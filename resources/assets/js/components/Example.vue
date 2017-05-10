@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">vue components</div>
+                    <div class="panel-heading">VUE实践</div>
 
                     <div class="panel-body">
                         <div class="panel-body">

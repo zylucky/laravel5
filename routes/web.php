@@ -38,7 +38,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/article/create','ArticleController@create');
-Route::post('/article','ArticleController@store');
-
+Route::resource('article','ArticleController');
 Route::resource('test', 'TestController');

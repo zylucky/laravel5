@@ -16,6 +16,12 @@ require('./bootstrap');
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('todos', require('./components/Todos.vue'));
 Vue.component('formtodo', require('./components/FormTodo.vue'));
+Vue.component('navigation', require('./components/Navigation.vue'));
+Vue.component('login', require('./components/Login.vue'));
+
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-default/index.css';
+Vue.use(ElementUI);
 
 const app = new Vue({
     el: '#app'
