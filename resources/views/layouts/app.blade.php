@@ -31,7 +31,6 @@
         {{--navigation--}}
         @yield('nav')
         {{--main content--}}
-        @yield('content')
     </div>
 
     <!-- Scripts -->

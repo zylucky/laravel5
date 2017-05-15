@@ -2,8 +2,7 @@
     <el-row class="container">
         <el-col :span="24" class="header">
             <el-col :span="10" class="logo" :class="collapsed?'logo-collapse-width':'logo-width'">
-                <!--{{collapsed?'':sysName}}-->
-                Youshi Space
+                {{collapsed?'':sysName}}
             </el-col>
             <el-col :span="10">
                 <div class="tools" @click.prevent="collapse">
@@ -24,47 +23,116 @@
         <el-col :span="24" class="main">
             <aside :class="collapsed?'menu-collapsed':'menu-expanded'">
                <!-- <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"> -->
-                <el-menu default-active="2" class="el-menu-vertical-demo" unique-opened>
-                    <el-submenu index="1">
-                        <template slot="title"><i class="el-icon-message"></i>合同管理</template>
-                        <el-menu-item-group>
-                            <template slot="title">幼狮科技</template>
-                            <el-menu-item index="1-1">收房合同</el-menu-item>
-                            <el-menu-item index="1-2">出房合同</el-menu-item>
-                        </el-menu-item-group>
-                        <el-menu-item-group title="华亮房产">
-                            <el-menu-item index="1-3">选项3</el-menu-item>
-                        </el-menu-item-group>
-                        <el-submenu index="1-4">
-                            <template slot="title">选项4</template>
-                            <el-menu-item index="1-4-1">选项1</el-menu-item>
+               <el-menu :default-active="2" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
+                         unique-opened router v-show="!collapsed">
+                    <template v-for="(item,index) in menulist" v-if="!item.hidden">
+                        <el-submenu :index="index+''" v-if="!item.leaf">
+                            <template slot="title"><i :class="item.iconCls"></i>{{item.name}}</template>
+                            <el-menu-item v-for="child in item.children" :index="child.path" :key="child.path" v-if="!child.hidden">{{child.name}}</el-menu-item>
                         </el-submenu>
-                    </el-submenu>
-                    <el-menu-item index="2"><i class="el-icon-menu"></i>导航二</el-menu-item>
-                    <el-menu-item index="3"><i class="el-icon-setting"></i>导航三</el-menu-item>
+                        <el-menu-item v-if="item.leaf&&item.children.length>0" :index="item.children[0].path"><i :class="item.iconCls"></i>{{item.children[0].name}}</el-menu-item>
+                    </template>
                 </el-menu>
+                <!--导航菜单-折叠后-->
+                <ul class="el-menu el-menu-vertical-demo collapsed" v-show="collapsed" ref="menuCollapsed">
+                    <li v-for="(item,index) in menulist" v-if="!item.hidden" class="el-submenu item">
+                        <template v-if="!item.leaf">
+                            <div class="el-submenu__title" style="padding-left: 20px;" @mouseover="showMenu(index,true)" @mouseout="showMenu(index,false)"><i :class="item.iconCls"></i></div>
+                            <ul class="el-menu submenu" :class="'submenu-hook-'+index" @mouseover="showMenu(index,true)" @mouseout="showMenu(index,false)">
+                                <li v-for="child in item.children" v-if="!child.hidden" :key="child.path" class="el-menu-item" style="padding-left: 40px;" :class="true?'is-active':''" @click="$router.push(child.path)">{{child.name}}</li>
+                            </ul>
+                        </template>
+                        <template v-else>
+                            <li class="el-submenu">
+                                <div class="el-submenu__title el-menu-item" style="padding-left: 20px;height: 56px;line-height: 56px;padding: 0 20px;" :class="$route.path==item.children[0].path?'is-active':''" @click="$router.push(item.children[0].path)"><i :class="item.iconCls"></i></div>
+                            </li>
+                        </template>
+                    </li>
+                </ul>
             </aside>
+            <section class="content-container">
+                <div class="grid-content bg-purple-light">
+                    <el-col :span="24" class="breadcrumb-container">
+                        <strong class="title">合同管理</strong>
+                        <el-breadcrumb separator="/" class="breadcrumb-inner">
+                            <el-breadcrumb-item >
+                                收购管理
+                            </el-breadcrumb-item>
+                        </el-breadcrumb>
+                    </el-col>
+                    <el-col :span="24" class="content-wrapper">
+                        <transition name="fade" mode="out-in">
+                            <!--<router-view></router-view>-->
+                        </transition>
+                    </el-col>
+                </div>
+            </section>
         </el-col>
-        <section class="content-container">
-            <div class="grid-content bg-purple-light">
-                <el-col :span="24" class="breadcrumb-container">
-                    <strong class="title"></strong>
-                    <el-breadcrumb separator="/" class="breadcrumb-inner">
-                        <el-breadcrumb-item >
-                            breadcrumb
-                        </el-breadcrumb-item>
-                    </el-breadcrumb>
-                </el-col>
-                <el-col :span="24" class="content-wrapper">
-                    <transition name="fade" mode="out-in">
-                        <h1>hello</h1>
-                        <!--这个地方就是放主体的-->
-                    </transition>
-                </el-col>
-            </div>
-        </section>
+
     </el-row>
 </template>
+<script>
+    export default {
+        //菜单栏
+        data(){
+            return {
+                sysName:'Youshi Space',
+                collapsed:false,
+                sysUserName: '李岳群',
+                sysUserAvatar: '',
+                menulist:[
+                    {
+                        path: '/',
+                        component: '',
+                        name: '导航一',
+                        iconCls: 'el-icon-message',//图标样式class
+                        children: [
+                            { path: '/main', component:'' , name: '主页', hidden: true },
+                            { path: '/table', component: '', name: 'Table' },
+                            { path: '/form', component: '', name: 'Form' },
+                            { path: '/user', component: '', name: '列表' },
+                        ]
+                    },
+                    {
+                        path: '/',
+                        component: '',
+                        name: '导航er',
+                        iconCls: 'el-icon-message',//图标样式class
+                        children: [
+                            { path: '/main', component:'' , name: '主页', hidden: true },
+                            { path: '/table', component: '', name: 'Table' },
+                            { path: '/form', component: '', name: 'Form' },
+                            { path: '/user', component: '', name: '列表' },
+                        ]
+                    },
+                ]
+            }
+        },
+
+        methods: {
+            onSubmit() {
+                console.log('submit!');
+            },
+            handleopen() {
+                //console.log('handleopen');
+            },
+            handleclose() {
+                //console.log('handleclose');
+            },
+            handleselect: function (a, b) {
+            },
+            //退出登录
+
+            //折叠导航栏
+            collapse:function(){
+                this.collapsed=!this.collapsed;
+            },
+            showMenu(i,status){
+                this.$refs.menuCollapsed.getElementsByClassName('submenu-hook-'+i)[0].style.display=status?'block':'none';
+            }
+        },
+    }
+</script>
 <style scoped lang="scss">
 
     .container {
@@ -166,7 +234,7 @@
                 width: 230px;
             }
             .content-container {
-                 background: #f1f2f7;
+                background: #f1f2f7;
                 flex:1;
                  //position: absolute;
                  //right: 0px;
