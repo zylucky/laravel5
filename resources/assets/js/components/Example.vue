@@ -8,7 +8,9 @@
                     <div class="panel-body">
                         <div class="panel-body">
                             <h1>{{message}}   {{todosCount}}</h1>
+                            <!-- todo mukuaier-->
                             <todos :todos="todos"></todos>
+                            <!-- anniumokuaier-->
                             <formtodo :todos="todos"></formtodo>
                         </div>
                     </div>
