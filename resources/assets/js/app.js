@@ -12,27 +12,31 @@ require('./bootstrap');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component('todos', require('./components/Todos.vue'));
-Vue.component('example', require('./components/Example.vue'));
-Vue.component('navigation', require('./components/Navigation.vue'));
-Vue.component('formtodo', require('./components/FormTodo.vue'));
-Vue.component('login', require('./components/Login.vue'));
-Vue.component('contractIndex', require('./components/Contract/index.vue'));
+
+// Vue.component('todos', require('./components/Todos.vue'));
+// Vue.component('example', require('./components/Example.vue'));
+// Vue.component('navigation', require('./components/Navigation.vue'));
+// Vue.component('formtodo', require('./components/FormTodo.vue'));
+// Vue.component('login', require('./components/Login.vue'));
+// Vue.component('contractIndex', require('./components/Contract/index.vue'));
 
 import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
-// import VueRouter from 'vue-router';
-// import routes from './routes';
+import VueRouter from 'vue-router';
+import routes from './routes';
 
 
 Vue.use(ElementUI);
-// Vue.use(VueRouter);
+Vue.use(VueRouter);
 
-// const router = new VueRouter({
-//     routes
-// })
+const router = new VueRouter({
+    routes
+})
+// const app = new Vue({
+//     router,
+//     el: '#app'
+// });
 const app = new Vue({
-    // router,
-    el: '#app'
-});
+    router
+}).$mount('#app')

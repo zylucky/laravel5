@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('nav')
-    <navigation>
-    </navigation>
+    <router-view></router-view>
 @endsection
 @section('content')
     <div class="container">
