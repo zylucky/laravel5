@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-            <example></example>
+        <passport-clients></passport-clients>
     </div>
 
 @endsection

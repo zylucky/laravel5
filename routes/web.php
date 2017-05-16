@@ -11,32 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-//->where('id', '[0-9]+');
-Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
-    //
-    return $postId.$commentId;
-});
-Route::get('user/profile', function () {
-    //
-})->name('profile');
-
-Route::get('user/{id}', 'UserController@show');
-
-/*Route::get('user/{id}', function ($id) {
-    return 'User '.$id;
-});*/
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
-
-Route::resource('article','ArticleController');
+Route::get('/', 'HomeController@index');
 Route::resource('test', 'TestController');
+Auth::routes();

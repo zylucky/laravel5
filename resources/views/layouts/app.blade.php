@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token"  content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'YoushiSpace') }}</title>
 
     <!-- Styles -->
 
-    {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <style>
         body,html{
             margin:0px!important;
@@ -30,7 +30,8 @@
     <div id="app">
         {{--navigation--}}
         @yield('nav')
-        {{--main content--}}
+        {{--content--}}
+        @yield('content')
     </div>
 
     <!-- Scripts -->

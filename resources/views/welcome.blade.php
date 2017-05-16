@@ -1,10 +1,5 @@
 @extends('layouts.app')
 @section('nav')
-    <router-view></router-view>
+    <h1>hello YouShi Space</h1>
 @endsection
-@section('content')
-    <div class="container">
-        {{--<contract-index></contract-index>--}}
-        <h1>hello</h1>
-    </div>
-@endsection
+

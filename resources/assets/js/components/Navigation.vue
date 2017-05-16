@@ -6,8 +6,8 @@
             </el-col>
             <el-col :span="10">
                 <div class="tools" @click.prevent="collapse">
-                <i class="fa fa-align-justify"></i>
-            </div>
+                    <i class="fa fa-align-justify"></i>
+                </div>
             </el-col>
             <el-col :span="4" class="userinfo">
                 <el-dropdown trigger="hover">
@@ -22,8 +22,8 @@
         </el-col>
         <el-col :span="24" class="main">
             <aside :class="collapsed?'menu-collapsed':'menu-expanded'">
-               <!-- <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"> -->
-               <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
+                <!--导航菜单-->
+                <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
                          unique-opened router v-show="!collapsed">
                     <template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
                         <el-submenu :index="index+''" v-if="!item.leaf">
@@ -39,39 +39,39 @@
                         <template v-if="!item.leaf">
                             <div class="el-submenu__title" style="padding-left: 20px;" @mouseover="showMenu(index,true)" @mouseout="showMenu(index,false)"><i :class="item.iconCls"></i></div>
                             <ul class="el-menu submenu" :class="'submenu-hook-'+index" @mouseover="showMenu(index,true)" @mouseout="showMenu(index,false)">
-                                <li v-for="child in item.children" v-if="!child.hidden" :key="child.path" class="el-menu-item" style="padding-left: 40px;" :class="true?'is-active':''" @click="$router.push(child.path)">{{child.name}}</li>
+                                <li v-for="child in item.children" v-if="!child.hidden" :key="child.path" class="el-menu-item" style="padding-left: 40px;" :class="$route.path==child.path?'is-active':''" @click="$router.push(child.path)">{{child.name}}</li>
                             </ul>
                         </template>
-                        <template v-else>
-                            <li class="el-submenu">
-                                <div class="el-submenu__title el-menu-item" style="padding-left: 20px;height: 56px;line-height: 56px;padding: 0 20px;" :class="$route.path==item.children[0].path?'is-active':''" @click="$router.push(item.children[0].path)"><i :class="item.iconCls"></i></div>
-                            </li>
-                        </template>
+                        <!--<template v-else>-->
+                            <!--<li class="el-submenu">-->
+                                <!--<div class="el-submenu__title el-menu-item" style="padding-left: 20px;height: 56px;line-height: 56px;padding: 0 20px;" :class="$route.path==item.children[0].path?'is-active':''" @click="$router.push(item.children[0].path)"><i :class="item.iconCls"></i></div>-->
+                            <!--</li>-->
+                        <!--</template>-->
                     </li>
                 </ul>
             </aside>
             <section class="content-container">
                 <div class="grid-content bg-purple-light">
-                    <el-col :span="24" class="breadcrumb-container">
-                        <strong class="title">合同管理</strong>
-                        <el-breadcrumb separator="/" class="breadcrumb-inner">
-                            <el-breadcrumb-item >
-                                收购管理
-                            </el-breadcrumb-item>
-                        </el-breadcrumb>
-                    </el-col>
-                    <el-col :span="24" class="content-wrapper">
-                        <transition name="fade" mode="out-in">
-                            <!--<router-view></router-view>-->
-                        </transition>
-                    </el-col>
-                </div>
+                <el-col :span="24" class="breadcrumb-container">
+                    <strong class="title">{{$route.name}}</strong>
+                    <el-breadcrumb separator="/" class="breadcrumb-inner">
+                        <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
+                            {{ item.name }}
+                        </el-breadcrumb-item>
+                    </el-breadcrumb>
+                </el-col>
+                <el-col :span="24" class="content-wrapper">
+                    <transition name="fade" mode="out-in">
+                        <router-view></router-view>
+                    </transition>
+                </el-col>
+        </div>
             </section>
         </el-col>
-
     </el-row>
 </template>
 <script>
+
     export default {
         //菜单栏
         data(){
@@ -80,32 +80,7 @@
                 collapsed:false,
                 sysUserName: '李岳群',
                 sysUserAvatar: '',
-                menulist:[
-                    {
-                        path: '/',
-                        component: '',
-                        name: '导航一',
-                        iconCls: 'el-icon-message',//图标样式class
-                        children: [
-                            { path: '/main', component:'' , name: '主页', hidden: true },
-                            { path: '/table', component: '', name: 'Table' },
-                            { path: '/form', component: '', name: 'Form' },
-                            { path: '/user', component: '', name: '列表' },
-                        ]
-                    },
-                    {
-                        path: '/',
-                        component: '',
-                        name: '导航er',
-                        iconCls: 'el-icon-message',//图标样式class
-                        children: [
-                            { path: '/main', component:'' , name: '主页', hidden: true },
-                            { path: '/table', component: '', name: 'Table' },
-                            { path: '/form', component: '', name: 'Form' },
-                            { path: '/user', component: '', name: '列表' },
-                        ]
-                    },
-                ]
+
             }
         },
 
@@ -122,6 +97,18 @@
             handleselect: function (a, b) {
             },
             //退出登录
+            logout: function () {
+                var _this = this;
+                this.$confirm('确认退出吗?', '提示', {
+                    //type: 'warning'
+                }).then(() => {
+                    _this.$router.push('/login');
+                }).catch(() => {
+
+                });
+
+
+            },
 
             //折叠导航栏
             collapse:function(){
@@ -234,13 +221,13 @@
                 width: 230px;
             }
             .content-container {
-                background: #f1f2f7;
+                // background: #f1f2f7;
                 flex:1;
-                 //position: absolute;
-                 //right: 0px;
-                 //top: 0px;
-                 //bottom: 0px;
-                 //left: 230px;
+                // position: absolute;
+                // right: 0px;
+                // top: 0px;
+                // bottom: 0px;
+                // left: 230px;
                 overflow-y: scroll;
                 padding: 20px;
                 .breadcrumb-container {

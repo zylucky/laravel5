@@ -15,7 +15,7 @@ class TestController extends Controller
     public function index()
     {
         //
-//        return view('test');
+        return view('test');exit;
         $client = new Client([
             // Base URI is used with relative requests
             'base_uri' => 'http://www.youshi.com',

@@ -18,7 +18,8 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            //如果判断是已经登陆的状态，就跳转到····
+            return redirect('/');
         }
 
         return $next($request);

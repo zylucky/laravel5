@@ -12,13 +12,20 @@ require('./bootstrap');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue')
+);
 
-// Vue.component('todos', require('./components/Todos.vue'));
-// Vue.component('example', require('./components/Example.vue'));
-// Vue.component('navigation', require('./components/Navigation.vue'));
-// Vue.component('formtodo', require('./components/FormTodo.vue'));
-// Vue.component('login', require('./components/Login.vue'));
-// Vue.component('contractIndex', require('./components/Contract/index.vue'));
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue')
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue')
+);
 
 import Vue from 'vue';
 import ElementUI from 'element-ui';
@@ -27,16 +34,13 @@ import VueRouter from 'vue-router';
 import routes from './routes';
 
 
+
 Vue.use(ElementUI);
 Vue.use(VueRouter);
 
 const router = new VueRouter({
     routes
 })
-// const app = new Vue({
-//     router,
-//     el: '#app'
-// });
 const app = new Vue({
-    router
+    router,
 }).$mount('#app')
