@@ -35500,7 +35500,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.logining = true;
                     //NProgress.start();
                     var loginParams = { email: _this2.ruleForm2.account, password: _this2.ruleForm2.checkPass };
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["b" /* requestLogin */])(loginParams).then(function (data) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["c" /* requestLogin */])(loginParams).then(function (data) {
 
                         _this2.logining = false;
                         //NProgress.done();
@@ -36490,9 +36490,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return requestLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return requestLogin; });
 /* unused harmony export logout */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getUserListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return removeUser; });
 
 var base = '';
 
@@ -36507,7 +36508,10 @@ var logout = function logout(params) {
   });
 };
 var getUserListPage = function getUserListPage(params) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/user/list', { params: params });
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/user/list', { params: params });
+};
+var removeUser = function removeUser(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/user/delete', { params: params });
 };
 
 /***/ }),
@@ -36598,9 +36602,9 @@ var routes = [{
 }, {
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a,
-    name: '合同管理',
+    name: '权限管理',
     iconCls: 'el-icon-message', //图标样式class
-    children: [{ path: '/purchaseContract-index', component: __WEBPACK_IMPORTED_MODULE_3__components_purchaseContract_index_vue___default.a, name: '收购合同' }, { path: '/form', component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a, name: 'Form' }, { path: '/user', component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a, name: '列表' }]
+    children: [{ path: '/purchaseContract-index', component: __WEBPACK_IMPORTED_MODULE_3__components_purchaseContract_index_vue___default.a, name: '用户' }, { path: '/form', component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a, name: 'Form' }, { path: '/user', component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a, name: '列表' }]
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
@@ -95215,18 +95219,114 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-
+//    , batchRemoveUser, editUser, addUser
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             filters: {
                 name: ''
             },
+            //分页类数据
+            total: 0,
+            currentPage: 0,
+            pageSize: 10,
+            pageSizes: [10, 20, 30, 40, 50, 100],
             users: [],
             listLoading: false,
-            sels: [] };
+            sels: [], //列表选中列
+
+            editFormVisible: false, //编辑界面是否显示
+            editLoading: false,
+            editFormRules: {
+                name: [{ required: true, message: '请输入姓名', trigger: 'blur' }]
+            },
+            //编辑界面数据
+            editForm: {
+                id: 0,
+                name: '',
+                sex: -1,
+                age: 0,
+                birth: '',
+                addr: ''
+            },
+            addFormVisible: false, //新增界面是否显示
+            addLoading: false,
+            addFormRules: {
+                name: [{ required: true, message: '请输入姓名', trigger: 'blur' }]
+            },
+            //新增界面数据
+            addForm: {
+                name: '',
+                sex: -1,
+                age: 0,
+                birth: '',
+                addr: ''
+            }
+        };
     },
 
     methods: {
@@ -95234,26 +95334,101 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         formatSex: function formatSex(row, column) {
             return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
         },
+        //页面跳转后
+        handleCurrentChange: function handleCurrentChange(val) {
+            this.page = val;
+            this.getUsers();
+        },
+
+        //更改每页显示数据
+        handleSizeChange: function handleSizeChange(val) {
+            this.pageSize = val;
+            this.getUsers();
+        },
+
         //获取用户列表
         getUsers: function getUsers() {
             var _this = this;
 
             var para = {
                 page: this.page,
+                pageSize: this.pageSize,
                 name: this.filters.name
             };
             this.listLoading = true;
             //NProgress.start();
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["a" /* getUserListPage */])(para).then(function (res) {
-                console.log(res);
+                //                    console.log(res)
                 _this.total = res.data.total;
-                _this.users = res.data.users;
+                _this.users = res.data.data;
                 _this.listLoading = false;
                 //NProgress.done();
             });
         },
-        handleAdd: function handleAdd() {},
 
+        //删除
+        handleDel: function handleDel(index, row) {
+            var _this2 = this;
+
+            this.$confirm('确认删除该记录吗?', '提示', {
+                type: 'warning'
+            }).then(function () {
+                _this2.listLoading = true;
+                //NProgress.start();
+                var para = { id: row.id };
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["b" /* removeUser */])(para).then(function (res) {
+                    _this2.listLoading = false;
+                    //NProgress.done();
+                    _this2.$message({
+                        message: '删除成功',
+                        type: 'success'
+                    });
+                    _this2.getUsers();
+                });
+            }).catch(function () {});
+        },
+        //显示编辑界面
+        handleEdit: function handleEdit(index, row) {
+            this.editFormVisible = true;
+            this.editForm = Object.assign({}, row);
+        },
+        //显示新增界面
+        handleAdd: function handleAdd() {
+            this.addFormVisible = true;
+            this.addForm = {
+                name: '',
+                sex: -1,
+                age: 0,
+                birth: '',
+                addr: ''
+            };
+        },
+        //编辑
+        editSubmit: function editSubmit() {
+            var _this3 = this;
+
+            this.$refs.editForm.validate(function (valid) {
+                if (valid) {
+                    _this3.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this3.editLoading = true;
+                        //NProgress.start();
+                        var para = Object.assign({}, _this3.editForm);
+                        para.birth = !para.birth || para.birth == '' ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
+                        editUser(para).then(function (res) {
+                            _this3.editLoading = false;
+                            //NProgress.done();
+                            _this3.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            _this3.$refs['editForm'].resetFields();
+                            _this3.editFormVisible = false;
+                            _this3.getUsers();
+                        });
+                    });
+                }
+            });
+        },
         selsChange: function selsChange(sels) {
             this.sels = sels;
         }
@@ -95338,7 +95513,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "name",
       "label": "姓名",
-      "width": "120",
+      "width": "150",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
@@ -95353,20 +95528,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "email",
       "label": "邮箱",
-      "width": "100",
+      "width": "200",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "created_at",
       "label": "创建时间",
-      "width": "120",
+      "width": "220",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "addr",
-      "label": "地址",
+      "label": "职位",
       "min-width": "180",
       "sortable": ""
     }
@@ -95399,7 +95574,253 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }, [_vm._v("删除")])]
       }]
     ])
-  })], 1), _vm._v(" "), _c('el-col', {
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "编辑",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.editFormVisible),
+      callback: function($$v) {
+        _vm.editFormVisible = $$v
+      },
+      expression: "editFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "editForm",
+    attrs: {
+      "model": _vm.editForm,
+      "label-width": "80px",
+      "rules": _vm.editFormRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "姓名",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.name),
+      callback: function($$v) {
+        _vm.editForm.name = $$v
+      },
+      expression: "editForm.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "性别"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.editForm.sex),
+      callback: function($$v) {
+        _vm.editForm.sex = $$v
+      },
+      expression: "editForm.sex"
+    }
+  }, [_c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": 1
+    }
+  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": 0
+    }
+  }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "年龄"
+    }
+  }, [_c('el-input-number', {
+    attrs: {
+      "min": 0,
+      "max": 200
+    },
+    model: {
+      value: (_vm.editForm.age),
+      callback: function($$v) {
+        _vm.editForm.age = $$v
+      },
+      expression: "editForm.age"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "生日"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "选择日期"
+    },
+    model: {
+      value: (_vm.editForm.birth),
+      callback: function($$v) {
+        _vm.editForm.birth = $$v
+      },
+      expression: "editForm.birth"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "地址"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea"
+    },
+    model: {
+      value: (_vm.editForm.addr),
+      callback: function($$v) {
+        _vm.editForm.addr = $$v
+      },
+      expression: "editForm.addr"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.editFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.editLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.editSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "新增",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.addFormVisible),
+      callback: function($$v) {
+        _vm.addFormVisible = $$v
+      },
+      expression: "addFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "addForm",
+    attrs: {
+      "model": _vm.addForm,
+      "label-width": "80px",
+      "rules": _vm.addFormRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "姓名",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.name),
+      callback: function($$v) {
+        _vm.addForm.name = $$v
+      },
+      expression: "addForm.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "性别"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.addForm.sex),
+      callback: function($$v) {
+        _vm.addForm.sex = $$v
+      },
+      expression: "addForm.sex"
+    }
+  }, [_c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": 1
+    }
+  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": 0
+    }
+  }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "年龄"
+    }
+  }, [_c('el-input-number', {
+    attrs: {
+      "min": 0,
+      "max": 200
+    },
+    model: {
+      value: (_vm.addForm.age),
+      callback: function($$v) {
+        _vm.addForm.age = $$v
+      },
+      expression: "addForm.age"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "生日"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "选择日期"
+    },
+    model: {
+      value: (_vm.addForm.birth),
+      callback: function($$v) {
+        _vm.addForm.birth = $$v
+      },
+      expression: "addForm.birth"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "地址"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea"
+    },
+    model: {
+      value: (_vm.addForm.addr),
+      callback: function($$v) {
+        _vm.addForm.addr = $$v
+      },
+      expression: "addForm.addr"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.addFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.addLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.addSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-col', {
     staticClass: "toolbar",
     attrs: {
       "span": 24
@@ -95412,7 +95833,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {}
     }
-  }, [_vm._v("批量删除")])], 1)], 1)
+  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "current-page": _vm.currentPage,
+      "page-sizes": _vm.pageSizes,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

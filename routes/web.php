@@ -16,6 +16,10 @@ Route::get('/', function (){
     return view('home');
 });
 Route::resource('test', 'TestController');
+
+
 Route::post('logout','Auth\LoginController@logout');
 Route::post('login','Auth\LoginController@index');
-Route::post('user/list','UserController@getlist');
+
+Route::get('user/list','UserController@getlist');
+Route::post('user/delete','UserController@delete');

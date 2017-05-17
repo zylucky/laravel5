@@ -23,10 +23,10 @@ import purchaseContractIndex from "./components/purchaseContract/index.vue";
     {
         path: '/',
         component: navigation,
-        name: '合同管理',
+        name: '权限管理',
         iconCls: 'el-icon-message',//图标样式class
         children: [
-            { path: '/purchaseContract-index', component: purchaseContractIndex, name: '收购合同' },
+            { path: '/purchaseContract-index', component: purchaseContractIndex, name: '用户' },
             { path: '/form', component: navigation, name: 'Form' },
             { path: '/user', component: navigation, name: '列表' },
         ]
