@@ -120,6 +120,15 @@
                 this.$refs.menuCollapsed.getElementsByClassName('submenu-hook-'+i)[0].style.display=status?'block':'none';
             }
         },
+        mounted() {
+            var user = sessionStorage.getItem('user');
+            if (user) {
+                user = JSON.parse(user);
+                this.sysUserName = user.name || '';
+                this.sysUserAvatar = user.avatar || '../../image/default.jpg';
+            }
+
+        }
     }
 </script>
 <style scoped lang="scss">

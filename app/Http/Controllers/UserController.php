@@ -18,5 +18,9 @@ class UserController extends Controller
 	{
 		return 'userinfo';
 	}
+	public function getlist(){
+
+	    return $users = ['users' => User::all() ];
+    }
 
 }

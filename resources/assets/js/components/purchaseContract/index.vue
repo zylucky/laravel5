@@ -1,0 +1,95 @@
+<template>
+    <section>
+        <!--工具条-->
+        <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
+            <el-form :inline="true" :model="filters">
+                <el-form-item>
+                    <el-input v-model="filters.name" placeholder="姓名"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" v-on:click="getUsers">查询</el-button>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="handleAdd">新增</el-button>
+                </el-form-item>
+            </el-form>
+        </el-col>
+        <el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
+            <el-table-column type="selection" width="55">
+            </el-table-column>
+            <el-table-column type="index" width="60">
+            </el-table-column>
+            <el-table-column prop="name" label="姓名" width="120" sortable>
+            </el-table-column>
+            <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
+            </el-table-column>
+            <el-table-column prop="email" label="邮箱" width="100" sortable>
+            </el-table-column>
+            <el-table-column prop="created_at" label="创建时间" width="120" sortable>
+            </el-table-column>
+            <el-table-column prop="addr" label="地址" min-width="180" sortable>
+            </el-table-column>
+            <el-table-column label="操作" width="150">
+                <template scope="scope">
+                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                    <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+
+        <el-col :span="24" class="toolbar">
+            <el-button type="danger" @click="" :disabled="this.sels.length===0">批量删除</el-button>
+            <!--<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">-->
+            </el-pagination>
+        </el-col>
+
+
+    </section>
+</template>
+<script>
+    import { getUserListPage} from '../../api/api';
+
+    export default{
+        data(){
+            return {
+                filters:{
+                    name:'',
+                },
+                users:[],
+                listLoading: false,
+                sels: [],//列表选中列
+            }
+        },
+        methods:{
+            //性别显示转换
+            formatSex: function (row, column) {
+                return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
+            },
+            //获取用户列表
+            getUsers() {
+                let para = {
+                    page: this.page,
+                    name: this.filters.name
+                };
+                this.listLoading = true;
+                //NProgress.start();
+                getUserListPage(para).then((res) => {
+                    console.log(res)
+                    this.total = res.data.total;
+                    this.users = res.data.users;
+                    this.listLoading = false;
+                    //NProgress.done();
+                });
+            },
+            handleAdd(){
+
+            },
+            selsChange: function (sels) {
+                this.sels = sels;
+            },
+        },
+        mounted() {
+            this.getUsers();
+        }
+    }
+</script>

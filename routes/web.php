@@ -18,3 +18,4 @@ Route::get('/', function (){
 Route::resource('test', 'TestController');
 Route::post('logout','Auth\LoginController@logout');
 Route::post('login','Auth\LoginController@index');
+Route::post('user/list','UserController@getlist');
