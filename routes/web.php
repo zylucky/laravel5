@@ -11,7 +11,10 @@
 |
 */
 
-Auth::routes();
-Route::get('/', 'HomeController@index');
+
+Route::get('/', function (){
+    return view('home');
+});
 Route::resource('test', 'TestController');
-Auth::routes();
+Route::post('logout','Auth\LoginController@logout');
+Route::post('login','Auth\LoginController@index');

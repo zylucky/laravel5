@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Input;
 
 class LoginController extends Controller
 {
@@ -18,15 +18,12 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/';
-
     /**
      * Create a new controller instance.
      *
@@ -34,7 +31,22 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        dd($_SESSION);
-        $this->middleware('guest', ['except' => 'logout']);
+    }
+    public function index(){
+        if (Auth::attempt(Input::get())) {
+            return [
+                'msg'=>'success!',
+                'code'=>200,
+                'user'=>Auth::user(),
+            ];
+        }else{
+            return [
+                'msg'=>'账户或者密码错误!',
+                'code'=>201,
+            ];
+        }
+    }
+    public function logout(){
+        return Auth::logout();
     }
 }

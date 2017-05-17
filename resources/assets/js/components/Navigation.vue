@@ -71,7 +71,7 @@
     </el-row>
 </template>
 <script>
-
+    import { requestLogin } from '../api/api.js';
     export default {
         //菜单栏
         data(){
@@ -102,7 +102,9 @@
                 this.$confirm('确认退出吗?', '提示', {
                     //type: 'warning'
                 }).then(() => {
+                    sessionStorage.removeItem('user');
                     _this.$router.push('/login');
+
                 }).catch(() => {
 
                 });

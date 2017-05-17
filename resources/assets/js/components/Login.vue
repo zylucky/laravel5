@@ -49,12 +49,13 @@
                         //_this.$router.replace('/table');
                         this.logining = true;
                         //NProgress.start();
-                        var loginParams = { username: this.ruleForm2.account, password: this.ruleForm2.checkPass };
+                        var loginParams = { email: this.ruleForm2.account, password: this.ruleForm2.checkPass };
                         requestLogin(loginParams).then(data => {
-                            console.log(data)
+
                             this.logining = false;
                             //NProgress.done();
                             let { msg, code, user } = data;
+                            console.log(msg,code,user)
                             if (code !== 200) {
                                 this.$message({
                                     message: msg,
@@ -62,7 +63,7 @@
                                 });
                             } else {
                                 sessionStorage.setItem('user', JSON.stringify(user));
-                                this.$router.push({ path: '/table' });
+                                this.$router.push({ path: '/' });
                             }
                         });
                     } else {
