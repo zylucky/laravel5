@@ -67,7 +67,10 @@
                             }
                         });
                     } else {
-                        console.log('error submit!!');
+                        this.$message({
+                            message: '连接超时',
+                            type: 'error'
+                        });
                         return false;
                     }
                 });

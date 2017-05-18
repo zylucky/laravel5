@@ -6,7 +6,7 @@ import navigation from "./components/Navigation.vue";
 import Login from "./components/Login.vue";
 import NotFound from "./components/404.vue";
 
-import purchaseContractIndex from "./components/purchaseContract/index.vue";
+import User from "./components/rbac/user.vue";
  let routes = [
      {
          path: '/login',
@@ -26,9 +26,9 @@ import purchaseContractIndex from "./components/purchaseContract/index.vue";
         name: '权限管理',
         iconCls: 'el-icon-message',//图标样式class
         children: [
-            { path: '/purchaseContract-index', component: purchaseContractIndex, name: '用户' },
-            { path: '/form', component: navigation, name: 'Form' },
-            { path: '/user', component: navigation, name: '列表' },
+            { path: '/user', component: User, name: '用户' },
+            { path: '/role', component: navigation, name: '角色' },
+            { path: '/permission', component: navigation, name: '权限' },
         ]
     },
 ]

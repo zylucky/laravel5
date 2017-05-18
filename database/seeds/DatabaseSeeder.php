@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
                 'name' => str_random(10),
                 'email' => str_random(10).'@gmail.com',
                 'password' => bcrypt('secret'),
+                'phone' => rand(18511909100,18511909124),
+
             ]);
         }
 
