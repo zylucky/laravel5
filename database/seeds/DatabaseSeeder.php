@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,24 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        Model::unguard();
+        $this->call('UserTabaleSeeder');
+        Model::reguard();
+
         // $this->call(UsersTableSeeder::class);
-        for ($i=0;$i<10;$i++){
-            DB::table('users')->insert([
-                'name' => str_random(10),
-                'email' => str_random(10).'@gmail.com',
-                'password' => bcrypt('secret'),
-                'phone' => rand(18511909100,18511909124),
-
-            ]);
-        }
-        DB::table('users')->insert([
-            'name' => 'liyuequn',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin'),
-            'phone' => rand(18511909100,18511909124),
-
-        ]);
-
 
     }
 }
