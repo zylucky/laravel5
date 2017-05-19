@@ -26,3 +26,4 @@ Route::post('user/delete','UserController@delete');
 Route::post('user/store','UserController@addUser');
 Route::post('user/edit','UserController@editUser');
 Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
+Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
