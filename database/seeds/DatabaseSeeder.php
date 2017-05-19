@@ -21,6 +21,14 @@ class DatabaseSeeder extends Seeder
 
             ]);
         }
+        DB::table('users')->insert([
+            'name' => 'liyuequn',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin'),
+            'phone' => rand(18511909100,18511909124),
+
+        ]);
+
 
     }
 }
