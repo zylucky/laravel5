@@ -36846,7 +36846,327 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
-/* 69 */,
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(12);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            filters: {
+                name: ''
+            },
+            //分页类数据
+            total: 0,
+            currentPage: 0,
+            pageSize: 10,
+            pageSizes: [10, 20, 30, 40, 50, 100],
+            users: [],
+            listLoading: false,
+            sels: [], //列表选中列
+
+            editFormVisible: false, //编辑界面是否显示
+            editLoading: false,
+            editFormRules: {
+                name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
+                sex: [{ required: true, message: '不能为空', trigger: 'blur' }],
+                email: [{ required: true, message: '不能为空', trigger: 'blur' }],
+                phone: [{ required: true, message: '不能为空', trigger: 'blur' }]
+            },
+            //编辑界面数据
+            editForm: {
+                id: 0,
+                name: '',
+                sex: 1,
+                email: '',
+                phone: '',
+                addr: ''
+            },
+            addFormVisible: false, //新增界面是否显示
+            addLoading: false,
+            addFormRules: {
+                name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
+                sex: [{ required: true, message: '输入性别', trigger: 'blur' }],
+                email: [{ required: true, message: '输入邮箱', trigger: 'blur' }],
+                phone: [{ required: true, message: '输入手机号', trigger: 'blur' }]
+            },
+            //新增界面数据
+            addForm: {
+                name: '',
+                sex: 1,
+                email: '',
+                phone: '',
+                addr: ''
+            }
+        };
+    },
+
+    methods: {
+        //性别显示转换
+        formatSex: function formatSex(row, column) {
+            return row.sex == 1 ? '男' : row.sex == 2 ? '女' : '未知';
+        },
+        //页面跳转后
+        handleCurrentChange: function handleCurrentChange(val) {
+            this.page = val;
+            this.getUsers();
+        },
+
+        //更改每页显示数据
+        handleSizeChange: function handleSizeChange(val) {
+            this.pageSize = val;
+            this.getUsers();
+        },
+
+        //获取用户列表
+        getUsers: function getUsers() {
+            var _this = this;
+
+            var para = {
+                page: this.page,
+                pageSize: this.pageSize,
+                name: this.filters.name
+            };
+            this.listLoading = true;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["a" /* getUserListPage */])(para).then(function (res) {
+                _this.total = res.data.total;
+                _this.users = res.data.data;
+                _this.listLoading = false;
+            });
+        },
+
+        //删除
+        handleDel: function handleDel(index, row) {
+            var _this2 = this;
+
+            this.$confirm('确认删除该记录吗?', '提示', {
+                type: 'warning'
+            }).then(function () {
+                _this2.listLoading = true;
+                //NProgress.start();
+                var para = { id: row.id };
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["b" /* removeUser */])(para).then(function (res) {
+                    _this2.listLoading = false;
+                    //NProgress.done();
+                    _this2.$message({
+                        message: '删除成功',
+                        type: 'success'
+                    });
+                    _this2.getUsers();
+                });
+            }).catch(function () {});
+        },
+        //显示编辑界面
+        handleEdit: function handleEdit(index, row) {
+            this.editFormVisible = true;
+            this.editForm = Object.assign({}, row);
+        },
+        //显示新增界面
+        handleAdd: function handleAdd() {
+            this.addFormVisible = true;
+            this.addForm = {
+                name: '',
+                sex: 0,
+                email: '',
+                phone: '',
+                addr: ''
+            };
+        },
+        //编辑
+        editSubmit: function editSubmit() {
+            var _this3 = this;
+
+            this.$refs.editForm.validate(function (valid) {
+                if (valid) {
+                    _this3.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this3.editLoading = true;
+                        //NProgress.start();
+                        var para = Object.assign({}, _this3.editForm);
+                        //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["c" /* editUser */])(para).then(function (res) {
+                            _this3.editLoading = false;
+                            //NProgress.done();
+                            _this3.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            _this3.$refs['editForm'].resetFields();
+                            _this3.editFormVisible = false;
+                            _this3.getUsers();
+                        });
+                    });
+                }
+            });
+        },
+        //新增
+        addSubmit: function addSubmit() {
+            var _this4 = this;
+
+            this.$refs.addForm.validate(function (valid) {
+                if (valid) {
+                    _this4.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this4.addLoading = true;
+                        //NProgress.start();
+                        var para = Object.assign({}, _this4.addForm);
+                        //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["d" /* addUser */])(para).then(function (res) {
+                            _this4.addLoading = false;
+                            //NProgress.done();
+                            _this4.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            _this4.$refs['addForm'].resetFields();
+                            _this4.addFormVisible = false;
+                            _this4.getUsers();
+                        });
+                    });
+                }
+            });
+        },
+        selsChange: function selsChange(sels) {
+            this.sels = sels;
+        },
+        //批量删除
+        batchRemove: function batchRemove() {
+            var _this5 = this;
+
+            var ids = this.sels.map(function (item) {
+                return item.id;
+            }).toString();
+            this.$confirm('确认删除选中记录吗？', '提示', {
+                type: 'warning'
+            }).then(function () {
+                _this5.listLoading = true;
+                //NProgress.start();
+                var para = { ids: ids };
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["e" /* batchRemoveUser */])(para).then(function (res) {
+                    _this5.listLoading = false;
+                    //NProgress.done();
+                    _this5.$message({
+                        message: '删除成功',
+                        type: 'success'
+                    });
+                    _this5.getUsers();
+                });
+            }).catch(function () {});
+        }
+    },
+    mounted: function mounted() {
+        this.getUsers();
+    }
+});
+
+/***/ }),
 /* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -36910,7 +37230,7 @@ window.axios.defaults.headers.common = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Login_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_404_vue__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_404_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_404_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_rbac_user_vue__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_rbac_user_vue__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_rbac_user_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_rbac_user_vue__);
 /**
  * Created by liyuequn on 2017/5/15.
@@ -71014,7 +71334,7 @@ var Component = __webpack_require__(6)(
   /* script */
   null,
   /* template */
-  __webpack_require__(111),
+  __webpack_require__(112),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -71058,7 +71378,7 @@ var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(64),
   /* template */
-  __webpack_require__(112),
+  __webpack_require__(113),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -71102,7 +71422,7 @@ var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(65),
   /* template */
-  __webpack_require__(108),
+  __webpack_require__(109),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -71146,7 +71466,7 @@ var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(66),
   /* template */
-  __webpack_require__(110),
+  __webpack_require__(111),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -71190,7 +71510,7 @@ var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(67),
   /* template */
-  __webpack_require__(109),
+  __webpack_require__(110),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -71234,7 +71554,7 @@ var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(68),
   /* template */
-  __webpack_require__(113),
+  __webpack_require__(114),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -71266,8 +71586,437 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 107 */,
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(69),
+  /* template */
+  __webpack_require__(108),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/rbac/user.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] user.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0c1463a1", Component.options)
+  } else {
+    hotAPI.reload("data-v-0c1463a1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
 /* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', [_c('el-input', {
+    attrs: {
+      "placeholder": "姓名"
+    },
+    model: {
+      value: (_vm.filters.name),
+      callback: function($$v) {
+        _vm.filters.name = $$v
+      },
+      expression: "filters.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.getUsers
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.handleAdd
+    }
+  }, [_vm._v("新增")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.users,
+      "highlight-current-row": ""
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "selection",
+      "width": "55"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "type": "index",
+      "width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "姓名",
+      "width": "150",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "sex",
+      "label": "性别",
+      "width": "100",
+      "formatter": _vm.formatSex,
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "email",
+      "label": "邮箱",
+      "width": "200",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "created_at",
+      "label": "创建时间",
+      "width": "220",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "角色",
+      "min-width": "180",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "150"
+    },
+    scopedSlots: _vm._u([
+      ["default", function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleEdit(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "danger",
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleDel(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("删除")])]
+      }]
+    ])
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "编辑",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.editFormVisible),
+      callback: function($$v) {
+        _vm.editFormVisible = $$v
+      },
+      expression: "editFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "editForm",
+    attrs: {
+      "model": _vm.editForm,
+      "label-width": "80px",
+      "rules": _vm.editFormRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "姓名",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.name),
+      callback: function($$v) {
+        _vm.editForm.name = $$v
+      },
+      expression: "editForm.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "性别",
+      "prop": "sex"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.editForm.sex),
+      callback: function($$v) {
+        _vm.editForm.sex = $$v
+      },
+      expression: "editForm.sex"
+    }
+  }, [_c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": 1
+    }
+  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": 2
+    }
+  }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "邮箱",
+      "prop": "email"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.email),
+      callback: function($$v) {
+        _vm.editForm.email = $$v
+      },
+      expression: "editForm.email"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "手机号",
+      "prop": "phone"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.phone),
+      callback: function($$v) {
+        _vm.editForm.phone = $$v
+      },
+      expression: "editForm.phone"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.editFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.editLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.editSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "新增",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.addFormVisible),
+      callback: function($$v) {
+        _vm.addFormVisible = $$v
+      },
+      expression: "addFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "addForm",
+    attrs: {
+      "model": _vm.addForm,
+      "label-width": "80px",
+      "rules": _vm.addFormRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "姓名",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.name),
+      callback: function($$v) {
+        _vm.addForm.name = $$v
+      },
+      expression: "addForm.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "性别",
+      "prop": "sex"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.addForm.sex),
+      callback: function($$v) {
+        _vm.addForm.sex = $$v
+      },
+      expression: "addForm.sex"
+    }
+  }, [_c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": 1
+    }
+  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": 2
+    }
+  }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "邮箱",
+      "prop": "email"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.email),
+      callback: function($$v) {
+        _vm.addForm.email = $$v
+      },
+      expression: "addForm.email"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "手机号",
+      "prop": "phone"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.phone),
+      callback: function($$v) {
+        _vm.addForm.phone = $$v
+      },
+      expression: "addForm.phone"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.addFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.addLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.addSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "danger",
+      "disabled": this.sels.length === 0
+    },
+    on: {
+      "click": _vm.batchRemove
+    }
+  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "current-page": _vm.currentPage,
+      "page-sizes": _vm.pageSizes,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-0c1463a1", module.exports)
+  }
+}
+
+/***/ }),
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -71466,7 +72215,7 @@ if (false) {
 }
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -71778,7 +72527,7 @@ if (false) {
 }
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -71824,7 +72573,7 @@ if (false) {
 }
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -71841,7 +72590,7 @@ if (false) {
 }
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -71931,7 +72680,7 @@ if (false) {
 }
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -72131,7 +72880,6 @@ if (false) {
 }
 
 /***/ }),
-/* 114 */,
 /* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -95219,751 +95967,6 @@ module.exports = function(module) {
 __webpack_require__(40);
 module.exports = __webpack_require__(41);
 
-
-/***/ }),
-/* 153 */,
-/* 154 */,
-/* 155 */,
-/* 156 */,
-/* 157 */,
-/* 158 */,
-/* 159 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(12);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-//    , ,
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            filters: {
-                name: ''
-            },
-            //分页类数据
-            total: 0,
-            currentPage: 0,
-            pageSize: 10,
-            pageSizes: [10, 20, 30, 40, 50, 100],
-            users: [],
-            listLoading: false,
-            sels: [], //列表选中列
-
-            editFormVisible: false, //编辑界面是否显示
-            editLoading: false,
-            editFormRules: {
-                name: [{ required: true, message: '请输入姓名', trigger: 'blur' }]
-            },
-            //编辑界面数据
-            editForm: {
-                id: 0,
-                name: '',
-                sex: 0,
-                email: '',
-                phone: '',
-                addr: ''
-            },
-            addFormVisible: false, //新增界面是否显示
-            addLoading: false,
-            addFormRules: {
-                name: [{ required: true, message: '请输入姓名', trigger: 'blur' }]
-            },
-            //新增界面数据
-            addForm: {
-                name: '',
-                sex: 0,
-                email: '',
-                phone: '',
-                addr: ''
-            }
-        };
-    },
-
-    methods: {
-        //性别显示转换
-        formatSex: function formatSex(row, column) {
-            return row.sex == 1 ? '男' : row.sex == 2 ? '女' : '未知';
-        },
-        //页面跳转后
-        handleCurrentChange: function handleCurrentChange(val) {
-            this.page = val;
-            this.getUsers();
-        },
-
-        //更改每页显示数据
-        handleSizeChange: function handleSizeChange(val) {
-            this.pageSize = val;
-            this.getUsers();
-        },
-
-        //获取用户列表
-        getUsers: function getUsers() {
-            var _this = this;
-
-            var para = {
-                page: this.page,
-                pageSize: this.pageSize,
-                name: this.filters.name
-            };
-            this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["a" /* getUserListPage */])(para).then(function (res) {
-                _this.total = res.data.total;
-                _this.users = res.data.data;
-                _this.listLoading = false;
-            });
-        },
-
-        //删除
-        handleDel: function handleDel(index, row) {
-            var _this2 = this;
-
-            this.$confirm('确认删除该记录吗?', '提示', {
-                type: 'warning'
-            }).then(function () {
-                _this2.listLoading = true;
-                //NProgress.start();
-                var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["b" /* removeUser */])(para).then(function (res) {
-                    _this2.listLoading = false;
-                    //NProgress.done();
-                    _this2.$message({
-                        message: '删除成功',
-                        type: 'success'
-                    });
-                    _this2.getUsers();
-                });
-            }).catch(function () {});
-        },
-        //显示编辑界面
-        handleEdit: function handleEdit(index, row) {
-            this.editFormVisible = true;
-            this.editForm = Object.assign({}, row);
-        },
-        //显示新增界面
-        handleAdd: function handleAdd() {
-            this.addFormVisible = true;
-            this.addForm = {
-                name: '',
-                sex: 0,
-                email: '',
-                phone: '',
-                addr: ''
-            };
-        },
-        //编辑
-        editSubmit: function editSubmit() {
-            var _this3 = this;
-
-            this.$refs.editForm.validate(function (valid) {
-                if (valid) {
-                    _this3.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this3.editLoading = true;
-                        //NProgress.start();
-                        var para = Object.assign({}, _this3.editForm);
-                        //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["c" /* editUser */])(para).then(function (res) {
-                            _this3.editLoading = false;
-                            //NProgress.done();
-                            _this3.$message({
-                                message: '提交成功',
-                                type: 'success'
-                            });
-                            _this3.$refs['editForm'].resetFields();
-                            _this3.editFormVisible = false;
-                            _this3.getUsers();
-                        });
-                    });
-                }
-            });
-        },
-        //新增
-        addSubmit: function addSubmit() {
-            var _this4 = this;
-
-            this.$refs.addForm.validate(function (valid) {
-                if (valid) {
-                    _this4.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this4.addLoading = true;
-                        //NProgress.start();
-                        var para = Object.assign({}, _this4.addForm);
-                        //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["d" /* addUser */])(para).then(function (res) {
-                            _this4.addLoading = false;
-                            //NProgress.done();
-                            _this4.$message({
-                                message: '提交成功',
-                                type: 'success'
-                            });
-                            _this4.$refs['addForm'].resetFields();
-                            _this4.addFormVisible = false;
-                            _this4.getUsers();
-                        });
-                    });
-                }
-            });
-        },
-        selsChange: function selsChange(sels) {
-            this.sels = sels;
-        },
-        //批量删除
-        batchRemove: function batchRemove() {
-            var _this5 = this;
-
-            var ids = this.sels.map(function (item) {
-                return item.id;
-            }).toString();
-            this.$confirm('确认删除选中记录吗？', '提示', {
-                type: 'warning'
-            }).then(function () {
-                _this5.listLoading = true;
-                //NProgress.start();
-                var para = { ids: ids };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["e" /* batchRemoveUser */])(para).then(function (res) {
-                    _this5.listLoading = false;
-                    //NProgress.done();
-                    _this5.$message({
-                        message: '删除成功',
-                        type: 'success'
-                    });
-                    _this5.getUsers();
-                });
-            }).catch(function () {});
-        }
-    },
-    mounted: function mounted() {
-        this.getUsers();
-    }
-});
-
-/***/ }),
-/* 160 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(159),
-  /* template */
-  __webpack_require__(161),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/rbac/user.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] user.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0c1463a1", Component.options)
-  } else {
-    hotAPI.reload("data-v-0c1463a1", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 161 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', [_c('el-input', {
-    attrs: {
-      "placeholder": "姓名"
-    },
-    model: {
-      value: (_vm.filters.name),
-      callback: function($$v) {
-        _vm.filters.name = $$v
-      },
-      expression: "filters.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.getUsers
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.handleAdd
-    }
-  }, [_vm._v("新增")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.users,
-      "highlight-current-row": ""
-    },
-    on: {
-      "selection-change": _vm.selsChange
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "type": "selection",
-      "width": "55"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "type": "index",
-      "width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "姓名",
-      "width": "150",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "sex",
-      "label": "性别",
-      "width": "100",
-      "formatter": _vm.formatSex,
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "email",
-      "label": "邮箱",
-      "width": "200",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "created_at",
-      "label": "创建时间",
-      "width": "220",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "角色",
-      "min-width": "180",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "150"
-    },
-    scopedSlots: _vm._u([
-      ["default", function(scope) {
-        return [_c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleEdit(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "type": "danger",
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleDel(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("删除")])]
-      }]
-    ])
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "编辑",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.editFormVisible),
-      callback: function($$v) {
-        _vm.editFormVisible = $$v
-      },
-      expression: "editFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "editForm",
-    attrs: {
-      "model": _vm.editForm,
-      "label-width": "80px",
-      "rules": _vm.editFormRules
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "姓名",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.name),
-      callback: function($$v) {
-        _vm.editForm.name = $$v
-      },
-      expression: "editForm.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "性别"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.editForm.sex),
-      callback: function($$v) {
-        _vm.editForm.sex = $$v
-      },
-      expression: "editForm.sex"
-    }
-  }, [_c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": 1
-    }
-  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": 2
-    }
-  }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "邮箱"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.email),
-      callback: function($$v) {
-        _vm.editForm.email = $$v
-      },
-      expression: "editForm.email"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "手机号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.phone),
-      callback: function($$v) {
-        _vm.editForm.phone = $$v
-      },
-      expression: "editForm.phone"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.editFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.editLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.editSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "新增",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.addFormVisible),
-      callback: function($$v) {
-        _vm.addFormVisible = $$v
-      },
-      expression: "addFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "addForm",
-    attrs: {
-      "model": _vm.addForm,
-      "label-width": "80px",
-      "rules": _vm.addFormRules
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "姓名",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.name),
-      callback: function($$v) {
-        _vm.addForm.name = $$v
-      },
-      expression: "addForm.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "性别"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.addForm.sex),
-      callback: function($$v) {
-        _vm.addForm.sex = $$v
-      },
-      expression: "addForm.sex"
-    }
-  }, [_c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": 1
-    }
-  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": 2
-    }
-  }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "邮箱"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.email),
-      callback: function($$v) {
-        _vm.addForm.email = $$v
-      },
-      expression: "addForm.email"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "手机号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.phone),
-      callback: function($$v) {
-        _vm.addForm.phone = $$v
-      },
-      expression: "addForm.phone"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.addFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.addLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.addSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "danger",
-      "disabled": this.sels.length === 0
-    },
-    on: {
-      "click": _vm.batchRemove
-    }
-  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "current-page": _vm.currentPage,
-      "page-sizes": _vm.pageSizes,
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "total": _vm.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-0c1463a1", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

@@ -43,16 +43,16 @@
                 <el-form-item label="姓名" prop="name">
                     <el-input v-model="editForm.name" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="性别">
+                <el-form-item label="性别" prop="sex">
                     <el-radio-group v-model="editForm.sex">
                         <el-radio class="radio" :label="1">男</el-radio>
                         <el-radio class="radio" :label="2">女</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item label="邮箱">
+                <el-form-item label="邮箱" prop="email">
                     <el-input v-model="editForm.email" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="手机号">
+                <el-form-item label="手机号" prop="phone">
                     <el-input v-model="editForm.phone" auto-complete="off"></el-input>
                 </el-form-item>
             </el-form>
@@ -67,16 +67,16 @@
                 <el-form-item label="姓名" prop="name">
                     <el-input v-model="addForm.name" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="性别">
+                <el-form-item label="性别" prop="sex">
                     <el-radio-group v-model="addForm.sex">
                         <el-radio class="radio" :label="1">男</el-radio>
                         <el-radio class="radio" :label="2">女</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item label="邮箱">
+                <el-form-item label="邮箱" prop="email">
                     <el-input v-model="addForm.email" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="手机号">
+                <el-form-item label="手机号" prop="phone">
                     <el-input v-model="addForm.phone" auto-complete="off"></el-input>
                 </el-form-item>
             </el-form>
@@ -104,7 +104,7 @@
 </template>
 <script>
     import { getUserListPage, removeUser ,addUser,editUser,batchRemoveUser} from '../../api/api';
-//    , ,
+
     export default{
         data(){
             return {
@@ -125,13 +125,22 @@
                 editFormRules: {
                     name: [
                         { required: true, message: '请输入姓名', trigger: 'blur' }
+                    ],
+                    sex:[
+                        { required: true, message:'不能为空',trigger:'blur' }
+                    ],
+                    email:[
+                        { required: true, message:'不能为空',trigger:'blur' }
+                    ],
+                    phone:[
+                        { required: true, message:'不能为空',trigger:'blur' }
                     ]
                 },
                 //编辑界面数据
                 editForm: {
                     id: 0,
                     name: '',
-                    sex: 0,
+                    sex: 1,
                     email: '',
                     phone: '',
                     addr: ''
@@ -141,12 +150,21 @@
                 addFormRules: {
                     name: [
                         { required: true, message: '请输入姓名', trigger: 'blur' }
+                    ],
+                    sex:[
+                        {required: true, message:'输入性别',trigger:'blur' }
+                    ],
+                    email:[
+                        {required: true, message:'输入邮箱',trigger:'blur' }
+                    ],
+                    phone:[
+                        {required: true, message:'输入手机号',trigger:'blur' }
                     ]
                 },
                 //新增界面数据
                 addForm: {
                     name: '',
-                    sex: 0,
+                    sex: 1,
                     email: '',
                     phone: '',
                     addr: ''
