@@ -48,8 +48,8 @@
                 </el-form-item>
                 <el-form-item label="性别" prop="sex">
                     <el-radio-group v-model="editForm.sex">
-                        <el-radio class="radio" :label="1">男</el-radio>
-                        <el-radio class="radio" :label="2">女</el-radio>
+                        <el-radio class="radio" :label="'1'">男</el-radio>
+                        <el-radio class="radio" :label="'2'">女</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="邮箱" prop="email">
