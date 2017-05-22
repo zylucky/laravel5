@@ -12,6 +12,9 @@
                 <el-form-item>
                     <el-button type="primary" @click="handleAdd">新增</el-button>
                 </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="handleTest">测试</el-button>
+                </el-form-item>
             </el-form>
         </el-col>
         <!--列表页-->
@@ -172,6 +175,10 @@
             }
         },
         methods:{
+            handleTest:function () {
+                var _this = this;
+                _this.$router.push('/purchaseContractIndex');
+            },
             //性别显示转换
             formatSex: function (row, column) {
                 return row.sex == 1 ? '男' : row.sex == 2 ? '女' : '未知';
