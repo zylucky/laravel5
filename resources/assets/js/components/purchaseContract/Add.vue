@@ -1,169 +1,39 @@
 <template>
-    <el-row class="container">
-        <div style="margin-bottom: 50px;">
-        </div>
-        <el-col :span="12">
-            <el-tabs v-model="editableTabsValue2" type="card" closable @tab-remove="removeTab">
-                <el-button
-                        size="small"
-                        @click="addTab(editableTabsValue2)"
-                >
-                    添加房源
-                </el-button>
-                <el-tab-pane
-                        v-for="(item, index) in editableTabs2"
-                        :key="item.name"
-                        :label="item.title"
-                        :name="item.name"
-                >
-                    <el-form :label-position="labelPosition" label-width="100px" :model="property[index]">
-                        <el-col :span="24">
-                            <el-row>
-                                <el-col :span="8">
-                                    <el-form-item label="楼盘" >
-                                        <el-input v-model="property[index].estate"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :span="8">
-                                    <el-form-item label="楼栋" >
-                                        <el-input v-model="property[index].building"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :span="8">
-                                    <el-form-item label="房间号" >
-                                        <el-input v-model="property[index].houseNumber"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                            </el-row>
-                            <el-form-item label="位置" >
-                                <el-input v-model="property[index].position"></el-input>
-                            </el-form-item>
-                            <el-form-item label="产权证编号" >
-                                <el-input v-model="property[index].ownNumber"></el-input>
-                            </el-form-item>
-                            <el-row>
-                                <el-col :span="12">
-                                    <el-form-item label="承租面积" >
-                                        <el-input v-model="property[index].rentArea"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :span="12">
-                                    <el-form-item label="签约面积" >
-                                        <el-input v-model="property[index].signArea"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                            </el-row>
-                            <el-form-item label="房屋类型">
-                                <el-select v-model="value" placeholder="请选择">
-                                    <el-option
-                                            v-for="item in options"
-                                            :key="item.value"
-                                            :label="item.label"
-                                            :value="item.value">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
+    <div>
+        <el-row>
+            <div style="margin-bottom: 50px;"></div>
+            <el-col :span="12">
+                <add-property v-if="stepNum==1"></add-property>
+                <add-owner v-if="stepNum==2"></add-owner>
+            </el-col>
+            <div style="margin-bottom:81px;"></div>
+            <el-col :span="6">
+                <step :stepNum="stepNum" v-on:changeNum2="changeNum"></step>
+            </el-col>
+        </el-row>
 
-                        </el-col>
-                    </el-form>
-
-                </el-tab-pane>
-            </el-tabs>
-        </el-col>
-        <div style="margin-bottom: 81px;">
-        </div>
-        <!--进程条-->
-        <el-col :span="6">
-            <step></step>
-        </el-col>
-
-    </el-row>
-
+    </div>
 </template>
 <script>
-    import step from './Step.vue'
-    export default {
-        components:{
-            step
-        },
-        data() {
+    import AddProperty from './AddProperty.vue'
+    import AddOwner from './AddOwner.vue'
+    import Step from './Step.vue'
+    export default{
+        data(){
             return {
-                options: [{
-                    value: '选项1',
-                    label: '公寓'
-                }, {
-                    value: '选项2',
-                    label: '写字楼'
-                }, {
-                    value: '选项3',
-                    label: '商铺'
-                }, {
-                    value: '选项4',
-                    label: '住宅'
-                }],
-                value: '',
-                ruleForm:{
-                    date1:0,
-                    date2:0,
-                },
-                labelPosition: 'right',
-                property: [{
-                    estate: '建外Soho',
-                    building: 'A',
-                    houseNumber: '2902',
-                    position: '东区',
-                    ownNumber: '12345',
-                    rentArea: '123.5',
-                    signArea: '123.5',
-                    houseType: 1,
-                }
-                ],
-                editableTabsValue2: '1',
-                editableTabs2: [{
-                    title: 'Tab 1',
-                    name: '1',
-                    content: 'Tab 1 content'
-                }],
-                tabIndex: 1
+                stepNum:1
             }
         },
-        methods: {
-            addTab(targetName) {
-                let newTabName = ++this.tabIndex + '';
-                this.editableTabs2.push({
-                    title: 'New Tab1',
-                    name: newTabName,
-                    content: 'New Tab content'
-                });
-                this.property.push({
-                    estate: '',
-                    building: '',
-                    houseNumber: '',
-                    position: '',
-                    ownNumber: '',
-                    rentArea: '',
-                    signArea: '',
-                    houseType: 1,
-                });
-                this.editableTabsValue2 = newTabName;
-            },
-            removeTab(targetName) {
-                let tabs = this.editableTabs2;
-                let activeName = this.editableTabsValue2;
-                if (activeName === targetName) {
-                    tabs.forEach((tab, index) => {
-                        if (tab.name === targetName) {
-                            let nextTab = tabs[index + 1] || tabs[index - 1];
-                            if (nextTab) {
-                                activeName = nextTab.name;
-                            }
-                        }
-                    });
-                }
-
-                this.editableTabsValue2 = activeName;
-                this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
+        components:{
+            AddProperty,
+            AddOwner,
+            Step
+        },
+        methods:{
+            changeNum(){
+                console.log(stepNum);
             }
         }
+
     }
 </script>

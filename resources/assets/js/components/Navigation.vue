@@ -55,14 +55,14 @@
                 <el-col :span="24" class="breadcrumb-container">
                     <strong class="title">{{$route.name}}</strong>
                     <el-breadcrumb separator="/" class="breadcrumb-inner">
-                        <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
+                        <el-breadcrumb-item :to="{ path: item.path }" v-for="item in $route.matched" :key="item.path">
                             {{ item.name }}
                         </el-breadcrumb-item>
                     </el-breadcrumb>
                 </el-col>
                 <el-col :span="24" class="content-wrapper">
                     <transition name="fade" mode="out-in">
-                        <router-view></router-view>
+                        <router-view key="key"></router-view>
                     </transition>
                 </el-col>
         </div>
@@ -80,6 +80,7 @@
                 collapsed:false,
                 sysUserName: '李岳群',
                 sysUserAvatar: '',
+                key:Date.parse(new Date()),
 
             }
         },

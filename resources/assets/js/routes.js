@@ -21,12 +21,6 @@ import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
          hidden: true
      },
      {
-         path:'/purchaseContractIndex',
-         component:PurchaseContractIndex,
-         name:'',
-         hidden:true
-     },
-     {
          path: '/404',
          component: NotFound,
          name: '',
@@ -49,9 +43,8 @@ import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
          name: '合同管理',
          iconCls: 'el-icon-document',//图标样式class
          children: [
-             { path: '/purchaseContact', component: PurchaseContractIndex, name: '收房合同',children:[
-                 {path:'/purchaseContact/Add',component:PurchaseContractAdd,name:'房间信息'}
-             ] },
+             { path: '/purchaseContact/', component: PurchaseContractIndex, name: '收房合同' },
+              { path: '/purchaseContact/add',component:PurchaseContractAdd,name:'房间信息',hidden:true}
          ]
      },
 ]
