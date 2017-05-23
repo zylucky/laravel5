@@ -72,7 +72,7 @@
 
 </template>
 <script>
-    import step from './Step.vue'
+
     export default {
         components:{
             step

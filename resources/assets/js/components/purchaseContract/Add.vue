@@ -8,7 +8,13 @@
             </el-col>
             <div style="margin-bottom:81px;"></div>
             <el-col :span="6">
-                <step :stepNum="stepNum" v-on:changeNum2="changeNum"></step>
+                <el-steps :space="100" direction="vertical" :active="stepNum" style="margin-left: 50%;">
+                    <a href="javascript:;" @click="stepNum=1"><el-step  title="房间信息"></el-step></a>
+                    <a href="javascript:;" @click="stepNum=2"><el-step  title="业主信息"></el-step></a>
+                    <a href="javascript:;" @click="stepNum=3"><el-step  title="租期信息"></el-step></a>
+                    <a href="javascript:;" @click="stepNum=4"><el-step  title="签约信息"></el-step></a>
+                    <a href="javascript:;" @click="stepNum=5"><el-step  title="条款信息"></el-step></a>
+                </el-steps>
             </el-col>
         </el-row>
 
@@ -17,7 +23,6 @@
 <script>
     import AddProperty from './AddProperty.vue'
     import AddOwner from './AddOwner.vue'
-    import Step from './Step.vue'
     export default{
         data(){
             return {
@@ -27,12 +32,9 @@
         components:{
             AddProperty,
             AddOwner,
-            Step
         },
         methods:{
-            changeNum(){
-                console.log(stepNum);
-            }
+
         }
 
     }
