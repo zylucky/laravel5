@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <template>
     <el-row >
@@ -63,3 +64,5 @@
         }
     }
 </script>
+=======
+>>>>>>> upstream/master
