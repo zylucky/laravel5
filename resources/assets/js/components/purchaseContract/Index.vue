@@ -9,9 +9,10 @@
             <el-form-item>
                 <el-button type="primary" icon="search">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus" @click="onSubmit"> 新增</el-button>
+                <el-button type="primary" class="el-icon-upload2" @click="uploadImg">上传</el-button>
             </el-form-item>
         </el-form>
-        <el-table  highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
+        <el-table  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="selection" width="55">
             </el-table-column>
             <el-table-column type="index" width="60">
@@ -75,6 +76,12 @@
             },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
+
+                _this.$router.push('/purchaseContact/add');
+            },
+            uploadImg(){
+                var _this = this;
+                _this.$router.push('/purchaseContact/upload');
             }
         }
     }

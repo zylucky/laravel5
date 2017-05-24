@@ -12,7 +12,8 @@
         "laravel/tinker": "~1.0",
         "nesbot/carbon": "^1.22",
         "nwidart/db-exporter": "1.*",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "zgldh/qiniu-laravel-storage": "^0.6.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

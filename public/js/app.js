@@ -27279,7 +27279,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             sysName: 'Youshi Space',
             collapsed: false,
             sysUserName: '李岳群',
-            sysUserAvatar: ''
+            sysUserAvatar: '',
+            key: Date.parse(new Date())
 
         };
     },
@@ -28190,8 +28191,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Step_vue__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Step_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Step_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AddProperty_vue__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AddProperty_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__AddProperty_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AddOwner_vue__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AddOwner_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__AddOwner_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AddDate_vue__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AddDate_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__AddDate_vue__);
 //
 //
 //
@@ -28217,150 +28222,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        step: __WEBPACK_IMPORTED_MODULE_0__Step_vue___default.a
-    },
     data: function data() {
         return {
-            options: [{
-                value: '选项1',
-                label: '公寓'
-            }, {
-                value: '选项2',
-                label: '写字楼'
-            }, {
-                value: '选项3',
-                label: '商铺'
-            }, {
-                value: '选项4',
-                label: '住宅'
-            }],
-            value: '',
-            ruleForm: {
-                date1: 0,
-                date2: 0
-            },
-            labelPosition: 'right',
-            property: [{
-                estate: '建外Soho',
-                building: 'A',
-                houseNumber: '2902',
-                position: '东区',
-                ownNumber: '12345',
-                rentArea: '123.5',
-                signArea: '123.5',
-                houseType: 1
-            }],
-            editableTabsValue2: '1',
-            editableTabs2: [{
-                title: 'Tab 1',
-                name: '1',
-                content: 'Tab 1 content'
-            }],
-            tabIndex: 1
+            stepNum: 1
         };
     },
 
+    components: {
+        AddProperty: __WEBPACK_IMPORTED_MODULE_0__AddProperty_vue___default.a,
+        AddOwner: __WEBPACK_IMPORTED_MODULE_1__AddOwner_vue___default.a,
+        AddDate: __WEBPACK_IMPORTED_MODULE_2__AddDate_vue___default.a
+    },
     methods: {
-        addTab: function addTab(targetName) {
-            var newTabName = ++this.tabIndex + '';
-            this.editableTabs2.push({
-                title: 'New Tab1',
-                name: newTabName,
-                content: 'New Tab content'
-            });
-            this.property.push({
-                estate: '',
-                building: '',
-                houseNumber: '',
-                position: '',
-                ownNumber: '',
-                rentArea: '',
-                signArea: '',
-                houseType: 1
-            });
-            this.editableTabsValue2 = newTabName;
-        },
-        removeTab: function removeTab(targetName) {
-            var tabs = this.editableTabs2;
-            var activeName = this.editableTabsValue2;
-            if (activeName === targetName) {
-                tabs.forEach(function (tab, index) {
-                    if (tab.name === targetName) {
-                        var nextTab = tabs[index + 1] || tabs[index - 1];
-                        if (nextTab) {
-                            activeName = nextTab.name;
-                        }
-                    }
-                });
-            }
-
-            this.editableTabsValue2 = activeName;
-            this.editableTabs2 = tabs.filter(function (tab) {
-                return tab.name !== targetName;
+        save: function save() {
+            var child = this.$refs.property.property;
+            console.log(child);
+            this.$message({
+                message: '保存成功',
+                type: 'success'
             });
         }
-    }
+    },
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -28369,8 +28257,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -28615,6 +28501,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -28642,6 +28529,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         handleCurrentChange: function handleCurrentChange(val) {
             console.log('\u5F53\u524D\u9875: ' + val);
+
+            _this.$router.push('/purchaseContact/add');
+        },
+        uploadImg: function uploadImg() {
+            var _this = this;
+            _this.$router.push('/purchaseContact/upload');
         }
     }
 });
@@ -28653,9 +28546,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(15);
-//
-//
-//
 //
 //
 //
@@ -29048,6 +28938,8 @@ window.axios.defaults.headers.common = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_AddDate_vue__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_AddDate_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_AddDate_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue__);
 /**
  * Created by liyuequn on 2017/5/15.
  */
@@ -29062,14 +28954,13 @@ window.axios.defaults.headers.common = {
 
 
 
+
+
+
+
 var routes = [{
     path: '/login',
     component: __WEBPACK_IMPORTED_MODULE_1__components_Login_vue___default.a,
-    name: '',
-    hidden: true
-}, {
-    path: '/purchaseContractIndex',
-    component: __WEBPACK_IMPORTED_MODULE_5__components_purchaseContract_Index_vue___default.a,
     name: '',
     hidden: true
 }, {
@@ -29088,7 +28979,7 @@ var routes = [{
     component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a,
     name: '合同管理',
     iconCls: 'el-icon-document', //图标样式class
-    children: [{ path: '/purchaseContact', component: __WEBPACK_IMPORTED_MODULE_5__components_purchaseContract_Index_vue___default.a, name: '收房合同' }, { path: '/purchaseContact/Add', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue___default.a, name: '房间信息', hidden: true }, { path: '/purchaseContact/AddDate', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_AddDate_vue___default.a, name: '租期信息', hidden: true }]
+    children: [{ path: '/purchaseContact', component: __WEBPACK_IMPORTED_MODULE_5__components_purchaseContract_Index_vue___default.a, name: '收房合同' }, { path: '/purchaseContact/Add', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue___default.a, name: '房间信息', hidden: true }, { path: '/purchaseContact/AddDate', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_AddDate_vue___default.a, name: '租期信息', hidden: true }, { path: '/purchaseContact/upload', component: __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }]
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
@@ -83275,46 +83166,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 146 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(2)(
-  /* script */
-  null,
-  /* template */
-  __webpack_require__(160),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "D:\\phpStudy\\WWW\\11\\laravel5\\resources\\assets\\js\\components\\purchaseContract\\Step.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Step.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c8fce0b0", Component.options)
-  } else {
-    hotAPI.reload("data-v-c8fce0b0", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 146 */,
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -83826,9 +83678,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', {
-    staticClass: "container"
-  }, [_c('div', {
+  return _c('div', [_c('el-row', [_c('div', {
     staticStyle: {
       "margin-bottom": "50px"
     }
@@ -83836,176 +83686,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "span": 12
     }
-  }, [_c('el-tabs', {
-    attrs: {
-      "type": "card",
-      "closable": ""
-    },
-    on: {
-      "tab-remove": _vm.removeTab
-    },
-    model: {
-      value: (_vm.editableTabsValue2),
-      callback: function($$v) {
-        _vm.editableTabsValue2 = $$v
-      },
-      expression: "editableTabsValue2"
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "size": "small"
-    },
-    on: {
-      "click": function($event) {
-        _vm.addTab(_vm.editableTabsValue2)
-      }
-    }
-  }, [_vm._v("\n                添加房源\n            ")]), _vm._v(" "), _vm._l((_vm.editableTabs2), function(item, index) {
-    return _c('el-tab-pane', {
-      key: item.name,
-      attrs: {
-        "label": item.title,
-        "name": item.name
-      }
-    }, [_c('el-form', {
-      attrs: {
-        "label-position": _vm.labelPosition,
-        "label-width": "100px",
-        "model": _vm.property[index]
-      }
-    }, [_c('el-col', {
-      attrs: {
-        "span": 24
-      }
-    }, [_c('el-row', [_c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "楼盘"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property[index].estate),
-        callback: function($$v) {
-          _vm.property[index].estate = $$v
-        },
-        expression: "property[index].estate"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "楼栋"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property[index].building),
-        callback: function($$v) {
-          _vm.property[index].building = $$v
-        },
-        expression: "property[index].building"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "房间号"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property[index].houseNumber),
-        callback: function($$v) {
-          _vm.property[index].houseNumber = $$v
-        },
-        expression: "property[index].houseNumber"
-      }
-    })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-      attrs: {
-        "label": "位置"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property[index].position),
-        callback: function($$v) {
-          _vm.property[index].position = $$v
-        },
-        expression: "property[index].position"
-      }
-    })], 1), _vm._v(" "), _c('el-form-item', {
-      attrs: {
-        "label": "产权证编号"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property[index].ownNumber),
-        callback: function($$v) {
-          _vm.property[index].ownNumber = $$v
-        },
-        expression: "property[index].ownNumber"
-      }
-    })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-      attrs: {
-        "span": 12
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "承租面积"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property[index].rentArea),
-        callback: function($$v) {
-          _vm.property[index].rentArea = $$v
-        },
-        expression: "property[index].rentArea"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 12
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "签约面积"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property[index].signArea),
-        callback: function($$v) {
-          _vm.property[index].signArea = $$v
-        },
-        expression: "property[index].signArea"
-      }
-    })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-      attrs: {
-        "label": "房屋类型"
-      }
-    }, [_c('el-select', {
-      attrs: {
-        "placeholder": "请选择"
-      },
-      model: {
-        value: (_vm.value),
-        callback: function($$v) {
-          _vm.value = $$v
-        },
-        expression: "value"
-      }
-    }, _vm._l((_vm.options), function(item) {
-      return _c('el-option', {
-        key: item.value,
-        attrs: {
-          "label": item.label,
-          "value": item.value
-        }
-      })
-    }))], 1)], 1)], 1)], 1)
-  })], 2)], 1), _vm._v(" "), _c('div', {
+  }, [_c('add-property', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 1),
+      expression: "stepNum==1"
+    }],
+    ref: "property"
+  }), _vm._v(" "), _c('add-owner', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 2),
+      expression: "stepNum==2"
+    }],
+    ref: "owner"
+  }), _vm._v(" "), _c('add-date', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 3),
+      expression: "stepNum==3"
+    }],
+    ref: "date"
+  })], 1), _vm._v(" "), _c('div', {
     staticStyle: {
       "margin-bottom": "81px"
     }
@@ -84013,7 +83718,79 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "span": 6
     }
-  }, [_c('step')], 1)], 1)
+  }, [_c('div', {
+    staticStyle: {
+      "margin-left": "50%"
+    }
+  }, [_c('el-steps', {
+    attrs: {
+      "space": 100,
+      "direction": "vertical",
+      "active": _vm.stepNum
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 1
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "房间信息"
+    }
+  })], 1), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 2
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "业主信息"
+    }
+  })], 1), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 3
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "租期信息"
+    }
+  })], 1), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 4
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "条款信息"
+    }
+  })], 1)]), _vm._v(" "), _c('el-button', {
+    staticStyle: {
+      "margin-top": "100px"
+    },
+    attrs: {
+      "type": "info"
+    },
+    on: {
+      "click": _vm.save
+    }
+  }, [_vm._v("保存")])], 1)])], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -84066,14 +83843,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleAdd
     }
-  }, [_vm._v("新增")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.handleTest
-    }
-  }, [_vm._v("测试")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("新增")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -84085,7 +83855,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "data": _vm.users,
-      "highlight-current-row": ""
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
     },
     on: {
       "selection-change": _vm.selsChange
@@ -84153,7 +83924,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
+        }, [_c('i', {
+          staticClass: "el-icon-edit"
+        })]), _vm._v(" "), _c('el-button', {
           attrs: {
             "type": "danger",
             "size": "small"
@@ -84163,7 +83936,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleDel(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("删除")])]
+        }, [_c('i', {
+          staticClass: "el-icon-delete"
+        })])]
       }
     }])
   })], 1), _vm._v(" "), _c('el-dialog', {
@@ -84464,7 +84239,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.onSubmit
     }
-  }, [_vm._v(" 新增")])], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 新增")]), _vm._v(" "), _c('el-button', {
+    staticClass: "el-icon-upload2",
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.uploadImg
+    }
+  }, [_vm._v("上传")])], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -84475,7 +84258,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "100%"
     },
     attrs: {
-      "highlight-current-row": ""
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
     },
     on: {
       "selection-change": _vm.selsChange
@@ -84915,11 +84699,7 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('el-row', {
     staticClass: "container"
-  }, [_c('div', {
-    staticStyle: {
-      "margin-bottom": "60px"
-    }
-  }), _vm._v(" "), _c('el-form', {
+  }, [_c('el-form', {
     ref: "dynamicValidateForm",
     staticClass: "demo-dynamic",
     attrs: {
@@ -84928,7 +84708,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-row', [_c('el-col', {
     attrs: {
-      "span": 4
+      "span": 8
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -84951,7 +84731,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 4
+      "span": 8
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -85002,7 +84782,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-col', {
     attrs: {
-      "span": 4
+      "span": 8
     }
   }, [_vm._l((_vm.addDate.domains), function(domain, index) {
     return _c('el-date-picker', {
@@ -85054,7 +84834,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
-      "span": 4
+      "span": 8
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -85073,7 +84853,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 4
+      "span": 8
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -85092,7 +84872,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 4
+      "span": 8
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -85111,7 +84891,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
-      "span": 4
+      "span": 8
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -85133,7 +84913,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 4
+      "span": 8
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -85156,7 +84936,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
-      "span": 4
+      "span": 8
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -85179,7 +84959,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 4
+      "span": 8
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -85202,7 +84982,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 4
+      "span": 8
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -85287,50 +85067,7 @@ if (false) {
 }
 
 /***/ }),
-/* 160 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-steps', {
-    staticStyle: {
-      "margin-left": "50%"
-    },
-    attrs: {
-      "space": 100,
-      "direction": "vertical",
-      "active": 2
-    }
-  }, [_c('el-step', {
-    attrs: {
-      "title": "房间信息"
-    }
-  }), _vm._v(" "), _c('el-step', {
-    attrs: {
-      "title": "业主信息"
-    }
-  }), _vm._v(" "), _c('el-step', {
-    attrs: {
-      "title": "租期信息"
-    }
-  }), _vm._v(" "), _c('el-step', {
-    attrs: {
-      "title": "签约信息"
-    }
-  }), _vm._v(" "), _c('el-step', {
-    attrs: {
-      "title": "条款信息"
-    }
-  })], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-c8fce0b0", module.exports)
-  }
-}
-
-/***/ }),
+/* 160 */,
 /* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -85507,7 +85244,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, _vm._l((_vm.$route.matched), function(item) {
     return _c('el-breadcrumb-item', {
-      key: item.path
+      key: item.path,
+      attrs: {
+        "to": {
+          path: item.path
+        }
+      }
     }, [_vm._v("\n                        " + _vm._s(item.name) + "\n                    ")])
   }))], 1), _vm._v(" "), _c('el-col', {
     staticClass: "content-wrapper",
@@ -85519,7 +85261,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": "fade",
       "mode": "out-in"
     }
-  }, [_c('router-view')], 1)], 1)], 1)])])], 1)
+  }, [_c('router-view', {
+    key: "key"
+  })], 1)], 1)], 1)])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -88284,6 +88028,1130 @@ module.exports = function(module) {
 __webpack_require__(40);
 module.exports = __webpack_require__(39);
 
+
+/***/ }),
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            labelPosition: 'right',
+            owner: {
+                renter: 1,
+                Intermediary: '华亮房产',
+                ownerType: 1,
+                payee: '彭亮',
+                bankAccount: '1234 5678 9012 345'
+            }
+
+        };
+    }
+});
+
+/***/ }),
+/* 181 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {},
+    data: function data() {
+        return {
+            purchaseContract: {
+                type: 0
+            },
+            options: [{
+                value: '选项1',
+                label: '公寓'
+            }, {
+                value: '选项2',
+                label: '写字楼'
+            }, {
+                value: '选项3',
+                label: '商铺'
+            }, {
+                value: '选项4',
+                label: '住宅'
+            }],
+            ruleForm: {
+                date1: 0,
+                date2: 0
+            },
+            labelPosition: 'right',
+            property: [{
+                estate: '建外Soho',
+                building: 'A',
+                houseNumber: '2902',
+                position: '东区',
+                ownNumber: '12345',
+                rentArea: '123.5',
+                signArea: '123.5',
+                houseType: ''
+            }],
+            editableTabsValue2: '1',
+            editableTabs2: [{
+                title: '房间1',
+                name: '1',
+                content: 'Tab 1 content'
+            }],
+            tabIndex: 1
+        };
+    },
+
+    methods: {
+        addTab: function addTab(targetName) {
+            this.$notify.success({
+                title: '成功',
+                message: '添加了一条新房源',
+                offset: 100
+            });
+            var newTabName = ++this.tabIndex + '';
+            this.editableTabs2.push({
+                title: 'New Tab1',
+                name: newTabName,
+                content: 'New Tab content'
+            });
+            this.property.push({
+                estate: '',
+                building: '',
+                houseNumber: '',
+                position: '',
+                ownNumber: '',
+                rentArea: '',
+                signArea: '',
+                houseType: ''
+            });
+            this.editableTabsValue2 = newTabName;
+        },
+        removeTab: function removeTab(targetName) {
+            var tabs = this.editableTabs2;
+            var activeName = this.editableTabsValue2;
+            if (activeName === targetName) {
+                tabs.forEach(function (tab, index) {
+                    if (tab.name === targetName) {
+                        var nextTab = tabs[index + 1] || tabs[index - 1];
+                        if (nextTab) {
+                            activeName = nextTab.name;
+                        }
+                    }
+                });
+            }
+
+            this.editableTabsValue2 = activeName;
+            this.editableTabs2 = tabs.filter(function (tab) {
+                return tab.name !== targetName;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 182 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            fileList2: [{ name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }, { name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }]
+        };
+    },
+
+    methods: {
+        handleRemove: function handleRemove(file, fileList) {
+            console.log(file, fileList);
+        },
+        handlePreview: function handlePreview(file) {
+            console.log(file);
+        }
+    }
+});
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(180),
+  /* template */
+  __webpack_require__(187),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "D:\\phpStudy\\WWW\\11\\laravel5\\resources\\assets\\js\\components\\purchaseContract\\AddOwner.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] AddOwner.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-61fd8b24", Component.options)
+  } else {
+    hotAPI.reload("data-v-61fd8b24", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(181),
+  /* template */
+  __webpack_require__(188),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "D:\\phpStudy\\WWW\\11\\laravel5\\resources\\assets\\js\\components\\purchaseContract\\AddProperty.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] AddProperty.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d45a5f2c", Component.options)
+  } else {
+    hotAPI.reload("data-v-d45a5f2c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(182),
+  /* template */
+  __webpack_require__(186),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "D:\\phpStudy\\WWW\\11\\laravel5\\resources\\assets\\js\\components\\purchaseContract\\Upload.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Upload.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5108f35d", Component.options)
+  } else {
+    hotAPI.reload("data-v-5108f35d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-upload', {
+    staticClass: "upload-demo",
+    attrs: {
+      "action": "https://jsonplaceholder.typicode.com/posts/",
+      "on-preview": _vm.handlePreview,
+      "on-remove": _vm.handleRemove,
+      "file-list": _vm.fileList2,
+      "list-type": "picture"
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "size": "small",
+      "type": "primary"
+    }
+  }, [_vm._v("点击上传")]), _vm._v(" "), _c('div', {
+    staticClass: "el-upload__tip",
+    slot: "tip"
+  }, [_vm._v("只能上传jpg/png文件，且不超过2000kb")])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-5108f35d", module.exports)
+  }
+}
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('el-form', {
+    attrs: {
+      "label-position": _vm.labelPosition,
+      "label-width": "100px",
+      "model": _vm.owner
+    }
+  }, [_c('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "承租人"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.owner.renter),
+      callback: function($$v) {
+        _vm.owner.renter = $$v
+      },
+      expression: "owner.renter"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": "1"
+    }
+  }, [_vm._v("华塑商贸")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "2"
+    }
+  }, [_vm._v("幼狮科技")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "居间方"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.Intermediary),
+      callback: function($$v) {
+        _vm.owner.Intermediary = $$v
+      },
+      expression: "owner.Intermediary"
+    }
+  })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "收款人"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.payee),
+      callback: function($$v) {
+        _vm.owner.payee = $$v
+      },
+      expression: "owner.payee"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "账号"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.bankAccount),
+      callback: function($$v) {
+        _vm.owner.bankAccount = $$v
+      },
+      expression: "owner.bankAccount"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "业主类型"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.owner.ownerType),
+      callback: function($$v) {
+        _vm.owner.ownerType = $$v
+      },
+      expression: "owner.ownerType"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": "1"
+    }
+  }, [_vm._v("个人")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "2"
+    }
+  }, [_vm._v("公司")])], 1)], 1), _vm._v(" "), (_vm.owner.ownerType == 1) ? _c('div', [_c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "产权人"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.payee),
+      callback: function($$v) {
+        _vm.owner.payee = $$v
+      },
+      expression: "owner.payee"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "身份证号"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.bankAccount),
+      callback: function($$v) {
+        _vm.owner.bankAccount = $$v
+      },
+      expression: "owner.bankAccount"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "联系方式"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.payee),
+      callback: function($$v) {
+        _vm.owner.payee = $$v
+      },
+      expression: "owner.payee"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "性别"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.owner.ownerType),
+      callback: function($$v) {
+        _vm.owner.ownerType = $$v
+      },
+      expression: "owner.ownerType"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": "男"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "女"
+    }
+  })], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "代理人"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.payee),
+      callback: function($$v) {
+        _vm.owner.payee = $$v
+      },
+      expression: "owner.payee"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "身份证号"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.bankAccount),
+      callback: function($$v) {
+        _vm.owner.bankAccount = $$v
+      },
+      expression: "owner.bankAccount"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "联系方式"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.payee),
+      callback: function($$v) {
+        _vm.owner.payee = $$v
+      },
+      expression: "owner.payee"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "性别"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.owner.ownerType),
+      callback: function($$v) {
+        _vm.owner.ownerType = $$v
+      },
+      expression: "owner.ownerType"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": "男"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "女"
+    }
+  })], 1)], 1)], 1)], 1)], 1) : _vm._e(), _vm._v(" "), (_vm.owner.ownerType == 2) ? _c('div', [_c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "法人"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.payee),
+      callback: function($$v) {
+        _vm.owner.payee = $$v
+      },
+      expression: "owner.payee"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "身份证号"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.bankAccount),
+      callback: function($$v) {
+        _vm.owner.bankAccount = $$v
+      },
+      expression: "owner.bankAccount"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "联系方式"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.payee),
+      callback: function($$v) {
+        _vm.owner.payee = $$v
+      },
+      expression: "owner.payee"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "性别"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.owner.ownerType),
+      callback: function($$v) {
+        _vm.owner.ownerType = $$v
+      },
+      expression: "owner.ownerType"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": "男"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "女"
+    }
+  })], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "签约人"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.payee),
+      callback: function($$v) {
+        _vm.owner.payee = $$v
+      },
+      expression: "owner.payee"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "身份证号"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.bankAccount),
+      callback: function($$v) {
+        _vm.owner.bankAccount = $$v
+      },
+      expression: "owner.bankAccount"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "联系方式"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.payee),
+      callback: function($$v) {
+        _vm.owner.payee = $$v
+      },
+      expression: "owner.payee"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "性别"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.owner.ownerType),
+      callback: function($$v) {
+        _vm.owner.ownerType = $$v
+      },
+      expression: "owner.ownerType"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": "男"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "女"
+    }
+  })], 1)], 1)], 1)], 1)], 1) : _vm._e()], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-61fd8b24", module.exports)
+  }
+}
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('el-row', {
+    staticClass: "container"
+  }, [_c('el-tabs', {
+    attrs: {
+      "type": "card",
+      "closable": ""
+    },
+    on: {
+      "tab-remove": _vm.removeTab
+    },
+    model: {
+      value: (_vm.editableTabsValue2),
+      callback: function($$v) {
+        _vm.editableTabsValue2 = $$v
+      },
+      expression: "editableTabsValue2"
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "size": "small"
+    },
+    on: {
+      "click": function($event) {
+        _vm.addTab(_vm.editableTabsValue2)
+      }
+    }
+  }, [_vm._v("\n                添加房源\n            ")]), _vm._v(" "), _vm._l((_vm.editableTabs2), function(item, index) {
+    return _c('el-tab-pane', {
+      key: item.name,
+      attrs: {
+        "label": item.title,
+        "name": item.name
+      }
+    }, [_c('el-form', {
+      attrs: {
+        "label-position": _vm.labelPosition,
+        "label-width": "100px",
+        "model": _vm.property[index]
+      }
+    }, [_c('el-col', {
+      attrs: {
+        "span": 24
+      }
+    }, [_c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 12
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "楼盘"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property[index].estate),
+        callback: function($$v) {
+          _vm.property[index].estate = $$v
+        },
+        expression: "property[index].estate"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 12
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "楼栋"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property[index].building),
+        callback: function($$v) {
+          _vm.property[index].building = $$v
+        },
+        expression: "property[index].building"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 12
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "房间号"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property[index].houseNumber),
+        callback: function($$v) {
+          _vm.property[index].houseNumber = $$v
+        },
+        expression: "property[index].houseNumber"
+      }
+    })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+      attrs: {
+        "label": "位置"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property[index].position),
+        callback: function($$v) {
+          _vm.property[index].position = $$v
+        },
+        expression: "property[index].position"
+      }
+    })], 1), _vm._v(" "), _c('el-form-item', {
+      attrs: {
+        "label": "产权证编号"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property[index].ownNumber),
+        callback: function($$v) {
+          _vm.property[index].ownNumber = $$v
+        },
+        expression: "property[index].ownNumber"
+      }
+    })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 12
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "承租面积"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property[index].rentArea),
+        callback: function($$v) {
+          _vm.property[index].rentArea = $$v
+        },
+        expression: "property[index].rentArea"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 12
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "签约面积"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property[index].signArea),
+        callback: function($$v) {
+          _vm.property[index].signArea = $$v
+        },
+        expression: "property[index].signArea"
+      }
+    })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+      attrs: {
+        "label": "房屋类型"
+      }
+    }, [_c('el-select', {
+      attrs: {
+        "placeholder": "请选择"
+      },
+      model: {
+        value: (_vm.property[index].houseType),
+        callback: function($$v) {
+          _vm.property[index].houseType = $$v
+        },
+        expression: "property[index].houseType"
+      }
+    }, _vm._l((_vm.options), function(item) {
+      return _c('el-option', {
+        key: item.value,
+        attrs: {
+          "label": item.label,
+          "value": item.value
+        }
+      })
+    }))], 1)], 1)], 1)], 1)
+  })], 2)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-d45a5f2c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

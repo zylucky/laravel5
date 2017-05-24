@@ -12,13 +12,10 @@
                 <el-form-item>
                     <el-button type="primary" @click="handleAdd">新增</el-button>
                 </el-form-item>
-                <el-form-item>
-                    <el-button type="primary" @click="handleTest">测试</el-button>
-                </el-form-item>
             </el-form>
         </el-col>
         <!--列表页-->
-        <el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
+        <el-table :data="users" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="selection" width="55">
             </el-table-column>
             <el-table-column type="index" width="60">
@@ -35,8 +32,8 @@
             </el-table-column>
             <el-table-column label="操作" width="150">
                 <template scope="scope">
-                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                    <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
+                    <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)"><i class="el-icon-delete"></i></el-button>
                 </template>
             </el-table-column>
         </el-table>

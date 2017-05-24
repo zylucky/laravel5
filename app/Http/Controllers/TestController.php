@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Qiniu\Auth;
 
 class TestController extends Controller
 {
@@ -41,7 +42,7 @@ class TestController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

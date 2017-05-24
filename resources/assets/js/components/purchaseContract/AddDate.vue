@@ -1,16 +1,14 @@
         <template>
         <el-row class="container">
-                <div style="margin-bottom: 60px;">
-                </div>
             <el-form :model="addDate" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
              <!--交房日、签约日-->
               <el-row>
-                  <el-col :span="4">
+                  <el-col :span="8">
                   <el-form-item label="交房日">
                           <el-date-picker type="date" placeholder="选择日期" v-model="addDate.date1" style="width: 100%;"></el-date-picker>
                   </el-form-item>
                   </el-col>
-                  <el-col :span="4">
+                  <el-col :span="8">
                   <el-form-item label="签约日">
                           <el-date-picker type="date" placeholder="选择日期" v-model="addDate.date2" style="width: 100%;"></el-date-picker>
                   </el-form-item>
@@ -26,7 +24,7 @@
               </el-form-item>
                 <!--免租期-->
                   <el-form-item label="免租期">
-                      <el-col :span="4">
+                      <el-col :span="8">
                       <el-date-picker
                               v-for="(domain, index) in addDate.domains"
                               type = "daterange"
@@ -58,17 +56,17 @@
                  </el-form-item>
                     <!--押金 总应付租金 合同佣金-->
                     <el-row>
-                        <el-col :span="4">
+                        <el-col :span="8">
                             <el-form-item label="押金">
                                 <el-input v-model="addDate.money" placeholder="押金"></el-input>
                             </el-form-item>
                         </el-col>
-                        <el-col :span="4">
+                        <el-col :span="8">
                             <el-form-item label="总应付租金">
                                 <el-input v-model="addDate.rent" placeholder="总应付押金"></el-input>
                             </el-form-item>
                         </el-col>
-                        <el-col :span="4">
+                        <el-col :span="8">
                             <el-form-item label="合同佣金">
                                 <el-input v-model="addDate.commission" placeholder="合同佣金"></el-input>
                             </el-form-item>
@@ -76,12 +74,12 @@
                     </el-row>
                     <!--提前几天付款 押金付款日期-->
                      <el-row>
-                         <el-col :span="4">
+                         <el-col :span="8">
                              <el-form-item label="提前几天付款">
                                  <el-input placeholder="提前几天付款" v-model="addDate.day" style="width: 100%;"></el-input>
                              </el-form-item>
                          </el-col>
-                         <el-col :span="4">
+                         <el-col :span="8">
                              <el-form-item label="押金付款日期">
                                  <el-date-picker
                                          type="date"
@@ -95,7 +93,7 @@
                      </el-row>
                     <!--首期支付 二期支付 三期支付-->
                      <el-row>
-                         <el-col :span="4">
+                         <el-col :span="8">
                              <el-form-item label="首期租金日期">
                                  <el-date-picker
                                          type="date"
@@ -105,7 +103,7 @@
                                  ></el-date-picker>
                              </el-form-item>
                          </el-col>
-                         <el-col :span="4">
+                         <el-col :span="8">
                              <el-form-item label="二期租金日期">
                                  <el-date-picker
                                          type="date"
@@ -115,7 +113,7 @@
                                  ></el-date-picker>
                              </el-form-item>
                          </el-col>
-                         <el-col :span="4">
+                         <el-col :span="8">
                              <el-form-item label="三期租金日期">
                                  <el-date-picker
                                          tpye="date"

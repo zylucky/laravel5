@@ -36,5 +36,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    {{--轮询获取消息通知--}}
+    <script>
+
+    </script>
 </body>
 </html>
