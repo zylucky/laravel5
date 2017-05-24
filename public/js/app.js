@@ -37019,6 +37019,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -37033,8 +37036,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         AddProperty: __WEBPACK_IMPORTED_MODULE_0__AddProperty_vue___default.a,
         AddOwner: __WEBPACK_IMPORTED_MODULE_1__AddOwner_vue___default.a
     },
-    methods: {}
-
+    methods: {
+        save: function save() {
+            var child = this.$refs.property.property;
+            console.log(child);
+            this.$message({
+                message: '保存成功',
+                type: 'success'
+            });
+        }
+    },
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -37325,7 +37337,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 ownNumber: '12345',
                 rentArea: '123.5',
                 signArea: '123.5',
-                houseType: 1
+                houseType: ''
             }],
             editableTabsValue2: '1',
             editableTabs2: [{
@@ -37339,6 +37351,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         addTab: function addTab(targetName) {
+            this.$notify.success({
+                title: '成功',
+                message: '添加了一条新房源',
+                offset: 100
+            });
             var newTabName = ++this.tabIndex + '';
             this.editableTabs2.push({
                 title: 'New Tab1',
@@ -37353,7 +37370,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 ownNumber: '',
                 rentArea: '',
                 signArea: '',
-                houseType: 1
+                houseType: ''
             });
             this.editableTabsValue2 = newTabName;
         },
@@ -37433,6 +37450,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -37448,6 +37466,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onSubmit: function onSubmit() {
             var _this = this;
             _this.$router.push('/purchaseContact/add');
+        },
+        uploadImg: function uploadImg() {
+            var _this = this;
+            _this.$router.push('/purchaseContact/upload');
         }
     }
 });
@@ -37459,9 +37481,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(13);
-//
-//
-//
 //
 //
 //
@@ -37852,9 +37871,12 @@ window.axios.defaults.headers.common = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_purchaseContract_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_purchaseContract_Index_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Upload_vue__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Upload_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Upload_vue__);
 /**
  * Created by liyuequn on 2017/5/15.
  */
+
 
 
 
@@ -37887,7 +37909,7 @@ var routes = [{
     component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a,
     name: '合同管理',
     iconCls: 'el-icon-document', //图标样式class
-    children: [{ path: '/purchaseContact/', component: __WEBPACK_IMPORTED_MODULE_5__components_purchaseContract_Index_vue___default.a, name: '收房合同' }, { path: '/purchaseContact/add', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue___default.a, name: '房间信息', hidden: true }]
+    children: [{ path: '/purchaseContact/', component: __WEBPACK_IMPORTED_MODULE_5__components_purchaseContract_Index_vue___default.a, name: '收房合同' }, { path: '/purchaseContact/add', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue___default.a, name: '房间信息', hidden: true }, { path: '/purchaseContact/upload', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }]
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
@@ -72597,14 +72619,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleAdd
     }
-  }, [_vm._v("新增")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.handleTest
-    }
-  }, [_vm._v("测试")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("新增")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -72616,7 +72631,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "data": _vm.users,
-      "highlight-current-row": ""
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
     },
     on: {
       "selection-change": _vm.selsChange
@@ -72683,7 +72699,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
+        }, [_c('i', {
+          staticClass: "el-icon-edit"
+        })]), _vm._v(" "), _c('el-button', {
           attrs: {
             "type": "danger",
             "size": "small"
@@ -72693,7 +72711,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleDel(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("删除")])]
+        }, [_c('i', {
+          staticClass: "el-icon-delete"
+        })])]
       }]
     ])
   })], 1), _vm._v(" "), _c('el-dialog', {
@@ -73207,7 +73227,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "span": 12
     }
-  }, [(_vm.stepNum == 1) ? _c('add-property') : _vm._e(), _vm._v(" "), (_vm.stepNum == 2) ? _c('add-owner') : _vm._e()], 1), _vm._v(" "), _c('div', {
+  }, [_c('add-property', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 1),
+      expression: "stepNum==1"
+    }],
+    ref: "property"
+  }), _vm._v(" "), _c('add-owner', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 2),
+      expression: "stepNum==2"
+    }],
+    ref: "owner"
+  })], 1), _vm._v(" "), _c('div', {
     staticStyle: {
       "margin-bottom": "81px"
     }
@@ -73215,10 +73251,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "span": 6
     }
-  }, [_c('el-steps', {
+  }, [_c('div', {
     staticStyle: {
       "margin-left": "50%"
-    },
+    }
+  }, [_c('el-steps', {
     attrs: {
       "space": 100,
       "direction": "vertical",
@@ -73276,7 +73313,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "title": "条款信息"
     }
-  })], 1)])], 1)], 1)], 1)
+  })], 1)]), _vm._v(" "), _c('el-button', {
+    staticStyle: {
+      "margin-top": "100px"
+    },
+    attrs: {
+      "type": "info"
+    },
+    on: {
+      "click": _vm.save
+    }
+  }, [_vm._v("保存")])], 1)])], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -73704,7 +73751,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.onSubmit
     }
-  }, [_vm._v(" 新增")])], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 新增")]), _vm._v(" "), _c('el-button', {
+    staticClass: "el-icon-upload2",
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.uploadImg
+    }
+  }, [_vm._v("上传")])], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -73715,7 +73770,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "100%"
     },
     attrs: {
-      "highlight-current-row": ""
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
     },
     on: {
       "selection-change": _vm.selsChange
@@ -97896,6 +97952,120 @@ module.exports = function(module) {
 __webpack_require__(40);
 module.exports = __webpack_require__(41);
 
+
+/***/ }),
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(184),
+  /* template */
+  __webpack_require__(183),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/purchaseContract/Upload.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Upload.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e61fd714", Component.options)
+  } else {
+    hotAPI.reload("data-v-e61fd714", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-upload', {
+    staticClass: "upload-demo",
+    attrs: {
+      "action": "https://jsonplaceholder.typicode.com/posts/",
+      "on-preview": _vm.handlePreview,
+      "on-remove": _vm.handleRemove,
+      "file-list": _vm.fileList2,
+      "list-type": "picture"
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "size": "small",
+      "type": "primary"
+    }
+  }, [_vm._v("点击上传")]), _vm._v(" "), _c('div', {
+    staticClass: "el-upload__tip",
+    slot: "tip"
+  }, [_vm._v("只能上传jpg/png文件，且不超过2000kb")])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-e61fd714", module.exports)
+  }
+}
+
+/***/ }),
+/* 184 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            fileList2: [{ name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }, { name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }]
+        };
+    },
+
+    methods: {
+        handleRemove: function handleRemove(file, fileList) {
+            console.log(file, fileList);
+        },
+        handlePreview: function handlePreview(file) {
+            console.log(file);
+        }
+    }
+});
 
 /***/ })
 /******/ ]);

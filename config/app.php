@@ -183,6 +183,9 @@ return [
          */
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+        //七牛云
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+
     ],
 
     /*

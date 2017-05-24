@@ -107,7 +107,7 @@
                     ownNumber: '12345',
                     rentArea: '123.5',
                     signArea: '123.5',
-                    houseType: 1,
+                    houseType: '',
                 }
                 ],
                 editableTabsValue2: '1',
@@ -121,6 +121,11 @@
         },
         methods: {
             addTab(targetName) {
+                this.$notify.success({
+                    title: '成功',
+                    message: '添加了一条新房源',
+                    offset: 100
+                });
                 let newTabName = ++this.tabIndex + '';
                 this.editableTabs2.push({
                     title: 'New Tab1',
@@ -135,7 +140,7 @@
                     ownNumber: '',
                     rentArea: '',
                     signArea: '',
-                    houseType: 1,
+                    houseType: '',
                 });
                 this.editableTabsValue2 = newTabName;
             },
