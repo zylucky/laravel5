@@ -34,15 +34,17 @@
         </el-table>
         <div style="margin-top:30px"></div>
         <!-- 分页-->
-        <el-col :span="24" class="toolbar">
+        <el-col :span="24" class="toolbar" >
             <el-pagination
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
-                    :current-page="currentPage4"
+                    :current-page="currentPage"
                     :page-sizes="[10, 20, 50, 100]"
                     :page-size="100"
                     layout="total, sizes, prev, pager, next, jumper"
-                    :total="400">
+                    :total=total
+                    style="float:right"
+            >
             </el-pagination>
         </el-col>
     </el-row>
@@ -54,7 +56,14 @@
                 formInline: {
                     user: '',
                     region: ''
-                }
+                },
+                //分页类数据
+                total:10000,
+                currentPage:0,
+                pageSize:10,
+                users:[],
+                listLoading: false,
+                sels: [],//列表选中列
             }
         },
         methods: {
@@ -65,8 +74,13 @@
             uploadImg(){
                 var _this = this;
                 _this.$router.push('/purchaseContact/upload');
+            },
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
             }
         }
     }
 </script>
-

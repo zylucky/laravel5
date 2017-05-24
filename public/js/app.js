@@ -37451,6 +37451,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -37458,8 +37460,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             formInline: {
                 user: '',
                 region: ''
-            }
-        };
+            },
+            //分页类数据
+            total: 10000,
+            currentPage: 0,
+            pageSize: 10,
+            users: [],
+            listLoading: false,
+            sels: [] };
     },
 
     methods: {
@@ -37470,6 +37478,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         uploadImg: function uploadImg() {
             var _this = this;
             _this.$router.push('/purchaseContact/upload');
+        },
+        handleSizeChange: function handleSizeChange(val) {
+            console.log('\u6BCF\u9875 ' + val + ' \u6761');
+        },
+        handleCurrentChange: function handleCurrentChange(val) {
+            console.log('\u5F53\u524D\u9875: ' + val);
         }
     }
 });
@@ -37873,9 +37887,12 @@ window.axios.defaults.headers.common = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Upload_vue__ = __webpack_require__(182);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Upload_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Upload_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_AddDate_vue__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_AddDate_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_AddDate_vue__);
 /**
  * Created by liyuequn on 2017/5/15.
  */
+
 
 
 
@@ -37909,7 +37926,7 @@ var routes = [{
     component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a,
     name: '合同管理',
     iconCls: 'el-icon-document', //图标样式class
-    children: [{ path: '/purchaseContact/', component: __WEBPACK_IMPORTED_MODULE_5__components_purchaseContract_Index_vue___default.a, name: '收房合同' }, { path: '/purchaseContact/add', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue___default.a, name: '房间信息', hidden: true }, { path: '/purchaseContact/upload', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }]
+    children: [{ path: '/purchaseContact/', component: __WEBPACK_IMPORTED_MODULE_5__components_purchaseContract_Index_vue___default.a, name: '收房合同' }, { path: '/purchaseContact/add', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Add_vue___default.a, name: '房间信息', hidden: true }, { path: '/purchaseContact/upload', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/purchaseContact/AddDate', component: __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_AddDate_vue___default.a, name: '租期信息', hidden: true }]
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
@@ -73850,12 +73867,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "span": 24
     }
   }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
     attrs: {
-      "current-page": _vm.currentPage4,
+      "current-page": _vm.currentPage,
       "page-sizes": [10, 20, 50, 100],
       "page-size": 100,
       "layout": "total, sizes, prev, pager, next, jumper",
-      "total": 400
+      "total": _vm.total
     },
     on: {
       "size-change": _vm.handleSizeChange,
@@ -98066,6 +98086,620 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     }
 });
+
+/***/ }),
+/* 185 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+
+            addDate: {
+                date1: '',
+                date2: '',
+                radio2: '',
+                value6: '',
+                value7: '',
+                commission: '',
+                domains: [{
+                    value: ''
+                }],
+                rent: '',
+                many: '',
+                day: '',
+                value8: '',
+                first: '',
+                second: '',
+                third: '',
+
+                desc: ''
+            },
+            checkList: []
+        };
+    },
+
+    methods: {
+        onSubmit: function onSubmit() {
+            console.log('submit!');
+        },
+        addDomain: function addDomain() {
+            this.addDate.domains.push({
+                value: '',
+                key: Date.now()
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(185),
+  /* template */
+  __webpack_require__(187),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/purchaseContract/AddDate.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] AddDate.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0501164a", Component.options)
+  } else {
+    hotAPI.reload("data-v-0501164a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticStyle: {
+      "margin-bottom": "60px"
+    }
+  }), _vm._v(" "), _c('el-form', {
+    ref: "dynamicValidateForm",
+    staticClass: "demo-dynamic",
+    attrs: {
+      "model": _vm.addDate,
+      "label-width": "100px"
+    }
+  }, [_c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "交房日"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "选择日期"
+    },
+    model: {
+      value: (_vm.addDate.date1),
+      callback: function($$v) {
+        _vm.addDate.date1 = $$v
+      },
+      expression: "addDate.date1"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "签约日"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "选择日期"
+    },
+    model: {
+      value: (_vm.addDate.date2),
+      callback: function($$v) {
+        _vm.addDate.date2 = $$v
+      },
+      expression: "addDate.date2"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "免租方式"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.addDate.radio2),
+      callback: function($$v) {
+        _vm.addDate.radio2 = $$v
+      },
+      expression: "addDate.radio2"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": 3
+    }
+  }, [_vm._v("期内免租")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 6
+    }
+  }, [_vm._v("期外免租")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 9
+    }
+  }, [_vm._v("期内期外")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "免租期"
+    }
+  }, [_c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_vm._l((_vm.addDate.domains), function(domain, index) {
+    return _c('el-date-picker', {
+      key: domain.key,
+      attrs: {
+        "type": "daterange",
+        "prop": 'domains.' + index + '.value',
+        "rules": {
+          required: true,
+          message: '免租期不能为空',
+          trigger: 'blur'
+        }
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (domain.value),
+        callback: function($$v) {
+          domain.value = $$v
+        },
+        expression: "domain.value"
+      }
+    }), _c('el-button', {
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeDomain(domain)
+        }
+      }
+    }, [_vm._v("删除")])], 1)
+  }), _vm._v(" "), _c('el-button', {
+    on: {
+      "click": _vm.addDomain
+    }
+  }, [_vm._v("新增免租期")])], 2)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "租期"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "daterange",
+      "placeholder": "选择日期范围"
+    },
+    model: {
+      value: (_vm.addDate.value7),
+      callback: function($$v) {
+        _vm.addDate.value7 = $$v
+      },
+      expression: "addDate.value7"
+    }
+  })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "押金"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "押金"
+    },
+    model: {
+      value: (_vm.addDate.money),
+      callback: function($$v) {
+        _vm.addDate.money = $$v
+      },
+      expression: "addDate.money"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "总应付租金"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "总应付押金"
+    },
+    model: {
+      value: (_vm.addDate.rent),
+      callback: function($$v) {
+        _vm.addDate.rent = $$v
+      },
+      expression: "addDate.rent"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "合同佣金"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "合同佣金"
+    },
+    model: {
+      value: (_vm.addDate.commission),
+      callback: function($$v) {
+        _vm.addDate.commission = $$v
+      },
+      expression: "addDate.commission"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "提前几天付款"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "placeholder": "提前几天付款"
+    },
+    model: {
+      value: (_vm.addDate.day),
+      callback: function($$v) {
+        _vm.addDate.day = $$v
+      },
+      expression: "addDate.day"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "押金付款日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "选择日期"
+    },
+    model: {
+      value: (_vm.addDate.date2),
+      callback: function($$v) {
+        _vm.addDate.date2 = $$v
+      },
+      expression: "addDate.date2"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "首期租金日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "首期租金日期"
+    },
+    model: {
+      value: (_vm.addDate.first),
+      callback: function($$v) {
+        _vm.addDate.first = $$v
+      },
+      expression: "addDate.first"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "二期租金日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "二期租金日期"
+    },
+    model: {
+      value: (_vm.addDate.second),
+      callback: function($$v) {
+        _vm.addDate.second = $$v
+      },
+      expression: "addDate.second"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "三期租金日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "tpye": "date",
+      "placeholder": "三期租金日期"
+    },
+    model: {
+      value: (_vm.addDate.third),
+      callback: function($$v) {
+        _vm.addDate.third = $$v
+      },
+      expression: "addDate.third"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "费用"
+    }
+  }, [_c('el-checkbox-group', {
+    model: {
+      value: (_vm.checkList),
+      callback: function($$v) {
+        _vm.checkList = $$v
+      },
+      expression: "checkList"
+    }
+  }, [_c('el-checkbox', {
+    attrs: {
+      "label": "1"
+    }
+  }, [_vm._v("物业费")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "2"
+    }
+  }, [_vm._v("取暖费")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "3"
+    }
+  }, [_vm._v("制冷")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "4"
+    }
+  }, [_vm._v("发票")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "5"
+    }
+  }, [_vm._v("其它")])], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 12
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "补充条款",
+      "prop": "desc"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea",
+      "rows": "5px"
+    },
+    model: {
+      value: (_vm.addDate.desc),
+      callback: function($$v) {
+        _vm.addDate.desc = $$v
+      },
+      expression: "addDate.desc"
+    }
+  })], 1)], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-0501164a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
