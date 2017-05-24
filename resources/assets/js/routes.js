@@ -12,7 +12,7 @@ import User from "./components/rbac/user.vue";
 
 import PurchaseContractIndex from "./components/purchaseContract/Index.vue";
 import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
-
+import PurchaseContractAddDate from "./components/purchaseContract/AddDate.vue";
  let routes = [
      {
          path: '/login',
@@ -49,9 +49,9 @@ import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
          name: '合同管理',
          iconCls: 'el-icon-document',//图标样式class
          children: [
-             { path: '/purchaseContact', component: PurchaseContractIndex, name: '收房合同',children:[
-                 {path:'/purchaseContact/Add',component:PurchaseContractAdd,name:'房间信息'}
-             ] },
+             { path: '/purchaseContact', component: PurchaseContractIndex, name: '收房合同'},
+             { path:'/purchaseContact/Add',component:PurchaseContractAdd,name:'房间信息',hidden:true},
+             { path:'/purchaseContact/AddDate',component:PurchaseContractAddDate,name:'租期信息',hidden:true},
          ]
      },
 ]
