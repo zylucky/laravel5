@@ -17,17 +17,17 @@
                     <el-form :label-position="labelPosition" label-width="100px" :model="property[index]">
                         <el-col :span="24">
                             <el-row>
-                                <el-col :span="8">
+                                <el-col :span="12">
                                     <el-form-item label="楼盘" >
                                         <el-input v-model="property[index].estate"></el-input>
                                     </el-form-item>
                                 </el-col>
-                                <el-col :span="8">
+                                <el-col :span="12">
                                     <el-form-item label="楼栋" >
                                         <el-input v-model="property[index].building"></el-input>
                                     </el-form-item>
                                 </el-col>
-                                <el-col :span="8">
+                                <el-col :span="12">
                                     <el-form-item label="房间号" >
                                         <el-input v-model="property[index].houseNumber"></el-input>
                                     </el-form-item>
@@ -112,7 +112,7 @@
                 ],
                 editableTabsValue2: '1',
                 editableTabs2: [{
-                    title: 'Tab 1',
+                    title: '房间1',
                     name: '1',
                     content: 'Tab 1 content'
                 }],

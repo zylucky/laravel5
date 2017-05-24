@@ -37019,7 +37019,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -37294,9 +37293,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        step: step
-    },
+    components: {},
     data: function data() {
         return {
             purchaseContract: {
@@ -37332,7 +37329,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }],
             editableTabsValue2: '1',
             editableTabs2: [{
-                title: 'Tab 1',
+                title: '房间1',
                 name: '1',
                 content: 'Tab 1 content'
             }],
@@ -37388,6 +37385,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73232,19 +73274,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-step', {
     attrs: {
-      "title": "签约信息"
-    }
-  })], 1), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "javascript:;"
-    },
-    on: {
-      "click": function($event) {
-        _vm.stepNum = 5
-      }
-    }
-  }, [_c('el-step', {
-    attrs: {
       "title": "条款信息"
     }
   })], 1)])], 1)], 1)], 1)
@@ -73637,7 +73666,37 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-button', {
+  return _c('el-row', [_c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-form', {
+    staticClass: "demo-form-inline",
+    attrs: {
+      "inline": true,
+      "model": _vm.formInline
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": ""
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "请输入项目"
+    },
+    model: {
+      value: (_vm.formInline.user),
+      callback: function($$v) {
+        _vm.formInline.user = $$v
+      },
+      expression: "formInline.user"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary",
+      "icon": "search"
+    }
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -73645,7 +73704,108 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.onSubmit
     }
-  }, [_vm._v(" 新增")])
+  }, [_vm._v(" 新增")])], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "highlight-current-row": ""
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "selection",
+      "width": "55"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "type": "index",
+      "width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "",
+      "label": "签约日期",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "",
+      "label": "房间",
+      "formatter": _vm.formatSex,
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "",
+      "label": "地址",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "",
+      "label": "标签",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "150"
+    },
+    scopedSlots: _vm._u([
+      ["default", function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleEdit(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "danger",
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleDel(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("删除")])]
+      }]
+    ])
+  })], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    attrs: {
+      "current-page": _vm.currentPage4,
+      "page-sizes": [10, 20, 50, 100],
+      "page-size": 100,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": 400
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -73705,7 +73865,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-row', [_c('el-col', {
       attrs: {
-        "span": 8
+        "span": 12
       }
     }, [_c('el-form-item', {
       attrs: {
@@ -73721,7 +73881,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
-        "span": 8
+        "span": 12
       }
     }, [_c('el-form-item', {
       attrs: {
@@ -73737,7 +73897,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
-        "span": 8
+        "span": 12
       }
     }, [_c('el-form-item', {
       attrs: {
