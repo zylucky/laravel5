@@ -9,12 +9,8 @@ import Example from "./components/Example.vue";
 
 import User from "./components/rbac/user.vue";
 
-
 import PurchaseContractIndex from "./components/purchaseContract/Index.vue";
 import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
-
-import PurchaseContractAddDate from "./components/purchaseContract/AddDate.vue";
-
 import PurchaseContractUpload from "./components/purchaseContract/Upload.vue";
 import PurchaseContractAddDate from "./components/purchaseContract/AddDate.vue";
 
