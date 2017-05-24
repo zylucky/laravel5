@@ -75,7 +75,6 @@
 
     export default {
         components:{
-            step
         },
         data() {
             return {
