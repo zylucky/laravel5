@@ -5,6 +5,7 @@
             <el-col :span="12">
                 <add-property ref="property" v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" v-show="stepNum==2"></add-owner>
+                <add-date ref="date" v-show="stepNum==3"></add-date>
             </el-col>
             <div style="margin-bottom:81px;"></div>
             <el-col :span="6">
@@ -25,6 +26,7 @@
 <script>
     import AddProperty from './AddProperty.vue'
     import AddOwner from './AddOwner.vue'
+    import AddDate from './AddDate.vue'
     export default{
         data(){
             return {
@@ -34,6 +36,7 @@
         components:{
             AddProperty,
             AddOwner,
+            AddDate,
         },
         methods:{
             save(){
