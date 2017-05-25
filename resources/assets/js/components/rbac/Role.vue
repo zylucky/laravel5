@@ -15,7 +15,7 @@
             </el-form>
         </el-row>
         <el-row>
-            <el-col :span="12">
+            <el-col :span="15">
 
                 <!--列表页-->
                 <el-table :data="Roles" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
@@ -49,7 +49,7 @@
                     </el-pagination>
                 </el-col>
             </el-col>
-            <el-col :span="11" style="margin-left: 5px;">
+            <el-col :span="8" style="margin-left: 5px;">
                 <el-tree
                         :data="data2"
                         show-checkbox
@@ -63,7 +63,7 @@
             <!--编辑界面-->
         <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
             <el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
-                <el-form-item label="姓名" prop="name">
+                <el-form-item label="角色" prop="name">
                     <el-input v-model="editForm.name" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="说明" prop="description">
@@ -78,7 +78,7 @@
         <!--新增界面-->
         <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
             <el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
-                <el-form-item label="姓名" prop="name">
+                <el-form-item label="角色" prop="name">
                     <el-input v-model="addForm.name" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="说明" prop="description">
@@ -129,7 +129,7 @@
                 addLoading: false,
                 addFormRules: {
                     name: [
-                        { required: true, message: '请输入姓名', trigger: 'blur' }
+                        { required: true, message: '请输入角色', trigger: 'blur' }
                     ],
 
                 },

@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
                 'name' => str_random(10),
                 'email' => str_random(10).'@gmail.com',
                 'password' => bcrypt('secret'),
-                'phone' => rand(18511909100,18511909124),
+                'phone' => str_random(10),
                 'avatar' => '',
 
             ]);
@@ -30,7 +30,7 @@ class UserTableSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@qq.com',
             'password' => bcrypt('123456'),
-            'phone' => rand(18511909100,18511909124),
+            'phone' => str_random(10),
             'avatar' => '',
 
         ]);
