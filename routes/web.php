@@ -16,6 +16,7 @@ Route::get('/', function (){
     return view('home');
 });
 Route::resource('test', 'TestController');
+Route::resource('role', 'RoleController');
 
 
 Route::post('logout','Auth\LoginController@logout');

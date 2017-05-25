@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\models\Role;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Qiniu\Auth;
+use Illuminate\Support\Facades\Input;
 
-class TestController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,26 +15,11 @@ class TestController extends Controller
      */
     public function index()
     {
-        $role = Role::findOrFail(1);
-        dd($role);
-        //
-        return view('test');exit;
-        $client = new Client([
-            // Base URI is used with relative requests
-            'base_uri' => 'http://www.youshi.com',
-            // You can set any number of default request options.
-            'timeout'  => 2.0,
-        ]);
-        /*$response = $client->get('http://httpbin.org/get');
-        $response = $client->delete('http://httpbin.org/delete');
-        $response = $client->head('http://httpbin.org/get');
-        $response = $client->options('http://httpbin.org/get');
-        $response = $client->patch('http://httpbin.org/patch');
-        $response = $client->post('http://httpbin.org/post');
-        $response = $client->put('http://httpbin.org/put');*/
-        $response = $client->request('GET', '/test');
-        echo $response->getBody();
-
+        $name = Input::get('name');
+        $pageSize = Input::get('pageSize');
+        return $roles =  Role::when($name, function ($query) use ($name) {
+            return $query->where('name','like',"$name%");
+        })->paginate($pageSize);
     }
 
     /**
@@ -45,7 +29,7 @@ class TestController extends Controller
      */
     public function create()
     {
-
+       //
     }
 
     /**
@@ -56,7 +40,16 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->params;
+        $role = new Role();
+        $role->name = $input['name'];
+        $role->description = $input['description'];
+        if($role->save()){
+            return [
+                'msg'=>'保存成功！',
+                'code'=>200
+            ];
+        }
     }
 
     /**
@@ -90,7 +83,15 @@ class TestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = Role::find($id);
+        $role->name = $request->params['name'];
+        $role->description = $request->params['description'];
+        if($role->save()){
+            return [
+                'msg'=>'保存成功！',
+                'code'=>200
+            ];
+        }
     }
 
     /**
@@ -101,6 +102,6 @@ class TestController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Role::destroy($id);
     }
 }
