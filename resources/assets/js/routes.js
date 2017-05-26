@@ -44,6 +44,7 @@ import PurchaseContractAddDate from "./components/purchaseContract/AddDate.vue";
          path: '/',
          component: navigation,
          name: '合同管理',
+         funKey:'Contract',
          iconCls: 'el-icon-document',//图标样式class
          children: [
 

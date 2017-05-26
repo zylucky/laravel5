@@ -16,7 +16,9 @@ Route::get('/', function (){
     return view('home');
 });
 Route::resource('test', 'TestController');
-Route::resource('role', 'RoleController');
+Route::resource('role', 'Rbac\RoleController');
+Route::get('permission/update','Rbac\PermissionController@update');
+Route::get('permission/list','Rbac\PermissionController@getPermissionList');
 
 
 Route::post('logout','Auth\LoginController@logout');

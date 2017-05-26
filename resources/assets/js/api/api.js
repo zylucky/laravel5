@@ -15,3 +15,7 @@ export const removeRole = params => { return axios.delete(`${base}/role/`+params
 export const addRole = params => { return axios.post(`${base}/role`, { params: params }); };
 export const editRole = params => { return axios.put(`${base}/role/`+params.id, { params: params }); };
 export const batchRemoveRole = params => { return axios.post(`${base}/user/batchRemoveUser`, { params: params }); };
+
+export const getPermissionListPage = params => { return axios.get(`${base}/permission/update`, { params: params }); };
+export const getPermissionList = params => { return axios.get(`${base}/permission/list`, { params: params }); };
+
