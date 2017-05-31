@@ -1,6 +1,6 @@
 <template>
     <el-row class="container">
-        <el-form :model="addDate" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
+        <el-form :model="addDate" ref="addDate" label-width="100px" class="demo-dynamic">
             <!--交房日、签约日-->
             <el-row>
                 <el-col :span="8">
@@ -23,36 +23,58 @@
                 </el-radio-group>
             </el-form-item>
             <!--免租期-->
-            <el-form-item label="免租期">
-                <el-col :span="8">
-                    <el-date-picker
-                            v-for="(domain, index) in addDate.domains"
-                            type = "daterange"
-                            :key="domain.key"
-                            :prop="'domains.' + index + '.value'"
-                            :rules="{
-                              required: true, message: '免租期不能为空', trigger: 'blur'
-                            }"
-                    >
-                        <el-input  v-model="domain.value"></el-input><el-button @click.prevent="removeDomain(domain)">删除</el-button>
-                    </el-date-picker>
-                    <el-button  @click="addDomain">新增免租期</el-button>
+            <el-form-item label="免租期" v-for="(item, index) in addDate.free"
+                          :key="item.key"
+                          :prop="'free.' + index + '.value'"
+                          >
+                <el-date-picker type = "daterange" placeholder="免租期范围" v-model="item.value">
+                </el-date-picker>
+                <el-button @click.prevent="removeFreeItem(item)">删除</el-button>
 
-                </el-col>
-                <!--<el-date-picker-->
-                <!--style="float:left"-->
-                <!--v-model="date.value6"-->
-                <!--type="daterange"-->
-                <!--placeholder="选择日期范围">-->
-                <!--</el-date-picker>-->
             </el-form-item>
+            <el-form-item>
+                <el-button  @click="addFreeItem">新增免租期</el-button>
+            </el-form-item>
+
             <!--租期-->
-            <el-form-item label="租期">
+            <el-form-item label="总租期">
                 <el-date-picker
                         v-model="addDate.value7"
                         type="daterange"
                         placeholder="选择日期范围">
                 </el-date-picker>
+            </el-form-item>
+            <!--租金-->
+            <div v-for="(item, index) in addDate.rental">
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item :label="'租期' + index"
+                                      :key="item.key"
+                                      :prop="'rental.' + index + '.value'"
+                        >
+                            <el-date-picker type = "daterange" placeholder="租期范围" v-model="item.value">
+                            </el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="6">
+                        <el-form-item label="" label-width="85px">
+                            <el-input v-model="addDate.money" placeholder="租金/元"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-form-item label="" label-width="10px">
+                            <el-input v-model="addDate.money" placeholder="单价"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="7">
+                        <el-button style="margin-left:6px;" @click.prevent="removeRentItem(item)">删除</el-button>
+                    </el-col>
+                </el-row>
+            </div>
+
+
+            <el-form-item>
+                <el-button  @click="addRentItem">新增租期</el-button>
             </el-form-item>
             <!--押金 总应付租金 合同佣金-->
             <el-row>
@@ -135,9 +157,9 @@
                 </el-checkbox-group>
             </el-form-item>
             <!--补充条款-->
-            <el-col :span="12">
+            <el-col :span="24">
                 <el-form-item label="补充条款"  prop="desc">
-                    <el-input type="textarea" rows="5px" v-model="addDate.desc"></el-input>
+                    <el-input type="textarea" row="5px" v-model="addDate.desc"></el-input>
                 </el-form-item>
             </el-col>
         </el-form>
@@ -156,9 +178,12 @@
                     value6: '',
                     value7: '',
                     commission:'',
-                    domains: [{
+                    free: [{
                         value:''
                     }],
+                    rental:[
+                        {value:'',rental:''},
+                    ],
                     rent:'',
                     many:'',
                     day:'',
@@ -176,11 +201,34 @@
             onSubmit() {
                 console.log('submit!');
             },
-            addDomain() {
-                this.addDate.domains.push({
+            //增加免租期
+            addFreeItem() {
+                this.addDate.free.push({
+                    value: '',
+                    rental:'',
+                    key: Date.now()
+                });
+            },
+            //移除免租期
+            removeFreeItem(item) {
+                var index = this.addDate.free.indexOf(item)
+                if (index !== -1) {
+                    this.addDate.free.splice(index, 1)
+                }
+            },
+            //增加租期租金
+            addRentItem() {
+                this.addDate.rental.push({
                     value: '',
                     key: Date.now()
                 });
+            },
+            //移除租期租金
+            removeRentItem(item) {
+                var index = this.addDate.rental.indexOf(item)
+                if (index !== -1) {
+                    this.addDate.rental.splice(index, 1)
+                }
             }
         }
     }

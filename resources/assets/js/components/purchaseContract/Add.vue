@@ -2,7 +2,7 @@
     <div>
         <el-row>
             <div style="margin-bottom: 50px;"></div>
-            <el-col :span="12">
+            <el-col :span="15">
                 <add-property ref="property" v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" v-show="stepNum==2"></add-owner>
                 <add-date ref="date" v-show="stepNum==3"></add-date>

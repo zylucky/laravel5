@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\models\Role;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Qiniu\Auth;
@@ -15,6 +16,8 @@ class TestController extends Controller
      */
     public function index()
     {
+        $role = Role::findOrFail(1);
+        dd($role);
         //
         return view('test');exit;
         $client = new Client([

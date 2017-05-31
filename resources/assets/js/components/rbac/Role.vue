@@ -1,59 +1,73 @@
 <template>
     <section>
-        <!--工具条-->
-        <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
+        <el-row>
+            <!--工具条-->
             <el-form :inline="true" :model="filters">
                 <el-form-item>
-                    <el-input v-model="filters.name" placeholder="姓名"></el-input>
+                    <el-input v-model="filters.name" placeholder="角色"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" v-on:click="getUsers">查询</el-button>
+                    <el-button v-if="this.fun('purchaseContractAdd')" type="primary" v-on:click="getRoles">查询</el-button>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="handleAdd">新增</el-button>
                 </el-form-item>
             </el-form>
-        </el-col>
-        <!--列表页-->
-        <el-table :data="users" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column type="selection" width="55">
-            </el-table-column>
-            <el-table-column type="index" width="60">
-            </el-table-column>
-            <el-table-column prop="name" label="姓名" width="150" sortable>
-            </el-table-column>
-            <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
-            </el-table-column>
-            <el-table-column prop="email" label="邮箱" width="200" sortable>
-            </el-table-column>
-            <el-table-column prop="created_at" label="创建时间" width="220" sortable>
-            </el-table-column>
-            <el-table-column prop="addr" label="角色" min-width="180" sortable>
-            </el-table-column>
-            <el-table-column label="操作" width="150">
-                <template scope="scope">
-                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
-                    <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)"><i class="el-icon-delete"></i></el-button>
-                </template>
-            </el-table-column>
-        </el-table>
-        <!--编辑界面-->
+        </el-row>
+        <el-row>
+            <el-col :span="15">
+
+                <!--列表页-->
+                <el-table :data="Roles" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
+                    <el-table-column type="selection" width="55">
+                    </el-table-column>
+                    <el-table-column type="index" width="60">
+                    </el-table-column>
+                    <el-table-column prop="name" label="角色" min-width="80" sortable>
+                    </el-table-column>
+                    <el-table-column prop="description" label="说明" min-width="100" sortable>
+                    </el-table-column>
+                    <el-table-column label="操作" width="200">
+                        <template scope="scope">
+                            <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
+                            <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)"><i class="el-icon-delete"></i></el-button>
+                            <el-button type="small" size="small" @click="handleDel(scope.$index, scope.row)"><i class="el-icon-setting"></i></el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+                <!-- 分页-->
+                <el-col :span="24" class="toolbar">
+                    <el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>
+                    <el-pagination
+                            @size-change="handleSizeChange"
+                            @current-change="handleCurrentChange"
+                            :current-page="currentPage"
+                            :page-sizes="pageSizes"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total=total
+                            style="float:right">
+                    </el-pagination>
+                </el-col>
+            </el-col>
+            <el-col :span="8" style="margin-left: 5px;">
+                <el-tree
+                        :data="data2"
+                        show-checkbox
+                        node-key="id"
+                        :default-expanded-keys="[2, 3]"
+                        :default-checked-keys="[5]"
+                        :props="defaultProps">
+                </el-tree>
+            </el-col>
+        </el-row>
+            <!--编辑界面-->
         <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
             <el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
-                <el-form-item label="姓名" prop="name">
+                <el-form-item label="角色" prop="name">
                     <el-input v-model="editForm.name" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="性别" prop="sex">
-                    <el-radio-group v-model="editForm.sex">
-                        <el-radio class="radio" :label="'1'">男</el-radio>
-                        <el-radio class="radio" :label="'2'">女</el-radio>
-                    </el-radio-group>
-                </el-form-item>
-                <el-form-item label="邮箱" prop="email">
-                    <el-input v-model="editForm.email" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="手机号" prop="phone">
-                    <el-input v-model="editForm.phone" auto-complete="off"></el-input>
+                <el-form-item label="说明" prop="description">
+                    <el-input v-model="editForm.description" auto-complete="off"></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -64,20 +78,11 @@
         <!--新增界面-->
         <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
             <el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
-                <el-form-item label="姓名" prop="name">
+                <el-form-item label="角色" prop="name">
                     <el-input v-model="addForm.name" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="性别" prop="sex">
-                    <el-radio-group v-model="addForm.sex">
-                        <el-radio class="radio" :label="1">男</el-radio>
-                        <el-radio class="radio" :label="2">女</el-radio>
-                    </el-radio-group>
-                </el-form-item>
-                <el-form-item label="邮箱" prop="email">
-                    <el-input v-model="addForm.email" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="手机号" prop="phone">
-                    <el-input v-model="addForm.phone" auto-complete="off"></el-input>
+                <el-form-item label="说明" prop="description">
+                    <el-input v-model="addForm.description" auto-complete="off"></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -85,25 +90,13 @@
                 <el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
             </div>
         </el-dialog>
-        <!-- 分页-->
-        <el-col :span="24" class="toolbar">
-            <el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>
-            <el-pagination
-                    @size-change="handleSizeChange"
-                    @current-change="handleCurrentChange"
-                    :current-page="currentPage"
-                    :page-sizes="pageSizes"
-                    layout="total, sizes, prev, pager, next, jumper"
-                    :total=total
-                    style="float:right">
-            </el-pagination>
-        </el-col>
+
 
 
     </section>
 </template>
 <script>
-    import { getUserListPage, removeUser ,addUser,editUser,batchRemoveUser} from '../../api/api';
+    import { getRoleListPage, removeRole ,addRole,editRole,batchRemoveRole,getPermissionListPage} from '../../api/api';
 
     export default{
         data(){
@@ -116,7 +109,7 @@
                 currentPage:0,
                 pageSize:10,
                 pageSizes:[10, 20, 30, 40, 50, 100],
-                users:[],
+                Roles:[],
                 listLoading: false,
                 sels: [],//列表选中列
 
@@ -124,83 +117,66 @@
                 editLoading: false,
                 editFormRules: {
                     name: [
-                        { required: true, message: '请输入姓名', trigger: 'blur' }
+                        { required: true, message: '请输入角色', trigger: 'blur' }
                     ],
-                    sex:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    email:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    phone:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ]
                 },
                 //编辑界面数据
                 editForm: {
                     id: 0,
                     name: '',
-                    sex: 1,
-                    email: '',
-                    phone: '',
-                    addr: ''
                 },
                 addFormVisible: false,//新增界面是否显示
                 addLoading: false,
                 addFormRules: {
                     name: [
-                        { required: true, message: '请输入姓名', trigger: 'blur' }
+                        { required: true, message: '请输入角色', trigger: 'blur' }
                     ],
-                    sex:[
-                        {required: true, message:'输入性别',trigger:'blur' }
-                    ],
-                    email:[
-                        {required: true, message:'输入邮箱',trigger:'blur' }
-                    ],
-                    phone:[
-                        {required: true, message:'输入手机号',trigger:'blur' }
-                    ]
+
                 },
                 //新增界面数据
                 addForm: {
                     name: '',
-                    sex: 1,
-                    email: '',
-                    phone: '',
-                    addr: ''
+                },
+                data2:[],
+                defaultProps: {
+                    children: 'children',
+                    label: 'label'
                 }
             }
         },
         methods:{
+            getPermission() {
+                let para = {
+                };
+                getPermissionListPage(para).then((res) => {
+                    this.data2 = res.data;
+                });
+            },
             handleTest:function () {
                 var _this = this;
                 _this.$router.push('/purchaseContractIndex');
             },
-            //性别显示转换
-            formatSex: function (row, column) {
-                return row.sex == 1 ? '男' : row.sex == 2 ? '女' : '未知';
-            },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
-                this.getUsers();
+                this.getRoles();
             },
             //更改每页显示数据
             handleSizeChange(val){
                 this.pageSize =val;
-                this.getUsers();
+                this.getRoles();
             },
             //获取用户列表
-            getUsers() {
+            getRoles() {
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
                     name: this.filters.name
                 };
                 this.listLoading = true;
-                getUserListPage(para).then((res) => {
+                getRoleListPage(para).then((res) => {
                     this.total = res.data.total;
-                    this.users = res.data.data;
+                    this.Roles = res.data.data;
                     this.listLoading = false;
                 });
             },
@@ -212,14 +188,14 @@
                     this.listLoading = true;
                     //NProgress.start();
                     let para = { id: row.id };
-                    removeUser(para).then((res) => {
+                    removeRole(para).then((res) => {
                         this.listLoading = false;
                         //NProgress.done();
                         this.$message({
                             message: '删除成功',
                             type: 'success'
                         });
-                        this.getUsers();
+                        this.getRoles();
                     });
                 }).catch(() => {
 
@@ -235,10 +211,7 @@
                 this.addFormVisible = true;
                 this.addForm = {
                     name: '',
-                    sex: 0,
-                    email: '',
-                    phone: '',
-                    addr: ''
+                    description: '',
                 };
             },
             //编辑
@@ -247,19 +220,16 @@
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
                             this.editLoading = true;
-                            //NProgress.start();
                             let para = Object.assign({}, this.editForm);
-                            //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                            editUser(para).then((res) => {
+                            editRole(para).then((res) => {
                                 this.editLoading = false;
-                                //NProgress.done();
                                 this.$message({
                                     message: '提交成功',
                                     type: 'success'
                                 });
                                 this.$refs['editForm'].resetFields();
                                 this.editFormVisible = false;
-                                this.getUsers();
+                                this.getRoles();
                             });
                         });
                     }
@@ -274,7 +244,7 @@
                             //NProgress.start();
                             let para = Object.assign({}, this.addForm);
                             //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                            addUser(para).then((res) => {
+                            addRole(para).then((res) => {
                                 this.addLoading = false;
                                 //NProgress.done();
                                 this.$message({
@@ -283,7 +253,7 @@
                                 });
                                 this.$refs['addForm'].resetFields();
                                 this.addFormVisible = false;
-                                this.getUsers();
+                                this.getRoles();
                             });
                         });
                     }
@@ -301,14 +271,14 @@
                     this.listLoading = true;
                     //NProgress.start();
                     let para = { ids: ids };
-                    batchRemoveUser(para).then((res) => {
+                    batchRemoveRole(para).then((res) => {
                         this.listLoading = false;
                         //NProgress.done();
                         this.$message({
                             message: '删除成功',
                             type: 'success'
                         });
-                        this.getUsers();
+                        this.getRoles();
                     });
                 }).catch(() => {
 
@@ -316,7 +286,9 @@
             }
         },
         mounted() {
-            this.getUsers();
+            this.getRoles();
+            this.getPermission();
+
         }
     }
 </script>

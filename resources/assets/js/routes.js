@@ -5,10 +5,10 @@
 import navigation from "./components/Navigation.vue";
 import Login from "./components/Login.vue";
 import NotFound from "./components/404.vue";
-import Example from "./components/Example.vue";
 
-import User from "./components/rbac/user.vue";
-
+import User from "./components/rbac/User.vue";
+import Permission from "./components/rbac/Permission.vue";
+import Role from "./components/rbac/Role.vue";
 
 import PurchaseContractIndex from "./components/purchaseContract/Index.vue";
 import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
@@ -37,14 +37,15 @@ import PurchaseContractAddDate from "./components/purchaseContract/AddDate.vue";
         iconCls: 'el-icon-message',//图标样式class
         children: [
             { path: '/user', component: User, name: '用户' },
-            { path: '/role', component: Example, name: '角色' },
-            { path: '/permission', component: navigation, name: '权限' },
+            { path: '/role', component: Role, name: '角色' },
+            { path: '/fun', component: Permission, name: '权限' },
         ]
      },
      {
          path: '/',
          component: navigation,
          name: '合同管理',
+         funKey:'Contract',
          iconCls: 'el-icon-document',//图标样式class
          children: [
 

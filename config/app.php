@@ -185,6 +185,8 @@ return [
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         //七牛云
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        //权限
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
     ],
 
@@ -234,6 +236,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
     ],
 

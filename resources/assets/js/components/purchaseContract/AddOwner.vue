@@ -13,12 +13,12 @@
                 <el-input v-model="owner.Intermediary"></el-input>
             </el-form-item>
             <el-row>
-                <el-col :span="12">
+                <el-col :span="8">
                     <el-form-item label="收款人" >
                         <el-input v-model="owner.payee"></el-input>
                     </el-form-item>
                 </el-col>
-                <el-col :span="12">
+                <el-col :span="10">
                     <el-form-item label="账号" >
                         <el-input v-model="owner.bankAccount"></el-input>
                     </el-form-item>
@@ -33,24 +33,24 @@
 
             <div v-if="owner.ownerType==1">
                 <el-row>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="产权人" >
                             <el-input v-model="owner.payee"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :span="10">
                         <el-form-item label="身份证号" >
                             <el-input v-model="owner.bankAccount"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="联系方式" >
                             <el-input v-model="owner.payee"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="性别">
                             <el-radio-group v-model="owner.ownerType">
                                 <el-radio label="男"></el-radio>
@@ -60,24 +60,24 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="代理人" >
                             <el-input v-model="owner.payee"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :span="10">
                         <el-form-item label="身份证号" >
                             <el-input v-model="owner.bankAccount"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="联系方式" >
                             <el-input v-model="owner.payee"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="性别">
                             <el-radio-group v-model="owner.ownerType">
                                 <el-radio label="男"></el-radio>
@@ -89,24 +89,24 @@
             </div>
             <div v-if="owner.ownerType==2">
                 <el-row>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="法人" >
                             <el-input v-model="owner.payee"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :span="10">
                         <el-form-item label="身份证号" >
                             <el-input v-model="owner.bankAccount"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="联系方式" >
                             <el-input v-model="owner.payee"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="性别">
                             <el-radio-group v-model="owner.ownerType">
                                 <el-radio label="男"></el-radio>
@@ -116,24 +116,24 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="签约人" >
                             <el-input v-model="owner.payee"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :span="10">
                         <el-form-item label="身份证号" >
                             <el-input v-model="owner.bankAccount"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="联系方式" >
                             <el-input v-model="owner.payee"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :span="8">
                         <el-form-item label="性别">
                             <el-radio-group v-model="owner.ownerType">
                                 <el-radio label="男"></el-radio>
@@ -159,7 +159,7 @@
                     Intermediary:'华亮房产',
                     ownerType:1,
                     payee:'彭亮',
-                    bankAccount:'1234 5678 9012 345',
+                    bankAccount:'834 5678 908 345',
                 }
 
             }

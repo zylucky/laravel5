@@ -17,17 +17,17 @@
                     <el-form :label-position="labelPosition" label-width="100px" :model="property[index]">
                         <el-col :span="24">
                             <el-row>
-                                <el-col :span="12">
+                                <el-col :span="8">
                                     <el-form-item label="楼盘" >
                                         <el-input v-model="property[index].estate"></el-input>
                                     </el-form-item>
                                 </el-col>
-                                <el-col :span="12">
+                                <el-col :span="8">
                                     <el-form-item label="楼栋" >
                                         <el-input v-model="property[index].building"></el-input>
                                     </el-form-item>
                                 </el-col>
-                                <el-col :span="12">
+                                <el-col :span="8">
                                     <el-form-item label="房间号" >
                                         <el-input v-model="property[index].houseNumber"></el-input>
                                     </el-form-item>
@@ -40,12 +40,12 @@
                                 <el-input v-model="property[index].ownNumber"></el-input>
                             </el-form-item>
                             <el-row>
-                                <el-col :span="12">
+                                <el-col :span="8">
                                     <el-form-item label="承租面积" >
                                         <el-input v-model="property[index].rentArea"></el-input>
                                     </el-form-item>
                                 </el-col>
-                                <el-col :span="12">
+                                <el-col :span="8">
                                     <el-form-item label="签约面积" >
                                         <el-input v-model="property[index].signArea"></el-input>
                                     </el-form-item>
@@ -104,9 +104,9 @@
                     building: 'A',
                     houseNumber: '2902',
                     position: '东区',
-                    ownNumber: '12345',
-                    rentArea: '123.5',
-                    signArea: '123.5',
+                    ownNumber: '8345',
+                    rentArea: '83.5',
+                    signArea: '83.5',
                     houseType: '',
                 }
                 ],

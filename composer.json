@@ -13,10 +13,12 @@
         "nesbot/carbon": "^1.22",
         "nwidart/db-exporter": "1.*",
         "predis/predis": "^1.1",
-        "zgldh/qiniu-laravel-storage": "^0.6.7"
+        "zgldh/qiniu-laravel-storage": "^0.6.7",
+        "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
+        "laracasts/generators": "dev-master as 1.1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.7",
         "xethron/migrations-generator": "^2.0"
