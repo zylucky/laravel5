@@ -7,6 +7,7 @@ use App\models\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PermissionController extends Controller
 {
@@ -14,12 +15,31 @@ class PermissionController extends Controller
     {
 
     }
-    public function update()
+    //获取系统权限列表
+    public function getAll()
     {
         $permissions = Permission::All(['id','display_name as label','parent_id'])->toArray() ;
         return $this->make_tree($permissions);
 
     }
+    //更改角色权限
+    public function update(Request $request,$id)
+    {
+
+        //删除该角色的所有原权限
+        DB::table('permission_role')->where('role_id', '=', $id)->delete();
+        $input = $request->params;
+        $lists = $input['permissions'];
+        $data = [];
+        foreach ($lists as $key => $list){
+            $data[$key]['permission_id']=$list;
+            $data[$key]['role_id']=$id;
+        }
+        //重新插入数据
+        DB::table('permission_role')->insert($data);
+
+    }
+
     /*
      *  获取当前用户的权限列表
      * */
@@ -37,6 +57,20 @@ class PermissionController extends Controller
             }
         }
         $permissions = array_unique($permissions);
+        return $permissions;
+    }    /*
+     *  获取当前用户的权限列表
+     * */
+
+    public function getPermission($id)
+    {
+        //获取当前角色
+        $role = Role::find($id);
+        //获取所有的权限
+        $permissions = [];
+        foreach($role->permissions->toArray() as $permission ){
+            $permissions[] = $permission['id'];
+        }
         return $permissions;
     }
 

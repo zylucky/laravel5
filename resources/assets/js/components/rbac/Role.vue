@@ -31,7 +31,7 @@
                         <template scope="scope">
                             <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
                             <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)"><i class="el-icon-delete"></i></el-button>
-                            <el-button type="small" size="small" @click="handleDel(scope.$index, scope.row)"><i class="el-icon-setting"></i></el-button>
+                            <el-button type="small" size="small" @click="handleSet(scope.$index, scope.row)"><i class="el-icon-setting"></i></el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -50,14 +50,20 @@
                 </el-col>
             </el-col>
             <el-col :span="8" style="margin-left: 5px;">
+                    <div style="height: 40px;background:#EEF1F6;text-align:center;line-height: 40px;font-size: 14px;">
+                        <b>{{roleName}}权限</b>
+                    </div>
                 <el-tree
                         :data="data2"
                         show-checkbox
                         node-key="id"
-                        :default-expanded-keys="[2, 3]"
-                        :default-checked-keys="[5]"
+                        ref="tree"
+                        :default-expanded-keys="[]"
+                        :default-checked-keys="checked"
                         :props="defaultProps">
+
                 </el-tree>
+                <el-button type="primary" @click="getCheckedKeys">保存</el-button>
             </el-col>
         </el-row>
             <!--编辑界面-->
@@ -96,8 +102,16 @@
     </section>
 </template>
 <script>
-    import { getRoleListPage, removeRole ,addRole,editRole,batchRemoveRole,getPermissionListPage} from '../../api/api';
-
+    import {
+        getRoleListPage,
+        removeRole ,
+        addRole,
+        editRole,
+        batchRemoveRole,
+        getPermissionListPage,
+        getPermissionListOfRole,
+        setPermissionList
+    } from '../../api/api';
     export default{
         data(){
             return {
@@ -137,24 +151,52 @@
                 addForm: {
                     name: '',
                 },
+                //权限
                 data2:[],
                 defaultProps: {
                     children: 'children',
                     label: 'label'
-                }
+                },
+                roleId:0,
+                roleName:'',
+                //被选中的权限
+                checked:[],
             }
         },
         methods:{
-            getPermission() {
+            //获取当前被选中的所有节点，保存
+            getCheckedKeys() {
+                this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                    let para = {
+                        id:this.roleId,
+                        permissions:this.$refs.tree.getCheckedKeys(),
+                    }
+                    setPermissionList(para).then((res) => {
+                        this.$message({
+                            message: '提交成功',
+                            type: 'success'
+                        });
+                    });
+                });
+
+
+            },
+            //权限设置
+            handleSet(index,row){
+                this.roleName = row.name+'_';
+                this.roleId = row.id;
                 let para = {
+                    id:row.id
+
                 };
-                getPermissionListPage(para).then((res) => {
+                getPermissionListOfRole(para).then((res) => {
+                    this.checked = res.data;
+                });
+                let para2 = {
+                };
+                getPermissionListPage(para2).then((res) => {
                     this.data2 = res.data;
                 });
-            },
-            handleTest:function () {
-                var _this = this;
-                _this.$router.push('/purchaseContractIndex');
             },
             //页面跳转后
             handleCurrentChange(val) {
@@ -287,7 +329,6 @@
         },
         mounted() {
             this.getRoles();
-            this.getPermission();
 
         }
     }

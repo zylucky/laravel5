@@ -34,7 +34,7 @@
                 <template scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)"><i class="el-icon-delete"></i></el-button>
-                    <el-button type="small" size="small" @click="handleDel(scope.$index, scope.row)"><i class="el-icon-setting"></i></el-button>
+                    <el-button type="small" size="small" @click="handleSet(scope.$index, scope.row)"><i class="el-icon-setting"></i></el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -99,12 +99,33 @@
                     style="float:right">
             </el-pagination>
         </el-col>
-
+        <!--设置角色-->
+        <el-dialog title="设置" :visible.sync="dialogRoleVisible">
+                <el-select
+                        v-model="Roles"
+                        multiple
+                        filterable
+                        remote
+                        placeholder="请输入关键词"
+                        :remote-method="remoteMethod"
+                        :loading="roleLoading">
+                    <el-option
+                            v-for="item in options4"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click.native="dialogRoleVisible = false">取消</el-button>
+                <el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
+            </div>
+        </el-dialog>
 
     </section>
 </template>
 <script>
-    import { getUserListPage, removeUser ,addUser,editUser,batchRemoveUser} from '../../api/api';
+    import { getUserListPage, removeUser ,addUser,editUser,batchRemoveUser,getRoleList} from '../../api/api';
 
     export default{
         data(){
@@ -169,13 +190,54 @@
                     email: '',
                     phone: '',
                     addr: ''
-                }
+                },
+                //角色参数
+                dialogRoleVisible:false,//设置角色的框是否显示
+                Roles:[],//角色列表
+                options4:[],
+                roleLoading:false,
+                states: [],
+                list: [],
             }
         },
         methods:{
-            handleTest:function () {
-                var _this = this;
-                _this.$router.push('/purchaseContractIndex');
+            remoteMethod(query) {
+                if (query !== '') {
+                    this.roleLoading = true;
+                    setTimeout(() => {
+                        this.roleLoading = false;
+                        this.options4 = this.list.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
+                    }, 200);
+                } else {
+                    this.options4 = [];
+                }
+            },
+            handleSet(index,row){
+                this.getRoles();
+                this.dialogRoleVisible = true;
+            },
+            getRoles() {
+                let para = {
+                    name: this.filters.name
+                };
+                this.listLoading = true;
+                getRoleList(para).then((res) => {
+                    let arr = [ ];
+                    for ( var i in res.data ){
+                        var str = res.data[ i ]// i 就代表 data 里面的 user pass 等等 而data[ i ] 就代表 userName    12121 就是 i 所对应的值；
+                        arr.push( str );
+                    }
+                    console.log(arr)
+                    this.states = arr;
+
+                    this.listLoading = false;
+                    this.list = this.states.map(item => {
+                        return { value: item, label: item };
+                    });
+                });
             },
             //性别显示转换
             formatSex: function (row, column) {

@@ -30,7 +30,12 @@ class RoleController extends Controller
      */
     public function create()
     {
-       //
+       $lists = Role::all();
+       $data = [];
+       foreach ($lists as $list){
+           $data[$list->id]=$list->name;
+       }
+       return $data;
     }
 
     /**
@@ -103,6 +108,8 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
+        //删除该角色的所有原权限
+        DB::table('permission_role')->where('role_id', '=', $id)->delete();
         return Role::destroy($id);
     }
 }

@@ -18,8 +18,10 @@ Route::get('/', function (){
 Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
 Route::resource('purchaseContract','Contract\purchaseContractController');
-Route::get('permission/update','Rbac\PermissionController@update');
+Route::get('permission/getAll','Rbac\PermissionController@getAll');
+Route::get('permission/role/{id}','Rbac\PermissionController@getPermission');
 Route::get('permission/list','Rbac\PermissionController@getPermissionList');
+Route::post('permission/update/{id}','Rbac\PermissionController@update');
 
 
 Route::post('logout','Auth\LoginController@logout');
