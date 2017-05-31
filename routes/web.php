@@ -17,6 +17,7 @@ Route::get('/', function (){
 });
 Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
+Route::resource('purchaseContract','Contract\purchaseContractController');
 Route::get('permission/update','Rbac\PermissionController@update');
 Route::get('permission/list','Rbac\PermissionController@getPermissionList');
 

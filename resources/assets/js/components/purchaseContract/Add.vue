@@ -40,7 +40,13 @@
         },
         methods:{
             save(){
-                var child = this.$refs.property.property;
+                if(this.stepNum==1){
+                    var child = this.$refs.property.property;
+                }else if(this.stepNum==2){
+                    var child = this.$refs.owner.owner;
+                }else if(this.stepNum==3){
+                    var child = this.$refs.date.addDate;
+                }
                 console.log(child)
                 this.$message({
                     message: '保存成功',

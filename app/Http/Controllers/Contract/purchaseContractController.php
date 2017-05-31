@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Contract;
 
-use App\models\Role;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Qiniu\Auth;
+use App\Http\Controllers\Controller;
 
-class TestController extends Controller
+class purchaseContractController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +15,21 @@ class TestController extends Controller
      */
     public function index()
     {
-        $role = Role::findOrFail(1);
-        dd($role);
-        //
-        return view('test');exit;
-
-
+        $client = new Client([
+            // Base URI is used with relative requests /api/contract/list
+            'base_uri' => 'http://123.57.48.144:8004',
+            // You can set any number of default request options.
+            'timeout'  => 2.0,
+        ]);
+        /*$response = $client->get('http://httpbin.org/get');
+        $response = $client->delete('http://httpbin.org/delete');
+        $response = $client->head('http://httpbin.org/get');
+        $response = $client->options('http://httpbin.org/get');
+        $response = $client->patch('http://httpbin.org/patch');
+        $response = $client->post('http://httpbin.org/post');
+        $response = $client->put('http://httpbin.org/put');*/
+        $response = $client->request('GET', '/api/contract/list');
+        echo $response->getBody();
     }
 
     /**
@@ -31,7 +39,16 @@ class TestController extends Controller
      */
     public function create()
     {
-
+        $client = new Client([
+            // Base URI is used with relative requests /api/contract/list
+            'base_uri' => 'http://123.57.48.144:8004',
+            // You can set any number of default request options.
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $r = $client->request('POST', '/api/contract/1', [
+            'json' => ['id' => '1','bianhao'=>'A2',]
+        ]);
     }
 
     /**
