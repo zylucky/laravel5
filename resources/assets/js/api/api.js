@@ -11,11 +11,14 @@ export const editUser = params => { return axios.post(`${base}/user/edit`, { par
 export const batchRemoveUser = params => { return axios.post(`${base}/user/batchRemoveUser`, { params: params }); };
 
 export const getRoleListPage = params => { return axios.get(`${base}/role`, { params: params }); };
-export const getRoleList = params => { return axios.get(`${base}/role/create`, { params: params }); };
 export const removeRole = params => { return axios.delete(`${base}/role/`+params.id, {}); };
 export const addRole = params => { return axios.post(`${base}/role`, { params: params }); };
 export const editRole = params => { return axios.put(`${base}/role/`+params.id, { params: params }); };
 export const batchRemoveRole = params => { return axios.post(`${base}/user/batchRemoveUser`, { params: params }); };
+export const getTotalRoleList = params => { return axios.get(`${base}/role/create`, { params: params }); };
+export const getRoleList = params => { return axios.get(`${base}/role/`+params.id, { params: params }); };
+export const setRoleList = params => { return axios.post(`${base}/user/role/`+params.id, { params: params }); };
+
 
 //查系统所有的权限
 export const getPermissionListPage = params => { return axios.get(`${base}/permission/getAll`, { params: params }); };

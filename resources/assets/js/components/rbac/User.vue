@@ -118,14 +118,14 @@
                 </el-select>
             <div slot="footer" class="dialog-footer">
                 <el-button @click.native="dialogRoleVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
+                <el-button type="primary" @click.native="roleSubmit" :loading="roleLoading">提交</el-button>
             </div>
         </el-dialog>
 
     </section>
 </template>
 <script>
-    import { getUserListPage, removeUser ,addUser,editUser,batchRemoveUser,getRoleList} from '../../api/api';
+    import { getUserListPage, removeUser ,addUser,editUser,batchRemoveUser,getTotalRoleList,getRoleList,setRoleList} from '../../api/api';
 
     export default{
         data(){
@@ -192,8 +192,9 @@
                     addr: ''
                 },
                 //角色参数
+                userId:0,
                 dialogRoleVisible:false,//设置角色的框是否显示
-                Roles:[],//角色列表
+                Roles:[],//选中后的角色
                 options4:[],
                 roleLoading:false,
                 states: [],
@@ -201,6 +202,23 @@
             }
         },
         methods:{
+            roleSubmit: function () {
+                this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                    this.roleLoading = true;
+                    let para = {
+                        id:this.userId,
+                        value:this.Roles,
+                    }
+                    setRoleList(para).then((res)=>{
+                        this.roleLoading = false;
+                        this.$message({
+                            message: '保存成功',
+                            type: 'success'
+                        });
+                        this.dialogRoleVisible = false;
+                    });
+                });
+            },
             remoteMethod(query) {
                 if (query !== '') {
                     this.roleLoading = true;
@@ -216,23 +234,36 @@
                 }
             },
             handleSet(index,row){
+                this.userId = row.id;
+                this.getTotalRoles();
                 this.getRoles();
                 this.dialogRoleVisible = true;
             },
+            //获取当前用户的所有角色
             getRoles() {
+                let para = {
+                    id:this.userId
+                };
+                getRoleList(para).then((res) => {
+                    let arr = [];
+                    for ( var i in res.data ){
+                        arr.push(res.data[i])
+                    }
+                    this.Roles = arr;
+                });
+            },
+            //获取系统所有的角色
+            getTotalRoles() {
                 let para = {
                     name: this.filters.name
                 };
                 this.listLoading = true;
-                getRoleList(para).then((res) => {
-                    let arr = [ ];
+                getTotalRoleList(para).then((res) => {
+                    let arr = [];
                     for ( var i in res.data ){
-                        var str = res.data[ i ]// i 就代表 data 里面的 user pass 等等 而data[ i ] 就代表 userName    12121 就是 i 所对应的值；
-                        arr.push( str );
+                        arr.push(res.data[i])
                     }
-                    console.log(arr)
                     this.states = arr;
-
                     this.listLoading = false;
                     this.list = this.states.map(item => {
                         return { value: item, label: item };

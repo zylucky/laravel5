@@ -5,6 +5,7 @@ namespace App\http\Controllers;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 /**
@@ -74,6 +75,22 @@ class UserController extends Controller
         $ids = $request->params['ids'];
         $arr = explode(',',$ids);
         User::destroy($arr);
+    }
+    /*
+     * 给设置角色
+     * */
+    public function setRole(Request $request ,$id){
+        $input = $request->params;
+        //角色全部删除
+        DB::table('role_user')->where('user_id' ,'=',$id)->delete();
+        $data = [];
+        $res = DB::table('roles')->whereIn('name',$input['value'])->select('id')->get();
+        foreach ($res as $key=> $value){
+            $data[$key]['role_id'] = $value->id;
+            $data[$key]['user_id'] = $id;
+        }
+        //设置
+        DB::table('role_user')->insert($data);
     }
 
 }

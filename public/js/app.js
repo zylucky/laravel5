@@ -10873,19 +10873,21 @@ process.umask = function() { return 0; };
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return requestLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return requestLogin; });
 /* unused harmony export logout */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return getUserListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return removeUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return addUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return editUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return batchRemoveUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return getUserListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return removeUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return addUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return editUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return batchRemoveUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getRoleListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return getRoleList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return removeRole; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return addRole; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return editRole; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return batchRemoveRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return getTotalRoleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return getRoleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return setRoleList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getPermissionListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getPermissionListOfRole; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getPermissionList; });
@@ -10923,9 +10925,6 @@ var batchRemoveUser = function batchRemoveUser(params) {
 var getRoleListPage = function getRoleListPage(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/role', { params: params });
 };
-var getRoleList = function getRoleList(params) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/role/create', { params: params });
-};
 var removeRole = function removeRole(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete(base + '/role/' + params.id, {});
 };
@@ -10937,6 +10936,15 @@ var editRole = function editRole(params) {
 };
 var batchRemoveRole = function batchRemoveRole(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/user/batchRemoveUser', { params: params });
+};
+var getTotalRoleList = function getTotalRoleList(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/role/create', { params: params });
+};
+var getRoleList = function getRoleList(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/role/' + params.id, { params: params });
+};
+var setRoleList = function setRoleList(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/user/role/' + params.id, { params: params });
 };
 
 //查系统所有的权限
@@ -35963,15 +35971,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.logining = true;
                     //NProgress.start();
                     var loginParams = { email: _this2.ruleForm2.account, password: _this2.ruleForm2.checkPass };
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["p" /* requestLogin */])(loginParams).then(function (data) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["r" /* requestLogin */])(loginParams).then(function (data) {
 
                         _this2.logining = false;
                         //NProgress.done();
                         var msg = data.msg,
                             code = data.code,
                             user = data.user;
+                        //console.log(msg,code,user)
 
-                        console.log(msg, code, user);
                         if (code !== 200) {
                             _this2.$message({
                                 message: msg,
@@ -38326,8 +38334,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 addr: ''
             },
             //角色参数
+            userId: 0,
             dialogRoleVisible: false, //设置角色的框是否显示
-            Roles: [], //角色列表
+            Roles: [], //选中后的角色
             options4: [],
             roleLoading: false,
             states: [],
@@ -38336,14 +38345,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        remoteMethod: function remoteMethod(query) {
+        roleSubmit: function roleSubmit() {
             var _this = this;
+
+            this.$confirm('确认提交吗？', '提示', {}).then(function () {
+                _this.roleLoading = true;
+                var para = {
+                    id: _this.userId,
+                    value: _this.Roles
+                };
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["j" /* setRoleList */])(para).then(function (res) {
+                    _this.roleLoading = false;
+                    _this.$message({
+                        message: '保存成功',
+                        type: 'success'
+                    });
+                    _this.dialogRoleVisible = false;
+                });
+            });
+        },
+        remoteMethod: function remoteMethod(query) {
+            var _this2 = this;
 
             if (query !== '') {
                 this.roleLoading = true;
                 setTimeout(function () {
-                    _this.roleLoading = false;
-                    _this.options4 = _this.list.filter(function (item) {
+                    _this2.roleLoading = false;
+                    _this2.options4 = _this2.list.filter(function (item) {
                         return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
                     });
                 }, 200);
@@ -38352,27 +38380,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         handleSet: function handleSet(index, row) {
+            this.userId = row.id;
+            this.getTotalRoles();
             this.getRoles();
             this.dialogRoleVisible = true;
         },
+
+        //获取当前用户的所有角色
         getRoles: function getRoles() {
-            var _this2 = this;
+            var _this3 = this;
+
+            var para = {
+                id: this.userId
+            };
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["k" /* getRoleList */])(para).then(function (res) {
+                var arr = [];
+                for (var i in res.data) {
+                    arr.push(res.data[i]);
+                }
+                _this3.Roles = arr;
+            });
+        },
+
+        //获取系统所有的角色
+        getTotalRoles: function getTotalRoles() {
+            var _this4 = this;
 
             var para = {
                 name: this.filters.name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["j" /* getRoleList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["l" /* getTotalRoleList */])(para).then(function (res) {
                 var arr = [];
                 for (var i in res.data) {
-                    var str = res.data[i]; // i 就代表 data 里面的 user pass 等等 而data[ i ] 就代表 userName    12121 就是 i 所对应的值；
-                    arr.push(str);
+                    arr.push(res.data[i]);
                 }
-                console.log(arr);
-                _this2.states = arr;
-
-                _this2.listLoading = false;
-                _this2.list = _this2.states.map(function (item) {
+                _this4.states = arr;
+                _this4.listLoading = false;
+                _this4.list = _this4.states.map(function (item) {
                     return { value: item, label: item };
                 });
             });
@@ -38396,7 +38441,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //获取用户列表
         getUsers: function getUsers() {
-            var _this3 = this;
+            var _this5 = this;
 
             var para = {
                 page: this.page,
@@ -38404,31 +38449,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: this.filters.name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["k" /* getUserListPage */])(para).then(function (res) {
-                _this3.total = res.data.total;
-                _this3.users = res.data.data;
-                _this3.listLoading = false;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["m" /* getUserListPage */])(para).then(function (res) {
+                _this5.total = res.data.total;
+                _this5.users = res.data.data;
+                _this5.listLoading = false;
             });
         },
 
         //删除
         handleDel: function handleDel(index, row) {
-            var _this4 = this;
+            var _this6 = this;
 
             this.$confirm('确认删除该记录吗?', '提示', {
                 type: 'warning'
             }).then(function () {
-                _this4.listLoading = true;
+                _this6.listLoading = true;
                 //NProgress.start();
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["l" /* removeUser */])(para).then(function (res) {
-                    _this4.listLoading = false;
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["n" /* removeUser */])(para).then(function (res) {
+                    _this6.listLoading = false;
                     //NProgress.done();
-                    _this4.$message({
+                    _this6.$message({
                         message: '删除成功',
                         type: 'success'
                     });
-                    _this4.getUsers();
+                    _this6.getUsers();
                 });
             }).catch(function () {});
         },
@@ -38450,25 +38495,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //编辑
         editSubmit: function editSubmit() {
-            var _this5 = this;
+            var _this7 = this;
 
             this.$refs.editForm.validate(function (valid) {
                 if (valid) {
-                    _this5.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this5.editLoading = true;
+                    _this7.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this7.editLoading = true;
                         //NProgress.start();
-                        var para = Object.assign({}, _this5.editForm);
+                        var para = Object.assign({}, _this7.editForm);
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["m" /* editUser */])(para).then(function (res) {
-                            _this5.editLoading = false;
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["o" /* editUser */])(para).then(function (res) {
+                            _this7.editLoading = false;
                             //NProgress.done();
-                            _this5.$message({
+                            _this7.$message({
                                 message: '提交成功',
                                 type: 'success'
                             });
-                            _this5.$refs['editForm'].resetFields();
-                            _this5.editFormVisible = false;
-                            _this5.getUsers();
+                            _this7.$refs['editForm'].resetFields();
+                            _this7.editFormVisible = false;
+                            _this7.getUsers();
                         });
                     });
                 }
@@ -38476,25 +38521,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //新增
         addSubmit: function addSubmit() {
-            var _this6 = this;
+            var _this8 = this;
 
             this.$refs.addForm.validate(function (valid) {
                 if (valid) {
-                    _this6.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this6.addLoading = true;
+                    _this8.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this8.addLoading = true;
                         //NProgress.start();
-                        var para = Object.assign({}, _this6.addForm);
+                        var para = Object.assign({}, _this8.addForm);
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["n" /* addUser */])(para).then(function (res) {
-                            _this6.addLoading = false;
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["p" /* addUser */])(para).then(function (res) {
+                            _this8.addLoading = false;
                             //NProgress.done();
-                            _this6.$message({
+                            _this8.$message({
                                 message: '提交成功',
                                 type: 'success'
                             });
-                            _this6.$refs['addForm'].resetFields();
-                            _this6.addFormVisible = false;
-                            _this6.getUsers();
+                            _this8.$refs['addForm'].resetFields();
+                            _this8.addFormVisible = false;
+                            _this8.getUsers();
                         });
                     });
                 }
@@ -38505,7 +38550,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //批量删除
         batchRemove: function batchRemove() {
-            var _this7 = this;
+            var _this9 = this;
 
             var ids = this.sels.map(function (item) {
                 return item.id;
@@ -38513,17 +38558,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$confirm('确认删除选中记录吗？', '提示', {
                 type: 'warning'
             }).then(function () {
-                _this7.listLoading = true;
+                _this9.listLoading = true;
                 //NProgress.start();
                 var para = { ids: ids };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["o" /* batchRemoveUser */])(para).then(function (res) {
-                    _this7.listLoading = false;
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["q" /* batchRemoveUser */])(para).then(function (res) {
+                    _this9.listLoading = false;
                     //NProgress.done();
-                    _this7.$message({
+                    _this9.$message({
                         message: '删除成功',
                         type: 'success'
                     });
-                    _this7.getUsers();
+                    _this9.getUsers();
                 });
             }).catch(function () {});
         }
@@ -74761,11 +74806,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
     attrs: {
       "type": "primary",
-      "loading": _vm.addLoading
+      "loading": _vm.roleLoading
     },
     nativeOn: {
       "click": function($event) {
-        _vm.addSubmit($event)
+        _vm.roleSubmit($event)
       }
     }
   }, [_vm._v("提交")])], 1)], 1)], 1)

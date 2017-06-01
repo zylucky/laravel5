@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Rbac;
 
 use App\Http\Controllers\Controller;
 use App\models\Role;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -24,7 +25,7 @@ class RoleController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 把角色的列表返回
      *
      * @return \Illuminate\Http\Response
      */
@@ -60,13 +61,18 @@ class RoleController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     *获取当前用户的所有角色
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $lists = User::find($id)->roles;
+        $data = [];
+        foreach ($lists as $list){
+            $data[$list->id]=$list->name;
+        }
+        return $data;
     }
 
     /**
