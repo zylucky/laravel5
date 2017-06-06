@@ -71,7 +71,7 @@
     </el-row>
 </template>
 <script>
-    import { requestLogin } from '../api/api.js';
+    import { requestLogin,logout } from '../api/api.js';
     export default {
         //菜单栏
         data(){
@@ -104,7 +104,9 @@
                     //type: 'warning'
                 }).then(() => {
                     sessionStorage.removeItem('user');
+                    logout().then();
                     _this.$router.push('/login');
+
 
                 }).catch(() => {
 

@@ -50,25 +50,25 @@ router.beforeEach((to, from, next) => {
         sessionStorage.removeItem('user');
     }
     let user = JSON.parse(sessionStorage.getItem('user'));
-    let para = {};
-    getPermissionList(para).then(function(res){
-        sessionStorage.removeItem('permission');
-        sessionStorage.setItem('permission', JSON.stringify(res.data));
-    });
-    Vue.prototype.fun = function (funKey){
-        let res = JSON.parse(sessionStorage.getItem('permission'));
-        //获取权限列表
-        var i = res.length;
-        while (i--) {
-            if (res[i] === funKey) {
-                return true;
-            }
-        }
-    }
     if (!user && to.path != '/login') {
         next({ path: '/login' })
     } else {
         next()
+        let para = {};
+        getPermissionList(para).then(function(res){
+            sessionStorage.removeItem('permission');
+            sessionStorage.setItem('permission', JSON.stringify(res.data));
+        });
+        Vue.prototype.fun = function (funKey){
+            let res = JSON.parse(sessionStorage.getItem('permission'));
+            //获取权限列表
+            var i = res.length;
+            while (i--) {
+                if (res[i] === funKey) {
+                    return true;
+                }
+            }
+        }
     }
 })
 const app = new Vue({

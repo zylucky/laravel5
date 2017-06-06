@@ -10873,8 +10873,8 @@ process.umask = function() { return 0; };
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return requestLogin; });
-/* unused harmony export logout */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return requestLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return logout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return getUserListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return removeUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return addUser; });
@@ -24568,7 +24568,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/purchaseContract/AddDate.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/purchaseContract/AddDate.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AddDate.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -34558,25 +34558,25 @@ router.beforeEach(function (to, from, next) {
         sessionStorage.removeItem('user');
     }
     var user = JSON.parse(sessionStorage.getItem('user'));
-    var para = {};
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__api_api_js__["a" /* getPermissionList */])(para).then(function (res) {
-        sessionStorage.removeItem('permission');
-        sessionStorage.setItem('permission', JSON.stringify(res.data));
-    });
-    __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.fun = function (funKey) {
-        var res = JSON.parse(sessionStorage.getItem('permission'));
-        //获取权限列表
-        var i = res.length;
-        while (i--) {
-            if (res[i] === funKey) {
-                return true;
-            }
-        }
-    };
     if (!user && to.path != '/login') {
         next({ path: '/login' });
     } else {
         next();
+        var para = {};
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__api_api_js__["a" /* getPermissionList */])(para).then(function (res) {
+            sessionStorage.removeItem('permission');
+            sessionStorage.setItem('permission', JSON.stringify(res.data));
+        });
+        __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.fun = function (funKey) {
+            var res = JSON.parse(sessionStorage.getItem('permission'));
+            //获取权限列表
+            var i = res.length;
+            while (i--) {
+                if (res[i] === funKey) {
+                    return true;
+                }
+            }
+        };
     }
 });
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
@@ -35971,7 +35971,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.logining = true;
                     //NProgress.start();
                     var loginParams = { email: _this2.ruleForm2.account, password: _this2.ruleForm2.checkPass };
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["r" /* requestLogin */])(loginParams).then(function (data) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["s" /* requestLogin */])(loginParams).then(function (data) {
 
                         _this2.logining = false;
                         //NProgress.done();
@@ -35988,6 +35988,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         } else {
                             sessionStorage.setItem('user', JSON.stringify(user));
                             _this2.$router.push({ path: '/' });
+                            window.location.reload();
                         }
                     });
                 } else {
@@ -36116,6 +36117,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //type: 'warning'
             }).then(function () {
                 sessionStorage.removeItem('user');
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["r" /* logout */])().then();
                 _this.$router.push('/login');
             }).catch(function () {});
         },
@@ -72812,7 +72814,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/404.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/404.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] 404.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -72856,7 +72858,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/Login.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/Login.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Login.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -72900,7 +72902,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/Navigation.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/Navigation.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Navigation.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -72944,7 +72946,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/passport/AuthorizedClients.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/passport/AuthorizedClients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AuthorizedClients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -72988,7 +72990,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/passport/Clients.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/passport/Clients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Clients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -73032,7 +73034,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/passport/PersonalAccessTokens.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/passport/PersonalAccessTokens.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] PersonalAccessTokens.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -73072,7 +73074,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/purchaseContract/Add.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/purchaseContract/Add.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Add.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -73112,7 +73114,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/purchaseContract/AddOwner.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/purchaseContract/AddOwner.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AddOwner.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -73152,7 +73154,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/purchaseContract/AddProperty.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/purchaseContract/AddProperty.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AddProperty.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -73192,7 +73194,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/purchaseContract/Index.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/purchaseContract/Index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -73232,7 +73234,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/purchaseContract/Upload.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/purchaseContract/Upload.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Upload.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -73272,7 +73274,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/rbac/Permission.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/rbac/Permission.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Permission.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -73312,7 +73314,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/rbac/Role.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/rbac/Role.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Role.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -73352,7 +73354,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/admin/resources/assets/js/components/rbac/User.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/rbac/User.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] User.vue: functional components are not supported with templates, they should use render functions.")}
 

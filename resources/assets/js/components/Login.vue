@@ -64,6 +64,7 @@
                             } else {
                                 sessionStorage.setItem('user', JSON.stringify(user));
                                 this.$router.push({ path: '/' });
+                                window.location.reload()
                             }
                         });
                     } else {
