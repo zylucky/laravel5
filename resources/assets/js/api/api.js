@@ -19,3 +19,7 @@ export const batchRemoveRole = params => { return axios.post(`${base}/user/batch
 export const getPermissionListPage = params => { return axios.get(`${base}/permission/update`, { params: params }); };
 export const getPermissionList = params => { return axios.get(`${base}/permission/list`, { params: params }); };
 
+//添加合同信息
+
+export const addInfo= params => { return axios.post(`${base}/purchaseContract/create`, { params: params }); };
+

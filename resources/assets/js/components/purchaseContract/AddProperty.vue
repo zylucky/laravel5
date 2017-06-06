@@ -19,12 +19,12 @@
                             <el-row>
                                 <el-col :span="8">
                                     <el-form-item label="楼盘" >
-                                        <el-input v-model="property[index].estate"></el-input>
+                                        <el-input v-model="property[index].loupan"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item label="楼栋" >
-                                        <el-input v-model="property[index].building"></el-input>
+                                        <el-input v-model="property[index].loudong"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
@@ -34,7 +34,7 @@
                                 </el-col>
                             </el-row>
                             <el-form-item label="位置" >
-                                <el-input v-model="property[index].position"></el-input>
+                                <el-input v-model="property[index].location"></el-input>
                             </el-form-item>
                             <el-form-item label="产权证编号" >
                                 <el-input v-model="property[index].ownNumber"></el-input>

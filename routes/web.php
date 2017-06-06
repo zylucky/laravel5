@@ -17,6 +17,7 @@ Route::get('/', function (){
 });
 Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
+//Route::resource('purchaseContract','Contract\purchaseContractController');
 Route::get('permission/update','Rbac\PermissionController@update');
 Route::get('permission/list','Rbac\PermissionController@getPermissionList');
 
@@ -29,3 +30,6 @@ Route::post('user/delete','UserController@delete');
 Route::post('user/store','UserController@addUser');
 Route::post('user/edit','UserController@editUser');
 Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
+
+//添加合同相关的路由
+Route::post('purchaseContract/create',"Contract\purchaseContractController@create");

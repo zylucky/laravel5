@@ -20,21 +20,7 @@ class TestController extends Controller
         dd($role);
         //
         return view('test');exit;
-        $client = new Client([
-            // Base URI is used with relative requests
-            'base_uri' => 'http://www.youshi.com',
-            // You can set any number of default request options.
-            'timeout'  => 2.0,
-        ]);
-        /*$response = $client->get('http://httpbin.org/get');
-        $response = $client->delete('http://httpbin.org/delete');
-        $response = $client->head('http://httpbin.org/get');
-        $response = $client->options('http://httpbin.org/get');
-        $response = $client->patch('http://httpbin.org/patch');
-        $response = $client->post('http://httpbin.org/post');
-        $response = $client->put('http://httpbin.org/put');*/
-        $response = $client->request('GET', '/test');
-        echo $response->getBody();
+
 
     }
 
