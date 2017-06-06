@@ -16,7 +16,7 @@
                     <a href="javascript:;" @click="stepNum=3"><el-step  title="租期信息"></el-step></a>
                     <a href="javascript:;" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>
                 </el-steps>
-                <el-button type="info" @click="save" style="margin-top:100px;">保存</el-button>
+                <el-button type="primary" @click="save" style="margin-top:100px;">保存</el-button>
                 </div>
             </el-col>
         </el-row>
@@ -27,10 +27,13 @@
     import AddProperty from './AddProperty.vue'
     import AddOwner from './AddOwner.vue'
     import AddDate from './AddDate.vue'
+    import {addInfo} from '../../api/api';
     export default{
         data(){
             return {
-                stepNum:1
+                stepNum:1,
+                stepNum:2,
+                stepNum:3,
             }
         },
         components:{
@@ -39,19 +42,21 @@
             AddDate,
         },
         methods:{
-            save(){
-                if(this.stepNum==1){
-                    var child = this.$refs.property.property;
-                }else if(this.stepNum==2){
-                    var child = this.$refs.owner.owner;
-                }else if(this.stepNum==3){
-                    var child = this.$refs.date.addDate;
-                }
-                console.log(child)
-                this.$message({
-                    message: '保存成功',
-                    type: 'success'
-                });
+            save:function () {
+                    var child_property = this.$refs.property.property;
+                    var child_owner  = this.$refs.owner.owner;
+                    var child_date = this.$refs.date.addDate;
+                    let para = Object.assign({}, child_property,child_owner,child_date);
+                    addInfo(para).then((res) => {
+
+                        if(res.data.code == 200)　{
+                            this.$message({
+                                message: '保存成功',
+                                type: 'success'
+                            });
+                        }
+
+                    });
             }
         },
         mounted() {

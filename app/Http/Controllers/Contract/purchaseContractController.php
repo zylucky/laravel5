@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Contract;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class purchaseContractController extends Controller
 {
@@ -39,6 +40,14 @@ class purchaseContractController extends Controller
      */
     public function create()
     {
+        $info = Input::get();
+        if($info) {
+              return [
+                        'message' => '保存成功',
+                        'code' => 200,
+              ];
+        }
+        dd($info);
         $client = new Client([
             // Base URI is used with relative requests /api/contract/list
             'base_uri' => 'http://123.57.48.144:8004',

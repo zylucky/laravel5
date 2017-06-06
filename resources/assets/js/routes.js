@@ -12,6 +12,7 @@ import Role from "./components/rbac/Role.vue";
 
 import PurchaseContractIndex from "./components/purchaseContract/Index.vue";
 import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
+
 import PurchaseContractUpload from "./components/purchaseContract/Upload.vue";
 import PurchaseContractAddDate from "./components/purchaseContract/AddDate.vue";
 

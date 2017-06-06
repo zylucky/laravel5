@@ -52,18 +52,18 @@
                                       :key="item.key"
                                       :prop="'rental.' + index + '.value'"
                         >
-                            <el-date-picker type = "daterange" placeholder="免租期范围" v-model="item.value">
+                            <el-date-picker type = "daterange" placeholder="租期范围" v-model="item.value">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
                     <el-col :span="6">
                         <el-form-item label="" label-width="85px">
-                            <el-input v-model="addDate.money" placeholder="租金/元"></el-input>
+                            <el-input v-model="addDate.Yajin" placeholder="租金/元"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="3">
                         <el-form-item label="" label-width="10px">
-                            <el-input v-model="addDate.money" placeholder="单价"></el-input>
+                            <el-input v-model="addDate.Yajin" placeholder="单价"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="7">
@@ -80,7 +80,7 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="押金">
-                        <el-input v-model="addDate.money" placeholder="押金"></el-input>
+                        <el-input v-model="addDate.Yajin" placeholder="押金"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
@@ -98,7 +98,7 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="提前几天付款">
-                        <el-input placeholder="提前几天付款" v-model="addDate.day" style="width: 100%;"></el-input>
+                        <el-input placeholder="提前几天付款" v-model="addDate.Tiqianfukuantian" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
@@ -119,7 +119,7 @@
                     <el-form-item label="首期租金日期">
                         <el-date-picker
                                 type="date"
-                                v-model="addDate.first"
+                                v-model="addDate.Shouqifukuanri"
                                 placeholder="首期租金日期"
                                 style="width: 100%"
                         ></el-date-picker>
@@ -129,7 +129,7 @@
                     <el-form-item label="二期租金日期">
                         <el-date-picker
                                 type="date"
-                                v-model="addDate.second"
+                                v-model="addDate.Erqifukuanri"
                                 placeholder="二期租金日期"
                                 style="width: 100%"
                         ></el-date-picker>
@@ -139,7 +139,7 @@
                     <el-form-item label="三期租金日期">
                         <el-date-picker
                                 tpye="date"
-                                v-model="addDate.third"
+                                v-model="addDate.Sanqifukuanri"
                                 placeholder="三期租金日期"
                                 style="width: 100%"
                         ></el-date-picker>
@@ -186,11 +186,11 @@
                     ],
                     rent:'',
                     many:'',
-                    day:'',
+                    Tiqianfukuantian:'',
                     value8:'',
-                    first:'',
-                    second:'',
-                    third:'',
+                    Shouqifukuanri:'',
+                    Erqifukuanri:'',
+                    Sanqifukuanri:'',
 
                     desc:'',
                 },

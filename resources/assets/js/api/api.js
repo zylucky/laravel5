@@ -28,3 +28,7 @@ export const getPermissionListOfRole = params => { return axios.get(`${base}/per
 export const getPermissionList = params => { return axios.get(`${base}/permission/list`, { params: params }); };
 export const setPermissionList = params => { return axios.post(`${base}/permission/update/`+params.id, { params: params }); };
 
+//添加合同信息
+
+export const addInfo= params => { return axios.post(`${base}/purchaseContract/create`, { params: params }); };
+

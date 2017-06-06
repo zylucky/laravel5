@@ -20,6 +20,8 @@ Route::resource('role', 'Rbac\RoleController');
 Route::resource('purchaseContract','Contract\purchaseContractController');
 Route::get('permission/getAll','Rbac\PermissionController@getAll');
 Route::get('permission/role/{id}','Rbac\PermissionController@getPermission');
+Route::get('permission/update','Rbac\PermissionController@update');
+
 Route::get('permission/list','Rbac\PermissionController@getPermissionList');
 Route::post('permission/update/{id}','Rbac\PermissionController@update');
 
@@ -33,3 +35,6 @@ Route::post('user/store','UserController@addUser');
 Route::post('user/edit','UserController@editUser');
 Route::post('user/role/{id}','UserController@setRole');
 Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
+
+//添加合同相关的路由
+Route::post('purchaseContract/create',"Contract\purchaseContractController@create");
