@@ -18,7 +18,7 @@ class purchaseContractController extends Controller
     {
         $client = new Client([
             // Base URI is used with relative requests /api/contract/list
-            'base_uri' => 'http://123.57.48.144:8004',
+            'base_uri' => 'http://123.57.48.144:8557',
             // You can set any number of default request options.
             'timeout'  => 2.0,
         ]);
@@ -40,24 +40,14 @@ class purchaseContractController extends Controller
      */
     public function create()
     {
-        $info = Input::get();
-        if($info) {
-              return [
-                        'message' => '保存成功',
-                        'code' => 200,
-              ];
-        }
-        dd($info);
-        $client = new Client([
-            // Base URI is used with relative requests /api/contract/list
-            'base_uri' => 'http://123.57.48.144:8004',
-            // You can set any number of default request options.
-            'timeout'  => 2.0,
-            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
-        ]);
-        $r = $client->request('POST', '/api/contract/1', [
-            'json' => ['id' => '1','bianhao'=>'A2',]
-        ]);
+//        $info = Input::get();
+//        if($info) {
+//              return [
+//                        'message' => '保存成功',
+//                        'code' => 200,
+//              ];
+//        }
+
     }
 
     /**
@@ -68,7 +58,18 @@ class purchaseContractController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->params;
+       // dd($request->params);
+        //数据格式化
+        $client = new Client([
+            'base_uri' => 'http://123.57.48.144:8557',
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $r = $client->request('POST', '/api/contract/save', [
+            'json' => $request->params
+        ]);
+        //dd($r);
     }
 
     /**
@@ -102,7 +103,8 @@ class purchaseContractController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $info = $request->params;
+        dd($info);
     }
 
     /**

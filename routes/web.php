@@ -35,6 +35,3 @@ Route::post('user/store','UserController@addUser');
 Route::post('user/edit','UserController@editUser');
 Route::post('user/role/{id}','UserController@setRole');
 Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
-
-//添加合同相关的路由
-Route::post('purchaseContract/create',"Contract\purchaseContractController@create");

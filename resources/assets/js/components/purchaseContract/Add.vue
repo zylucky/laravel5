@@ -27,13 +27,11 @@
     import AddProperty from './AddProperty.vue'
     import AddOwner from './AddOwner.vue'
     import AddDate from './AddDate.vue'
-    import {addInfo} from '../../api/api';
+    import {addPurchaseContractInfo} from '../../api/api';
     export default{
         data(){
             return {
                 stepNum:1,
-                stepNum:2,
-                stepNum:3,
             }
         },
         components:{
@@ -46,8 +44,9 @@
                     var child_property = this.$refs.property.property;
                     var child_owner  = this.$refs.owner.owner;
                     var child_date = this.$refs.date.addDate;
+
                     let para = Object.assign({}, child_property,child_owner,child_date);
-                    addInfo(para).then((res) => {
+                    addPurchaseContractInfo(para).then((res) => {
 
                         if(res.data.code == 200)　{
                             this.$message({

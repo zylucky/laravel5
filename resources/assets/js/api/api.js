@@ -29,6 +29,9 @@ export const getPermissionList = params => { return axios.get(`${base}/permissio
 export const setPermissionList = params => { return axios.post(`${base}/permission/update/`+params.id, { params: params }); };
 
 //添加合同信息
-
-export const addInfo= params => { return axios.post(`${base}/purchaseContract/create`, { params: params }); };
+export const addPurchaseContractInfo= params => { return axios.post(`${base}/purchaseContract`, { params: params }); };
+//获取楼盘，楼栋，房间号
+export const getLoupanList = params =>{ return axios.get(`${base}/role/create`, { params: params }); };
+export const getLoudongList = params =>{ return axios.get(`${base}/role/create`, { params: params }); };
+export const getFanghaoList = params =>{ return axios.get(`${base}/role/create`, { params: params }); };
 
