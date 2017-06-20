@@ -73,7 +73,7 @@
             //新增
             addContract() {
                 var _this = this;
-                    _this.$router.push("purchaseContact/Add");
+                    _this.$router.push("/saleContact/Add");
             },
             //时间戳转日期格式
             changeDate(row, column){
@@ -91,6 +91,7 @@
                     //console.log(res.data.data)
                     this.lists = res.data.data;
                     this.listLoading = false;
+
                 });
             },
             handleSizeChange(val) {
@@ -104,7 +105,7 @@
             },
             uploadImg(){
                 var _this = this;
-                _this.$router.push('/purchaseContact/upload');
+                _this.$router.push('/saleContract/upload');
             },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);

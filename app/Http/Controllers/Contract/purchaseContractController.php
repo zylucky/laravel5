@@ -14,21 +14,14 @@ class purchaseContractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-        $client = new Client([
-            // Base URI is used with relative requests /api/contract/list
-            'base_uri' => 'http://123.57.48.144:8557',
-            // You can set any number of default request options.
+        $client = new Client ([
+            'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        /*$response = $client->get('http://httpbin.org/get');
-        $response = $client->delete('http://httpbin.org/delete');
-        $response = $client->head('http://httpbin.org/get');
-        $response = $client->options('http://httpbin.org/get');
-        $response = $client->patch('http://httpbin.org/patch');
-        $response = $client->post('http://httpbin.org/post');
-        $response = $client->put('http://httpbin.org/put');*/
         $response = $client->request('GET', '/api/contract/list');
         echo $response->getBody();
     }
@@ -58,11 +51,10 @@ class purchaseContractController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->params;
-       // dd($request->params);
+        //return $request->params;
         //数据格式化
         $client = new Client([
-            'base_uri' => 'http://123.57.48.144:8557',
+            'base_uri' => $this->base_url,
             'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);

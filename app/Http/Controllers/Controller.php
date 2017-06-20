@@ -9,5 +9,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
+    public $base_url = 'http://121.196.195.129:8557';
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

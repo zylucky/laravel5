@@ -1,5 +1,6 @@
 import axios from 'axios';
 let base = '';
+let omc = 'http://121.196.195.129:8557';
 
 export const requestLogin = params => { return axios.post(`${base}/login`, params).then(res => res.data); };
 export const logout = params => { return axios.post(`${base}/logout`, params).then(res => res.data); };
@@ -28,10 +29,13 @@ export const getPermissionListOfRole = params => { return axios.get(`${base}/per
 export const getPermissionList = params => { return axios.get(`${base}/permission/list`, { params: params }); };
 export const setPermissionList = params => { return axios.post(`${base}/permission/update/`+params.id, { params: params }); };
 
-//添加合同信息
+//合同信息
 export const addPurchaseContractInfo= params => { return axios.post(`${base}/purchaseContract`, { params: params }); };
+export const getPurchaseContractList = params => { return axios.get(`${base}/purchaseContract`, { params: params }); };
+
+
 //获取楼盘，楼栋，房间号
-export const getLoupanList = params =>{ return axios.get(`${base}/role/create`, { params: params }); };
-export const getLoudongList = params =>{ return axios.get(`${base}/role/create`, { params: params }); };
-export const getFanghaoList = params =>{ return axios.get(`${base}/role/create`, { params: params }); };
+export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };
+export const getLoudongList = params =>{ return axios.get(`${base}/office/loudongList`, { params: params }); };
+export const getFanghaoList = params =>{ return axios.get(`${base}/office/fanghaoList`, { params: params }); };
 

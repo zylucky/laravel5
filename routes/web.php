@@ -35,3 +35,7 @@ Route::post('user/store','UserController@addUser');
 Route::post('user/edit','UserController@editUser');
 Route::post('user/role/{id}','UserController@setRole');
 Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
+
+Route::get('office/loupanList','Contract\OfficeController@loupanList');
+Route::get('office/loudongList','Contract\OfficeController@loudongList');
+Route::get('office/fanghaoList','Contract\OfficeController@fanghaoList');

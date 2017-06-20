@@ -2,7 +2,7 @@
     <div>
         <el-form :label-position="labelPosition" label-width="100px" :model="owner">
         <el-col :span="24">
-            <el-form-item label="承租人">
+            <el-form-item label="出租人">
                 <el-radio-group v-model="owner.chengzufang">
                     <el-radio label="华塑商贸"></el-radio>
                     <el-radio label="幼狮科技"></el-radio>
@@ -23,12 +23,18 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="10">
+                    <el-form-item label="开户行" >
+                        <el-input v-model="owner.kaihuhang"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="8">
                     <el-form-item label="账号" >
                         <el-input v-model="owner.zhanghao"></el-input>
                     </el-form-item>
                 </el-col>
+
             </el-row>
-            <el-form-item label="业主类型">
+            <el-form-item label="租户类型">
                 <el-radio-group v-model="owner.yezhuleixing">
                     <el-radio :label="1">个人</el-radio>
                     <el-radio :label="2">公司</el-radio>
@@ -39,7 +45,7 @@
                 <div v-for="(item, index) in owner.chanquanrenList">
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="产权人" >
+                        <el-form-item label="承租人" >
                             <el-input v-model="owner.chanquanrenList[index].Name"></el-input>
                         </el-form-item>
                     </el-col>
@@ -69,7 +75,7 @@
                 </el-row>
                 </div>
                 <el-form-item>
-                    <el-button  @click="addRentItem">新增产权人</el-button>
+                    <el-button  @click="addRentItem">新增承租人</el-button>
                 </el-form-item>
                 <el-row>
                     <el-col :span="8">
@@ -79,7 +85,7 @@
                     </el-col>
                     <el-col :span="10">
                         <el-form-item label="身份证号" >
-                            <el-input v-model="owner.dailirenId"></el-input>
+                            <el-input v-model="owner.dailirenZhengjian"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -133,24 +139,24 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="签约人" >
-                            <el-input v-model="owner.qianyuerenName"></el-input>
+                            <el-input v-model="owner.dailirenName"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="10">
                         <el-form-item label="身份证号" >
-                            <el-input v-model="owner.qianyuerenId"></el-input>
+                            <el-input v-model="owner.dailirenZhengjian"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="联系方式" >
-                            <el-input v-model="owner.qianyuerenTel"></el-input>
+                            <el-input v-model="owner.dailirenTel"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="性别">
-                            <el-radio-group v-model="owner.qianyuerenSex">
+                            <el-radio-group v-model="owner.dailirenSex">
                                 <el-radio :label="1">男</el-radio>
                                 <el-radio :label="2">女</el-radio>
                             </el-radio-group>
@@ -173,7 +179,7 @@
                     chengzufang:'华溯商贸',
                     jujianfang:'华亮房产',
                     yezhuleixing:1,
-                    //产权人
+                    //承租人
                     chanquanrenList:[
                         {
                             Faren:'李岳群',
@@ -186,22 +192,18 @@
                     //收款人
                     shoukuanren:'彭亮',
                     zhanghao:'1234 4567 7891 0123',
+                    kaihuhang:'',
                     //代理人
                     dailirenName:'李朝晖',
                     dailirenTel:'18511909125',
                     dailirenSex:1,
-                    dailirenId:'37158119900124317X',
-                    //签约人
-                    qianyuerenName:'',
-                    qianyuerenTel:'',
-                    qianyuerenSex:'',
-                    qianyuerenId:'',
+                    dailirenZhengjian:'37158119900124317X',
                 }
 
             }
         },
         methods: {
-            //新增产权人
+            //新增承租人
             addRentItem() {
                 this.owner.chanquanrenList.push({
                     Name:'',
@@ -210,7 +212,7 @@
                     Sex:0,
                 });
             },
-            //移除产权人
+            //移除承租人
             removeRentItem(item) {
                 this.owner.chanquanrenList.pop();
                 var index = this.owner.chanquanrenList.indexOf(item)

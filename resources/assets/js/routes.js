@@ -9,12 +9,16 @@ import NotFound from "./components/404.vue";
 import User from "./components/rbac/User.vue";
 import Permission from "./components/rbac/Permission.vue";
 import Role from "./components/rbac/Role.vue";
-
+//收房合同
 import PurchaseContractIndex from "./components/purchaseContract/Index.vue";
 import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
-
 import PurchaseContractUpload from "./components/purchaseContract/Upload.vue";
-import PurchaseContractAddDate from "./components/purchaseContract/AddDate.vue";
+
+
+//出房合同
+import SaleContractIndex from "./components/saleContract/Index.vue";
+import SaleContractAdd from "./components/saleContract/Add.vue";
+
 
 var fk_permission ;
 fun('permission')==true? fk_permission = false:fk_permission = true;
@@ -85,10 +89,11 @@ function fun(funKey) {
          iconCls: 'el-icon-document',//图标样式class
          hidden:fk_contract,
          children: [
-             { path: '/purchaseContact', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
-             { path:'/purchaseContact/Add',component:PurchaseContractAdd,name:'房间信息',hidden:true},
-             { path:'/purchaseContact/AddDate',component:PurchaseContractAddDate,name:'租期信息',hidden:true},
-             { path: '/purchaseContact/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true}
+             { path:'/purchaseContact', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
+             { path:'/purchaseContact/Add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
+             { path:'/purchaseContact/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
+             { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
+             { path:'/saleContact/Add',component:SaleContractAdd,name:'出房录入',hidden:true}
 
          ]
      },

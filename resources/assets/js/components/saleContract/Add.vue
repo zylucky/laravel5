@@ -4,16 +4,15 @@
             <div style="margin-bottom: 50px;"></div>
             <el-col :span="18">
                 <add-property ref="property" v-show="stepNum==1"></add-property>
-                <add-owner ref="owner" v-show="stepNum==2"></add-owner>
+                <add-renter ref="owner" v-show="stepNum==2"></add-renter>
                 <add-date ref="date" v-show="stepNum==3"></add-date>
-                <add-tiaokuan ref="tiaokuan" v-show="stepNum==4"></add-tiaokuan>
             </el-col>
             <div style="margin-bottom:81px;"></div>
             <el-col :span="6">
                 <div style="margin-left: 50%;">
                 <el-steps :space="100" direction="vertical" :active="stepNum">
                     <a href="javascript:;" @click="stepNum=1"><el-step  title="房间信息"></el-step></a>
-                    <a href="javascript:;" @click="stepNum=2"><el-step  title="业主信息"></el-step></a>
+                    <a href="javascript:;" @click="stepNum=2"><el-step  title="租户信息"></el-step></a>
                     <a href="javascript:;" @click="stepNum=3"><el-step  title="租期信息"></el-step></a>
                     <a href="javascript:;" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>
                 </el-steps>
@@ -26,21 +25,19 @@
 </template>
 <script>
     import AddProperty from './AddProperty.vue'
-    import AddOwner from './AddOwner.vue'
+    import AddRenter from './AddRenter.vue'
     import AddDate from './AddDate.vue'
-    import AddTiaokuan from './AddTiaoKuan.vue'
     import {addPurchaseContractInfo} from '../../api/api';
     export default{
         data(){
             return {
-                stepNum:3,
+                stepNum:2,
             }
         },
         components:{
             AddProperty,
-            AddOwner,
+            AddRenter,
             AddDate,
-            AddTiaokuan,
         },
         methods:{
             save:function () {
