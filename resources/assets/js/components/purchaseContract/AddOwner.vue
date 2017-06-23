@@ -23,6 +23,11 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="10">
+                    <el-form-item label="开户行" >
+                        <el-input v-model="owner.kaihuhang"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="8">
                     <el-form-item label="账号" >
                         <el-input v-model="owner.zhanghao"></el-input>
                     </el-form-item>
@@ -169,37 +174,11 @@
         data(){
             return {
                 labelPosition:'right',
-                owner:{
-                    chengzufang:'华溯商贸',
-                    jujianfang:'华亮房产',
-                    yezhuleixing:1,
-                    //产权人
-                    chanquanrenList:[
-                        {
-                            Faren:'李岳群',
-                            Name:'北京大象群文化传媒有限公司',
-                            zhengjian:'37158119900124317X',
-                            Tel:'18511909124',
-                            Sex:1,
-                        },
-                    ],
-                    //收款人
-                    shoukuanren:'彭亮',
-                    zhanghao:'1234 4567 7891 0123',
-                    //代理人
-                    dailirenName:'李朝晖',
-                    dailirenTel:'18511909125',
-                    dailirenSex:1,
-                    dailirenId:'37158119900124317X',
-                    //签约人
-                    qianyuerenName:'',
-                    qianyuerenTel:'',
-                    qianyuerenSex:'',
-                    qianyuerenId:'',
-                }
+
 
             }
         },
+        props:['owner'],
         methods: {
             //新增产权人
             addRentItem() {

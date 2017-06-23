@@ -192,7 +192,7 @@
                     //收款人
                     shoukuanren:'彭亮',
                     zhanghao:'1234 4567 7891 0123',
-                    kaihuhang:'',
+                    kaihuhang:'中国建设银行',
                     //代理人
                     dailirenName:'李朝晖',
                     dailirenTel:'18511909125',

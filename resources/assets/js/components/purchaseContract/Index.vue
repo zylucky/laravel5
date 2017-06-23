@@ -72,8 +72,7 @@
         methods: {
             //新增
             addContract() {
-                var _this = this;
-                    _this.$router.push("purchaseContact/Add");
+                this.$router.push("purchaseContact/Add");
             },
             //时间戳转日期格式
             changeDate(row, column){
@@ -103,14 +102,17 @@
                 this.sels = sels;
             },
             uploadImg(){
-                var _this = this;
-                _this.$router.push('/purchaseContact/upload');
+                this.$router.push('/purchaseContact/upload');
             },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
             },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
+            },
+            handleEdit(index,row){
+                //
+                this.$router.push('/purchaseContact/add?id='+row.id);
             }
         },
         mounted(){

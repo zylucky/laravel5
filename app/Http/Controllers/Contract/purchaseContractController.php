@@ -58,21 +58,26 @@ class purchaseContractController extends Controller
             'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $r = $client->request('POST', '/api/contract/save', [
+        $response = $client->request('POST', '/api/contract/save', [
             'json' => $request->params
         ]);
-        //dd($r);
+        echo $response->getBody();
     }
 
     /**
      * Display the specified resource.
-     *
+     * 根据合同ID获取合同的信息
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/'.$id);
+        echo $response->getBody();
     }
 
     /**

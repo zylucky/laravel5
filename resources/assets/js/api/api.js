@@ -32,6 +32,7 @@ export const setPermissionList = params => { return axios.post(`${base}/permissi
 //合同信息
 export const addPurchaseContractInfo= params => { return axios.post(`${base}/purchaseContract`, { params: params }); };
 export const getPurchaseContractList = params => { return axios.get(`${base}/purchaseContract`, { params: params }); };
+export const getPurchaseContractInfo = params => { return axios.get(`${base}/purchaseContract/`+params.id, {}); };
 
 
 //获取楼盘，楼栋，房间号
