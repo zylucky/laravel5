@@ -1,14 +1,6 @@
 <template>
     <el-row class="container">
         <el-form :model="addDate"  label-width="100px" class="demo-dynamic">
-            <!--免租期方式-->
-            <el-form-item label="免租方式">
-                <el-radio-group v-model="addDate.mianzufangshi">
-                    <el-radio :label="1">期内免租</el-radio>
-                    <el-radio :label="2">期外免租</el-radio>
-                    <el-radio :label="3">期内期外</el-radio>
-                </el-radio-group>
-            </el-form-item>
             <!--免租期-->
             <el-form-item label="免租期" v-for="(item, index) in addDate.mianzuqiList"
                           :key="item.key"
@@ -18,6 +10,11 @@
                 </el-date-picker>
                 <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
                 </el-date-picker>
+                <!--免租期方式ddd-->
+                    <el-radio-group v-model="item.mianzufangshi">
+                        <el-radio :label="1">期内免租</el-radio>
+                        <el-radio :label="2">期外免租</el-radio>
+                    </el-radio-group>
                 <el-button @click.prevent="removeFreeItem(item)">删除</el-button>
 
             </el-form-item>
@@ -122,12 +119,12 @@
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="总应付租金">
-                        <el-input v-model="addDate.zongzujin" placeholder="总应付押金"></el-input>
+                        <el-input v-model="addDate.zongyingfuzujin" placeholder="总应付押金"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="合同佣金">
-                        <el-input v-model="addDate.commission" placeholder="合同佣金"></el-input>
+                        <el-input v-model="addDate.yongjin" placeholder="合同佣金"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -159,7 +156,7 @@
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="签约日">
-                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyueDate" style="width: 100%;"></el-date-picker>
+                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -243,6 +240,7 @@
                 this.addDate.mianzuqiList.push({
                     startdate:'',//免租开始
                     enddate:'',//免租结束
+                    mianzufangshi:'',
                     key: Date.now()
                 });
             },

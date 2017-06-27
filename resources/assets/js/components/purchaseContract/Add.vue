@@ -34,7 +34,7 @@
     export default{
         data(){
             return {
-                stepNum:4,
+                stepNum:2,
                 id:'',
                 property:{
                     officeList: [{
@@ -59,11 +59,11 @@
                     //产权人
                     chanquanrenList:[
                         {
-                            Faren:'李岳群',
-                            Name:'北京大象群文化传媒有限公司',
-                            zhengjian:'37158119900124317X',
-                            Tel:'18511909124',
-                            Sex:1,
+                            faren:'',
+                            name:'',
+                            zhengjian:'',
+                            tel:'',
+                            sex:1,
                             hetongid:null,
                         },
                     ],
@@ -86,11 +86,12 @@
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
                     shoufangdate: '',//收房日期
-                    qianyueDate: '',//签约日期
+                    qianyuedate: '',//签约日期
                     mianzufangshi: [],//免租方式
                     mianzuqiList: [{
                         startdate:'',//免租开始
                         enddate:'',//免租结束
+                        mianzufangshi:'',
                     }],
                     fukuanFangshiList:[{
                         startdate:'',//开始
@@ -99,8 +100,8 @@
                         zujinyue:'',
                     }],
                     yajin:'',//押金
-                    zongzujin:'',//总租金
-                    commission:'',//佣金
+                    zongyingfuzujin:'',//总租金
+                    yongjin:'',//佣金
                     tiqianfukuantian:'',//提前付款天数
                     yajinfukuanri:'',//押金付款日
                     shouqifukuanri:'',//首期租金付款日
@@ -133,7 +134,6 @@
                     id:this.id,
                 }
                 submitPurchaseContract(para).then((res)=>{
-                    console.log(res.data)
                     if(res.data.code == 200)　{
                         this.$message({
                             message: '提交成功',
@@ -155,7 +155,6 @@
                        id: this.id
                     };
                     let para = Object.assign({}, child_property,child_owner,child_date,id);
-                    console.log(para)
                     addPurchaseContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         //保存完以后可以得到一个返回的ID
@@ -177,7 +176,6 @@
             getPurchaseContract(id){
                 getPurchaseContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
-                        //console.log(res.data.data)
                         //把数据分别赋值给三个组件的变量
                        this.fuzhi(res);
                     }else {
@@ -191,7 +189,10 @@
             fuzhi(res){
                 this.id = res.data.data.id;
                 this.property.officeList = res.data.data.officeList;
-                this.owner.chanquanrenList = res.data.data.chanquanrenList;
+                if(res.data.data.chanquanrenList.length>0){
+                    console.log(res.data.data.chanquanrenList)
+                    this.owner.chanquanrenList = res.data.data.chanquanrenList;
+                }
                 this.owner.chengzufang = res.data.data.chengzufang;
                 this.owner.jujianfang = res.data.data.jujianfang;
                 this.owner.yezhuleixing = res.data.data.yezhuleixing;
@@ -209,13 +210,13 @@
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;
-                this.addDate.qianyueDate = res.data.data.qianyueDate;
+                this.addDate.qianyuedate = res.data.data.qianyuedate;
                 this.addDate.mianzufangshi = res.data.data.mianzufangshi;
                 this.addDate.mianzuqiList = res.data.data.mianzuqiList;
                 this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;
                 this.addDate.yajin = res.data.data.yajin;
-                this.addDate.zongzujin = res.data.data.zongzujin;
-                this.addDate.commission = res.data.data.commission;
+                this.addDate.zongyingfuzujin = res.data.data.zongyingfuzujin;
+                this.addDate.yongjin = res.data.data.yongjin;
                 this.addDate.tiqianfukuantian = res.data.data.tiqianfukuantian;
                 this.addDate.yajinfukuanri = res.data.data.yajinfukuanri;
                 this.addDate.shouqifukuanri = res.data.data.shouqifukuanri;

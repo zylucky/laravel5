@@ -45,7 +45,7 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="产权人" >
-                            <el-input v-model="owner.chanquanrenList[index].Name"></el-input>
+                            <el-input v-model="owner.chanquanrenList[index].name"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="10">
@@ -57,12 +57,12 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="联系方式" >
-                            <el-input v-model="owner.chanquanrenList[index].Tel"></el-input>
+                            <el-input v-model="owner.chanquanrenList[index].tel"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="性别">
-                            <el-radio-group v-model="owner.chanquanrenList[index].Sex">
+                            <el-radio-group v-model="owner.chanquanrenList[index].sex">
                                 <el-radio :label="1">男</el-radio>
                                 <el-radio :label="2">女</el-radio>
                             </el-radio-group>
@@ -106,12 +106,12 @@
             </div>
             <div v-if="owner.yezhuleixing==2">
                 <el-form-item label="公司名称" >
-                    <el-input v-model="owner.chanquanrenList[0].Name"></el-input>
+                    <el-input v-model="owner.chanquanrenList[0].name"></el-input>
                 </el-form-item>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="法人" >
-                            <el-input v-model="owner.chanquanrenList[0].Faren"></el-input>
+                            <el-input v-model="owner.chanquanrenList[0].faren"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="10">
@@ -123,12 +123,12 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="联系方式" >
-                            <el-input v-model="owner.chanquanrenList[0].Tel"></el-input>
+                            <el-input v-model="owner.chanquanrenList[0].tel"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="性别">
-                            <el-radio-group v-model="owner.chanquanrenList[0].Sex">
+                            <el-radio-group v-model="owner.chanquanrenList[0].sex">
                                 <el-radio :label="1">男</el-radio>
                                 <el-radio :label="2">女</el-radio>
                             </el-radio-group>

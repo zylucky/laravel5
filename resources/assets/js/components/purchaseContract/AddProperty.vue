@@ -97,7 +97,7 @@
                                 </el-col>
                             </el-row>
                             <el-form-item label="房屋类型">
-                                <el-select v-model="property.officeList[index].leixing" placeholder="请选择">
+                                <el-select v-model="property.officeList[index].leixing" clearable placeholder="请选择">
                                     <el-option
                                             v-for="item in options"
                                             :key="item.value"
@@ -147,16 +147,16 @@
                 //房间类型
                 options: [
                     {
-                        value: '1',
+                        value: 1,
                         label: '公寓'
                     }, {
-                        value: '2',
+                        value: 2,
                         label: '写字楼'
                     }, {
-                        value: '3',
+                        value: 3,
                         label: '商铺'
                     }, {
-                        value: '4',
+                        value: 4,
                         label: '住宅'
                     }
                     ],
