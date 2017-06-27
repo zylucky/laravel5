@@ -18,6 +18,9 @@ import PurchaseContractUpload from "./components/purchaseContract/Upload.vue";
 //出房合同
 import SaleContractIndex from "./components/saleContract/Index.vue";
 import SaleContractAdd from "./components/saleContract/Add.vue";
+//渠道公司
+import BrokerCompany from "./components/brokerCompany/Index.vue";
+import BrokerCompanyUser from "./components/brokerCompany/UserList.vue";
 
 
 var fk_permission ;
@@ -37,6 +40,16 @@ fun('contract')==true? fk_contract = false:fk_contract = true;
 
 var fk_contract_purchase ;
 fun('purchaseContract')==true? fk_contract_purchase = false:fk_contract_purchase = true;
+
+var fk_brokerCompany ;
+fun('brokerCompany')==true? fk_brokerCompany = false:fk_brokerCompany = true;
+
+var fk_brokerCompanyList ;
+fun('brokerCompanyList')==true? fk_brokerCompanyList = false:fk_brokerCompanyList = true;
+
+var fk_brokerCompanyUserList ;
+fun('brokerCompanyUserList')==true? fk_brokerCompanyUserList = false:fk_brokerCompanyUserList = true;
+
 
 
 function fun(funKey) {
@@ -94,6 +107,19 @@ function fun(funKey) {
              { path:'/purchaseContact/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
              { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
              { path:'/saleContact/Add',component:SaleContractAdd,name:'出房录入',hidden:true}
+
+         ]
+     },
+     {
+         path: '/',
+         component: navigation,
+         name: '基础数据管理',
+         iconCls: 'el-icon-document',//图标样式class
+         hidden:fk_brokerCompany,
+         children: [
+             { path:'/brokerCompany', component: BrokerCompany, name: '渠道公司维护',hidden:fk_brokerCompanyList},
+             { path:'/brokerCompanyUserList',component:BrokerCompanyUser,name:'渠道公司人员维护',hidden:fk_brokerCompanyUserList},
+
 
          ]
      },
