@@ -18,12 +18,22 @@ class purchaseContractController extends Controller
 
     public function index()
     {
+        $pn = Input::get('pn');
+        $cnt = Input::get('cnt');
+        if(!$pn){
+            $pn = 1;
+        }
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/contract/list');
-        echo $response->getBody();
+            $response = $client->request('GET', '/api/contract/list',[
+                'query'=>[
+                    'pn'=>$pn,
+                    'cnt'=>$cnt,
+                    ]
+            ]);
+            echo $response->getBody();
     }
 
     /**
@@ -88,7 +98,12 @@ class purchaseContractController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/'.$id.'/submit');
+        echo $response->getBody();
     }
 
     /**
@@ -96,12 +111,12 @@ class purchaseContractController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     * 合同提交
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $info = $request->params;
-        dd($info);
+
     }
 
     /**

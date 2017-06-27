@@ -52,10 +52,14 @@
                             </el-date-picker>
                         </el-col>
                         <el-col :span="2" :pull="2">
+                            <el-form-item >
                                 <el-input v-model="item.yajinyue" placeholder="押几"></el-input>
+                            </el-form-item>
                         </el-col>
                         <el-col :span="2" :pull="2">
+                            <el-form-item >
                                 <el-input v-model="item.zujinyue" placeholder="付几"></el-input>
+                            </el-form-item>
                         </el-col>
                         <el-col :span="2" :pull="2">
                             <el-button  @click.prevent="removePayItem(item)">删除</el-button>
@@ -87,6 +91,9 @@
                                     <el-input v-model="item.price" placeholder="单价"></el-input>
                             </el-col>
                             <el-col :span="2" :pull="2">
+                                <el-input v-model="item.dizengliang" placeholder="递增量"></el-input>
+                            </el-col>
+                            <el-col :span="2" :pull="2">
                                     <el-select v-model="addDate.zujinList[index].dizengfangshi" placeholder="递增方式">
                                         <el-option
                                                 v-for="item in options"
@@ -95,9 +102,6 @@
                                                 :value="item.value">
                                         </el-option>
                                     </el-select>
-                            </el-col>
-                            <el-col :span="2" :pull="2">
-                                    <el-input v-model="item.dizengliang" placeholder="递增量"></el-input>
                             </el-col>
                             <el-col :span="2" :pull="2">
                                 <el-button @click.prevent="removeRentItem(item)">删除</el-button>
@@ -252,7 +256,8 @@
             //增加租期租金
             addRentItem() {
                 this.addDate.zujinList.push({
-                    zuqiDate:'',
+                    startdate:'',//租期开始时间
+                    enddate:'',//租期结束时间
                     yuezujin:'',
                     price:'',
                     dizengfangshi:'',

@@ -18,6 +18,7 @@
                     <a href="javascript:;" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>
                 </el-steps>
                 <el-button type="primary" @click="save" style="margin-top:100px;">保存</el-button>
+                <el-button type="primary" @click="submit" >提交</el-button>
                 </div>
             </el-col>
         </el-row>
@@ -29,11 +30,11 @@
     import AddOwner from './AddOwner.vue'
     import AddDate from './AddDate.vue'
     import AddTiaokuan from './AddTiaoKuan.vue'
-    import {addPurchaseContractInfo,getPurchaseContractInfo} from '../../api/api';
+    import {addPurchaseContractInfo,getPurchaseContractInfo,submitPurchaseContract} from '../../api/api';
     export default{
         data(){
             return {
-                stepNum:1,
+                stepNum:4,
                 id:'',
                 property:{
                     officeList: [{
@@ -69,6 +70,7 @@
                     //收款人
                     shoukuanren:'彭亮',
                     zhanghao:'1234 4567 7891 0123',
+                    kaihuhang:'',
                     //代理人
                     dailirenName:'李朝晖',
                     dailirenTel:'18511909125',
@@ -126,6 +128,25 @@
             AddTiaokuan,
         },
         methods:{
+            submit(){
+                let  para = {
+                    id:this.id,
+                }
+                submitPurchaseContract(para).then((res)=>{
+                    console.log(res.data)
+                    if(res.data.code == 200)　{
+                        this.$message({
+                            message: '提交成功',
+                            type: 'success'
+                        });
+                    }else{
+                        this.$message({
+                            message:res.data.msg,
+                            type:'error'
+                        })
+                    }
+                })
+            },
             save:function () {
                     var child_property = this.$refs.property.property;
                     var child_owner  = this.$refs.owner.owner;
@@ -175,6 +196,7 @@
                 this.owner.jujianfang = res.data.data.jujianfang;
                 this.owner.yezhuleixing = res.data.data.yezhuleixing;
                 this.owner.shoukuanren = res.data.data.shoukuanren;
+                this.owner.kaihuhang = res.data.data.kaihuhang;
                 this.owner.zhanghao = res.data.data.zhanghao;
                 this.owner.dailirenTel = res.data.data.dailirenTel;
                 this.owner.dailirenSex = res.data.data.dailirenSex;
@@ -207,7 +229,9 @@
         },
         mounted() {
             //根据url得到的合同ID，来获取数据
-            this.getPurchaseContract(this.$route.query);
+            if(this.$route.query.id!=null){
+                this.getPurchaseContract(this.$route.query);
+            }
         },
 
     }

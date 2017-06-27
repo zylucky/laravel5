@@ -274,7 +274,7 @@
             change1(){
                 //楼盘
                 for (var x in this.options1){
-                    if(this.options1[x].value==this.property.officeList[this.tabIndex-1].loupanName){
+                    if(this.options1[x].label==this.property.officeList[this.tabIndex-1].loupanName){
                         this.property.officeList[this.tabIndex-1].loupanOmcId=this.options1[x].value;
                     }
                 }
