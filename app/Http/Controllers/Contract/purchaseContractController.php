@@ -111,7 +111,7 @@ class purchaseContractController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * 合同提交
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -128,5 +128,21 @@ class purchaseContractController extends Controller
     public function destroy($id)
     {
         //
+    }
+    /*
+     * 合同审核
+     *
+     * */
+    public function review(){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+
+        $response = $client->request('POST', '/api/contract/sf', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
     }
 }

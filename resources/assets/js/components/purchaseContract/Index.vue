@@ -74,7 +74,7 @@
         methods: {
             //新增
             addContract() {
-                this.$router.push("purchaseContact/Add");
+                this.$router.push("purchaseContract/add");
             },
             formatStatus(row, column){
                 let status = [];
@@ -121,10 +121,13 @@
                 this.sels = sels;
             },
             uploadImg(){
-                this.$router.push('/purchaseContact/upload');
+                this.$router.push('/purchaseContract/upload');
             },
             handleEdit(index,row){
-                this.$router.push('/purchaseContact/add?id='+row.id);
+                this.$router.push('/purchaseContract/edit?id='+row.id);
+            },
+            handleReview(index,row){
+                this.$router.push('/purchaseContract/review?id='+row.id);
             }
         },
         mounted(){

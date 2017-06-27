@@ -2,23 +2,26 @@
     <div>
         <el-row>
             <div style="margin-bottom: 50px;"></div>
-            <el-col :span="18">
+            <el-col :span="17">
                 <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" :owner="owner" v-show="stepNum==2"></add-owner>
                 <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
                 <add-tiaokuan ref="tiaokuan" v-show="stepNum==4"></add-tiaokuan>
             </el-col>
             <div style="margin-bottom:81px;"></div>
-            <el-col :span="6">
-                <div style="margin-left: 50%;">
+            <el-col :span="7">
+                <div style="margin-left: 30%;">
                 <el-steps :space="100" direction="vertical" :active="stepNum">
                     <a href="javascript:;" @click="stepNum=1"><el-step  title="房间信息"></el-step></a>
                     <a href="javascript:;" @click="stepNum=2"><el-step  title="业主信息"></el-step></a>
                     <a href="javascript:;" @click="stepNum=3"><el-step  title="租期信息"></el-step></a>
                     <a href="javascript:;" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>
                 </el-steps>
-                <el-button type="primary" @click="save" style="margin-top:100px;">保存</el-button>
-                <el-button type="primary" @click="submit" >提交</el-button>
+                <el-button type="primary" v-show="!review" @click="save" style="margin-top:100px;">保存</el-button>
+                <el-button type="primary" v-show="!review" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
+                    <el-button type="primary" v-show="review" @click="review" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
+                    <el-button type="warning" v-show="review" @click="notReview" style="margin-top:100px;">不通过</el-button>
+
                 </div>
             </el-col>
         </el-row>
@@ -30,10 +33,14 @@
     import AddOwner from './AddOwner.vue'
     import AddDate from './AddDate.vue'
     import AddTiaokuan from './AddTiaoKuan.vue'
-    import {addPurchaseContractInfo,getPurchaseContractInfo,submitPurchaseContract} from '../../api/api';
+    import {addPurchaseContractInfo,reviewPurchaseContract,getPurchaseContractInfo,submitPurchaseContract} from '../../api/api';
     export default{
         data(){
             return {
+                btnType:true,
+                submsg:'提交',
+                review:false,
+                pizhu:'hello world',
                 stepNum:2,
                 id:'',
                 property:{
@@ -130,6 +137,8 @@
         },
         methods:{
             submit(){
+                this.btnType = true;
+                this.submsg  = '已提交';
                 let  para = {
                     id:this.id,
                 }
@@ -147,7 +156,9 @@
                     }
                 })
             },
-            save:function () {
+            save() {
+                this.btnType = false;
+                this.submsg  = '提交';
                     var child_property = this.$refs.property.property;
                     var child_owner  = this.$refs.owner.owner;
                     var child_date = this.$refs.date.addDate;
@@ -172,6 +183,29 @@
                     }
                 });
             },
+            review(){
+                //审核
+                let  para = {
+                    id:this.id,
+                    pizhu:this.pizhu,
+                }
+                reviewPurchaseContract(para).then((res) => {
+                    if(res.data.code == 200)　{
+                        //保存完以后可以得到一个返回的ID
+                        //把数据分别赋值给三个组件的变量
+                        this.$message({
+                            message: '保存成功',
+                            type: 'success'
+                        });
+                    }else{
+                        this.$message({
+                            message:res.data.msg,
+                            type:'error'
+                        })
+                    }
+                });
+            },
+            notReview(){},
             //根据url得到的合同ID，来获取数据
             getPurchaseContract(id){
                 getPurchaseContractInfo(id).then((res)=>{
@@ -227,11 +261,29 @@
                 this.addDate.checkList = res.data.data.checkList;
 
             },
+            disabledInput(){
+                this.review =true;
+                var allInputs = document.getElementsByTagName('input');
+                var textArea = document.getElementsByTagName('textarea');
+                for (let i=0; i<allInputs.length; i++){
+                    allInputs[i].disabled="true";
+                    allInputs[i].parentNode.className += " is-disabled";
+                }
+                for (let i=0; i<textArea.length; i++){
+                    textArea[i].disabled="true";
+                    textArea[i].parentNode.className += " is-disabled";
+                }
+
+            },
         },
         mounted() {
             //根据url得到的合同ID，来获取数据
             if(this.$route.query.id!=null){
                 this.getPurchaseContract(this.$route.query);
+            }
+            //审核页面input禁用
+            if(this.$route.path=='/purchaseContract/review'){
+                this.disabledInput();
             }
         },
 

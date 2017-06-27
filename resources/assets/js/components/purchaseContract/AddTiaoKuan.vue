@@ -19,7 +19,6 @@
         <el-input  v-model="tiaokuan[0].kuan1" icon="edit" :on-icon-click="handleIconClick"></el-input>
 
         <el-input  v-model="tiaokuan[0].kuan2" type="textarea"
-                   autosize icon="edit"
                    :on-icon-click="handleIconClick"
         ></el-input>
         <el-input  v-model="tiaokuan[0].xiang" icon="edit" :on-icon-click="handleIconClick"></el-input>

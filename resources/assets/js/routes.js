@@ -102,9 +102,11 @@ function fun(funKey) {
          iconCls: 'el-icon-document',//图标样式class
          hidden:fk_contract,
          children: [
-             { path:'/purchaseContact', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
-             { path:'/purchaseContact/Add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
-             { path:'/purchaseContact/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
+             { path:'/purchaseContract', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
+             { path:'/purchaseContract/add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
+             { path:'/purchaseContract/edit',component:PurchaseContractAdd,name:'收房编辑',hidden:true},
+             { path:'/purchaseContract/review',component:PurchaseContractAdd,name:'收房审核',hidden:true},
+             { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
              { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
              { path:'/saleContact/Add',component:SaleContractAdd,name:'出房录入',hidden:true}
 
