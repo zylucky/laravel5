@@ -185,10 +185,10 @@
                 },
                 options:[
                     {
-                        value: '1',
+                        value: 1,
                         label: '按月租金'
                     }, {
-                        value: '2',
+                        value: 2,
                         label: '按年租金'
                     },
                 ],
@@ -210,7 +210,15 @@
                 editFormVisible: false,//编辑界面是否显示
                 editLoading: false,
                 editFormRules: {
-
+                    tQdCompayId:[
+                        { required: true,validator:(rule,value,callback)=>{
+                            if(value==''){
+                               callback(new Error('输入渠道公司名称' ));
+                            }else{
+                                callback();
+                            }
+                        }, trigger:'blur'}
+                    ],
                     qdPername: [
                         { required: true, message: '请输入渠道公司人员姓名', trigger: 'blur' }
                     ],
@@ -224,12 +232,19 @@
                         {  required: true, message: '请输入出房佣金占比', trigger: 'blur' }
                     ],
                     yjType: [
-                        { required: true, message: '请输入佣金类型', trigger: 'blur' }
+                        {required: true,validator:(rule,value,callback)=>{
+                            if(/^\d+$/.test(value) == false){
+                                callback(new Error("请输入佣金类型"));
+                            }else{
+                                callback();
+                            }
+                        }, trigger:'blur'}
                     ],
                 },
                 //编辑界面数据
                 editForm: {
                     //compayname: '',
+                    tQdCompayId:'',
                     qdPername:'',
                     qdPertel:'',
                     yjzbSf:'',
@@ -239,7 +254,15 @@
                 addFormVisible: false,//新增界面是否显示
                 addLoading: false,
                 addFormRules: {
-
+                    tQdCompayId:[
+                        {required: true,validator:(rule,value,callback)=>{
+                            if(/^\d+$/.test(value) == false){
+                                callback(new Error('请输入渠道公司名称'));
+                            }else{
+                                callback();
+                            }
+                        }, trigger:'blur'}
+                    ],
                     qdPername: [
                         { required: true, message: '请输入渠道公司人员姓名', trigger: 'blur' }
                     ],
@@ -253,7 +276,13 @@
                         {  required: true, message: '请输入出房佣金占比', trigger: 'blur' }
                     ],
                     yjType: [
-                        { required: true, message: '请输入佣金类型', trigger: 'blur' }
+                        {required: true,validator:(rule,value,callback)=>{
+                            if(/^\d+$/.test(value) == false){
+                                callback(new Error("请输入佣金类型"));
+                            }else{
+                                callback();
+                            }
+                        }, trigger:'blur'}
                     ],
                 },
                 //新增界面数据
@@ -263,7 +292,7 @@
                     qdPertel:'',
                     yjzbSf:'',
                     yjzbCf:'',
-                    yjType:'',
+                    yjType:1,
 
                 },
 
@@ -387,7 +416,7 @@
                 // Console.log(row);
                 this.editFormVisible = true;
                 this.editForm = Object.assign({}, row);
-                this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
+               // this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
                 this.editForm.tQdCompayId= row.qvDaoCompayXinxi.compayname;
                 this.editForm.tQdCompayName= row.qvDaoCompayXinxi.tQdCompayId;
                 this.editForm.yjzbCf= row.yjzbCf.toString();
@@ -403,21 +432,19 @@
                     qdPertel:'',
                     yjzbSf:'',
                     yjzbCf:'',
-                    yjType:'按月租金',
+                    yjType:1,
                 };
             },
             //编辑
             editSubmit: function () {
+
                 this.$refs.editForm.validate((valid) => {
-                    if(this.editForm.tQdCompayId==''){
-                        alert('请输入渠道公司名称');
-                        return false;
-                    }
+
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
                             this.editLoading = true;
                             let para = Object.assign({}, this.editForm);
-                            para.yjType= this.editForm.yjType == '按月租金' ?1 : this.editForm.yjType =='按年租金' ?2 : this.editForm.yjType;
+                           // para.yjType= this.editForm.yjType == '按月租金' ?1 : this.editForm.yjType =='按年租金' ?2 : this.editForm.yjType;
                             para.tQdCompayId=this.editForm.tQdCompayName;
 
                             //console.log(para);
@@ -439,16 +466,13 @@
             addSubmit: function () {
                 this.$refs.addForm.validate((valid) => {
                   //  alert(this.addForm.tQdCompayId);
-                    if(this.addForm.tQdCompayId==''){
-                        alert('请输入渠道公司名称');
-                        return false;
-                    }
+
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
                             this.addLoading = true;
                             //NProgress.start();
                             let para = Object.assign({}, this.addForm);
-                            para.yjType= this.addForm.yjType == '按月租金' ? 1 : 2;
+                            //para.yjType= this.addForm.yjType == '按月租金' ? 1 : 2;
                             //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
                             addBrokerCompanyUser(para).then((res) => {
                                 this.addLoading = false;
