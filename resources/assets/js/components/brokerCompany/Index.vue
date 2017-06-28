@@ -8,7 +8,7 @@
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getBrokerCompany">搜索</el-button>
-                <el-button type="primary" class="el-icon-plus" @click="handleAdd"> 新增</el-button>
+                <el-button type="primary" class="el-icon-plus"    @click="handleAdd"    > 新增</el-button>
             </el-form-item>
         </el-form>
         <el-table :data="brokerCompany"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
@@ -89,7 +89,7 @@
         <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
             <el-form :model="addForm" label-width="120px" :rules="addFormRules" ref="addForm">
                 <el-form-item label="渠道公司名称" prop="compayname">
-                    <el-input v-model="addForm.compayname" auto-complete="off"   ></el-input>
+                    <el-input v-model="addForm.compayname" auto-complete="off"  disabled=""  ></el-input>
                 </el-form-item>
                 <el-form-item label="收房佣金占比" prop="yjzbSf">
                     <el-input type="number" v-model="addForm.yjzbSf" auto-complete="off"></el-input>
@@ -190,7 +190,7 @@
                         { required: true, message: '请输入出房佣金占比', trigger: 'blur' }
                     ],
                     yjType: [
-                        {validator:(rule,value,callback)=>{
+                        {required: true,validator:(rule,value,callback)=>{
                             if(/^\d+$/.test(value) == false){
                                 callback(new Error("请输入佣金类型"));
                             }else{
@@ -223,6 +223,8 @@
                                     if(res.data.code!='200')
                                     {
                                         callback(new Error(res.data.msg));
+                                    }else{
+                                        callback();
                                     }
                                 })
                             }
@@ -235,7 +237,7 @@
                         { required: true, message: '请输入出房佣金占比', trigger: 'blur' }
                     ],
                     yjType: [
-                        {validator:(rule,value,callback)=>{
+                        {required: true,validator:(rule,value,callback)=>{
                             if(/^\d+$/.test(value) == false){
                                 callback(new Error("请输入佣金类型"));
                             }else{
