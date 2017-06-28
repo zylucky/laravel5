@@ -15,7 +15,7 @@
         <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="selection" width="55">
             </el-table-column>
-            <el-table-column  prop="id" width="60">
+            <el-table-column  prop="id" label="id" width="60">
             </el-table-column>
             <el-table-column prop="officeList[0].loupanName" label="楼盘"  sortable>
             </el-table-column>
@@ -27,10 +27,11 @@
             </el-table-column>
             <el-table-column prop="createtime" label="签约日" :formatter="changeDate"  sortable>
             </el-table-column>
-            <el-table-column label="操作" width="200">
+            <el-table-column label="操作" width="300">
                 <template scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
                     <el-button size="small" @click="handleReview(scope.$index, scope.row)">审核</el-button>
+                    <el-button size="small" @click="handleOptimize(scope.$index, scope.row)">优化</el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
                 </template>
             </el-table-column>
@@ -128,6 +129,9 @@
             },
             handleReview(index,row){
                 this.$router.push('/purchaseContract/review?id='+row.id);
+            },
+            handleOptimize(index,row){
+                this.$router.push('/purchaseContract/optimize?id='+row.id);
             }
         },
         mounted(){

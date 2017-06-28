@@ -18,7 +18,7 @@ Route::get('/', function (){
 Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
 Route::resource('purchaseContract','Contract\purchaseContractController');
-Route::get('purchaseContract/review','Contract\purchaseContractController@review');
+Route::post('purchaseContract/review','Contract\purchaseContractController@review');
 Route::resource('brokerCompany','brokerCompany\brokerCompanyController');
 Route::resource('brokerCompanyUser','brokerCompany\brokerCompanyUserController');
 

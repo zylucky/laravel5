@@ -133,14 +133,14 @@ class purchaseContractController extends Controller
      * 合同审核
      *
      * */
-    public function review(){
+    public function review(Request $request){
         $client = new Client([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
 
-        $response = $client->request('POST', '/api/contract/sf', [
+        $response = $client->request('POST', '/api/contract/sf/shenhe', [
             'json' => $request->params
         ]);
         echo $response->getBody();

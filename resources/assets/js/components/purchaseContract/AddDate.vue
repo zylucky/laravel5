@@ -37,73 +37,79 @@
             </el-form-item>
             <!--付款方式-->
             <div  v-for="(item, index) in addDate.fukuanFangshiList">
-                <el-form-item label="付款方式"
-                              :key="item.key"
-                              :prop="'fukuanFangshiList.' + index + '.value'"
-                >
-                    <el-row :gutter="5">
-                        <el-col :span="14" >
+                <el-row :gutter="5">
+                    <el-col :span="14" style="width:550px;">
+                        <el-form-item label="付款方式"
+                                      :key="item.key"
+                                      :prop="'fukuanFangshiList.' + index + '.value'"
+                        >
                             <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate">
                             </el-date-picker>
                             <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
                             </el-date-picker>
-                        </el-col>
-                        <el-col :span="2" :pull="2">
-                            <el-form-item >
-                                <el-input v-model="item.yajinyue" placeholder="押几"></el-input>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="2" :pull="2">
-                            <el-form-item >
-                                <el-input v-model="item.zujinyue" placeholder="付几"></el-input>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="2" :pull="2">
-                            <el-button  @click.prevent="removePayItem(item)">删除</el-button>
-                        </el-col>
-                    </el-row>
-                </el-form-item>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="1" :pull="1" style="width: 90px;">
+                        <el-form-item label="押" label-width="20px">
+                            <el-input v-model="item.yajinyue" placeholder="押几"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="1" :pull="1" style="margin-left: 15px;width: 90px;">
+                        <el-form-item label="付" label-width="20px">
+                            <el-input v-model="item.zujinyue" placeholder="付几"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="2" :pull="1">
+                        <el-button  @click.prevent="removePayItem(item)">删除</el-button>
+                    </el-col>
+                </el-row>
             </div>
             <el-form-item>
                 <el-button  @click="addPayItem">新增付款方式</el-button>
             </el-form-item>
             <!--租金-->
             <div v-for="(item, index) in addDate.zujinList">
-                <el-row :gutter="5">
+                <el-row>
+                    <el-col :span="9" style="width:550px;">
 
                         <el-form-item :label="'租期' + index"
                                       :key="item.key"
                                       :prop="'zujinList.' + index + '.value'"
                         >
-                            <el-col :span="14">
-                                <el-date-picker type = "date" placeholder="租期范围" v-model="item.startdate">
-                                </el-date-picker>
-                                <el-date-picker type = "date" placeholder="租期范围" v-model="item.enddate">
-                                </el-date-picker>
-                            </el-col>
-                            <el-col :span="2" :pull="2">
-                                    <el-input v-model="item.yuezujin" placeholder="租金"></el-input>
-                            </el-col>
-                            <el-col :span="2" :pull="2">
-                                    <el-input v-model="item.price" placeholder="单价"></el-input>
-                            </el-col>
-                            <el-col :span="2" :pull="2">
-                                <el-input v-model="item.dizengliang" placeholder="递增量"></el-input>
-                            </el-col>
-                            <el-col :span="2" :pull="2">
-                                    <el-select v-model="addDate.zujinList[index].dizengfangshi" placeholder="递增方式">
-                                        <el-option
-                                                v-for="item in options"
-                                                :key="item.value"
-                                                :label="item.label"
-                                                :value="item.value">
-                                        </el-option>
-                                    </el-select>
-                            </el-col>
-                            <el-col :span="2" :pull="2">
-                                <el-button @click.prevent="removeRentItem(item)">删除</el-button>
-                            </el-col>
+                            <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate">
+                            </el-date-picker>
+                            <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
+                            </el-date-picker>
                         </el-form-item>
+                    </el-col>
+                    <el-col :span="2" :pull="1" style="width: 130px;margin-left:-20px;">
+                        <el-form-item label="月租金" label-width="55px">
+                            <el-input v-model="item.yuezujin" style="margin-left:-10px;" placeholder="租金"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="2" :pull="1" style="width: 94px;margin-left:-10px;">
+                        <el-form-item label="单价" label-width="40px">
+                            <el-input v-model="item.price" style="margin-left:-10px;" placeholder="单价"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="3" :pull="1">
+                        <el-form-item label="递增方式" label-width="70px">
+                            <el-input v-model="item.dizengliang" placeholder=""></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="2"  style="width: 70px;">
+                        <el-select v-model="addDate.zujinList[index].dizengfangshi" placeholder="">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="2" :pull="1">
+                        <el-button @click.prevent="removeRentItem(item)">删除</el-button>
+                    </el-col>
                 </el-row>
             </div>
             <el-form-item>
@@ -221,10 +227,10 @@
             return {
                 options:[
                     {
-                        value: '1',
+                        value: 1,
                         label: '%'
                     }, {
-                        value: '2',
+                        value: 2,
                         label: '元'
                     },
                 ],

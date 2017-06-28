@@ -13,6 +13,7 @@ import Role from "./components/rbac/Role.vue";
 import PurchaseContractIndex from "./components/purchaseContract/Index.vue";
 import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
 import PurchaseContractUpload from "./components/purchaseContract/Upload.vue";
+import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue";
 
 
 //出房合同
@@ -106,6 +107,7 @@ function fun(funKey) {
              { path:'/purchaseContract/add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
              { path:'/purchaseContract/edit',component:PurchaseContractAdd,name:'收房编辑',hidden:true},
              { path:'/purchaseContract/review',component:PurchaseContractAdd,name:'收房审核',hidden:true},
+             { path:'/purchaseContract/optimize',component:PurchaseContractOptimize,name:'收房优化',hidden:true},
              { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
              { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
              { path:'/saleContact/Add',component:SaleContractAdd,name:'出房录入',hidden:true}

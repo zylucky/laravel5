@@ -2,29 +2,40 @@
     <div>
         <el-row>
             <div style="margin-bottom: 50px;"></div>
-            <el-col :span="17">
+            <el-col :span="20">
                 <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" :owner="owner" v-show="stepNum==2"></add-owner>
                 <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
                 <add-tiaokuan ref="tiaokuan" v-show="stepNum==4"></add-tiaokuan>
             </el-col>
             <div style="margin-bottom:81px;"></div>
-            <el-col :span="7">
+            <el-col :span="4">
                 <div style="margin-left: 30%;">
                 <el-steps :space="100" direction="vertical" :active="stepNum">
-                    <a href="javascript:;" @click="stepNum=1"><el-step  title="房间信息"></el-step></a>
-                    <a href="javascript:;" @click="stepNum=2"><el-step  title="业主信息"></el-step></a>
-                    <a href="javascript:;" @click="stepNum=3"><el-step  title="租期信息"></el-step></a>
-                    <a href="javascript:;" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>
+                    <a href="javascript:" @click="stepNum=1"><el-step title="房间信息"></el-step></a>
+                    <a href="javascript:" @click="stepNum=2"><el-step title="业主信息"></el-step></a>
+                    <a href="javascript:" @click="stepNum=3"><el-step title="租期信息"></el-step></a>
+                    <a href="javascript:" @click="stepNum=4"><el-step title="条款信息"></el-step></a>
                 </el-steps>
-                <el-button type="primary" v-show="!review" @click="save" style="margin-top:100px;">保存</el-button>
-                <el-button type="primary" v-show="!review" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
-                    <el-button type="primary" v-show="review" @click="review" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
-                    <el-button type="warning" v-show="review" @click="notReview" style="margin-top:100px;">不通过</el-button>
-
+                <el-button type="primary" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
+                <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
+                    <el-button type="primary" v-show="reviewVisible" @click="review(1)" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
+                    <el-button type="warning" v-show="reviewVisible" @click="review(0)" style="margin-top:100px;">不通过</el-button>
                 </div>
             </el-col>
         </el-row>
+        <el-dialog title="审核批注" :visible.sync="dialogFormVisible">
+            <el-form>
+                <el-form-item label="批注" label-width="50px">
+                    <el-input type="textarea" v-model="content" auto-complete="off"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="review2">确 定</el-button>
+            </div>
+        </el-dialog>
+
 
     </div>
 </template>
@@ -39,9 +50,11 @@
             return {
                 btnType:true,
                 submsg:'提交',
-                review:false,
-                pizhu:'hello world',
-                stepNum:2,
+                shenhe:null,//审核数据
+                reviewVisible:false,//审核显示
+                content:'',//审核批注
+                dialogFormVisible:false,
+                stepNum:3,
                 id:'',
                 property:{
                     officeList: [{
@@ -137,17 +150,18 @@
         },
         methods:{
             submit(){
-                this.btnType = true;
-                this.submsg  = '已提交';
+
                 let  para = {
                     id:this.id,
-                }
+                };
                 submitPurchaseContract(para).then((res)=>{
                     if(res.data.code == 200)　{
                         this.$message({
                             message: '提交成功',
                             type: 'success'
                         });
+                        this.btnType = true;
+                        this.submsg  = '已提交';
                     }else{
                         this.$message({
                             message:res.data.msg,
@@ -183,20 +197,23 @@
                     }
                 });
             },
-            review(){
+            review(result){
+                this.dialogFormVisible = true;
                 //审核
-                let  para = {
-                    id:this.id,
-                    pizhu:this.pizhu,
-                }
-                reviewPurchaseContract(para).then((res) => {
+                this.shenhe = {
+                    hetongid:this.id,
+                    content:this.content,
+                    result:result,
+                };
+            },
+            review2(){
+                reviewPurchaseContract(this.shenhe).then((res) => {
                     if(res.data.code == 200)　{
-                        //保存完以后可以得到一个返回的ID
-                        //把数据分别赋值给三个组件的变量
                         this.$message({
                             message: '保存成功',
                             type: 'success'
                         });
+                        this.dialogFormVisible = false;
                     }else{
                         this.$message({
                             message:res.data.msg,
@@ -205,7 +222,6 @@
                     }
                 });
             },
-            notReview(){},
             //根据url得到的合同ID，来获取数据
             getPurchaseContract(id){
                 getPurchaseContractInfo(id).then((res)=>{
@@ -224,7 +240,7 @@
                 this.id = res.data.data.id;
                 this.property.officeList = res.data.data.officeList;
                 if(res.data.data.chanquanrenList.length>0){
-                    console.log(res.data.data.chanquanrenList)
+                    console.log(res.data.data.chanquanrenList);
                     this.owner.chanquanrenList = res.data.data.chanquanrenList;
                 }
                 this.owner.chengzufang = res.data.data.chengzufang;
@@ -262,7 +278,7 @@
 
             },
             disabledInput(){
-                this.review =true;
+                this.reviewVisible =true;
                 var allInputs = document.getElementsByTagName('input');
                 var textArea = document.getElementsByTagName('textarea');
                 for (let i=0; i<allInputs.length; i++){
