@@ -3,7 +3,7 @@
         <div style="margin-bottom: 50px;"></div>
         <h3>建外SOHO-A-2602</h3>
         <div style="margin-bottom: 50px;"></div>
-        <el-form :model="addDate"  label-width="50px" class="demo-dynamic">
+        <el-form :model="addDate"  label-width="70px" class="demo-dynamic">
             <!--免租期-->
             <el-form-item label="免租期" v-for="(item, index) in addDate.mianzuqiList"
                           :key="item.key"
@@ -23,6 +23,19 @@
             </el-form-item>
             <el-form-item>
                 <el-button  @click="addFreeItem">新增免租期</el-button>
+            </el-form-item>
+            <!--租期-->
+            <el-form-item label="总租期">
+                <el-date-picker
+                        v-model="addDate.startdate"
+                        type="date"
+                        placeholder="开始时间">
+                </el-date-picker>
+                <el-date-picker
+                        v-model="addDate.enddate"
+                        type="date"
+                        placeholder="结束时间">
+                </el-date-picker>
             </el-form-item>
             <!--付款方式-->
             <div  v-for="(item, index) in addDate.fukuanFangshiList">
@@ -125,7 +138,6 @@
                 addDate: {
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
-                    qianyuedate: '',//签约日期
                     mianzufangshi: [],//免租方式
                     mianzuqiList: [{
                         startdate:'',//免租开始

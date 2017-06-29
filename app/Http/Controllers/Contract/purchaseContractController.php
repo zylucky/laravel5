@@ -38,18 +38,17 @@ class purchaseContractController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     *    合同新增的时候获取条款信息
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-//        $info = Input::get();
-//        if($info) {
-//              return [
-//                        'message' => '保存成功',
-//                        'code' => 200,
-//              ];
-//        }
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/create');
+        echo $response->getBody();
 
     }
 
@@ -145,4 +144,5 @@ class purchaseContractController extends Controller
         ]);
         echo $response->getBody();
     }
+
 }

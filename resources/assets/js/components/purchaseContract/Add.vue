@@ -6,7 +6,7 @@
                 <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" :owner="owner" v-show="stepNum==2"></add-owner>
                 <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
-                <add-tiaokuan ref="tiaokuan" v-show="stepNum==4"></add-tiaokuan>
+                <add-tiaokuan ref="tiaokuan" :tiaoList="tiaoList" v-show="stepNum==4"></add-tiaokuan>
             </el-col>
             <div style="margin-bottom:81px;"></div>
             <el-col :span="4">
@@ -35,8 +35,6 @@
                 <el-button type="primary" @click="review2">确 定</el-button>
             </div>
         </el-dialog>
-
-
     </div>
 </template>
 <script>
@@ -44,7 +42,13 @@
     import AddOwner from './AddOwner.vue'
     import AddDate from './AddDate.vue'
     import AddTiaokuan from './AddTiaoKuan.vue'
-    import {addPurchaseContractInfo,reviewPurchaseContract,getPurchaseContractInfo,submitPurchaseContract} from '../../api/api';
+    import {
+        addPurchaseContractInfo,
+        reviewPurchaseContract,
+        getPurchaseContractInfo,
+        submitPurchaseContract,
+        getPurchaseContractTiaoKuan
+    } from '../../api/api';
     export default{
         data(){
             return {
@@ -54,7 +58,7 @@
                 reviewVisible:false,//审核显示
                 content:'',//审核批注
                 dialogFormVisible:false,
-                stepNum:3,
+                stepNum:4,
                 id:'',
                 property:{
                     officeList: [{
@@ -140,6 +144,8 @@
                     ],
                     checkList: []
                 },
+                tiaoList:[],
+
             }
         },
         components:{
@@ -236,11 +242,27 @@
                     }
                 })
             },
+            //获取条款信息
+            getTiaokuan(){
+                getPurchaseContractTiaoKuan().then((res)=>{
+                    for (let x in res.data.data.tiaoList){
+                        res.data.data.tiaoList[x].show = false;
+                        for (let y in res.data.data.tiaoList[x].kuanList){
+                            res.data.data.tiaoList[x].kuanList[y].show = false;
+                            for (let z in res.data.data.tiaoList[x].kuanList[y].xiangList){
+                                res.data.data.tiaoList[x].kuanList[y].xiangList[z].show = false;
+                            }
+                        }
+                    }
+                    this.tiaoList = res.data.data.tiaoList;
+                    console.log(this.tiaoList);
+
+                })
+            },
             fuzhi(res){
                 this.id = res.data.data.id;
                 this.property.officeList = res.data.data.officeList;
                 if(res.data.data.chanquanrenList.length>0){
-                    console.log(res.data.data.chanquanrenList);
                     this.owner.chanquanrenList = res.data.data.chanquanrenList;
                 }
                 this.owner.chengzufang = res.data.data.chengzufang;
@@ -275,7 +297,18 @@
                 this.addDate.buchongtiaokuan = res.data.data.buchongtiaokuan;
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
-
+                //给条款的每一条数据都添加一个属性字段show
+                for (let x in res.data.data.tiaoList){
+                    res.data.data.tiaoList[x].show = false;
+                    for (let y in res.data.data.tiaoList[x].kuanList){
+                        res.data.data.tiaoList[x].kuanList[y].show = false;
+                        for (let z in res.data.data.tiaoList[x].kuanList[y].xiangList){
+                            res.data.data.tiaoList[x].kuanList[y].xiangList[z].show = false;
+                        }
+                    }
+                }
+                this.tiaoList = res.data.data.tiaoList;
+                //console.log(this.tiaoList)
             },
             disabledInput(){
                 this.reviewVisible =true;
@@ -300,6 +333,10 @@
             //审核页面input禁用
             if(this.$route.path=='/purchaseContract/review'){
                 this.disabledInput();
+            }
+            //新增页面获取默认条款
+            if(this.$route.path=='/purchaseContract/add'){
+                this.getTiaokuan();
             }
         },
 

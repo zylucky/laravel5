@@ -32,8 +32,58 @@
                 <el-date-picker
                         v-model="addDate.enddate"
                         type="date"
-                        placeholder="结束时间">
+                        placeholder="结束时间"
+                        @change="zqchange()"
+                >
                 </el-date-picker>
+            </el-form-item>
+            <!--租金-->
+            <div v-for="(item, index) in addDate.zujinList">
+                <el-row>
+                    <el-col :span="9" style="width:550px;">
+
+                        <el-form-item :label="'租期' + index"
+                                      :key="item.key"
+                                      :prop="'zujinList.' + index + '.value'"
+                        >
+                            <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate">
+                            </el-date-picker>
+                            <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
+                            </el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="2" :pull="1" style="width: 130px;margin-left:-20px;">
+                        <el-form-item label="月租金" label-width="55px">
+                            <el-input v-model="item.yuezujin" class="pulll10" placeholder="租金"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="2" :pull="1" style="width: 94px;margin-left:-10px;">
+                        <el-form-item label="单价" label-width="40px">
+                            <el-input v-model="item.price" class="pulll10" placeholder="单价"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="3" :pull="1" style="margin-left:-10px;">
+                        <el-form-item label="递增方式" label-width="70px">
+                            <el-input v-model="item.dizengliang" class="pulll10" placeholder=""></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="2"  style="width: 70px;margin-left:-50px;">
+                        <el-select v-model="addDate.zujinList[index].dizengfangshi"   placeholder="">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="2" style="margin-left:5px;">
+                        <el-button @click.prevent="removeRentItem(item)">删除</el-button>
+                    </el-col>
+                </el-row>
+            </div>
+            <el-form-item>
+                <el-button  @click="addRentItem">新增租期</el-button>
             </el-form-item>
             <!--付款方式-->
             <div  v-for="(item, index) in addDate.fukuanFangshiList">
@@ -66,54 +116,6 @@
             </div>
             <el-form-item>
                 <el-button  @click="addPayItem">新增付款方式</el-button>
-            </el-form-item>
-            <!--租金-->
-            <div v-for="(item, index) in addDate.zujinList">
-                <el-row>
-                    <el-col :span="9" style="width:550px;">
-
-                        <el-form-item :label="'租期' + index"
-                                      :key="item.key"
-                                      :prop="'zujinList.' + index + '.value'"
-                        >
-                            <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate">
-                            </el-date-picker>
-                            <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
-                            </el-date-picker>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="2" :pull="1" style="width: 130px;margin-left:-20px;">
-                        <el-form-item label="月租金" label-width="55px">
-                            <el-input v-model="item.yuezujin" style="margin-left:-10px;" placeholder="租金"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="2" :pull="1" style="width: 94px;margin-left:-10px;">
-                        <el-form-item label="单价" label-width="40px">
-                            <el-input v-model="item.price" style="margin-left:-10px;" placeholder="单价"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="3" :pull="1">
-                        <el-form-item label="递增方式" label-width="70px">
-                            <el-input v-model="item.dizengliang" placeholder=""></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="2"  style="width: 70px;">
-                        <el-select v-model="addDate.zujinList[index].dizengfangshi" placeholder="">
-                            <el-option
-                                    v-for="item in options"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-col>
-                    <el-col :span="2" :pull="1">
-                        <el-button @click.prevent="removeRentItem(item)">删除</el-button>
-                    </el-col>
-                </el-row>
-            </div>
-            <el-form-item>
-                <el-button  @click="addRentItem">新增租期</el-button>
             </el-form-item>
 
             <!--押金 总应付租金 合同佣金-->
@@ -219,6 +221,11 @@
     </el-row>
 
 </template>
+<style>
+    .pulll10{
+        margin-left: -10px;
+    }
+</style>
 <script>
     import ElCol from "element-ui/packages/col/src/col";
     export default {
@@ -239,6 +246,15 @@
         props:['addDate'],
         methods: {
             onSubmit() {
+
+            },
+            zqchange(){
+                //时间一改变，我就对zujinList的日期进行填充
+                //先获取租期的开始和结束时间
+                var d1=new Date(this.addDate.startdate);
+                d1.setFullYear(d1.getFullYear()+1);
+                d1.setDate(d1.getDate()-1);
+                alert(d1.toLocaleString());
 
             },
             //增加免租期

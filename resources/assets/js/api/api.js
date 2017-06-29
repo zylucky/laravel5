@@ -49,6 +49,7 @@ export const reviewPurchaseContract= params => { return axios.post(`${base}/purc
 export const getPurchaseContractList = params => { return axios.get(`${base}/purchaseContract`, { params: params }); };
 export const getPurchaseContractInfo = params => { return axios.get(`${base}/purchaseContract/`+params.id, {}); };
 export const submitPurchaseContract = params => { return axios.get(`${base}/purchaseContract/`+params.id+'/edit', {}); };
+export const getPurchaseContractTiaoKuan = params => { return axios.get(`${base}/purchaseContract/create`, {}); };
 
 
 //获取楼盘，楼栋，房间号
