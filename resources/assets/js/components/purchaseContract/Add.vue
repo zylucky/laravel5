@@ -179,13 +179,16 @@
             save() {
                 this.btnType = false;
                 this.submsg  = '提交';
-                    var child_property = this.$refs.property.property;
-                    var child_owner  = this.$refs.owner.owner;
-                    var child_date = this.$refs.date.addDate;
+                    var child_property = this.$refs.property.property;//
+                    var child_owner  = this.$refs.owner.owner;//业主信息
+                    var child_date = this.$refs.date.addDate;//日期
+                    var tiaokuan = {
+                        tiaoList:this.$refs.tiaokuan.tiaoList,
+                    };//条款
                     var id = {
                        id: this.id
                     };
-                    let para = Object.assign({}, child_property,child_owner,child_date,id);
+                    let para = Object.assign({}, child_property,child_owner,child_date,id,tiaokuan);
                     addPurchaseContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         //保存完以后可以得到一个返回的ID
@@ -308,7 +311,6 @@
                     }
                 }
                 this.tiaoList = res.data.data.tiaoList;
-                //console.log(this.tiaoList)
             },
             disabledInput(){
                 this.reviewVisible =true;

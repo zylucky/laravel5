@@ -4,6 +4,136 @@
         <h3>建外SOHO-A-2602</h3>
         <div style="margin-bottom: 50px;"></div>
         <el-form :model="addDate"  label-width="70px" class="demo-dynamic">
+            <el-form-item label="业主类型">
+                <el-radio-group v-model="owner.yezhuleixing">
+                    <el-radio :label="1">个人</el-radio>
+                    <el-radio :label="2">公司</el-radio>
+                </el-radio-group>
+            </el-form-item>
+
+            <div v-if="owner.yezhuleixing==1">
+                <div v-for="(item, index) in owner.chanquanrenList">
+                    <el-row>
+                        <el-col :span="8">
+                            <el-form-item label="产权人" >
+                                <el-input v-model="owner.chanquanrenList[index].name"></el-input>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="10">
+                            <el-form-item label="身份证号" >
+                                <el-input v-model="owner.chanquanrenList[index].zhengjian"></el-input>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="8">
+                            <el-form-item label="联系方式" >
+                                <el-input v-model="owner.chanquanrenList[index].tel"></el-input>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-form-item label="性别">
+                                <el-radio-group v-model="owner.chanquanrenList[index].sex">
+                                    <el-radio :label="1">男</el-radio>
+                                    <el-radio :label="2">女</el-radio>
+                                </el-radio-group>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="2">
+                            <el-button style="margin-left:6px;" @click.prevent="removeRentItem(item)">删除</el-button>
+                        </el-col>
+                    </el-row>
+                </div>
+                <el-form-item>
+                    <el-button  @click="addRentItem">新增产权人</el-button>
+                </el-form-item>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="代理人" >
+                            <el-input v-model="owner.dailirenName"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="10">
+                        <el-form-item label="身份证号" >
+                            <el-input v-model="owner.dailirenId"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="联系方式" >
+                            <el-input v-model="owner.dailirenTel"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="性别">
+                            <el-radio-group v-model="owner.dailirenSex">
+                                <el-radio :label="1">男</el-radio>
+                                <el-radio :label="2">女</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+            </div>
+            <div v-if="owner.yezhuleixing==2">
+                <el-form-item label="公司名称" >
+                    <el-input v-model="owner.chanquanrenList[0].name"></el-input>
+                </el-form-item>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="法人" >
+                            <el-input v-model="owner.chanquanrenList[0].faren"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="10">
+                        <el-form-item label="身份证号" >
+                            <el-input v-model="owner.chanquanrenList[0].zhengjian"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="联系方式" >
+                            <el-input v-model="owner.chanquanrenList[0].tel"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="性别">
+                            <el-radio-group v-model="owner.chanquanrenList[0].sex">
+                                <el-radio :label="1">男</el-radio>
+                                <el-radio :label="2">女</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="签约人" >
+                            <el-input v-model="owner.qianyuerenName"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="10">
+                        <el-form-item label="身份证号" >
+                            <el-input v-model="owner.qianyuerenId"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="联系方式" >
+                            <el-input v-model="owner.qianyuerenTel"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="性别">
+                            <el-radio-group v-model="owner.qianyuerenSex">
+                                <el-radio :label="1">男</el-radio>
+                                <el-radio :label="2">女</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+            </div>
             <!--免租期-->
             <el-form-item label="免租期" v-for="(item, index) in addDate.mianzuqiList"
                           :key="item.key"
@@ -135,6 +265,36 @@
                         label: '元'
                     },
                 ],
+                owner:{
+                    chengzufang:'华溯商贸',
+                    jujianfang:'',
+                    yezhuleixing:1,
+                    //产权人
+                    chanquanrenList:[
+                        {
+                            faren:'',
+                            name:'',
+                            zhengjian:'',
+                            tel:'',
+                            sex:1,
+                            hetongid:null,
+                        },
+                    ],
+                    //收款人
+                    shoukuanren:'彭亮',
+                    zhanghao:'1234 4567 7891 0123',
+                    kaihuhang:'',
+                    //代理人
+                    dailirenName:'李朝晖',
+                    dailirenTel:'18511909125',
+                    dailirenSex:1,
+                    dailirenId:'37158119900124317X',
+                    //签约人
+                    qianyuerenName:'lizhaohui',
+                    qianyuerenTel:'18511909124',
+                    qianyuerenSex:1,
+                    qianyuerenId:'37158119900124317X',
+                },
                 addDate: {
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
@@ -216,6 +376,23 @@
                 var index = this.addDate.fukuanFangshiList.indexOf(item)
                 if (index !== -1) {
                     this.addDate.fukuanFangshiList.splice(index, 1)
+                }
+            },
+            //新增产权人
+            addRentItem() {
+                this.owner.chanquanrenList.push({
+                    Name:'',
+                    Id:'',
+                    Tel:'',
+                    Sex:null,
+                });
+            },
+            //移除产权人
+            removeRentItem(item) {
+                this.owner.chanquanrenList.pop();
+                var index = this.owner.chanquanrenList.indexOf(item)
+                if (index !== -1) {
+                    this.owner.chanquanrenList.splice(index, 1)
                 }
             },
             cancel(){

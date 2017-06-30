@@ -91,6 +91,7 @@
     }
 </style>
 <script>
+    import {editPurchaseContractTiaoKuan} from '../../api/api';
     export default{
         data(){
             return{
@@ -107,11 +108,15 @@
             save(tiao){
                 //发送条款的ID到后端
                 console.log(tiao)
+                editPurchaseContractTiaoKuan(tiao).then((res)=>{
+
+                })
             }
 
         },
         mounted(){
             //console.log(this.tiaoList)
+
         }
 
     }

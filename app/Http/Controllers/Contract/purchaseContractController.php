@@ -144,5 +144,24 @@ class purchaseContractController extends Controller
         ]);
         echo $response->getBody();
     }
+    /*
+     * 修改合同条款api/contract/hetong/update/tiao
+     * */
+    public function editTiaoKuan(Request $request){
+        dd();
+        $data = [
+            'id'=>$request->params->id,
+        ];
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+
+        $response = $client->request('POST', '/api/contract/sf/shenhe', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
 
 }
