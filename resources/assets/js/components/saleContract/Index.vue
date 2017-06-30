@@ -23,14 +23,13 @@
             </el-table-column>
             <el-table-column prop="officeList[0].fanghao" label="房间号"  sortable>
             </el-table-column>
-            <el-table-column prop="zhuangtai" label="状态" :formatter="formatStatus"  sortable>
+            <el-table-column prop="zhuangtai" label="状态"  sortable>
             </el-table-column>
             <el-table-column prop="createtime" label="签约日" :formatter="changeDate"  sortable>
             </el-table-column>
-            <el-table-column label="操作" width="200">
+            <el-table-column label="操作" width="150">
                 <template scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                    <el-button size="small" @click="handleReview(scope.$index, scope.row)">审核</el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
                 </template>
             </el-table-column>
@@ -42,8 +41,8 @@
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
                     :current-page="currentPage"
-                    :page-sizes="pageSizes"
-                    :page-size="pageSize"
+                    :page-sizes="[10, 20, 50, 100]"
+                    :page-size="100"
                     layout="total, sizes, prev, pager, next, jumper"
                     :total=total
                     style="float:right"
@@ -53,7 +52,7 @@
     </el-row>
 </template>
 <script>
-    import {getChufangPurchaseContractList,removeChufangContract} from '../../api/api.js';
+    import {getPurchaseContractList} from '../../api/api.js';
     export default {
         data() {
             return {
@@ -62,48 +61,19 @@
                     region: ''
                 },
                 //分页类数据
-                total:100,
+                total:10000,
                 currentPage:0,
                 pageSize:10,
-                pageSizes:[10, 20, 30, 40, 50, 100],
                 lists:[],
                 listLoading: false,
                 sels: [],//列表选中列
             }
         },
         methods: {
-            //搜索
-            search(){
-
-            },
-            getUsers() {
-                let para = {
-                    page: this.page,
-                    pageSize: this.pageSize,
-                    name: this.filters.name
-                };
-                this.listLoading = true;
-                getUserListPage(para).then((res) => {
-                    this.total = res.data.total;
-                    this.users = res.data.data;
-                    this.listLoading = false;
-                });
-            },
             //新增
             addContract() {
                 var _this = this;
                     _this.$router.push("/saleContact/Add");
-            },
-            formatStatus(row, column){
-                let status = [];
-                status[0] = '已创建';
-                status[1] = '待审核';
-                status[2] = '审核中';
-                status[3] = '待打印';
-                status[4] = '审核拒绝';
-                status[5] = '待确认';
-                status[6] = '履约中';
-                return status[row.zhuangtai];
             },
             //时间戳转日期格式
             changeDate(row, column){
@@ -114,12 +84,10 @@
             //获取合同列表
             purchaseContractList() {
                 let para = {
-                    pn: this.page,
-                    cnt: this.pageSize,
                     name:'',
                 }
                 this.listLoading = true;
-                getChufangPurchaseContractList(para).then((res) => {
+                getPurchaseContractList(para).then((res) => {
                     //console.log(res.data.data)
                     this.lists = res.data.data;
                     this.listLoading = false;
@@ -128,44 +96,22 @@
             },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
-                this.purchaseContractList();
             },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
-                this.purchaseContractList();
             },
             selsChange: function (sels) {
                 this.sels = sels;
             },
             uploadImg(){
                 var _this = this;
-                _this.$router.push('/saleContact/upload');
+                _this.$router.push('/saleContract/upload');
             },
-            handleEdit(index,row){
-                //
-                //var _this = this;
-                this.$router.push('/saleContact/add?id='+row.id);
-                //
-                // this.$router.push('/purchaseContact/add?id='+row.id);
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
             },
-            handleDel(index,row){
-                this.$confirm('确认删除该记录吗？','提示',{
-                    type:'warning'
-                }).then(()=>{
-                    this.listLoading = true;
-                    let para = { id: row.id};
-                    removeChufangContract(para).then((res) =>
-                    {
-                        this.listLoading = false;
-                        this.message({
-                            message: '删除成功',
-                            type: 'success'
-                        });
-                        this.getUsers();
-                    });
-                }).catch(() => {
-
-                });
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
             }
         },
         mounted(){

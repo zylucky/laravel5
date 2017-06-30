@@ -20,11 +20,9 @@
                                 <el-col :span="8">
                                     <el-form-item label="楼盘" >
                                         <el-select
-                                                v-model="property.officeList[index].loupanName"
+                                                v-model="property.officeList[index].loupanOmcId"
                                                 filterable
-                                                default-first-option
                                                 remote
-                                                @change="change1"
                                                 placeholder="楼盘"
                                                 :remote-method="remoteMethod1"
                                                 :loading="loupanloading">
@@ -32,7 +30,7 @@
                                                     v-for="item in options1"
                                                     :key="item.value"
                                                     :label="item.label"
-                                                    :value="item.label">
+                                                    :value="item.value">
                                             </el-option>
                                         </el-select>
                                     </el-form-item>
@@ -40,11 +38,9 @@
                                 <el-col :span="8">
                                     <el-form-item label="楼栋" >
                                         <el-select
-                                                v-model="property.officeList[index].loudongName"
+                                                v-model="property.officeList[index].loudongOmcId"
                                                 filterable
-                                                default-first-option
                                                 remote
-                                                @change="change2"
                                                 placeholder="楼栋"
                                                 :remote-method="remoteMethod2"
                                                 :loading="loupanloading">
@@ -52,7 +48,7 @@
                                                     v-for="item in options2"
                                                     :key="item.value"
                                                     :label="item.label"
-                                                    :value="item.label">
+                                                    :value="item.value">
                                             </el-option>
                                         </el-select>
                                     </el-form-item>
@@ -60,11 +56,10 @@
                                 <el-col :span="8">
                                     <el-form-item label="房间号" >
                                         <el-select
-                                                v-model="property.officeList[index].fanghao"
+                                                v-model="property.officeList[index].omcId"
                                                 filterable
-                                                default-first-option
                                                 remote
-                                                @change="change3"
+                                                @change="change"
                                                 placeholder="房间号"
                                                 :remote-method="remoteMethod3"
                                                 :loading="fanghaoloading">
@@ -72,7 +67,7 @@
                                                     v-for="item in options3"
                                                     :key="item.value"
                                                     :label="item.label"
-                                                    :value="item.label">
+                                                    :value="item.value">
                                             </el-option>
                                         </el-select>
                                     </el-form-item>
@@ -97,7 +92,7 @@
                                 </el-col>
                             </el-row>
                             <el-form-item label="房屋类型">
-                                <el-select v-model="property.officeList[index].leixing" clearable placeholder="请选择">
+                                <el-select v-model="property.officeList[index].leixing" placeholder="请选择">
                                     <el-option
                                             v-for="item in options"
                                             :key="item.value"
@@ -122,7 +117,6 @@
         components:{
 
         },
-        props:['property'],
         data() {
             return {
                 purchaseContract:{
@@ -147,21 +141,36 @@
                 //房间类型
                 options: [
                     {
-                        value: 1,
+                        value: '1',
                         label: '公寓'
                     }, {
-                        value: 2,
+                        value: '2',
                         label: '写字楼'
                     }, {
-                        value: 3,
+                        value: '3',
                         label: '商铺'
                     }, {
-                        value: 4,
+                        value: '4',
                         label: '住宅'
                     }
                     ],
                 //房源数据初始化
-
+                property:{
+                    officeList: [{
+                        omcId:null,
+                        loupanOmcId:null,
+                        loudongOmcId:null,
+                        loupanName:'',
+                        loudongName: '',
+                        fanghao: '',
+                        weizhi: '东区',
+                        chanquanzhenghao: '8345',
+                        jianzhumianji: '83.5',
+                        qianyuemianji: '83.5',
+                        leixing: '',
+                        //hetongid:0
+                    }],
+                },
                 editableTabsValue2: '1',
                 editableTabs2: [{
                     title: '房间1',
@@ -189,20 +198,19 @@
                     this.list = this.estate.map((item,index) => {
                         return { value: index, label: item };
                     });
-                    if (query !== '') {
-                        this.loupanloading = true;
-                        setTimeout(() => {
-                            this.loupanloading = false;
-                            this.options1 = this.list.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
-                    } else {
-                        this.options1 = [];
-                    }
                 });
-
+                if (query !== '') {
+                    this.loupanloading = true;
+                    setTimeout(() => {
+                        this.loupanloading = false;
+                        this.options1 = this.list.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
+                    }, 200);
+                } else {
+                    this.options1 = [];
+                }
             },
             //获取楼栋
             remoteMethod2(query) {
@@ -221,20 +229,19 @@
                     this.list2 = this.building.map((item,index) => {
                         return { value: index, label: item };
                     });
-                    if (query !== '') {
-                        this.loupanloading = true;
-                        setTimeout(() => {
-                            this.loupanloading = false;
-                            this.options2 = this.list2.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
-                    } else {
-                        this.options2 = [];
-                    }
                 });
-
+                if (query !== '') {
+                    this.loupanloading = true;
+                    setTimeout(() => {
+                        this.loupanloading = false;
+                        this.options2 = this.list2.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
+                    }, 200);
+                } else {
+                    this.options2 = [];
+                }
             },
             //获取房号
             remoteMethod3(query) {
@@ -255,43 +262,36 @@
                     this.list3 = this.house.map((item,index) => {
                         return { value: index, label: item };
                     });
-                    if (query !== '') {
-                        this.fanghaoloading = true;
-                        setTimeout(() => {
-                            this.fanghaoloading = false;
-                            this.options3 = this.list3.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
-                    } else {
-                        this.options3 = [];
-                    }
                 });
-
+                if (query !== '') {
+                    this.fanghaoloading = true;
+                    setTimeout(() => {
+                        this.fanghaoloading = false;
+                        this.options3 = this.list3.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
+                    }, 200);
+                } else {
+                    this.options3 = [];
+                }
             },
             //得到房间号以后，提取OMC的对应信息
-            change1(){
-                //楼盘
+            change(){
+                //给楼盘名称赋值
                 for (var x in this.options1){
-                    if(this.options1[x].label==this.property.officeList[this.tabIndex-1].loupanName){
-                        this.property.officeList[this.tabIndex-1].loupanOmcId=this.options1[x].value;
+                    if(this.options1[x].value==this.property.officeList[this.tabIndex-1].omcId){
+                        this.property.officeList[this.tabIndex-1].loupanName=this.options1[x].label;
                     }
                 }
-            },
-            change2(){
-                //楼栋
                 for (var x in this.options2){
-                    if(this.options2[x].value==this.property.officeList[this.tabIndex-1].loudongName){
-                        this.property.officeList[this.tabIndex-1].loudongOmcId=this.options2[x].value;
+                    if(this.options2[x].value==this.property.officeList[this.tabIndex-1].loupanOmcId){
+                        this.property.officeList[this.tabIndex-1].loudongName=this.options2[x].label;
                     }
                 }
-            },
-            change3(){
-                //房号
                 for (var x in this.options3){
-                    if(this.options3[x].label==this.property.officeList[this.tabIndex-1].fanghao){
-                        this.property.officeList[this.tabIndex-1].omcId=this.options3[x].value;
+                    if(this.options3[x].value==this.property.officeList[this.tabIndex-1].loudongOmcId){
+                        this.property.officeList[this.tabIndex-1].fanghao=this.options3[x].label;
                     }
                 }
                 for (var x in this.houseData){
@@ -300,11 +300,8 @@
                         this.property.officeList[this.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
                     }
                 }
-//                console.log(
-//                    '楼盘'+this.property.officeList[this.tabIndex-1].loupanOmcId
-//                    +'楼栋'+this.property.officeList[this.tabIndex-1].loudongOmcId
-//                    +'房号'+this.property.officeList[this.tabIndex-1].omcId
-//                )
+
+
             },
             addTab(targetName) {
                 let newTabName = ++this.tabIndex + '';
@@ -346,9 +343,6 @@
                 this.editableTabsValue2 = activeName;
                 this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
             }
-        },
-        mounted() {
-
         }
 
     }

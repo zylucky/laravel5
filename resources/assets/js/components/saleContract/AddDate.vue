@@ -238,7 +238,7 @@
                 addDate: {
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
-                    shoufangDate: '',//收房日期
+                    shoufangdate: '',//收房日期
                     qianyueDate: '',//签约日期
                     mianzufangshi: [],//免租方式
                     mianzuqiList: [{

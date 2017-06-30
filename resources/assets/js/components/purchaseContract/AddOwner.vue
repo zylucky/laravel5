@@ -23,11 +23,6 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="10">
-                    <el-form-item label="开户行" >
-                        <el-input v-model="owner.kaihuhang"></el-input>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="8">
                     <el-form-item label="账号" >
                         <el-input v-model="owner.zhanghao"></el-input>
                     </el-form-item>
@@ -45,7 +40,7 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="产权人" >
-                            <el-input v-model="owner.chanquanrenList[index].name"></el-input>
+                            <el-input v-model="owner.chanquanrenList[index].Name"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="10">
@@ -57,12 +52,12 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="联系方式" >
-                            <el-input v-model="owner.chanquanrenList[index].tel"></el-input>
+                            <el-input v-model="owner.chanquanrenList[index].Tel"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="性别">
-                            <el-radio-group v-model="owner.chanquanrenList[index].sex">
+                            <el-radio-group v-model="owner.chanquanrenList[index].Sex">
                                 <el-radio :label="1">男</el-radio>
                                 <el-radio :label="2">女</el-radio>
                             </el-radio-group>
@@ -106,12 +101,12 @@
             </div>
             <div v-if="owner.yezhuleixing==2">
                 <el-form-item label="公司名称" >
-                    <el-input v-model="owner.chanquanrenList[0].name"></el-input>
+                    <el-input v-model="owner.chanquanrenList[0].Name"></el-input>
                 </el-form-item>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="法人" >
-                            <el-input v-model="owner.chanquanrenList[0].faren"></el-input>
+                            <el-input v-model="owner.chanquanrenList[0].Faren"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="10">
@@ -123,12 +118,12 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="联系方式" >
-                            <el-input v-model="owner.chanquanrenList[0].tel"></el-input>
+                            <el-input v-model="owner.chanquanrenList[0].Tel"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="性别">
-                            <el-radio-group v-model="owner.chanquanrenList[0].sex">
+                            <el-radio-group v-model="owner.chanquanrenList[0].Sex">
                                 <el-radio :label="1">男</el-radio>
                                 <el-radio :label="2">女</el-radio>
                             </el-radio-group>
@@ -174,11 +169,37 @@
         data(){
             return {
                 labelPosition:'right',
-
+                owner:{
+                    chengzufang:'华溯商贸',
+                    jujianfang:'华亮房产',
+                    yezhuleixing:1,
+                    //产权人
+                    chanquanrenList:[
+                        {
+                            Faren:'李岳群',
+                            Name:'北京大象群文化传媒有限公司',
+                            zhengjian:'37158119900124317X',
+                            Tel:'18511909124',
+                            Sex:1,
+                        },
+                    ],
+                    //收款人
+                    shoukuanren:'彭亮',
+                    zhanghao:'1234 4567 7891 0123',
+                    //代理人
+                    dailirenName:'李朝晖',
+                    dailirenTel:'18511909125',
+                    dailirenSex:1,
+                    dailirenId:'37158119900124317X',
+                    //签约人
+                    qianyuerenName:'',
+                    qianyuerenTel:'',
+                    qianyuerenSex:'',
+                    qianyuerenId:'',
+                }
 
             }
         },
-        props:['owner'],
         methods: {
             //新增产权人
             addRentItem() {
@@ -186,7 +207,7 @@
                     Name:'',
                     Id:'',
                     Tel:'',
-                    Sex:null,
+                    Sex:0,
                 });
             },
             //移除产权人
