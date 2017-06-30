@@ -20,6 +20,20 @@ export const getTotalRoleList = params => { return axios.get(`${base}/role/creat
 export const getRoleList = params => { return axios.get(`${base}/role/`+params.id, { params: params }); };
 export const setRoleList = params => { return axios.post(`${base}/user/role/`+params.id, { params: params }); };
 
+export const getBrokerCompanyListPage = params => { return axios.get(`${base}/brokerCompany`, { params: params }); };
+export const removeBrokerCompany = params => { return axios.delete(`${base}/brokerCompany/`+params.id, {}); };
+export const addBrokerCompany = params => { return axios.post(`${base}/brokerCompany`, { params: params }); };
+export const editBrokerCompany = params => { return axios.put(`${base}/brokerCompany/`+params.tQdCompayId, { params: params }); };
+export const batchRemoveBrokerCompany = params => { return axios.post(`${base}/brokerCompany/batchRemoveBrokerCompany`, { params: params }); };
+
+export const getBrokerCompanyUserListPage = params => { return axios.get(`${base}/brokerCompanyUser`, { params: params }); };
+export const removeBrokerCompanyUser = params => { return axios.delete(`${base}/brokerCompanyUser/`+params.id, {}); };
+export const addBrokerCompanyUser = params => { return axios.post(`${base}/brokerCompanyUser`, { params: params }); };
+export const editBrokerCompanyUser = params => { return axios.put(`${base}/brokerCompanyUser/`+params.id, { params: params }); };
+export const batchRemoveBrokerCompanyUser = params => { return axios.post(`${base}/brokerCompanyUser/batchRemoveBKUser`, { params: params }); };
+export const getbkNameList = params =>{ return axios.post(`${base}/brokerCompanyUser/getbkNameList`, { params: params }); };
+export const checkbkNameList = params =>{ return axios.post(`${base}/brokerCompany/checkbkNameList`, { params: params }); };
+export const getUserById = params =>{ return axios.post(`${base}/brokerCompany/getUserById`, { params: params }); };
 
 //查系统所有的权限
 export const getPermissionListPage = params => { return axios.get(`${base}/permission/getAll`, { params: params }); };
@@ -32,6 +46,17 @@ export const setPermissionList = params => { return axios.post(`${base}/permissi
 //合同信息
 export const addPurchaseContractInfo= params => { return axios.post(`${base}/purchaseContract`, { params: params }); };
 export const getPurchaseContractList = params => { return axios.get(`${base}/purchaseContract`, { params: params }); };
+export const getPurchaseContractInfo = params => { return axios.get(`${base}/purchaseContract/`+params.id, {}); };
+export const submitPurchaseContract = params => { return axios.get(`${base}/purchaseContract/`+params.id+'/edit', {}); };
+
+//出房合同
+//合同信息
+export const addChufangPurchaseContractInfo= params => { return axios.post(`${base}/saleContract`, { params: params }); };
+export const getChufangPurchaseContractList = params => { return axios.get(`${base}/saleContract`, { params: params }); };
+export const getChufangPurchaseContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
+export const submitSaleContract = params => {return axios.get(`${base}/saleContract/`+params.id+'/edit', {}); };
+
+export const removeChufangContract = params => { return axios.post(`${base}/saleContract/delete`, { params: params }); };
 
 
 //获取楼盘，楼栋，房间号
