@@ -13,11 +13,15 @@ import Role from "./components/rbac/Role.vue";
 import PurchaseContractIndex from "./components/purchaseContract/Index.vue";
 import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
 import PurchaseContractUpload from "./components/purchaseContract/Upload.vue";
+import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue";
 
 
 //出房合同
 import SaleContractIndex from "./components/saleContract/Index.vue";
 import SaleContractAdd from "./components/saleContract/Add.vue";
+//渠道公司
+import BrokerCompany from "./components/brokerCompany/Index.vue";
+import BrokerCompanyUser from "./components/brokerCompany/UserList.vue";
 
 
 var fk_permission ;
@@ -37,6 +41,16 @@ fun('contract')==true? fk_contract = false:fk_contract = true;
 
 var fk_contract_purchase ;
 fun('purchaseContract')==true? fk_contract_purchase = false:fk_contract_purchase = true;
+
+var fk_brokerCompany ;
+fun('brokerCompany')==true? fk_brokerCompany = false:fk_brokerCompany = true;
+
+var fk_brokerCompanyList ;
+fun('brokerCompanyList')==true? fk_brokerCompanyList = false:fk_brokerCompanyList = true;
+
+var fk_brokerCompanyUserList ;
+fun('brokerCompanyUserList')==true? fk_brokerCompanyUserList = false:fk_brokerCompanyUserList = true;
+
 
 
 function fun(funKey) {
@@ -89,11 +103,27 @@ function fun(funKey) {
          iconCls: 'el-icon-document',//图标样式class
          hidden:fk_contract,
          children: [
-             { path:'/purchaseContact', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
-             { path:'/purchaseContact/Add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
-             { path:'/purchaseContact/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
+             { path:'/purchaseContract', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
+             { path:'/purchaseContract/add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
+             { path:'/purchaseContract/edit',component:PurchaseContractAdd,name:'收房编辑',hidden:true},
+             { path:'/purchaseContract/review',component:PurchaseContractAdd,name:'收房审核',hidden:true},
+             { path:'/purchaseContract/optimize',component:PurchaseContractOptimize,name:'收房优化',hidden:true},
+             { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
              { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
              { path:'/saleContact/Add',component:SaleContractAdd,name:'出房录入',hidden:true}
+
+         ]
+     },
+     {
+         path: '/',
+         component: navigation,
+         name: '基础数据管理',
+         iconCls: 'el-icon-document',//图标样式class
+         hidden:fk_brokerCompany,
+         children: [
+             { path:'/brokerCompany', component: BrokerCompany, name: '渠道公司维护',hidden:fk_brokerCompanyList},
+             { path:'/brokerCompanyUserList',component:BrokerCompanyUser,name:'渠道公司人员维护',hidden:fk_brokerCompanyUserList},
+
 
          ]
      },

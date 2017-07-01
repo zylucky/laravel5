@@ -7,17 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
-class purchaseContractController extends Controller
+class saleContractController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
-    public function index()
-    {
+    //出房合同的列表页的数据
+    public function index(){
         $pn = Input::get('pn');
         $cnt = Input::get('cnt');
         if(!$pn){
@@ -27,29 +25,13 @@ class purchaseContractController extends Controller
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-            $response = $client->request('GET', '/api/contract/sf/list',[
-                'query'=>[
-                    'pn'=>$pn,
-                    'cnt'=>$cnt,
-                    ]
-            ]);
-            echo $response->getBody();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *    合同新增的时候获取条款信息
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+        $response = $client->request('GET', '/api/contract/xs/list',[
+            'query'=>[
+                'pn'=>$pn,
+                'cnt'=>$cnt,
+            ]
         ]);
-        $response = $client->request('GET', '/api/contract/sf/create');
         echo $response->getBody();
-
     }
 
     /**
@@ -58,6 +40,7 @@ class purchaseContractController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //出房合同点新增后保存数据的方法
     public function store(Request $request)
     {
         //return $request->params;
@@ -67,11 +50,12 @@ class purchaseContractController extends Controller
             'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $response = $client->request('POST', '/api/contract/sf/save', [
+        $response = $client->request('POST', '/api/contract/xs/save', [
             'json' => $request->params
         ]);
         echo $response->getBody();
     }
+
 
     /**
      * Display the specified resource.
@@ -79,13 +63,14 @@ class purchaseContractController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //出房合同点编辑后显示数据的方法
     public function show($id)
     {
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/contract/sf/'.$id);
+        $response = $client->request('GET', '/api/contract/xs/save'.$id);
         echo $response->getBody();
     }
 
@@ -95,14 +80,17 @@ class purchaseContractController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    /*edit --->编辑*/
+    //在这里是提交那个按钮的处理
     public function edit($id)
     {
-        $client = new Client ([
+        dd(2222);
+        /*$client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+            'timeout' => 2.0,
         ]);
-        $response = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
-        echo $response->getBody();
+        $response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
+        echo $response->getBody();*/
     }
 
     /**
@@ -110,12 +98,19 @@ class purchaseContractController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     *
      * @return \Illuminate\Http\Response
      */
+    //出房合同点击编辑后保存的方法
     public function update(Request $request, $id)
     {
-
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/update'.$id);
+        echo $response->getBody();
+        /*$info = $request->params;
+        dd($info);*/
     }
 
     /**
@@ -128,40 +123,20 @@ class purchaseContractController extends Controller
     {
         //
     }
-    /*
-     * 合同审核
-     *
-     * */
-    public function review(Request $request){
+
+    //删除
+    public function delete(){
         $client = new Client([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-
-        $response = $client->request('POST', '/api/contract/sf/shenhe', [
+        $response = $client->request('POST', '/api/contract/xs/delete', [
             'json' => $request->params
         ]);
         echo $response->getBody();
     }
-    /*
-     * 修改合同条款api/contract/hetong/update/tiao
-     * */
-    public function editTiaoKuan(Request $request){
-        dd();
-        $data = [
-            'id'=>$request->params->id,
-        ];
-        $client = new Client([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
-        ]);
 
-        $response = $client->request('POST', '/api/contract/sf/shenhe', [
-            'json' => $request->params
-        ]);
-        echo $response->getBody();
-    }
+
 
 }

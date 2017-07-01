@@ -7,9 +7,10 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class Controller extends BaseController
+class IndexController extends BaseController
 {
-    //public $base_url = 'http://192.168.0.163:8557';
-    public $base_url = 'http://121.196.195.129:8557';
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public function index(){
+//        echo "欢迎登陆";
+//        echo 11;
+    }
 }
