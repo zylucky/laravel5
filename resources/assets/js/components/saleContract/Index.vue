@@ -15,7 +15,7 @@
         <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="selection" width="55">
             </el-table-column>
-            <el-table-column type="index" width="60">
+            <el-table-column type="index" label="id" width="60">
             </el-table-column>
             <el-table-column prop="officeList[0].loupanName" label="楼盘"  sortable>
             </el-table-column>
@@ -27,10 +27,11 @@
             </el-table-column>
             <el-table-column prop="createtime" label="签约日" :formatter="changeDate"  sortable>
             </el-table-column>
-            <el-table-column label="操作" width="200">
+            <el-table-column label="操作" width="300">
                 <template scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
                     <el-button size="small" @click="handleReview(scope.$index, scope.row)">审核</el-button>
+                    <el-button size="small" @click="handlePrint(scope.$index, scope.row)">打印</el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
                 </template>
             </el-table-column>
@@ -53,7 +54,7 @@
     </el-row>
 </template>
 <script>
-    import {getChufangPurchaseContractList,removeChufangContract} from '../../api/api.js';
+    import {getSaleContractList,removeSaleContract} from '../../api/api.js';
     export default {
         data() {
             return {
@@ -62,7 +63,7 @@
                     region: ''
                 },
                 //分页类数据
-                total:10000,
+                total:100,
                 currentPage:0,
                 pageSize:10,
                 lists:[],
@@ -118,7 +119,7 @@
                     name:'',
                 }
                 this.listLoading = true;
-                getChufangPurchaseContractList(para).then((res) => {
+                getSaleContractList(para).then((res) => {
                     //console.log(res.data.data)
                     this.lists = res.data.data;
                     this.listLoading = false;
@@ -147,13 +148,16 @@
                 //
                 // this.$router.push('/purchaseContact/add?id='+row.id);
             },
+            handleReview(index,row){
+                this.$router.push('/saleContract/review?id='+row.id);
+            },
             handleDel(index,row){
                 this.$confirm('确认删除该记录吗？','提示',{
                     type:'warning'
                 }).then(()=>{
                     this.listLoading = true;
                     let para = { id: row.id};
-                    removeChufangContract(para).then((res) =>
+                    removeSaleContract(para).then((res) =>
                     {
                         this.listLoading = false;
                         this.message({

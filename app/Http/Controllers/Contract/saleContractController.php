@@ -84,13 +84,13 @@ class saleContractController extends Controller
     //在这里是提交那个按钮的处理
     public function edit($id)
     {
-        dd(2222);
-        /*$client = new Client([
+        //dd(2222);
+        $client = new Client([
             'base_uri' => $this->base_url,
             'timeout' => 2.0,
         ]);
         $response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
-        echo $response->getBody();*/
+        echo $response->getBody();
     }
 
     /**
@@ -122,6 +122,22 @@ class saleContractController extends Controller
     public function destroy($id)
     {
         //
+    }
+    /*
+     * 合同审核
+     *
+     * */
+    public function review(Request $request){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+
+        $response = $client->request('POST', '/api/contract/xs/shenhe', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
     }
 
     //删除
