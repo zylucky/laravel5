@@ -14,6 +14,7 @@ import PurchaseContractIndex from "./components/purchaseContract/Index.vue";
 import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
 import PurchaseContractUpload from "./components/purchaseContract/Upload.vue";
 import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue";
+import PurchaseContractDump from "./components/purchaseContract/Dump.vue";
 
 
 //出房合同
@@ -103,7 +104,12 @@ function fun(funKey) {
          iconCls: 'el-icon-document',//图标样式class
          hidden:fk_contract,
          children: [
-             { path:'/purchaseContract', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
+             {
+                 path:'/purchaseContract',
+                 component: PurchaseContractIndex,
+                 name: '收房合同',
+                 hidden:fk_contract_purchase,
+             },
              { path:'/purchaseContract/add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
              { path:'/purchaseContract/edit',component:PurchaseContractAdd,name:'收房编辑',hidden:true},
              { path:'/purchaseContract/review',component:PurchaseContractAdd,name:'收房审核',hidden:true},
@@ -113,6 +119,12 @@ function fun(funKey) {
              { path:'/saleContact/Add',component:SaleContractAdd,name:'出房录入',hidden:true}
 
          ]
+     },
+     {
+         path:'/purchaseContract/dump',
+         component: PurchaseContractDump,
+         name: '合同打印',
+         hidden:fk_contract_purchase,
      },
      {
          path: '/',

@@ -31,6 +31,7 @@
                 <template scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
                     <el-button size="small" @click="handleReview(scope.$index, scope.row)">审核</el-button>
+                    <el-button size="small" @click="handleDump(scope.$index, scope.row)">打印</el-button>
                     <el-button size="small" @click="handleOptimize(scope.$index, scope.row)">优化</el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
                 </template>
@@ -132,7 +133,10 @@
             },
             handleOptimize(index,row){
                 this.$router.push('/purchaseContract/optimize?id='+row.id);
-            }
+            },
+            handleDump(index,row){
+                this.$router.push('/purchaseContract/dump?id='+row.id);
+            },
         },
         mounted(){
             this.purchaseContractList();
