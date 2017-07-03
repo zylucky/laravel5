@@ -17,9 +17,11 @@ import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue
 import PurchaseContractDump from "./components/purchaseContract/Dump.vue";
 
 
+
 //出房合同
 import SaleContractIndex from "./components/saleContract/Index.vue";
 import SaleContractAdd from "./components/saleContract/Add.vue";
+import SaleContractUpload from "./components/saleContract/Upload.vue";
 //渠道公司
 import BrokerCompany from "./components/brokerCompany/Index.vue";
 import BrokerCompanyUser from "./components/brokerCompany/UserList.vue";
@@ -104,27 +106,17 @@ function fun(funKey) {
          iconCls: 'el-icon-document',//图标样式class
          hidden:fk_contract,
          children: [
-             {
-                 path:'/purchaseContract',
-                 component: PurchaseContractIndex,
-                 name: '收房合同',
-                 hidden:fk_contract_purchase,
-             },
+             { path:'/purchaseContract', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
              { path:'/purchaseContract/add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
              { path:'/purchaseContract/edit',component:PurchaseContractAdd,name:'收房编辑',hidden:true},
              { path:'/purchaseContract/review',component:PurchaseContractAdd,name:'收房审核',hidden:true},
              { path:'/purchaseContract/optimize',component:PurchaseContractOptimize,name:'收房优化',hidden:true},
              { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
              { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
-             { path:'/saleContact/Add',component:SaleContractAdd,name:'出房录入',hidden:true}
+             { path:'/saleContact/Add',component:SaleContractAdd,name:'出房录入',hidden:true},
+             { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true}
 
          ]
-     },
-     {
-         path:'/purchaseContract/dump',
-         component: PurchaseContractDump,
-         name: '合同打印',
-         hidden:fk_contract_purchase,
      },
      {
          path: '/',
@@ -135,9 +127,13 @@ function fun(funKey) {
          children: [
              { path:'/brokerCompany', component: BrokerCompany, name: '渠道公司维护',hidden:fk_brokerCompanyList},
              { path:'/brokerCompanyUserList',component:BrokerCompanyUser,name:'渠道公司人员维护',hidden:fk_brokerCompanyUserList},
-
-
          ]
+     },
+     {
+         path:'/purchaseContract/dump',
+         component: PurchaseContractDump,
+         name: '合同打印',
+         hidden: true
      },
 ]
 

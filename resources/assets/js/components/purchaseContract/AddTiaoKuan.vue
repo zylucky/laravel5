@@ -122,14 +122,11 @@
                             type:'error'
                         })
                     }
-                })
-            }
-
+            })
+        },
         },
         mounted(){
-            //console.log(this.tiaoList)
 
         }
-
     }
 </script>

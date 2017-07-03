@@ -1,9 +1,9 @@
 <template>
     <div>
-        <el-form :label-position="labelPosition" label-width="100px" :model="owner">
+        <el-form :label-position="labelPosition" label-width="100px" :model="addRenter">
         <el-col :span="24">
             <el-form-item label="出租人">
-                <el-radio-group v-model="owner.chengzufang">
+                <el-radio-group v-model="addRenter.chengzufang">
                     <el-radio label="华塑商贸"></el-radio>
                     <el-radio label="幼狮科技"></el-radio>
                     <el-radio label="航远房地产"></el-radio>
@@ -14,56 +14,56 @@
 
             </el-form-item>
             <el-form-item label="居间方">
-                <el-input v-model="owner.jujianfang"></el-input>
+                <el-input v-model="addRenter.jujianfang"></el-input>
             </el-form-item>
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="收款人" >
-                        <el-input v-model="owner.shoukuanren"></el-input>
+                        <el-input v-model="addRenter.shoukuanren"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="10">
                     <el-form-item label="开户行" >
-                        <el-input v-model="owner.kaihuhang"></el-input>
+                        <el-input v-model="addRenter.kaihuhang"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="账号" >
-                        <el-input v-model="owner.zhanghao"></el-input>
+                        <el-input v-model="addRenter.zhanghao"></el-input>
                     </el-form-item>
                 </el-col>
 
             </el-row>
             <el-form-item label="租户类型">
-                <el-radio-group v-model="owner.yezhuleixing">
+                <el-radio-group v-model="addRenter.yezhuleixing">
                     <el-radio :label="1">个人</el-radio>
                     <el-radio :label="2">公司</el-radio>
                 </el-radio-group>
             </el-form-item>
 
-            <div v-if="owner.yezhuleixing==1">
-                <div v-for="(item, index) in owner.chanquanrenList">
+            <div v-if="addRenter.yezhuleixing==1">
+                <div v-for="(item, index) in addRenter.chanquanrenList">
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="承租人" >
-                            <el-input v-model="owner.chanquanrenList[index].Name"></el-input>
+                            <el-input v-model="addRenter.chanquanrenList[index].Name"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="10">
                         <el-form-item label="身份证号" >
-                            <el-input v-model="owner.chanquanrenList[index].zhengjian"></el-input>
+                            <el-input v-model="addRenter.chanquanrenList[index].zhengjian"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="联系方式" >
-                            <el-input v-model="owner.chanquanrenList[index].Tel"></el-input>
+                            <el-input v-model="addRenter.chanquanrenList[index].Tel"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="性别">
-                            <el-radio-group v-model="owner.chanquanrenList[index].Sex">
+                            <el-radio-group v-model="addRenter.chanquanrenList[index].Sex">
                                 <el-radio :label="1">男</el-radio>
                                 <el-radio :label="2">女</el-radio>
                             </el-radio-group>
@@ -80,24 +80,24 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="代理人" >
-                            <el-input v-model="owner.dailirenName"></el-input>
+                            <el-input v-model="addRenter.dailirenName"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="10">
                         <el-form-item label="身份证号" >
-                            <el-input v-model="owner.dailirenZhengjian"></el-input>
+                            <el-input v-model="addRenter.dailirenZhengjian"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="联系方式" >
-                            <el-input v-model="owner.dailirenTel"></el-input>
+                            <el-input v-model="addRenter.dailirenTel"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="性别">
-                            <el-radio-group v-model="owner.dailirenSex">
+                            <el-radio-group v-model="addRenter.dailirenSex">
                                 <el-radio :label="1">男</el-radio>
                                 <el-radio :label="2">女</el-radio>
                             </el-radio-group>
@@ -105,31 +105,31 @@
                     </el-col>
                 </el-row>
             </div>
-            <div v-if="owner.yezhuleixing==2">
+            <div v-if="addRenter.yezhuleixing==2">
                 <el-form-item label="公司名称" >
-                    <el-input v-model="owner.chanquanrenList[0].Name"></el-input>
+                    <el-input v-model="addRenter.chanquanrenList[0].Name"></el-input>
                 </el-form-item>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="法人" >
-                            <el-input v-model="owner.chanquanrenList[0].Faren"></el-input>
+                            <el-input v-model="addRenter.chanquanrenList[0].Faren"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="10">
                         <el-form-item label="身份证号" >
-                            <el-input v-model="owner.chanquanrenList[0].zhengjian"></el-input>
+                            <el-input v-model="addRenter.chanquanrenList[0].zhengjian"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="联系方式" >
-                            <el-input v-model="owner.chanquanrenList[0].Tel"></el-input>
+                            <el-input v-model="addRenter.chanquanrenList[0].Tel"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="性别">
-                            <el-radio-group v-model="owner.chanquanrenList[0].Sex">
+                            <el-radio-group v-model="addRenter.chanquanrenList[0].Sex">
                                 <el-radio :label="1">男</el-radio>
                                 <el-radio :label="2">女</el-radio>
                             </el-radio-group>
@@ -139,24 +139,24 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="签约人" >
-                            <el-input v-model="owner.dailirenName"></el-input>
+                            <el-input v-model="addRenter.dailirenName"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="10">
                         <el-form-item label="身份证号" >
-                            <el-input v-model="owner.dailirenZhengjian"></el-input>
+                            <el-input v-model="addRenter.dailirenZhengjian"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="联系方式" >
-                            <el-input v-model="owner.dailirenTel"></el-input>
+                            <el-input v-model="addRenter.dailirenTel"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="性别">
-                            <el-radio-group v-model="owner.dailirenSex">
+                            <el-radio-group v-model="addRenter.dailirenSex">
                                 <el-radio :label="1">男</el-radio>
                                 <el-radio :label="2">女</el-radio>
                             </el-radio-group>
@@ -175,7 +175,7 @@
         data(){
             return {
                 labelPosition:'right',
-                owner:{
+                addRenter:{
                     chengzufang:'华溯商贸',
                     jujianfang:'华亮房产',
                     yezhuleixing:1,
@@ -205,7 +205,7 @@
         methods: {
             //新增承租人
             addRentItem() {
-                this.owner.chanquanrenList.push({
+                this.addRenter.chanquanrenList.push({
                     Name:'',
                     Id:'',
                     Tel:'',
@@ -214,10 +214,10 @@
             },
             //移除承租人
             removeRentItem(item) {
-                this.owner.chanquanrenList.pop();
-                var index = this.owner.chanquanrenList.indexOf(item)
+                this.addRenter.chanquanrenList.pop();
+                var index = this.addRenter.chanquanrenList.indexOf(item)
                 if (index !== -1) {
-                    this.owner.chanquanrenList.splice(index, 1)
+                    this.addRenter.chanquanrenList.splice(index, 1)
                 }
             }
         }
