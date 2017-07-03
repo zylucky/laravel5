@@ -42,8 +42,8 @@
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
                     :current-page="currentPage"
-                    :page-sizes="pageSizes"
-                    :page-size="pageSize"
+                    :page-sizes="[10, 20, 50, 100]"
+                    :page-size="100"
                     layout="total, sizes, prev, pager, next, jumper"
                     :total=total
                     style="float:right"
@@ -62,10 +62,9 @@
                     region: ''
                 },
                 //分页类数据
-                total:100,
+                total:10000,
                 currentPage:0,
                 pageSize:10,
-                pageSizes:[10, 20, 30, 40, 50, 100],
                 lists:[],
                 listLoading: false,
                 sels: [],//列表选中列

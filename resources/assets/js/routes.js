@@ -19,6 +19,7 @@ import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue
 //出房合同
 import SaleContractIndex from "./components/saleContract/Index.vue";
 import SaleContractAdd from "./components/saleContract/Add.vue";
+import SaleContractUpload from "./components/saleContract/Upload.vue";
 //渠道公司
 import BrokerCompany from "./components/brokerCompany/Index.vue";
 import BrokerCompanyUser from "./components/brokerCompany/UserList.vue";
@@ -110,7 +111,8 @@ function fun(funKey) {
              { path:'/purchaseContract/optimize',component:PurchaseContractOptimize,name:'收房优化',hidden:true},
              { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
              { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
-             { path:'/saleContact/Add',component:SaleContractAdd,name:'出房录入',hidden:true}
+             { path:'/saleContact/Add',component:SaleContractAdd,name:'出房录入',hidden:true},
+             { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true}
 
          ]
      },

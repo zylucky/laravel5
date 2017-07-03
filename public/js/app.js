@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 208);
+/******/ 	return __webpack_require__(__webpack_require__.s = 206);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -397,21 +397,21 @@ module.exports = exports['default'];
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "T", function() { return requestLogin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "S", function() { return logout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "N", function() { return getUserListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "O", function() { return removeUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Q", function() { return addUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "P", function() { return editUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "R", function() { return batchRemoveUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "F", function() { return getRoleListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "G", function() { return removeRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I", function() { return addRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "H", function() { return editRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "J", function() { return batchRemoveRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "M", function() { return getTotalRoleList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "L", function() { return getRoleList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "K", function() { return setRoleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "O", function() { return requestLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "N", function() { return logout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I", function() { return getUserListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "J", function() { return removeUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "L", function() { return addUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "K", function() { return editUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "M", function() { return batchRemoveUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return getRoleListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return removeRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return addRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return editRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return batchRemoveRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "H", function() { return getTotalRoleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "G", function() { return getRoleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "F", function() { return setRoleList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getBrokerCompanyListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return removeBrokerCompany; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return addBrokerCompany; });
@@ -425,22 +425,20 @@ module.exports = exports['default'];
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getbkNameList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return checkbkNameList; });
 /* unused harmony export getUserById */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return getPermissionListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return getPermissionListOfRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return getPermissionListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return getPermissionListOfRole; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getPermissionList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return setPermissionList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return addPurchaseContractInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return getPurchaseContractList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return getPurchaseContractInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return submitPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return addChufangPurchaseContractInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return getChufangPurchaseContractList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return getChufangPurchaseContractInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return submitSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return removeChufangContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return getLoupanList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return getLoudongList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return getFanghaoList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return setPermissionList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return addPurchaseContractInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return reviewPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return getPurchaseContractList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return getPurchaseContractInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return submitPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return getPurchaseContractTiaoKuan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return editPurchaseContractTiaoKuan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return getLoupanList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return getLoudongList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return getFanghaoList; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
@@ -560,6 +558,9 @@ var setPermissionList = function setPermissionList(params) {
 var addPurchaseContractInfo = function addPurchaseContractInfo(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/purchaseContract', { params: params });
 };
+var reviewPurchaseContract = function reviewPurchaseContract(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/purchaseContract/review', { params: params });
+};
 var getPurchaseContractList = function getPurchaseContractList(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/purchaseContract', { params: params });
 };
@@ -569,24 +570,11 @@ var getPurchaseContractInfo = function getPurchaseContractInfo(params) {
 var submitPurchaseContract = function submitPurchaseContract(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/purchaseContract/' + params.id + '/edit', {});
 };
-
-//出房合同
-//合同信息
-var addChufangPurchaseContractInfo = function addChufangPurchaseContractInfo(params) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/saleContract', { params: params });
+var getPurchaseContractTiaoKuan = function getPurchaseContractTiaoKuan(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/purchaseContract/create', {});
 };
-var getChufangPurchaseContractList = function getChufangPurchaseContractList(params) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/saleContract', { params: params });
-};
-var getChufangPurchaseContractInfo = function getChufangPurchaseContractInfo(params) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/saleContract/' + params.id, {});
-};
-var submitSaleContract = function submitSaleContract(params) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/saleContract/' + params.id + '/edit', {});
-};
-
-var removeChufangContract = function removeChufangContract(params) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/saleContract/delete', { params: params });
+var editPurchaseContractTiaoKuan = function editPurchaseContractTiaoKuan(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/purchaseContract/editTiaoKuan', { params: params });
 };
 
 //获取楼盘，楼栋，房间号
@@ -10707,7 +10695,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(206)
+var listToStyles = __webpack_require__(204)
 
 /*
 type StyleObject = {
@@ -24806,7 +24794,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_element_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_element_ui__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_element_ui_lib_theme_default_index_css__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_element_ui_lib_theme_default_index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_element_ui_lib_theme_default_index_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_router__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_router__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__routes__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_font_awesome_css_font_awesome_min_css__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_font_awesome_css_font_awesome_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_font_awesome_css_font_awesome_min_css__);
@@ -27098,7 +27086,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (valid) {
                     _this2.logining = true;
                     var loginParams = { email: _this2.ruleForm2.account, password: _this2.ruleForm2.checkPass };
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["T" /* requestLogin */])(loginParams).then(function (data) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["O" /* requestLogin */])(loginParams).then(function (data) {
 
                         _this2.logining = false;
                         //NProgress.done();
@@ -27244,7 +27232,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //type: 'warning'
             }).then(function () {
                 sessionStorage.removeItem('user');
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["S" /* logout */])().then();
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["N" /* logout */])().then();
                 _this.$router.push('/login');
             }).catch(function () {});
         },
@@ -29237,7 +29225,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: this.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["v" /* submitPurchaseContract */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["s" /* submitPurchaseContract */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     _this.$message({
                         message: '提交成功',
@@ -29268,7 +29256,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: this.id
             };
             var para = Object.assign({}, child_property, child_owner, child_date, id, tiaokuan);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["w" /* addPurchaseContractInfo */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["n" /* addPurchaseContractInfo */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     //保存完以后可以得到一个返回的ID
                     //把数据分别赋值给三个组件的变量
@@ -29297,7 +29285,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         review2: function review2() {
             var _this3 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["reviewPurchaseContract"])(this.shenhe).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["t" /* reviewPurchaseContract */])(this.shenhe).then(function (res) {
                 if (res.data.code == 200) {
                     _this3.$message({
                         message: '保存成功',
@@ -29317,7 +29305,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getPurchaseContract: function getPurchaseContract(id) {
             var _this4 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["y" /* getPurchaseContractInfo */])(id).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["u" /* getPurchaseContractInfo */])(id).then(function (res) {
                 if (res.data.code == '200') {
                     //把数据分别赋值给三个组件的变量
                     _this4.fuzhi(res);
@@ -29334,7 +29322,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getTiaokuan: function getTiaokuan() {
             var _this5 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["getPurchaseContractTiaoKuan"])().then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["v" /* getPurchaseContractTiaoKuan */])().then(function (res) {
                 for (var x in res.data.data.tiaoList) {
                     res.data.data.tiaoList[x].show = false;
                     for (var y in res.data.data.tiaoList[x].kuanList) {
@@ -30148,7 +30136,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 str: query
             };
             this.loupanloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["q" /* getLoupanList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["o" /* getLoupanList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -30181,7 +30169,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 loupanOmcId: this.property.officeList[this.tabIndex - 1].loupanOmcId
             };
             this.loupanloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["r" /* getLoudongList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["p" /* getLoudongList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -30215,7 +30203,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 zdid: this.property.officeList[this.tabIndex - 1].loudongOmcId
             };
             this.fanghaoloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["s" /* getFanghaoList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["q" /* getFanghaoList */])(para).then(function (res) {
                 _this3.houseData = res.data;
                 var arr = [];
                 arr[0] = '';
@@ -30440,7 +30428,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         save: function save(tiao) {
             //发送条款的ID到后端
             console.log(tiao);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["editPurchaseContractTiaoKuan"])(tiao).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["w" /* editPurchaseContractTiaoKuan */])(tiao).then(function (res) {});
         }
     },
     mounted: function mounted() {
@@ -30565,7 +30553,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: ''
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["B" /* getPurchaseContractList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["r" /* getPurchaseContractList */])(para).then(function (res) {
                 // console.log(res.data)
                 //                    this.total = res.data.total;
 
@@ -31085,7 +31073,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             var para = {};
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["C" /* getPermissionListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["x" /* getPermissionListPage */])(para).then(function (res) {
                 _this.data2 = res.data;
             });
         }
@@ -31265,7 +31253,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: _this.roleId,
                     permissions: _this.$refs.tree.getCheckedKeys()
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["D" /* setPermissionList */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["y" /* setPermissionList */])(para).then(function (res) {
                     _this.$message({
                         message: '提交成功',
                         type: 'success'
@@ -31284,11 +31272,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: row.id
 
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["E" /* getPermissionListOfRole */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["z" /* getPermissionListOfRole */])(para).then(function (res) {
                 _this2.checked = res.data;
             });
             var para2 = {};
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["C" /* getPermissionListPage */])(para2).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["x" /* getPermissionListPage */])(para2).then(function (res) {
                 _this2.data2 = res.data;
             });
         },
@@ -31315,7 +31303,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: this.filters.name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["F" /* getRoleListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["A" /* getRoleListPage */])(para).then(function (res) {
                 _this3.total = res.data.total;
                 _this3.Roles = res.data.data;
                 _this3.listLoading = false;
@@ -31332,7 +31320,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this4.listLoading = true;
                 //NProgress.start();
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["G" /* removeRole */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["B" /* removeRole */])(para).then(function (res) {
                     _this4.listLoading = false;
                     //NProgress.done();
                     _this4.$message({
@@ -31365,7 +31353,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this5.$confirm('确认提交吗？', '提示', {}).then(function () {
                         _this5.editLoading = true;
                         var para = Object.assign({}, _this5.editForm);
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["H" /* editRole */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["C" /* editRole */])(para).then(function (res) {
                             _this5.editLoading = false;
                             _this5.$message({
                                 message: '提交成功',
@@ -31390,7 +31378,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         //NProgress.start();
                         var para = Object.assign({}, _this6.addForm);
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["I" /* addRole */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["D" /* addRole */])(para).then(function (res) {
                             _this6.addLoading = false;
                             //NProgress.done();
                             _this6.$message({
@@ -31421,7 +31409,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this7.listLoading = true;
                 //NProgress.start();
                 var para = { ids: ids };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["J" /* batchRemoveRole */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["E" /* batchRemoveRole */])(para).then(function (res) {
                     _this7.listLoading = false;
                     //NProgress.done();
                     _this7.$message({
@@ -31643,7 +31631,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: _this.userId,
                     value: _this.Roles
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["K" /* setRoleList */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["F" /* setRoleList */])(para).then(function (res) {
                     _this.roleLoading = false;
                     _this.$message({
                         message: '保存成功',
@@ -31682,7 +31670,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: this.userId
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["L" /* getRoleList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["G" /* getRoleList */])(para).then(function (res) {
                 var arr = [];
                 for (var i in res.data) {
                     arr.push(res.data[i]);
@@ -31699,7 +31687,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: this.filters.name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["M" /* getTotalRoleList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["H" /* getTotalRoleList */])(para).then(function (res) {
                 var arr = [];
                 for (var i in res.data) {
                     arr.push(res.data[i]);
@@ -31738,7 +31726,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: this.filters.name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["N" /* getUserListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["I" /* getUserListPage */])(para).then(function (res) {
                 _this5.total = res.data.total;
                 _this5.users = res.data.data;
                 _this5.listLoading = false;
@@ -31755,7 +31743,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this6.listLoading = true;
                 //NProgress.start();
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["O" /* removeUser */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["J" /* removeUser */])(para).then(function (res) {
                     _this6.listLoading = false;
                     //NProgress.done();
                     _this6.$message({
@@ -31793,7 +31781,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         //NProgress.start();
                         var para = Object.assign({}, _this7.editForm);
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["P" /* editUser */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["K" /* editUser */])(para).then(function (res) {
                             _this7.editLoading = false;
                             //NProgress.done();
                             _this7.$message({
@@ -31819,7 +31807,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         //NProgress.start();
                         var para = Object.assign({}, _this8.addForm);
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["Q" /* addUser */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["L" /* addUser */])(para).then(function (res) {
                             _this8.addLoading = false;
                             //NProgress.done();
                             _this8.$message({
@@ -31850,7 +31838,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this9.listLoading = true;
                 //NProgress.start();
                 var para = { ids: ids };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["R" /* batchRemoveUser */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["M" /* batchRemoveUser */])(para).then(function (res) {
                     _this9.listLoading = false;
                     //NProgress.done();
                     _this9.$message({
@@ -31879,9 +31867,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AddRenter_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__AddRenter_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AddDate_vue__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AddDate_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__AddDate_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AddTiaoKuan_vue__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AddTiaoKuan_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__AddTiaoKuan_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api_api__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__api_api__ = __webpack_require__(3);
 //
 //
 //
@@ -31907,10 +31893,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-
 
 
 
@@ -31919,222 +31901,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            stepNum: 1,
-            id: '',
-            property: {
-                officeList: [{
-                    omcId: null,
-                    loupanOmcId: null,
-                    loudongOmcId: null,
-                    loupanName: null,
-                    loudongName: null,
-                    fanghao: null,
-                    weizhi: null,
-                    chanquanzhenghao: null,
-                    jianzhumianji: null,
-                    qianyuemianji: null,
-                    leixing: null,
-                    hetongid: null
-                }]
-            },
-
-            /* stepNum:1,
-             id:'',
-             property:{
-             officeList: [{
-             omcId:null,
-             loupanOmcId:null,
-             loudongOmcId:null,
-             loupanName:null,
-             loudongName:null,
-             fanghao:null,
-             weizhi: null,
-             chanquanzhenghao: null,
-             jianzhumianji: null,
-             qianyuemianji: null,
-             leixing: null,
-             hetongid:null,
-             }],
-             },*/
-
-            addRenter: {
-                chengzufang: '华溯商贸',
-                jujianfang: '',
-                yezhuleixing: 1,
-                //产权人
-                chanquanrenList: [{
-                    Faren: '李岳群',
-                    Name: '北京大象群文化传媒有限公司',
-                    zhengjian: '37158119900124317X',
-                    Tel: '18511909124',
-                    Sex: 1,
-                    hetongid: null
-                }],
-                //收款人
-                shoukuanren: '彭亮',
-                zhanghao: '1234 4567 7891 0123',
-                //代理人
-                dailirenName: '李朝晖',
-                dailirenTel: '18511909125',
-                dailirenSex: 1,
-                dailirenId: '37158119900124317X',
-                //签约人
-                qianyuerenName: 'lizhaohui',
-                qianyuerenTel: '18511909124',
-                qianyuerenSex: 1,
-                qianyuerenId: '37158119900124317X'
-            },
-            addDate: {
-                startdate: '', //租期开始时间
-                enddate: '', //租期结束时间
-                shoufangdate: '', //收房日期
-                qianyueDate: '', //签约日期
-                mianzufangshi: [], //免租方式
-                mianzuqiList: [{
-                    startdate: '', //免租开始
-                    enddate: '' //免租结束
-                }],
-                fukuanFangshiList: [{
-                    startdate: '', //开始
-                    enddate: '', //结束
-                    yajinyue: '',
-                    zujinyue: ''
-                }],
-                yajin: '', //押金
-                zongzujin: '', //总租金
-                commission: '', //佣金
-                tiqianfukuantian: '', //提前付款天数
-                yajinfukuanri: '', //押金付款日
-                shouqifukuanri: '', //首期租金付款日
-                erqifukuanri: '', //二期付款
-                sanqifukuanri: '', //三期付款
-                buchongtiaokuan: '', //补充条款
-                zujinList: [{
-                    startdate: '',
-                    enddate: '',
-                    yuezujin: '',
-                    price: '',
-                    dizengfangshi: '',
-                    dizengliang: ''
-                }],
-                checkList: []
-            }
+            stepNum: 2
         };
     },
 
     components: {
         AddProperty: __WEBPACK_IMPORTED_MODULE_0__AddProperty_vue___default.a,
         AddRenter: __WEBPACK_IMPORTED_MODULE_1__AddRenter_vue___default.a,
-        AddDate: __WEBPACK_IMPORTED_MODULE_2__AddDate_vue___default.a,
-        AddTiaokuan: __WEBPACK_IMPORTED_MODULE_3__AddTiaoKuan_vue___default.a
+        AddDate: __WEBPACK_IMPORTED_MODULE_2__AddDate_vue___default.a
     },
     methods: {
-        submit: function submit() {
+        save: function save() {
             var _this = this;
 
-            var para = {
-                id: this.id
-            };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["n" /* submitSaleContract */])(para).then(function (res) {
-                if (res.data.code == 200) {
-                    _this.$message({ //这是Vue中从后台返回来的数据的格式
-                        message: '提交成功',
-                        type: 'success'
-                    });
-                } else {
-                    _this.$message({
-                        message: res.data.msg,
-                        type: 'error'
-                    });
-                }
-            });
-        },
-
-        save: function save() {
-            var _this2 = this;
-
             var child_property = this.$refs.property.property;
-            var child_renter = this.$refs.renter.addRenter;
+            var child_owner = this.$refs.owner.owner;
             var child_date = this.$refs.date.addDate;
-            var id = {
-                id: this.id
-            };
 
-            var para = Object.assign({}, child_property, child_renter, child_date);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["o" /* addChufangPurchaseContractInfo */])(para).then(function (res) {
+            var para = Object.assign({}, child_property, child_owner, child_date);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__api_api__["n" /* addPurchaseContractInfo */])(para).then(function (res) {
 
                 if (res.data.code == 200) {
-                    _this2.fuzhi(res);
-                    _this2.$message({
+                    _this.$message({
                         message: '保存成功',
                         type: 'success'
                     });
-                } else {
-                    _this2.$message({
-                        message: res.data.msg,
-                        type: 'error'
-                    });
                 }
             });
-        },
-        //根据url得到的合同ID，来获取数据
-        getPurchaseContract: function getPurchaseContract(id) {
-            var _this3 = this;
-
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["p" /* getChufangPurchaseContractInfo */])(id).then(function (res) {
-                if (res.data.code == '200') {
-                    //console.log(res.data.data)
-                    //把数据分别赋值给三个组件的变量
-                    _this3.fuzhi(res);
-                } else {
-                    _this3.$message({
-                        message: '获取数据失败',
-                        type: 'error'
-                    });
-                }
-            });
-        },
-        fuzhi: function fuzhi(res) {
-            this.id = res.data.data.id;
-            this.property.officeList = res.data.data.officeList;
-            this.addRenter.chanquanrenList = res.data.data.chanquanrenList;
-            this.addRenter.chengzufang = res.data.data.chengzufang;
-            this.addRenter.jujianfang = res.data.data.jujianfang;
-            this.addRenter.yezhuleixing = res.data.data.yezhuleixing;
-            this.addRenter.shoukuanren = res.data.data.shoukuanren;
-            this.addRenter.zhanghao = res.data.data.zhanghao;
-            this.addRenter.dailirenTel = res.data.data.dailirenTel;
-            this.addRenter.dailirenSex = res.data.data.dailirenSex;
-            this.addRenter.dailirenId = res.data.data.dailirenId;
-            this.addRenter.dailirenName = res.data.data.dailirenName;
-            this.addRenter.qianyuerenName = res.data.data.qianyuerenName;
-            this.addRenter.qianyuerenTel = res.data.data.qianyuerenTel;
-            this.addRenter.qianyuerenSex = res.data.data.qianyuerenSex;
-            this.addRenter.qianyuerenId = res.data.data.qianyuerenId;
-            this.addDate.startdate = res.data.data.startdate;
-            this.addDate.enddate = res.data.data.enddate;
-            this.addDate.shoufangdate = res.data.data.shoufangdate;
-            this.addDate.qianyueDate = res.data.data.qianyueDate;
-            this.addDate.mianzufangshi = res.data.data.mianzufangshi;
-            this.addDate.mianzuqiList = res.data.data.mianzuqiList;
-            this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;
-            this.addDate.yajin = res.data.data.yajin;
-            this.addDate.zongzujin = res.data.data.zongzujin;
-            this.addDate.commission = res.data.data.commission;
-            this.addDate.tiqianfukuantian = res.data.data.tiqianfukuantian;
-            this.addDate.yajinfukuanri = res.data.data.yajinfukuanri;
-            this.addDate.shouqifukuanri = res.data.data.shouqifukuanri;
-            this.addDate.erqifukuanri = res.data.data.erqifukuanri;
-            this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
-            this.addDate.buchongtiaokuan = res.data.data.buchongtiaokuan;
-            this.addDate.zujinList = res.data.data.zujinList;
-            this.addDate.checkList = res.data.data.checkList;
         }
     },
-    mounted: function mounted() {
-        //根据url得到的合同ID，来获取数据
-        this.getPurchaseContract(this.$route.query);
-    }
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -32382,7 +32178,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             addDate: {
                 startdate: '', //租期开始时间
                 enddate: '', //租期结束时间
-                shoufangDate: '', //收房日期
+                shoufangdate: '', //收房日期
                 qianyueDate: '', //签约日期
                 mianzufangshi: [], //免租方式
                 mianzuqiList: [{
@@ -32673,7 +32469,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 str: query
             };
             this.loupanloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["q" /* getLoupanList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["o" /* getLoupanList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -32706,7 +32502,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 loupanOmcId: this.property.officeList[this.tabIndex - 1].loupanOmcId
             };
             this.loupanloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["r" /* getLoudongList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["p" /* getLoudongList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -32740,7 +32536,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 zdid: this.property.officeList[this.tabIndex - 1].loudongOmcId
             };
             this.fanghaoloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["s" /* getFanghaoList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["q" /* getFanghaoList */])(para).then(function (res) {
                 _this3.houseData = res.data;
                 var arr = [];
                 arr[0] = '';
@@ -33020,7 +32816,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             labelPosition: 'right',
-            addRenter: {
+            owner: {
                 chengzufang: '华溯商贸',
                 jujianfang: '华亮房产',
                 yezhuleixing: 1,
@@ -33049,7 +32845,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         //新增承租人
         addRentItem: function addRentItem() {
-            this.addRenter.chanquanrenList.push({
+            this.owner.chanquanrenList.push({
                 Name: '',
                 Id: '',
                 Tel: '',
@@ -33059,10 +32855,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //移除承租人
         removeRentItem: function removeRentItem(item) {
-            this.addRenter.chanquanrenList.pop();
-            var index = this.addRenter.chanquanrenList.indexOf(item);
+            this.owner.chanquanrenList.pop();
+            var index = this.owner.chanquanrenList.indexOf(item);
             if (index !== -1) {
-                this.addRenter.chanquanrenList.splice(index, 1);
+                this.owner.chanquanrenList.splice(index, 1);
             }
         }
     }
@@ -33075,7 +32871,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api_js__ = __webpack_require__(3);
-//
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -33139,50 +32938,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 region: ''
             },
             //分页类数据
-            total: 100,
+            total: 10000,
             currentPage: 0,
             pageSize: 10,
-            pageSizes: [10, 20, 30, 40, 50, 100],
             lists: [],
             listLoading: false,
             sels: [] //列表选中列
         };
     },
 
-    methods: {
-        //搜索
-        search: function search() {},
-        getUsers: function getUsers() {
-            var _this2 = this;
-
-            var para = {
-                page: this.page,
-                pageSize: this.pageSize,
-                name: this.filters.name
-            };
-            this.listLoading = true;
-            getUserListPage(para).then(function (res) {
-                _this2.total = res.data.total;
-                _this2.users = res.data.data;
-                _this2.listLoading = false;
-            });
-        },
-
+    methods: (_methods = {
         //新增
         addContract: function addContract() {
             var _this = this;
             _this.$router.push("/saleContact/Add");
-        },
-        formatStatus: function formatStatus(row, column) {
-            var status = [];
-            status[0] = '已创建';
-            status[1] = '待审核';
-            status[2] = '审核中';
-            status[3] = '待打印';
-            status[4] = '审核拒绝';
-            status[5] = '待确认';
-            status[6] = '履约中';
-            return status[row.zhuangtai];
         },
 
         //时间戳转日期格式
@@ -33194,27 +32963,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //获取合同列表
         purchaseContractList: function purchaseContractList() {
-            var _this3 = this;
+            var _this2 = this;
 
             var para = {
-                pn: this.page,
-                cnt: this.pageSize,
                 name: ''
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["t" /* getChufangPurchaseContractList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["r" /* getPurchaseContractList */])(para).then(function (res) {
                 //console.log(res.data.data)
-                _this3.lists = res.data.data;
-                _this3.listLoading = false;
+                _this2.lists = res.data.data;
+                _this2.listLoading = false;
             });
         },
         handleSizeChange: function handleSizeChange(val) {
             console.log('\u6BCF\u9875 ' + val + ' \u6761');
-            this.purchaseContractList();
         },
         handleCurrentChange: function handleCurrentChange(val) {
             console.log('\u5F53\u524D\u9875: ' + val);
-            this.purchaseContractList();
         },
 
         selsChange: function selsChange(sels) {
@@ -33222,34 +32987,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         uploadImg: function uploadImg() {
             var _this = this;
-            _this.$router.push('/saleContact/upload');
-        },
-        handleEdit: function handleEdit(index, row) {
-            //
-            //var _this = this;
-            this.$router.push('/saleContact/add?id=' + row.id);
-            //
-            // this.$router.push('/purchaseContact/add?id='+row.id);
-        },
-        handleDel: function handleDel(index, row) {
-            var _this4 = this;
-
-            this.$confirm('确认删除该记录吗？', '提示', {
-                type: 'warning'
-            }).then(function () {
-                _this4.listLoading = true;
-                var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["u" /* removeChufangContract */])(para).then(function (res) {
-                    _this4.listLoading = false;
-                    _this4.message({
-                        message: '删除成功',
-                        type: 'success'
-                    });
-                    _this4.getUsers();
-                });
-            }).catch(function () {});
+            _this.$router.push('/saleContract/upload');
         }
-    },
+    }, _defineProperty(_methods, 'handleSizeChange', function handleSizeChange(val) {
+        console.log('\u6BCF\u9875 ' + val + ' \u6761');
+    }), _defineProperty(_methods, 'handleCurrentChange', function handleCurrentChange(val) {
+        console.log('\u5F53\u524D\u9875: ' + val);
+    }), _methods),
     mounted: function mounted() {
         this.purchaseContractList();
     }
@@ -33333,7 +33077,7 @@ window.axios.defaults.headers.common = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_saleContract_Index_vue__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_saleContract_Index_vue__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_saleContract_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_saleContract_Index_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_saleContract_Add_vue__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_saleContract_Add_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_saleContract_Add_vue__);
@@ -35860,7 +35604,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, "\n.pulll10{\n    margin-left: -10px;\n}\n", ""]);
+exports.push([module.i, "\n.action-link[data-v-17c3eb97] {\n    cursor: pointer;\n}\n.m-b-none[data-v-17c3eb97] {\n    margin-bottom: 0;\n}\n", ""]);
 
 // exports
 
@@ -35874,7 +35618,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, "\n.action-link[data-v-39711956] {\n    cursor: pointer;\n}\n.m-b-none[data-v-39711956] {\n    margin-bottom: 0;\n}\n", ""]);
+exports.push([module.i, "\n.action-link[data-v-2924957f] {\n    cursor: pointer;\n}\n.m-b-none[data-v-2924957f] {\n    margin-bottom: 0;\n}\n", ""]);
 
 // exports
 
@@ -35888,7 +35632,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, "\n.action-link[data-v-4916a9b6] {\n    cursor: pointer;\n}\n.m-b-none[data-v-4916a9b6] {\n    margin-bottom: 0;\n}\n", ""]);
+exports.push([module.i, "\n.container[data-v-2aa44748] {\n  position: absolute;\n  top: 0px;\n  bottom: 0px;\n  width: 100%;\n}\n.container .header[data-v-2aa44748] {\n    height: 60px;\n    line-height: 60px;\n    background: #20a0ff;\n    color: #fff;\n}\n.container .header .userinfo[data-v-2aa44748] {\n      text-align: right;\n      padding-right: 35px;\n      float: right;\n}\n.container .header .userinfo .userinfo-inner[data-v-2aa44748] {\n        cursor: pointer;\n        color: #fff;\n}\n.container .header .userinfo .userinfo-inner img[data-v-2aa44748] {\n          width: 40px;\n          height: 40px;\n          border-radius: 20px;\n          margin: 10px 0px 10px 10px;\n          float: right;\n}\n.container .header .logo[data-v-2aa44748] {\n      height: 60px;\n      font-size: 22px;\n      padding-left: 20px;\n      padding-right: 20px;\n      border-color: rgba(238, 241, 146, 0.3);\n      border-right-width: 1px;\n      border-right-style: solid;\n}\n.container .header .logo img[data-v-2aa44748] {\n        width: 40px;\n        float: left;\n        margin: 10px 10px 10px 18px;\n}\n.container .header .logo .txt[data-v-2aa44748] {\n        color: #fff;\n}\n.container .header .logo-width[data-v-2aa44748] {\n      width: 230px;\n}\n.container .header .logo-collapse-width[data-v-2aa44748] {\n      width: 60px;\n}\n.container .header .tools[data-v-2aa44748] {\n      padding: 0px 23px;\n      width: 14px;\n      height: 60px;\n      line-height: 60px;\n      cursor: pointer;\n}\n.container .main[data-v-2aa44748] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: absolute;\n    top: 60px;\n    bottom: 0px;\n    overflow: hidden;\n}\n.container .main aside[data-v-2aa44748] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 230px;\n              flex: 0 0 230px;\n      width: 230px;\n}\n.container .main aside .el-menu[data-v-2aa44748] {\n        height: 100%;\n}\n.container .main aside .collapsed[data-v-2aa44748] {\n        width: 60px;\n}\n.container .main aside .collapsed .item[data-v-2aa44748] {\n          position: relative;\n}\n.container .main aside .collapsed .submenu[data-v-2aa44748] {\n          position: absolute;\n          top: 0px;\n          left: 60px;\n          z-index: 99999;\n          height: auto;\n          display: none;\n}\n.container .main .menu-collapsed[data-v-2aa44748] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 60px;\n              flex: 0 0 60px;\n      width: 60px;\n}\n.container .main .menu-expanded[data-v-2aa44748] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 230px;\n              flex: 0 0 230px;\n      width: 230px;\n}\n.container .main .content-container[data-v-2aa44748] {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      overflow-y: scroll;\n      padding: 20px;\n}\n.container .main .content-container .breadcrumb-container .title[data-v-2aa44748] {\n        width: 200px;\n        float: left;\n        color: #475669;\n}\n.container .main .content-container .breadcrumb-container .breadcrumb-inner[data-v-2aa44748] {\n        float: right;\n}\n.container .main .content-container .content-wrapper[data-v-2aa44748] {\n        background-color: #fff;\n        box-sizing: border-box;\n}\n", ""]);
 
 // exports
 
@@ -35902,7 +35646,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, "\n.login-container[data-v-72f3a8f3] {\n  /*box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);*/\n  border-radius: 5px;\n  -moz-border-radius: 5px;\n  background-clip: padding-box;\n  margin: 180px auto;\n  width: 350px;\n  padding: 35px 35px 15px 35px;\n  background: #fff;\n  border: 1px solid #eaeaea;\n  box-shadow: 0 0 25px #cac6c6;\n}\n.login-container .title[data-v-72f3a8f3] {\n    margin: 0px auto 40px auto;\n    text-align: center;\n    color: #505458;\n}\n.login-container .remember[data-v-72f3a8f3] {\n    margin: 0px 0px 35px 0px;\n}\n", ""]);
+exports.push([module.i, "\n.pulll10{\n    margin-left: -10px;\n}\n", ""]);
 
 // exports
 
@@ -35916,7 +35660,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, "\n.action-link[data-v-9aa4b19e] {\n    cursor: pointer;\n}\n.m-b-none[data-v-9aa4b19e] {\n    margin-bottom: 0;\n}\n", ""]);
+exports.push([module.i, "\n.login-container[data-v-71c29f65] {\n  /*box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);*/\n  border-radius: 5px;\n  -moz-border-radius: 5px;\n  background-clip: padding-box;\n  margin: 180px auto;\n  width: 350px;\n  padding: 35px 35px 15px 35px;\n  background: #fff;\n  border: 1px solid #eaeaea;\n  box-shadow: 0 0 25px #cac6c6;\n}\n.login-container .title[data-v-71c29f65] {\n    margin: 0px auto 40px auto;\n    text-align: center;\n    color: #505458;\n}\n.login-container .remember[data-v-71c29f65] {\n    margin: 0px 0px 35px 0px;\n}\n", ""]);
 
 // exports
 
@@ -35930,7 +35674,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, "\n.page-container[data-v-e266c03c] {\n  font-size: 20px;\n  text-align: center;\n  color: #c0ccda;\n}\n", ""]);
+exports.push([module.i, "\n.txs:hover{\n        color: #20A0FF;\n        background-color:#FCFED5;\n}\n.txs:hover > .bjxs{\n    display:inline;\n}\n.bjxs{\n    float:right;\n    color:#20A0FF;\n    display: none;\n}\n.tiao{\n    font-size: 20px;\n    height: 42px;\n    font-weight:bold;\n}\n.kuan{\n    font-size: 16px;\n}\n.xiang{\n    font-size: 16px;\n}\n", ""]);
 
 // exports
 
@@ -35944,7 +35688,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, "\n.container[data-v-e3fdf30c] {\n  position: absolute;\n  top: 0px;\n  bottom: 0px;\n  width: 100%;\n}\n.container .header[data-v-e3fdf30c] {\n    height: 60px;\n    line-height: 60px;\n    background: #20a0ff;\n    color: #fff;\n}\n.container .header .userinfo[data-v-e3fdf30c] {\n      text-align: right;\n      padding-right: 35px;\n      float: right;\n}\n.container .header .userinfo .userinfo-inner[data-v-e3fdf30c] {\n        cursor: pointer;\n        color: #fff;\n}\n.container .header .userinfo .userinfo-inner img[data-v-e3fdf30c] {\n          width: 40px;\n          height: 40px;\n          border-radius: 20px;\n          margin: 10px 0px 10px 10px;\n          float: right;\n}\n.container .header .logo[data-v-e3fdf30c] {\n      height: 60px;\n      font-size: 22px;\n      padding-left: 20px;\n      padding-right: 20px;\n      border-color: rgba(238, 241, 146, 0.3);\n      border-right-width: 1px;\n      border-right-style: solid;\n}\n.container .header .logo img[data-v-e3fdf30c] {\n        width: 40px;\n        float: left;\n        margin: 10px 10px 10px 18px;\n}\n.container .header .logo .txt[data-v-e3fdf30c] {\n        color: #fff;\n}\n.container .header .logo-width[data-v-e3fdf30c] {\n      width: 230px;\n}\n.container .header .logo-collapse-width[data-v-e3fdf30c] {\n      width: 60px;\n}\n.container .header .tools[data-v-e3fdf30c] {\n      padding: 0px 23px;\n      width: 14px;\n      height: 60px;\n      line-height: 60px;\n      cursor: pointer;\n}\n.container .main[data-v-e3fdf30c] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: absolute;\n    top: 60px;\n    bottom: 0px;\n    overflow: hidden;\n}\n.container .main aside[data-v-e3fdf30c] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 230px;\n              flex: 0 0 230px;\n      width: 230px;\n}\n.container .main aside .el-menu[data-v-e3fdf30c] {\n        height: 100%;\n}\n.container .main aside .collapsed[data-v-e3fdf30c] {\n        width: 60px;\n}\n.container .main aside .collapsed .item[data-v-e3fdf30c] {\n          position: relative;\n}\n.container .main aside .collapsed .submenu[data-v-e3fdf30c] {\n          position: absolute;\n          top: 0px;\n          left: 60px;\n          z-index: 99999;\n          height: auto;\n          display: none;\n}\n.container .main .menu-collapsed[data-v-e3fdf30c] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 60px;\n              flex: 0 0 60px;\n      width: 60px;\n}\n.container .main .menu-expanded[data-v-e3fdf30c] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 230px;\n              flex: 0 0 230px;\n      width: 230px;\n}\n.container .main .content-container[data-v-e3fdf30c] {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      overflow-y: scroll;\n      padding: 20px;\n}\n.container .main .content-container .breadcrumb-container .title[data-v-e3fdf30c] {\n        width: 200px;\n        float: left;\n        color: #475669;\n}\n.container .main .content-container .breadcrumb-container .breadcrumb-inner[data-v-e3fdf30c] {\n        float: right;\n}\n.container .main .content-container .content-wrapper[data-v-e3fdf30c] {\n        background-color: #fff;\n        box-sizing: border-box;\n}\n", ""]);
+exports.push([module.i, "\n.page-container[data-v-852aea58] {\n  font-size: 20px;\n  text-align: center;\n  color: #c0ccda;\n}\n", ""]);
 
 // exports
 
@@ -35958,7 +35702,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, "\n.txs:hover{\n        color: #20A0FF;\n        background-color:#FCFED5;\n}\n.txs:hover > .bjxs{\n    display:inline;\n}\n.bjxs{\n    float:right;\n    color:#20A0FF;\n    display: none;\n}\n.tiao{\n    font-size: 20px;\n    height: 42px;\n    font-weight:bold;\n}\n.kuan{\n    font-size: 16px;\n}\n.xiang{\n    font-size: 16px;\n}\n", ""]);
+exports.push([module.i, "\n.action-link[data-v-df7603b8] {\n    cursor: pointer;\n}\n.m-b-none[data-v-df7603b8] {\n    margin-bottom: 0;\n}\n", ""]);
 
 // exports
 
@@ -87099,7 +86843,7 @@ module.exports = "/fonts/fontawesome-webfont.woff?fee66e712a8a08eef5805a46892932
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38), __webpack_require__(207)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38), __webpack_require__(205)(module)))
 
 /***/ }),
 /* 144 */
@@ -87265,21 +87009,21 @@ if(false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(203)
+  __webpack_require__(202)
 }
 var Component = __webpack_require__(0)(
   /* script */
   null,
   /* template */
-  __webpack_require__(194),
+  __webpack_require__(190),
   /* styles */
   injectStyle,
   /* scopeId */
-  "data-v-e266c03c",
+  "data-v-852aea58",
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\404.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\404.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] 404.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87290,9 +87034,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e266c03c", Component.options)
+    hotAPI.createRecord("data-v-852aea58", Component.options)
   } else {
-    hotAPI.reload("data-v-e266c03c", Component.options)
+    hotAPI.reload("data-v-852aea58", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87309,7 +87053,7 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(201)
+  __webpack_require__(200)
 }
 var Component = __webpack_require__(0)(
   /* script */
@@ -87319,11 +87063,11 @@ var Component = __webpack_require__(0)(
   /* styles */
   injectStyle,
   /* scopeId */
-  "data-v-72f3a8f3",
+  "data-v-71c29f65",
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\Login.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\Login.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Login.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87334,9 +87078,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-72f3a8f3", Component.options)
+    hotAPI.createRecord("data-v-71c29f65", Component.options)
   } else {
-    hotAPI.reload("data-v-72f3a8f3", Component.options)
+    hotAPI.reload("data-v-71c29f65", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87353,21 +87097,21 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(204)
+  __webpack_require__(198)
 }
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(81),
   /* template */
-  __webpack_require__(195),
+  __webpack_require__(177),
   /* styles */
   injectStyle,
   /* scopeId */
-  "data-v-e3fdf30c",
+  "data-v-2aa44748",
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\Navigation.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\Navigation.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Navigation.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87378,9 +87122,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e3fdf30c", Component.options)
+    hotAPI.createRecord("data-v-2aa44748", Component.options)
   } else {
-    hotAPI.reload("data-v-e3fdf30c", Component.options)
+    hotAPI.reload("data-v-2aa44748", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87399,7 +87143,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(82),
   /* template */
-  __webpack_require__(192),
+  __webpack_require__(194),
   /* styles */
   null,
   /* scopeId */
@@ -87407,7 +87151,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\brokerCompany\\Index.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\brokerCompany\\Index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87418,9 +87162,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a476071e", Component.options)
+    hotAPI.createRecord("data-v-f03a793a", Component.options)
   } else {
-    hotAPI.reload("data-v-a476071e", Component.options)
+    hotAPI.reload("data-v-f03a793a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87439,7 +87183,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(83),
   /* template */
-  __webpack_require__(184),
+  __webpack_require__(178),
   /* styles */
   null,
   /* scopeId */
@@ -87447,7 +87191,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\brokerCompany\\UserList.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\brokerCompany\\UserList.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] UserList.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87458,9 +87202,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5fb9648c", Component.options)
+    hotAPI.createRecord("data-v-3f55c988", Component.options)
   } else {
-    hotAPI.reload("data-v-5fb9648c", Component.options)
+    hotAPI.reload("data-v-3f55c988", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87477,21 +87221,21 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(199)
+  __webpack_require__(203)
 }
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(84),
   /* template */
-  __webpack_require__(177),
+  __webpack_require__(193),
   /* styles */
   injectStyle,
   /* scopeId */
-  "data-v-39711956",
+  "data-v-df7603b8",
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\passport\\AuthorizedClients.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\passport\\AuthorizedClients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AuthorizedClients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87502,9 +87246,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-39711956", Component.options)
+    hotAPI.createRecord("data-v-df7603b8", Component.options)
   } else {
-    hotAPI.reload("data-v-39711956", Component.options)
+    hotAPI.reload("data-v-df7603b8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87521,21 +87265,21 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(202)
+  __webpack_require__(197)
 }
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(85),
   /* template */
-  __webpack_require__(191),
+  __webpack_require__(176),
   /* styles */
   injectStyle,
   /* scopeId */
-  "data-v-9aa4b19e",
+  "data-v-2924957f",
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\passport\\Clients.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\passport\\Clients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Clients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87546,9 +87290,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9aa4b19e", Component.options)
+    hotAPI.createRecord("data-v-2924957f", Component.options)
   } else {
-    hotAPI.reload("data-v-9aa4b19e", Component.options)
+    hotAPI.reload("data-v-2924957f", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87565,21 +87309,21 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(200)
+  __webpack_require__(196)
 }
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(86),
   /* template */
-  __webpack_require__(181),
+  __webpack_require__(171),
   /* styles */
   injectStyle,
   /* scopeId */
-  "data-v-4916a9b6",
+  "data-v-17c3eb97",
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\passport\\PersonalAccessTokens.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\passport\\PersonalAccessTokens.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] PersonalAccessTokens.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87590,9 +87334,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4916a9b6", Component.options)
+    hotAPI.createRecord("data-v-17c3eb97", Component.options)
   } else {
-    hotAPI.reload("data-v-4916a9b6", Component.options)
+    hotAPI.reload("data-v-17c3eb97", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87611,7 +87355,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(87),
   /* template */
-  __webpack_require__(185),
+  __webpack_require__(180),
   /* styles */
   null,
   /* scopeId */
@@ -87619,7 +87363,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\purchaseContract\\Add.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\purchaseContract\\Add.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Add.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87630,9 +87374,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6dbf33eb", Component.options)
+    hotAPI.createRecord("data-v-514b698e", Component.options)
   } else {
-    hotAPI.reload("data-v-6dbf33eb", Component.options)
+    hotAPI.reload("data-v-514b698e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87649,13 +87393,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(198)
+  __webpack_require__(199)
 }
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(88),
   /* template */
-  __webpack_require__(176),
+  __webpack_require__(181),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -87663,7 +87407,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\purchaseContract\\AddDate.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\purchaseContract\\AddDate.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AddDate.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87674,9 +87418,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3293c18e", Component.options)
+    hotAPI.createRecord("data-v-5338df87", Component.options)
   } else {
-    hotAPI.reload("data-v-3293c18e", Component.options)
+    hotAPI.reload("data-v-5338df87", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87695,7 +87439,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(89),
   /* template */
-  __webpack_require__(172),
+  __webpack_require__(174),
   /* styles */
   null,
   /* scopeId */
@@ -87703,7 +87447,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\purchaseContract\\AddOwner.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\purchaseContract\\AddOwner.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AddOwner.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87714,9 +87458,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-02908e38", Component.options)
+    hotAPI.createRecord("data-v-2665d7aa", Component.options)
   } else {
-    hotAPI.reload("data-v-02908e38", Component.options)
+    hotAPI.reload("data-v-2665d7aa", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87735,7 +87479,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(90),
   /* template */
-  __webpack_require__(193),
+  __webpack_require__(192),
   /* styles */
   null,
   /* scopeId */
@@ -87743,7 +87487,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\purchaseContract\\AddProperty.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\purchaseContract\\AddProperty.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AddProperty.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87754,9 +87498,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ac0b1f40", Component.options)
+    hotAPI.createRecord("data-v-c92f4ca4", Component.options)
   } else {
-    hotAPI.reload("data-v-ac0b1f40", Component.options)
+    hotAPI.reload("data-v-c92f4ca4", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87773,13 +87517,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(205)
+  __webpack_require__(201)
 }
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(91),
   /* template */
-  __webpack_require__(196),
+  __webpack_require__(189),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -87787,7 +87531,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\purchaseContract\\AddTiaoKuan.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\purchaseContract\\AddTiaoKuan.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AddTiaoKuan.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87798,9 +87542,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e589a9b6", Component.options)
+    hotAPI.createRecord("data-v-7ea91473", Component.options)
   } else {
-    hotAPI.reload("data-v-e589a9b6", Component.options)
+    hotAPI.reload("data-v-7ea91473", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87819,7 +87563,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(92),
   /* template */
-  __webpack_require__(173),
+  __webpack_require__(188),
   /* styles */
   null,
   /* scopeId */
@@ -87827,7 +87571,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\purchaseContract\\Index.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\purchaseContract\\Index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87838,9 +87582,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0987df1c", Component.options)
+    hotAPI.createRecord("data-v-78ba5aea", Component.options)
   } else {
-    hotAPI.reload("data-v-0987df1c", Component.options)
+    hotAPI.reload("data-v-78ba5aea", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87859,7 +87603,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(93),
   /* template */
-  __webpack_require__(186),
+  __webpack_require__(175),
   /* styles */
   null,
   /* scopeId */
@@ -87867,7 +87611,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\purchaseContract\\Optimize.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\purchaseContract\\Optimize.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Optimize.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87878,9 +87622,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6f4405fa", Component.options)
+    hotAPI.createRecord("data-v-27997316", Component.options)
   } else {
-    hotAPI.reload("data-v-6f4405fa", Component.options)
+    hotAPI.reload("data-v-27997316", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87899,7 +87643,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(94),
   /* template */
-  __webpack_require__(175),
+  __webpack_require__(184),
   /* styles */
   null,
   /* scopeId */
@@ -87907,7 +87651,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\purchaseContract\\Upload.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\purchaseContract\\Upload.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Upload.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87918,9 +87662,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-21e29cb2", Component.options)
+    hotAPI.createRecord("data-v-662baf99", Component.options)
   } else {
-    hotAPI.reload("data-v-21e29cb2", Component.options)
+    hotAPI.reload("data-v-662baf99", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87939,7 +87683,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(95),
   /* template */
-  __webpack_require__(174),
+  __webpack_require__(183),
   /* styles */
   null,
   /* scopeId */
@@ -87947,7 +87691,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\rbac\\Permission.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\rbac\\Permission.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Permission.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87958,9 +87702,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1e318114", Component.options)
+    hotAPI.createRecord("data-v-57d24f68", Component.options)
   } else {
-    hotAPI.reload("data-v-1e318114", Component.options)
+    hotAPI.reload("data-v-57d24f68", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -87979,7 +87723,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(96),
   /* template */
-  __webpack_require__(188),
+  __webpack_require__(173),
   /* styles */
   null,
   /* scopeId */
@@ -87987,7 +87731,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\rbac\\Role.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\rbac\\Role.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Role.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -87998,9 +87742,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-77db25dd", Component.options)
+    hotAPI.createRecord("data-v-1ef4d962", Component.options)
   } else {
-    hotAPI.reload("data-v-77db25dd", Component.options)
+    hotAPI.reload("data-v-1ef4d962", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -88019,7 +87763,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(97),
   /* template */
-  __webpack_require__(189),
+  __webpack_require__(172),
   /* styles */
   null,
   /* scopeId */
@@ -88027,7 +87771,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\rbac\\User.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\rbac\\User.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] User.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -88038,9 +87782,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-77dcdeb2", Component.options)
+    hotAPI.createRecord("data-v-1ef167b8", Component.options)
   } else {
-    hotAPI.reload("data-v-77dcdeb2", Component.options)
+    hotAPI.reload("data-v-1ef167b8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -88059,7 +87803,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(98),
   /* template */
-  __webpack_require__(183),
+  __webpack_require__(182),
   /* styles */
   null,
   /* scopeId */
@@ -88067,7 +87811,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\saleContract\\Add.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\saleContract\\Add.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Add.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -88078,9 +87822,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5ebeea31", Component.options)
+    hotAPI.createRecord("data-v-55944f02", Component.options)
   } else {
-    hotAPI.reload("data-v-5ebeea31", Component.options)
+    hotAPI.reload("data-v-55944f02", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -88099,7 +87843,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(99),
   /* template */
-  __webpack_require__(180),
+  __webpack_require__(191),
   /* styles */
   null,
   /* scopeId */
@@ -88107,7 +87851,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\saleContract\\AddDate.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\saleContract\\AddDate.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AddDate.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -88118,9 +87862,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-48c5427f", Component.options)
+    hotAPI.createRecord("data-v-9b3f4c66", Component.options)
   } else {
-    hotAPI.reload("data-v-48c5427f", Component.options)
+    hotAPI.reload("data-v-9b3f4c66", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -88139,7 +87883,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(100),
   /* template */
-  __webpack_require__(182),
+  __webpack_require__(185),
   /* styles */
   null,
   /* scopeId */
@@ -88147,7 +87891,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\saleContract\\AddProperty.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\saleContract\\AddProperty.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AddProperty.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -88158,9 +87902,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5d9a80a6", Component.options)
+    hotAPI.createRecord("data-v-6bc57e18", Component.options)
   } else {
-    hotAPI.reload("data-v-5d9a80a6", Component.options)
+    hotAPI.reload("data-v-6bc57e18", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -88179,7 +87923,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(101),
   /* template */
-  __webpack_require__(178),
+  __webpack_require__(179),
   /* styles */
   null,
   /* scopeId */
@@ -88187,7 +87931,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\saleContract\\AddRenter.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\saleContract\\AddRenter.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AddRenter.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -88198,9 +87942,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d65ab92", Component.options)
+    hotAPI.createRecord("data-v-507fa605", Component.options)
   } else {
-    hotAPI.reload("data-v-3d65ab92", Component.options)
+    hotAPI.reload("data-v-507fa605", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -88217,9 +87961,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  null,
+  __webpack_require__(102),
   /* template */
-  __webpack_require__(179),
+  __webpack_require__(186),
   /* styles */
   null,
   /* scopeId */
@@ -88227,9 +87971,9 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\saleContract\\AddTiaoKuan.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel5.2\\resources\\assets\\js\\components\\saleContract\\Index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] AddTiaoKuan.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Index.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -88238,9 +87982,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-40db3b6b", Component.options)
+    hotAPI.createRecord("data-v-6de7aeb0", Component.options)
   } else {
-    hotAPI.reload("data-v-40db3b6b", Component.options)
+    hotAPI.reload("data-v-6de7aeb0", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -88254,44 +87998,1001 @@ module.exports = Component.exports
 /* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(102),
-  /* template */
-  __webpack_require__(190),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "D:\\phpStudy\\WWW\\wangqa1\\resources\\assets\\js\\components\\saleContract\\Index.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Index.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_c('div', {
+    staticStyle: {
+      "display": "flex",
+      "justify-content": "space-between",
+      "align-items": "center"
+    }
+  }, [_c('span', [_vm._v("\n                        Personal Access Tokens\n                    ")]), _vm._v(" "), _c('a', {
+    staticClass: "action-link",
+    on: {
+      "click": _vm.showCreateTokenForm
+    }
+  }, [_vm._v("\n                        Create New Token\n                    ")])])]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [(_vm.tokens.length === 0) ? _c('p', {
+    staticClass: "m-b-none"
+  }, [_vm._v("\n                    You have not created any personal access tokens.\n                ")]) : _vm._e(), _vm._v(" "), (_vm.tokens.length > 0) ? _c('table', {
+    staticClass: "table table-borderless m-b-none"
+  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.tokens), function(token) {
+    return _c('tr', [_c('td', {
+      staticStyle: {
+        "vertical-align": "middle"
+      }
+    }, [_vm._v("\n                                " + _vm._s(token.name) + "\n                            ")]), _vm._v(" "), _c('td', {
+      staticStyle: {
+        "vertical-align": "middle"
+      }
+    }, [_c('a', {
+      staticClass: "action-link text-danger",
+      on: {
+        "click": function($event) {
+          _vm.revoke(token)
+        }
+      }
+    }, [_vm._v("\n                                    Delete\n                                ")])])])
+  }))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+    staticClass: "modal fade",
+    attrs: {
+      "id": "modal-create-token",
+      "tabindex": "-1",
+      "role": "dialog"
+    }
+  }, [_c('div', {
+    staticClass: "modal-dialog"
+  }, [_c('div', {
+    staticClass: "modal-content"
+  }, [_vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "modal-body"
+  }, [(_vm.form.errors.length > 0) ? _c('div', {
+    staticClass: "alert alert-danger"
+  }, [_vm._m(2), _vm._v(" "), _c('br'), _vm._v(" "), _c('ul', _vm._l((_vm.form.errors), function(error) {
+    return _c('li', [_vm._v("\n                                " + _vm._s(error) + "\n                            ")])
+  }))]) : _vm._e(), _vm._v(" "), _c('form', {
+    staticClass: "form-horizontal",
+    attrs: {
+      "role": "form"
+    },
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.store($event)
+      }
+    }
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    staticClass: "col-md-4 control-label"
+  }, [_vm._v("Name")]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.name),
+      expression: "form.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "id": "create-token-name",
+      "type": "text",
+      "name": "name"
+    },
+    domProps: {
+      "value": (_vm.form.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.name = $event.target.value
+      }
+    }
+  })])]), _vm._v(" "), (_vm.scopes.length > 0) ? _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    staticClass: "col-md-4 control-label"
+  }, [_vm._v("Scopes")]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, _vm._l((_vm.scopes), function(scope) {
+    return _c('div', [_c('div', {
+      staticClass: "checkbox"
+    }, [_c('label', [_c('input', {
+      attrs: {
+        "type": "checkbox"
+      },
+      domProps: {
+        "checked": _vm.scopeIsAssigned(scope.id)
+      },
+      on: {
+        "click": function($event) {
+          _vm.toggleScope(scope.id)
+        }
+      }
+    }), _vm._v("\n\n                                                " + _vm._s(scope.id) + "\n                                        ")])])])
+  }))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "modal-footer"
+  }, [_c('button', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "modal"
+    }
+  }, [_vm._v("Close")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": _vm.store
+    }
+  }, [_vm._v("\n                        Create\n                    ")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "modal fade",
+    attrs: {
+      "id": "modal-access-token",
+      "tabindex": "-1",
+      "role": "dialog"
+    }
+  }, [_c('div', {
+    staticClass: "modal-dialog"
+  }, [_c('div', {
+    staticClass: "modal-content"
+  }, [_vm._m(3), _vm._v(" "), _c('div', {
+    staticClass: "modal-body"
+  }, [_c('p', [_vm._v("\n                        Here is your new personal access token. This is the only time it will be shown so don't lose it!\n                        You may now use this token to make API requests.\n                    ")]), _vm._v(" "), _c('pre', [_c('code', [_vm._v(_vm._s(_vm.accessToken))])])]), _vm._v(" "), _vm._m(4)])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th')])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "modal-header"
+  }, [_c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button ",
+      "data-dismiss": "modal",
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×")]), _vm._v(" "), _c('h4', {
+    staticClass: "modal-title"
+  }, [_vm._v("\n                        Create Token\n                    ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('strong', [_vm._v("Whoops!")]), _vm._v(" Something went wrong!")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "modal-header"
+  }, [_c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button ",
+      "data-dismiss": "modal",
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×")]), _vm._v(" "), _c('h4', {
+    staticClass: "modal-title"
+  }, [_vm._v("\n                        Personal Access Token\n                    ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "modal-footer"
+  }, [_c('button', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "modal"
+    }
+  }, [_vm._v("Close")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
   module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8d19c83c", Component.options)
-  } else {
-    hotAPI.reload("data-v-8d19c83c", Component.options)
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-17c3eb97", module.exports)
   }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
+}
 
 /***/ }),
 /* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', [_c('el-input', {
+    attrs: {
+      "placeholder": "姓名"
+    },
+    model: {
+      value: (_vm.filters.name),
+      callback: function($$v) {
+        _vm.filters.name = $$v
+      },
+      expression: "filters.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.getUsers
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.handleAdd
+    }
+  }, [_vm._v("新增")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.users,
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "selection",
+      "width": "55"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "type": "index",
+      "width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "姓名",
+      "width": "150",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "sex",
+      "label": "性别",
+      "width": "100",
+      "formatter": _vm.formatSex,
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "email",
+      "label": "邮箱",
+      "width": "200",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "created_at",
+      "label": "创建时间",
+      "width": "220",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "角色",
+      "min-width": "180",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "200"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleEdit(scope.$index, scope.row)
+            }
+          }
+        }, [_c('i', {
+          staticClass: "el-icon-edit"
+        })]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "danger",
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleDel(scope.$index, scope.row)
+            }
+          }
+        }, [_c('i', {
+          staticClass: "el-icon-delete"
+        })]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "small",
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleSet(scope.$index, scope.row)
+            }
+          }
+        }, [_c('i', {
+          staticClass: "el-icon-setting"
+        })])]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "编辑",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.editFormVisible),
+      callback: function($$v) {
+        _vm.editFormVisible = $$v
+      },
+      expression: "editFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "editForm",
+    attrs: {
+      "model": _vm.editForm,
+      "label-width": "80px",
+      "rules": _vm.editFormRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "姓名",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.name),
+      callback: function($$v) {
+        _vm.editForm.name = $$v
+      },
+      expression: "editForm.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "性别",
+      "prop": "sex"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.editForm.sex),
+      callback: function($$v) {
+        _vm.editForm.sex = $$v
+      },
+      expression: "editForm.sex"
+    }
+  }, [_c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": "1"
+    }
+  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": "2"
+    }
+  }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "邮箱",
+      "prop": "email"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.email),
+      callback: function($$v) {
+        _vm.editForm.email = $$v
+      },
+      expression: "editForm.email"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "手机号",
+      "prop": "phone"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.phone),
+      callback: function($$v) {
+        _vm.editForm.phone = $$v
+      },
+      expression: "editForm.phone"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.editFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.editLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.editSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "新增",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.addFormVisible),
+      callback: function($$v) {
+        _vm.addFormVisible = $$v
+      },
+      expression: "addFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "addForm",
+    attrs: {
+      "model": _vm.addForm,
+      "label-width": "80px",
+      "rules": _vm.addFormRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "姓名",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.name),
+      callback: function($$v) {
+        _vm.addForm.name = $$v
+      },
+      expression: "addForm.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "性别",
+      "prop": "sex"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.addForm.sex),
+      callback: function($$v) {
+        _vm.addForm.sex = $$v
+      },
+      expression: "addForm.sex"
+    }
+  }, [_c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": "1"
+    }
+  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": "2"
+    }
+  }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "邮箱",
+      "prop": "email"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.email),
+      callback: function($$v) {
+        _vm.addForm.email = $$v
+      },
+      expression: "addForm.email"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "手机号",
+      "prop": "phone"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.phone),
+      callback: function($$v) {
+        _vm.addForm.phone = $$v
+      },
+      expression: "addForm.phone"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.addFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.addLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.addSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "danger",
+      "disabled": this.sels.length === 0
+    },
+    on: {
+      "click": _vm.batchRemove
+    }
+  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "current-page": _vm.currentPage,
+      "page-sizes": _vm.pageSizes,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "设置",
+      "visible": _vm.dialogRoleVisible
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.dialogRoleVisible = $event
+      }
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "multiple": "",
+      "filterable": "",
+      "remote": "",
+      "placeholder": "请输入关键词",
+      "remote-method": _vm.remoteMethod,
+      "loading": _vm.roleLoading
+    },
+    model: {
+      value: (_vm.Roles),
+      callback: function($$v) {
+        _vm.Roles = $$v
+      },
+      expression: "Roles"
+    }
+  }, _vm._l((_vm.options4), function(item) {
+    return _c('el-option', {
+      key: item.value,
+      attrs: {
+        "label": item.label,
+        "value": item.value
+      }
+    })
+  })), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.dialogRoleVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.roleLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.roleSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-1ef167b8", module.exports)
+  }
+}
+
+/***/ }),
+/* 173 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-row', [_c('el-form', {
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', [_c('el-input', {
+    attrs: {
+      "placeholder": "角色"
+    },
+    model: {
+      value: (_vm.filters.name),
+      callback: function($$v) {
+        _vm.filters.name = $$v
+      },
+      expression: "filters.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [(this.fun('purchaseContractAdd')) ? _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.getRoles
+    }
+  }, [_vm._v("查询")]) : _vm._e()], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.handleAdd
+    }
+  }, [_vm._v("新增")])], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 15
+    }
+  }, [_c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.Roles,
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "selection",
+      "width": "55"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "type": "index",
+      "width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "角色",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "description",
+      "label": "说明",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "200"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleEdit(scope.$index, scope.row)
+            }
+          }
+        }, [_c('i', {
+          staticClass: "el-icon-edit"
+        })]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "danger",
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleDel(scope.$index, scope.row)
+            }
+          }
+        }, [_c('i', {
+          staticClass: "el-icon-delete"
+        })]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "small",
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleSet(scope.$index, scope.row)
+            }
+          }
+        }, [_c('i', {
+          staticClass: "el-icon-setting"
+        })])]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "danger",
+      "disabled": this.sels.length === 0
+    },
+    on: {
+      "click": _vm.batchRemove
+    }
+  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "current-page": _vm.currentPage,
+      "page-sizes": _vm.pageSizes,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticStyle: {
+      "margin-left": "5px"
+    },
+    attrs: {
+      "span": 8
+    }
+  }, [_c('div', {
+    staticStyle: {
+      "height": "40px",
+      "background": "#EEF1F6",
+      "text-align": "center",
+      "line-height": "40px",
+      "font-size": "14px"
+    }
+  }, [_c('b', [_vm._v(_vm._s(_vm.roleName) + "权限")])]), _vm._v(" "), _c('el-tree', {
+    ref: "tree",
+    attrs: {
+      "data": _vm.data2,
+      "show-checkbox": "",
+      "node-key": "id",
+      "default-expanded-keys": [],
+      "default-checked-keys": _vm.checked,
+      "props": _vm.defaultProps
+    }
+  }), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.getCheckedKeys
+    }
+  }, [_vm._v("保存")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "编辑",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.editFormVisible),
+      callback: function($$v) {
+        _vm.editFormVisible = $$v
+      },
+      expression: "editFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "editForm",
+    attrs: {
+      "model": _vm.editForm,
+      "label-width": "80px",
+      "rules": _vm.editFormRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "角色",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.name),
+      callback: function($$v) {
+        _vm.editForm.name = $$v
+      },
+      expression: "editForm.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "说明",
+      "prop": "description"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.description),
+      callback: function($$v) {
+        _vm.editForm.description = $$v
+      },
+      expression: "editForm.description"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.editFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.editLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.editSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "新增",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.addFormVisible),
+      callback: function($$v) {
+        _vm.addFormVisible = $$v
+      },
+      expression: "addFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "addForm",
+    attrs: {
+      "model": _vm.addForm,
+      "label-width": "80px",
+      "rules": _vm.addFormRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "角色",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.name),
+      callback: function($$v) {
+        _vm.addForm.name = $$v
+      },
+      expression: "addForm.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "说明",
+      "prop": "description"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.description),
+      callback: function($$v) {
+        _vm.addForm.description = $$v
+      },
+      expression: "addForm.description"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.addFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.addLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.addSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-1ef4d962", module.exports)
+  }
+}
+
+/***/ }),
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -88747,3397 +89448,12 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-02908e38", module.exports)
-  }
-}
-
-/***/ }),
-/* 173 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
-    staticClass: "demo-form-inline",
-    attrs: {
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": ""
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "请输入项目"
-    },
-    model: {
-      value: (_vm.filters.name),
-      callback: function($$v) {
-        _vm.filters.name = $$v
-      },
-      expression: "filters.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary",
-      "icon": "search"
-    }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
-    staticClass: "el-icon-plus",
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.addContract
-    }
-  }, [_vm._v(" 新增")]), _vm._v(" "), _c('el-button', {
-    staticClass: "el-icon-upload2",
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.uploadImg
-    }
-  }, [_vm._v("上传")])], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.lists,
-      "highlight-current-row": "",
-      "element-loading-text": "拼命加载中"
-    },
-    on: {
-      "selection-change": _vm.selsChange
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "type": "selection",
-      "width": "55"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "id",
-      "label": "id",
-      "width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "officeList[0].loupanName",
-      "label": "楼盘",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "officeList[0].loudongName",
-      "label": "楼栋",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "officeList[0].fanghao",
-      "label": "房间号",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zhuangtai",
-      "label": "状态",
-      "formatter": _vm.formatStatus,
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "createtime",
-      "label": "签约日",
-      "formatter": _vm.changeDate,
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "300"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleEdit(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleReview(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("审核")]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleOptimize(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("优化")]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "type": "danger",
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleDel(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("删除")])]
-      }
-    }])
-  })], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "current-page": _vm.currentPage,
-      "page-sizes": _vm.pageSizes,
-      "page-size": _vm.pageSize,
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "total": _vm.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-0987df1c", module.exports)
-  }
-}
-
-/***/ }),
-/* 174 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-tree', {
-    attrs: {
-      "data": _vm.data2,
-      "show-checkbox": "",
-      "node-key": "id",
-      "default-expanded-keys": [2, 3],
-      "default-checked-keys": [5],
-      "props": _vm.defaultProps
-    }
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-1e318114", module.exports)
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-2665d7aa", module.exports)
   }
 }
 
 /***/ }),
 /* 175 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-upload', {
-    staticClass: "upload-demo",
-    attrs: {
-      "action": "https://jsonplaceholder.typicode.com/posts/",
-      "on-preview": _vm.handlePreview,
-      "on-remove": _vm.handleRemove,
-      "file-list": _vm.fileList2,
-      "list-type": "picture"
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "size": "small",
-      "type": "primary"
-    }
-  }, [_vm._v("点击上传")]), _vm._v(" "), _c('div', {
-    staticClass: "el-upload__tip",
-    slot: "tip"
-  }, [_vm._v("只能上传jpg/png文件，且不超过2000kb")])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-21e29cb2", module.exports)
-  }
-}
-
-/***/ }),
-/* 176 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', {
-    staticClass: "container"
-  }, [_c('el-form', {
-    staticClass: "demo-dynamic",
-    attrs: {
-      "model": _vm.addDate,
-      "label-width": "100px"
-    }
-  }, [_vm._l((_vm.addDate.mianzuqiList), function(item, index) {
-    return _c('el-form-item', {
-      key: item.key,
-      attrs: {
-        "label": "免租期",
-        "prop": 'mianzuqiList.' + index + '.value'
-      }
-    }, [_c('el-date-picker', {
-      attrs: {
-        "type": "date",
-        "placeholder": "开始时间"
-      },
-      model: {
-        value: (item.startdate),
-        callback: function($$v) {
-          item.startdate = $$v
-        },
-        expression: "item.startdate"
-      }
-    }), _vm._v(" "), _c('el-date-picker', {
-      attrs: {
-        "type": "date",
-        "placeholder": "结束时间"
-      },
-      model: {
-        value: (item.enddate),
-        callback: function($$v) {
-          item.enddate = $$v
-        },
-        expression: "item.enddate"
-      }
-    }), _vm._v(" "), _c('el-radio-group', {
-      model: {
-        value: (item.mianzufangshi),
-        callback: function($$v) {
-          item.mianzufangshi = $$v
-        },
-        expression: "item.mianzufangshi"
-      }
-    }, [_c('el-radio', {
-      attrs: {
-        "label": 1
-      }
-    }, [_vm._v("期内免租")]), _vm._v(" "), _c('el-radio', {
-      attrs: {
-        "label": 2
-      }
-    }, [_vm._v("期外免租")])], 1), _vm._v(" "), _c('el-button', {
-      on: {
-        "click": function($event) {
-          $event.preventDefault();
-          _vm.removeFreeItem(item)
-        }
-      }
-    }, [_vm._v("删除")])], 1)
-  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    on: {
-      "click": _vm.addFreeItem
-    }
-  }, [_vm._v("新增免租期")])], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "总租期"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.addDate.startdate),
-      callback: function($$v) {
-        _vm.addDate.startdate = $$v
-      },
-      expression: "addDate.startdate"
-    }
-  }), _vm._v(" "), _c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "结束时间"
-    },
-    on: {
-      "change": function($event) {
-        _vm.zqchange()
-      }
-    },
-    model: {
-      value: (_vm.addDate.enddate),
-      callback: function($$v) {
-        _vm.addDate.enddate = $$v
-      },
-      expression: "addDate.enddate"
-    }
-  })], 1), _vm._v(" "), _vm._l((_vm.addDate.zujinList), function(item, index) {
-    return _c('div', [_c('el-row', [_c('el-col', {
-      staticStyle: {
-        "width": "550px"
-      },
-      attrs: {
-        "span": 9
-      }
-    }, [_c('el-form-item', {
-      key: item.key,
-      attrs: {
-        "label": '租期' + index,
-        "prop": 'zujinList.' + index + '.value'
-      }
-    }, [_c('el-date-picker', {
-      attrs: {
-        "type": "date",
-        "placeholder": "开始时间"
-      },
-      model: {
-        value: (item.startdate),
-        callback: function($$v) {
-          item.startdate = $$v
-        },
-        expression: "item.startdate"
-      }
-    }), _vm._v(" "), _c('el-date-picker', {
-      attrs: {
-        "type": "date",
-        "placeholder": "结束时间"
-      },
-      model: {
-        value: (item.enddate),
-        callback: function($$v) {
-          item.enddate = $$v
-        },
-        expression: "item.enddate"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "width": "130px",
-        "margin-left": "-20px"
-      },
-      attrs: {
-        "span": 2,
-        "pull": 1
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "月租金",
-        "label-width": "55px"
-      }
-    }, [_c('el-input', {
-      staticClass: "pulll10",
-      attrs: {
-        "placeholder": "租金"
-      },
-      model: {
-        value: (item.yuezujin),
-        callback: function($$v) {
-          item.yuezujin = $$v
-        },
-        expression: "item.yuezujin"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "width": "94px",
-        "margin-left": "-10px"
-      },
-      attrs: {
-        "span": 2,
-        "pull": 1
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "单价",
-        "label-width": "40px"
-      }
-    }, [_c('el-input', {
-      staticClass: "pulll10",
-      attrs: {
-        "placeholder": "单价"
-      },
-      model: {
-        value: (item.price),
-        callback: function($$v) {
-          item.price = $$v
-        },
-        expression: "item.price"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "margin-left": "-10px"
-      },
-      attrs: {
-        "span": 3,
-        "pull": 1
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "递增方式",
-        "label-width": "70px"
-      }
-    }, [_c('el-input', {
-      staticClass: "pulll10",
-      attrs: {
-        "placeholder": ""
-      },
-      model: {
-        value: (item.dizengliang),
-        callback: function($$v) {
-          item.dizengliang = $$v
-        },
-        expression: "item.dizengliang"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "width": "70px",
-        "margin-left": "-50px"
-      },
-      attrs: {
-        "span": 2
-      }
-    }, [_c('el-select', {
-      attrs: {
-        "placeholder": ""
-      },
-      model: {
-        value: (_vm.addDate.zujinList[index].dizengfangshi),
-        callback: function($$v) {
-          _vm.addDate.zujinList[index].dizengfangshi = $$v
-        },
-        expression: "addDate.zujinList[index].dizengfangshi"
-      }
-    }, _vm._l((_vm.options), function(item) {
-      return _c('el-option', {
-        key: item.value,
-        attrs: {
-          "label": item.label,
-          "value": item.value
-        }
-      })
-    }))], 1), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "margin-left": "5px"
-      },
-      attrs: {
-        "span": 2
-      }
-    }, [_c('el-button', {
-      on: {
-        "click": function($event) {
-          $event.preventDefault();
-          _vm.removeRentItem(item)
-        }
-      }
-    }, [_vm._v("删除")])], 1)], 1)], 1)
-  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    on: {
-      "click": _vm.addRentItem
-    }
-  }, [_vm._v("新增租期")])], 1), _vm._v(" "), _vm._l((_vm.addDate.fukuanFangshiList), function(item, index) {
-    return _c('div', [_c('el-row', {
-      attrs: {
-        "gutter": 5
-      }
-    }, [_c('el-col', {
-      staticStyle: {
-        "width": "550px"
-      },
-      attrs: {
-        "span": 14
-      }
-    }, [_c('el-form-item', {
-      key: item.key,
-      attrs: {
-        "label": "付款方式",
-        "prop": 'fukuanFangshiList.' + index + '.value'
-      }
-    }, [_c('el-date-picker', {
-      attrs: {
-        "type": "date",
-        "placeholder": "开始时间"
-      },
-      model: {
-        value: (item.startdate),
-        callback: function($$v) {
-          item.startdate = $$v
-        },
-        expression: "item.startdate"
-      }
-    }), _vm._v(" "), _c('el-date-picker', {
-      attrs: {
-        "type": "date",
-        "placeholder": "结束时间"
-      },
-      model: {
-        value: (item.enddate),
-        callback: function($$v) {
-          item.enddate = $$v
-        },
-        expression: "item.enddate"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "width": "90px"
-      },
-      attrs: {
-        "span": 1,
-        "pull": 1
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "押",
-        "label-width": "20px"
-      }
-    }, [_c('el-input', {
-      attrs: {
-        "placeholder": "押几"
-      },
-      model: {
-        value: (item.yajinyue),
-        callback: function($$v) {
-          item.yajinyue = $$v
-        },
-        expression: "item.yajinyue"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "margin-left": "15px",
-        "width": "90px"
-      },
-      attrs: {
-        "span": 1,
-        "pull": 1
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "付",
-        "label-width": "20px"
-      }
-    }, [_c('el-input', {
-      attrs: {
-        "placeholder": "付几"
-      },
-      model: {
-        value: (item.zujinyue),
-        callback: function($$v) {
-          item.zujinyue = $$v
-        },
-        expression: "item.zujinyue"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 2,
-        "pull": 1
-      }
-    }, [_c('el-button', {
-      on: {
-        "click": function($event) {
-          $event.preventDefault();
-          _vm.removePayItem(item)
-        }
-      }
-    }, [_vm._v("删除")])], 1)], 1)], 1)
-  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    on: {
-      "click": _vm.addPayItem
-    }
-  }, [_vm._v("新增付款方式")])], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "押金"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "押金"
-    },
-    model: {
-      value: (_vm.addDate.yajin),
-      callback: function($$v) {
-        _vm.addDate.yajin = $$v
-      },
-      expression: "addDate.yajin"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "总应付租金"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "总应付押金"
-    },
-    model: {
-      value: (_vm.addDate.zongyingfuzujin),
-      callback: function($$v) {
-        _vm.addDate.zongyingfuzujin = $$v
-      },
-      expression: "addDate.zongyingfuzujin"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "合同佣金"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "合同佣金"
-    },
-    model: {
-      value: (_vm.addDate.yongjin),
-      callback: function($$v) {
-        _vm.addDate.yongjin = $$v
-      },
-      expression: "addDate.yongjin"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "提前几天付款"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "placeholder": "提前几天付款"
-    },
-    model: {
-      value: (_vm.addDate.tiqianfukuantian),
-      callback: function($$v) {
-        _vm.addDate.tiqianfukuantian = $$v
-      },
-      expression: "addDate.tiqianfukuantian"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "押金付款日期"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "type": "date",
-      "placeholder": "选择日期"
-    },
-    model: {
-      value: (_vm.addDate.yajinfukuanri),
-      callback: function($$v) {
-        _vm.addDate.yajinfukuanri = $$v
-      },
-      expression: "addDate.yajinfukuanri"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "收房日"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "type": "date",
-      "placeholder": "选择日期"
-    },
-    model: {
-      value: (_vm.addDate.shoufangdate),
-      callback: function($$v) {
-        _vm.addDate.shoufangdate = $$v
-      },
-      expression: "addDate.shoufangdate"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "签约日"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "type": "date",
-      "placeholder": "选择日期"
-    },
-    model: {
-      value: (_vm.addDate.qianyuedate),
-      callback: function($$v) {
-        _vm.addDate.qianyuedate = $$v
-      },
-      expression: "addDate.qianyuedate"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "首期租金日期"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "type": "date",
-      "placeholder": "首期租金日期"
-    },
-    model: {
-      value: (_vm.addDate.shouqifukuanri),
-      callback: function($$v) {
-        _vm.addDate.shouqifukuanri = $$v
-      },
-      expression: "addDate.shouqifukuanri"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "二期租金日期"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "type": "date",
-      "placeholder": "二期租金日期"
-    },
-    model: {
-      value: (_vm.addDate.erqifukuanri),
-      callback: function($$v) {
-        _vm.addDate.erqifukuanri = $$v
-      },
-      expression: "addDate.erqifukuanri"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "三期租金日期"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "tpye": "date",
-      "placeholder": "三期租金日期"
-    },
-    model: {
-      value: (_vm.addDate.sanqifukuanri),
-      callback: function($$v) {
-        _vm.addDate.sanqifukuanri = $$v
-      },
-      expression: "addDate.sanqifukuanri"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "费用"
-    }
-  }, [_c('el-checkbox-group', {
-    model: {
-      value: (_vm.addDate.checkList),
-      callback: function($$v) {
-        _vm.addDate.checkList = $$v
-      },
-      expression: "addDate.checkList"
-    }
-  }, [_c('el-checkbox', {
-    attrs: {
-      "label": "1"
-    }
-  }, [_vm._v("物业费")]), _vm._v(" "), _c('el-checkbox', {
-    attrs: {
-      "label": "2"
-    }
-  }, [_vm._v("取暖费")]), _vm._v(" "), _c('el-checkbox', {
-    attrs: {
-      "label": "3"
-    }
-  }, [_vm._v("制冷")]), _vm._v(" "), _c('el-checkbox', {
-    attrs: {
-      "label": "4"
-    }
-  }, [_vm._v("发票")]), _vm._v(" "), _c('el-checkbox', {
-    attrs: {
-      "label": "5"
-    }
-  }, [_vm._v("其它")])], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "补充条款",
-      "prop": "buchongtiaokuan"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea",
-      "row": "5px"
-    },
-    model: {
-      value: (_vm.addDate.buchongtiaokuan),
-      callback: function($$v) {
-        _vm.addDate.buchongtiaokuan = $$v
-      },
-      expression: "addDate.buchongtiaokuan"
-    }
-  })], 1)], 1)], 2)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-3293c18e", module.exports)
-  }
-}
-
-/***/ }),
-/* 177 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.tokens.length > 0) ? _c('div', [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [_vm._v("Authorized Applications")]), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
-  }, [_c('table', {
-    staticClass: "table table-borderless m-b-none"
-  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.tokens), function(token) {
-    return _c('tr', [_c('td', {
-      staticStyle: {
-        "vertical-align": "middle"
-      }
-    }, [_vm._v("\n                                " + _vm._s(token.client.name) + "\n                            ")]), _vm._v(" "), _c('td', {
-      staticStyle: {
-        "vertical-align": "middle"
-      }
-    }, [(token.scopes.length > 0) ? _c('span', [_vm._v("\n                                    " + _vm._s(token.scopes.join(', ')) + "\n                                ")]) : _vm._e()]), _vm._v(" "), _c('td', {
-      staticStyle: {
-        "vertical-align": "middle"
-      }
-    }, [_c('a', {
-      staticClass: "action-link text-danger",
-      on: {
-        "click": function($event) {
-          _vm.revoke(token)
-        }
-      }
-    }, [_vm._v("\n                                    Revoke\n                                ")])])])
-  }))])])])]) : _vm._e()])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Scopes")]), _vm._v(" "), _c('th')])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-39711956", module.exports)
-  }
-}
-
-/***/ }),
-/* 178 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('el-form', {
-    attrs: {
-      "label-position": _vm.labelPosition,
-      "label-width": "100px",
-      "model": _vm.addRenter
-    }
-  }, [_c('el-col', {
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "出租人"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.addRenter.chengzufang),
-      callback: function($$v) {
-        _vm.addRenter.chengzufang = $$v
-      },
-      expression: "addRenter.chengzufang"
-    }
-  }, [_c('el-radio', {
-    attrs: {
-      "label": "华塑商贸"
-    }
-  }), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": "幼狮科技"
-    }
-  }), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": "航远房地产"
-    }
-  }), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": "航远投资管理"
-    }
-  }), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": "彭昆"
-    }
-  }), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": "彭亮"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "居间方"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.jujianfang),
-      callback: function($$v) {
-        _vm.addRenter.jujianfang = $$v
-      },
-      expression: "addRenter.jujianfang"
-    }
-  })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "收款人"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.shoukuanren),
-      callback: function($$v) {
-        _vm.addRenter.shoukuanren = $$v
-      },
-      expression: "addRenter.shoukuanren"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 10
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "开户行"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.kaihuhang),
-      callback: function($$v) {
-        _vm.addRenter.kaihuhang = $$v
-      },
-      expression: "addRenter.kaihuhang"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "账号"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.zhanghao),
-      callback: function($$v) {
-        _vm.addRenter.zhanghao = $$v
-      },
-      expression: "addRenter.zhanghao"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "租户类型"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.addRenter.yezhuleixing),
-      callback: function($$v) {
-        _vm.addRenter.yezhuleixing = $$v
-      },
-      expression: "addRenter.yezhuleixing"
-    }
-  }, [_c('el-radio', {
-    attrs: {
-      "label": 1
-    }
-  }, [_vm._v("个人")]), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": 2
-    }
-  }, [_vm._v("公司")])], 1)], 1), _vm._v(" "), (_vm.addRenter.yezhuleixing == 1) ? _c('div', [_vm._l((_vm.addRenter.chanquanrenList), function(item, index) {
-    return _c('div', [_c('el-row', [_c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "承租人"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.addRenter.chanquanrenList[index].Name),
-        callback: function($$v) {
-          _vm.addRenter.chanquanrenList[index].Name = $$v
-        },
-        expression: "addRenter.chanquanrenList[index].Name"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 10
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "身份证号"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.addRenter.chanquanrenList[index].zhengjian),
-        callback: function($$v) {
-          _vm.addRenter.chanquanrenList[index].zhengjian = $$v
-        },
-        expression: "addRenter.chanquanrenList[index].zhengjian"
-      }
-    })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "联系方式"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.addRenter.chanquanrenList[index].Tel),
-        callback: function($$v) {
-          _vm.addRenter.chanquanrenList[index].Tel = $$v
-        },
-        expression: "addRenter.chanquanrenList[index].Tel"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "性别"
-      }
-    }, [_c('el-radio-group', {
-      model: {
-        value: (_vm.addRenter.chanquanrenList[index].Sex),
-        callback: function($$v) {
-          _vm.addRenter.chanquanrenList[index].Sex = $$v
-        },
-        expression: "addRenter.chanquanrenList[index].Sex"
-      }
-    }, [_c('el-radio', {
-      attrs: {
-        "label": 1
-      }
-    }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
-      attrs: {
-        "label": 2
-      }
-    }, [_vm._v("女")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 2
-      }
-    }, [_c('el-button', {
-      staticStyle: {
-        "margin-left": "6px"
-      },
-      on: {
-        "click": function($event) {
-          $event.preventDefault();
-          _vm.removeRentItem(item)
-        }
-      }
-    }, [_vm._v("删除")])], 1)], 1)], 1)
-  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    on: {
-      "click": _vm.addRentItem
-    }
-  }, [_vm._v("新增承租人")])], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "代理人"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.dailirenName),
-      callback: function($$v) {
-        _vm.addRenter.dailirenName = $$v
-      },
-      expression: "addRenter.dailirenName"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 10
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "身份证号"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.dailirenZhengjian),
-      callback: function($$v) {
-        _vm.addRenter.dailirenZhengjian = $$v
-      },
-      expression: "addRenter.dailirenZhengjian"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "联系方式"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.dailirenTel),
-      callback: function($$v) {
-        _vm.addRenter.dailirenTel = $$v
-      },
-      expression: "addRenter.dailirenTel"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "性别"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.addRenter.dailirenSex),
-      callback: function($$v) {
-        _vm.addRenter.dailirenSex = $$v
-      },
-      expression: "addRenter.dailirenSex"
-    }
-  }, [_c('el-radio', {
-    attrs: {
-      "label": 1
-    }
-  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": 2
-    }
-  }, [_vm._v("女")])], 1)], 1)], 1)], 1)], 2) : _vm._e(), _vm._v(" "), (_vm.addRenter.yezhuleixing == 2) ? _c('div', [_c('el-form-item', {
-    attrs: {
-      "label": "公司名称"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.chanquanrenList[0].Name),
-      callback: function($$v) {
-        _vm.addRenter.chanquanrenList[0].Name = $$v
-      },
-      expression: "addRenter.chanquanrenList[0].Name"
-    }
-  })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "法人"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.chanquanrenList[0].Faren),
-      callback: function($$v) {
-        _vm.addRenter.chanquanrenList[0].Faren = $$v
-      },
-      expression: "addRenter.chanquanrenList[0].Faren"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 10
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "身份证号"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.chanquanrenList[0].zhengjian),
-      callback: function($$v) {
-        _vm.addRenter.chanquanrenList[0].zhengjian = $$v
-      },
-      expression: "addRenter.chanquanrenList[0].zhengjian"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "联系方式"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.chanquanrenList[0].Tel),
-      callback: function($$v) {
-        _vm.addRenter.chanquanrenList[0].Tel = $$v
-      },
-      expression: "addRenter.chanquanrenList[0].Tel"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "性别"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.addRenter.chanquanrenList[0].Sex),
-      callback: function($$v) {
-        _vm.addRenter.chanquanrenList[0].Sex = $$v
-      },
-      expression: "addRenter.chanquanrenList[0].Sex"
-    }
-  }, [_c('el-radio', {
-    attrs: {
-      "label": 1
-    }
-  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": 2
-    }
-  }, [_vm._v("女")])], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "签约人"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.dailirenName),
-      callback: function($$v) {
-        _vm.addRenter.dailirenName = $$v
-      },
-      expression: "addRenter.dailirenName"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 10
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "身份证号"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.dailirenZhengjian),
-      callback: function($$v) {
-        _vm.addRenter.dailirenZhengjian = $$v
-      },
-      expression: "addRenter.dailirenZhengjian"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "联系方式"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addRenter.dailirenTel),
-      callback: function($$v) {
-        _vm.addRenter.dailirenTel = $$v
-      },
-      expression: "addRenter.dailirenTel"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "性别"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.addRenter.dailirenSex),
-      callback: function($$v) {
-        _vm.addRenter.dailirenSex = $$v
-      },
-      expression: "addRenter.dailirenSex"
-    }
-  }, [_c('el-radio', {
-    attrs: {
-      "label": 1
-    }
-  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": 2
-    }
-  }, [_vm._v("女")])], 1)], 1)], 1)], 1)], 1) : _vm._e()], 1)], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-3d65ab92", module.exports)
-  }
-}
-
-/***/ }),
-/* 179 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n    222222222222222222222222222222\n    "), _c('h1', [_vm._v("我是条款")])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-40db3b6b", module.exports)
-  }
-}
-
-/***/ }),
-/* 180 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', {
-    staticClass: "container"
-  }, [_c('el-form', {
-    staticClass: "demo-dynamic",
-    attrs: {
-      "model": _vm.addDate,
-      "label-width": "100px"
-    }
-  }, [_c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "收房日"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "type": "date",
-      "placeholder": "选择日期"
-    },
-    model: {
-      value: (_vm.addDate.shoufangDate),
-      callback: function($$v) {
-        _vm.addDate.shoufangDate = $$v
-      },
-      expression: "addDate.shoufangDate"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "签约日"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "type": "date",
-      "placeholder": "选择日期"
-    },
-    model: {
-      value: (_vm.addDate.qianyueDate),
-      callback: function($$v) {
-        _vm.addDate.qianyueDate = $$v
-      },
-      expression: "addDate.qianyueDate"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "免租方式"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.addDate.mianzufangshi),
-      callback: function($$v) {
-        _vm.addDate.mianzufangshi = $$v
-      },
-      expression: "addDate.mianzufangshi"
-    }
-  }, [_c('el-radio', {
-    attrs: {
-      "label": 1
-    }
-  }, [_vm._v("期内免租")]), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": 2
-    }
-  }, [_vm._v("期外免租")]), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": 3
-    }
-  }, [_vm._v("期内期外")])], 1)], 1), _vm._v(" "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
-    return _c('el-form-item', {
-      key: item.key,
-      attrs: {
-        "label": "免租期",
-        "prop": 'mianzuqiList.' + index + '.value'
-      }
-    }, [_c('el-date-picker', {
-      attrs: {
-        "type": "date",
-        "placeholder": "开始时间"
-      },
-      model: {
-        value: (item.startdate),
-        callback: function($$v) {
-          item.startdate = $$v
-        },
-        expression: "item.startdate"
-      }
-    }), _vm._v(" "), _c('el-date-picker', {
-      attrs: {
-        "type": "date",
-        "placeholder": "结束时间"
-      },
-      model: {
-        value: (item.enddate),
-        callback: function($$v) {
-          item.enddate = $$v
-        },
-        expression: "item.enddate"
-      }
-    }), _vm._v(" "), _c('el-button', {
-      on: {
-        "click": function($event) {
-          $event.preventDefault();
-          _vm.removeFreeItem(item)
-        }
-      }
-    }, [_vm._v("删除")])], 1)
-  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    on: {
-      "click": _vm.addFreeItem
-    }
-  }, [_vm._v("新增免租期")])], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "总租期"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.addDate.startdate),
-      callback: function($$v) {
-        _vm.addDate.startdate = $$v
-      },
-      expression: "addDate.startdate"
-    }
-  }), _vm._v(" "), _c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.addDate.enddate),
-      callback: function($$v) {
-        _vm.addDate.enddate = $$v
-      },
-      expression: "addDate.enddate"
-    }
-  })], 1), _vm._v(" "), _vm._l((_vm.addDate.fukuanFangshiList), function(item, index) {
-    return _c('div', [_c('el-form-item', {
-      key: item.key,
-      attrs: {
-        "label": "付款方式",
-        "prop": 'fukuanFangshiList.' + index + '.value'
-      }
-    }, [_c('el-row', [_c('el-col', {
-      attrs: {
-        "span": 13
-      }
-    }, [_c('el-date-picker', {
-      attrs: {
-        "type": "date",
-        "placeholder": "开始时间"
-      },
-      model: {
-        value: (item.startdate),
-        callback: function($$v) {
-          item.startdate = $$v
-        },
-        expression: "item.startdate"
-      }
-    }), _vm._v(" "), _c('el-date-picker', {
-      attrs: {
-        "type": "date",
-        "placeholder": "结束时间"
-      },
-      model: {
-        value: (item.enddate),
-        callback: function($$v) {
-          item.enddate = $$v
-        },
-        expression: "item.enddate"
-      }
-    })], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 3
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "",
-        "label-width": "10px"
-      }
-    }, [_c('el-input', {
-      attrs: {
-        "placeholder": "押几"
-      },
-      model: {
-        value: (item.yajinyue),
-        callback: function($$v) {
-          item.yajinyue = $$v
-        },
-        expression: "item.yajinyue"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 3
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "",
-        "label-width": "10px"
-      }
-    }, [_c('el-input', {
-      attrs: {
-        "placeholder": "付几"
-      },
-      model: {
-        value: (item.zujinyue),
-        callback: function($$v) {
-          item.zujinyue = $$v
-        },
-        expression: "item.zujinyue"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 2
-      }
-    }, [_c('el-button', {
-      on: {
-        "click": function($event) {
-          $event.preventDefault();
-          _vm.removePayItem(item)
-        }
-      }
-    }, [_vm._v("删除")])], 1)], 1)], 1)], 1)
-  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    on: {
-      "click": _vm.addPayItem
-    }
-  }, [_vm._v("新增付款方式")])], 1), _vm._v(" "), _vm._l((_vm.addDate.zujinList), function(item, index) {
-    return _c('div', [_c('el-row', [_c('el-col', {
-      attrs: {
-        "span": 9
-      }
-    }, [_c('el-form-item', {
-      key: item.key,
-      attrs: {
-        "label": '租期' + index,
-        "prop": 'zujinList.' + index + '.value'
-      }
-    }, [_c('el-date-picker', {
-      attrs: {
-        "type": "daterange",
-        "placeholder": "租期范围"
-      },
-      model: {
-        value: (item.zuqiDate),
-        callback: function($$v) {
-          item.zuqiDate = $$v
-        },
-        expression: "item.zuqiDate"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 3
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "",
-        "label-width": "10px"
-      }
-    }, [_c('el-input', {
-      attrs: {
-        "placeholder": "租金/元"
-      },
-      model: {
-        value: (item.yuezujin),
-        callback: function($$v) {
-          item.yuezujin = $$v
-        },
-        expression: "item.yuezujin"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 3
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "",
-        "label-width": "10px"
-      }
-    }, [_c('el-input', {
-      attrs: {
-        "placeholder": "单价"
-      },
-      model: {
-        value: (item.price),
-        callback: function($$v) {
-          item.price = $$v
-        },
-        expression: "item.price"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 3
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "",
-        "label-width": "10px"
-      }
-    }, [_c('el-select', {
-      attrs: {
-        "placeholder": "递增方式"
-      },
-      model: {
-        value: (_vm.addDate.zujinList[index].dizengfangshi),
-        callback: function($$v) {
-          _vm.addDate.zujinList[index].dizengfangshi = $$v
-        },
-        expression: "addDate.zujinList[index].dizengfangshi"
-      }
-    }, _vm._l((_vm.options), function(item) {
-      return _c('el-option', {
-        key: item.value,
-        attrs: {
-          "label": item.label,
-          "value": item.value
-        }
-      })
-    }))], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 3
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "",
-        "label-width": "10px"
-      }
-    }, [_c('el-input', {
-      attrs: {
-        "placeholder": "递增量"
-      },
-      model: {
-        value: (item.dizengliang),
-        callback: function($$v) {
-          item.dizengliang = $$v
-        },
-        expression: "item.dizengliang"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 2
-      }
-    }, [_c('el-button', {
-      staticStyle: {
-        "margin-left": "6px"
-      },
-      on: {
-        "click": function($event) {
-          $event.preventDefault();
-          _vm.removeRentItem(item)
-        }
-      }
-    }, [_vm._v("删除")])], 1)], 1)], 1)
-  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    on: {
-      "click": _vm.addRentItem
-    }
-  }, [_vm._v("新增租期")])], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "押金"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "押金"
-    },
-    model: {
-      value: (_vm.addDate.yajin),
-      callback: function($$v) {
-        _vm.addDate.yajin = $$v
-      },
-      expression: "addDate.yajin"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "总应付租金"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "总应付押金"
-    },
-    model: {
-      value: (_vm.addDate.zongzujin),
-      callback: function($$v) {
-        _vm.addDate.zongzujin = $$v
-      },
-      expression: "addDate.zongzujin"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "合同佣金"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "合同佣金"
-    },
-    model: {
-      value: (_vm.addDate.commission),
-      callback: function($$v) {
-        _vm.addDate.commission = $$v
-      },
-      expression: "addDate.commission"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "提前几天付款"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "placeholder": "提前几天付款"
-    },
-    model: {
-      value: (_vm.addDate.tiqianfukuantian),
-      callback: function($$v) {
-        _vm.addDate.tiqianfukuantian = $$v
-      },
-      expression: "addDate.tiqianfukuantian"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "押金付款日期"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "type": "date",
-      "placeholder": "选择日期"
-    },
-    model: {
-      value: (_vm.addDate.yajinfukuanri),
-      callback: function($$v) {
-        _vm.addDate.yajinfukuanri = $$v
-      },
-      expression: "addDate.yajinfukuanri"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "首期租金日期"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "type": "date",
-      "placeholder": "首期租金日期"
-    },
-    model: {
-      value: (_vm.addDate.shouqifukuanri),
-      callback: function($$v) {
-        _vm.addDate.shouqifukuanri = $$v
-      },
-      expression: "addDate.shouqifukuanri"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "二期租金日期"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "type": "date",
-      "placeholder": "二期租金日期"
-    },
-    model: {
-      value: (_vm.addDate.erqifukuanri),
-      callback: function($$v) {
-        _vm.addDate.erqifukuanri = $$v
-      },
-      expression: "addDate.erqifukuanri"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "三期租金日期"
-    }
-  }, [_c('el-date-picker', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "tpye": "date",
-      "placeholder": "三期租金日期"
-    },
-    model: {
-      value: (_vm.addDate.sanqifukuanri),
-      callback: function($$v) {
-        _vm.addDate.sanqifukuanri = $$v
-      },
-      expression: "addDate.sanqifukuanri"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "费用"
-    }
-  }, [_c('el-checkbox-group', {
-    model: {
-      value: (_vm.addDate.checkList),
-      callback: function($$v) {
-        _vm.addDate.checkList = $$v
-      },
-      expression: "addDate.checkList"
-    }
-  }, [_c('el-checkbox', {
-    attrs: {
-      "label": "1"
-    }
-  }, [_vm._v("物业费")]), _vm._v(" "), _c('el-checkbox', {
-    attrs: {
-      "label": "2"
-    }
-  }, [_vm._v("取暖费")]), _vm._v(" "), _c('el-checkbox', {
-    attrs: {
-      "label": "3"
-    }
-  }, [_vm._v("制冷")]), _vm._v(" "), _c('el-checkbox', {
-    attrs: {
-      "label": "4"
-    }
-  }, [_vm._v("发票")]), _vm._v(" "), _c('el-checkbox', {
-    attrs: {
-      "label": "5"
-    }
-  }, [_vm._v("其它")])], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "补充条款",
-      "prop": "buchongtiaokuan"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea",
-      "row": "5px"
-    },
-    model: {
-      value: (_vm.addDate.buchongtiaokuan),
-      callback: function($$v) {
-        _vm.addDate.buchongtiaokuan = $$v
-      },
-      expression: "addDate.buchongtiaokuan"
-    }
-  })], 1)], 1)], 2)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-48c5427f", module.exports)
-  }
-}
-
-/***/ }),
-/* 181 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [_c('div', {
-    staticStyle: {
-      "display": "flex",
-      "justify-content": "space-between",
-      "align-items": "center"
-    }
-  }, [_c('span', [_vm._v("\n                        Personal Access Tokens\n                    ")]), _vm._v(" "), _c('a', {
-    staticClass: "action-link",
-    on: {
-      "click": _vm.showCreateTokenForm
-    }
-  }, [_vm._v("\n                        Create New Token\n                    ")])])]), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
-  }, [(_vm.tokens.length === 0) ? _c('p', {
-    staticClass: "m-b-none"
-  }, [_vm._v("\n                    You have not created any personal access tokens.\n                ")]) : _vm._e(), _vm._v(" "), (_vm.tokens.length > 0) ? _c('table', {
-    staticClass: "table table-borderless m-b-none"
-  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.tokens), function(token) {
-    return _c('tr', [_c('td', {
-      staticStyle: {
-        "vertical-align": "middle"
-      }
-    }, [_vm._v("\n                                " + _vm._s(token.name) + "\n                            ")]), _vm._v(" "), _c('td', {
-      staticStyle: {
-        "vertical-align": "middle"
-      }
-    }, [_c('a', {
-      staticClass: "action-link text-danger",
-      on: {
-        "click": function($event) {
-          _vm.revoke(token)
-        }
-      }
-    }, [_vm._v("\n                                    Delete\n                                ")])])])
-  }))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
-    staticClass: "modal fade",
-    attrs: {
-      "id": "modal-create-token",
-      "tabindex": "-1",
-      "role": "dialog"
-    }
-  }, [_c('div', {
-    staticClass: "modal-dialog"
-  }, [_c('div', {
-    staticClass: "modal-content"
-  }, [_vm._m(1), _vm._v(" "), _c('div', {
-    staticClass: "modal-body"
-  }, [(_vm.form.errors.length > 0) ? _c('div', {
-    staticClass: "alert alert-danger"
-  }, [_vm._m(2), _vm._v(" "), _c('br'), _vm._v(" "), _c('ul', _vm._l((_vm.form.errors), function(error) {
-    return _c('li', [_vm._v("\n                                " + _vm._s(error) + "\n                            ")])
-  }))]) : _vm._e(), _vm._v(" "), _c('form', {
-    staticClass: "form-horizontal",
-    attrs: {
-      "role": "form"
-    },
-    on: {
-      "submit": function($event) {
-        $event.preventDefault();
-        _vm.store($event)
-      }
-    }
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    staticClass: "col-md-4 control-label"
-  }, [_vm._v("Name")]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6"
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.form.name),
-      expression: "form.name"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "id": "create-token-name",
-      "type": "text",
-      "name": "name"
-    },
-    domProps: {
-      "value": (_vm.form.name)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.form.name = $event.target.value
-      }
-    }
-  })])]), _vm._v(" "), (_vm.scopes.length > 0) ? _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    staticClass: "col-md-4 control-label"
-  }, [_vm._v("Scopes")]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6"
-  }, _vm._l((_vm.scopes), function(scope) {
-    return _c('div', [_c('div', {
-      staticClass: "checkbox"
-    }, [_c('label', [_c('input', {
-      attrs: {
-        "type": "checkbox"
-      },
-      domProps: {
-        "checked": _vm.scopeIsAssigned(scope.id)
-      },
-      on: {
-        "click": function($event) {
-          _vm.toggleScope(scope.id)
-        }
-      }
-    }), _vm._v("\n\n                                                " + _vm._s(scope.id) + "\n                                        ")])])])
-  }))]) : _vm._e()])]), _vm._v(" "), _c('div', {
-    staticClass: "modal-footer"
-  }, [_c('button', {
-    staticClass: "btn btn-default",
-    attrs: {
-      "type": "button",
-      "data-dismiss": "modal"
-    }
-  }, [_vm._v("Close")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "type": "button"
-    },
-    on: {
-      "click": _vm.store
-    }
-  }, [_vm._v("\n                        Create\n                    ")])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "modal fade",
-    attrs: {
-      "id": "modal-access-token",
-      "tabindex": "-1",
-      "role": "dialog"
-    }
-  }, [_c('div', {
-    staticClass: "modal-dialog"
-  }, [_c('div', {
-    staticClass: "modal-content"
-  }, [_vm._m(3), _vm._v(" "), _c('div', {
-    staticClass: "modal-body"
-  }, [_c('p', [_vm._v("\n                        Here is your new personal access token. This is the only time it will be shown so don't lose it!\n                        You may now use this token to make API requests.\n                    ")]), _vm._v(" "), _c('pre', [_c('code', [_vm._v(_vm._s(_vm.accessToken))])])]), _vm._v(" "), _vm._m(4)])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th')])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "modal-header"
-  }, [_c('button', {
-    staticClass: "close",
-    attrs: {
-      "type": "button ",
-      "data-dismiss": "modal",
-      "aria-hidden": "true"
-    }
-  }, [_vm._v("×")]), _vm._v(" "), _c('h4', {
-    staticClass: "modal-title"
-  }, [_vm._v("\n                        Create Token\n                    ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('strong', [_vm._v("Whoops!")]), _vm._v(" Something went wrong!")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "modal-header"
-  }, [_c('button', {
-    staticClass: "close",
-    attrs: {
-      "type": "button ",
-      "data-dismiss": "modal",
-      "aria-hidden": "true"
-    }
-  }, [_vm._v("×")]), _vm._v(" "), _c('h4', {
-    staticClass: "modal-title"
-  }, [_vm._v("\n                        Personal Access Token\n                    ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "modal-footer"
-  }, [_c('button', {
-    staticClass: "btn btn-default",
-    attrs: {
-      "type": "button",
-      "data-dismiss": "modal"
-    }
-  }, [_vm._v("Close")])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-4916a9b6", module.exports)
-  }
-}
-
-/***/ }),
-/* 182 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('el-row', {
-    staticClass: "container"
-  }, [_c('el-tabs', {
-    attrs: {
-      "type": "card",
-      "closable": ""
-    },
-    on: {
-      "tab-remove": _vm.removeTab
-    },
-    model: {
-      value: (_vm.editableTabsValue2),
-      callback: function($$v) {
-        _vm.editableTabsValue2 = $$v
-      },
-      expression: "editableTabsValue2"
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "size": "small"
-    },
-    on: {
-      "click": function($event) {
-        _vm.addTab(_vm.editableTabsValue2)
-      }
-    }
-  }, [_vm._v("\n                添加房源\n            ")]), _vm._v(" "), _vm._l((_vm.editableTabs2), function(item, index) {
-    return _c('el-tab-pane', {
-      key: item.name,
-      attrs: {
-        "label": item.title,
-        "name": item.name
-      }
-    }, [_c('el-form', {
-      attrs: {
-        "label-Weizhi": "right",
-        "label-width": "100px",
-        "model": _vm.property.officeList[index]
-      }
-    }, [_c('el-col', {
-      attrs: {
-        "span": 24
-      }
-    }, [_c('el-row', [_c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "楼盘"
-      }
-    }, [_c('el-select', {
-      attrs: {
-        "filterable": "",
-        "remote": "",
-        "placeholder": "楼盘",
-        "remote-method": _vm.remoteMethod1,
-        "loading": _vm.loupanloading
-      },
-      model: {
-        value: (_vm.property.officeList[index].loupanOmcId),
-        callback: function($$v) {
-          _vm.property.officeList[index].loupanOmcId = $$v
-        },
-        expression: "property.officeList[index].loupanOmcId"
-      }
-    }, _vm._l((_vm.options1), function(item) {
-      return _c('el-option', {
-        key: item.value,
-        attrs: {
-          "label": item.label,
-          "value": item.value
-        }
-      })
-    }))], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "楼栋"
-      }
-    }, [_c('el-select', {
-      attrs: {
-        "filterable": "",
-        "remote": "",
-        "placeholder": "楼栋",
-        "remote-method": _vm.remoteMethod2,
-        "loading": _vm.loupanloading
-      },
-      model: {
-        value: (_vm.property.officeList[index].loudongOmcId),
-        callback: function($$v) {
-          _vm.property.officeList[index].loudongOmcId = $$v
-        },
-        expression: "property.officeList[index].loudongOmcId"
-      }
-    }, _vm._l((_vm.options2), function(item) {
-      return _c('el-option', {
-        key: item.value,
-        attrs: {
-          "label": item.label,
-          "value": item.value
-        }
-      })
-    }))], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "房间号"
-      }
-    }, [_c('el-select', {
-      attrs: {
-        "filterable": "",
-        "remote": "",
-        "placeholder": "房间号",
-        "remote-method": _vm.remoteMethod3,
-        "loading": _vm.fanghaoloading
-      },
-      on: {
-        "change": _vm.change
-      },
-      model: {
-        value: (_vm.property.officeList[index].omcId),
-        callback: function($$v) {
-          _vm.property.officeList[index].omcId = $$v
-        },
-        expression: "property.officeList[index].omcId"
-      }
-    }, _vm._l((_vm.options3), function(item) {
-      return _c('el-option', {
-        key: item.value,
-        attrs: {
-          "label": item.label,
-          "value": item.value
-        }
-      })
-    }))], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-      attrs: {
-        "label": "位置"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property.officeList[index].weizhi),
-        callback: function($$v) {
-          _vm.property.officeList[index].weizhi = $$v
-        },
-        expression: "property.officeList[index].weizhi"
-      }
-    })], 1), _vm._v(" "), _c('el-form-item', {
-      attrs: {
-        "label": "产权证编号"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property.officeList[index].chanquanzhenghao),
-        callback: function($$v) {
-          _vm.property.officeList[index].chanquanzhenghao = $$v
-        },
-        expression: "property.officeList[index].chanquanzhenghao"
-      }
-    })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "承租面积"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property.officeList[index].jianzhumianji),
-        callback: function($$v) {
-          _vm.property.officeList[index].jianzhumianji = $$v
-        },
-        expression: "property.officeList[index].jianzhumianji"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "签约面积"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property.officeList[index].qianyuemianji),
-        callback: function($$v) {
-          _vm.property.officeList[index].qianyuemianji = $$v
-        },
-        expression: "property.officeList[index].qianyuemianji"
-      }
-    })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-      attrs: {
-        "label": "房屋类型"
-      }
-    }, [_c('el-select', {
-      attrs: {
-        "placeholder": "请选择"
-      },
-      model: {
-        value: (_vm.property.officeList[index].leixing),
-        callback: function($$v) {
-          _vm.property.officeList[index].leixing = $$v
-        },
-        expression: "property.officeList[index].leixing"
-      }
-    }, _vm._l((_vm.options), function(item) {
-      return _c('el-option', {
-        key: item.value,
-        attrs: {
-          "label": item.label,
-          "value": item.value
-        }
-      })
-    }))], 1)], 1)], 1)], 1)
-  })], 2)], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-5d9a80a6", module.exports)
-  }
-}
-
-/***/ }),
-/* 183 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-bottom": "50px"
-    }
-  }), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 18
-    }
-  }, [_c('add-property', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.stepNum == 1),
-      expression: "stepNum==1"
-    }],
-    ref: "property"
-  }), _vm._v(" "), _c('add-renter', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.stepNum == 2),
-      expression: "stepNum==2"
-    }],
-    ref: "renter",
-    attrs: {
-      "addRenter": _vm.addRenter
-    }
-  }), _vm._v(" "), _c('add-date', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.stepNum == 3),
-      expression: "stepNum==3"
-    }],
-    ref: "date",
-    attrs: {
-      "addDate": _vm.addDate
-    }
-  }), _vm._v(" "), _c('add-tiaokuan', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.stepNum == 4),
-      expression: "stepNum==4"
-    }],
-    ref: "tiaokuan"
-  })], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "margin-bottom": "81px"
-    }
-  }), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 6
-    }
-  }, [_c('div', {
-    staticStyle: {
-      "margin-left": "50%"
-    }
-  }, [_c('el-steps', {
-    attrs: {
-      "space": 100,
-      "direction": "vertical",
-      "active": _vm.stepNum
-    }
-  }, [_c('a', {
-    attrs: {
-      "href": "javascript:;"
-    },
-    on: {
-      "click": function($event) {
-        _vm.stepNum = 1
-      }
-    }
-  }, [_c('el-step', {
-    attrs: {
-      "title": "房间信息"
-    }
-  })], 1), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "javascript:;"
-    },
-    on: {
-      "click": function($event) {
-        _vm.stepNum = 2
-      }
-    }
-  }, [_c('el-step', {
-    attrs: {
-      "title": "租户信息"
-    }
-  })], 1), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "javascript:;"
-    },
-    on: {
-      "click": function($event) {
-        _vm.stepNum = 3
-      }
-    }
-  }, [_c('el-step', {
-    attrs: {
-      "title": "租期信息"
-    }
-  })], 1), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "javascript:;"
-    },
-    on: {
-      "click": function($event) {
-        _vm.stepNum = 4
-      }
-    }
-  }, [_c('el-step', {
-    attrs: {
-      "title": "条款信息"
-    }
-  })], 1)]), _vm._v(" "), _c('el-button', {
-    staticStyle: {
-      "margin-top": "100px"
-    },
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.save
-    }
-  }, [_vm._v("保存")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.submit
-    }
-  }, [_vm._v("提交")])], 1)])], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-5ebeea31", module.exports)
-  }
-}
-
-/***/ }),
-/* 184 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
-    staticClass: "demo-form-inline",
-    attrs: {
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": ""
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "渠道公司人员"
-    },
-    model: {
-      value: (_vm.filters.bk_username),
-      callback: function($$v) {
-        _vm.filters.bk_username = $$v
-      },
-      expression: "filters.bk_username"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": ""
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "渠道公司名称"
-    },
-    model: {
-      value: (_vm.filters.bk_name),
-      callback: function($$v) {
-        _vm.filters.bk_name = $$v
-      },
-      expression: "filters.bk_name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary",
-      "icon": "search"
-    },
-    on: {
-      "click": _vm.getBrokerCompanyUser
-    }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
-    staticClass: "el-icon-plus",
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.handleAdd
-    }
-  }, [_vm._v(" 新增")])], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.brokerCompanyUser,
-      "highlight-current-row": "",
-      "element-loading-text": "拼命加载中"
-    },
-    on: {
-      "selection-change": _vm.selsChange
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "type": "selection",
-      "width": "55"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "type": "index",
-      "width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "qvDaoCompayXinxi.compayname",
-      "label": "渠道公司名称",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "qdPername",
-      "label": "姓名",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "qdPertel",
-      "label": "电话",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbSf",
-      "label": "收房佣金占比",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "出房佣金占比",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjType",
-      "label": "佣金类型",
-      "formatter": _vm.formatYJType,
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "150"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleEdit(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "type": "danger",
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleDel(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("删除")])]
-      }
-    }])
-  })], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "danger",
-      "disabled": this.sels.length === 0
-    },
-    on: {
-      "click": _vm.batchRemove
-    }
-  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "current-page": _vm.currentPage,
-      "page-size": 10,
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "total": _vm.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "编辑",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.editFormVisible),
-      callback: function($$v) {
-        _vm.editFormVisible = $$v
-      },
-      expression: "editFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "editForm",
-    attrs: {
-      "model": _vm.editForm,
-      "label-width": "120px",
-      "rules": _vm.editFormRules
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "hidden",
-      "prop": "tQdCompayName",
-      "auto-complete": "off"
-    }
-  }), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "渠道公司名称",
-      "prop": "tQdCompayId"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "filterable": "",
-      "remote": "",
-      "placeholder": "渠道公司名称",
-      "remote-method": _vm.remoteMethod1,
-      "loading": _vm.bkNameloading
-    },
-    on: {
-      "change": _vm.change
-    },
-    model: {
-      value: (_vm.editForm.tQdCompayId),
-      callback: function($$v) {
-        _vm.editForm.tQdCompayId = $$v
-      },
-      expression: "editForm.tQdCompayId"
-    }
-  }, _vm._l((_vm.options1), function(item) {
-    return _c('el-option', {
-      key: item.value,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  }))], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "姓名",
-      "prop": "qdPername"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.qdPername),
-      callback: function($$v) {
-        _vm.editForm.qdPername = $$v
-      },
-      expression: "editForm.qdPername"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "电话",
-      "prop": "qdPertel"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "tel",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.qdPertel),
-      callback: function($$v) {
-        _vm.editForm.qdPertel = $$v
-      },
-      expression: "editForm.qdPertel"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "收房佣金占比",
-      "prop": "yjzbSf"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "number",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.yjzbSf),
-      callback: function($$v) {
-        _vm.editForm.yjzbSf = $$v
-      },
-      expression: "editForm.yjzbSf"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "出房佣金占比",
-      "prop": "yjzbCf"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "number",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.yjzbCf),
-      callback: function($$v) {
-        _vm.editForm.yjzbCf = $$v
-      },
-      expression: "editForm.yjzbCf"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "佣金类型",
-      "prop": "yjType"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": ""
-    },
-    model: {
-      value: (_vm.editForm.yjType),
-      callback: function($$v) {
-        _vm.editForm.yjType = $$v
-      },
-      expression: "editForm.yjType"
-    }
-  }, _vm._l((_vm.options), function(item) {
-    return _c('el-option', {
-      key: item.value,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  }))], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.editFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.editLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.editSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "新增",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.addFormVisible),
-      callback: function($$v) {
-        _vm.addFormVisible = $$v
-      },
-      expression: "addFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "addForm",
-    attrs: {
-      "model": _vm.addForm,
-      "label-width": "120px",
-      "rules": _vm.addFormRules
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "渠道公司名称",
-      "prop": "tQdCompayId"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "filterable": "",
-      "remote": "",
-      "placeholder": "渠道公司名称",
-      "remote-method": _vm.remoteMethod1,
-      "loading": _vm.bkNameloading
-    },
-    model: {
-      value: (_vm.addForm.tQdCompayId),
-      callback: function($$v) {
-        _vm.addForm.tQdCompayId = $$v
-      },
-      expression: "addForm.tQdCompayId"
-    }
-  }, _vm._l((_vm.options1), function(item) {
-    return _c('el-option', {
-      key: item.value,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  }))], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "姓名",
-      "prop": "qdPername"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.qdPername),
-      callback: function($$v) {
-        _vm.addForm.qdPername = $$v
-      },
-      expression: "addForm.qdPername"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "电话",
-      "prop": "qdPertel"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "tel",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.qdPertel),
-      callback: function($$v) {
-        _vm.addForm.qdPertel = $$v
-      },
-      expression: "addForm.qdPertel"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "收房佣金占比",
-      "prop": "yjzbSf"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "number",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.yjzbSf),
-      callback: function($$v) {
-        _vm.addForm.yjzbSf = $$v
-      },
-      expression: "addForm.yjzbSf"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "出房佣金占比",
-      "prop": "yjzbCf"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "number",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.yjzbCf),
-      callback: function($$v) {
-        _vm.addForm.yjzbCf = $$v
-      },
-      expression: "addForm.yjzbCf"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "佣金类型",
-      "prop": "yjType"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": ""
-    },
-    model: {
-      value: (_vm.addForm.yjType),
-      callback: function($$v) {
-        _vm.addForm.yjType = $$v
-      },
-      expression: "addForm.yjType"
-    }
-  }, _vm._l((_vm.options), function(item) {
-    return _c('el-option', {
-      key: item.value,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  }))], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.addFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.addLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.addSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-5fb9648c", module.exports)
-  }
-}
-
-/***/ }),
-/* 185 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-bottom": "50px"
-    }
-  }), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 20
-    }
-  }, [_c('add-property', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.stepNum == 1),
-      expression: "stepNum==1"
-    }],
-    ref: "property",
-    attrs: {
-      "property": _vm.property
-    }
-  }), _vm._v(" "), _c('add-owner', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.stepNum == 2),
-      expression: "stepNum==2"
-    }],
-    ref: "owner",
-    attrs: {
-      "owner": _vm.owner
-    }
-  }), _vm._v(" "), _c('add-date', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.stepNum == 3),
-      expression: "stepNum==3"
-    }],
-    ref: "date",
-    attrs: {
-      "addDate": _vm.addDate
-    }
-  }), _vm._v(" "), _c('add-tiaokuan', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.stepNum == 4),
-      expression: "stepNum==4"
-    }],
-    ref: "tiaokuan",
-    attrs: {
-      "tiaoList": _vm.tiaoList
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "margin-bottom": "81px"
-    }
-  }), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 4
-    }
-  }, [_c('div', {
-    staticStyle: {
-      "margin-left": "30%"
-    }
-  }, [_c('el-steps', {
-    attrs: {
-      "space": 100,
-      "direction": "vertical",
-      "active": _vm.stepNum
-    }
-  }, [_c('a', {
-    attrs: {
-      "href": "javascript:"
-    },
-    on: {
-      "click": function($event) {
-        _vm.stepNum = 1
-      }
-    }
-  }, [_c('el-step', {
-    attrs: {
-      "title": "房间信息"
-    }
-  })], 1), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "javascript:"
-    },
-    on: {
-      "click": function($event) {
-        _vm.stepNum = 2
-      }
-    }
-  }, [_c('el-step', {
-    attrs: {
-      "title": "业主信息"
-    }
-  })], 1), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "javascript:"
-    },
-    on: {
-      "click": function($event) {
-        _vm.stepNum = 3
-      }
-    }
-  }, [_c('el-step', {
-    attrs: {
-      "title": "租期信息"
-    }
-  })], 1), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "javascript:"
-    },
-    on: {
-      "click": function($event) {
-        _vm.stepNum = 4
-      }
-    }
-  }, [_c('el-step', {
-    attrs: {
-      "title": "条款信息"
-    }
-  })], 1)]), _vm._v(" "), _c('el-button', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (!_vm.reviewVisible),
-      expression: "!reviewVisible"
-    }],
-    staticStyle: {
-      "margin-top": "100px"
-    },
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.save
-    }
-  }, [_vm._v("保存")]), _vm._v(" "), _c('el-button', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (!_vm.reviewVisible),
-      expression: "!reviewVisible"
-    }],
-    attrs: {
-      "type": "primary",
-      "disabled": _vm.btnType
-    },
-    on: {
-      "click": _vm.submit
-    }
-  }, [_vm._v(_vm._s(_vm.submsg))]), _vm._v(" "), _c('el-button', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.reviewVisible),
-      expression: "reviewVisible"
-    }],
-    staticStyle: {
-      "margin-top": "100px"
-    },
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        _vm.review(1)
-      }
-    }
-  }, [_vm._v("通   过")]), _vm._v(" "), _c('el-button', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.reviewVisible),
-      expression: "reviewVisible"
-    }],
-    staticStyle: {
-      "margin-top": "100px"
-    },
-    attrs: {
-      "type": "warning"
-    },
-    on: {
-      "click": function($event) {
-        _vm.review(0)
-      }
-    }
-  }, [_vm._v("不通过")])], 1)])], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "审核批注",
-      "visible": _vm.dialogFormVisible
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.dialogFormVisible = $event
-      }
-    }
-  }, [_c('el-form', [_c('el-form-item', {
-    attrs: {
-      "label": "批注",
-      "label-width": "50px"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.content),
-      callback: function($$v) {
-        _vm.content = $$v
-      },
-      expression: "content"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    on: {
-      "click": function($event) {
-        _vm.dialogFormVisible = false
-      }
-    }
-  }, [_vm._v("取 消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.review2
-    }
-  }, [_vm._v("确 定")])], 1)], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-6dbf33eb", module.exports)
-  }
-}
-
-/***/ }),
-/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -92868,1083 +90184,12 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-6f4405fa", module.exports)
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-27997316", module.exports)
   }
 }
 
 /***/ }),
-/* 187 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-form', {
-    ref: "ruleForm2",
-    staticClass: "demo-ruleForm login-container",
-    attrs: {
-      "model": _vm.ruleForm2,
-      "rules": _vm.rules2,
-      "label-position": "left",
-      "label-width": "0px"
-    }
-  }, [_c('h3', {
-    staticClass: "title"
-  }, [_vm._v("系统登录")]), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "prop": "account"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "text",
-      "auto-complete": "off",
-      "placeholder": "账号"
-    },
-    model: {
-      value: (_vm.ruleForm2.account),
-      callback: function($$v) {
-        _vm.ruleForm2.account = $$v
-      },
-      expression: "ruleForm2.account"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "prop": "checkPass"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "password",
-      "auto-complete": "off",
-      "placeholder": "密码"
-    },
-    model: {
-      value: (_vm.ruleForm2.checkPass),
-      callback: function($$v) {
-        _vm.ruleForm2.checkPass = $$v
-      },
-      expression: "ruleForm2.checkPass"
-    }
-  })], 1), _vm._v(" "), _c('el-checkbox', {
-    staticClass: "remember",
-    attrs: {
-      "checked": ""
-    },
-    model: {
-      value: (_vm.checked),
-      callback: function($$v) {
-        _vm.checked = $$v
-      },
-      expression: "checked"
-    }
-  }, [_vm._v("记住密码")]), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "100%"
-    }
-  }, [_c('el-button', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "type": "primary",
-      "loading": _vm.logining
-    },
-    nativeOn: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.handleSubmit2($event)
-      }
-    }
-  }, [_vm._v("登录")])], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-72f3a8f3", module.exports)
-  }
-}
-
-/***/ }),
-/* 188 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-row', [_c('el-form', {
-    attrs: {
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', [_c('el-input', {
-    attrs: {
-      "placeholder": "角色"
-    },
-    model: {
-      value: (_vm.filters.name),
-      callback: function($$v) {
-        _vm.filters.name = $$v
-      },
-      expression: "filters.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [(this.fun('purchaseContractAdd')) ? _c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.getRoles
-    }
-  }, [_vm._v("查询")]) : _vm._e()], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.handleAdd
-    }
-  }, [_vm._v("新增")])], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 15
-    }
-  }, [_c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.Roles,
-      "highlight-current-row": "",
-      "element-loading-text": "拼命加载中"
-    },
-    on: {
-      "selection-change": _vm.selsChange
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "type": "selection",
-      "width": "55"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "type": "index",
-      "width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "角色",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "description",
-      "label": "说明",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "200"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleEdit(scope.$index, scope.row)
-            }
-          }
-        }, [_c('i', {
-          staticClass: "el-icon-edit"
-        })]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "type": "danger",
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleDel(scope.$index, scope.row)
-            }
-          }
-        }, [_c('i', {
-          staticClass: "el-icon-delete"
-        })]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "type": "small",
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleSet(scope.$index, scope.row)
-            }
-          }
-        }, [_c('i', {
-          staticClass: "el-icon-setting"
-        })])]
-      }
-    }])
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "danger",
-      "disabled": this.sels.length === 0
-    },
-    on: {
-      "click": _vm.batchRemove
-    }
-  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "current-page": _vm.currentPage,
-      "page-sizes": _vm.pageSizes,
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "total": _vm.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticStyle: {
-      "margin-left": "5px"
-    },
-    attrs: {
-      "span": 8
-    }
-  }, [_c('div', {
-    staticStyle: {
-      "height": "40px",
-      "background": "#EEF1F6",
-      "text-align": "center",
-      "line-height": "40px",
-      "font-size": "14px"
-    }
-  }, [_c('b', [_vm._v(_vm._s(_vm.roleName) + "权限")])]), _vm._v(" "), _c('el-tree', {
-    ref: "tree",
-    attrs: {
-      "data": _vm.data2,
-      "show-checkbox": "",
-      "node-key": "id",
-      "default-expanded-keys": [],
-      "default-checked-keys": _vm.checked,
-      "props": _vm.defaultProps
-    }
-  }), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.getCheckedKeys
-    }
-  }, [_vm._v("保存")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "编辑",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.editFormVisible),
-      callback: function($$v) {
-        _vm.editFormVisible = $$v
-      },
-      expression: "editFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "editForm",
-    attrs: {
-      "model": _vm.editForm,
-      "label-width": "80px",
-      "rules": _vm.editFormRules
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "角色",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.name),
-      callback: function($$v) {
-        _vm.editForm.name = $$v
-      },
-      expression: "editForm.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "说明",
-      "prop": "description"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.description),
-      callback: function($$v) {
-        _vm.editForm.description = $$v
-      },
-      expression: "editForm.description"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.editFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.editLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.editSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "新增",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.addFormVisible),
-      callback: function($$v) {
-        _vm.addFormVisible = $$v
-      },
-      expression: "addFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "addForm",
-    attrs: {
-      "model": _vm.addForm,
-      "label-width": "80px",
-      "rules": _vm.addFormRules
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "角色",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.name),
-      callback: function($$v) {
-        _vm.addForm.name = $$v
-      },
-      expression: "addForm.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "说明",
-      "prop": "description"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.description),
-      callback: function($$v) {
-        _vm.addForm.description = $$v
-      },
-      expression: "addForm.description"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.addFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.addLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.addSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-77db25dd", module.exports)
-  }
-}
-
-/***/ }),
-/* 189 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', [_c('el-input', {
-    attrs: {
-      "placeholder": "姓名"
-    },
-    model: {
-      value: (_vm.filters.name),
-      callback: function($$v) {
-        _vm.filters.name = $$v
-      },
-      expression: "filters.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.getUsers
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.handleAdd
-    }
-  }, [_vm._v("新增")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.users,
-      "highlight-current-row": "",
-      "element-loading-text": "拼命加载中"
-    },
-    on: {
-      "selection-change": _vm.selsChange
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "type": "selection",
-      "width": "55"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "type": "index",
-      "width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "姓名",
-      "width": "150",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "sex",
-      "label": "性别",
-      "width": "100",
-      "formatter": _vm.formatSex,
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "email",
-      "label": "邮箱",
-      "width": "200",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "created_at",
-      "label": "创建时间",
-      "width": "220",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "角色",
-      "min-width": "180",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "200"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleEdit(scope.$index, scope.row)
-            }
-          }
-        }, [_c('i', {
-          staticClass: "el-icon-edit"
-        })]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "type": "danger",
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleDel(scope.$index, scope.row)
-            }
-          }
-        }, [_c('i', {
-          staticClass: "el-icon-delete"
-        })]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "type": "small",
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleSet(scope.$index, scope.row)
-            }
-          }
-        }, [_c('i', {
-          staticClass: "el-icon-setting"
-        })])]
-      }
-    }])
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "编辑",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.editFormVisible),
-      callback: function($$v) {
-        _vm.editFormVisible = $$v
-      },
-      expression: "editFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "editForm",
-    attrs: {
-      "model": _vm.editForm,
-      "label-width": "80px",
-      "rules": _vm.editFormRules
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "姓名",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.name),
-      callback: function($$v) {
-        _vm.editForm.name = $$v
-      },
-      expression: "editForm.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "性别",
-      "prop": "sex"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.editForm.sex),
-      callback: function($$v) {
-        _vm.editForm.sex = $$v
-      },
-      expression: "editForm.sex"
-    }
-  }, [_c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": "1"
-    }
-  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": "2"
-    }
-  }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "邮箱",
-      "prop": "email"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.email),
-      callback: function($$v) {
-        _vm.editForm.email = $$v
-      },
-      expression: "editForm.email"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "手机号",
-      "prop": "phone"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.phone),
-      callback: function($$v) {
-        _vm.editForm.phone = $$v
-      },
-      expression: "editForm.phone"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.editFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.editLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.editSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "新增",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.addFormVisible),
-      callback: function($$v) {
-        _vm.addFormVisible = $$v
-      },
-      expression: "addFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "addForm",
-    attrs: {
-      "model": _vm.addForm,
-      "label-width": "80px",
-      "rules": _vm.addFormRules
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "姓名",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.name),
-      callback: function($$v) {
-        _vm.addForm.name = $$v
-      },
-      expression: "addForm.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "性别",
-      "prop": "sex"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.addForm.sex),
-      callback: function($$v) {
-        _vm.addForm.sex = $$v
-      },
-      expression: "addForm.sex"
-    }
-  }, [_c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": "1"
-    }
-  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": "2"
-    }
-  }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "邮箱",
-      "prop": "email"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.email),
-      callback: function($$v) {
-        _vm.addForm.email = $$v
-      },
-      expression: "addForm.email"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "手机号",
-      "prop": "phone"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.phone),
-      callback: function($$v) {
-        _vm.addForm.phone = $$v
-      },
-      expression: "addForm.phone"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.addFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.addLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.addSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "danger",
-      "disabled": this.sels.length === 0
-    },
-    on: {
-      "click": _vm.batchRemove
-    }
-  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "current-page": _vm.currentPage,
-      "page-sizes": _vm.pageSizes,
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "total": _vm.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "设置",
-      "visible": _vm.dialogRoleVisible
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.dialogRoleVisible = $event
-      }
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "multiple": "",
-      "filterable": "",
-      "remote": "",
-      "placeholder": "请输入关键词",
-      "remote-method": _vm.remoteMethod,
-      "loading": _vm.roleLoading
-    },
-    model: {
-      value: (_vm.Roles),
-      callback: function($$v) {
-        _vm.Roles = $$v
-      },
-      expression: "Roles"
-    }
-  }, _vm._l((_vm.options4), function(item) {
-    return _c('el-option', {
-      key: item.value,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  })), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.dialogRoleVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.roleLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.roleSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-77dcdeb2", module.exports)
-  }
-}
-
-/***/ }),
-/* 190 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
-    staticClass: "demo-form-inline",
-    attrs: {
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": ""
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "请输入项目"
-    },
-    model: {
-      value: (_vm.filters.name),
-      callback: function($$v) {
-        _vm.filters.name = $$v
-      },
-      expression: "filters.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary",
-      "icon": "search"
-    }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
-    staticClass: "el-icon-plus",
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.addContract
-    }
-  }, [_vm._v(" 新增")]), _vm._v(" "), _c('el-button', {
-    staticClass: "el-icon-upload2",
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.uploadImg
-    }
-  }, [_vm._v("上传")])], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.lists,
-      "highlight-current-row": "",
-      "element-loading-text": "拼命加载中"
-    },
-    on: {
-      "selection-change": _vm.selsChange
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "type": "selection",
-      "width": "55"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "type": "index",
-      "width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "officeList[0].loupanName",
-      "label": "楼盘",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "officeList[0].loudongName",
-      "label": "楼栋",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "officeList[0].fanghao",
-      "label": "房间号",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zhuangtai",
-      "label": "状态",
-      "formatter": _vm.formatStatus,
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "createtime",
-      "label": "签约日",
-      "formatter": _vm.changeDate,
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "200"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleEdit(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleReview(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("审核")]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "type": "danger",
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleDel(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("删除")])]
-      }
-    }])
-  })], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "current-page": _vm.currentPage,
-      "page-sizes": _vm.pageSizes,
-      "page-size": _vm.pageSize,
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "total": _vm.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-8d19c83c", module.exports)
-  }
-}
-
-/***/ }),
-/* 191 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -94251,12 +90496,4183 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-9aa4b19e", module.exports)
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-2924957f", module.exports)
+  }
+}
+
+/***/ }),
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', {
+    staticClass: "container"
+  }, [_c('el-col', {
+    staticClass: "header",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-col', {
+    staticClass: "logo",
+    class: _vm.collapsed ? 'logo-collapse-width' : 'logo-width',
+    attrs: {
+      "span": 10
+    }
+  }, [_vm._v("\n            " + _vm._s(_vm.collapsed ? '' : _vm.sysName) + "\n        ")]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('div', {
+    staticClass: "tools",
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.collapse($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-align-justify"
+  })])]), _vm._v(" "), _c('el-col', {
+    staticClass: "userinfo",
+    attrs: {
+      "span": 4
+    }
+  }, [_c('el-dropdown', {
+    attrs: {
+      "trigger": "hover"
+    }
+  }, [_c('span', {
+    staticClass: "el-dropdown-link userinfo-inner"
+  }, [_c('img', {
+    attrs: {
+      "src": this.sysUserAvatar
+    }
+  }), _vm._v(" " + _vm._s(_vm.sysUserName))]), _vm._v(" "), _c('el-dropdown-menu', {
+    slot: "dropdown"
+  }, [_c('el-dropdown-item', [_vm._v("my news")]), _vm._v(" "), _c('el-dropdown-item', [_vm._v("设置")]), _vm._v(" "), _c('el-dropdown-item', {
+    attrs: {
+      "divided": ""
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.logout($event)
+      }
+    }
+  }, [_vm._v("退出登录")])], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "main",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('aside', {
+    class: _vm.collapsed ? 'menu-collapsed' : 'menu-expanded'
+  }, [_c('el-menu', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.collapsed),
+      expression: "!collapsed"
+    }],
+    staticClass: "el-menu-vertical-demo",
+    attrs: {
+      "default-active": _vm.$route.path,
+      "unique-opened": "",
+      "router": ""
+    },
+    on: {
+      "open": _vm.handleopen,
+      "close": _vm.handleclose,
+      "select": _vm.handleselect
+    }
+  }, [_vm._l((_vm.$router.options.routes), function(item, index) {
+    return (!item.hidden) ? [(!item.leaf) ? _c('el-submenu', {
+      attrs: {
+        "index": index + ''
+      }
+    }, [_c('template', {
+      slot: "title"
+    }, [_c('i', {
+      class: item.iconCls
+    }), _vm._v(_vm._s(item.name))]), _vm._v(" "), _vm._l((item.children), function(child) {
+      return (!child.hidden) ? _c('el-menu-item', {
+        key: child.path,
+        attrs: {
+          "index": child.path
+        }
+      }, [_vm._v(_vm._s(child.name))]) : _vm._e()
+    })], 2) : _vm._e(), _vm._v(" "), (item.leaf && item.children.length > 0) ? _c('el-menu-item', {
+      attrs: {
+        "index": item.children[0].path
+      }
+    }, [_c('i', {
+      class: item.iconCls
+    }), _vm._v(_vm._s(item.children[0].name))]) : _vm._e()] : _vm._e()
+  })], 2), _vm._v(" "), _c('ul', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.collapsed),
+      expression: "collapsed"
+    }],
+    ref: "menuCollapsed",
+    staticClass: "el-menu el-menu-vertical-demo collapsed"
+  }, _vm._l((_vm.$router.options.routes), function(item, index) {
+    return (!item.hidden) ? _c('li', {
+      staticClass: "el-submenu item"
+    }, [(!item.leaf) ? [_c('div', {
+      staticClass: "el-submenu__title",
+      staticStyle: {
+        "padding-left": "20px"
+      },
+      on: {
+        "mouseover": function($event) {
+          _vm.showMenu(index, true)
+        },
+        "mouseout": function($event) {
+          _vm.showMenu(index, false)
+        }
+      }
+    }, [_c('i', {
+      class: item.iconCls
+    })]), _vm._v(" "), _c('ul', {
+      staticClass: "el-menu submenu",
+      class: 'submenu-hook-' + index,
+      on: {
+        "mouseover": function($event) {
+          _vm.showMenu(index, true)
+        },
+        "mouseout": function($event) {
+          _vm.showMenu(index, false)
+        }
+      }
+    }, _vm._l((item.children), function(child) {
+      return (!child.hidden) ? _c('li', {
+        key: child.path,
+        staticClass: "el-menu-item",
+        class: _vm.$route.path == child.path ? 'is-active' : '',
+        staticStyle: {
+          "padding-left": "40px"
+        },
+        on: {
+          "click": function($event) {
+            _vm.$router.push(child.path)
+          }
+        }
+      }, [_vm._v(_vm._s(child.name))]) : _vm._e()
+    }))] : _vm._e()], 2) : _vm._e()
+  }))], 1), _vm._v(" "), _c('section', {
+    staticClass: "content-container"
+  }, [_c('div', {
+    staticClass: "grid-content bg-purple-light"
+  }, [_c('el-col', {
+    staticClass: "breadcrumb-container",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('strong', {
+    staticClass: "title"
+  }, [_vm._v(_vm._s(_vm.$route.name))]), _vm._v(" "), _c('el-breadcrumb', {
+    staticClass: "breadcrumb-inner",
+    attrs: {
+      "separator": "/"
+    }
+  }, _vm._l((_vm.$route.matched), function(item) {
+    return _c('el-breadcrumb-item', {
+      key: item.path,
+      attrs: {
+        "to": {
+          path: item.path
+        }
+      }
+    }, [_vm._v("\n                        " + _vm._s(item.name) + "\n                    ")])
+  }))], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "content-wrapper",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('transition', {
+    attrs: {
+      "name": "fade",
+      "mode": "out-in"
+    }
+  }, [_c('router-view', {
+    key: "key"
+  })], 1)], 1)], 1)])])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-2aa44748", module.exports)
+  }
+}
+
+/***/ }),
+/* 178 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', [_c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-form', {
+    staticClass: "demo-form-inline",
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": ""
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "渠道公司人员"
+    },
+    model: {
+      value: (_vm.filters.bk_username),
+      callback: function($$v) {
+        _vm.filters.bk_username = $$v
+      },
+      expression: "filters.bk_username"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": ""
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "渠道公司名称"
+    },
+    model: {
+      value: (_vm.filters.bk_name),
+      callback: function($$v) {
+        _vm.filters.bk_name = $$v
+      },
+      expression: "filters.bk_name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary",
+      "icon": "search"
+    },
+    on: {
+      "click": _vm.getBrokerCompanyUser
+    }
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
+    staticClass: "el-icon-plus",
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.handleAdd
+    }
+  }, [_vm._v(" 新增")])], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.brokerCompanyUser,
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "selection",
+      "width": "55"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "type": "index",
+      "width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "qvDaoCompayXinxi.compayname",
+      "label": "渠道公司名称",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "qdPername",
+      "label": "姓名",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "qdPertel",
+      "label": "电话",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbSf",
+      "label": "收房佣金占比",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "出房佣金占比",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjType",
+      "label": "佣金类型",
+      "formatter": _vm.formatYJType,
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "150"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleEdit(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "danger",
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleDel(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("删除")])]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "danger",
+      "disabled": this.sels.length === 0
+    },
+    on: {
+      "click": _vm.batchRemove
+    }
+  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "current-page": _vm.currentPage,
+      "page-size": 10,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "编辑",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.editFormVisible),
+      callback: function($$v) {
+        _vm.editFormVisible = $$v
+      },
+      expression: "editFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "editForm",
+    attrs: {
+      "model": _vm.editForm,
+      "label-width": "120px",
+      "rules": _vm.editFormRules
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "hidden",
+      "prop": "tQdCompayName",
+      "auto-complete": "off"
+    }
+  }), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "渠道公司名称",
+      "prop": "tQdCompayId"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "filterable": "",
+      "remote": "",
+      "placeholder": "渠道公司名称",
+      "remote-method": _vm.remoteMethod1,
+      "loading": _vm.bkNameloading
+    },
+    on: {
+      "change": _vm.change
+    },
+    model: {
+      value: (_vm.editForm.tQdCompayId),
+      callback: function($$v) {
+        _vm.editForm.tQdCompayId = $$v
+      },
+      expression: "editForm.tQdCompayId"
+    }
+  }, _vm._l((_vm.options1), function(item) {
+    return _c('el-option', {
+      key: item.value,
+      attrs: {
+        "label": item.label,
+        "value": item.value
+      }
+    })
+  }))], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "姓名",
+      "prop": "qdPername"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.qdPername),
+      callback: function($$v) {
+        _vm.editForm.qdPername = $$v
+      },
+      expression: "editForm.qdPername"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "电话",
+      "prop": "qdPertel"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "tel",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.qdPertel),
+      callback: function($$v) {
+        _vm.editForm.qdPertel = $$v
+      },
+      expression: "editForm.qdPertel"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "收房佣金占比",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "出房佣金占比",
+      "prop": "yjzbCf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbCf),
+      callback: function($$v) {
+        _vm.editForm.yjzbCf = $$v
+      },
+      expression: "editForm.yjzbCf"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "佣金类型",
+      "prop": "yjType"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": ""
+    },
+    model: {
+      value: (_vm.editForm.yjType),
+      callback: function($$v) {
+        _vm.editForm.yjType = $$v
+      },
+      expression: "editForm.yjType"
+    }
+  }, _vm._l((_vm.options), function(item) {
+    return _c('el-option', {
+      key: item.value,
+      attrs: {
+        "label": item.label,
+        "value": item.value
+      }
+    })
+  }))], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.editFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.editLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.editSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "新增",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.addFormVisible),
+      callback: function($$v) {
+        _vm.addFormVisible = $$v
+      },
+      expression: "addFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "addForm",
+    attrs: {
+      "model": _vm.addForm,
+      "label-width": "120px",
+      "rules": _vm.addFormRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "渠道公司名称",
+      "prop": "tQdCompayId"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "filterable": "",
+      "remote": "",
+      "placeholder": "渠道公司名称",
+      "remote-method": _vm.remoteMethod1,
+      "loading": _vm.bkNameloading
+    },
+    model: {
+      value: (_vm.addForm.tQdCompayId),
+      callback: function($$v) {
+        _vm.addForm.tQdCompayId = $$v
+      },
+      expression: "addForm.tQdCompayId"
+    }
+  }, _vm._l((_vm.options1), function(item) {
+    return _c('el-option', {
+      key: item.value,
+      attrs: {
+        "label": item.label,
+        "value": item.value
+      }
+    })
+  }))], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "姓名",
+      "prop": "qdPername"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.qdPername),
+      callback: function($$v) {
+        _vm.addForm.qdPername = $$v
+      },
+      expression: "addForm.qdPername"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "电话",
+      "prop": "qdPertel"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "tel",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.qdPertel),
+      callback: function($$v) {
+        _vm.addForm.qdPertel = $$v
+      },
+      expression: "addForm.qdPertel"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "收房佣金占比",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.yjzbSf),
+      callback: function($$v) {
+        _vm.addForm.yjzbSf = $$v
+      },
+      expression: "addForm.yjzbSf"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "出房佣金占比",
+      "prop": "yjzbCf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.yjzbCf),
+      callback: function($$v) {
+        _vm.addForm.yjzbCf = $$v
+      },
+      expression: "addForm.yjzbCf"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "佣金类型",
+      "prop": "yjType"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": ""
+    },
+    model: {
+      value: (_vm.addForm.yjType),
+      callback: function($$v) {
+        _vm.addForm.yjType = $$v
+      },
+      expression: "addForm.yjType"
+    }
+  }, _vm._l((_vm.options), function(item) {
+    return _c('el-option', {
+      key: item.value,
+      attrs: {
+        "label": item.label,
+        "value": item.value
+      }
+    })
+  }))], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.addFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.addLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.addSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-3f55c988", module.exports)
+  }
+}
+
+/***/ }),
+/* 179 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('el-form', {
+    attrs: {
+      "label-position": _vm.labelPosition,
+      "label-width": "100px",
+      "model": _vm.owner
+    }
+  }, [_c('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "出租人"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.owner.chengzufang),
+      callback: function($$v) {
+        _vm.owner.chengzufang = $$v
+      },
+      expression: "owner.chengzufang"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": "华塑商贸"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "幼狮科技"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "航远房地产"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "航远投资管理"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "彭昆"
+    }
+  }), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "彭亮"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "居间方"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.jujianfang),
+      callback: function($$v) {
+        _vm.owner.jujianfang = $$v
+      },
+      expression: "owner.jujianfang"
+    }
+  })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "收款人"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.shoukuanren),
+      callback: function($$v) {
+        _vm.owner.shoukuanren = $$v
+      },
+      expression: "owner.shoukuanren"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "开户行"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.kaihuhang),
+      callback: function($$v) {
+        _vm.owner.kaihuhang = $$v
+      },
+      expression: "owner.kaihuhang"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "账号"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.zhanghao),
+      callback: function($$v) {
+        _vm.owner.zhanghao = $$v
+      },
+      expression: "owner.zhanghao"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "租户类型"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.owner.yezhuleixing),
+      callback: function($$v) {
+        _vm.owner.yezhuleixing = $$v
+      },
+      expression: "owner.yezhuleixing"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": 1
+    }
+  }, [_vm._v("个人")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 2
+    }
+  }, [_vm._v("公司")])], 1)], 1), _vm._v(" "), (_vm.owner.yezhuleixing == 1) ? _c('div', [_vm._l((_vm.owner.chanquanrenList), function(item, index) {
+    return _c('div', [_c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "承租人"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.owner.chanquanrenList[index].Name),
+        callback: function($$v) {
+          _vm.owner.chanquanrenList[index].Name = $$v
+        },
+        expression: "owner.chanquanrenList[index].Name"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 10
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "身份证号"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.owner.chanquanrenList[index].zhengjian),
+        callback: function($$v) {
+          _vm.owner.chanquanrenList[index].zhengjian = $$v
+        },
+        expression: "owner.chanquanrenList[index].zhengjian"
+      }
+    })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "联系方式"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.owner.chanquanrenList[index].Tel),
+        callback: function($$v) {
+          _vm.owner.chanquanrenList[index].Tel = $$v
+        },
+        expression: "owner.chanquanrenList[index].Tel"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "性别"
+      }
+    }, [_c('el-radio-group', {
+      model: {
+        value: (_vm.owner.chanquanrenList[index].Sex),
+        callback: function($$v) {
+          _vm.owner.chanquanrenList[index].Sex = $$v
+        },
+        expression: "owner.chanquanrenList[index].Sex"
+      }
+    }, [_c('el-radio', {
+      attrs: {
+        "label": 1
+      }
+    }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
+      attrs: {
+        "label": 2
+      }
+    }, [_vm._v("女")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 2
+      }
+    }, [_c('el-button', {
+      staticStyle: {
+        "margin-left": "6px"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeRentItem(item)
+        }
+      }
+    }, [_vm._v("删除")])], 1)], 1)], 1)
+  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    on: {
+      "click": _vm.addRentItem
+    }
+  }, [_vm._v("新增承租人")])], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "代理人"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.dailirenName),
+      callback: function($$v) {
+        _vm.owner.dailirenName = $$v
+      },
+      expression: "owner.dailirenName"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "身份证号"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.dailirenZhengjian),
+      callback: function($$v) {
+        _vm.owner.dailirenZhengjian = $$v
+      },
+      expression: "owner.dailirenZhengjian"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "联系方式"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.dailirenTel),
+      callback: function($$v) {
+        _vm.owner.dailirenTel = $$v
+      },
+      expression: "owner.dailirenTel"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "性别"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.owner.dailirenSex),
+      callback: function($$v) {
+        _vm.owner.dailirenSex = $$v
+      },
+      expression: "owner.dailirenSex"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": 1
+    }
+  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 2
+    }
+  }, [_vm._v("女")])], 1)], 1)], 1)], 1)], 2) : _vm._e(), _vm._v(" "), (_vm.owner.yezhuleixing == 2) ? _c('div', [_c('el-form-item', {
+    attrs: {
+      "label": "公司名称"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.chanquanrenList[0].Name),
+      callback: function($$v) {
+        _vm.owner.chanquanrenList[0].Name = $$v
+      },
+      expression: "owner.chanquanrenList[0].Name"
+    }
+  })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "法人"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.chanquanrenList[0].Faren),
+      callback: function($$v) {
+        _vm.owner.chanquanrenList[0].Faren = $$v
+      },
+      expression: "owner.chanquanrenList[0].Faren"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "身份证号"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.chanquanrenList[0].zhengjian),
+      callback: function($$v) {
+        _vm.owner.chanquanrenList[0].zhengjian = $$v
+      },
+      expression: "owner.chanquanrenList[0].zhengjian"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "联系方式"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.chanquanrenList[0].Tel),
+      callback: function($$v) {
+        _vm.owner.chanquanrenList[0].Tel = $$v
+      },
+      expression: "owner.chanquanrenList[0].Tel"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "性别"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.owner.chanquanrenList[0].Sex),
+      callback: function($$v) {
+        _vm.owner.chanquanrenList[0].Sex = $$v
+      },
+      expression: "owner.chanquanrenList[0].Sex"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": 1
+    }
+  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 2
+    }
+  }, [_vm._v("女")])], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "签约人"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.dailirenName),
+      callback: function($$v) {
+        _vm.owner.dailirenName = $$v
+      },
+      expression: "owner.dailirenName"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "身份证号"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.dailirenZhengjian),
+      callback: function($$v) {
+        _vm.owner.dailirenZhengjian = $$v
+      },
+      expression: "owner.dailirenZhengjian"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "联系方式"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.owner.dailirenTel),
+      callback: function($$v) {
+        _vm.owner.dailirenTel = $$v
+      },
+      expression: "owner.dailirenTel"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "性别"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.owner.dailirenSex),
+      callback: function($$v) {
+        _vm.owner.dailirenSex = $$v
+      },
+      expression: "owner.dailirenSex"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": 1
+    }
+  }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 2
+    }
+  }, [_vm._v("女")])], 1)], 1)], 1)], 1)], 1) : _vm._e()], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-507fa605", module.exports)
+  }
+}
+
+/***/ }),
+/* 180 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('el-row', [_c('div', {
+    staticStyle: {
+      "margin-bottom": "50px"
+    }
+  }), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 20
+    }
+  }, [_c('add-property', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 1),
+      expression: "stepNum==1"
+    }],
+    ref: "property",
+    attrs: {
+      "property": _vm.property
+    }
+  }), _vm._v(" "), _c('add-owner', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 2),
+      expression: "stepNum==2"
+    }],
+    ref: "owner",
+    attrs: {
+      "owner": _vm.owner
+    }
+  }), _vm._v(" "), _c('add-date', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 3),
+      expression: "stepNum==3"
+    }],
+    ref: "date",
+    attrs: {
+      "addDate": _vm.addDate
+    }
+  }), _vm._v(" "), _c('add-tiaokuan', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 4),
+      expression: "stepNum==4"
+    }],
+    ref: "tiaokuan",
+    attrs: {
+      "tiaoList": _vm.tiaoList
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-bottom": "81px"
+    }
+  }), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 4
+    }
+  }, [_c('div', {
+    staticStyle: {
+      "margin-left": "30%"
+    }
+  }, [_c('el-steps', {
+    attrs: {
+      "space": 100,
+      "direction": "vertical",
+      "active": _vm.stepNum
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "javascript:"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 1
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "房间信息"
+    }
+  })], 1), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "javascript:"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 2
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "业主信息"
+    }
+  })], 1), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "javascript:"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 3
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "租期信息"
+    }
+  })], 1), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "javascript:"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 4
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "条款信息"
+    }
+  })], 1)]), _vm._v(" "), _c('el-button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.reviewVisible),
+      expression: "!reviewVisible"
+    }],
+    staticStyle: {
+      "margin-top": "100px"
+    },
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.save
+    }
+  }, [_vm._v("保存")]), _vm._v(" "), _c('el-button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.reviewVisible),
+      expression: "!reviewVisible"
+    }],
+    attrs: {
+      "type": "primary",
+      "disabled": _vm.btnType
+    },
+    on: {
+      "click": _vm.submit
+    }
+  }, [_vm._v(_vm._s(_vm.submsg))]), _vm._v(" "), _c('el-button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.reviewVisible),
+      expression: "reviewVisible"
+    }],
+    staticStyle: {
+      "margin-top": "100px"
+    },
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        _vm.review(1)
+      }
+    }
+  }, [_vm._v("通   过")]), _vm._v(" "), _c('el-button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.reviewVisible),
+      expression: "reviewVisible"
+    }],
+    staticStyle: {
+      "margin-top": "100px"
+    },
+    attrs: {
+      "type": "warning"
+    },
+    on: {
+      "click": function($event) {
+        _vm.review(0)
+      }
+    }
+  }, [_vm._v("不通过")])], 1)])], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "审核批注",
+      "visible": _vm.dialogFormVisible
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.dialogFormVisible = $event
+      }
+    }
+  }, [_c('el-form', [_c('el-form-item', {
+    attrs: {
+      "label": "批注",
+      "label-width": "50px"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.content),
+      callback: function($$v) {
+        _vm.content = $$v
+      },
+      expression: "content"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    on: {
+      "click": function($event) {
+        _vm.dialogFormVisible = false
+      }
+    }
+  }, [_vm._v("取 消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.review2
+    }
+  }, [_vm._v("确 定")])], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-514b698e", module.exports)
+  }
+}
+
+/***/ }),
+/* 181 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', {
+    staticClass: "container"
+  }, [_c('el-form', {
+    staticClass: "demo-dynamic",
+    attrs: {
+      "model": _vm.addDate,
+      "label-width": "100px"
+    }
+  }, [_vm._l((_vm.addDate.mianzuqiList), function(item, index) {
+    return _c('el-form-item', {
+      key: item.key,
+      attrs: {
+        "label": "免租期",
+        "prop": 'mianzuqiList.' + index + '.value'
+      }
+    }, [_c('el-date-picker', {
+      attrs: {
+        "type": "date",
+        "placeholder": "开始时间"
+      },
+      model: {
+        value: (item.startdate),
+        callback: function($$v) {
+          item.startdate = $$v
+        },
+        expression: "item.startdate"
+      }
+    }), _vm._v(" "), _c('el-date-picker', {
+      attrs: {
+        "type": "date",
+        "placeholder": "结束时间"
+      },
+      model: {
+        value: (item.enddate),
+        callback: function($$v) {
+          item.enddate = $$v
+        },
+        expression: "item.enddate"
+      }
+    }), _vm._v(" "), _c('el-radio-group', {
+      model: {
+        value: (item.mianzufangshi),
+        callback: function($$v) {
+          item.mianzufangshi = $$v
+        },
+        expression: "item.mianzufangshi"
+      }
+    }, [_c('el-radio', {
+      attrs: {
+        "label": 1
+      }
+    }, [_vm._v("期内免租")]), _vm._v(" "), _c('el-radio', {
+      attrs: {
+        "label": 2
+      }
+    }, [_vm._v("期外免租")])], 1), _vm._v(" "), _c('el-button', {
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeFreeItem(item)
+        }
+      }
+    }, [_vm._v("删除")])], 1)
+  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    on: {
+      "click": _vm.addFreeItem
+    }
+  }, [_vm._v("新增免租期")])], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "总租期"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.addDate.startdate),
+      callback: function($$v) {
+        _vm.addDate.startdate = $$v
+      },
+      expression: "addDate.startdate"
+    }
+  }), _vm._v(" "), _c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "结束时间"
+    },
+    on: {
+      "change": function($event) {
+        _vm.zqchange()
+      }
+    },
+    model: {
+      value: (_vm.addDate.enddate),
+      callback: function($$v) {
+        _vm.addDate.enddate = $$v
+      },
+      expression: "addDate.enddate"
+    }
+  })], 1), _vm._v(" "), _vm._l((_vm.addDate.zujinList), function(item, index) {
+    return _c('div', [_c('el-row', [_c('el-col', {
+      staticStyle: {
+        "width": "550px"
+      },
+      attrs: {
+        "span": 9
+      }
+    }, [_c('el-form-item', {
+      key: item.key,
+      attrs: {
+        "label": '租期' + index,
+        "prop": 'zujinList.' + index + '.value'
+      }
+    }, [_c('el-date-picker', {
+      attrs: {
+        "type": "date",
+        "placeholder": "开始时间"
+      },
+      model: {
+        value: (item.startdate),
+        callback: function($$v) {
+          item.startdate = $$v
+        },
+        expression: "item.startdate"
+      }
+    }), _vm._v(" "), _c('el-date-picker', {
+      attrs: {
+        "type": "date",
+        "placeholder": "结束时间"
+      },
+      model: {
+        value: (item.enddate),
+        callback: function($$v) {
+          item.enddate = $$v
+        },
+        expression: "item.enddate"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      staticStyle: {
+        "width": "130px",
+        "margin-left": "-20px"
+      },
+      attrs: {
+        "span": 2,
+        "pull": 1
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "月租金",
+        "label-width": "55px"
+      }
+    }, [_c('el-input', {
+      staticClass: "pulll10",
+      attrs: {
+        "placeholder": "租金"
+      },
+      model: {
+        value: (item.yuezujin),
+        callback: function($$v) {
+          item.yuezujin = $$v
+        },
+        expression: "item.yuezujin"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      staticStyle: {
+        "width": "94px",
+        "margin-left": "-10px"
+      },
+      attrs: {
+        "span": 2,
+        "pull": 1
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "单价",
+        "label-width": "40px"
+      }
+    }, [_c('el-input', {
+      staticClass: "pulll10",
+      attrs: {
+        "placeholder": "单价"
+      },
+      model: {
+        value: (item.price),
+        callback: function($$v) {
+          item.price = $$v
+        },
+        expression: "item.price"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      staticStyle: {
+        "margin-left": "-10px"
+      },
+      attrs: {
+        "span": 3,
+        "pull": 1
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "递增方式",
+        "label-width": "70px"
+      }
+    }, [_c('el-input', {
+      staticClass: "pulll10",
+      attrs: {
+        "placeholder": ""
+      },
+      model: {
+        value: (item.dizengliang),
+        callback: function($$v) {
+          item.dizengliang = $$v
+        },
+        expression: "item.dizengliang"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      staticStyle: {
+        "width": "70px",
+        "margin-left": "-50px"
+      },
+      attrs: {
+        "span": 2
+      }
+    }, [_c('el-select', {
+      attrs: {
+        "placeholder": ""
+      },
+      model: {
+        value: (_vm.addDate.zujinList[index].dizengfangshi),
+        callback: function($$v) {
+          _vm.addDate.zujinList[index].dizengfangshi = $$v
+        },
+        expression: "addDate.zujinList[index].dizengfangshi"
+      }
+    }, _vm._l((_vm.options), function(item) {
+      return _c('el-option', {
+        key: item.value,
+        attrs: {
+          "label": item.label,
+          "value": item.value
+        }
+      })
+    }))], 1), _vm._v(" "), _c('el-col', {
+      staticStyle: {
+        "margin-left": "5px"
+      },
+      attrs: {
+        "span": 2
+      }
+    }, [_c('el-button', {
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeRentItem(item)
+        }
+      }
+    }, [_vm._v("删除")])], 1)], 1)], 1)
+  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    on: {
+      "click": _vm.addRentItem
+    }
+  }, [_vm._v("新增租期")])], 1), _vm._v(" "), _vm._l((_vm.addDate.fukuanFangshiList), function(item, index) {
+    return _c('div', [_c('el-row', {
+      attrs: {
+        "gutter": 5
+      }
+    }, [_c('el-col', {
+      staticStyle: {
+        "width": "550px"
+      },
+      attrs: {
+        "span": 14
+      }
+    }, [_c('el-form-item', {
+      key: item.key,
+      attrs: {
+        "label": "付款方式",
+        "prop": 'fukuanFangshiList.' + index + '.value'
+      }
+    }, [_c('el-date-picker', {
+      attrs: {
+        "type": "date",
+        "placeholder": "开始时间"
+      },
+      model: {
+        value: (item.startdate),
+        callback: function($$v) {
+          item.startdate = $$v
+        },
+        expression: "item.startdate"
+      }
+    }), _vm._v(" "), _c('el-date-picker', {
+      attrs: {
+        "type": "date",
+        "placeholder": "结束时间"
+      },
+      model: {
+        value: (item.enddate),
+        callback: function($$v) {
+          item.enddate = $$v
+        },
+        expression: "item.enddate"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      staticStyle: {
+        "width": "90px"
+      },
+      attrs: {
+        "span": 1,
+        "pull": 1
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "押",
+        "label-width": "20px"
+      }
+    }, [_c('el-input', {
+      attrs: {
+        "placeholder": "押几"
+      },
+      model: {
+        value: (item.yajinyue),
+        callback: function($$v) {
+          item.yajinyue = $$v
+        },
+        expression: "item.yajinyue"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      staticStyle: {
+        "margin-left": "15px",
+        "width": "90px"
+      },
+      attrs: {
+        "span": 1,
+        "pull": 1
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "付",
+        "label-width": "20px"
+      }
+    }, [_c('el-input', {
+      attrs: {
+        "placeholder": "付几"
+      },
+      model: {
+        value: (item.zujinyue),
+        callback: function($$v) {
+          item.zujinyue = $$v
+        },
+        expression: "item.zujinyue"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 2,
+        "pull": 1
+      }
+    }, [_c('el-button', {
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removePayItem(item)
+        }
+      }
+    }, [_vm._v("删除")])], 1)], 1)], 1)
+  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    on: {
+      "click": _vm.addPayItem
+    }
+  }, [_vm._v("新增付款方式")])], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "押金"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "押金"
+    },
+    model: {
+      value: (_vm.addDate.yajin),
+      callback: function($$v) {
+        _vm.addDate.yajin = $$v
+      },
+      expression: "addDate.yajin"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "总应付租金"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "总应付押金"
+    },
+    model: {
+      value: (_vm.addDate.zongyingfuzujin),
+      callback: function($$v) {
+        _vm.addDate.zongyingfuzujin = $$v
+      },
+      expression: "addDate.zongyingfuzujin"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "合同佣金"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "合同佣金"
+    },
+    model: {
+      value: (_vm.addDate.yongjin),
+      callback: function($$v) {
+        _vm.addDate.yongjin = $$v
+      },
+      expression: "addDate.yongjin"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "提前几天付款"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "placeholder": "提前几天付款"
+    },
+    model: {
+      value: (_vm.addDate.tiqianfukuantian),
+      callback: function($$v) {
+        _vm.addDate.tiqianfukuantian = $$v
+      },
+      expression: "addDate.tiqianfukuantian"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "押金付款日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "选择日期"
+    },
+    model: {
+      value: (_vm.addDate.yajinfukuanri),
+      callback: function($$v) {
+        _vm.addDate.yajinfukuanri = $$v
+      },
+      expression: "addDate.yajinfukuanri"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "收房日"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "选择日期"
+    },
+    model: {
+      value: (_vm.addDate.shoufangdate),
+      callback: function($$v) {
+        _vm.addDate.shoufangdate = $$v
+      },
+      expression: "addDate.shoufangdate"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "签约日"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "选择日期"
+    },
+    model: {
+      value: (_vm.addDate.qianyuedate),
+      callback: function($$v) {
+        _vm.addDate.qianyuedate = $$v
+      },
+      expression: "addDate.qianyuedate"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "首期租金日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "首期租金日期"
+    },
+    model: {
+      value: (_vm.addDate.shouqifukuanri),
+      callback: function($$v) {
+        _vm.addDate.shouqifukuanri = $$v
+      },
+      expression: "addDate.shouqifukuanri"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "二期租金日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "二期租金日期"
+    },
+    model: {
+      value: (_vm.addDate.erqifukuanri),
+      callback: function($$v) {
+        _vm.addDate.erqifukuanri = $$v
+      },
+      expression: "addDate.erqifukuanri"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "三期租金日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "tpye": "date",
+      "placeholder": "三期租金日期"
+    },
+    model: {
+      value: (_vm.addDate.sanqifukuanri),
+      callback: function($$v) {
+        _vm.addDate.sanqifukuanri = $$v
+      },
+      expression: "addDate.sanqifukuanri"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "费用"
+    }
+  }, [_c('el-checkbox-group', {
+    model: {
+      value: (_vm.addDate.checkList),
+      callback: function($$v) {
+        _vm.addDate.checkList = $$v
+      },
+      expression: "addDate.checkList"
+    }
+  }, [_c('el-checkbox', {
+    attrs: {
+      "label": "1"
+    }
+  }, [_vm._v("物业费")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "2"
+    }
+  }, [_vm._v("取暖费")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "3"
+    }
+  }, [_vm._v("制冷")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "4"
+    }
+  }, [_vm._v("发票")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "5"
+    }
+  }, [_vm._v("其它")])], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "补充条款",
+      "prop": "buchongtiaokuan"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea",
+      "row": "5px"
+    },
+    model: {
+      value: (_vm.addDate.buchongtiaokuan),
+      callback: function($$v) {
+        _vm.addDate.buchongtiaokuan = $$v
+      },
+      expression: "addDate.buchongtiaokuan"
+    }
+  })], 1)], 1)], 2)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-5338df87", module.exports)
+  }
+}
+
+/***/ }),
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('el-row', [_c('div', {
+    staticStyle: {
+      "margin-bottom": "50px"
+    }
+  }), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 18
+    }
+  }, [_c('add-property', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 1),
+      expression: "stepNum==1"
+    }],
+    ref: "property"
+  }), _vm._v(" "), _c('add-renter', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 2),
+      expression: "stepNum==2"
+    }],
+    ref: "owner"
+  }), _vm._v(" "), _c('add-date', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.stepNum == 3),
+      expression: "stepNum==3"
+    }],
+    ref: "date"
+  })], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-bottom": "81px"
+    }
+  }), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 6
+    }
+  }, [_c('div', {
+    staticStyle: {
+      "margin-left": "50%"
+    }
+  }, [_c('el-steps', {
+    attrs: {
+      "space": 100,
+      "direction": "vertical",
+      "active": _vm.stepNum
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 1
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "房间信息"
+    }
+  })], 1), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 2
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "租户信息"
+    }
+  })], 1), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 3
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "租期信息"
+    }
+  })], 1), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    },
+    on: {
+      "click": function($event) {
+        _vm.stepNum = 4
+      }
+    }
+  }, [_c('el-step', {
+    attrs: {
+      "title": "条款信息"
+    }
+  })], 1)]), _vm._v(" "), _c('el-button', {
+    staticStyle: {
+      "margin-top": "100px"
+    },
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.save
+    }
+  }, [_vm._v("保存")])], 1)])], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-55944f02", module.exports)
+  }
+}
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-tree', {
+    attrs: {
+      "data": _vm.data2,
+      "show-checkbox": "",
+      "node-key": "id",
+      "default-expanded-keys": [2, 3],
+      "default-checked-keys": [5],
+      "props": _vm.defaultProps
+    }
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-57d24f68", module.exports)
+  }
+}
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-upload', {
+    staticClass: "upload-demo",
+    attrs: {
+      "action": "https://jsonplaceholder.typicode.com/posts/",
+      "on-preview": _vm.handlePreview,
+      "on-remove": _vm.handleRemove,
+      "file-list": _vm.fileList2,
+      "list-type": "picture"
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "size": "small",
+      "type": "primary"
+    }
+  }, [_vm._v("点击上传")]), _vm._v(" "), _c('div', {
+    staticClass: "el-upload__tip",
+    slot: "tip"
+  }, [_vm._v("只能上传jpg/png文件，且不超过2000kb")])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-662baf99", module.exports)
+  }
+}
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('el-row', {
+    staticClass: "container"
+  }, [_c('el-tabs', {
+    attrs: {
+      "type": "card",
+      "closable": ""
+    },
+    on: {
+      "tab-remove": _vm.removeTab
+    },
+    model: {
+      value: (_vm.editableTabsValue2),
+      callback: function($$v) {
+        _vm.editableTabsValue2 = $$v
+      },
+      expression: "editableTabsValue2"
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "size": "small"
+    },
+    on: {
+      "click": function($event) {
+        _vm.addTab(_vm.editableTabsValue2)
+      }
+    }
+  }, [_vm._v("\n                添加房源\n            ")]), _vm._v(" "), _vm._l((_vm.editableTabs2), function(item, index) {
+    return _c('el-tab-pane', {
+      key: item.name,
+      attrs: {
+        "label": item.title,
+        "name": item.name
+      }
+    }, [_c('el-form', {
+      attrs: {
+        "label-Weizhi": "right",
+        "label-width": "100px",
+        "model": _vm.property.officeList[index]
+      }
+    }, [_c('el-col', {
+      attrs: {
+        "span": 24
+      }
+    }, [_c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "楼盘"
+      }
+    }, [_c('el-select', {
+      attrs: {
+        "filterable": "",
+        "remote": "",
+        "placeholder": "楼盘",
+        "remote-method": _vm.remoteMethod1,
+        "loading": _vm.loupanloading
+      },
+      model: {
+        value: (_vm.property.officeList[index].loupanOmcId),
+        callback: function($$v) {
+          _vm.property.officeList[index].loupanOmcId = $$v
+        },
+        expression: "property.officeList[index].loupanOmcId"
+      }
+    }, _vm._l((_vm.options1), function(item) {
+      return _c('el-option', {
+        key: item.value,
+        attrs: {
+          "label": item.label,
+          "value": item.value
+        }
+      })
+    }))], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "楼栋"
+      }
+    }, [_c('el-select', {
+      attrs: {
+        "filterable": "",
+        "remote": "",
+        "placeholder": "楼栋",
+        "remote-method": _vm.remoteMethod2,
+        "loading": _vm.loupanloading
+      },
+      model: {
+        value: (_vm.property.officeList[index].loudongOmcId),
+        callback: function($$v) {
+          _vm.property.officeList[index].loudongOmcId = $$v
+        },
+        expression: "property.officeList[index].loudongOmcId"
+      }
+    }, _vm._l((_vm.options2), function(item) {
+      return _c('el-option', {
+        key: item.value,
+        attrs: {
+          "label": item.label,
+          "value": item.value
+        }
+      })
+    }))], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "房间号"
+      }
+    }, [_c('el-select', {
+      attrs: {
+        "filterable": "",
+        "remote": "",
+        "placeholder": "房间号",
+        "remote-method": _vm.remoteMethod3,
+        "loading": _vm.fanghaoloading
+      },
+      on: {
+        "change": _vm.change
+      },
+      model: {
+        value: (_vm.property.officeList[index].omcId),
+        callback: function($$v) {
+          _vm.property.officeList[index].omcId = $$v
+        },
+        expression: "property.officeList[index].omcId"
+      }
+    }, _vm._l((_vm.options3), function(item) {
+      return _c('el-option', {
+        key: item.value,
+        attrs: {
+          "label": item.label,
+          "value": item.value
+        }
+      })
+    }))], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+      attrs: {
+        "label": "位置"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property.officeList[index].weizhi),
+        callback: function($$v) {
+          _vm.property.officeList[index].weizhi = $$v
+        },
+        expression: "property.officeList[index].weizhi"
+      }
+    })], 1), _vm._v(" "), _c('el-form-item', {
+      attrs: {
+        "label": "产权证编号"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property.officeList[index].chanquanzhenghao),
+        callback: function($$v) {
+          _vm.property.officeList[index].chanquanzhenghao = $$v
+        },
+        expression: "property.officeList[index].chanquanzhenghao"
+      }
+    })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "承租面积"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property.officeList[index].jianzhumianji),
+        callback: function($$v) {
+          _vm.property.officeList[index].jianzhumianji = $$v
+        },
+        expression: "property.officeList[index].jianzhumianji"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "签约面积"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property.officeList[index].qianyuemianji),
+        callback: function($$v) {
+          _vm.property.officeList[index].qianyuemianji = $$v
+        },
+        expression: "property.officeList[index].qianyuemianji"
+      }
+    })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+      attrs: {
+        "label": "房屋类型"
+      }
+    }, [_c('el-select', {
+      attrs: {
+        "placeholder": "请选择"
+      },
+      model: {
+        value: (_vm.property.officeList[index].leixing),
+        callback: function($$v) {
+          _vm.property.officeList[index].leixing = $$v
+        },
+        expression: "property.officeList[index].leixing"
+      }
+    }, _vm._l((_vm.options), function(item) {
+      return _c('el-option', {
+        key: item.value,
+        attrs: {
+          "label": item.label,
+          "value": item.value
+        }
+      })
+    }))], 1)], 1)], 1)], 1)
+  })], 2)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-6bc57e18", module.exports)
+  }
+}
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', [_c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-form', {
+    staticClass: "demo-form-inline",
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": ""
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "请输入项目"
+    },
+    model: {
+      value: (_vm.filters.name),
+      callback: function($$v) {
+        _vm.filters.name = $$v
+      },
+      expression: "filters.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary",
+      "icon": "search"
+    }
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
+    staticClass: "el-icon-plus",
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.addContract
+    }
+  }, [_vm._v(" 新增")]), _vm._v(" "), _c('el-button', {
+    staticClass: "el-icon-upload2",
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.uploadImg
+    }
+  }, [_vm._v("上传")])], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.lists,
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "selection",
+      "width": "55"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "type": "index",
+      "width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "officeList[0].loupanName",
+      "label": "楼盘",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "officeList[0].loudongName",
+      "label": "楼栋",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "officeList[0].fanghao",
+      "label": "房间号",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "zhuangtai",
+      "label": "状态",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "createtime",
+      "label": "签约日",
+      "formatter": _vm.changeDate,
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "150"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleEdit(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "danger",
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleDel(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("删除")])]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "current-page": _vm.currentPage,
+      "page-sizes": [10, 20, 50, 100],
+      "page-size": 100,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-6de7aeb0", module.exports)
+  }
+}
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-form', {
+    ref: "ruleForm2",
+    staticClass: "demo-ruleForm login-container",
+    attrs: {
+      "model": _vm.ruleForm2,
+      "rules": _vm.rules2,
+      "label-position": "left",
+      "label-width": "0px"
+    }
+  }, [_c('h3', {
+    staticClass: "title"
+  }, [_vm._v("系统登录")]), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "prop": "account"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "text",
+      "auto-complete": "off",
+      "placeholder": "账号"
+    },
+    model: {
+      value: (_vm.ruleForm2.account),
+      callback: function($$v) {
+        _vm.ruleForm2.account = $$v
+      },
+      expression: "ruleForm2.account"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "prop": "checkPass"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "password",
+      "auto-complete": "off",
+      "placeholder": "密码"
+    },
+    model: {
+      value: (_vm.ruleForm2.checkPass),
+      callback: function($$v) {
+        _vm.ruleForm2.checkPass = $$v
+      },
+      expression: "ruleForm2.checkPass"
+    }
+  })], 1), _vm._v(" "), _c('el-checkbox', {
+    staticClass: "remember",
+    attrs: {
+      "checked": ""
+    },
+    model: {
+      value: (_vm.checked),
+      callback: function($$v) {
+        _vm.checked = $$v
+      },
+      expression: "checked"
+    }
+  }, [_vm._v("记住密码")]), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "100%"
+    }
+  }, [_c('el-button', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "primary",
+      "loading": _vm.logining
+    },
+    nativeOn: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.handleSubmit2($event)
+      }
+    }
+  }, [_vm._v("登录")])], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-71c29f65", module.exports)
+  }
+}
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', [_c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-form', {
+    staticClass: "demo-form-inline",
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": ""
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "请输入项目"
+    },
+    model: {
+      value: (_vm.filters.name),
+      callback: function($$v) {
+        _vm.filters.name = $$v
+      },
+      expression: "filters.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary",
+      "icon": "search"
+    }
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
+    staticClass: "el-icon-plus",
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.addContract
+    }
+  }, [_vm._v(" 新增")]), _vm._v(" "), _c('el-button', {
+    staticClass: "el-icon-upload2",
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.uploadImg
+    }
+  }, [_vm._v("上传")])], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.lists,
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "selection",
+      "width": "55"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "id",
+      "label": "id",
+      "width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "officeList[0].loupanName",
+      "label": "楼盘",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "officeList[0].loudongName",
+      "label": "楼栋",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "officeList[0].fanghao",
+      "label": "房间号",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "zhuangtai",
+      "label": "状态",
+      "formatter": _vm.formatStatus,
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "createtime",
+      "label": "签约日",
+      "formatter": _vm.changeDate,
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "300"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleEdit(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleReview(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("审核")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleOptimize(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("优化")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "danger",
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleDel(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("删除")])]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "current-page": _vm.currentPage,
+      "page-sizes": _vm.pageSizes,
+      "page-size": _vm.pageSize,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-78ba5aea", module.exports)
+  }
+}
+
+/***/ }),
+/* 189 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', _vm._l((_vm.tiaoList), function(tiao, index) {
+    return _c('div', {
+      key: tiao.index
+    }, [_c('el-row', {
+      staticClass: "txs",
+      attrs: {
+        "gutter": 5
+      }
+    }, [_c('el-col', {
+      attrs: {
+        "span": 20
+      }
+    }, [_c('el-input', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (tiao.show),
+        expression: "tiao.show"
+      }],
+      staticStyle: {
+        "font-size": "18px"
+      },
+      attrs: {
+        "size": "large"
+      },
+      model: {
+        value: (tiao.title),
+        callback: function($$v) {
+          tiao.title = $$v
+        },
+        expression: "tiao.title"
+      }
+    })], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 4
+      }
+    }, [_c('el-button', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (tiao.show),
+        expression: "tiao.show"
+      }],
+      attrs: {
+        "type": "info"
+      },
+      on: {
+        "click": function($event) {
+          _vm.save(tiao)
+        }
+      }
+    }, [_vm._v("保存")]), _vm._v(" "), _c('el-button', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (tiao.show),
+        expression: "tiao.show"
+      }],
+      attrs: {
+        "type": "info",
+        "plain": true
+      },
+      on: {
+        "click": function($event) {
+          _vm.cancel(tiao)
+        }
+      }
+    }, [_vm._v("取消")])], 1), _vm._v(" "), _c('span', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (!tiao.show),
+        expression: "!tiao.show"
+      }],
+      staticClass: "tiao"
+    }, [_vm._v(_vm._s(tiao.title))]), _vm._v(" "), _c('a', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (!tiao.show),
+        expression: "!tiao.show"
+      }],
+      staticClass: "bjxs",
+      attrs: {
+        "href": "javascript:;"
+      }
+    }, [_c('i', {
+      staticClass: "el-icon-edit",
+      on: {
+        "click": function($event) {
+          _vm.editFormVisible(tiao)
+        }
+      }
+    }, [_vm._v("编辑")])])], 1), _vm._v(" "), _c('br'), _vm._v(" "), _vm._l((tiao.kuanList), function(kuan, index2) {
+      return _c('div', {
+        key: kuan.index2
+      }, [_c('el-row', {
+        staticClass: "txs kuan",
+        attrs: {
+          "gutter": 5
+        }
+      }, [_c('el-col', {
+        attrs: {
+          "span": 20
+        }
+      }, [_c('el-input', {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: (kuan.show),
+          expression: "kuan.show"
+        }],
+        attrs: {
+          "type": "textarea",
+          "autosize": ""
+        },
+        model: {
+          value: (kuan.content),
+          callback: function($$v) {
+            kuan.content = $$v
+          },
+          expression: "kuan.content"
+        }
+      })], 1), _vm._v(" "), _c('el-col', {
+        attrs: {
+          "span": 4
+        }
+      }, [_c('el-button', {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: (kuan.show),
+          expression: "kuan.show"
+        }],
+        attrs: {
+          "type": "info"
+        },
+        on: {
+          "click": function($event) {
+            _vm.save(kuan)
+          }
+        }
+      }, [_vm._v("保存")]), _vm._v(" "), _c('el-button', {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: (kuan.show),
+          expression: "kuan.show"
+        }],
+        attrs: {
+          "type": "info",
+          "plain": true
+        },
+        on: {
+          "click": function($event) {
+            _vm.cancel(kuan)
+          }
+        }
+      }, [_vm._v("取消")])], 1), _vm._v(" "), _c('span', {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: (!kuan.show),
+          expression: "!kuan.show"
+        }],
+        staticClass: "kuan"
+      }, [_vm._v(_vm._s(kuan.content))]), _vm._v(" "), _c('a', {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: (!kuan.show),
+          expression: "!kuan.show"
+        }],
+        staticClass: "bjxs",
+        attrs: {
+          "href": "javascript:;"
+        }
+      }, [_c('i', {
+        staticClass: "el-icon-edit",
+        on: {
+          "click": function($event) {
+            _vm.editFormVisible(kuan)
+          }
+        }
+      }, [_vm._v("编辑")])])], 1), _vm._v(" "), _vm._l((kuan.xiangList), function(xiang, index3) {
+        return _c('div', {
+          key: xiang.index3
+        }, [_c('el-row', {
+          staticClass: "txs xiang",
+          attrs: {
+            "gutter": 5
+          }
+        }, [_c('el-col', {
+          attrs: {
+            "span": 20
+          }
+        }, [_c('el-input', {
+          directives: [{
+            name: "show",
+            rawName: "v-show",
+            value: (xiang.show),
+            expression: "xiang.show"
+          }],
+          attrs: {
+            "type": "textarea",
+            "autosize": ""
+          },
+          model: {
+            value: (xiang.content),
+            callback: function($$v) {
+              xiang.content = $$v
+            },
+            expression: "xiang.content"
+          }
+        })], 1), _vm._v(" "), _c('el-col', {
+          attrs: {
+            "span": 4
+          }
+        }, [_c('el-button', {
+          directives: [{
+            name: "show",
+            rawName: "v-show",
+            value: (xiang.show),
+            expression: "xiang.show"
+          }],
+          attrs: {
+            "type": "info"
+          },
+          on: {
+            "click": function($event) {
+              _vm.save(xiang)
+            }
+          }
+        }, [_vm._v("保存")]), _vm._v(" "), _c('el-button', {
+          directives: [{
+            name: "show",
+            rawName: "v-show",
+            value: (xiang.show),
+            expression: "xiang.show"
+          }],
+          attrs: {
+            "type": "info",
+            "plain": true
+          },
+          on: {
+            "click": function($event) {
+              _vm.cancel(xiang)
+            }
+          }
+        }, [_vm._v("取消")])], 1), _vm._v(" "), _c('span', {
+          directives: [{
+            name: "show",
+            rawName: "v-show",
+            value: (!xiang.show),
+            expression: "!xiang.show"
+          }],
+          staticClass: "xiang"
+        }, [_vm._v(_vm._s(xiang.content))]), _vm._v(" "), _c('a', {
+          directives: [{
+            name: "show",
+            rawName: "v-show",
+            value: (!xiang.show),
+            expression: "!xiang.show"
+          }],
+          staticClass: "bjxs",
+          attrs: {
+            "href": "javascript:;"
+          }
+        }, [_c('i', {
+          staticClass: "el-icon-edit",
+          on: {
+            "click": function($event) {
+              _vm.editFormVisible(xiang)
+            }
+          }
+        }, [_vm._v("编辑")])])], 1)], 1)
+      })], 2)
+    }), _vm._v(" "), _c('br')], 2)
+  }))
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-7ea91473", module.exports)
+  }
+}
+
+/***/ }),
+/* 190 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
+    staticClass: "page-container"
+  }, [_vm._v("404 page not found")])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-852aea58", module.exports)
+  }
+}
+
+/***/ }),
+/* 191 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', {
+    staticClass: "container"
+  }, [_c('el-form', {
+    staticClass: "demo-dynamic",
+    attrs: {
+      "model": _vm.addDate,
+      "label-width": "100px"
+    }
+  }, [_c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "收房日"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "选择日期"
+    },
+    model: {
+      value: (_vm.addDate.shoufangDate),
+      callback: function($$v) {
+        _vm.addDate.shoufangDate = $$v
+      },
+      expression: "addDate.shoufangDate"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "签约日"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "选择日期"
+    },
+    model: {
+      value: (_vm.addDate.qianyueDate),
+      callback: function($$v) {
+        _vm.addDate.qianyueDate = $$v
+      },
+      expression: "addDate.qianyueDate"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "免租方式"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.addDate.mianzufangshi),
+      callback: function($$v) {
+        _vm.addDate.mianzufangshi = $$v
+      },
+      expression: "addDate.mianzufangshi"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": 1
+    }
+  }, [_vm._v("期内免租")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 2
+    }
+  }, [_vm._v("期外免租")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 3
+    }
+  }, [_vm._v("期内期外")])], 1)], 1), _vm._v(" "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
+    return _c('el-form-item', {
+      key: item.key,
+      attrs: {
+        "label": "免租期",
+        "prop": 'mianzuqiList.' + index + '.value'
+      }
+    }, [_c('el-date-picker', {
+      attrs: {
+        "type": "date",
+        "placeholder": "开始时间"
+      },
+      model: {
+        value: (item.startdate),
+        callback: function($$v) {
+          item.startdate = $$v
+        },
+        expression: "item.startdate"
+      }
+    }), _vm._v(" "), _c('el-date-picker', {
+      attrs: {
+        "type": "date",
+        "placeholder": "结束时间"
+      },
+      model: {
+        value: (item.enddate),
+        callback: function($$v) {
+          item.enddate = $$v
+        },
+        expression: "item.enddate"
+      }
+    }), _vm._v(" "), _c('el-button', {
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeFreeItem(item)
+        }
+      }
+    }, [_vm._v("删除")])], 1)
+  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    on: {
+      "click": _vm.addFreeItem
+    }
+  }, [_vm._v("新增免租期")])], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "总租期"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.addDate.startdate),
+      callback: function($$v) {
+        _vm.addDate.startdate = $$v
+      },
+      expression: "addDate.startdate"
+    }
+  }), _vm._v(" "), _c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.addDate.enddate),
+      callback: function($$v) {
+        _vm.addDate.enddate = $$v
+      },
+      expression: "addDate.enddate"
+    }
+  })], 1), _vm._v(" "), _vm._l((_vm.addDate.fukuanFangshiList), function(item, index) {
+    return _c('div', [_c('el-form-item', {
+      key: item.key,
+      attrs: {
+        "label": "付款方式",
+        "prop": 'fukuanFangshiList.' + index + '.value'
+      }
+    }, [_c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 13
+      }
+    }, [_c('el-date-picker', {
+      attrs: {
+        "type": "date",
+        "placeholder": "开始时间"
+      },
+      model: {
+        value: (item.startdate),
+        callback: function($$v) {
+          item.startdate = $$v
+        },
+        expression: "item.startdate"
+      }
+    }), _vm._v(" "), _c('el-date-picker', {
+      attrs: {
+        "type": "date",
+        "placeholder": "结束时间"
+      },
+      model: {
+        value: (item.enddate),
+        callback: function($$v) {
+          item.enddate = $$v
+        },
+        expression: "item.enddate"
+      }
+    })], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 3
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "",
+        "label-width": "10px"
+      }
+    }, [_c('el-input', {
+      attrs: {
+        "placeholder": "押几"
+      },
+      model: {
+        value: (item.yajinyue),
+        callback: function($$v) {
+          item.yajinyue = $$v
+        },
+        expression: "item.yajinyue"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 3
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "",
+        "label-width": "10px"
+      }
+    }, [_c('el-input', {
+      attrs: {
+        "placeholder": "付几"
+      },
+      model: {
+        value: (item.zujinyue),
+        callback: function($$v) {
+          item.zujinyue = $$v
+        },
+        expression: "item.zujinyue"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 2
+      }
+    }, [_c('el-button', {
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removePayItem(item)
+        }
+      }
+    }, [_vm._v("删除")])], 1)], 1)], 1)], 1)
+  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    on: {
+      "click": _vm.addPayItem
+    }
+  }, [_vm._v("新增付款方式")])], 1), _vm._v(" "), _vm._l((_vm.addDate.zujinList), function(item, index) {
+    return _c('div', [_c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 9
+      }
+    }, [_c('el-form-item', {
+      key: item.key,
+      attrs: {
+        "label": '租期' + index,
+        "prop": 'zujinList.' + index + '.value'
+      }
+    }, [_c('el-date-picker', {
+      attrs: {
+        "type": "daterange",
+        "placeholder": "租期范围"
+      },
+      model: {
+        value: (item.zuqiDate),
+        callback: function($$v) {
+          item.zuqiDate = $$v
+        },
+        expression: "item.zuqiDate"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 3
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "",
+        "label-width": "10px"
+      }
+    }, [_c('el-input', {
+      attrs: {
+        "placeholder": "租金/元"
+      },
+      model: {
+        value: (item.yuezujin),
+        callback: function($$v) {
+          item.yuezujin = $$v
+        },
+        expression: "item.yuezujin"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 3
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "",
+        "label-width": "10px"
+      }
+    }, [_c('el-input', {
+      attrs: {
+        "placeholder": "单价"
+      },
+      model: {
+        value: (item.price),
+        callback: function($$v) {
+          item.price = $$v
+        },
+        expression: "item.price"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 3
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "",
+        "label-width": "10px"
+      }
+    }, [_c('el-select', {
+      attrs: {
+        "placeholder": "递增方式"
+      },
+      model: {
+        value: (_vm.addDate.zujinList[index].dizengfangshi),
+        callback: function($$v) {
+          _vm.addDate.zujinList[index].dizengfangshi = $$v
+        },
+        expression: "addDate.zujinList[index].dizengfangshi"
+      }
+    }, _vm._l((_vm.options), function(item) {
+      return _c('el-option', {
+        key: item.value,
+        attrs: {
+          "label": item.label,
+          "value": item.value
+        }
+      })
+    }))], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 3
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "",
+        "label-width": "10px"
+      }
+    }, [_c('el-input', {
+      attrs: {
+        "placeholder": "递增量"
+      },
+      model: {
+        value: (item.dizengliang),
+        callback: function($$v) {
+          item.dizengliang = $$v
+        },
+        expression: "item.dizengliang"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 2
+      }
+    }, [_c('el-button', {
+      staticStyle: {
+        "margin-left": "6px"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeRentItem(item)
+        }
+      }
+    }, [_vm._v("删除")])], 1)], 1)], 1)
+  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    on: {
+      "click": _vm.addRentItem
+    }
+  }, [_vm._v("新增租期")])], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "押金"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "押金"
+    },
+    model: {
+      value: (_vm.addDate.yajin),
+      callback: function($$v) {
+        _vm.addDate.yajin = $$v
+      },
+      expression: "addDate.yajin"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "总应付租金"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "总应付押金"
+    },
+    model: {
+      value: (_vm.addDate.zongzujin),
+      callback: function($$v) {
+        _vm.addDate.zongzujin = $$v
+      },
+      expression: "addDate.zongzujin"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "合同佣金"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "合同佣金"
+    },
+    model: {
+      value: (_vm.addDate.commission),
+      callback: function($$v) {
+        _vm.addDate.commission = $$v
+      },
+      expression: "addDate.commission"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "提前几天付款"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "placeholder": "提前几天付款"
+    },
+    model: {
+      value: (_vm.addDate.tiqianfukuantian),
+      callback: function($$v) {
+        _vm.addDate.tiqianfukuantian = $$v
+      },
+      expression: "addDate.tiqianfukuantian"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "押金付款日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "选择日期"
+    },
+    model: {
+      value: (_vm.addDate.yajinfukuanri),
+      callback: function($$v) {
+        _vm.addDate.yajinfukuanri = $$v
+      },
+      expression: "addDate.yajinfukuanri"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "首期租金日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "首期租金日期"
+    },
+    model: {
+      value: (_vm.addDate.shouqifukuanri),
+      callback: function($$v) {
+        _vm.addDate.shouqifukuanri = $$v
+      },
+      expression: "addDate.shouqifukuanri"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "二期租金日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "type": "date",
+      "placeholder": "二期租金日期"
+    },
+    model: {
+      value: (_vm.addDate.erqifukuanri),
+      callback: function($$v) {
+        _vm.addDate.erqifukuanri = $$v
+      },
+      expression: "addDate.erqifukuanri"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "三期租金日期"
+    }
+  }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "tpye": "date",
+      "placeholder": "三期租金日期"
+    },
+    model: {
+      value: (_vm.addDate.sanqifukuanri),
+      callback: function($$v) {
+        _vm.addDate.sanqifukuanri = $$v
+      },
+      expression: "addDate.sanqifukuanri"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "费用"
+    }
+  }, [_c('el-checkbox-group', {
+    model: {
+      value: (_vm.addDate.checkList),
+      callback: function($$v) {
+        _vm.addDate.checkList = $$v
+      },
+      expression: "addDate.checkList"
+    }
+  }, [_c('el-checkbox', {
+    attrs: {
+      "label": "1"
+    }
+  }, [_vm._v("物业费")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "2"
+    }
+  }, [_vm._v("取暖费")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "3"
+    }
+  }, [_vm._v("制冷")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "4"
+    }
+  }, [_vm._v("发票")]), _vm._v(" "), _c('el-checkbox', {
+    attrs: {
+      "label": "5"
+    }
+  }, [_vm._v("其它")])], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "补充条款",
+      "prop": "buchongtiaokuan"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea",
+      "row": "5px"
+    },
+    model: {
+      value: (_vm.addDate.buchongtiaokuan),
+      callback: function($$v) {
+        _vm.addDate.buchongtiaokuan = $$v
+      },
+      expression: "addDate.buchongtiaokuan"
+    }
+  })], 1)], 1)], 2)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-9b3f4c66", module.exports)
   }
 }
 
 /***/ }),
 /* 192 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('el-row', {
+    staticClass: "container"
+  }, [_c('el-tabs', {
+    attrs: {
+      "type": "card",
+      "closable": ""
+    },
+    on: {
+      "tab-remove": _vm.removeTab
+    },
+    model: {
+      value: (_vm.editableTabsValue2),
+      callback: function($$v) {
+        _vm.editableTabsValue2 = $$v
+      },
+      expression: "editableTabsValue2"
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "size": "small"
+    },
+    on: {
+      "click": function($event) {
+        _vm.addTab(_vm.editableTabsValue2)
+      }
+    }
+  }, [_vm._v("\n                添加房源\n            ")]), _vm._v(" "), _vm._l((_vm.editableTabs2), function(item, index) {
+    return _c('el-tab-pane', {
+      key: item.name,
+      attrs: {
+        "label": item.title,
+        "name": item.name
+      }
+    }, [_c('el-form', {
+      attrs: {
+        "label-Weizhi": "right",
+        "label-width": "100px",
+        "model": _vm.property.officeList[index]
+      }
+    }, [_c('el-col', {
+      attrs: {
+        "span": 24
+      }
+    }, [_c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "楼盘"
+      }
+    }, [_c('el-select', {
+      attrs: {
+        "filterable": "",
+        "default-first-option": "",
+        "remote": "",
+        "placeholder": "楼盘",
+        "remote-method": _vm.remoteMethod1,
+        "loading": _vm.loupanloading
+      },
+      on: {
+        "change": _vm.change1
+      },
+      model: {
+        value: (_vm.property.officeList[index].loupanName),
+        callback: function($$v) {
+          _vm.property.officeList[index].loupanName = $$v
+        },
+        expression: "property.officeList[index].loupanName"
+      }
+    }, _vm._l((_vm.options1), function(item) {
+      return _c('el-option', {
+        key: item.value,
+        attrs: {
+          "label": item.label,
+          "value": item.label
+        }
+      })
+    }))], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "楼栋"
+      }
+    }, [_c('el-select', {
+      attrs: {
+        "filterable": "",
+        "default-first-option": "",
+        "remote": "",
+        "placeholder": "楼栋",
+        "remote-method": _vm.remoteMethod2,
+        "loading": _vm.loupanloading
+      },
+      on: {
+        "change": _vm.change2
+      },
+      model: {
+        value: (_vm.property.officeList[index].loudongName),
+        callback: function($$v) {
+          _vm.property.officeList[index].loudongName = $$v
+        },
+        expression: "property.officeList[index].loudongName"
+      }
+    }, _vm._l((_vm.options2), function(item) {
+      return _c('el-option', {
+        key: item.value,
+        attrs: {
+          "label": item.label,
+          "value": item.label
+        }
+      })
+    }))], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "房间号"
+      }
+    }, [_c('el-select', {
+      attrs: {
+        "filterable": "",
+        "default-first-option": "",
+        "remote": "",
+        "placeholder": "房间号",
+        "remote-method": _vm.remoteMethod3,
+        "loading": _vm.fanghaoloading
+      },
+      on: {
+        "change": _vm.change3
+      },
+      model: {
+        value: (_vm.property.officeList[index].fanghao),
+        callback: function($$v) {
+          _vm.property.officeList[index].fanghao = $$v
+        },
+        expression: "property.officeList[index].fanghao"
+      }
+    }, _vm._l((_vm.options3), function(item) {
+      return _c('el-option', {
+        key: item.value,
+        attrs: {
+          "label": item.label,
+          "value": item.label
+        }
+      })
+    }))], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+      attrs: {
+        "label": "位置"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property.officeList[index].weizhi),
+        callback: function($$v) {
+          _vm.property.officeList[index].weizhi = $$v
+        },
+        expression: "property.officeList[index].weizhi"
+      }
+    })], 1), _vm._v(" "), _c('el-form-item', {
+      attrs: {
+        "label": "产权证编号"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property.officeList[index].chanquanzhenghao),
+        callback: function($$v) {
+          _vm.property.officeList[index].chanquanzhenghao = $$v
+        },
+        expression: "property.officeList[index].chanquanzhenghao"
+      }
+    })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "承租面积"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property.officeList[index].jianzhumianji),
+        callback: function($$v) {
+          _vm.property.officeList[index].jianzhumianji = $$v
+        },
+        expression: "property.officeList[index].jianzhumianji"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "签约面积"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property.officeList[index].qianyuemianji),
+        callback: function($$v) {
+          _vm.property.officeList[index].qianyuemianji = $$v
+        },
+        expression: "property.officeList[index].qianyuemianji"
+      }
+    })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+      attrs: {
+        "label": "房屋类型"
+      }
+    }, [_c('el-select', {
+      attrs: {
+        "clearable": "",
+        "placeholder": "请选择"
+      },
+      model: {
+        value: (_vm.property.officeList[index].leixing),
+        callback: function($$v) {
+          _vm.property.officeList[index].leixing = $$v
+        },
+        expression: "property.officeList[index].leixing"
+      }
+    }, _vm._l((_vm.options), function(item) {
+      return _c('el-option', {
+        key: item.value,
+        attrs: {
+          "label": item.label,
+          "value": item.value
+        }
+      })
+    }))], 1)], 1)], 1)], 1)
+  })], 2)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-c92f4ca4", module.exports)
+  }
+}
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [(_vm.tokens.length > 0) ? _c('div', [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_vm._v("Authorized Applications")]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_c('table', {
+    staticClass: "table table-borderless m-b-none"
+  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.tokens), function(token) {
+    return _c('tr', [_c('td', {
+      staticStyle: {
+        "vertical-align": "middle"
+      }
+    }, [_vm._v("\n                                " + _vm._s(token.client.name) + "\n                            ")]), _vm._v(" "), _c('td', {
+      staticStyle: {
+        "vertical-align": "middle"
+      }
+    }, [(token.scopes.length > 0) ? _c('span', [_vm._v("\n                                    " + _vm._s(token.scopes.join(', ')) + "\n                                ")]) : _vm._e()]), _vm._v(" "), _c('td', {
+      staticStyle: {
+        "vertical-align": "middle"
+      }
+    }, [_c('a', {
+      staticClass: "action-link text-danger",
+      on: {
+        "click": function($event) {
+          _vm.revoke(token)
+        }
+      }
+    }, [_vm._v("\n                                    Revoke\n                                ")])])])
+  }))])])])]) : _vm._e()])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Scopes")]), _vm._v(" "), _c('th')])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-df7603b8", module.exports)
+  }
+}
+
+/***/ }),
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -94713,772 +95129,12 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-a476071e", module.exports)
-  }
-}
-
-/***/ }),
-/* 193 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('el-row', {
-    staticClass: "container"
-  }, [_c('el-tabs', {
-    attrs: {
-      "type": "card",
-      "closable": ""
-    },
-    on: {
-      "tab-remove": _vm.removeTab
-    },
-    model: {
-      value: (_vm.editableTabsValue2),
-      callback: function($$v) {
-        _vm.editableTabsValue2 = $$v
-      },
-      expression: "editableTabsValue2"
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "size": "small"
-    },
-    on: {
-      "click": function($event) {
-        _vm.addTab(_vm.editableTabsValue2)
-      }
-    }
-  }, [_vm._v("\n                添加房源\n            ")]), _vm._v(" "), _vm._l((_vm.editableTabs2), function(item, index) {
-    return _c('el-tab-pane', {
-      key: item.name,
-      attrs: {
-        "label": item.title,
-        "name": item.name
-      }
-    }, [_c('el-form', {
-      attrs: {
-        "label-Weizhi": "right",
-        "label-width": "100px",
-        "model": _vm.property.officeList[index]
-      }
-    }, [_c('el-col', {
-      attrs: {
-        "span": 24
-      }
-    }, [_c('el-row', [_c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "楼盘"
-      }
-    }, [_c('el-select', {
-      attrs: {
-        "filterable": "",
-        "default-first-option": "",
-        "remote": "",
-        "placeholder": "楼盘",
-        "remote-method": _vm.remoteMethod1,
-        "loading": _vm.loupanloading
-      },
-      on: {
-        "change": _vm.change1
-      },
-      model: {
-        value: (_vm.property.officeList[index].loupanName),
-        callback: function($$v) {
-          _vm.property.officeList[index].loupanName = $$v
-        },
-        expression: "property.officeList[index].loupanName"
-      }
-    }, _vm._l((_vm.options1), function(item) {
-      return _c('el-option', {
-        key: item.value,
-        attrs: {
-          "label": item.label,
-          "value": item.label
-        }
-      })
-    }))], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "楼栋"
-      }
-    }, [_c('el-select', {
-      attrs: {
-        "filterable": "",
-        "default-first-option": "",
-        "remote": "",
-        "placeholder": "楼栋",
-        "remote-method": _vm.remoteMethod2,
-        "loading": _vm.loupanloading
-      },
-      on: {
-        "change": _vm.change2
-      },
-      model: {
-        value: (_vm.property.officeList[index].loudongName),
-        callback: function($$v) {
-          _vm.property.officeList[index].loudongName = $$v
-        },
-        expression: "property.officeList[index].loudongName"
-      }
-    }, _vm._l((_vm.options2), function(item) {
-      return _c('el-option', {
-        key: item.value,
-        attrs: {
-          "label": item.label,
-          "value": item.label
-        }
-      })
-    }))], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "房间号"
-      }
-    }, [_c('el-select', {
-      attrs: {
-        "filterable": "",
-        "default-first-option": "",
-        "remote": "",
-        "placeholder": "房间号",
-        "remote-method": _vm.remoteMethod3,
-        "loading": _vm.fanghaoloading
-      },
-      on: {
-        "change": _vm.change3
-      },
-      model: {
-        value: (_vm.property.officeList[index].fanghao),
-        callback: function($$v) {
-          _vm.property.officeList[index].fanghao = $$v
-        },
-        expression: "property.officeList[index].fanghao"
-      }
-    }, _vm._l((_vm.options3), function(item) {
-      return _c('el-option', {
-        key: item.value,
-        attrs: {
-          "label": item.label,
-          "value": item.label
-        }
-      })
-    }))], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-      attrs: {
-        "label": "位置"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property.officeList[index].weizhi),
-        callback: function($$v) {
-          _vm.property.officeList[index].weizhi = $$v
-        },
-        expression: "property.officeList[index].weizhi"
-      }
-    })], 1), _vm._v(" "), _c('el-form-item', {
-      attrs: {
-        "label": "产权证编号"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property.officeList[index].chanquanzhenghao),
-        callback: function($$v) {
-          _vm.property.officeList[index].chanquanzhenghao = $$v
-        },
-        expression: "property.officeList[index].chanquanzhenghao"
-      }
-    })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "承租面积"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property.officeList[index].jianzhumianji),
-        callback: function($$v) {
-          _vm.property.officeList[index].jianzhumianji = $$v
-        },
-        expression: "property.officeList[index].jianzhumianji"
-      }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 8
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "label": "签约面积"
-      }
-    }, [_c('el-input', {
-      model: {
-        value: (_vm.property.officeList[index].qianyuemianji),
-        callback: function($$v) {
-          _vm.property.officeList[index].qianyuemianji = $$v
-        },
-        expression: "property.officeList[index].qianyuemianji"
-      }
-    })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-      attrs: {
-        "label": "房屋类型"
-      }
-    }, [_c('el-select', {
-      attrs: {
-        "clearable": "",
-        "placeholder": "请选择"
-      },
-      model: {
-        value: (_vm.property.officeList[index].leixing),
-        callback: function($$v) {
-          _vm.property.officeList[index].leixing = $$v
-        },
-        expression: "property.officeList[index].leixing"
-      }
-    }, _vm._l((_vm.options), function(item) {
-      return _c('el-option', {
-        key: item.value,
-        attrs: {
-          "label": item.label,
-          "value": item.value
-        }
-      })
-    }))], 1)], 1)], 1)], 1)
-  })], 2)], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-ac0b1f40", module.exports)
-  }
-}
-
-/***/ }),
-/* 194 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', {
-    staticClass: "page-container"
-  }, [_vm._v("404 page not found")])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-e266c03c", module.exports)
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-f03a793a", module.exports)
   }
 }
 
 /***/ }),
 /* 195 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', {
-    staticClass: "container"
-  }, [_c('el-col', {
-    staticClass: "header",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-col', {
-    staticClass: "logo",
-    class: _vm.collapsed ? 'logo-collapse-width' : 'logo-width',
-    attrs: {
-      "span": 10
-    }
-  }, [_vm._v("\n            " + _vm._s(_vm.collapsed ? '' : _vm.sysName) + "\n        ")]), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 10
-    }
-  }, [_c('div', {
-    staticClass: "tools",
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.collapse($event)
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-align-justify"
-  })])]), _vm._v(" "), _c('el-col', {
-    staticClass: "userinfo",
-    attrs: {
-      "span": 4
-    }
-  }, [_c('el-dropdown', {
-    attrs: {
-      "trigger": "hover"
-    }
-  }, [_c('span', {
-    staticClass: "el-dropdown-link userinfo-inner"
-  }, [_c('img', {
-    attrs: {
-      "src": this.sysUserAvatar
-    }
-  }), _vm._v(" " + _vm._s(_vm.sysUserName))]), _vm._v(" "), _c('el-dropdown-menu', {
-    slot: "dropdown"
-  }, [_c('el-dropdown-item', [_vm._v("my news")]), _vm._v(" "), _c('el-dropdown-item', [_vm._v("设置")]), _vm._v(" "), _c('el-dropdown-item', {
-    attrs: {
-      "divided": ""
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.logout($event)
-      }
-    }
-  }, [_vm._v("退出登录")])], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "main",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('aside', {
-    class: _vm.collapsed ? 'menu-collapsed' : 'menu-expanded'
-  }, [_c('el-menu', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (!_vm.collapsed),
-      expression: "!collapsed"
-    }],
-    staticClass: "el-menu-vertical-demo",
-    attrs: {
-      "default-active": _vm.$route.path,
-      "unique-opened": "",
-      "router": ""
-    },
-    on: {
-      "open": _vm.handleopen,
-      "close": _vm.handleclose,
-      "select": _vm.handleselect
-    }
-  }, [_vm._l((_vm.$router.options.routes), function(item, index) {
-    return (!item.hidden) ? [(!item.leaf) ? _c('el-submenu', {
-      attrs: {
-        "index": index + ''
-      }
-    }, [_c('template', {
-      slot: "title"
-    }, [_c('i', {
-      class: item.iconCls
-    }), _vm._v(_vm._s(item.name))]), _vm._v(" "), _vm._l((item.children), function(child) {
-      return (!child.hidden) ? _c('el-menu-item', {
-        key: child.path,
-        attrs: {
-          "index": child.path
-        }
-      }, [_vm._v(_vm._s(child.name))]) : _vm._e()
-    })], 2) : _vm._e(), _vm._v(" "), (item.leaf && item.children.length > 0) ? _c('el-menu-item', {
-      attrs: {
-        "index": item.children[0].path
-      }
-    }, [_c('i', {
-      class: item.iconCls
-    }), _vm._v(_vm._s(item.children[0].name))]) : _vm._e()] : _vm._e()
-  })], 2), _vm._v(" "), _c('ul', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.collapsed),
-      expression: "collapsed"
-    }],
-    ref: "menuCollapsed",
-    staticClass: "el-menu el-menu-vertical-demo collapsed"
-  }, _vm._l((_vm.$router.options.routes), function(item, index) {
-    return (!item.hidden) ? _c('li', {
-      staticClass: "el-submenu item"
-    }, [(!item.leaf) ? [_c('div', {
-      staticClass: "el-submenu__title",
-      staticStyle: {
-        "padding-left": "20px"
-      },
-      on: {
-        "mouseover": function($event) {
-          _vm.showMenu(index, true)
-        },
-        "mouseout": function($event) {
-          _vm.showMenu(index, false)
-        }
-      }
-    }, [_c('i', {
-      class: item.iconCls
-    })]), _vm._v(" "), _c('ul', {
-      staticClass: "el-menu submenu",
-      class: 'submenu-hook-' + index,
-      on: {
-        "mouseover": function($event) {
-          _vm.showMenu(index, true)
-        },
-        "mouseout": function($event) {
-          _vm.showMenu(index, false)
-        }
-      }
-    }, _vm._l((item.children), function(child) {
-      return (!child.hidden) ? _c('li', {
-        key: child.path,
-        staticClass: "el-menu-item",
-        class: _vm.$route.path == child.path ? 'is-active' : '',
-        staticStyle: {
-          "padding-left": "40px"
-        },
-        on: {
-          "click": function($event) {
-            _vm.$router.push(child.path)
-          }
-        }
-      }, [_vm._v(_vm._s(child.name))]) : _vm._e()
-    }))] : _vm._e()], 2) : _vm._e()
-  }))], 1), _vm._v(" "), _c('section', {
-    staticClass: "content-container"
-  }, [_c('div', {
-    staticClass: "grid-content bg-purple-light"
-  }, [_c('el-col', {
-    staticClass: "breadcrumb-container",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('strong', {
-    staticClass: "title"
-  }, [_vm._v(_vm._s(_vm.$route.name))]), _vm._v(" "), _c('el-breadcrumb', {
-    staticClass: "breadcrumb-inner",
-    attrs: {
-      "separator": "/"
-    }
-  }, _vm._l((_vm.$route.matched), function(item) {
-    return _c('el-breadcrumb-item', {
-      key: item.path,
-      attrs: {
-        "to": {
-          path: item.path
-        }
-      }
-    }, [_vm._v("\n                        " + _vm._s(item.name) + "\n                    ")])
-  }))], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "content-wrapper",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('transition', {
-    attrs: {
-      "name": "fade",
-      "mode": "out-in"
-    }
-  }, [_c('router-view', {
-    key: "key"
-  })], 1)], 1)], 1)])])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-e3fdf30c", module.exports)
-  }
-}
-
-/***/ }),
-/* 196 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((_vm.tiaoList), function(tiao, index) {
-    return _c('div', {
-      key: tiao.index
-    }, [_c('el-row', {
-      staticClass: "txs",
-      attrs: {
-        "gutter": 5
-      }
-    }, [_c('el-col', {
-      attrs: {
-        "span": 20
-      }
-    }, [_c('el-input', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (tiao.show),
-        expression: "tiao.show"
-      }],
-      staticStyle: {
-        "font-size": "18px"
-      },
-      attrs: {
-        "size": "large"
-      },
-      model: {
-        value: (tiao.title),
-        callback: function($$v) {
-          tiao.title = $$v
-        },
-        expression: "tiao.title"
-      }
-    })], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 4
-      }
-    }, [_c('el-button', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (tiao.show),
-        expression: "tiao.show"
-      }],
-      attrs: {
-        "type": "info"
-      },
-      on: {
-        "click": function($event) {
-          _vm.save(tiao)
-        }
-      }
-    }, [_vm._v("保存")]), _vm._v(" "), _c('el-button', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (tiao.show),
-        expression: "tiao.show"
-      }],
-      attrs: {
-        "type": "info",
-        "plain": true
-      },
-      on: {
-        "click": function($event) {
-          _vm.cancel(tiao)
-        }
-      }
-    }, [_vm._v("取消")])], 1), _vm._v(" "), _c('span', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (!tiao.show),
-        expression: "!tiao.show"
-      }],
-      staticClass: "tiao"
-    }, [_vm._v(_vm._s(tiao.title))]), _vm._v(" "), _c('a', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (!tiao.show),
-        expression: "!tiao.show"
-      }],
-      staticClass: "bjxs",
-      attrs: {
-        "href": "javascript:;"
-      }
-    }, [_c('i', {
-      staticClass: "el-icon-edit",
-      on: {
-        "click": function($event) {
-          _vm.editFormVisible(tiao)
-        }
-      }
-    }, [_vm._v("编辑")])])], 1), _vm._v(" "), _c('br'), _vm._v(" "), _vm._l((tiao.kuanList), function(kuan, index2) {
-      return _c('div', {
-        key: kuan.index2
-      }, [_c('el-row', {
-        staticClass: "txs kuan",
-        attrs: {
-          "gutter": 5
-        }
-      }, [_c('el-col', {
-        attrs: {
-          "span": 20
-        }
-      }, [_c('el-input', {
-        directives: [{
-          name: "show",
-          rawName: "v-show",
-          value: (kuan.show),
-          expression: "kuan.show"
-        }],
-        attrs: {
-          "type": "textarea",
-          "autosize": ""
-        },
-        model: {
-          value: (kuan.content),
-          callback: function($$v) {
-            kuan.content = $$v
-          },
-          expression: "kuan.content"
-        }
-      })], 1), _vm._v(" "), _c('el-col', {
-        attrs: {
-          "span": 4
-        }
-      }, [_c('el-button', {
-        directives: [{
-          name: "show",
-          rawName: "v-show",
-          value: (kuan.show),
-          expression: "kuan.show"
-        }],
-        attrs: {
-          "type": "info"
-        },
-        on: {
-          "click": function($event) {
-            _vm.save(kuan)
-          }
-        }
-      }, [_vm._v("保存")]), _vm._v(" "), _c('el-button', {
-        directives: [{
-          name: "show",
-          rawName: "v-show",
-          value: (kuan.show),
-          expression: "kuan.show"
-        }],
-        attrs: {
-          "type": "info",
-          "plain": true
-        },
-        on: {
-          "click": function($event) {
-            _vm.cancel(kuan)
-          }
-        }
-      }, [_vm._v("取消")])], 1), _vm._v(" "), _c('span', {
-        directives: [{
-          name: "show",
-          rawName: "v-show",
-          value: (!kuan.show),
-          expression: "!kuan.show"
-        }],
-        staticClass: "kuan"
-      }, [_vm._v(_vm._s(kuan.content))]), _vm._v(" "), _c('a', {
-        directives: [{
-          name: "show",
-          rawName: "v-show",
-          value: (!kuan.show),
-          expression: "!kuan.show"
-        }],
-        staticClass: "bjxs",
-        attrs: {
-          "href": "javascript:;"
-        }
-      }, [_c('i', {
-        staticClass: "el-icon-edit",
-        on: {
-          "click": function($event) {
-            _vm.editFormVisible(kuan)
-          }
-        }
-      }, [_vm._v("编辑")])])], 1), _vm._v(" "), _vm._l((kuan.xiangList), function(xiang, index3) {
-        return _c('div', {
-          key: xiang.index3
-        }, [_c('el-row', {
-          staticClass: "txs xiang",
-          attrs: {
-            "gutter": 5
-          }
-        }, [_c('el-col', {
-          attrs: {
-            "span": 20
-          }
-        }, [_c('el-input', {
-          directives: [{
-            name: "show",
-            rawName: "v-show",
-            value: (xiang.show),
-            expression: "xiang.show"
-          }],
-          attrs: {
-            "type": "textarea",
-            "autosize": ""
-          },
-          model: {
-            value: (xiang.content),
-            callback: function($$v) {
-              xiang.content = $$v
-            },
-            expression: "xiang.content"
-          }
-        })], 1), _vm._v(" "), _c('el-col', {
-          attrs: {
-            "span": 4
-          }
-        }, [_c('el-button', {
-          directives: [{
-            name: "show",
-            rawName: "v-show",
-            value: (xiang.show),
-            expression: "xiang.show"
-          }],
-          attrs: {
-            "type": "info"
-          },
-          on: {
-            "click": function($event) {
-              _vm.save(xiang)
-            }
-          }
-        }, [_vm._v("保存")]), _vm._v(" "), _c('el-button', {
-          directives: [{
-            name: "show",
-            rawName: "v-show",
-            value: (xiang.show),
-            expression: "xiang.show"
-          }],
-          attrs: {
-            "type": "info",
-            "plain": true
-          },
-          on: {
-            "click": function($event) {
-              _vm.cancel(xiang)
-            }
-          }
-        }, [_vm._v("取消")])], 1), _vm._v(" "), _c('span', {
-          directives: [{
-            name: "show",
-            rawName: "v-show",
-            value: (!xiang.show),
-            expression: "!xiang.show"
-          }],
-          staticClass: "xiang"
-        }, [_vm._v(_vm._s(xiang.content))]), _vm._v(" "), _c('a', {
-          directives: [{
-            name: "show",
-            rawName: "v-show",
-            value: (!xiang.show),
-            expression: "!xiang.show"
-          }],
-          staticClass: "bjxs",
-          attrs: {
-            "href": "javascript:;"
-          }
-        }, [_c('i', {
-          staticClass: "el-icon-edit",
-          on: {
-            "click": function($event) {
-              _vm.editFormVisible(xiang)
-            }
-          }
-        }, [_vm._v("编辑")])])], 1)], 1)
-      })], 2)
-    }), _vm._v(" "), _c('br')], 2)
-  }))
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-e589a9b6", module.exports)
-  }
-}
-
-/***/ }),
-/* 197 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97991,7 +97647,7 @@ if (inBrowser && window.Vue) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
-/* 198 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -98001,13 +97657,65 @@ var content = __webpack_require__(108);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("c19f8db8", content, false);
+var update = __webpack_require__(7)("3f19aa6b", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3293c18e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AddDate.vue", function() {
-     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3293c18e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AddDate.vue");
+   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-17c3eb97\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue", function() {
+     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-17c3eb97\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(109);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(7)("6ddd2c80", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2924957f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue", function() {
+     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2924957f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(110);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(7)("5b3e2dbe", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2aa44748\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Navigation.vue", function() {
+     var newContent = require("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2aa44748\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Navigation.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -98023,17 +97731,17 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(109);
+var content = __webpack_require__(111);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("37619f74", content, false);
+var update = __webpack_require__(7)("3408df14", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-39711956\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue", function() {
-     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-39711956\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue");
+   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5338df87\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AddDate.vue", function() {
+     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5338df87\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AddDate.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -98049,17 +97757,17 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(110);
+var content = __webpack_require__(112);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("699d24d0", content, false);
+var update = __webpack_require__(7)("042470e5", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4916a9b6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue", function() {
-     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4916a9b6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue");
+   module.hot.accept("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-71c29f65\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Login.vue", function() {
+     var newContent = require("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-71c29f65\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Login.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -98075,17 +97783,17 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(111);
+var content = __webpack_require__(113);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("11560ebc", content, false);
+var update = __webpack_require__(7)("25930129", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-72f3a8f3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Login.vue", function() {
-     var newContent = require("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-72f3a8f3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Login.vue");
+   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7ea91473\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AddTiaoKuan.vue", function() {
+     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7ea91473\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AddTiaoKuan.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -98101,17 +97809,17 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(112);
+var content = __webpack_require__(114);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("44eab61e", content, false);
+var update = __webpack_require__(7)("6ea724ec", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9aa4b19e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue", function() {
-     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9aa4b19e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue");
+   module.hot.accept("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-852aea58\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./404.vue", function() {
+     var newContent = require("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-852aea58\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./404.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -98127,17 +97835,17 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(113);
+var content = __webpack_require__(115);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("54e0f06b", content, false);
+var update = __webpack_require__(7)("25c17975", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e266c03c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./404.vue", function() {
-     var newContent = require("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e266c03c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./404.vue");
+   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-df7603b8\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue", function() {
+     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-df7603b8\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -98148,58 +97856,6 @@ if(false) {
 
 /***/ }),
 /* 204 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(114);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(7)("323217ca", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e3fdf30c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Navigation.vue", function() {
-     var newContent = require("!!../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e3fdf30c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@5.0.1@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Navigation.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 205 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(115);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(7)("b20f093e", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e589a9b6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AddTiaoKuan.vue", function() {
-     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e589a9b6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./AddTiaoKuan.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 206 */
 /***/ (function(module, exports) {
 
 /**
@@ -98232,7 +97888,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 207 */
+/* 205 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -98260,7 +97916,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 208 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(39);

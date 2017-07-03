@@ -45,9 +45,12 @@ export const setPermissionList = params => { return axios.post(`${base}/permissi
 
 //合同信息
 export const addPurchaseContractInfo= params => { return axios.post(`${base}/purchaseContract`, { params: params }); };
+export const reviewPurchaseContract= params => { return axios.post(`${base}/purchaseContract/review`, { params: params }); };
 export const getPurchaseContractList = params => { return axios.get(`${base}/purchaseContract`, { params: params }); };
 export const getPurchaseContractInfo = params => { return axios.get(`${base}/purchaseContract/`+params.id, {}); };
 export const submitPurchaseContract = params => { return axios.get(`${base}/purchaseContract/`+params.id+'/edit', {}); };
+export const getPurchaseContractTiaoKuan = params => { return axios.get(`${base}/purchaseContract/create`, {}); };
+export const editPurchaseContractTiaoKuan= params => { return axios.post(`${base}/purchaseContract/editTiaoKuan`, { params: params }); };
 
 //出房合同
 //合同信息
