@@ -51,9 +51,14 @@ export const getPurchaseContractInfo = params => { return axios.get(`${base}/pur
 export const submitPurchaseContract = params => { return axios.get(`${base}/purchaseContract/`+params.id+'/edit', {}); };
 export const getPurchaseContractTiaoKuan = params => { return axios.get(`${base}/purchaseContract/create`, {}); };
 export const editPurchaseContractTiaoKuan= params => { return axios.post(`${base}/purchaseContract/editTiaoKuan`, { params: params }); };
+//出房合同
+//合同信息
+export const addChufangPurchaseContractInfo= params => { return axios.post(`${base}/saleContract`, { params: params }); };
+export const getChufangPurchaseContractList = params => { return axios.get(`${base}/saleContract`, { params: params }); };
+export const getChufangPurchaseContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
+export const submitSaleContract = params => {return axios.get(`${base}/saleContract/`+params.id+'/edit', {}); };
 
-
-
+export const removeChufangContract = params => { return axios.post(`${base}/saleContract/delete`, { params: params }); };
 
 //获取楼盘，楼栋，房间号
 export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };

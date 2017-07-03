@@ -13,7 +13,7 @@
                     <el-button type="info" :plain="true" v-show="tiao.show" @click="cancel(tiao)">取消</el-button>
                 </el-col>
                 <!--条展示-->
-                <span class="tiao" v-show="!tiao.show">{{tiao.title}}</span>
+                <span class="tiao" :class="tiao.status==1?'red':''" v-show="!tiao.show">{{tiao.title}}</span>
                 <a  href="javascript:;" class="bjxs" v-show="!tiao.show">
                     <i class="el-icon-edit"    @click="editFormVisible(tiao)">编辑</i>
                 </a>
@@ -73,6 +73,9 @@
     .txs:hover > .bjxs{
         display:inline;
     }
+    .red{
+        color:red;
+    }
     .bjxs{
         float:right;
         color:#20A0FF;
@@ -107,17 +110,23 @@
             },
             save(tiao){
                 //发送条款的ID到后端
-                console.log(tiao)
                 editPurchaseContractTiaoKuan(tiao).then((res)=>{
-
-                })
-            }
-
+                    if(res.data.code == 200)　{
+                        this.$message({
+                            message: '保存成功',
+                            type: 'success'
+                        });
+                    }else{
+                        this.$message({
+                            message:res.data.msg,
+                            type:'error'
+                        })
+                    }
+            })
+        },
         },
         mounted(){
-            //console.log(this.tiaoList)
 
         }
-
     }
 </script>
