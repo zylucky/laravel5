@@ -20,6 +20,7 @@ class purchaseContractController extends Controller
     {
         $pn = Input::get('pn');
         $cnt = Input::get('cnt');
+        $selectItem = Input::get('selectItem');
         if(!$pn){
             $pn = 1;
         }
@@ -31,6 +32,7 @@ class purchaseContractController extends Controller
                 'query'=>[
                     'pn'=>$pn,
                     'cnt'=>$cnt,
+                    'selectItem'=>$selectItem,
                     ]
             ]);
             echo $response->getBody();
@@ -172,6 +174,16 @@ class purchaseContractController extends Controller
         $response = $client->request('POST', $requestUrl, [
             'json' => $data
         ]);
+        echo $response->getBody();
+    }
+    //合同确认
+    public function confirm(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirm');
         echo $response->getBody();
     }
 
