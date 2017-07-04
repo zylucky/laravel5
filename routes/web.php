@@ -19,6 +19,11 @@ Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
 Route::resource('purchaseContract','Contract\purchaseContractController');
 Route::resource('saleContract','Contract\saleContractController');
+
+
+Route::post('purchaseContract/review','Contract\purchaseContractController@review');
+Route::post('purchaseContract/editTiaoKuan','Contract\purchaseContractController@editTiaoKuan');
+
 Route::resource('brokerCompany','brokerCompany\brokerCompanyController');
 Route::resource('brokerCompanyUser','brokerCompany\brokerCompanyUserController');
 

@@ -31,6 +31,7 @@
                 <template scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
                     <el-button size="small" @click="handleReview(scope.$index, scope.row)">审核</el-button>
+                    <el-button size="small" @click="handleDump(scope.$index, scope.row)">打印</el-button>
                     <el-button size="small" @click="handleOptimize(scope.$index, scope.row)">优化</el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
                 </template>
@@ -38,6 +39,15 @@
         </el-table>
         <div style="margin-top:30px"></div>
         <!-- 分页-->
+
+        <!--
+        :current-page="currentPage" 当前页
+        :page-sizes="pageSizes"  可以选择的每页有多少条数据
+        :page-size="pageSize"   分页中每页有几条数据
+        layout="total, sizes, prev, pager, next, jumper"    上一页，下一页，最后一页，........
+        :total=total     总共有多少页
+        -->
+
         <el-col :span="24" class="toolbar" >
             <el-pagination
                     @size-change="handleSizeChange"
@@ -63,11 +73,11 @@
                     region: ''
                 },
                 //分页类数据
-                total:100,
-                currentPage:0,
-                pageSize:30,
-                pageSizes:[10, 20, 30, 40, 50, 100],
-                lists:[],
+                total:100,/*总共有多少页*/
+                currentPage:0,/*当前页*/
+                pageSize:30,/*分页中每页有几条数据*/
+                pageSizes:[10, 20, 30, 40, 50, 100],/*可以选择的每页有多少条数据*/
+                lists:[],/*所有的列表，只有所有的数据放在table里，才能在页面上显示出来*/
                 listLoading: false,
                 sels: [],//列表选中列
             }
@@ -132,7 +142,10 @@
             },
             handleOptimize(index,row){
                 this.$router.push('/purchaseContract/optimize?id='+row.id);
-            }
+            },
+            handleDump(index,row){
+                this.$router.push('/purchaseContract/dump?id='+row.id);
+            },
         },
         mounted(){
             this.purchaseContractList();

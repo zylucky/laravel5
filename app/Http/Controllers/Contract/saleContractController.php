@@ -84,13 +84,14 @@ class saleContractController extends Controller
     //在这里是提交那个按钮的处理
     public function edit($id)
     {
-        //dd(2222);
-        $client = new Client([
+        dd(333);
+        dd(2222);
+        /*$client = new Client([
             'base_uri' => $this->base_url,
             'timeout' => 2.0,
-        ]);
-        $response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
-        echo $response->getBody();
+        ]);*/
+        /*$response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
+        echo $response->getBody();*/
     }
 
     /**

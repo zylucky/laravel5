@@ -51,7 +51,6 @@ export const getPurchaseContractInfo = params => { return axios.get(`${base}/pur
 export const submitPurchaseContract = params => { return axios.get(`${base}/purchaseContract/`+params.id+'/edit', {}); };
 export const getPurchaseContractTiaoKuan = params => { return axios.get(`${base}/purchaseContract/create`, {}); };
 export const editPurchaseContractTiaoKuan= params => { return axios.post(`${base}/purchaseContract/editTiaoKuan`, { params: params }); };
-
 //出房合同
 //合同信息
 export const addSaleContractInfo= params => { return axios.post(`${base}/saleContract`, { params: params }); };
@@ -60,7 +59,10 @@ export const getSaleContractList = params => { return axios.get(`${base}/saleCon
 export const getSaleContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
 export const submitSaleContract = params => {return axios.get(`${base}/saleContract/`+params.id+'/edit', {}); };
 
+
+
 export const removeSaleContract = params => { return axios.post(`${base}/saleContract/delete`, { params: params }); };
+
 
 
 //获取楼盘，楼栋，房间号

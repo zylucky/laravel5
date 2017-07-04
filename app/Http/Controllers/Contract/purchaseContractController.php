@@ -148,18 +148,29 @@ class purchaseContractController extends Controller
      * 修改合同条款api/contract/hetong/update/tiao
      * */
     public function editTiaoKuan(Request $request){
-        dd();
-        $data = [
-            'id'=>$request->params->id,
-        ];
+        $data['id'] = $request->params['id'];
         $client = new Client([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-
-        $response = $client->request('POST', '/api/contract/sf/shenhe', [
-            'json' => $request->params
+        //条
+        if(array_key_exists('kuanList', $request->params)){
+            $requestUrl = '/api/contract/hetong/update/tiao';
+            $data['title'] = $request->params['title'];
+        }
+        //款
+        if(array_key_exists('xiangList', $request->params)){
+            $requestUrl = '/api/contract/hetong/update/kuan/id/'.$data['id'];
+            $data['content'] = $request->params['content'];
+        }
+        //项
+        if(array_key_exists('kuanid', $request->params)){
+            $requestUrl = '/api/contract/hetong/update/xiang';
+            $data['content'] = $request->params['content'];
+        }
+        $response = $client->request('POST', $requestUrl, [
+            'json' => $data
         ]);
         echo $response->getBody();
     }

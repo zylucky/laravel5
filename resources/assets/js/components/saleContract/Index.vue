@@ -31,7 +31,7 @@
                 <template scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
                     <el-button size="small" @click="handleReview(scope.$index, scope.row)">审核</el-button>
-                    <el-button size="small" @click="handlePrint(scope.$index, scope.row)">打印</el-button>
+                    <el-button size="small" @click="handleDump(scope.$index, scope.row)">打印</el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
                 </template>
             </el-table-column>
@@ -144,12 +144,16 @@
             handleEdit(index,row){
                 //
                 //var _this = this;
-                this.$router.push('/saleContact/add?id='+row.id);
+                //this.$router.push('/saleContact/edit?id='+row.id);
+                this.$router.push('/saleContract/edit?id='+row.id);
                 //
                 // this.$router.push('/purchaseContact/add?id='+row.id);
             },
             handleReview(index,row){
                 this.$router.push('/saleContract/review?id='+row.id);
+            },
+            handleDump(index,row){
+                this.$router.push('/saleContract/dump?id='+row.id);
             },
             handleDel(index,row){
                 this.$confirm('确认删除该记录吗？','提示',{
