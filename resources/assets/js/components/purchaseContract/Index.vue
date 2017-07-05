@@ -62,13 +62,20 @@
             >
             </el-pagination>
         </el-col>
+        <contract-pay-type :payType="payType"></contract-pay-type>
     </el-row>
 </template>
 <script>
+    import contractPayType from '../Commission/contractPayType.vue';//佣金支付方式
     import {getPurchaseContractList,confirmPurchaseContract} from '../../api/api.js';
     export default {
         data() {
             return {
+                payType:{
+                    sureFormVisible:false,//佣金支付方式显示
+                    tHetongId:1,
+                    tHetongBianhao:'URS-SG-KJ-17070007',
+                },
                 filters: {
                     name: '',
                 },
@@ -81,6 +88,9 @@
                 listLoading: false,
                 sels: [],//列表选中列
             }
+        },
+        components:{
+            contractPayType
         },
         methods: {
             //新增
@@ -152,7 +162,9 @@
             },
             //合同确认
             handleConfirm(index,row){
-                let para = {
+                this.payType.sureFormVisible = true;
+                this.payType.tHetongId = row.id;
+                /*let para = {
                     id:row.id,
                 }
                 confirmPurchaseContract(para).then((res)=>{
@@ -168,7 +180,7 @@
                             type:'error'
                         })
                     }
-                })
+                })*/
             },
 
         },

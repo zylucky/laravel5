@@ -170,13 +170,13 @@ function fun(funKey) {
              { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
              { path:'/paymentRecord',component:PaymentRecord,name:'已付款记录',hidden:true},
          ]
-
+     },
+     {
          path:'/purchaseContract/dump',
          component: PurchaseContractDump,
          name: '合同打印',
          hidden: true
-
-     },
+     }
 ]
 
 export default routes;
