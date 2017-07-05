@@ -34,12 +34,13 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  ><el-button @click="handleEdit(scope.$index, scope.row)">编辑</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleReview(scope.$index, scope.row)">审核</el-button> </el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleDump(scope.$index, scope.row)">打印</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleConfirm(scope.$index, scope.row)">确认</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleOptimize(scope.$index, scope.row)">优化</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
+                            <el-dropdown-item  ><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  ><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
+                            <el-dropdown-item  ><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  ><el-button @click="handleConfirm(scope.$index, scope.row)">确认合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  ><el-button @click="handleOptimize(scope.$index, scope.row)">优化协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  ><el-button type="danger" @click="handleDel(scope.$index, scope.row)">删除合同</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -141,6 +142,9 @@
             },
             handleOptimize(index,row){
                 this.$router.push('/purchaseContract/optimize?id='+row.id);
+            },
+            handleCheckOptimize(index,row){
+                this.$router.push('/purchaseContract/checkOptimize?id='+row.id);
             },
             handleDump(index,row){
                 window.open('/#/purchaseContract/dump?id='+row.id)

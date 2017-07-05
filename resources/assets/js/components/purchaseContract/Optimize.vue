@@ -1,5 +1,5 @@
 <template>
-    <el-row class="container">
+    <el-row class="">
         <div style="margin-bottom: 50px;"></div>
         <h3>建外SOHO-A-2602</h3>
         <div style="margin-bottom: 50px;"></div>
@@ -40,12 +40,12 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="2">
-                            <el-button style="margin-left:6px;" @click.prevent="removeRentItem(item)">删除</el-button>
+                            <el-button style="margin-left:6px;" @click.prevent="removeOwnerItem(item)">删除</el-button>
                         </el-col>
                     </el-row>
                 </div>
                 <el-form-item>
-                    <el-button  @click="addRentItem">新增产权人</el-button>
+                    <el-button  @click="addOwnerItem">新增产权人</el-button>
                 </el-form-item>
                 <el-row>
                     <el-col :span="8">
@@ -170,7 +170,7 @@
             <!--付款方式-->
             <div  v-for="(item, index) in addDate.fukuanFangshiList">
                 <el-row :gutter="5">
-                    <el-col :span="9" >
+                    <el-col :span="10" >
                         <el-form-item label="付款方式"
                                       :key="item.key"
                                       :prop="'fukuanFangshiList.' + index + '.value'"
@@ -181,12 +181,12 @@
                                     </el-date-picker>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="1" :pull="1" style="width: 90px;">
+                    <el-col :span="1" :pull="1" style="width: 90px;margin-left:30px;">
                         <el-form-item label="押" label-width="20px">
                             <el-input v-model="item.yajinyue" placeholder="押几"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="1" :pull="1" style="margin-left: 15px;width: 90px;">
+                    <el-col :span="1" :pull="1" style="margin-left: 0px;width: 90px;">
                         <el-form-item label="付" label-width="20px">
                             <el-input v-model="item.zujinyue" placeholder="付几"></el-input>
                         </el-form-item>
@@ -199,12 +199,11 @@
             <el-form-item>
                 <el-button  @click="addPayItem">新增付款方式</el-button>
             </el-form-item>
-            <!--租金-->
+            <!--租金详细-->
             <div v-for="(item, index) in addDate.zujinList">
                 <el-row :gutter="5">
-                    <el-col :span="9">
-
-                    <el-form-item :label="'租期' + index"
+                    <el-col :span="10">
+                        <el-form-item :label="'租期' + index"
                                   :key="item.key"
                                   :prop="'zujinList.' + index + '.value'"
                     >
@@ -214,48 +213,50 @@
                             </el-date-picker>
                     </el-form-item>
                     </el-col>
-                        <el-col :span="2" :pull="1" style="width: 160px;">
-                            <el-form-item label="月租金" label-width="55px">
-                                <el-input v-model="item.yuezujin" placeholder="租金"></el-input>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="2" :pull="1" style="width: 120px;">
-                            <el-form-item label="单价" label-width="40px">
-                                <el-input v-model="item.price" placeholder="单价"></el-input>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="2" :pull="1">
-                            <el-form-item label="递增方式" label-width="70px">
-                                <el-input v-model="item.dizengliang" placeholder=""></el-input>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="2" :pull="1" style="width: 70px;">
-                            <el-select v-model="addDate.zujinList[index].dizengfangshi" placeholder="">
-                                <el-option
-                                        v-for="item in options"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value">
-                                </el-option>
-                            </el-select>
-                        </el-col>
-                        <el-col :span="2" :pull="1">
-                            <el-button @click.prevent="removeRentItem(item)">删除</el-button>
-                        </el-col>
+                    <el-col :span="2" :pull="1" style="width: 160px;margin-left:30px;">
+                        <el-form-item label="月租金" label-width="55px">
+                            <el-input v-model="item.yuezujin" placeholder="租金"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="2" :pull="1" style="width: 120px;margin-left:10px;">
+                        <el-form-item label="单价" label-width="40px">
+                            <el-input v-model="item.price" placeholder="单价"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="2" :pull="1" style="width:140px;">
+                        <el-form-item label="递增方式" label-width="70px">
+                            <el-input v-model="item.dizengliang" placeholder=""></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="2" :pull="1" style="width: 70px;">
+                        <el-select v-model="addDate.zujinList[index].dizengfangshi" placeholder="">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="2" :pull="1">
+                        <el-button @click.prevent="removeRentItem(item)">删除</el-button>
+                    </el-col>
                 </el-row>
             </div>
             <el-form-item>
                 <el-button  @click="addRentItem">新增租期</el-button>
             </el-form-item>
         </el-form>
-        <el-button type=""  @click="cancel" style="margin-top:100px;margin-left: 30%;">取消</el-button>
-        <el-button type="primary"  @click="save" style="margin-top:100px;">保存</el-button>
+        <el-button v-if="btnShow"  @click="cancel" style="margin-top:80px;margin-left: 40%;">取消</el-button>
+        <el-button v-if="btnShow" type="primary"  @click="save" style="margin-top:100px;">保存</el-button>
     </el-row>
 </template>
 <script>
+    import {optimizePurchaseContract } from  '../../api/api';
     export default{
         data(){
             return{
+                btnShow:true,
                 options:[
                     {
                         value: 1,
@@ -325,7 +326,27 @@
         },
         methods:{
             save(){
-                console.log('保存')
+                let para = {
+                    hetongid:this.$route.query.id,
+                    zujinList:this.addDate.zujinList,
+                    mianzuqiList:this.addDate.mianzuqiList,
+                    fukuanFangshiList:this.addDate.fukuanFangshiList,
+                    chanquanrenList:this.addDate.fukuanFangshiList,
+                }
+                console.log(para);
+                optimizePurchaseContract(para).then((res)=>{
+                    if(res.data.code == 200)　{
+                        this.$message({
+                            message: '提交成功',
+                            type: 'success'
+                        });
+                    }else{
+                        this.$message({
+                            message:res.data.msg,
+                            type:'error'
+                        })
+                    }
+                })
             },
             //增加免租期
             addFreeItem() {
@@ -379,7 +400,7 @@
                 }
             },
             //新增产权人
-            addRentItem() {
+            addOwnerItem() {
                 this.owner.chanquanrenList.push({
                     Name:'',
                     Id:'',
@@ -388,7 +409,7 @@
                 });
             },
             //移除产权人
-            removeRentItem(item) {
+            removeOwnerItem(item) {
                 this.owner.chanquanrenList.pop();
                 var index = this.owner.chanquanrenList.indexOf(item)
                 if (index !== -1) {
@@ -398,6 +419,29 @@
             cancel(){
                 history.go(-1);
             },
+            disabledInput(){
+                this.reviewVisible =true;
+                var allInputs = document.getElementsByTagName('input');
+                var textArea = document.getElementsByTagName('textarea');
+                for (let i=0; i<allInputs.length; i++){
+                    allInputs[i].disabled="true";
+                    allInputs[i].parentNode.className += " is-disabled";
+                }
+                for (let i=0; i<textArea.length; i++){
+                    textArea[i].disabled="true";
+                    textArea[i].parentNode.className += " is-disabled";
+                }
+
+            },
+        },
+        mounted(){
+            //查询
+
+            //审核页面input禁用
+            if(this.$route.path=='/purchaseContract/checkOptimize'){
+                this.disabledInput();
+                this.btnShow=false;
+            }
         }
     }
 </script>
