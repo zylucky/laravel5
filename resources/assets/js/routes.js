@@ -171,11 +171,12 @@ function fun(funKey) {
              { path:'/paymentRecord',component:PaymentRecord,name:'已付款记录',hidden:true},
          ]
 
+     },
+     {
          path:'/purchaseContract/dump',
          component: PurchaseContractDump,
          name: '合同打印',
          hidden: true
-
      },
 ]
 

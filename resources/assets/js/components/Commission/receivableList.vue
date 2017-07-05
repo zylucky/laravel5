@@ -51,7 +51,6 @@
             </el-table-column>
             <el-table-column label="操作" width="150">
                    <template scope="scope">
-                       <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
                        <el-button size="small" @click="handleRokeBack(scope.$index, scope.row)">收款</el-button>
                    </template>
             </el-table-column>

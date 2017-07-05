@@ -21,25 +21,27 @@
                 <el-button type="primary" icon="search"  v-on:click="getReceivable">搜索</el-button>
             </el-form-item>
         </el-form>
+        <el-tabs v-model="first" @tab-click="handleClick">
+            <el-tab-pane label="未提交" name="first"></el-tab-pane>
+            <el-tab-pane label="已提交" name="second"></el-tab-pane>
+            <el-tab-pane label="已付款" name="third"></el-tab-pane>
+        </el-tabs>
         <el-table :data="Receivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-
-            <el-table-column prop="compayname" label="单位计划"   :v-html= "formatYJType"  >
-            </el-table-column>
             <el-table-column prop="compaytest" label="楼盘"   >
             </el-table-column>
             <el-table-column prop="yjzbSf" label="楼栋" >
             </el-table-column>
             <el-table-column prop="yjzbCf" label="房间号" >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="租户" >
-            </el-table-column>
-            <el-table-column prop="yjzbCf" label="付款日" >
+            <el-table-column prop="yjzbCf" label="业主" >
             </el-table-column>
             <el-table-column prop="yjzbCf" label="周期" >
             </el-table-column>
+            <el-table-column prop="yjzbCf" label="付款日" >
+            </el-table-column>
             <el-table-column prop="compayname" label="付款方式" >
             </el-table-column>
-            <el-table-column prop="compayname" label="应收房租" >
+            <el-table-column prop="compayname" label="应付房租" >
             </el-table-column>
             <el-table-column prop="compayname" label="押金"  >
             </el-table-column>
@@ -49,10 +51,11 @@
             </el-table-column>
             <el-table-column prop="compayname" label="收款银行"  >
             </el-table-column>
+            <el-table-column prop="compayname" label="状态"  >
+            </el-table-column>
             <el-table-column label="操作" width="150">
                    <template scope="scope">
-                       <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                       <el-button size="small" @click="handleRokeBack(scope.$index, scope.row)">收款</el-button>
+                       <el-button size="small" @click="handleRokeBack(scope.$index, scope.row)">付款</el-button>
                    </template>
             </el-table-column>
            </el-table>
@@ -269,7 +272,10 @@
                 newDate.setTime(row.createdate);
                 return newDate.toLocaleDateString()
             },
-
+            //标签切换时
+            handleClick(tab, event) {
+                console.log(tab, event);
+            },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
