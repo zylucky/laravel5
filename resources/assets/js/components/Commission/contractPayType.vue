@@ -1,10 +1,10 @@
 
 <template>
-        <el-dialog title="确认佣金支付方式" v-model="sureFormVisible" :close-on-click-modal="false">
+        <el-dialog title="确认佣金支付方式" v-model="payType.sureFormVisible" :close-on-click-modal="false">
             <el-form :model="sureForm" label-width="120px" :rules="sureFormRules" ref="sureForm">
-                <el-input type="hidden" prop="tHetongId"  v-model="sureForm.tHetongId" auto-complete="off"></el-input>
+                <el-input type="hidden" prop="tHetongId"  v-model="payType.tHetongId" auto-complete="off"></el-input>
                 <el-form-item label="合同编号" prop="tHetongBianhao">
-                    20170628001
+                    {{payType.tHetongBianhao}}
                 </el-form-item>
                 <el-form-item label="佣金支付方式" prop="yjZfType">
                     <el-radio-group v-model="sureForm.yjZfType">
@@ -14,7 +14,7 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click.native="sureFormVisible = false">取消</el-button>
+                <el-button @click.native="payType.sureFormVisible = false">取消</el-button>
                 <el-button type="primary" @click.native="sureSubmit" :loading="sureLoading">提交</el-button>
             </div>
         </el-dialog>
@@ -27,11 +27,11 @@
     } from '../../api/api';
 
     export default{
-
+        props:['payType'],
         data(){
             return {
 
-                sureFormVisible: true,//确认界面是否显示
+               // sureFormVisible: true,//确认界面是否显示
                 sureLoading: false,
                 sureFormRules: {
                     yjZfType:[
@@ -59,7 +59,10 @@
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
                             this.sureLoading = true;
-                            let para = Object.assign({}, this.sureForm);
+                            let hetongId = {
+                                tHetongId:this.payType.tHetongId,
+                            }
+                            let para = Object.assign({}, this.sureForm,hetongId);
 
                             selectCommissionPayType(para).then((res) => {
                                 this.sureLoading = false;

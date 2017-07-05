@@ -60,7 +60,7 @@
                 reviewVisible:false,//审核显示
                 content:'',//审核批注
                 dialogFormVisible:false,
-                stepNum:4,
+                stepNum:1,
                 id:'',
                 property:{
                     officeList: [{

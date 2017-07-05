@@ -173,11 +173,12 @@ function fun(funKey) {
 
      },
      {
-         path:'/purchaseContract/dump',
+         path: '/purchaseContract/dump',
          component: PurchaseContractDump,
          name: '合同打印',
          hidden: true
-     },
+     }
+
 ]
 
 export default routes;
