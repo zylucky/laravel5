@@ -108,7 +108,7 @@ class brokerCompanyUserController extends Controller
         $obj=$request->params;
         array_pop($obj);
         array_pop($obj);
-        dd($obj);
+        //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
