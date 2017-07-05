@@ -21,7 +21,18 @@ import SaleContractAdd from "./components/saleContract/Add.vue";
 //渠道公司
 import BrokerCompany from "./components/brokerCompany/Index.vue";
 import BrokerCompanyUser from "./components/brokerCompany/UserList.vue";
-
+//佣金管理
+import ChuFangCommission from "./components/Commission/Index.vue";
+import ShouFangCommission from "./components/Commission/ShouFangList.vue";
+import selectCommissionPayType from "./components/Commission/contractPayType.vue";
+//应收
+import AccountsReceivable from "./components/Commission/accountsReceivableList.vue";
+import ReceivableRecord from "./components/Commission/receivableRecordList.vue";
+import Receivable from "./components/Commission/receivableList.vue";
+//应付
+import PaymentRecord from "./components/Report/paymentRecordList.vue";
+import PayableRecord from "./components/Report/payableRecordList.vue";
+import Payable from "./components/Report/payableList.vue";
 
 var fk_permission ;
 fun('permission')==true? fk_permission = false:fk_permission = true;
@@ -123,6 +134,33 @@ function fun(funKey) {
              { path:'/brokerCompanyUserList',component:BrokerCompanyUser,name:'渠道公司人员维护',hidden:fk_brokerCompanyUserList},
 
 
+         ]
+     },
+     {
+         path: '/',
+         component: navigation,
+         name: '佣金管理',
+         iconCls: 'el-icon-document',//图标样式class
+         hidden:false,
+         children: [
+             { path:'/shouFangCommission', component: ShouFangCommission, name: '收房佣金管理',hidden:false},
+             { path:'/chuFangCommission',component:ChuFangCommission,name:'出房佣金管理',hidden:false},
+             { path:'/contractPayType',component:selectCommissionPayType,name:'佣金支付方式',hidden:true},
+         ]
+     },
+     {
+         path: '/',
+         component: navigation,
+         name: '统计',
+         iconCls: 'el-icon-document',//图标样式class
+         hidden:false,
+         children: [
+             { path:'/receivable',component:Receivable,name:'应收款信息',hidden:false},
+             { path:'/accountsReceivable',component:AccountsReceivable,name:'应收款记录',hidden:true},
+             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
+             { path:'/payable',component:Payable,name:'应付款信息',hidden:false},
+             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
+             { path:'/paymentRecord',component:PaymentRecord,name:'已付款记录',hidden:true},
          ]
      },
 ]

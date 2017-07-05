@@ -35,6 +35,21 @@ export const getbkNameList = params =>{ return axios.post(`${base}/brokerCompany
 export const checkbkNameList = params =>{ return axios.post(`${base}/brokerCompany/checkbkNameList`, { params: params }); };
 export const getUserById = params =>{ return axios.post(`${base}/brokerCompany/getUserById`, { params: params }); };
 
+export const getChuFangCommissionListPage = params => { return axios.get(`${base}/chuFangCommission`, { params: params }); };
+
+export const getShouFangCommissionListPage = params => { return axios.get(`${base}/shouFangCommission`, { params: params }); };
+
+export const selectCommissionPayType = params => { return axios.post(`${base}/Commission/contractPayType`, { params: params }); };
+
+export const getReceivableListPage = params => { return axios.get(`${base}/receivable`, { params: params }); };
+export const editReceivable = params => { return axios.put(`${base}/receivable/`+params.id, { params: params }); };
+export const saveShouKuan = params => { return axios.post(`${base}/receivable/saveShouKuan` , { params: params }); };
+
+export const getReceivableRecordListPage = params => { return axios.get(`${base}/receivableRecord`, { params: params }); };
+
+export const getAccountsReceivableListPage = params => { return axios.get(`${base}/accountsReceivable`, { params: params }); };
+export const addReceivable = params => { return axios.post(`${base}/accountsReceivable`, { params: params }); };
+export const removeReceivable = params => { return axios.delete(`${base}/accountsReceivable/`+params.id, {}); };
 //查系统所有的权限
 export const getPermissionListPage = params => { return axios.get(`${base}/permission/getAll`, { params: params }); };
 //查XX的权限

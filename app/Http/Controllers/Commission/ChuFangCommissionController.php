@@ -1,23 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\BrokerCompany;
+namespace App\Http\Controllers\Commission;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
-class brokerCompanyUserController extends Controller
+class ChuFangCommissionController  extends Controller
 {
     /**
      * Display a listing of the resource.
-     *显示渠道人员列表
+     *显示出房佣金列表
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $name = Input::get('bk_name');
-        $username = Input::get('username');
+        $contractNo = Input::get('contractNo');
+        $buildingname= Input::get('buildingname');
+        $buildname = Input::get('buildname');
+        $roomname = Input::get('roomname');
+        $ZhuangTai = Input::get('ZhuangTai');
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
 
@@ -29,8 +32,8 @@ class brokerCompanyUserController extends Controller
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-                'compay' =>  $name,
-                'uname'=>$username
+                'compay' =>  $contractNo,
+                'uname'=>$buildingname
             ]
         ]);
         return $response->getBody();
@@ -108,7 +111,7 @@ class brokerCompanyUserController extends Controller
         $obj=$request->params;
         array_pop($obj);
         array_pop($obj);
-        dd($obj);
+        //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
