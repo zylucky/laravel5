@@ -53,9 +53,10 @@
             </el-table-column>
             <el-table-column prop="compayname" label="状态"  >
             </el-table-column>
-            <el-table-column label="操作" width="150">
+            <el-table-column label="操作" width="180">
                    <template scope="scope">
                        <el-button size="small" @click="handleRokeBack(scope.$index, scope.row)">付款</el-button>
+                       <el-button size="small" @click="handleOpen(scope.$index, scope.row)">应付记录</el-button>
                    </template>
             </el-table-column>
            </el-table>
@@ -74,44 +75,8 @@
             >
             </el-pagination>
         </el-col>
-        <!--编辑界面-->
-        <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
-            <el-form :model="editForm" label-width="120px" :rules="editFormRules" ref="editForm"  >
-                <el-form-item label="付款日期" prop="fkrq">
-                    <el-date-picker type = "date" v-model="editForm.fkrq" auto-complete="off">
-                    </el-date-picker>
-                </el-form-item>
-                <el-form-item label="付款周期" required>
-                    <el-col :span="8">
-                        <el-form-item   prop="fkstaDate" >
-                            <el-date-picker type = "date" v-model="editForm.fkstaDate" auto-complete="off">
-                            </el-date-picker>
-                        </el-form-item>
-                    </el-col>
-                    <el-col class="line" :span="2">至</el-col>
-                    <el-col :span="8">
-                        <el-form-item   prop="fkendDate" >
-                            <el-date-picker type = "date" v-model="editForm.fkendDate" auto-complete="off">
-                            </el-date-picker>
-                        </el-form-item>
-                    </el-col>
-                </el-form-item>
-                <el-form-item label="付款金额" prop="fkje">
-                    <el-input  type="number"  v-model="editForm.fkje" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item   label="是否需要发票" prop="isFP">
-                    <el-radio-group v-model="editForm.isFP">
-                        <el-radio class="radio" label=1>是</el-radio>
-                        <el-radio class="radio" label=2>否</el-radio>
-                    </el-radio-group>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click.native="editFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-            </div>
-        </el-dialog>
-        <el-dialog title="收款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
+
+        <el-dialog title="付款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
             <el-form :model="rokeBackForm" label-width="120px" :rules="rokeBackFormRules" ref="rokeBackForm"  >
                 <el-input type="hidden" prop="tQdCompayId"  v-model="rokeBackForm.tQdCompayId" auto-complete="off"></el-input>
                 <el-form-item label="收款类型"    prop="skType">
@@ -248,7 +213,7 @@
                     isFP:'',
                 },
 
-                //收款界面数据
+                //付款界面数据
                 rokeBackForm: {
                     tQdCompayId:0,
                     skType:1,
@@ -286,8 +251,11 @@
                 this.pageSize =val;
                 this.getReceivable();
             },
-
-            //获取应收款列表
+            //打开应付记录页面
+            handleOpen: function () {
+                window.open('#/paymentRecord');
+            },
+            //获取应付款列表
             getReceivable() {
                 let para = {
                     page: this.page,
@@ -305,7 +273,7 @@
                     this.listLoading = false;
                 });
             },
-            //显示收款界面
+            //显示付款界面
             handleRokeBack: function (index, row) {
                 this.rokeBackFormVisible = true;
                 this.rokeBackForm  = Object.assign({}, row);
@@ -355,7 +323,7 @@
                     }
                 });
             },
-            //收款
+            //付款
             rokeBackSubmit: function () {
                 this.$refs.rokeBackForm.validate((valid) => {
                     if (valid) {

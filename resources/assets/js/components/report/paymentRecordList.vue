@@ -22,8 +22,8 @@
             </el-table-column>
             <el-table-column label="操作" width="200">
                    <template scope="scope">
-                       <el-button    size="small"  @click="handleRokeBack(scope.$index, scope.row)">收款</el-button>
-                       <el-button    size="small"  @click="handleRokeBack(scope.$index, scope.row)">收款记录</el-button>
+                       <el-button    size="small"  @click="handleRokeBack(scope.$index, scope.row)">提交付款</el-button>
+                       <el-button    size="small"  @click="handleOpen(scope.$index, scope.row)">付款记录</el-button>
                    </template>
             </el-table-column>
            </el-table>
@@ -325,7 +325,10 @@
                 this.pageSize =val;
                 this.getAccountsReceivable();
             },
-
+            //打开收款记录页面
+            handleOpen: function () {
+                window.location.href='#/payableRecord';
+            },
             //获取应收款记录列表
             getAccountsReceivable() {
                 let para = {

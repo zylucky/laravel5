@@ -30,6 +30,7 @@ class CommissionController extends Controller
         $r = $client->request('POST', '/api/qd/apply/add', [
             'json' => $obj
         ]);
+
         return  $r ->getBody();
 
     }

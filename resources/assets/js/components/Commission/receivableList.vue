@@ -49,9 +49,10 @@
             </el-table-column>
             <el-table-column prop="compayname" label="收款银行"  >
             </el-table-column>
-            <el-table-column label="操作" width="150">
+            <el-table-column label="操作" width="180">
                    <template scope="scope">
                        <el-button size="small" @click="handleRokeBack(scope.$index, scope.row)">收款</el-button>
+                       <el-button size="small" @click="handleOpen(scope.$index, scope.row)">应收记录</el-button>
                    </template>
             </el-table-column>
            </el-table>
@@ -125,7 +126,7 @@
                         <el-input type="number"  v-model="rokeBackForm.meoney" auto-complete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="收款日期" prop="skrq">
-                        <el-date-picker type = "date" v-model="rokeBackForm.skrq" auto-complete="off">
+                        <el-date-picker type = "date" v-model="rokeBackForm.skrq"   auto-complete="off">
                         </el-date-picker>
                     </el-form-item>
                     <el-form-item   label="备注" prop="test">
@@ -158,8 +159,8 @@
                     buildingname:'',
                     buildname:'',
                     roomname:'',
-                    startdate:'',
-                    enddate:'',
+                    startdate:'2017-07-01',
+                    enddate:'2017-07-31',
 
                 },
                 options:[
@@ -306,7 +307,7 @@
                     tQdCompayId:row.tQdCompayId,
                     skType:1,
                     meoney:'',
-                    skrq:'',
+                    skrq:'2017-07-05',
                     memo:'',
                 };
             },
@@ -323,7 +324,10 @@
                     isFP:1,
                 };
             },
-
+            //打开应收记录页面
+            handleOpen: function () {
+                window.open('#/accountsReceivable');
+            },
             //编辑
             editSubmit: function () {
                 this.$refs.editForm.validate((valid) => {

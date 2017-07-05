@@ -28561,7 +28561,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.getAccountsReceivable();
         },
 
-
+        //打开收款记录页面
+        handleOpen: function handleOpen() {
+            window.location.href = '#/receivableRecord';
+        },
         //获取应收款记录列表
         getAccountsReceivable: function getAccountsReceivable() {
             var _this2 = this;
@@ -28977,6 +28980,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -28991,8 +28995,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 buildingname: '',
                 buildname: '',
                 roomname: '',
-                startdate: '',
-                enddate: ''
+                startdate: '2017-07-01',
+                enddate: '2017-07-31'
 
             },
             options: [{
@@ -29127,7 +29131,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 tQdCompayId: row.tQdCompayId,
                 skType: 1,
                 meoney: '',
-                skrq: '',
+                skrq: '2017-07-05',
                 memo: ''
             };
         },
@@ -29144,7 +29148,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 isFP: 1
             };
         },
-
+        //打开应收记录页面
+        handleOpen: function handleOpen() {
+            window.open('#/accountsReceivable');
+        },
         //编辑
         editSubmit: function editSubmit() {
             var _this3 = this;
@@ -92068,7 +92075,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           },
           on: {
             "click": function($event) {
-              _vm.handleRokeBack(scope.$index, scope.row)
+              _vm.handleOpen(scope.$index, scope.row)
             }
           }
         }, [_vm._v("收款记录")])]
@@ -98049,7 +98056,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "label": "操作",
-      "width": "150"
+      "width": "180"
     },
     scopedSlots: _vm._u([{
       key: "default",
@@ -98063,7 +98070,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleRokeBack(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("收款")])]
+        }, [_vm._v("收款")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleOpen(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("应收记录")])]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
@@ -102395,41 +102411,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -102511,7 +102492,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 isFP: ''
             },
 
-            //收款界面数据
+            //付款界面数据
             rokeBackForm: {
                 tQdCompayId: 0,
                 skType: 1,
@@ -102554,8 +102535,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.getReceivable();
         },
 
-
-        //获取应收款列表
+        //打开应付记录页面
+        handleOpen: function handleOpen() {
+            window.open('#/paymentRecord');
+        },
+        //获取应付款列表
         getReceivable: function getReceivable() {
             var _this2 = this;
 
@@ -102576,7 +102560,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
 
-        //显示收款界面
+        //显示付款界面
         handleRokeBack: function handleRokeBack(index, row) {
             this.rokeBackFormVisible = true;
             this.rokeBackForm = Object.assign({}, row);
@@ -102628,7 +102612,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        //收款
+        //付款
         rokeBackSubmit: function rokeBackSubmit() {
             var _this4 = this;
 
@@ -103095,7 +103079,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.getAccountsReceivable();
         },
 
-
+        //打开收款记录页面
+        handleOpen: function handleOpen() {
+            window.location.href = '#/payableRecord';
+        },
         //获取应收款记录列表
         getAccountsReceivable: function getAccountsReceivable() {
             var _this2 = this;
@@ -103590,7 +103577,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "label": "操作",
-      "width": "150"
+      "width": "180"
     },
     scopedSlots: _vm._u([{
       key: "default",
@@ -103604,7 +103591,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleRokeBack(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("付款")])]
+        }, [_vm._v("付款")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleOpen(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("应付记录")])]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
@@ -103632,152 +103628,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "title": "编辑",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.editFormVisible),
-      callback: function($$v) {
-        _vm.editFormVisible = $$v
-      },
-      expression: "editFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "editForm",
-    attrs: {
-      "model": _vm.editForm,
-      "label-width": "120px",
-      "rules": _vm.editFormRules
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "付款日期",
-      "prop": "fkrq"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.fkrq),
-      callback: function($$v) {
-        _vm.editForm.fkrq = $$v
-      },
-      expression: "editForm.fkrq"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "付款周期",
-      "required": ""
-    }
-  }, [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "prop": "fkstaDate"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.fkstaDate),
-      callback: function($$v) {
-        _vm.editForm.fkstaDate = $$v
-      },
-      expression: "editForm.fkstaDate"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "line",
-    attrs: {
-      "span": 2
-    }
-  }, [_vm._v("至")]), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "prop": "fkendDate"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.fkendDate),
-      callback: function($$v) {
-        _vm.editForm.fkendDate = $$v
-      },
-      expression: "editForm.fkendDate"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "付款金额",
-      "prop": "fkje"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "number",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.fkje),
-      callback: function($$v) {
-        _vm.editForm.fkje = $$v
-      },
-      expression: "editForm.fkje"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "是否需要发票",
-      "prop": "isFP"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.editForm.isFP),
-      callback: function($$v) {
-        _vm.editForm.isFP = $$v
-      },
-      expression: "editForm.isFP"
-    }
-  }, [_c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": "1"
-    }
-  }, [_vm._v("是")]), _vm._v(" "), _c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": "2"
-    }
-  }, [_vm._v("否")])], 1)], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.editFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.editLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.editSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "收款",
+      "title": "付款",
       "close-on-click-modal": false
     },
     model: {
@@ -103995,16 +103846,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleRokeBack(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("收款")]), _vm._v(" "), _c('el-button', {
+        }, [_vm._v("提交付款")]), _vm._v(" "), _c('el-button', {
           attrs: {
             "size": "small"
           },
           on: {
             "click": function($event) {
-              _vm.handleRokeBack(scope.$index, scope.row)
+              _vm.handleOpen(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("收款记录")])]
+        }, [_vm._v("付款记录")])]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
