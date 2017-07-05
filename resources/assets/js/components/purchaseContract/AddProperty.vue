@@ -147,6 +147,9 @@
                 //房间类型
                 options: [
                     {
+                        value: 0,
+                        label: '请选择'
+                    },{
                         value: 1,
                         label: '公寓'
                     }, {

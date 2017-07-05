@@ -17,6 +17,9 @@ Route::get('/', function (){
 });
 Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
+Route::post('purchaseContract/review','Contract\purchaseContractController@review');
+Route::post('purchaseContract/editTiaoKuan','Contract\purchaseContractController@editTiaoKuan');
+Route::get('purchaseContract/confirm','Contract\purchaseContractController@confirm');
 Route::resource('purchaseContract','Contract\purchaseContractController');
 Route::get('purchaseContract/review','Contract\purchaseContractController@review');
 Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');
@@ -31,6 +34,9 @@ Route::resource('payable','Report\payableController');
 Route::resource('payavleRecord','Report\payavleRecordController');
 Route::resource('paymentRecord','Report\paymentRecordController');
 
+
+
+Route::resource('saleContract','Contract\saleContractController');
 
 
 Route::get('permission/getAll','Rbac\PermissionController@getAll');

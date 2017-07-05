@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 
 class purchaseContractController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +21,7 @@ class purchaseContractController extends Controller
     {
         $pn = Input::get('pn');
         $cnt = Input::get('cnt');
+        $selectItem = Input::get('selectItem');
         if(!$pn){
             $pn = 1;
         }
@@ -31,6 +33,7 @@ class purchaseContractController extends Controller
                 'query'=>[
                     'pn'=>$pn,
                     'cnt'=>$cnt,
+                    'selectItem'=>$selectItem,
                     ]
             ]);
             echo $response->getBody();
@@ -38,18 +41,17 @@ class purchaseContractController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     *    合同新增的时候获取条款信息
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-//        $info = Input::get();
-//        if($info) {
-//              return [
-//                        'message' => '保存成功',
-//                        'code' => 200,
-//              ];
-//        }
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/create');
+        echo $response->getBody();
 
     }
 
@@ -111,12 +113,21 @@ class purchaseContractController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     *
+     * 二次优化
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
 
+        $response = $client->request('POST', '/api/contract/sf/buchongXieyi/save', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
     }
 
     /**
@@ -133,16 +144,69 @@ class purchaseContractController extends Controller
      * 合同审核
      *
      * */
-    public function review(){
+    public function review(Request $request){
         $client = new Client([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
 
-        $response = $client->request('POST', '/api/contract/sf', [
+        $response = $client->request('POST', '/api/contract/sf/shenhe', [
             'json' => $request->params
         ]);
         echo $response->getBody();
     }
+    /*
+     * 修改合同条款api/contract/hetong/update/tiao
+     * */
+    public function editTiaoKuan(Request $request){
+        $data['id'] = $request->params['id'];
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        //条
+        if(array_key_exists('kuanList', $request->params)){
+            $requestUrl = '/api/contract/hetong/update/tiao';
+            $data['title'] = $request->params['title'];
+        }
+        //款
+        if(array_key_exists('xiangList', $request->params)){
+            $requestUrl = '/api/contract/hetong/update/kuan/id/'.$data['id'];
+            $data['content'] = $request->params['content'];
+        }
+        //项
+        if(array_key_exists('kuanid', $request->params)){
+            $requestUrl = '/api/contract/hetong/update/xiang';
+            $data['content'] = $request->params['content'];
+        }
+        $response = $client->request('POST', $requestUrl, [
+            'json' => $data
+        ]);
+        echo $response->getBody();
+    }
+    //合同确认
+    public function confirm(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirm');
+        echo $response->getBody();
+    }
+    /*
+     * /api/contract/sf/buchongXieyi/3
+     * */
+    public function getOptimize(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$id);
+        echo $response->getBody();
+    }
+
 }
