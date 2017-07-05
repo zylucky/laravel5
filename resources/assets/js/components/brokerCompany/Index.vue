@@ -57,7 +57,7 @@
         <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
             <el-form :model="editForm" label-width="120px" :rules="editFormRules" ref="editForm">
                 <el-form-item label="渠道公司名称" prop="compayname">
-                    <el-input v-model="editForm.compayname" auto-complete="off"  ></el-input>
+                    <el-input v-model="editForm.compayname" auto-complete="off"   disabled=""></el-input>
                 </el-form-item>
                 <el-form-item label="收房佣金占比" prop="yjzbSf">
                     <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
@@ -89,7 +89,7 @@
         <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
             <el-form :model="addForm" label-width="120px" :rules="addFormRules" ref="addForm">
                 <el-form-item label="渠道公司名称" prop="compayname">
-                    <el-input v-model="addForm.compayname" auto-complete="off"  disabled=""  ></el-input>
+                    <el-input v-model="addForm.compayname" auto-complete="off"   ></el-input>
                 </el-form-item>
                 <el-form-item label="收房佣金占比" prop="yjzbSf">
                     <el-input type="number" v-model="addForm.yjzbSf" auto-complete="off"></el-input>
@@ -168,26 +168,26 @@
                 editFormRules: {
                     compayname: [
                         { required: true, message: '请输入渠道公司名称', trigger: 'blur' },
-                        {validator:(rule,value,callback)=>{
-                            let para = {
-                                name: value
-                            };
-                            if(value!=''){
-                                checkbkNameList(para).then((res) => {
-                                    //alert( JSON.stringify(res));
-                                    if(res.data.code!='200')
-                                    {
-                                        callback(new Error(res.data.msg));
-                                    }
-                                })
+                    ],
+                    yjzbSf: [
+                        { required: true, message: '请输入收房佣金占比', trigger: 'blur' },
+                        {required: true,validator:(rule,value,callback)=>{
+                            if(value>1||value<0){
+                                callback(new Error("收房佣金占比只能是0到1之间的数"));
+                            }else{
+                                callback();
                             }
                         }, trigger:'blur'}
                     ],
-                    yjzbSf: [
-                        { required: true, message: '请输入收房佣金占比', trigger: 'blur' }
-                    ],
                     yjzbCf: [
-                        { required: true, message: '请输入出房佣金占比', trigger: 'blur' }
+                        { required: true, message: '请输入出房佣金占比', trigger: 'blur' },
+                        {required: true,validator:(rule,value,callback)=>{
+                            if(value>1||value<0){
+                                callback(new Error("出房佣金占比只能是0到1之间的数"));
+                            }else{
+                                callback();
+                            }
+                        }, trigger:'blur'}
                     ],
                     yjType: [
                         {required: true,validator:(rule,value,callback)=>{
@@ -231,10 +231,24 @@
                         }, trigger:'blur'}
                     ],
                     yjzbSf: [
-                        { required: true, message: '请输入收房佣金占比', trigger: 'blur' }
+                        { required: true, message: '请输入收房佣金占比', trigger: 'blur' },
+                        {required: true,validator:(rule,value,callback)=>{
+                            if(value>1||value<0){
+                                callback(new Error("收房佣金占比只能是0到1之间的数"));
+                            }else{
+                                callback();
+                            }
+                        }, trigger:'blur'}
                     ],
                     yjzbCf: [
-                        { required: true, message: '请输入出房佣金占比', trigger: 'blur' }
+                        { required: true, message: '请输入出房佣金占比', trigger: 'blur' },
+                        {required: true,validator:(rule,value,callback)=>{
+                            if(value>1||value<0){
+                                callback(new Error("出房佣金占比只能是0到1之间的数"));
+                            }else{
+                                callback();
+                            }
+                        }, trigger:'blur'}
                     ],
                     yjType: [
                         {required: true,validator:(rule,value,callback)=>{

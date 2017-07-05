@@ -21,25 +21,27 @@
                 <el-button type="primary" icon="search"  v-on:click="getReceivable">搜索</el-button>
             </el-form-item>
         </el-form>
+        <el-tabs v-model="first" @tab-click="handleClick">
+            <el-tab-pane label="未提交" name="first"></el-tab-pane>
+            <el-tab-pane label="已提交" name="second"></el-tab-pane>
+            <el-tab-pane label="已付款" name="third"></el-tab-pane>
+        </el-tabs>
         <el-table :data="Receivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-
-            <el-table-column prop="compayname" label="单位计划"   :v-html= "formatYJType"  >
-            </el-table-column>
             <el-table-column prop="compaytest" label="楼盘"   >
             </el-table-column>
             <el-table-column prop="yjzbSf" label="楼栋" >
             </el-table-column>
             <el-table-column prop="yjzbCf" label="房间号" >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="租户" >
-            </el-table-column>
-            <el-table-column prop="yjzbCf" label="付款日" >
+            <el-table-column prop="yjzbCf" label="业主" >
             </el-table-column>
             <el-table-column prop="yjzbCf" label="周期" >
             </el-table-column>
+            <el-table-column prop="yjzbCf" label="付款日" >
+            </el-table-column>
             <el-table-column prop="compayname" label="付款方式" >
             </el-table-column>
-            <el-table-column prop="compayname" label="应收房租" >
+            <el-table-column prop="compayname" label="应付房租" >
             </el-table-column>
             <el-table-column prop="compayname" label="押金"  >
             </el-table-column>
@@ -49,10 +51,12 @@
             </el-table-column>
             <el-table-column prop="compayname" label="收款银行"  >
             </el-table-column>
-            <el-table-column label="操作" width="150">
+            <el-table-column prop="compayname" label="状态"  >
+            </el-table-column>
+            <el-table-column label="操作" width="180">
                    <template scope="scope">
-                       <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                       <el-button size="small" @click="handleRokeBack(scope.$index, scope.row)">收款</el-button>
+                       <el-button size="small" @click="handleRokeBack(scope.$index, scope.row)">付款</el-button>
+                       <el-button size="small" @click="handleOpen(scope.$index, scope.row)">应付记录</el-button>
                    </template>
             </el-table-column>
            </el-table>
@@ -71,44 +75,8 @@
             >
             </el-pagination>
         </el-col>
-        <!--编辑界面-->
-        <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
-            <el-form :model="editForm" label-width="120px" :rules="editFormRules" ref="editForm"  >
-                <el-form-item label="付款日期" prop="fkrq">
-                    <el-date-picker type = "date" v-model="editForm.fkrq" auto-complete="off">
-                    </el-date-picker>
-                </el-form-item>
-                <el-form-item label="付款周期" required>
-                    <el-col :span="8">
-                        <el-form-item   prop="fkstaDate" >
-                            <el-date-picker type = "date" v-model="editForm.fkstaDate" auto-complete="off">
-                            </el-date-picker>
-                        </el-form-item>
-                    </el-col>
-                    <el-col class="line" :span="2">至</el-col>
-                    <el-col :span="8">
-                        <el-form-item   prop="fkendDate" >
-                            <el-date-picker type = "date" v-model="editForm.fkendDate" auto-complete="off">
-                            </el-date-picker>
-                        </el-form-item>
-                    </el-col>
-                </el-form-item>
-                <el-form-item label="付款金额" prop="fkje">
-                    <el-input  type="number"  v-model="editForm.fkje" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item   label="是否需要发票" prop="isFP">
-                    <el-radio-group v-model="editForm.isFP">
-                        <el-radio class="radio" label=1>是</el-radio>
-                        <el-radio class="radio" label=2>否</el-radio>
-                    </el-radio-group>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click.native="editFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-            </div>
-        </el-dialog>
-        <el-dialog title="收款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
+
+        <el-dialog title="付款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
             <el-form :model="rokeBackForm" label-width="120px" :rules="rokeBackFormRules" ref="rokeBackForm"  >
                 <el-input type="hidden" prop="tQdCompayId"  v-model="rokeBackForm.tQdCompayId" auto-complete="off"></el-input>
                 <el-form-item label="收款类型"    prop="skType">
@@ -245,7 +213,7 @@
                     isFP:'',
                 },
 
-                //收款界面数据
+                //付款界面数据
                 rokeBackForm: {
                     tQdCompayId:0,
                     skType:1,
@@ -269,7 +237,10 @@
                 newDate.setTime(row.createdate);
                 return newDate.toLocaleDateString()
             },
-
+            //标签切换时
+            handleClick(tab, event) {
+                console.log(tab, event);
+            },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
@@ -280,8 +251,11 @@
                 this.pageSize =val;
                 this.getReceivable();
             },
-
-            //获取应收款列表
+            //打开应付记录页面
+            handleOpen: function () {
+                window.open('#/paymentRecord');
+            },
+            //获取应付款列表
             getReceivable() {
                 let para = {
                     page: this.page,
@@ -299,7 +273,7 @@
                     this.listLoading = false;
                 });
             },
-            //显示收款界面
+            //显示付款界面
             handleRokeBack: function (index, row) {
                 this.rokeBackFormVisible = true;
                 this.rokeBackForm  = Object.assign({}, row);
@@ -349,7 +323,7 @@
                     }
                 });
             },
-            //收款
+            //付款
             rokeBackSubmit: function () {
                 this.$refs.rokeBackForm.validate((valid) => {
                     if (valid) {
