@@ -38,7 +38,7 @@ export const getUserById = params =>{ return axios.post(`${base}/brokerCompany/g
 export const getChuFangCommissionListPage = params => { return axios.get(`${base}/chuFangCommission`, { params: params }); };
 
 export const getShouFangCommissionListPage = params => { return axios.get(`${base}/shouFangCommission`, { params: params }); };
-
+export const editShouFangCommission = params => { return axios.put(`${base}/shouFangCommission/`+params.id, { params: params }); };
 export const selectCommissionPayType = params => { return axios.post(`${base}/Commission/contractPayType`, { params: params }); };
 
 export const getReceivableListPage = params => { return axios.get(`${base}/receivable`, { params: params }); };

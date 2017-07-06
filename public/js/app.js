@@ -397,16 +397,17 @@ function deepMerge(target, source) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return addBrokerCompany; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return editBrokerCompany; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return batchRemoveBrokerCompany; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return getBrokerCompanyUserListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return removeBrokerCompanyUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return getBrokerCompanyUserListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return removeBrokerCompanyUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return addBrokerCompanyUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return editBrokerCompanyUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return editBrokerCompanyUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return batchRemoveBrokerCompanyUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return getbkNameList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return getbkNameList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return checkbkNameList; });
 /* unused harmony export getUserById */
 /* unused harmony export getChuFangCommissionListPage */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return getShouFangCommissionListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return getShouFangCommissionListPage; });
+/* unused harmony export editShouFangCommission */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return selectCommissionPayType; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getReceivableListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return editReceivable; });
@@ -542,7 +543,9 @@ var getChuFangCommissionListPage = function getChuFangCommissionListPage(params)
 var getShouFangCommissionListPage = function getShouFangCommissionListPage(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/shouFangCommission', { params: params });
 };
-
+var editShouFangCommission = function editShouFangCommission(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put(base + '/shouFangCommission/' + params.id, { params: params });
+};
 var selectCommissionPayType = function selectCommissionPayType(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/Commission/contractPayType', { params: params });
 };
@@ -27378,6 +27381,80 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -27391,14 +27468,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 buildingname: '',
                 buildname: '',
                 roomname: '',
-                ZhuangTai: 0
+                ZhuangTai: ''
             },
             options: [{
                 value: 1,
-                label: '按月租金'
+                label: '未申请'
             }, {
                 value: 2,
-                label: '按年租金'
+                label: '已申请'
             }],
 
             //分页类数据
@@ -27414,7 +27491,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             editFormVisible: false, //编辑界面是否显示
             editLoading: false,
             editFormRules: {
-                compayname: [{ required: true, message: '请输入渠道公司名称', trigger: 'blur' }, { validator: function validator(rule, value, callback) {
+                compayname: [{ required: true, message: '请输入渠道公司名称', trigger: 'blur' }, {
+                    validator: function validator(rule, value, callback) {
                         var para = {
                             name: value
                         };
@@ -27426,16 +27504,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 }
                             });
                         }
-                    }, trigger: 'blur' }],
+                    }, trigger: 'blur'
+                }],
                 yjzbSf: [{ required: true, message: '请输入收房佣金占比', trigger: 'blur' }],
                 yjzbCf: [{ required: true, message: '请输入出房佣金占比', trigger: 'blur' }],
-                yjType: [{ required: true, validator: function validator(rule, value, callback) {
+                yjType: [{
+                    required: true, validator: function validator(rule, value, callback) {
                         if (/^\d+$/.test(value) == false) {
                             callback(new Error("请输入佣金类型"));
                         } else {
                             callback();
                         }
-                    }, trigger: 'blur' }]
+                    }, trigger: 'blur'
+                }]
             },
             //编辑界面数据
             editForm: {
@@ -27449,7 +27530,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             addFormVisible: false, //新增界面是否显示
             addLoading: false,
             addFormRules: {
-                compayname: [{ required: true, message: '请输入渠道公司名称', trigger: 'blur' }, { validator: function validator(rule, value, callback) {
+                compayname: [{ required: true, message: '请输入渠道公司名称', trigger: 'blur' }, {
+                    validator: function validator(rule, value, callback) {
                         var para = {
                             name: value
                         };
@@ -27463,16 +27545,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 }
                             });
                         }
-                    }, trigger: 'blur' }],
+                    }, trigger: 'blur'
+                }],
                 yjzbSf: [{ required: true, message: '请输入收房佣金占比', trigger: 'blur' }],
                 yjzbCf: [{ required: true, message: '请输入出房佣金占比', trigger: 'blur' }],
-                yjType: [{ required: true, validator: function validator(rule, value, callback) {
+                yjType: [{
+                    required: true, validator: function validator(rule, value, callback) {
                         if (/^\d+$/.test(value) == false) {
                             callback(new Error("请输入佣金类型"));
                         } else {
                             callback();
                         }
-                    }, trigger: 'blur' }]
+                    }, trigger: 'blur'
+                }]
 
             },
             //新增界面数据
@@ -27730,12 +27815,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__);
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_element_ui_packages_col_src_col__ = __webpack_require__(36);
 //
 //
 //
@@ -27982,7 +28062,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { ElForm: __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default.a },
+    components: { ElCol: __WEBPACK_IMPORTED_MODULE_1_element_ui_packages_col_src_col__["a" /* default */] },
     data: function data() {
         return {
             filters: {
@@ -27990,15 +28070,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 buildingname: '',
                 buildname: '',
                 roomname: '',
-                ZhuangTai: 0
+                ZhuangTai: '',
+                startdate: '',
+                enddate: '',
+                yjstartdate: '',
+                yjenddate: ''
 
             },
             options: [{
                 value: 1,
-                label: '按月租金'
+                label: '未修改'
             }, {
                 value: 2,
-                label: '按年租金'
+                label: '未确认'
             }],
             showed: false,
             //分页类数据
@@ -28008,36 +28092,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             pageSizes: [10, 20, 30, 40, 50, 100],
             brokerCompanyUser: [],
             estate: [], //服务器搜索的渠道公司数据放入这个数组中
+            estate1: [], //服务器搜索的渠道公司人员数据放入这个数组中
             listLoading: false,
             sels: [], //列表选中列
             bkNameloading: false,
             qdPernameloading: false,
             options1: [],
+            options2: [],
 
             rokeBackFormVisible: false, //返佣界面是否显示
             rokeBackLoading: false,
+            rokeBackFormRules: {
 
-            editFormVisible: false, //编辑界面是否显示
-            editLoading: false,
-            editFormRules: {
-
-                yjType: [{ required: true, validator: function validator(rule, value, callback) {
+                yjType: [{
+                    required: true, validator: function validator(rule, value, callback) {
                         if (/^\d+$/.test(value) == false) {
                             callback(new Error("请输入佣金类型"));
                         } else {
                             callback();
                         }
-                    }, trigger: 'blur' }]
+                    }, trigger: 'blur'
+                }]
+            },
+
+            editFormVisible: false, //编辑界面是否显示
+            editLoading: false,
+            editFormRules: {
+
+                yjType: [{
+                    required: true, validator: function validator(rule, value, callback) {
+                        if (/^\d+$/.test(value) == false) {
+                            callback(new Error("请输入佣金类型"));
+                        } else {
+                            callback();
+                        }
+                    }, trigger: 'blur'
+                }]
             },
             //编辑界面数据
             editForm: {
                 //compayname: '',
+                buildingname: '',
+                buildname: '',
+                roomname: '',
+                area: '',
+                htyzj: '',
+                sjyzj: '',
+                htbzyj: '',
+                yzsjzf: '',
+                hlfy: '',
+                qtje: '',
                 tQdCompayId: '',
-                qdPername: '',
-                qdPertel: '',
-                yjzbSf: '',
-                yjzbCf: '',
-                yjType: '',
                 QDPersonList: [{
                     qdPername: ''
                 }]
@@ -28045,6 +28150,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //编辑界面数据
             rokeBackForm: {
                 //compayname: '',
+
                 tQdCompayId: '',
                 qdPername: '',
                 qdPertel: '',
@@ -28075,18 +28181,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //增加渠道人员
         addFreeItem: function addFreeItem() {
-            this.editForm.mianzuqiList.push({
-
-                mianzufangshi: '',
+            this.editForm.QDPersonList.push({
+                qdPername: '',
                 key: Date.now()
             });
         },
 
         //移除渠道人员
         removeFreeItem: function removeFreeItem(item) {
-            var index = this.editForm.mianzuqiList.indexOf(item);
+            var index = this.editForm.QDPersonList.indexOf(item);
             if (index !== -1) {
-                this.editForm.mianzuqiList.splice(index, 1);
+                this.editForm.QDPersonList.splice(index, 1);
             }
         },
 
@@ -28113,10 +28218,79 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
 
+        //获取渠道公司名称
+        remoteMethod1: function remoteMethod1(query) {
+            var _this = this;
+
+            var para = {
+                name: query
+            };
+            this.bkNameloading = true;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["q" /* getbkNameList */])(para).then(function (res) {
+
+                var arr = [];
+                arr[0] = '';
+                for (var i in res.data) {
+                    arr[i] = res.data[i];
+                }
+                _this.estate = arr;
+                _this.bkNameloading = false;
+                _this.list = _this.estate.map(function (item, index) {
+                    return { value: index, label: item };
+                });
+                if (query !== '') {
+                    _this.bkNameloading = true;
+                    setTimeout(function () {
+
+                        _this.bkNameloading = false;
+                        _this.options1 = _this.list.filter(function (item) {
+                            return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
+                        });
+                    }, 200);
+                } else {
+                    _this.options1 = [];
+                }
+            });
+        },
+
+        //获取渠道公司人员名称
+        remoteMethod2: function remoteMethod2(query) {
+            var _this2 = this;
+
+            var para = {
+                name: query
+            };
+            this.qdPernameloading = true;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["q" /* getbkNameList */])(para).then(function (res) {
+
+                var arr = [];
+                arr[0] = '';
+                for (var i in res.data) {
+                    arr[i] = res.data[i];
+                }
+                _this2.estate1 = arr;
+                _this2.qdPernameloading = false;
+                _this2.list = _this2.estate1.map(function (item, index) {
+                    return { value: index, label: item };
+                });
+                if (query !== '') {
+                    _this2.qdPernameloading = true;
+                    setTimeout(function () {
+
+                        _this2.qdPernameloading = false;
+                        _this2.options2 = _this2.list.filter(function (item) {
+                            return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
+                        });
+                    }, 200);
+                } else {
+                    _this2.options2 = [];
+                }
+            });
+        },
 
         //获取渠道公司列表
         getBrokerCompanyUser: function getBrokerCompanyUser() {
-            var _this = this;
+            var _this3 = this;
 
             var para = {
                 page: this.page,
@@ -28125,10 +28299,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 username: this.filters.bk_username
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["q" /* getShouFangCommissionListPage */])(para).then(function (res) {
-                _this.total = res.data.total;
-                _this.brokerCompanyUser = res.data.data;
-                _this.listLoading = false;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["r" /* getShouFangCommissionListPage */])(para).then(function (res) {
+                _this3.total = res.data.total;
+                _this3.brokerCompanyUser = res.data.data;
+                _this3.listLoading = false;
             });
         },
 
@@ -28143,44 +28317,58 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleEdit: function handleEdit(index, row) {
             // Console.log(row);
 
-            this.editForm.QDPersonList = [{
-                qdPername: '1',
-                key: Date.now()
-            }];
+
             this.editFormVisible = true;
-            this.editForm = Object.assign({}, row);
+            // this.editForm = Object.assign({}, row);
             // this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-            this.editForm.tQdCompayId = row.qvDaoCompayXinxi.compayname;
-            this.editForm.tQdCompayName = row.qvDaoCompayXinxi.tQdCompayId;
+
             this.editForm.yjzbCf = row.yjzbCf.toString();
             this.editForm.yjzbSf = row.yjzbSf.toString();
-
-            // alert(this.editForm.tQdCompayName);
+            this.editForm.QDPersonList = [{
+                qdPername: '',
+                key: Date.now()
+            }];
+            this.editForm = {
+                buildingname: '',
+                buildname: '',
+                roomname: '',
+                area: '',
+                htyzj: '',
+                sjyzj: '',
+                htbzyj: '',
+                yzsjzf: '',
+                hlfy: '',
+                qtje: '',
+                tQdCompayId: '',
+                QDPersonList: [{
+                    qdPername: '',
+                    key: Date.now()
+                }]
+                // alert(this.editForm.tQdCompayName);
+            };
         },
 
         //编辑
         editSubmit: function editSubmit() {
-            var _this2 = this;
+            var _this4 = this;
 
             this.$refs.editForm.validate(function (valid) {
 
                 if (valid) {
-                    _this2.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this2.editLoading = true;
-                        var para = Object.assign({}, _this2.editForm);
-                        // para.yjType= this.editForm.yjType == '按月租金' ?1 : this.editForm.yjType =='按年租金' ?2 : this.editForm.yjType;
-                        para.tQdCompayId = _this2.editForm.tQdCompayName;
-
+                    _this4.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this4.editLoading = true;
+                        var para = Object.assign({}, _this4.editForm);
+                        para.tQdCompayId = _this4.editForm.tQdCompayName;
                         //console.log(para);
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["r" /* editBrokerCompanyUser */])(para).then(function (res) {
-                            _this2.editLoading = false;
-                            _this2.$message({
+                        editBrokerCompanyUser(para).then(function (res) {
+                            _this4.editLoading = false;
+                            _this4.$message({
                                 message: '提交成功',
                                 type: 'success'
                             });
-                            _this2.$refs['editForm'].resetFields();
-                            _this2.editFormVisible = false;
-                            _this2.getBrokerCompanyUser();
+                            _this4.$refs['editForm'].resetFields();
+                            _this4.editFormVisible = false;
+                            _this4.getBrokerCompanyUser();
                         });
                     });
                 }
@@ -28188,28 +28376,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //新增
         addSubmit: function addSubmit() {
-            var _this3 = this;
+            var _this5 = this;
 
             this.$refs.addForm.validate(function (valid) {
                 //  alert(this.addForm.tQdCompayId);
 
                 if (valid) {
-                    _this3.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this3.addLoading = true;
+                    _this5.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this5.addLoading = true;
                         //NProgress.start();
-                        var para = Object.assign({}, _this3.addForm);
+                        var para = Object.assign({}, _this5.addForm);
                         //para.yjType= this.addForm.yjType == '按月租金' ? 1 : 2;
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
                         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["s" /* addBrokerCompanyUser */])(para).then(function (res) {
-                            _this3.addLoading = false;
+                            _this5.addLoading = false;
                             //NProgress.done();
-                            _this3.$message({
+                            _this5.$message({
                                 message: '提交成功',
                                 type: 'success'
                             });
-                            _this3.$refs['addForm'].resetFields();
-                            _this3.addFormVisible = false;
-                            _this3.getBrokerCompanyUser();
+                            _this5.$refs['addForm'].resetFields();
+                            _this5.addFormVisible = false;
+                            _this5.getBrokerCompanyUser();
                         });
                     });
                 }
@@ -28220,7 +28408,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //批量删除
         batchRemove: function batchRemove() {
-            var _this4 = this;
+            var _this6 = this;
 
             var ids = this.sels.map(function (item) {
                 return item.tQdPersonId;
@@ -28228,24 +28416,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$confirm('确认删除选中记录吗？', '提示', {
                 type: 'warning'
             }).then(function () {
-                _this4.listLoading = true;
+                _this6.listLoading = true;
                 //NProgress.start();
                 var para = { ids: ids };
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["t" /* batchRemoveBrokerCompanyUser */])(para).then(function (res) {
-                    _this4.listLoading = false;
+                    _this6.listLoading = false;
                     //NProgress.done();
                     if (res == '200') {
-                        _this4.$message({
+                        _this6.$message({
                             message: '删除成功',
                             type: 'success'
                         });
                     } else {
-                        _this4.$message({
+                        _this6.$message({
                             message: res,
                             type: 'error'
                         });
                     }
-                    _this4.getBrokerCompanyUser();
+                    _this6.getBrokerCompanyUser();
                 });
             }).catch(function () {});
         }
@@ -29830,28 +30018,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return newDate.toLocaleDateString();
         },
 
-        //判断渠道公司名称是否重复
-        changeCountAdd: function changeCountAdd() {},
-        //判断渠道公司名称是否重复
-        changeCountEidt: function changeCountEidt() {
-            var _this = this;
 
-            var para = {
-                name: this.editForm.compayname
-            };
-            if (this.editForm.compayname != '') {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["k" /* checkbkNameList */])(para).then(function (res) {
-                    //alert( JSON.stringify(res));
-                    if (res.data.code != '200') {
-
-                        _this.$message({
-                            message: "公司名称已存在",
-                            type: 'error'
-                        });
-                    }
-                });
-            }
-        },
         //页面跳转后
         handleCurrentChange: function handleCurrentChange(val) {
             this.page = val;
@@ -29869,7 +30036,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //获取渠道公司列表
         getBrokerCompany: function getBrokerCompany() {
-            var _this2 = this;
+            var _this = this;
 
             var para = {
                 page: this.page,
@@ -29878,39 +30045,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["l" /* getBrokerCompanyListPage */])(para).then(function (res) {
-                _this2.total = res.data.total;
-                _this2.brokerCompany = res.data.data;
-                _this2.listLoading = false;
+                _this.total = res.data.total;
+                _this.brokerCompany = res.data.data;
+                _this.listLoading = false;
             });
         },
 
         //删除
         handleDel: function handleDel(index, row) {
-            var _this3 = this;
+            var _this2 = this;
 
             this.$confirm('确认删除该记录吗?', '提示', {
                 type: 'warning'
             }).then(function () {
-                _this3.listLoading = true;
+                _this2.listLoading = true;
                 //NProgress.start();
                 var para = { id: row.tQdCompayId };
                 // alert(row.tQdCompayId);
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["m" /* removeBrokerCompany */])(para).then(function (res) {
-                    _this3.listLoading = false;
+                    _this2.listLoading = false;
                     //NProgress.done();
                     if (res.data.code == '200') {
-                        _this3.$message({
+                        _this2.$message({
                             message: '删除成功',
                             type: 'success'
                         });
                     } else {
-                        _this3.$message({
+                        _this2.$message({
                             message: res.data.msg,
                             type: 'error'
                         });
                     }
 
-                    _this3.getBrokerCompany();
+                    _this2.getBrokerCompany();
                 });
             }).catch(function () {});
         },
@@ -29936,34 +30103,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //编辑
         editSubmit: function editSubmit() {
-            var _this4 = this;
+            var _this3 = this;
 
             this.$refs.editForm.validate(function (valid) {
                 if (valid) {
-                    _this4.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this4.editLoading = true;
-                        var para = Object.assign({}, _this4.editForm);
+                    _this3.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this3.editLoading = true;
+                        var para = Object.assign({}, _this3.editForm);
                         //  para.yjType= this.editForm.yjType == '按月租金' ?1 : this.editForm.yjType =='按年租金' ?2 : this.editForm.yjType;
 
                         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["n" /* editBrokerCompany */])(para).then(function (res) {
-                            _this4.editLoading = false;
+                            _this3.editLoading = false;
                             //alert(JSON.stringify(res));
                             if (res.data.code == '200') {
                                 //alert(0);
-                                _this4.$message({
+                                _this3.$message({
                                     message: '提交成功',
                                     type: 'success'
                                 });
                             } else {
-                                _this4.$message({
+                                _this3.$message({
                                     message: res.data.msg,
                                     type: 'error'
                                 });
                             }
 
-                            _this4.$refs['editForm'].resetFields();
-                            _this4.editFormVisible = false;
-                            _this4.getBrokerCompany();
+                            _this3.$refs['editForm'].resetFields();
+                            _this3.editFormVisible = false;
+                            _this3.getBrokerCompany();
                         });
                     });
                 }
@@ -29971,36 +30138,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //新增
         addSubmit: function addSubmit() {
-            var _this5 = this;
+            var _this4 = this;
 
             this.$refs.addForm.validate(function (valid) {
                 // alert(valid);
                 // alert(this.addForm.compayname.lazy);
                 if (valid) {
-                    _this5.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this5.addLoading = true;
+                    _this4.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this4.addLoading = true;
                         //NProgress.start();
-                        var para = Object.assign({}, _this5.addForm);
+                        var para = Object.assign({}, _this4.addForm);
                         // para.yjType= this.addForm.yjType == '按月租金' ? 1 : 2;
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
                         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["o" /* addBrokerCompany */])(para).then(function (res) {
-                            _this5.addLoading = false;
+                            _this4.addLoading = false;
                             //NProgress.done();
                             if (res.data.code == '200') {
                                 //alert(0);
-                                _this5.$message({
+                                _this4.$message({
                                     message: '提交成功',
                                     type: 'success'
                                 });
                             } else {
-                                _this5.$message({
+                                _this4.$message({
                                     message: res.data.msg,
                                     type: 'error'
                                 });
                             }
-                            _this5.$refs['addForm'].resetFields();
-                            _this5.addFormVisible = false;
-                            _this5.getBrokerCompany();
+                            _this4.$refs['addForm'].resetFields();
+                            _this4.addFormVisible = false;
+                            _this4.getBrokerCompany();
                         });
                     });
                 }
@@ -30011,7 +30178,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //批量删除
         batchRemove: function batchRemove() {
-            var _this6 = this;
+            var _this5 = this;
 
             var ids = this.sels.map(function (item) {
                 return item.tQdCompayId;
@@ -30019,25 +30186,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$confirm('确认删除选中记录吗？', '提示', {
                 type: 'warning'
             }).then(function () {
-                _this6.listLoading = true;
+                _this5.listLoading = true;
                 //NProgress.start();
                 var para = { ids: ids };
                 // alert(ids);
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["p" /* batchRemoveBrokerCompany */])(para).then(function (res) {
-                    _this6.listLoading = false;
+                    _this5.listLoading = false;
                     //NProgress.done();
                     if (res == '200') {
-                        _this6.$message({
+                        _this5.$message({
                             message: '删除成功',
                             type: 'success'
                         });
                     } else {
-                        _this6.$message({
+                        _this5.$message({
                             message: res.data.msg,
                             type: 'error'
                         });
                     }
-                    _this6.getBrokerCompany();
+                    _this5.getBrokerCompany();
                 });
             }).catch(function () {});
         }
@@ -30367,7 +30534,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: query
             };
             this.bkNameloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["u" /* getbkNameList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["q" /* getbkNameList */])(para).then(function (res) {
 
                 var arr = [];
                 arr[0] = '';
@@ -30427,7 +30594,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 username: this.filters.bk_username
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["v" /* getBrokerCompanyUserListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["u" /* getBrokerCompanyUserListPage */])(para).then(function (res) {
                 _this2.total = res.data.total;
                 _this2.brokerCompanyUser = res.data.data;
                 _this2.listLoading = false;
@@ -30444,7 +30611,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this3.listLoading = true;
                 //NProgress.start();
                 var para = { id: row.tQdPersonId };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["w" /* removeBrokerCompanyUser */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["v" /* removeBrokerCompanyUser */])(para).then(function (res) {
                     _this3.listLoading = false;
                     //NProgress.done();
                     if (res.data.code == '200') {
@@ -30499,7 +30666,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         para.tQdCompayId = _this4.editForm.tQdCompayName;
 
                         //console.log(para);
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["r" /* editBrokerCompanyUser */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["w" /* editBrokerCompanyUser */])(para).then(function (res) {
                             _this4.editLoading = false;
                             _this4.$message({
                                 message: '提交成功',
@@ -35372,12 +35539,12 @@ window.axios.defaults.headers.common = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_Commission_receivableRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__components_Commission_receivableRecordList_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_Commission_receivableList_vue__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_Commission_receivableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21__components_Commission_receivableList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_Report_paymentRecordList_vue__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_Report_paymentRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22__components_Report_paymentRecordList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_Report_payableRecordList_vue__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_Report_payableRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23__components_Report_payableRecordList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_Report_payableList_vue__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_Report_payableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24__components_Report_payableList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_report_paymentRecordList_vue__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_report_paymentRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22__components_report_paymentRecordList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_report_payableRecordList_vue__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_report_payableRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23__components_report_payableRecordList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_report_payableList_vue__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_report_payableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24__components_report_payableList_vue__);
 /**
  * Created by liyuequn on 2017/5/15.
  */
@@ -35501,7 +35668,7 @@ var routes = [{
     name: '统计',
     iconCls: 'el-icon-document', //图标样式class
     hidden: false,
-    children: [{ path: '/receivable', component: __WEBPACK_IMPORTED_MODULE_21__components_Commission_receivableList_vue___default.a, name: '应收款信息', hidden: false }, { path: '/accountsReceivable', component: __WEBPACK_IMPORTED_MODULE_19__components_Commission_accountsReceivableList_vue___default.a, name: '应收款记录', hidden: true }, { path: '/receivableRecord', component: __WEBPACK_IMPORTED_MODULE_20__components_Commission_receivableRecordList_vue___default.a, name: '已收款记录', hidden: true }, { path: '/payable', component: __WEBPACK_IMPORTED_MODULE_24__components_Report_payableList_vue___default.a, name: '应付款信息', hidden: false }, { path: '/payableRecord', component: __WEBPACK_IMPORTED_MODULE_23__components_Report_payableRecordList_vue___default.a, name: '应付款记录', hidden: true }, { path: '/paymentRecord', component: __WEBPACK_IMPORTED_MODULE_22__components_Report_paymentRecordList_vue___default.a, name: '已付款记录', hidden: true }]
+    children: [{ path: '/receivable', component: __WEBPACK_IMPORTED_MODULE_21__components_Commission_receivableList_vue___default.a, name: '应收款信息', hidden: false }, { path: '/accountsReceivable', component: __WEBPACK_IMPORTED_MODULE_19__components_Commission_accountsReceivableList_vue___default.a, name: '应收款记录', hidden: true }, { path: '/receivableRecord', component: __WEBPACK_IMPORTED_MODULE_20__components_Commission_receivableRecordList_vue___default.a, name: '已收款记录', hidden: true }, { path: '/payable', component: __WEBPACK_IMPORTED_MODULE_24__components_report_payableList_vue___default.a, name: '应付款信息', hidden: false }, { path: '/payableRecord', component: __WEBPACK_IMPORTED_MODULE_23__components_report_payableRecordList_vue___default.a, name: '应付款记录', hidden: true }, { path: '/paymentRecord', component: __WEBPACK_IMPORTED_MODULE_22__components_report_paymentRecordList_vue___default.a, name: '已付款记录', hidden: true }]
 
 }, {
     path: '/purchaseContract/dump',
@@ -93070,9 +93237,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label-width": "120px",
       "rules": _vm.editFormRules
     }
+  }, [_c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 10
+    }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "渠道公司名称",
+      "label": "申请人",
       "prop": "compayname"
     }
   }, [_c('el-input', {
@@ -93086,9 +93257,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editForm.compayname"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', {
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "label": "收房佣金占比",
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "申请部门",
       "prop": "yjzbSf"
     }
   }, [_c('el-input', {
@@ -93104,9 +93279,317 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editForm.yjzbSf"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', {
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
-      "label": "出房佣金占比",
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "申请部门总监",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "项目",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "月租金",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "渠道公司",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "渠道公司人员",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "付款方式",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "首期租金",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "押金",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "是否已经提交发票",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "支付方式",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "规定返佣金额",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "实际返佣金额",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-form-item', {
+    attrs: {
+      "label": "备注",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "收款户名",
+      "prop": "yjzbSf"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "value": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.yjzbSf),
+      callback: function($$v) {
+        _vm.editForm.yjzbSf = $$v
+      },
+      expression: "editForm.yjzbSf"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 10
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "开户银行",
       "prop": "yjzbCf"
     }
   }, [_c('el-input', {
@@ -93121,33 +93604,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editForm.yjzbCf"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', {
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "佣金类型",
-      "prop": "yjType"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": ""
-    },
-    model: {
-      value: (_vm.editForm.yjType),
-      callback: function($$v) {
-        _vm.editForm.yjType = $$v
-      },
-      expression: "editForm.yjType"
-    }
-  }, _vm._l((_vm.options), function(item) {
-    return _c('el-option', {
-      key: item.value,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  }))], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "渠道公司说明",
+      "label": "收款账号",
       "prop": "compaytest"
     }
   }, [_c('el-input', {
@@ -93161,20 +93620,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editForm.compaytest"
     }
-  })], 1), _vm._v(" "), _c('el-input', {
-    attrs: {
-      "type": "hidden",
-      "prop": "tbPersonIdCreate",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.tbPersonIdCreate),
-      callback: function($$v) {
-        _vm.editForm.tbPersonIdCreate = $$v
-      },
-      expression: "editForm.tbPersonIdCreate"
-    }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "dialog-footer",
     slot: "footer"
   }, [_c('el-button', {
@@ -93742,7 +94188,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "label": "操作",
-      "width": "100"
+      "width": "138"
     },
     scopedSlots: _vm._u([{
       key: "default",
@@ -93816,9 +94262,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "prop": "tQdCompayName",
       "auto-complete": "off"
     }
-  }), _vm._v(" "), _c('el-col', {
+  }), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
-      "span": 10
+      "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -93838,7 +94284,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 10
+      "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -93857,9 +94303,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editForm.buildname"
     }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
-      "span": 10
+      "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -93880,7 +94326,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 10
+      "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -93899,9 +94345,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editForm.area"
     }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
-      "span": 10
+      "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -93922,7 +94368,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 10
+      "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -93941,9 +94387,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editForm.sjyzj"
     }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
-      "span": 10
+      "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -93964,7 +94410,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 10
+      "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -93983,9 +94429,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editForm.yzsjzf"
     }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
-      "span": 10
+      "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -94006,7 +94452,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 10
+      "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -94024,11 +94470,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editForm.qtje"
     }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 10
-    }
-  }, [_c('el-form-item', {
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "渠道公司名称",
       "prop": "tQdCompayId"
@@ -94059,13 +94501,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": item.value
       }
     })
-  }))], 1)], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 10
-    }
-  }, _vm._l((_vm.editForm.QDPersonList), function(item, index) {
+  }))], 1), _vm._v(" "), _vm._l((_vm.editForm.QDPersonList), function(item1, index) {
     return _c('el-form-item', {
-      key: item.key,
+      key: item1.key,
       attrs: {
         "label": "渠道人员",
         "prop": 'QDPersonList.' + index + '.value'
@@ -94075,20 +94513,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "filterable": "",
         "remote": "",
         "placeholder": "渠道人员",
-        "remote-method": _vm.remoteMethod1,
+        "remote-method": _vm.remoteMethod2,
         "loading": _vm.qdPernameloading
       },
-      on: {
-        "change": _vm.change
-      },
       model: {
-        value: (_vm.editForm.qdPername),
+        value: (_vm.editForm.QDPersonList[index].qdPername),
         callback: function($$v) {
-          _vm.editForm.qdPername = $$v
+          _vm.editForm.QDPersonList[index].qdPername = $$v
         },
-        expression: "editForm.qdPername"
+        expression: "editForm.QDPersonList[index].qdPername"
       }
-    }, _vm._l((_vm.options1), function(item) {
+    }, _vm._l((_vm.options2), function(item) {
       return _c('el-option', {
         key: item.value,
         attrs: {
@@ -94100,11 +94535,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "click": function($event) {
           $event.preventDefault();
-          _vm.removeFreeItem(item)
+          _vm.removeFreeItem(item1)
         }
       }
     }, [_vm._v("删除")])], 1)
-  })), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     on: {
       "click": _vm.addFreeItem
     }
@@ -94125,7 +94560,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editForm.yjzbCf"
     }
-  })], 1)], 1), _vm._v(" "), _c('div', {
+  })], 1)], 2), _vm._v(" "), _c('div', {
     staticClass: "dialog-footer",
     slot: "footer"
   }, [_c('el-button', {
@@ -94226,7 +94661,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "实际返佣今晚",
+      "label": "实际返佣金额",
       "prop": "area"
     }
   }, [_c('el-input', {
@@ -102313,2116 +102748,15 @@ module.exports = __webpack_require__(41);
 /* 226 */,
 /* 227 */,
 /* 228 */,
-/* 229 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: { ElForm: __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default.a },
-    data: function data() {
-        var _this = this;
-
-        return {
-            filters: {
-                buildingname: '',
-                buildname: '',
-                roomname: '',
-                startdate: '',
-                enddate: ''
-
-            },
-            options: [{
-                value: 1,
-                label: '押金'
-            }, {
-                value: 2,
-                label: '房租'
-            }],
-            //分页类数据
-            total: 0,
-            currentPage: 0,
-            pageSize: 10,
-            pageSizes: [10, 20, 30, 40, 50, 100],
-            Receivable: [],
-            listLoading: false,
-            sels: [], //列表选中列
-
-            rokeBackFormVisible: false, //收款界面是否显示
-            rokeBackLoading: false,
-            rokeBackFormRules: {
-                skrq: [{ type: 'date', required: true, message: '请输入收款日期', trigger: 'change' }],
-                meoney: [{ required: true, message: '请输入收款金额', trigger: 'blur' }],
-                skType: [{ required: true, validator: function validator(rule, value, callback) {
-                        if (/^\d+$/.test(value) == false) {
-                            callback(new Error("请输入收款类型"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }]
-            },
-
-            editFormVisible: false, //编辑界面是否显示
-            editLoading: false,
-            editFormRules: {
-                fkrq: [{ type: 'date', required: true, message: '请输入付款日期', trigger: 'change' }],
-                fkstaDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }],
-                fkendDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }, { required: true, validator: function validator(rule, value, callback) {
-                        var d1 = new Date(_this.editForm.fkstaDate);
-                        var d2 = new Date(value);
-                        if (d2 < d1) {
-                            callback(new Error("付款周期的结束日期不能小于开始日期"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'change' }],
-                fkje: [{ required: true, validator: function validator(rule, value, callback) {
-                        if (/^\d+$/.test(value) == false) {
-                            callback(new Error("请输入付款金额"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                isFP: [{ required: true, message: '请选择是否需要发票', trigger: 'blur' }]
-            },
-            //编辑界面数据
-            editForm: {
-
-                fkrq: '',
-                fkstaDate: '',
-                fkendDate: '',
-                fkje: '',
-                isFP: ''
-            },
-
-            //付款界面数据
-            rokeBackForm: {
-                tQdCompayId: 0,
-                skType: 1,
-                meoney: '',
-                skrq: '',
-                memo: ''
-            },
-
-            //被选中的权限
-            checked: []
-        };
-    },
-
-    methods: {
-        //佣金类型显示转换
-        formatYJType: function formatYJType(row, column) {
-            return '<a href="#">' + row.compayname + '</a>';
-        },
-        //时间戳转日期格式
-        changeDate: function changeDate(row, column) {
-            var newDate = new Date();
-            newDate.setTime(row.createdate);
-            return newDate.toLocaleDateString();
-        },
-
-        //标签切换时
-        handleClick: function handleClick(tab, event) {
-            console.log(tab, event);
-        },
-
-        //页面跳转后
-        handleCurrentChange: function handleCurrentChange(val) {
-            this.page = val;
-            this.getReceivable();
-        },
-
-        //更改每页显示数据
-        handleSizeChange: function handleSizeChange(val) {
-            this.pageSize = val;
-            this.getReceivable();
-        },
-
-        //打开应付记录页面
-        handleOpen: function handleOpen() {
-            window.open('#/paymentRecord');
-        },
-        //获取应付款列表
-        getReceivable: function getReceivable() {
-            var _this2 = this;
-
-            var para = {
-                page: this.page,
-                pageSize: this.pageSize,
-                buildingname: this.filters.buildingname,
-                buildname: this.filters.buildname,
-                roomname: this.filters.roomname,
-                startdate: this.filters.startdate,
-                enddate: this.filters.enddate
-            };
-            this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["i" /* getReceivableListPage */])(para).then(function (res) {
-                _this2.total = res.data.total;
-                _this2.Receivable = res.data.data;
-                _this2.listLoading = false;
-            });
-        },
-
-        //显示付款界面
-        handleRokeBack: function handleRokeBack(index, row) {
-            this.rokeBackFormVisible = true;
-            this.rokeBackForm = Object.assign({}, row);
-            this.rokeBackForm = {
-                tQdCompayId: row.tQdCompayId,
-                skType: 1,
-                meoney: '',
-                skrq: '',
-                memo: ''
-            };
-        },
-        //显示编辑界面
-        handleEdit: function handleEdit(index, row) {
-
-            this.editFormVisible = true;
-            this.editForm = Object.assign({}, row);
-            this.editForm = {
-                fkrq: '',
-                fkstaDate: '',
-                fkendDate: '',
-                fkje: '',
-                isFP: 1
-            };
-        },
-
-        //编辑
-        editSubmit: function editSubmit() {
-            var _this3 = this;
-
-            this.$refs.editForm.validate(function (valid) {
-                if (valid) {
-                    _this3.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this3.editLoading = true;
-                        var para = Object.assign({}, _this3.editForm);
-                        para.fkrq = new Date(para.fkrq).toLocaleDateString();
-                        para.fkstaDate = new Date(para.fkstaDate).toLocaleDateString();
-                        para.fkendDate = new Date(para.fkendDate).toLocaleDateString();
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["d" /* editReceivable */])(para).then(function (res) {
-                            _this3.editLoading = false;
-                            _this3.$message({
-                                message: '提交成功',
-                                type: 'success'
-                            });
-                            _this3.$refs['editForm'].resetFields();
-                            _this3.editFormVisible = false;
-                            _this3.getReceivable();
-                        });
-                    });
-                }
-            });
-        },
-        //付款
-        rokeBackSubmit: function rokeBackSubmit() {
-            var _this4 = this;
-
-            this.$refs.rokeBackForm.validate(function (valid) {
-                if (valid) {
-                    _this4.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this4.rokeBackLoading = true;
-                        var para = Object.assign({}, _this4.rokeBackForm);
-                        para.skrq = new Date(para.skrq).toLocaleDateString();
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["e" /* saveShouKuan */])(para).then(function (res) {
-                            _this4.rokeBackLoading = false;
-                            //NProgress.done();
-                            _this4.$message({
-                                message: '提交成功',
-                                type: 'success'
-                            });
-                            _this4.$refs['rokeBackForm'].resetFields();
-                            _this4.rokeBackFormVisible = false;
-                            _this4.getReceivable();
-                        });
-                    });
-                }
-            });
-        },
-        selsChange: function selsChange(sels) {
-            this.sels = sels;
-        }
-
-    },
-    mounted: function mounted() {
-        this.page = 1;
-        this.getReceivable();
-    }
-});
-
-/***/ }),
-/* 230 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: { ElForm: __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default.a },
-    data: function data() {
-        return {
-            options: [{
-                value: 1,
-                label: '押金'
-            }, {
-                value: 2,
-                label: '房租'
-            }],
-            showed: false,
-            //分页类数据
-            total: 0,
-            currentPage: 0,
-            pageSize: 10,
-            pageSizes: [10, 20, 30, 40, 50, 100],
-            ReceivableRecord: [],
-            listLoading: false,
-            sels: [], //列表选中列
-            //被选中的权限
-            checked: []
-        };
-    },
-
-    methods: {
-        //佣金类型显示转换
-        formatYJType: function formatYJType(row, column) {
-            return row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-        },
-        //时间戳转日期格式
-        changeDate: function changeDate(row, column) {
-            var newDate = new Date();
-            newDate.setTime(row.createdate);
-            return newDate.toLocaleDateString();
-        },
-
-
-        //页面跳转后
-        handleCurrentChange: function handleCurrentChange(val) {
-            this.page = val;
-            this.getReceivableRecord();
-        },
-
-        //更改每页显示数据
-        handleSizeChange: function handleSizeChange(val) {
-            this.pageSize = val;
-            this.getReceivableRecord();
-        },
-
-
-        //获取渠道公司列表
-        getReceivableRecord: function getReceivableRecord() {
-            var _this = this;
-
-            var para = {
-                page: this.page,
-                pageSize: this.pageSize
-            };
-            this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["h" /* getReceivableRecordListPage */])(para).then(function (res) {
-                _this.total = res.data.total;
-                _this.ReceivableRecord = res.data.data;
-                _this.listLoading = false;
-            });
-        },
-
-
-        selsChange: function selsChange(sels) {
-            this.sels = sels;
-        }
-
-    },
-    mounted: function mounted() {
-        this.page = 1;
-        this.getReceivableRecord();
-    }
-});
-
-/***/ }),
-/* 231 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: { ElForm: __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default.a },
-    data: function data() {
-        var _this = this;
-
-        return {
-            options: [{
-                value: 1,
-                label: '押金'
-            }, {
-                value: 2,
-                label: '房租'
-            }],
-            //分页类数据
-            total: 0,
-            currentPage: 0,
-            pageSize: 10,
-            pageSizes: [10, 20, 30, 40, 50, 100],
-            AccountsReceivable: [],
-            listLoading: false,
-            sels: [], //列表选中列
-
-            rokeBackFormVisible: false, //收款界面是否显示
-            rokeBackLoading: false,
-            rokeBackFormRules: {
-                skrq: [{ type: 'date', required: true, message: '请输入收款日期', trigger: 'change' }],
-                meoney: [{ required: true, message: '请输入收款金额', trigger: 'blur' }],
-                skType: [{ required: true, validator: function validator(rule, value, callback) {
-                        if (/^\d+$/.test(value) == false) {
-                            callback(new Error("请输入收款类型"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }]
-            },
-            //收款界面数据
-            rokeBackForm: {
-                tQdCompayId: 0,
-                skType: 1,
-                meoney: '',
-                skrq: '',
-                memo: ''
-            },
-            editFormVisible: false, //编辑界面是否显示
-            editLoading: false,
-            editFormRules: {
-                fkrq: [{ type: 'date', required: true, message: '请输入付款日期', trigger: 'change' }],
-                fkstaDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }],
-                fkendDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }, { required: true, validator: function validator(rule, value, callback) {
-                        var d1 = new Date(_this.editForm.fkstaDate);
-                        var d2 = new Date(value);
-                        if (d2 < d1) {
-                            callback(new Error("付款周期的结束日期不能小于开始日期"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'change' }],
-                fkje: [{ required: true, validator: function validator(rule, value, callback) {
-                        if (/^\d+$/.test(value) == false) {
-                            callback(new Error("请输入付款金额"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                isFP: [{ required: true, message: '请选择是否需要发票', trigger: 'blur' }]
-            },
-            //编辑界面数据
-            editForm: {
-                tQdCompayId: 0,
-                fkrq: '',
-                fkstaDate: '',
-                fkendDate: '',
-                fkje: '',
-                isFP: 1
-            },
-
-            addFormVisible: false, //新增界面是否显示
-            addLoading: false,
-            addFormRules: {
-                fkrq: [{ type: 'date', required: true, message: '请输入付款日期', trigger: 'change' }],
-                fkstaDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }],
-                fkendDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }, { required: true, validator: function validator(rule, value, callback) {
-                        var d1 = new Date(_this.editForm.fkstaDate);
-                        var d2 = new Date(value);
-                        if (d2 < d1) {
-                            callback(new Error("付款周期的结束日期不能小于开始日期"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'change' }],
-                fkje: [{ required: true, validator: function validator(rule, value, callback) {
-                        if (/^\d+$/.test(value) == false) {
-                            callback(new Error("请输入付款金额"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                isFP: [{ required: true, message: '请选择是否需要发票', trigger: 'blur' }]
-            },
-            //新增界面数据
-            addForm: {
-                tQdCompayId: 0,
-                fkrq: '',
-                fkstaDate: '',
-                fkendDate: '',
-                fkje: '',
-                isFP: 1
-            },
-            //被选中的权限
-            checked: []
-        };
-    },
-
-    methods: {
-        //佣金类型显示转换
-        formatYJType: function formatYJType(row, column) {
-            return row.yjType == 1 ? '押金' : row.yjType == 2 ? '房租' : '未知';
-        },
-        //时间戳转日期格式
-        changeDate: function changeDate(row, column) {
-            var newDate = new Date();
-            newDate.setTime(row.createdate);
-            return newDate.toLocaleDateString();
-        },
-
-
-        //页面跳转后
-        handleCurrentChange: function handleCurrentChange(val) {
-            this.page = val;
-            this.getAccountsReceivable();
-        },
-
-        //更改每页显示数据
-        handleSizeChange: function handleSizeChange(val) {
-            this.pageSize = val;
-            this.getAccountsReceivable();
-        },
-
-        //打开收款记录页面
-        handleOpen: function handleOpen() {
-            window.location.href = '#/payableRecord';
-        },
-        //获取应收款记录列表
-        getAccountsReceivable: function getAccountsReceivable() {
-            var _this2 = this;
-
-            var para = {
-                page: this.page,
-                pageSize: this.pageSize
-            };
-            this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["c" /* getAccountsReceivableListPage */])(para).then(function (res) {
-                _this2.total = res.data.total;
-                _this2.AccountsReceivable = res.data.data;
-                _this2.listLoading = false;
-            });
-        },
-
-        //显示收款界面
-        handleRokeBack: function handleRokeBack(index, row) {
-            this.rokeBackFormVisible = true;
-            this.rokeBackForm = Object.assign({}, row);
-            this.rokeBackForm = {
-                tQdCompayId: row.tQdCompayId,
-                skType: 1,
-                meoney: '',
-                skrq: '',
-                memo: ''
-            };
-        },
-        //显示新增界面
-        handleAdd: function handleAdd() {
-            this.addFormVisible = true;
-            this.addForm = {
-                fkrq: '',
-                fkstaDate: '',
-                fkendDate: '',
-                fkje: '',
-                isFP: 1
-            };
-        },
-        //显示编辑界面
-        handleEdit: function handleEdit(index, row) {
-            this.editFormVisible = true;
-            this.editForm = Object.assign({}, row);
-            this.editForm = {
-                tQdCompayId: row.tQdCompayId,
-                fkrq: '',
-                fkstaDate: '',
-                fkendDate: '',
-                fkje: '',
-                isFP: 2
-            };
-        },
-
-        //编辑
-        editSubmit: function editSubmit() {
-            var _this3 = this;
-
-            this.$refs.editForm.validate(function (valid) {
-                if (valid) {
-                    _this3.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this3.editLoading = true;
-                        var para = Object.assign({}, _this3.editForm);
-                        para.fkrq = new Date(para.fkrq).toLocaleDateString();
-                        para.fkstaDate = new Date(para.fkstaDate).toLocaleDateString();
-                        para.fkendDate = new Date(para.fkendDate).toLocaleDateString();
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["d" /* editReceivable */])(para).then(function (res) {
-                            _this3.editLoading = false;
-                            _this3.$message({
-                                message: '提交成功',
-                                type: 'success'
-                            });
-                            _this3.$refs['editForm'].resetFields();
-                            _this3.editFormVisible = false;
-                            _this3.getAccountsReceivable();
-                        });
-                    });
-                }
-            });
-        },
-        //收款
-        rokeBackSubmit: function rokeBackSubmit() {
-            var _this4 = this;
-
-            this.$refs.rokeBackForm.validate(function (valid) {
-                if (valid) {
-                    _this4.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this4.rokeBackLoading = true;
-                        var para = Object.assign({}, _this4.rokeBackForm);
-                        para.skrq = new Date(para.skrq).toLocaleDateString();
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["e" /* saveShouKuan */])(para).then(function (res) {
-                            _this4.rokeBackLoading = false;
-                            //NProgress.done();
-                            _this4.$message({
-                                message: '提交成功',
-                                type: 'success'
-                            });
-                            _this4.$refs['rokeBackForm'].resetFields();
-                            _this4.rokeBackFormVisible = false;
-                            _this4.getAccountsReceivable();
-                        });
-                    });
-                }
-            });
-        },
-        //新增
-        addSubmit: function addSubmit() {
-            var _this5 = this;
-
-            this.$refs.addForm.validate(function (valid) {
-                if (valid) {
-                    _this5.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this5.addLoading = true;
-                        //NProgress.start();
-                        var para = Object.assign({}, _this5.addForm);
-                        para.fkrq = new Date(para.fkrq).toLocaleDateString();
-                        para.fkstaDate = new Date(para.fkstaDate).toLocaleDateString();
-                        para.fkendDate = new Date(para.fkendDate).toLocaleDateString();
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["f" /* addReceivable */])(para).then(function (res) {
-                            _this5.addLoading = false;
-                            //NProgress.done();
-                            _this5.$message({
-                                message: '提交成功',
-                                type: 'success'
-                            });
-                            _this5.$refs['addForm'].resetFields();
-                            _this5.addFormVisible = false;
-                            _this5.getAccountsReceivable();
-                        });
-                    });
-                }
-            });
-        },
-        selsChange: function selsChange(sels) {
-            this.sels = sels;
-        },
-        //删除
-        handleDel: function handleDel(index, row) {
-            var _this6 = this;
-
-            this.$confirm('确认删除该记录吗?', '提示', {
-                type: 'warning'
-            }).then(function () {
-                _this6.listLoading = true;
-                //NProgress.start();
-                var para = { id: row.tQdCompayId };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["g" /* removeReceivable */])(para).then(function (res) {
-                    _this6.listLoading = false;
-                    //NProgress.done();
-                    if (res.data.code == '200') {
-                        _this6.$message({
-                            message: '删除成功',
-                            type: 'success'
-                        });
-                    } else {
-                        _this6.$message({
-                            message: res.data.msg,
-                            type: 'error'
-                        });
-                    }
-                    _this6.getAccountsReceivable();
-                });
-            }).catch(function () {});
-        }
-    },
-    mounted: function mounted() {
-        this.page = 1;
-        this.getAccountsReceivable();
-    }
-});
-
-/***/ }),
-/* 232 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(229),
-  /* template */
-  __webpack_require__(235),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "D:\\phpStudy\\WWW\\laravel\\resources\\assets\\js\\components\\Report\\payableList.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] payableList.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6966aef4", Component.options)
-  } else {
-    hotAPI.reload("data-v-6966aef4", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 233 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(230),
-  /* template */
-  __webpack_require__(237),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "D:\\phpStudy\\WWW\\laravel\\resources\\assets\\js\\components\\Report\\payableRecordList.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] payableRecordList.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ed8fc812", Component.options)
-  } else {
-    hotAPI.reload("data-v-ed8fc812", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 234 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(231),
-  /* template */
-  __webpack_require__(236),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "D:\\phpStudy\\WWW\\laravel\\resources\\assets\\js\\components\\Report\\paymentRecordList.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] paymentRecordList.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8de9760a", Component.options)
-  } else {
-    hotAPI.reload("data-v-8de9760a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 235 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
-    staticClass: "demo-form-inline",
-    attrs: {
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": ""
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "楼盘名称"
-    },
-    model: {
-      value: (_vm.filters.buildingname),
-      callback: function($$v) {
-        _vm.filters.buildingname = $$v
-      },
-      expression: "filters.buildingname"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": ""
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "楼栋名称"
-    },
-    model: {
-      value: (_vm.filters.buildname),
-      callback: function($$v) {
-        _vm.filters.buildname = $$v
-      },
-      expression: "filters.buildname"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": ""
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "房间号"
-    },
-    model: {
-      value: (_vm.filters.roomname),
-      callback: function($$v) {
-        _vm.filters.roomname = $$v
-      },
-      expression: "filters.roomname"
-    }
-  })], 1), _vm._v(" "), _c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "应付日期"
-    },
-    model: {
-      value: (_vm.filters.startdate),
-      callback: function($$v) {
-        _vm.filters.startdate = $$v
-      },
-      expression: "filters.startdate"
-    }
-  }), _vm._v(" "), _c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "至"
-    },
-    model: {
-      value: (_vm.filters.enddate),
-      callback: function($$v) {
-        _vm.filters.enddate = $$v
-      },
-      expression: "filters.enddate"
-    }
-  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary",
-      "icon": "search"
-    },
-    on: {
-      "click": _vm.getReceivable
-    }
-  }, [_vm._v("搜索")])], 1)], 1), _vm._v(" "), _c('el-tabs', {
-    on: {
-      "tab-click": _vm.handleClick
-    },
-    model: {
-      value: (_vm.first),
-      callback: function($$v) {
-        _vm.first = $$v
-      },
-      expression: "first"
-    }
-  }, [_c('el-tab-pane', {
-    attrs: {
-      "label": "未提交",
-      "name": "first"
-    }
-  }), _vm._v(" "), _c('el-tab-pane', {
-    attrs: {
-      "label": "已提交",
-      "name": "second"
-    }
-  }), _vm._v(" "), _c('el-tab-pane', {
-    attrs: {
-      "label": "已付款",
-      "name": "third"
-    }
-  })], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.Receivable,
-      "highlight-current-row": "",
-      "element-loading-text": "拼命加载中"
-    },
-    on: {
-      "selection-change": _vm.selsChange
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "compaytest",
-      "label": "楼盘"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbSf",
-      "label": "楼栋"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "房间号"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "业主"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "周期"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "付款日"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "compayname",
-      "label": "付款方式"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "compayname",
-      "label": "应付房租"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "compayname",
-      "label": "押金"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "compayname",
-      "label": "月租金"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "compayname",
-      "label": "户名"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "compayname",
-      "label": "收款银行"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "compayname",
-      "label": "状态"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "180"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleRokeBack(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("付款")]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleOpen(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("应付记录")])]
-      }
-    }])
-  })], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_vm._v("\n        应收房租：应收押金：合计：\n        "), _c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "current-page": _vm.currentPage,
-      "page-size": 10,
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "total": _vm.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "付款",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.rokeBackFormVisible),
-      callback: function($$v) {
-        _vm.rokeBackFormVisible = $$v
-      },
-      expression: "rokeBackFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "rokeBackForm",
-    attrs: {
-      "model": _vm.rokeBackForm,
-      "label-width": "120px",
-      "rules": _vm.rokeBackFormRules
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "hidden",
-      "prop": "tQdCompayId",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.rokeBackForm.tQdCompayId),
-      callback: function($$v) {
-        _vm.rokeBackForm.tQdCompayId = $$v
-      },
-      expression: "rokeBackForm.tQdCompayId"
-    }
-  }), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "收款类型",
-      "prop": "skType"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": ""
-    },
-    model: {
-      value: (_vm.rokeBackForm.skType),
-      callback: function($$v) {
-        _vm.rokeBackForm.skType = $$v
-      },
-      expression: "rokeBackForm.skType"
-    }
-  }, _vm._l((_vm.options), function(item) {
-    return _c('el-option', {
-      key: item.value,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  }))], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "金额",
-      "prop": "meoney"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "number",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.rokeBackForm.meoney),
-      callback: function($$v) {
-        _vm.rokeBackForm.meoney = $$v
-      },
-      expression: "rokeBackForm.meoney"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "收款日期",
-      "prop": "skrq"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.rokeBackForm.skrq),
-      callback: function($$v) {
-        _vm.rokeBackForm.skrq = $$v
-      },
-      expression: "rokeBackForm.skrq"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "备注",
-      "prop": "test"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.rokeBackForm.memo),
-      callback: function($$v) {
-        _vm.rokeBackForm.memo = $$v
-      },
-      expression: "rokeBackForm.memo"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.rokeBackFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.rokeBackLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.rokeBackSubmit($event)
-      }
-    }
-  }, [_vm._v("保存")])], 1)], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-6966aef4", module.exports)
-  }
-}
-
-/***/ }),
-/* 236 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.AccountsReceivable,
-      "highlight-current-row": "",
-      "element-loading-text": "拼命加载中"
-    },
-    on: {
-      "selection-change": _vm.selsChange
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "compayname",
-      "label": "收款日"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "compayname",
-      "label": "收款周期"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "compaytest",
-      "label": "收款项目"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbSf",
-      "label": "收款金额"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "月租金（元）"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "是否需要发票"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "是否收款"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "是否已开发票"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "200"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleRokeBack(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("提交付款")]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleOpen(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("付款记录")])]
-      }
-    }])
-  })], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "current-page": _vm.currentPage,
-      "page-size": 10,
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "total": _vm.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "编辑",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.editFormVisible),
-      callback: function($$v) {
-        _vm.editFormVisible = $$v
-      },
-      expression: "editFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "editForm",
-    attrs: {
-      "model": _vm.editForm,
-      "label-width": "120px",
-      "rules": _vm.editFormRules
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "hidden",
-      "prop": "tQdCompayId",
-      "auto-complete": "off"
-    }
-  }), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "付款日期",
-      "prop": "fkrq"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.fkrq),
-      callback: function($$v) {
-        _vm.editForm.fkrq = $$v
-      },
-      expression: "editForm.fkrq"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "付款周期",
-      "required": ""
-    }
-  }, [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "prop": "fkstaDate"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.fkstaDate),
-      callback: function($$v) {
-        _vm.editForm.fkstaDate = $$v
-      },
-      expression: "editForm.fkstaDate"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "line",
-    attrs: {
-      "span": 2
-    }
-  }, [_vm._v("至")]), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "prop": "fkendDate"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.fkendDate),
-      callback: function($$v) {
-        _vm.editForm.fkendDate = $$v
-      },
-      expression: "editForm.fkendDate"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "付款金额",
-      "prop": "fkje"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "number",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.fkje),
-      callback: function($$v) {
-        _vm.editForm.fkje = $$v
-      },
-      expression: "editForm.fkje"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "是否需要发票",
-      "prop": "isFP"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.editForm.isFP),
-      callback: function($$v) {
-        _vm.editForm.isFP = $$v
-      },
-      expression: "editForm.isFP"
-    }
-  }, [_c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": "1"
-    }
-  }, [_vm._v("是")]), _vm._v(" "), _c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": "2"
-    }
-  }, [_vm._v("否")])], 1)], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.editFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.editLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.editSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "新增",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.addFormVisible),
-      callback: function($$v) {
-        _vm.addFormVisible = $$v
-      },
-      expression: "addFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "addForm",
-    attrs: {
-      "model": _vm.addForm,
-      "label-width": "120px",
-      "rules": _vm.addFormRules
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "hidden",
-      "prop": "tQdCompayId",
-      "auto-complete": "off"
-    }
-  }), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "付款日期",
-      "prop": "fkrq"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.fkrq),
-      callback: function($$v) {
-        _vm.addForm.fkrq = $$v
-      },
-      expression: "addForm.fkrq"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "付款周期",
-      "required": ""
-    }
-  }, [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "prop": "fkstaDate"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.fkstaDate),
-      callback: function($$v) {
-        _vm.addForm.fkstaDate = $$v
-      },
-      expression: "addForm.fkstaDate"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "line",
-    attrs: {
-      "span": 2
-    }
-  }, [_vm._v("至")]), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "prop": "fkendDate"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.fkendDate),
-      callback: function($$v) {
-        _vm.addForm.fkendDate = $$v
-      },
-      expression: "addForm.fkendDate"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "付款金额",
-      "prop": "fkje"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "number",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.fkje),
-      callback: function($$v) {
-        _vm.addForm.fkje = $$v
-      },
-      expression: "addForm.fkje"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "是否需要发票",
-      "prop": "isFP"
-    }
-  }, [_c('el-radio-group', {
-    model: {
-      value: (_vm.addForm.isFP),
-      callback: function($$v) {
-        _vm.addForm.isFP = $$v
-      },
-      expression: "addForm.isFP"
-    }
-  }, [_c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": "1"
-    }
-  }, [_vm._v("是")]), _vm._v(" "), _c('el-radio', {
-    staticClass: "radio",
-    attrs: {
-      "label": "2"
-    }
-  }, [_vm._v("否")])], 1)], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.addFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.addLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.addSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "收款",
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.rokeBackFormVisible),
-      callback: function($$v) {
-        _vm.rokeBackFormVisible = $$v
-      },
-      expression: "rokeBackFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "rokeBackForm",
-    attrs: {
-      "model": _vm.rokeBackForm,
-      "label-width": "120px",
-      "rules": _vm.rokeBackFormRules
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "hidden",
-      "prop": "tQdCompayId",
-      "auto-complete": "off"
-    }
-  }), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "收款类型",
-      "prop": "skType"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": ""
-    },
-    model: {
-      value: (_vm.rokeBackForm.skType),
-      callback: function($$v) {
-        _vm.rokeBackForm.skType = $$v
-      },
-      expression: "rokeBackForm.skType"
-    }
-  }, _vm._l((_vm.options), function(item) {
-    return _c('el-option', {
-      key: item.value,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  }))], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "金额",
-      "prop": "meoney"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "number",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.rokeBackForm.meoney),
-      callback: function($$v) {
-        _vm.rokeBackForm.meoney = $$v
-      },
-      expression: "rokeBackForm.meoney"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "收款日期",
-      "prop": "skrq"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.rokeBackForm.skrq),
-      callback: function($$v) {
-        _vm.rokeBackForm.skrq = $$v
-      },
-      expression: "rokeBackForm.skrq"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "备注",
-      "prop": "test"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.rokeBackForm.memo),
-      callback: function($$v) {
-        _vm.rokeBackForm.memo = $$v
-      },
-      expression: "rokeBackForm.memo"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.rokeBackFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.rokeBackLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.rokeBackSubmit($event)
-      }
-    }
-  }, [_vm._v("保存")])], 1)], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-8de9760a", module.exports)
-  }
-}
-
-/***/ }),
-/* 237 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.ReceivableRecord,
-      "highlight-current-row": "",
-      "element-loading-text": "拼命加载中"
-    },
-    on: {
-      "selection-change": _vm.selsChange
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "compayname",
-      "label": "收款日"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "compaytest",
-      "label": "收款类型"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbSf",
-      "label": "收款金额"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "收款人"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "收款时间"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "yjzbCf",
-      "label": "收款备注"
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "current-page": _vm.currentPage,
-      "page-size": 10,
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "total": _vm.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-ed8fc812", module.exports)
-  }
-}
-
-/***/ }),
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
 /* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -106728,6 +105062,2116 @@ if(false) {
  }
  // When the module is disposed, remove the <style> tags
  module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 253 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { ElForm: __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default.a },
+    data: function data() {
+        var _this = this;
+
+        return {
+            filters: {
+                buildingname: '',
+                buildname: '',
+                roomname: '',
+                startdate: '',
+                enddate: ''
+
+            },
+            options: [{
+                value: 1,
+                label: '押金'
+            }, {
+                value: 2,
+                label: '房租'
+            }],
+            //分页类数据
+            total: 0,
+            currentPage: 0,
+            pageSize: 10,
+            pageSizes: [10, 20, 30, 40, 50, 100],
+            Receivable: [],
+            listLoading: false,
+            sels: [], //列表选中列
+
+            rokeBackFormVisible: false, //收款界面是否显示
+            rokeBackLoading: false,
+            rokeBackFormRules: {
+                skrq: [{ type: 'date', required: true, message: '请输入收款日期', trigger: 'change' }],
+                meoney: [{ required: true, message: '请输入收款金额', trigger: 'blur' }],
+                skType: [{ required: true, validator: function validator(rule, value, callback) {
+                        if (/^\d+$/.test(value) == false) {
+                            callback(new Error("请输入收款类型"));
+                        } else {
+                            callback();
+                        }
+                    }, trigger: 'blur' }]
+            },
+
+            editFormVisible: false, //编辑界面是否显示
+            editLoading: false,
+            editFormRules: {
+                fkrq: [{ type: 'date', required: true, message: '请输入付款日期', trigger: 'change' }],
+                fkstaDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }],
+                fkendDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }, { required: true, validator: function validator(rule, value, callback) {
+                        var d1 = new Date(_this.editForm.fkstaDate);
+                        var d2 = new Date(value);
+                        if (d2 < d1) {
+                            callback(new Error("付款周期的结束日期不能小于开始日期"));
+                        } else {
+                            callback();
+                        }
+                    }, trigger: 'change' }],
+                fkje: [{ required: true, validator: function validator(rule, value, callback) {
+                        if (/^\d+$/.test(value) == false) {
+                            callback(new Error("请输入付款金额"));
+                        } else {
+                            callback();
+                        }
+                    }, trigger: 'blur' }],
+                isFP: [{ required: true, message: '请选择是否需要发票', trigger: 'blur' }]
+            },
+            //编辑界面数据
+            editForm: {
+
+                fkrq: '',
+                fkstaDate: '',
+                fkendDate: '',
+                fkje: '',
+                isFP: ''
+            },
+
+            //付款界面数据
+            rokeBackForm: {
+                tQdCompayId: 0,
+                skType: 1,
+                meoney: '',
+                skrq: '',
+                memo: ''
+            },
+
+            //被选中的权限
+            checked: []
+        };
+    },
+
+    methods: {
+        //佣金类型显示转换
+        formatYJType: function formatYJType(row, column) {
+            return '<a href="#">' + row.compayname + '</a>';
+        },
+        //时间戳转日期格式
+        changeDate: function changeDate(row, column) {
+            var newDate = new Date();
+            newDate.setTime(row.createdate);
+            return newDate.toLocaleDateString();
+        },
+
+        //标签切换时
+        handleClick: function handleClick(tab, event) {
+            console.log(tab, event);
+        },
+
+        //页面跳转后
+        handleCurrentChange: function handleCurrentChange(val) {
+            this.page = val;
+            this.getReceivable();
+        },
+
+        //更改每页显示数据
+        handleSizeChange: function handleSizeChange(val) {
+            this.pageSize = val;
+            this.getReceivable();
+        },
+
+        //打开应付记录页面
+        handleOpen: function handleOpen() {
+            window.open('#/paymentRecord');
+        },
+        //获取应付款列表
+        getReceivable: function getReceivable() {
+            var _this2 = this;
+
+            var para = {
+                page: this.page,
+                pageSize: this.pageSize,
+                buildingname: this.filters.buildingname,
+                buildname: this.filters.buildname,
+                roomname: this.filters.roomname,
+                startdate: this.filters.startdate,
+                enddate: this.filters.enddate
+            };
+            this.listLoading = true;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["i" /* getReceivableListPage */])(para).then(function (res) {
+                _this2.total = res.data.total;
+                _this2.Receivable = res.data.data;
+                _this2.listLoading = false;
+            });
+        },
+
+        //显示付款界面
+        handleRokeBack: function handleRokeBack(index, row) {
+            this.rokeBackFormVisible = true;
+            this.rokeBackForm = Object.assign({}, row);
+            this.rokeBackForm = {
+                tQdCompayId: row.tQdCompayId,
+                skType: 1,
+                meoney: '',
+                skrq: '',
+                memo: ''
+            };
+        },
+        //显示编辑界面
+        handleEdit: function handleEdit(index, row) {
+
+            this.editFormVisible = true;
+            this.editForm = Object.assign({}, row);
+            this.editForm = {
+                fkrq: '',
+                fkstaDate: '',
+                fkendDate: '',
+                fkje: '',
+                isFP: 1
+            };
+        },
+
+        //编辑
+        editSubmit: function editSubmit() {
+            var _this3 = this;
+
+            this.$refs.editForm.validate(function (valid) {
+                if (valid) {
+                    _this3.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this3.editLoading = true;
+                        var para = Object.assign({}, _this3.editForm);
+                        para.fkrq = new Date(para.fkrq).toLocaleDateString();
+                        para.fkstaDate = new Date(para.fkstaDate).toLocaleDateString();
+                        para.fkendDate = new Date(para.fkendDate).toLocaleDateString();
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["d" /* editReceivable */])(para).then(function (res) {
+                            _this3.editLoading = false;
+                            _this3.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            _this3.$refs['editForm'].resetFields();
+                            _this3.editFormVisible = false;
+                            _this3.getReceivable();
+                        });
+                    });
+                }
+            });
+        },
+        //付款
+        rokeBackSubmit: function rokeBackSubmit() {
+            var _this4 = this;
+
+            this.$refs.rokeBackForm.validate(function (valid) {
+                if (valid) {
+                    _this4.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this4.rokeBackLoading = true;
+                        var para = Object.assign({}, _this4.rokeBackForm);
+                        para.skrq = new Date(para.skrq).toLocaleDateString();
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["e" /* saveShouKuan */])(para).then(function (res) {
+                            _this4.rokeBackLoading = false;
+                            //NProgress.done();
+                            _this4.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            _this4.$refs['rokeBackForm'].resetFields();
+                            _this4.rokeBackFormVisible = false;
+                            _this4.getReceivable();
+                        });
+                    });
+                }
+            });
+        },
+        selsChange: function selsChange(sels) {
+            this.sels = sels;
+        }
+
+    },
+    mounted: function mounted() {
+        this.page = 1;
+        this.getReceivable();
+    }
+});
+
+/***/ }),
+/* 254 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { ElForm: __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default.a },
+    data: function data() {
+        return {
+            options: [{
+                value: 1,
+                label: '押金'
+            }, {
+                value: 2,
+                label: '房租'
+            }],
+            showed: false,
+            //分页类数据
+            total: 0,
+            currentPage: 0,
+            pageSize: 10,
+            pageSizes: [10, 20, 30, 40, 50, 100],
+            ReceivableRecord: [],
+            listLoading: false,
+            sels: [], //列表选中列
+            //被选中的权限
+            checked: []
+        };
+    },
+
+    methods: {
+        //佣金类型显示转换
+        formatYJType: function formatYJType(row, column) {
+            return row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
+        },
+        //时间戳转日期格式
+        changeDate: function changeDate(row, column) {
+            var newDate = new Date();
+            newDate.setTime(row.createdate);
+            return newDate.toLocaleDateString();
+        },
+
+
+        //页面跳转后
+        handleCurrentChange: function handleCurrentChange(val) {
+            this.page = val;
+            this.getReceivableRecord();
+        },
+
+        //更改每页显示数据
+        handleSizeChange: function handleSizeChange(val) {
+            this.pageSize = val;
+            this.getReceivableRecord();
+        },
+
+
+        //获取渠道公司列表
+        getReceivableRecord: function getReceivableRecord() {
+            var _this = this;
+
+            var para = {
+                page: this.page,
+                pageSize: this.pageSize
+            };
+            this.listLoading = true;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["h" /* getReceivableRecordListPage */])(para).then(function (res) {
+                _this.total = res.data.total;
+                _this.ReceivableRecord = res.data.data;
+                _this.listLoading = false;
+            });
+        },
+
+
+        selsChange: function selsChange(sels) {
+            this.sels = sels;
+        }
+
+    },
+    mounted: function mounted() {
+        this.page = 1;
+        this.getReceivableRecord();
+    }
+});
+
+/***/ }),
+/* 255 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { ElForm: __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default.a },
+    data: function data() {
+        var _this = this;
+
+        return {
+            options: [{
+                value: 1,
+                label: '押金'
+            }, {
+                value: 2,
+                label: '房租'
+            }],
+            //分页类数据
+            total: 0,
+            currentPage: 0,
+            pageSize: 10,
+            pageSizes: [10, 20, 30, 40, 50, 100],
+            AccountsReceivable: [],
+            listLoading: false,
+            sels: [], //列表选中列
+
+            rokeBackFormVisible: false, //收款界面是否显示
+            rokeBackLoading: false,
+            rokeBackFormRules: {
+                skrq: [{ type: 'date', required: true, message: '请输入收款日期', trigger: 'change' }],
+                meoney: [{ required: true, message: '请输入收款金额', trigger: 'blur' }],
+                skType: [{ required: true, validator: function validator(rule, value, callback) {
+                        if (/^\d+$/.test(value) == false) {
+                            callback(new Error("请输入收款类型"));
+                        } else {
+                            callback();
+                        }
+                    }, trigger: 'blur' }]
+            },
+            //收款界面数据
+            rokeBackForm: {
+                tQdCompayId: 0,
+                skType: 1,
+                meoney: '',
+                skrq: '',
+                memo: ''
+            },
+            editFormVisible: false, //编辑界面是否显示
+            editLoading: false,
+            editFormRules: {
+                fkrq: [{ type: 'date', required: true, message: '请输入付款日期', trigger: 'change' }],
+                fkstaDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }],
+                fkendDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }, { required: true, validator: function validator(rule, value, callback) {
+                        var d1 = new Date(_this.editForm.fkstaDate);
+                        var d2 = new Date(value);
+                        if (d2 < d1) {
+                            callback(new Error("付款周期的结束日期不能小于开始日期"));
+                        } else {
+                            callback();
+                        }
+                    }, trigger: 'change' }],
+                fkje: [{ required: true, validator: function validator(rule, value, callback) {
+                        if (/^\d+$/.test(value) == false) {
+                            callback(new Error("请输入付款金额"));
+                        } else {
+                            callback();
+                        }
+                    }, trigger: 'blur' }],
+                isFP: [{ required: true, message: '请选择是否需要发票', trigger: 'blur' }]
+            },
+            //编辑界面数据
+            editForm: {
+                tQdCompayId: 0,
+                fkrq: '',
+                fkstaDate: '',
+                fkendDate: '',
+                fkje: '',
+                isFP: 1
+            },
+
+            addFormVisible: false, //新增界面是否显示
+            addLoading: false,
+            addFormRules: {
+                fkrq: [{ type: 'date', required: true, message: '请输入付款日期', trigger: 'change' }],
+                fkstaDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }],
+                fkendDate: [{ type: 'date', required: true, message: '请输入付款周期', trigger: 'change' }, { required: true, validator: function validator(rule, value, callback) {
+                        var d1 = new Date(_this.editForm.fkstaDate);
+                        var d2 = new Date(value);
+                        if (d2 < d1) {
+                            callback(new Error("付款周期的结束日期不能小于开始日期"));
+                        } else {
+                            callback();
+                        }
+                    }, trigger: 'change' }],
+                fkje: [{ required: true, validator: function validator(rule, value, callback) {
+                        if (/^\d+$/.test(value) == false) {
+                            callback(new Error("请输入付款金额"));
+                        } else {
+                            callback();
+                        }
+                    }, trigger: 'blur' }],
+                isFP: [{ required: true, message: '请选择是否需要发票', trigger: 'blur' }]
+            },
+            //新增界面数据
+            addForm: {
+                tQdCompayId: 0,
+                fkrq: '',
+                fkstaDate: '',
+                fkendDate: '',
+                fkje: '',
+                isFP: 1
+            },
+            //被选中的权限
+            checked: []
+        };
+    },
+
+    methods: {
+        //佣金类型显示转换
+        formatYJType: function formatYJType(row, column) {
+            return row.yjType == 1 ? '押金' : row.yjType == 2 ? '房租' : '未知';
+        },
+        //时间戳转日期格式
+        changeDate: function changeDate(row, column) {
+            var newDate = new Date();
+            newDate.setTime(row.createdate);
+            return newDate.toLocaleDateString();
+        },
+
+
+        //页面跳转后
+        handleCurrentChange: function handleCurrentChange(val) {
+            this.page = val;
+            this.getAccountsReceivable();
+        },
+
+        //更改每页显示数据
+        handleSizeChange: function handleSizeChange(val) {
+            this.pageSize = val;
+            this.getAccountsReceivable();
+        },
+
+        //打开收款记录页面
+        handleOpen: function handleOpen() {
+            window.location.href = '#/payableRecord';
+        },
+        //获取应收款记录列表
+        getAccountsReceivable: function getAccountsReceivable() {
+            var _this2 = this;
+
+            var para = {
+                page: this.page,
+                pageSize: this.pageSize
+            };
+            this.listLoading = true;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["c" /* getAccountsReceivableListPage */])(para).then(function (res) {
+                _this2.total = res.data.total;
+                _this2.AccountsReceivable = res.data.data;
+                _this2.listLoading = false;
+            });
+        },
+
+        //显示收款界面
+        handleRokeBack: function handleRokeBack(index, row) {
+            this.rokeBackFormVisible = true;
+            this.rokeBackForm = Object.assign({}, row);
+            this.rokeBackForm = {
+                tQdCompayId: row.tQdCompayId,
+                skType: 1,
+                meoney: '',
+                skrq: '',
+                memo: ''
+            };
+        },
+        //显示新增界面
+        handleAdd: function handleAdd() {
+            this.addFormVisible = true;
+            this.addForm = {
+                fkrq: '',
+                fkstaDate: '',
+                fkendDate: '',
+                fkje: '',
+                isFP: 1
+            };
+        },
+        //显示编辑界面
+        handleEdit: function handleEdit(index, row) {
+            this.editFormVisible = true;
+            this.editForm = Object.assign({}, row);
+            this.editForm = {
+                tQdCompayId: row.tQdCompayId,
+                fkrq: '',
+                fkstaDate: '',
+                fkendDate: '',
+                fkje: '',
+                isFP: 2
+            };
+        },
+
+        //编辑
+        editSubmit: function editSubmit() {
+            var _this3 = this;
+
+            this.$refs.editForm.validate(function (valid) {
+                if (valid) {
+                    _this3.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this3.editLoading = true;
+                        var para = Object.assign({}, _this3.editForm);
+                        para.fkrq = new Date(para.fkrq).toLocaleDateString();
+                        para.fkstaDate = new Date(para.fkstaDate).toLocaleDateString();
+                        para.fkendDate = new Date(para.fkendDate).toLocaleDateString();
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["d" /* editReceivable */])(para).then(function (res) {
+                            _this3.editLoading = false;
+                            _this3.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            _this3.$refs['editForm'].resetFields();
+                            _this3.editFormVisible = false;
+                            _this3.getAccountsReceivable();
+                        });
+                    });
+                }
+            });
+        },
+        //收款
+        rokeBackSubmit: function rokeBackSubmit() {
+            var _this4 = this;
+
+            this.$refs.rokeBackForm.validate(function (valid) {
+                if (valid) {
+                    _this4.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this4.rokeBackLoading = true;
+                        var para = Object.assign({}, _this4.rokeBackForm);
+                        para.skrq = new Date(para.skrq).toLocaleDateString();
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["e" /* saveShouKuan */])(para).then(function (res) {
+                            _this4.rokeBackLoading = false;
+                            //NProgress.done();
+                            _this4.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            _this4.$refs['rokeBackForm'].resetFields();
+                            _this4.rokeBackFormVisible = false;
+                            _this4.getAccountsReceivable();
+                        });
+                    });
+                }
+            });
+        },
+        //新增
+        addSubmit: function addSubmit() {
+            var _this5 = this;
+
+            this.$refs.addForm.validate(function (valid) {
+                if (valid) {
+                    _this5.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this5.addLoading = true;
+                        //NProgress.start();
+                        var para = Object.assign({}, _this5.addForm);
+                        para.fkrq = new Date(para.fkrq).toLocaleDateString();
+                        para.fkstaDate = new Date(para.fkstaDate).toLocaleDateString();
+                        para.fkendDate = new Date(para.fkendDate).toLocaleDateString();
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["f" /* addReceivable */])(para).then(function (res) {
+                            _this5.addLoading = false;
+                            //NProgress.done();
+                            _this5.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            _this5.$refs['addForm'].resetFields();
+                            _this5.addFormVisible = false;
+                            _this5.getAccountsReceivable();
+                        });
+                    });
+                }
+            });
+        },
+        selsChange: function selsChange(sels) {
+            this.sels = sels;
+        },
+        //删除
+        handleDel: function handleDel(index, row) {
+            var _this6 = this;
+
+            this.$confirm('确认删除该记录吗?', '提示', {
+                type: 'warning'
+            }).then(function () {
+                _this6.listLoading = true;
+                //NProgress.start();
+                var para = { id: row.tQdCompayId };
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["g" /* removeReceivable */])(para).then(function (res) {
+                    _this6.listLoading = false;
+                    //NProgress.done();
+                    if (res.data.code == '200') {
+                        _this6.$message({
+                            message: '删除成功',
+                            type: 'success'
+                        });
+                    } else {
+                        _this6.$message({
+                            message: res.data.msg,
+                            type: 'error'
+                        });
+                    }
+                    _this6.getAccountsReceivable();
+                });
+            }).catch(function () {});
+        }
+    },
+    mounted: function mounted() {
+        this.page = 1;
+        this.getAccountsReceivable();
+    }
+});
+
+/***/ }),
+/* 256 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(253),
+  /* template */
+  __webpack_require__(261),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel\\resources\\assets\\js\\components\\report\\payableList.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] payableList.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c7f80734", Component.options)
+  } else {
+    hotAPI.reload("data-v-c7f80734", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(254),
+  /* template */
+  __webpack_require__(260),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel\\resources\\assets\\js\\components\\report\\payableRecordList.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] payableRecordList.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b94df052", Component.options)
+  } else {
+    hotAPI.reload("data-v-b94df052", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 258 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(255),
+  /* template */
+  __webpack_require__(259),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel\\resources\\assets\\js\\components\\report\\paymentRecordList.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] paymentRecordList.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-59a79e4a", Component.options)
+  } else {
+    hotAPI.reload("data-v-59a79e4a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 259 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', [_c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.AccountsReceivable,
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "compayname",
+      "label": "收款日"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "compayname",
+      "label": "收款周期"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "compaytest",
+      "label": "收款项目"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbSf",
+      "label": "收款金额"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "月租金（元）"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "是否需要发票"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "是否收款"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "是否已开发票"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "200"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleRokeBack(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("提交付款")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleOpen(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("付款记录")])]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "current-page": _vm.currentPage,
+      "page-size": 10,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "编辑",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.editFormVisible),
+      callback: function($$v) {
+        _vm.editFormVisible = $$v
+      },
+      expression: "editFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "editForm",
+    attrs: {
+      "model": _vm.editForm,
+      "label-width": "120px",
+      "rules": _vm.editFormRules
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "hidden",
+      "prop": "tQdCompayId",
+      "auto-complete": "off"
+    }
+  }), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "付款日期",
+      "prop": "fkrq"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.fkrq),
+      callback: function($$v) {
+        _vm.editForm.fkrq = $$v
+      },
+      expression: "editForm.fkrq"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "付款周期",
+      "required": ""
+    }
+  }, [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "prop": "fkstaDate"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.fkstaDate),
+      callback: function($$v) {
+        _vm.editForm.fkstaDate = $$v
+      },
+      expression: "editForm.fkstaDate"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "line",
+    attrs: {
+      "span": 2
+    }
+  }, [_vm._v("至")]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "prop": "fkendDate"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.fkendDate),
+      callback: function($$v) {
+        _vm.editForm.fkendDate = $$v
+      },
+      expression: "editForm.fkendDate"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "付款金额",
+      "prop": "fkje"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.fkje),
+      callback: function($$v) {
+        _vm.editForm.fkje = $$v
+      },
+      expression: "editForm.fkje"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "是否需要发票",
+      "prop": "isFP"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.editForm.isFP),
+      callback: function($$v) {
+        _vm.editForm.isFP = $$v
+      },
+      expression: "editForm.isFP"
+    }
+  }, [_c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": "1"
+    }
+  }, [_vm._v("是")]), _vm._v(" "), _c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": "2"
+    }
+  }, [_vm._v("否")])], 1)], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.editFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.editLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.editSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "新增",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.addFormVisible),
+      callback: function($$v) {
+        _vm.addFormVisible = $$v
+      },
+      expression: "addFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "addForm",
+    attrs: {
+      "model": _vm.addForm,
+      "label-width": "120px",
+      "rules": _vm.addFormRules
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "hidden",
+      "prop": "tQdCompayId",
+      "auto-complete": "off"
+    }
+  }), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "付款日期",
+      "prop": "fkrq"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.fkrq),
+      callback: function($$v) {
+        _vm.addForm.fkrq = $$v
+      },
+      expression: "addForm.fkrq"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "付款周期",
+      "required": ""
+    }
+  }, [_c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "prop": "fkstaDate"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.fkstaDate),
+      callback: function($$v) {
+        _vm.addForm.fkstaDate = $$v
+      },
+      expression: "addForm.fkstaDate"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "line",
+    attrs: {
+      "span": 2
+    }
+  }, [_vm._v("至")]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 8
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "prop": "fkendDate"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.fkendDate),
+      callback: function($$v) {
+        _vm.addForm.fkendDate = $$v
+      },
+      expression: "addForm.fkendDate"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "付款金额",
+      "prop": "fkje"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.fkje),
+      callback: function($$v) {
+        _vm.addForm.fkje = $$v
+      },
+      expression: "addForm.fkje"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "是否需要发票",
+      "prop": "isFP"
+    }
+  }, [_c('el-radio-group', {
+    model: {
+      value: (_vm.addForm.isFP),
+      callback: function($$v) {
+        _vm.addForm.isFP = $$v
+      },
+      expression: "addForm.isFP"
+    }
+  }, [_c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": "1"
+    }
+  }, [_vm._v("是")]), _vm._v(" "), _c('el-radio', {
+    staticClass: "radio",
+    attrs: {
+      "label": "2"
+    }
+  }, [_vm._v("否")])], 1)], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.addFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.addLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.addSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "收款",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.rokeBackFormVisible),
+      callback: function($$v) {
+        _vm.rokeBackFormVisible = $$v
+      },
+      expression: "rokeBackFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "rokeBackForm",
+    attrs: {
+      "model": _vm.rokeBackForm,
+      "label-width": "120px",
+      "rules": _vm.rokeBackFormRules
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "hidden",
+      "prop": "tQdCompayId",
+      "auto-complete": "off"
+    }
+  }), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "收款类型",
+      "prop": "skType"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": ""
+    },
+    model: {
+      value: (_vm.rokeBackForm.skType),
+      callback: function($$v) {
+        _vm.rokeBackForm.skType = $$v
+      },
+      expression: "rokeBackForm.skType"
+    }
+  }, _vm._l((_vm.options), function(item) {
+    return _c('el-option', {
+      key: item.value,
+      attrs: {
+        "label": item.label,
+        "value": item.value
+      }
+    })
+  }))], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "金额",
+      "prop": "meoney"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.rokeBackForm.meoney),
+      callback: function($$v) {
+        _vm.rokeBackForm.meoney = $$v
+      },
+      expression: "rokeBackForm.meoney"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "收款日期",
+      "prop": "skrq"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.rokeBackForm.skrq),
+      callback: function($$v) {
+        _vm.rokeBackForm.skrq = $$v
+      },
+      expression: "rokeBackForm.skrq"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "备注",
+      "prop": "test"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.rokeBackForm.memo),
+      callback: function($$v) {
+        _vm.rokeBackForm.memo = $$v
+      },
+      expression: "rokeBackForm.memo"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.rokeBackFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.rokeBackLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.rokeBackSubmit($event)
+      }
+    }
+  }, [_vm._v("保存")])], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-59a79e4a", module.exports)
+  }
+}
+
+/***/ }),
+/* 260 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', [_c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.ReceivableRecord,
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "compayname",
+      "label": "收款日"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "compaytest",
+      "label": "收款类型"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbSf",
+      "label": "收款金额"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "收款人"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "收款时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "收款备注"
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "current-page": _vm.currentPage,
+      "page-size": 10,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-b94df052", module.exports)
+  }
+}
+
+/***/ }),
+/* 261 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', [_c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-form', {
+    staticClass: "demo-form-inline",
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": ""
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "楼盘名称"
+    },
+    model: {
+      value: (_vm.filters.buildingname),
+      callback: function($$v) {
+        _vm.filters.buildingname = $$v
+      },
+      expression: "filters.buildingname"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": ""
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "楼栋名称"
+    },
+    model: {
+      value: (_vm.filters.buildname),
+      callback: function($$v) {
+        _vm.filters.buildname = $$v
+      },
+      expression: "filters.buildname"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": ""
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "房间号"
+    },
+    model: {
+      value: (_vm.filters.roomname),
+      callback: function($$v) {
+        _vm.filters.roomname = $$v
+      },
+      expression: "filters.roomname"
+    }
+  })], 1), _vm._v(" "), _c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "应付日期"
+    },
+    model: {
+      value: (_vm.filters.startdate),
+      callback: function($$v) {
+        _vm.filters.startdate = $$v
+      },
+      expression: "filters.startdate"
+    }
+  }), _vm._v(" "), _c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "至"
+    },
+    model: {
+      value: (_vm.filters.enddate),
+      callback: function($$v) {
+        _vm.filters.enddate = $$v
+      },
+      expression: "filters.enddate"
+    }
+  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary",
+      "icon": "search"
+    },
+    on: {
+      "click": _vm.getReceivable
+    }
+  }, [_vm._v("搜索")])], 1)], 1), _vm._v(" "), _c('el-tabs', {
+    on: {
+      "tab-click": _vm.handleClick
+    },
+    model: {
+      value: (_vm.first),
+      callback: function($$v) {
+        _vm.first = $$v
+      },
+      expression: "first"
+    }
+  }, [_c('el-tab-pane', {
+    attrs: {
+      "label": "未提交",
+      "name": "first"
+    }
+  }), _vm._v(" "), _c('el-tab-pane', {
+    attrs: {
+      "label": "已提交",
+      "name": "second"
+    }
+  }), _vm._v(" "), _c('el-tab-pane', {
+    attrs: {
+      "label": "已付款",
+      "name": "third"
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.Receivable,
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "compaytest",
+      "label": "楼盘"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbSf",
+      "label": "楼栋"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "房间号"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "业主"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "周期"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "yjzbCf",
+      "label": "付款日"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "compayname",
+      "label": "付款方式"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "compayname",
+      "label": "应付房租"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "compayname",
+      "label": "押金"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "compayname",
+      "label": "月租金"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "compayname",
+      "label": "户名"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "compayname",
+      "label": "收款银行"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "compayname",
+      "label": "状态"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "180"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleRokeBack(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("付款")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleOpen(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("应付记录")])]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_vm._v("\n        应收房租：应收押金：合计：\n        "), _c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "current-page": _vm.currentPage,
+      "page-size": 10,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "付款",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.rokeBackFormVisible),
+      callback: function($$v) {
+        _vm.rokeBackFormVisible = $$v
+      },
+      expression: "rokeBackFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "rokeBackForm",
+    attrs: {
+      "model": _vm.rokeBackForm,
+      "label-width": "120px",
+      "rules": _vm.rokeBackFormRules
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "hidden",
+      "prop": "tQdCompayId",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.rokeBackForm.tQdCompayId),
+      callback: function($$v) {
+        _vm.rokeBackForm.tQdCompayId = $$v
+      },
+      expression: "rokeBackForm.tQdCompayId"
+    }
+  }), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "收款类型",
+      "prop": "skType"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": ""
+    },
+    model: {
+      value: (_vm.rokeBackForm.skType),
+      callback: function($$v) {
+        _vm.rokeBackForm.skType = $$v
+      },
+      expression: "rokeBackForm.skType"
+    }
+  }, _vm._l((_vm.options), function(item) {
+    return _c('el-option', {
+      key: item.value,
+      attrs: {
+        "label": item.label,
+        "value": item.value
+      }
+    })
+  }))], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "金额",
+      "prop": "meoney"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "number",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.rokeBackForm.meoney),
+      callback: function($$v) {
+        _vm.rokeBackForm.meoney = $$v
+      },
+      expression: "rokeBackForm.meoney"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "收款日期",
+      "prop": "skrq"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.rokeBackForm.skrq),
+      callback: function($$v) {
+        _vm.rokeBackForm.skrq = $$v
+      },
+      expression: "rokeBackForm.skrq"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "备注",
+      "prop": "test"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.rokeBackForm.memo),
+      callback: function($$v) {
+        _vm.rokeBackForm.memo = $$v
+      },
+      expression: "rokeBackForm.memo"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.rokeBackFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.rokeBackLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.rokeBackSubmit($event)
+      }
+    }
+  }, [_vm._v("保存")])], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-c7f80734", module.exports)
+  }
 }
 
 /***/ })

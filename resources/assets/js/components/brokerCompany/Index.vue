@@ -288,29 +288,7 @@
                 newDate.setTime(row.createdate);
                 return newDate.toLocaleDateString()
             },
-            //判断渠道公司名称是否重复
-            changeCountAdd: function() {
 
-            },
-            //判断渠道公司名称是否重复
-            changeCountEidt: function() {
-                let para = {
-                    name: this.editForm.compayname
-                };
-                if(this.editForm.compayname!=''){
-                    checkbkNameList(para).then((res) => {
-                        //alert( JSON.stringify(res));
-                        if(res.data.code!='200')
-                        {
-
-                            this.$message({
-                                message: "公司名称已存在",
-                                type: 'error'
-                            });
-                        }
-                    })
-                }
-            },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;

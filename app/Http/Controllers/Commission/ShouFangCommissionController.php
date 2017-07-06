@@ -49,19 +49,13 @@ class ShouFangCommissionController extends Controller
      */
     public function create()
     {
-//        $info = Input::get();
-//        if($info) {
-//              return [
-//                        'message' => '保存成功',
-//                        'code' => 200,
-//              ];
-//        }
+
 
     }
 
     /**
      * Store a newly created resource in storage.
-     *保存渠道公司
+     *保存
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -107,7 +101,7 @@ class ShouFangCommissionController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *更新渠道公司
+     *更新
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -130,7 +124,7 @@ class ShouFangCommissionController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *删除渠道公司
+     *删除
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -138,66 +132,6 @@ class ShouFangCommissionController extends Controller
     {
        // dd($id);
 
-        return $this->deleteCompany($id);
     }
 
-    public  function deleteCompany($id)
-    {
-
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
-        $response = $client->request('POST', '/api/qd/compay/del',[
-                'json' => [
-                    'id'=>$id
-                ]
-
-            ]
-        );
-        return $response->getBody();
-    }
-
-    public function batchRemoveBrokerCompany(Request $request)
-    {
-        $ids = $request->params['ids'];
-        $code='200';
-        $arr = explode(',',$ids);
-        foreach ($arr as $item ){
-          $status= $this->deleteCompany($item);
-           if($status->code!='200')
-           {
-               $code=$status->msg;
-           }
-        }
-        return $code;
-       // destroy($arr);
-    }
-    public function checkbkNameList(Request $request)
-    {
-       // dd($request->params['name']);
-        $client = new Client([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
-        $bkName =$request->params['name'];
-
-        $response = $client->request('GET', '/api/qd/compay/check',[
-                'query' => [
-                    'compay' =>  $bkName
-                ]
-
-            ]
-        );
-        //dd($response->getBody());
-
-
-        echo $response->getBody();
-
-    }
-    public function getUserById(Request $request)
-    {
-       $user= DB::table('users')->where('id', $request->params['id'])->first();
-        return $user->name;
-    }
 }

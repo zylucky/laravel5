@@ -35,9 +35,9 @@ import AccountsReceivable from "./components/Commission/accountsReceivableList.v
 import ReceivableRecord from "./components/Commission/receivableRecordList.vue";
 import Receivable from "./components/Commission/receivableList.vue";
 //应付
-import PaymentRecord from "./components/Report/paymentRecordList.vue";
-import PayableRecord from "./components/Report/payableRecordList.vue";
-import Payable from "./components/Report/payableList.vue";
+import PaymentRecord from "./components/report/paymentRecordList.vue";
+import PayableRecord from "./components/report/payableRecordList.vue";
+import Payable from "./components/report/payableList.vue";
 
 var fk_permission ;
 fun('permission')==true? fk_permission = false:fk_permission = true;
