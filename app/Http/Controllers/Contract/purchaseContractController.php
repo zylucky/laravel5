@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 
 class purchaseContractController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +21,7 @@ class purchaseContractController extends Controller
     {
         $pn = Input::get('pn');
         $cnt = Input::get('cnt');
+        $selectItem = Input::get('selectItem');
         if(!$pn){
             $pn = 1;
         }
@@ -31,6 +33,7 @@ class purchaseContractController extends Controller
                 'query'=>[
                     'pn'=>$pn,
                     'cnt'=>$cnt,
+                    'selectItem'=>$selectItem,
                     ]
             ]);
             echo $response->getBody();
@@ -110,12 +113,21 @@ class purchaseContractController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     *
+     * 二次优化
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
 
+        $response = $client->request('POST', '/api/contract/sf/buchongXieyi/save', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
     }
 
     /**
@@ -172,6 +184,28 @@ class purchaseContractController extends Controller
         $response = $client->request('POST', $requestUrl, [
             'json' => $data
         ]);
+        echo $response->getBody();
+    }
+    //合同确认
+    public function confirm(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirm');
+        echo $response->getBody();
+    }
+    /*
+     * /api/contract/sf/buchongXieyi/3
+     * */
+    public function getOptimize(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$id);
         echo $response->getBody();
     }
 

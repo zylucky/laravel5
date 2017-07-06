@@ -3,8 +3,8 @@
         <el-row>
             <div style="margin-bottom: 50px;"></div>
             <el-col :span="18">
-                <add-property ref="property" v-show="stepNum==1"></add-property>
-                <add-renter ref="renter" :addRenter="addRenter" v-show="stepNum==2"></add-renter>
+                <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
+                <add-renter ref="renter" :renter="renter" v-show="stepNum==2"></add-renter>
                 <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
                 <!--<add-tiaokuan ref="tiaokuan" v-show="stepNum==4"></add-tiaokuan>-->
             </el-col>
@@ -94,24 +94,25 @@
                  },*/
 
 
-                addRenter:{
+                renter:{
                     chengzufang:'华溯商贸',
                     jujianfang:'',
                     yezhuleixing:1,
                     //产权人
                     chanquanrenList:[
                         {
-                            Faren:'李岳群',
-                            Name:'北京大象群文化传媒有限公司',
-                            zhengjian:'37158119900124317X',
-                            Tel:'18511909124',
-                            Sex:1,
+                            faren:'',
+                            name:'',
+                            zhengjian:'',
+                            tel:'',
+                            sex:1,
                             hetongid:null,
                         },
                     ],
                     //收款人
                     shoukuanren:'彭亮',
                     zhanghao:'1234 4567 7891 0123',
+                    kaihuhang:'',
                     //代理人
                     dailirenName:'李朝晖',
                     dailirenTel:'18511909125',

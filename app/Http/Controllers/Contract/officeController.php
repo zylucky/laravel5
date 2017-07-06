@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\contract;
+namespace App\Http\Controllers\Contract;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;

@@ -20,7 +20,7 @@
                                 <el-col :span="8">
                                     <el-form-item label="楼盘" >
                                         <el-select
-                                                v-model="property.officeList[index].loupanOmcId"
+                                                v-model="property.officeList[index].loupanName"
                                                 filterable
                                                 remote
                                                 placeholder="楼盘"
@@ -38,7 +38,7 @@
                                 <el-col :span="8">
                                     <el-form-item label="楼栋" >
                                         <el-select
-                                                v-model="property.officeList[index].loudongOmcId"
+                                                v-model="property.officeList[index].loudongName"
                                                 filterable
                                                 remote
                                                 placeholder="楼栋"
@@ -56,7 +56,7 @@
                                 <el-col :span="8">
                                     <el-form-item label="房间号" >
                                         <el-select
-                                                v-model="property.officeList[index].omcId"
+                                                v-model="property.officeList[index].fanghao"
                                                 filterable
                                                 remote
                                                 @change="change"
@@ -117,6 +117,7 @@
         components:{
 
         },
+        props:['property'],
         data() {
             return {
                 purchaseContract:{
@@ -155,7 +156,7 @@
                     }
                     ],
                 //房源数据初始化
-                property:{
+                /*property:{
                     officeList: [{
                         omcId:null,
                         loupanOmcId:null,
@@ -170,7 +171,7 @@
                         leixing: '',
                         //hetongid:0
                     }],
-                },
+                },*/
                 editableTabsValue2: '1',
                 editableTabs2: [{
                     title: '房间1',
@@ -343,6 +344,9 @@
                 this.editableTabsValue2 = activeName;
                 this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
             }
+        },
+        mounted() {
+
         }
 
     }

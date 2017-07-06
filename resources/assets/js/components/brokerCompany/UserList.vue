@@ -226,10 +226,24 @@
                         { required: true, message: '请输入人员电话', trigger: 'blur' }
                     ],
                     yjzbSf: [
-                        {  required: true, message: '请输入收房佣金占比', trigger: 'blur' }
+                        {  required: true, message: '请输入收房佣金占比', trigger: 'blur' },
+                        {required: true,validator:(rule,value,callback)=>{
+                            if(value>1||value<0){
+                                callback(new Error("收房佣金占比只能是0到1之间的数"));
+                            }else{
+                                callback();
+                            }
+                        }, trigger:'blur'}
                     ],
                     yjzbCf: [
-                        {  required: true, message: '请输入出房佣金占比', trigger: 'blur' }
+                        {  required: true, message: '请输入出房佣金占比', trigger: 'blur' },
+                        {required: true,validator:(rule,value,callback)=>{
+                            if(value>1||value<0){
+                                callback(new Error("出房佣金占比只能是0到1之间的数"));
+                            }else{
+                                callback();
+                            }
+                        }, trigger:'blur'}
                     ],
                     yjType: [
                         {required: true,validator:(rule,value,callback)=>{
@@ -270,10 +284,24 @@
                         { required: true, message: '请输入人员电话', trigger: 'blur' }
                     ],
                     yjzbSf: [
-                        {   required: true, message: '请输入收房佣金占比', trigger: 'blur' }
+                        {   required: true, message: '请输入收房佣金占比', trigger: 'blur' },
+                        {required: true,validator:(rule,value,callback)=>{
+                            if(value>1||value<0){
+                                callback(new Error("收房佣金占比只能是0到1之间的数"));
+                            }else{
+                                callback();
+                            }
+                        }, trigger:'blur'}
                     ],
                     yjzbCf: [
-                        {  required: true, message: '请输入出房佣金占比', trigger: 'blur' }
+                        {  required: true, message: '请输入出房佣金占比', trigger: 'blur' },
+                        {required: true,validator:(rule,value,callback)=>{
+                            if(value>1||value<0){
+                                callback(new Error("出房佣金占比只能是0到1之间的数"));
+                            }else{
+                                callback();
+                            }
+                        }, trigger:'blur'}
                     ],
                     yjType: [
                         {required: true,validator:(rule,value,callback)=>{
@@ -416,7 +444,6 @@
                 // Console.log(row);
                 this.editFormVisible = true;
                 this.editForm = Object.assign({}, row);
-               // this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
                 this.editForm.tQdCompayId= row.qvDaoCompayXinxi.compayname;
                 this.editForm.tQdCompayName= row.qvDaoCompayXinxi.tQdCompayId;
                 this.editForm.yjzbCf= row.yjzbCf.toString();

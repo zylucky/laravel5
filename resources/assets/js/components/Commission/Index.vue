@@ -4,43 +4,71 @@
         <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="">
-                <el-input v-model="filters.bk_name" placeholder="渠道公司名称"></el-input>
+                <el-input v-model="filters.contractNo" placeholder="合同编号"></el-input>
+            </el-form-item>
+            <el-form-item label="">
+                <el-input v-model="filters.buildingname" placeholder="楼盘名称"></el-input>
+            </el-form-item>
+            <el-form-item label="">
+                <el-input v-model="filters.buildname" placeholder="楼栋名称"></el-input>
+            </el-form-item>
+            <el-form-item label="">
+                <el-input v-model="filters.roomname" placeholder="房间号"></el-input>
+            </el-form-item>
+            <el-form-item label="">
+                <el-select v-model="filters.ZhuangTai" placeholder="状态">
+                    <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
+
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getBrokerCompany">搜索</el-button>
-                <el-button type="primary" class="el-icon-plus"    @click="handleAdd"    > 新增</el-button>
+
             </el-form-item>
         </el-form>
         <el-table :data="brokerCompany"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column type="selection" width="55">
+            <el-table-column type="selection" width="50">
             </el-table-column>
-            <el-table-column type="index"   width="60">
+
+            <el-table-column prop="compayname" label="合同编号"  sortable>
             </el-table-column>
-            <el-table-column prop="compayname" label="渠道公司名称"  sortable>
+            <el-table-column prop="compaytest" label="楼盘"   sortable>
             </el-table-column>
-            <el-table-column prop="compaytest" label="渠道公司说明"  sortable>
+            <el-table-column prop="yjzbSf" label="楼栋"  sortable>
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="收房佣金占比"  sortable>
+            <el-table-column prop="yjzbCf" label="房间号"  sortable>
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="出房佣金占比"  sortable>
+            <el-table-column prop="yjzbCf" label="月租金"   sortable>
             </el-table-column>
-            <el-table-column prop="yjType" label="佣金类型"  :formatter="formatYJType" sortable>
+            <el-table-column prop="yjzbCf" label="出房佣金(月租金96%)" width="200" sortable>
             </el-table-column>
-            <el-table-column prop="tbPersonIdCreate" label="创建人"     sortable>
+            <el-table-column prop="yjzbCf" label="实际佣金"   sortable>
             </el-table-column>
-            <el-table-column prop="createdate" label="创建时间" :formatter="changeDate" sortable>
+            <el-table-column prop="compayname" label="渠道公司" width="200" sortable>
             </el-table-column>
-            <el-table-column label="操作" width="150">
+            <el-table-column prop="compayname" label="渠道人员"   sortable>
+            </el-table-column>
+            <el-table-column prop="compayname" label="申请人"   sortable>
+            </el-table-column>
+            <el-table-column prop="yjType" label="返佣状态"  :formatter="formatYJType" sortable>
+            </el-table-column>
+
+            <el-table-column label="操作" width="100">
                 <template scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                    <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+
                 </template>
             </el-table-column>
         </el-table>
         <div style="margin-top:30px"></div>
         <!-- 分页-->
         <el-col :span="24" class="toolbar" >
-            <el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>
+
             <el-pagination
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
@@ -57,7 +85,7 @@
         <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
             <el-form :model="editForm" label-width="120px" :rules="editFormRules" ref="editForm">
                 <el-form-item label="渠道公司名称" prop="compayname">
-                    <el-input v-model="editForm.compayname" auto-complete="off"   disabled=""></el-input>
+                    <el-input v-model="editForm.compayname" auto-complete="off"  ></el-input>
                 </el-form-item>
                 <el-form-item label="收房佣金占比" prop="yjzbSf">
                     <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
@@ -85,38 +113,6 @@
                 <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
             </div>
         </el-dialog>
-        <!--新增界面-->
-        <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
-            <el-form :model="addForm" label-width="120px" :rules="addFormRules" ref="addForm">
-                <el-form-item label="渠道公司名称" prop="compayname">
-                    <el-input v-model="addForm.compayname" auto-complete="off"   ></el-input>
-                </el-form-item>
-                <el-form-item label="收房佣金占比" prop="yjzbSf">
-                    <el-input type="number" v-model="addForm.yjzbSf" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="出房佣金占比" prop="yjzbCf">
-                    <el-input type="number" v-model="addForm.yjzbCf" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="佣金类型"    prop="yjType">
-                    <el-select type="number"  v-model="addForm.yjType" placeholder="">
-                        <el-option
-                                v-for="item in options"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-
-                <el-form-item label="渠道公司说明" prop="compaytest">
-                    <el-input v-model="addForm.compaytest" auto-complete="off"></el-input>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click.native="addFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
-            </div>
-        </el-dialog>
 
     </el-row>
 </template>
@@ -140,7 +136,11 @@
 
             return {
                 filters:{
-                    bk_name:'',
+                    contractNo:'',
+                    buildingname:'',
+                    buildname:'',
+                    roomname:'',
+                    ZhuangTai:0,
                 },
                 options:[
                     {
@@ -168,26 +168,26 @@
                 editFormRules: {
                     compayname: [
                         { required: true, message: '请输入渠道公司名称', trigger: 'blur' },
+                        {validator:(rule,value,callback)=>{
+                            let para = {
+                                name: value
+                            };
+                            if(value!=''){
+                                checkbkNameList(para).then((res) => {
+                                    //alert( JSON.stringify(res));
+                                    if(res.data.code!='200')
+                                    {
+                                        callback(new Error(res.data.msg));
+                                    }
+                                })
+                            }
+                        }, trigger:'blur'}
                     ],
                     yjzbSf: [
-                        { required: true, message: '请输入收房佣金占比', trigger: 'blur' },
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("收房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
+                        { required: true, message: '请输入收房佣金占比', trigger: 'blur' }
                     ],
                     yjzbCf: [
-                        { required: true, message: '请输入出房佣金占比', trigger: 'blur' },
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("出房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
+                        { required: true, message: '请输入出房佣金占比', trigger: 'blur' }
                     ],
                     yjType: [
                         {required: true,validator:(rule,value,callback)=>{
@@ -231,24 +231,10 @@
                         }, trigger:'blur'}
                     ],
                     yjzbSf: [
-                        { required: true, message: '请输入收房佣金占比', trigger: 'blur' },
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("收房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
+                        { required: true, message: '请输入收房佣金占比', trigger: 'blur' }
                     ],
                     yjzbCf: [
-                        { required: true, message: '请输入出房佣金占比', trigger: 'blur' },
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("出房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
+                        { required: true, message: '请输入出房佣金占比', trigger: 'blur' }
                     ],
                     yjType: [
                         {required: true,validator:(rule,value,callback)=>{
