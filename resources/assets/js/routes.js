@@ -168,25 +168,9 @@ function fun(funKey) {
          ]
      },
      {
-         path: '/',
-         component: navigation,
-         name: '统计',
-         iconCls: 'el-icon-document',//图标样式class
-         hidden:false,
-         children: [
-             { path:'/receivable',component:Receivable,name:'应收款信息',hidden:false},
-             { path:'/accountsReceivable',component:AccountsReceivable,name:'应收款记录',hidden:true},
-             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
-             { path:'/payable',component:Payable,name:'应付款信息',hidden:false},
-             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
-             { path:'/paymentRecord',component:PaymentRecord,name:'已付款记录',hidden:true},
-         ]
-
-     },
-     {
          path:'/purchaseContract/dump',
          component: PurchaseContractDump,
-         name: '合同打印',
+         name: '收房合同打印',
          hidden: true
      },
      {
@@ -206,17 +190,11 @@ function fun(funKey) {
 
      },
      {
-         path: '/purchaseContract/dump',
-         component: PurchaseContractDump,
-         name: '合同打印',
-         hidden: true
-     },
-    {
         path:'/saleContract/dump',
             component: SaleContractDump,
-        name: '合同打印',
+        name: '出方合同打印',
         hidden: true
-    },
+     },
 ]
 
 export default routes;
