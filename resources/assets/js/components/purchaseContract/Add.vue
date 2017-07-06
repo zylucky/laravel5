@@ -303,7 +303,9 @@
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
                 this.addDate.buchongtiaokuan = res.data.data.buchongtiaokuan;
                 this.addDate.zujinList = res.data.data.zujinList;
-                this.addDate.checkList = res.data.data.checkList;
+                //this.addDate.checkList = res.data.data.checkList;
+                this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+                this.addDate.yifangfeiyong = res.data.data.yifangfeiyong;
                 //给条款的每一条数据都添加一个属性字段show
                 for (let x in res.data.data.tiaoList){
                     res.data.data.tiaoList[x].show = false;

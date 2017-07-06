@@ -93,8 +93,10 @@ class purchaseContractController extends Controller
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id);
         $res = $response->getBody();
-        var_dump($res);
-        //echo
+        $res = json_decode($res);
+        $res->data->yifangfeiyong = explode(',',$res->data->yifangfeiyong);
+        $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
+        echo json_encode($res)  ;
     }
 
     /**
