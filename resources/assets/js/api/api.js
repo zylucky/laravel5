@@ -50,6 +50,10 @@ export const getReceivableRecordListPage = params => { return axios.get(`${base}
 export const getAccountsReceivableListPage = params => { return axios.get(`${base}/accountsReceivable`, { params: params }); };
 export const addReceivable = params => { return axios.post(`${base}/accountsReceivable`, { params: params }); };
 export const removeReceivable = params => { return axios.delete(`${base}/accountsReceivable/`+params.id, {}); };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9929b17f7f4ddbdb6571196036056ae363975dba
 //查系统所有的权限
 export const getPermissionListPage = params => { return axios.get(`${base}/permission/getAll`, { params: params }); };
 //查XX的权限
@@ -70,12 +74,18 @@ export const confirmPurchaseContract= params => { return axios.get(`${base}/purc
 export const optimizePurchaseContract= params => { return axios.put(`${base}/purchaseContract/`, {params:params}); };//二次优化
 //出房合同
 //合同信息
-export const addChufangPurchaseContractInfo= params => { return axios.post(`${base}/saleContract`, { params: params }); };
-export const getChufangPurchaseContractList = params => { return axios.get(`${base}/saleContract`, { params: params }); };
-export const getChufangPurchaseContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
+export const addSaleContractInfo= params => { return axios.post(`${base}/saleContract`, { params: params }); };
+export const reviewSaleContract= params => { return axios.post(`${base}/saleContract/review`, { params: params }); };
+export const getSaleContractList = params => { return axios.get(`${base}/saleContract`, { params: params }); };
+export const getSaleContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
 export const submitSaleContract = params => {return axios.get(`${base}/saleContract/`+params.id+'/edit', {}); };
+export const jieyueSaleContractInfo = params => { return axios.post(`${base}/saleContract/sub`, { params: params }); };
+export const getJieyueSaleContractInfo = params => { return axios.get(`${base}/saleContract/sub`+params.id, {}); };
 
-export const removeChufangContract = params => { return axios.post(`${base}/saleContract/delete`, { params: params }); };
+
+
+export const removeSaleContract = params => { return axios.post(`${base}/saleContract/delete`, { params: params }); };
+
 
 //获取楼盘，楼栋，房间号
 export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };

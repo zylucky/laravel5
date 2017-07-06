@@ -17,12 +17,16 @@ import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue
 import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimize.vue";
 import PurchaseContractDump from "./components/purchaseContract/Dump.vue";
 
-
-
 //出房合同
 import SaleContractIndex from "./components/saleContract/Index.vue";
 import SaleContractAdd from "./components/saleContract/Add.vue";
 import SaleContractUpload from "./components/saleContract/Upload.vue";
+import SaleContractWeiyue from "./components/saleContract/Weiyue.vue";
+import SaleContractJieyue from "./components/saleContract/Jieyue.vue";
+import SaleContractCheckJieyue from "./components/saleContract/Jieyue.vue";
+import SaleContractDump from "./components/saleContract/Dump.vue";
+
+
 //渠道公司
 import BrokerCompany from "./components/brokerCompany/Index.vue";
 import BrokerCompanyUser from "./components/brokerCompany/UserList.vue";
@@ -118,6 +122,7 @@ function fun(funKey) {
          iconCls: 'el-icon-document',//图标样式class
          hidden:fk_contract,
          children: [
+
              { path:'/purchaseContract', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
              { path:'/purchaseContract/add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
              { path:'/purchaseContract/edit',component:PurchaseContractAdd,name:'收房编辑',hidden:true},
@@ -127,8 +132,14 @@ function fun(funKey) {
              { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
 
              { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
-             { path:'/saleContact/Add',component:SaleContractAdd,name:'出房录入',hidden:true},
+             { path:'/saleContact/add',component:SaleContractAdd,name:'出房录入',hidden:true},
+             { path:'/saleContract/edit',component:SaleContractAdd,name:'出房编辑',hidden:true},
+             { path:'/saleContract/review',component:SaleContractAdd,name:'出房审核',hidden:true},
+             { path:'/saleContract/weiyue',component:SaleContractWeiyue,name:'出房违约',hidden:true},
+             { path:'/saleContract/jieyue',component:SaleContractJieyue,name:'解约协议',hidden:true},
+             { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
              { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true}
+
 
          ]
      },
@@ -173,12 +184,39 @@ function fun(funKey) {
 
      },
      {
+         path:'/purchaseContract/dump',
+         component: PurchaseContractDump,
+         name: '合同打印',
+         hidden: true
+     },
+     {
+         path: '/',
+         component: navigation,
+         name: '统计',
+         iconCls: 'el-icon-document',//图标样式class
+         hidden:false,
+         children: [
+             { path:'/receivable',component:Receivable,name:'应收款信息',hidden:false},
+             { path:'/accountsReceivable',component:AccountsReceivable,name:'应收款记录',hidden:true},
+             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
+             { path:'/payable',component:Payable,name:'应付款信息',hidden:false},
+             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
+             { path:'/paymentRecord',component:PaymentRecord,name:'已付款记录',hidden:true},
+         ]
+
+     },
+     {
          path: '/purchaseContract/dump',
          component: PurchaseContractDump,
          name: '合同打印',
          hidden: true
-     }
-
+     },
+    {
+        path:'/saleContract/dump',
+            component: SaleContractDump,
+        name: '合同打印',
+        hidden: true
+    },
 ]
 
 export default routes;

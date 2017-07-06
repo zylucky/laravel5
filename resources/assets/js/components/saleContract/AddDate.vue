@@ -1,6 +1,20 @@
 <template>
     <el-row class="container">
         <el-form :model="addDate"  label-width="100px" class="demo-dynamic">
+            <el-form-item label="合同类型">
+                <el-radio-group v-model="addDate.hetongleixing">
+                    <el-radio :label="1">新建合同</el-radio>
+                    <el-radio :label="2">续签合同</el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <!--合同金额-->
+            <div v-if="addDate.hetongleixing==2">
+                <el-col :span="8">
+                    <el-form-item label="合同金额">
+                        <el-input v-model="addDate.jine" placeholder="合同金额"></el-input>
+                    </el-form-item>
+                </el-col>
+            </div>
             <!--交房日、签约日-->
             <el-row>
                 <el-col :span="8">
@@ -216,6 +230,9 @@
                     <el-input type="textarea" row="5px" v-model="addDate.buchongtiaokuan"></el-input>
                 </el-form-item>
             </el-col>
+
+
+
         </el-form>
     </el-row>
 
@@ -236,6 +253,8 @@
                     },
                 ],
                 addDate: {
+                    hetongleixing:1,//合同类型
+                    jine:'',//合同金额
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
                     shoufangDate: '',//收房日期
