@@ -67,7 +67,8 @@ export const submitPurchaseContract = params => { return axios.get(`${base}/purc
 export const getPurchaseContractTiaoKuan = params => { return axios.get(`${base}/purchaseContract/create`, {}); };
 export const editPurchaseContractTiaoKuan= params => { return axios.post(`${base}/purchaseContract/editTiaoKuan`, { params: params }); };
 export const confirmPurchaseContract= params => { return axios.get(`${base}/purchaseContract/confirm`, {params:params}); };
-export const optimizePurchaseContract= params => { return axios.put(`${base}/purchaseContract/`, {params:params}); };//二次优化
+export const optimizePurchaseContract= params => { return axios.put(`${base}/purchaseContract/`+params.id, {params:params}); };//二次优化
+export const getOptimizePurchaseContract= params => { return axios.get(`${base}/purchaseContract/optimize`, {params:params}); };//二次优化
 //出房合同
 //合同信息
 export const addSaleContractInfo= params => { return axios.post(`${base}/saleContract`, { params: params }); };

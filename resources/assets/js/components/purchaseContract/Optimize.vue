@@ -252,7 +252,7 @@
     </el-row>
 </template>
 <script>
-    import {optimizePurchaseContract } from  '../../api/api';
+    import {optimizePurchaseContract,getOptimizePurchaseContract } from  '../../api/api';
     export default{
         data(){
             return{
@@ -267,8 +267,6 @@
                     },
                 ],
                 owner:{
-                    chengzufang:'华溯商贸',
-                    jujianfang:'',
                     yezhuleixing:1,
                     //产权人
                     chanquanrenList:[
@@ -281,10 +279,6 @@
                             hetongid:null,
                         },
                     ],
-                    //收款人
-                    shoukuanren:'彭亮',
-                    zhanghao:'1234 4567 7891 0123',
-                    kaihuhang:'',
                     //代理人
                     dailirenName:'李朝晖',
                     dailirenTel:'18511909125',
@@ -325,17 +319,59 @@
             }
         },
         methods:{
+            //根据合同ID来查询协议
+            getOptimize(){
+                let para = {
+                    id:this.$route.query.id
+                };
+                getOptimizePurchaseContract(para).then((res)=>{
+                    console.log(res.data);
+                    this.fuzhi(res);
+                });
+            },
+            fuzhi(res){
+                if(res.data.data.chanquanrenList.length>0){
+                    this.owner.chanquanrenList = res.data.data.chanquanrenList;
+                }
+                this.owner.yezhuleixing = res.data.data.yezhuleixing;
+                this.owner.dailirenTel = res.data.data.dailirenTel;
+                this.owner.dailirenSex = res.data.data.dailirenSex;
+                this.owner.dailirenId = res.data.data.dailirenId;
+                this.owner.dailirenName = res.data.data.dailirenName;
+                this.owner.qianyuerenName = res.data.data.qianyuerenName;
+                this.owner.qianyuerenTel = res.data.data.qianyuerenTel;
+                this.owner.qianyuerenSex = res.data.data.qianyuerenSex;
+                this.owner.qianyuerenId = res.data.data.qianyuerenId;
+                this.addDate.startdate = res.data.data.startdate;
+                this.addDate.enddate = res.data.data.enddate;
+                this.addDate.shoufangdate = res.data.data.shoufangdate;
+                this.addDate.qianyuedate = res.data.data.qianyuedate;
+                this.addDate.mianzufangshi = res.data.data.mianzufangshi;
+                this.addDate.mianzuqiList = res.data.data.mianzuqiList;
+                this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;
+                this.addDate.zujinList = res.data.data.zujinList;
+            },
             save(){
                 let para = {
                     hetongid:this.$route.query.id,
                     zujinList:this.addDate.zujinList,
                     mianzuqiList:this.addDate.mianzuqiList,
                     fukuanFangshiList:this.addDate.fukuanFangshiList,
-                    chanquanrenList:this.addDate.fukuanFangshiList,
+                    chanquanrenList:this.owner.chanquanrenList,
+                    yezhuleixing :this.owner.yezhuleixing ,
+                    dailirenTel : this.owner.dailirenTel,
+                    dailirenSex : this.owner.dailirenSex  ,
+                    dailirenId : this.owner.dailirenId  ,
+                    dailirenName : this.owner.dailirenName ,
+                    qianyuerenName : this.owner.qianyuerenName  ,
+                    qianyuerenTel : this.owner.qianyuerenTel  ,
+                    qianyuerenSex :this.owner.qianyuerenSex  ,
+                    qianyuerenId :  this.owner.qianyuerenId  ,
                 }
-                console.log(para);
+                //console.log(para);
                 optimizePurchaseContract(para).then((res)=>{
                     if(res.data.code == 200)　{
+                        this.fuzhi(res);
                         this.$message({
                             message: '提交成功',
                             type: 'success'
@@ -436,7 +472,7 @@
         },
         mounted(){
             //查询
-
+            this.getOptimize();
             //审核页面input禁用
             if(this.$route.path=='/purchaseContract/checkOptimize'){
                 this.disabledInput();
