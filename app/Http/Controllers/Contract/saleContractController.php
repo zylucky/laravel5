@@ -18,6 +18,7 @@ class saleContractController extends Controller
     public function index(){
         $pn = Input::get('pn');
         $cnt = Input::get('cnt');
+        $selectItem = Input::get('selectItem');
         if(!$pn){
             $pn = 1;
         }
@@ -29,6 +30,7 @@ class saleContractController extends Controller
             'query'=>[
                 'pn'=>$pn,
                 'cnt'=>$cnt,
+                'selectItem'=>$selectItem,
             ]
         ]);
         echo $response->getBody();
@@ -51,6 +53,22 @@ class saleContractController extends Controller
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST', '/api/contract/xs/save', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
+
+
+    public function sub(Request $request)
+    {
+        //return $request->params;
+        //数据格式化
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/sf/buchongXieyi/save', [
             'json' => $request->params
         ]);
         echo $response->getBody();
@@ -84,12 +102,13 @@ class saleContractController extends Controller
     //在这里是提交那个按钮的处理
     public function edit($id)
     {
+        dd(333);
         dd(2222);
         /*$client = new Client([
             'base_uri' => $this->base_url,
             'timeout' => 2.0,
-        ]);
-        $response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
+        ]);*/
+        /*$response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
         echo $response->getBody();*/
     }
 
@@ -122,6 +141,22 @@ class saleContractController extends Controller
     public function destroy($id)
     {
         //
+    }
+    /*
+     * 合同审核
+     *
+     * */
+    public function review(Request $request){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+
+        $response = $client->request('POST', '/api/contract/xs/shenhe', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
     }
 
     //删除

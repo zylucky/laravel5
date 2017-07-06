@@ -3,10 +3,10 @@
         <el-row>
             <div style="margin-bottom: 50px;"></div>
             <el-col :span="18">
-                <add-property ref="property" v-show="stepNum==1"></add-property>
-                <add-renter ref="renter" :addRenter="addRenter" v-show="stepNum==2"></add-renter>
+                <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
+                <add-renter ref="renter" :renter="renter" v-show="stepNum==2"></add-renter>
                 <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
-                <add-tiaokuan ref="tiaokuan" v-show="stepNum==4"></add-tiaokuan>
+                <!--<add-tiaokuan ref="tiaokuan" v-show="stepNum==4"></add-tiaokuan>-->
             </el-col>
             <div style="margin-bottom:81px;"></div>
             <el-col :span="6">
@@ -15,14 +15,28 @@
                         <a href="javascript:;" @click="stepNum=1"><el-step  title="房间信息"></el-step></a>
                         <a href="javascript:;" @click="stepNum=2"><el-step  title="租户信息"></el-step></a>
                         <a href="javascript:;" @click="stepNum=3"><el-step  title="租期信息"></el-step></a>
-                        <a href="javascript:;" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>
+                        <!--<a href="javascript:;" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>-->
                     </el-steps>
-                    <el-button type="primary" @click="save" style="margin-top:100px;">保存</el-button>
-                    <el-button type="primary" @click="submit" >提交</el-button>
+                    <el-button type="primary" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
+                    <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
+                    <el-button type="primary" v-show="reviewVisible" @click="review(1)" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
+                    <el-button type="warning" v-show="reviewVisible" @click="review(0)" style="margin-top:100px;">不通过</el-button>
+
                 </div>
 
             </el-col>
         </el-row>
+        <el-dialog title="审核批注" :visible.sync="dialogFormVisible">
+            <el-form>
+                <el-form-item label="批注" label-width="50px">
+                    <el-input type="textarea" v-model="content" auto-complete="off"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="review2">确 定</el-button>
+            </div>
+        </el-dialog>
 
     </div>
 </template>
@@ -31,10 +45,16 @@
     import AddRenter from './AddRenter.vue'
     import AddDate from './AddDate.vue'
     import AddTiaokuan from './AddTiaoKuan.vue'
-    import {addChufangPurchaseContractInfo,getChufangPurchaseContractInfo,submitSaleContract} from '../../api/api';
+    import {addSaleContractInfo,getSaleContractInfo,submitSaleContract,reviewSaleContract} from '../../api/api';
     export default{
         data(){
             return {
+                btnType:true,
+                submsg:'提交',
+                shenhe:null,//审核数据
+                reviewVisible:false,//审核显示
+                content:'',//审核批注
+                dialogFormVisible:false,
                 stepNum:1,
                 id:'',
                 property:{
@@ -74,24 +94,25 @@
                  },*/
 
 
-                addRenter:{
+                renter:{
                     chengzufang:'华溯商贸',
                     jujianfang:'',
                     yezhuleixing:1,
                     //产权人
                     chanquanrenList:[
                         {
-                            Faren:'李岳群',
-                            Name:'北京大象群文化传媒有限公司',
-                            zhengjian:'37158119900124317X',
-                            Tel:'18511909124',
-                            Sex:1,
+                            faren:'',
+                            name:'',
+                            zhengjian:'',
+                            tel:'',
+                            sex:1,
                             hetongid:null,
                         },
                     ],
                     //收款人
                     shoukuanren:'彭亮',
                     zhanghao:'1234 4567 7891 0123',
+                    kaihuhang:'',
                     //代理人
                     dailirenName:'李朝晖',
                     dailirenTel:'18511909125',
@@ -159,6 +180,8 @@
                             message:'提交成功',
                             type:'success'
                         });
+                        this.btnType = true;
+                        this.submsg  = '已提交';
                     }else{
                         this.$message({
                             message:res.data.msg,
@@ -176,7 +199,7 @@
                     };
 
                     let para = Object.assign({}, child_property,child_renter,child_date);
-                    addChufangPurchaseContractInfo(para).then((res) => {
+                    addSaleContractInfo(para).then((res) => {
 
                         if(res.data.code == 200)　{
                             this.fuzhi(res);
@@ -193,9 +216,34 @@
 
                     });
             },
+            review(result){
+                this.dialogFormVisible = true;
+                //审核
+                this.shenhe = {
+                    hetongid:this.id,
+                    content:this.content,
+                    result:result,
+                };
+            },
+            review2(){
+                reviewSaleContract(this.shenhe).then((res) => {
+                    if(res.data.code == 200)　{
+                        this.$message({
+                            message: '保存成功',
+                            type: 'success'
+                        });
+                        this.dialogFormVisible = false;
+                    }else{
+                        this.$message({
+                            message:res.data.msg,
+                            type:'error'
+                        })
+                    }
+                });
+            },
             //根据url得到的合同ID，来获取数据
             getPurchaseContract(id){
-                getChufangPurchaseContractInfo(id).then((res)=>{
+                getSaleContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
                         //console.log(res.data.data)
                         //把数据分别赋值给三个组件的变量
@@ -245,10 +293,30 @@
                 this.addDate.checkList = res.data.data.checkList;
 
             },
+            disabledInput(){
+                this.reviewVisible =true;
+                var allInputs = document.getElementsByTagName('input');
+                var textArea = document.getElementsByTagName('textarea');
+                for (let i=0; i<allInputs.length; i++){
+                    allInputs[i].disabled="true";
+                    allInputs[i].parentNode.className += " is-disabled";
+                }
+                for (let i=0; i<textArea.length; i++){
+                    textArea[i].disabled="true";
+                    textArea[i].parentNode.className += " is-disabled";
+                }
+
+            },
         },
         mounted() {
             //根据url得到的合同ID，来获取数据
-            this.getPurchaseContract(this.$route.query);
+            /*if(this.$route.query.id!=null){
+                this.getSaleContract(this.$route.query);
+            }*/
+            //审核页面input禁用
+            if(this.$route.path=='/saleContract/review'){
+                this.disabledInput();
+            }
         },
 
     }

@@ -18,10 +18,11 @@ Route::get('/', function (){
 Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
 Route::post('purchaseContract/review','Contract\purchaseContractController@review');
+Route::get('purchaseContract/optimize','Contract\purchaseContractController@getOptimize');
 Route::post('purchaseContract/editTiaoKuan','Contract\purchaseContractController@editTiaoKuan');
 Route::get('purchaseContract/confirm','Contract\purchaseContractController@confirm');
 Route::resource('purchaseContract','Contract\purchaseContractController');
-Route::get('purchaseContract/review','Contract\purchaseContractController@review');
+//Route::get('purchaseContract/review','Contract\purchaseContractController@review');
 Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');
 Route::resource('brokerCompanyUser','BrokerCompany\brokerCompanyUserController');
 Route::resource('chuFangCommission','Commission\ChuFangCommissionController');
@@ -37,6 +38,7 @@ Route::resource('paymentRecord','Report\paymentRecordController');
 
 
 Route::resource('saleContract','Contract\saleContractController');
+Route::post('saleContract/sub','Contract\saleContractController@sub');
 
 
 Route::get('permission/getAll','Rbac\PermissionController@getAll');
@@ -66,3 +68,4 @@ Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
 Route::get('office/loupanList','Contract\OfficeController@loupanList');
 Route::get('office/loudongList','Contract\OfficeController@loudongList');
 Route::get('office/fanghaoList','Contract\OfficeController@fanghaoList');
+

@@ -15,7 +15,7 @@
                     <a href="javascript:" @click="stepNum=1"><el-step title="房间信息"></el-step></a>
                     <a href="javascript:" @click="stepNum=2"><el-step title="业主信息"></el-step></a>
                     <a href="javascript:" @click="stepNum=3"><el-step title="租期信息"></el-step></a>
-                    <a href="javascript:" @click="stepNum=4"><el-step title="条款信息"></el-step></a>
+                    <!--<a href="javascript:" @click="stepNum=4"><el-step title="条款信息"></el-step></a>-->
                 </el-steps>
                 <el-button type="primary" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
                 <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
@@ -144,7 +144,8 @@
                             dizengliang:'',
                         },
                     ],
-                    checkList: []
+                    jiafangfeiyong:[],
+                    yifangfeiyong:[],
                 },
                 tiaoList:[],
 
@@ -179,6 +180,7 @@
                 })
             },
             save() {
+
                 this.btnType = false;
                 this.submsg  = '提交';
                     var child_property = this.$refs.property.property;//
@@ -301,7 +303,9 @@
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
                 this.addDate.buchongtiaokuan = res.data.data.buchongtiaokuan;
                 this.addDate.zujinList = res.data.data.zujinList;
-                this.addDate.checkList = res.data.data.checkList;
+                //this.addDate.checkList = res.data.data.checkList;
+                this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+                this.addDate.yifangfeiyong = res.data.data.yifangfeiyong;
                 //给条款的每一条数据都添加一个属性字段show
                 for (let x in res.data.data.tiaoList){
                     res.data.data.tiaoList[x].show = false;
