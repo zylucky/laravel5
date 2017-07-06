@@ -203,35 +203,35 @@
             </el-row>
             <!--各种费用-->
             <el-form-item label="甲方承担">
-                <el-checkbox-group v-model="addDate.jiafangchengdan">
-                    <el-checkbox label="1">（一）供暖费 </el-checkbox>
-                    <el-checkbox label="2">（二）制冷费</el-checkbox>
-                    <el-checkbox label="3">（三）物业管理费</el-checkbox>
-                    <el-checkbox label="4">（四）水费</el-checkbox>
-                    <el-checkbox label="5">（五）电费</el-checkbox>
-                    <el-checkbox label="6">（六）燃气费</el-checkbox>
-                    <el-checkbox label="7">（七）电话费</el-checkbox>
-                    <el-checkbox label="7">（八）电视收视费</el-checkbox>
-                    <el-checkbox label="9">（九）上网费</el-checkbox>
-                    <el-checkbox label="10">（十）卫生费</el-checkbox>
-                    <el-checkbox label="11">（十一）车位费</el-checkbox>
-                    <el-checkbox label="12">（十二）其他</el-checkbox>
+                <el-checkbox-group v-model="addDate.jiafangfeiyong">
+                    <el-checkbox label="（一）供暖费"></el-checkbox>
+                    <el-checkbox label="（二）制冷费"></el-checkbox>
+                    <el-checkbox label="（三）物业管理费"></el-checkbox>
+                    <el-checkbox label="（四）水费"></el-checkbox>
+                    <el-checkbox label="（五）电费"></el-checkbox>
+                    <el-checkbox label="（六）燃气费"></el-checkbox>
+                    <el-checkbox label="（七）电话费"></el-checkbox>
+                    <el-checkbox label="（八）电视收视费"></el-checkbox>
+                    <el-checkbox label="（九）上网费"></el-checkbox>
+                    <el-checkbox label="（十）卫生费"></el-checkbox>
+                    <el-checkbox label="（十一）车位费"></el-checkbox>
+                    <el-checkbox label="（十二）其他"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
             <el-form-item label="乙方承担">
-                <el-checkbox-group v-model="addDate.yifangchengdan">
-                    <el-checkbox label="1">（一）供暖费 </el-checkbox>
-                    <el-checkbox label="2">（二）制冷费</el-checkbox>
-                    <el-checkbox label="3">（三）物业管理费</el-checkbox>
-                    <el-checkbox label="4">（四）水费</el-checkbox>
-                    <el-checkbox label="5">（五）电费</el-checkbox>
-                    <el-checkbox label="6">（六）燃气费</el-checkbox>
-                    <el-checkbox label="7">（七）电话费</el-checkbox>
-                    <el-checkbox label="7">（八）电视收视费</el-checkbox>
-                    <el-checkbox label="9">（九）上网费</el-checkbox>
-                    <el-checkbox label="10">（十）卫生费</el-checkbox>
-                    <el-checkbox label="11">（十一）车位费</el-checkbox>
-                    <el-checkbox label="12">（十二）其他</el-checkbox>
+                <el-checkbox-group v-model="addDate.yifangfeiyong">
+                    <el-checkbox label="（一）供暖费"></el-checkbox>
+                    <el-checkbox label="（二）制冷费"></el-checkbox>
+                    <el-checkbox label="（三）物业管理费"></el-checkbox>
+                    <el-checkbox label="（四）水费"></el-checkbox>
+                    <el-checkbox label="（五）电费"></el-checkbox>
+                    <el-checkbox label="（六）燃气费"></el-checkbox>
+                    <el-checkbox label="（七）电话费"></el-checkbox>
+                    <el-checkbox label="（八）电视收视费"></el-checkbox>
+                    <el-checkbox label="（九）上网费"></el-checkbox>
+                    <el-checkbox label="（十）卫生费"></el-checkbox>
+                    <el-checkbox label="（十一）车位费"></el-checkbox>
+                    <el-checkbox label="（十二）其他"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
             <!--补充条款-->

@@ -70,8 +70,11 @@ class purchaseContractController extends Controller
             'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
+        $data = $request->params;
+        $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
+        $data['yifangfeiyong'] = implode(',',$data['yifangfeiyong']);
         $response = $client->request('POST', '/api/contract/sf/save', [
-            'json' => $request->params
+            'json' => $data,
         ]);
         echo $response->getBody();
     }
@@ -89,7 +92,9 @@ class purchaseContractController extends Controller
             'timeout'  => 2.0,
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id);
-        echo $response->getBody();
+        $res = $response->getBody();
+        var_dump($res);
+        //echo
     }
 
     /**

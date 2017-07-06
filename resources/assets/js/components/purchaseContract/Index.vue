@@ -40,7 +40,7 @@
                             <el-dropdown-item  ><el-button @click="handleConfirm(scope.$index, scope.row)">确认合同</el-button></el-dropdown-item>
                             <el-dropdown-item  ><el-button @click="handleOptimize(scope.$index, scope.row)">优化协议</el-button></el-dropdown-item>
                             <el-dropdown-item  ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button type="danger" @click="handleDel(scope.$index, scope.row)">删除合同</el-button></el-dropdown-item>
+                            <!--<el-dropdown-item  ><el-button type="danger" @click="handleDel(scope.$index, scope.row)">删除合同</el-button></el-dropdown-item>-->
                         </el-dropdown-menu>
                     </el-dropdown>
 

@@ -15,7 +15,7 @@
                     <a href="javascript:" @click="stepNum=1"><el-step title="房间信息"></el-step></a>
                     <a href="javascript:" @click="stepNum=2"><el-step title="业主信息"></el-step></a>
                     <a href="javascript:" @click="stepNum=3"><el-step title="租期信息"></el-step></a>
-                    <a href="javascript:" @click="stepNum=4"><el-step title="条款信息"></el-step></a>
+                    <!--<a href="javascript:" @click="stepNum=4"><el-step title="条款信息"></el-step></a>-->
                 </el-steps>
                 <el-button type="primary" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
                 <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
@@ -144,7 +144,8 @@
                             dizengliang:'',
                         },
                     ],
-                    checkList: []
+                    jiafangfeiyong:[],
+                    yifangfeiyong:[],
                 },
                 tiaoList:[],
 
@@ -179,6 +180,7 @@
                 })
             },
             save() {
+
                 this.btnType = false;
                 this.submsg  = '提交';
                     var child_property = this.$refs.property.property;//
