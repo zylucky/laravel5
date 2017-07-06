@@ -50,10 +50,6 @@ export const getReceivableRecordListPage = params => { return axios.get(`${base}
 export const getAccountsReceivableListPage = params => { return axios.get(`${base}/accountsReceivable`, { params: params }); };
 export const addReceivable = params => { return axios.post(`${base}/accountsReceivable`, { params: params }); };
 export const removeReceivable = params => { return axios.delete(`${base}/accountsReceivable/`+params.id, {}); };
-<<<<<<< HEAD
-=======
-
->>>>>>> 9929b17f7f4ddbdb6571196036056ae363975dba
 //查系统所有的权限
 export const getPermissionListPage = params => { return axios.get(`${base}/permission/getAll`, { params: params }); };
 //查XX的权限

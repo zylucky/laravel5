@@ -35,13 +35,9 @@ Route::resource('payavleRecord','Report\payavleRecordController');
 Route::resource('paymentRecord','Report\paymentRecordController');
 
 
-<<<<<<< HEAD
 
 Route::resource('saleContract','Contract\saleContractController');
-=======
-Route::resource('saleContract','Contract\saleContractController');
 Route::post('saleContract/sub','Contract\saleContractController@sub');
->>>>>>> 9929b17f7f4ddbdb6571196036056ae363975dba
 
 
 Route::get('permission/getAll','Rbac\PermissionController@getAll');
