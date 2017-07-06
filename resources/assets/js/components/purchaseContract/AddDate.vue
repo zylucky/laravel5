@@ -277,8 +277,6 @@
                 var d1=new Date(this.addDate.startdate);
                 d1.setFullYear(d1.getFullYear()+1);
                 d1.setDate(d1.getDate()-1);
-                alert(d1.toLocaleString());
-
             },
             //增加免租期
             addFreeItem() {
