@@ -2,7 +2,7 @@
     <div>
     <el-row class="container">
             <el-tabs v-model="editableTabsValue2" type="card" closable @tab-remove="removeTab">
-                <el-button
+                <el-button v-show="editVisible"
                         size="small"
                         @click="addTab(editableTabsValue2)"
                 >
@@ -128,6 +128,7 @@
                 purchaseContract:{
                     type:0,
                 },
+                editVisible:true,
                 //楼盘数据
                 options1:[],
                 list1: [],
@@ -351,7 +352,13 @@
             }
         },
         mounted() {
-
+            //审核页面input禁用
+            if(this.$route.path=='/purchaseContract/review'){
+                this.editVisible   =false;
+            }
+            if(this.$route.path=='/purchaseContract/view'){
+                this.editVisible   =false;
+            }
         }
 
     }

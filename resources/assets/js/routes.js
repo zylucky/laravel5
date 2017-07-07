@@ -127,6 +127,7 @@ function fun(funKey) {
              { path:'/purchaseContract/add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
              { path:'/purchaseContract/edit',component:PurchaseContractAdd,name:'收房编辑',hidden:true},
              { path:'/purchaseContract/review',component:PurchaseContractAdd,name:'收房审核',hidden:true},
+             { path:'/purchaseContract/view',component:PurchaseContractAdd,name:'收房查看',hidden:true},
              { path:'/purchaseContract/optimize',component:PurchaseContractOptimize,name:'收房优化',hidden:true},
              { path:'/purchaseContract/checkOptimize',component:PurchaseContractCheckOptimize,name:'收房协议查看',hidden:true},
              { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},

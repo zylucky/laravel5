@@ -157,12 +157,12 @@
             <!--租期-->
             <el-form-item label="总租期">
                 <el-date-picker
-                        v-model="addDate.startdate"
+                        v-model="addDate.zuqistartdate"
                         type="date"
                         placeholder="开始时间">
                 </el-date-picker>
                 <el-date-picker
-                        v-model="addDate.enddate"
+                        v-model="addDate.zuqienddate"
                         type="date"
                         placeholder="结束时间">
                 </el-date-picker>
@@ -266,6 +266,7 @@
                         label: '元'
                     },
                 ],
+                id:null,
                 owner:{
                     yezhuleixing:1,
                     //产权人
@@ -291,8 +292,8 @@
                     qianyuerenId:'37158119900124317X',
                 },
                 addDate: {
-                    startdate:'',//租期开始时间
-                    enddate:'',//租期结束时间
+                    zuqistartdate:'',//租期开始时间
+                    zuqienddate:'',//租期结束时间
                     mianzufangshi: [],//免租方式
                     mianzuqiList: [{
                         startdate:'',//免租开始
@@ -333,7 +334,8 @@
                 if(res.data.data.chanquanrenList.length>0){
                     this.owner.chanquanrenList = res.data.data.chanquanrenList;
                 }
-                this.owner.yezhuleixing = res.data.data.yezhuleixing;
+                this.id = res.data.data.id;
+                //this.owner.yezhuleixing = res.data.data.yezhuleixing;
                 this.owner.dailirenTel = res.data.data.dailirenTel;
                 this.owner.dailirenSex = res.data.data.dailirenSex;
                 this.owner.dailirenId = res.data.data.dailirenId;
@@ -342,8 +344,8 @@
                 this.owner.qianyuerenTel = res.data.data.qianyuerenTel;
                 this.owner.qianyuerenSex = res.data.data.qianyuerenSex;
                 this.owner.qianyuerenId = res.data.data.qianyuerenId;
-                this.addDate.startdate = res.data.data.startdate;
-                this.addDate.enddate = res.data.data.enddate;
+                this.addDate.zuqistartdate = res.data.data.zuqistartdate;
+                this.addDate.zuqienddate = res.data.data.zuqienddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;
                 this.addDate.qianyuedate = res.data.data.qianyuedate;
                 this.addDate.mianzufangshi = res.data.data.mianzufangshi;
@@ -353,6 +355,7 @@
             },
             save(){
                 let para = {
+                    id:this.id,
                     hetongid:this.$route.query.id,
                     zujinList:this.addDate.zujinList,
                     mianzuqiList:this.addDate.mianzuqiList,

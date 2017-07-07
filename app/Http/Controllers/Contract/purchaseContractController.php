@@ -215,5 +215,29 @@ class purchaseContractController extends Controller
         $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$id);
         echo $response->getBody();
     }
+    /*
+     * 状态变更为审核中
+     * */
+    public function approving(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', "/api/contract/sf/$id/approving");
+        echo $response->getBody();
+    }
+    /*
+     *  打印按钮，将合同变更为待确认
+     * */
+    public function dumping(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', "/api/contract/sf/$id/dumping");
+        echo $response->getBody();
+    }
 
 }
