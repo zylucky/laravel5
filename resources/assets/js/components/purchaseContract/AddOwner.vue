@@ -22,7 +22,7 @@
                         :remote-method="remoteMethod1"
                         :loading="bkNameloading">
                     <el-option
-                            v-for="item in options1"
+                            v-for="item in owner.options1"
                             :key="item.value"
                             :label="item.label"
                             :value="item.value">
@@ -189,12 +189,7 @@
             return {
                 labelPosition:'right',
                 bkNameloading:false,
-                options1:[
-                    {
-                        value: 7,
-                        label: '幼狮科技'
-                    },
-                ],
+                
                 estate: [],//服务器搜索的渠道公司数据放入这个数组中
                 editVisible:true,
 
@@ -226,13 +221,13 @@
                         setTimeout(() => {
 
                             this.bkNameloading = false;
-                            this.options1 = this.list.filter(item => {
+                            this.owner.options1 = this.list.filter(item => {
                                 return item.label.toLowerCase()
                                         .indexOf(query.toLowerCase()) > -1;
                             });
                         }, 200);
                     } else {
-                        this.options1 = [];
+                        this.owner.options1 = [];
                     }
                 });
 

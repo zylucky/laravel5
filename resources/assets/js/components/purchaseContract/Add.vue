@@ -17,11 +17,11 @@
                     <a href="javascript:" @click="stepNum=3"><el-step title="租期信息"></el-step></a>
                     <!--<a href="javascript:" @click="stepNum=4"><el-step title="条款信息"></el-step></a>-->
                 </el-steps>
-                <el-button type="primary" v-show="editVisible" @click="save" style="margin-top:100px;">保存</el-button>
-                <el-button type="primary" v-show="editVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
+                <el-button type="primary"  v-show="editVisible" @click="save" style="margin-top:100px;">保存</el-button>
+                <el-button type="primary"  v-show="editVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
                 <div style="margin-left:-50px;">
                     <el-button type="primary"  v-show="reviewVisible" @click="review(1)" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
-                    <el-button type="warning" v-show="reviewVisible" @click="review(0)" style="margin-top:100px;">不通过</el-button>
+                    <el-button type="warning"  v-show="reviewVisible" @click="review(0)" style="margin-top:100px;">不通过</el-button>
                 </div>
                 </div>
             </el-col>
@@ -81,6 +81,12 @@
                     }],
                 },
                 owner:{
+                    options1:[
+                        {
+                            value: 7,
+                            label: '幼狮科技'
+                        },
+                    ],
                     chengzufang:'华溯商贸',
                     jujianfang:'幼狮科技',
                     jujianfangid:7,
@@ -283,8 +289,12 @@
                     this.owner.chanquanrenList = res.data.data.chanquanrenList;
                 }
                 this.owner.chengzufang = res.data.data.chengzufang;
-                this.owner.jujianfang = '幼狮科技';//res.data.data.jujianfang
-                this.owner.jujianfangid = 7;
+
+                this.owner.jujianfang = res.data.data.jujianfang;//
+                this.owner.jujianfangid = res.data.data.jujianfangid;
+                this.owner.options1[0].value = res.data.data.jujianfangid;
+                this.owner.options1[0].label = res.data.data.jujianfang;
+
                 this.owner.yezhuleixing = res.data.data.yezhuleixing;
                 this.owner.shoukuanren = res.data.data.shoukuanren;
                 this.owner.kaihuhang = res.data.data.kaihuhang;
