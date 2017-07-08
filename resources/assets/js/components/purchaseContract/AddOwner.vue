@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-form :label-position="labelPosition" label-width="100px" :model="owner">
+        <el-form :label-position="labelPosition" ref="ownerForm" :rules="owner.editFormRules" label-width="100px" :model="owner">
         <el-col :span="24">
             <el-form-item label="承租人">
                 <el-radio-group v-model="owner.chengzufang">
@@ -33,22 +33,22 @@
             </el-form-item>
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="收款人" >
+                    <el-form-item label="收款人" prop="shoukuanren">
                         <el-input v-model="owner.shoukuanren"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="10">
-                    <el-form-item label="开户行" >
+                    <el-form-item label="开户行" prop="kaihuhang">
                         <el-input v-model="owner.kaihuhang"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="账号" >
+                    <el-form-item label="账号" prop="zhanghao">
                         <el-input v-model="owner.zhanghao"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-form-item label="业主类型">
+            <el-form-item label="业主类型" prop="yezhuleixing">
                 <el-radio-group v-model="owner.yezhuleixing">
                     <el-radio :label="1">个人</el-radio>
                     <el-radio :label="2">公司</el-radio>
@@ -59,19 +59,19 @@
                 <div v-for="(item, index) in owner.chanquanrenList">
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="产权人" >
+                        <el-form-item label="产权人" prop="chanquanName" >
                             <el-input v-model="owner.chanquanrenList[index].name"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="10">
-                        <el-form-item label="身份证号" >
+                        <el-form-item label="身份证号">
                             <el-input v-model="owner.chanquanrenList[index].zhengjian"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="联系方式" >
+                        <el-form-item label="联系方式">
                             <el-input v-model="owner.chanquanrenList[index].tel"></el-input>
                         </el-form-item>
                     </el-col>
@@ -120,7 +120,7 @@
                 </el-row>
             </div>
             <div v-if="owner.yezhuleixing==2">
-                <el-form-item label="公司名称" >
+                <el-form-item label="公司名称" prop="companyName">
                     <el-input v-model="owner.chanquanrenList[0].name"></el-input>
                 </el-form-item>
                 <el-row>

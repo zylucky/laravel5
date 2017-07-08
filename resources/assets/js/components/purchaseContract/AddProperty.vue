@@ -14,7 +14,7 @@
                         :label="item.title"
                         :name="item.name"
                 >
-                    <el-form label-Weizhi="right" :rules="editFormRules" label-width="100px" :model="property.officeList[index]">
+                    <el-form label-Weizhi="right" ref="propertyForm" :rules="property.editFormRules" label-width="100px" :model="property.officeList[index]">
                         <el-col :span="24">
                             <el-row>
                                 <el-col :span="8">
@@ -202,35 +202,7 @@
                     content: 'Tab 1 content'
                 }],
                 tabIndex: 1,
-                editFormRules: {
-                    loupanName: [
-                        { required: true, message: '请输入姓名', trigger: 'blur' }
-                    ],
-                    loudongName:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    fanghao:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    quyu:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    weizhi:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    chanquanzhenghao:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    jianzhumianji:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    leixing:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    qianyuemianji:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ]
-                },
+
             }
         },
         methods: {
