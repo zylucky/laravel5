@@ -64,6 +64,7 @@
                 stepNum:1,
                 id:'',
                 bianhao:'',
+                zhuangtai:'',
                 property:{
                     officeList: [{
                         omcId:null,
@@ -78,18 +79,21 @@
                         qianyuemianji: null,
                         leixing: null,
                         hetongid:null,
+                        quyu:'',
+                        isdiya:0,
+                        diyaren:'',
                     }],
                 },
                 owner:{
                     options1:[
                         {
-                            value: 7,
-                            label: '幼狮科技'
-                        },
+                            value:null,
+                            label:null,
+                        }
                     ],
                     chengzufang:'华溯商贸',
-                    jujianfang:'幼狮科技',
-                    jujianfangid:7,
+                    jujianfang:'',
+                    jujianfangid:null,
                     yezhuleixing:1,
                     //产权人
                     chanquanrenList:[
@@ -138,11 +142,13 @@
                     zongyingfuzujin:'',//总租金
                     yongjin:'',//佣金
                     tiqianfukuantian:'',//提前付款天数
+                    beianqixian:'',
                     yajinfukuanri:'',//押金付款日
                     shouqifukuanri:'',//首期租金付款日
                     erqifukuanri:'',//二期付款
                     sanqifukuanri:'',//三期付款
                     buchongtiaokuan:'',//补充条款
+                    yanqizujin:'',
                     zujinList:[
                         {
                             startdate:'',
@@ -174,10 +180,6 @@
                 };
                 submitPurchaseContract(para).then((res)=>{
                     if(res.data.code == 200)　{
-//                        this.$message({
-//                            message: '提交成功',
-//                            type: 'success'
-//                        });
                         history.go(-1);
                         this.btnType = true;
                         this.submsg  = '已提交';
@@ -283,6 +285,7 @@
             },
             fuzhi(res){
                 this.id = res.data.data.id;
+                this.zhuangtai = res.data.data.zhuangtai;
                 this.bianhao = res.data.data.bianhao;
                 this.property.officeList = res.data.data.officeList;
                 if(res.data.data.chanquanrenList.length>0){
@@ -292,6 +295,7 @@
 
                 this.owner.jujianfang = res.data.data.jujianfang;//
                 this.owner.jujianfangid = res.data.data.jujianfangid;
+
                 this.owner.options1[0].value = res.data.data.jujianfangid;
                 this.owner.options1[0].label = res.data.data.jujianfang;
 
@@ -318,12 +322,14 @@
                 this.addDate.zongyingfuzujin = res.data.data.zongyingfuzujin;
                 this.addDate.yongjin = res.data.data.yongjin;
                 this.addDate.tiqianfukuantian = res.data.data.tiqianfukuantian;
+                this.addDate.beianqixian = res.data.data.beianqixian;
                 this.addDate.yajinfukuanri = res.data.data.yajinfukuanri;
                 this.addDate.shouqifukuanri = res.data.data.shouqifukuanri;
                 this.addDate.erqifukuanri = res.data.data.erqifukuanri;
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
                 this.addDate.buchongtiaokuan = res.data.data.buchongtiaokuan;
                 this.addDate.zujinList = res.data.data.zujinList;
+                this.addDate.yanqizujin = res.data.data.yanqizujin;
                 //this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
                 this.addDate.yifangfeiyong = res.data.data.yifangfeiyong;

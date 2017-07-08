@@ -13,11 +13,13 @@
                 </el-radio-group>
 
             </el-form-item>
-            <el-form-item label="居间方"  >
+            <el-form-item label="居间方">
                 <el-select
+                        id="jujianfang"
                         v-model="owner.jujianfangid"
                         filterable
                         remote
+                        @change="changeOnSelect"
                         placeholder="渠道公司名称"
                         :remote-method="remoteMethod1"
                         :loading="bkNameloading">
@@ -189,23 +191,27 @@
             return {
                 labelPosition:'right',
                 bkNameloading:false,
-                
                 estate: [],//服务器搜索的渠道公司数据放入这个数组中
                 editVisible:true,
-
             }
         },
         props:['owner'],
         methods: {
+            changeOnSelect(){
+                var arr = this.owner.options1;
+                for (let i=0;i<arr.length;i++ ){
+                    if(arr[i].value==this.owner.jujianfangid){
+                        this.owner.jujianfang = arr[i].label;
+                    }
+                }
+            },
             //获取渠道公司名称
             remoteMethod1(query) {
-
                 let para = {
                     name: query
                 };
                 this.bkNameloading = true;
                 getbkNameList(para).then((res) => {
-
                     let arr = [];
                     arr[0] = '';
                     for ( var i in res.data ){
@@ -219,11 +225,10 @@
                     if (query !== '') {
                         this.bkNameloading = true;
                         setTimeout(() => {
-
                             this.bkNameloading = false;
                             this.owner.options1 = this.list.filter(item => {
                                 return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
+                                        .indexOf(query) > -1;
                             });
                         }, 200);
                     } else {
@@ -231,12 +236,6 @@
                     }
                 });
 
-            },
-            //编辑选择渠道公司将id赋值给隐藏字段
-            change(){
-                if(!isNaN(this.editForm.tQdCompayId)){
-                    this.editForm.tQdCompayName= this.editForm.tQdCompayId;
-                }
             },
             //新增产权人
             addRentItem() {

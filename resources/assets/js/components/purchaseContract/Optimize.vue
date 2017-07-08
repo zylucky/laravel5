@@ -40,12 +40,12 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="2">
-                            <el-button style="margin-left:6px;" @click.prevent="removeOwnerItem(item)">删除</el-button>
+                            <el-button v-if="btnShow" style="margin-left:6px;" @click.prevent="removeOwnerItem(item)">删除</el-button>
                         </el-col>
                     </el-row>
                 </div>
                 <el-form-item>
-                    <el-button  @click="addOwnerItem">新增产权人</el-button>
+                    <el-button v-if="btnShow"  @click="addOwnerItem">新增产权人</el-button>
                 </el-form-item>
                 <el-row>
                     <el-col :span="8">
@@ -148,11 +148,11 @@
                     <el-radio :label="1">期内免租</el-radio>
                     <el-radio :label="2">期外免租</el-radio>
                 </el-radio-group>
-                <el-button @click.prevent="removeFreeItem(item)">删除</el-button>
+                <el-button v-if="btnShow" @click.prevent="removeFreeItem(item)">删除</el-button>
 
             </el-form-item>
             <el-form-item>
-                <el-button  @click="addFreeItem">新增免租期</el-button>
+                <el-button v-if="btnShow" @click="addFreeItem">新增免租期</el-button>
             </el-form-item>
             <!--租期-->
             <el-form-item label="总租期">
@@ -192,12 +192,12 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1">
-                        <el-button  @click.prevent="removePayItem(item)">删除</el-button>
+                        <el-button v-if="btnShow"  @click.prevent="removePayItem(item)">删除</el-button>
                     </el-col>
                 </el-row>
             </div>
             <el-form-item>
-                <el-button  @click="addPayItem">新增付款方式</el-button>
+                <el-button v-if="btnShow" @click="addPayItem">新增付款方式</el-button>
             </el-form-item>
             <!--租金详细-->
             <div v-for="(item, index) in addDate.zujinList">
@@ -239,24 +239,27 @@
                         </el-select>
                     </el-col>
                     <el-col :span="2" :pull="1">
-                        <el-button @click.prevent="removeRentItem(item)">删除</el-button>
+                        <el-button v-if="btnShow" @click.prevent="removeRentItem(item)">删除</el-button>
                     </el-col>
                 </el-row>
             </div>
             <el-form-item>
-                <el-button  @click="addRentItem">新增租期</el-button>
+                <el-button v-if="btnShow"  @click="addRentItem">新增租期</el-button>
             </el-form-item>
         </el-form>
         <el-button v-if="btnShow"  @click="cancel" style="margin-top:80px;margin-left: 40%;">取消</el-button>
         <el-button v-if="btnShow" type="primary"  @click="save" style="margin-top:100px;">保存</el-button>
+        <el-button v-if="btnShow" type="primary" :disabled="btnType"  @click="save" style="margin-top:100px;">{{submsg}}</el-button>
     </el-row>
 </template>
 <script>
-    import {optimizePurchaseContract,getOptimizePurchaseContract } from  '../../api/api';
+    import {optimizePurchaseContract,getOptimizePurchaseContract,youhuacgPurchaseContract} from  '../../api/api';
     export default{
         data(){
             return{
                 btnShow:true,
+                btnType:true,
+                submsg:'提交',
                 options:[
                     {
                         value: 1,
@@ -371,12 +374,12 @@
                     qianyuerenSex :this.owner.qianyuerenSex  ,
                     qianyuerenId :  this.owner.qianyuerenId  ,
                 }
-                //console.log(para);
                 optimizePurchaseContract(para).then((res)=>{
                     if(res.data.code == 200)　{
                         this.fuzhi(res);
+                        this.btnType=false,
                         this.$message({
-                            message: '提交成功',
+                            message: '保存成功',
                             type: 'success'
                         });
                     }else{
@@ -386,6 +389,17 @@
                         })
                     }
                 })
+            },
+            submit(){
+                let para = {
+                        id:this.hetongid,
+                        xyid:this.id,
+                }
+                youhuacgPurchaseContract().then((res)=>{
+                    if(res.data.code=='200'){
+                        this.$route.push('/purchaseContract');
+                    }
+                });
             },
             //增加免租期
             addFreeItem() {

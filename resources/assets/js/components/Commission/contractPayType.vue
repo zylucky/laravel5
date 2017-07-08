@@ -82,7 +82,7 @@
                                 }
 
                                 this.$refs['sureForm'].resetFields();
-                                this.sureFormVisible = false;
+                                this.payType.sureFormVisible = false;
                                // this.getBrokerCompany();
                             });
                         });

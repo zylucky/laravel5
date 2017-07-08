@@ -36,12 +36,12 @@
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item  ><el-button @click="handleView(scope.$index, scope.row)">查看合同</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[0,4,5])" ><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[1])" ><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[1,2])" ><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[3])" ><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><!-- v-if="ztin(scope.row,[5])" --> <el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
-                            <el-dropdown-item   ><el-button @click="handleWeiyue(scope.$index, scope.row)">违约</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[5])"  > <el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,9])" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违约</el-button></el-dropdown-item>
                             <el-dropdown-item   ><el-button @click="handleEnd(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[7])" ><el-button @click="handleOptimize(scope.$index, scope.row)">优化协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[7,9])" ><el-button @click="handleOptimize(scope.$index, scope.row)">优化协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
                             <!--<el-dropdown-item  ><el-button type="danger" @click="handleDel(scope.$index, scope.row)">删除合同</el-button></el-dropdown-item>-->
                         </el-dropdown-menu>
@@ -76,7 +76,9 @@
         approvingPurchaseContract,
         dumpingPurchaseContract,
         weiyuePurchaseContract,
-        endPurchaseContract} from '../../api/api.js';
+        endPurchaseContract,
+        youhuaPurchaseContract,
+    } from '../../api/api.js';
     export default {
         data() {
             return {
@@ -224,36 +226,31 @@
                 });
             },
             handleOptimize(index,row){
+                let para = {
+                    id:row.id,
+                }
+                youhuaPurchaseContract(para).then((res)=>{
+                });
                 this.$router.push('/purchaseContract/optimize?id='+row.id);
             },
             handleCheckOptimize(index,row){
                 this.$router.push('/purchaseContract/checkOptimize?id='+row.id);
             },
             handleDump(index,row){
+                let para = {
+                    id:row.id,
+                }
+                this.getPurchaseContractList();
+                dumpingPurchaseContract(para).then((res)=>{
+                    //this.getPurchaseContractList();
+                });
                 window.open('/#/purchaseContract/dump?id='+row.id)
-                //this.$router.push('/purchaseContract/dump?id='+row.id);
+
             },
             //合同确认
             handleConfirm(index,row){
                 this.payType.sureFormVisible = true;
                 this.payType.tHetongId = row.id;
-                /*let para = {
-                    id:row.id,
-                }
-                confirmPurchaseContract(para).then((res)=>{
-                    if(res.data.code == 200)　{
-                        this.$message({
-                            message: '合同确认成功',
-                            type: 'success'
-                        });
-                        this.purchaseContractList();
-                    }else{
-                        this.$message({
-                            message:res.data.msg,
-                            type:'error'
-                        })
-                    }
-                })*/
             },
 
         },

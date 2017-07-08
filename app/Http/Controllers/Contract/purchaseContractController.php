@@ -71,8 +71,13 @@ class purchaseContractController extends Controller
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $data = $request->params;
-        $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
-        $data['yifangfeiyong'] = implode(',',$data['yifangfeiyong']);
+        if($data['jiafangfeiyong']){
+            $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
+        }
+        if($data['yifangfeiyong']){
+            $data['yifangfeiyong'] = implode(',',$data['yifangfeiyong']);
+        }
+
         $response = $client->request('POST', '/api/contract/sf/save', [
             'json' => $data,
         ]);
@@ -193,7 +198,7 @@ class purchaseContractController extends Controller
         ]);
         echo $response->getBody();
     }
-    //合同确认
+    //合同状态变为：已确认
     public function confirm(){
         $id = Input::get('id');
         $client = new Client ([
@@ -203,21 +208,60 @@ class purchaseContractController extends Controller
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirm');
         echo $response->getBody();
     }
-    /*
-     * /api/contract/sf/buchongXieyi/3
-     * */
-    public function getOptimize(){
+    //合同状态变为：待确认
+    public function confirming(){
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$id);
+        $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirming');
         echo $response->getBody();
     }
-    /*
-     * 状态变更为审核中
-     * */
+    //合同状态变为：违约处理中
+    public function violating(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/'.$id.'/violating');
+        echo $response->getBody();
+    }
+    //合同状态变为：合同终止
+    public function terminated(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/'.$id.'/terminated');
+        echo $response->getBody();
+    }
+    //合同状态变为：优化中
+    public function releasing(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/'.$id.'/releasing');
+        echo $response->getBody();
+    }
+    //合同状态变为：优化成功  执行两个动作：协议改为已提交的状态，合同改为已经优化的状态
+    public function released(){
+
+        $id = Input::get('id');
+        $xyid = Input::get('xyid');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/'.$id.'/released');
+        $response = $client->request('GET', '/api/contract/sf/'.$xyid.'/confirm');
+        echo $response->getBody();
+    }
+    //状态变更为审核中
     public function approving(){
         $id = Input::get('id');
         $client = new Client ([
@@ -228,16 +272,16 @@ class purchaseContractController extends Controller
         echo $response->getBody();
     }
     /*
-     *  打印按钮，将合同变更为待确认
+     * /api/contract/sf/buchongXieyi/3
+     * 获取该合同的优化协议
      * */
-    public function dumping(){
+    public function getOptimize(){
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', "/api/contract/sf/$id/dumping");
+        $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$id);
         echo $response->getBody();
     }
-
 }

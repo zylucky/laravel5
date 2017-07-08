@@ -12,13 +12,13 @@
                 v-for="(item,index) in property.officeList"
                 :key="index"
         >
-        <p>（一）房屋坐落于北京市<input type="text" contenteditable="true" style="width:110px;">区（县）<input type="text"  style="width:210px;" v-model="item.weizhi">，建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米；<br>
+        <p>（一）房屋坐落于北京市<input type="text" contenteditable="true" v-model="item.quyu" style="width:110px;">区（县）<input type="text"  style="width:210px;" v-model="item.weizhi">，建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米；<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： <input type="text" value="办公">  。</p>
         <p>（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号：<input type="text"  style="width:210px;" v-model="item.chanquanzhenghao">，房屋所有权人姓名或名称：
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
                 <input type="text" v-model="item.name" style="width:210px;">
             </span>
-            ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为：<input type="text"  style="width:210px;">。</p>
+            ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为：<input type="text"  style="width:210px;" v-model="item.diyaren">。</p>
         </span>
         <p><b>第二条  委托管理期限</b></p>
         <p>
@@ -69,9 +69,22 @@
             <br>
         </span>
         </p>
-        <p>如有延长期，延长期租金为人民币（大写<input type="text" style="width: 100px;"> 元／月（￥：<input type="text" style="width: 100px;"> 元／月）。
+        <p>如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> 元/月（￥：<u>&nbsp;&nbsp;{{addDate.yanqizujin}}&nbsp;&nbsp;</u>元/月）。
             <br>
-            租金的支付方式：每 <input type="text" style="width: 25px;"> 月支付一次。租金中包含物业管理费、供暖费及制冷费。
+            租金的支付方式：
+            <span v-for="(item,index) in addDate.fukuanFangshiList"
+            :key="index"
+            >
+                <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
+                <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日
+                每 <u>{{(item.zujinyue)}}</u> 月支付一次。
+            </span>
+
+            租金中包含物业管理费、供暖费及制冷费。
             <br>
             首期租金支付时间为
             <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
@@ -372,6 +385,9 @@
             }
             return chineseStr;
             },
+            daxie2(number){
+               let arr = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
+            },
             year(riqi){
                 return new Date(riqi).getFullYear();
             },
@@ -445,6 +461,7 @@
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
                 this.addDate.buchongtiaokuan = res.data.data.buchongtiaokuan;
                 this.addDate.zujinList = res.data.data.zujinList;
+                this.addDate.yanqizujin = res.data.data.yanqizujin;
                 this.addDate.checkList = res.data.data.checkList;
                 //给条款的每一条数据都添加一个属性字段show
                 for (let x in res.data.data.tiaoList){

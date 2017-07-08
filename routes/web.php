@@ -22,6 +22,11 @@ Route::get('purchaseContract/optimize','Contract\purchaseContractController@getO
 Route::get('purchaseContract/approving','Contract\purchaseContractController@approving');
 Route::post('purchaseContract/editTiaoKuan','Contract\purchaseContractController@editTiaoKuan');
 Route::get('purchaseContract/confirm','Contract\purchaseContractController@confirm');
+Route::get('purchaseContract/confirming','Contract\purchaseContractController@confirming');
+Route::get('purchaseContract/violating','Contract\purchaseContractController@violating');
+Route::get('purchaseContract/terminated','Contract\purchaseContractController@terminated');
+Route::get('purchaseContract/releasing','Contract\purchaseContractController@releasing');
+Route::get('purchaseContract/released','Contract\purchaseContractController@released');
 Route::resource('purchaseContract','Contract\purchaseContractController');
 //Route::get('purchaseContract/review','Contract\purchaseContractController@review');
 Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');

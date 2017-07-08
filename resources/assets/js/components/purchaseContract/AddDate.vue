@@ -144,6 +144,11 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
+                    <el-form-item label="备案期限">
+                        <el-input placeholder="备案期限" v-model="addDate.beianqixian" style="width: 100%;"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="8">
                     <el-form-item label="押金付款日期">
                         <el-date-picker
                                 type="date"
@@ -165,6 +170,11 @@
                 <el-col :span="8">
                     <el-form-item label="签约日">
                         <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="8">
+                    <el-form-item label="延长期租金">
+                        <el-input placeholder="延长期租金" v-model="addDate.yanqizujin" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
