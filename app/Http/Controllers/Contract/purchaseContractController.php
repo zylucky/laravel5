@@ -77,11 +77,14 @@ class purchaseContractController extends Controller
         if($data['yifangfeiyong']){
             $data['yifangfeiyong'] = implode(',',$data['yifangfeiyong']);
         }
-
         $response = $client->request('POST', '/api/contract/sf/save', [
             'json' => $data,
         ]);
-        echo $response->getBody();
+        $res = $response->getBody();
+        $res = json_decode($res);
+        $res->data->yifangfeiyong = explode(',',$res->data->yifangfeiyong);
+        $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
+        echo json_encode($res)  ;
     }
 
     /**
