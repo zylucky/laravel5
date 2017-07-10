@@ -33,22 +33,22 @@
             </el-form-item>
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="收款人" prop="shoukuanren">
+                    <el-form-item label="收款人" prop="shoukuanren" required>
                         <el-input v-model="owner.shoukuanren"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="10">
-                    <el-form-item label="开户行" prop="kaihuhang">
+                    <el-form-item label="开户行" prop="kaihuhang" required>
                         <el-input v-model="owner.kaihuhang"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="账号" prop="zhanghao">
+                    <el-form-item label="账号" prop="zhanghao" required>
                         <el-input v-model="owner.zhanghao"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-form-item label="业主类型" prop="yezhuleixing">
+            <el-form-item label="业主类型" prop="yezhuleixing" required>
                 <el-radio-group v-model="owner.yezhuleixing">
                     <el-radio :label="1">个人</el-radio>
                     <el-radio :label="2">公司</el-radio>
@@ -59,7 +59,7 @@
                 <div v-for="(item, index) in owner.chanquanrenList">
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="产权人" prop="chanquanName" >
+                        <el-form-item label="产权人" prop="chanquanName" required>
                             <el-input v-model="owner.chanquanrenList[index].name"></el-input>
                         </el-form-item>
                     </el-col>
