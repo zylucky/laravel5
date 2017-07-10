@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-form :label-position="labelPosition" ref="ownerForm" :rules="editFormRules" label-width="100px" :model="owner">
+        <el-form :label-position="labelPosition" ref="ownerForm" :rules="editOwnerRules" label-width="100px" :model="owner">
         <el-col :span="24">
             <el-form-item label="承租人">
                 <el-radio-group v-model="owner.chengzufang">
@@ -193,7 +193,7 @@
                 bkNameloading:false,
                 estate: [],//服务器搜索的渠道公司数据放入这个数组中
                 editVisible:true,
-                editFormRules :{
+                editOwnerRules :{
                     shoukuanren: [
                         { required: true, message: '不能为空' }
                     ],
@@ -216,7 +216,7 @@
         methods: {
             valid(){
                 this.$refs.ownerForm.validate((valid) => {
-                    //alert(valid+'2')
+                    alert(valid+'2')
                 });
             },
             changeOnSelect(){

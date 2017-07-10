@@ -14,7 +14,7 @@
                         :label="item.title"
                         :name="item.name"
                 >
-                    <el-form label-Weizhi="right" ref="propertyForm" :rules="property.editFormRules" label-width="100px" :model="property.officeList[index]">
+                    <el-form label-Weizhi="right" ref="propertyForm" :rules="editPropertyRules" label-width="100px" :model="property.officeList[index]">
                         <el-col :span="24">
                             <el-row>
                                 <el-col :span="8">
@@ -157,7 +157,7 @@
                 purchaseContract:{
                     type:0,
                 },
-                editFormRules :{
+                editPropertyRules :{
                     loupanName: [
                         { required: true, message: '不能为空'}
                     ],
@@ -232,35 +232,6 @@
                     content: 'Tab 1 content'
                 }],
                 tabIndex: 1,
-                editFormRules :{
-                    loupanName: [
-                        { required: true, message: '不能为空'}
-                    ],
-                    loudongName:[
-                        { required: true, message:'不能为空'}
-                    ],
-                    fanghao:[
-                        { required: true, message:'不能为空'}
-                    ],
-                    quyu:[
-                        { required: true, message:'不能为空'}
-                    ],
-                    weizhi:[
-                        { required: true, message:'不能为空'}
-                    ],
-                    chanquanzhenghao:[
-                        { required: true, message:'不能为空'}
-                    ],
-                    jianzhumianji:[
-                        { required: true, message: '不能为空'},
-                    ],
-                    leixing:[
-                        { required: true, message:'不能为空'}
-                    ],
-                    qianyuemianji:[
-                        { required: true, message:'不能为空'}
-                    ]
-                },
 
             }
         },
@@ -269,7 +240,7 @@
                 var flag  = true;
                 var flag1 = true;
                 var property =  this.$refs.propertyForm;
-                console.log(property)
+
                 for (let i=0;i<property.length;i++){
                     property[i].validate((valid) => {
                         flag = valid;

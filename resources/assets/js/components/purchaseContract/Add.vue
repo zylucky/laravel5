@@ -184,23 +184,23 @@
                     let  para = {
                         id:this.id,
                     };
-//                    submitPurchaseContract(para).then((res)=>{
-//                        if(res.data.code == 200)　{
-//                            history.go(-1);
-//                            this.btnType = true;
-//                            this.submsg  = '已提交';
-//                        }else{
-//                            this.$message({
-//                                message:res.data.msg,
-//                                type:'error'
-//                            })
-//                        }
-//                    })
+                    submitPurchaseContract(para).then((res)=>{
+                        if(res.data.code == 200)　{
+                            history.go(-1);
+                            this.btnType = true;
+                            this.submsg  = '已提交';
+                        }else{
+                            this.$message({
+                                message:res.data.msg,
+                                type:'error'
+                            })
+                        }
+                    })
                 }
                 else{
-//                    if(flag3==false){this.stepNum = 3;}
-//                    if(flag2==false){this.stepNum = 2;}
-//                    if(flag1==false){this.stepNum = 1;}
+                    if(this.property.flag==false){this.stepNum = 3;}
+                    if(this.owner.flag==false){this.stepNum = 2;}
+                    if(this.addDate.flag==false){this.stepNum = 1;}
                     this.btnType = true;
                     this.$message({
                         message: '数据格式有问题，请检查',

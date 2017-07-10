@@ -1,6 +1,6 @@
 <template>
     <el-row class="container">
-        <el-form :model="addDate" ref="addDateForm" :rules="editFormRules"  label-width="100px" class="demo-dynamic">
+        <el-form :model="addDate" ref="addDateForm" :rules="editDateRules"  label-width="100px" class="demo-dynamic">
             <!--免租期-->
 
             <el-form-item label="免租期" v-for="(item, index) in addDate.mianzuqiList"
@@ -321,7 +321,7 @@
                         label: '元'
                     },
                 ],
-                editFormRules :{
+                editDateRules :{
                     startdate: [
                         { required: true, message: '不能为空' }
                     ],enddate: [
@@ -375,8 +375,8 @@
         props:['addDate'],
         methods: {
             valid(){
-                this.$refs.addDateForm.validate((valid) => {
-                    //alert(valid+'3')
+                this.$refs['addDateForm'].validate((valid) => {
+                    alert(valid+'3')
                 });
             },
             onSubmit() {
