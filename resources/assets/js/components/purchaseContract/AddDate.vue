@@ -37,32 +37,34 @@
             </el-form-item>
 
             <!--租期-->
-            <el-col :span="9" style="width:550px;">
-            <el-form-item label="总租期" required>
-                <el-col :span="11">
-                    <el-form-item prop="startdate">
-                        <el-date-picker
-                                v-model="addDate.startdate"
-                                type="date"
-                                placeholder="开始时间"
+            <el-row>
+                <el-col :span="9" style="width:550px;">
+                    <el-form-item label="总租期" required>
+                    <el-col :span="11">
+                        <el-form-item prop="startdate">
+                            <el-date-picker
+                                    v-model="addDate.startdate"
+                                    type="date"
+                                    placeholder="开始时间"
 
-                        >
-                        </el-date-picker>
-                    </el-form-item>
+                            >
+                            </el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="11">
+                        <el-form-item prop="enddate">
+                            <el-date-picker
+                                    v-model="addDate.enddate"
+                                    type="date"
+                                    placeholder="结束时间"
+                                    @change="zqchange()"
+                            >
+                            </el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                </el-form-item>
                 </el-col>
-                <el-col :span="11">
-                    <el-form-item prop="enddate">
-                        <el-date-picker
-                                v-model="addDate.enddate"
-                                type="date"
-                                placeholder="结束时间"
-                                @change="zqchange()"
-                        >
-                        </el-date-picker>
-                    </el-form-item>
-                </el-col>
-            </el-form-item>
-            </el-col>
+            </el-row>
             <!--租金-->
             <div v-for="(item, index) in addDate.zujinList">
                 <el-row>

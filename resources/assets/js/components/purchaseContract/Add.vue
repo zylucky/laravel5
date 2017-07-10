@@ -110,19 +110,19 @@
                         },
                     ],
                     //收款人
-                    shoukuanren:'彭亮',
-                    zhanghao:'1234 4567 7891 0123',
+                    shoukuanren:'',
+                    zhanghao:'',
                     kaihuhang:'',
                     //代理人
-                    dailirenName:'李朝晖',
-                    dailirenTel:'18511909125',
+                    dailirenName:'',
+                    dailirenTel:'',
                     dailirenSex:1,
-                    dailirenId:'37158119900124317X',
+                    dailirenId:'',
                     //签约人
-                    qianyuerenName:'lizhaohui',
-                    qianyuerenTel:'18511909124',
+                    qianyuerenName:'',
+                    qianyuerenTel:'',
                     qianyuerenSex:1,
-                    qianyuerenId:'37158119900124317X',
+                    qianyuerenId:'',
                 },
                 addDate: {
                     editFormRules:{},
