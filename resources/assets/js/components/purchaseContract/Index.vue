@@ -242,7 +242,7 @@
                 }
                 this.getPurchaseContractList();
                 dumpingPurchaseContract(para).then((res)=>{
-                    //this.getPurchaseContractList();
+                    this.getPurchaseContractList();
                 });
                 window.open('/#/purchaseContract/dump?id='+row.id)
 

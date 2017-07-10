@@ -96,8 +96,8 @@
                             </el-form-item>
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item required label="承租面积" prop="jianzhumianji" >
-                                        <el-input v-model="property.officeList[index].jianzhumianji"></el-input>
+                                    <el-form-item required label="承租面积" prop="jianzhumianji"  >
+                                        <el-input type="number"  v-model.number="property.officeList[index].jianzhumianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
@@ -157,6 +157,36 @@
                 purchaseContract:{
                     type:0,
                 },
+                editFormRules :{
+                    loupanName: [
+                        { required: true, message: '不能为空'}
+                    ],
+                    loudongName:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    fanghao:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    quyu:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    weizhi:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    chanquanzhenghao:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    jianzhumianji:[
+                        { required: true, message: '年龄不能为空'},
+                        { type: 'number', message: '年龄必须为数字值'}
+                    ],
+                    leixing:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    qianyuemianji:[
+                        { required: true, message:'不能为空'}
+                    ]
+                },
                 editVisible:true,
                 //楼盘数据
                 options1:[],
@@ -202,10 +232,54 @@
                     content: 'Tab 1 content'
                 }],
                 tabIndex: 1,
+                editFormRules :{
+                    loupanName: [
+                        { required: true, message: '不能为空'}
+                    ],
+                    loudongName:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    fanghao:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    quyu:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    weizhi:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    chanquanzhenghao:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    jianzhumianji:[
+                        { required: true, message: '不能为空'},
+                    ],
+                    leixing:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    qianyuemianji:[
+                        { required: true, message:'不能为空'}
+                    ]
+                },
 
             }
         },
         methods: {
+            valid(){
+                var flag  = true;
+                var flag1 = true;
+                var property =  this.$refs.propertyForm;
+                console.log(property)
+                for (let i=0;i<property.length;i++){
+                    property[i].validate((valid) => {
+                        flag = valid;
+                        if(flag==false){
+                            flag1 = false;
+                        }
+                        alert(valid+'1')
+                    })
+                }
+            },
             //获取楼盘
             remoteMethod1(query) {
                 let para = {
@@ -338,7 +412,7 @@
             addTab(targetName) {
                 let newTabName = ++this.tabIndex + '';
                 this.editableTabs2.push({
-                    title: '房间',
+                    title: '房间'+this.tabIndex,
                     name: newTabName,
                     content: 'New Tab content'
                 });
@@ -349,10 +423,10 @@
                     loupanName:'',
                     loudongName: '',
                     fanghao: '',
-                    weizhi: '东区',
-                    chanquanzhenghao: '8345',
-                    jianzhumianji: '83.5',
-                    qianyuemianji: '83.5',
+                    weizhi: '',
+                    chanquanzhenghao: '',
+                    jianzhumianji: '',
+                    qianyuemianji: '',
                     leixing: 0,
                     quyu:'',
                     isdiya:0,

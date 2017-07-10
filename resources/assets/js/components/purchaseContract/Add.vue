@@ -66,7 +66,7 @@
                 bianhao:'',
                 zhuangtai:'',
                 property:{
-                    editFormRules: {},
+                    flag:null,
                     officeList: [{
                         omcId:null,
                         loupanOmcId:null,
@@ -86,15 +86,14 @@
                     }],
                 },
                 owner:{
-                    editFormRules:{},
-
+                    flag:null,
                     options1:[
                         {
                             value:null,
                             label:null,
                         }
                     ],
-                    chengzufang:'华溯商贸',
+                    chengzufang:'',
                     jujianfang:'',
                     jujianfangid:null,
                     yezhuleixing:1,
@@ -125,7 +124,7 @@
                     qianyuerenId:'',
                 },
                 addDate: {
-                    editFormRules:{},
+                    flag:null,
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
                     shoufangdate: '',//收房日期
@@ -178,156 +177,36 @@
         },
         methods:{
             submit(){
-                this.property.editFormRules ={
-                    loupanName: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],
-                    loudongName:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    fanghao:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    quyu:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    weizhi:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    chanquanzhenghao:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    jianzhumianji:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    leixing:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    qianyuemianji:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ]
-                };
-                this.owner.editFormRules ={
-                    shoukuanren: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],
-                    kaihuhang: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],
-                    zhanghao: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],
-                    chanquanName: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],
-                    companyName: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],
-                };
-                this.addDate.editFormRules ={
-                    startdate: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],enddate: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],zuqistartddate: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],zuqienddate: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],yuezujin: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],price: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],fukuanstartdate: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],fukuanenddate: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],yajinyue: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],zujinyue: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],yajin: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],zongyingfuzujin: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],yongjin: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],tiqianfukuantian: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],beianqixian: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],yajinfukuanri: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],shoufangdate: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],qianyuedate: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],shouqifukuanri: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],erqifukuanri: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],sanqifukuanri: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],jiafangfeiyong: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],yifangfeiyong: [
-                        { required: true, message: '不能为空', trigger: 'blur' }
-                    ],
-                };
-                var property = this.$refs.property.$refs.propertyForm;
-                var owner = this.$refs.owner.$refs.ownerForm;
-                var addDate = this.$refs.date.$refs.addDateForm;
-                var flag = false;
-                var flag2 = false;
-
-                for (let i=0;i<property.length;i++){
-                    property[i].validate((valid) => {
-
-                        flag = valid;
-                        if(flag==false){
-                            flag2 = false;
-                        }
-
-                    })
-
-                }
-                owner.validate((valid) => {
-
-                    flag = valid;
-                    if(flag==false){
-                        flag2 = false;
-                    }
-
-                });
-                addDate.validate((valid) => {
-
-                    flag = valid;
-                    if(flag==false){
-                        flag2 = false;
-                    }
-
-                });
-
-                if(flag2){
-
+                this.$refs.owner.valid();
+                this.$refs.property.valid();
+                this.$refs.date.valid();
+                if(this.property.flag && this.owner.flag && this.addDate.flag){
                     let  para = {
                         id:this.id,
                     };
-                    submitPurchaseContract(para).then((res)=>{
-                        if(res.data.code == 200)　{
-                            history.go(-1);
-                            this.btnType = true;
-                            this.submsg  = '已提交';
-                        }else{
-                            this.$message({
-                                message:res.data.msg,
-                                type:'error'
-                            })
-                        }
-                    })
+//                    submitPurchaseContract(para).then((res)=>{
+//                        if(res.data.code == 200)　{
+//                            history.go(-1);
+//                            this.btnType = true;
+//                            this.submsg  = '已提交';
+//                        }else{
+//                            this.$message({
+//                                message:res.data.msg,
+//                                type:'error'
+//                            })
+//                        }
+//                    })
                 }
-
-
-
+                else{
+//                    if(flag3==false){this.stepNum = 3;}
+//                    if(flag2==false){this.stepNum = 2;}
+//                    if(flag1==false){this.stepNum = 1;}
+                    this.btnType = true;
+                    this.$message({
+                        message: '数据格式有问题，请检查',
+                        type: 'error'
+                    });
+                }
             },
             save() {
 

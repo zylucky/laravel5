@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-form :label-position="labelPosition" ref="ownerForm" :rules="owner.editFormRules" label-width="100px" :model="owner">
+        <el-form :label-position="labelPosition" ref="ownerForm" :rules="editFormRules" label-width="100px" :model="owner">
         <el-col :span="24">
             <el-form-item label="承租人">
                 <el-radio-group v-model="owner.chengzufang">
@@ -120,7 +120,7 @@
                 </el-row>
             </div>
             <div v-if="owner.yezhuleixing==2">
-                <el-form-item label="公司名称" prop="companyName">
+                <el-form-item label="公司名称" prop="companyName" required>
                     <el-input v-model="owner.chanquanrenList[0].name"></el-input>
                 </el-form-item>
                 <el-row>
@@ -193,10 +193,32 @@
                 bkNameloading:false,
                 estate: [],//服务器搜索的渠道公司数据放入这个数组中
                 editVisible:true,
+                editFormRules :{
+                    shoukuanren: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    kaihuhang: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    zhanghao: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    chanquanName: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    companyName: [
+                        { required: true, message: '不能为空' }
+                    ],
+                },
             }
         },
         props:['owner'],
         methods: {
+            valid(){
+                this.$refs.ownerForm.validate((valid) => {
+                    //alert(valid+'2')
+                });
+            },
             changeOnSelect(){
                 var arr = this.owner.options1;
                 for (let i=0;i<arr.length;i++ ){

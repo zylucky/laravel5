@@ -1,6 +1,6 @@
 <template>
     <el-row class="container">
-        <el-form :model="addDate" ref="addDateForm" :rules="addDate.editFormRules"  label-width="100px" class="demo-dynamic">
+        <el-form :model="addDate" ref="addDateForm" :rules="editFormRules"  label-width="100px" class="demo-dynamic">
             <!--免租期-->
 
             <el-form-item label="免租期" v-for="(item, index) in addDate.mianzuqiList"
@@ -321,10 +321,64 @@
                         label: '元'
                     },
                 ],
+                editFormRules :{
+                    startdate: [
+                        { required: true, message: '不能为空' }
+                    ],enddate: [
+                        { required: true, message: '不能为空' }
+                    ],zuqistartddate: [
+                        { required: true, message: '不能为空' }
+                    ],zuqienddate: [
+                        { required: true, message: '不能为空' }
+                    ],yuezujin: [
+                        { required: true, message: '不能为空' }
+                    ],price: [
+                        { required: true, message: '不能为空' }
+                    ],fukuanstartdate: [
+                        { required: true, message: '不能为空' }
+                    ],fukuanenddate: [
+                        { required: true, message: '不能为空' }
+                    ],yajinyue: [
+                        { required: true, message: '不能为空' }
+                    ],zujinyue: [
+                        { required: true, message: '不能为空' }
+                    ],yajin: [
+                        { required: true, message: '不能为空' }
+                    ],zongyingfuzujin: [
+                        { required: true, message: '不能为空' }
+                    ],yongjin: [
+                        { required: true, message: '不能为空' }
+                    ],tiqianfukuantian: [
+                        { required: true, message: '不能为空' }
+                    ],beianqixian: [
+                        { required: true, message: '不能为空' }
+                    ],yajinfukuanri: [
+                        { required: true, message: '不能为空' }
+                    ],shoufangdate: [
+                        { required: true, message: '不能为空' }
+                    ],qianyuedate: [
+                        { required: true, message: '不能为空' }
+                    ],shouqifukuanri: [
+                        { required: true, message: '不能为空' }
+                    ],erqifukuanri: [
+                        { required: true, message: '不能为空' }
+                    ],sanqifukuanri: [
+                        { required: true, message: '不能为空' }
+                    ],jiafangfeiyong: [
+                        { required: true, message: '不能为空' }
+                    ],yifangfeiyong: [
+                        { required: true, message: '不能为空' }
+                    ],
+                },
             }
         },
         props:['addDate'],
         methods: {
+            valid(){
+                this.$refs.addDateForm.validate((valid) => {
+                    //alert(valid+'3')
+                });
+            },
             onSubmit() {
 
             },
