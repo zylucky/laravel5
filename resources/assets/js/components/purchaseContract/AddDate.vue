@@ -388,7 +388,8 @@
                     ],zuqienddate: [
                         { required: true, message: '不能为空' }
                     ],yuezujin: [
-                        { required: true, message: '不能为空' }
+                        { required: true, message: '不能为空' },
+                        { type: 'number', message: '必须为数字'},
                     ],price: [
                         { required: true, message: '不能为空' }
                     ],fukuanstartdate: [
@@ -396,21 +397,28 @@
                     ],fukuanenddate: [
                         { required: true, message: '不能为空' }
                     ],yajinyue: [
-                        { required: true, message: '不能为空' }
+                        { required: true, message: '不能为空' },
+                        { type: 'number', message: '必须为数字'},
                     ],zujinyue: [
-                        { required: true, message: '不能为空' }
+                        { required: true, message: '不能为空' },
+                        { type: 'number', message: '必须为数字'},
                     ],yajin: [
-                        { required: true, message: '不能为空' }
+                        { required: true, message: '不能为空' },
+                        { type: 'number', message: '必须为数字'},
                     ],zongyingfuzujin: [
-                        { required: true, message: '不能为空' }
+                        { required: true, message: '不能为空' },
+                        { type: 'number', message: '必须为数字'},
                     ],yongjin: [
-                        { required: true, message: '不能为空' }
+                        { required: true, message: '不能为空' },
+                        { type: 'number', message: '必须为数字'},
                     ],tiqianfukuantian: [
-                        { required: true, message: '不能为空' }
+                        { required: true, message: '不能为空' },
+                        { type: 'number', message: '必须为数字'},
                     ],beianqixian: [
-                        { required: true, message: '不能为空' }
+                        { required: true, message: '不能为空' },
+                        { type: 'number', message: '必须为数字'},
                     ],yajinfukuanri: [
-                        { required: true, message: '不能为空' }
+                        { required: true, message: '不能为空' },
                     ],shoufangdate: [
                         { required: true, message: '不能为空' }
                     ],qianyuedate: [
