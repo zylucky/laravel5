@@ -30,11 +30,11 @@ class receivableController extends Controller
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/compay/list',[
+        $response = $client->request('GET', '/api/cw/ys/list',[
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-                'compay' =>  $buildingname
+
                 ]
 
        ]

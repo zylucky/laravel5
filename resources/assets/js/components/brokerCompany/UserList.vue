@@ -38,8 +38,16 @@
                </el-table-column>-->
                <el-table-column label="操作" width="150">
                    <template scope="scope">
-                       <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                       <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+                       <el-dropdown   menu-align="start">
+                           <el-button type="primary" size="normal" splitButton="true">
+                               操作<i class="el-icon-caret-bottom el-icon--right"></i>
+                           </el-button>
+                           <el-dropdown-menu slot="dropdown" size="100">
+                               <el-dropdown-item  >  <el-button  @click="handleEdit(scope.$index, scope.row)">编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;辑</el-button> </el-dropdown-item>
+                               <el-dropdown-item  >  <el-button  @click="handleDel(scope.$index, scope.row)">删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除</el-button> </el-dropdown-item>
+                           </el-dropdown-menu>
+                       </el-dropdown>
+
                    </template>
                </el-table-column>
            </el-table>
@@ -139,10 +147,10 @@
                 </el-form-item>
 
                 <el-form-item label="收房佣金占比" prop="yjzbSf">
-                    <el-input type="number" v-model="addForm.yjzbSf" auto-complete="off"></el-input>
+                    <el-input   v-model.number="addForm.yjzbSf" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="出房佣金占比" prop="yjzbCf">
-                    <el-input type="number" v-model="addForm.yjzbCf" auto-complete="off"></el-input>
+                    <el-input  v-model.number="addForm.yjzbCf" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="佣金类型"    prop="yjType">
                     <el-select v-model="addForm.yjType" placeholder="">
@@ -226,7 +234,7 @@
                         { required: true, message: '请输入人员电话', trigger: 'blur' }
                     ],
                     yjzbSf: [
-                        {  required: true, message: '请输入收房佣金占比', trigger: 'blur' },
+                        { type: 'number', message: '收房佣金占比不能为空且必须为数字',trigger: 'blur' },
                         {required: true,validator:(rule,value,callback)=>{
                             if(value>1||value<0){
                                 callback(new Error("收房佣金占比只能是0到1之间的数"));
@@ -236,7 +244,7 @@
                         }, trigger:'blur'}
                     ],
                     yjzbCf: [
-                        {  required: true, message: '请输入出房佣金占比', trigger: 'blur' },
+                        { type: 'number', message: '出房佣金占比不能为空且必须为数字',trigger: 'blur'},
                         {required: true,validator:(rule,value,callback)=>{
                             if(value>1||value<0){
                                 callback(new Error("出房佣金占比只能是0到1之间的数"));
@@ -284,7 +292,7 @@
                         { required: true, message: '请输入人员电话', trigger: 'blur' }
                     ],
                     yjzbSf: [
-                        {   required: true, message: '请输入收房佣金占比', trigger: 'blur' },
+                        { type: 'number', message: '收房佣金占比不能为空且必须为数字',trigger: 'blur' },
                         {required: true,validator:(rule,value,callback)=>{
                             if(value>1||value<0){
                                 callback(new Error("收房佣金占比只能是0到1之间的数"));
@@ -294,7 +302,7 @@
                         }, trigger:'blur'}
                     ],
                     yjzbCf: [
-                        {  required: true, message: '请输入出房佣金占比', trigger: 'blur' },
+                        { type: 'number', message: '出房佣金占比不能为空且必须为数字',trigger: 'blur'},
                         {required: true,validator:(rule,value,callback)=>{
                             if(value>1||value<0){
                                 callback(new Error("出房佣金占比只能是0到1之间的数"));
@@ -389,6 +397,7 @@
             //编辑选择渠道公司将id赋值给隐藏字段
             change(){
                 //alert(this.editForm.tQdCompayId);
+
                 if(!isNaN(this.editForm.tQdCompayId)){
 
                 this.editForm.tQdCompayName= this.editForm.tQdCompayId;
@@ -499,6 +508,7 @@
                             this.addLoading = true;
                             //NProgress.start();
                             let para = Object.assign({}, this.addForm);
+
                             //para.yjType= this.addForm.yjType == '按月租金' ? 1 : 2;
                             //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
                             addBrokerCompanyUser(para).then((res) => {

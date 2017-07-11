@@ -29,11 +29,11 @@ class ShouFangCommissionController extends Controller
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/compay/list',[
+        $response = $client->request('GET', '/api/qd/apply/list',[
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-                'compay' =>  $contractNo
+                'htno' =>  $contractNo
                 ]
 
        ]
@@ -49,37 +49,19 @@ class ShouFangCommissionController extends Controller
      */
     public function create()
     {
-//        $info = Input::get();
-//        if($info) {
-//              return [
-//                        'message' => '保存成功',
-//                        'code' => 200,
-//              ];
-//        }
+
 
     }
 
     /**
      * Store a newly created resource in storage.
-     *保存渠道公司
+     *保存
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-       // dd($request->params);
-        $user = Auth::user();
-        $obj=array_merge($request->params,Array('tbPersonIdCreate'=>$user->id));
-        //dd($obj);
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
 
-        $r = $client->request('POST', '/api/qd/compay/add', [
-            'json' => $obj
-        ]);
-        return  $r ->getBody();
 
     }
 
@@ -107,22 +89,29 @@ class ShouFangCommissionController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *更新渠道公司
+     *更新
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
+        //以后用户会从OMC取
+        $user=    Array(
+            'tEmpId'=>1,
+            'empname'=>'张三',
+            'empzb'=>null,
+            'acctype'=>'hualiang',
+        );
 
-        $obj=array_merge($request->params,Array('tQdCompayId'=>$id));
-        //dd($obj);
+        $obj=array_merge($request->params,$user);
+       // dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
 
-        $r = $client->request('POST', '/api/qd/compay/alter', [
+        $r = $client->request('POST', '/api/qd/apply/addApplys', [
             'json' => $obj
         ]);
         return  $r ->getBody();
@@ -130,7 +119,7 @@ class ShouFangCommissionController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *删除渠道公司
+     *删除
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -138,66 +127,19 @@ class ShouFangCommissionController extends Controller
     {
        // dd($id);
 
-        return $this->deleteCompany($id);
     }
-
-    public  function deleteCompany($id)
+    public function  finishSK(Request $request)
     {
-
+        $obj= $request->params ;
+        dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('POST', '/api/qd/compay/del',[
-                'json' => [
-                    'id'=>$id
-                ]
-
-            ]
-        );
-        return $response->getBody();
-    }
-
-    public function batchRemoveBrokerCompany(Request $request)
-    {
-        $ids = $request->params['ids'];
-        $code='200';
-        $arr = explode(',',$ids);
-        foreach ($arr as $item ){
-          $status= $this->deleteCompany($item);
-           if($status->code!='200')
-           {
-               $code=$status->msg;
-           }
-        }
-        return $code;
-       // destroy($arr);
-    }
-    public function checkbkNameList(Request $request)
-    {
-       // dd($request->params['name']);
-        $client = new Client([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+        $response = $client->request('GET', '/api/qd/apply/addApplys',[
+            'query' =>$obj
         ]);
-        $bkName =$request->params['name'];
-
-        $response = $client->request('GET', '/api/qd/compay/check',[
-                'query' => [
-                    'compay' =>  $bkName
-                ]
-
-            ]
-        );
-        //dd($response->getBody());
-
-
-        echo $response->getBody();
-
+        return  $response ->getBody();
     }
-    public function getUserById(Request $request)
-    {
-       $user= DB::table('users')->where('id', $request->params['id'])->first();
-        return $user->name;
-    }
+
 }

@@ -23,20 +23,20 @@ class ChuFangCommissionController  extends Controller
         $ZhuangTai = Input::get('ZhuangTai');
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
-
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/person/list',[
-            'query' => [
-                'page'=>$page,
-                'size'=>$pageSize,
-                'compay' =>  $contractNo,
-                'uname'=>$buildingname
+        $response = $client->request('GET', '/api/qd/apply/list',[
+                'query' => [
+                    'page'=>$page,
+                    'size'=>$pageSize,
+                    'htno' =>  $contractNo
+                ]
+
             ]
-        ]);
-        return $response->getBody();
+        );
+        echo $response->getBody();
     }
 
     /**
@@ -58,23 +58,14 @@ class ChuFangCommissionController  extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *保存渠道人员
+     *保存
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 
-      //  dd( $request->params);
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
 
-        $r = $client->request('POST', '/api/qd/person/add', [
-            'json' => $request->params
-        ]);
-        return  $r ->getBody();
     }
 
     /**
@@ -101,7 +92,7 @@ class ChuFangCommissionController  extends Controller
 
     /**
      * Update the specified resource in storage.
-     *更新渠道人员
+     *更新
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -125,76 +116,26 @@ class ChuFangCommissionController  extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *删除渠道人员
+     *删除
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         dd($id);
-        return deleteCompany($id);
-    }
 
-    public  function deleteCompany($id)
+    }
+    public function  finishFK(Request $request)
     {
+        $obj= $request->params ;
+        dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/compay/del',[
-                'query' => [
-                    'id'=>$id
-                ]
-
-            ]
-        );
-        return $response->getBody();
-    }
-    /*
-     * 批量删除
-     * @param Request $request
-     */
-    public function batchRemoveBKUser(Request $request)
-    {
-        $ids = $request->params['ids'];
-        dd($ids);
-        $code='200';
-        $arr = explode(',',$ids);
-        foreach ($arr as $item ){
-            $status= $this->deleteCompany($item);
-            if($status->code!='200')
-            {
-                $code=$status->msg;
-            }
-        }
-        return $code;
-    }
-
-    public function getbkNameList(Request $request)
-    {
-
-        $client = new Client([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+        $response = $client->request('GET', '/api/qd/apply/addApplys',[
+            'query' =>$obj
         ]);
-        $bkName =$request->params['name'];
-        $response = $client->request('GET', '/api/qd/compay/list',[
-                'query' => [
-                    'page'=>1,
-                    'size'=>10,
-                    'compay' =>  $bkName
-                ]
-
-            ]
-        );
-        $obj = json_decode($response->getBody());
-        $json = [];
-        if($obj->code==200){
-            foreach ($obj->data as $key=> $value){
-                $json[$value->tQdCompayId] = $value->compayname;
-            }
-            return $json;
-        }
+        return  $response ->getBody();
     }
-
 }
