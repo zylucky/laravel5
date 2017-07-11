@@ -18,7 +18,6 @@ import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimiz
 import PurchaseContractDump from "./components/purchaseContract/Dump.vue";
 
 
-
 //出房合同
 import SaleContractIndex from "./components/saleContract/Index.vue";
 import SaleContractAdd from "./components/saleContract/Add.vue";
@@ -115,6 +114,7 @@ let routes = [
             { path: '/role', component: Role, name: '角色' ,hidden:fk_permission_role},
             { path: '/fun', component: Permission, name: '权限',hidden:fk_permission_per },
         ]
+
     },
     {
         path: '/',
@@ -133,6 +133,7 @@ let routes = [
             { path:'/purchaseContract/checkOptimize',component:PurchaseContractCheckOptimize,name:'收房协议查看',hidden:true},
             { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
 
+
              { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
              { path:'/saleContact/add',component:SaleContractAdd,name:'出房录入',hidden:true},
              { path:'/saleContract/see',component:SaleContractAdd,name:'出房查看',hidden:true},
@@ -141,8 +142,6 @@ let routes = [
              { path:'/saleContract/jieyue',component:SaleContractJieyue,name:'解约协议',hidden:true},
              { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
              { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true}
-
-
         ]
     },
     {

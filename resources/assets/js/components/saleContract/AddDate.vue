@@ -1,7 +1,7 @@
 <template>
     <el-row class="container">
         <el-form :model="addDate"  label-width="100px" class="demo-dynamic">
-            <el-form-item label="合同类型">
+            <el-form-item label="合同类型" required>
                 <el-radio-group v-model="addDate.hetongType">
                     <el-radio :label="1">新建合同</el-radio>
                     <el-radio :label="2">续签合同</el-radio>
@@ -47,12 +47,12 @@
                 <div v-if="addDate.hetongType == 1">
                     <el-row>
                         <el-col :span="8">
-                            <el-form-item label="收房日">
+                            <el-form-item label="收房日" required>
                                 <el-date-picker type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;"></el-date-picker>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="签约日">
+                            <el-form-item label="签约日" required>
                                 <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
                             </el-form-item>
                         </el-col>
@@ -63,19 +63,19 @@
                 <div v-if="addDate.hetongType == 2">
                     <el-row>
                         <el-col :span="8">
-                            <el-form-item label="原房屋抵扣金额">
+                            <el-form-item label="原房屋抵扣金额" required>
                                 <el-input v-model="addDate.dikoujine" placeholder="原房屋抵扣金额"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
                         <el-col :span="8">
-                            <el-form-item label="收房日">
+                            <el-form-item label="收房日" required>
                                 <el-date-picker type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;"></el-date-picker>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="签约日">
+                            <el-form-item label="签约日" required>
                                 <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
                             </el-form-item>
                         </el-col>
@@ -124,7 +124,7 @@
             </el-form-item>
 
             <!--租期-->
-            <el-form-item label="总租期">
+            <el-form-item label="总租期" required>
                 <el-date-picker
                         v-model="addDate.startdate"
                         type="date"
@@ -140,6 +140,7 @@
             <div  v-for="(item, index) in addDate.fukuanFangshiList">
                 <el-form-item label="付款方式"
                               :key="item.key"
+                              required
                               :prop="'fukuanFangshiList.' + index + '.value'"
                 >
                     <el-row>
@@ -220,30 +221,30 @@
             <!--押金 总应付租金 合同佣金-->
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="押金">
+                    <el-form-item label="押金" required>
                         <el-input v-model="addDate.yajin" placeholder="押金"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="总应付租金">
-                        <el-input v-model="addDate.yingfuzongzujin" placeholder="总应付押金"></el-input>
+                        <el-input v-model="addDate.yingfuzongzujin" placeholder="总应付押金" required></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="合同佣金">
-                        <el-input v-model="addDate.hetongyongjin" placeholder="合同佣金"></el-input>
+                        <el-input v-model="addDate.hetongyongjin" placeholder="合同佣金" required></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
             <!--提前几天付款 押金付款日期-->
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="提前几天付款">
+                    <el-form-item label="提前几天付款" required>
                         <el-input placeholder="提前几天付款" v-model="addDate.tiqianfukuantian" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="押金付款日期">
+                    <el-form-item label="押金付款日期" required>
                         <el-date-picker
                                 type="date"
                                 placeholder="选择日期"
@@ -257,7 +258,7 @@
             <!--首期支付 二期支付 三期支付-->
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="首期租金日期">
+                    <el-form-item label="首期租金日期" required>
                         <el-date-picker
                                 type="date"
                                 v-model="addDate.shouqifukuanri"
@@ -267,7 +268,7 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="二期租金日期">
+                    <el-form-item label="二期租金日期" required>
                         <el-date-picker
                                 type="date"
                                 v-model="addDate.erqifukuanri"
@@ -277,7 +278,7 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="三期租金日期">
+                    <el-form-item label="三期租金日期" required>
                         <el-date-picker
                                 tpye="date"
                                 v-model="addDate.sanqifukuanri"
@@ -288,7 +289,7 @@
                 </el-col>
             </el-row>
             <!--各种费用-->
-            <el-form-item label="费用">
+            <el-form-item label="费用" required>
                 <el-checkbox-group  v-model="addDate.checkList">
                     <el-checkbox label="物业费"></el-checkbox>
                     <el-checkbox label="取暖费"></el-checkbox>

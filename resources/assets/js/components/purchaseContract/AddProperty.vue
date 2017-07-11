@@ -97,12 +97,12 @@
                             <el-row>
                                 <el-col :span="8">
                                     <el-form-item required label="承租面积" prop="jianzhumianji"  >
-                                        <el-input type="number"  v-model.number="property.officeList[index].jianzhumianji"></el-input>
+                                        <el-input   v-model.number="property.officeList[index].jianzhumianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item required label="签约面积" prop="qianyuemianji">
-                                        <el-input v-model="property.officeList[index].qianyuemianji"></el-input>
+                                        <el-input  v-model.number="property.officeList[index].qianyuemianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
@@ -177,14 +177,15 @@
                         { required: true, message:'不能为空'}
                     ],
                     jianzhumianji:[
-                        { required: true, message: '年龄不能为空'},
-                        { type: 'number', message: '年龄必须为数字值'}
+                        { required: true, message: '不能为空'},
+                        { type: 'number', message: '必须为数字'},
                     ],
                     leixing:[
                         { required: true, message:'不能为空'}
                     ],
                     qianyuemianji:[
-                        { required: true, message:'不能为空'}
+                        { required: true, message:'不能为空'},
+                        { type: 'number', message: '必须为数字'},
                     ]
                 },
                 editVisible:true,
@@ -247,7 +248,7 @@
                         if(flag==false){
                             flag1 = false;
                         }
-                        alert(valid+'1')
+                        this.property.flag = flag1;
                     })
                 }
             },

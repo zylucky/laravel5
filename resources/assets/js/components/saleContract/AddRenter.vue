@@ -46,17 +46,17 @@
 
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="收款人" >
+                    <el-form-item label="收款人" required>
                         <el-input v-model="renter.shoukuanren"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="10">
-                    <el-form-item label="开户行" >
+                    <el-form-item label="开户行" required>
                         <el-input v-model="renter.kaihuhang"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="账号" >
+                    <el-form-item label="账号" required>
                         <el-input v-model="renter.zhanghao"></el-input>
                     </el-form-item>
                 </el-col>
@@ -71,7 +71,7 @@
                 <div v-for="(item, index) in renter.chengzuren">
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="承租人" >
+                        <el-form-item label="承租人" required>
                             <el-input v-model="renter.chengzuren[index].name"></el-input>
                         </el-form-item>
                     </el-col>
