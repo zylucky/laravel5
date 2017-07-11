@@ -19,8 +19,14 @@ Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
 Route::post('purchaseContract/review','Contract\purchaseContractController@review');
 Route::get('purchaseContract/optimize','Contract\purchaseContractController@getOptimize');
+Route::get('purchaseContract/approving','Contract\purchaseContractController@approving');
 Route::post('purchaseContract/editTiaoKuan','Contract\purchaseContractController@editTiaoKuan');
 Route::get('purchaseContract/confirm','Contract\purchaseContractController@confirm');
+Route::get('purchaseContract/confirming','Contract\purchaseContractController@confirming');
+Route::get('purchaseContract/violating','Contract\purchaseContractController@violating');
+Route::get('purchaseContract/terminated','Contract\purchaseContractController@terminated');
+Route::get('purchaseContract/releasing','Contract\purchaseContractController@releasing');
+Route::get('purchaseContract/released','Contract\purchaseContractController@released');
 Route::resource('purchaseContract','Contract\purchaseContractController');
 //Route::get('purchaseContract/review','Contract\purchaseContractController@review');
 Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');
@@ -65,7 +71,7 @@ Route::post('user/edit','UserController@editUser');
 Route::post('user/role/{id}','UserController@setRole');
 Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
 
-Route::get('office/loupanList','Contract\OfficeController@loupanList');
-Route::get('office/loudongList','Contract\OfficeController@loudongList');
-Route::get('office/fanghaoList','Contract\OfficeController@fanghaoList');
+Route::get('office/loupanList','Contract\officeController@loupanList');
+Route::get('office/loudongList','Contract\officeController@loudongList');
+Route::get('office/fanghaoList','Contract\officeController@fanghaoList');
 

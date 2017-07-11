@@ -74,7 +74,7 @@ class officeController extends Controller
             }
             return $json;
         }else{
-            echo  $obj;
+            echo $obj->msg;
         }
     }
 
