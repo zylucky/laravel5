@@ -42,10 +42,17 @@ Route::resource('payavleRecord','Report\payavleRecordController');
 Route::resource('paymentRecord','Report\paymentRecordController');
 Route::post('shouFangCommission/finishSK','Commission\ShouFangCommissionController@finishSK');
 
+//Route::post('saleContract/sub','Contract\saleContractController@sub');
+Route::get('saleContract/submit','Contract\saleContractController@submit');
+Route::get('saleContract/approving','Contract\saleContractController@approving');
+Route::get('saleContract/confirm','Contract\saleContractController@confirm');
+Route::get('saleContract/violating','Contract\saleContractController@violating');
+Route::get('saleContract/terminated','Contract\saleContractController@terminated');
+Route::get('saleContract/releasing','Contract\saleContractController@releasing');
+Route::get('saleContract/released','Contract\saleContractController@released');
+Route::get('saleContract/jieyuesave','Contract\saleContractController@jieyuesave');
 
-Route::resource('saleContract','Contract\saleContractController');
-Route::post('saleContract/sub','Contract\saleContractController@sub');
-
+Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 
 Route::get('permission/getAll','Rbac\PermissionController@getAll');
 Route::get('permission/role/{id}','Rbac\PermissionController@getPermission');

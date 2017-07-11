@@ -17,10 +17,11 @@
                         <a href="javascript:;" @click="stepNum=3"><el-step  title="租期信息"></el-step></a>
                         <!--<a href="javascript:;" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>-->
                     </el-steps>
+                    <el-input type="hidden" prop="id"  auto-complete="off"></el-input>
                     <el-button type="primary" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
                     <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
-                    <el-button type="primary" v-show="reviewVisible" @click="review(1)" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
-                    <el-button type="warning" v-show="reviewVisible" @click="review(0)" style="margin-top:100px;">不通过</el-button>
+                    <el-button type="primary" v-show="tonguo" @click="review(1)" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
+                    <el-button type="warning" v-show="tonguo" @click="review(0)" style="margin-top:100px;">不通过</el-button>
 
                 </div>
 
@@ -53,10 +54,12 @@
                 submsg:'提交',
                 shenhe:null,//审核数据
                 reviewVisible:false,//审核显示
+                tonguo:false,
                 content:'',//审核批注
                 dialogFormVisible:false,
                 stepNum:1,
                 id:'',
+                bianhao:'',
                 property:{
                     officeList: [{
                         omcId:null,
@@ -95,15 +98,22 @@
 
 
                 renter:{
+                    options1:[
+                        {
+                            value:null,
+                            label:null,
+                        }
+                    ],
                     chengzufang:'华溯商贸',
+                    jujianfangtype:1,
                     jujianfang:'',
-                    yezhuleixing:1,
+                    zuhuleixing:1,
                     //产权人
-                    chanquanrenList:[
+                    chengzuren:[
                         {
                             faren:'',
                             name:'',
-                            zhengjian:'',
+                            idNo:'',
                             tel:'',
                             sex:1,
                             hetongid:null,
@@ -141,14 +151,14 @@
                         zujinyue:'',
                     }],
                     yajin:'',//押金
-                    zongzujin:'',//总租金
-                    commission:'',//佣金
+                    yingfuzongzujin:'',//总租金
+                    hetongyongjin:'',//佣金
                     tiqianfukuantian:'',//提前付款天数
-                    yajinfukuanri:'',//押金付款日
+                    yajinfukuanriqi:'',//押金付款日
                     shouqifukuanri:'',//首期租金付款日
                     erqifukuanri:'',//二期付款
                     sanqifukuanri:'',//三期付款
-                    buchongtiaokuan:'',//补充条款
+                    buchongTiaokuanList:'',//补充条款
                     zujinList:[
                         {
                             startdate:'',
@@ -176,10 +186,11 @@
                 }
                 submitSaleContract(para).then((res)=>{
                     if(res.data.code == 200){
-                        this.$message({//这是Vue中从后台返回来的数据的格式
+                        history.go(-1);
+                        /*this.$message({//这是Vue中从后台返回来的数据的格式
                             message:'提交成功',
                             type:'success'
-                        });
+                        });*/
                         this.btnType = true;
                         this.submsg  = '已提交';
                     }else{
@@ -191,16 +202,20 @@
                 })
             },
             save:function () {
+                this.btnType = false;
+                this.submsg  = '提交';
                     var child_property = this.$refs.property.property;
-                    var child_renter  = this.$refs.renter.addRenter;
+                    var child_renter  = this.$refs.renter.renter;
                     var child_date = this.$refs.date.addDate;
                     var id = {
                         id: this.id
                     };
-
-                    let para = Object.assign({}, child_property,child_renter,child_date);
+                    var bianhao = {
+                        bianhao: this.bianhao,
+                    };
+                    let para = Object.assign({}, child_property,child_renter,child_date,id);
+                    //alert(para);
                     addSaleContractInfo(para).then((res) => {
-
                         if(res.data.code == 200)　{
                             this.fuzhi(res);
                             this.$message({
@@ -242,7 +257,7 @@
                 });
             },
             //根据url得到的合同ID，来获取数据
-            getPurchaseContract(id){
+            getSaleContract(id){
                 getSaleContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
                         //console.log(res.data.data)
@@ -259,20 +274,24 @@
             fuzhi(res){
                 this.id = res.data.data.id;
                 this.property.officeList = res.data.data.officeList;
-                this.addRenter.chanquanrenList = res.data.data.chanquanrenList;
-                this.addRenter.chengzufang = res.data.data.chengzufang;
-                this.addRenter.jujianfang = res.data.data.jujianfang;
-                this.addRenter.yezhuleixing = res.data.data.yezhuleixing;
-                this.addRenter.shoukuanren = res.data.data.shoukuanren;
-                this.addRenter.zhanghao = res.data.data.zhanghao;
-                this.addRenter.dailirenTel = res.data.data.dailirenTel;
-                this.addRenter.dailirenSex = res.data.data.dailirenSex;
-                this.addRenter.dailirenId = res.data.data.dailirenId;
-                this.addRenter.dailirenName = res.data.data.dailirenName;
-                this.addRenter.qianyuerenName = res.data.data.qianyuerenName;
-                this.addRenter.qianyuerenTel = res.data.data.qianyuerenTel;
-                this.addRenter.qianyuerenSex = res.data.data.qianyuerenSex;
-                this.addRenter.qianyuerenId = res.data.data.qianyuerenId;
+                if(res.data.data.chengzuren.length>0){
+                    this.renter.chengzuren = res.data.data.chengzuren;
+                }
+                //this.renter.chengzuren = res.data.data.chengzuren;
+                this.renter.chengzufang = res.data.data.chengzufang;
+                this.renter.jujianfangtype = res.data.data.jujianfangtype;
+                this.renter.jujianfang = res.data.data.jujianfang;
+                this.renter.zuhuleixing = res.data.data.zuhuleixing;
+                this.renter.shoukuanren = res.data.data.shoukuanren;
+                this.renter.zhanghao = res.data.data.zhanghao;
+                /*this.renter.dailirenTel = res.data.data.dailirenTel;
+                this.renter.dailirenSex = res.data.data.dailirenSex;
+                this.renter.dailirenId = res.data.data.dailirenId;
+                this.renter.dailirenName = res.data.data.dailirenName;*/
+                this.renter.qianyuerenName = res.data.data.qianyuerenName;
+                this.renter.qianyuerenTel = res.data.data.qianyuerenTel;
+                this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
+                this.renter.qianyuerenId = res.data.data.qianyuerenId;
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;
@@ -281,20 +300,35 @@
                 this.addDate.mianzuqiList = res.data.data.mianzuqiList;
                 this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;
                 this.addDate.yajin = res.data.data.yajin;
-                this.addDate.zongzujin = res.data.data.zongzujin;
-                this.addDate.commission = res.data.data.commission;
+                this.addDate.yingfuzongzujin = res.data.data.yingfuzongzujin;
+                this.addDate.hetongyongjin = res.data.data.hetongyongjin;
                 this.addDate.tiqianfukuantian = res.data.data.tiqianfukuantian;
-                this.addDate.yajinfukuanri = res.data.data.yajinfukuanri;
+                this.addDate.yajinfukuanriqi = res.data.data.yajinfukuanriqi;
                 this.addDate.shouqifukuanri = res.data.data.shouqifukuanri;
                 this.addDate.erqifukuanri = res.data.data.erqifukuanri;
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
-                this.addDate.buchongtiaokuan = res.data.data.buchongtiaokuan;
+                this.addDate.buchongTiaokuanList = res.data.data.buchongTiaokuanList;
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
-
             },
             disabledInput(){
-                this.reviewVisible =true;
+                this.reviewVisible = true;
+                this.tonguo = true;
+                var allInputs = document.getElementsByTagName('input');
+                var textArea = document.getElementsByTagName('textarea');
+                for (let i=0; i<allInputs.length; i++){
+                    allInputs[i].disabled="true";
+                    allInputs[i].parentNode.className += " is-disabled";
+                }
+                for (let i=0; i<textArea.length; i++){
+                    textArea[i].disabled="true";
+                    textArea[i].parentNode.className += " is-disabled";
+                }
+
+            },
+            seeDisabledInput(){
+                this.reviewVisible = true;
+                this.tonguo = false;
                 var allInputs = document.getElementsByTagName('input');
                 var textArea = document.getElementsByTagName('textarea');
                 for (let i=0; i<allInputs.length; i++){
@@ -310,12 +344,16 @@
         },
         mounted() {
             //根据url得到的合同ID，来获取数据
-            /*if(this.$route.query.id!=null){
+            if(this.$route.query.id!=null){
                 this.getSaleContract(this.$route.query);
-            }*/
+            }
             //审核页面input禁用
             if(this.$route.path=='/saleContract/review'){
                 this.disabledInput();
+            }
+            //查看页面input禁用
+            if(this.$route.path=='/saleContract/see'){
+                this.seeDisabledInput();
             }
         },
 

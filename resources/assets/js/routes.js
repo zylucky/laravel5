@@ -17,11 +17,11 @@ import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue
 import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimize.vue";
 import PurchaseContractDump from "./components/purchaseContract/Dump.vue";
 
+
 //出房合同
 import SaleContractIndex from "./components/saleContract/Index.vue";
 import SaleContractAdd from "./components/saleContract/Add.vue";
 import SaleContractUpload from "./components/saleContract/Upload.vue";
-import SaleContractWeiyue from "./components/saleContract/Weiyue.vue";
 import SaleContractJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractCheckJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractDump from "./components/saleContract/Dump.vue";
@@ -90,30 +90,31 @@ function fun(funKey) {
 
 
 
- let routes = [
-     {
-         path: '/login',
-         component: Login,
-         name: '',
-         hidden: true
-     },
-     {
-         path: '/404',
-         component: NotFound,
-         name: '',
-         hidden: true
-     },
-     {
+let routes = [
+    {
+        path: '/login',
+        component: Login,
+        name: '',
+        hidden: true
+    },
+    {
+        path: '/404',
+        component: NotFound,
+        name: '',
+        hidden: true
+    },
+    {
         path: '/',
         component: navigation,
         name: '权限管理',
         iconCls: 'el-icon-message',//图标样式class
-         hidden:fk_permission,
+        hidden:fk_permission,
         children: [
             { path: '/user', component: User, name: '用户' ,hidden:fk_permission_user},
             { path: '/role', component: Role, name: '角色' ,hidden:fk_permission_role},
             { path: '/fun', component: Permission, name: '权限',hidden:fk_permission_per },
         ]
+
      },
      {
          path: '/',
@@ -132,16 +133,15 @@ function fun(funKey) {
              { path:'/purchaseContract/checkOptimize',component:PurchaseContractCheckOptimize,name:'收房协议查看',hidden:true},
              { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
 
+
              { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
              { path:'/saleContact/add',component:SaleContractAdd,name:'出房录入',hidden:true},
+             { path:'/saleContract/see',component:SaleContractAdd,name:'出房查看',hidden:true},
              { path:'/saleContract/edit',component:SaleContractAdd,name:'出房编辑',hidden:true},
              { path:'/saleContract/review',component:SaleContractAdd,name:'出房审核',hidden:true},
-             { path:'/saleContract/weiyue',component:SaleContractWeiyue,name:'出房违约',hidden:true},
              { path:'/saleContract/jieyue',component:SaleContractJieyue,name:'解约协议',hidden:true},
              { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
              { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true}
-
-
          ]
      },
      {
@@ -192,12 +192,13 @@ function fun(funKey) {
      },
      {
         path:'/saleContract/dump',
-            component: SaleContractDump,
+        component: SaleContractDump,
         name: '出方合同打印',
         hidden: true
      },
 ]
 
 export default routes;
+
 
 
