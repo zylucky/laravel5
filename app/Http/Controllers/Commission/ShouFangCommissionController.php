@@ -29,11 +29,11 @@ class ShouFangCommissionController extends Controller
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/compay/list',[
+        $response = $client->request('GET', '/api/qd/apply/list',[
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-                'compay' =>  $contractNo
+                'htno' =>  $contractNo
                 ]
 
        ]
@@ -61,19 +61,7 @@ class ShouFangCommissionController extends Controller
      */
     public function store(Request $request)
     {
-       // dd($request->params);
-        $user = Auth::user();
-        $obj=array_merge($request->params,Array('tbPersonIdCreate'=>$user->id));
-        //dd($obj);
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
 
-        $r = $client->request('POST', '/api/qd/compay/add', [
-            'json' => $obj
-        ]);
-        return  $r ->getBody();
 
     }
 
@@ -108,15 +96,22 @@ class ShouFangCommissionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //以后用户会从OMC取
+        $user=    Array(
+            'tEmpId'=>1,
+            'empname'=>'张三',
+            'empzb'=>null,
+            'acctype'=>'hualiang',
+        );
 
-        $obj=array_merge($request->params,Array('tQdCompayId'=>$id));
-        //dd($obj);
+        $obj=array_merge($request->params,$user);
+       // dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
 
-        $r = $client->request('POST', '/api/qd/compay/alter', [
+        $r = $client->request('POST', '/api/qd/apply/addApplys', [
             'json' => $obj
         ]);
         return  $r ->getBody();
@@ -132,6 +127,19 @@ class ShouFangCommissionController extends Controller
     {
        // dd($id);
 
+    }
+    public function  finishSK(Request $request)
+    {
+        $obj= $request->params ;
+        dd($obj);
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/qd/apply/addApplys',[
+            'query' =>$obj
+        ]);
+        return  $response ->getBody();
     }
 
 }

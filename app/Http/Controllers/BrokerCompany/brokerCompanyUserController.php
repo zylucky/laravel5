@@ -128,8 +128,8 @@ class brokerCompanyUserController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
-        return deleteCompany($id);
+
+        return $this->deleteCompany($id);
     }
 
     public  function deleteCompany($id)
@@ -138,9 +138,9 @@ class brokerCompanyUserController extends Controller
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/compay/del',[
-                'query' => [
-                    'id'=>$id
+        $response = $client->request('POST', '/api/qd/person/del',[
+                'json' => [
+                    'personId'=>$id
                 ]
 
             ]
@@ -154,7 +154,7 @@ class brokerCompanyUserController extends Controller
     public function batchRemoveBKUser(Request $request)
     {
         $ids = $request->params['ids'];
-        dd($ids);
+
         $code='200';
         $arr = explode(',',$ids);
         foreach ($arr as $item ){

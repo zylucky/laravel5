@@ -36,6 +36,7 @@ export const checkbkNameList = params =>{ return axios.post(`${base}/brokerCompa
 export const getUserById = params =>{ return axios.post(`${base}/brokerCompany/getUserById`, { params: params }); };
 
 export const getChuFangCommissionListPage = params => { return axios.get(`${base}/chuFangCommission`, { params: params }); };
+export const editChuFangCommission = params => { return axios.put(`${base}/chuFangCommission/`+params.id, { params: params }); };
 
 export const getShouFangCommissionListPage = params => { return axios.get(`${base}/shouFangCommission`, { params: params }); };
 export const editShouFangCommission = params => { return axios.put(`${base}/shouFangCommission/`+params.id, { params: params }); };
@@ -50,6 +51,10 @@ export const getReceivableRecordListPage = params => { return axios.get(`${base}
 export const getAccountsReceivableListPage = params => { return axios.get(`${base}/accountsReceivable`, { params: params }); };
 export const addReceivable = params => { return axios.post(`${base}/accountsReceivable`, { params: params }); };
 export const removeReceivable = params => { return axios.delete(`${base}/accountsReceivable/`+params.id, {}); };
+
+export const getPayableListPage = params => { return axios.get(`${base}/payable`, { params: params }); };
+export const finishSK= params => { return axios.post(`${base}/shouFangCommission/finishSK` , { params: params }); };
+export const finishFK= params => { return axios.post(`${base}/chuFangCommission/finishFK` , { params: params }); };
 //查系统所有的权限
 export const getPermissionListPage = params => { return axios.get(`${base}/permission/getAll`, { params: params }); };
 //查XX的权限

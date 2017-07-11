@@ -14,49 +14,45 @@
             <el-form-item label="">
                 <el-input v-model="filters.roomname" placeholder="房间号"></el-input>
             </el-form-item>
-            <el-form-item label="">
-                <el-select v-model="filters.ZhuangTai" placeholder="状态">
-                    <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-            </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search" v-on:click="getBrokerCompany">搜索</el-button>
             </el-form-item>
         </el-form>
-        <el-table :data="brokerCompany" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
+        <el-table :data="ChuFang" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
                   @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="selection" width="50">
             </el-table-column>
-            <el-table-column prop="compayname" label="合同编号" sortable>
+
+            <el-table-column prop="htqiandingdate" label="合同签约" :formatter="changeDate" sortable>
             </el-table-column>
-            <el-table-column prop="compaytest" label="楼盘" sortable>
+            <el-table-column prop="loupanname" label="楼盘" sortable>
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="楼栋" sortable>
+            <el-table-column prop="loudongname" label="楼栋" sortable>
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="房间号" sortable>
+            <el-table-column prop="houseno" label="房间号" sortable>
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="月租金" sortable>
+            <el-table-column prop="htzujin" label="合同月租金" sortable>
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="出房佣金(月租金96%)" width="200" sortable>
+            <el-table-column prop="htyongjin" label="合同佣金" width="200" sortable>
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="实际佣金" sortable>
+            <el-table-column prop="tQdCompayId" label="渠道公司" width="200" sortable>
             </el-table-column>
-            <el-table-column prop="compayname" label="渠道公司" width="200" sortable>
+            <el-table-column prop="qdpersons" label="渠道人员" sortable>
             </el-table-column>
-            <el-table-column prop="compayname" label="渠道人员" sortable>
+            <el-table-column prop="yjstate" label="状态" :formatter="formatYJType">
             </el-table-column>
-            <el-table-column prop="compayname" label="申请人" sortable>
-            </el-table-column>
-            <el-table-column prop="yjType" label="返佣状态" :formatter="formatYJType" sortable>
-            </el-table-column>
-            <el-table-column label="操作" width="100">
+            <el-table-column label="操作" width="140">
                 <template scope="scope">
-                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                    <el-dropdown   menu-align="start">
+                        <el-button type="primary" size="normal" splitButton="true">
+                            操作<i class="el-icon-caret-bottom el-icon--right"></i>
+                        </el-button>
+                        <el-dropdown-menu slot="dropdown" >
+                            <el-dropdown-item  > <el-button   v-if="scope.row.yjstate==1" @click="handleFinish(scope.$index, scope.row)">完&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button  v-if="scope.row.yjstate<3" @click="handleRokeBack(scope.$index, scope.row)">确认付款</el-button> </el-dropdown-item>
+                            <el-dropdown-item  ><el-button  @click="handleEdit(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button></el-dropdown-item>
+                        </el-dropdown-menu>
+                    </el-dropdown>
                 </template>
             </el-table-column>
         </el-table>
@@ -76,130 +72,110 @@
             >
             </el-pagination>
         </el-col>
-        <!--编辑界面-->
-        <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
+        <!--详情界面-->
+        <el-dialog title="详情" v-model="editFormVisible" :close-on-click-modal="false">
             <el-form :model="editForm" label-width="120px" :rules="editFormRules" ref="editForm">
+                    <el-row>
+                        <el-col :span="11">
+                            <el-form-item label="合同编号：" prop="tHetongBianhao">
+                                {{editForm.tHetongBianhao}}
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="11">
+                            <el-form-item label="楼盘：" prop="loupanname">
+                                {{editForm.loupanname}}
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="11">
+                            <el-form-item label="楼栋：" prop="loudongname">
+                                {{editForm.loudongname}}
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="11">
+                            <el-form-item label="房间号：" prop="houseno">
+                                {{editForm.houseno}}
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="11">
+                            <el-form-item label="合同签订日期：" prop="htqiandingdate">
+                                {{changeXQDate(editForm.htqiandingdate)}}
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="11">
+                            <el-form-item label="合同月租金：" prop="htzujin">
+                                {{editForm.htzujin}}
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
                 <el-row>
-                    <el-col :span="10">
-                        <el-form-item label="申请人" prop="compayname">
-                            <el-input v-model="editForm.compayname" auto-complete="off"></el-input>
+                    <el-col :span="11">
+                        <el-form-item label="合同佣金：" prop="htyongjin">
+                            {{editForm.htyongjin}}
                         </el-form-item>
                     </el-col>
-                    <el-col :span="10">
-                        <el-form-item label="申请部门" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
+                    <el-col :span="11">
+                        <el-form-item label="付款方式：" prop="yzj">
+                            {{editForm.yjzbCf}}
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="10">
-                        <el-form-item label="申请部门总监" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
+                    <el-col :span="11">
+                        <el-form-item label="渠道公司：" prop="tQdCompayId">
+                            {{editForm.tQdCompayId}}
                         </el-form-item>
                     </el-col>
-                    <el-col :span="10">
-                        <el-form-item label="项目" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="10">
-                        <el-form-item label="月租金" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="10">
-                        <el-form-item label="渠道公司" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
+                    <el-col :span="11">
+                        <el-form-item label="渠道公司人员：" prop="qdpersons">
+                            {{editForm.qdpersons}}
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="10">
-                        <el-form-item label="渠道公司人员" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
+                    <el-col :span="11">
+                        <el-form-item label="首期租金：" prop="sqzj">
+                            {{editForm.yjzbCf}}
                         </el-form-item>
                     </el-col>
-                    <el-col :span="10">
-                        <el-form-item label="付款方式" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="10">
-                        <el-form-item label="首期租金" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="10">
-                        <el-form-item label="押金" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
+                    <el-col :span="11">
+                        <el-form-item label="押金：" prop="yj">
+                            {{editForm.yjzbCf}}
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="10">
-                        <el-form-item label="是否已经提交发票" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="10">
-                        <el-form-item label="支付方式" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
+                    <el-col :span="11">
+                        <el-form-item label="状态：" prop="yjstate">
+                            {{formatState(editForm.yjstate)}}
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-row>
-                    <el-col :span="10">
-                        <el-form-item label="规定返佣金额" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="10">
-                        <el-form-item label="实际返佣金额" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-form-item label="备注" prop="yjzbSf">
-                        <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
-                    </el-form-item>
-                    <el-col :span="10">
-                        <el-form-item label="收款户名" prop="yjzbSf">
-                            <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="10">
-                        <el-form-item label="开户银行" prop="yjzbCf">
-                            <el-input type="number" v-model="editForm.yjzbCf" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-form-item label="收款账号" prop="compaytest">
-                    <el-input v-model="editForm.compaytest" auto-complete="off"></el-input>
+            </el-form>
+        </el-dialog>
+        <el-dialog title="确认付款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
+            <el-form :model="rokeBackForm" label-width="120px" :rules="rokeBackFormRules" ref="rokeBackForm">
+                <el-form-item label="实际支付佣金" prop="empmoney">
+                    <el-input type="number" v-model="rokeBackForm.empmoney" auto-complete="off"></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click.native="editFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+                <el-button @click.native="rokeBackFormVisible = false">取消</el-button>
+                <el-button type="primary" @click.native="RokeBackSubmit" :loading="rokeBackLoading">确认</el-button>
             </div>
         </el-dialog>
-
     </el-row>
 </template>
 <script>
 
 
     import {
-        getBrokerCompanyListPage,
-        editBrokerCompany,
-        removeBrokerCompany,
-        addBrokerCompany,
-        batchRemoveBrokerCompany,
-        checkbkNameList,
+        getChuFangCommissionListPage,
+        editChuFangCommission,
+        finishFK,
 
 
     } from '../../api/api';
@@ -225,215 +201,108 @@
                         label: '已申请'
                     },
                 ],
-
                 //分页类数据
                 total: 0,
                 currentPage: 0,
-
-
                 pageSize: 10,
                 pageSizes: [10, 20, 30, 40, 50, 100],
-                brokerCompany: [],
+                ChuFang: [],
                 listLoading: false,
                 sels: [],//列表选中列
-
                 editFormVisible: false,//编辑界面是否显示
                 editLoading: false,
                 editFormRules: {
-                    compayname: [
-                        {required: true, message: '请输入渠道公司名称', trigger: 'blur'},
-                        {
-                            validator: (rule, value, callback) => {
-                                let para = {
-                                    name: value
-                                };
-                                if (value != '') {
-                                    checkbkNameList(para).then((res) => {
-                                        //alert( JSON.stringify(res));
-                                        if (res.data.code != '200') {
-                                            callback(new Error(res.data.msg));
-                                        }
-                                    })
-                                }
-                            }, trigger: 'blur'
-                        }
-                    ],
-                    yjzbSf: [
-                        {required: true, message: '请输入收房佣金占比', trigger: 'blur'}
-                    ],
-                    yjzbCf: [
-                        {required: true, message: '请输入出房佣金占比', trigger: 'blur'}
-                    ],
-                    yjType: [
-                        {
-                            required: true, validator: (rule, value, callback) => {
-                            if (/^\d+$/.test(value) == false) {
-                                callback(new Error("请输入佣金类型"));
-                            } else {
-                                callback();
-                            }
-                        }, trigger: 'blur'
-                        }
-                    ],
                 },
                 //编辑界面数据
                 editForm: {
-                    tQdCompayId: 0,
-                    compayname: '',
-                    yjzbSf: '',
-                    yjzbCf: '',
-                    compaytest: '',
-                    yjType: 1,
-                },
-                addFormVisible: false,//新增界面是否显示
-                addLoading: false,
-                addFormRules: {
-                    compayname: [
-                        {required: true, message: '请输入渠道公司名称', trigger: 'blur'},
-                        {
-                            validator: (rule, value, callback) => {
-                                let para = {
-                                    name: value
-                                };
-                                if (value != '') {
-                                    checkbkNameList(para).then((res) => {
-                                        //alert( JSON.stringify(res));
-                                        if (res.data.code != '200') {
-                                            callback(new Error(res.data.msg));
-                                        } else {
-                                            callback();
-                                        }
-                                    })
-                                }
-                            }, trigger: 'blur'
-                        }
-                    ],
-                    yjzbSf: [
-                        {required: true, message: '请输入收房佣金占比', trigger: 'blur'}
-                    ],
-                    yjzbCf: [
-                        {required: true, message: '请输入出房佣金占比', trigger: 'blur'}
-                    ],
-                    yjType: [
-                        {
-                            required: true, validator: (rule, value, callback) => {
-                            if (/^\d+$/.test(value) == false) {
-                                callback(new Error("请输入佣金类型"));
-                            } else {
-                                callback();
-                            }
-                        }, trigger: 'blur'
-                        }
-                    ],
-
-                },
-                //新增界面数据
-                addForm: {
-                    compayname: '',
-                    yjzbSf: '',
-                    yjzbCf: '',
-                    compaytest: '',
-                    yjType: 1,
                 },
 
-                tQdCompayId: 0,
+                rokeBackFormVisible: false,//返佣界面是否显示
+                rokeBackLoading: false,
+                rokeBackFormRules: {
+                    empmoney:{  required: true, message: '实际支付佣金', trigger: 'blur' },
+                },
+                //确认付款界面数据
+                rokeBackForm: {
+                    tQdApplyId: '',
+                    empmoney: '',
+                },
                 bk_name: '',
                 //被选中的权限
                 checked: [],
             }
         },
         methods: {
-            //佣金类型显示转换
+            //状态显示转换
             formatYJType: function (row, column) {
-                return row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
+                let status = [];
+                status[1] = '未收款';
+                status[2] = '已收款';
+                status[3] = '已完成';
+                return status[row.yjstate];
+            },
+            //状态显示转换
+            formatState: function (yjstate) {
+                let status = [];
+                status[1] = '未收款';
+                status[2] = '已收款';
+                status[3] = '已完成';
+                return status[yjstate];
             },
 
             //时间戳转日期格式
+            changeXQDate(dt){
+                if(dt!=null){
+                    var newDate = new Date();
+                    newDate.setTime(dt);
+                    return newDate.toLocaleDateString();
+                }
+            },
+            //时间戳转日期格式
+            changeJSDate(row, column){
+                if(row.fukuanriqi!=null) {
+                    var newDate = new Date();
+                    newDate.setTime(row.fukuanriqi);
+                    return newDate.toLocaleDateString();
+                }
+            },
+            //时间戳转日期格式
             changeDate(row, column){
-                var newDate = new Date();
-                newDate.setTime(row.createdate);
-                return newDate.toLocaleDateString()
-            },
-            //判断渠道公司名称是否重复
-            changeCountAdd: function () {
-
-            },
-            //判断渠道公司名称是否重复
-            changeCountEidt: function () {
-                let para = {
-                    name: this.editForm.compayname
-                };
-                if (this.editForm.compayname != '') {
-                    checkbkNameList(para).then((res) => {
-                        //alert( JSON.stringify(res));
-                        if (res.data.code != '200') {
-
-                            this.$message({
-                                message: "公司名称已存在",
-                                type: 'error'
-                            });
-                        }
-                    })
+                if(row.htqiandingdate!=null){
+                    var newDate = new Date();
+                    newDate.setTime(row.htqiandingdate);
+                    return newDate.toLocaleDateString();
                 }
             },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
                 // console.log(`当前页: ${val}`);
-                this.getBrokerCompany();
+                this.getChuFangCommission();
             },
             //更改每页显示数据
             handleSizeChange(val){
                 this.pageSize = val;
                 //console.log(`每页 ${val} 条`);
 
-                this.getBrokerCompany();
+                this.getChuFangCommission();
             },
             //获取渠道公司列表
-            getBrokerCompany() {
+            getChuFangCommission() {
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
                     bk_name: this.filters.bk_name
                 };
                 this.listLoading = true;
-                getBrokerCompanyListPage(para).then((res) => {
+                getChuFangCommissionListPage(para).then((res) => {
                     this.total = res.data.total;
-                    this.brokerCompany = res.data.data;
+                    this.ChuFang = res.data.data;
                     this.listLoading = false;
                 });
             },
-            //删除
-            handleDel: function (index, row) {
-                this.$confirm('确认删除该记录吗?', '提示', {
-                    type: 'warning'
-                }).then(() => {
-                    this.listLoading = true;
-                    //NProgress.start();
-                    let para = {id: row.tQdCompayId};
-                    // alert(row.tQdCompayId);
-                    removeBrokerCompany(para).then((res) => {
-                        this.listLoading = false;
-                        //NProgress.done();
-                        if (res.data.code == '200') {
-                            this.$message({
-                                message: '删除成功',
-                                type: 'success'
-                            });
-                        } else {
-                            this.$message({
-                                message: res.data.msg,
-                                type: 'error'
-                            });
-                        }
 
-                        this.getBrokerCompany();
-                    });
-                }).catch(() => {
-
-                });
-            },
-            //显示编辑界面
+            //显示详情界面
             handleEdit: function (index, row) {
                 this.editFormVisible = true;
                 this.editForm = Object.assign({}, row);
@@ -442,126 +311,69 @@
                 this.editForm.yjzbSf = row.yjzbSf.toString();
 
             },
-            //显示新增界面
-            handleAdd: function () {
-                this.addFormVisible = true;
-                this.addForm = {
-                    compayname: '',
-                    yjzbSf: '',
-                    yjzbCf: '',
-                    compaytest: '',
-                    yjType: 1,
 
-                };
-            },
-            //编辑
-            editSubmit: function () {
-                this.$refs.editForm.validate((valid) => {
-                    if (valid) {
-                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
-                            this.editLoading = true;
-                            let para = Object.assign({}, this.editForm);
-                            //  para.yjType= this.editForm.yjType == '按月租金' ?1 : this.editForm.yjType =='按年租金' ?2 : this.editForm.yjType;
 
-                            editBrokerCompany(para).then((res) => {
-                                this.editLoading = false;
-                                //alert(JSON.stringify(res));
-                                if (res.data.code == '200') {
-                                    //alert(0);
-                                    this.$message({
-                                        message: '提交成功',
-                                        type: 'success'
-                                    });
-                                } else {
-                                    this.$message({
-                                        message: res.data.msg,
-                                        type: 'error'
-                                    });
-                                }
-
-                                this.$refs['editForm'].resetFields();
-                                this.editFormVisible = false;
-                                this.getBrokerCompany();
-                            });
-                        });
-                    }
-                });
-            },
-            //新增
-            addSubmit: function () {
-                this.$refs.addForm.validate((valid) => {
-                    // alert(valid);
-                    // alert(this.addForm.compayname.lazy);
-                    if (valid) {
-                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
-                            this.addLoading = true;
-                            //NProgress.start();
-                            let para = Object.assign({}, this.addForm);
-                            // para.yjType= this.addForm.yjType == '按月租金' ? 1 : 2;
-                            //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                            addBrokerCompany(para).then((res) => {
-                                this.addLoading = false;
-                                //NProgress.done();
-                                if (res.data.code == '200') {
-                                    //alert(0);
-                                    this.$message({
-                                        message: '提交成功',
-                                        type: 'success'
-                                    });
-                                } else {
-                                    this.$message({
-                                        message: res.data.msg,
-                                        type: 'error'
-                                    });
-                                }
-                                this.$refs['addForm'].resetFields();
-                                this.addFormVisible = false;
-                                this.getBrokerCompany();
-                            });
-                        });
-                    }
-                });
-            },
             selsChange: function (sels) {
                 this.sels = sels;
             },
-            //批量删除
-            batchRemove: function () {
-                var ids = this.sels.map(item => item.tQdCompayId).toString();
-                this.$confirm('确认删除选中记录吗？', '提示', {
-                    type: 'warning'
-                }).then(() => {
-                    this.listLoading = true;
-                    //NProgress.start();
-                    let para = {ids: ids};
-                    // alert(ids);
-                    batchRemoveBrokerCompany(para).then((res) => {
-                        this.listLoading = false;
-                        //NProgress.done();
-                        if (res == '200') {
-                            this.$message({
-                                message: '删除成功',
-                                type: 'success'
-                            });
-                        } else {
-                            this.$message({
-                                message: res.data.msg,
-                                type: 'error'
-                            });
-                        }
-                        this.getBrokerCompany();
-
+            //完成按钮
+            handleFinish: function (index, row) {
+                this.$confirm('确认提交完成付款吗？', '提示', {}).then(() => {
+                    this.editLoading = true;
+                    let para = {
+                        tQdApplyId:row.tQdApplyId,
+                    }
+                    //console.log(para);
+                    finishFK(para).then((res) => {
+                        this.editLoading = false;
+                        this.$message({
+                            message: '提交成功',
+                            type: 'success'
+                        });
+                        this.$refs['editForm'].resetFields();
+                        this.editFormVisible = false;
+                        this.getChuFangCommission();
                     });
-                }).catch(() => {
-
                 });
-            }
+            },
+            //确认收款按钮
+            RokeBackSubmit: function () {
+                this.$refs.rokeBackForm.validate((valid) => {
+                    if (valid) {
+                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                            this.rokeBackLoading = true;
+                            let para = Object.assign({}, this.rokeBackForm);
+                            // para.tQdApplyId = this.editForm.tQdApplyId;
+                            editChuFangCommission(para).then((res) => {
+                                this.rokeBackLoading = false;
+                                //NProgress.done();
+                                this.$message({
+                                    message: '提交成功',
+                                    type: 'success'
+                                });
+                                this.$refs['rokeBackForm'].resetFields();
+                                this.rokeBackFormVisible = false;
+                                this.getChuFangCommission();
+                            });
+                        });
+                    }
+                });
+            },
+            //显示确认收款界面
+            handleRokeBack: function (index, row) {
+                this.rokeBackFormVisible = true;
+                // this.rokeBackForm = Object.assign({}, row);
+                this.rokeBackForm= {
+                    tQdApplyId: row.tQdApplyId,
+                    empmoney: '',
+                }
+            },
         },
 
 
         mounted() {
             this.page = 1;
-            this.getBrokerCompany();
+            this.getChuFangCommission();
 
         }
     }
