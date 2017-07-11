@@ -216,7 +216,7 @@
         methods: {
             valid(){
                 this.$refs.ownerForm.validate((valid) => {
-                    alert(valid+'2')
+                    this.owner.flag = valid;
                 });
             },
             changeOnSelect(){

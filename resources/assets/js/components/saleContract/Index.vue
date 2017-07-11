@@ -63,7 +63,6 @@
             >
             </el-pagination>
         </el-col>
-        <contract-pay-type :pop="pop"></contract-pay-type>
     </el-row>
 </template>
 <script>
