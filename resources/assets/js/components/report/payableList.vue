@@ -13,57 +13,60 @@
             <el-form-item label="">
                 <el-input v-model="filters.roomname" placeholder="房间号"></el-input>
             </el-form-item>
-            <el-date-picker type = "date" placeholder="应付日期" v-model="filters.startdate">
+            <el-date-picker type = "date" placeholder="付款日" v-model="filters.startdate">
             </el-date-picker>
             <el-date-picker type = "date" placeholder="至" v-model="filters.enddate">
             </el-date-picker>
             <el-form-item>
-                <el-button type="primary" icon="search"  v-on:click="getReceivable">搜索</el-button>
+                <el-button type="primary" icon="search"  v-on:click="getPayable">搜索</el-button>
             </el-form-item>
         </el-form>
-        <el-tabs v-model="first" @tab-click="handleClick">
-            <el-tab-pane label="未提交" name="first"></el-tab-pane>
-            <el-tab-pane label="已提交" name="second"></el-tab-pane>
-            <el-tab-pane label="已付款" name="third"></el-tab-pane>
-        </el-tabs>
-        <el-table :data="Receivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column prop="compaytest" label="楼盘"   >
+        <el-table :data="Payable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
+
+            <el-table-column prop="loupanName" label="楼盘"   >
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="楼栋" >
+            <el-table-column prop="loudongName" label="楼栋"  width="80">
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="房间号" >
+            <el-table-column prop="houseno" label="房间号"  width="80">
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="业主" >
+            <el-table-column prop="yezhu" label="业主"  width="100" >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="周期" >
+            <el-table-column prop="zhouqi" label="周期"  width="200" >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="付款日" >
+            <el-table-column prop="fkdate" label="付款日" :formatter="changeDate" >
             </el-table-column>
-            <el-table-column prop="compayname" label="付款方式" >
+            <el-table-column prop="fktype" label="付款方式"  :formatter="formatFKType" >
             </el-table-column>
-            <el-table-column prop="compayname" label="应付房租" >
+            <el-table-column prop="fkmoney" label="应付房租" >
             </el-table-column>
-            <el-table-column prop="compayname" label="押金"  >
+            <el-table-column prop="monthmoney" label="月租金"  >
             </el-table-column>
-            <el-table-column prop="compayname" label="月租金"  >
+            <el-table-column prop="skhuming" label="户名"  width="100" >
             </el-table-column>
-            <el-table-column prop="compayname" label="户名"  >
+            <el-table-column prop="skyinhang" label="收款银行"   width="200" :formatter="formatskyh">
             </el-table-column>
-            <el-table-column prop="compayname" label="收款银行"  >
+            <el-table-column prop="fkstate" label="状态"  :formatter="formatState"  width="100">
             </el-table-column>
-            <el-table-column prop="compayname" label="状态"  >
-            </el-table-column>
-            <el-table-column label="操作" width="180">
+            <el-table-column label="操作" width="120">
                    <template scope="scope">
-                       <el-button size="small" @click="handleRokeBack(scope.$index, scope.row)">付款</el-button>
-                       <el-button size="small" @click="handleOpen(scope.$index, scope.row)">应付记录</el-button>
+                       <el-dropdown   menu-align="start">
+                           <el-button type="primary" size="normal" splitButton="true">
+                               操作<i class="el-icon-caret-bottom el-icon--right"></i>
+                           </el-button>
+                           <el-dropdown-menu slot="dropdown" >
+                               <el-dropdown-item  ><el-button   @click="handleRokeBack(scope.$index, scope.row)">付&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;款</el-button></el-dropdown-item>
+                               <el-dropdown-item  > <el-button  @click="handleOpen(scope.$index, scope.row)">应付记录</el-button> </el-dropdown-item>
+
+                           </el-dropdown-menu>
+                       </el-dropdown>
+
                    </template>
             </el-table-column>
            </el-table>
            <div style="margin-top:30px"></div>
            <!-- 分页-->
         <el-col :span="24" class="toolbar" >
-            应收房租：应收押金：合计：
+
             <el-pagination
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
@@ -111,7 +114,7 @@
 <script>
 
     import {
-        getReceivableListPage,
+        getPayableListPage,
         editReceivable,
         saveShouKuan,
         addBrokerCompanyUser,
@@ -145,7 +148,7 @@
                 currentPage:0,
                 pageSize:10,
                 pageSizes:[10, 20, 30, 40, 50, 100],
-                Receivable:[],
+                Payable:[],
                 listLoading: false,
                 sels: [],//列表选中列
 
@@ -227,14 +230,31 @@
             }
         },
         methods:{
+            formatFKType(row, column){
+                let status = [];
+                status[0] = '押金';
+                status[1] = '租金';
+                status[2] = '幼师补佣';
+                status[3] = '佣金';
+                status[4] = '华亮返佣';
+                return status[row.fktype];
+            },
             //佣金类型显示转换
-            formatYJType: function (row, column) {
-               return '<a href="#">'+  row.compayname+'</a>'   ;
+            formatState: function (row, column) {
+                let status = [];
+                status[0] = '未付';
+                status[1] = '已付';
+                return status[row.fkstate];
+            },
+            //佣金类型显示转换
+            formatskyh: function (row, column) {
+
+                return  row.skyinhang+"\r账号:"+row.skzhanhu ;
             },
             //时间戳转日期格式
             changeDate(row, column){
                 var newDate = new Date();
-                newDate.setTime(row.createdate);
+                newDate.setTime(row.fkdate);
                 return newDate.toLocaleDateString()
             },
             //标签切换时
@@ -244,19 +264,19 @@
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
-                this.getReceivable();
+                this.getPayable();
             },
             //更改每页显示数据
             handleSizeChange(val){
                 this.pageSize =val;
-                this.getReceivable();
+                this.getPayable();
             },
             //打开应付记录页面
             handleOpen: function () {
                 window.open('#/paymentRecord');
             },
             //获取应付款列表
-            getReceivable() {
+            getPayable() {
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
@@ -267,9 +287,9 @@
                     enddate: this.filters.enddate,
                 };
                 this.listLoading = true;
-                getReceivableListPage(para).then((res) => {
+                getPayableListPage(para).then((res) => {
                     this.total = res.data.total;
-                    this.Receivable = res.data.data;
+                    this.Payable = res.data.data;
                     this.listLoading = false;
                 });
             },
@@ -317,7 +337,7 @@
                                 });
                                 this.$refs['editForm'].resetFields();
                                 this.editFormVisible = false;
-                                this.getReceivable();
+                                this.getPayable();
                             });
                         });
                     }
@@ -340,7 +360,7 @@
                                 });
                                 this.$refs['rokeBackForm'].resetFields();
                                 this.rokeBackFormVisible = false;
-                                this.getReceivable();
+                                this.getPayable();
                             });
                         });
                     }
@@ -353,7 +373,7 @@
         },
         mounted() {
             this.page=1;
-            this.getReceivable();
+            this.getPayable();
 
         }
     }

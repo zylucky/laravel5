@@ -146,7 +146,7 @@ class brokerCompanyController extends Controller
         ]);
         $response = $client->request('POST', '/api/qd/compay/del',[
                 'json' => [
-                    'id'=>$id
+                    'compayId'=>$id
                 ]
 
             ]

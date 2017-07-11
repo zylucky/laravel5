@@ -3,7 +3,6 @@
     <el-row >
         <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
-
             <el-form-item label="">
                 <el-input v-model="filters.buildingname" placeholder="楼盘名称"></el-input>
             </el-form-item>
@@ -22,37 +21,43 @@
             </el-form-item>
         </el-form>
         <el-table :data="Receivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-
-            <el-table-column prop="compayname" label="单位计划"   :v-html= "formatYJType"  >
+            <el-table-column prop="htbianhao" label="合同编号"     >
             </el-table-column>
-            <el-table-column prop="compaytest" label="楼盘"   >
+            <el-table-column prop="loupanName" label="楼盘"   >
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="楼栋" >
+            <el-table-column prop="loudongName" label="楼栋" >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="房间号" >
+            <el-table-column prop="houseno" label="房间号" >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="租户" >
+            <el-table-column prop="zuhu" label="租户" >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="付款日" >
+            <el-table-column prop="skdate" label="收款日" :formatter="changeDate" >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="周期" >
+            <el-table-column prop="zhouqi" label="周期" >
             </el-table-column>
-            <el-table-column prop="compayname" label="付款方式" >
+            <el-table-column prop="sktype" label="付款方式" :formatter="formatFKType"  >
             </el-table-column>
-            <el-table-column prop="compayname" label="应收房租" >
+            <el-table-column prop="skmoney" label="应收房租" >
             </el-table-column>
-            <el-table-column prop="compayname" label="押金"  >
-            </el-table-column>
-            <el-table-column prop="compayname" label="月租金"  >
+            <el-table-column prop="monthmoney" label="月租金"  >
             </el-table-column>
             <el-table-column prop="compayname" label="户名"  >
             </el-table-column>
-            <el-table-column prop="compayname" label="收款银行"  >
+            <el-table-column prop="skyinhang" label="收款银行"   width="200" :formatter="formatskyh"  >
+            </el-table-column>
+            <el-table-column prop="srstate" label="状态"  :formatter="formatState"  width="100">
             </el-table-column>
             <el-table-column label="操作" width="180">
                    <template scope="scope">
-                       <el-button size="small" @click="handleRokeBack(scope.$index, scope.row)">收款</el-button>
-                       <el-button size="small" @click="handleOpen(scope.$index, scope.row)">应收记录</el-button>
+                       <el-dropdown   menu-align="start">
+                           <el-button type="primary" size="normal" splitButton="true">
+                               操作<i class="el-icon-caret-bottom el-icon--right"></i>
+                           </el-button>
+                           <el-dropdown-menu slot="dropdown" >
+                               <el-dropdown-item  > <el-button   @click="handleRokeBack(scope.$index, scope.row)">收&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;款</el-button> </el-dropdown-item>
+                               <el-dropdown-item  > <el-button   @click="handleOpen(scope.$index, scope.row)">应收记录</el-button> </el-dropdown-item>
+                           </el-dropdown-menu>
+                       </el-dropdown>
                    </template>
             </el-table-column>
            </el-table>
@@ -237,7 +242,6 @@
                 },
                 //编辑界面数据
                 editForm: {
-
                     fkrq:'',
                     fkstaDate:'',
                     fkendDate:'',
@@ -259,14 +263,31 @@
             }
         },
         methods:{
-            //佣金类型显示转换
-            formatYJType: function (row, column) {
-               return '<a href="#">'+  row.compayname+'</a>'   ;
+            formatFKType(row, column){
+                let status = [];
+                status[0] = '押金';
+                status[1] = '租金';
+                status[2] = '幼师补佣';
+                status[3] = '佣金';
+                status[4] = '华亮返佣';
+                return status[row.sktype];
+            },
+            //状态显示转换
+            formatState: function (row, column) {
+                let status = [];
+                status[0] = '未付';
+                status[1] = '已付';
+                return status[row.srstate];
+            },
+            //银行账号显示转换
+            formatskyh: function (row, column) {
+
+                return  row.skyinhang+"\r账号:"+row.skzhanhu ;
             },
             //时间戳转日期格式
             changeDate(row, column){
                 var newDate = new Date();
-                newDate.setTime(row.createdate);
+                newDate.setTime(row.skdate);
                 return newDate.toLocaleDateString()
             },
 

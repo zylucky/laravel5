@@ -19,25 +19,25 @@ class payableController extends Controller
     public function index()
     {
 
-        $buildingname= Input::get('buildingname');
+        $buildingname = Input::get('buildingname');
         $buildname = Input::get('buildname');
         $roomname = Input::get('roomname');
         $startdate = Input::get('startdate');
         $enddate = Input::get('enddate');
         $pageSize = Input::get('pageSize');
-        $page= Input::get('page');
+        $page = Input::get('page');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+            'timeout' => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/compay/list',[
-            'query' => [
-                'page'=>$page,
-                'size'=>$pageSize,
-                'compay' =>  $buildingname
+        $response = $client->request('GET', '/api/cw/yf/list', [
+                'query' => [
+                    'page' => $page,
+                    'size' => $pageSize,
+                    'houseno' => $roomname,
                 ]
 
-       ]
+            ]
         );
         echo $response->getBody();
 
@@ -57,7 +57,7 @@ class payableController extends Controller
     /**
      * Store a newly created resource in storage.
      *保存
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -69,7 +69,7 @@ class payableController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -80,7 +80,7 @@ class payableController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -91,50 +91,51 @@ class payableController extends Controller
     /**
      * Update the specified resource in storage.
      *更新应收款记录
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
 
-        $obj=array_merge($request->params );
+        $obj = array_merge($request->params);
         dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+            'timeout' => 2.0,
         ]);
 
         $r = $client->request('POST', '/api/qd/compay/alter', [
             'json' => $obj
         ]);
-        return  $r ->getBody();
+        return $r->getBody();
     }
+
     /**
      * Update the specified resource in storage.
      *保存收款记录
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function saveShouKuan(Request $request)
     {
 
-        $obj=array_merge($request->params );
+        $obj = array_merge($request->params);
         dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+            'timeout' => 2.0,
         ]);
 
         $r = $client->request('POST', '/api/qd/compay/alter', [
             'json' => $obj
         ]);
-        return  $r ->getBody();
+        return $r->getBody();
     }
 
     public function destroy($id)
     {
-       // dd($id);
+        // dd($id);
 
 
     }
