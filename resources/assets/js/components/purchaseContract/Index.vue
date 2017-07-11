@@ -9,7 +9,7 @@
             <el-form-item>
                 <el-button type="primary" icon="search" @click="purchaseContractList">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
-                <el-button type="primary" class="el-icon-upload2" @click="uploadImg">上传</el-button>
+                <!--<el-button type="primary" class="el-icon-upload2" @click="uploadImg">上传</el-button>-->
             </el-form-item>
         </el-form>
         <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
@@ -34,13 +34,16 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  ><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleConfirm(scope.$index, scope.row)">确认合同</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleOptimize(scope.$index, scope.row)">优化协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button type="danger" @click="handleDel(scope.$index, scope.row)">删除合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  ><el-button @click="handleView(scope.$index, scope.row)">查看合同</el-button> </el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[0,4,5])" ><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[1,2])" ><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[3])" ><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[5])"  > <el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,9])" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违约</el-button></el-dropdown-item>
+                            <el-dropdown-item   ><el-button @click="handleEnd(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[7,9])" ><el-button @click="handleOptimize(scope.$index, scope.row)">优化协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
+                            <!--<el-dropdown-item  ><el-button type="danger" @click="handleDel(scope.$index, scope.row)">删除合同</el-button></el-dropdown-item>-->
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -67,7 +70,15 @@
 </template>
 <script>
     import contractPayType from '../Commission/contractPayType.vue';//佣金支付方式
-    import {getPurchaseContractList,confirmPurchaseContract} from '../../api/api.js';
+    import {
+        getPurchaseContractList,
+        confirmPurchaseContract,
+        approvingPurchaseContract,
+        dumpingPurchaseContract,
+        weiyuePurchaseContract,
+        endPurchaseContract,
+        youhuaPurchaseContract,
+    } from '../../api/api.js';
     export default {
         data() {
             return {
@@ -80,7 +91,7 @@
                     name: '',
                 },
                 //分页类数据
-                total:100,
+                total:0,
                 currentPage:0,
                 pageSize:10,
                 pageSizes:[10, 20, 30, 40, 50, 100],
@@ -93,6 +104,14 @@
             contractPayType
         },
         methods: {
+            ztin(row,arr){
+                var status = arr.indexOf(row.zhuangtai);
+                if(status>-1){
+                    return true;
+                }else{
+                    return false;
+                }
+            },
             //新增
             addContract() {
                 this.$router.push("purchaseContract/add");
@@ -106,6 +125,11 @@
                 status[4] = '审核拒绝';
                 status[5] = '待确认';
                 status[6] = '履约中';
+                status[7] = '违约处理中';
+                status[8] = '合同终止';
+                status[9] = '优化中';
+                status[10] = '二次优化';
+                status[11] = '已完成';
                 return status[row.zhuangtai];
             },
             //时间戳转日期格式
@@ -124,7 +148,7 @@
                 this.listLoading = true;
                 getPurchaseContractList(para).then((res) => {
                     //console.log(res.data)
-//                    this.total = res.data.total;
+                    this.total = res.data.total;
 
                     this.lists = res.data.data;
                     this.listLoading = false;
@@ -147,40 +171,86 @@
             handleEdit(index,row){
                 this.$router.push('/purchaseContract/edit?id='+row.id);
             },
+            //审核
             handleReview(index,row){
+                //审核状态变更：审核中
+                let para = {
+                    id:row.id,
+                }
+                approvingPurchaseContract(para).then((res)=>{
+                });
                 this.$router.push('/purchaseContract/review?id='+row.id);
             },
+            //查看
+            handleView(index,row){
+                this.$router.push('/purchaseContract/view?id='+row.id);
+            },
+            //违约 弹窗确认是否违约
+            handleWeiyue(index,row){
+                this.$confirm('确认将合同设置为违约中吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    this.listLoading = true;
+                    let para = { id: row.id };
+                    weiyuePurchaseContract(para).then((res) => {
+                        this.listLoading = false;
+                        //NProgress.done();
+                        this.$message({
+                            message: '设置成功',
+                            type: 'success'
+                        });
+                        this.purchaseContractList();
+                    });
+                }).catch(() => {
+
+                });
+            },
+            //终止 弹窗确认是否终止
+            handleEnd(index,row){
+                this.$confirm('确认终止合同吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    this.listLoading = true;
+                    let para = { id: row.id };
+                    endPurchaseContract(para).then((res) => {
+                        this.listLoading = false;
+                        //NProgress.done();
+                        this.$message({
+                            message: '设置成功',
+                            type: 'success'
+                        });
+                        this.purchaseContractList();
+                    });
+                }).catch(() => {
+
+                });
+            },
             handleOptimize(index,row){
+                let para = {
+                    id:row.id,
+                }
+                youhuaPurchaseContract(para).then((res)=>{
+                });
                 this.$router.push('/purchaseContract/optimize?id='+row.id);
             },
             handleCheckOptimize(index,row){
                 this.$router.push('/purchaseContract/checkOptimize?id='+row.id);
             },
             handleDump(index,row){
+                let para = {
+                    id:row.id,
+                }
+                this.getPurchaseContractList();
+                dumpingPurchaseContract(para).then((res)=>{
+                    this.getPurchaseContractList();
+                });
                 window.open('/#/purchaseContract/dump?id='+row.id)
-                //this.$router.push('/purchaseContract/dump?id='+row.id);
+
             },
             //合同确认
             handleConfirm(index,row){
                 this.payType.sureFormVisible = true;
                 this.payType.tHetongId = row.id;
-                /*let para = {
-                    id:row.id,
-                }
-                confirmPurchaseContract(para).then((res)=>{
-                    if(res.data.code == 200)　{
-                        this.$message({
-                            message: '合同确认成功',
-                            type: 'success'
-                        });
-                        this.purchaseContractList();
-                    }else{
-                        this.$message({
-                            message:res.data.msg,
-                            type:'error'
-                        })
-                    }
-                })*/
             },
 
         },

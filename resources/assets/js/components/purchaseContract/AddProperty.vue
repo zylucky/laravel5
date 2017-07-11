@@ -2,7 +2,7 @@
     <div>
     <el-row class="container">
             <el-tabs v-model="editableTabsValue2" type="card" closable @tab-remove="removeTab">
-                <el-button
+                <el-button v-show="editVisible"
                         size="small"
                         @click="addTab(editableTabsValue2)"
                 >
@@ -14,11 +14,11 @@
                         :label="item.title"
                         :name="item.name"
                 >
-                    <el-form label-Weizhi="right" label-width="100px" :model="property.officeList[index]">
+                    <el-form label-Weizhi="right" ref="propertyForm" :rules="editPropertyRules" label-width="100px" :model="property.officeList[index]">
                         <el-col :span="24">
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item label="楼盘" >
+                                    <el-form-item label="楼盘" required prop="loupanName">
                                         <el-select
                                                 v-model="property.officeList[index].loupanName"
                                                 filterable
@@ -38,7 +38,7 @@
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="楼栋" >
+                                    <el-form-item required label="楼栋" prop="loudongName" >
                                         <el-select
                                                 v-model="property.officeList[index].loudongName"
                                                 filterable
@@ -58,7 +58,7 @@
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="房间号" >
+                                    <el-form-item required label="房间号" prop="fanghao">
                                         <el-select
                                                 v-model="property.officeList[index].fanghao"
                                                 filterable
@@ -78,34 +78,63 @@
                                     </el-form-item>
                                 </el-col>
                             </el-row>
-                            <el-form-item label="位置" >
-                                <el-input v-model="property.officeList[index].weizhi"></el-input>
-                            </el-form-item>
-                            <el-form-item label="产权证编号" >
+                            <el-row>
+                                <el-col :span="8">
+                                    <el-form-item required label="区域" prop="quyu">
+                                        <el-input v-model="property.officeList[index].quyu"></el-input>
+                                    </el-form-item>
+                                </el-col>
+                                <el-col :span="16">
+                                    <el-form-item required label="位置" prop="weizhi" :span="10">
+                                        <el-input v-model="property.officeList[index].weizhi"></el-input>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+
+                            <el-form-item required label="产权证编号" prop="chanquanzhenghao">
                                 <el-input v-model="property.officeList[index].chanquanzhenghao"></el-input>
                             </el-form-item>
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item label="承租面积" >
-                                        <el-input v-model="property.officeList[index].jianzhumianji"></el-input>
+                                    <el-form-item required label="承租面积" prop="jianzhumianji"  >
+                                        <el-input type="number"  v-model.number="property.officeList[index].jianzhumianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="签约面积" >
+                                    <el-form-item required label="签约面积" prop="qianyuemianji">
                                         <el-input v-model="property.officeList[index].qianyuemianji"></el-input>
                                     </el-form-item>
                                 </el-col>
+                                <el-col :span="8">
+                                    <el-form-item required label="房屋类型" prop="leixing">
+                                        <el-select v-model="property.officeList[index].leixing" clearable placeholder="请选择">
+                                            <el-option
+                                                    v-for="item in options"
+                                                    :key="item.value"
+                                                    :label="item.label"
+                                                    :value="item.value">
+                                            </el-option>
+                                        </el-select>
+                                    </el-form-item>
+                                </el-col>
                             </el-row>
-                            <el-form-item label="房屋类型">
-                                <el-select v-model="property.officeList[index].leixing" clearable placeholder="请选择">
-                                    <el-option
-                                            v-for="item in options"
-                                            :key="item.value"
-                                            :label="item.label"
-                                            :value="item.value">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
+                            <el-row>
+                                <el-col :span="8">
+                                    <el-form-item label="抵押权人">
+                                        <el-radio-group v-model="property.officeList[index].isdiya">
+                                            <el-radio :label="1">是</el-radio>
+                                            <el-radio :label="2">否</el-radio>
+                                        </el-radio-group>
+                                    </el-form-item>
+                                </el-col>
+                                <el-col :span="8">
+                                    <el-form-item label="抵押权人" prop="diyaquanren">
+                                        <el-input v-model="property.officeList[index].diyaren"></el-input>
+                                    </el-form-item>
+                                </el-col>
+
+                            </el-row>
+
 
                         </el-col>
                     </el-form>
@@ -128,6 +157,37 @@
                 purchaseContract:{
                     type:0,
                 },
+                editPropertyRules :{
+                    loupanName: [
+                        { required: true, message: '不能为空'}
+                    ],
+                    loudongName:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    fanghao:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    quyu:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    weizhi:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    chanquanzhenghao:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    jianzhumianji:[
+                        { required: true, message: '年龄不能为空'},
+                        { type: 'number', message: '年龄必须为数字值'}
+                    ],
+                    leixing:[
+                        { required: true, message:'不能为空'}
+                    ],
+                    qianyuemianji:[
+                        { required: true, message:'不能为空'}
+                    ]
+                },
+                editVisible:true,
                 //楼盘数据
                 options1:[],
                 list1: [],
@@ -172,9 +232,25 @@
                     content: 'Tab 1 content'
                 }],
                 tabIndex: 1,
+
             }
         },
         methods: {
+            valid(){
+                var flag  = true;
+                var flag1 = true;
+                var property =  this.$refs.propertyForm;
+
+                for (let i=0;i<property.length;i++){
+                    property[i].validate((valid) => {
+                        flag = valid;
+                        if(flag==false){
+                            flag1 = false;
+                        }
+                        alert(valid+'1')
+                    })
+                }
+            },
             //获取楼盘
             remoteMethod1(query) {
                 let para = {
@@ -285,7 +361,7 @@
             change2(){
                 //楼栋
                 for (var x in this.options2){
-                    if(this.options2[x].value==this.property.officeList[this.tabIndex-1].loudongName){
+                    if(this.options2[x].label==this.property.officeList[this.tabIndex-1].loudongName){
                         this.property.officeList[this.tabIndex-1].loudongOmcId=this.options2[x].value;
                     }
                 }
@@ -303,16 +379,11 @@
                         this.property.officeList[this.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
                     }
                 }
-//                console.log(
-//                    '楼盘'+this.property.officeList[this.tabIndex-1].loupanOmcId
-//                    +'楼栋'+this.property.officeList[this.tabIndex-1].loudongOmcId
-//                    +'房号'+this.property.officeList[this.tabIndex-1].omcId
-//                )
             },
             addTab(targetName) {
                 let newTabName = ++this.tabIndex + '';
                 this.editableTabs2.push({
-                    title: '房间',
+                    title: '房间'+this.tabIndex,
                     name: newTabName,
                     content: 'New Tab content'
                 });
@@ -323,11 +394,14 @@
                     loupanName:'',
                     loudongName: '',
                     fanghao: '',
-                    Weizhi: '东区',
-                    Chanquanzhenghao: '8345',
-                    Jianzhumianji: '83.5',
-                    Qianyuemianji: '83.5',
-                    Leixing: '',
+                    weizhi: '',
+                    chanquanzhenghao: '',
+                    jianzhumianji: '',
+                    qianyuemianji: '',
+                    leixing: 0,
+                    quyu:'',
+                    isdiya:0,
+                    diyaren:'',
                 });
                 this.editableTabsValue2 = newTabName;
             },
@@ -351,7 +425,13 @@
             }
         },
         mounted() {
-
+            //审核页面input禁用
+            if(this.$route.path=='/purchaseContract/review'){
+                this.editVisible   =false;
+            }
+            if(this.$route.path=='/purchaseContract/view'){
+                this.editVisible   =false;
+            }
         }
 
     }

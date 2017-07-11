@@ -1,23 +1,19 @@
-
 <template>
-        <el-dialog title="确认佣金支付方式" v-model="payType.sureFormVisible" :close-on-click-modal="false">
-            <el-form :model="sureForm" label-width="120px" :rules="sureFormRules" ref="sureForm">
-                <el-input type="hidden" prop="tHetongId"  v-model="payType.tHetongId" auto-complete="off"></el-input>
-                <el-form-item label="合同编号" prop="tHetongBianhao">
-                    {{payType.tHetongBianhao}}
-                </el-form-item>
-                <el-form-item label="佣金支付方式" prop="yjZfType">
-                    <el-radio-group v-model="sureForm.yjZfType">
-                        <el-radio class="radio"  :label=0>业主支付</el-radio>
-                        <el-radio class="radio" :label=1>幼狮代付</el-radio>
-                    </el-radio-group>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click.native="payType.sureFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="sureSubmit" :loading="sureLoading">提交</el-button>
-            </div>
-        </el-dialog>
+    <el-dialog title="确认操作" v-model="payType.sureFormVisible" :close-on-click-modal="false">
+        <el-form :model="sureForm" label-width="120px" :rules="sureFormRules" ref="sureForm">
+            <el-input type="hidden" prop="tHetongId"  v-model="payType.tHetongId" auto-complete="off"></el-input>
+            <el-form-item label="佣金支付方式" prop="yjZfType">
+                <el-radio-group v-model="sureForm.yjZfType">
+                    <el-radio class="radio"  :label=0>业主支付</el-radio>
+                    <el-radio class="radio" :label=1>幼狮代付</el-radio>
+                </el-radio-group>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click.native="payType.sureFormVisible = false">取消</el-button>
+            <el-button type="primary" @click.native="sureSubmit" :loading="sureLoading">确认</el-button>
+        </div>
+    </el-dialog>
 </template>
 <script>
 
@@ -31,7 +27,7 @@
         data(){
             return {
 
-               // sureFormVisible: true,//确认界面是否显示
+                // sureFormVisible: true,//确认界面是否显示
                 sureLoading: false,
                 sureFormRules: {
                     yjZfType:[
@@ -82,8 +78,8 @@
                                 }
 
                                 this.$refs['sureForm'].resetFields();
-                                this.payType.sureFormVisible = false;
-                               // this.getBrokerCompany();
+                                this.sureFormVisible = false;
+                                // this.getBrokerCompany();
                             });
                         });
                     }

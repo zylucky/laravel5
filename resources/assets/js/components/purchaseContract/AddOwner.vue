@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-form :label-position="labelPosition" label-width="100px" :model="owner">
+        <el-form :label-position="labelPosition" ref="ownerForm" :rules="editOwnerRules" label-width="100px" :model="owner">
         <el-col :span="24">
             <el-form-item label="承租人">
                 <el-radio-group v-model="owner.chengzufang">
@@ -14,26 +14,41 @@
 
             </el-form-item>
             <el-form-item label="居间方">
-                <el-input v-model="owner.jujianfang"></el-input>
+                <el-select
+                        id="jujianfang"
+                        v-model="owner.jujianfangid"
+                        filterable
+                        remote
+                        @change="changeOnSelect"
+                        placeholder="渠道公司名称"
+                        :remote-method="remoteMethod1"
+                        :loading="bkNameloading">
+                    <el-option
+                            v-for="item in owner.options1"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
             </el-form-item>
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="收款人" >
+                    <el-form-item label="收款人" prop="shoukuanren" required>
                         <el-input v-model="owner.shoukuanren"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="10">
-                    <el-form-item label="开户行" >
+                    <el-form-item label="开户行" prop="kaihuhang" required>
                         <el-input v-model="owner.kaihuhang"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="账号" >
+                    <el-form-item label="账号" prop="zhanghao" required>
                         <el-input v-model="owner.zhanghao"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-form-item label="业主类型">
+            <el-form-item label="业主类型" prop="yezhuleixing" required>
                 <el-radio-group v-model="owner.yezhuleixing">
                     <el-radio :label="1">个人</el-radio>
                     <el-radio :label="2">公司</el-radio>
@@ -44,19 +59,19 @@
                 <div v-for="(item, index) in owner.chanquanrenList">
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="产权人" >
+                        <el-form-item label="产权人" prop="chanquanName" required>
                             <el-input v-model="owner.chanquanrenList[index].name"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="10">
-                        <el-form-item label="身份证号" >
+                        <el-form-item label="身份证号">
                             <el-input v-model="owner.chanquanrenList[index].zhengjian"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="联系方式" >
+                        <el-form-item label="联系方式">
                             <el-input v-model="owner.chanquanrenList[index].tel"></el-input>
                         </el-form-item>
                     </el-col>
@@ -69,12 +84,12 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="2">
-                        <el-button style="margin-left:6px;" @click.prevent="removeRentItem(item)">删除</el-button>
+                        <el-button v-show="editVisible" style="margin-left:6px;" @click.prevent="removeRentItem(item)">删除</el-button>
                     </el-col>
                 </el-row>
                 </div>
                 <el-form-item>
-                    <el-button  @click="addRentItem">新增产权人</el-button>
+                    <el-button v-show="editVisible"  @click="addRentItem">新增产权人</el-button>
                 </el-form-item>
                 <el-row>
                     <el-col :span="8">
@@ -105,7 +120,7 @@
                 </el-row>
             </div>
             <div v-if="owner.yezhuleixing==2">
-                <el-form-item label="公司名称" >
+                <el-form-item label="公司名称" prop="companyName" required>
                     <el-input v-model="owner.chanquanrenList[0].name"></el-input>
                 </el-form-item>
                 <el-row>
@@ -170,16 +185,80 @@
     </div>
 </template>
 <script>
+    import {getbkNameList} from '../../api/api';;
     export default{
         data(){
             return {
                 labelPosition:'right',
-
-
+                bkNameloading:false,
+                estate: [],//服务器搜索的渠道公司数据放入这个数组中
+                editVisible:true,
+                editOwnerRules :{
+                    shoukuanren: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    kaihuhang: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    zhanghao: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    chanquanName: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    companyName: [
+                        { required: true, message: '不能为空' }
+                    ],
+                },
             }
         },
         props:['owner'],
         methods: {
+            valid(){
+                this.$refs.ownerForm.validate((valid) => {
+                    alert(valid+'2')
+                });
+            },
+            changeOnSelect(){
+                var arr = this.owner.options1;
+                for (let i=0;i<arr.length;i++ ){
+                    if(arr[i].value==this.owner.jujianfangid){
+                        this.owner.jujianfang = arr[i].label;
+                    }
+                }
+            },
+            //获取渠道公司名称
+            remoteMethod1(query) {
+                let para = {
+                    name: query
+                };
+                this.bkNameloading = true;
+                getbkNameList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for ( var i in res.data ){
+                        arr[i]=res.data[i]
+                    }
+                    this.estate = arr;
+                    this.bkNameloading = false;
+                    this.list = this.estate.map((item,index) => {
+                        return { value: index, label: item };
+                    });
+                    if (query !== '') {
+                        this.bkNameloading = true;
+                        setTimeout(() => {
+                            this.bkNameloading = false;
+                            this.owner.options1 = this.list.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.owner.options1 = [];
+                    }
+                });
+
+            },
             //新增产权人
             addRentItem() {
                 this.owner.chanquanrenList.push({
@@ -197,6 +276,16 @@
                     this.owner.chanquanrenList.splice(index, 1)
                 }
             }
+        },
+        mounted(){
+            //审核页面input禁用
+            if(this.$route.path=='/purchaseContract/review'){
+                this.editVisible   =false;
+            }
+            if(this.$route.path=='/purchaseContract/view'){
+                this.editVisible   =false;
+            }
+
         }
     }
 </script>

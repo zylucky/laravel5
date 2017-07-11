@@ -18,10 +18,17 @@ Route::get('/', function (){
 Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
 Route::post('purchaseContract/review','Contract\purchaseContractController@review');
+Route::get('purchaseContract/optimize','Contract\purchaseContractController@getOptimize');
+Route::get('purchaseContract/approving','Contract\purchaseContractController@approving');
 Route::post('purchaseContract/editTiaoKuan','Contract\purchaseContractController@editTiaoKuan');
 Route::get('purchaseContract/confirm','Contract\purchaseContractController@confirm');
+Route::get('purchaseContract/confirming','Contract\purchaseContractController@confirming');
+Route::get('purchaseContract/violating','Contract\purchaseContractController@violating');
+Route::get('purchaseContract/terminated','Contract\purchaseContractController@terminated');
+Route::get('purchaseContract/releasing','Contract\purchaseContractController@releasing');
+Route::get('purchaseContract/released','Contract\purchaseContractController@released');
 Route::resource('purchaseContract','Contract\purchaseContractController');
-Route::get('purchaseContract/review','Contract\purchaseContractController@review');
+//Route::get('purchaseContract/review','Contract\purchaseContractController@review');
 Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');
 Route::resource('brokerCompanyUser','BrokerCompany\brokerCompanyUserController');
 Route::resource('chuFangCommission','Commission\ChuFangCommissionController');
@@ -34,10 +41,17 @@ Route::resource('payable','Report\payableController');
 Route::resource('payavleRecord','Report\payavleRecordController');
 Route::resource('paymentRecord','Report\paymentRecordController');
 
+//Route::post('saleContract/sub','Contract\saleContractController@sub');
+Route::get('saleContract/submit','Contract\saleContractController@submit');
+Route::get('saleContract/approving','Contract\saleContractController@approving');
+Route::get('saleContract/confirm','Contract\saleContractController@confirm');
+Route::get('saleContract/violating','Contract\saleContractController@violating');
+Route::get('saleContract/terminated','Contract\saleContractController@terminated');
+Route::get('saleContract/releasing','Contract\saleContractController@releasing');
+Route::get('saleContract/released','Contract\saleContractController@released');
+Route::get('saleContract/jieyuesave','Contract\saleContractController@jieyuesave');
 
-Route::resource('saleContract','Contract\saleContractController');
-Route::post('saleContract/sub','Contract\saleContractController@sub');
-
+Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 
 Route::get('permission/getAll','Rbac\PermissionController@getAll');
 Route::get('permission/role/{id}','Rbac\PermissionController@getPermission');
@@ -63,7 +77,7 @@ Route::post('user/edit','UserController@editUser');
 Route::post('user/role/{id}','UserController@setRole');
 Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
 
-Route::get('office/loupanList','Contract\OfficeController@loupanList');
-Route::get('office/loudongList','Contract\OfficeController@loudongList');
-Route::get('office/fanghaoList','Contract\OfficeController@fanghaoList');
+Route::get('office/loupanList','Contract\officeController@loupanList');
+Route::get('office/loudongList','Contract\officeController@loudongList');
+Route::get('office/fanghaoList','Contract\officeController@fanghaoList');
 
