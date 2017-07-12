@@ -183,9 +183,15 @@
                 _this.$router.push('/saleContact/upload');
             },
             handlSee(index, row){
+                let para = {
+                    id:row.id,
+                }
                 this.$router.push('/saleContract/see?id=' + row.id);
             },
             handleEdit(index, row){
+                let para = {
+                    id:row.id,
+                }
                 //
                 //var _this = this;
                 //this.$router.push('/saleContact/edit?id='+row.id);
