@@ -12,8 +12,7 @@
             </el-form-item>
         </el-form>
         <el-table :data="brokerCompany"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column type="selection" width="55">
-            </el-table-column>
+
             <el-table-column type="index"   width="60">
             </el-table-column>
             <el-table-column prop="compayname" label="渠道公司名称"  sortable>
@@ -48,7 +47,7 @@
         <div style="margin-top:30px"></div>
         <!-- 分页-->
         <el-col :span="24" class="toolbar" >
-            <el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>
+
             <el-pagination
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
