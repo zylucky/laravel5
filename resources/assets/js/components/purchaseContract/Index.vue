@@ -65,7 +65,7 @@
             >
             </el-pagination>
         </el-col>
-        <contract-pay-type :payType="payType"></contract-pay-type>
+        <contract-pay-type :payType="payType" v-on:refreshbizlines="purchaseContractList"></contract-pay-type>
     </el-row>
 </template>
 <script>
@@ -85,7 +85,7 @@
                 payType:{
                     sureFormVisible:false,//佣金支付方式显示
                     tHetongId:1,
-                    tHetongBianhao:'URS-SG-KJ-17070007',
+                    tHetongBianhao:null,
                 },
                 filters: {
                     name: '',
@@ -149,7 +149,6 @@
                 getPurchaseContractList(para).then((res) => {
                     //console.log(res.data)
                     this.total = res.data.total;
-
                     this.lists = res.data.data;
                     this.listLoading = false;
                 });
@@ -240,17 +239,20 @@
                 let para = {
                     id:row.id,
                 }
-                this.getPurchaseContractList();
                 dumpingPurchaseContract(para).then((res)=>{
-                    this.getPurchaseContractList();
+                    if(res.data.code=="200"){
+                        this.purchaseContractList();
+                        window.open('/#/purchaseContract/dump?id='+row.id)
+                    }
                 });
-                window.open('/#/purchaseContract/dump?id='+row.id)
+
 
             },
             //合同确认
             handleConfirm(index,row){
                 this.payType.sureFormVisible = true;
                 this.payType.tHetongId = row.id;
+                this.payType.tHetongBianhao = row.bianhao;
             },
 
         },

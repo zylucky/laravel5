@@ -100,8 +100,8 @@
                     //产权人
                     chanquanrenList:[
                         {
-                            faren:'',
                             name:'',
+                            faren:'',
                             zhengjian:'',
                             tel:'',
                             sex:1,

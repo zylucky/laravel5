@@ -71,12 +71,8 @@ class purchaseContractController extends Controller
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $data = $request->params;
-        if($data['jiafangfeiyong']){
-            $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
-        }
-        if($data['yifangfeiyong']){
-            $data['yifangfeiyong'] = implode(',',$data['yifangfeiyong']);
-        }
+        $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
+        $data['yifangfeiyong'] = implode(',',$data['yifangfeiyong']);
         $response = $client->request('POST', '/api/contract/sf/save', [
             'json' => $data,
         ]);
@@ -138,7 +134,6 @@ class purchaseContractController extends Controller
             'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-
         $response = $client->request('POST', '/api/contract/sf/buchongXieyi/save', [
             'json' => $request->params
         ]);
@@ -253,15 +248,15 @@ class purchaseContractController extends Controller
     }
     //合同状态变为：优化成功  执行两个动作：协议改为已提交的状态，合同改为已经优化的状态
     public function released(){
-
         $id = Input::get('id');
         $xyid = Input::get('xyid');
+
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/released');
-        $response = $client->request('GET', '/api/contract/sf/'.$xyid.'/confirm');
+        $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$xyid.'/confrim?id='.$xyid);
         echo $response->getBody();
     }
     //状态变更为审核中

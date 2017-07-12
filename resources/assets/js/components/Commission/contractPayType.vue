@@ -69,6 +69,7 @@
                                 //alert(JSON.stringify(res));
                                 if(res.data.code=='200')
                                 {
+                                    this.$emit('refreshbizlines')
                                     //alert(0);
                                     this.$message({
                                         message: '提交成功' ,
