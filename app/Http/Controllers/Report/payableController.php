@@ -19,6 +19,7 @@ class payableController extends Controller
     public function index()
     {
 
+        $contractNo = Input::get('contractNo');
         $buildingname = Input::get('buildingname');
         $buildname = Input::get('buildname');
         $roomname = Input::get('roomname');
@@ -34,7 +35,10 @@ class payableController extends Controller
                 'query' => [
                     'page' => $page,
                     'size' => $pageSize,
-                    'houseno' => $roomname,
+                    'sdate'=>$startdate,
+                    'edate'=>$enddate,
+                    'houseno'=>$roomname,
+                    'htno' =>  $contractNo,
                 ]
 
             ]
