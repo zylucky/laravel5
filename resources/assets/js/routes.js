@@ -44,7 +44,7 @@ import PayableRecord from "./components/report/payableRecordList.vue";
 import Payable from "./components/report/payableList.vue";
 
 //消息管理
-import MessageList from "./components/Message/Index.vue";
+import MessageList from "./components/message/Index.vue";
 
 var fk_permission ;
 fun('permission')==true? fk_permission = false:fk_permission = true;
