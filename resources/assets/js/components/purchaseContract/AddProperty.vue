@@ -356,6 +356,10 @@
                 for (var x in this.options1){
                     if(this.options1[x].label==this.property.officeList[this.tabIndex-1].loupanName){
                         this.property.officeList[this.tabIndex-1].loupanOmcId=this.options1[x].value;
+                        this.property.officeList[this.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
+                        this.property.officeList[this.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
+                        this.property.officeList[this.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                        this.property.officeList[this.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
                     }
                 }
             },
@@ -364,6 +368,8 @@
                 for (var x in this.options2){
                     if(this.options2[x].label==this.property.officeList[this.tabIndex-1].loudongName){
                         this.property.officeList[this.tabIndex-1].loudongOmcId=this.options2[x].value;
+                        this.property.officeList[this.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                        this.property.officeList[this.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
                     }
                 }
             },
@@ -407,7 +413,7 @@
                 this.editableTabsValue2 = newTabName;
             },
             removeTab(targetName) {
-                this.property.officeList.pop();//删除
+                this.property.officeList.pop();
                 let tabs = this.editableTabs2;
                 let activeName = this.editableTabsValue2;
                 if (activeName === targetName) {
@@ -420,7 +426,10 @@
                         }
                     });
                 }
+                let propertys = this.property.officeList ;
+                propertys.forEach((property,index)=>{
 
+                })
                 this.editableTabsValue2 = activeName;
                 this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
             }

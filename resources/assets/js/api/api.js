@@ -85,8 +85,7 @@ export const dumpingPurchaseContract= params => { return axios.get(`${base}/purc
 export const weiyuePurchaseContract= params => { return axios.get(`${base}/purchaseContract/violating`, {params:params}); };//状态变更为：违约中
 export const endPurchaseContract= params => { return axios.get(`${base}/purchaseContract/terminated`, {params:params}); };//状态变更为：合同终止
 export const youhuaPurchaseContract= params => { return axios.get(`${base}/purchaseContract/releasing`, {params:params}); };//状态变更为：优化中
-export const youhuacgPurchaseContract= params => { return axios.get(`${base}/purchaseContract/released`, {params:params}); };//状态变更为：优化中
-export const submitOptimize= params => { return axios.get(`${base}/purchaseContract/released`, {params:params}); };//状态变更为：优化中
+export const youhuacgPurchaseContract= params => { return axios.get(`${base}/purchaseContract/released`, {params:params}); };//状态变更为：优化完成
 
 //出房合同
 //合同信息

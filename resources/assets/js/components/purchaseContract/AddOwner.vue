@@ -56,10 +56,16 @@
             </el-form-item>
 
             <div v-if="owner.yezhuleixing==1">
-                <div v-for="(item, index) in owner.chanquanrenList">
+                <div v-for="(item, index) in owner.chanquanrenList"
+                     :key="index"
+                >
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="产权人" prop="chanquanName" required>
+                        <el-form-item label="产权人" :prop="'chanquanrenList.' + index + '.name'"
+                                      :rules="[
+                                      { required: true, message: '不能为空' }
+                                        ]"
+                                      required>
                             <el-input v-model="owner.chanquanrenList[index].name"></el-input>
                         </el-form-item>
                     </el-col>
@@ -84,7 +90,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="2">
-                        <el-button v-show="editVisible" style="margin-left:6px;" @click.prevent="removeRentItem(item)">删除</el-button>
+                        <el-button v-if="index>0" v-show="editVisible" style="margin-left:6px;" @click.prevent="removeRentItem(item)">删除</el-button>
                     </el-col>
                 </el-row>
                 </div>
@@ -120,63 +126,69 @@
                 </el-row>
             </div>
             <div v-if="owner.yezhuleixing==2">
-                <el-form-item label="公司名称" prop="companyName" required>
-                    <el-input v-model="owner.chanquanrenList[0].name"></el-input>
-                </el-form-item>
+                <div v-for="(item, index) in owner.chanquanrenList"
+                     :key="index"
+                >
+                    <el-form-item label="公司名称" :prop="'chanquanrenList.' + index + '.name'" :rules="[
+                         { required: true, message: '不能为空' }
+                    ]">
+                        <el-input v-model="owner.chanquanrenList[index].name"></el-input>
+                    </el-form-item>
+                    <el-row>
+                        <el-col :span="8">
+                            <el-form-item label="法人" >
+                                <el-input v-model="owner.chanquanrenList[index].faren"></el-input>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="10">
+                            <el-form-item label="身份证号" >
+                                <el-input v-model="owner.chanquanrenList[index].zhengjian"></el-input>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="8">
+                            <el-form-item label="联系方式" >
+                                <el-input v-model="owner.chanquanrenList[index].tel"></el-input>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-form-item label="性别">
+                                <el-radio-group v-model="owner.chanquanrenList[index].sex">
+                                    <el-radio :label="1">男</el-radio>
+                                    <el-radio :label="2">女</el-radio>
+                                </el-radio-group>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                </div>
                 <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="法人" >
-                            <el-input v-model="owner.chanquanrenList[0].faren"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="10">
-                        <el-form-item label="身份证号" >
-                            <el-input v-model="owner.chanquanrenList[0].zhengjian"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="联系方式" >
-                            <el-input v-model="owner.chanquanrenList[0].tel"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item label="性别">
-                            <el-radio-group v-model="owner.chanquanrenList[0].sex">
-                                <el-radio :label="1">男</el-radio>
-                                <el-radio :label="2">女</el-radio>
-                            </el-radio-group>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="签约人" >
-                            <el-input v-model="owner.qianyuerenName"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="10">
-                        <el-form-item label="身份证号" >
-                            <el-input v-model="owner.qianyuerenId"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="联系方式" >
-                            <el-input v-model="owner.qianyuerenTel"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item label="性别">
-                            <el-radio-group v-model="owner.qianyuerenSex">
-                                <el-radio :label="1">男</el-radio>
-                                <el-radio :label="2">女</el-radio>
-                            </el-radio-group>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
+                        <el-col :span="8">
+                            <el-form-item label="签约人" >
+                                <el-input v-model="owner.qianyuerenName"></el-input>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="10">
+                            <el-form-item label="身份证号" >
+                                <el-input v-model="owner.qianyuerenId"></el-input>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="8">
+                            <el-form-item label="联系方式" >
+                                <el-input v-model="owner.qianyuerenTel"></el-input>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-form-item label="性别">
+                                <el-radio-group v-model="owner.qianyuerenSex">
+                                    <el-radio :label="1">男</el-radio>
+                                    <el-radio :label="2">女</el-radio>
+                                </el-radio-group>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
             </div>
 
 
@@ -201,12 +213,6 @@
                         { required: true, message: '不能为空' }
                     ],
                     zhanghao: [
-                        { required: true, message: '不能为空' }
-                    ],
-                    chanquanName: [
-                        { required: true, message: '不能为空' }
-                    ],
-                    companyName: [
                         { required: true, message: '不能为空' }
                     ],
                 },
