@@ -55,6 +55,10 @@ export const removeReceivable = params => { return axios.delete(`${base}/account
 export const getPayableListPage = params => { return axios.get(`${base}/payable`, { params: params }); };
 export const finishSK= params => { return axios.post(`${base}/shouFangCommission/finishSK` , { params: params }); };
 export const finishFK= params => { return axios.post(`${base}/chuFangCommission/finishFK` , { params: params }); };
+export const getMessageListPage = params => { return axios.get(`${base}/message`, { params: params }); };
+export const AcceptMessage= params => { return axios.post(`${base}/message/acceptMessage` , { params: params }); };
+export const RefuseMessage= params => { return axios.post(`${base}/message/refuseMessage` , { params: params }); };
+
 //查系统所有的权限
 export const getPermissionListPage = params => { return axios.get(`${base}/permission/getAll`, { params: params }); };
 //查XX的权限

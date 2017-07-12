@@ -21,6 +21,11 @@ class ChuFangCommissionController  extends Controller
         $buildname = Input::get('buildname');
         $roomname = Input::get('roomname');
         $ZhuangTai = Input::get('ZhuangTai');
+        $startdate=Input::get('startdate');
+        $enddate=Input::get('enddate');
+        $yjstartdate=Input::get('yjstartdate');
+        $yjenddate=Input::get('yjenddate');
+        $compayname=Input::get('compayname');
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
         $client = new Client ([
@@ -31,7 +36,16 @@ class ChuFangCommissionController  extends Controller
                 'query' => [
                     'page'=>$page,
                     'size'=>$pageSize,
-                    'htno' =>  $contractNo
+                    'htno' =>  $contractNo,
+                    'lpname'=>$buildingname,
+                    'ldname'=>$buildname,
+                    'htsdate' =>  $startdate,
+                    'htedate'=>$enddate,
+                    'yjsdate'=>$yjstartdate,
+                    'yjedate' =>  $yjenddate,
+                    'houseno' =>  $roomname,
+                    'pname' =>  $compayname,
+                    'yjstate' =>  $ZhuangTai
                 ]
 
             ]

@@ -41,7 +41,7 @@ Route::resource('payable','Report\payableController');
 Route::resource('payavleRecord','Report\payavleRecordController');
 Route::resource('paymentRecord','Report\paymentRecordController');
 Route::post('shouFangCommission/finishSK','Commission\ShouFangCommissionController@finishSK');
-
+Route::resource('message','Message\messageController');
 
 Route::resource('saleContract','Contract\saleContractController');
 Route::post('saleContract/sub','Contract\saleContractController@sub');

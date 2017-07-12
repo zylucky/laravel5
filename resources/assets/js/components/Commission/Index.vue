@@ -14,9 +14,35 @@
             <el-form-item label="">
                 <el-input v-model="filters.roomname" placeholder="房间号"></el-input>
             </el-form-item>
+            <el-checkbox v-model="filters.checked" @change="change">高级搜索</el-checkbox>
             <el-form-item>
-                <el-button type="primary" icon="search" v-on:click="getBrokerCompany">搜索</el-button>
+                <el-button type="primary" icon="search" v-on:click="getShouFang">搜索</el-button>
             </el-form-item>
+            <br/>
+            <div v-show="showed" v-model="filters.showDiv">
+                <el-form-item label="">
+                    <el-select v-model="filters.ZhuangTai" placeholder="状态">
+                        <el-option
+                                v-for="item in options"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="">
+                    <el-input v-model="filters.compayname" placeholder="渠道公司"></el-input>
+                </el-form-item>
+                <el-date-picker type="date" placeholder="合同日期" v-model="filters.startdate">
+                </el-date-picker>
+                <el-date-picker type="date" placeholder="至" v-model="filters.enddate">
+                </el-date-picker>
+                <el-date-picker type="date" placeholder="佣金结算" v-model="filters.yjstartdate">
+                </el-date-picker>
+                <el-date-picker type="date" placeholder="至" v-model="filters.yjenddate">
+                </el-date-picker>
+            </div>
+
         </el-form>
         <el-table :data="ChuFang" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
                   @selection-change="selsChange" style="width: 100%;">
@@ -161,6 +187,10 @@
                 <el-form-item label="实际支付佣金" prop="empmoney">
                     <el-input type="number" v-model="rokeBackForm.empmoney" auto-complete="off"></el-input>
                 </el-form-item>
+                <el-form-item label="付款日期" prop="fkrq">
+                    <el-date-picker type = "date" v-model="rokeBackForm.fkrq"   auto-complete="off">
+                    </el-date-picker>
+                </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click.native="rokeBackFormVisible = false">取消</el-button>
@@ -191,14 +221,23 @@
                     buildname: '',
                     roomname: '',
                     ZhuangTai: '',
+                    compayname:'',
+                    startdate: '',
+                    enddate: '',
+                    yjstartdate: '',
+                    yjenddate: '',
                 },
                 options: [
                     {
                         value: 1,
-                        label: '未申请'
-                    }, {
+                        label: '未收款'
+                    },
+                    {
                         value: 2,
-                        label: '已申请'
+                        label: '已收款'
+                    }, {
+                        value: 3,
+                        label: '已完成'
                     },
                 ],
                 //分页类数据
@@ -221,11 +260,15 @@
                 rokeBackLoading: false,
                 rokeBackFormRules: {
                     empmoney:{  required: true, message: '实际支付佣金', trigger: 'blur' },
+                    fkrq: [
+                        { type: 'date', required: true, message: '请输入付款日期', trigger: 'change' }
+                    ],
                 },
                 //确认付款界面数据
                 rokeBackForm: {
                     tQdApplyId: '',
                     empmoney: '',
+                    fkrq:''
                 },
                 bk_name: '',
                 //被选中的权限
@@ -287,12 +330,21 @@
 
                 this.getChuFangCommission();
             },
-            //获取渠道公司列表
+            //获取出房佣金列表
             getChuFangCommission() {
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
-                    bk_name: this.filters.bk_name
+                    contractNo: this.filters.contractNo,
+                    buildingname: this.filters.buildingname,
+                    buildname: this.filters.buildname,
+                    roomname: this.filters.roomname,
+                    ZhuangTai: this.filters.ZhuangTai,
+                    startdate: this.filters.startdate,
+                    enddate: this.filters.enddate,
+                    yjstartdate: this.filters.yjstartdate,
+                    yjenddate: this.filters.yjenddate,
+                    compayname:this.filters.compayname,
                 };
                 this.listLoading = true;
                 getChuFangCommissionListPage(para).then((res) => {
@@ -307,8 +359,7 @@
                 this.editFormVisible = true;
                 this.editForm = Object.assign({}, row);
                 //  this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-                this.editForm.yjzbCf = row.yjzbCf.toString();
-                this.editForm.yjzbSf = row.yjzbSf.toString();
+
 
             },
 
@@ -366,6 +417,7 @@
                 this.rokeBackForm= {
                     tQdApplyId: row.tQdApplyId,
                     empmoney: '',
+                    fkrq:''
                 }
             },
         },
