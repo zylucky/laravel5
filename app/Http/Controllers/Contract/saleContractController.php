@@ -59,20 +59,7 @@ class saleContractController extends Controller
     }
 
 
-    public function sub(Request $request)
-    {
-        //return $request->params;
-        //数据格式化
-        $client = new Client([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
-        ]);
-        $response = $client->request('POST', '/api/contract/sf/buchongXieyi/save', [
-            'json' => $request->params
-        ]);
-        echo $response->getBody();
-    }
+
 
 
     /**
@@ -84,13 +71,19 @@ class saleContractController extends Controller
     //出房合同点编辑后显示数据的方法
     public function show($id)
     {
+        //dd(10101010);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/contract/xs/save'.$id);
+        $response = $client->request('GET', '/api/contract/xs/'.$id);
         echo $response->getBody();
+        /*$res = json_decode($res);
+        $res->data->yifangfeiyong = explode(',',$res->data->yifangfeiyong);
+        $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
+        echo json_encode($res);*/
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -102,14 +95,13 @@ class saleContractController extends Controller
     //在这里是提交那个按钮的处理
     public function edit($id)
     {
-        dd(333);
-        dd(2222);
-        /*$client = new Client([
+        //dd(666);
+        $client = new Client([
             'base_uri' => $this->base_url,
             'timeout' => 2.0,
-        ]);*/
-        /*$response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
-        echo $response->getBody();*/
+        ]);
+        $response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
+        echo $response->getBody();
     }
 
     /**
@@ -122,6 +114,7 @@ class saleContractController extends Controller
     //出房合同点击编辑后保存的方法
     public function update(Request $request, $id)
     {
+        //dd(555);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
@@ -160,7 +153,7 @@ class saleContractController extends Controller
     }
 
     //删除
-    public function delete(){
+    /*public function delete(){
         $client = new Client([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
@@ -170,8 +163,113 @@ class saleContractController extends Controller
             'json' => $request->params
         ]);
         echo $response->getBody();
+    }*/
+    //解约协议的保存
+    public function jieyuesave(Request $request){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/xs/jieyueXieyi/save', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
+    //解约协议的提交
+    public function submit(Request $request){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout' => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST','/api/contract/xs/jieyueXieyi/submit', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
+    //合同状态变为：审核中
+    public function approving(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/'.$id.'/approving');
+        echo $response->getBody();
+    }
+    //合同状态变为：解约中
+    public function releasing(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/'.$id.'/releasing');
+        echo $response->getBody();
+    }
+    //合同状态变为：解约完成
+    public function released(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/'.$id.'/released');
+        echo $response->getBody();
     }
 
+    public function sub($id)
+    {
+        //return $request->params;
+        //数据格式化
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/'.$id);
+        echo $response->getBody();
+        /*$client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/sf/buchongXieyi/save', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();*/
+    }
+    //合同状态变为：已确认
+    public function confirm(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET','/api/contract/xs/'.$id.'/confirm');
+        echo $response->getBody();
+    }
+    //合同状态变为：违约处理中
+    public function violating(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/'.$id.'/violating');
+        echo $response->getBody();
+    }
+    //合同状态变为：合同终止
+    public function terminated(){
+        //dd(1111);
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/'.$id.'/terminated');
+        echo $response->getBody();
+    }
 
 
 }
