@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-form :label-position="labelPosition" label-width="100px" :model="renter">
+        <el-form :label-position="labelPosition" :rules="editRenterRules" label-width="100px" :model="renter">
         <el-col :span="24">
             <el-form-item label="出租人">
                 <el-radio-group v-model="renter.chengzufang">
@@ -71,7 +71,7 @@
                 <div v-for="(item, index) in renter.chengzuren">
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="承租人" required>
+                        <el-form-item label="承租人" prop="chengzurenname" required>
                             <el-input v-model="renter.chengzuren[index].name"></el-input>
                         </el-form-item>
                     </el-col>
@@ -132,7 +132,7 @@
                 </el-row>
             </div>
             <div v-if="renter.zuhuleixing == 2">
-                <el-form-item label="公司名称" >
+                <el-form-item label="公司名称" prop="companyname" required>
                     <el-input v-model="renter.chengzuren[0].name"></el-input>
                 </el-form-item>
                 <el-row>
@@ -204,7 +204,23 @@
                 labelPosition:'right',
                 bkNameloading:false,
                 estate: [],//服务器搜索的渠道公司数据放入这个数组中
-
+                editRenterRules :{
+                    shoukuanren: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    kaihuhang: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    zhanghao: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    chengzurenname: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    companyname: [
+                        { required: true, message: '不能为空' }
+                    ],
+                },
             }
         },
         props:['renter'],

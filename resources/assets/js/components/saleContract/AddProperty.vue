@@ -14,7 +14,7 @@
                         :label="item.title"
                         :name="item.name"
                 >
-                    <el-form label-Weizhi="right" :rules="editFormRules" label-width="100px" :model="property.officeList[index]">
+                    <el-form label-Weizhi="right" ref="propertyForm" :rules="editPropertyRules" label-width="100px" :model="property.officeList[index]">
                         <el-col :span="24">
                             <el-row>
                                 <el-col :span="8">
@@ -202,35 +202,34 @@
                     content: 'Tab 1 content'
                 }],
                 tabIndex: 1,
-                /*editFormRules: {
+                editPropertyRules: {
                     loupanName: [
-                        { required: true, message: '请输入姓名', trigger: 'blur' }
+                        { required: true, message: '不能为空'}
                     ],
                     loudongName:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'}
                     ],
                     fanghao:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    quyu:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'}
                     ],
                     weizhi:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'}
                     ],
                     chanquanzhenghao:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'}
                     ],
                     jianzhumianji:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message: '不能为空'},
+                        { type: 'number', message: '必须为数字'},
                     ],
                     leixing:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'}
                     ],
                     qianyuemianji:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'},
+                        { type: 'number', message: '必须为数字'},
                     ]
-                },*/
+                },
             }
         },
         methods: {
@@ -366,7 +365,7 @@
             addTab(targetName) {
                 let newTabName = ++this.tabIndex + '';
                 this.editableTabs2.push({
-                    title: '房间',
+                    title: '房间'+this.tabIndex,//房间号加上次数（一直会加1，以此类推）
                     name: newTabName,
                     content: 'New Tab content'
                 });
@@ -377,10 +376,10 @@
                     loupanName:'',
                     loudongName: '',
                     fanghao: '',
-                    weizhi: '东区',
-                    chanquanzhenghao: '8345',
-                    jianzhumianji: '83.5',
-                    qianyuemianji: '83.5',
+                    weizhi: '',
+                    chanquanzhenghao: '',
+                    jianzhumianji: '',
+                    qianyuemianji: '',
                     leixing: 0,
                     quyu:'',
                     isdiya:0,
