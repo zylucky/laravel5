@@ -18,7 +18,7 @@ class receivableController extends Controller
      */
     public function index()
     {
-
+        $contractNo = Input::get('contractNo');
         $buildingname= Input::get('buildingname');
         $buildname = Input::get('buildname');
         $roomname = Input::get('roomname');
@@ -34,7 +34,10 @@ class receivableController extends Controller
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-
+                'sdate'=>$startdate,
+                'edate'=>$enddate,
+                'houseno'=>$roomname,
+                'htno' =>  $contractNo,
                 ]
 
        ]

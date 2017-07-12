@@ -43,6 +43,9 @@ import PaymentRecord from "./components/report/paymentRecordList.vue";
 import PayableRecord from "./components/report/payableRecordList.vue";
 import Payable from "./components/report/payableList.vue";
 
+//消息管理
+import MessageList from "./components/Message/Index.vue";
+
 var fk_permission ;
 fun('permission')==true? fk_permission = false:fk_permission = true;
 
@@ -187,6 +190,7 @@ let routes = [
              { path:'/payable',component:Payable,name:'应付款信息',hidden:false},
              { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
              { path:'/paymentRecord',component:PaymentRecord,name:'已付款记录',hidden:true},
+
          ]
 
      },
@@ -196,6 +200,18 @@ let routes = [
         name: '出方合同打印',
         hidden: true
      },
+     {
+         path: '/',
+         component: navigation,
+         name: '消息管理',
+         iconCls: 'el-icon-message',//图标样式class
+         hidden:false,
+         children: [
+             {path:'/message', component: MessageList, name: '消息列表', hidden: false},
+         ]
+
+     },
+
 ]
 
 export default routes;

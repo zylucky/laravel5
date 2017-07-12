@@ -1,39 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\BrokerCompany;
+namespace App\Http\Controllers\Message;
 
+use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 
-class brokerCompanyUserController extends Controller
+class messageController  extends Controller
 {
     /**
      * Display a listing of the resource.
-     *显示渠道人员列表
+     *显示消息通知列表
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $name = Input::get('bk_name');
-        $username = Input::get('username');
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
-
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/person/list',[
+        $response = $client->request('GET', '/api/qd/compay/list',[
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-                'compay' =>  $name,
-                'uname'=>$username
-            ]
-        ]);
-        return $response->getBody();
+                'compay' =>  $name
+                ]
+
+       ]
+        );
+        echo $response->getBody();
+
     }
 
     /**
@@ -55,23 +57,26 @@ class brokerCompanyUserController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *保存渠道人员
+     *保存渠道公司
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
-      //  dd( $request->params);
+       // dd($request->params);
+        $user = Auth::user();
+        $obj=array_merge($request->params,Array('tbPersonIdCreate'=>$user->id));
+        //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
 
-        $r = $client->request('POST', '/api/qd/person/add', [
-            'json' => $request->params
+        $r = $client->request('POST', '/api/qd/compay/add', [
+            'json' => $obj
         ]);
         return  $r ->getBody();
+
     }
 
     /**
@@ -98,23 +103,22 @@ class brokerCompanyUserController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *更新渠道人员
+     *更新渠道公司
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $obj=$request->params;
-        array_pop($obj);
-        array_pop($obj);
+
+        $obj=array_merge($request->params,Array('tQdCompayId'=>$id));
         //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
 
-        $r = $client->request('POST', '/api/qd/person/alter', [
+        $r = $client->request('POST', '/api/qd/compay/alter', [
             'json' => $obj
         ]);
         return  $r ->getBody();
@@ -122,70 +126,55 @@ class brokerCompanyUserController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *删除渠道人员
+     *删除渠道公司
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
+       // dd($id);
 
         return $this->deleteCompany($id);
     }
 
     public  function deleteCompany($id)
     {
+
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/person/'.$id.'/del');
+        $response = $client->request('GET', '/api/qd/compay/'.$id.'/del'
+
+        );
         return $response->getBody();
     }
-    /*
-     * 批量删除
-     * @param Request $request
-     */
-    public function batchRemoveBKUser(Request $request)
+
+
+    public function acceptMessage(Request $request)
     {
-        $ids = $request->params['ids'];
-
-        $code='200';
-        $arr = explode(',',$ids);
-        foreach ($arr as $item ){
-            $status= $this->deleteCompany($item);
-            if($status->code!='200')
-            {
-                $code=$status->msg;
-            }
-        }
-        return $code;
-    }
-
-    public function getbkNameList(Request $request)
-    {
-
-        $client = new Client([
+        $obj= $request->params ;
+        dd($obj);
+        $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $bkName =$request->params['name'];
-        $response = $client->request('GET', '/api/qd/compay/list',[
-                'query' => [
-                    'page'=>1,
-                    'size'=>10,
-                    'compay' =>  $bkName
-                ]
-
-            ]
-        );
-        $obj = json_decode($response->getBody());
-        $json = [];
-        if($obj->code==200){
-            foreach ($obj->data as $key=> $value){
-                $json[$value->tQdCompayId] = $value->compayname;
-            }
-            return $json;
-        }
+        $response = $client->request('GET', '/api/qd/apply/addApplys',[
+            'query' =>$obj
+        ]);
+        return  $response ->getBody();
     }
-
+    public function  refuseMessage(Request $request)
+    {
+        $obj= $request->params ;
+        dd($obj);
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/qd/apply/addApplys',[
+            'query' =>$obj
+        ]);
+        return  $response ->getBody();
+    }
 }
