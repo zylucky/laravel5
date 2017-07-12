@@ -3,6 +3,11 @@
     <el-row >
         <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
+
+            <el-form-item label="">
+                <el-input v-model="filters.contractNo" placeholder="合同编号"></el-input>
+            </el-form-item>
+
             <el-form-item label="">
                 <el-input v-model="filters.buildingname" placeholder="楼盘名称"></el-input>
             </el-form-item>
@@ -55,6 +60,7 @@
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
                                <el-dropdown-item  > <el-button   @click="handleRokeBack(scope.$index, scope.row)">收&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;款</el-button> </el-dropdown-item>
+
                                <el-dropdown-item  > <el-button   @click="handleOpen(scope.$index, scope.row)">应收记录</el-button> </el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
@@ -78,6 +84,7 @@
         </el-col>
         <!--编辑界面-->
         <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
+
             <el-form :model="editForm" label-width="120px" :rules="editFormRules" ref="editForm"  >
                 <el-form-item label="付款日期" prop="fkrq">
                     <el-date-picker type = "date" v-model="editForm.fkrq" auto-complete="off">
@@ -93,7 +100,7 @@
                     <el-col class="line" :span="2">至</el-col>
                     <el-col :span="8">
                         <el-form-item   prop="fkendDate" >
-                            <el-date-picker type = "date" v-model="editForm.fkendDate" auto-complete="off">
+                            <el-date-picker  v-model="editForm.fkendDate"   auto-complete="off">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
@@ -108,9 +115,10 @@
                     </el-radio-group>
                 </el-form-item>
             </el-form>
+
             <div slot="footer" class="dialog-footer">
                 <el-button @click.native="editFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+                <el-button type="primary" @click.native="editSubmit" :loading="editLoading"   >提交</el-button>
             </div>
         </el-dialog>
         <el-dialog title="收款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
@@ -161,6 +169,7 @@
         data(){
             return {
                 filters:{
+                    contractNo: '',
                     buildingname:'',
                     buildname:'',
                     roomname:'',
@@ -217,15 +226,7 @@
                     ],
                     fkendDate: [
                         { type: 'date', required: true, message: '请输入付款周期', trigger: 'change' },
-                        {  required: true,validator:(rule,value,callback)=>{
-                            var d1= new Date( this.editForm.fkstaDate);
-                            var d2= new Date(value);
-                            if(d2<d1){
-                                callback(new Error("付款周期的结束日期不能小于开始日期"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'change'}
+                        { after: '2017-07-11',message: 'sss', trigger: 'blur' },
                     ],
                     fkje: [
                         {required: true,validator:(rule,value,callback)=>{
@@ -307,6 +308,7 @@
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
+                    contractNo: this.filters.contractNo,
                     buildingname: this.filters.buildingname,
                     buildname: this.filters.buildname,
                     roomname: this.filters.roomname,

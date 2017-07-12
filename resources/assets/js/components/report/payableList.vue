@@ -3,7 +3,9 @@
     <el-row >
         <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
-
+            <el-form-item label="">
+                <el-input v-model="filters.contractNo" placeholder="合同编号"></el-input>
+            </el-form-item>
             <el-form-item label="">
                 <el-input v-model="filters.buildingname" placeholder="楼盘名称"></el-input>
             </el-form-item>
@@ -127,11 +129,12 @@
         data(){
             return {
                 filters:{
+                    contractNo: '',
                     buildingname:'',
                     buildname:'',
                     roomname:'',
-                    startdate:'',
-                    enddate:'',
+                    startdate:'2017-07-01',
+                    enddate:'2017-07-31',
 
                 },
                 options:[
@@ -239,6 +242,7 @@
                 status[4] = '华亮返佣';
                 return status[row.fktype];
             },
+
             //佣金类型显示转换
             formatState: function (row, column) {
                 let status = [];
@@ -247,6 +251,7 @@
                 return status[row.fkstate];
             },
             //佣金类型显示转换
+
             formatskyh: function (row, column) {
 
                 return  row.skyinhang+"\r账号:"+row.skzhanhu ;
@@ -280,6 +285,7 @@
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
+                    contractNo: this.filters.contractNo,
                     buildingname: this.filters.buildingname,
                     buildname: this.filters.buildname,
                     roomname: this.filters.roomname,

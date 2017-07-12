@@ -57,6 +57,12 @@ export const getPayableListPage = params => { return axios.get(`${base}/payable`
 export const finishSK= params => { return axios.post(`${base}/shouFangCommission/finishSK` , { params: params }); };
 export const finishFK= params => { return axios.post(`${base}/chuFangCommission/finishFK` , { params: params }); };
 
+
+export const getMessageListPage = params => { return axios.get(`${base}/message`, { params: params }); };
+export const AcceptMessage= params => { return axios.post(`${base}/message/acceptMessage` , { params: params }); };
+export const RefuseMessage= params => { return axios.post(`${base}/message/refuseMessage` , { params: params }); };
+
+
 //查系统所有的权限
 export const getPermissionListPage = params => { return axios.get(`${base}/permission/getAll`, { params: params }); };
 //查XX的权限
@@ -81,8 +87,7 @@ export const dumpingPurchaseContract= params => { return axios.get(`${base}/purc
 export const weiyuePurchaseContract= params => { return axios.get(`${base}/purchaseContract/violating`, {params:params}); };//状态变更为：违约中
 export const endPurchaseContract= params => { return axios.get(`${base}/purchaseContract/terminated`, {params:params}); };//状态变更为：合同终止
 export const youhuaPurchaseContract= params => { return axios.get(`${base}/purchaseContract/releasing`, {params:params}); };//状态变更为：优化中
-export const youhuacgPurchaseContract= params => { return axios.get(`${base}/purchaseContract/released`, {params:params}); };//状态变更为：优化中
-export const submitOptimize= params => { return axios.get(`${base}/purchaseContract/released`, {params:params}); };//状态变更为：优化中
+export const youhuacgPurchaseContract= params => { return axios.get(`${base}/purchaseContract/released`, {params:params}); };//状态变更为：优化完成
 
 //出房合同
 //合同信息

@@ -18,7 +18,7 @@ class receivableController extends Controller
      */
     public function index()
     {
-
+        $contractNo = Input::get('contractNo');
         $buildingname= Input::get('buildingname');
         $buildname = Input::get('buildname');
         $roomname = Input::get('roomname');
@@ -30,11 +30,14 @@ class receivableController extends Controller
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/compay/list',[
+        $response = $client->request('GET', '/api/cw/ys/list',[
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-                'compay' =>  $buildingname
+                'sdate'=>$startdate,
+                'edate'=>$enddate,
+                'houseno'=>$roomname,
+                'htno' =>  $contractNo,
                 ]
 
        ]
