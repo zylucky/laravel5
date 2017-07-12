@@ -29840,7 +29840,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -30180,7 +30179,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
 //
 //
 //
@@ -38913,8 +38911,8 @@ window.axios.defaults.headers.common = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_report_payableRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_25__components_report_payableRecordList_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_report_payableList_vue__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_report_payableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_26__components_report_payableList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_Message_Index_vue__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_Message_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27__components_Message_Index_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_message_Index_vue__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_message_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27__components_message_Index_vue__);
 /**
  * Created by liyuequn on 2017/5/15.
  */
@@ -39064,7 +39062,7 @@ var routes = [{
     name: '消息管理',
     iconCls: 'el-icon-message', //图标样式class
     hidden: false,
-    children: [{ path: '/message', component: __WEBPACK_IMPORTED_MODULE_27__components_Message_Index_vue___default.a, name: '消息列表', hidden: false }]
+    children: [{ path: '/message', component: __WEBPACK_IMPORTED_MODULE_27__components_message_Index_vue___default.a, name: '消息列表', hidden: false }]
 
 }];
 
@@ -101309,11 +101307,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-table-column', {
     attrs: {
-      "type": "selection",
-      "width": "55"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
       "type": "index",
       "width": "60"
     }
@@ -101403,15 +101396,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "span": 24
     }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "danger",
-      "disabled": this.sels.length === 0
-    },
-    on: {
-      "click": _vm.batchRemove
-    }
-  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
+  }, [_c('el-pagination', {
     staticStyle: {
       "float": "right"
     },
@@ -105642,11 +105627,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-table-column', {
     attrs: {
-      "type": "selection",
-      "width": "55"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
       "type": "index",
       "width": "60"
     }
@@ -105740,15 +105720,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "span": 24
     }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "danger",
-      "disabled": this.sels.length === 0
-    },
-    on: {
-      "click": _vm.batchRemove
-    }
-  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
+  }, [_c('el-pagination', {
     staticStyle: {
       "float": "right"
     },
@@ -110008,7 +109980,10 @@ module.exports = __webpack_require__(44);
 /* 260 */,
 /* 261 */,
 /* 262 */,
-/* 263 */
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110259,15 +110234,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 264 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(263),
+  __webpack_require__(266),
   /* template */
-  __webpack_require__(265),
+  __webpack_require__(268),
   /* styles */
   null,
   /* scopeId */
@@ -110275,7 +110250,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\phpStudy\\WWW\\laravel\\resources\\assets\\js\\components\\Message\\Index.vue"
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel\\resources\\assets\\js\\components\\message\\Index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -110286,9 +110261,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-63c54199", Component.options)
+    hotAPI.createRecord("data-v-790101b9", Component.options)
   } else {
-    hotAPI.reload("data-v-63c54199", Component.options)
+    hotAPI.reload("data-v-790101b9", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -110299,7 +110274,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 265 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -110506,7 +110481,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-63c54199", module.exports)
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-790101b9", module.exports)
   }
 }
 
