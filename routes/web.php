@@ -41,8 +41,10 @@ Route::resource('payable','Report\payableController');
 Route::resource('payavleRecord','Report\payavleRecordController');
 Route::resource('paymentRecord','Report\paymentRecordController');
 Route::post('shouFangCommission/finishSK','Commission\ShouFangCommissionController@finishSK');
+
 //消息列表
 Route::resource('message','Message\messageController');
+
 
 //Route::post('saleContract/sub','Contract\saleContractController@sub');
 Route::get('saleContract/submit','Contract\saleContractController@submit');

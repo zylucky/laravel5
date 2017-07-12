@@ -60,7 +60,9 @@
                 stepNum:1,
                 id:'',
                 bianhao:'',
+                zhuangtai:'',
                 property:{
+                    flag:null,
                     officeList: [{
                         omcId:null,
                         loupanOmcId:null,
@@ -98,6 +100,7 @@
 
 
                 renter:{
+                    flag:null,
                     options1:[
                         {
                             value:null,
@@ -120,19 +123,19 @@
                         },
                     ],
                     //收款人
-                    shoukuanren:'彭亮',
-                    zhanghao:'1234 4567 7891 0123',
+                    shoukuanren:'',
+                    zhanghao:'',
                     kaihuhang:'',
                     //代理人
-                    dailirenName:'李朝晖',
-                    dailirenTel:'18511909125',
+                    dailirenName:'',
+                    dailirenTel:'',
                     dailirenSex:1,
-                    dailirenId:'37158119900124317X',
+                    dailirenId:'',
                     //签约人
-                    qianyuerenName:'lizhaohui',
-                    qianyuerenTel:'18511909124',
+                    qianyuerenName:'',
+                    qianyuerenTel:'',
                     qianyuerenSex:1,
-                    qianyuerenId:'37158119900124317X',
+                    qianyuerenId:'',
                 },
                 addDate: {
                     startdate:'',//租期开始时间
@@ -272,6 +275,7 @@
                 })
             },
             fuzhi(res){
+                alert(22);
                 this.id = res.data.data.id;
                 this.property.officeList = res.data.data.officeList;
                 if(res.data.data.chengzuren.length>0){
@@ -281,6 +285,15 @@
                 this.renter.chengzufang = res.data.data.chengzufang;
                 this.renter.jujianfangtype = res.data.data.jujianfangtype;
                 this.renter.jujianfang = res.data.data.jujianfang;
+                this.renter.shoukuanren = res.data.data.shoukuanren;
+                this.renter.kaihuhang = res.data.data.kaihuhang;
+                this.renter.zhanghao = res.data.data.zhanghao;
+                /*this.renter.jujianfang = res.data.data.jujianfang;
+                this.renter.jujianfang = res.data.data.jujianfang;
+                this.renter.jujianfang = res.data.data.jujianfang;
+                this.renter.jujianfang = res.data.data.jujianfang;
+                this.renter.jujianfang = res.data.data.jujianfang;*/
+
                 this.renter.zuhuleixing = res.data.data.zuhuleixing;
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.zhanghao = res.data.data.zhanghao;
@@ -310,6 +323,7 @@
                 this.addDate.buchongTiaokuanList = res.data.data.buchongTiaokuanList;
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
+                alert(333);
             },
             disabledInput(){
                 this.reviewVisible = true;

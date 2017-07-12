@@ -178,6 +178,7 @@ class saleContractController extends Controller
     }
     //解约协议的提交
     public function submit(Request $request){
+        dd(111111);
         $client = new Client([
             'base_uri' => $this->base_url,
             'timeout' => 2.0,

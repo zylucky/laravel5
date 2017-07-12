@@ -16,12 +16,17 @@
                 </el-col>
                 <el-col :span="12">
                     <el-form-item
+
                             :prop="'mianzuqiList.' + index + '.enddate'"
                             :rules="[
                                 {  required: true,validator:
                                 (rule,value,callback)=>{
                                     var d1= new Date( addDate.mianzuqiList[index].startdate);
                                     var d2= new Date(value);
+
+                                    if(value==null){
+                                        callback('不能为空');
+                                    }
                                     if(d2<d1){
                                         callback('结束日期不能小于开始日期');
                                     }else{
@@ -45,10 +50,11 @@
             </el-form-item>
 
             <el-form-item>
-                <el-button v-show="editVisible"  @click="addFreeItem">新增免租期</el-button>
+                <el-button v-show="editVisible"  @click="addFreeItem">新增免</el-button>
             </el-form-item>
 
             <!--总租期-->
+
             <el-row>
                 <el-col :span="9" style="width:550px;">
                     <el-form-item label="总租期" required>
@@ -453,6 +459,7 @@
                     this.addDate.yifangfeiyong;
                 }
             },
+
             valid(){
                 this.$refs['addDateForm'].validate((valid) => {
                     this.addDate.flag = valid;
