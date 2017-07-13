@@ -300,7 +300,7 @@
             },
             //删除
             handleDel: function (index, row) {
-                this.$confirm('确认删除该记录吗?', '提示', {
+                this.$confirm('确认删除该记录吗?', '提示12', {
                     type: 'warning'
                 }).then(() => {
                     this.listLoading = true;
