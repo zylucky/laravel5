@@ -32593,10 +32593,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -34785,13 +34781,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -34810,7 +34799,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             callback();
                         };
                     }, trigger: 'blur' }],
-                zuqistartdate: [{ required: true, message: '不能为空' }],
                 zuqienddate: [{ required: true, validator: function validator(rule, value, callback) {
                         var d1 = new Date(_this.addDate.zuqistartdate);
                         var d2 = new Date(value);
@@ -34923,46 +34911,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         save: function save() {
             var _this3 = this;
 
-            this.$refs['editForm'].validate(function (valid) {
-                if (valid) {
-                    var para = {
-                        id: _this3.id,
-                        hetongid: _this3.$route.query.id,
-                        zujinList: _this3.addDate.zujinList,
-                        mianzuqiList: _this3.addDate.mianzuqiList,
-                        fukuanFangshiList: _this3.addDate.fukuanFangshiList,
-                        chanquanrenList: _this3.owner.chanquanrenList,
-                        yezhuleixing: _this3.owner.yezhuleixing,
-                        dailirenTel: _this3.owner.dailirenTel,
-                        dailirenSex: _this3.owner.dailirenSex,
-                        dailirenId: _this3.owner.dailirenId,
-                        dailirenName: _this3.owner.dailirenName,
-                        qianyuerenName: _this3.owner.qianyuerenName,
-                        qianyuerenTel: _this3.owner.qianyuerenTel,
-                        qianyuerenSex: _this3.owner.qianyuerenSex,
-                        qianyuerenId: _this3.owner.qianyuerenId,
-                        zuqistartdate: _this3.addDate.zuqistartdate,
-                        zuqienddate: _this3.addDate.zuqienddate,
-                        xieyistartdate: _this3.addDate.xieyistartdate,
-                        xieyienddate: _this3.addDate.xieyienddate
-                    };
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["V" /* optimizePurchaseContract */])(para).then(function (res) {
-                        if (res.data.code == 200) {
-                            _this3.fuzhi(res);
-                            _this3.btnType = false, _this3.$message({
-                                message: '保存成功',
-                                type: 'success'
-                            });
-                        } else {
-                            _this3.$message({
-                                message: res.data.msg,
-                                type: 'error'
-                            });
-                        }
+            var para = {
+                id: this.id,
+                hetongid: this.$route.query.id,
+                zujinList: this.addDate.zujinList,
+                mianzuqiList: this.addDate.mianzuqiList,
+                fukuanFangshiList: this.addDate.fukuanFangshiList,
+                chanquanrenList: this.owner.chanquanrenList,
+                yezhuleixing: this.owner.yezhuleixing,
+                dailirenTel: this.owner.dailirenTel,
+                dailirenSex: this.owner.dailirenSex,
+                dailirenId: this.owner.dailirenId,
+                dailirenName: this.owner.dailirenName,
+                qianyuerenName: this.owner.qianyuerenName,
+                qianyuerenTel: this.owner.qianyuerenTel,
+                qianyuerenSex: this.owner.qianyuerenSex,
+                qianyuerenId: this.owner.qianyuerenId,
+                zuqistartdate: this.addDate.zuqistartdate,
+                zuqienddate: this.addDate.zuqienddate,
+                xieyistartdate: this.addDate.xieyistartdate,
+                xieyienddate: this.addDate.xieyienddate
+            };
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["V" /* optimizePurchaseContract */])(para).then(function (res) {
+                if (res.data.code == 200) {
+                    _this3.fuzhi(res);
+                    _this3.btnType = false, _this3.$message({
+                        message: '保存成功',
+                        type: 'success'
                     });
                 } else {
                     _this3.$message({
-                        message: '数据格式有误',
+                        message: res.data.msg,
                         type: 'error'
                     });
                 }
@@ -34971,13 +34950,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submit: function submit() {
             var _this4 = this;
 
-            var para = {
-                id: this.$route.query.id,
-                xyid: this.id
-            };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["W" /* youhuacgPurchaseContract */])(para).then(function (res) {
-                if (res.data.code == '200') {
-                    _this4.$router.push('/purchaseContract');
+            this.$refs['editForm'].validate(function (valid) {
+                if (valid) {
+                    var para = {
+                        id: _this4.$route.query.id,
+                        xyid: _this4.id
+                    };
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["W" /* youhuacgPurchaseContract */])(para).then(function (res) {
+                        if (res.data.code == '200') {
+                            _this4.$router.push('/purchaseContract');
+                        }
+                    });
+                } else {
+                    _this4.$message({
+                        message: '数据格式有误',
+                        type: 'error'
+                    });
                 }
             });
         },
@@ -95567,15 +95555,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "prop": 'mianzuqiList.' + index + '.enddate',
         "rules": [{
-          required: true,
+          required: false,
           validator:
             function (rule, value, callback) {
               var d1 = new Date(_vm.addDate.mianzuqiList[index].startdate);
               var d2 = new Date(value);
-
-              if (value == null) {
-                callback('不能为空');
-              }
               if (d2 < d1) {
                 callback('结束日期不能小于开始日期');
               } else {
@@ -95799,7 +95783,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       model: {
         value: (item.yuezujin),
         callback: function($$v) {
-          item.yuezujin = $$v
+          item.yuezujin = _vm._n($$v)
         },
         expression: "item.yuezujin"
       }
@@ -95833,7 +95817,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       model: {
         value: (item.price),
         callback: function($$v) {
-          item.price = $$v
+          item.price = _vm._n($$v)
         },
         expression: "item.price"
       }
@@ -103659,7 +103643,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "prop": 'mianzuqiList.' + index + '.enddate',
         "rules": [{
-          required: true,
+          required: false,
           validator:
             function (rule, value, callback) {
               var d1 = new Date(_vm.addDate.mianzuqiList[index].startdate);
@@ -103802,11 +103786,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-form-item', {
       attrs: {
-        "prop": 'fukuanFangshiList.' + index + '.startdate',
-        "rules": {
-          required: true,
-          message: '不能为空'
-        }
+        "prop": 'fukuanFangshiList.' + index + '.startdate'
       }
     }, [_c('el-date-picker', {
       attrs: {
@@ -103828,7 +103808,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "prop": 'fukuanFangshiList.' + index + '.enddate',
         "rules": [{
-          required: true,
+          required: false,
           validator:
             function (rule, value, callback) {
               var d1 = new Date(_vm.addDate.fukuanFangshiList[index].startdate);
@@ -103953,11 +103933,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-form-item', {
       attrs: {
-        "prop": 'zujinList.' + index + '.startdate',
-        "rules": [{
-          required: true,
-          message: '不能为空'
-        }]
+        "prop": 'zujinList.' + index + '.startdate'
       }
     }, [_c('el-date-picker', {
       attrs: {
@@ -103979,7 +103955,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "prop": 'zujinList.' + index + '.enddate',
         "rules": [{
-          required: true,
+          required: false,
           validator:
             function (rule, value, callback) {
               var d1 = new Date(_vm.addDate.zujinList[index].startdate);

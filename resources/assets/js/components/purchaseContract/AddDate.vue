@@ -19,14 +19,10 @@
 
                             :prop="'mianzuqiList.' + index + '.enddate'"
                             :rules="[
-                                {  required: true,validator:
+                                {required: false,validator:
                                 (rule,value,callback)=>{
                                     var d1= new Date( addDate.mianzuqiList[index].startdate);
                                     var d2= new Date(value);
-
-                                    if(value==null){
-                                        callback('不能为空');
-                                    }
                                     if(d2<d1){
                                         callback('结束日期不能小于开始日期');
                                     }else{
@@ -129,14 +125,14 @@
                         <el-form-item label="月租金" label-width="55px"  :prop="'zujinList.' + index + '.yuezujin'" :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]" >
-                            <el-input v-model="item.yuezujin" class="pulll10" placeholder="租金"></el-input>
+                            <el-input v-model.number="item.yuezujin" class="pulll10" placeholder="租金"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1" style="width: 94px;margin-left:-10px;">
                         <el-form-item label="单价" label-width="40px"  :prop="'zujinList.' + index + '.price' " :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]">
-                            <el-input v-model="item.price" class="pulll10" placeholder="单价"></el-input>
+                            <el-input v-model.number="item.price" class="pulll10" placeholder="单价"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="3" :pull="1" style="margin-left:-10px;">
