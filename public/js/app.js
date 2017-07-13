@@ -35738,10 +35738,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
 
-        //性别显示转换
-        formatSex: function formatSex(row, column) {
-            return row.sex == 1 ? '男' : row.sex == 2 ? '女' : '未知';
-        },
         //页面跳转后
         handleCurrentChange: function handleCurrentChange(val) {
             this.page = val;
