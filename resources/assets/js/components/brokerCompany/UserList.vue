@@ -94,10 +94,10 @@
                 </el-form-item>
 
                 <el-form-item label="收房佣金占比" prop="yjzbSf">
-                    <el-input  type="number"  v-model="editForm.yjzbSf" auto-complete="off"></el-input>
+                    <el-input  v-model.number="editForm.yjzbSf" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item   label="出房佣金占比" prop="yjzbCf">
-                    <el-input type="number" v-model="editForm.yjzbCf" auto-complete="off"></el-input>
+                    <el-input v-model.number="editForm.yjzbCf" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="佣金类型"    prop="yjType">
                     <el-select v-model="editForm.yjType" placeholder=""   >
@@ -106,7 +106,6 @@
                                 :key="item.value"
                                 :label="item.label"
                                 :value="item.value"
-
                         >
                         </el-option>
                     </el-select>
@@ -454,8 +453,7 @@
                 this.editForm = Object.assign({}, row);
                 this.editForm.tQdCompayId= row.qvDaoCompayXinxi.compayname;
                 this.editForm.tQdCompayName= row.qvDaoCompayXinxi.tQdCompayId;
-                this.editForm.yjzbCf= row.yjzbCf.toString();
-                this.editForm.yjzbSf= row.yjzbSf.toString();
+
                 // alert(this.editForm.tQdCompayName);
             },
             //显示新增界面

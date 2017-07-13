@@ -30069,8 +30069,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.editFormVisible = true;
             this.editForm = Object.assign({}, row);
             //  this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-            this.editForm.yjzbCf = row.yjzbCf.toString();
-            this.editForm.yjzbSf = row.yjzbSf.toString();
+
         },
         //显示新增界面
         handleAdd: function handleAdd() {
@@ -30206,7 +30205,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
 //
 //
 //
@@ -30627,8 +30625,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.editForm = Object.assign({}, row);
             this.editForm.tQdCompayId = row.qvDaoCompayXinxi.compayname;
             this.editForm.tQdCompayName = row.qvDaoCompayXinxi.tQdCompayId;
-            this.editForm.yjzbCf = row.yjzbCf.toString();
-            this.editForm.yjzbSf = row.yjzbSf.toString();
+
             // alert(this.editForm.tQdCompayName);
         },
         //显示新增界面
@@ -35527,8 +35524,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
-//
 //
 //
 //
@@ -95528,35 +95523,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "label": "操作",
-      "width": "200"
+      "width": "100"
     },
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(scope) {
         return [_c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleEdit(scope.$index, scope.row)
-            }
-          }
-        }, [_c('i', {
-          staticClass: "el-icon-edit"
-        })]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "type": "danger",
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleDel(scope.$index, scope.row)
-            }
-          }
-        }, [_c('i', {
-          staticClass: "el-icon-delete"
-        })]), _vm._v(" "), _c('el-button', {
           attrs: {
             "type": "small",
             "size": "small"
@@ -102132,13 +102104,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-input', {
     attrs: {
-      "type": "number",
       "auto-complete": "off"
     },
     model: {
       value: (_vm.editForm.yjzbSf),
       callback: function($$v) {
-        _vm.editForm.yjzbSf = $$v
+        _vm.editForm.yjzbSf = _vm._n($$v)
       },
       expression: "editForm.yjzbSf"
     }
@@ -102149,13 +102120,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-input', {
     attrs: {
-      "type": "number",
       "auto-complete": "off"
     },
     model: {
       value: (_vm.editForm.yjzbCf),
       callback: function($$v) {
-        _vm.editForm.yjzbCf = $$v
+        _vm.editForm.yjzbCf = _vm._n($$v)
       },
       expression: "editForm.yjzbCf"
     }
@@ -106869,14 +106839,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-input', {
     attrs: {
-      "type": "number",
       "value": "",
       "auto-complete": "off"
     },
     model: {
       value: (_vm.editForm.yjzbSf),
       callback: function($$v) {
-        _vm.editForm.yjzbSf = $$v
+        _vm.editForm.yjzbSf = _vm._n($$v)
       },
       expression: "editForm.yjzbSf"
     }
@@ -106887,13 +106856,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-input', {
     attrs: {
-      "type": "number",
       "auto-complete": "off"
     },
     model: {
       value: (_vm.editForm.yjzbCf),
       callback: function($$v) {
-        _vm.editForm.yjzbCf = $$v
+        _vm.editForm.yjzbCf = _vm._n($$v)
       },
       expression: "editForm.yjzbCf"
     }
@@ -107016,7 +106984,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addForm.yjzbSf),
       callback: function($$v) {
-        _vm.addForm.yjzbSf = $$v
+        _vm.addForm.yjzbSf = _vm._n($$v)
       },
       expression: "addForm.yjzbSf"
     }
@@ -107032,7 +107000,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addForm.yjzbCf),
       callback: function($$v) {
-        _vm.addForm.yjzbCf = $$v
+        _vm.addForm.yjzbCf = _vm._n($$v)
       },
       expression: "addForm.yjzbCf"
     }

@@ -51,10 +51,8 @@
             </el-table-column>
             <el-table-column prop="addr" label="角色"   sortable>
             </el-table-column>
-            <el-table-column label="操作" width="200">
+            <el-table-column label="操作" width="100">
                 <template scope="scope">
-                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
-                    <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)"><i class="el-icon-delete"></i></el-button>
                     <el-button type="small" size="small" @click="handleSet(scope.$index, scope.row)"><i class="el-icon-setting"></i></el-button>
                 </template>
             </el-table-column>
@@ -183,7 +181,7 @@
 
             },
             handleSet(index,row){
-                this.userId = row.id; 
+                this.userId = row.id;
                 this.getRoles();
                 this.dialogRoleVisible = true;
             },
