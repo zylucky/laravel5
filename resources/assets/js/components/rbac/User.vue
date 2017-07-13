@@ -204,7 +204,7 @@
 
             //性别显示转换
             formatSex: function (row, column) {
-                return row.sex == 1 ? '男' : row.sex == 2 ? '女' : '未知1';
+                return row.sex == 1 ? '男' : row.sex == 2 ? '女' : '未知';
             },
             //页面跳转后
             handleCurrentChange(val) {
