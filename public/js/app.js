@@ -32625,7 +32625,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             callback();
                         };
                     }, trigger: 'blur' }],
-                yuezujin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], price: [{ required: true, message: '不能为空' }], fukuanstartdate: [{ required: true, message: '不能为空' }], fukuanenddate: [{ required: true, message: '不能为空' }], yajinyue: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], zujinyue: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], yajin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], zongyingfuzujin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], yongjin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], tiqianfukuantian: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], beianqixian: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], yajinfukuanri: [{ required: true, message: '不能为空' }], shoufangdate: [{ required: true, message: '不能为空' }], qianyuedate: [{ required: true, message: '不能为空' }], shouqifukuanri: [{ required: true, message: '不能为空' }], erqifukuanri: [{ required: true, message: '不能为空' }], sanqifukuanri: [{ required: true, message: '不能为空' }], jiafangfeiyong: [{ required: true, message: '不能为空' }], yifangfeiyong: [{ required: true, message: '不能为空' }]
+                yajin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
+                zongyingfuzujin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
+                yongjin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
+                tiqianfukuantian: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
+                beianqixian: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], yajinfukuanri: [{ required: true, message: '不能为空' }], shoufangdate: [{ required: true, message: '不能为空' }], qianyuedate: [{ required: true, message: '不能为空' }], shouqifukuanri: [{ required: true, message: '不能为空' }], erqifukuanri: [{ required: true, message: '不能为空' }], sanqifukuanri: [{ required: true, message: '不能为空' }], jiafangfeiyong: [{ required: true, message: '不能为空' }], yifangfeiyong: [{ required: true, message: '不能为空' }]
             }
         };
     },
@@ -95633,7 +95637,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.addFreeItem
     }
-  }, [_vm._v("新增免")])], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+  }, [_vm._v("新增免租期")])], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     staticStyle: {
       "width": "550px"
     },
@@ -95779,10 +95783,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "label": "月租金",
         "label-width": "55px",
         "prop": 'zujinList.' + index + '.yuezujin',
-        "rules": {
+        "rules": [{
           required: true,
           message: '不能为空'
-        }
+        }, {
+          type: 'number',
+          message: '必须为数字'
+        }]
       }
     }, [_c('el-input', {
       staticClass: "pulll10",
@@ -95810,10 +95817,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "label": "单价",
         "label-width": "40px",
         "prop": 'zujinList.' + index + '.price',
-        "rules": {
+        "rules": [{
           required: true,
           message: '不能为空'
-        }
+        }, {
+          type: 'number',
+          message: '必须为数字'
+        }]
       }
     }, [_c('el-input', {
       staticClass: "pulll10",
@@ -96002,10 +96012,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "label": "押",
         "label-width": "20px",
         "prop": 'fukuanFangshiList.' + index + '.yajinyue',
-        "rules": {
+        "rules": [{
           required: true,
           message: '不能为空'
-        }
+        }, {
+          type: 'number',
+          message: '必须为数字'
+        }]
       }
     }, [_c('el-input', {
       attrs: {
@@ -96014,7 +96027,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       model: {
         value: (item.yajinyue),
         callback: function($$v) {
-          item.yajinyue = $$v
+          item.yajinyue = _vm._n($$v)
         },
         expression: "item.yajinyue"
       }
@@ -96032,10 +96045,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "label": "付",
         "label-width": "20px",
         "prop": 'fukuanFangshiList.' + index + '.zujinyue',
-        "rules": {
+        "rules": [{
           required: true,
           message: '不能为空'
-        }
+        }, {
+          type: 'number',
+          message: '必须为数字'
+        }]
       }
     }, [_c('el-input', {
       attrs: {
@@ -96044,7 +96060,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       model: {
         value: (item.zujinyue),
         callback: function($$v) {
-          item.zujinyue = $$v
+          item.zujinyue = _vm._n($$v)
         },
         expression: "item.zujinyue"
       }
@@ -96094,7 +96110,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addDate.yajin),
       callback: function($$v) {
-        _vm.addDate.yajin = $$v
+        _vm.addDate.yajin = _vm._n($$v)
       },
       expression: "addDate.yajin"
     }
@@ -96115,7 +96131,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addDate.zongyingfuzujin),
       callback: function($$v) {
-        _vm.addDate.zongyingfuzujin = $$v
+        _vm.addDate.zongyingfuzujin = _vm._n($$v)
       },
       expression: "addDate.zongyingfuzujin"
     }
@@ -96136,7 +96152,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addDate.yongjin),
       callback: function($$v) {
-        _vm.addDate.yongjin = $$v
+        _vm.addDate.yongjin = _vm._n($$v)
       },
       expression: "addDate.yongjin"
     }
@@ -96160,7 +96176,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addDate.tiqianfukuantian),
       callback: function($$v) {
-        _vm.addDate.tiqianfukuantian = $$v
+        _vm.addDate.tiqianfukuantian = _vm._n($$v)
       },
       expression: "addDate.tiqianfukuantian"
     }
@@ -96184,7 +96200,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addDate.beianqixian),
       callback: function($$v) {
-        _vm.addDate.beianqixian = $$v
+        _vm.addDate.beianqixian = _vm._n($$v)
       },
       expression: "addDate.beianqixian"
     }
@@ -96281,7 +96297,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addDate.yanqizujin),
       callback: function($$v) {
-        _vm.addDate.yanqizujin = $$v
+        _vm.addDate.yanqizujin = _vm._n($$v)
       },
       expression: "addDate.yanqizujin"
     }

@@ -50,7 +50,7 @@
             </el-form-item>
 
             <el-form-item>
-                <el-button v-show="editVisible"  @click="addFreeItem">新增免</el-button>
+                <el-button v-show="editVisible"  @click="addFreeItem">新增免租期</el-button>
             </el-form-item>
 
             <!--总租期-->
@@ -126,16 +126,16 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1" style="width: 130px;margin-left:-20px;">
-                        <el-form-item label="月租金" label-width="55px"  :prop="'zujinList.' + index + '.yuezujin'" :rules="{
+                        <el-form-item label="月租金" label-width="55px"  :prop="'zujinList.' + index + '.yuezujin'" :rules="[{
                                     required: true, message: '不能为空'
-                                }" >
+                                },{ type: 'number', message: '必须为数字'}]" >
                             <el-input v-model="item.yuezujin" class="pulll10" placeholder="租金"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1" style="width: 94px;margin-left:-10px;">
-                        <el-form-item label="单价" label-width="40px"  :prop="'zujinList.' + index + '.price' " :rules="{
+                        <el-form-item label="单价" label-width="40px"  :prop="'zujinList.' + index + '.price' " :rules="[{
                                     required: true, message: '不能为空'
-                                }">
+                                },{ type: 'number', message: '必须为数字'}]">
                             <el-input v-model="item.price" class="pulll10" placeholder="单价"></el-input>
                         </el-form-item>
                     </el-col>
@@ -201,17 +201,17 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="1" :pull="1" style="width: 90px;">
-                        <el-form-item label="押" label-width="20px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="{
+                        <el-form-item label="押" label-width="20px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="[{
                                     required: true, message: '不能为空'
-                                }">
-                            <el-input v-model="item.yajinyue" placeholder="押几"></el-input>
+                                },{ type: 'number', message: '必须为数字'}]">
+                            <el-input v-model.number="item.yajinyue" placeholder="押几"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="1" :pull="1" style="margin-left: 15px;width: 90px;">
-                        <el-form-item label="付" label-width="20px" :prop="'fukuanFangshiList.' + index + '.zujinyue'" :rules="{
+                        <el-form-item label="付" label-width="20px" :prop="'fukuanFangshiList.' + index + '.zujinyue'" :rules="[{
                                     required: true, message: '不能为空'
-                                }">
-                            <el-input v-model="item.zujinyue" placeholder="付几"></el-input>
+                                },{ type: 'number', message: '必须为数字'}]">
+                            <el-input v-model.number="item.zujinyue" placeholder="付几"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1">
@@ -227,17 +227,17 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="押金" prop="yajin" required>
-                        <el-input v-model="addDate.yajin" placeholder="押金"></el-input>
+                        <el-input v-model.number="addDate.yajin" placeholder="押金"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="总应付租金" prop="zongyingfuzujin" required>
-                        <el-input v-model="addDate.zongyingfuzujin" placeholder="总应付押金"></el-input>
+                        <el-input v-model.number="addDate.zongyingfuzujin" placeholder="总应付押金"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="合同佣金" prop="yongjin" required>
-                        <el-input v-model="addDate.yongjin" placeholder="合同佣金"></el-input>
+                        <el-input v-model.number="addDate.yongjin" placeholder="合同佣金"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -245,12 +245,12 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="提前几天付款" prop="tiqianfukuantian" required>
-                        <el-input placeholder="提前几天付款" v-model="addDate.tiqianfukuantian" style="width: 100%;"></el-input>
+                        <el-input placeholder="提前几天付款" v-model.number="addDate.tiqianfukuantian" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="备案期限" prop="beianqixian" required>
-                        <el-input placeholder="备案期限" v-model="addDate.beianqixian" style="width: 100%;"></el-input>
+                        <el-input placeholder="备案期限" v-model.number="addDate.beianqixian" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
@@ -279,7 +279,7 @@
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="延长期租金">
-                        <el-input placeholder="延长期租金" v-model="addDate.yanqizujin" style="width: 100%;"></el-input>
+                        <el-input placeholder="延长期租金" v-model.number="addDate.yanqizujin" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -413,34 +413,23 @@
                                 };
                             }, trigger:'blur'}
                     ],
-                    yuezujin: [
+                    yajin: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
-                    ],price: [
-                        { required: true, message: '不能为空' }
-                    ],fukuanstartdate: [
-                        { required: true, message: '不能为空' }
-                    ],fukuanenddate: [
-                        { required: true, message: '不能为空' }
-                    ],yajinyue: [
+                    ],
+                    zongyingfuzujin: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
-                    ],zujinyue: [
+                    ],
+                    yongjin: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
-                    ],yajin: [
+                    ],
+                    tiqianfukuantian: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
-                    ],zongyingfuzujin: [
-                        { required: true, message: '不能为空' },
-                        { type: 'number', message: '必须为数字'},
-                    ],yongjin: [
-                        { required: true, message: '不能为空' },
-                        { type: 'number', message: '必须为数字'},
-                    ],tiqianfukuantian: [
-                        { required: true, message: '不能为空' },
-                        { type: 'number', message: '必须为数字'},
-                    ],beianqixian: [
+                    ],
+                    beianqixian: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
                     ],yajinfukuanri: [
