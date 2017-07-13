@@ -12,10 +12,10 @@
             <el-col :span="4">
                 <div style="margin-left: 30%;">
                 <el-steps :space="100" direction="vertical" :active="stepNum">
-                    <a href="javascript:" @click="stepNum=1"><el-step title="房间信息"></el-step></a>
-                    <a href="javascript:" @click="stepNum=2"><el-step title="业主信息"></el-step></a>
-                    <a href="javascript:" @click="stepNum=3"><el-step title="租期信息"></el-step></a>
-                    <!--<a href="javascript:" @click="stepNum=4"><el-step title="条款信息"></el-step></a>-->
+                    <a href="javascript:;" onfocus="this.blur();" @click="stepNum=1"><el-step title="房间信息"></el-step></a>
+                    <a href="javascript:;" onfocus="this.blur();" @click="stepNum=2"><el-step title="业主信息"></el-step></a>
+                    <a href="javascript:;" onfocus="this.blur();" @click="stepNum=3"><el-step title="租期信息"></el-step></a>
+                    <!--<a href="javascript:" onfocus="this.blur();" @click="stepNum=4"><el-step title="条款信息"></el-step></a>-->
                 </el-steps>
                 <el-button type="primary"  v-show="editVisible" @click="save" style="margin-top:100px;">保存</el-button>
                 <el-button type="primary"  v-show="editVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
