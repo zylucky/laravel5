@@ -149,7 +149,7 @@
                         <el-form-item
                                 :prop="'mianzuqiList.' + index + '.enddate'"
                                 :rules="[
-                                {  required: true,validator:
+                                {  required:false,validator:
                                 (rule,value,callback)=>{
                                     var d1= new Date( addDate.mianzuqiList[index].startdate);
                                     var d2= new Date(value);
@@ -207,7 +207,6 @@
                         type="date"
                         placeholder="结束时间"
                         prop="xieyienddate"
-
                 >
                 </el-date-picker>
             </el-form-item>
@@ -219,16 +218,14 @@
                                       :key="item.key"
                         >
                             <el-col :span="10">
-                                <el-form-item  :prop="'fukuanFangshiList.' + index + '.startdate'" :rules="{
-                                    required: true, message: '不能为空'
-                                }">
+                                <el-form-item  :prop="'fukuanFangshiList.' + index + '.startdate'">
                                     <el-date-picker type = "date"  placeholder="开始时间" v-model="item.startdate">
                                     </el-date-picker>
                                 </el-form-item>
                             </el-col>
                             <el-col :span="10">
                                 <el-form-item :prop="'fukuanFangshiList.' + index + '.enddate'" :rules="[
-                                {  required: true,validator:
+                                {  required: false,validator:
                                 (rule,value,callback)=>{
                                     var d1= new Date( addDate.fukuanFangshiList[index].startdate);
                                     var d2= new Date(value);
@@ -274,11 +271,7 @@
                                   :key="item.key"
                     >
                             <el-col :span="10">
-                            <el-form-item  :prop="'zujinList.' + index + '.startdate' " :rules="[
-                                {
-                                    required: true, message: '不能为空'
-                                }
-                                ]"
+                            <el-form-item  :prop="'zujinList.' + index + '.startdate' "
                             >
                                 <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate">
                                 </el-date-picker>
@@ -286,7 +279,7 @@
                             </el-col>
                             <el-col :span="10">
                             <el-form-item :prop="'zujinList.' + index + '.enddate' " :rules="[
-                                {  required: true,validator:
+                                {  required: false,validator:
                                 (rule,value,callback)=>{
                                     var d1= new Date( addDate.zujinList[index].startdate);
                                     var d2= new Date(value);
@@ -366,9 +359,6 @@
                                     callback();
                                 };
                             }, trigger:'blur'}
-                    ],
-                    zuqistartdate:[
-                        { required: true, message: '不能为空' },
                     ],
                     zuqienddate:[
                         {  required: true,validator:
@@ -487,8 +477,6 @@
                 this.addDate.xieyienddate = res.data.data.xieyienddate
             },
             save(){
-                this.$refs['editForm'].validate((valid) => {
-                    if(valid){
                         let para = {
                             id:this.id,
                             hetongid:this.$route.query.id,
@@ -525,24 +513,27 @@
                                 })
                             }
                         })
-                    }else{
-                        this.$message({
-                            message:'数据格式有误',
-                            type:'error'
-                        })
-                    }
-                });
+
 
             },
             submit(){
-                let para = {
-                        id:this.$route.query.id,
-                        xyid:this.id,
-                }
-                youhuacgPurchaseContract(para).then((res)=>{
-                    if(res.data.code=='200'){
-                        this.$router.push('/purchaseContract');
+                this.$refs['editForm'].validate((valid) => {
+                        if(valid){
+                    let para = {
+                            id:this.$route.query.id,
+                            xyid:this.id,
                     }
+                    youhuacgPurchaseContract(para).then((res)=>{
+                        if(res.data.code=='200'){
+                            this.$router.push('/purchaseContract');
+                        }
+                    });
+                        }else{
+                            this.$message({
+                                message:'数据格式有误',
+                                type:'error'
+                            })
+                        }
                 });
             },
             //增加免租期
