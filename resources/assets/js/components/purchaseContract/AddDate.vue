@@ -16,12 +16,14 @@
                 </el-col>
                 <el-col :span="12">
                     <el-form-item
-                            :prop="'mianzuqiList.' + index + '.value'"
+
+                            :prop="'mianzuqiList.' + index + '.enddate'"
                             :rules="[
                                 {  required: true,validator:
                                 (rule,value,callback)=>{
                                     var d1= new Date( addDate.mianzuqiList[index].startdate);
                                     var d2= new Date(value);
+
                                     if(value==null){
                                         callback('不能为空');
                                     }
@@ -43,15 +45,16 @@
                     <el-radio :label="1">期内免租</el-radio>
                     <el-radio :label="2">期外免租</el-radio>
                 </el-radio-group>
-                <el-button v-show="editVisible" @click.prevent="removeFreeItem(item)">删除</el-button>
+                <el-button v-if="index>0" v-show="editVisible" @click.prevent="removeFreeItem(item)">删除</el-button>
 
             </el-form-item>
 
             <el-form-item>
-                <el-button v-show="editVisible"  @click="addFreeItem">新增免</el-button>
+                <el-button v-show="editVisible"  @click="addFreeItem">新增免租期</el-button>
             </el-form-item>
 
-            <!---->
+            <!--总租期-->
+
             <el-row>
                 <el-col :span="9" style="width:550px;">
                     <el-form-item label="总租期" required>
@@ -61,7 +64,6 @@
                                     v-model="addDate.startdate"
                                     type="date"
                                     placeholder="开始时间"
-
                             >
                             </el-date-picker>
                         </el-form-item>
@@ -124,16 +126,16 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1" style="width: 130px;margin-left:-20px;">
-                        <el-form-item label="月租金" label-width="55px"  :prop="'zujinList.' + index + '.yuezujin'" :rules="{
+                        <el-form-item label="月租金" label-width="55px"  :prop="'zujinList.' + index + '.yuezujin'" :rules="[{
                                     required: true, message: '不能为空'
-                                }" >
+                                },{ type: 'number', message: '必须为数字'}]" >
                             <el-input v-model="item.yuezujin" class="pulll10" placeholder="租金"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1" style="width: 94px;margin-left:-10px;">
-                        <el-form-item label="单价" label-width="40px"  :prop="'zujinList.' + index + '.price' " :rules="{
+                        <el-form-item label="单价" label-width="40px"  :prop="'zujinList.' + index + '.price' " :rules="[{
                                     required: true, message: '不能为空'
-                                }">
+                                },{ type: 'number', message: '必须为数字'}]">
                             <el-input v-model="item.price" class="pulll10" placeholder="单价"></el-input>
                         </el-form-item>
                     </el-col>
@@ -153,7 +155,7 @@
                         </el-select>
                     </el-col>
                     <el-col :span="2" style="margin-left:5px;">
-                        <el-button v-show="editVisible" @click.prevent="removeRentItem(item)">删除</el-button>
+                        <el-button v-if="index>0" v-show="editVisible" @click.prevent="removeRentItem(item)">删除</el-button>
                     </el-col>
                 </el-row>
             </div>
@@ -199,21 +201,21 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="1" :pull="1" style="width: 90px;">
-                        <el-form-item label="押" label-width="20px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="{
+                        <el-form-item label="押" label-width="20px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="[{
                                     required: true, message: '不能为空'
-                                }">
-                            <el-input v-model="item.yajinyue" placeholder="押几"></el-input>
+                                },{ type: 'number', message: '必须为数字'}]">
+                            <el-input v-model.number="item.yajinyue" placeholder="押几"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="1" :pull="1" style="margin-left: 15px;width: 90px;">
-                        <el-form-item label="付" label-width="20px" :prop="'fukuanFangshiList.' + index + '.zujinyue'" :rules="{
+                        <el-form-item label="付" label-width="20px" :prop="'fukuanFangshiList.' + index + '.zujinyue'" :rules="[{
                                     required: true, message: '不能为空'
-                                }">
-                            <el-input v-model="item.zujinyue" placeholder="付几"></el-input>
+                                },{ type: 'number', message: '必须为数字'}]">
+                            <el-input v-model.number="item.zujinyue" placeholder="付几"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1">
-                        <el-button v-show="editVisible"  @click.prevent="removePayItem(item)">删除</el-button>
+                        <el-button v-if="index>0" v-show="editVisible"  @click.prevent="removePayItem(item)">删除</el-button>
                     </el-col>
                 </el-row>
             </div>
@@ -225,17 +227,17 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="押金" prop="yajin" required>
-                        <el-input v-model="addDate.yajin" placeholder="押金"></el-input>
+                        <el-input v-model.number="addDate.yajin" placeholder="押金"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="总应付租金" prop="zongyingfuzujin" required>
-                        <el-input v-model="addDate.zongyingfuzujin" placeholder="总应付押金"></el-input>
+                        <el-input v-model.number="addDate.zongyingfuzujin" placeholder="总应付押金"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="合同佣金" prop="yongjin" required>
-                        <el-input v-model="addDate.yongjin" placeholder="合同佣金"></el-input>
+                        <el-input v-model.number="addDate.yongjin" placeholder="合同佣金"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -243,12 +245,12 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="提前几天付款" prop="tiqianfukuantian" required>
-                        <el-input placeholder="提前几天付款" v-model="addDate.tiqianfukuantian" style="width: 100%;"></el-input>
+                        <el-input placeholder="提前几天付款" v-model.number="addDate.tiqianfukuantian" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="备案期限" prop="beianqixian" required>
-                        <el-input placeholder="备案期限" v-model="addDate.beianqixian" style="width: 100%;"></el-input>
+                        <el-input placeholder="备案期限" v-model.number="addDate.beianqixian" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
@@ -277,7 +279,7 @@
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="延长期租金">
-                        <el-input placeholder="延长期租金" v-model="addDate.yanqizujin" style="width: 100%;"></el-input>
+                        <el-input placeholder="延长期租金" v-model.number="addDate.yanqizujin" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -316,7 +318,10 @@
             </el-row>
             <!--各种费用-->
             <el-form-item label="甲方承担" prop="jiafangfeiyong" required>
-                <el-checkbox-group v-model="addDate.jiafangfeiyong">
+                <el-checkbox-group
+                        v-model="addDate.jiafangfeiyong"
+                        @change="changeOnCheck(1)"
+                >
                     <el-checkbox label="（一）供暖费"></el-checkbox>
                     <el-checkbox label="（二）制冷费"></el-checkbox>
                     <el-checkbox label="（三）物业管理费"></el-checkbox>
@@ -331,8 +336,8 @@
                     <el-checkbox label="（十二）其他"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
-            <el-form-item label="乙方承担" prop="yifangfeiyong" required>
-                <el-checkbox-group v-model="addDate.yifangfeiyong">
+            <el-form-item label="乙方承担" prop="yifangfeiyong" required >
+                <el-checkbox-group v-model="addDate.yifangfeiyong" @change="changeOnCheck(2)">
                     <el-checkbox label="（一）供暖费"></el-checkbox>
                     <el-checkbox label="（二）制冷费"></el-checkbox>
                     <el-checkbox label="（三）物业管理费"></el-checkbox>
@@ -368,6 +373,20 @@
         components: {ElCol},
         data() {
             return {
+                checkList : [
+                    "（一）供暖费",
+                    "（二）制冷费",
+                    "（三）物业管理费",
+                    "（四）水费",
+                    "（五）电费",
+                    "（六）燃气费",
+                    "（七）电话费",
+                    "（八）电视收视费",
+                    "（九）上网费",
+                    "（十）卫生费",
+                    "（十一）车位费",
+                    "（十二）其他"
+                ],
                 editVisible:true,
                 options:[
                     {
@@ -379,42 +398,38 @@
                     },
                 ],
                 editDateRules :{
-                    startdate: [
-                        { required: true, message: '不能为空' }
-                    ],enddate: [
-                        { required: true, message: '不能为空' }
-                    ],zuqistartddate: [
-                        { required: true, message: '不能为空' }
-                    ],zuqienddate: [
-                        { required: true, message: '不能为空' }
-                    ],yuezujin: [
+                    startdate:[
+                        { required: true, message: '不能为空' },
+                    ],
+                    enddate:[
+                        {  required: true,validator:
+                            (rule,value,callback)=>{
+                                var d1= new Date( this.addDate.startdate);
+                                var d2= new Date(value);
+                                if(d2<d1){
+                                    callback('结束日期不能小于开始日期');
+                                }else{
+                                    callback();
+                                };
+                            }, trigger:'blur'}
+                    ],
+                    yajin: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
-                    ],price: [
-                        { required: true, message: '不能为空' }
-                    ],fukuanstartdate: [
-                        { required: true, message: '不能为空' }
-                    ],fukuanenddate: [
-                        { required: true, message: '不能为空' }
-                    ],yajinyue: [
+                    ],
+                    zongyingfuzujin: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
-                    ],zujinyue: [
+                    ],
+                    yongjin: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
-                    ],yajin: [
+                    ],
+                    tiqianfukuantian: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
-                    ],zongyingfuzujin: [
-                        { required: true, message: '不能为空' },
-                        { type: 'number', message: '必须为数字'},
-                    ],yongjin: [
-                        { required: true, message: '不能为空' },
-                        { type: 'number', message: '必须为数字'},
-                    ],tiqianfukuantian: [
-                        { required: true, message: '不能为空' },
-                        { type: 'number', message: '必须为数字'},
-                    ],beianqixian: [
+                    ],
+                    beianqixian: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
                     ],yajinfukuanri: [
@@ -444,6 +459,30 @@
                 newDate.setTime(value);
                 value= newDate.getFullYear()+'-'+newDate.getMonth()+'-'+newDate.getDay();
             },
+            changeOnCheck(index){
+                let jafangs =  this.addDate.jiafangfeiyong;
+                let yifangs =  this.addDate.yifangfeiyong;
+
+                if(index==1){
+                    //点击甲方的时候
+                    this.addDate.yifangfeiyong = [];
+                    this.checkList.forEach((check,index)=>{
+                        if(jafangs.indexOf(check)==-1){
+                            //如果列表内的数据不存在于甲方的，就属于乙方
+                            this.addDate.yifangfeiyong.push(check);
+                        }
+                    })
+                }else if(index==2){
+                    this.addDate.jiafangfeiyong = [];
+                    this.checkList.forEach((check,index)=>{
+                        if(yifangs.indexOf(check)==-1){
+                            //如果列表内的数据不存在于甲方的，就属于乙方
+                            this.addDate.jiafangfeiyong.push(check);
+                        }
+                    })
+                }
+            },
+
             valid(){
                 this.$refs['addDateForm'].validate((valid) => {
                     this.addDate.flag = valid;

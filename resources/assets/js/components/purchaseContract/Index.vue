@@ -40,7 +40,7 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[3])" ><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[5])"  > <el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,9])" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[7])" ><el-button @click="handleEnd(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[0])" ><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7,9])" ><el-button @click="handleOptimize(scope.$index, scope.row)">优化协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
                             <!--<el-dropdown-item  ><el-button type="danger" @click="handleDel(scope.$index, scope.row)">删除合同</el-button></el-dropdown-item>-->
@@ -65,7 +65,33 @@
             >
             </el-pagination>
         </el-col>
-        <contract-pay-type :payType="payType"></contract-pay-type>
+        <contract-pay-type :payType="payType" v-on:refreshbizlines="purchaseContractList"></contract-pay-type>
+
+        <el-dialog title="违约" v-model="weiYue.formVisible" :close-on-click-modal="false">
+            <el-form  label-width="120px"  ref="sureForm">
+                <el-input type="hidden" prop="tHetongId"  v-model="weiYue.tHetongId" auto-complete="off"></el-input>
+                <el-form-item label="合同编号" prop="tHetongBianhao">
+                    {{weiYue.tHetongBianhao}}
+                </el-form-item>
+                <el-form-item label="违约类型" >
+                    <el-radio-group v-model="weiYue.weiyueleixing">
+                        <el-radio class="radio" label="0" >业主违约</el-radio>
+                        <el-radio class="radio" label="1" >幼狮违约</el-radio>
+                        <el-radio class="radio" label="2" >不可抗拒</el-radio>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item label="应收金额">
+                    <el-input v-model="weiYue.yingshoujine"></el-input>
+                </el-form-item>
+                <el-form-item label="应付金额">
+                    <el-input v-model="weiYue.yingfujine"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click.native="weiYue.formVisible = false">取消</el-button>
+                <el-button type="primary" @click.native="handleEnd" :loading="weiYue.Loading">提交</el-button>
+            </div>
+        </el-dialog>
     </el-row>
 </template>
 <script>
@@ -85,7 +111,16 @@
                 payType:{
                     sureFormVisible:false,//佣金支付方式显示
                     tHetongId:1,
-                    tHetongBianhao:'URS-SG-KJ-17070007',
+                    tHetongBianhao:null,
+                },
+                weiYue:{
+                    formVisible:false,
+                    tHetongId:null,
+                    tHetongBianhao:null,
+                    weiyueleixing:null,
+                    yingshoujine:null,
+                    yingfujine:null,
+                    Loading:null,
                 },
                 filters: {
                     name: '',
@@ -136,7 +171,9 @@
             changeDate(row, column){
                 var newDate = new Date();
                 newDate.setTime(row.qianyuedate);
-                return newDate.toLocaleDateString()
+                if(row.qianyuedate!=null){
+                    return newDate.toLocaleDateString()
+                }
             },
             //获取合同列表
             purchaseContractList() {
@@ -149,7 +186,6 @@
                 getPurchaseContractList(para).then((res) => {
                     //console.log(res.data)
                     this.total = res.data.total;
-
                     this.lists = res.data.data;
                     this.listLoading = false;
                 });
@@ -206,6 +242,14 @@
                 });
             },
             //终止 弹窗确认是否终止
+
+            openEndDialog(index,row){
+                this.weiYue.formVisible = true;
+                this.weiYue.tHetongBianhao = row.bianhao;
+                this.weiYue.formVisible = true;
+                this.weiYue.tHetongId = true;
+
+            },
             handleEnd(index,row){
                 this.$confirm('确认终止合同吗?', '提示', {
                     type: 'warning'
@@ -240,17 +284,20 @@
                 let para = {
                     id:row.id,
                 }
-                this.getPurchaseContractList();
                 dumpingPurchaseContract(para).then((res)=>{
-                    this.getPurchaseContractList();
+                    if(res.data.code=="200"){
+                        this.purchaseContractList();
+                        window.open('/#/purchaseContract/dump?id='+row.id)
+                    }
                 });
-                window.open('/#/purchaseContract/dump?id='+row.id)
+
 
             },
             //合同确认
             handleConfirm(index,row){
                 this.payType.sureFormVisible = true;
                 this.payType.tHetongId = row.id;
+                this.payType.tHetongBianhao = row.bianhao;
             },
 
         },
