@@ -14,9 +14,11 @@
             <el-form-item label="">
                 <el-input v-model="filters.roomname" placeholder="房间号"></el-input>
             </el-form-item>
+
             <el-checkbox v-model="filters.checked" @change="change">高级搜索</el-checkbox>
             <el-form-item>
                 <el-button type="primary" icon="search" v-on:click="getShouFang">搜索</el-button>
+
             </el-form-item>
             <br/>
             <div v-show="showed" v-model="filters.showDiv">
@@ -50,6 +52,7 @@
             </el-table-column>
 
             <el-table-column prop="htqiandingdate" label="合同签约" :formatter="changeDate" sortable>
+
             </el-table-column>
             <el-table-column prop="loupanname" label="楼盘" sortable>
             </el-table-column>
@@ -67,6 +70,7 @@
             </el-table-column>
             <el-table-column prop="yjstate" label="状态" :formatter="formatYJType">
             </el-table-column>
+
             <el-table-column label="操作" width="140">
                 <template scope="scope">
                     <el-dropdown   menu-align="start">
@@ -186,10 +190,12 @@
             <el-form :model="rokeBackForm" label-width="120px" :rules="rokeBackFormRules" ref="rokeBackForm">
                 <el-form-item label="实际支付佣金" prop="empmoney">
                     <el-input type="number" v-model="rokeBackForm.empmoney" auto-complete="off"></el-input>
+
                 </el-form-item>
                 <el-form-item label="付款日期" prop="fkrq">
                     <el-date-picker type = "date" v-model="rokeBackForm.fkrq"   auto-complete="off">
                     </el-date-picker>
+
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -226,18 +232,21 @@
                     enddate: '',
                     yjstartdate: '',
                     yjenddate: '',
+
                 },
                 options: [
                     {
                         value: 1,
-                        label: '未收款'
-                    },
+
+                        label: '未申请'
+                    }, 
                     {
                         value: 2,
                         label: '已收款'
                     }, {
                         value: 3,
                         label: '已完成'
+
                     },
                 ],
                 //分页类数据
@@ -260,9 +269,11 @@
                 rokeBackLoading: false,
                 rokeBackFormRules: {
                     empmoney:{  required: true, message: '实际支付佣金', trigger: 'blur' },
+
                     fkrq: [
                         { type: 'date', required: true, message: '请输入付款日期', trigger: 'change' }
                     ],
+
                 },
                 //确认付款界面数据
                 rokeBackForm: {
@@ -330,7 +341,11 @@
 
                 this.getChuFangCommission();
             },
+
+            //获取渠道公司列表
+
             //获取出房佣金列表
+
             getChuFangCommission() {
                 let para = {
                     page: this.page,
@@ -359,6 +374,9 @@
                 this.editFormVisible = true;
                 this.editForm = Object.assign({}, row);
                 //  this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
+
+                this.editForm.yjzbCf = row.yjzbCf.toString();
+                this.editForm.yjzbSf = row.yjzbSf.toString();
 
 
             },

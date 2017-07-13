@@ -147,7 +147,7 @@ class brokerCompanyController extends Controller
         $response = $client->request('GET', '/api/qd/compay/'.$id.'/del'
 
         );
-        return $response->getBody();
+        echo $response->getBody();
     }
 
     public function batchRemoveBrokerCompany(Request $request)
@@ -155,7 +155,9 @@ class brokerCompanyController extends Controller
         $ids = $request->params['ids'];
         $code='200';
         $arr = explode(',',$ids);
+
         foreach ($arr as $item ){
+           // dd($item);
           $status= $this->deleteCompany($item);
            if($status->code!='200')
            {

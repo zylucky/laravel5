@@ -137,6 +137,7 @@ let routes = [
              { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
 
 
+
              { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
              { path:'/saleContact/add',component:SaleContractAdd,name:'出房录入',hidden:true},
              { path:'/saleContract/see',component:SaleContractAdd,name:'出房查看',hidden:true},
@@ -145,55 +146,55 @@ let routes = [
              { path:'/saleContract/jieyue',component:SaleContractJieyue,name:'解约协议',hidden:true},
              { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
              { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true}
-         ]
-     },
-     {
-         path: '/',
-         component: navigation,
-         name: '基础数据管理',
-         iconCls: 'el-icon-document',//图标样式class
-         hidden:fk_brokerCompany,
-         children: [
-             { path:'/brokerCompany', component: BrokerCompany, name: '渠道公司维护',hidden:fk_brokerCompanyList},
-             { path:'/brokerCompanyUserList',component:BrokerCompanyUser,name:'渠道公司人员维护',hidden:fk_brokerCompanyUserList},
-         ]
-     },
-     {
 
-         path: '/',
-         component: navigation,
-         name: '佣金管理',
-         iconCls: 'el-icon-document',//图标样式class
-         hidden:false,
-         children: [
-             { path:'/shouFangCommission', component: ShouFangCommission, name: '收房佣金管理',hidden:false},
-             { path:'/chuFangCommission',component:ChuFangCommission,name:'出房佣金管理',hidden:false},
-             { path:'/contractPayType',component:selectCommissionPayType,name:'佣金支付方式',hidden:true},
-         ]
-     },
-     {
-         path:'/purchaseContract/dump',
-         component: PurchaseContractDump,
-         name: '收房合同打印',
-         hidden: true
-     },
-     {
-         path: '/',
-         component: navigation,
-         name: '统计',
-         iconCls: 'el-icon-document',//图标样式class
-         hidden:false,
-         children: [
-             { path:'/receivable',component:Receivable,name:'应收款信息',hidden:false},
-             { path:'/accountsReceivable',component:AccountsReceivable,name:'应收款记录',hidden:true},
-             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
-             { path:'/payable',component:Payable,name:'应付款信息',hidden:false},
-             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
-             { path:'/paymentRecord',component:PaymentRecord,name:'已付款记录',hidden:true},
+        ]
+    },
+    {
+        path: '/',
+        component: navigation,
+        name: '基础数据管理',
+        iconCls: 'el-icon-document',//图标样式class
+        hidden:fk_brokerCompany,
+        children: [
+            { path:'/brokerCompany', component: BrokerCompany, name: '渠道公司维护',hidden:fk_brokerCompanyList},
+            { path:'/brokerCompanyUserList',component:BrokerCompanyUser,name:'渠道公司人员维护',hidden:fk_brokerCompanyUserList},
+        ]
+    },
+    {
 
-         ]
+        path: '/',
+        component: navigation,
+        name: '佣金管理',
+        iconCls: 'el-icon-document',//图标样式class
+        hidden:false,
+        children: [
+            { path:'/shouFangCommission', component: ShouFangCommission, name: '收房佣金管理',hidden:false},
+            { path:'/chuFangCommission',component:ChuFangCommission,name:'出房佣金管理',hidden:false},
+            { path:'/contractPayType',component:selectCommissionPayType,name:'佣金支付方式',hidden:true},
+        ]
+    },
+    {
+        path:'/purchaseContract/dump',
+        component: PurchaseContractDump,
+        name: '收房合同打印',
+        hidden: true
+    },
+    {
+        path: '/',
+        component: navigation,
+        name: '统计',
+        iconCls: 'el-icon-document',//图标样式class
+        hidden:false,
+        children: [
+            { path:'/receivable',component:Receivable,name:'应收款信息',hidden:false},
+            { path:'/accountsReceivable',component:AccountsReceivable,name:'应收款记录',hidden:true},
+            { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
+            { path:'/payable',component:Payable,name:'应付款信息',hidden:false},
+            { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
+            { path:'/paymentRecord',component:PaymentRecord,name:'已付款记录',hidden:true},
+        ]
 
-     },
+    },
      {
         path:'/saleContract/dump',
         component: SaleContractDump,

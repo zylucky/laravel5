@@ -14,11 +14,11 @@
                         :label="item.title"
                         :name="item.name"
                 >
-                    <el-form label-Weizhi="right" :rules="editFormRules" label-width="100px" :model="property.officeList[index]">
+                    <el-form label-Weizhi="right" ref="propertyForm" :rules="editPropertyRules" label-width="100px" :model="property.officeList[index]">
                         <el-col :span="24">
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item label="楼盘" prop="loupanName">
+                                    <el-form-item label="楼盘" required prop="loupanName">
                                         <el-select
                                                 v-model="property.officeList[index].loupanName"
                                                 filterable
@@ -38,7 +38,7 @@
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="楼栋" prop="loudongName" >
+                                    <el-form-item label="楼栋" required prop="loudongName" >
                                         <el-select
                                                 v-model="property.officeList[index].loudongName"
                                                 filterable
@@ -58,7 +58,7 @@
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="房间号" prop="fanghao">
+                                    <el-form-item label="房间号" required prop="fanghao">
                                         <el-select
                                                 v-model="property.officeList[index].fanghao"
                                                 filterable
@@ -85,28 +85,28 @@
                                     </el-form-item>
                                 </el-col>-->
                                 <el-col :span="16">
-                                    <el-form-item label="位置" prop="weizhi" :span="10">
+                                    <el-form-item label="位置" required prop="weizhi" :span="10">
                                         <el-input v-model="property.officeList[index].weizhi"></el-input>
                                     </el-form-item>
                                 </el-col>
                             </el-row>
 
-                            <el-form-item label="产权证编号" prop="chanquanzhenghao">
+                            <el-form-item label="产权证编号" required prop="chanquanzhenghao">
                                 <el-input v-model="property.officeList[index].chanquanzhenghao"></el-input>
                             </el-form-item>
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item label="承租面积" prop="jianzhumianji" >
+                                    <el-form-item label="承租面积" required prop="jianzhumianji" >
                                         <el-input v-model="property.officeList[index].jianzhumianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="签约面积" prop="qianyuemianji">
+                                    <el-form-item label="签约面积" required prop="qianyuemianji">
                                         <el-input v-model="property.officeList[index].qianyuemianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="房屋类型" prop="leixing">
+                                    <el-form-item label="房屋类型" required prop="leixing">
                                         <el-select v-model="property.officeList[index].leixing" clearable placeholder="请选择">
                                             <el-option
                                                     v-for="item in options"
@@ -202,35 +202,34 @@
                     content: 'Tab 1 content'
                 }],
                 tabIndex: 1,
-                /*editFormRules: {
+                editPropertyRules: {
                     loupanName: [
-                        { required: true, message: '请输入姓名', trigger: 'blur' }
+                        { required: true, message: '不能为空'}
                     ],
                     loudongName:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'}
                     ],
                     fanghao:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ],
-                    quyu:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'}
                     ],
                     weizhi:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'}
                     ],
                     chanquanzhenghao:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'}
                     ],
                     jianzhumianji:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message: '不能为空'},
+                        { type: 'number', message: '必须为数字'},
                     ],
                     leixing:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'}
                     ],
                     qianyuemianji:[
-                        { required: true, message:'不能为空',trigger:'blur' }
+                        { required: true, message:'不能为空'},
+                        { type: 'number', message: '必须为数字'},
                     ]
-                },*/
+                },
             }
         },
         methods: {
@@ -366,7 +365,7 @@
             addTab(targetName) {
                 let newTabName = ++this.tabIndex + '';
                 this.editableTabs2.push({
-                    title: '房间',
+                    title: '房间'+this.tabIndex,//房间号加上次数（一直会加1，以此类推）
                     name: newTabName,
                     content: 'New Tab content'
                 });
@@ -377,10 +376,10 @@
                     loupanName:'',
                     loudongName: '',
                     fanghao: '',
-                    weizhi: '东区',
-                    chanquanzhenghao: '8345',
-                    jianzhumianji: '83.5',
-                    qianyuemianji: '83.5',
+                    weizhi: '',
+                    chanquanzhenghao: '',
+                    jianzhumianji: '',
+                    qianyuemianji: '',
                     leixing: 0,
                     quyu:'',
                     isdiya:0,

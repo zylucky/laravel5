@@ -242,6 +242,7 @@
                 status[4] = '华亮返佣';
                 return status[row.fktype];
             },
+
             //佣金类型显示转换
             formatState: function (row, column) {
                 let status = [];
@@ -250,6 +251,7 @@
                 return status[row.fkstate];
             },
             //佣金类型显示转换
+
             formatskyh: function (row, column) {
 
                 return  row.skyinhang+"\r账号:"+row.skzhanhu ;

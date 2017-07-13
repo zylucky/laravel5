@@ -16,8 +16,7 @@
             </el-form-item>
         </el-form>
         <el-table :data="brokerCompanyUser" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column type="selection" width="55">
-            </el-table-column>
+
             <el-table-column type="index"   width="60">
             </el-table-column>
             <el-table-column prop="qvDaoCompayXinxi.compayname" label="渠道公司名称"  sortable>
@@ -26,7 +25,6 @@
             </el-table-column>
             <el-table-column prop="qdPertel" label="电话"  sortable>
             </el-table-column>
-
             <el-table-column prop="yjzbSf" label="收房佣金占比"  sortable>
             </el-table-column>
             <el-table-column prop="yjzbCf" label="出房佣金占比"  sortable>
@@ -55,7 +53,7 @@
            <div style="margin-top:30px"></div>
            <!-- 分页-->
         <el-col :span="24" class="toolbar" >
-            <el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>
+
             <el-pagination
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"

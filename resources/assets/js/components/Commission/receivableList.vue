@@ -3,9 +3,11 @@
     <el-row >
         <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
+
             <el-form-item label="">
                 <el-input v-model="filters.contractNo" placeholder="合同编号"></el-input>
             </el-form-item>
+
             <el-form-item label="">
                 <el-input v-model="filters.buildingname" placeholder="楼盘名称"></el-input>
             </el-form-item>
@@ -58,7 +60,7 @@
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
                                <el-dropdown-item  > <el-button   @click="handleRokeBack(scope.$index, scope.row)">收&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;款</el-button> </el-dropdown-item>
-                               <el-dropdown-item  > <el-button   @click="handleEdit(scope.$index, scope.row)">编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;辑</el-button> </el-dropdown-item>
+
                                <el-dropdown-item  > <el-button   @click="handleOpen(scope.$index, scope.row)">应收记录</el-button> </el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
