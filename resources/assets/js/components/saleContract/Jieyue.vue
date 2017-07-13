@@ -22,11 +22,11 @@
                             :label="item.title"
                             :name="item.name"
                     >
-                        <el-form label-Weizhi="right" label-width="100px" :model="property.officeList[index]">
-                                <el-form-item label="新合同编号" >
+                        <el-form label-Weizhi="right" label-width="100px" :rules="jieyueRules" :model="property.officeList[index]">
+                                <el-form-item label="新合同编号" prop="newbiaohao" required>
                                     <el-input v-model="property.officeList[index].xinbianhao" placeholder="请输入新合同编号"></el-input>
                                 </el-form-item>
-                                <el-form-item label="解约方式">
+                                <el-form-item label="解约方式" prop="jiefangshi" required>
                                     <el-radio-group v-model="property.officeList[index].jieyuefangshi">
                                         <el-radio label="退租"></el-radio>
                                         <el-radio label="扩租"></el-radio>
@@ -35,7 +35,7 @@
                                 </el-form-item>
                                 <el-row>
                                     <el-col :span="8">
-                                        <el-form-item label="合同终止日期">
+                                        <el-form-item label="合同终止日期" prop="zhongzhidata" required>
                                             <el-date-picker type="date" placeholder="请选择合同终止日期" v-model="property.officeList[index].zhongzhidate" style="width: 100%;"></el-date-picker>
                                         </el-form-item>
                                     </el-col>
@@ -45,7 +45,7 @@
                                         </el-form-item>
                                     </el-col>
                                 </el-row>
-                                <el-form-item label="工商营业执照迁出">
+                                <el-form-item label="工商营业执照迁出" prop="yingyezhizhao" required>
                                     <el-radio-group v-model="property.officeList[index].zhizhaoqianchu">
                                         <el-radio label="是"></el-radio>
                                         <el-radio label="否"></el-radio>
@@ -54,18 +54,18 @@
 
                                 <el-row>
                                     <el-col :span="8">
-                                        <el-form-item label="退还押金">
+                                        <el-form-item label="退还押金" prop="tuiyajin" required>
                                             <el-input v-model="property.officeList[index].tuihuanyajin" placeholder="请输入退还押金"></el-input>
                                         </el-form-item>
                                     </el-col>
                                     <el-col :span="8">
-                                        <el-form-item label="退还剩余房租">
+                                        <el-form-item label="退还剩余房租" prop="tuihuanfangzu" required>
                                             <el-input v-model="property.officeList[index].tuihuanfangzu" placeholder="请输入退还剩余房租"></el-input>
                                         </el-form-item>
                                     </el-col>
                                 </el-row>
                                 <el-col :span="8">
-                                    <el-form-item label="应收杂费">
+                                    <el-form-item label="应收杂费" prop="yingshouzafei" required>
                                         <el-input v-model="property.officeList[index].yingshouzafei" placeholder="请输入租户应交杂费"></el-input>
                                     </el-form-item>
                                 </el-col>
@@ -93,6 +93,28 @@
                 /*purchaseContract:{
                     type:0,
                 },*/
+                jieyueRules : {
+                    newbiaohao: [
+                        {required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'},
+                    ], jiefangshi: [
+                        {required: true, message: '不能为空'}
+                    ], zhongzhidata: [
+                        {required: true, message: '不能为空'}
+                    ], yingyezhizhao: [
+                        {required: true, message: '不能为空'},
+
+                    ], tuiyajin: [
+                        {required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'},
+                    ], tuihuanfangzu: [
+                        {required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'},
+                    ], yingshouzafei: [
+                        {required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'},
+                    ],
+                },
                 property:{
                     officeList: [{
                         /*omcId:null,
@@ -213,20 +235,13 @@
                 var id = {
                     id: this.id
                 };
+                alert(id);
                 let para = Object.assign({}, child_property,loupanName,loudongName,fanghao,biaohao,id);
-                jieyuewanSaleContract(para).then((res)=>{
-                });
+                /*jieyuewanSaleContract(para).then((res)=>{
+                });*/
                 jieyueSaleContractInfo(para).then((res) => {
-                    if(res.data.code == 200)　{
-                        this.$message({
-                            message: '提交成功',
-                            type: 'success'
-                        });
-                    }else{
-                        this.$message({
-                            message:res.data.msg,
-                            type:'error'
-                        })
+                    if(res.data.code=='200'){
+                        this.$route.push('/saleContract');
                     }
                 });
             },

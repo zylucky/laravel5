@@ -16,12 +16,17 @@
                 </el-col>
                 <el-col :span="12">
                     <el-form-item
+
                             :prop="'mianzuqiList.' + index + '.enddate'"
                             :rules="[
                                 {  required: true,validator:
                                 (rule,value,callback)=>{
                                     var d1= new Date( addDate.mianzuqiList[index].startdate);
                                     var d2= new Date(value);
+
+                                    if(value==null){
+                                        callback('不能为空');
+                                    }
                                     if(d2<d1){
                                         callback('结束日期不能小于开始日期');
                                     }else{
@@ -45,10 +50,11 @@
             </el-form-item>
 
             <el-form-item>
-                <el-button v-show="editVisible"  @click="addFreeItem">新增免租期</el-button>
+                <el-button v-show="editVisible"  @click="addFreeItem">新增免</el-button>
             </el-form-item>
 
             <!--总租期-->
+
             <el-row>
                 <el-col :span="9" style="width:550px;">
                     <el-form-item label="总租期" required>
@@ -312,19 +318,22 @@
             </el-row>
             <!--各种费用-->
             <el-form-item label="甲方承担" prop="jiafangfeiyong" required>
-                <el-checkbox-group v-model="addDate.jiafangfeiyong" @change="changeOnCheck(1)">
-                    <el-checkbox id="jiafangfeiyong1" label="（一）供暖费"></el-checkbox>
-                    <el-checkbox id="jiafangfeiyong2" label="（二）制冷费"></el-checkbox>
-                    <el-checkbox id="jiafangfeiyong3" label="（三）物业管理费"></el-checkbox>
-                    <el-checkbox id="jiafangfeiyong4" label="（四）水费"></el-checkbox>
-                    <el-checkbox id="jiafangfeiyong5" label="（五）电费"></el-checkbox>
-                    <el-checkbox id="jiafangfeiyong6" label="（六）燃气费"></el-checkbox>
-                    <el-checkbox id="jiafangfeiyong7" label="（七）电话费"></el-checkbox>
-                    <el-checkbox id="jiafangfeiyong8" label="（八）电视收视费"></el-checkbox>
-                    <el-checkbox id="jiafangfeiyong9" label="（九）上网费"></el-checkbox>
-                    <el-checkbox id="jiafangfeiyong10" label="（十）卫生费"></el-checkbox>
-                    <el-checkbox id="jiafangfeiyong11"label="（十一）车位费"></el-checkbox>
-                    <el-checkbox id="jiafangfeiyong12" label="（十二）其他"></el-checkbox>
+                <el-checkbox-group
+                        v-model="addDate.jiafangfeiyong"
+                        @change="changeOnCheck(1)"
+                >
+                    <el-checkbox label="（一）供暖费"></el-checkbox>
+                    <el-checkbox label="（二）制冷费"></el-checkbox>
+                    <el-checkbox label="（三）物业管理费"></el-checkbox>
+                    <el-checkbox label="（四）水费"></el-checkbox>
+                    <el-checkbox label="（五）电费"></el-checkbox>
+                    <el-checkbox label="（六）燃气费"></el-checkbox>
+                    <el-checkbox label="（七）电话费"></el-checkbox>
+                    <el-checkbox label="（八）电视收视费"></el-checkbox>
+                    <el-checkbox label="（九）上网费"></el-checkbox>
+                    <el-checkbox label="（十）卫生费"></el-checkbox>
+                    <el-checkbox label="（十一）车位费"></el-checkbox>
+                    <el-checkbox label="（十二）其他"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
             <el-form-item label="乙方承担" prop="yifangfeiyong" required >
@@ -364,6 +373,20 @@
         components: {ElCol},
         data() {
             return {
+                checkList : [
+                    "（一）供暖费",
+                    "（二）制冷费",
+                    "（三）物业管理费",
+                    "（四）水费",
+                    "（五）电费",
+                    "（六）燃气费",
+                    "（七）电话费",
+                    "（八）电视收视费",
+                    "（九）上网费",
+                    "（十）卫生费",
+                    "（十一）车位费",
+                    "（十二）其他"
+                ],
                 editVisible:true,
                 options:[
                     {
@@ -448,11 +471,29 @@
                 value= newDate.getFullYear()+'-'+newDate.getMonth()+'-'+newDate.getDay();
             },
             changeOnCheck(index){
+                let jafangs =  this.addDate.jiafangfeiyong;
+                let yifangs =  this.addDate.yifangfeiyong;
+
                 if(index==1){
-                    this.addDate.jiafangfeiyong;
-                    this.addDate.yifangfeiyong;
+                    //点击甲方的时候
+                    this.addDate.yifangfeiyong = [];
+                    this.checkList.forEach((check,index)=>{
+                        if(jafangs.indexOf(check)==-1){
+                            //如果列表内的数据不存在于甲方的，就属于乙方
+                            this.addDate.yifangfeiyong.push(check);
+                        }
+                    })
+                }else if(index==2){
+                    this.addDate.jiafangfeiyong = [];
+                    this.checkList.forEach((check,index)=>{
+                        if(yifangs.indexOf(check)==-1){
+                            //如果列表内的数据不存在于甲方的，就属于乙方
+                            this.addDate.jiafangfeiyong.push(check);
+                        }
+                    })
                 }
             },
+
             valid(){
                 this.$refs['addDateForm'].validate((valid) => {
                     this.addDate.flag = valid;

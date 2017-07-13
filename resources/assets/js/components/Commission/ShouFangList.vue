@@ -194,9 +194,12 @@
                 </el-row>
                 <el-form-item label="备注：" prop="qdpersons">
                     {{editForm.qdpersons}}
+
                 </el-form-item>
             </el-form>
         </el-dialog>
+
+        
         <el-dialog title="确认收款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
             <el-form :model="rokeBackForm" label-width="120px" :rules="rokeBackFormRules" ref="rokeBackForm">
                 <el-form-item label="业主实付佣金" prop="empmoney">
@@ -212,6 +215,7 @@
                 <el-button type="primary" @click.native="RokeBackSubmit" :loading="rokeBackLoading">确认</el-button>
             </div>
         </el-dialog>
+
     </el-row>
 </template>
 <script>
@@ -236,6 +240,7 @@
                     roomname: '',
                     ZhuangTai: '',
                     personname:'',
+
                     startdate: '',
                     enddate: '',
                     yjstartdate: '',
@@ -269,9 +274,11 @@
                 rokeBackLoading: false,
                 rokeBackFormRules: {
                     empmoney:{  required: true, message: '请输入业主实付佣金', trigger: 'blur' },
+
                     skrq: [
                         { type: 'date', required: true, message: '请输入收款日期', trigger: 'change' }
                     ],
+
                 },
 
                 editFormVisible: false,//编辑界面是否显示
@@ -286,6 +293,7 @@
                     tQdApplyId: '',
                     empmoney: '',
                     skrq:''
+
                 },
 
                 //被选中的权限
@@ -368,7 +376,9 @@
                     enddate: this.filters.enddate,
                     yjstartdate: this.filters.yjstartdate,
                     yjenddate: this.filters.yjenddate,
+
                     personname:this.filters.personname,
+
                 };
                 this.listLoading = true;
                 getShouFangCommissionListPage(para).then((res) => {
@@ -428,6 +438,7 @@
                     tQdApplyId: row.tQdApplyId,
                     empmoney: '',
                     skrq:''
+
                 }
             },
             //显示详情界面
