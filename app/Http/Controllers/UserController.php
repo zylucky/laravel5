@@ -98,14 +98,16 @@ class UserController extends Controller
     public function setRole(Request $request, $id)
     {
         $input = $request->params;
+        //dd($input);
         //角色全部删除
         DB::table('role_user')->where('user_id', '=', $id)->delete();
         $data = [];
-        $res = DB::table('roles')->whereIn('name', $input['value'])->select('id')->get();
-        foreach ($res as $key => $value) {
-            $data[$key]['role_id'] = $value->id;
-            $data[$key]['user_id'] = $id;
+       // $res = DB::table('roles')->whereIn('name', $input['value'])->select('id')->get();
+        foreach ($input['value'] as $key => $item) {
+            $data[$key]['role_id'] = $item ;
+            $data[$key]['user_id'] = $input['id'];
         }
+       // dd($data);
         //设置
         DB::table('role_user')->insert($data);
     }

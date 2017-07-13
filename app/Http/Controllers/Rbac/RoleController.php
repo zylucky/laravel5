@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Rbac;
 
 use App\Http\Controllers\Controller;
 use App\models\Role;
+use App\Models\UserRole;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -19,8 +20,8 @@ class RoleController extends Controller
     {
         $name = Input::get('name');
         $pageSize = Input::get('pageSize');
-        return $roles =  Role::when($name, function ($query) use ($name) {
-            return $query->where('name','like',"$name%");
+        return $roles = Role::when($name, function ($query) use ($name) {
+            return $query->where('name', 'like', "$name%");
         })->paginate($pageSize);
     }
 
@@ -31,18 +32,18 @@ class RoleController extends Controller
      */
     public function create()
     {
-       $lists = Role::all();
-       $data = [];
-       foreach ($lists as $list){
-           $data[$list->id]=$list->name;
-       }
-       return $data;
+        $lists = Role::all();
+        $data = [];
+        foreach ($lists as $list) {
+            $data[$list->id] = $list->name;
+        }
+        return $data;
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -51,10 +52,10 @@ class RoleController extends Controller
         $role = new Role();
         $role->name = $input['name'];
         $role->description = $input['description'];
-        if($role->save()){
+        if ($role->save()) {
             return [
-                'msg'=>'保存成功！',
-                'code'=>200
+                'msg' => '保存成功！',
+                'code' => 200
             ];
         }
     }
@@ -62,23 +63,28 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      *获取当前用户的所有角色
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $lists = User::find($id)->roles;
         $data = [];
-        foreach ($lists as $list){
-            $data[$list->id]=$list->name;
+        $user = UserRole::find($id);
+        if (isset($user)) {
+            $lists = $user
+                ->roles;
+            foreach ($lists as $list) {
+                $data[$list->id] = $list->name;
+            }
         }
+        //dd($data);
         return $data;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -89,8 +95,8 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -98,10 +104,10 @@ class RoleController extends Controller
         $role = Role::find($id);
         $role->name = $request->params['name'];
         $role->description = $request->params['description'];
-        if($role->save()){
+        if ($role->save()) {
             return [
-                'msg'=>'保存成功！',
-                'code'=>200
+                'msg' => '保存成功！',
+                'code' => 200
             ];
         }
     }
@@ -109,7 +115,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

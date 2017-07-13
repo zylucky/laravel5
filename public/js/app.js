@@ -35621,7 +35621,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -35644,7 +35643,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             users: [],
             listLoading: false,
             sels: [], //列表选中列
-
+            userrole: [], //用户角色
 
             //角色参数
             userId: 0,
@@ -35730,7 +35729,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this3.Roles = arr;
             });
         },
+        closeRole: function closeRole() {
 
+            this.Roles = [];
+        },
 
         //页面跳转后
         handleCurrentChange: function handleCurrentChange(val) {
@@ -95475,49 +95477,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "namepinyin",
-      "label": "账号",
-      "sortable": ""
+      "label": "账号"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "companyname",
-      "label": "公司",
-      "sortable": ""
+      "label": "公司"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "deptname",
-      "label": "部门",
-      "sortable": ""
+      "label": "部门"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "sondeptname",
-      "label": "子部门",
-      "sortable": ""
+      "label": "子部门"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "jobname",
-      "label": "职位",
-      "sortable": ""
+      "label": "职位"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "phone",
-      "label": "联系电话",
-      "sortable": ""
+      "label": "联系电话"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "created_at",
       "label": "最后登陆时间",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "角色",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
@@ -95548,15 +95538,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "span": 24
     }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "danger",
-      "disabled": this.sels.length === 0
-    },
-    on: {
-      "click": _vm.batchRemove
-    }
-  }, [_vm._v("批量删除")]), _vm._v(" "), _c('el-pagination', {
+  }, [_c('el-pagination', {
     staticStyle: {
       "float": "right"
     },
@@ -95579,7 +95561,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "update:visible": function($event) {
         _vm.dialogRoleVisible = $event
-      }
+      },
+      "close": _vm.closeRole
     }
   }, [_c('el-select', {
     attrs: {
@@ -98463,53 +98446,46 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "htqiandingdate",
-      "label": "合同签约",
+      "label": "合同签订日期",
       "formatter": _vm.changeDate,
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "loupanname",
-      "label": "楼盘",
-      "sortable": ""
+      "label": "楼盘"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "loudongname",
-      "label": "楼栋",
-      "sortable": ""
+      "label": "楼栋"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "houseno",
-      "label": "房间号",
-      "sortable": ""
+      "label": "房间号"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "htzujin",
-      "label": "合同月租金",
-      "sortable": ""
+      "label": "合同月租金"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "htyongjin",
       "label": "合同佣金",
-      "width": "200",
-      "sortable": ""
+      "width": "200"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "tQdCompayId",
       "label": "渠道公司",
-      "width": "200",
-      "sortable": ""
+      "width": "200"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "qdpersons",
-      "label": "渠道人员",
-      "sortable": ""
+      "label": "渠道人员"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {

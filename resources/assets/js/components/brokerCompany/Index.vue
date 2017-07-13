@@ -359,7 +359,7 @@
                 this.editFormVisible = true;
                 this.editForm = Object.assign({}, row);
               //  this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-               
+
 
             },
             //显示新增界面

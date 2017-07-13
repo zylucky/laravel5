@@ -35,22 +35,21 @@
             </el-table-column>
             <el-table-column prop="name" label="姓名"   sortable>
             </el-table-column>
-            <el-table-column prop="namepinyin" label="账号"   sortable>
+            <el-table-column prop="namepinyin" label="账号"   >
             </el-table-column>
-            <el-table-column prop="companyname" label="公司"  sortable>
+            <el-table-column prop="companyname" label="公司"  >
             </el-table-column>
-            <el-table-column prop="deptname" label="部门"  sortable>
+            <el-table-column prop="deptname" label="部门"  >
             </el-table-column>
-            <el-table-column prop="sondeptname" label="子部门"   sortable>
+            <el-table-column prop="sondeptname" label="子部门"   >
             </el-table-column>
-            <el-table-column prop="jobname" label="职位"   sortable>
+            <el-table-column prop="jobname" label="职位"   >
             </el-table-column>
-            <el-table-column prop="phone" label="联系电话"  sortable>
+            <el-table-column prop="phone" label="联系电话"  >
             </el-table-column>
             <el-table-column prop="created_at" label="最后登陆时间"   sortable>
             </el-table-column>
-            <el-table-column prop="addr" label="角色"   sortable>
-            </el-table-column>
+
             <el-table-column label="操作" width="100">
                 <template scope="scope">
                     <el-button type="small" size="small" @click="handleSet(scope.$index, scope.row)"><i class="el-icon-setting"></i></el-button>
@@ -60,7 +59,7 @@
 
         <!-- 分页-->
         <el-col :span="24" class="toolbar">
-            <el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button>
+
             <el-pagination
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
@@ -73,7 +72,7 @@
             </el-pagination>
         </el-col>
         <!--设置角色-->
-        <el-dialog title="设置" :visible.sync="dialogRoleVisible">
+        <el-dialog title="设置" :visible.sync="dialogRoleVisible" @close="closeRole">
                 <el-select
                         v-model="Roles"
                         multiple
@@ -118,7 +117,7 @@
                 users:[],
                 listLoading: false,
                 sels: [],//列表选中列
-
+                userrole:[],//用户角色
 
                 //角色参数
                 userId:0,
@@ -198,7 +197,10 @@
                     this.Roles = arr;
                 });
             },
+            closeRole(){
 
+                this.Roles=[];
+            },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
