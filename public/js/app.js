@@ -35716,7 +35716,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         handleSet: function handleSet(index, row) {
             this.userId = row.id;
-            //this.getTotalRoles();
             this.getRoles();
             this.dialogRoleVisible = true;
         },

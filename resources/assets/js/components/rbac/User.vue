@@ -183,8 +183,7 @@
 
             },
             handleSet(index,row){
-                this.userId = row.id;
-                //this.getTotalRoles();
+                this.userId = row.id; 
                 this.getRoles();
                 this.dialogRoleVisible = true;
             },
@@ -201,7 +200,7 @@
                     this.Roles = arr;
                 });
             },
-            
+
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
