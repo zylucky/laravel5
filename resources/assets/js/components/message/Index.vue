@@ -7,21 +7,23 @@
             </el-table-column>
             <el-table-column type="index"   width="60">
             </el-table-column>
-            <el-table-column prop="compayname" label="编号"  sortable>
+            <el-table-column prop="id" label="编号"  width="100" sortable>
             </el-table-column>
-            <el-table-column prop="compaytest" label="内容"  sortable>
+            <el-table-column prop="title" label="标题"  >
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="创建人"  sortable>
+            <el-table-column prop="content" label="内容"  width="300" >
             </el-table-column>
-            <el-table-column prop="createdate" label="创建时间" :formatter="changeDate" sortable>
+            <el-table-column prop="creatorname" label="创建人"  >
             </el-table-column>
-            <el-table-column prop="yjType" label="优先级"  :formatter="formatYJType" sortable>
+            <el-table-column prop="creationtime" label="创建时间" :formatter="changeDate" sortable>
             </el-table-column>
-            <el-table-column prop="yjType" label="类别"  :formatter="formatYJType" sortable>
+            <el-table-column prop="priority" label="优先级"  :formatter="formatYXJ">
             </el-table-column>
-            <el-table-column prop="tbPersonIdCreate" label="状态"     sortable>
+            <el-table-column prop="category" label="类别"  :formatter="formatType" >
             </el-table-column>
-            <el-table-column label="操作" width="150">
+            <el-table-column prop="status" label="状态" :formatter="formatZT"  width="100" >
+            </el-table-column>
+            <el-table-column label="操作" width="130">
                 <template scope="scope">
                     <el-dropdown   menu-align="start">
                         <el-button type="primary" size="normal" splitButton="true">
@@ -59,20 +61,23 @@
                 <el-form-item label="编号：" prop="compayname">
                     {{editForm.compayname}}
                 </el-form-item>
-                <el-form-item label="内容：" prop="yjzbSf">
-                    {{editForm.compayname}}
+                <el-form-item label="标题：" prop="title">
+                    {{editForm.title}}
                 </el-form-item>
-                <el-form-item label="创建人：" prop="yjzbCf">
-                    {{editForm.compayname}}
+                <el-form-item label="内容：" prop="content">
+                    {{editForm.content}}
                 </el-form-item>
-                <el-form-item label="创建时间：" prop="compayname">
-                    {{editForm.compayname}}
+                <el-form-item label="创建人：" prop="creatorname">
+                    {{editForm.creatorname}}
+                </el-form-item>
+                <el-form-item label="创建时间：" prop="creationtime">
+                    {{changeXQDate(editForm.creationtime)}}
                 </el-form-item>
                 <el-form-item label="优先级：" prop="yjzbSf">
                     {{editForm.compayname}}
                 </el-form-item>
                 <el-form-item label="类别：" prop="yjzbCf">
-                    {{editForm.compayname}}
+                    {{editForm.category}}
                 </el-form-item>
                 <el-form-item label="状态："   prop="yjType">
                     {{editForm.compayname}}
@@ -145,16 +150,51 @@
             }
         },
         methods:{
-            //佣金类型显示转换
-            formatYJType: function (row, column) {
-               return row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
+            //优先级
+            formatYXJ: function (row, column) {
+                let status = [];
+                status[0] = '低';
+                status[1] = '中';
+                status[2] = '高'; ;
+                return status[row.priority];
             },
-
+            //类型：0,日程提醒；1,通知；2,任务；3,调查评测
+            formatType: function (row, column) {
+                let status = [];
+                status[0] = '日程提醒';
+                status[1] = '通知';
+                status[2] = '任务';
+                status[3] = '调查评测';
+                return status[row.category];
+            },
+            //状态任务的状态。1，已创建；2，已送达，3，已读；4，已接受，5，拒绝接受；6，已办；7，已确认；8，已关闭
+            formatZT: function (row, column) {
+                let status = [];
+                status[1] = '已创建';
+                status[2] = '已送达';
+                status[3] = '已读';
+                status[4] = '已接受';
+                status[5] = '拒绝接受';
+                status[6] = '已办';
+                status[7] = '已确认';
+                status[8] = '已关闭';
+                return status[row.status];
+            },
+            //时间戳转日期格式
+            changeXQDate(dt){
+                if(dt!=null){
+                    var newDate = new Date();
+                    newDate.setTime(dt);
+                    return newDate.toLocaleDateString();
+                }
+            },
             //时间戳转日期格式
             changeDate(row, column){
-                var newDate = new Date();
-                newDate.setTime(row.createdate);
-                return newDate.toLocaleDateString()
+                if(row.creationtime!=null) {
+                    var newDate = new Date();
+                    newDate.setTime(row.creationtime);
+                    return newDate.toLocaleDateString()
+                }
             },
 
             //页面跳转后
@@ -187,40 +227,30 @@
             //接受按钮
             handleAccept: function (index, row) {
                 this.$confirm('确认接受吗？', '提示', {}).then(() => {
-                    this.editLoading = true;
                     let para = {
-                        tQdApplyId:row.tQdApplyId,
+                        id:row.id,
                     }
-                    //console.log(para);
-                    finishSK(para).then((res) => {
-                        this.editLoading = false;
+                    AcceptMessage(para).then((res) => {
                         this.$message({
                             message: '提交成功',
                             type: 'success'
                         });
-                        this.$refs['editForm'].resetFields();
-                        this.editFormVisible = false;
-                        this.getShouFang();
+                        this.getMessage();
                     });
                 });
             },
             //拒绝按钮
             handleRefuse: function (index, row) {
                 this.$confirm('确认拒绝吗？', '提示', {}).then(() => {
-                    this.editLoading = true;
                     let para = {
-                        tQdApplyId:row.tQdApplyId,
+                        id:row.id,
                     }
-                    //console.log(para);
-                    finishSK(para).then((res) => {
-                        this.editLoading = false;
+                    RefuseMessage(para).then((res) => {
                         this.$message({
                             message: '提交成功',
                             type: 'success'
                         });
-                        this.$refs['editForm'].resetFields();
-                        this.editFormVisible = false;
-                        this.getShouFang();
+                        this.getMessage();
                     });
                 });
             },
@@ -228,10 +258,6 @@
             handleEdit: function (index, row) {
                 this.editFormVisible = true;
                 this.editForm = Object.assign({}, row);
-              //  this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-                this.editForm.yjzbCf= row.yjzbCf.toString();
-                this.editForm.yjzbSf= row.yjzbSf.toString();
-
             },
 
 
