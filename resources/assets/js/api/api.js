@@ -76,7 +76,7 @@ export const addPurchaseContractInfo= params => { return axios.post(`${base}/pur
 export const reviewPurchaseContract= params => { return axios.post(`${base}/purchaseContract/review`, { params: params }); };
 export const getPurchaseContractList = params => { return axios.get(`${base}/purchaseContract`, { params: params }); };
 export const getPurchaseContractInfo = params => { return axios.get(`${base}/purchaseContract/`+params.id, {}); };
-export const submitPurchaseContract = params => { return axios.get(`${base}/purchaseContract/`+params.id+'/edit', {}); };
+export const submitPurchaseContract = params => { return axios.get(`${base}/purchaseContract/`+params.id+'/edit', {params}); };
 export const getPurchaseContractTiaoKuan = params => { return axios.get(`${base}/purchaseContract/create`, {}); };
 export const editPurchaseContractTiaoKuan= params => { return axios.post(`${base}/purchaseContract/editTiaoKuan`, { params: params }); };
 export const confirmPurchaseContract= params => { return axios.get(`${base}/purchaseContract/confirmed`, {params:params}); };

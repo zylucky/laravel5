@@ -111,22 +111,40 @@ class purchaseContractController extends Controller
      */
     public function edit($id)
     {
+        $bianhao = Input::get('bianhao');
+        $zd = Input::get('zd');
         //0.将合同提交
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
-
         //1.根据楼栋的id取获取 objareaID
         $client = new Client ([
-            'base_uri' => $this->base_url,
+            'base_uri' => $this->work_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/wf/getzdareaid?zd=11');
-
-
+        $response = $client->request('GET', '/api/wf/getzdareaid?zd='.$zd);
+        $objareaid = $response->getBody()->getContents();
+        $data = [
+            "cmd"=>0,
+            "data"=>[
+                "bianhao"=>$bianhao,
+                "objareaid"=>(int)$objareaid,
+            ],
+            "operatorId"=>15,//操作人
+            "operatorName"=>'liyuequn',
+        ];
         //2.服务创建审核任务
+        $client = new Client([
+            'base_uri' => $this->work_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        //return $data;
+        $response = $client->request('POST', '/api/wf/createapproval', [
+            'json' => $data
+        ]);
 
         echo $response->getBody();
     }
