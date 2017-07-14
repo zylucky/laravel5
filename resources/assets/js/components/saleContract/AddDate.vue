@@ -106,7 +106,6 @@
             <!--免租期-->
             <el-form-item label="免租期" v-for="(item, index) in addDate.mianzuqiList"
                           :key="item.key"
-                          :prop="'mianzuqiList.' + index + '.value'"
                           >
                 <el-col  style="width:410px;">
 
@@ -116,7 +115,7 @@
                 </el-col>
                 <el-col :span="12">
                     <el-form-item
-                            :prop="'mianzuqiList.' + index + '.value'"
+                            :prop="'mianzuqiList.' + index + '.enddate'"
                             :rules="[
                                     {  required: true,validator:
                                     (rule,value,callback)=>{
@@ -153,37 +152,37 @@
 
                 <el-col  style="width:410px;">
                     <el-col :span="12">
-                        <el-date-picker
-                                v-model="addDate.startdate"
-                                type="date"
-                                prop="startdate"
-                                placeholder="开始时间">
-                        </el-date-picker>
+                        <el-form-item prop="startdate">
+                            <el-date-picker
+                                    v-model="addDate.startdate"
+                                    type="date"
+                                    placeholder="开始时间">
+                            </el-date-picker>
+                        </el-form-item>
                     </el-col>
                 <el-col :span="12">
-                    <el-form-item
-                            :prop="'zong.value'"
-                            :rules="[
-                                    {  required: true,validator:
-                                    (rule,value,callback)=>{
-                                        var d1= new Date( addDate.zong.startdate);
-                                        var d2= new Date(value);
-                                        if(value==null){
-                                            callback('不能为空');
-                                        }
-                                        if(d2<d1){
-                                            callback('结束日期不能小于开始日期');
-                                        }else{
-                                        callback();
-                                        };
-                                            }, trigger:'blur'}
-                                    ]">
-                        <el-date-picker
-                                v-model="addDate.enddate"
-                                type="date"
-                                placeholder="结束时间">
-                        </el-date-picker>
-                    </el-form-item>
+                        <el-form-item
+                                :rules="[
+                                        {  required: true,validator:
+                                        (rule,value,callback)=>{
+                                            var d1= new Date( addDate.zong.startdate);
+                                            var d2= new Date(value);
+                                            if(value==null){
+                                                callback('不能为空');
+                                            }
+                                            if(d2<d1){
+                                                callback('结束日期不能小于开始日期');
+                                            }else{
+                                            callback();
+                                            };
+                                                }, trigger:'blur'}
+                                        ]">
+                            <el-date-picker
+                                    v-model="addDate.enddate"
+                                    type="date"
+                                    placeholder="结束时间">
+                            </el-date-picker>
+                        </el-form-item>
                 </el-col>
                 </el-col>
 
@@ -195,7 +194,6 @@
                         <el-form-item label="付款方式"
                                       :key="item.key"
                                       required
-                                      :prop="'fukuanFangshiList.' + index + '.value'"
                         >
                                 <el-col :span="11">
                                     <el-form-item  :prop="'fukuanFangshiList.' + index + '.startdate'" :rules="{
@@ -259,7 +257,6 @@
                     <el-col :span="9"style="width:550px;">
                         <el-form-item :label="'租期' + index"
                                       :key="item.key"
-                                      :prop="'zujinList.' + index + '.value'"
                                       required
                         >
                             <el-col :span="11">
@@ -432,11 +429,11 @@
             <!--各种费用-->
             <el-form-item label="费用" prop="feiyong" required>
                 <el-checkbox-group  v-model="addDate.checkList">
-                    <el-checkbox label="物业费"></el-checkbox>
-                    <el-checkbox label="取暖费"></el-checkbox>
-                    <el-checkbox label="制冷"></el-checkbox>
-                    <el-checkbox label="发票"></el-checkbox>
-                    <el-checkbox label="其它"></el-checkbox>
+                    <el-checkbox label="（一）物业费" value="1"></el-checkbox>
+                    <el-checkbox label="（二）取暖费" checked=""></el-checkbox>
+                    <el-checkbox label="（三）制冷"></el-checkbox>
+                    <el-checkbox label="（四）发票"></el-checkbox>
+                    <el-checkbox label="（五）其它"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
             <!--补充条款-->
@@ -569,7 +566,7 @@
                 },*/
             }
         },
-        props:['addDate'],//这块是父页面和子页面出数据时声明（定义的）
+        props:['addDate'],   //这块是父页面和子页面出数据时声明（定义的）
         methods: {
             onSubmit() {
 
@@ -580,6 +577,11 @@
                     startdate:'',//免租开始
                     enddate:'',//免租结束
                     key: Date.now()
+                });
+            },
+            valid(){
+                this.$refs['addDateForm'].validate((valid) => {
+                    this.addDate.flag = valid;
                 });
             },
             //移除免租期

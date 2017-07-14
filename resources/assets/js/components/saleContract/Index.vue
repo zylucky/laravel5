@@ -39,11 +39,11 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[1,2])"><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[3])"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[5])"><el-button @click="handleConfirm(scope.$index, scope.row)">签约成功</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,7])"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[9])"><el-button @click="handleJieyue(scope.$index, scope.row)">解 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[10])"><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6])"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6])"><el-button @click="handleJieyue(scope.$index, scope.row)">解 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[9])"><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[10])"><el-button @click="handleCheckJieyue(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleEnd(scope.$index, scope.row)">终止合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[7])"><el-button @click="handleEnd(scope.$index, scope.row)">终止合同</el-button></el-dropdown-item>
                         </el-dropdown-menu>
 
                     </el-dropdown>
@@ -217,7 +217,7 @@
                     jieyueSaleContract(para).then((res) => {
                         this.listLoading = false;
                         this.message({
-                            message: '删除成功',
+                            message: '设置成功',
                             type: 'success'
                         });
                         this.getUsers();
@@ -241,6 +241,7 @@
                 }
                 //this.getPurchaseContractList();
                 confirmSaleContract(para).then((res)=>{
+
                     //this.getPurchaseContractList();
                     if(res.data.code=="200"){
                         this.saleContractList();
@@ -258,7 +259,7 @@
                     removeSaleContract(para).then((res) => {
                         this.listLoading = false;
                         this.message({
-                            message: '删除成功',
+                            message: '设置成功',
                             type: 'success'
                         });
                         this.getUsers();
