@@ -35179,6 +35179,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -35191,6 +35211,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 xieyienddate: [{ required: true, validator: function validator(rule, value, callback) {
                         var d1 = new Date(_this.addDate.xieyistartdate);
                         var d2 = new Date(value);
+                        if (value == null) {
+                            callback('不能为空');
+                        }
                         if (d2 < d1) {
                             callback('结束日期不能小于开始日期');
                         } else {
@@ -103730,7 +103753,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "model": _vm.addDate,
       "rules": _vm.editFormRules,
-      "label-width": "70px"
+      "label-width": "80px"
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -104172,15 +104195,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.addFreeItem
     }
-  }, [_vm._v("新增免租期")]) : _vm._e()], 1), _vm._v(" "), _c('el-form-item', {
+  }, [_vm._v("新增免租期")]) : _vm._e()], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    staticStyle: {
+      "width": "510px"
+    },
+    attrs: {
+      "span": 9
+    }
+  }, [_c('el-form-item', {
     attrs: {
       "label": "总租期"
+    }
+  }, [_c('el-col', {
+    attrs: {
+      "span": 11
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "prop": "zuqistartdate"
     }
   }, [_c('el-date-picker', {
     attrs: {
       "type": "date",
-      "placeholder": "开始时间",
-      "prop": "zuqistartdate"
+      "placeholder": "开始时间"
     },
     model: {
       value: (_vm.addDate.zuqistartdate),
@@ -104189,11 +104226,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "addDate.zuqistartdate"
     }
-  }), _vm._v(" "), _c('el-date-picker', {
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 11
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "prop": "zuqienddate"
+    }
+  }, [_c('el-date-picker', {
     attrs: {
       "type": "date",
-      "placeholder": "结束时间",
-      "prop": "zuqienddate"
+      "placeholder": "结束时间"
     },
     model: {
       value: (_vm.addDate.zuqienddate),
@@ -104202,15 +104246,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "addDate.zuqienddate"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', {
+  })], 1)], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    staticStyle: {
+      "width": "510px"
+    },
     attrs: {
-      "label": "生效时间"
+      "span": 9
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "生效时间",
+      "required": ""
+    }
+  }, [_c('el-col', {
+    attrs: {
+      "span": 11
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "prop": "xieyistartdate"
     }
   }, [_c('el-date-picker', {
     attrs: {
       "type": "date",
-      "placeholder": "开始时间",
-      "prop": "xieyistartdate"
+      "placeholder": "开始时间"
     },
     model: {
       value: (_vm.addDate.xieyistartdate),
@@ -104219,11 +104278,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "addDate.xieyistartdate"
     }
-  }), _vm._v(" "), _c('el-date-picker', {
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 11
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "prop": "xieyienddate"
+    }
+  }, [_c('el-date-picker', {
     attrs: {
       "type": "date",
-      "placeholder": "结束时间",
-      "prop": "xieyienddate"
+      "placeholder": "结束时间"
     },
     model: {
       value: (_vm.addDate.xieyienddate),
@@ -104232,14 +104298,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "addDate.xieyienddate"
     }
-  })], 1), _vm._v(" "), _vm._l((_vm.addDate.fukuanFangshiList), function(item, index) {
+  })], 1)], 1)], 1)], 1)], 1), _vm._v(" "), _vm._l((_vm.addDate.fukuanFangshiList), function(item, index) {
     return _c('div', [_c('el-row', {
       attrs: {
         "gutter": 5
       }
     }, [_c('el-col', {
       staticStyle: {
-        "width": "550px"
+        "width": "560px"
       },
       attrs: {
         "span": 12
@@ -104383,7 +104449,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-col', {
       staticStyle: {
-        "width": "550px"
+        "width": "560px"
       },
       attrs: {
         "span": 12

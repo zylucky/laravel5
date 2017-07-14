@@ -3,7 +3,7 @@
         <div style="margin-bottom: 50px;"></div>
         <h3>建外SOHO-A-2602</h3>
         <div style="margin-bottom: 50px;"></div>
-        <el-form :model="addDate" ref="editForm" :rules="editFormRules" label-width="70px" class="demo-dynamic">
+        <el-form :model="addDate" ref="editForm" :rules="editFormRules" label-width="80px" class="demo-dynamic">
             <el-form-item label="业主类型">
                 <el-radio-group v-model="owner.yezhuleixing">
                     <el-radio :label="1">个人</el-radio>
@@ -177,43 +177,63 @@
                 <el-button v-if="btnShow" @click="addFreeItem">新增免租期</el-button>
             </el-form-item>
             <!--租期-->
-            <el-form-item label="总租期">
-                <el-date-picker
-                        v-model="addDate.zuqistartdate"
-                        type="date"
-                        placeholder="开始时间"
-                        prop="zuqistartdate"
-                >
-                </el-date-picker>
-                <el-date-picker
-                        v-model="addDate.zuqienddate"
-                        type="date"
-                        placeholder="结束时间"
-                        prop="zuqienddate"
-                >
-                </el-date-picker>
-            </el-form-item>
+            <el-row>
+                <el-col :span="9" style="width:510px;">
+                    <el-form-item label="总租期">
+                        <el-col :span="11">
+                            <el-form-item prop="zuqistartdate">
+                                <el-date-picker
+                                        v-model="addDate.zuqistartdate"
+                                        type="date"
+                                        placeholder="开始时间"
+                                >
+                                </el-date-picker>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="11">
+                            <el-form-item prop="zuqienddate">
+                                <el-date-picker
+                                        v-model="addDate.zuqienddate"
+                                        type="date"
+                                        placeholder="结束时间"
+                                >
+                                </el-date-picker>
+                            </el-form-item>
+                        </el-col>
+                    </el-form-item>
+                </el-col>
+            </el-row>
             <!--租期-->
-            <el-form-item label="生效时间">
-                <el-date-picker
-                        v-model="addDate.xieyistartdate"
-                        type="date"
-                        placeholder="开始时间"
-                        prop="xieyistartdate"
-                >
-                </el-date-picker>
-                <el-date-picker
-                        v-model="addDate.xieyienddate"
-                        type="date"
-                        placeholder="结束时间"
-                        prop="xieyienddate"
-                >
-                </el-date-picker>
-            </el-form-item>
+            <el-row>
+                <el-col :span="9" style="width:510px;">
+                    <el-form-item label="生效时间" required="">
+                        <el-col :span="11">
+                            <el-form-item prop="xieyistartdate">
+                                <el-date-picker
+                                        v-model="addDate.xieyistartdate"
+                                        type="date"
+                                        placeholder="开始时间"
+                                >
+                                </el-date-picker>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="11">
+                            <el-form-item prop="xieyienddate">
+                                <el-date-picker
+                                        v-model="addDate.xieyienddate"
+                                        type="date"
+                                        placeholder="结束时间"
+                                >
+                                </el-date-picker>
+                            </el-form-item>
+                        </el-col>
+                    </el-form-item>
+                </el-col>
+            </el-row>
             <!--付款方式-->
             <div  v-for="(item, index) in addDate.fukuanFangshiList">
                 <el-row :gutter="5">
-                    <el-col :span="12" style="width:550px;">
+                    <el-col :span="12" style="width:560px;">
                         <el-form-item label="付款方式"
                                       :key="item.key"
                         >
@@ -263,7 +283,7 @@
             <!--租金详细-->
             <div v-for="(item, index) in addDate.zujinList">
                 <el-row :gutter="5">
-                    <el-col :span="12" style="width:550px;">
+                    <el-col :span="12" style="width:560px;">
                         <el-form-item :label="'租期' + index"
                                   :key="item.key"
                     >
@@ -347,6 +367,9 @@
                             (rule,value,callback)=>{
                                 var d1= new Date( this.addDate.xieyistartdate);
                                 var d2= new Date(value);
+                                if(value==null){
+                                    callback('不能为空');
+                                }
                                 if(d2<d1){
                                     callback('结束日期不能小于开始日期');
                                 }else{
