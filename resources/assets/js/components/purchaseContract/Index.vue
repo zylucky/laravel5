@@ -81,7 +81,7 @@
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="终止时间：">
-                    <el-date-picker type = "date" placeholder="结束时间"  >
+                    <el-date-picker type = "date" placeholder="结束时间"  v-model="weiYue.zhongzhidate" @change="changeEnd">
                     </el-date-picker>
                 </el-form-item>
                 <el-row>
@@ -152,6 +152,10 @@
             contractPayType
         },
         methods: {
+            changeEnd(value){
+                //获取三个信息：合同ID，违约类型，以及本日期
+                
+            },
             ztin(row,arr){
                 var status = arr.indexOf(row.zhuangtai);
                 if(status>-1){
