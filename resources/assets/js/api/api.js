@@ -88,7 +88,8 @@ export const weiyuePurchaseContract= params => { return axios.get(`${base}/purch
 export const endPurchaseContract= params => { return axios.get(`${base}/purchaseContract/terminated`, {params:params}); };//状态变更为：合同终止
 export const youhuaPurchaseContract= params => { return axios.get(`${base}/purchaseContract/releasing`, {params:params}); };//状态变更为：优化中
 export const youhuacgPurchaseContract= params => { return axios.get(`${base}/purchaseContract/released`, {params:params}); };//状态变更为：优化完成
-export const weiYueInfoPurchaseContract= params => { return axios.get(`${base}/purchaseContract/weiYueInfo`, {params:params}); };//合同终止
+export const weiYueInfoPurchaseContract= params => { return axios.post(`${base}/purchaseContract/weiYueInfo`, {params:params}); };//合同终止
+export const weiYueSavePurchaseContract= params => { return axios.post(`${base}/purchaseContract/weiYueSave`, {params:params}); };//合同终止保存一些数据
 
 //出房合同
 //合同信息

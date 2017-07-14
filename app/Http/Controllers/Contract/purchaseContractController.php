@@ -289,8 +289,22 @@ class purchaseContractController extends Controller
             'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        dd($request->params);
         $response = $client->request('POST', '/api/cw/comm/inithtwy', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+
+    }
+    /*
+     * api/contract/sf/weiyue/save
+     * */
+    public function weiYueSave(Request $request){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/sf/weiyue/save', [
             'json' => $request->params
         ]);
         echo $response->getBody();

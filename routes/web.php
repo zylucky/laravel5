@@ -20,6 +20,8 @@ Route::resource('role', 'Rbac\RoleController');
 //收房合同分组
 Route::group(['prefix' => 'purchaseContract'], function () {
     Route::post('review','Contract\purchaseContractController@review');
+    Route::post('weiYueInfo','Contract\purchaseContractController@weiYueInfo');
+    Route::post('weiYueSave','Contract\purchaseContractController@weiYueSave');
     Route::get('optimize','Contract\purchaseContractController@getOptimize');
     Route::get('approving','Contract\purchaseContractController@approving');
     Route::post('editTiaoKuan','Contract\purchaseContractController@editTiaoKuan');
@@ -29,7 +31,6 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('terminated','Contract\purchaseContractController@terminated');
     Route::get('releasing','Contract\purchaseContractController@releasing');
     Route::get('released','Contract\purchaseContractController@released');
-    Route::get('weiYueInfo','Contract\purchaseContractController@weiYueInfo');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
 

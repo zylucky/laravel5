@@ -75,9 +75,9 @@
                 </el-form-item>
                 <el-form-item label="违约类型：" >
                     <el-radio-group v-model="weiYue.weiyueleixing">
-                        <el-radio class="radio" label="0" >业主违约</el-radio>
-                        <el-radio class="radio" label="1" >幼狮违约</el-radio>
-                        <el-radio class="radio" label="2" >不可抗拒</el-radio>
+                        <el-radio class="radio" label="1" >业主违约</el-radio>
+                        <el-radio class="radio" label="2" >幼狮违约</el-radio>
+                        <el-radio class="radio" label="3" >不可抗拒</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="终止时间：">
@@ -100,7 +100,7 @@
                 </el-row>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click.native="weiYue.formVisible = false">取消</el-button>
+                <el-button @click.native="weiYue.Visible = false">取消</el-button>
                 <el-button type="primary" @click.native="handleEnd" :loading="weiYue.Loading">提交</el-button>
             </div>
         </el-dialog>
@@ -117,6 +117,7 @@
         endPurchaseContract,
         youhuaPurchaseContract,
         weiYueInfoPurchaseContract,
+        weiYueSavePurchaseContract,
     } from '../../api/api.js';
     export default {
         data() {
@@ -128,7 +129,8 @@
                     tHetongBianhao:null,
                 },
                 weiYue:{
-                    formVisible:false,
+                    id:null,
+                    Visible:false,
                     tHetongId:null,
                     tHetongBianhao:null,
                     weiyueleixing:null,
@@ -156,15 +158,22 @@
         methods: {
             changeEnd(value){
                 //获取三个信息：合同ID，违约类型，以及本日期
-                this.weiYue.zhongzhidate = new Date(this.weiYue.zhongzhidate).toLocaleDateString() ;
                 let para = {
                     hetongId:this.id,
                     hetongType:0,
                     weiYueType:this.weiYue.weiyueleixing,
-                    zhongZhiDate:this.weiYue.zhongzhidate,
+                    zhongZhiDate:new Date(this.weiYue.zhongzhidate).toLocaleDateString(),
                 }
                 weiYueInfoPurchaseContract(para).then((res)=>{
-                    console.log(res)
+                    if(res.data.code!='200'){
+                        this.$message({
+                            message: '获取应付信息失败',
+                            type: 'error'
+                        });
+                    }
+                    //把值赋予weiYue
+                    this.weiYue.yingfujine = res.data.data.yfMoney;
+                    this.weiYue.yingshoujine = res.data.data.ysMoney;
                 })
 
             },
@@ -259,6 +268,7 @@
                     let para = { id: row.id };
                     weiyuePurchaseContract(para).then((res) => {
                         this.listLoading = false;
+                        this.weiYue.formVisible =false;
                         //NProgress.done();
                         this.$message({
                             message: '设置成功',
@@ -273,16 +283,27 @@
             //终止 弹窗确认是否终止
             openEndDialog(index,row){
                 this.id = row.id;
-                this.weiYue.formVisible = true;
                 this.weiYue.tHetongBianhao = row.bianhao;
-                this.weiYue.formVisible = true;
+                this.weiYue.Visible = true;
                 this.weiYue.tHetongId = this.id;
+                this.weiYue.id = this.id;
 
             },
+            //合同终止
             handleEnd(index,row){
                 this.$confirm('确认终止合同吗?', '提示', {
                     type: 'warning'
                 }).then(() => {
+                    let para1 = this.weiYue;
+                    this.weiYue.Visible = false;
+                    weiYueSavePurchaseContract(para1).then((res)=>{
+                        if(res.data.code!='200'){
+                            this.$message({
+                                message: '数据没有保存成功',
+                                type: 'error'
+                            });
+                        }
+                    });
                     this.listLoading = true;
                     let para = { id:this.id };
                     endPurchaseContract(para).then((res) => {
@@ -298,6 +319,7 @@
 
                 });
             },
+            //二次优化
             handleOptimize(index,row){
                 let para = {
                     id:row.id,
@@ -309,6 +331,7 @@
             handleCheckOptimize(index,row){
                 this.$router.push('/purchaseContract/checkOptimize?id='+row.id);
             },
+            //打印
             handleDump(index,row){
                 let para = {
                     id:row.id,
