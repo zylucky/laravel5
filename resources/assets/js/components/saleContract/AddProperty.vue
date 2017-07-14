@@ -14,13 +14,13 @@
                         :label="item.title"
                         :name="item.name"
                 >
-                    <el-form label-Weizhi="right" ref="propertyForm" :rules="editPropertyRules" label-width="100px" :model="property.officeList[index]">
+                    <el-form label-Weizhi="right" ref="propertyForm" :rules="editPropertyRules" label-width="100px" :model="property.xsOffice[index]">
                         <el-col :span="24">
                             <el-row>
                                 <el-col :span="8">
                                     <el-form-item label="楼盘" required prop="loupanName">
                                         <el-select
-                                                v-model="property.officeList[index].loupanName"
+                                                v-model="property.xsOffice[index].loupanName"
                                                 filterable
                                                 default-first-option
                                                 remote
@@ -40,7 +40,7 @@
                                 <el-col :span="8">
                                     <el-form-item label="楼栋" required prop="loudongName" >
                                         <el-select
-                                                v-model="property.officeList[index].loudongName"
+                                                v-model="property.xsOffice[index].loudongName"
                                                 filterable
                                                 default-first-option
                                                 remote
@@ -60,7 +60,7 @@
                                 <el-col :span="8">
                                     <el-form-item label="房间号" required prop="fanghao">
                                         <el-select
-                                                v-model="property.officeList[index].fanghao"
+                                                v-model="property.xsOffice[index].fanghao"
                                                 filterable
                                                 default-first-option
                                                 remote
@@ -81,33 +81,33 @@
                             <el-row>
                                 <!--<el-col :span="8">
                                     <el-form-item label="区域" prop="quyu">
-                                        <el-input v-model="property.officeList[index].quyu"></el-input>
+                                        <el-input v-model="property.xsOffice[index].quyu"></el-input>
                                     </el-form-item>
                                 </el-col>-->
                                 <el-col :span="16">
                                     <el-form-item label="位置" required prop="weizhi" :span="10">
-                                        <el-input v-model="property.officeList[index].weizhi"></el-input>
+                                        <el-input v-model="property.xsOffice[index].weizhi"></el-input>
                                     </el-form-item>
                                 </el-col>
                             </el-row>
 
                             <el-form-item label="产权证编号" required prop="chanquanzhenghao">
-                                <el-input v-model="property.officeList[index].chanquanzhenghao"></el-input>
+                                <el-input v-model="property.xsOffice[index].chanquanzhenghao"></el-input>
                             </el-form-item>
                             <el-row>
                                 <el-col :span="8">
                                     <el-form-item label="承租面积" required prop="jianzhumianji" >
-                                        <el-input v-model="property.officeList[index].jianzhumianji"></el-input>
+                                        <el-input v-model="property.xsOffice[index].jianzhumianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item label="签约面积" required prop="qianyuemianji">
-                                        <el-input v-model="property.officeList[index].qianyuemianji"></el-input>
+                                        <el-input v-model="property.xsOffice[index].qianyuemianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item label="房屋类型" required prop="leixing">
-                                        <el-select v-model="property.officeList[index].leixing" clearable placeholder="请选择">
+                                        <el-select v-model="property.xsOffice[index].leixing" clearable placeholder="请选择">
                                             <el-option
                                                     v-for="item in options"
                                                     :key="item.value"
@@ -233,6 +233,21 @@
             }
         },
         methods: {
+            /*valid(){
+                var flag  = true;
+                var flag1 = true;
+                var property =  this.$refs.propertyForm;
+
+                for (let i=0;i<property.length;i++){
+                    property[i].validate((valid) => {
+                        flag = valid;
+                        if(flag==false){
+                            flag1 = false;
+                        }
+                        this.property.flag = flag1;
+                    })
+                }
+            },*/
             //获取楼盘
             remoteMethod1(query) {
                 let para = {
@@ -268,7 +283,7 @@
             //获取楼栋
             remoteMethod2(query) {
                 let para = {
-                    loupanOmcId:this.property.officeList[this.tabIndex-1].loupanOmcId,
+                    loupanOmcId:this.property.xsOffice[this.tabIndex-1].loupanOmcId,
                 };
                 this.loupanloading = true;
                 getLoudongList(para).then((res) => {
@@ -300,8 +315,8 @@
             //获取房号
             remoteMethod3(query) {
                 let para = {
-                    lpid: this.property.officeList[this.tabIndex-1].loupanOmcId,
-                    zdid: this.property.officeList[this.tabIndex-1].loudongOmcId,
+                    lpid: this.property.xsOffice[this.tabIndex-1].loupanOmcId,
+                    zdid: this.property.xsOffice[this.tabIndex-1].loudongOmcId,
                 };
                 this.fanghaoloading = true;
                 getSaleFanghaoList(para).then((res) => {
@@ -335,30 +350,36 @@
             change1(){
                 //楼盘
                 for (var x in this.options1){
-                    if(this.options1[x].label==this.property.officeList[this.tabIndex-1].loupanName){
-                        this.property.officeList[this.tabIndex-1].loupanOmcId=this.options1[x].value;
+                    if(this.options1[x].label==this.property.xsOffice[this.tabIndex-1].loupanName){
+                        this.property.xsOffice[this.tabIndex-1].loupanOmcId=this.options1[x].value;
+                        this.property.xsOffice[this.tabIndex-1].loupanOmcId=this.options1[x].value;
+                        this.property.xsOffice[this.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
+                        this.property.xsOffice[this.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
+                        this.property.xsOffice[this.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                        this.property.xsOffice[this.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
                     }
                 }
             },
             change2(){
                 //楼栋
                 for (var x in this.options2){
-                    if(this.options2[x].label==this.property.officeList[this.tabIndex-1].loudongName){
-                        this.property.officeList[this.tabIndex-1].loudongOmcId=this.options2[x].value;
+                    if(this.options2[x].label==this.property.xsOffice[this.tabIndex-1].loudongName){
+                        this.property.xsOffice[this.tabIndex-1].loudongOmcId=this.options2[x].value;
+
                     }
                 }
             },
             change3(){
                 //房号
                 for (var x in this.options3){
-                    if(this.options3[x].label==this.property.officeList[this.tabIndex-1].fanghao){
-                        this.property.officeList[this.tabIndex-1].omcId=this.options3[x].value;
+                    if(this.options3[x].label==this.property.xsOffice[this.tabIndex-1].fanghao){
+                        this.property.xsOffice[this.tabIndex-1].omcId=this.options3[x].value;
                     }
                 }
                 for (var x in this.houseData){
-                    if(this.houseData[x].id==this.property.officeList[this.tabIndex-1].omcId){
-                        this.property.officeList[this.tabIndex-1].Jianzhumianji=this.houseData[x].fjmj;
-                        this.property.officeList[this.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
+                    if(this.houseData[x].id==this.property.xsOffice[this.tabIndex-1].omcId){
+                        this.property.xsOffice[this.tabIndex-1].Jianzhumianji=this.houseData[x].fjmj;
+                        this.property.xsOffice[this.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
                     }
                 }
             },
@@ -369,7 +390,7 @@
                     name: newTabName,
                     content: 'New Tab content'
                 });
-                this.property.officeList.push({
+                this.property.xsOffice.push({
                     omcId:null,
                     loupanOmcId:null,
                     loudongOmcId:null,
@@ -388,7 +409,7 @@
                 this.editableTabsValue2 = newTabName;
             },
             removeTab(targetName) {
-                this.property.officeList.pop();//删除
+                this.property.xsOffice.pop();//删除
                 let tabs = this.editableTabs2;
                 let activeName = this.editableTabsValue2;
                 if (activeName === targetName) {
@@ -401,6 +422,10 @@
                         }
                     });
                 }
+                /*let propertys = this.property.xsOffice ;
+                propertys.forEach((property,index)=>{
+
+                })*/
 
                 this.editableTabsValue2 = activeName;
                 this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
