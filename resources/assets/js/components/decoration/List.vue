@@ -4,7 +4,7 @@
         <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="">
-                <el-input v-model="filters.bk_name" placeholder="请输入工长姓名"></el-input>
+                <el-input v-model="filters.bk_name" placeholder="请输入工长姓名1"></el-input>
             </el-form-item>
             <el-form-item label="">
                 <el-select v-model="status" placeholder="请选择合同状态">

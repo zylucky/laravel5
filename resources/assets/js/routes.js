@@ -151,7 +151,7 @@ let routes = [
              { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
              { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true},
 
-             { path:'/decoration', component: DecorationList, name: '装饰合同'},
+             { path:'/decoration', component: DecorationList, name: '装饰合同1'},
 
 
          ]
