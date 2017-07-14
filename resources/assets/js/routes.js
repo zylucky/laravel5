@@ -211,11 +211,11 @@ let routes = [
      {
          path: '/',
          component: navigation,
-         name: '消息管理',
+         name: '任务管理',
          iconCls: 'el-icon-message',//图标样式class
          hidden:false,
          children: [
-             {path:'/message', component: MessageList, name: '消息列表', hidden: false},
+             {path:'/message', component: MessageList, name: '我的待办事项', hidden: false},
          ]
 
      },
