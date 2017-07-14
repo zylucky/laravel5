@@ -22,14 +22,12 @@ class messageController  extends Controller
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
         $client = new Client ([
-            'base_uri' => $this->base_url,
+            'base_uri' =>$this->work_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/compay/list',[
-            'query' => [
-                'page'=>$page,
-                'size'=>$pageSize,
-                'compay' =>  $name
+        $response = $client->request('POST', '/api/wf/gettasksto',[
+            'json' => [
+                'data'=>14,
                 ]
 
        ]
@@ -57,25 +55,13 @@ class messageController  extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *保存渠道公司
+     *保存
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
        // dd($request->params);
-        $user = Auth::user();
-        $obj=array_merge($request->params,Array('tbPersonIdCreate'=>$user->id));
-        //dd($obj);
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
-
-        $r = $client->request('POST', '/api/qd/compay/add', [
-            'json' => $obj
-        ]);
-        return  $r ->getBody();
 
     }
 
@@ -103,7 +89,7 @@ class messageController  extends Controller
 
     /**
      * Update the specified resource in storage.
-     *更新渠道公司
+     *更新
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -111,22 +97,11 @@ class messageController  extends Controller
     public function update(Request $request, $id)
     {
 
-        $obj=array_merge($request->params,Array('tQdCompayId'=>$id));
-        //dd($obj);
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
-
-        $r = $client->request('POST', '/api/qd/compay/alter', [
-            'json' => $obj
-        ]);
-        return  $r ->getBody();
     }
 
     /**
      * Remove the specified resource from storage.
-     *删除渠道公司
+     *删除
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -134,46 +109,44 @@ class messageController  extends Controller
     {
        // dd($id);
 
-        return $this->deleteCompany($id);
     }
 
-    public  function deleteCompany($id)
-    {
 
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
-        $response = $client->request('GET', '/api/qd/compay/'.$id.'/del'
-
-        );
-        return $response->getBody();
-    }
 
 
     public function acceptMessage(Request $request)
     {
-        $obj= $request->params ;
-        dd($obj);
+        $obj= [
+            'cmd'=>10004,
+            'data'=>$request->params,
+            'operatorId'=>14,
+            'operatorName'=>'梁旭',
+        ];
+        //dd($obj);
         $client = new Client ([
-            'base_uri' => $this->base_url,
+            'base_uri' =>$this->work_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/apply/addApplys',[
-            'query' =>$obj
+        $response = $client->request('POST', '/api/wf/dotask',[
+            'json' =>$obj
         ]);
         return  $response ->getBody();
     }
     public function  refuseMessage(Request $request)
     {
-        $obj= $request->params ;
-        dd($obj);
+        $obj= [
+            'cmd'=>10005,
+            'data'=>$request->params,
+            'operatorId'=>14,
+            'operatorName'=>'梁旭',
+        ];
+       // dd($obj);
         $client = new Client ([
-            'base_uri' => $this->base_url,
+            'base_uri' =>$this->work_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/apply/addApplys',[
-            'query' =>$obj
+        $response = $client->request('POST', '/api/wf/dotask',[
+            'json' =>$obj
         ]);
         return  $response ->getBody();
     }

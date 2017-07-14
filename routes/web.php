@@ -51,8 +51,8 @@ Route::post('shouFangCommission/finishSK','Commission\ShouFangCommissionControll
 
 //消息列表
 Route::resource('message','Message\messageController');
-
-
+Route::post('message/acceptMessage','Message\messageController@acceptMessage');
+Route::post('message/refuseMessage','Message\messageController@refuseMessage');
 //Route::post('saleContract/sub','Contract\saleContractController@sub');
 Route::get('saleContract/submit','Contract\saleContractController@submit');
 Route::get('saleContract/approving','Contract\saleContractController@approving');
