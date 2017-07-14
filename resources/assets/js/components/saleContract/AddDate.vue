@@ -1,8 +1,8 @@
 <template>
     <el-row class="container">
-        <el-form :model="addDate" :rules="editDateRules"  label-width="100px" class="demo-dynamic">
+        <el-form :model="addDate" ref="addDateForm" :rules="editDateRules"  label-width="100px" class="demo-dynamic">
             <el-form-item label="合同类型" required>
-                <el-radio-group v-model="addDate.hetongType">
+                <el-radio-group v-model="addDate.hetongtype">
                     <el-radio :label="1">新建合同</el-radio>
                     <el-radio :label="2">续签合同</el-radio>
                 </el-radio-group>
@@ -44,7 +44,7 @@
                 </el-row>
             </div>-->
             <div>
-                <div v-if="addDate.hetongType == 1">
+                <div v-if="addDate.hetongtype == 1">
                     <el-row>
                         <el-col :span="8">
                             <el-form-item label="收房日" prop="shoufangdate" required>
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div>
-                <div v-if="addDate.hetongType == 2">
+                <div v-if="addDate.hetongtype == 2">
                     <el-row>
                         <el-col :span="8">
                             <el-form-item label="原房屋抵扣金额" prop="dikoujine" required>
@@ -522,7 +522,7 @@
                         { required: true, message: '不能为空' }
                     ],
                 },
-                addDate: {
+                /*addDate: {
                     hetongType:1,//合同类型
                     dikoujine:'',//合同金额
                     startdate:'',//租期开始时间
@@ -566,9 +566,10 @@
                     zhilengzhifu:'',
                     fapiaozhifu:'',
                     qitazhifu:'',
-                },
+                },*/
             }
         },
+        props:['addDate'],//这块是父页面和子页面出数据时声明（定义的）
         methods: {
             onSubmit() {
 
@@ -623,6 +624,15 @@
                 }
             },
 
+        },
+        mounted(){
+            //审核页面input禁用
+            if(this.$route.path=='/saleContract/edit'){
+                this.editVisible   =false;
+            }
+            if(this.$route.path=='/saleContract/edit'){
+                this.editVisible   =false;
+            }
         }
     }
 </script>

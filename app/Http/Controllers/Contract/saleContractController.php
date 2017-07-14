@@ -140,6 +140,7 @@ class saleContractController extends Controller
      *
      * */
     public function review(Request $request){
+        dd(111);
         $client = new Client([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,

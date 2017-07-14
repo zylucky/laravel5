@@ -90,4 +90,5 @@ Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
 Route::get('office/loupanList','Contract\officeController@loupanList');
 Route::get('office/loudongList','Contract\officeController@loudongList');
 Route::get('office/fanghaoList','Contract\officeController@fanghaoList');
+Route::get('office/salefanghaoList','Contract\officeController@salefanghaoList');
 //hello world1
