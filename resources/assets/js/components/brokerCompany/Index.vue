@@ -67,10 +67,10 @@
                     <el-input v-model="editForm.compayname" auto-complete="off"   disabled=""></el-input>
                 </el-form-item>
                 <el-form-item label="收房佣金占比" prop="yjzbSf">
-                    <el-input type="number" v-model="editForm.yjzbSf" value="" auto-complete="off"></el-input>
+                    <el-input v-model.number="editForm.yjzbSf" value="" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="出房佣金占比" prop="yjzbCf">
-                    <el-input type="number" v-model="editForm.yjzbCf" auto-complete="off"></el-input>
+                    <el-input v-model.number="editForm.yjzbCf" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="佣金类型"   prop="yjType">
                     <el-select v-model="editForm.yjType" placeholder="">
@@ -99,10 +99,10 @@
                     <el-input v-model="addForm.compayname" auto-complete="off"   ></el-input>
                 </el-form-item>
                 <el-form-item label="收房佣金占比" prop="yjzbSf">
-                    <el-input   v-model="addForm.yjzbSf" auto-complete="off"></el-input>
+                    <el-input  v-model.number="addForm.yjzbSf" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="出房佣金占比" prop="yjzbCf">
-                    <el-input  v-model="addForm.yjzbCf" auto-complete="off"></el-input>
+                    <el-input  v-model.number="addForm.yjzbCf" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="佣金类型"    prop="yjType">
                     <el-select type="number"  v-model="addForm.yjType" placeholder="">
@@ -359,8 +359,7 @@
                 this.editFormVisible = true;
                 this.editForm = Object.assign({}, row);
               //  this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-                this.editForm.yjzbCf= row.yjzbCf.toString();
-                this.editForm.yjzbSf= row.yjzbSf.toString();
+
 
             },
             //显示新增界面

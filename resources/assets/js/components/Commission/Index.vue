@@ -51,22 +51,22 @@
             <el-table-column type="selection" width="50">
             </el-table-column>
 
-            <el-table-column prop="htqiandingdate" label="合同签约" :formatter="changeDate" sortable>
+            <el-table-column prop="htqiandingdate" label="合同签订日期" :formatter="changeDate" sortable>
 
             </el-table-column>
-            <el-table-column prop="loupanname" label="楼盘" sortable>
+            <el-table-column prop="loupanname" label="楼盘" >
             </el-table-column>
-            <el-table-column prop="loudongname" label="楼栋" sortable>
+            <el-table-column prop="loudongname" label="楼栋" >
             </el-table-column>
-            <el-table-column prop="houseno" label="房间号" sortable>
+            <el-table-column prop="houseno" label="房间号" >
             </el-table-column>
-            <el-table-column prop="htzujin" label="合同月租金" sortable>
+            <el-table-column prop="htzujin" label="合同月租金" >
             </el-table-column>
-            <el-table-column prop="htyongjin" label="合同佣金" width="200" sortable>
+            <el-table-column prop="htyongjin" label="合同佣金" width="200">
             </el-table-column>
-            <el-table-column prop="tQdCompayId" label="渠道公司" width="200" sortable>
+            <el-table-column prop="tQdCompayId" label="渠道公司" width="200">
             </el-table-column>
-            <el-table-column prop="qdpersons" label="渠道人员" sortable>
+            <el-table-column prop="qdpersons" label="渠道人员" >
             </el-table-column>
             <el-table-column prop="yjstate" label="状态" :formatter="formatYJType">
             </el-table-column>
