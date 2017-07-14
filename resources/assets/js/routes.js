@@ -25,6 +25,9 @@ import SaleContractUpload from "./components/saleContract/Upload.vue";
 import SaleContractJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractCheckJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractDump from "./components/saleContract/Dump.vue";
+//装饰合同
+import DecorationList from "./components/decoration/List.vue";
+
 
 
 //渠道公司
@@ -42,6 +45,7 @@ import Receivable from "./components/Commission/receivableList.vue";
 import PaymentRecord from "./components/report/paymentRecordList.vue";
 import PayableRecord from "./components/report/payableRecordList.vue";
 import Payable from "./components/report/payableList.vue";
+
 
 //消息管理
 import MessageList from "./components/message/Index.vue";
@@ -118,34 +122,37 @@ let routes = [
             { path: '/fun', component: Permission, name: '权限',hidden:fk_permission_per },
         ]
 
-     },
-     {
-         path: '/',
-         component: navigation,
-         name: '合同管理',
-         iconCls: 'el-icon-document',//图标样式class
-         hidden:fk_contract,
-         children: [
+    },
+    {
+        path: '/',
+        component: navigation,
+        name: '合同管理',
+        iconCls: 'el-icon-document',//图标样式class
+        hidden:fk_contract,
+        children: [
 
-             { path:'/purchaseContract', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
-             { path:'/purchaseContract/add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
-             { path:'/purchaseContract/edit',component:PurchaseContractAdd,name:'收房编辑',hidden:true},
-             { path:'/purchaseContract/review',component:PurchaseContractAdd,name:'收房审核',hidden:true},
-             { path:'/purchaseContract/view',component:PurchaseContractAdd,name:'收房查看',hidden:true},
-             { path:'/purchaseContract/optimize',component:PurchaseContractOptimize,name:'收房优化',hidden:true},
-             { path:'/purchaseContract/checkOptimize',component:PurchaseContractCheckOptimize,name:'收房协议查看',hidden:true},
-             { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
+            { path:'/purchaseContract', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
+            { path:'/purchaseContract/add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
+            { path:'/purchaseContract/edit',component:PurchaseContractAdd,name:'收房编辑',hidden:true},
+            { path:'/purchaseContract/review',component:PurchaseContractAdd,name:'收房审核',hidden:true},
+            { path:'/purchaseContract/view',component:PurchaseContractAdd,name:'收房查看',hidden:true},
+            { path:'/purchaseContract/optimize',component:PurchaseContractOptimize,name:'收房优化',hidden:true},
+            { path:'/purchaseContract/checkOptimize',component:PurchaseContractCheckOptimize,name:'收房协议查看',hidden:true},
+            { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
 
 
 
-             { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
-             { path:'/saleContact/add',component:SaleContractAdd,name:'出房录入',hidden:true},
-             { path:'/saleContract/see',component:SaleContractAdd,name:'出房查看',hidden:true},
-             { path:'/saleContract/edit',component:SaleContractAdd,name:'出房编辑',hidden:true},
-             { path:'/saleContract/review',component:SaleContractAdd,name:'出房审核',hidden:true},
-             { path:'/saleContract/jieyue',component:SaleContractJieyue,name:'解约协议',hidden:true},
-             { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
-             { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true}
+            { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
+            { path:'/saleContact/add',component:SaleContractAdd,name:'出房录入',hidden:true},
+            { path:'/saleContract/see',component:SaleContractAdd,name:'出房查看',hidden:true},
+            { path:'/saleContract/edit',component:SaleContractAdd,name:'出房编辑',hidden:true},
+            { path:'/saleContract/review',component:SaleContractAdd,name:'出房审核',hidden:true},
+            { path:'/saleContract/jieyue',component:SaleContractJieyue,name:'解约协议',hidden:true},
+            { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
+            { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true},
+
+            { path:'/decoration', component: DecorationList, name: '装饰合同1'},
+
 
         ]
     },
@@ -195,27 +202,24 @@ let routes = [
         ]
 
     },
-     {
+    {
         path:'/saleContract/dump',
         component: SaleContractDump,
         name: '出方合同打印',
         hidden: true
-     },
-     {
-         path: '/',
-         component: navigation,
-         name: '消息管理',
-         iconCls: 'el-icon-message',//图标样式class
-         hidden:false,
-         children: [
-             {path:'/message', component: MessageList, name: '消息列表', hidden: false},
-         ]
+    },
+    {
+        path: '/',
+        component: navigation,
+        name: '消息管理',
+        iconCls: 'el-icon-message',//图标样式class
+        hidden:false,
+        children: [
+            {path:'/message', component: MessageList, name: '消息列表', hidden: false},
+        ]
 
-     },
+    },
 
 ]
 
 export default routes;
-
-
-
