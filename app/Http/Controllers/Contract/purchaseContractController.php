@@ -105,17 +105,29 @@ class purchaseContractController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * 提交的时候，先根据楼栋的id取获取 objareaID，然后再根据获取到的东西去服务创建审核任务
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+        //0.将合同提交
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
+
+        //1.根据楼栋的id取获取 objareaID
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/wf/getzdareaid?zd=11');
+
+
+        //2.服务创建审核任务
+
         echo $response->getBody();
     }
 
