@@ -25,6 +25,9 @@ import SaleContractUpload from "./components/saleContract/Upload.vue";
 import SaleContractJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractCheckJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractDump from "./components/saleContract/Dump.vue";
+//装饰合同
+import DecorationList from "./components/decoration/List.vue";
+
 
 
 //渠道公司
@@ -42,6 +45,7 @@ import Receivable from "./components/Commission/receivableList.vue";
 import PaymentRecord from "./components/report/paymentRecordList.vue";
 import PayableRecord from "./components/report/payableRecordList.vue";
 import Payable from "./components/report/payableList.vue";
+
 
 //消息管理
 import MessageList from "./components/message/Index.vue";
@@ -145,9 +149,12 @@ let routes = [
              { path:'/saleContract/review',component:SaleContractAdd,name:'出房审核',hidden:true},
              { path:'/saleContract/jieyue',component:SaleContractJieyue,name:'解约协议',hidden:true},
              { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
-             { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true}
+             { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true},
 
-        ]
+             { path:'/decoration', component: DecorationList, name: '装饰合同1'},
+
+
+         ]
     },
     {
         path: '/',

@@ -70,22 +70,34 @@
         <el-dialog title="违约" v-model="weiYue.formVisible" :close-on-click-modal="false">
             <el-form  label-width="120px"  ref="sureForm">
                 <el-input type="hidden" prop="tHetongId"  v-model="weiYue.tHetongId" auto-complete="off"></el-input>
-                <el-form-item label="合同编号" prop="tHetongBianhao">
+                <el-form-item label="合同编号：" prop="tHetongBianhao">
                     {{weiYue.tHetongBianhao}}
                 </el-form-item>
-                <el-form-item label="违约类型" >
+                <el-form-item label="违约类型：" >
                     <el-radio-group v-model="weiYue.weiyueleixing">
                         <el-radio class="radio" label="0" >业主违约</el-radio>
                         <el-radio class="radio" label="1" >幼狮违约</el-radio>
                         <el-radio class="radio" label="2" >不可抗拒</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item label="应收金额">
+                <el-form-item label="终止时间：">
+                    <el-date-picker type = "date" placeholder="结束时间"  >
+                    </el-date-picker>
+                </el-form-item>
+                <el-row>
+                <el-col :span="14">
+                <el-form-item label="应收金额：">
                     <el-input v-model="weiYue.yingshoujine"></el-input>
                 </el-form-item>
-                <el-form-item label="应付金额">
+                </el-col>
+                </el-row>
+                <el-row>
+                <el-col :span="14">
+                <el-form-item label="应付金额：">
                     <el-input v-model="weiYue.yingfujine"></el-input>
                 </el-form-item>
+                </el-col>
+                </el-row>
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click.native="weiYue.formVisible = false">取消</el-button>
@@ -118,6 +130,7 @@
                     tHetongId:null,
                     tHetongBianhao:null,
                     weiyueleixing:null,
+                    zhongzhidate:null,
                     yingshoujine:null,
                     yingfujine:null,
                     Loading:null,
