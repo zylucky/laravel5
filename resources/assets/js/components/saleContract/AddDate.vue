@@ -165,7 +165,7 @@
                                 :rules="[
                                         {  required: true,validator:
                                         (rule,value,callback)=>{
-                                            var d1= new Date( addDate.zong.startdate);
+                                            var d1= new Date( addDate.zong.enddate);
                                             var d2= new Date(value);
                                             if(value==null){
                                                 callback('不能为空');
@@ -428,7 +428,7 @@
             </el-row>
             <!--各种费用-->
             <el-form-item label="费用" prop="feiyong" required>
-                <el-checkbox-group  v-model="addDate.checkList">
+                <el-checkbox-group  v-model="addDate.jiafangfeiyong">
                     <el-checkbox label="（一）物业费" value="1"></el-checkbox>
                     <el-checkbox label="（二）取暖费" checked=""></el-checkbox>
                     <el-checkbox label="（三）制冷"></el-checkbox>

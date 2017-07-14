@@ -107,9 +107,11 @@
                             label:null,
                         }
                     ],
-                    chengzufang:'',
+                    chengzufang:'华溯商贸',
                     jujianfangtype:1,
                     jujianfang:'',
+                    jujianfangtype:'',
+
                     zuhuleixing:1,
                     //产权人
                     chengzuren:[
@@ -174,7 +176,8 @@
                             dizengliang:'',
                         },
                     ],
-                    checkList: []
+                    checkList: [],
+                    jiafangfeiyong:[],
                 },
             }
         },
@@ -340,6 +343,7 @@
                 this.addDate.buchongTiaokuanList = res.data.data.buchongTiaokuanList;
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
+                this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
             },
             disabledInput(){
                 this.reviewVisible = true;

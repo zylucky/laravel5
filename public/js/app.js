@@ -37638,6 +37638,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AddTiaoKuan_vue__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AddTiaoKuan_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__AddTiaoKuan_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api_api__ = __webpack_require__(1);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -37689,6 +37691,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
+        var _renter;
+
         return {
             btnType: true,
             submsg: '提交',
@@ -37738,40 +37742,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
              }],
              },*/
 
-            renter: {
+            renter: (_renter = {
                 flag: null,
                 options1: [{
                     value: null,
                     label: null
                 }],
-                chengzufang: '',
+                chengzufang: '华溯商贸',
                 jujianfangtype: 1,
-                jujianfang: '',
-                zuhuleixing: 1,
-                //产权人
-                chengzuren: [{
-                    faren: '',
-                    name: '',
-                    idNo: '',
-                    tel: '',
-                    sex: 1,
-                    hetongid: null
-                }],
-                //收款人
-                shoukuanren: '',
-                zhanghao: '',
-                kaihuhang: '',
-                //代理人
-                dailirenName: '',
-                dailirenTel: '',
-                dailirenSex: 1,
-                dailirenId: '',
-                //签约人
-                qianyuerenName: '',
-                qianyuerenTel: '',
-                qianyuerenSex: 1,
-                qianyuerenId: ''
-            },
+                jujianfang: ''
+            }, _defineProperty(_renter, 'jujianfangtype', ''), _defineProperty(_renter, 'zuhuleixing', 1), _defineProperty(_renter, 'chengzuren', [{
+                faren: '',
+                name: '',
+                idNo: '',
+                tel: '',
+                sex: 1,
+                hetongid: null
+            }]), _defineProperty(_renter, 'shoukuanren', ''), _defineProperty(_renter, 'zhanghao', ''), _defineProperty(_renter, 'kaihuhang', ''), _defineProperty(_renter, 'dailirenName', ''), _defineProperty(_renter, 'dailirenTel', ''), _defineProperty(_renter, 'dailirenSex', 1), _defineProperty(_renter, 'dailirenId', ''), _defineProperty(_renter, 'qianyuerenName', ''), _defineProperty(_renter, 'qianyuerenTel', ''), _defineProperty(_renter, 'qianyuerenSex', 1), _defineProperty(_renter, 'qianyuerenId', ''), _renter),
             addDate: {
                 hetongtype: 1, //合同类型
                 dikoujine: '', //合同金额
@@ -37807,7 +37794,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     dizengfangshi: '',
                     dizengliang: ''
                 }],
-                checkList: []
+                checkList: [],
+                jiafangfeiyong: []
             }
         };
     },
@@ -37989,6 +37977,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.addDate.buchongTiaokuanList = res.data.data.buchongTiaokuanList;
             this.addDate.zujinList = res.data.data.zujinList;
             this.addDate.checkList = res.data.data.checkList;
+            this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
         },
         disabledInput: function disabledInput() {
             this.reviewVisible = true;
@@ -39789,7 +39778,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         message: '设置成功',
                         type: 'success'
                     });
-                    _this4.getUsers();
+                    _this4.saleContractList();
                 });
             }).catch(function () {});
         },
@@ -39827,7 +39816,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["T" /* removeSaleContract */])(para).then(function (res) {
                     _this6.listLoading = false;
                     _this6.message({
-                        message: '设置成功',
+                        message: '删除成功',
                         type: 'success'
                     });
                     _this6.getUsers();
@@ -102788,7 +102777,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         required: true,
         validator:
           function (rule, value, callback) {
-            var d1 = new Date(_vm.addDate.zong.startdate);
+            var d1 = new Date(_vm.addDate.zong.enddate);
             var d2 = new Date(value);
             if (value == null) {
               callback('不能为空');
@@ -103373,11 +103362,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-checkbox-group', {
     model: {
-      value: (_vm.addDate.checkList),
+      value: (_vm.addDate.jiafangfeiyong),
       callback: function($$v) {
-        _vm.addDate.checkList = $$v
+        _vm.addDate.jiafangfeiyong = $$v
       },
-      expression: "addDate.checkList"
+      expression: "addDate.jiafangfeiyong"
     }
   }, [_c('el-checkbox', {
     attrs: {
@@ -108010,7 +107999,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1, 2])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("编辑合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleReview(scope.$index, scope.row)
