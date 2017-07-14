@@ -63,7 +63,7 @@
                 zhuangtai:'',
                 property:{
                     flag:null,
-                    officeList: [{
+                    xsOffice: [{
                         omcId:null,
                         loupanOmcId:null,
                         loudongOmcId:null,
@@ -138,6 +138,7 @@
                     qianyuerenId:'',
                 },
                 addDate: {
+                    hetongtype:1,//合同类型
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
                     shoufangdate: '',//收房日期
@@ -275,9 +276,8 @@
                 })
             },
             fuzhi(res){
-                alert(22);
                 this.id = res.data.data.id;
-                this.property.officeList = res.data.data.officeList;
+                this.property.xsOffice = res.data.data.xsOffice;
                 if(res.data.data.chengzuren.length>0){
                     this.renter.chengzuren = res.data.data.chengzuren;
                 }
@@ -305,6 +305,7 @@
                 this.renter.qianyuerenTel = res.data.data.qianyuerenTel;
                 this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
                 this.renter.qianyuerenId = res.data.data.qianyuerenId;
+                this.addDate.hetongtype = res.data.data.hetongtype;
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;
@@ -323,7 +324,6 @@
                 this.addDate.buchongTiaokuanList = res.data.data.buchongTiaokuanList;
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
-                alert(333);
             },
             disabledInput(){
                 this.reviewVisible = true;
