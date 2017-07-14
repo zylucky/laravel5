@@ -229,9 +229,6 @@
                                 (rule,value,callback)=>{
                                     var d1= new Date( addDate.fukuanFangshiList[index].startdate);
                                     var d2= new Date(value);
-                                    if(value==null){
-                                        callback('不能为空');
-                                    }
                                     if(d2<d1){
                                         callback('结束日期不能小于开始日期');
                                     }else{
@@ -283,9 +280,6 @@
                                 (rule,value,callback)=>{
                                     var d1= new Date( addDate.zujinList[index].startdate);
                                     var d2= new Date(value);
-                                    if(value==null){
-                                        callback('不能为空');
-                                    }
                                     if(d2<d1){
                                         callback('结束日期不能小于开始日期');
                                     }else{

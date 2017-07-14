@@ -81,7 +81,7 @@
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="终止时间：">
-                    <el-date-picker type = "date" placeholder="结束时间"  v-model="weiYue.zhongzhidate" @change="changeEnd">
+                    <el-date-picker type = "date" placeholder="结束时间"   v-model="weiYue.zhongzhidate" @change="changeEnd">
                     </el-date-picker>
                 </el-form-item>
                 <el-row>
@@ -116,13 +116,15 @@
         weiyuePurchaseContract,
         endPurchaseContract,
         youhuaPurchaseContract,
+        weiYueInfoPurchaseContract,
     } from '../../api/api.js';
     export default {
         data() {
             return {
+                id:null,
                 payType:{
                     sureFormVisible:false,//佣金支付方式显示
-                    tHetongId:1,
+                    tHetongId:this.id,
                     tHetongBianhao:null,
                 },
                 weiYue:{
@@ -154,7 +156,17 @@
         methods: {
             changeEnd(value){
                 //获取三个信息：合同ID，违约类型，以及本日期
-                
+                this.weiYue.zhongzhidate = new Date(this.weiYue.zhongzhidate).toLocaleDateString() ;
+                let para = {
+                    hetongId:this.id,
+                    hetongType:0,
+                    weiYueType:this.weiYue.weiyueleixing,
+                    zhongZhiDate:this.weiYue.zhongzhidate,
+                }
+                weiYueInfoPurchaseContract(para).then((res)=>{
+                    console.log(res)
+                })
+
             },
             ztin(row,arr){
                 var status = arr.indexOf(row.zhuangtai);
@@ -259,12 +271,12 @@
                 });
             },
             //终止 弹窗确认是否终止
-
             openEndDialog(index,row){
+                this.id = row.id;
                 this.weiYue.formVisible = true;
                 this.weiYue.tHetongBianhao = row.bianhao;
                 this.weiYue.formVisible = true;
-                this.weiYue.tHetongId = true;
+                this.weiYue.tHetongId = this.id;
 
             },
             handleEnd(index,row){
@@ -272,7 +284,7 @@
                     type: 'warning'
                 }).then(() => {
                     this.listLoading = true;
-                    let para = { id: row.id };
+                    let para = { id:this.id };
                     endPurchaseContract(para).then((res) => {
                         this.listLoading = false;
                         //NProgress.done();

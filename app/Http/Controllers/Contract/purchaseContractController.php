@@ -282,4 +282,17 @@ class purchaseContractController extends Controller
         $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$id);
         echo $response->getBody();
     }
+    //合同终止的时候提交合同ID，然后获取应付信息
+    public function weiYueInfo(Request $request){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        dd($request->params);
+        $response = $client->request('POST', '/api/cw/comm/inithtwy', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
 }

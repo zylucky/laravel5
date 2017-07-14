@@ -29,6 +29,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('terminated','Contract\purchaseContractController@terminated');
     Route::get('releasing','Contract\purchaseContractController@releasing');
     Route::get('released','Contract\purchaseContractController@released');
+    Route::get('weiYueInfo','Contract\purchaseContractController@weiYueInfo');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
 
@@ -90,4 +91,5 @@ Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
 Route::get('office/loupanList','Contract\officeController@loupanList');
 Route::get('office/loudongList','Contract\officeController@loudongList');
 Route::get('office/fanghaoList','Contract\officeController@fanghaoList');
+Route::get('office/salefanghaoList','Contract\officeController@salefanghaoList');
 //hello world1

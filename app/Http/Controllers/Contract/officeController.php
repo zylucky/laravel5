@@ -77,5 +77,34 @@ class officeController extends Controller
             echo $obj->msg;
         }
     }
+    //销售获取房间号
+    public function salefanghaoList(){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $lpid = Input::get('lpid');
+        $zdid = Input::get('zdid');
+        //dd(111);
+        //dd($zdid);
+        $response = $client->request('GET', '/api/fangyuan/xsfy',[
+            'query' => [
+                'lpid' => $lpid,
+                'zdid' => $zdid,
+            ]
+        ]);
+        $obj = json_decode($response->getBody());
+        $json = [];
+        if($obj->code==200){
+            foreach ($obj->data as $key=> $value){
+                $json[$key]['id'] = $value->id;
+                $json[$key]['fybh'] = $value->fybh;
+                $json[$key]['fjmj'] = $value->fjmj;
+            }
+            return $json;
+        }else{
+            echo $obj->msg;
+        }
+    }
 
 }

@@ -75,7 +75,6 @@
         weiyueSaleContract,
         endSaleContract,
         jieyueSaleContract,
-        dumpingPurchaseContract,
         approvingSaleContract,} from '../../api/api.js';
     export default {
         data() {
@@ -235,16 +234,20 @@
             },
 
             handleDump(index, row){
-                window.open('/#/saleContract/dump?id=' + row.id)
+
                 /*this.$router.push('/saleContract/dump?id='+row.id);*/
                 let para = {
                     id:row.id,
                 }
                 //this.getPurchaseContractList();
-                dumpingPurchaseContract(para).then((res)=>{
+                confirmSaleContract(para).then((res)=>{
                     //this.getPurchaseContractList();
+                    if(res.data.code=="200"){
+                        this.saleContractList();
+                        window.open('/#/saleContract/dump?id=' + row.id)
+                    }
                 });
-                window.open('/#/purchaseContract/dump?id='+row.id)
+                //window.open('/#/purchaseContract/dump?id='+row.id)
             },
             handleDel(index, row){
                 this.$confirm('确认删除该记录吗？', '提示', {
