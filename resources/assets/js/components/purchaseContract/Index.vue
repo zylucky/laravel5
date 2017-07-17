@@ -67,7 +67,7 @@
         </el-col>
         <contract-pay-type :payType="payType" v-on:refreshbizlines="purchaseContractList"></contract-pay-type>
 
-        <el-dialog title="违约" v-model="weiYue.formVisible" :close-on-click-modal="false">
+        <el-dialog title="违约" v-model="weiYue.Visible" :close-on-click-modal="false">
             <el-form  label-width="120px"  ref="sureForm">
                 <el-input type="hidden" prop="tHetongId"  v-model="weiYue.tHetongId" auto-complete="off"></el-input>
                 <el-form-item label="合同编号：" prop="tHetongBianhao">

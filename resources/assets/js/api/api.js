@@ -116,3 +116,9 @@ export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanL
 export const getLoudongList = params =>{ return axios.get(`${base}/office/loudongList`, { params: params }); };
 export const getFanghaoList = params =>{ return axios.get(`${base}/office/fanghaoList`, { params: params }); };
 export const getSaleFanghaoList = params =>{ return axios.get(`${base}/office/salefanghaoList`, { params: params }); };
+
+//工程合同
+export const getDecorationList = params =>{ return axios.get(`${base}/decoration/index`, { params: params }); };
+export const getDecorationDetail = params =>{ return axios.get(`${base}/decoration/show`, { params: params }); };
+export const submitDecoration = params =>{ return axios.post(`${base}/decoration/submit`, { params: params }); };
+export const storeDecoration = params =>{ return axios.post(`${base}/decoration/store`, { params: params }); };

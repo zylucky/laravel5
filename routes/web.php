@@ -33,6 +33,12 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('released','Contract\purchaseContractController@released');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
+Route::group(['prefix' => 'decoration'], function () {
+    Route::get('index','Contract\decorationController@index');
+    Route::get('show','Contract\decorationController@show');
+    Route::post('submit','Contract\decorationController@submit');
+    Route::post('store','Contract\decorationController@store');
+});
 
 
 //Route::get('purchaseContract/review','Contract\purchaseContractController@review');

@@ -208,9 +208,6 @@
                 //房间类型
                 options: [
                     {
-                        value: 0,
-                        label: '请选择'
-                    },{
                         value: 1,
                         label: '公寓'
                     }, {
@@ -382,8 +379,8 @@
                 }
                 for (var x in this.houseData){
                     if(this.houseData[x].id==this.property.officeList[this.tabIndex-1].omcId){
-                        this.property.officeList[this.tabIndex-1].Jianzhumianji=this.houseData[x].fjmj;
-                        this.property.officeList[this.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
+                        this.property.officeList[this.tabIndex-1].jianzhumianji=this.houseData[x].fjmj;
+                        this.property.officeList[this.tabIndex-1].qianyuemianji=this.houseData[x].fjmj;
                     }
                 }
             },
