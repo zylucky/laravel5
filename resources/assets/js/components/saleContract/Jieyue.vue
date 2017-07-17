@@ -1,18 +1,18 @@
 <template>
-    <div>
+    <el-row class="">
         <div style="font-size:16px;font-weight:700;position:relative;left:30px;top:20px;">基本信息</div>
         <div style="font-size:14px;position:relative;left:30px;top:20px;">
             <span style="position:relative;left:30px;top:40px;">
-                <span>楼盘名称：</span><span id="loupanName"></span>
+                <span>楼盘名称：</span><span id="loupanName">测试楼盘</span>
             </span>
             <span style="position:relative;left:460px;top:40px;">
-                <span>楼栋：</span><span id="loudongName"></span>
+                <span>楼栋：</span><span id="loudongName">A座</span>
             </span>
             <span style="position:relative;left:880px;top:40px;">
-                <span>房间号：</span><span id="fanghao"></span>
+                <span>房间号：</span><span id="fanghao">1001</span>
             </span>
             <div style="position:relative;left:15px;top:70px;">
-                <span>原合同编号：</span><span id="biaohao"></span>
+                <span>原合同编号：</span><span id="biaohao">URS-XS-KJ-17070011</span>
             </div>
 
                 <div v-model="editableTabsValue2" type="card" closable @tab-remove="removeTab" style="position:relative;top:100px;">
@@ -22,12 +22,12 @@
                             :label="item.title"
                             :name="item.name"
                     >
-                        <el-form label-Weizhi="right" label-width="100px" :rules="jieyueRules" :model="property.officeList[index]">
+                        <el-form label-Weizhi="right" label-width="100px" :rules="jieyueRules" :model="property.jieyueXieyi[index]">
                                 <el-form-item label="新合同编号" prop="newbiaohao" required>
-                                    <el-input v-model="property.officeList[index].xinbianhao" placeholder="请输入新合同编号"></el-input>
+                                    <el-input v-model="property.jieyueXieyi[index].xinbianhao" placeholder="请输入新合同编号"></el-input>
                                 </el-form-item>
                                 <el-form-item label="解约方式" prop="jiefangshi" required>
-                                    <el-radio-group v-model="property.officeList[index].jieyuefangshi">
+                                    <el-radio-group v-model="property.jieyueXieyi[index].jieyuefangshi">
                                         <el-radio label="退租"></el-radio>
                                         <el-radio label="扩租"></el-radio>
                                         <el-radio label="缩租"></el-radio>
@@ -36,17 +36,17 @@
                                 <el-row>
                                     <el-col :span="8">
                                         <el-form-item label="合同终止日期" prop="zhongzhidata" required>
-                                            <el-date-picker type="date" placeholder="请选择合同终止日期" v-model="property.officeList[index].zhongzhidate" style="width: 100%;"></el-date-picker>
+                                            <el-date-picker type="date" placeholder="请选择合同终止日期" v-model="property.jieyueXieyi[index].zhongzhidate" style="width: 100%;"></el-date-picker>
                                         </el-form-item>
                                     </el-col>
                                     <el-col :span="8">
                                         <el-form-item label="交房日期">
-                                            <el-date-picker type="date" placeholder="请选择交房日期" v-model="property.officeList[index].jiaofangdate" style="width: 100%;"></el-date-picker>
+                                            <el-date-picker type="date" placeholder="请选择交房日期" v-model="property.jieyueXieyi[index].jiaofangdate" style="width: 100%;"></el-date-picker>
                                         </el-form-item>
                                     </el-col>
                                 </el-row>
                                 <el-form-item label="工商营业执照迁出" prop="yingyezhizhao" required>
-                                    <el-radio-group v-model="property.officeList[index].zhizhaoqianchu">
+                                    <el-radio-group v-model="property.jieyueXieyi[index].zhizhaoqianchu">
                                         <el-radio label="是"></el-radio>
                                         <el-radio label="否"></el-radio>
                                     </el-radio-group>
@@ -55,18 +55,18 @@
                                 <el-row>
                                     <el-col :span="8">
                                         <el-form-item label="退还押金" prop="tuiyajin" required>
-                                            <el-input v-model="property.officeList[index].tuihuanyajin" placeholder="请输入退还押金"></el-input>
+                                            <el-input v-model="property.jieyueXieyi[index].tuihuanyajin" placeholder="请输入退还押金"></el-input>
                                         </el-form-item>
                                     </el-col>
                                     <el-col :span="8">
                                         <el-form-item label="退还剩余房租" prop="tuihuanfangzu" required>
-                                            <el-input v-model="property.officeList[index].tuihuanfangzu" placeholder="请输入退还剩余房租"></el-input>
+                                            <el-input v-model="property.jieyueXieyi[index].tuihuanfangzu" placeholder="请输入退还剩余房租"></el-input>
                                         </el-form-item>
                                     </el-col>
                                 </el-row>
                                 <el-col :span="8">
                                     <el-form-item label="应收杂费" prop="yingshouzafei" required>
-                                        <el-input v-model="property.officeList[index].yingshouzafei" placeholder="请输入租户应交杂费"></el-input>
+                                        <el-input v-model="property.jieyueXieyi[index].yingshouzafei" placeholder="请输入租户应交杂费"></el-input>
                                     </el-form-item>
                                 </el-col>
                             <div style="margin-left:-50px;">
@@ -79,10 +79,10 @@
                 </div>
             <!--</el-row>-->
         </div>
-    </div>
+    </el-row>
 </template>
 <script>
-    import {getLoupanList,getLoudongList,getFanghaoList,jieyueSaleContract,addSaleJieyueContractInfo,jieyuewanSaleContract} from '../../api/api';
+    import {getLoupanList,getLoudongList,getFanghaoList,jieyueSaleContract,addSaleJieyueContractInfo,jieyuewanSaleContract,getJieyueSaleContract} from '../../api/api';
     export default {
         components:{
 
@@ -115,25 +115,23 @@
                         {type: 'number', message: '必须为数字'},
                     ],
                 },
-                property:{
-                    officeList: [{
-                        /*omcId:null,
+                jieyueXieyi: {
+                    /*omcId:null,
                         loupanOmcId:null,
                         loudongOmcId:null,*/
-                        loupanName:null,
-                        loudongName:null,
-                        fanghao:null,
-                        yuanhetongbiaohao: null,
-                        jieyuefangshi:'退租',
-                        zhongzhidate:'',
-                        jiaofangdate:'',
-                        zhizhaoqianchu:'',
-                        tuihuanyajin:'',
-                        tuihuanfangzu:'',
-                        yingshouzafei:'',
-                        xinbianhao: null,
-                        hetongid:null,
-                    }],
+                    loupanName:null,
+                    loudongName:null,
+                    fanghao:null,
+                    yuanhetongbiaohao: null,
+                    jieyuefangshi:'退租',
+                    zhongzhidate:'',
+                    jiaofangdate:'',
+                    zhizhaoqianchu:'',
+                    tuihuanyajin:'',
+                    tuihuanfangzu:'',
+                    yingshouzafei:'',
+                    xinbianhao: null,
+                    hetongid:null,
                 },
                 //楼盘数据
                 /*options1:[],
@@ -182,25 +180,79 @@
             }
         },
         methods: {
-            save:function () {
-                this.btnType = false;
-                this.submsg  = '提交';
+            //根据合同ID来查询协议
+            getjieyue(){
+                let para = {
+                    id:this.$route.query.id
+                };
+                getJieyueSaleContract(para).then((res)=>{
+//                    console.log(res.data);
+                    this.fuzhi(res);
+                });
+            },
+            fuzhi(res){
                 var loupanName = document.getElementById("loupanName").innerHTML;
                 var loudongName = document.getElementById("loudongName").innerHTML;
                 var fanghao = document.getElementById("fanghao").innerHTML;
                 var biaohao = document.getElementById("biaohao").innerHTML;
-
-                var child_property = this.property;
+                loupanName = res.data.data.xsOffice.loupanName;
+                loudongName = res.data.data.xsOffice.loudongName;
+                fanghao = res.data.data.xsOffice.fanghao;
+                loupanName = res.data.data.xsOffice.bianhao;
+                alert(11);
+                if(res.data.data.chanquanrenList.length>0){
+                    this.owner.chanquanrenList = res.data.data.chanquanrenList;
+                }
+                this.id = res.data.data.id;
+                //this.owner.yezhuleixing = res.data.data.yezhuleixing;
+                this.jieyueXieyi.xinbianhao = res.data.data.dailirenTel;
+                this.jieyueXieyi.jieyuefangshi = res.data.data.dailirenSex;
+                this.jieyueXieyi.zhongzhidate = res.data.data.dailirenId;
+                this.jieyueXieyi.jiaofangdate = res.data.data.dailirenName;
+                this.jieyueXieyi.zhizhaoqianchu = res.data.data.qianyuerenName;
+                this.jieyueXieyi.tuihuanyajin = res.data.data.qianyuerenTel;
+                this.jieyueXieyi.tuihuanfangzu = res.data.data.qianyuerenSex;
+                this.jieyueXieyi.yingshouzafei = res.data.data.qianyuerenId;
+                this.jieyueXieyi.zuqistartdate = res.data.data.zuqistartdate;
+                this.addDate.zuqienddate = res.data.data.zuqienddate;
+            },
+            save:function () {
+                this.btnType = false;
+                this.submsg  = '提交';
+                /*var loupanName = document.getElementById("loupanName").innerHTML;
+                var loudongName = document.getElementById("loudongName").innerHTML;
+                var fanghao = document.getElementById("fanghao").innerHTML;
+                var biaohao = document.getElementById("biaohao").innerHTML;*/
+                /*var child_property = this.property;*/
                 //var child_renter  = this.$refs.renter.renter;
                 //var child_date = this.$refs.date.addDate;
-                var id = {
+                let para = {
+                    id:this.id,
+                    hetongid:this.$route.query.id,
+                    zujinList:this.addDate.zujinList,
+                    mianzuqiList:this.addDate.mianzuqiList,
+                    fukuanFangshiList:this.addDate.fukuanFangshiList,
+                    chanquanrenList:this.owner.chanquanrenList,
+                    yezhuleixing :this.owner.yezhuleixing ,
+                    dailirenTel : this.owner.dailirenTel,
+                    dailirenSex : this.owner.dailirenSex  ,
+                    dailirenId : this.owner.dailirenId  ,
+                    dailirenName : this.owner.dailirenName ,
+                    qianyuerenName : this.owner.qianyuerenName  ,
+                    qianyuerenTel : this.owner.qianyuerenTel  ,
+                    qianyuerenSex :this.owner.qianyuerenSex  ,
+                    qianyuerenId :  this.owner.qianyuerenId  ,
+                    zuqistartdate:this.addDate.zuqistartdate,
+                    zuqienddate:this.addDate.zuqienddate,
+                    xieyistartdate:this.addDate.xieyistartdate,
+                    xieyienddate:this.addDate.xieyienddate,
+                }
+                /*var id = {
                     id: this.id
-                };
+                };*/
                 /*var bianhao = {
                     bianhao: this.bianhao,
                 };*/
-                let para = Object.assign({}, child_property,loupanName,loudongName,fanghao,biaohao,id);
-                alert(para);
                 addSaleJieyueContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         this.fuzhi(res);
@@ -264,7 +316,7 @@
                 window.location.href="./Index.vue";*/
                 window.history.back(-1);
             },
-            fuzhi(res){
+            /*fuzhi(res){
                 var loupanName = document.getElementById("loupanName").innerHTML;
                 var loudongName = document.getElementById("loudongName").innerHTML;
                 var fanghao = document.getElementById("fanghao").innerHTML;
@@ -275,7 +327,7 @@
                 loudongName = res.data.data.officeList.loudongName;
                 fanghao = res.data.data.officeList.fanghao;
                 biaohao = res.data.data.bianhao;
-            },
+            },*/
             /*removeTab(targetName) {
                 this.property.officeList.pop();//删除
                 let tabs = this.editableTabs2;
@@ -310,7 +362,8 @@
             },
         },
         mounted() {
-            fuzhi(res);
+            //查询
+            this.getjieyue();
             if(this.$route.query.id!=null){
                 this.getJieyueSaleContract(this.$route.query);
             }

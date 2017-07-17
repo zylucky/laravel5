@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-form :label-position="labelPosition" :rules="editRenterRules" label-width="100px" :model="renter">
+        <el-form :label-position="labelPosition" ref="renterForm" :rules="editRenterRules" label-width="100px" :model="renter">
         <el-col :span="24">
             <el-form-item label="出租人">
                 <el-radio-group v-model="renter.chengzufang">
@@ -46,17 +46,17 @@
 
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="收款人" required>
+                    <el-form-item label="收款人" prop="shoukuanren" required>
                         <el-input v-model="renter.shoukuanren"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="10">
-                    <el-form-item label="开户行" required>
+                    <el-form-item label="开户行" prop="kaihuhang" required>
                         <el-input v-model="renter.kaihuhang"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="账号" required>
+                    <el-form-item label="账号" prop="zhanghao" required>
                         <el-input v-model="renter.zhanghao"></el-input>
                     </el-form-item>
                 </el-col>
@@ -225,6 +225,11 @@
         },
         props:['renter'],
         methods: {
+            valid(){
+                this.$refs.renterForm.validate((valid) => {
+                    this.renter.flag = valid;
+                });
+            },
             changeOnSelect(){
                 var arr = this.renter.options1;
                 for (let i=0;i<arr.length;i++ ){
