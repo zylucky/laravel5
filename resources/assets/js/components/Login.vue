@@ -61,8 +61,8 @@
                                 });
                             } else {
                                 sessionStorage.setItem('user', JSON.stringify(user));
-                                this.$router.push({ path: '/' });
-                                window.location.reload()
+                                this.$router.push({ path: '/message' });
+                                //window.location.reload()
                             }
                         });
                     } else {

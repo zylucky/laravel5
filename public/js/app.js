@@ -29578,8 +29578,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             });
                         } else {
                             sessionStorage.setItem('user', JSON.stringify(user));
-                            _this2.$router.push({ path: '/' });
-                            window.location.reload();
+                            _this2.$router.push({ path: '/message' });
+                            //window.location.reload()
                         }
                     });
                 } else {
