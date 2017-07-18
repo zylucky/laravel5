@@ -69,11 +69,7 @@ router.beforeEach((to, from, next) => {
                 }
             }
         }
-        Vue.prototype.changeDate = function (dt){
-            var newDate = new Date();
-            newDate.setTime(dt);
-            return newDate.toLocaleDateString()
-        }
+
     }
 })
 const app = new Vue({

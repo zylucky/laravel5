@@ -2,32 +2,83 @@
 <template>
     <el-row >
         <div style="margin-top:30px"></div>
-        <el-form :inline="true" :model="filters" class="demo-form-inline">
-            <el-form-item label="">
-                <el-input v-model="filters.bk_name" placeholder="渠道公司名称"></el-input>
+        <el-form   :inline="true" :model="filters"  class="demo-form-inline">
+            <el-row>
+            <el-form-item label="业务区域：" >
+                <el-select v-model="filters.areaId" placeholder="请选择区域">
+                    <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="地图区域："   >
+                <el-select v-model="filters.mapAreaId" placeholder="请选择地图区域">
+                    <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="所在楼盘："   >
+                <el-input v-model="filters.buildingname" placeholder="请输入所在楼盘"></el-input>
+            </el-form-item></el-row><el-row>
+            <el-form-item label="服务类型："   >
+                <el-select v-model="filters.serviceType" placeholder="请选择服务类型">
+                    <el-option
+                            v-for="item in optionsfw"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="经营属性："    >
+                <el-select v-model="filters.managementAttr" placeholder="请选择经营属性">
+                    <el-option
+                            v-for="item in optionssx"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="公司名称：">
+                <el-input v-model="filters.bk_name" placeholder="请输入公司名称"></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getBrokerCompany">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus"    @click="handleAdd"    > 新增</el-button>
             </el-form-item>
+        </el-row>
         </el-form>
         <el-table :data="brokerCompany"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
 
             <el-table-column type="index"   width="60">
             </el-table-column>
-            <el-table-column prop="compayname" label="渠道公司名称"  sortable>
+            <el-table-column prop="compayname" label="公司名称"  >
             </el-table-column>
-            <el-table-column prop="compaytest" label="渠道公司说明"  sortable>
+            <el-table-column prop="compaytest" label="区域"  >
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="收房佣金占比"  sortable>
+            <el-table-column prop="yjzbSf" label="地图区域"  >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="出房佣金占比"  sortable>
+            <el-table-column prop="yjzbCf" label="所在项目"  >
             </el-table-column>
-            <el-table-column prop="yjType" label="佣金类型"  :formatter="formatYJType" sortable>
+            <el-table-column prop="yjType" label="经营属性"  :formatter="formatYJType" >
             </el-table-column>
-            <el-table-column prop="tbPersonIdCreate" label="创建人"     sortable>
+            <el-table-column prop="yjType" label="服务类型"  :formatter="formatYJType" >
             </el-table-column>
-            <el-table-column prop="createdate" label="创建时间" :formatter="changeDate" sortable>
+            <el-table-column prop="tbPersonIdCreate" label="负责人姓名"     >
+            </el-table-column>
+            <el-table-column prop="tbPersonIdCreate" label="联系方式"     >
+            </el-table-column>
+            <el-table-column prop="tbPersonIdCreate" label="协议等级"     >
+            </el-table-column>
+            <el-table-column prop="createdate" label="信息完整度"  >
             </el-table-column>
             <el-table-column label="操作" width="150">
                 <template scope="scope">
@@ -36,8 +87,9 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  >  <el-button   @click="handleEdit(scope.$index, scope.row)">编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;辑</el-button> </el-dropdown-item>
-                                <el-dropdown-item  >  <el-button   @click="handleDel(scope.$index, scope.row)">删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除</el-button> </el-dropdown-item>
+                            <el-dropdown-item  >  <el-button   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
+                            <el-dropdown-item  >  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
+                            <el-dropdown-item  >  <el-button   @click="handleDel(scope.$index, scope.row)">删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -60,70 +112,7 @@
             >
             </el-pagination>
         </el-col>
-        <!--编辑界面-->
-        <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
-            <el-form :model="editForm" label-width="120px" :rules="editFormRules" ref="editForm">
-                <el-form-item label="渠道公司名称" prop="compayname">
-                    <el-input v-model="editForm.compayname" auto-complete="off"   disabled=""></el-input>
-                </el-form-item>
-                <el-form-item label="收房佣金占比" prop="yjzbSf">
-                    <el-input v-model.number="editForm.yjzbSf" value="" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="出房佣金占比" prop="yjzbCf">
-                    <el-input v-model.number="editForm.yjzbCf" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="佣金类型"   prop="yjType">
-                    <el-select v-model="editForm.yjType" placeholder="">
-                        <el-option
-                                v-for="item in options"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-                <el-form-item label="渠道公司说明" prop="compaytest">
-                    <el-input v-model="editForm.compaytest" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-input type="hidden" prop="tbPersonIdCreate" v-model="editForm.tbPersonIdCreate" auto-complete="off"></el-input>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click.native="editFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-            </div>
-        </el-dialog>
-        <!--新增界面-->
-        <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
-            <el-form :model="addForm" label-width="120px" :rules="addFormRules" ref="addForm">
-                <el-form-item label="渠道公司名称" prop="compayname">
-                    <el-input v-model="addForm.compayname" auto-complete="off"   ></el-input>
-                </el-form-item>
-                <el-form-item label="收房佣金占比" prop="yjzbSf">
-                    <el-input  v-model.number="addForm.yjzbSf" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="出房佣金占比" prop="yjzbCf">
-                    <el-input  v-model.number="addForm.yjzbCf" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="佣金类型"    prop="yjType">
-                    <el-select type="number"  v-model="addForm.yjType" placeholder="">
-                        <el-option
-                                v-for="item in options"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
 
-                <el-form-item label="渠道公司说明" prop="compaytest">
-                    <el-input v-model="addForm.compaytest" auto-complete="off"></el-input>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click.native="addFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
-            </div>
-        </el-dialog>
 
     </el-row>
 </template>
@@ -135,14 +124,15 @@
         editBrokerCompany,
         removeBrokerCompany,
         addBrokerCompany,
-        batchRemoveBrokerCompany,
         checkbkNameList,
 
 
     } from '../../api/api';
+    import ElRow from "element-ui/packages/row/src/row";
 
     export default{
 
+        components: {ElRow},
         data(){
 
             return {
@@ -150,7 +140,7 @@
                     bk_name:'',
                 },
                 options:[
-                    {
+                   {
                         value: 1,
                         label: '按月租金'
                     }, {
@@ -158,11 +148,60 @@
                         label: '按年租金'
                     },
                 ],
-
+                optionsfw:[
+                    {
+                        value: 0,
+                        label: '请选择'
+                    }, {
+                        value: 1,
+                        label: '开发商'
+                    }, {
+                        value: 2,
+                        label: '个人'
+                    },
+                ],
+                optionssx:[
+                    {
+                        value: 0,
+                        label: '请选择'
+                    },{
+                        value: 1,
+                        label: '写字楼租赁'
+                    }, {
+                        value: 2,
+                        label: '住宅租赁'
+                    }, {
+                        value: 2,
+                        label: '公寓租赁'
+                    }, {
+                        value: 2,
+                        label: '商铺租赁'
+                    }, {
+                        value: 2,
+                        label: '别墅租赁'
+                    }, {
+                        value: 2,
+                        label: '写字楼买卖'
+                    }, {
+                        value: 2,
+                        label: '住宅买卖'
+                    }, {
+                        value: 2,
+                        label: '公寓买卖'
+                    }, {
+                        value: 2,
+                        label: '商铺买卖'
+                    }, {
+                        value: 2,
+                        label: '别墅买卖'
+                    },
+                ],
+                value1: null,
                 //分页类数据
                 total:0,
                 currentPage:0,
-
+                dialogImageUrl: '',
+                dialogVisible: false,
 
                 pageSize:10,
                 pageSizes:[10, 20, 30, 40, 50, 100],
@@ -295,7 +334,9 @@
                 newDate.setTime(row.createdate);
                 return newDate.toLocaleDateString()
             },
-
+            handleView: function (index, row) {
+                this.$router.push('/brokerCompany/view?id=' + row.id);
+            },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
@@ -356,23 +397,11 @@
             },
             //显示编辑界面
             handleEdit: function (index, row) {
-                this.editFormVisible = true;
-                this.editForm = Object.assign({}, row);
-              //  this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-
-
+                this.$router.push('/brokerCompany/edit?id=' + row.id);
             },
             //显示新增界面
             handleAdd: function () {
-                this.addFormVisible = true;
-                this.addForm = {
-                    compayname: '',
-                    yjzbSf:'',
-                    yjzbCf:'',
-                    compaytest:'',
-                    yjType:1,
-
-                };
+                this.$router.push('/brokerCompany/add');
             },
             //编辑
             editSubmit: function () {
@@ -478,6 +507,13 @@
                 }).catch(() => {
 
                 });
+            },
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
             }
         },
 

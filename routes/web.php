@@ -57,9 +57,9 @@ Route::post('shouFangCommission/finishSK','Commission\ShouFangCommissionControll
 
 //消息列表
 Route::resource('message','Message\messageController');
+
 Route::post('message/acceptMessage','Message\messageController@acceptMessage');
 Route::post('message/refuseMessage','Message\messageController@refuseMessage');
-
 
 //Route::post('saleContract/sub','Contract\saleContractController@sub');
 Route::get('saleContract/submit','Contract\saleContractController@submit');
@@ -75,32 +75,51 @@ Route::get('saleContract/jieyuesave','Contract\saleContractController@jieyuesave
 
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 
-Route::get('permission/getAll','Rbac\PermissionController@getAll');
-Route::get('permission/role/{id}','Rbac\PermissionController@getPermission');
-Route::get('permission/update','Rbac\PermissionController@update');
+//权限
+Route::group(['prefix' => 'permission'], function () {
+    Route::get('getAll','Rbac\PermissionController@getAll');
+    Route::get('role/{id}','Rbac\PermissionController@getPermission');
+    Route::get('update','Rbac\PermissionController@update');
+    Route::get('list','Rbac\PermissionController@getPermissionList');
+    Route::post('update/{id}','Rbac\PermissionController@update');
+});
+//消息
+Route::group(['prefix' => 'message'], function () {
+    Route::post('acceptMessage','Message\messageController@acceptMessage');
+    Route::post('refuseMessage','Message\messageController@refuseMessage');
+});
+//渠道公司
+Route::group(['prefix' => 'brokerCompany'], function () {
+    Route::post('checkbkNameList','BrokerCompany\brokerCompanyController@checkbkNameList');
 
-Route::get('permission/list','Rbac\PermissionController@getPermissionList');
-Route::post('permission/update/{id}','Rbac\PermissionController@update');
-Route::post('brokerCompany/batchRemoveBrokerCompany','BrokerCompany\brokerCompanyController@batchRemoveBrokerCompany');
-Route::post('brokerCompanyUser/getbkNameList','BrokerCompany\brokerCompanyUserController@getbkNameList');
-Route::post('brokerCompanyUser/batchRemoveBKUser','BrokerCompany\brokerCompanyUserController@batchRemoveBKUser');
-Route::post('brokerCompany/checkbkNameList','BrokerCompany\brokerCompanyController@checkbkNameList');
-Route::post('brokerCompany/getUserById','BrokerCompany\brokerCompanyController@getUserById');
+});
+//渠道公司人员
+Route::group(['prefix' => 'brokerCompanyUser'], function () {
+    Route::post('getbkNameList','BrokerCompany\brokerCompanyUserController@getbkNameList');
+});
+Route::resource('brokerCompanyHistory','BrokerCompany\brokerCompanyHistoryController');
 
 Route::post('Commission/contractPayType','Commission\CommissionController@selectCommissionPayType');
 
 Route::post('logout','Auth\LoginController@logout');
 Route::post('login','Auth\LoginController@index');
 
-Route::get('user/list','UserController@getlist');
-Route::post('user/delete','UserController@delete');
-Route::post('user/store','UserController@addUser');
-Route::post('user/edit','UserController@editUser');
-Route::post('user/role/{id}','UserController@setRole');
-Route::post('user/batchRemoveUser','UserController@batchRemoveUser');
+//用户
+Route::group(['prefix' => 'user'], function () {
+    Route::get('list','UserController@getlist');
+    Route::post('delete','UserController@delete');
+    Route::post('store','UserController@addUser');
+    Route::post('edit','UserController@editUser');
+    Route::post('role/{id}','UserController@setRole');
+    Route::post('batchRemoveUser','UserController@batchRemoveUser');
+});
 
-Route::get('office/loupanList','Contract\officeController@loupanList');
-Route::get('office/loudongList','Contract\officeController@loudongList');
-Route::get('office/fanghaoList','Contract\officeController@fanghaoList');
-Route::get('office/salefanghaoList','Contract\officeController@salefanghaoList');
+//合同房源
+Route::group(['prefix' => 'office'], function () {
+    Route::get('loupanList','Contract\officeController@loupanList');
+    Route::get('loudongList','Contract\officeController@loudongList');
+    Route::get('fanghaoList','Contract\officeController@fanghaoList');
+    Route::get('salefanghaoList','Contract\officeController@salefanghaoList');
+});
+
 //hello world1

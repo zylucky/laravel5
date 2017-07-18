@@ -73,6 +73,7 @@
 <script>
     import { requestLogin,logout } from '../api/api.js';
     export default {
+
         //菜单栏
         data(){
             return {
@@ -99,6 +100,7 @@
             },
             //退出登录
             logout: function () {
+
                 var _this = this;
                 this.$confirm('确认退出吗?', '提示', {
                     //type: 'warning'
@@ -115,6 +117,12 @@
 
             },
 
+            openMessage() {
+                this.$notify.info({
+                    title: '消息',
+                    message: '这是一条消息的提示消息'
+                });
+            },
             //折叠导航栏
             collapse:function(){
                 this.collapsed=!this.collapsed;
@@ -124,14 +132,17 @@
             }
         },
         mounted() {
+
             var user = sessionStorage.getItem('user');
             if (user) {
                 user = JSON.parse(user);
                 this.sysUserName = user.name || '';
                 this.sysUserAvatar = user.avatar || '../../image/default.jpg';
             }
+           // setInterval(this.openMessage,300000)
 
         }
+
     }
 </script>
 <style scoped lang="scss">
