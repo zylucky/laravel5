@@ -93,10 +93,12 @@ export const weiYueSavePurchaseContract= params => { return axios.post(`${base}/
 
 //出房合同
 //合同信息
+export const getdayinSaleContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
 export const addSaleContractInfo= params => { return axios.post(`${base}/saleContract`, { params: params }); };
 export const reviewSaleContract= params => { return axios.post(`${base}/saleContract/review`, { params: params }); };
 export const getSaleContractList = params => { return axios.get(`${base}/saleContract`, { params: params }); };
 export const getSaleContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
+export const getjieyueSaleContractInfo = params => { return axios.get(`${base}/saleContract/jieyuelist`, {params:params}); };
 export const submitSaleContract = params => {return axios.get(`${base}/saleContract/`+params.id+'/edit', {}); };
 export const getJieyueSaleContract = params => { return axios.get(`${base}/saleContract/jieyue`, { params: params }); };
 /*export const dumpingSaleContract = params => {return axios.get(`${base}/saleContract/`+params.id+'/edit', {}); };//状态变更为：待确认*/
@@ -108,8 +110,8 @@ export const weiyueSaleContract= params => { return axios.get(`${base}/saleContr
 export const endSaleContract= params => { return axios.get(`${base}/saleContract/terminated`, {params:params}); };//状态变更为：合同终止
 export const jieyueSaleContract = params => { return axios.get(`${base}/saleContract/releasing`, { params: params }); };//状态变更为：解约中
 export const jieyuewanSaleContract = params => { return axios.get(`${base}/saleContract/released`, { params: params }); };//状态变更为：解约完成
-export const jieyueSaleContractInfo = params => { return axios.get(`${base}/saleContract/submit`+params.id, {}); };
-export const addSaleJieyueContractInfo = params => { return axios.get(`${base}/saleContract/jieyuesave`+params.id, {}); };
+export const jieyueSaleContractInfo = params => { return axios.post(`${base}/saleContract/submit`, {params:params}); };
+export const addSaleJieyueContractInfo = params => { return axios.post(`${base}/saleContract/jieyuesave`, { params: params });};
 export const removeSaleContract = params => { return axios.post(`${base}/saleContract/delete`, { params: params }); };
 
 //获取楼盘，楼栋，房间号

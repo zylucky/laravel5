@@ -144,8 +144,10 @@
                     dikoujine:'',//合同金额
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
+                    xinjianshoufangdate: '',//收房日期
+                    xinjianqianyuedate: '',//签约日期
                     shoufangdate: '',//收房日期
-                    qianyueDate: '',//签约日期
+                    qianyuedate: '',//签约日期
                     mianzufangshi: [],//免租方式
                     mianzuqiList: [{
                         startdate:'',//免租开始
@@ -213,6 +215,9 @@
                     }
                 })
                 }else{
+                    console.log(this.property.flag);
+                    console.log(this.renter.flag);
+                    console.log(this.addDate.flag);
                     if(this.property.flag==false){this.stepNum = 3;}
                     if(this.renter.flag==false){this.stepNum = 2;}
                     if(this.addDate.flag==false){this.stepNum = 1;}
@@ -237,6 +242,7 @@
                     };
                     let para = Object.assign({}, child_property,child_renter,child_date,id,bianhao);
                     //alert(para);
+                    console.log(para);
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
                             this.fuzhi(res);

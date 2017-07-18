@@ -63,7 +63,7 @@ Route::post('message/acceptMessage','Message\messageController@acceptMessage');
 Route::post('message/refuseMessage','Message\messageController@refuseMessage');
 
 //Route::post('saleContract/sub','Contract\saleContractController@sub');
-Route::get('saleContract/submit','Contract\saleContractController@submit');
+Route::post('saleContract/submit','Contract\saleContractController@submit');
 Route::get('saleContract/jieyue','Contract\saleContractController@jieyue');
 Route::get('saleContract/approving','Contract\saleContractController@approving');
 Route::get('saleContract/confirm','Contract\saleContractController@confirm');
@@ -73,7 +73,8 @@ Route::get('saleContract/terminated','Contract\saleContractController@terminated
 Route::get('saleContract/releasing','Contract\saleContractController@releasing');
 Route::get('saleContract/released','Contract\saleContractController@released');
 Route::post('saleContract/review','Contract\saleContractController@review');
-Route::get('saleContract/jieyuesave','Contract\saleContractController@jieyuesave');
+Route::post('saleContract/jieyuesave','Contract\saleContractController@jieyuesave');
+Route::get('saleContract/jieyuelist','Contract\saleContractController@jieyuelist');
 
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 

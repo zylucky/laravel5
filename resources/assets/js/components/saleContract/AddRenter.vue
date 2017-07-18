@@ -71,7 +71,11 @@
                 <div v-for="(item, index) in renter.chengzuren">
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="承租人" prop="chengzurenname" required>
+                        <el-form-item label="承租人" :prop="'chengzuren.' + index + '.name'"
+                                      :rules="[
+                                      { required: true, message: '不能为空' }
+                                        ]"
+                                      required>
                             <el-input v-model="renter.chengzuren[index].name"></el-input>
                         </el-form-item>
                     </el-col>
@@ -132,7 +136,9 @@
                 </el-row>
             </div>
             <div v-if="renter.zuhuleixing == 2">
-                <el-form-item label="公司名称" prop="companyname" required>
+                <el-form-item label="公司名称" :prop="'chengzuren.' + index + '.name'" :rules="[
+                         { required: true, message: '不能为空' }
+                    ]">
                     <el-input v-model="renter.chengzuren[0].name"></el-input>
                 </el-form-item>
                 <el-row>
@@ -212,12 +218,6 @@
                         { required: true, message: '不能为空' }
                     ],
                     zhanghao: [
-                        { required: true, message: '不能为空' }
-                    ],
-                    chengzurenname: [
-                        { required: true, message: '不能为空' }
-                    ],
-                    companyname: [
                         { required: true, message: '不能为空' }
                     ],
                 },

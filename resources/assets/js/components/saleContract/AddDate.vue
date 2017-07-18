@@ -71,12 +71,12 @@
                     <el-row>
                         <el-col :span="8">
                             <el-form-item label="收房日" required>
-                                <el-date-picker type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;"></el-date-picker>
+                                <el-date-picker type="date" placeholder="选择日期" v-model="addDate.xinjianshoufangdate" style="width: 100%;"></el-date-picker>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
                             <el-form-item label="签约日" required>
-                                <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
+                                <el-date-picker type="date" placeholder="选择日期" v-model="addDate.xinjianqianyuedate" style="width: 100%;"></el-date-picker>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -205,7 +205,7 @@
                                 </el-col>
                                     <el-col :span="11">
                                         <el-form-item
-                                                :prop="'fukuanFangshiList.' + index + '.value'"
+                                                :prop="'fukuanFangshiList.' + index + '.enddate'"
                                                 :rules="[
                                             {  required: true,validator:
                                             (rule,value,callback)=>{
@@ -364,12 +364,12 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="总应付租金" prop="zongyingfuzujin" required>
+                    <el-form-item label="总应付租金" prop="yingfuzongzujin" required>
                         <el-input v-model="addDate.yingfuzongzujin" placeholder="总应付押金" required></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="合同佣金" prop="yongjin" required>
+                    <el-form-item label="合同佣金" prop="hetongyongjin" required>
                         <el-input v-model="addDate.hetongyongjin" placeholder="合同佣金" required></el-input>
                     </el-form-item>
                 </el-col>
@@ -382,7 +382,7 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="押金付款日期" prop="yajinfukuanri" required>
+                    <el-form-item label="押金付款日期" prop="yajinfukuanriqi" required>
                         <el-date-picker
                                 type="date"
                                 placeholder="选择日期"
@@ -427,10 +427,10 @@
                 </el-col>
             </el-row>
             <!--各种费用-->
-            <el-form-item label="费用" prop="feiyong" required>
+            <el-form-item label="费用" prop="jiafangfeiyong" required>
                 <el-checkbox-group  v-model="addDate.jiafangfeiyong">
-                    <el-checkbox label="（一）物业费" value="1"></el-checkbox>
-                    <el-checkbox label="（二）取暖费" checked=""></el-checkbox>
+                    <el-checkbox label="（一）物业费"></el-checkbox>
+                    <el-checkbox label="（二）取暖费"></el-checkbox>
                     <el-checkbox label="（三）制冷"></el-checkbox>
                     <el-checkbox label="（四）发票"></el-checkbox>
                     <el-checkbox label="（五）其它"></el-checkbox>
@@ -478,7 +478,6 @@
                         { required: true, message: '不能为空' }
                     ],yuezujin: [
                         { required: true, message: '不能为空' },
-                        { type: 'number', message: '必须为数字'},
                     ],price: [
                         { required: true, message: '不能为空' }
                     ],fukuanstartdate: [
@@ -494,17 +493,21 @@
                     ],yajin: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
-                    ],zongyingfuzujin: [
+                    ],yingfuzongzujin: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
-                    ],yongjin: [
+                    ],hetongyongjin: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
                     ],tiqianfukuantian: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
-                    ],yajinfukuanri: [
+                    ],yajinfukuanriqi: [
                         { required: true, message: '不能为空' },
+                    ],xinjianshoufangdate: [
+                        { required: true, message: '不能为空' }
+                    ],xinjianqianyuedate: [
+                        { required: true, message: '不能为空' }
                     ],shoufangdate: [
                         { required: true, message: '不能为空' }
                     ],qianyuedate: [
@@ -515,7 +518,7 @@
                         { required: true, message: '不能为空' }
                     ],sanqifukuanri: [
                         { required: true, message: '不能为空' }
-                    ],feiyong: [
+                    ],jiafangfeiyong: [
                         { required: true, message: '不能为空' }
                     ],
                 },
