@@ -3,11 +3,35 @@
     <el-row >
         <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
-            <el-form-item label="">
-                <el-input v-model="filters.bk_name" placeholder="渠道公司名称"></el-input>
+            <el-form-item label="公司名称：">
+                <el-input v-model="filters.bk_name" placeholder="请输入公司名称"></el-input>
             </el-form-item>
-            <el-form-item label="">
-                <el-input v-model="filters.bk_username" placeholder="渠道公司人员"></el-input>
+            <el-form-item label="所在楼盘："   >
+                <el-input v-model="filters.buildingname" placeholder="请输入所在楼盘"></el-input>
+            </el-form-item>
+            <el-form-item label="业务区域：" >
+                <el-select v-model="filters.areaId" placeholder="请选择区域">
+                    <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item><br/>
+            <el-form-item label="渠道等级："   >
+                <el-select v-model="filters.serviceType" placeholder="请选择渠道等级" style="width:192px"  >
+                    <el-option
+                            v-for="item in optionsfw"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+
+            <el-form-item label="渠道姓名：">
+                <el-input v-model="filters.bk_username" placeholder="请输入渠道人员姓名"></el-input>
             </el-form-item>
 
             <el-form-item>
@@ -19,31 +43,35 @@
 
             <el-table-column type="index"   width="60">
             </el-table-column>
-            <el-table-column prop="qvDaoCompayXinxi.compayname" label="渠道公司名称"  sortable>
+
+            <el-table-column prop="qdPername" label="姓名"  >
             </el-table-column>
-            <el-table-column prop="qdPername" label="姓名"  sortable>
+            <el-table-column prop="qdPertel" label="职务"  >
             </el-table-column>
-            <el-table-column prop="qdPertel" label="电话"  sortable>
+            <el-table-column prop="qdPertel" label="联系电话"  >
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="收房佣金占比"  sortable>
+            <el-table-column prop="qvDaoCompayXinxi.compayname" label="公司名称"  >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="出房佣金占比"  sortable>
+            <el-table-column prop="yjzbSf" label="所在楼盘"  >
             </el-table-column>
-            <el-table-column prop="yjType" label="佣金类型"  :formatter="formatYJType" sortable>
+            <el-table-column prop="yjzbCf" label="业务区域"  >
             </el-table-column>
-            <!--    <el-table-column prop="tbPersonIdCreate" label="创建人"   sortable>
-               </el-table-column>
-               <el-table-column prop="createdate" label="创建时间" :formatter="changeDate" sortable>
-               </el-table-column>-->
+            <el-table-column prop="yjzbCf" label="跟进次数"  >
+            </el-table-column>
+            <el-table-column prop="yjType" label="渠道等级"  :formatter="formatYJType" >
+            </el-table-column>
+            <el-table-column prop="yjzbCf" label="信息完整度"  >
+            </el-table-column>
                <el-table-column label="操作" width="150">
                    <template scope="scope">
                        <el-dropdown   menu-align="start">
                            <el-button type="primary" size="normal" splitButton="true">
                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
                            </el-button>
-                           <el-dropdown-menu slot="dropdown" size="100">
-                               <el-dropdown-item  >  <el-button  @click="handleEdit(scope.$index, scope.row)">编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;辑</el-button> </el-dropdown-item>
-                               <el-dropdown-item  >  <el-button  @click="handleDel(scope.$index, scope.row)">删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除</el-button> </el-dropdown-item>
+                           <el-dropdown-menu slot="dropdown" >
+                               <el-dropdown-item  >  <el-button   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
+                               <el-dropdown-item  >  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
+                               <el-dropdown-item  >  <el-button   @click="handleDel(scope.$index, scope.row)">删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除</el-button> </el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
 
@@ -198,7 +226,24 @@
                         label: '按年租金'
                     },
                 ],
-
+                optionsfw:[
+                    {
+                        value: 0,
+                        label: '请选择'
+                    }, {
+                        value: 1,
+                        label: '粘性渠道(A)'
+                    }, {
+                        value: 2,
+                        label: '确定渠道(B)'
+                    },{
+                        value: 3,
+                        label: '不确定渠道(C)'
+                    },{
+                        value: 4,
+                        label: '沉默渠道(D)'
+                    },
+                ],
                 //分页类数据
                 total:0,
                 currentPage:0,
@@ -448,25 +493,15 @@
             },
             //显示编辑界面
             handleEdit: function (index, row) {
-                // Console.log(row);
-                this.editFormVisible = true;
-                this.editForm = Object.assign({}, row);
-                this.editForm.tQdCompayId= row.qvDaoCompayXinxi.compayname;
-                this.editForm.tQdCompayName= row.qvDaoCompayXinxi.tQdCompayId;
-
-                // alert(this.editForm.tQdCompayName);
+                this.$router.push('/brokerCompanyUserList/edit?id=' + row.id);
             },
             //显示新增界面
             handleAdd: function () {
-                this.addFormVisible = true;
-                this.addForm = {
-                    tQdCompayId: '',
-                    qdPername:'',
-                    qdPertel:'',
-                    yjzbSf:'',
-                    yjzbCf:'',
-                    yjType:1,
-                };
+                this.$router.push('/brokerCompanyUserList/add');
+            },
+            //显示详情页面s
+            handleView: function (index, row) {
+                this.$router.push('/brokerCompanyUserList/view?id=' + row.id);
             },
             //编辑
             editSubmit: function () {

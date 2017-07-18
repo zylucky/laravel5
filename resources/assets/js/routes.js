@@ -33,6 +33,9 @@ import DecorationList from "./components/decoration/List.vue";
 //渠道公司
 import BrokerCompany from "./components/brokerCompany/Index.vue";
 import BrokerCompanyUser from "./components/brokerCompany/UserList.vue";
+import BrokerCompanyAdd from "./components/brokerCompany/Add.vue";
+import BrokerCompanyUserAdd from "./components/brokerCompany/AddUser.vue";
+import BrokerCompanyHistory from "./components/brokerCompany/HistoryList.vue";
 //佣金管理
 import ChuFangCommission from "./components/Commission/Index.vue";
 import ShouFangCommission from "./components/Commission/ShouFangList.vue";
@@ -151,7 +154,7 @@ let routes = [
             { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
             { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true},
 
-            { path:'/decoration', component: DecorationList, name: '装饰合同1'},
+            { path:'/decoration', component: DecorationList, name: '装饰合同'},
 
 
         ]
@@ -163,8 +166,15 @@ let routes = [
         iconCls: 'el-icon-document',//图标样式class
         hidden:fk_brokerCompany,
         children: [
-            { path:'/brokerCompany', component: BrokerCompany, name: '渠道公司维护',hidden:fk_brokerCompanyList},
-            { path:'/brokerCompanyUserList',component:BrokerCompanyUser,name:'渠道公司人员维护',hidden:fk_brokerCompanyUserList},
+            { path:'/brokerCompany', component: BrokerCompany, name: '渠道公司管理',hidden:fk_brokerCompanyList},
+            { path:'/brokerCompany/add',component:BrokerCompanyAdd,name:'渠道公司录入',hidden:true},
+            { path:'/brokerCompany/edit',component:BrokerCompanyAdd,name:'渠道公司编辑',hidden:true},
+            { path:'/brokerCompany/view',component:BrokerCompanyAdd,name:'渠道公司查看',hidden:true},
+            { path:'/brokerCompanyUserList',component:BrokerCompanyUser,name:'渠道公司人员管理',hidden:fk_brokerCompanyUserList},
+            { path:'/brokerCompanyUserList/add',component:BrokerCompanyUserAdd,name:'渠道公司人员录入',hidden:true},
+            { path:'/brokerCompanyUserList/edit',component:BrokerCompanyUserAdd,name:'渠道公司人员编辑',hidden:true},
+            { path:'/brokerCompanyUserList/view',component:BrokerCompanyUserAdd,name:'渠道公司人员查看',hidden:true},
+            { path:'/brokerCompanyHistory',component:BrokerCompanyHistory,name:'跟进记录',hidden:true},
         ]
     },
     {
