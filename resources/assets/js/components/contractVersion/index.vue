@@ -24,12 +24,11 @@
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getList">搜索</el-button>
-                <el-button type="primary" class="el-icon-plus" @click="handleAdd">新增</el-button>
             </el-form-item>
         </el-form>
         <el-table :data="decoration" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
 
-            <el-table-column type="index"   width="60">
+            <el-table-column type="index"   >
             </el-table-column>
             <el-table-column prop="bianhao" label="版本名称"  sortable>
             </el-table-column>
@@ -39,10 +38,18 @@
             </el-table-column>
             <el-table-column prop="qianyuedate" label="版本创建时间"  sortable>
             </el-table-column>
-            <el-table-column label="操作" width="150">
+            <el-table-column prop="qianyuedate" label="启用"  sortable>
                 <template scope="scope">
-                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
-                    <el-button type="small" size="small" @click="handleSet(scope.$index, scope.row)"><i class="el-icon-view"></i></el-button>
+                <el-switch
+                        v-model="scope.row.zhuangtai"
+                        on-color="#13ce66"
+                        off-color="#ff4949">
+                </el-switch>
+                </template>
+            </el-table-column>
+            <el-table-column label="操作" >
+                <template scope="scope">
+                    <el-button type="small" size="small" @click="handleSet(scope.$index, scope.row)">查看</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -61,38 +68,6 @@
             >
             </el-pagination>
         </el-col>
-        <!--编辑界面-->
-        <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
-            <el-form :model="editForm" label-width="120px" :rules="addFormRules" ref="editForm">
-                <el-form-item label="工长姓名" prop="gongzhangname">
-                    <el-input v-model="editForm.gongzhangname" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="签约日期" prop="qianyuedate">
-                    <el-date-picker type = "date" placeholder="结束时间" v-model="editForm.qianyuedate" >
-                    </el-date-picker>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click.native="editFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-            </div>
-        </el-dialog>
-        <!--新增界面-->
-        <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
-            <el-form :model="addForm" label-width="120px" :rules="addFormRules" ref="addForm">
-                <el-form-item label="姓名" prop="gongzhangname">
-                    <el-input v-model="addForm.gongzhangname" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="签约日期" prop="qianyuedate">
-                    <el-date-picker v-model="addForm.qianyuedate" type = "date" placeholder="结束时间"  >
-                    </el-date-picker>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click.native="addFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
-            </div>
-        </el-dialog>
 
     </el-row>
 </template>
@@ -101,10 +76,6 @@
     import {
         getDecorationList,//列表
         getDecorationDetail,//详情
-        submitDecoration,//提交
-        storeDecoration,
-        batchRemoveBrokerCompanyUser,
-        getbkNameList,
     } from '../../api/api';
     export default{
         data(){
@@ -131,24 +102,6 @@
                 decoration:[],
                 listLoading: false,
                 sels: [],//列表选中列
-                bkNameloading: false,
-                editFormVisible: false,//编辑界面是否显示
-                editLoading: false,
-                addFormRules: {
-
-                },
-                //编辑界面数据
-                editForm: {
-                    gongzhangname:'',
-                    qianyuedate:'',
-                },
-                addFormVisible: false,//新增界面是否显示
-                addLoading: false,
-                //新增界面数据
-                addForm: {
-                    gongzhangname:'',
-                    qianyuedate:'',
-                },
                 //被选中的权限
                 checked:[],
             }
@@ -190,91 +143,6 @@
                     this.total = res.data.total;
                     this.decoration = res.data.data;
                     this.listLoading = false;
-                });
-            },
-            //删除
-            handleDel: function (index, row) {
-                this.$confirm('确认删除该记录吗?', '提示', {
-                    type: 'warning'
-                }).then(() => {
-                    this.listLoading = true;
-                    //NProgress.start();
-                    let para = { id: row.tQdPersonId  };
-                    removeBrokerCompanyUser(para).then((res) => {
-                        this.listLoading = false;
-                        //NProgress.done();
-                        if(res.data.code=='200')
-                        {
-                            this.$message({
-                                message: '删除成功',
-                                type: 'success'
-                            });
-                        }else{
-                            this.$message({
-                                message: res.data.msg,
-                                type: 'error'
-                            });
-                        }
-                        this.getList();
-                    });
-                }).catch(() => {
-
-                });
-            },
-            //显示编辑界面
-            handleEdit: function (index, row) {
-                this.editFormVisible = true;
-                this.editForm = Object.assign({}, row);
-                this.editForm.gongzhangname= row.gongzhangname;
-                this.editForm.id= row.id;
-                this.editForm.qianyuedate= row.qianyuedate.toString();
-            },
-            //显示新增界面
-            handleAdd: function () {
-                this.addFormVisible = true;
-            },
-            //编辑
-            editSubmit: function () {
-                this.$refs.editForm.validate((valid) => {
-                    if (valid) {
-                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
-                            this.editLoading = true;
-                            let para = Object.assign({}, this.editForm);
-                            para.id = this.editForm.id;
-                            console.log(para)
-                            submitDecoration(para).then((res) => {
-                                this.editLoading = false;
-                                this.$message({
-                                    message: '提交成功',
-                                    type: 'success'
-                                });
-                                this.$refs['editForm'].resetFields();
-                                this.editFormVisible = false;
-                                this.getList();
-                            });
-                        });
-                    }
-                });
-            },
-            //新增
-            addSubmit: function () {
-                this.$refs.addForm.validate((valid) => {
-                    if (valid) {
-                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
-                            this.addLoading = true;
-                            let para = Object.assign({}, this.addForm);
-                            storeDecoration(para).then((res) => {
-                                this.addLoading = false;
-                                this.$message({
-                                    message: '提交成功',
-                                    type: 'success'
-                                });
-                                this.$refs['addForm'].resetFields();
-                                this.addFormVisible = false;
-                                this.getList();
-                            });
-                        });
-                    }
                 });
             },
             selsChange: function (sels) {

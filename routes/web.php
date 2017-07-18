@@ -38,6 +38,7 @@ Route::group(['prefix' => 'decoration'], function () {
     Route::get('show','Contract\decorationController@show');
     Route::post('submit','Contract\decorationController@submit');
     Route::post('store','Contract\decorationController@store');
+    Route::get('status','Contract\decorationController@status');
 });
 
 

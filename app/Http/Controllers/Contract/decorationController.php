@@ -13,7 +13,8 @@ class decorationController extends Controller
     public function index(){
         $pn = Input::get('pn');
         $cnt = Input::get('cnt');
-        $selectItem = Input::get('selectItem');
+        $status = Input::get('status');
+        $name = Input::get('name');
         if(!$pn){
             $pn = 1;
         }
@@ -25,7 +26,8 @@ class decorationController extends Controller
             'query'=>[
                 'pn'=>$pn,
                 'cnt'=>$cnt,
-                'selectItem'=>$selectItem,
+                'status'=>$status,
+                'name'=>$name,
             ]
         ]);
         echo $response->getBody();
@@ -68,6 +70,32 @@ class decorationController extends Controller
         $data = $request->params;
         $response = $client->request('POST', '/api/contract/gc/submit', [
             'json' => $data,
+        ]);
+        echo $response->getBody();
+    }
+    //改变合同状态
+    public function status(){
+        $id = Input::get('id');
+        $status = Input::get('status');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        switch ($status)
+        {
+            case 1:
+                $requestUrl = 'api/contract/gc/'.$id.'/confrim';
+            break;
+            case 2:
+                $requestUrl = '/api/contract/gc/'.$id.'/finish';
+            break;
+            default:
+                ;
+        }
+        $response = $client->request('GET', $requestUrl,[
+            'query'=>[
+                'id'=>$id,
+            ]
         ]);
         echo $response->getBody();
     }

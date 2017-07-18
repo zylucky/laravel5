@@ -4,10 +4,10 @@
         <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="">
-                <el-input v-model="filters.name" placeholder="请输入工长姓名1"></el-input>
+                <el-input v-model="filters.name" placeholder="请输入工长姓名"></el-input>
             </el-form-item>
             <el-form-item label="">
-                <el-select v-model="status" placeholder="请选择合同状态">
+                <el-select v-model="filters.status" placeholder="请选择合同状态">
                     <el-option
                             v-for="item in options"
                             :key="item.value"
@@ -33,10 +33,12 @@
             </el-table-column>
             <el-table-column prop="qianyuedate" label="签约日"  sortable>
             </el-table-column>
-               <el-table-column label="操作" width="150">
+               <el-table-column label="操作" width="140">
                     <template scope="scope">
-                       <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
-                        <el-button type="small" size="small" @click="handleSet(scope.$index, scope.row)"><i class="el-icon-view"></i></el-button>
+                       <el-button size="small" v-if="ztin(scope.row,[0])" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                        <el-button type="small" v-if="ztin(scope.row,[0])" size="small" @click="handleDump(scope.$index, scope.row)">打印</el-button>
+                        <el-button type="small" v-if="ztin(scope.row,[2])" size="small" @click="handleDump(scope.$index, scope.row)">查看</el-button>
+                        <el-button type="small" v-if="ztin(scope.row,[1])" size="small" @click="handleConfirm(scope.$index, scope.row)">完成</el-button>
                     </template>
                </el-table-column>
            </el-table>
@@ -62,7 +64,7 @@
                     <el-input v-model="editForm.gongzhangname" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="签约日期" prop="qianyuedate">
-                    <el-date-picker type = "date" placeholder="结束时间" v-model="editForm.qianyuedate" >
+                    <el-date-picker type = "date" placeholder="结束时间"  v-model="editForm.qianyuedate" >
                     </el-date-picker>
                 </el-form-item>
             </el-form>
@@ -78,7 +80,7 @@
                     <el-input v-model="addForm.gongzhangname" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="签约日期" prop="qianyuedate">
-                    <el-date-picker v-model="addForm.qianyuedate" type = "date" placeholder="结束时间"  >
+                    <el-date-picker v-model="addForm.qianyuedate"  type = "date" placeholder="结束时间"  >
                     </el-date-picker>
                 </el-form-item>
             </el-form>
@@ -93,6 +95,7 @@
 <script>
 
     import {
+        statusDecoration,//改变状态接口
         getDecorationList,//列表
         getDecorationDetail,//详情
         submitDecoration,//提交
@@ -105,21 +108,21 @@
             return {
                 filters:{
                     name:'',
+                    status:null,
                 },
                 options:[
                     {
-                        value: 1,
+                        value: 0,
                         label: '等待打印'
                     }, {
-                        value: 2,
+                        value: 1,
                         label: '正在确认'
                     },
                     {
-                        value: 3,
+                        value: 2,
                         label: '已确认'
                     },
                 ],
-                status:null,
                 //分页类数据
                 total:0,
                 currentPage:0,
@@ -155,16 +158,18 @@
             //佣金类型显示转换
             formatStatus: function (row, column) {
                 let status = [];
-                status[1] = '等待打印';
-                status[2] = '正在确认';
-                status[3] = '已确认';
+                status[0] = '等待打印';
+                status[1] = '正在确认';
+                status[2] = '已签约';
                 return status[row.zhuangtai];
             },
-            //时间戳转日期格式
-            changeDate(row, column){
-                var newDate = new Date();
-                newDate.setTime(row.qianyuedate);
-                return newDate.toLocaleDateString()
+            ztin(row,arr){
+                var status = arr.indexOf(row.zhuangtai);
+                if(status>-1){
+                    return true;
+                }else{
+                    return false;
+                }
             },
             //页面跳转后
             handleCurrentChange(val) {
@@ -182,41 +187,13 @@
                     page: this.page,
                     pageSize: this.pageSize,
                     name: this.filters.name,
+                    status:this.filters.status,
                 };
                 this.listLoading = true;
                 getDecorationList(para).then((res) => {
                     this.total = res.data.total;
                     this.decoration = res.data.data;
                     this.listLoading = false;
-                });
-            },
-            //删除
-            handleDel: function (index, row) {
-                this.$confirm('确认删除该记录吗?', '提示', {
-                    type: 'warning'
-                }).then(() => {
-                    this.listLoading = true;
-                    //NProgress.start();
-                    let para = { id: row.tQdPersonId  };
-                    removeBrokerCompanyUser(para).then((res) => {
-                        this.listLoading = false;
-                        //NProgress.done();
-                        if(res.data.code=='200')
-                        {
-                            this.$message({
-                                message: '删除成功',
-                                type: 'success'
-                            });
-                        }else{
-                            this.$message({
-                                message: res.data.msg,
-                                type: 'error'
-                            });
-                        }
-                        this.getDecoration();
-                    });
-                }).catch(() => {
-
                 });
             },
             //显示编辑界面
@@ -239,7 +216,6 @@
                             this.editLoading = true;
                             let para = Object.assign({}, this.editForm);
                             para.id = this.editForm.id;
-                            console.log(para)
                             submitDecoration(para).then((res) => {
                                 this.editLoading = false;
                                 this.$message({
@@ -273,6 +249,34 @@
                             });
                         });
                     }
+                });
+            },
+            //打印
+            handleDump(index,row){
+                let para = {
+                    id:row.id,
+                    status:1,
+                }
+                statusDecoration(para).then((res)=>{
+                    if(res.data.code=="200"){
+                        this.getDecoration();
+                        window.open('/#/purchaseContract/dump?id='+row.id)
+                    }
+                });
+            },
+            handleConfirm(index,row){
+                let para = {
+                    id:row.id,
+                    status:2,
+                }
+                this.$confirm('合同状态将更为签约完成?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    statusDecoration(para).then((res)=>{
+                        if(res.data.code=="200"){
+                            this.getDecoration();
+                        }
+                    });
                 });
             },
             selsChange: function (sels) {
