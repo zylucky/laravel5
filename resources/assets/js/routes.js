@@ -27,6 +27,8 @@ import SaleContractCheckJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractDump from "./components/saleContract/Dump.vue";
 //装饰合同
 import DecorationList from "./components/decoration/List.vue";
+//合同版本
+import ContractVersionList from "./components/contractVersion/index.vue";
 
 
 
@@ -157,6 +159,7 @@ let routes = [
 
 
             { path:'/decoration', component: DecorationList, name: '工程合同'},
+            { path:'/contractVersion', component: ContractVersionList, name: '合同版本管理'},
 
         ]
     },

@@ -52,10 +52,15 @@ class saleContractController extends Controller
             'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
+        $data = $request->params;
+        $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
         $response = $client->request('POST', '/api/contract/xs/save', [
-            'json' => $request->params
+            'json' => $data,
         ]);
-        echo $response->getBody();
+        $res = $response->getBody();
+        $res = json_decode($res);
+        $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
+        echo json_encode($res);
     }
 
 
@@ -77,11 +82,10 @@ class saleContractController extends Controller
             'timeout'  => 2.0,
         ]);
         $response = $client->request('GET', '/api/contract/xs/'.$id);
-        echo $response->getBody();
-        /*$res = json_decode($res);
-        $res->data->yifangfeiyong = explode(',',$res->data->yifangfeiyong);
+        $res = $response->getBody();
+        $res = json_decode($res);
         $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
-        echo json_encode($res);*/
+        echo json_encode($res);
     }
 
 
@@ -240,8 +244,18 @@ class saleContractController extends Controller
         ]);
         echo $response->getBody();*/
     }
-    //合同状态变为：已确认
+    //合同状态变为：正在确认
     public function confirm(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET','/api/contract/xs/'.$id.'/confirm');
+        echo $response->getBody();
+    }
+    //合同状态变为：已确认
+    public function confirmed(){
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
