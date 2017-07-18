@@ -3,7 +3,7 @@
     <el-row >
         <div style="margin-top:30px"></div>
 
-        <el-table :data="brokerCompanyHistory" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
+        <el-table :data="brokerCompanyUserHistroy" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
 
             <el-table-column type="index"   width="60">
             </el-table-column>
@@ -16,6 +16,8 @@
             <el-table-column prop="shifouyouxiao" label="信息是否有效"  >
             </el-table-column>
             <el-table-column prop="xinxishifouzhunque" label="信息是否准确"  >
+            </el-table-column>
+            <el-table-column  prop="shifouzhuanhang" label="是否转行"  >
             </el-table-column>
             <el-table-column   type="expand">
                        <template scope="props">
@@ -48,13 +50,18 @@
 <script>
 
     import {
-        getBrokerCompanyHistoryListPage,
+        getBrokerCompanyUserHistoryListPage,
+
+
 
     } from '../../api/api';
     export default{
         data(){
             return {
-
+                filters:{
+                    bk_name:'',
+                    bk_username:'',
+                },
                 options:[
                     {
                         value: 1,
@@ -64,13 +71,12 @@
                         label: '按年租金'
                     },
                 ],
-
                 //分页类数据
                 total:0,
                 currentPage:0,
                 pageSize:10,
                 pageSizes:[10, 20, 30, 40, 50, 100],
-                brokerCompanyHistory:[],
+                brokerCompanyUserHistroy:[],
                 listLoading: false,
                 sels: [],//列表选中列
 
@@ -91,17 +97,17 @@
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
-                this.getBrokerCompanyHistory();
+                this.getBrokerCompanyUser();
             },
             //更改每页显示数据
             handleSizeChange(val){
                 this.pageSize =val;
-                this.getBrokerCompanyHistory();
+                this.getBrokerCompanyUser();
             },
 
 
             //获取渠道公司列表
-            getBrokerCompanyHistory() {
+            getBrokerCompanyUser() {
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
@@ -109,9 +115,9 @@
                     username: this.filters.bk_username,
                 };
                 this.listLoading = true;
-                getBrokerCompanyHistoryListPage(para).then((res) => {
+                getBrokerCompanyUserHistoryListPage(para).then((res) => {
                     this.total = res.data.total;
-                    this.brokerCompanyHistory = res.data.data;
+                    this.brokerCompanyUserHistroy = res.data.data;
                     this.listLoading = false;
                 });
             },
@@ -124,7 +130,7 @@
         mounted() {
             this.page=1;
 
-            this.getBrokerCompanyHistory();
+            this.getBrokerCompanyUser();
 
         }
     }

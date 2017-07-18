@@ -335,7 +335,7 @@
                 return newDate.toLocaleDateString()
             },
             handleView: function (index, row) {
-                this.$router.push('/brokerCompany/view?id=' + row.id);
+                this.$router.push('/brokerCompany/view?id=' + row.tQdCompayId);
             },
             //页面跳转后
             handleCurrentChange(val) {
@@ -397,7 +397,7 @@
             },
             //显示编辑界面
             handleEdit: function (index, row) {
-                this.$router.push('/brokerCompany/edit?id=' + row.id);
+                this.$router.push('/brokerCompany/edit?id=' + row.tQdCompayId);
             },
             //显示新增界面
             handleAdd: function () {

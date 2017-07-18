@@ -17,7 +17,7 @@
 
             <el-checkbox v-model="filters.checked" @change="change">高级搜索</el-checkbox>
             <el-form-item>
-                <el-button type="primary" icon="search" v-on:click="getShouFang">搜索</el-button>
+                <el-button type="primary" icon="search" v-on:click="getChuFangCommission">搜索</el-button>
 
             </el-form-item>
             <br/>
@@ -50,23 +50,21 @@
                   @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="selection" width="50">
             </el-table-column>
-
             <el-table-column prop="htqiandingdate" label="合同签订日期" :formatter="changeDate" sortable>
-
             </el-table-column>
             <el-table-column prop="loupanname" label="楼盘" >
             </el-table-column>
             <el-table-column prop="loudongname" label="楼栋" >
             </el-table-column>
-            <el-table-column prop="houseno" label="房间号" sortable>
+            <el-table-column prop="houseno" label="房间号" >
             </el-table-column>
-            <el-table-column prop="htzujin" label="合同月租金" sortable>
+            <el-table-column prop="htzujin" label="合同月租金" >
             </el-table-column>
-            <el-table-column prop="htyongjin" label="合同佣金" width="200" sortable>
+            <el-table-column prop="htyongjin" label="合同佣金" width="200" >
             </el-table-column>
-            <el-table-column prop="tQdCompayId" label="渠道公司" width="200" sortable>
+            <el-table-column prop="tQdCompayId" label="渠道公司" width="200" >
             </el-table-column>
-            <el-table-column prop="qdpersons" label="渠道人员" sortable>
+            <el-table-column prop="qdpersons" label="渠道人员" >
             </el-table-column>
             <el-table-column prop="yjstate" label="状态" :formatter="formatYJType">
             </el-table-column>
@@ -264,7 +262,7 @@
                 //编辑界面数据
                 editForm: {
                 },
-
+                showed: false,
                 rokeBackFormVisible: false,//返佣界面是否显示
                 rokeBackLoading: false,
                 rokeBackFormRules: {
@@ -342,8 +340,6 @@
                 this.getChuFangCommission();
             },
 
-            //获取渠道公司列表
-
             //获取出房佣金列表
 
             getChuFangCommission() {
@@ -381,7 +377,15 @@
 
             },
 
+            //显示和隐藏高级搜索
+            change(){
 
+                if (this.filters.checked) {
+                    this.showed = true;
+                } else {
+                    this.showed = false;
+                }
+            },
             selsChange: function (sels) {
                 this.sels = sels;
             },
@@ -439,7 +443,6 @@
                 }
             },
         },
-
 
         mounted() {
             this.page = 1;

@@ -151,15 +151,15 @@
             </el-col>
         </el-form>
         <el-col>
-            <div>
+            <div v-show="showeidt">
                 <el-button @click.native="change">跟进记录</el-button>
             </div>
             <div v-show="showed">
                 <el-form :model="editForm" label-width="180px" :rules="editFormRules" ref="editForm" label-Weizhi="right" >
-                    第二次跟进
+                    {{officeList.genjinjindo}}
                     <el-row :span="18">
-                        <el-form-item label="信息是否有效" prop="compayname">
-                            <el-radio-group v-model="editForm.dailirenSex">
+                        <el-form-item label="信息是否有效" prop="shifouyouxiao">
+                            <el-radio-group v-model="editForm.shifouyouxiao">
                                 <el-radio :label="1">有效</el-radio>
                                 <el-radio :label="2">无效</el-radio>
                                 <el-radio :label="3">无法取得联系</el-radio>
@@ -167,19 +167,27 @@
                         </el-form-item>
                     </el-row>
                     <el-row :span="18">
-                        <el-form-item label="信息是否准确" prop="compayname">
-                            <el-radio-group v-model="editForm.dailirenSex">
+                        <el-form-item label="信息是否准确" prop="xinxishifouzhunque">
+                            <el-radio-group v-model="editForm.xinxishifouzhunque">
                                 <el-radio :label="1">上报信息准确</el-radio>
                                 <el-radio :label="2">上报信息不准确</el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </el-row>
                     <el-row :span="18">
-                        <el-form-item label="内容" prop="qdPertel">
-                            <el-input type="textarea" v-model="editForm.qdPertel" auto-complete="off" style="width:1100px"></el-input>
+                        <el-form-item label="是否转行" prop="shifouzhuanhang">
+                            <el-radio-group v-model="editForm.shifouzhuanhang">
+                                <el-radio :label="1">未转行</el-radio>
+                                <el-radio :label="2">转行</el-radio>
+                            </el-radio-group>
                         </el-form-item>
                     </el-row>
-                    <a href="/#/brokerCompanyHistory?id=1">查看历史记录</a>
+                    <el-row :span="18">
+                        <el-form-item label="内容" prop="shuoming">
+                            <el-input type="textarea" v-model="editForm.shuoming" auto-complete="off" style="width:1100px"></el-input>
+                        </el-form-item>
+                    </el-row>
+                    <a href="/#/brokerCompanyUserHistory">查看历史记录</a>
                 </el-form>
             </div>
             <el-button type="primary" v-show="editVisible" @click="save" style="margin-top:20px;">保存</el-button>
@@ -289,14 +297,8 @@
                     }
                 ],
                 //房源数据初始化
+                showeidt:true,
 
-                editableTabsValue2: '1',
-                editableTabs2: [{
-                    title: '房间1',
-                    name: '1',
-                    content: 'Tab 1 content'
-                }],
-                tabIndex: 1,
                 //编辑界面数据
                 editLoading: false,
                 editForm: {
@@ -319,10 +321,14 @@
 
             //显示和隐藏跟进记录
             change(){
+                if (this.$route.path == '/brokerCompanyUserList/view') {
+
+                }else{
                 if (this.showed == false) {
                     this.showed = true;
                 } else {
                     this.showed = false;
+                }
                 }
             },
             //获取楼盘
@@ -494,16 +500,21 @@
             },
         },
         mounted() {
-            //根据url得到的合同ID，来获取数据
+            //根据url得到的渠道ID，来获取数据
             if (this.$route.query.id != null) {
                 // this.getPurchaseContract(this.$route.query);
             }
+            //新增页面input禁用
+            if (this.$route.path == '/brokerCompanyUserList/add') {
+                this.showeidt = false;
 
+            }
             //详情页面input禁用
             if (this.$route.path == '/brokerCompanyUserList/view') {
                 this.editVisible = false;
                 this.disabledInput();
             }
+
 
         }
 

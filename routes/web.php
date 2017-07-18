@@ -99,6 +99,7 @@ Route::group(['prefix' => 'brokerCompanyUser'], function () {
     Route::post('getbkNameList','BrokerCompany\brokerCompanyUserController@getbkNameList');
 });
 Route::resource('brokerCompanyHistory','BrokerCompany\brokerCompanyHistoryController');
+Route::resource('brokerCompanyUserHistory','BrokerCompany\brokerCompanyUserHistoryController');
 
 Route::post('Commission/contractPayType','Commission\CommissionController@selectCommissionPayType');
 

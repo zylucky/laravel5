@@ -138,7 +138,7 @@ class brokerCompanyUserController extends Controller
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET', '/api/qd/person/'.$id.'/del');
+        $response = $client->request('GET', '/api/qd/person/{$$}/del');
         return $response->getBody();
     }
     /*

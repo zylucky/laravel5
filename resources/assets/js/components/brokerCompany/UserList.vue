@@ -493,7 +493,7 @@
             },
             //显示编辑界面
             handleEdit: function (index, row) {
-                this.$router.push('/brokerCompanyUserList/edit?id=' + row.id);
+                this.$router.push('/brokerCompanyUserList/edit?id=' + row.tQdPersonId);
             },
             //显示新增界面
             handleAdd: function () {
@@ -501,7 +501,7 @@
             },
             //显示详情页面s
             handleView: function (index, row) {
-                this.$router.push('/brokerCompanyUserList/view?id=' + row.id);
+                this.$router.push('/brokerCompanyUserList/view?id=' + row.tQdPersonId);
             },
             //编辑
             editSubmit: function () {
