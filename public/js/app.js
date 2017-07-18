@@ -32945,6 +32945,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -33022,12 +33023,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         onSubmit: function onSubmit() {},
-        zqchange: function zqchange() {
-            //时间一改变，我就对zujinList的日期进行填充
+        zqchange1: function zqchange1() {
+            //时间一改变就对zujinList的日期进行填充
             //先获取的开始和结束时间
             var d1 = new Date(this.addDate.startdate);
-            d1.setFullYear(d1.getFullYear() + 1);
-            d1.setDate(d1.getDate() - 1);
+            var d2 = new Date(this.addDate.enddate);
+            var cha = parseInt(d2.getFullYear()) - parseInt(d1.getFullYear());
+            //每次变数据清空当前的列表
+            this.addDate.zujinList.splice(0, this.addDate.zujinList.length); //清空数组
+            for (var i = 0; i < cha; i++) {
+                this.addRentItem();
+                if (i == 0) {
+                    this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear());
+                    var dx = new Date(this.addDate.zujinList[i].startdate); //将时间复制，然后加一年
+                    this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear() + 1);
+                    var dy = new Date(this.addDate.zujinList[i].enddate); //将时间复制，然后减一天
+                    this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate() - 1);
+                }
+                if (i > 0) {
+                    this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear() + 1);
+                    var _dx = new Date(this.addDate.zujinList[i].startdate); //将时间复制，然后加一年
+                    this.addDate.zujinList[i].enddate = _dx.setFullYear(_dx.getFullYear() + 1);
+                    var _dy = new Date(this.addDate.zujinList[i].enddate); //将时间复制，然后减一天
+                    this.addDate.zujinList[i].enddate = _dy.setDate(_dx.getDate() - 1);
+                }
+            }
+        },
+        zqchange2: function zqchange2() {
+            //时间一改变就对zujinList的日期进行填充
+            //先获取的开始和结束时间
+            var d1 = new Date(this.addDate.startdate);
+            var d2 = new Date(this.addDate.enddate);
+            var cha = parseInt(d2.getFullYear()) - parseInt(d1.getFullYear());
+            //每次变数据清空当前的列表
+            this.addDate.zujinList.splice(0, this.addDate.zujinList.length); //清空数组
+            for (var i = 0; i < cha; i++) {
+                this.addRentItem();
+                if (i == 0) {
+                    this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear());
+                    var dx = new Date(this.addDate.zujinList[i].startdate); //将时间复制，然后加一年
+                    this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear() + 1);
+                    var dy = new Date(this.addDate.zujinList[i].enddate); //将时间复制，然后减一天
+                    this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate() - 1);
+                }
+                if (i > 0) {
+                    this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear() + 1);
+                    var _dx2 = new Date(this.addDate.zujinList[i].startdate); //将时间复制，然后加一年
+                    this.addDate.zujinList[i].enddate = _dx2.setFullYear(_dx2.getFullYear() + 1);
+                    var _dy2 = new Date(this.addDate.zujinList[i].enddate); //将时间复制，然后减一天
+                    this.addDate.zujinList[i].enddate = _dy2.setDate(_dx2.getDate() - 1);
+                }
+            }
         },
 
         //增加免
@@ -96063,6 +96109,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "date",
       "placeholder": "开始时间"
     },
+    on: {
+      "change": function($event) {
+        _vm.zqchange1()
+      }
+    },
     model: {
       value: (_vm.addDate.startdate),
       callback: function($$v) {
@@ -96085,7 +96136,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "change": function($event) {
-        _vm.zqchange()
+        _vm.zqchange2()
       }
     },
     model: {
