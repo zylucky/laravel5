@@ -71,6 +71,7 @@ class purchaseContractController extends Controller
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $data = $request->params;
+        
         $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
         $data['yifangfeiyong'] = implode(',',$data['yifangfeiyong']);
         $response = $client->request('POST', '/api/contract/sf/save', [

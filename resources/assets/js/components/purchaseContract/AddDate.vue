@@ -319,34 +319,34 @@
                         v-model="addDate.jiafangfeiyong"
                         @change="changeOnCheck(1)"
                 >
-                    <el-checkbox label="（一）供暖费"></el-checkbox>
-                    <el-checkbox label="（二）制冷费"></el-checkbox>
-                    <el-checkbox label="（三）物业管理费"></el-checkbox>
-                    <el-checkbox label="（四）水费"></el-checkbox>
-                    <el-checkbox label="（五）电费"></el-checkbox>
-                    <el-checkbox label="（六）燃气费"></el-checkbox>
-                    <el-checkbox label="（七）电话费"></el-checkbox>
-                    <el-checkbox label="（八）电视收视费"></el-checkbox>
-                    <el-checkbox label="（九）上网费"></el-checkbox>
-                    <el-checkbox label="（十）卫生费"></el-checkbox>
-                    <el-checkbox label="（十一）车位费"></el-checkbox>
-                    <el-checkbox label="（十二）其他"></el-checkbox>
+                    <el-checkbox label="（1）供暖费"></el-checkbox>
+                    <el-checkbox label="（2）制冷费"></el-checkbox>
+                    <el-checkbox label="（3）物业管理费"></el-checkbox>
+                    <el-checkbox label="（4）水费"></el-checkbox>
+                    <el-checkbox label="（5）电费"></el-checkbox>
+                    <el-checkbox label="（6）燃气费"></el-checkbox>
+                    <el-checkbox label="（7）电话费"></el-checkbox>
+                    <el-checkbox label="（8）电视收视费"></el-checkbox>
+                    <el-checkbox label="（9）上网费"></el-checkbox>
+                    <el-checkbox label="（10）卫生费"></el-checkbox>
+                    <el-checkbox label="（11）车位费"></el-checkbox>
+                    <el-checkbox label="（12）其他"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
             <el-form-item label="乙方承担" prop="yifangfeiyong" required >
                 <el-checkbox-group v-model="addDate.yifangfeiyong" @change="changeOnCheck(2)">
-                    <el-checkbox label="（一）供暖费"></el-checkbox>
-                    <el-checkbox label="（二）制冷费"></el-checkbox>
-                    <el-checkbox label="（三）物业管理费"></el-checkbox>
-                    <el-checkbox label="（四）水费"></el-checkbox>
-                    <el-checkbox label="（五）电费"></el-checkbox>
-                    <el-checkbox label="（六）燃气费"></el-checkbox>
-                    <el-checkbox label="（七）电话费"></el-checkbox>
-                    <el-checkbox label="（八）电视收视费"></el-checkbox>
-                    <el-checkbox label="（九）上网费"></el-checkbox>
-                    <el-checkbox label="（十）卫生费"></el-checkbox>
-                    <el-checkbox label="（十一）车位费"></el-checkbox>
-                    <el-checkbox label="（十二）其他"></el-checkbox>
+                    <el-checkbox label="（1）供暖费"></el-checkbox>
+                    <el-checkbox label="（2）制冷费"></el-checkbox>
+                    <el-checkbox label="（3）物业管理费"></el-checkbox>
+                    <el-checkbox label="（4）水费"></el-checkbox>
+                    <el-checkbox label="（5）电费"></el-checkbox>
+                    <el-checkbox label="（6）燃气费"></el-checkbox>
+                    <el-checkbox label="（7）电话费"></el-checkbox>
+                    <el-checkbox label="（8）电视收视费"></el-checkbox>
+                    <el-checkbox label="（9）上网费"></el-checkbox>
+                    <el-checkbox label="（10）卫生费"></el-checkbox>
+                    <el-checkbox label="（11）车位费"></el-checkbox>
+                    <el-checkbox label="（12）其他"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
             <!--补充条款-->
@@ -371,18 +371,18 @@
         data() {
             return {
                 checkList : [
-                    "（一）供暖费",
-                    "（二）制冷费",
-                    "（三）物业管理费",
-                    "（四）水费",
-                    "（五）电费",
-                    "（六）燃气费",
-                    "（七）电话费",
-                    "（八）电视收视费",
-                    "（九）上网费",
-                    "（十）卫生费",
-                    "（十一）车位费",
-                    "（十二）其他"
+                    "（1）供暖费",
+                    "（2）制冷费",
+                    "（3）物业管理费",
+                    "（4）水费",
+                    "（5）电费",
+                    "（6）燃气费",
+                    "（7）电话费",
+                    "（8）电视收视费",
+                    "（9）上网费",
+                    "（10）卫生费",
+                    "（11）车位费",
+                    "（12）其他"
                 ],
                 editVisible:true,
                 options:[
