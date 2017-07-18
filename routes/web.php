@@ -66,6 +66,7 @@ Route::get('saleContract/submit','Contract\saleContractController@submit');
 Route::get('saleContract/jieyue','Contract\saleContractController@jieyue');
 Route::get('saleContract/approving','Contract\saleContractController@approving');
 Route::get('saleContract/confirm','Contract\saleContractController@confirm');
+Route::get('saleContract/confirmed','Contract\saleContractController@confirmed');
 Route::get('saleContract/violating','Contract\saleContractController@violating');
 Route::get('saleContract/terminated','Contract\saleContractController@terminated');
 Route::get('saleContract/releasing','Contract\saleContractController@releasing');

@@ -227,6 +227,7 @@
                         bianhao:this.bianhao,
                     }
                     let para = Object.assign({}, child_property,child_owner,child_date,id,tiaokuan,bianhao);
+                    console.log(para);
                     addPurchaseContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         //保存完以后可以得到一个返回的ID
