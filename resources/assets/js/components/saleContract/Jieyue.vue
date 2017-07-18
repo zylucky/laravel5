@@ -117,22 +117,22 @@
                 },
                 jieyueXieyi: {
                     /*omcId:null,
-                        loupanOmcId:null,
-                        loudongOmcId:null,*/
+                    loupanOmcId:null,
+                       loudongOmcId:null,*/
                     loupanName:null,
                     loudongName:null,
                     fanghao:null,
                     yuanhetongbiaohao: null,
                     jieyuefangshi:'退租',
                     zhongzhidate:'',
-                    jiaofangdate:'',
-                    zhizhaoqianchu:'',
-                    tuihuanyajin:'',
-                    tuihuanfangzu:'',
-                    yingshouzafei:'',
-                    xinbianhao: null,
-                    hetongid:null,
-                },
+                        jiaofangdate:'',
+                        zhizhaoqianchu:'',
+                        tuihuanyajin:'',
+                        tuihuanfangzu:'',
+                        yingshouzafei:'',
+                        xinbianhao: null,
+                        hetongid:null,
+                    },
                 //楼盘数据
                 /*options1:[],
                 list1: [],
@@ -199,60 +199,49 @@
                 loudongName = res.data.data.xsOffice.loudongName;
                 fanghao = res.data.data.xsOffice.fanghao;
                 loupanName = res.data.data.xsOffice.bianhao;
-                alert(11);
                 if(res.data.data.chanquanrenList.length>0){
                     this.owner.chanquanrenList = res.data.data.chanquanrenList;
                 }
                 this.id = res.data.data.id;
                 //this.owner.yezhuleixing = res.data.data.yezhuleixing;
-                this.jieyueXieyi.xinbianhao = res.data.data.dailirenTel;
-                this.jieyueXieyi.jieyuefangshi = res.data.data.dailirenSex;
-                this.jieyueXieyi.zhongzhidate = res.data.data.dailirenId;
-                this.jieyueXieyi.jiaofangdate = res.data.data.dailirenName;
-                this.jieyueXieyi.zhizhaoqianchu = res.data.data.qianyuerenName;
-                this.jieyueXieyi.tuihuanyajin = res.data.data.qianyuerenTel;
-                this.jieyueXieyi.tuihuanfangzu = res.data.data.qianyuerenSex;
-                this.jieyueXieyi.yingshouzafei = res.data.data.qianyuerenId;
-                this.jieyueXieyi.zuqistartdate = res.data.data.zuqistartdate;
+                this.owner.dailirenTel = res.data.data.dailirenTel;
+                this.owner.dailirenSex = res.data.data.dailirenSex;
+                this.owner.dailirenId = res.data.data.dailirenId;
+                this.owner.dailirenName = res.data.data.dailirenName;
+                this.owner.qianyuerenName = res.data.data.qianyuerenName;
+                this.owner.qianyuerenTel = res.data.data.qianyuerenTel;
+                this.owner.qianyuerenSex = res.data.data.qianyuerenSex;
+                this.owner.qianyuerenId = res.data.data.qianyuerenId;
+                this.addDate.zuqistartdate = res.data.data.zuqistartdate;
                 this.addDate.zuqienddate = res.data.data.zuqienddate;
+                this.addDate.shoufangdate = res.data.data.shoufangdate;
+                this.addDate.qianyuedate = res.data.data.qianyuedate;
+                this.addDate.mianzufangshi = res.data.data.mianzufangshi;
+                this.addDate.mianzuqiList = res.data.data.mianzuqiList;
+                this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;
+                this.addDate.zujinList = res.data.data.zujinList;
+                this.addDate.xieyistartdate=res.data.data.xieyistartdate,
+                    this.addDate.xieyienddate = res.data.data.xieyienddate
             },
             save:function () {
                 this.btnType = false;
                 this.submsg  = '提交';
-                /*var loupanName = document.getElementById("loupanName").innerHTML;
+                var loupanName = document.getElementById("loupanName").innerHTML;
                 var loudongName = document.getElementById("loudongName").innerHTML;
                 var fanghao = document.getElementById("fanghao").innerHTML;
-                var biaohao = document.getElementById("biaohao").innerHTML;*/
-                /*var child_property = this.property;*/
+                var biaohao = document.getElementById("biaohao").innerHTML;
+
+                var child_property = this.property;
                 //var child_renter  = this.$refs.renter.renter;
                 //var child_date = this.$refs.date.addDate;
-                let para = {
-                    id:this.id,
-                    hetongid:this.$route.query.id,
-                    zujinList:this.addDate.zujinList,
-                    mianzuqiList:this.addDate.mianzuqiList,
-                    fukuanFangshiList:this.addDate.fukuanFangshiList,
-                    chanquanrenList:this.owner.chanquanrenList,
-                    yezhuleixing :this.owner.yezhuleixing ,
-                    dailirenTel : this.owner.dailirenTel,
-                    dailirenSex : this.owner.dailirenSex  ,
-                    dailirenId : this.owner.dailirenId  ,
-                    dailirenName : this.owner.dailirenName ,
-                    qianyuerenName : this.owner.qianyuerenName  ,
-                    qianyuerenTel : this.owner.qianyuerenTel  ,
-                    qianyuerenSex :this.owner.qianyuerenSex  ,
-                    qianyuerenId :  this.owner.qianyuerenId  ,
-                    zuqistartdate:this.addDate.zuqistartdate,
-                    zuqienddate:this.addDate.zuqienddate,
-                    xieyistartdate:this.addDate.xieyistartdate,
-                    xieyienddate:this.addDate.xieyienddate,
-                }
-                /*var id = {
+                var id = {
                     id: this.id
-                };*/
+                };
                 /*var bianhao = {
                     bianhao: this.bianhao,
                 };*/
+                let para = Object.assign({}, child_property,loupanName,loudongName,fanghao,biaohao,id);
+                alert(para);
                 addSaleJieyueContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         this.fuzhi(res);
