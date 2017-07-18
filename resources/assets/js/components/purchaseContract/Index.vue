@@ -6,6 +6,16 @@
             <el-form-item label="">
                 <el-input v-model="filters.name" placeholder="请输入项目"></el-input>
             </el-form-item>
+            <el-form-item label="">
+                <el-select v-model="filters.status" placeholder="请选择合同状态">
+                    <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search" @click="purchaseContractList">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
@@ -141,7 +151,22 @@
                 },
                 filters: {
                     name: '',
+                    status:null,
                 },
+                options:[
+                    {value:0, label:'已创建',},
+                    {value:1, label:'待审核',},
+                    {value:2, label:'审核中',},
+                    {value:3, label:'待打印',},
+                    {value:4, label:'审核拒绝',},
+                    {value:5, label:'待确认',},
+                    {value:6, label:'履约中',},
+                    {value:7, label:'违约处理中',},
+                    {value:8, label:'合同终止',},
+                    {value:9, label:'优化中',},
+                    {value:10, label:'二次优化',},
+                    {value:11, label:'已完成',},
+                ],
                 //分页类数据
                 total:0,
                 currentPage:0,
@@ -199,10 +224,10 @@
                 status[5] = '待确认';
                 status[6] = '履约中';
                 status[7] = '违约处理中';
-                status[8] = '合同终止';
+                status[8] = '合同终止(违约处理失败)';
                 status[9] = '优化中';
-                status[10] = '二次优化';
-                status[11] = '已完成';
+                status[10] = '已优化，履约中';
+                status[11] = '合同终止(合同到期)';
                 return status[row.zhuangtai];
             },
             //时间戳转日期格式
@@ -219,6 +244,7 @@
                     pn: this.page,
                     cnt: this.pageSize,
                     selectItem:this.filters.name,
+                    zhuangtai:this.filters.status,
                 }
                 this.listLoading = true;
                 getPurchaseContractList(para).then((res) => {
