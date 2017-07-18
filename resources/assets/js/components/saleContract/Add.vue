@@ -235,7 +235,7 @@
                     var bianhao = {
                         bianhao: this.bianhao,
                     };
-                    let para = Object.assign({}, child_property,child_renter,child_date,id);
+                    let para = Object.assign({}, child_property,child_renter,child_date,id,bianhao);
                     //alert(para);
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
