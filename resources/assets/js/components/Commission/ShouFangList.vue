@@ -51,7 +51,7 @@
         <el-table :data="ShouFang" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
                   @selection-change="selsChange" style="width: 100%;">
 
-            <el-table-column prop="htqiandingdate" label="合同签订日期" :formatter="changeDate">
+            <el-table-column prop="htqiandingdate" label="合同签订日期" :formatter="changeDate" sortable>
             </el-table-column>
             <el-table-column prop="loupanname" label="楼盘">
             </el-table-column>

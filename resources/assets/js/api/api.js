@@ -123,4 +123,11 @@ export const getDecorationList = params =>{ return axios.get(`${base}/decoration
 export const getDecorationDetail = params =>{ return axios.get(`${base}/decoration/show`, { params: params }); };
 export const submitDecoration = params =>{ return axios.post(`${base}/decoration/submit`, { params: params }); };
 export const storeDecoration = params =>{ return axios.post(`${base}/decoration/store`, { params: params }); };
+<<<<<<< HEAD
 export const statusDecoration = params =>{ return axios.get(`${base}/decoration/status`, { params: params }); };
+=======
+
+//渠道跟进
+export const getBrokerCompanyUserHistoryListPage = params => { return axios.get(`${base}/brokerCompanyUserHistory`, { params: params }); };
+export const getBrokerCompanyHistoryListPage = params => { return axios.get(`${base}/brokerCompanyUserHistory`, { params: params }); };
+>>>>>>> 71699e0c0bab9ad637c925dcc2a22c7b7ee09791

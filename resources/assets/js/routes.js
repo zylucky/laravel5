@@ -38,6 +38,7 @@ import BrokerCompanyUser from "./components/brokerCompany/UserList.vue";
 import BrokerCompanyAdd from "./components/brokerCompany/Add.vue";
 import BrokerCompanyUserAdd from "./components/brokerCompany/AddUser.vue";
 import BrokerCompanyHistory from "./components/brokerCompany/HistoryList.vue";
+import BrokerCompanyUserHistory from "./components/brokerCompany/UserHistoryList.vue";
 //佣金管理
 import ChuFangCommission from "./components/Commission/Index.vue";
 import ShouFangCommission from "./components/Commission/ShouFangList.vue";
@@ -177,7 +178,8 @@ let routes = [
             { path:'/brokerCompanyUserList/add',component:BrokerCompanyUserAdd,name:'渠道公司人员录入',hidden:true},
             { path:'/brokerCompanyUserList/edit',component:BrokerCompanyUserAdd,name:'渠道公司人员编辑',hidden:true},
             { path:'/brokerCompanyUserList/view',component:BrokerCompanyUserAdd,name:'渠道公司人员查看',hidden:true},
-            { path:'/brokerCompanyHistory',component:BrokerCompanyHistory,name:'跟进记录',hidden:true},
+            { path:'/brokerCompanyHistory',component:BrokerCompanyHistory,name:'渠道公司跟进记录',hidden:true},
+            { path:'/brokerCompanyUserHistory',component:BrokerCompanyUserHistory,name:'渠道公司人员跟进记录',hidden:true},
         ]
     },
     {
