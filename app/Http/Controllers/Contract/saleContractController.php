@@ -140,7 +140,6 @@ class saleContractController extends Controller
      *
      * */
     public function review(Request $request){
-        dd(111);
         $client = new Client([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
@@ -248,7 +247,7 @@ class saleContractController extends Controller
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('GET','/api/contract/xs/'.$id.'/confirm');
+        $response = $client->request('GET','/api/contract/xs/'.$id.'/confirmed');
         echo $response->getBody();
     }
     //合同状态变为：违约处理中
@@ -270,6 +269,19 @@ class saleContractController extends Controller
             'timeout'  => 2.0,
         ]);
         $response = $client->request('GET', '/api/contract/xs/'.$id.'/terminated');
+        echo $response->getBody();
+    }
+    /*
+     * /api/contract/sf/buchongXieyi/3
+     * 获取该合同的优化协议
+     * */
+    public function jieyue(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/jieyueXieyi/'.$id);
         echo $response->getBody();
     }
 

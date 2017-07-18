@@ -233,7 +233,7 @@
             }
         },
         methods: {
-            /*valid(){
+            valid(){
                 var flag  = true;
                 var flag1 = true;
                 var property =  this.$refs.propertyForm;
@@ -247,7 +247,7 @@
                         this.property.flag = flag1;
                     })
                 }
-            },*/
+            },
             //获取楼盘
             remoteMethod1(query) {
                 let para = {

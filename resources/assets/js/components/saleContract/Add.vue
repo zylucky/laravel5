@@ -110,6 +110,8 @@
                     chengzufang:'华溯商贸',
                     jujianfangtype:1,
                     jujianfang:'',
+                    jujianfangtype:'',
+
                     zuhuleixing:1,
                     //产权人
                     chengzuren:[
@@ -139,6 +141,7 @@
                 },
                 addDate: {
                     hetongtype:1,//合同类型
+                    dikoujine:'',//合同金额
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
                     shoufangdate: '',//收房日期
@@ -173,7 +176,8 @@
                             dizengliang:'',
                         },
                     ],
-                    checkList: []
+                    checkList: [],
+                    jiafangfeiyong:[],
                 },
             }
         },
@@ -185,9 +189,13 @@
         },
         methods:{
             submit(){
-                let para = {
-                    id:this.id,
-                }
+                this.$refs.renter.valid();
+                this.$refs.property.valid();
+                this.$refs.date.valid();
+                if(this.property.flag && this.renter.flag && this.addDate.flag) {
+                    let  para = {
+                        id: this.id,
+                    }
                 submitSaleContract(para).then((res)=>{
                     if(res.data.code == 200){
                         history.go(-1);
@@ -204,6 +212,16 @@
                         })
                     }
                 })
+                }else{
+                    if(this.property.flag==false){this.stepNum = 3;}
+                    if(this.renter.flag==false){this.stepNum = 2;}
+                    if(this.addDate.flag==false){this.stepNum = 1;}
+                    this.btnType = true;
+                    this.$message({
+                        message: '数据格式有问题，请检查',
+                        type:'error'
+                    })
+                }
             },
             save:function () {
                 this.btnType = false;
@@ -245,12 +263,13 @@
                 };
             },
             review2(){
-                reviewSaleContract(this.shenhe).then((res) => {
+                    reviewSaleContract(this.shenhe).then((res) => {
                     if(res.data.code == 200)　{
-                        this.$message({
+                        /*this.$message({
                             message: '保存成功',
                             type: 'success'
-                        });
+                        });*/
+                        history.go(-1);
                         this.dialogFormVisible = false;
                     }else{
                         this.$message({
@@ -324,6 +343,7 @@
                 this.addDate.buchongTiaokuanList = res.data.data.buchongTiaokuanList;
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
+                this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
             },
             disabledInput(){
                 this.reviewVisible = true;

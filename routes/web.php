@@ -33,6 +33,12 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('released','Contract\purchaseContractController@released');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
+Route::group(['prefix' => 'decoration'], function () {
+    Route::get('index','Contract\decorationController@index');
+    Route::get('show','Contract\decorationController@show');
+    Route::post('submit','Contract\decorationController@submit');
+    Route::post('store','Contract\decorationController@store');
+});
 
 
 //Route::get('purchaseContract/review','Contract\purchaseContractController@review');
@@ -52,14 +58,19 @@ Route::post('shouFangCommission/finishSK','Commission\ShouFangCommissionControll
 //消息列表
 Route::resource('message','Message\messageController');
 
+Route::post('message/acceptMessage','Message\messageController@acceptMessage');
+Route::post('message/refuseMessage','Message\messageController@refuseMessage');
+
 //Route::post('saleContract/sub','Contract\saleContractController@sub');
 Route::get('saleContract/submit','Contract\saleContractController@submit');
+Route::get('saleContract/jieyue','Contract\saleContractController@jieyue');
 Route::get('saleContract/approving','Contract\saleContractController@approving');
 Route::get('saleContract/confirm','Contract\saleContractController@confirm');
 Route::get('saleContract/violating','Contract\saleContractController@violating');
 Route::get('saleContract/terminated','Contract\saleContractController@terminated');
 Route::get('saleContract/releasing','Contract\saleContractController@releasing');
 Route::get('saleContract/released','Contract\saleContractController@released');
+Route::post('saleContract/review','Contract\saleContractController@review');
 Route::get('saleContract/jieyuesave','Contract\saleContractController@jieyuesave');
 
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了

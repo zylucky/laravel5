@@ -183,6 +183,8 @@
                 if(this.property.flag && this.owner.flag && this.addDate.flag){
                     let  para = {
                         id:this.id,
+                        bianhao:this.bianhao,
+                        zd:this.property.officeList[0].loudongOmcId,
                     };
                     submitPurchaseContract(para).then((res)=>{
                         if(res.data.code == 200)　{
