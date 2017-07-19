@@ -40158,8 +40158,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -41958,53 +41956,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {},
-    props: ['property'],
     data: function data() {
         return {
             id: '',
             btnShow: true,
             reviewVisible: false, //审核显示
-            /*purchaseContract:{
-                type:0,
-            },*/
-
-            /*omcId:null,
-            loupanOmcId:null,
-               loudongOmcId:null,*/
             xsOffice: [{
                 loupanName: null,
                 loudongName: null,
                 fanghao: null
             }],
             bianhao: null,
-            jieyuefangshi: '退租',
-            zhongzhidate: '',
-            jiaofangdate: '',
-            zhizhaoqianchu: '',
-            tuihuanyajin: '',
-            tuihuanfangzu: '',
-            yingshouzafei: '',
-            xinbianhao: null,
+            ruleForm: {
+                jieyuefangshi: 1,
+                zhongzhidate: '',
+                jiaofangdate: '',
+                zhizhaoqianchu: '',
+                tuihuanyajin: '',
+                tuihuanfangzu: '',
+                yingshouzafei: '',
+                xinbianhao: null
+            },
             hetongid: null,
             jieyueRules: {
                 xinbianhao: [{ required: true, message: '不能为空' }],
-
-                jiefangshi: [{ required: true, message: '不能为空' }],
-                zhongzhidata: [{ required: true, message: '不能为空' }],
-                yingyezhizhao: [{ required: true, message: '不能为空' }],
-                tuiyajin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
+                jieyuefangshi: [{ required: true, message: '不能为空' }],
+                zhongzhidate: [{ required: true, message: '不能为空' }],
+                zhizhaoqianchu: [{ required: true, message: '不能为空' }],
+                tuihuanyajin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
                 tuihuanfangzu: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
                 yingshouzafei: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }]
             }
@@ -42025,7 +42008,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         if (res.data.code == '200') {
                             console.log(res.data.data);
                             //把数据分别赋值给三个组件的变量
-                            _this.fuzhi(res);
+                            _this.fuzhi2(res);
                         } else {
                             _this.$message({
                                 message: '获取数据失败',
@@ -42061,18 +42044,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };*/
             //alert(11);
             //let para = Object.assign({}, xinbianhao,jieyuefangshi,zhongzhidate,jiaofangdate,zhizhaoqianchu,tuihuanyajin,tuihuanfangzu,yingshouzafei,id);
-            var para = {
-                hetongid: this.hetongid,
-                xinbianhao: this.xinbianhao,
-                jieyuefangshi: this.jieyuefangshi,
-                zhongzhidate: this.zhongzhidate,
-                jiaofangdate: this.jiaofangdate,
-                zhizhaoqianchu: this.zhizhaoqianchu,
-                tuihuanyajin: this.tuihuanyajin,
-                tuihuanfangzu: this.tuihuanfangzu,
-                yingshouzafei: this.yingshouzafei
+
+            var hetongid = {
+                hetongid: this.hetongid
             };
-            //console.log(para);
+            var para = Object.assign({}, hetongid, this.ruleForm);
+            console.log(para);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["Q" /* addSaleJieyueContractInfo */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     //alert(333);
@@ -42192,6 +42169,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.xsOffice = res.data.data.xsOffice;
             //console.log(this.xsOffice);
             this.bianhao = res.data.data.bianhao;
+            this.xinbianhao = res.data.data.xinbianhao;
+            this.jieyuefangshi = res.data.data.jieyuefangshi;
+            this.zhongzhidate = res.data.data.zhongzhidate;
+            this.jiaofangdate = res.data.data.jiaofangdate;
+            this.zhizhaoqianchu = res.data.data.zhizhaoqianchu;
+            this.tuihuanyajin = res.data.data.tuihuanyajin;
+            this.tuihuanfangzu = res.data.data.tuihuanfangzu;
+            this.yingshouzafei = res.data.data.yingshouzafei;
+        },
+        fuzhi2: function fuzhi2(res) {
+            //console.log(res.data.data);
+            //this.hetongid = res.data.data.id;
+            //this.xsOffice = res.data.data.xsOffice;
+            //console.log(this.xsOffice);
+            //this.bianhao = res.data.data.bianhao;
             this.xinbianhao = res.data.data.xinbianhao;
             this.jieyuefangshi = res.data.data.jieyuefangshi;
             this.zhongzhidate = res.data.data.zhongzhidate;
@@ -99092,6 +99084,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', [_vm._v("原合同编号：" + _vm._s(_vm.bianhao))])])], 1), _vm._v(" "), _c('el-form', {
     attrs: {
+      "model": _vm.ruleForm,
       "label-Weizhi": "right",
       "label-width": "100px",
       "rules": _vm.jieyueRules
@@ -99103,6 +99096,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "新合同编号",
+      "prop": "xinbianhao",
       "required": ""
     }
   }, [_c('el-input', {
@@ -99110,37 +99104,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "请输入新合同编号"
     },
     model: {
-      value: (_vm.xinbianhao),
+      value: (_vm.ruleForm.xinbianhao),
       callback: function($$v) {
-        _vm.xinbianhao = $$v
+        _vm.ruleForm.xinbianhao = $$v
       },
-      expression: "xinbianhao"
+      expression: "ruleForm.xinbianhao"
     }
   })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "解约方式",
-      "prop": "jiefangshi",
+      "prop": "jieyuefangshi",
       "required": ""
     }
   }, [_c('el-radio-group', {
     model: {
-      value: (_vm.jieyuefangshi),
+      value: (_vm.ruleForm.jieyuefangshi),
       callback: function($$v) {
-        _vm.jieyuefangshi = $$v
+        _vm.ruleForm.jieyuefangshi = $$v
       },
-      expression: "jieyuefangshi"
+      expression: "ruleForm.jieyuefangshi"
     }
   }, [_c('el-radio', {
     attrs: {
-      "label": 1
+      "label": "1"
     }
   }, [_vm._v("退租")]), _vm._v(" "), _c('el-radio', {
     attrs: {
-      "label": 2
+      "label": "2"
     }
   }, [_vm._v("扩租")]), _vm._v(" "), _c('el-radio', {
     attrs: {
-      "label": 3
+      "label": "3"
     }
   }, [_vm._v("缩租")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
@@ -99149,7 +99143,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "合同终止日期",
-      "prop": "zhongzhidata",
+      "prop": "zhongzhidate",
       "required": ""
     }
   }, [_c('el-date-picker', {
@@ -99161,11 +99155,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "请选择合同终止日期"
     },
     model: {
-      value: (_vm.zhongzhidate),
+      value: (_vm.ruleForm.zhongzhidate),
       callback: function($$v) {
-        _vm.zhongzhidate = $$v
+        _vm.ruleForm.zhongzhidate = $$v
       },
-      expression: "zhongzhidate"
+      expression: "ruleForm.zhongzhidate"
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
@@ -99173,7 +99167,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "交房日期"
+      "label": "交房日期",
+      "prop": "jiaofangdate"
     }
   }, [_c('el-date-picker', {
     staticStyle: {
@@ -99184,25 +99179,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "请选择交房日期"
     },
     model: {
-      value: (_vm.jiaofangdate),
+      value: (_vm.ruleForm.jiaofangdate),
       callback: function($$v) {
-        _vm.jiaofangdate = $$v
+        _vm.ruleForm.jiaofangdate = $$v
       },
-      expression: "jiaofangdate"
+      expression: "ruleForm.jiaofangdate"
     }
   })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "工商营业执照迁出",
-      "prop": "yingyezhizhao",
+      "prop": "zhizhaoqianchu",
       "required": ""
     }
   }, [_c('el-radio-group', {
     model: {
-      value: (_vm.zhizhaoqianchu),
+      value: (_vm.ruleForm.zhizhaoqianchu),
       callback: function($$v) {
-        _vm.zhizhaoqianchu = $$v
+        _vm.ruleForm.zhizhaoqianchu = $$v
       },
-      expression: "zhizhaoqianchu"
+      expression: "ruleForm.zhizhaoqianchu"
     }
   }, [_c('el-radio', {
     attrs: {
@@ -99219,7 +99214,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "退还押金",
-      "prop": "tuiyajin",
+      "prop": "tuihuanyajin",
       "required": ""
     }
   }, [_c('el-input', {
@@ -99227,11 +99222,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "请输入退还押金"
     },
     model: {
-      value: (_vm.tuihuanyajin),
+      value: (_vm.ruleForm.tuihuanyajin),
       callback: function($$v) {
-        _vm.tuihuanyajin = $$v
+        _vm.ruleForm.tuihuanyajin = _vm._n($$v)
       },
-      expression: "tuihuanyajin"
+      expression: "ruleForm.tuihuanyajin"
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
@@ -99248,11 +99243,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "请输入退还剩余房租"
     },
     model: {
-      value: (_vm.tuihuanfangzu),
+      value: (_vm.ruleForm.tuihuanfangzu),
       callback: function($$v) {
-        _vm.tuihuanfangzu = $$v
+        _vm.ruleForm.tuihuanfangzu = _vm._n($$v)
       },
-      expression: "tuihuanfangzu"
+      expression: "ruleForm.tuihuanfangzu"
     }
   })], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
@@ -99269,11 +99264,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "请输入租户应交杂费"
     },
     model: {
-      value: (_vm.yingshouzafei),
+      value: (_vm.ruleForm.yingshouzafei),
       callback: function($$v) {
-        _vm.yingshouzafei = $$v
+        _vm.ruleForm.yingshouzafei = _vm._n($$v)
       },
-      expression: "yingshouzafei"
+      expression: "ruleForm.yingshouzafei"
     }
   })], 1)], 1), _vm._v(" "), _c('div', {
     staticStyle: {
@@ -106009,32 +106004,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         },
         expression: "item.startdate"
       }
-    })], 1), _vm._v(" "), _c('el-col', {
-      attrs: {
-        "span": 12
-      }
-    }, [_c('el-form-item', {
-      attrs: {
-        "prop": 'mianzuqiList.' + index + '.enddate',
-        "rules": [{
-          required: true,
-          validator:
-            function (rule, value, callback) {
-              var d1 = new Date(_vm.addDate.mianzuqiList[index].startdate);
-              var d2 = new Date(value);
-              if (value == null) {
-                callback('不能为空');
-              }
-              if (d2 < d1) {
-                callback('结束日期不能小于开始日期');
-              } else {
-                callback();
-              };
-            },
-          trigger: 'blur'
-        }]
-      }
-    }, [_c('el-date-picker', {
+    })], 1), _vm._v(" "), _c('el-date-picker', {
       attrs: {
         "type": "date",
         "placeholder": "结束时间"
@@ -106046,7 +106016,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         },
         expression: "item.enddate"
       }
-    })], 1)], 1)], 1), _vm._v(" "), _c('el-radio-group', {
+    })], 1), _vm._v(" "), _c('el-radio-group', {
       model: {
         value: (_vm.addDate.mianzufangshi),
         callback: function($$v) {
@@ -106518,7 +106488,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addDate.yajin),
       callback: function($$v) {
-        _vm.addDate.yajin = $$v
+        _vm.addDate.yajin = _vm._n($$v)
       },
       expression: "addDate.yajin"
     }
@@ -106540,7 +106510,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addDate.yingfuzongzujin),
       callback: function($$v) {
-        _vm.addDate.yingfuzongzujin = $$v
+        _vm.addDate.yingfuzongzujin = _vm._n($$v)
       },
       expression: "addDate.yingfuzongzujin"
     }
@@ -106562,7 +106532,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addDate.hetongyongjin),
       callback: function($$v) {
-        _vm.addDate.hetongyongjin = $$v
+        _vm.addDate.hetongyongjin = _vm._n($$v)
       },
       expression: "addDate.hetongyongjin"
     }
@@ -106586,7 +106556,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     model: {
       value: (_vm.addDate.tiqianfukuantian),
       callback: function($$v) {
-        _vm.addDate.tiqianfukuantian = $$v
+        _vm.addDate.tiqianfukuantian = _vm._n($$v)
       },
       expression: "addDate.tiqianfukuantian"
     }
@@ -107281,7 +107251,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       model: {
         value: (_vm.property.xsOffice[index].jianzhumianji),
         callback: function($$v) {
-          _vm.property.xsOffice[index].jianzhumianji = $$v
+          _vm.property.xsOffice[index].jianzhumianji = _vm._n($$v)
         },
         expression: "property.xsOffice[index].jianzhumianji"
       }
@@ -107299,7 +107269,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       model: {
         value: (_vm.property.xsOffice[index].qianyuemianji),
         callback: function($$v) {
-          _vm.property.xsOffice[index].qianyuemianji = $$v
+          _vm.property.xsOffice[index].qianyuemianji = _vm._n($$v)
         },
         expression: "property.xsOffice[index].qianyuemianji"
       }

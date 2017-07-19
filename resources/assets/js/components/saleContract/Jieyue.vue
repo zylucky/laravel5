@@ -15,46 +15,38 @@
                 </el-row>
             </li>
         </ol>
-           <!-- <el-col :span="24">
-
-            </el-col>-->
-        <!--<el-row :gutter="20" style="margin-top:30px;margin-bottom:30px;">
-            <el-col :span="8"><span >楼盘：{{loupanName}}</span> </el-col>
-            <el-col :span="8"><span v-model="loudongName">楼栋：</span></el-col>
-            <el-col :span="8"><span v-model="fanghao">房间号：</span></el-col>
-        </el-row>-->
         <el-row :gutter="20" style="margin-bottom:30px;">
             <el-col :span="8"> <span >原合同编号：{{bianhao}}</span> </el-col>
         </el-row>
-        <el-form  label-Weizhi="right" label-width="100px" :rules="jieyueRules">
+        <el-form :model="ruleForm"  label-Weizhi="right" label-width="100px" :rules="jieyueRules">
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="新合同编号" required>
-                        <el-input v-model="xinbianhao" placeholder="请输入新合同编号"></el-input>
+                    <el-form-item label="新合同编号" prop="xinbianhao" required>
+                        <el-input v-model="ruleForm.xinbianhao" placeholder="请输入新合同编号"  ></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-form-item label="解约方式" prop="jiefangshi" required>
-                <el-radio-group v-model="jieyuefangshi">
-                    <el-radio :label="1">退租</el-radio>
-                    <el-radio :label="2">扩租</el-radio>
-                    <el-radio :label="3">缩租</el-radio>
+            <el-form-item label="解约方式" prop="jieyuefangshi" required>
+                <el-radio-group v-model="ruleForm.jieyuefangshi">
+                    <el-radio label="1">退租</el-radio>
+                    <el-radio label="2">扩租</el-radio>
+                    <el-radio label="3">缩租</el-radio>
                 </el-radio-group>
             </el-form-item>
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="合同终止日期" prop="zhongzhidata" required>
-                        <el-date-picker type="date" placeholder="请选择合同终止日期" v-model="zhongzhidate" style="width: 100%;"></el-date-picker>
+                    <el-form-item label="合同终止日期" prop="zhongzhidate" required>
+                        <el-date-picker type="date" placeholder="请选择合同终止日期" v-model="ruleForm.zhongzhidate" style="width: 100%;"></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="交房日期">
-                        <el-date-picker type="date" placeholder="请选择交房日期" v-model="jiaofangdate" style="width: 100%;"></el-date-picker>
+                    <el-form-item label="交房日期" prop="jiaofangdate">
+                        <el-date-picker type="date" placeholder="请选择交房日期" v-model="ruleForm.jiaofangdate" style="width: 100%;"></el-date-picker>
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-form-item label="工商营业执照迁出" prop="yingyezhizhao" required>
-                <el-radio-group v-model="zhizhaoqianchu">
+            <el-form-item label="工商营业执照迁出" prop="zhizhaoqianchu" required>
+                <el-radio-group v-model="ruleForm.zhizhaoqianchu">
                     <el-radio :label="1">是</el-radio>
                     <el-radio :label="0">否</el-radio>
                 </el-radio-group>
@@ -62,19 +54,19 @@
 
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="退还押金" prop="tuiyajin" required>
-                        <el-input v-model="tuihuanyajin" placeholder="请输入退还押金"></el-input>
+                    <el-form-item label="退还押金" prop="tuihuanyajin" required>
+                        <el-input v-model.number="ruleForm.tuihuanyajin" placeholder="请输入退还押金"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="退还剩余房租" prop="tuihuanfangzu" required>
-                        <el-input v-model="tuihuanfangzu" placeholder="请输入退还剩余房租"></el-input>
+                        <el-input v-model.number="ruleForm.tuihuanfangzu" placeholder="请输入退还剩余房租"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
             <el-col :span="8">
                 <el-form-item label="应收杂费" prop="yingshouzafei" required>
-                    <el-input v-model="yingshouzafei" placeholder="请输入租户应交杂费"></el-input>
+                    <el-input v-model.number="ruleForm.yingshouzafei" placeholder="请输入租户应交杂费"></el-input>
                 </el-form-item>
             </el-col>
             <div style="margin-left:-50px;">
@@ -93,49 +85,42 @@
         components:{
 
         },
-        props:['property'],
         data() {
             return {
                 id:'',
                 btnShow:true,
                 reviewVisible:false,//审核显示
-                /*purchaseContract:{
-                    type:0,
-                },*/
-
-                    /*omcId:null,
-                    loupanOmcId:null,
-                       loudongOmcId:null,*/
                 xsOffice:[{
                     loupanName:null,
                     loudongName:null,
                     fanghao:null,
                 }],
                 bianhao: null,
-                jieyuefangshi:'退租',
-                zhongzhidate:'',
-                jiaofangdate:'',
-                zhizhaoqianchu:'',
-                tuihuanyajin:'',
-                tuihuanfangzu:'',
-                yingshouzafei:'',
-                xinbianhao: null,
+                ruleForm:{
+                    jieyuefangshi:1,
+                    zhongzhidate:'',
+                    jiaofangdate:'',
+                    zhizhaoqianchu:'',
+                    tuihuanyajin:'',
+                    tuihuanfangzu:'',
+                    yingshouzafei:'',
+                    xinbianhao: null,
+                },
                 hetongid:null,
                 jieyueRules : {
                     xinbianhao: [
                         {required: true, message: '不能为空'}
                     ],
-
-                    jiefangshi: [
+                    jieyuefangshi: [
                         {required: true, message: '不能为空'}
                     ],
-                    zhongzhidata: [
+                    zhongzhidate: [
                         {required: true, message: '不能为空'}
                     ],
-                    yingyezhizhao: [
+                    zhizhaoqianchu: [
                         {required: true, message: '不能为空'}
                     ],
-                    tuiyajin: [
+                    tuihuanyajin: [
                         {required: true, message: '不能为空'},
                         {type: 'number', message: '必须为数字'},
                     ],
@@ -162,7 +147,7 @@
                             if(res.data.code=='200') {
                                 console.log(res.data.data)
                                 //把数据分别赋值给三个组件的变量
-                                this.fuzhi(res);
+                                this.fuzhi2(res);
                             }else{
                                 this.$message({
                                     message: '获取数据失败',
@@ -195,18 +180,12 @@
                 };*/
                 //alert(11);
                 //let para = Object.assign({}, xinbianhao,jieyuefangshi,zhongzhidate,jiaofangdate,zhizhaoqianchu,tuihuanyajin,tuihuanfangzu,yingshouzafei,id);
-                let para ={
+
+                var hetongid = {
                     hetongid: this.hetongid,
-                    xinbianhao:this.xinbianhao,
-                    jieyuefangshi:this.jieyuefangshi,
-                    zhongzhidate: this.zhongzhidate,
-                    jiaofangdate: this.jiaofangdate,
-                    zhizhaoqianchu: this.zhizhaoqianchu,
-                    tuihuanyajin: this.tuihuanyajin,
-                    tuihuanfangzu: this.tuihuanfangzu,
-                    yingshouzafei: this.yingshouzafei,
                 };
-                //console.log(para);
+                let para = Object.assign({}, hetongid,this.ruleForm);
+                console.log(para);
                 addSaleJieyueContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         //alert(333);
@@ -325,6 +304,21 @@
                 this.xsOffice = res.data.data.xsOffice;
                 //console.log(this.xsOffice);
                 this.bianhao = res.data.data.bianhao;
+                this.xinbianhao = res.data.data.xinbianhao;
+                this.jieyuefangshi = res.data.data.jieyuefangshi;
+                this.zhongzhidate = res.data.data.zhongzhidate;
+                this.jiaofangdate = res.data.data.jiaofangdate;
+                this.zhizhaoqianchu = res.data.data.zhizhaoqianchu;
+                this.tuihuanyajin = res.data.data.tuihuanyajin;
+                this.tuihuanfangzu = res.data.data.tuihuanfangzu;
+                this.yingshouzafei = res.data.data.yingshouzafei;
+            },
+            fuzhi2(res){
+                //console.log(res.data.data);
+                //this.hetongid = res.data.data.id;
+                //this.xsOffice = res.data.data.xsOffice;
+                //console.log(this.xsOffice);
+                //this.bianhao = res.data.data.bianhao;
                 this.xinbianhao = res.data.data.xinbianhao;
                 this.jieyuefangshi = res.data.data.jieyuefangshi;
                 this.zhongzhidate = res.data.data.zhongzhidate;

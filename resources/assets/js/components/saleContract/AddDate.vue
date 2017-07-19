@@ -113,8 +113,7 @@
                     <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate">
                     </el-date-picker>
                 </el-col>
-                <el-col :span="12">
-                    <el-form-item
+                    <!--<el-form-item
                             :prop="'mianzuqiList.' + index + '.enddate'"
                             :rules="[
                                     {  required: true,validator:
@@ -130,11 +129,10 @@
                                         callback();
                                         };
                                             }, trigger:'blur'}
-                                    ]">
-                        <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
-                        </el-date-picker>
-                    </el-form-item>
-                </el-col>
+                                    ]">-->
+                <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
+                </el-date-picker>
+                   <!-- </el-form-item>-->
                 </el-col>
                 <el-radio-group v-model="addDate.mianzufangshi">
                     <el-radio :label="1">期内免租</el-radio>
@@ -360,17 +358,17 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="押金" prop="yajin" required>
-                        <el-input v-model="addDate.yajin" placeholder="押金"></el-input>
+                        <el-input v-model.number="addDate.yajin" placeholder="押金"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="总应付租金" prop="yingfuzongzujin" required>
-                        <el-input v-model="addDate.yingfuzongzujin" placeholder="总应付押金" required></el-input>
+                        <el-input v-model.number="addDate.yingfuzongzujin" placeholder="总应付押金" required></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="合同佣金" prop="hetongyongjin" required>
-                        <el-input v-model="addDate.hetongyongjin" placeholder="合同佣金" required></el-input>
+                        <el-input v-model.number="addDate.hetongyongjin" placeholder="合同佣金" required></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -378,7 +376,7 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="提前几天付款" prop="tiqianfukuantian" required>
-                        <el-input placeholder="提前几天付款" v-model="addDate.tiqianfukuantian" style="width: 100%;"></el-input>
+                        <el-input placeholder="提前几天付款" v-model.number="addDate.tiqianfukuantian" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
