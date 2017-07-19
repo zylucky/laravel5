@@ -3,12 +3,6 @@
     <el-row >
         <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
-            <el-form-item label="公司名称：">
-                <el-input v-model="filters.bk_name" placeholder="请输入公司名称"></el-input>
-            </el-form-item>
-            <el-form-item label="所在楼盘："   >
-                <el-input v-model="filters.buildingname" placeholder="请输入所在楼盘"></el-input>
-            </el-form-item>
             <el-form-item label="业务区域：" >
                 <el-select v-model="filters.areaId" placeholder="请选择区域">
                     <el-option
@@ -18,9 +12,16 @@
                             :value="item.value">
                     </el-option>
                 </el-select>
-            </el-form-item><br/>
-            <el-form-item label="渠道等级："   >
-                <el-select v-model="filters.serviceType" placeholder="请选择渠道等级" style="width:192px"  >
+            </el-form-item>
+            <el-form-item label="公司名称：">
+                <el-input v-model="filters.bk_name" placeholder="请输入公司名称"></el-input>
+            </el-form-item>
+            <el-form-item label="所在楼盘："   >
+                <el-input v-model="filters.buildingname" placeholder="请输入所在楼盘"></el-input>
+            </el-form-item>
+        <br/>
+            <el-form-item label="渠道等级："    >
+                <el-select v-model="filters.serviceType" placeholder="请选择渠道等级"  >
                     <el-option
                             v-for="item in optionsfw"
                             :key="item.value"
@@ -493,7 +494,7 @@
             },
             //显示编辑界面
             handleEdit: function (index, row) {
-                this.$router.push('/brokerCompanyUserList/edit?id=' + row.tQdPersonId);
+                this.$router.push( {path: '/brokerCompanyUserList/edit?id=' + row.tQdPersonId, query:{stage: row}});
             },
             //显示新增界面
             handleAdd: function () {
@@ -501,7 +502,7 @@
             },
             //显示详情页面s
             handleView: function (index, row) {
-                this.$router.push('/brokerCompanyUserList/view?id=' + row.tQdPersonId);
+                this.$router.push({path: '/brokerCompanyUserList/view?id=' + row.tQdPersonId, query: {stage: row}});
             },
             //编辑
             editSubmit: function () {

@@ -126,4 +126,7 @@ export const storeDecoration = params =>{ return axios.post(`${base}/decoration/
 
 //渠道跟进
 export const getBrokerCompanyUserHistoryListPage = params => { return axios.get(`${base}/brokerCompanyUserHistory`, { params: params }); };
-export const getBrokerCompanyHistoryListPage = params => { return axios.get(`${base}/brokerCompanyUserHistory`, { params: params }); };
+export const getBrokerCompanyHistoryListPage = params => { return axios.get(`${base}/brokerCompanyHistory`, { params: params }); };
+export const addBrokerCompanyHistory = params => { return axios.post(`${base}/brokerCompanyUserHistory`, { params: params }); };
+
+
