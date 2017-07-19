@@ -128,6 +128,7 @@
         youhuaPurchaseContract,
         weiYueInfoPurchaseContract,
         weiYueSavePurchaseContract,
+        getPurchaseContractInfo,
     } from '../../api/api.js';
     export default {
         data() {
@@ -373,11 +374,41 @@
             },
             //合同确认
             handleConfirm(index,row){
-                this.payType.sureFormVisible = true;
-                this.payType.tHetongId = row.id;
-                this.payType.tHetongBianhao = row.bianhao;
-            },
 
+                getPurchaseContractInfo({id:row.id}).then((res) => {
+                    if (res.data.code == '200') {
+                        //把数据分别赋值给三个组件的变量
+                        if (res.data.data.jujianfangid == '') {
+                            this.$confirm('确认没有居间方的信息吗?', '提示', {
+                                type: 'warning'
+                            }).then(() => {
+                                let para1 = {
+                                    id: row.id,
+                                }
+                                //直接执行签约完成的状态
+                                confirmPurchaseContract(para1).then((res) => {
+                                    if (res.data.code != '200') {
+                                        this.$message({
+                                            message: '签约完成',
+                                            type: 'error'
+                                        });
+                                    }
+                                });
+                            })
+
+                        } else {
+                            this.payType.sureFormVisible = true;
+                            this.payType.tHetongId = row.id;
+                            this.payType.tHetongBianhao = row.bianhao;
+                        }
+                    } else {
+                        this.$message({
+                            message: '获取数据失败',
+                            type: 'error'
+                        });
+                    }
+                })
+            },
         },
         mounted(){
             this.purchaseContractList();

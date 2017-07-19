@@ -152,16 +152,14 @@
                     sanqifukuanri:'',//三期付款
                     buchongtiaokuan:'',//补充条款
                     yanqizujin:'',
-                    zujinList:[
-                        {
+                    zujinList:[{
                             startdate:'',
                             enddate:'',
                             yuezujin:'',
                             price:'',
                             dizengfangshi:'',
                             dizengliang:'',
-                        },
-                    ],
+                        }],
                     jiafangfeiyong:[],
                     yifangfeiyong:[],
                 },
@@ -275,9 +273,10 @@
             getPurchaseContract(id){
                 getPurchaseContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
+                        console.log(res.data.data.zujinList[0].id)
+                        console.log(res.data.data.zujinList)
                         //把数据分别赋值给三个组件的变量
-                       this.fuzhi(res);
-
+                        this.fuzhi(res);
                     }else {
                         this.$message({
                             message: '获取数据失败',
@@ -299,7 +298,7 @@
                         }
                     }
                     this.tiaoList = res.data.data.tiaoList;
-                    console.log(this.tiaoList);
+                    //console.log(this.tiaoList);
 
                 })
             },
