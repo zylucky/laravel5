@@ -97,7 +97,7 @@
                 }],
                 bianhao: null,
                 ruleForm:{
-                    jieyuefangshi:1,
+                    jieyuefangshi:null,
                     zhongzhidate:'',
                     jiaofangdate:'',
                     zhizhaoqianchu:'',
