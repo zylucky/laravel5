@@ -49,7 +49,7 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[1,2])" ><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[3])"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[5])"  > <el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,9])" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,9])" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7])" ><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7,9])" ><el-button @click="handleOptimize(scope.$index, scope.row)">优化协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
@@ -378,7 +378,7 @@
                 getPurchaseContractInfo({id:row.id}).then((res) => {
                     if (res.data.code == '200') {
                         //把数据分别赋值给三个组件的变量
-                        if (res.data.data.jujianfangid == '') {
+                        if (res.data.data.jujianfangid == null) {
                             this.$confirm('确认没有居间方的信息吗?', '提示', {
                                 type: 'warning'
                             }).then(() => {
@@ -387,11 +387,12 @@
                                 }
                                 //直接执行签约完成的状态
                                 confirmPurchaseContract(para1).then((res) => {
-                                    if (res.data.code != '200') {
+                                    if (res.data.code == '200') {
                                         this.$message({
                                             message: '签约完成',
-                                            type: 'error'
+                                            type: 'success'
                                         });
+                                        this.purchaseContractList();
                                     }
                                 });
                             })

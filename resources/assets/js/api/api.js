@@ -79,7 +79,7 @@ export const getPurchaseContractInfo = params => { return axios.get(`${base}/pur
 export const submitPurchaseContract = params => { return axios.get(`${base}/purchaseContract/`+params.id+'/edit', {params}); };
 export const getPurchaseContractTiaoKuan = params => { return axios.get(`${base}/purchaseContract/create`, {}); };
 export const editPurchaseContractTiaoKuan= params => { return axios.post(`${base}/purchaseContract/editTiaoKuan`, { params: params }); };
-export const confirmPurchaseContract= params => { return axios.get(`${base}/purchaseContract/confirmed`, {params:params}); };
+export const confirmPurchaseContract= params => { return axios.get(`${base}/purchaseContract/confirm`, {params:params}); };
 export const optimizePurchaseContract= params => { return axios.put(`${base}/purchaseContract/`+params.id, {params:params}); };//二次优化
 export const getOptimizePurchaseContract= params => { return axios.get(`${base}/purchaseContract/optimize`, {params:params}); };//二次优化
 export const approvingPurchaseContract= params => { return axios.get(`${base}/purchaseContract/approving`, {params:params}); };//状态变更为：审核中
@@ -130,3 +130,6 @@ export const statusDecoration = params =>{ return axios.get(`${base}/decoration/
 //渠道跟进
 export const getBrokerCompanyUserHistoryListPage = params => { return axios.get(`${base}/brokerCompanyUserHistory`, { params: params }); };
 export const getBrokerCompanyHistoryListPage = params => { return axios.get(`${base}/brokerCompanyUserHistory`, { params: params }); };
+//版本控制
+export const getContractVersionList = params =>{ return axios.get(`${base}/contractVersion/index`, { params: params }); };
+export const changeContractVersionStatus = params =>{ return axios.get(`${base}/contractVersion/status`, { params: params }); };

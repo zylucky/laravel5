@@ -3,7 +3,7 @@
         <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="">
-                <el-select v-model="type" placeholder="请选择合同类型">
+                <el-select v-model="filters.category" placeholder="请选择合同类型">
                     <el-option
                             v-for="item in options1"
                             :key="item.value"
@@ -13,7 +13,7 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="">
-                <el-select v-model="status" placeholder="请选择版本状态">
+                <el-select v-model="filters.status" placeholder="请选择版本状态">
                     <el-option
                             v-for="item in options2"
                             :key="item.value"
@@ -30,20 +30,22 @@
 
             <el-table-column type="index"   >
             </el-table-column>
-            <el-table-column prop="bianhao" label="版本名称"  sortable>
+            <el-table-column prop="version" label="版本名称"  sortable>
             </el-table-column>
-            <el-table-column prop="gongzhangname" label="合同类型"  sortable>
+            <el-table-column prop="category" label="合同类型" :formatter="formatCategory"  sortable>
             </el-table-column>
-            <el-table-column prop="zhuangtai" label="版本状态"  :formatter="formatStatus" sortable>
+            <el-table-column prop="createtime" label="版本创建时间" :formatter="changeDate" sortable>
             </el-table-column>
-            <el-table-column prop="qianyuedate" label="版本创建时间"  sortable>
-            </el-table-column>
-            <el-table-column prop="qianyuedate" label="启用"  sortable>
+            <el-table-column prop="enabled" label="版本状态"  sortable>
                 <template scope="scope">
                 <el-switch
-                        v-model="scope.row.zhuangtai"
+                        v-model="scope.row.enabled"
                         on-color="#13ce66"
-                        off-color="#ff4949">
+                        off-color="#ff4949"
+                        :on-value=1
+                        :off-value=0
+                        @change="changeStatus(scope.row)"
+                >
                 </el-switch>
                 </template>
             </el-table-column>
@@ -74,23 +76,24 @@
 <script>
 
     import {
-        getDecorationList,//列表
-        getDecorationDetail,//详情
+        getContractVersionList,//列表
+        changeContractVersionStatus,//启用禁用
     } from '../../api/api';
     export default{
         data(){
             return {
                 filters:{
-                    name:'',
+                    category:'',
+                    status:'',
                 },
                 options1:[
-                    {value: 1, label: '收房合同'},
-                    {value: 2, label: '出房合同'},
-                    {value: 3, label: '工程合同'},
+                    {value: 0, label: '收房合同'},
+                    {value: 1, label: '出房合同'},
+                    {value: 2, label: '工程合同'},
                 ],
                 options2:[
                     {value: 1, label: '启用'},
-                    {value: 2, label: '停用'},
+                    {value: 0, label: '停用'},
                 ],
                 status:null,
                 type:null,
@@ -107,18 +110,28 @@
             }
         },
         methods:{
-            //佣金类型显示转换
-            formatStatus: function (row, column) {
+            //合同类型
+            formatCategory: function (row, column) {
                 let status = [];
-                status[1] = '等待打印';
-                status[2] = '正在确认';
-                status[3] = '已确认';
-                return status[row.zhuangtai];
+                status[0] = '收房合同';
+                status[1] = '出房合同';
+                status[2] = '工程合同';
+                return status[row.category];
             },
+            changeStatus(row){
+                let para ={
+                    id:row.id,
+                    status:row.enabled,
+                }
+                changeContractVersionStatus(para).then((res)=>{
+
+                })
+            },
+
             //时间戳转日期格式
             changeDate(row, column){
                 var newDate = new Date();
-                newDate.setTime(row.qianyuedate);
+                newDate.setTime(row.createtime);
                 return newDate.toLocaleDateString()
             },
             //页面跳转后
@@ -136,10 +149,11 @@
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
-                    name: this.filters.name,
+                    category: this.filters.category,
+                    status:this.filters.status,
                 };
                 this.listLoading = true;
-                getDecorationList(para).then((res) => {
+                getContractVersionList(para).then((res) => {
                     this.total = res.data.total;
                     this.decoration = res.data.data;
                     this.listLoading = false;

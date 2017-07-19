@@ -33,6 +33,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('released','Contract\purchaseContractController@released');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
+//装饰合同
 Route::group(['prefix' => 'decoration'], function () {
     Route::get('index','Contract\decorationController@index');
     Route::get('show','Contract\decorationController@show');
@@ -40,7 +41,11 @@ Route::group(['prefix' => 'decoration'], function () {
     Route::post('store','Contract\decorationController@store');
     Route::get('status','Contract\decorationController@status');
 });
-
+//合同版本
+Route::group(['prefix' => 'contractVersion'], function () {
+    Route::get('index','Contract\contractVersionController@index');
+    Route::get('status','Contract\contractVersionController@status');
+});
 
 //Route::get('purchaseContract/review','Contract\purchaseContractController@review');
 Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');

@@ -22,6 +22,7 @@ class purchaseContractController extends Controller
         $pn = Input::get('pn');
         $cnt = Input::get('cnt');
         $selectItem = Input::get('selectItem');
+        $status = Input::get('zhuangtai');
         if(!$pn){
             $pn = 1;
         }
@@ -34,6 +35,7 @@ class purchaseContractController extends Controller
                     'pn'=>$pn,
                     'cnt'=>$cnt,
                     'selectItem'=>$selectItem,
+                    'status'=>$status,
                     ]
             ]);
             echo $response->getBody();

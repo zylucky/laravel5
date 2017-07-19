@@ -31,7 +31,7 @@
             </el-table-column>
             <el-table-column prop="zhuangtai" label="状态"  :formatter="formatStatus" sortable>
             </el-table-column>
-            <el-table-column prop="qianyuedate" label="签约日"  sortable>
+            <el-table-column prop="qianyuedate" label="签约日" :formatter="changeDate"  sortable>
             </el-table-column>
                <el-table-column label="操作" width="140">
                     <template scope="scope">
@@ -162,6 +162,14 @@
                 status[1] = '正在确认';
                 status[2] = '已签约';
                 return status[row.zhuangtai];
+            },
+            //时间戳转日期格式
+            changeDate(row, column){
+                var newDate = new Date();
+                newDate.setTime(row.qianyuedate);
+                if(row.qianyuedate!=null){
+                    return newDate.toLocaleDateString()
+                }
             },
             ztin(row,arr){
                 var status = arr.indexOf(row.zhuangtai);

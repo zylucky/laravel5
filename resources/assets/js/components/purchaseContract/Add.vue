@@ -8,7 +8,20 @@
                 <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
                 <add-tiaokuan ref="tiaokuan" :tiaoList="tiaoList" v-show="stepNum==4"></add-tiaokuan>
             </el-col>
-            <div style="margin-bottom:81px;"></div>
+            <div style="margin-bottom:81px;">
+                <el-form>
+                    <el-form-item label="">
+                        <el-select v-model="contractVersion" placeholder="请选择合同版本">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-form>
+            </div>
             <el-col :span="4">
                 <div style="margin-left: 30%;">
                 <el-steps :space="100" direction="vertical" :active="stepNum">
@@ -54,6 +67,12 @@
     export default{
         data(){
             return {
+                options:[
+                    {label:'合同版本1',value:0},
+                    {label:'合同版本2',value:1},
+                    {label:'合同版本3',value:2},
+                ],
+                contractVersion:null,
                 btnType:true,
                 submsg:'提交',
                 shenhe:null,//审核数据
@@ -186,6 +205,10 @@
                     };
                     submitPurchaseContract(para).then((res)=>{
                         if(res.data.code == 200)　{
+                            this.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
                             history.go(-1);
                             this.btnType = true;
                             this.submsg  = '已提交';
