@@ -113,6 +113,8 @@ export const jieyuewanSaleContract = params => { return axios.get(`${base}/saleC
 export const jieyueSaleContractInfo = params => { return axios.post(`${base}/saleContract/submit`, {params:params}); };
 export const addSaleJieyueContractInfo = params => { return axios.post(`${base}/saleContract/jieyuesave`, { params: params });};
 export const removeSaleContract = params => { return axios.post(`${base}/saleContract/delete`, { params: params }); };
+export const weiYueInfoSaleContract= params => { return axios.post(`${base}/saleContract/weiYueInfo`, {params:params}); };//合同终止
+export const weiYueSaveSaleContract= params => { return axios.post(`${base}/saleContract/weiYueSave`, {params:params}); };//合同终止保存一些数据
 
 //获取楼盘，楼栋，房间号
 export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };

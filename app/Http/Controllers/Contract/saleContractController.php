@@ -19,6 +19,7 @@ class saleContractController extends Controller
         $pn = Input::get('pn');
         $cnt = Input::get('cnt');
         $selectItem = Input::get('selectItem');
+        $status = Input::get('zhuangtai');
         if(!$pn){
             $pn = 1;
         }
@@ -31,6 +32,7 @@ class saleContractController extends Controller
                 'pn'=>$pn,
                 'cnt'=>$cnt,
                 'selectItem'=>$selectItem,
+                'status'=>$status,
             ]
         ]);
         echo $response->getBody();
@@ -356,6 +358,34 @@ class saleContractController extends Controller
         $response = $client->request('GET', '/api/contract/xs/jieyueXieyi/'.$id);
         echo $response->getBody();
     }
+    //合同终止的时候提交合同ID，然后获取应付信息
+    public function weiYueInfo(Request $request){
+        //dd(111);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/cw/comm/inithtwy', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
 
+    }
+    /*
+     * api/contract/sf/weiyue/save
+     * */
+    public function weiYueSave(Request $request){
+        //dd($request);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/xs/weiyue/save', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
 
 }

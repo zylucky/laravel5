@@ -80,6 +80,8 @@ Route::get('saleContract/released','Contract\saleContractController@released');
 Route::post('saleContract/review','Contract\saleContractController@review');
 Route::post('saleContract/jieyuesave','Contract\saleContractController@jieyuesave');
 Route::get('saleContract/jieyuelist','Contract\saleContractController@jieyuelist');
+Route::post('saleContract/weiYueInfo','Contract\saleContractController@weiYueInfo');
+Route::post('saleContract/weiYueSave','Contract\saleContractController@weiYueSave');
 
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 
