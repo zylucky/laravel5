@@ -6,6 +6,16 @@
             <el-form-item label="">
                 <el-input v-model="filters.name" placeholder="请输入项目"></el-input>
             </el-form-item>
+            <el-form-item label="">
+                <el-select v-model="filters.status" placeholder="请选择合同状态">
+                    <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search" @click="saleContractList">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
@@ -37,15 +47,14 @@
                             <el-dropdown-item  ><el-button @click="handlSee(scope.$index, scope.row)">查看合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[0,4,5])"><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[1,2])"><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[3])"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[5])"><el-button @click="handleConfirm(scope.$index, scope.row)">签约成功</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6])"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6])"><el-button @click="handleJieyue(scope.$index, scope.row)">解 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[9])"><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[10])"><el-button @click="handleCheckJieyue(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[7])"><el-button @click="handleEnd(scope.$index, scope.row)">终止合同</el-button></el-dropdown-item>
-                        </el-dropdown-menu>  <!--    v-if="ztin(scope.row,[3])"          v-if="ztin(scope.row,[9])"-->
-
+                            <el-dropdown-item  ><el-button @click="openEndDialog(scope.$index, scope.row)">终止合同</el-button></el-dropdown-item>
+                        </el-dropdown-menu>    <!-- v-if="ztin(scope.row,[7])"-->
                     </el-dropdown>
                 </template>
             </el-table-column>
@@ -65,6 +74,43 @@
             >
             </el-pagination>
         </el-col>
+        <el-dialog title="违约" v-model="weiYue.Visible" :close-on-click-modal="false">
+            <el-form  label-width="120px"  ref="sureForm">
+                <el-input type="hidden" prop="tHetongId"  v-model="weiYue.tHetongId" auto-complete="off"></el-input>
+                <el-form-item label="合同编号：" prop="tHetongBianhao">
+                    {{weiYue.tHetongBianhao}}
+                </el-form-item>
+                <el-form-item label="违约类型：" >
+                    <el-radio-group v-model="weiYue.weiyueleixing">
+                        <el-radio class="radio" label="1" >租户违约</el-radio>
+                        <el-radio class="radio" label="2" >幼狮违约</el-radio>
+                        <el-radio class="radio" label="3" >不可抗拒</el-radio>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item label="终止时间：">
+                    <el-date-picker type = "date" placeholder="结束时间"   v-model="weiYue.zhongzhidate" @change="changeEnd">
+                    </el-date-picker>
+                </el-form-item>
+                <el-row>
+                    <el-col :span="14">
+                        <el-form-item label="应收金额：">
+                            <el-input v-model="weiYue.yingshoujine"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="14">
+                        <el-form-item label="应付金额：">
+                            <el-input v-model="weiYue.yingfujine"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click.native="weiYue.Visible = false">取消</el-button>
+                <el-button type="primary" @click.native="handleEnd" :loading="weiYue.Loading">提交</el-button>
+            </div>
+        </el-dialog>
     </el-row>
 </template>
 <script>
@@ -76,15 +122,42 @@
         weiyueSaleContract,
         endSaleContract,
         jieyueSaleContract,
-
+        weiYueSaveSaleContract,
+        weiYueInfoSaleContract,
         approvingSaleContract,} from '../../api/api.js';
     export default {
         data() {
             return {
                 filters: {
                     name: '',
-                    region: ''
+                    region: '',
+                    status:null,
                 },
+                weiYue:{
+                    id:null,
+                    Visible:false,
+                    tHetongId:null,
+                    tHetongBianhao:null,
+                    weiyueleixing:null,
+                    zhongzhidate:null,
+                    yingshoujine:null,
+                    yingfujine:null,
+                    Loading:null,
+                },
+                options:[
+                    {value:0, label:'已创建',},
+                    {value:1, label:'已提交',},
+                    {value:2, label:'审核中',},
+                    {value:3, label:'待打印',},
+                    {value:4, label:'审核拒绝',},
+                    {value:5, label:'待确认',},
+                    {value:6, label:'履约中',},
+                    {value:7, label:'违约处理中',},
+                    {value:8, label:'合同终止（违约处理完成）',},
+                    {value:9, label:'解约中',},
+                    {value:10, label:'合同终止（解约完成）',},
+                    {value:11, label:'合同终止（合同到期）',},
+                ],
                 //分页类数据
                 total:0,
                 currentPage:0,
@@ -99,6 +172,27 @@
 
         },
         methods: {
+            changeEnd(value){
+                //获取三个信息：合同ID，违约类型，以及本日期
+                let para = {
+                    hetongId:this.id,
+                    hetongType:0,
+                    weiYueType:this.weiYue.weiyueleixing,
+                    zhongZhiDate:new Date(this.weiYue.zhongzhidate).toLocaleDateString(),
+                }
+                weiYueInfoSaleContract(para).then((res)=>{
+                    if(res.data.code!='200'){
+                        this.$message({
+                            message: '获取应付信息失败',
+                            type: 'error'
+                        });
+                    }
+                    //把值赋予weiYue
+                    this.weiYue.yingfujine = res.data.data.yfMoney;
+                    this.weiYue.yingshoujine = res.data.data.ysMoney;
+                })
+
+            },
             ztin(row,arr){
                 var status = arr.indexOf(row.zhuangtai);
                 if(status>-1){
@@ -139,10 +233,10 @@
                 status[5] = '正在确认';
                 status[6] = '履约中';
                 status[7] = '违约处理中';
-                status[8] = '合同终止';
+                status[8] = '合同终止（违约处理完成）';
                 status[9] = '解约中';
-                status[10] = '解约完成';
-                status[11] = '已完成';
+                status[10] = '合同终止（解约完成）';
+                status[11] = '合同终止（合同到期）';
                 return status[row.zhuangtai];
             },
             //时间戳转日期格式
@@ -160,6 +254,7 @@
                     cnt: this.pageSize,
                     /*name:'',*/
                     selectItem: this.filters.name,
+                    zhuangtai:this.filters.status,
                 }
                 this.listLoading = true;
                 getSaleContractList(para).then((res) => {
@@ -337,10 +432,29 @@
                 });
             },
             //终止 弹窗确认是否终止
+            openEndDialog(index,row){
+                this.id = row.id;
+                this.weiYue.tHetongBianhao = row.bianhao;
+                this.weiYue.Visible = true;
+                this.weiYue.tHetongId = this.id;
+                this.weiYue.id = this.id;
+
+            },
+            //合同终止
             handleEnd(index, row){
                 this.$confirm('确认合同终止吗?', '提示', {
                     type: 'warning'
                 }).then(() => {
+                    let para1 = this.weiYue;
+                    this.weiYue.Visible = false;
+                    weiYueSaveSaleContract(para1).then((res)=>{
+                        if(res.data.code!='200'){
+                            this.$message({
+                                message: '数据没有保存成功',
+                                type: 'error'
+                            });
+                        }
+                    });
                     this.listLoading = true;
                     let para = {id: row.id};
                     endSaleContract(para).then((res) => {

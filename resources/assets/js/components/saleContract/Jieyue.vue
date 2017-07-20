@@ -317,15 +317,15 @@
             disabledInput(){
                 this.reviewVisible =true;
                 var allInputs = document.getElementsByTagName('input');
-                var textArea = document.getElementsByTagName('textarea');
+                //var textArea = document.getElementsByTagName('textarea');
                 for (let i=0; i<allInputs.length; i++){
                     allInputs[i].disabled="true";
                     allInputs[i].parentNode.className += " is-disabled";
                 }
-                for (let i=0; i<textArea.length; i++){
+                /*for (let i=0; i<textArea.length; i++){
                     textArea[i].disabled="true";
                     textArea[i].parentNode.className += " is-disabled";
-                }
+                }*/
 
             },
             fuzhi(res){
@@ -375,10 +375,10 @@
             if(this.$route.query.id!=null){
                 this.getSaleContract(this.$route.query);
             }
-            /*if(this.$route.path=='/saleContract/checkJieyue'){
+            if(this.$route.path=='/saleContract/checkJieyue'){
                 this.disabledInput();
                 this.btnShow=false;
-            }*/
+            }
         }
 
     }
