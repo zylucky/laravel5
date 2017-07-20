@@ -63,13 +63,17 @@
                             } else {
                                 sessionStorage.setItem('user', JSON.stringify(user));
                                 let para = {};
+                                var _this = this
                                 getPermissionList(para).then(function(res){
                                     sessionStorage.removeItem('permission');
                                     sessionStorage.setItem('permission', JSON.stringify(res.data));
+                                    if(res){
+                                        _this.$router.push({ path: '/message' });
+                                        //console.log(this.$router.options.routes = routes);
+                                        window.location.reload()
+                                    }
                                 });
-                                this.$router.push({ path: '/message' });
-                                //console.log(this.$router.options.routes = routes);
-                                window.location.reload()
+
                             }
                         });
                     } else {
