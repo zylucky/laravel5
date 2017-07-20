@@ -70,13 +70,13 @@
                     </el-row>
                     <el-row>
                         <el-col :span="8">
-                            <el-form-item label="收房日" required>
-                                <el-date-picker type="date" placeholder="选择日期" v-model="addDate.xinjianshoufangdate" style="width: 100%;"></el-date-picker>
+                            <el-form-item label="收房日" prop="shoufangdate" required>
+                                <el-date-picker type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;"></el-date-picker>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="签约日" required>
-                                <el-date-picker type="date" placeholder="选择日期" v-model="addDate.xinjianqianyuedate" style="width: 100%;"></el-date-picker>
+                            <el-form-item label="签约日" prop="qianyuedate" required>
+                                <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -133,6 +133,7 @@
                 <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
                 </el-date-picker>
                    <!-- </el-form-item>-->
+                </el-col>
                 </el-col>
                 <el-radio-group v-model="addDate.mianzufangshi">
                     <el-radio :label="1">期内免租</el-radio>
@@ -502,10 +503,6 @@
                         { type: 'number', message: '必须为数字'},
                     ],yajinfukuanriqi: [
                         { required: true, message: '不能为空' },
-                    ],xinjianshoufangdate: [
-                        { required: true, message: '不能为空' }
-                    ],xinjianqianyuedate: [
-                        { required: true, message: '不能为空' }
                     ],shoufangdate: [
                         { required: true, message: '不能为空' }
                     ],qianyuedate: [

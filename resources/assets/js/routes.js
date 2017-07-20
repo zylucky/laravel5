@@ -53,37 +53,9 @@ import PayableRecord from "./components/report/payableRecordList.vue";
 import Payable from "./components/report/payableList.vue";
 
 
+
 //消息管理
 import MessageList from "./components/message/Index.vue";
-
-var fk_permission ;
-fun('permission')==true? fk_permission = false:fk_permission = true;
-
-var fk_permission_user ;
-fun('permission')==true? fk_permission_user = false:fk_permission_user = true;
-
-var fk_permission_role ;
-fun('permission')==true? fk_permission_role = false:fk_permission_role = true;
-
-var fk_permission_per ;
-fun('permission')==true? fk_permission_per = false:fk_permission_per = true;
-
-var fk_contract ;
-fun('contract')==true? fk_contract = false:fk_contract = true;
-
-var fk_contract_purchase ;
-fun('purchaseContract')==true? fk_contract_purchase = false:fk_contract_purchase = true;
-
-var fk_brokerCompany ;
-fun('brokerCompany')==true? fk_brokerCompany = false:fk_brokerCompany = true;
-
-var fk_brokerCompanyList ;
-fun('brokerCompanyList')==true? fk_brokerCompanyList = false:fk_brokerCompanyList = true;
-
-var fk_brokerCompanyUserList ;
-fun('brokerCompanyUserList')==true? fk_brokerCompanyUserList = false:fk_brokerCompanyUserList = true;
-
-
 
 function fun(funKey) {
     let res = JSON.parse(sessionStorage.getItem('permission'));
@@ -98,10 +70,17 @@ function fun(funKey) {
 
 }
 
-
-
-
-
+var fk_permission ,fk_permission_user ,fk_permission_role ,fk_permission_per ,fk_contract ,fk_contract_purchase ,fk_brokerCompany ,fk_brokerCompanyList
+,fk_brokerCompanyUserList ;
+fun('permission')==true? fk_permission = false:fk_permission = true;
+fun('permission')==true? fk_permission_user = false:fk_permission_user = true;
+fun('permission')==true? fk_permission_role = false:fk_permission_role = true;
+fun('permission')==true? fk_permission_per = false:fk_permission_per = true;
+fun('contract')==true? fk_contract = false:fk_contract = true;
+fun('purchaseContract')==true? fk_contract_purchase = false:fk_contract_purchase = true;
+fun('brokerCompany')==true? fk_brokerCompany = false:fk_brokerCompany = true;
+fun('brokerCompanyList')==true? fk_brokerCompanyList = false:fk_brokerCompanyList = true;
+fun('brokerCompanyUserList')==true? fk_brokerCompanyUserList = false:fk_brokerCompanyUserList = true;
 
 let routes = [
     {

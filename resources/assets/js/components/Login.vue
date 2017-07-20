@@ -15,7 +15,8 @@
     </el-form>
 </template>
 <script>
-    import { requestLogin } from '../api/api.js';
+    import { requestLogin,getPermissionList } from '../api/api.js';
+    import routes from '../routes';
     //import NProgress from 'nprogress'
     export default {
         data() {
@@ -61,8 +62,14 @@
                                 });
                             } else {
                                 sessionStorage.setItem('user', JSON.stringify(user));
+                                let para = {};
+                                getPermissionList(para).then(function(res){
+                                    sessionStorage.removeItem('permission');
+                                    sessionStorage.setItem('permission', JSON.stringify(res.data));
+                                });
                                 this.$router.push({ path: '/message' });
-                                //window.location.reload()
+                                //console.log(this.$router.options.routes = routes);
+                                window.location.reload()
                             }
                         });
                     } else {

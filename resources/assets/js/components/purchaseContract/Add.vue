@@ -8,10 +8,12 @@
                 <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
                 <add-tiaokuan ref="tiaokuan" :tiaoList="tiaoList" v-show="stepNum==4"></add-tiaokuan>
             </el-col>
-            <div style="margin-bottom:81px;">
+            <div style="margin-bottom:51px;">
+            </div>
+            <el-col :span="4">
                 <el-form>
-                    <el-form-item label="">
-                        <el-select v-model="contractVersion" placeholder="请选择合同版本">
+                    <el-form-item label="合同版本：" style="margin-left:auto;width: 70%;">
+                        <el-select v-model="contractVersion" placeholder="合同版本">
                             <el-option
                                     v-for="item in options"
                                     :key="item.value"
@@ -21,14 +23,13 @@
                         </el-select>
                     </el-form-item>
                 </el-form>
-            </div>
-            <el-col :span="4">
                 <div style="margin-left: 30%;">
                 <el-steps :space="100" direction="vertical" :active="stepNum">
                     <a href="javascript:;" onfocus="this.blur();" @click="stepNum=1"><el-step title="房间信息"></el-step></a>
                     <a href="javascript:;" onfocus="this.blur();" @click="stepNum=2"><el-step title="业主信息"></el-step></a>
                     <a href="javascript:;" onfocus="this.blur();" @click="stepNum=3"><el-step title="租期信息"></el-step></a>
                     <!--<a href="javascript:" onfocus="this.blur();" @click="stepNum=4"><el-step title="条款信息"></el-step></a>-->
+
                 </el-steps>
                 <el-button type="primary"  v-show="editVisible" @click="save" style="margin-top:100px;">保存</el-button>
                 <el-button type="primary"  v-show="editVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
@@ -68,9 +69,9 @@
         data(){
             return {
                 options:[
-                    {label:'合同版本1',value:0},
-                    {label:'合同版本2',value:1},
-                    {label:'合同版本3',value:2},
+                    {label:'20170719',value:'20170719'},
+                    {label:'20170720',value:'20170720'},
+                    {label:'20170721',value:'20170721'},
                 ],
                 contractVersion:null,
                 btnType:true,
@@ -247,8 +248,10 @@
                     var bianhao = {
                         bianhao:this.bianhao,
                     }
-                    let para = Object.assign({}, child_property,child_owner,child_date,id,tiaokuan,bianhao);
-                    console.log(para);
+                    var version ={
+                        version:this.contractVersion,
+                    }
+                    let para = Object.assign({}, child_property,child_owner,child_date,id,tiaokuan,bianhao,version);
                     addPurchaseContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         //保存完以后可以得到一个返回的ID
@@ -329,6 +332,7 @@
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
                 this.bianhao = res.data.data.bianhao;
+                this.contractVersion = res.data.data.version;
                 this.property.officeList = res.data.data.officeList;
                 if(res.data.data.chanquanrenList.length>0){
                     this.owner.chanquanrenList = res.data.data.chanquanrenList;
