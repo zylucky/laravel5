@@ -37,14 +37,14 @@
                             <el-dropdown-item  ><el-button @click="handlSee(scope.$index, scope.row)">查看合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[0,4,5])"><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[1,2])"><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[3])"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  ><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[5])"><el-button @click="handleConfirm(scope.$index, scope.row)">签约成功</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6])"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6])"><el-button @click="handleJieyue(scope.$index, scope.row)">解 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[9])"><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
+                            <el-dropdown-item  ><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[10])"><el-button @click="handleCheckJieyue(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7])"><el-button @click="handleEnd(scope.$index, scope.row)">终止合同</el-button></el-dropdown-item>
-                        </el-dropdown-menu>
+                        </el-dropdown-menu>  <!--    v-if="ztin(scope.row,[3])"          v-if="ztin(scope.row,[9])"-->
 
                     </el-dropdown>
                 </template>
@@ -212,15 +212,36 @@
                 });
                 this.$router.push('/saleContract/review?id=' + row.id);
             },
-            handleJieyue(index, row){
+            /*handleJieyue(index, row){
                 this.$confirm('确认将合同设置为解约中吗？', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    this.listLoading = true;
+                    let para = {id: row.id};
+                    alert(11);
+                    jieyueSaleContract(para).then((res) => {
+                        this.listLoading = false;
+                        alert(2222);
+                        this.message({
+                            message: '设置成功',
+                            type: 'success'
+                        });
+                        this.saleContractList();
+                        alert(333);
+                    });
+                }).catch(() => {
+
+                });
+            },*/
+            handleJieyue(index, row){
+                this.$confirm('确认将合同设置为解约中吗?', '提示', {
                     type: 'warning'
                 }).then(() => {
                     this.listLoading = true;
                     let para = {id: row.id};
                     jieyueSaleContract(para).then((res) => {
                         this.listLoading = false;
-                        this.message({
+                        this.$message({
                             message: '设置成功',
                             type: 'success'
                         });
