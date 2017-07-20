@@ -18,35 +18,35 @@
         <el-row :gutter="20" style="margin-bottom:30px;">
             <el-col :span="8"> <span >原合同编号：{{bianhao}}</span> </el-col>
         </el-row>
-        <el-form :model="ruleForm"  label-Weizhi="right" label-width="100px" :rules="jieyueRules">
+        <el-form :model="jieyueXieyi"  label-Weizhi="right" label-width="100px" :rules="jieyueRules">
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="新合同编号" prop="xinbianhao" required>
-                        <el-input v-model="ruleForm.xinbianhao" placeholder="请输入新合同编号"  ></el-input>
+                        <el-input v-model="jieyueXieyi.xinbianhao" placeholder="请输入新合同编号"  ></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
             <el-form-item label="解约方式" prop="jieyuefangshi" required>
-                <el-radio-group v-model="ruleForm.jieyuefangshi">
-                    <el-radio label="1">退租</el-radio>
-                    <el-radio label="2">扩租</el-radio>
-                    <el-radio label="3">缩租</el-radio>
+                <el-radio-group v-model="jieyueXieyi.jieyuefangshi">
+                    <el-radio :label="1">退租</el-radio>
+                    <el-radio :label="2">扩租</el-radio>
+                    <el-radio :label="3">缩租</el-radio>
                 </el-radio-group>
             </el-form-item>
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="合同终止日期" prop="zhongzhidate" required>
-                        <el-date-picker type="date" placeholder="请选择合同终止日期" v-model="ruleForm.zhongzhidate" style="width: 100%;"></el-date-picker>
+                        <el-date-picker type="date" placeholder="请选择合同终止日期" v-model="jieyueXieyi.zhongzhidate" style="width: 100%;"></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="交房日期" prop="jiaofangdate">
-                        <el-date-picker type="date" placeholder="请选择交房日期" v-model="ruleForm.jiaofangdate" style="width: 100%;"></el-date-picker>
+                        <el-date-picker type="date" placeholder="请选择交房日期" v-model="jieyueXieyi.jiaofangdate" style="width: 100%;"></el-date-picker>
                     </el-form-item>
                 </el-col>
             </el-row>
             <el-form-item label="工商营业执照迁出" prop="zhizhaoqianchu" required>
-                <el-radio-group v-model="ruleForm.zhizhaoqianchu">
+                <el-radio-group v-model="jieyueXieyi.zhizhaoqianchu">
                     <el-radio :label="1">是</el-radio>
                     <el-radio :label="0">否</el-radio>
                 </el-radio-group>
@@ -55,23 +55,28 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="退还押金" prop="tuihuanyajin" required>
-                        <el-input v-model.number="ruleForm.tuihuanyajin" placeholder="请输入退还押金"></el-input>
+                        <el-input v-model.number="jieyueXieyi.tuihuanyajin" placeholder="请输入退还押金"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="退还剩余房租" prop="tuihuanfangzu" required>
-                        <el-input v-model.number="ruleForm.tuihuanfangzu" placeholder="请输入退还剩余房租"></el-input>
+                        <el-input v-model.number="jieyueXieyi.tuihuanfangzu" placeholder="请输入退还剩余房租"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="8" style="display: none;">
+                    <el-form-item label="合同的id">
+                        <el-input v-model="hetongid" placeholder="请输入退还剩余房租"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
             <el-col :span="8">
                 <el-form-item label="应收杂费" prop="yingshouzafei" required>
-                    <el-input v-model.number="ruleForm.yingshouzafei" placeholder="请输入租户应交杂费"></el-input>
+                    <el-input v-model.number="jieyueXieyi.yingshouzafei" placeholder="请输入租户应交杂费"></el-input>
                 </el-form-item>
             </el-col>
             <div style="margin-left:-50px;">
                 <el-button type="primary" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保&nbsp;&nbsp;&nbsp;存</el-button>
-                <el-button v-if="btnShow" @click="review" style="margin-top:100px;">提&nbsp;&nbsp;&nbsp;交</el-button>
+                <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit"  style="margin-top:100px;">{{submsg}}</el-button>
                 <el-button v-if="btnShow" type="warning" @click="cancel" style="margin-top:100px;">取&nbsp;&nbsp;&nbsp;消</el-button>
             </div>
         </el-form>
@@ -80,13 +85,15 @@
 </template>
 
 <script>
-    import {getSaleContractInfo,getLoupanList,getLoudongList,getFanghaoList,jieyueSaleContract,addSaleJieyueContractInfo,jieyuewanSaleContract,getJieyueSaleContract,getjieyueSaleContractInfo,jieyueSaleContractInfo} from '../../api/api';
+    import {getSaleContractList,getSaleContractInfo,getLoupanList,getLoudongList,getFanghaoList,jieyueSaleContract,addSaleJieyueContractInfo,jieyuewanSaleContract,getJieyueSaleContract,getjieyueSaleContractInfo,jieyueSaleContractInfo} from '../../api/api';
     export default {
         components:{
 
         },
         data() {
             return {
+                btnType:true,
+                submsg:'提交',
                 id:'',
                 btnShow:true,
                 reviewVisible:false,//审核显示
@@ -96,7 +103,7 @@
                     fanghao:null,
                 }],
                 bianhao: null,
-                ruleForm:{
+                jieyueXieyi:{
                     jieyuefangshi:null,
                     zhongzhidate:'',
                     jiaofangdate:'',
@@ -140,21 +147,9 @@
             getSaleContract(id){
                 getSaleContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
-                        console.log(res.data.data)
+                        //console.log(res.data.data)
                         //把数据分别赋值给三个组件的变量
-                        this.fuzhi1(res);
-                        getjieyueSaleContractInfo(id).then((res)=>{
-                            if(res.data.code=='200') {
-                                console.log(res.data.data)
-                                //把数据分别赋值给三个组件的变量
-                                this.fuzhi2(res);
-                            }else{
-                                this.$message({
-                                    message: '获取数据失败',
-                                    type: 'error'
-                                });
-                            }
-                        })
+                        this.fuzhi(res);
                     }else {
                         this.$message({
                             message: '获取数据失败',
@@ -165,6 +160,8 @@
             },
 
             save:function () {
+                this.btnType = false;
+                this.submsg  = '提交';
                 /*var xinbianhao = this.xinbianhao;
                 var jieyuefangshi = this.jieyuefangshi;
                 var zhongzhidate = this.zhongzhidate;
@@ -184,17 +181,31 @@
                 var hetongid = {
                     hetongid: this.hetongid,
                 };
-                let para = Object.assign({}, hetongid,this.ruleForm);
+                let para = Object.assign({}, hetongid,this.jieyueXieyi);
                 console.log(para);
+                //alert(111);
                 addSaleJieyueContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         //alert(333);
                         this.fuzhi(res);
-                        //alert(444);
-                        this.$message({
-                            message: '保存成功',
-                            type: 'success'
-                        });
+                        /*getSaleContractList(hetongid).then((res) => {*/
+                            //alert(444);
+                            /*if(res.data.code == 200)
+                            {*/
+                                //alert(5555);
+                                //console.log(res);
+                               //this.fuzhi3(res);
+                                this.$message({
+                                    message: '保存成功',
+                                    type: 'success'
+                                });
+                        /*}else{
+                                this.$message({
+                                    message: res.data.msg,
+                                    type: 'error'
+                                })
+                            }*/
+                        //});
                     } else {
                         this.$message({
                             message: res.data.msg,
@@ -205,18 +216,23 @@
                 });
             },
 
-            review(){
-                let para ={
+            submit(){
+                var hetongid = {
                     hetongid: this.hetongid,
-                    xinbianhao:this.xinbianhao,
+                };
+                let para = Object.assign({}, hetongid,this.jieyueXieyi);
+               /* let para ={
+                    hetongid: this.hetongid,
+                    /!*xinbianhao:this.xinbianhao,
                     jieyuefangshi:this.jieyuefangshi,
                     zhongzhidate: this.zhongzhidate,
                     jiaofangdate: this.jiaofangdate,
                     zhizhaoqianchu: this.zhizhaoqianchu,
                     tuihuanyajin: this.tuihuanyajin,
                     tuihuanfangzu: this.tuihuanfangzu,
-                    yingshouzafei: this.yingshouzafei,
-                };
+                    yingshouzafei: this.yingshouzafei,*!/
+                    jieyueXieyi: this.jieyueXieyi,
+                };*/
                 //alert(111);
                 //this.btnType = false;
                 //this.submsg  = '提交';
@@ -228,11 +244,25 @@
                 };//条款*/
                 /*jieyuewanSaleContract(para).then((res)=>{
                 });*/
-                //console.log(para);
+                console.log(para);
                 jieyueSaleContractInfo(para).then((res) => {
-                    if(res.data.code=='200'){
-                        this.$route.push('/saleContract');
+                    if(res.data.code == 200){
+                        history.go(-1);
+                        this.$message({//这是Vue中从后台返回来的数据的格式
+                         message:'提交成功',
+                         type:'success'
+                         });
+                        this.btnType = true;
+                        this.submsg  = '已提交';
+                    }else{
+                        this.$message({
+                            message:res.data.msg,
+                            type:'error'
+                        })
                     }
+                    /*if(res.data.code=='200'){
+                        this.$route.push('/saleContract');
+                    }*/
                 });
             },
             //根据url得到的合同ID，来获取数据
@@ -303,17 +333,19 @@
                 this.hetongid = res.data.data.id;
                 this.xsOffice = res.data.data.xsOffice;
                 //console.log(this.xsOffice);
+                this.jieyueXieyi = res.data.data.jieyueXieyi[0];
                 this.bianhao = res.data.data.bianhao;
-                this.xinbianhao = res.data.data.xinbianhao;
+                /* this.xinbianhao = res.data.data.xinbianhao;
                 this.jieyuefangshi = res.data.data.jieyuefangshi;
                 this.zhongzhidate = res.data.data.zhongzhidate;
                 this.jiaofangdate = res.data.data.jiaofangdate;
                 this.zhizhaoqianchu = res.data.data.zhizhaoqianchu;
                 this.tuihuanyajin = res.data.data.tuihuanyajin;
                 this.tuihuanfangzu = res.data.data.tuihuanfangzu;
-                this.yingshouzafei = res.data.data.yingshouzafei;
+                this.yingshouzafei = res.data.data.yingshouzafei;*/
+                //console.log(this.jieyueXieyi);
             },
-            fuzhi2(res){
+            /*fuzhi2(res){
                 //console.log(res.data.data);
                 //this.hetongid = res.data.data.id;
                 //this.xsOffice = res.data.data.xsOffice;
@@ -333,6 +365,10 @@
                 this.xsOffice = res.data.data.xsOffice;
                 this.bianhao = res.data.data.bianhao;
             },
+            fuzhi3(res){
+                this.xsOffice = res.data.data.xsOffice;
+                this.bianhao = res.data.data.bianhao;
+            },*/
         },
         mounted() {
             //根据url得到的合同ID，来获取数据
