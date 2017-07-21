@@ -51,10 +51,10 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[5])"><el-button @click="handleConfirm(scope.$index, scope.row)">签约成功</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6])"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6])"><el-button @click="handleJieyue(scope.$index, scope.row)">解 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[9])"><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[10])"><el-button @click="handleCheckJieyue(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7])"><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
-                        </el-dropdown-menu>  <!--v-if="ztin(scope.row,[9])"-->
+                        </el-dropdown-menu>
                     </el-dropdown>
                 </template>
             </el-table-column>
@@ -124,7 +124,9 @@
         jieyueSaleContract,
         weiYueSaveSaleContract,
         weiYueInfoSaleContract,
-        approvingSaleContract,} from '../../api/api.js';
+        approvingSaleContract,
+        getSaleContractInfo,
+    } from '../../api/api.js';
     export default {
         data() {
             return {
@@ -235,7 +237,7 @@
             //新增
             addContract() {
                 var _this = this;
-                _this.$router.push("/saleContact/Add");
+                _this.$router.push("/saleContract/add");
             },
             formatStatus(row, column){
                 let status = [];
@@ -297,20 +299,13 @@
                 _this.$router.push('/saleContact/upload');
             },
             handlSee(index, row){
-                /*let para = {
-                    id:row.id,
-                }*/
                 this.$router.push('/saleContract/see?id=' + row.id);
             },
             handleEdit(index, row){
                 let para = {
                     id:row.id,
                 }
-                //
-                //var _this = this;
-                //this.$router.push('/saleContact/edit?id='+row.id);
                 this.$router.push('/saleContract/edit?id=' + row.id);
-                //
                 // this.$router.push('/purchaseContact/add?id='+row.id);
             },
             handleReview(index, row){
@@ -321,27 +316,6 @@
                 });
                 this.$router.push('/saleContract/review?id=' + row.id);
             },
-            /*handleJieyue(index, row){
-                this.$confirm('确认将合同设置为解约中吗？', '提示', {
-                    type: 'warning'
-                }).then(() => {
-                    this.listLoading = true;
-                    let para = {id: row.id};
-                    alert(11);
-                    jieyueSaleContract(para).then((res) => {
-                        this.listLoading = false;
-                        alert(2222);
-                        this.message({
-                            message: '设置成功',
-                            type: 'success'
-                        });
-                        this.saleContractList();
-                        alert(333);
-                    });
-                }).catch(() => {
-
-                });
-            },*/
             handleJieyue(index, row){
                 this.$confirm('确认将合同设置为解约中吗?', '提示', {
                     type: 'warning'
@@ -373,18 +347,22 @@
             },
 
             handleDump(index, row){
-                /*this.$router.push('/saleContract/dump?id='+row.id);*/
-                let para = {
+                getSaleContractInfo({id:row.id}).then((res) => {
+                    var version = res.data.data.version;
+                    let para = {
+                        id: row.id,
+                    }
+                    /*let para = {
                     id:row.id,
-                }
-                //this.getPurchaseContractList();
-                confirmSaleContract(para).then((res)=>{
+                }*/
+                    confirmSaleContract(para).then((res)=>{
                     if(res.data.code=="200"){
                         this.saleContractList();
-                        window.open('/#/saleContract/dump?id=' + row.id);
-                    }
-                });
-                //window.open('/#/purchaseContract/dump?id='+row.id)
+                        window.open('/#/saleContract/dump'+version+'?id=' + row.id);
+                        }
+                    });
+                    //window.open('/#/purchaseContract/dump?id='+row.id)
+                })
             },
             handleDel(index, row){
                 this.$confirm('确认删除该记录吗？', '提示', {

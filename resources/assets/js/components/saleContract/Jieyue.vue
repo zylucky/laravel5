@@ -85,7 +85,7 @@
 </template>
 
 <script>
-    import {getSaleContractList,getSaleContractInfo,getLoupanList,getLoudongList,getFanghaoList,jieyueSaleContract,addSaleJieyueContractInfo,jieyuewanSaleContract,getJieyueSaleContract,getjieyueSaleContractInfo,jieyueSaleContractInfo} from '../../api/api';
+    import {getSaleContractInfo,jieyueSaleContract,addSaleJieyueContractInfo,jieyueSaleContractInfo} from '../../api/api';
     export default {
         components:{
 
@@ -218,23 +218,16 @@
             },
 
             cancel(){
-                /*window.open('/#/saleContract/dump?id='+row.id)
-                window.location.href="./Index.vue";*/
                 window.history.back(-1);
             },
 
             disabledInput(){
                 this.reviewVisible =true;
                 var allInputs = document.getElementsByTagName('input');
-                //var textArea = document.getElementsByTagName('textarea');
                 for (let i=0; i<allInputs.length; i++){
                     allInputs[i].disabled="true";
                     allInputs[i].parentNode.className += " is-disabled";
                 }
-                /*for (let i=0; i<textArea.length; i++){
-                    textArea[i].disabled="true";
-                    textArea[i].parentNode.className += " is-disabled";
-                }*/
 
             },
             fuzhi(res){
@@ -251,15 +244,9 @@
                 this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;
-                //console.log(this.xsOffice);
-                //this.jieyueXieyi = res.data.data.jieyueXieyi[0];
             },
             fuzhi2(res){
-                //console.log(res.data.data);
                 this.hetongid = res.data.data.hetongid;
-                /*this.bianhao = res.data.data.bianhao;
-                this.xsOffice = res.data.data.xsOffice;*/
-                //console.log(this.xsOffice);
                 this.jieyueXieyi = res.data.data.jieyueXieyi[0];
             },
         },
