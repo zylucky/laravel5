@@ -149,7 +149,7 @@
                     if(res.data.code=='200'){
                         //console.log(res.data.data)
                         //把数据分别赋值给三个组件的变量
-                        this.fuzhi1(res);
+                        this.fuzhi(res);
                     }else {
                         this.$message({
                             message: '获取数据失败',
@@ -171,7 +171,7 @@
                 addSaleJieyueContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         //alert(333);
-                        this.fuzhi(res);
+                        this.fuzhi2(res);
                                 this.$message({
                                     message: '保存成功',
                                     type: 'success'
@@ -232,11 +232,12 @@
 
             },
             fuzhi(res){
-                //console.log(res.data.data);
+                console.log(res.data.data);
                 this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;
-                //console.log(this.xsOffice);
+                console.log(this.xsOffice);
+                console.log(this.jieyueXieyi);
                 this.jieyueXieyi = res.data.data.jieyueXieyi[0];
             },
             fuzhi1(res){
@@ -244,12 +245,12 @@
                 this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;
-                //console.log(this.xsOffice);
+                console.log(this.hetongid);
                 //this.jieyueXieyi = res.data.data.jieyueXieyi[0];
             },
             fuzhi2(res){
                 //console.log(res.data.data);
-                this.hetongid = res.data.data.id;
+                //this.hetongid = res.data.data.id;
                 /*this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;*/
                 //console.log(this.xsOffice);
