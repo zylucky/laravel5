@@ -2,15 +2,27 @@
     <div>
         <el-row>
             <div style="margin-bottom: 50px;"></div>
-            <el-col :span="18">
+            <el-col :span="20">
                 <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
                 <add-renter ref="renter" :renter="renter" v-show="stepNum==2"></add-renter>
                 <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
                 <!--<add-tiaokuan ref="tiaokuan" v-show="stepNum==4"></add-tiaokuan>-->
             </el-col>
-            <div style="margin-bottom:81px;"></div>
-            <el-col :span="6">
-                <div style="margin-left: 50%;">
+            <div style="margin-bottom:51px;"></div>
+            <el-col :span="4">
+                <el-form>
+                    <el-form-item label="合同版本：" style="margin-left:auto;width: 70%;">
+                        <el-select v-model="contractVersion" placeholder="合同版本">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.id"
+                                    :label="item.version"
+                                    :value="item.version">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-form>
+                <div style="margin-left: 30%;">
                     <el-steps :space="100" direction="vertical" :active="stepNum">
                         <a href="javascript:;" @click="stepNum=1"><el-step  title="房间信息"></el-step></a>
                         <a href="javascript:;" @click="stepNum=2"><el-step  title="租户信息"></el-step></a>
@@ -22,9 +34,7 @@
                     <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
                     <el-button type="primary" v-show="tonguo" @click="review(1)" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
                     <el-button type="warning" v-show="tonguo" @click="review(0)" style="margin-top:100px;">不通过</el-button>
-
                 </div>
-
             </el-col>
         </el-row>
         <el-dialog title="审核批注" :visible.sync="dialogFormVisible">
@@ -38,7 +48,6 @@
                 <el-button type="primary" @click="review2">确 定</el-button>
             </div>
         </el-dialog>
-
     </div>
 </template>
 <script>
@@ -46,10 +55,13 @@
     import AddRenter from './AddRenter.vue'
     import AddDate from './AddDate.vue'
     import AddTiaokuan from './AddTiaoKuan.vue'
-    import {addSaleContractInfo,getSaleContractInfo,submitSaleContract,reviewSaleContract} from '../../api/api';
+    import {addSaleContractInfo,getSaleContractInfo,submitSaleContract,reviewSaleContract,getContractVersionList} from '../../api/api';
     export default{
         data(){
             return {
+                options:[
+                ],
+                contractVersion:null,
                 btnType:true,
                 submsg:'提交',
                 shenhe:null,//审核数据
@@ -78,27 +90,6 @@
                         hetongid:null,
                     }],
                 },
-
-                /* stepNum:1,
-                 id:'',
-                 property:{
-                 officeList: [{
-                 omcId:null,
-                 loupanOmcId:null,
-                 loudongOmcId:null,
-                 loupanName:null,
-                 loudongName:null,
-                 fanghao:null,
-                 weizhi: null,
-                 chanquanzhenghao: null,
-                 jianzhumianji: null,
-                 qianyuemianji: null,
-                 leixing: null,
-                 hetongid:null,
-                 }],
-                 },*/
-
-
                 renter:{
                     flag:null,
                     options1:[
@@ -199,10 +190,6 @@
                 submitSaleContract(para).then((res)=>{
                     if(res.data.code == 200){
                         history.go(-1);
-                        /*this.$message({//这是Vue中从后台返回来的数据的格式
-                            message:'提交成功',
-                            type:'success'
-                        });*/
                         this.btnType = true;
                         this.submsg  = '已提交';
                     }else{
@@ -213,9 +200,9 @@
                     }
                 })
                 }else{
-                    console.log(this.property.flag);
-                    console.log(this.renter.flag);
-                    console.log(this.addDate.flag);
+                    //console.log(this.property.flag);
+                    //console.log(this.renter.flag);
+                    //console.log(this.addDate.flag);
                     if(this.property.flag==false){this.stepNum = 3;}
                     if(this.renter.flag==false){this.stepNum = 2;}
                     if(this.addDate.flag==false){this.stepNum = 1;}
@@ -238,9 +225,12 @@
                     var bianhao = {
                         bianhao: this.bianhao,
                     };
-                    let para = Object.assign({}, child_property,child_renter,child_date,id,bianhao);
+                    var version ={
+                        version:this.contractVersion,
+                    }
+                    let para = Object.assign({}, child_property,child_renter,child_date,id,bianhao,version);
                     //alert(para);
-                    console.log(para);
+                    //console.log(para);
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
                             this.fuzhi(res);
@@ -269,10 +259,6 @@
             review2(){
                     reviewSaleContract(this.shenhe).then((res) => {
                     if(res.data.code == 200)　{
-                        /*this.$message({
-                            message: '保存成功',
-                            type: 'success'
-                        });*/
                         history.go(-1);
                         this.dialogFormVisible = false;
                     }else{
@@ -298,16 +284,26 @@
                     }
                 })
             },
+            //获取当前启用的合同版本
+            getVersion(){
+                let para = {
+                    category: 1,
+                    status:1,
+                };
+                this.listLoading = true;
+                getContractVersionList(para).then((res) => {
+                    this.options = res.data.data;
+                    this.contractVersion = this.options[0].version;
+                });
+            },
             fuzhi(res){
                 this.id = res.data.data.id;
+                this.contractVersion = res.data.data.version;
                 this.property.xsOffice = res.data.data.xsOffice;
                 if(res.data.data.chengzuren.length>0){
                     this.renter.chengzuren = res.data.data.chengzuren;
                 }
-                //this.renter.chengzuren = res.data.data.chengzuren;
                 this.renter.chengzufang = res.data.data.chengzufang;
-                /*this.renter.jujianfangtype = res.data.data.jujianfangtype;
-                this.renter.jujianfang = res.data.data.jujianfang;*/
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.kaihuhang = res.data.data.kaihuhang;
                 this.renter.zhanghao = res.data.data.zhanghao;
@@ -316,19 +312,9 @@
                 this.renter.jujianfangid = res.data.data.jujianfangid;
                 this.renter.options1[0].value = res.data.data.jujianfangid;
                 this.renter.options1[0].label = res.data.data.jujianfang;
-                /*this.renter.jujianfang = res.data.data.jujianfang;
-                this.renter.jujianfang = res.data.data.jujianfang;
-                this.renter.jujianfang = res.data.data.jujianfang;
-                this.renter.jujianfang = res.data.data.jujianfang;
-                this.renter.jujianfang = res.data.data.jujianfang;*/
-
                 this.renter.zuhuleixing = res.data.data.zuhuleixing;
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.zhanghao = res.data.data.zhanghao;
-                /*this.renter.dailirenTel = res.data.data.dailirenTel;
-                this.renter.dailirenSex = res.data.data.dailirenSex;
-                this.renter.dailirenId = res.data.data.dailirenId;
-                this.renter.dailirenName = res.data.data.dailirenName;*/
                 this.renter.qianyuerenName = res.data.data.qianyuerenName;
                 this.renter.qianyuerenTel = res.data.data.qianyuerenTel;
                 this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
@@ -398,6 +384,8 @@
             if(this.$route.path=='/saleContract/see'){
                 this.seeDisabledInput();
             }
+            //新增页面获取版本
+            this.getVersion();
         },
 
     }

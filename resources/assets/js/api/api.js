@@ -141,3 +141,4 @@ export const getFWDXDicList = params => { return axios.post(`${base}/brokerCompa
 export const getContractVersionList = params =>{ return axios.get(`${base}/contractVersion/index`, { params: params }); };
 export const changeContractVersionStatus = params =>{ return axios.get(`${base}/contractVersion/status`, { params: params }); };
 
+

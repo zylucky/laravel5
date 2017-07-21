@@ -6,7 +6,6 @@
         <p>承租方（乙方）：<input type="text" style="width: 450px" disabled value=""/></p>
         <p>居间方（丙方）：<input type="text" style="width: 450px" disabled value='北京华亮房地产经纪有限公司'/></p>
 
-        <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鉴于乙方具有行业领先的房屋资产管理服务经验，能够运用自身拥有的资源及优质的增值服务，为业主方提供完善的服务，如物业对接，装饰装修，代缴物业费、供暖费，设备、空调设施、维修检测等，提高受托管理房屋资产的使用价值，为业主方带来稳定的租金收益；同时为业主方节省大量的管理费用及时间成本。</p>-->
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙、丙三方在平等、自愿的基础上，就乙方承租甲方房屋，丙方提供居间服务等事宜，经各方友好协商一致，签订本合同以资信守。</b></p>
         <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一条  房屋基本情况</b></p>
         <span
@@ -407,7 +406,7 @@
                 getSaleContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
                         //把数据分别赋值给三个组件的变量
-                        console.log(res.data)
+                        //console.log(res.data)
                         this.fuzhi(res);
                     }else {
                         this.$message({
@@ -430,19 +429,9 @@
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.kaihuhang = res.data.data.kaihuhang;
                 this.renter.zhanghao = res.data.data.zhanghao;
-                /*this.renter.jujianfang = res.data.data.jujianfang;
-                 this.renter.jujianfang = res.data.data.jujianfang;
-                 this.renter.jujianfang = res.data.data.jujianfang;
-                 this.renter.jujianfang = res.data.data.jujianfang;
-                 this.renter.jujianfang = res.data.data.jujianfang;*/
-
                 this.renter.zuhuleixing = res.data.data.zuhuleixing;
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.zhanghao = res.data.data.zhanghao;
-                /*this.renter.dailirenTel = res.data.data.dailirenTel;
-                 this.renter.dailirenSex = res.data.data.dailirenSex;
-                 this.renter.dailirenId = res.data.data.dailirenId;
-                 this.renter.dailirenName = res.data.data.dailirenName;*/
                 this.renter.qianyuerenName = res.data.data.qianyuerenName;
                 this.renter.qianyuerenTel = res.data.data.qianyuerenTel;
                 this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
@@ -474,7 +463,12 @@
             //获取合同的详细信息
             this.getSaleContract(this.$route.query);
             // document.getElementsByTagName('head').innerHTML('<title>华亮房产 -- 先锋地产机构、专业人、信誉人</title>>');
+            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
+            function  hello() {
+                window.print()
+            }
 
+            setTimeout(hello,1000);
         }
     }
 </script>
