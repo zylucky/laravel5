@@ -14,7 +14,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="地图区域："   >
+            <el-form-item label=""   >
                 <el-select v-model="filters.mapAreaId" placeholder="请选择地图区域">
                     <el-option
                             v-for="item in options"
@@ -24,10 +24,17 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="所在楼盘："   >
-                <el-input v-model="filters.buildingname" placeholder="请输入所在楼盘"></el-input>
+            <el-form-item label="经营属性："    >
+                    <el-select v-model="filters.managementAttr" placeholder="请选择经营属性">
+                        <el-option
+                                v-for="item in optionssx"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
             </el-form-item></el-row><el-row>
-            <el-form-item label="服务类型："   >
+            <el-form-item label="协议等级："   >
                 <el-select v-model="filters.serviceType" placeholder="请选择服务类型">
                     <el-option
                             v-for="item in optionsfw"
@@ -37,16 +44,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="经营属性："    >
-                <el-select v-model="filters.managementAttr" placeholder="请选择经营属性">
-                    <el-option
-                            v-for="item in optionssx"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-            </el-form-item>
+
             <el-form-item label="公司名称：">
                 <el-input v-model="filters.bk_name" placeholder="请输入公司名称"></el-input>
             </el-form-item>
@@ -62,23 +60,27 @@
             </el-table-column>
             <el-table-column prop="compayname" label="公司名称"  >
             </el-table-column>
-            <el-table-column prop="compaytest" label="区域"  >
+            <el-table-column label="公司所属业务区域">
+            <el-table-column prop="compaytest"    >
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="地图区域"  >
+            <el-table-column prop="yjzbSf"    >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="所在项目"  >
             </el-table-column>
-            <el-table-column prop="yjType" label="经营属性"  :formatter="formatYJType" >
+            <el-table-column prop="yjzbCf" label="主做区域"  >
             </el-table-column>
-            <el-table-column prop="yjType" label="服务类型"  :formatter="formatYJType" >
+            <el-table-column prop="yjType" label="渠道等级"  :formatter="formatYJType" >
             </el-table-column>
             <el-table-column prop="tbPersonIdCreate" label="负责人姓名"     >
             </el-table-column>
-            <el-table-column prop="tbPersonIdCreate" label="联系方式"     >
+            <el-table-column prop="yjType" label="幼狮对接人"  :formatter="formatYJType" >
             </el-table-column>
-            <el-table-column prop="tbPersonIdCreate" label="协议等级"     >
+            <el-table-column prop="tbPersonIdCreate" label="是否签署协议"     >
+            </el-table-column>
+            <el-table-column prop="tbPersonIdCreate" label="最后跟进日期"     >
             </el-table-column>
             <el-table-column prop="createdate" label="信息完整度"  >
+            </el-table-column>
+            <el-table-column prop="createdate" label="渠道状态"  >
             </el-table-column>
             <el-table-column label="操作" width="150">
                 <template scope="scope">

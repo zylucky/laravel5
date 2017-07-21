@@ -110,8 +110,7 @@
                     chengzufang:'华溯商贸',
                     jujianfangtype:1,
                     jujianfang:'',
-                    jujianfangtype:'',
-
+                    jujianfangid:null,
                     zuhuleixing:1,
                     //产权人
                     chengzuren:[
@@ -144,8 +143,10 @@
                     dikoujine:'',//合同金额
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
+                    //xinjianshoufangdate: '',//收房日期
+                    //xinjianqianyuedate: '',//签约日期
                     shoufangdate: '',//收房日期
-                    qianyueDate: '',//签约日期
+                    qianyuedate: '',//签约日期
                     mianzufangshi: [],//免租方式
                     mianzuqiList: [{
                         startdate:'',//免租开始
@@ -213,6 +214,9 @@
                     }
                 })
                 }else{
+                    console.log(this.property.flag);
+                    console.log(this.renter.flag);
+                    console.log(this.addDate.flag);
                     if(this.property.flag==false){this.stepNum = 3;}
                     if(this.renter.flag==false){this.stepNum = 2;}
                     if(this.addDate.flag==false){this.stepNum = 1;}
@@ -237,6 +241,7 @@
                     };
                     let para = Object.assign({}, child_property,child_renter,child_date,id,bianhao);
                     //alert(para);
+                    console.log(para);
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
                             this.fuzhi(res);
@@ -302,11 +307,16 @@
                 }
                 //this.renter.chengzuren = res.data.data.chengzuren;
                 this.renter.chengzufang = res.data.data.chengzufang;
-                this.renter.jujianfangtype = res.data.data.jujianfangtype;
-                this.renter.jujianfang = res.data.data.jujianfang;
+                /*this.renter.jujianfangtype = res.data.data.jujianfangtype;
+                this.renter.jujianfang = res.data.data.jujianfang;*/
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.kaihuhang = res.data.data.kaihuhang;
                 this.renter.zhanghao = res.data.data.zhanghao;
+                this.renter.jujianfangtype = res.data.data.jujianfangtype;
+                this.renter.jujianfang = res.data.data.jujianfang;//
+                this.renter.jujianfangid = res.data.data.jujianfangid;
+                this.renter.options1[0].value = res.data.data.jujianfangid;
+                this.renter.options1[0].label = res.data.data.jujianfang;
                 /*this.renter.jujianfang = res.data.data.jujianfang;
                 this.renter.jujianfang = res.data.data.jujianfang;
                 this.renter.jujianfang = res.data.data.jujianfang;
@@ -328,7 +338,7 @@
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;
-                this.addDate.qianyueDate = res.data.data.qianyueDate;
+                this.addDate.qianyuedate = res.data.data.qianyuedate;
                 this.addDate.mianzufangshi = res.data.data.mianzufangshi;
                 this.addDate.mianzuqiList = res.data.data.mianzuqiList;
                 this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;

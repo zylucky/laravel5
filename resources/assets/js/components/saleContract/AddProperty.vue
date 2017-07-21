@@ -97,12 +97,12 @@
                             <el-row>
                                 <el-col :span="8">
                                     <el-form-item label="承租面积" required prop="jianzhumianji" >
-                                        <el-input v-model="property.xsOffice[index].jianzhumianji"></el-input>
+                                        <el-input v-model.number="property.xsOffice[index].jianzhumianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item label="签约面积" required prop="qianyuemianji">
-                                        <el-input v-model="property.xsOffice[index].qianyuemianji"></el-input>
+                                        <el-input v-model.number="property.xsOffice[index].qianyuemianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
@@ -177,9 +177,6 @@
                 //房间类型
                 options: [
                     {
-                        value: 0,
-                        label: '请选择'
-                    },{
                         value: 1,
                         label: '公寓'
                     }, {

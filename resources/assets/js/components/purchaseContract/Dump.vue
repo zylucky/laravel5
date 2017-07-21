@@ -111,7 +111,7 @@
         <p><b>第四条  资产管理服务费</b></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲、乙双方一致同意，乙方按照风险自担的方式收取资产管理服务费。即乙方对房屋进行出租及为实际使用人提供增值服务而取得的收入中，超出向甲方支付固定租金收益的溢价部分，将作为乙方的服务费，由乙方直接收取；如未产生溢价的，甲方亦不向乙方支付任何服务费用，该风险由乙方自行承担。</p>
         <p><b>第五条  相关费用的承担方式</b></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）管理期限内的下列费用中，      <input type="text" value="（1）、（2）、（3）">    由甲方承担， 其他费用 由乙方（或实际使用人）承担：(1)供暖费 (2)制冷费 (3)物业管理费 (4)水费 (5)电费 (6)燃气费 (7)电话费 (8)电视收视费 (9)上网费 (10)卫生费 (11)车位费 （12）其他
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）管理期限内的下列费用中， <u>{{addDate.jiafangfeiyong}}</u>  由甲方承担， 其他费用 由乙方（或实际使用人）承担：(1)供暖费 (2)制冷费 (3)物业管理费 (4)水费 (5)电费 (6)燃气费 (7)电话费 (8)电视收视费 (9)上网费 (10)卫生费 (11)车位费 （12）其他
             <input type="text" style="width:100px;">。
             <br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）乙方仅承担本合同列明应由乙方承担的费用。如乙方垫付了应由甲方支付的费用，甲方应根据乙方出示的相关缴费凭据向乙方返还相应费用或直接从下一次支付的租金收益中扣除。
@@ -412,7 +412,6 @@
                 getPurchaseContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
                         //把数据分别赋值给三个组件的变量
-                        console.log(res.data)
                         this.fuzhi(res);
                     }else {
                         this.$message({
@@ -462,6 +461,17 @@
                 this.addDate.buchongtiaokuan = res.data.data.buchongtiaokuan;
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.yanqizujin = res.data.data.yanqizujin;
+                this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+
+                var lists = this.addDate.jiafangfeiyong;
+                var str ='';
+                lists.forEach(function(item,index){
+                    str += item.substr(0, item.indexOf('）')+1);
+                    if(index<lists.length-1){
+                        str +='、';
+                    }
+                });
+                this.addDate.jiafangfeiyong = str;
                 this.addDate.checkList = res.data.data.checkList;
                 //给条款的每一条数据都添加一个属性字段show
                 for (let x in res.data.data.tiaoList){
@@ -477,11 +487,14 @@
             },
         },
         mounted(){
-            //window.print();
             //获取合同的详细信息
             this.getPurchaseContract(this.$route.query);
-           // document.getElementsByTagName('head').innerHTML('<title>华亮房产 -- 先锋地产机构、专业人、信誉人</title>>');
+            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
+            function  hello() {
+                window.print()
+            }
 
+            setTimeout(hello,1000);
         }
     }
 </script>

@@ -4,80 +4,101 @@
         <span class="tc f22">幼狮空间成交版</span>
         <p>出租方（甲方）：<input type="text" style="width: 450px" disabled value='北京幼狮科技有限公司'/></p>
         <p>承租方（乙方）：<input type="text" style="width: 450px" disabled value=""/></p>
-        <p>居间方（丙方）：<input type="text" style="width: 450px" disabled value=''/></p>
+        <p>居间方（丙方）：<input type="text" style="width: 450px" disabled value='北京华亮房地产经纪有限公司'/></p>
 
         <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鉴于乙方具有行业领先的房屋资产管理服务经验，能够运用自身拥有的资源及优质的增值服务，为业主方提供完善的服务，如物业对接，装饰装修，代缴物业费、供暖费，设备、空调设施、维修检测等，提高受托管理房屋资产的使用价值，为业主方带来稳定的租金收益；同时为业主方节省大量的管理费用及时间成本。</p>-->
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙、丙三方在平等、自愿的基础上，就乙方承租甲方房屋，丙方提供居间服务等事宜，经各方友好协商一致，签订本合同以资信守。</b></p>
         <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一条  房屋基本情况</b></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" contenteditable="true" style="width:110px;">区（县）<input type="text"  style="width:210px;">，承租区域建筑面积<input type="text"  style="width:120px;">平方米（最终以房屋所有权证标注的建筑面积为准），产权证编号： <input type="text" value="">  。</p>
+        <span
+                v-for="(item,index) in property.xsOffice"
+                :key="index"
+        >
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" contenteditable="true" style="width:110px;">区（县）<input type="text" v-model="item.weizhi" style="width:210px;">，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），产权证编号： <input type="text" v-model="item.chanquanzhenghao" value="">  。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。</p>
         <p><b>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二条  房屋租赁情况
         </b></p>
         <p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租赁用途：
-            <input type="text" style="width: 70px;" value="办公">，房屋性质<input type="text" style="width: 70px;">，根据房产性质及政府相关规定可以进行工商注册的房屋，甲方向乙方提供业主身份证及房屋所有权证复印件，乙方自行到相关部门办理工商注册事宜，并由乙方自行承担注册不成功之风险。
+            <input type="text" style="width: 70px;" value="办公">，房屋性质<input type="text" style="width: 70px;" v-model="item.leixing">，根据房产性质及政府相关规定可以进行工商注册的房屋，甲方向乙方提供业主身份证及房屋所有权证复印件，乙方自行到相关部门办理工商注册事宜，并由乙方自行承担注册不成功之风险。
         </p>
+        </span>
         <p><b>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第三条  租赁期限及免租期
         </b></p>
+
         <p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方承诺在租赁合同期限内给予乙方<input type="text" style="width:70px;">天的免租期。
         </p>
         <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自<input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日至
-            <input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日止。免租期内乙方不支付租金，以便于乙方进行装饰装修及办理入住手续等事宜。免租期内物业管理费、供暖费由 □甲方 □乙方 承担。
-
+            <span v-for="(item,index) in addDate.mianzuqiList">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
+            <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日止。免租期内乙方不支付租金，以便于乙方进行装饰装修及办理入住手续等事宜。免租期内物业管理费、供暖费由 □甲方 □乙方 承担。
+            </span>
         </p>
+        </span>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同房屋租赁期限为<input type="text" style="width:25px;">年。
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自<input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日至
-            <input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日止。
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自<u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日至
+        <u>&nbsp;&nbsp;{{year(addDate.enddate)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{month(addDate.enddate)}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{day(addDate.enddate)}}&nbsp;&nbsp;</u>日止。
         </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）合同期满乙方仍使用该房屋，乙方应提前90天通知甲方，双方协商同意后另行签署新的租赁合同；若乙方未提前90日提出书面续租申请视为乙方放弃续租权，在此期间乙方应配合甲方带领未来租户看房。在同等市场条件下，乙方拥有优先承租权。</p>
         <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第四条  租金和押金</b></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）乙方按照下列标准向甲方支付租金（以人民币进行结算）：<input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日至
-            <input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日，租金为￥<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月）；<input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日至
-            <input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日，租金为￥<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月）；<input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日至
-            <input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日，租金为￥<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月）；
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）乙方按照下列标准向甲方支付租金（以人民币进行结算）：<span v-for="(item,index) in addDate.zujinList"><u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
+            <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日，租金为￥<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月）；<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
+            <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日，租金为￥<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月）；<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
+            <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日，租金为￥<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月）；
+        </span>
         </p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）租金支付方式为：押<input type="text" style="width: 70px;">付<input type="text" style="width: 70px;">；</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月），支付时间为<input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日前。 </p>
+        <span v-for="(item,index) in addDate.fukuanFangshiList"
+              :key="index"
+        >
+        <p>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）租金支付方式为：押<input type="text" style="width: 70px;" v-model="item.yajinyue">付<input type="text" style="width: 70px;" v-model="item.zujinyue">；</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月），支付时间为
+
+            <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日前。
+
+        </p>
+        </span>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、首期租金：￥<input type="text" style="width: 100px;">元（大写：<input type="text" style="width: 130px;">元整），支付时间为<input type="text" style="width: 90px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日前；租金每<input type="text" style="width: 25px;">个月支付一次，于付款月起租日 30日前支付下一次租金，即第二期租金的支付时间为<input type="text" style="width: 90px;">年
-            <input type="text" style="width: 25px;">月
-            <input type="text" style="width: 50px;">日前，第三期租金的支付时间为<input type="text" style="width: 100px;">年
-            <input type="text" style="width: 50px;">月
-            <input type="text" style="width: 50px;">日前，合同期每期租金以此类推。
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、首期租金：￥<input type="text" style="width: 100px;">元（大写：<input type="text" style="width: 130px;">元整），支付时间为
+
+            <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每<input type="text" style="width: 25px;">个月支付一次，于付款月起租日 30日前支付下一次租金，即第二期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日前，第三期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>日前，合同期每期租金以此类推。
         </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）租金的结算方式为：□ 以转账方式 ；□ 现金支付</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（甲方指定收款账户为：</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户 &nbsp;&nbsp;名：<input type="text" style="width: 150px;"></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开户行：<input type="text" style="width: 150px;"></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账 &nbsp;&nbsp;号：<input type="text" style="width: 150px;"></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户 &nbsp;&nbsp;名：<input type="text" style="width: 150px;" v-model="renter.shoukuanren"></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开户行：<input type="text" style="width: 150px;" v-model="renter.kaihuhang"></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账 &nbsp;&nbsp;号：<input type="text" style="width: 150px;" v-model="renter.zhanghao"></p>
         <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第五条  相关费用的承担方式</b></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方承担在承租期的物业管理费、供暖费。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）在承租期内，乙方自行承担在使用期间的相关费用（水费、电费、燃气费、宽带费、停车费等），乙方按物业管理机构提供的交费通知单交费。</p>
@@ -177,9 +198,291 @@
     }
 </style>
 <script>
+    import {getSaleContractInfo} from '../../api/api';;
     export default{
+        components:{
+
+        },
+        data(){
+            return {
+                property:{
+                    flag:null,
+                    xsOffice: [{
+                        omcId:null,
+                        loupanOmcId:null,
+                        loudongOmcId:null,
+                        loupanName:null,
+                        loudongName:null,
+                        fanghao:null,
+                        weizhi: null,
+                        chanquanzhenghao: null,
+                        jianzhumianji: null,
+                        qianyuemianji: null,
+                        leixing: null,
+                        hetongid:null,
+                    }],
+                },
+                renter:{
+                    flag:null,
+                    options1:[
+                        {
+                            value:null,
+                            label:null,
+                        }
+                    ],
+                    chengzufang:'华溯商贸',
+                    jujianfang:'',
+                    jujianfangtype:'',
+                    zuhuleixing:1,
+                    //产权人
+                    chengzuren:[
+                        {
+                            faren:'',
+                            name:'',
+                            idNo:'',
+                            tel:'',
+                            sex:1,
+                            hetongid:null,
+                        },
+                    ],
+                    //收款人
+                    shoukuanren:'',
+                    zhanghao:'',
+                    kaihuhang:'',
+                    //代理人
+                    dailirenName:'',
+                    dailirenTel:'',
+                    dailirenSex:1,
+                    dailirenId:'',
+                    //签约人
+                    qianyuerenName:'',
+                    qianyuerenTel:'',
+                    qianyuerenSex:1,
+                    qianyuerenId:'',
+                },
+                addDate: {
+                    hetongtype:1,//合同类型
+                    dikoujine:'',//合同金额
+                    startdate:'',//租期开始时间
+                    enddate:'',//租期结束时间
+                    xinjianshoufangdate: '',//收房日期
+                    xinjianqianyuedate: '',//签约日期
+                    shoufangdate: '',//收房日期
+                    qianyuedate: '',//签约日期
+                    mianzufangshi: [],//免租方式
+                    mianzuqiList: [{
+                        startdate:'',//免租开始
+                        enddate:'',//免租结束
+                    }],
+                    fukuanFangshiList:[{
+                        startdate:'',//开始
+                        enddate:'',//结束
+                        yajinyue:'',
+                        zujinyue:'',
+                    }],
+                    yajin:'',//押金
+                    yingfuzongzujin:'',//总租金
+                    hetongyongjin:'',//佣金
+                    tiqianfukuantian:'',//提前付款天数
+                    yajinfukuanriqi:'',//押金付款日
+                    shouqifukuanri:'',//首期租金付款日
+                    erqifukuanri:'',//二期付款
+                    sanqifukuanri:'',//三期付款
+                    buchongTiaokuanList:'',//补充条款
+                    zujinList:[
+                        {
+                            startdate:'',
+                            enddate:'',
+                            yuezujin:'',
+                            price:'',
+                            dizengfangshi:'',
+                            dizengliang:'',
+                        },
+                    ],
+                    checkList: [],
+                    jiafangfeiyong:[],
+                },
+            }
+        },
+        methods:{
+            daxie(money) {
+                //汉字的数字
+                var cnNums = new Array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
+                //基本单位
+                var cnIntRadice = new Array('', '拾', '佰', '仟');
+                //对应整数部分扩展单位
+                var cnIntUnits = new Array('', '万', '亿', '兆');
+                //对应小数部分单位
+                var cnDecUnits = new Array('角', '分', '毫', '厘');
+                //整数金额时后面跟的字符
+                var cnInteger = '整';
+                //整型完以后的单位
+                var cnIntLast = '元';
+                //最大处理的数字
+                var maxNum = 999999999999999.9999;
+                //金额整数部分
+                var integerNum;
+                //金额小数部分
+                var decimalNum;
+                //输出的中文金额字符串
+                var chineseStr = '';
+                //分离金额后用的数组，预定义
+                var parts;
+                if (money == '') { return ''; }
+                money = parseFloat(money);
+                if (money >= maxNum) {
+                    //超出最大处理数字
+                    return '';
+                }
+                if (money == 0) {
+                    chineseStr = cnNums[0] + cnIntLast + cnInteger;
+                    return chineseStr;
+                }
+                //转换为字符串
+                money = money.toString();
+                if (money.indexOf('.') == -1) {
+                    integerNum = money;
+                    decimalNum = '';
+                } else {
+                    parts = money.split('.');
+                    integerNum = parts[0];
+                    decimalNum = parts[1].substr(0, 4);
+                }
+                //获取整型部分转换
+                if (parseInt(integerNum, 10) > 0) {
+                    var zeroCount = 0;
+                    var IntLen = integerNum.length;
+                    for (var i = 0; i < IntLen; i++) {
+                        var n = integerNum.substr(i, 1);
+                        var p = IntLen - i - 1;
+                        var q = p / 4;
+                        var m = p % 4;
+                        if (n == '0') {
+                            zeroCount++;
+                        } else {
+                            if (zeroCount > 0) {
+                                chineseStr += cnNums[0];
+                            }
+                            //归零
+                            zeroCount = 0;
+                            chineseStr += cnNums[parseInt(n)] + cnIntRadice[m];
+                        }
+                        if (m == 0 && zeroCount < 4) {
+                            chineseStr += cnIntUnits[q];
+                        }
+                    }
+                    chineseStr += cnIntLast;
+                }
+                //小数部分
+                if (decimalNum != '') {
+                    var decLen = decimalNum.length;
+                    for (var i = 0; i < decLen; i++) {
+                        var n = decimalNum.substr(i, 1);
+                        if (n != '0') {
+                            chineseStr += cnNums[Number(n)] + cnDecUnits[i];
+                        }
+                    }
+                }
+                if (chineseStr == '') {
+                    chineseStr += cnNums[0] + cnIntLast + cnInteger;
+                } else if (decimalNum == '') {
+                    chineseStr += cnInteger;
+                }
+                return chineseStr;
+            },
+            daxie2(number){
+                let arr = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
+            },
+            year(riqi){
+                return new Date(riqi).getFullYear();
+            },
+            month(riqi){
+                if(new Date(riqi).getMonth()+1 <10 ){
+                    return '0'+(new Date(riqi).getMonth()+1);
+                }else{
+                    return new Date(riqi).getMonth()+1
+                }
+
+            },
+            day(riqi){
+                if(new Date(riqi).getDate() <10 ){
+                    return '0'+(new Date(riqi).getDate());
+                }else{
+                    return (new Date(riqi).getDate());
+
+                }
+            },
+            //根据url得到的合同ID，来获取数据
+            getSaleContract(id){
+                getSaleContractInfo(id).then((res)=>{
+                    if(res.data.code=='200'){
+                        //把数据分别赋值给三个组件的变量
+                        console.log(res.data)
+                        this.fuzhi(res);
+                    }else {
+                        this.$message({
+                            message: '获取数据失败',
+                            type: 'error'
+                        });
+                    }
+                })
+            },
+            fuzhi(res){
+                this.id = res.data.data.id;
+                this.property.xsOffice = res.data.data.xsOffice;
+                if(res.data.data.chengzuren.length>0){
+                    this.renter.chengzuren = res.data.data.chengzuren;
+                }
+                //this.renter.chengzuren = res.data.data.chengzuren;
+                this.renter.chengzufang = res.data.data.chengzufang;
+                this.renter.jujianfangtype = res.data.data.jujianfangtype;
+                this.renter.jujianfang = res.data.data.jujianfang;
+                this.renter.shoukuanren = res.data.data.shoukuanren;
+                this.renter.kaihuhang = res.data.data.kaihuhang;
+                this.renter.zhanghao = res.data.data.zhanghao;
+                /*this.renter.jujianfang = res.data.data.jujianfang;
+                 this.renter.jujianfang = res.data.data.jujianfang;
+                 this.renter.jujianfang = res.data.data.jujianfang;
+                 this.renter.jujianfang = res.data.data.jujianfang;
+                 this.renter.jujianfang = res.data.data.jujianfang;*/
+
+                this.renter.zuhuleixing = res.data.data.zuhuleixing;
+                this.renter.shoukuanren = res.data.data.shoukuanren;
+                this.renter.zhanghao = res.data.data.zhanghao;
+                /*this.renter.dailirenTel = res.data.data.dailirenTel;
+                 this.renter.dailirenSex = res.data.data.dailirenSex;
+                 this.renter.dailirenId = res.data.data.dailirenId;
+                 this.renter.dailirenName = res.data.data.dailirenName;*/
+                this.renter.qianyuerenName = res.data.data.qianyuerenName;
+                this.renter.qianyuerenTel = res.data.data.qianyuerenTel;
+                this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
+                this.renter.qianyuerenId = res.data.data.qianyuerenId;
+                this.addDate.hetongtype = res.data.data.hetongtype;
+                this.addDate.startdate = res.data.data.startdate;
+                this.addDate.enddate = res.data.data.enddate;
+                this.addDate.shoufangdate = res.data.data.shoufangdate;
+                this.addDate.qianyueDate = res.data.data.qianyueDate;
+                this.addDate.mianzufangshi = res.data.data.mianzufangshi;
+                this.addDate.mianzuqiList = res.data.data.mianzuqiList;
+                this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;
+                this.addDate.yajin = res.data.data.yajin;
+                this.addDate.yingfuzongzujin = res.data.data.yingfuzongzujin;
+                this.addDate.hetongyongjin = res.data.data.hetongyongjin;
+                this.addDate.tiqianfukuantian = res.data.data.tiqianfukuantian;
+                this.addDate.yajinfukuanriqi = res.data.data.yajinfukuanriqi;
+                this.addDate.shouqifukuanri = res.data.data.shouqifukuanri;
+                this.addDate.erqifukuanri = res.data.data.erqifukuanri;
+                this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
+                this.addDate.buchongTiaokuanList = res.data.data.buchongTiaokuanList;
+                this.addDate.zujinList = res.data.data.zujinList;
+                this.addDate.checkList = res.data.data.checkList;
+                this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+            },
+        },
         mounted(){
-            window.print();
+            //window.print();
+            //获取合同的详细信息
+            this.getSaleContract(this.$route.query);
             // document.getElementsByTagName('head').innerHTML('<title>华亮房产 -- 先锋地产机构、专业人、信誉人</title>>');
 
         }

@@ -72,10 +72,11 @@
         getSaleContractList,
         removeSaleContract,
         confirmSaleContract,
+        confirmedSaleContract,
         weiyueSaleContract,
         endSaleContract,
         jieyueSaleContract,
-        confirmedSaleContract,
+
         approvingSaleContract,} from '../../api/api.js';
     export default {
         data() {
@@ -148,7 +149,9 @@
             changeDate(row, column){
                 var newDate = new Date();
                 newDate.setTime(row.qianyuedate);
-                return newDate.toLocaleDateString()
+                if(row.qianyuedate!=null){
+                    return newDate.toLocaleDateString()
+                }
             },
             //获取合同列表
             saleContractList() {
@@ -240,18 +243,15 @@
             },
 
             handleDump(index, row){
-
                 /*this.$router.push('/saleContract/dump?id='+row.id);*/
                 let para = {
                     id:row.id,
                 }
                 //this.getPurchaseContractList();
                 confirmSaleContract(para).then((res)=>{
-
-                    //this.getPurchaseContractList();
                     if(res.data.code=="200"){
                         this.saleContractList();
-                        window.open('/#/saleContract/dump?id=' + row.id)
+                        window.open('/#/saleContract/dump?id=' + row.id);
                     }
                 });
                 //window.open('/#/purchaseContract/dump?id='+row.id)

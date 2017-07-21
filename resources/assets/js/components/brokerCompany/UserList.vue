@@ -534,7 +534,6 @@
             //新增
             addSubmit: function () {
                 this.$refs.addForm.validate((valid) => {
-                  //  alert(this.addForm.tQdCompayId);
 
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {

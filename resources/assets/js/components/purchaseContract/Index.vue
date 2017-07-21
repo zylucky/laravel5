@@ -47,7 +47,7 @@
                             <el-dropdown-item  ><el-button @click="handleView(scope.$index, scope.row)">查看合同</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[0,4,5])" ><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[1,2])" ><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[3])" ><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[3])"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[5])"  > <el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,9])" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7])" ><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
@@ -128,6 +128,7 @@
         youhuaPurchaseContract,
         weiYueInfoPurchaseContract,
         weiYueSavePurchaseContract,
+        getPurchaseContractInfo,
     } from '../../api/api.js';
     export default {
         data() {
@@ -373,11 +374,41 @@
             },
             //合同确认
             handleConfirm(index,row){
-                this.payType.sureFormVisible = true;
-                this.payType.tHetongId = row.id;
-                this.payType.tHetongBianhao = row.bianhao;
-            },
 
+                getPurchaseContractInfo({id:row.id}).then((res) => {
+                    if (res.data.code == '200') {
+                        //把数据分别赋值给三个组件的变量
+                        if (res.data.data.jujianfangid == '') {
+                            this.$confirm('确认没有居间方的信息吗?', '提示', {
+                                type: 'warning'
+                            }).then(() => {
+                                let para1 = {
+                                    id: row.id,
+                                }
+                                //直接执行签约完成的状态
+                                confirmPurchaseContract(para1).then((res) => {
+                                    if (res.data.code != '200') {
+                                        this.$message({
+                                            message: '签约完成',
+                                            type: 'error'
+                                        });
+                                    }
+                                });
+                            })
+
+                        } else {
+                            this.payType.sureFormVisible = true;
+                            this.payType.tHetongId = row.id;
+                            this.payType.tHetongBianhao = row.bianhao;
+                        }
+                    } else {
+                        this.$message({
+                            message: '获取数据失败',
+                            type: 'error'
+                        });
+                    }
+                })
+            },
         },
         mounted(){
             this.purchaseContractList();
