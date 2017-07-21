@@ -110,7 +110,6 @@
                     chengzufang:'华溯商贸',
                     jujianfangtype:1,
                     jujianfang:'',
-                    jujianfangid:null,
                     zuhuleixing:1,
                     //产权人
                     chengzuren:[

@@ -79,7 +79,7 @@ export const getPurchaseContractInfo = params => { return axios.get(`${base}/pur
 export const submitPurchaseContract = params => { return axios.get(`${base}/purchaseContract/`+params.id+'/edit', {params}); };
 export const getPurchaseContractTiaoKuan = params => { return axios.get(`${base}/purchaseContract/create`, {}); };
 export const editPurchaseContractTiaoKuan= params => { return axios.post(`${base}/purchaseContract/editTiaoKuan`, { params: params }); };
-export const confirmPurchaseContract= params => { return axios.get(`${base}/purchaseContract/confirmed`, {params:params}); };
+export const confirmPurchaseContract= params => { return axios.get(`${base}/purchaseContract/confirm`, {params:params}); };
 export const optimizePurchaseContract= params => { return axios.put(`${base}/purchaseContract/`+params.id, {params:params}); };//二次优化
 export const getOptimizePurchaseContract= params => { return axios.get(`${base}/purchaseContract/optimize`, {params:params}); };//二次优化
 export const approvingPurchaseContract= params => { return axios.get(`${base}/purchaseContract/approving`, {params:params}); };//状态变更为：审核中
@@ -113,6 +113,8 @@ export const jieyuewanSaleContract = params => { return axios.get(`${base}/saleC
 export const jieyueSaleContractInfo = params => { return axios.post(`${base}/saleContract/submit`, {params:params}); };
 export const addSaleJieyueContractInfo = params => { return axios.post(`${base}/saleContract/jieyuesave`, { params: params });};
 export const removeSaleContract = params => { return axios.post(`${base}/saleContract/delete`, { params: params }); };
+export const weiYueInfoSaleContract= params => { return axios.post(`${base}/saleContract/weiYueInfo`, {params:params}); };//合同终止
+export const weiYueSaveSaleContract= params => { return axios.post(`${base}/saleContract/weiYueSave`, {params:params}); };//合同终止保存一些数据
 
 //获取楼盘，楼栋，房间号
 export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };
@@ -129,7 +131,13 @@ export const statusDecoration = params =>{ return axios.get(`${base}/decoration/
 
 //渠道跟进
 export const getBrokerCompanyUserHistoryListPage = params => { return axios.get(`${base}/brokerCompanyUserHistory`, { params: params }); };
+
 export const getBrokerCompanyHistoryListPage = params => { return axios.get(`${base}/brokerCompanyHistory`, { params: params }); };
 export const addBrokerCompanyHistory = params => { return axios.post(`${base}/brokerCompanyUserHistory`, { params: params }); };
 export const getGSSXDicList = params => { return axios.get(`${base}/brokerCompany/getGSSXDicList`, { params: params }); };
 export const getFWDXDicList = params => { return axios.post(`${base}/brokerCompany/getFWDXDicList`, { params: params }); };
+
+//版本控制
+export const getContractVersionList = params =>{ return axios.get(`${base}/contractVersion/index`, { params: params }); };
+export const changeContractVersionStatus = params =>{ return axios.get(`${base}/contractVersion/status`, { params: params }); };
+

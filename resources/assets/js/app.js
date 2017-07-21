@@ -34,7 +34,6 @@ import VueRouter from 'vue-router';
 import routes from './routes';
 import 'font-awesome/css/font-awesome.min.css'
 
-import { getPermissionList } from './api/api.js';
 
 
 
@@ -54,11 +53,6 @@ router.beforeEach((to, from, next) => {
         next({ path: '/login' })
     } else {
         next()
-        let para = {};
-        getPermissionList(para).then(function(res){
-            sessionStorage.removeItem('permission');
-            sessionStorage.setItem('permission', JSON.stringify(res.data));
-        });
         Vue.prototype.fun = function (funKey){
             let res = JSON.parse(sessionStorage.getItem('permission'));
             //获取权限列表
@@ -69,7 +63,6 @@ router.beforeEach((to, from, next) => {
                 }
             }
         }
-
     }
 })
 const app = new Vue({

@@ -33,6 +33,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('released','Contract\purchaseContractController@released');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
+//装饰合同
 Route::group(['prefix' => 'decoration'], function () {
     Route::get('index','Contract\decorationController@index');
     Route::get('show','Contract\decorationController@show');
@@ -40,7 +41,11 @@ Route::group(['prefix' => 'decoration'], function () {
     Route::post('store','Contract\decorationController@store');
     Route::get('status','Contract\decorationController@status');
 });
-
+//合同版本
+Route::group(['prefix' => 'contractVersion'], function () {
+    Route::get('index','Contract\contractVersionController@index');
+    Route::get('status','Contract\contractVersionController@status');
+});
 
 //Route::get('purchaseContract/review','Contract\purchaseContractController@review');
 Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');
@@ -75,6 +80,8 @@ Route::get('saleContract/released','Contract\saleContractController@released');
 Route::post('saleContract/review','Contract\saleContractController@review');
 Route::post('saleContract/jieyuesave','Contract\saleContractController@jieyuesave');
 Route::get('saleContract/jieyuelist','Contract\saleContractController@jieyuelist');
+Route::post('saleContract/weiYueInfo','Contract\saleContractController@weiYueInfo');
+Route::post('saleContract/weiYueSave','Contract\saleContractController@weiYueSave');
 
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 

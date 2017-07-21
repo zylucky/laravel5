@@ -56,17 +56,7 @@
             <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
             <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日，租金为￥<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月）；<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
-            <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
-            <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
-            <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日，租金为￥<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月）；<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
-            <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
-            <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
-            <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日，租金为￥<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月）；
+            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日，租金为￥<u>&nbsp;&nbsp;{{item.yuezujin}}&nbsp;&nbsp;</u>元/月（大写：<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u>元/月）；
         </span>
         </p>
         <span v-for="(item,index) in addDate.fukuanFangshiList"
@@ -75,7 +65,7 @@
         <p>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）租金支付方式为：押<input type="text" style="width: 70px;" v-model="item.yajinyue">付<input type="text" style="width: 70px;" v-model="item.zujinyue">；</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：<input type="text" style="width: 100px;">元/月（大写：<input type="text" style="width: 130px;">元/月），支付时间为
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：<input type="text" style="width: 100px;" v-model="addDate.yajin">元/月（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yajin)}}&nbsp;&nbsp;</u>元/月），支付时间为
 
             <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
@@ -84,7 +74,7 @@
         </p>
         </span>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、首期租金：￥<input type="text" style="width: 100px;">元（大写：<input type="text" style="width: 130px;">元整），支付时间为
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、首期租金：￥<input type="text" style="width: 100px;" v-model="addDate.yingfuzongzujin">元（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yingfuzongzujin)}}&nbsp;&nbsp;</u>元整），支付时间为
 
             <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
