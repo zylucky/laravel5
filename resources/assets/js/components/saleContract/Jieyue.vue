@@ -147,9 +147,14 @@
             getSaleContract(id){
                 getSaleContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
+                        if(res.data.data.jieyueXieyi.length>0){
+                            this.fuzhi(res);
+                        }
                         //console.log(res.data.data)
                         //把数据分别赋值给三个组件的变量
-                        this.fuzhi(res);
+                        this.fuzhi1(res);
+
+                        //this.fuzhi3(res);
                     }else {
                         this.$message({
                             message: '获取数据失败',
@@ -166,16 +171,17 @@
                     hetongid: this.hetongid,
                 };
                 let para = Object.assign({}, hetongid,this.jieyueXieyi);
-                console.log(para);
+                //console.log(para);
                 //alert(111);
                 addSaleJieyueContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         //alert(333);
+
+                        this.$message({
+                            message: '保存成功',
+                            type: 'success'
+                        });
                         this.fuzhi2(res);
-                                this.$message({
-                                    message: '保存成功',
-                                    type: 'success'
-                                });
                     } else {
                         this.$message({
                             message: res.data.msg,
@@ -191,7 +197,7 @@
                     hetongid: this.hetongid,
                 };
                 let para = Object.assign({}, hetongid,this.jieyueXieyi);
-                console.log(para);
+                //console.log(para);
                 jieyueSaleContractInfo(para).then((res) => {
                     if(res.data.code == 200){
                         history.go(-1);
@@ -232,31 +238,30 @@
 
             },
             fuzhi(res){
-                console.log(res.data.data);
+                //console.log(res.data.data);
                 this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;
-                console.log(this.xsOffice);
-                console.log(this.jieyueXieyi);
+                //console.log(this.xsOffice);
                 this.jieyueXieyi = res.data.data.jieyueXieyi[0];
+                //console.log(this.jieyueXieyi);
             },
             fuzhi1(res){
                 //console.log(res.data.data);
                 this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;
-                console.log(this.hetongid);
+                //console.log(this.xsOffice);
                 //this.jieyueXieyi = res.data.data.jieyueXieyi[0];
             },
             fuzhi2(res){
                 //console.log(res.data.data);
-                //this.hetongid = res.data.data.id;
+                this.hetongid = res.data.data.hetongid;
                 /*this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;*/
                 //console.log(this.xsOffice);
                 this.jieyueXieyi = res.data.data.jieyueXieyi[0];
             },
-
         },
         mounted() {
             //根据url得到的合同ID，来获取数据
