@@ -139,11 +139,11 @@
                     <el-radio :label="1">期内免租</el-radio>
                     <el-radio :label="2">期外免租</el-radio>
                 </el-radio-group>
-                <el-button @click.prevent="removeFreeItem(item)">删除</el-button>
+                <el-button v-show="editVisible" @click.prevent="removeFreeItem(item)">删除</el-button>
 
             </el-form-item>
             <el-form-item>
-                <el-button  @click="addFreeItem">新增免租期</el-button>
+                <el-button v-show="editVisible"  @click="addFreeItem">新增免租期</el-button>
             </el-form-item>
 
             <!--租期-->
@@ -242,13 +242,13 @@
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="2">
-                                    <el-button  @click.prevent="removePayItem(item)">删除</el-button>
+                                    <el-button v-show="editVisible"  @click.prevent="removePayItem(item)">删除</el-button>
                                 </el-col>
                     </el-row>
                 </el-form-item>
             </div>
             <el-form-item>
-                <el-button  @click="addPayItem">新增付款方式</el-button>
+                <el-button v-show="editVisible"  @click="addPayItem">新增付款方式</el-button>
             </el-form-item>
             <!--租金-->
             <div v-for="(item, index) in addDate.zujinList">
@@ -348,12 +348,12 @@
 
 
                     <el-col :span="2">
-                        <el-button style="margin-left:6px;" @click.prevent="removeRentItem(item)">删除</el-button>
+                        <el-button style="margin-left:6px;" v-show="editVisible" @click.prevent="removeRentItem(item)">删除</el-button>
                     </el-col>
                 </el-row>
             </div>
             <el-form-item>
-                <el-button  @click="addRentItem">新增租期</el-button>
+                <el-button v-show="editVisible"  @click="addRentItem">新增租期</el-button>
             </el-form-item>
             <!--押金 总应付租金 合同佣金-->
             <el-row>
@@ -459,6 +459,7 @@
         components: {ElCol},
         data() {
             return {
+                editVisible:true,
                 options:[
                     {
                         value: '1',
@@ -627,10 +628,10 @@
         },
         mounted(){
             //审核页面input禁用
-            if(this.$route.path=='/saleContract/edit'){
+            if(this.$route.path=='/saleContract/review'){
                 this.editVisible   =false;
             }
-            if(this.$route.path=='/saleContract/edit'){
+            if(this.$route.path=='/saleContract/see'){
                 this.editVisible   =false;
             }
         }
