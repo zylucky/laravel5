@@ -102,7 +102,7 @@
                     loudongName:null,
                     fanghao:null,
                 }],
-                bianhao: null,
+                bianhao:null,
                 jieyueXieyi:{
                     jieyuefangshi:null,
                     zhongzhidate:'',
@@ -111,7 +111,7 @@
                     tuihuanyajin:'',
                     tuihuanfangzu:'',
                     yingshouzafei:'',
-                    xinbianhao: null,
+                    xinbianhao:null,
                 },
                 hetongid:null,
                 jieyueRules : {
@@ -149,7 +149,7 @@
                     if(res.data.code=='200'){
                         //console.log(res.data.data)
                         //把数据分别赋值给三个组件的变量
-                        this.fuzhi(res);
+                        this.fuzhi1(res);
                     }else {
                         this.$message({
                             message: '获取数据失败',
@@ -162,22 +162,6 @@
             save:function () {
                 this.btnType = false;
                 this.submsg  = '提交';
-                /*var xinbianhao = this.xinbianhao;
-                var jieyuefangshi = this.jieyuefangshi;
-                var zhongzhidate = this.zhongzhidate;
-                var jiaofangdate = this.jiaofangdate;
-                var zhizhaoqianchu = this.zhizhaoqianchu;
-                var tuihuanyajin = this.tuihuanyajin;
-                var tuihuanfangzu = this.tuihuanfangzu;
-                var yingshouzafei = this.yingshouzafei;*/
-                //var child_renter  = this.$refs.renter.renter;
-                //var child_date = this.$refs.date.addDate;
-                /*var bianhao = {
-                    bianhao: this.bianhao,
-                };*/
-                //alert(11);
-                //let para = Object.assign({}, xinbianhao,jieyuefangshi,zhongzhidate,jiaofangdate,zhizhaoqianchu,tuihuanyajin,tuihuanfangzu,yingshouzafei,id);
-
                 var hetongid = {
                     hetongid: this.hetongid,
                 };
@@ -188,24 +172,10 @@
                     if(res.data.code == 200)　{
                         //alert(333);
                         this.fuzhi(res);
-                        /*getSaleContractList(hetongid).then((res) => {*/
-                            //alert(444);
-                            /*if(res.data.code == 200)
-                            {*/
-                                //alert(5555);
-                                //console.log(res);
-                               //this.fuzhi3(res);
                                 this.$message({
                                     message: '保存成功',
                                     type: 'success'
                                 });
-                        /*}else{
-                                this.$message({
-                                    message: res.data.msg,
-                                    type: 'error'
-                                })
-                            }*/
-                        //});
                     } else {
                         this.$message({
                             message: res.data.msg,
@@ -221,29 +191,6 @@
                     hetongid: this.hetongid,
                 };
                 let para = Object.assign({}, hetongid,this.jieyueXieyi);
-               /* let para ={
-                    hetongid: this.hetongid,
-                    /!*xinbianhao:this.xinbianhao,
-                    jieyuefangshi:this.jieyuefangshi,
-                    zhongzhidate: this.zhongzhidate,
-                    jiaofangdate: this.jiaofangdate,
-                    zhizhaoqianchu: this.zhizhaoqianchu,
-                    tuihuanyajin: this.tuihuanyajin,
-                    tuihuanfangzu: this.tuihuanfangzu,
-                    yingshouzafei: this.yingshouzafei,*!/
-                    jieyueXieyi: this.jieyueXieyi,
-                };*/
-                //alert(111);
-                //this.btnType = false;
-                //this.submsg  = '提交';
-                //var child_property = this.$refs.property.property;//
-                //var child_owner  = this.$refs.owner.owner;//业主信息
-                //alert(child_date);
-                /*var tiaokuan = {
-                    tiaoList:this.$refs.tiaokuan.tiaoList,
-                };//条款*/
-                /*jieyuewanSaleContract(para).then((res)=>{
-                });*/
                 console.log(para);
                 jieyueSaleContractInfo(para).then((res) => {
                     if(res.data.code == 200){
@@ -260,60 +207,16 @@
                             type:'error'
                         })
                     }
-                    /*if(res.data.code=='200'){
-                        this.$route.push('/saleContract');
-                    }*/
+
                 });
             },
-            //根据url得到的合同ID，来获取数据
-           /* getJieyueSaleContract(id){
-                getJieyueSaleContractInfo(id).then((res)=>{
-                    if(res.data.code=='200'){
-                        //把数据分别赋值给三个组件的变量
-                        this.fuzhi(res);
-                    }else {
-                        this.$message({
-                            message: '获取数据失败',
-                            type: 'error'
-                        });
-                    }
-                })
-            },*/
+
             cancel(){
                 /*window.open('/#/saleContract/dump?id='+row.id)
                 window.location.href="./Index.vue";*/
                 window.history.back(-1);
             },
-            /*fuzhi(res){
-                var loupanName = document.getElementById("loupanName").innerHTML;
-                var loudongName = document.getElementById("loudongName").innerHTML;
-                var fanghao = document.getElementById("fanghao").innerHTML;
-                var biaohao = document.getElementById("biaohao").innerHTML;
-                //this.property.officeList = res.data.data.officeList;
-                this.id = res.data.data.id;
-                loupanName = res.data.data.officeList.loupanName;
-                loudongName = res.data.data.officeList.loudongName;
-                fanghao = res.data.data.officeList.fanghao;
-                biaohao = res.data.data.bianhao;
-            },*/
-            /*removeTab(targetName) {
-                this.property.officeList.pop();//删除
-                let tabs = this.editableTabs2;
-                let activeName = this.editableTabsValue2;
-                if (activeName === targetName) {
-                    tabs.forEach((tab, index) => {
-                        if (tab.name === targetName) {
-                            let nextTab = tabs[index + 1] || tabs[index - 1];
-                            if (nextTab) {
-                                activeName = nextTab.name;
-                            }
-                        }
-                    });
-                }
 
-                this.editableTabsValue2 = activeName;
-                this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
-            }*/
             disabledInput(){
                 this.reviewVisible =true;
                 var allInputs = document.getElementsByTagName('input');
@@ -331,44 +234,28 @@
             fuzhi(res){
                 //console.log(res.data.data);
                 this.hetongid = res.data.data.id;
+                this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;
                 //console.log(this.xsOffice);
                 this.jieyueXieyi = res.data.data.jieyueXieyi[0];
-                this.bianhao = res.data.data.bianhao;
-                /* this.xinbianhao = res.data.data.xinbianhao;
-                this.jieyuefangshi = res.data.data.jieyuefangshi;
-                this.zhongzhidate = res.data.data.zhongzhidate;
-                this.jiaofangdate = res.data.data.jiaofangdate;
-                this.zhizhaoqianchu = res.data.data.zhizhaoqianchu;
-                this.tuihuanyajin = res.data.data.tuihuanyajin;
-                this.tuihuanfangzu = res.data.data.tuihuanfangzu;
-                this.yingshouzafei = res.data.data.yingshouzafei;*/
-                //console.log(this.jieyueXieyi);
-            },
-            /*fuzhi2(res){
-                //console.log(res.data.data);
-                //this.hetongid = res.data.data.id;
-                //this.xsOffice = res.data.data.xsOffice;
-                //console.log(this.xsOffice);
-                //this.bianhao = res.data.data.bianhao;
-                this.xinbianhao = res.data.data.xinbianhao;
-                this.jieyuefangshi = res.data.data.jieyuefangshi;
-                this.zhongzhidate = res.data.data.zhongzhidate;
-                this.jiaofangdate = res.data.data.jiaofangdate;
-                this.zhizhaoqianchu = res.data.data.zhizhaoqianchu;
-                this.tuihuanyajin = res.data.data.tuihuanyajin;
-                this.tuihuanfangzu = res.data.data.tuihuanfangzu;
-                this.yingshouzafei = res.data.data.yingshouzafei;
             },
             fuzhi1(res){
+                //console.log(res.data.data);
                 this.hetongid = res.data.data.id;
-                this.xsOffice = res.data.data.xsOffice;
                 this.bianhao = res.data.data.bianhao;
+                this.xsOffice = res.data.data.xsOffice;
+                //console.log(this.xsOffice);
+                //this.jieyueXieyi = res.data.data.jieyueXieyi[0];
             },
-            fuzhi3(res){
-                this.xsOffice = res.data.data.xsOffice;
-                this.bianhao = res.data.data.bianhao;
-            },*/
+            fuzhi2(res){
+                //console.log(res.data.data);
+                this.hetongid = res.data.data.id;
+                /*this.bianhao = res.data.data.bianhao;
+                this.xsOffice = res.data.data.xsOffice;*/
+                //console.log(this.xsOffice);
+                this.jieyueXieyi = res.data.data.jieyueXieyi[0];
+            },
+
         },
         mounted() {
             //根据url得到的合同ID，来获取数据
