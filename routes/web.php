@@ -101,7 +101,8 @@ Route::group(['prefix' => 'message'], function () {
 //渠道公司
 Route::group(['prefix' => 'brokerCompany'], function () {
     Route::post('checkbkNameList','BrokerCompany\brokerCompanyController@checkbkNameList');
-
+    Route::post('getGSSXDicList','BrokerCompany\brokerCompanyController@getGSSXDicList');
+    Route::post('getFWDXDicList','BrokerCompany\brokerCompanyController@getFWDXDicList');
 });
 //渠道公司人员
 Route::group(['prefix' => 'brokerCompanyUser'], function () {

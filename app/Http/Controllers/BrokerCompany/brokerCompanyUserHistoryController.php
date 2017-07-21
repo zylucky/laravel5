@@ -59,7 +59,7 @@ class brokerCompanyUserHistoryController extends Controller
     public function store(Request $request)
     {
 
-      //  dd( $request->params);
+        dd( $request->params);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
@@ -95,7 +95,7 @@ class brokerCompanyUserHistoryController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *更新渠道人员
+     *更新
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -119,70 +119,13 @@ class brokerCompanyUserHistoryController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *删除渠道人员
+     *删除
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
 
-        return $this->deleteCompany($id);
-    }
-
-    public  function deleteCompany($id)
-    {
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
-        $response = $client->request('GET', '/api/qd/person/'.$id.'/del');
-        return $response->getBody();
-    }
-    /*
-     * 批量删除
-     * @param Request $request
-     */
-    public function batchRemoveBKUser(Request $request)
-    {
-        $ids = $request->params['ids'];
-
-        $code='200';
-        $arr = explode(',',$ids);
-        foreach ($arr as $item ){
-            $status= $this->deleteCompany($item);
-            if($status->code!='200')
-            {
-                $code=$status->msg;
-            }
-        }
-        return $code;
-    }
-
-    public function getbkNameList(Request $request)
-    {
-
-        $client = new Client([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
-        $bkName =$request->params['name'];
-        $response = $client->request('GET', '/api/qd/compay/list',[
-                'query' => [
-                    'page'=>1,
-                    'size'=>10,
-                    'compay' =>  $bkName
-                ]
-
-            ]
-        );
-        $obj = json_decode($response->getBody());
-        $json = [];
-        if($obj->code==200){
-            foreach ($obj->data as $key=> $value){
-                $json[$value->tQdCompayId] = $value->compayname;
-            }
-            return $json;
-        }
     }
 
 }

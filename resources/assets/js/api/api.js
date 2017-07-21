@@ -131,7 +131,13 @@ export const statusDecoration = params =>{ return axios.get(`${base}/decoration/
 
 //渠道跟进
 export const getBrokerCompanyUserHistoryListPage = params => { return axios.get(`${base}/brokerCompanyUserHistory`, { params: params }); };
-export const getBrokerCompanyHistoryListPage = params => { return axios.get(`${base}/brokerCompanyUserHistory`, { params: params }); };
+
+export const getBrokerCompanyHistoryListPage = params => { return axios.get(`${base}/brokerCompanyHistory`, { params: params }); };
+export const addBrokerCompanyHistory = params => { return axios.post(`${base}/brokerCompanyUserHistory`, { params: params }); };
+export const getGSSXDicList = params => { return axios.get(`${base}/brokerCompany/getGSSXDicList`, { params: params }); };
+export const getFWDXDicList = params => { return axios.post(`${base}/brokerCompany/getFWDXDicList`, { params: params }); };
+
 //版本控制
 export const getContractVersionList = params =>{ return axios.get(`${base}/contractVersion/index`, { params: params }); };
 export const changeContractVersionStatus = params =>{ return axios.get(`${base}/contractVersion/status`, { params: params }); };
+

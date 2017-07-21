@@ -1,82 +1,82 @@
 <template>
 
-    <el-row class="container">
+    <el-row >
         <div style="margin-bottom: 60px;"></div>
-        <el-form label-Weizhi="right" ref="propertyForm" :rules="editPropertyRules" label-width="180px"
-                 :model="officeList" class="demo-dynamic">
+        <el-form label-Weizhi="right" ref="brokerCompanyUserForm" :rules="brokerCompanyUserFormRules" label-width="180px"
+                 :model="brokerCompanyUserForm" class="demo-dynamic">
             <el-col :span="18">
 
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item required label="姓名" prop="quyu">
-                            <el-input v-model="officeList.quyu"></el-input>
+                        <el-form-item required label="姓名" prop="qdPername">
+                            <el-input v-model="brokerCompanyUserForm.qdPername"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="职务" prop="quyu">
-                            <el-input v-model="officeList.quyu"></el-input>
+                        <el-form-item required label="职务" prop="yjType">
+                            <el-input v-model="brokerCompanyUserForm.yjType"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="联系电话" prop="quyu">
-                            <el-input v-model="officeList.quyu"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item required label="渠道公司" prop="quyu">
-                            <el-input v-model="officeList.quyu"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="公司所在楼盘" prop="quyu">
-                            <el-input v-model="officeList.quyu"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="业务区域" prop="quyu">
-                            <el-input v-model="officeList.quyu"></el-input>
+                        <el-form-item required label="联系电话" prop="yjType">
+                            <el-input v-model="brokerCompanyUserForm.yjType"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item required label="幼狮联系人1" prop="qianyuemianji">
-                            <el-input v-model.number="officeList.qianyuemianji"></el-input>
+                        <el-form-item required label="渠道公司" prop="yjType">
+                            <el-input v-model="brokerCompanyUserForm.qvDaoCompayXinxi.compayname"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="幼狮联系人2" prop="qianyuemianji">
-                            <el-input v-model.number="officeList.qianyuemianji"></el-input>
+                        <el-form-item required label="公司所在楼盘" prop="yjType">
+                            <el-input v-model="brokerCompanyUserForm.yjType"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="幼狮联系人3" prop="qianyuemianji">
-                            <el-input v-model.number="officeList.qianyuemianji"></el-input>
+                        <el-form-item required label="业务区域" prop="yjType">
+                            <el-input v-model="brokerCompanyUserForm.yjType"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item required label="幼狮联系人1" prop="yjType">
+                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item required label="幼狮联系人2" prop="yjType">
+                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item required label="幼狮联系人3" prop="yjType">
+                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
 
                     <el-col :span="8">
-                        <el-form-item label="是否添加微信好友" prop="compayname">
-                            <el-radio-group v-model="editForm.dailirenSex">
+                        <el-form-item label="是否添加微信好友" prop="yjType">
+                            <el-radio-group v-model="brokerCompanyUserForm.yjType">
                                 <el-radio :label="1">是</el-radio>
                                 <el-radio :label="2">否</el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="添加好友人数" prop="leixing">
-                            <el-input v-model.number="officeList.qianyuemianji"></el-input>
+                        <el-form-item required label="添加好友人数" prop="yjType">
+                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="是否带看幼狮" prop="compayname">
-                            <el-radio-group v-model="editForm.dailirenSex">
+                        <el-form-item label="是否带看幼狮" prop="yjType">
+                            <el-radio-group v-model="brokerCompanyUserForm.yjType">
                                 <el-radio :label="1">是</el-radio>
                                 <el-radio :label="2">否</el-radio>
                             </el-radio-group>
@@ -84,37 +84,37 @@
                     </el-col>
                     <el-col :span="8">
                         <el-form-item required label="带看次数" prop="leixing">
-                            <el-input v-model.number="officeList.qianyuemianji"></el-input>
+                            <el-input v-model.number="brokerCompanyUserForm.qianyuemianji"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item required label="带看对接人数" prop="qianyuemianji">
-                            <el-input v-model.number="officeList.qianyuemianji"></el-input>
+                            <el-input v-model.number="brokerCompanyUserForm.qianyuemianji"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="是否签约过幼狮" prop="compayname">
-                            <el-radio-group v-model="editForm.dailirenSex">
+                            <el-radio-group v-model="brokerCompanyUserForm.dailirenSex">
                                 <el-radio :label="1">是</el-radio>
                                 <el-radio :label="2">否</el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="签约次数" prop="leixing">
-                            <el-input v-model.number="officeList.qianyuemianji"></el-input>
+                        <el-form-item required label="签约次数" prop="yjType">
+                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="签约对接人数" prop="qianyuemianji">
-                            <el-input v-model.number="officeList.qianyuemianji"></el-input>
+                        <el-form-item required label="签约对接人数" prop="yjType">
+                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-form-item label="渠道等级" prop="yjType">
-                    <el-select v-model="officeList.yjType" placeholder="">
+                    <el-select v-model="brokerCompanyUserForm.yjType" placeholder="">
                         <el-option
                                 v-for="item in options"
                                 :key="item.value"
@@ -126,7 +126,7 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="佣金类型" prop="yjType">
-                            <el-select v-model="officeList.yjType" placeholder="">
+                            <el-select v-model="brokerCompanyUserForm.yjType" placeholder="">
                                 <el-option
                                         v-for="item in options"
                                         :key="item.value"
@@ -138,12 +138,12 @@
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="收房佣金占比" prop="yjzbSf">
-                            <el-input v-model.number="officeList.yjzbSf" value="" auto-complete="off"></el-input>
+                            <el-input v-model.number="brokerCompanyUserForm.yjzbSf" value="" auto-complete="off"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="出房佣金占比" prop="yjzbCf">
-                            <el-input v-model.number="officeList.yjzbCf" auto-complete="off"></el-input>
+                            <el-input v-model.number="brokerCompanyUserForm.yjzbCf" auto-complete="off"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -156,7 +156,7 @@
             </div>
             <div v-show="showed">
                 <el-form :model="editForm" label-width="180px" :rules="editFormRules" ref="editForm" label-Weizhi="right" >
-                    {{officeList.genjinjindo}}
+                    {{brokerCompanyUserForm.yjzbCf}}
                     <el-row :span="18">
                         <el-form-item label="信息是否有效" prop="shifouyouxiao">
                             <el-radio-group v-model="editForm.shifouyouxiao">
@@ -202,13 +202,12 @@
         components: {
             ElRow
         },
-        props: ['property'],
         data() {
             return {
                 dialogImageUrl: '',
                 dialogVisible: false,
                 showed: false,
-                officeList: {
+                brokerCompanyUserForm: {
                     omcId: null,
                     loupanOmcId: null,
                     loudongOmcId: null,
@@ -225,11 +224,15 @@
                     isdiya: 0,
                     diyaren: '',
                     value1: null,
+                    qvDaoCompayXinxi:[{
+                        compayname:'',}
+                    ]
+                    ,
                 },
                 purchaseContract: {
                     type: 0,
                 },
-                editPropertyRules: {
+                brokerCompanyUserFormRules: {
                     loupanName: [
                         {required: true, message: '不能为空'}
                     ],
@@ -239,26 +242,7 @@
                     fanghao: [
                         {required: true, message: '不能为空'}
                     ],
-                    quyu: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    weizhi: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    chanquanzhenghao: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    jianzhumianji: [
-                        {required: true, message: '不能为空'},
-                        {type: 'number', message: '必须为数字'},
-                    ],
-                    leixing: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    qianyuemianji: [
-                        {required: true, message: '不能为空'},
-                        {type: 'number', message: '必须为数字'},
-                    ]
+
                 },
                 editVisible: true,
                 //楼盘数据
@@ -303,11 +287,10 @@
                 editLoading: false,
                 editForm: {
                     tQdCompayId: 0,
-                    compayname: '',
-                    yjzbSf: '',
-                    yjzbCf: '',
-                    compaytest: '',
-                    yjType: 1,
+                    shifouyouxiao: null,
+                    xinxishifouzhunque: null,
+                    shifouzhuanhang:null,
+                    shuoming: '',
                 },
                 editFormRules: {
                     compayname: [
@@ -381,7 +364,7 @@
             //获取楼栋
             remoteMethod2(query) {
                 let para = {
-                    loupanOmcId: this.officeList[this.tabIndex - 1].loupanOmcId,
+                    loupanOmcId: this.brokerCompanyUserForm.loupanOmcId,
                 };
                 this.loupanloading = true;
                 getLoudongList(para).then((res) => {
@@ -413,8 +396,8 @@
             //获取房号
             remoteMethod3(query) {
                 let para = {
-                    lpid: this.officeList[this.tabIndex - 1].loupanOmcId,
-                    zdid: this.officeList[this.tabIndex - 1].loudongOmcId,
+                    lpid: this.brokerCompanyUserForm.loupanOmcId,
+                    zdid: this.brokerCompanyUserForm.loudongOmcId,
                 };
                 this.fanghaoloading = true;
                 getFanghaoList(para).then((res) => {
@@ -448,36 +431,36 @@
             change1(){
                 //楼盘
                 for (var x in this.options1) {
-                    if (this.options1[x].label == this.officeList[this.tabIndex - 1].loupanName) {
-                        this.officeList[this.tabIndex - 1].loupanOmcId = this.options1[x].value;
-                        this.officeList[this.tabIndex - 1].loudongName = null;//清除楼栋和房号的缓存
-                        this.officeList[this.tabIndex - 1].loudongOmcId = null;//清除楼栋和房号的缓存
-                        this.officeList[this.tabIndex - 1].fanghao = null;//清除楼栋和房号的缓存
-                        this.officeList[this.tabIndex - 1].omcId = null;//清除楼栋和房号的缓存
+                    if (this.options1[x].label == this.brokerCompanyUserForm.loupanName) {
+                        this.brokerCompanyUserForm.loupanOmcId = this.options1[x].value;
+                        this.brokerCompanyUserForm.loudongName = null;//清除楼栋和房号的缓存
+                        this.brokerCompanyUserForm.loudongOmcId = null;//清除楼栋和房号的缓存
+                        this.brokerCompanyUserForm.fanghao = null;//清除楼栋和房号的缓存
+                        this.brokerCompanyUserForm.omcId = null;//清除楼栋和房号的缓存
                     }
                 }
             },
             change2(){
                 //楼栋
                 for (var x in this.options2) {
-                    if (this.options2[x].label == this.officeList[this.tabIndex - 1].loudongName) {
-                        this.officeList[this.tabIndex - 1].loudongOmcId = this.options2[x].value;
-                        this.officeList[this.tabIndex - 1].fanghao = null;//清除楼栋和房号的缓存
-                        this.officeList[this.tabIndex - 1].omcId = null;//清除楼栋和房号的缓存
+                    if (this.options2[x].label == this.brokerCompanyUserForm.loudongName) {
+                        this.brokerCompanyUserForm.loudongOmcId = this.options2[x].value;
+                        this.brokerCompanyUserForm.fanghao = null;//清除楼栋和房号的缓存
+                        this.brokerCompanyUserForm.omcId = null;//清除楼栋和房号的缓存
                     }
                 }
             },
             change3(){
                 //房号
                 for (var x in this.options3) {
-                    if (this.options3[x].label == this.officeList[this.tabIndex - 1].fanghao) {
-                        this.property.officeList[this.tabIndex - 1].omcId = this.options3[x].value;
+                    if (this.options3[x].label == this.brokerCompanyUserForm.fanghao) {
+                        this.brokerCompanyUserForm.omcId = this.options3[x].value;
                     }
                 }
                 for (var x in this.houseData) {
-                    if (this.houseData[x].id == this.officeList[this.tabIndex - 1].omcId) {
-                        this.officeList[this.tabIndex - 1].Jianzhumianji = this.houseData[x].fjmj;
-                        this.officeList[this.tabIndex - 1].Qianyuemianji = this.houseData[x].fjmj;
+                    if (this.houseData[x].id == this.brokerCompanyUserForm.omcId) {
+                        this.brokerCompanyUserForm.Jianzhumianji = this.houseData[x].fjmj;
+                        this.brokerCompanyUserForm.Qianyuemianji = this.houseData[x].fjmj;
                     }
                 }
             },
@@ -503,6 +486,10 @@
             //根据url得到的渠道ID，来获取数据
             if (this.$route.query.id != null) {
                 // this.getPurchaseContract(this.$route.query);
+                console.log( this.$route.query.stage);
+                this.brokerCompanyUserForm= Object.assign({}, this.$route.query.stage );
+                //console.log( this.brokerCompanyUserForm);
+                //console.log( this.brokerCompanyUserForm)
             }
             //新增页面input禁用
             if (this.$route.path == '/brokerCompanyUserList/add') {

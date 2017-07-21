@@ -1,100 +1,19 @@
 <template>
-    <el-row class="container">
+    <el-row  >
             <div style="margin-bottom: 60px;"></div>
-            <el-form label-Weizhi="right" ref="propertyForm" :rules="editPropertyRules" label-width="180px"
-                     :model="officeList" class="demo-dynamic">
+            <el-form label-Weizhi="right" ref="brokerCompanyFrom" :rules="brokerCompanyFromRules" label-width="180px"
+                     :model="brokerCompanyFrom" class="demo-dynamic">
                 <el-col :span="18">
-                    <el-form-item required label="公司名称" prop="quyu">
-                        <el-input v-model="officeList.quyu"></el-input>
+
+                    <el-row>
+                        <el-col :span="8">
+                    <el-form-item required label="公司名称" prop="compayname">
+                        <el-input v-model="brokerCompanyFrom.compayname" placeholder="请输入公司名称"></el-input>
                     </el-form-item>
-                    <el-row>
-                        <el-col :span="8">
-                            <el-form-item label="楼盘" required prop="loupanName">
-                                <el-select
-                                        v-model="officeList.loupanName"
-                                        filterable
-                                        default-first-option
-                                        remote
-                                        @change="change1"
-                                        placeholder="楼盘"
-                                        :remote-method="remoteMethod1"
-                                        :loading="loupanloading">
-                                    <el-option
-                                            v-for="item in options1"
-                                            :key="item.value"
-                                            :label="item.label"
-                                            :value="item.label">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item required label="楼栋" prop="loudongName">
-                                <el-select
-                                        v-model="officeList.loudongName"
-                                        filterable
-                                        default-first-option
-                                        remote
-                                        @change="change2"
-                                        placeholder="楼栋"
-                                        :remote-method="remoteMethod2"
-                                        :loading="loupanloading">
-                                    <el-option
-                                            v-for="item in options2"
-                                            :key="item.value"
-                                            :label="item.label"
-                                            :value="item.label">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="8">
-                            <el-form-item required label="房间号" prop="fanghao">
-                                <el-select
-                                        v-model="officeList.fanghao"
-                                        filterable
-                                        default-first-option
-                                        remote
-                                        @change="change3"
-                                        placeholder="房间号"
-                                        :remote-method="remoteMethod3"
-                                        :loading="fanghaoloading">
-                                    <el-option
-                                            v-for="item in options3"
-                                            :key="item.value"
-                                            :label="item.label"
-                                            :value="item.label">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                    <el-row>
-                        <el-col :span="8">
-                            <el-form-item required label="业务区域" prop="quyu">
-                                <el-input v-model="officeList.quyu"></el-input>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="8">
-                            <el-form-item required label="地图区域" prop="quyu">
-                                <el-input v-model="officeList.quyu"></el-input>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="8">
-                            <el-form-item required label="主做区域" prop="quyu">
-                                <el-input v-model="officeList.quyu"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                    <el-row>
-                        <el-col :span="8">
-                            <el-form-item required label="服务类型" prop="qianyuemianji">
-                                <el-input v-model.number="officeList.qianyuemianji"></el-input>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="8">
-                            <el-form-item required label="公司规模" prop="leixing">
-                                <el-select v-model="officeList.leixing" clearable placeholder="请选择">
+                            <el-form-item required label="公司所在业务区域" prop="yewuquyu">
+                                <el-select v-model="brokerCompanyFrom.yewuquyu" placeholder="">
                                     <el-option
                                             v-for="item in options"
                                             :key="item.value"
@@ -105,52 +24,184 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item required label="成立年限" prop="jianzhumianji">
-                                <el-input v-model.number="officeList.jianzhumianji"></el-input>
+                            <el-form-item required label-width="10px" prop="dituquyu">
+                                <el-select v-model="brokerCompanyFrom.dituquyu" placeholder="地图区域">
+                                    <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
-
-                        <el-col :span="8">
-                            <el-form-item required label="签署合作协议时间" prop="qianyuemianji">
-                                <el-input v-model.number="officeList.qianyuemianji"></el-input>
+                        <el-col :span="6">
+                            <el-form-item required label="公司详细地址" prop="addr">
+                                <el-input v-model="brokerCompanyFrom.addr"></el-input>
                             </el-form-item>
                         </el-col>
-                        <el-col :span="8">
-                            <el-form-item required label="合作协议等级" prop="leixing">
-                                <el-rate v-model="officeList.value1"></el-rate>
+                        <el-col :span="5">
+                            <el-form-item required label-width="10px" prop="xingzhengqu">
+                                <el-select v-model="brokerCompanyFrom.xingzhengqu" placeholder="行政区域">
+                                    <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="5">
+                            <el-form-item required label-width="10px" prop="jiedao">
+                                <el-select v-model="brokerCompanyFrom.jiedao" placeholder="街道">
+                                    <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="7">
+                            <el-form-item required label-width="10px" prop="xiangxidizhi">
+                                <el-input v-model="brokerCompanyFrom.xiangxidizhi" placeholder="请输入公司详细地址"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
                         <el-col :span="8">
-                            <el-form-item required label="法人姓名" prop="jianzhumianji">
-                                <el-input v-model.number="officeList.jianzhumianji"></el-input>
+                            <el-form-item required label="公司所在楼盘" prop="loupanName">
+                                <el-input v-model="brokerCompanyFrom.loupanname" placeholder="请输入公司所在楼盘"></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item required label="法人联系方式" prop="qianyuemianji">
-                                <el-input v-model.number="officeList.qianyuemianji"></el-input>
+                            <el-form-item required label="公司规模" prop="gongshiguimo">
+                                <el-input v-model="brokerCompanyFrom.gongshiguimo" placeholder="请输入公司规模"></el-input>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-form-item required label="公司成立时间" prop="chenglinianxian">
+                                <el-date-picker type="date" placeholder="公司成立时间" v-model="brokerCompanyFrom.chenglinianxian">
+                                </el-date-picker>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-form-item label="主做区域" prop="zhuzuoquyu">
+                        <el-checkbox-group   v-model="checkedCities"  >
+                            <el-checkbox v-for="city in cities" :label="city.label" :key="city.value" :value="city.value">{{city.label}}</el-checkbox>
+                        </el-checkbox-group>
+                    </el-form-item>
+                    <el-row>
+                        <el-col :span="8">
+                    <el-form-item label="是否有过合作" prop="shifouyouguohezuo">
+                        <el-radio-group v-model="brokerCompanyFrom.shifouyouguohezuo">
+                            <el-radio :label=1>是</el-radio>
+                            <el-radio :label=2>否</el-radio>
+                        </el-radio-group>
+                    </el-form-item>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-form-item required label="合作次数" prop="hezuocishu">
+                                <el-input v-model="brokerCompanyFrom.hezuocishu"></el-input>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                            <el-form-item label="是否签署合作协议" prop="shifouqianshuxieyi">
+                                <el-radio-group v-model="brokerCompanyFrom.shifouqianshuxieyi">
+                                    <el-radio :label=1>是</el-radio>
+                                    <el-radio :label=2>否</el-radio>
+                                </el-radio-group>
+                            </el-form-item>
+                    <el-row>
+                        <el-col :span="8">
+                            <el-form-item required label="签署合作协议时间" prop="qianshuriqi">
+                                <el-date-picker type="date" placeholder="签署合作协议时间" v-model="brokerCompanyFrom.qianshuriqi">
+                                </el-date-picker>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-form-item required label="合作协议等级" prop="xieyidengji">
+                                <el-select v-model="brokerCompanyFrom.xieyidengji" placeholder="请输入合作协议等级">
+                                    <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
                         <el-col :span="8">
-                            <el-form-item required label="负责人姓名" prop="jianzhumianji">
-                                <el-input v-model.number="officeList.jianzhumianji"></el-input>
+                            <el-form-item required label="幼狮联系人1" prop="person1">
+                                <el-select v-model="brokerCompanyFrom.person1" placeholder="请输入幼狮联系人">
+                                    <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item required label="负责人联系方式" prop="qianyuemianji">
-                                <el-input v-model.number="officeList.qianyuemianji"></el-input>
+                            <el-form-item required label="幼狮联系人2" prop="person2">
+                                <el-select v-model="brokerCompanyFrom.person2" placeholder="请输入幼狮联系人">
+                                    <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-form-item required label="幼狮联系人3" prop="person3">
+                                <el-select v-model="brokerCompanyFrom.person3" placeholder="请输入幼狮联系人">
+                                    <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="8">
+                            <el-form-item required label="法人姓名" prop="farenxingming">
+                                <el-input v-model="brokerCompanyFrom.farenxingming"></el-input>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-form-item required label="法人联系方式" prop="farenphone">
+                                <el-input v-model="brokerCompanyFrom.farenphone"></el-input>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="8">
+                            <el-form-item required label="负责人姓名" prop="fuzherenxingming">
+                                <el-input v-model="brokerCompanyFrom.fuzherenxingming"></el-input>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-form-item required label="负责人联系方式" prop="fuzherenphone">
+                                <el-input v-model="brokerCompanyFrom.fuzherenphone"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
                         <el-col :span="8">
                             <el-form-item label="佣金类型" prop="yjType">
-                                <el-select v-model="officeList.yjType" placeholder="">
+                                <el-select v-model="brokerCompanyFrom.yjType" placeholder="请输入佣金类型">
                                     <el-option
                                             v-for="item in options"
                                             :key="item.value"
@@ -162,22 +213,25 @@
                         </el-col>
                         <el-col :span="8">
                             <el-form-item label="收房佣金占比" prop="yjzbSf">
-                                <el-input v-model.number="officeList.yjzbSf" value="" auto-complete="off"></el-input>
+                                <el-input v-model.number="brokerCompanyFrom.yjzbSf"   auto-complete="off"></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
                             <el-form-item label="出房佣金占比" prop="yjzbCf">
-                                <el-input v-model.number="officeList.yjzbCf" auto-complete="off"></el-input>
+                                <el-input v-model.number="brokerCompanyFrom.yjzbCf" auto-complete="off"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
-                    <el-form-item label="公司经营属性">
-                        <el-checkbox-group v-model="officeList.jianzhumianji" @change="changeOnCheck(2)">
-                            <el-checkbox v-for="(item, index) in options"
-                                         :key="item.key"
-                                         :label="item.label"
-                                         :value="item.value"></el-checkbox>
+                    <el-form-item label="公司经营属性" prop="jingyingshuxing">
+                        <el-checkbox-group v-model="brokerCompanyFrom.jingyingshuxing"  >
+                            <el-checkbox v-for="city in optionsgssx" :label="city.label" :key="city.value" :value="city.value">{{city.label}}</el-checkbox>
                         </el-checkbox-group>
+                    </el-form-item>
+                    <el-form-item label="服务对象" prop="fuwuduixiang">
+
+                    </el-form-item>
+                    <el-form-item required label="综合评价" prop="zonghepingjia">
+                        <el-rate v-model="brokerCompanyFrom.zonghepingjia"></el-rate>
                     </el-form-item>
                     <el-form-item label="通讯录" prop="yjzbCf">
                         <el-upload
@@ -191,29 +245,44 @@
                     <el-dialog v-model="dialogVisible" size="tiny">
                         <img width="100%" :src="dialogImageUrl" alt="">
                     </el-dialog>
+                    <el-form-item label="合作协议" prop="yjzbCf">
+                        <el-upload
+                                action="https://jsonplaceholder.typicode.com/posts/"
+                                list-type="picture-card"
+                                :on-preview="handlePictureCardPreview"
+                                :on-remove="handleRemove">
+                            <i class="el-icon-plus"></i>
+                        </el-upload>
+                    </el-form-item>
+                    <el-dialog v-model="dialogVisible" size="tiny">
+                        <img width="100%" :src="dialogImageUrl" alt="">
+                    </el-dialog>
+                    <el-form-item label="备注" prop="bz">
+                        <el-input type="textarea" v-model="brokerCompanyFrom.bz"  auto-complete="off"></el-input>
+                    </el-form-item>
                 </el-col>
             </el-form>
             <el-col>
                 <div v-show="showeidt">
                     <el-button @click.native="change">跟进记录</el-button>
-
+                    <add-history v-show="showhistory"></add-history>
                     <div v-show="showed">
                         <el-form :model="editForm" label-width="180px" :rules="editFormRules" ref="editForm" label-Weizhi="right" >
-                            {{officeList.genjinjindo}}
+                            {{brokerCompanyFrom.genjinjindo}}
                             <el-row :span="18">
                                 <el-form-item label="信息是否有效" prop="shifouyouxiao">
                                     <el-radio-group v-model="editForm.shifouyouxiao">
-                                        <el-radio :label="1">有效</el-radio>
-                                        <el-radio :label="2">无效</el-radio>
-                                        <el-radio :label="3">无法取得联系</el-radio>
+                                        <el-radio :label=1>有效</el-radio>
+                                        <el-radio :label=2>无效</el-radio>
+                                        <el-radio :label=3>无法取得联系</el-radio>
                                     </el-radio-group>
                                 </el-form-item>
                             </el-row>
                             <el-row :span="18">
                                 <el-form-item label="信息是否准确" prop="xinxishifouzhunque">
                                     <el-radio-group v-model="editForm.xinxishifouzhunque">
-                                        <el-radio :label="1">上报信息准确</el-radio>
-                                        <el-radio :label="2">上报信息不准确</el-radio>
+                                        <el-radio :label=1>上报信息准确</el-radio>
+                                        <el-radio :label=2>上报信息不准确</el-radio>
                                     </el-radio-group>
                                 </el-form-item>
                             </el-row>
@@ -222,84 +291,100 @@
                                     <el-input type="textarea" v-model="editForm.shuoming" auto-complete="off" style="width:1100px"></el-input>
                                 </el-form-item>
                             </el-row>
-                            <a href="/#/brokerCompanyHistory">查看历史记录</a>
+                            <a href="/#/brokerCompanyHistory?id=" >查看历史记录</a>
                         </el-form>
                     </div>
                 </div>
                 <el-button type="primary" v-show="editVisible" @click="save" style="margin-top:100px;">保存</el-button>
-                <el-button @click.native="editFormVisible = false">取消</el-button>
+                <el-button @click.native="">取消</el-button>
             </el-col>
         </el-row>
 </template>
 
 <script>
-    import {getLoupanList, getLoudongList, getFanghaoList, getPurchaseContractInfo} from '../../api/api';
+    import {getLoupanList, getLoudongList, getFanghaoList, getPurchaseContractInfo,addBrokerCompanyHistory,getGSSXDicList,getFWDXDicList} from '../../api/api';
     import ElRow from "element-ui/packages/row/src/row";
+    import AddHistory from './HistoryList.vue'
     export default {
         components: {
-            ElRow
+            ElRow,
+            AddHistory
         },
-        props: ['property'],
         data() {
             return {
+                checkedCities: [ '元'],
                 dialogImageUrl: '',
                 dialogVisible: false,
                 showed: false,
-                officeList: {
-                    omcId: null,
-                    loupanOmcId: null,
-                    loudongOmcId: null,
+                showhistory:false,
+                brokerCompanyFrom: {
                     loupanName: null,
-                    loudongName: null,
-                    fanghao: null,
-                    weizhi: null,
-                    chanquanzhenghao: null,
-                    jianzhumianji: null,
-                    qianyuemianji: null,
-                    leixing: null,
-                    hetongid: null,
-                    quyu: '',
-                    isdiya: 0,
-                    diyaren: '',
-                    value1: null,
-                    genjinjindo:1,
+                    compayname: null,
+                    yewuquyu: [],
+                    dituquyu: [],
+                    gongshiguimo: '',
+                    chenglinianxian: '',
+                    qianshuriqi:null,
+                    xieyidengji: [],
+                    farenxingming: null,
+                    farenphone:'',
+                    fuzherenxingming:'',
+                    jianzhumianji:null,
+                    yjzbCf:'',
+                    bz:'',
+                    zonghepingjia:3,
+                    fuwuduixiang:[],
+                    yjzbSf:'',
+                    yjType:null,
+                    jingyingshuxing:[],
+                    person1:'',
+                    person2:'',
+                    person3:'',
+                    shifouqianshuxieyi:null,
+                    hezuocishu:null,
+                    shifouyouguohezuo:null,
+                    xiangxidizhi:null,
+                    jiedao:[],
+                    xingzhengqu:[],
+                    addr:null,
+                    zhuzuoquyu:[],
+
                 },
                 purchaseContract: {
                     type: 0,
                 },
-                editPropertyRules: {
-                    loupanName: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    loudongName: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    fanghao: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    quyu: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    weizhi: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    chanquanzhenghao: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    jianzhumianji: [
-                        {required: true, message: '不能为空'},
-                        {type: 'number', message: '必须为数字'},
-                    ],
-                    leixing: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    qianyuemianji: [
-                        {required: true, message: '不能为空'},
-                        {type: 'number', message: '必须为数字'},
-                    ]
+                brokerCompanyFromRules: {
+
                 },
+                cities:[{
+                    value: 1,
+                    label: '%'
+                }, {
+                    value: 2,
+                    label: '元'
+                }],
+                optionszzqy: [ {
+                    value: 1,
+                    label: '%'
+                }, {
+                    value: 2,
+                    label: '元'
+                },],
                 showeidt:true,
                 editVisible: true,
+                optionsgssx: [  {
+                    value: 1,
+                    label: '公寓'
+                }, {
+                    value: 2,
+                    label: '写字楼'
+                }, {
+                    value: 3,
+                    label: '商铺'
+                }, {
+                    value: 4,
+                    label: '住宅'
+                }],
                 //楼盘数据
                 options1: [],
                 list1: [],
@@ -318,38 +403,14 @@
                 houseData: [],
                 //房间类型
                 options: [
-                    {
-                        value: 0,
-                        label: '请选择'
-                    }, {
-                        value: 1,
-                        label: '公寓'
-                    }, {
-                        value: 2,
-                        label: '写字楼'
-                    }, {
-                        value: 3,
-                        label: '商铺'
-                    }, {
-                        value: 4,
-                        label: '住宅'
-                    }
                 ],
-                //房源数据初始化
 
-                editableTabsValue2: '1',
-                editableTabs2: [{
-                    title: '房间1',
-                    name: '1',
-                    content: 'Tab 1 content'
-                }],
-                tabIndex: 1,
                 //编辑界面数据
                 editLoading: false,
                 editForm: {
                     tQdCompayId: 0,
-                    shifouyouxiao: '',
-                    xinxishifouzhunque: '',
+                    shifouyouxiao: null,
+                    xinxishifouzhunque: null,
                     shuoming: '',
                 },
                 editFormRules: {
@@ -364,11 +425,28 @@
 
             //显示和隐藏跟进记录
             change(){
-                if (this.showed == false) {
-                    this.showed = true;
-                } else {
-                    this.showed = false;
+                if (this.$route.path == '/brokerCompany/view') {
+                    if (this.showhistory == false) {
+                        this.showhistory = true;
+                    } else {
+                        this.showhistory = false;
+                    }
+                }else{
+                    if (this.showed == false) {
+                        this.showed = true;
+                    } else {
+                        this.showed = false;
+                    }
                 }
+            },
+            //获取公司属性
+            remoteMethodgssx() {
+                let para = {
+                    str: '华贸'
+                };
+
+
+
             },
             //获取楼盘
             remoteMethod1(query) {
@@ -420,7 +498,7 @@
             //获取楼栋
             remoteMethod2(query) {
                 let para = {
-                    loupanOmcId: this.officeList[this.tabIndex - 1].loupanOmcId,
+                    loupanOmcId: this.brokerCompanyFrom.loupanOmcId,
                 };
                 this.loupanloading = true;
                 getLoudongList(para).then((res) => {
@@ -452,8 +530,8 @@
             //获取房号
             remoteMethod3(query) {
                 let para = {
-                    lpid: this.officeList[this.tabIndex - 1].loupanOmcId,
-                    zdid: this.officeList[this.tabIndex - 1].loudongOmcId,
+                    lpid: this.brokerCompanyFrom.loupanOmcId,
+                    zdid: this.brokerCompanyFrom.loudongOmcId,
                 };
                 this.fanghaoloading = true;
                 getFanghaoList(para).then((res) => {
@@ -487,40 +565,59 @@
             change1(){
                 //楼盘
                 for (var x in this.options1) {
-                    if (this.options1[x].label == this.officeList[this.tabIndex - 1].loupanName) {
-                        this.officeList[this.tabIndex - 1].loupanOmcId = this.options1[x].value;
-                        this.officeList[this.tabIndex - 1].loudongName = null;//清除楼栋和房号的缓存
-                        this.officeList[this.tabIndex - 1].loudongOmcId = null;//清除楼栋和房号的缓存
-                        this.officeList[this.tabIndex - 1].fanghao = null;//清除楼栋和房号的缓存
-                        this.officeList[this.tabIndex - 1].omcId = null;//清除楼栋和房号的缓存
+                    if (this.options1[x].label == this.brokerCompanyFrom.loupanName) {
+                        this.brokerCompanyFrom.loupanOmcId = this.options1[x].value;
+                        this.brokerCompanyFrom.loudongName = null;//清除楼栋和房号的缓存
+                        this.brokerCompanyFrom.loudongOmcId = null;//清除楼栋和房号的缓存
+                        this.brokerCompanyFrom.fanghao = null;//清除楼栋和房号的缓存
+                        this.brokerCompanyFrom.omcId = null;//清除楼栋和房号的缓存
                     }
                 }
             },
             change2(){
                 //楼栋
                 for (var x in this.options2) {
-                    if (this.options2[x].label == this.officeList[this.tabIndex - 1].loudongName) {
-                        this.officeList[this.tabIndex - 1].loudongOmcId = this.options2[x].value;
-                        this.officeList[this.tabIndex - 1].fanghao = null;//清除楼栋和房号的缓存
-                        this.officeList[this.tabIndex - 1].omcId = null;//清除楼栋和房号的缓存
+                    if (this.options2[x].label == this.brokerCompanyFrom.loudongName) {
+                        this.brokerCompanyFrom.loudongOmcId = this.options2[x].value;
+                        this.brokerCompanyFrom.fanghao = null;//清除楼栋和房号的缓存
+                        this.brokerCompanyFrom.omcId = null;//清除楼栋和房号的缓存
                     }
                 }
             },
             change3(){
                 //房号
                 for (var x in this.options3) {
-                    if (this.options3[x].label == this.officeList[this.tabIndex - 1].fanghao) {
-                        this.property.officeList[this.tabIndex - 1].omcId = this.options3[x].value;
+                    if (this.options3[x].label == this.brokerCompanyFrom.fanghao) {
+                        this.brokerCompanyFrom.omcId = this.options3[x].value;
                     }
                 }
-                for (var x in this.houseData) {
-                    if (this.houseData[x].id == this.officeList[this.tabIndex - 1].omcId) {
-                        this.officeList[this.tabIndex - 1].Jianzhumianji = this.houseData[x].fjmj;
-                        this.officeList[this.tabIndex - 1].Qianyuemianji = this.houseData[x].fjmj;
-                    }
-                }
+
             },
             save(){
+                this.$refs.editForm.validate((valid) => {
+                    //  alert(this.addForm.tQdCompayId);
+
+                    if (valid) {
+                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
+
+                            //NProgress.start();
+                            let para = Object.assign({}, this.editForm,this.brokerCompanyFrom);
+console.log(para);
+                            //para.yjType= this.addForm.yjType == '按月租金' ? 1 : 2;
+                            //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
+                            addBrokerCompanyHistory(para).then((res) => {
+
+                                //NProgress.done();
+                                this.$message({
+                                    message: '提交成功',
+                                    type: 'success'
+                                });
+                                /////this.$refs['addForm'].resetFields();
+                               // this.getBrokerCompanyUser();
+                            });
+                        });
+                    }
+                });
             },
 
             handleRemove(file, fileList) {
@@ -553,7 +650,7 @@
                 this.editVisible = false;
                 this.disabledInput();
             }
-
+           this.remoteMethodgssx();
         }
 
     }

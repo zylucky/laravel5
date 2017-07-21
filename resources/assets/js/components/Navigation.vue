@@ -139,7 +139,7 @@
                 this.sysUserName = user.name || '';
                 this.sysUserAvatar = user.avatar || '../../image/default.jpg';
             }
-           // setInterval(this.openMessage,300000)
+           //setInterval(this.openMessage,3000)
 
         }
 
