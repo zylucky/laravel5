@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
-class brokerCompanyUserController extends Controller
+class brokerUserController extends Controller
 {
     /**
      * Display a listing of the resource.

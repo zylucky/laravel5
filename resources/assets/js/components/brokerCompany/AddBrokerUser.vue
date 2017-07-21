@@ -34,27 +34,27 @@
 
                 <el-row>
                     <el-col :span="8">
-                            <el-form-item label="渠道公司名称"   prop="tQdCompayId"  >
-                                <el-select
-                                        v-model="brokerCompanyUserForm.tQdCompayId"
-                                        filterable
-                                        remote
-                                        @change="change1"
-                                        placeholder="渠道公司名称"
-                                        :remote-method="remoteMethod1"
-                                        :loading="bkNameloading">
-                                    <el-option
-                                            v-for="item in options1"
-                                            :key="item.value"
-                                            :label="item.label"
-                                            :value="item.value">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
+                        <el-form-item required label="所在业务区域" prop="qvyvId">
+                            <el-select v-model="brokerCompanyUserForm.qvyvId" placeholder="">
+                                <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item  label="公司所在楼盘" prop="loupanName">
-                            <el-input v-model="brokerCompanyUserForm.loupanName" disabled="disabled"></el-input>
+                        <el-form-item   label-width="10px" prop="dituquyu">
+                            <el-select v-model="brokerCompanyUserForm.dituquyu" placeholder="地图区域">
+                                <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                </el-option>
+                            </el-select>
                         </el-form-item>
                     </el-col>
 
@@ -142,7 +142,30 @@
                         </el-option>
                     </el-select>
                 </el-form-item>
-
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="佣金类型" prop="yjType">
+                            <el-select v-model="brokerCompanyUserForm.yjType" placeholder="请输入佣金类型">
+                                <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="收房佣金占比" prop="yjzbSf">
+                            <el-input v-model.number="brokerCompanyUserForm.yjzbSf"   auto-complete="off"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="出房佣金占比" prop="yjzbCf">
+                            <el-input v-model.number="brokerCompanyUserForm.yjzbCf" auto-complete="off"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
                 <el-form-item label="备注" prop="bz">
                     <el-input type="textarea" v-model="brokerCompanyUserForm.bz"  auto-complete="off"></el-input>
                 </el-form-item>
@@ -194,7 +217,11 @@
     </el-row>
 </template>
 <script>
-    import {getbkNameList, getLoudongList, getFanghaoList, getPurchaseContractInfo} from '../../api/api';
+    import {getbkNameList, getLoudongList, getFanghaoList, getPurchaseContractInfo,
+        addBrokerUser,
+        editBrokerUser,
+        addBrokerUserHistory,
+    } from '../../api/api';
     import ElRow from "element-ui/packages/row/src/row";
     export default {
         components: {
@@ -296,7 +323,7 @@
             },
             //显示和隐藏跟进记录
             change(){
-                if (this.$route.path == '/brokerCompanyUserList/view') {
+                if (this.$route.path == '/brokerUser/view') {
 
                 }else{
                 if (this.showed == false) {
@@ -400,12 +427,12 @@
                 //console.log( this.brokerCompanyUserForm)
             }
             //新增页面input禁用
-            if (this.$route.path == '/brokerCompanyUserList/add') {
+            if (this.$route.path == '/brokerUser/add') {
                 this.showeidt = false;
 
             }
             //详情页面input禁用
-            if (this.$route.path == '/brokerCompanyUserList/view') {
+            if (this.$route.path == '/brokerUser/view') {
                 this.editVisible = false;
                 this.disabledInput();
             }

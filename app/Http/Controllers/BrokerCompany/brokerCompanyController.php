@@ -189,6 +189,7 @@ class brokerCompanyController extends Controller
         echo $response->getBody();
 
     }
+    //公司经营属性
     public function getGSSXDicList(Request $request)
     {
         $client = new Client([
@@ -200,6 +201,7 @@ class brokerCompanyController extends Controller
         );
         echo $response->getBody();
     }
+    //服务对象
     public function getFWDXDicList(Request $request)
     {
         $client = new Client([
@@ -211,4 +213,64 @@ class brokerCompanyController extends Controller
         );
         echo $response->getBody();
     }
+    //业务区域
+    public function getYWQYDicList(Request $request)
+    {
+        $parentid =$request->params['parentid'];
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/area/searchbusiness',[
+                'query' => [
+                    'parentid' =>  $parentid
+                ]
+            ]
+        );
+        echo $response->getBody();
+    }
+    //行政区域
+    public function getXZQYDicList(Request $request)
+    {
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/area/searchcity',[
+            ]
+        );
+        echo $response->getBody();
+    }
+    //根据行政区域获取街道
+    public function getJDDicList(Request $request)
+    {
+        $code =$request->params['code'];
+
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/area/searchcity',[
+                'query' => [
+                    'code' =>  $code
+                ] ]
+        );
+        echo $response->getBody();
+    }
+
+    //停用启用渠道公司状态
+    public function changeBrokerCompanyStatus(Request $request)
+    {
+        $obj =$request->params ;
+
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('POST', '/api/area/searchcity',[
+                'json' => $obj]
+        );
+        echo $response->getBody();
+    }
+
 }

@@ -39,6 +39,9 @@ import BrokerCompanyAdd from "./components/brokerCompany/Add.vue";
 import BrokerCompanyUserAdd from "./components/brokerCompany/AddUser.vue";
 import BrokerCompanyHistory from "./components/brokerCompany/HistoryList.vue";
 import BrokerCompanyUserHistory from "./components/brokerCompany/UserHistoryList.vue";
+import BrokerUser from "./components/brokerCompany/BrokerUserList.vue";
+import BrokerUserAdd from "./components/brokerCompany/AddBrokerUser.vue";
+import BrokerUserHistory from "./components/brokerCompany/BrokerUserHistoryList.vue";
 //佣金管理
 import ChuFangCommission from "./components/Commission/Index.vue";
 import ShouFangCommission from "./components/Commission/ShouFangList.vue";
@@ -145,7 +148,7 @@ let routes = [
     {
         path: '/',
         component: navigation,
-        name: '基础数据管理',
+        name: '渠道管理',
         iconCls: 'el-icon-document',//图标样式class
         hidden:fk_brokerCompany,
         children: [
@@ -159,6 +162,11 @@ let routes = [
             { path:'/brokerCompanyUserList/view',component:BrokerCompanyUserAdd,name:'渠道公司人员查看',hidden:true},
             { path:'/brokerCompanyHistory',component:BrokerCompanyHistory,name:'渠道公司跟进记录',hidden:true},
             { path:'/brokerCompanyUserHistory',component:BrokerCompanyUserHistory,name:'渠道公司人员跟进记录',hidden:true},
+            { path:'/brokerUser',component:BrokerUser,name:'自由经纪人管理',hidden:false},
+            { path:'/brokerUser/add',component:BrokerUserAdd,name:'自由经纪人录入',hidden:true},
+            { path:'/brokerUser/edit',component:BrokerUserAdd,name:'自由经纪人编辑',hidden:true},
+            { path:'/brokerUser/view',component:BrokerUserAdd,name:'自由经纪人查看',hidden:true},
+            { path:'/brokerUserHistory',component:BrokerUserHistory,name:'自由经纪人跟进记录',hidden:true},
         ]
     },
     {
@@ -183,7 +191,7 @@ let routes = [
     {
         path: '/',
         component: navigation,
-        name: '统计',
+        name: '应收应付',
         iconCls: 'el-icon-document',//图标样式class
         hidden:false,
         children: [

@@ -35,7 +35,7 @@
                     </el-select>
             </el-form-item></el-row><el-row>
             <el-form-item label="协议等级："   >
-                <el-select v-model="filters.serviceType" placeholder="请选择服务类型">
+                <el-select v-model="filters.serviceType" placeholder="请选择协议等级">
                     <el-option
                             v-for="item in optionsfw"
                             :key="item.value"
@@ -80,7 +80,18 @@
             </el-table-column>
             <el-table-column prop="createdate" label="信息完整度"  >
             </el-table-column>
-            <el-table-column prop="createdate" label="渠道状态"  >
+            <el-table-column prop="yjType" label="渠道状态"  >
+                <template scope="scope">
+                    <el-switch
+                            v-model="scope.row.yjType"
+                            on-color="#13ce66"
+                            off-color="#ff4949"
+                            :on-value=1
+                            :off-value=0
+                            @change="changeStatus(scope.row)"
+                    >
+                    </el-switch>
+                </template>
             </el-table-column>
             <el-table-column label="操作" width="150">
                 <template scope="scope">
@@ -91,7 +102,8 @@
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item  >  <el-button   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
                             <el-dropdown-item  >  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
-                            <el-dropdown-item  >  <el-button   @click="handleDel(scope.$index, scope.row)">删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除</el-button> </el-dropdown-item>
+                            <el-dropdown-item  >  <el-button   @click="handleUser(scope.$index, scope.row)">查看渠道人员</el-button> </el-dropdown-item>
+                            <el-dropdown-item  >  <el-button   @click="handleUpload(scope.$index, scope.row)">上次协议</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -127,7 +139,7 @@
         removeBrokerCompany,
         addBrokerCompany,
         checkbkNameList,
-
+        changeBrokerCompanyStatus,
 
     } from '../../api/api';
     import ElRow from "element-ui/packages/row/src/row";
@@ -149,6 +161,10 @@
                         value: 2,
                         label: '按年租金'
                     },
+                ],
+                options2:[
+                    {value: 1, label: '启用'},
+                    {value: 2, label: '停用'},
                 ],
                 optionsfw:[
                     {
@@ -352,6 +368,16 @@
 
                 this.getBrokerCompany();
             },
+            //更改渠道公司状态
+            changeStatus(row){
+                let para ={
+                    id:row.id,
+                    status:row.yjType,
+                }
+                changeBrokerCompanyStatus(para).then((res)=>{
+
+                })
+            },
             //获取渠道公司列表
             getBrokerCompany() {
                 let para = {
@@ -366,36 +392,13 @@
                     this.listLoading = false;
                 });
             },
-            //删除
-            handleDel: function (index, row) {
-                this.$confirm('确认删除该记录吗?', '提示', {
-                    type: 'warning'
-                }).then(() => {
-                    this.listLoading = true;
-                    //NProgress.start();
-                    let para = { id: row.tQdCompayId };
-                   // alert(row.tQdCompayId);
-                    removeBrokerCompany(para).then((res) => {
-                        this.listLoading = false;
-                        //NProgress.done();
-                        if(res.data.code=='200')
-                        {
-                            this.$message({
-                                message: '删除成功',
-                                type: 'success'
-                            });
-                        }else{
-                            this.$message({
-                                message: res.data.msg,
-                                type: 'error'
-                            });
-                        }
-
-                        this.getBrokerCompany();
-                    });
-                }).catch(() => {
-
-                });
+            //查看渠道人员
+            handleUser: function (index, row) {
+                this.$router.push('/brokerCompanyUserList?id=' + row.tQdCompayId);
+            },
+            //上传协议
+            handleUpload: function (index, row) {
+                this.$router.push('/brokerCompany/edit?id=' + row.tQdCompayId);
             },
             //显示编辑界面
             handleEdit: function (index, row) {

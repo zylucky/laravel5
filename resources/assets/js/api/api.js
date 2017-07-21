@@ -136,7 +136,17 @@ export const getBrokerCompanyHistoryListPage = params => { return axios.get(`${b
 export const addBrokerCompanyHistory = params => { return axios.post(`${base}/brokerCompanyUserHistory`, { params: params }); };
 export const getGSSXDicList = params => { return axios.get(`${base}/brokerCompany/getGSSXDicList`, { params: params }); };
 export const getFWDXDicList = params => { return axios.post(`${base}/brokerCompany/getFWDXDicList`, { params: params }); };
-
+export const getYWQYDicList = params => { return axios.get(`${base}/brokerCompany/getYWQYDicList`, { params: params }); };
+export const getXZQYDicList = params => { return axios.post(`${base}/brokerCompany/getXZQYDicList`, { params: params }); };
+export const getJDDicList = params => { return axios.post(`${base}/brokerCompany/getJDDicList`, { params: params }); };
+export const changeBrokerCompanyStatus = params => { return axios.post(`${base}/brokerCompany/changeBrokerCompanyStatus`, { params: params }); };
+export const changeBrokerCompanyUserStatus = params => { return axios.post(`${base}/brokerCompanyUser/changeBrokerCompanyUserStatus`, { params: params }); };
+export const getBrokerUserListPage = params => { return axios.get(`${base}/brokerUser`, { params: params }); };
+export const addBrokerUser = params => { return axios.post(`${base}/brokerUser`, { params: params }); };
+export const editBrokerUser = params => { return axios.put(`${base}/brokerUser/`+params.id, { params: params }); };
+export const getBrokerUserHistoryListPage = params => { return axios.get(`${base}/brokerCompanyHistory`, { params: params }); };
+export const addBrokerUserHistory = params => { return axios.post(`${base}/brokerCompanyUserHistory`, { params: params }); };
+export const changeBrokerUserStatus = params => { return axios.post(`${base}/brokerCompanyUser/changeBrokerUserStatus`, { params: params }); };
 //版本控制
 export const getContractVersionList = params =>{ return axios.get(`${base}/contractVersion/index`, { params: params }); };
 export const changeContractVersionStatus = params =>{ return axios.get(`${base}/contractVersion/status`, { params: params }); };

@@ -3,23 +3,13 @@
     <el-row >
         <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
-            <el-form-item label="业务区域：" >
-                <el-select v-model="filters.areaId" placeholder="请选择区域">
-                    <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-            </el-form-item>
+
             <el-form-item label="公司名称：">
                 <el-input v-model="filters.bk_name" placeholder="请输入公司名称"></el-input>
             </el-form-item>
             <el-form-item label="所在楼盘："   >
                 <el-input v-model="filters.buildingname" placeholder="请输入所在楼盘"></el-input>
             </el-form-item>
-        <br/>
             <el-form-item label="渠道等级："    >
                 <el-select v-model="filters.serviceType" placeholder="请选择渠道等级"  >
                     <el-option
@@ -30,7 +20,13 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-
+            <br/>
+            <el-form-item label="最后跟进日期：">
+            <el-date-picker type="date" placeholder="最后跟进日期" v-model="filters.startdate">
+            </el-date-picker>
+            <el-date-picker type="date" placeholder="至" v-model="filters.enddate">
+            </el-date-picker>
+            </el-form-item>
             <el-form-item label="渠道姓名：">
                 <el-input v-model="filters.bk_username" placeholder="请输入渠道人员姓名"></el-input>
             </el-form-item>
@@ -44,7 +40,6 @@
 
             <el-table-column type="index"   width="60">
             </el-table-column>
-
             <el-table-column prop="qdPername" label="姓名"  >
             </el-table-column>
             <el-table-column prop="qdPertel" label="职务"  >
@@ -53,15 +48,26 @@
             </el-table-column>
             <el-table-column prop="qvDaoCompayXinxi.compayname" label="公司名称"  >
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="所在楼盘"  >
-            </el-table-column>
-            <el-table-column prop="yjzbCf" label="业务区域"  >
-            </el-table-column>
-            <el-table-column prop="yjzbCf" label="跟进次数"  >
+            <el-table-column prop="yjzbSf" label="公司所在楼盘"  >
             </el-table-column>
             <el-table-column prop="yjType" label="渠道等级"  :formatter="formatYJType" >
             </el-table-column>
+            <el-table-column prop="yjzbCf" label="最后跟进日期"  >
+            </el-table-column>
             <el-table-column prop="yjzbCf" label="信息完整度"  >
+            </el-table-column>
+            <el-table-column prop="yjType" label="状态"  >
+                <template scope="scope">
+                    <el-switch
+                            v-model="scope.row.yjType"
+                            on-color="#13ce66"
+                            off-color="#ff4949"
+                            :on-value=1
+                            :off-value=0
+                            @change="changeStatus(scope.row)"
+                    >
+                    </el-switch>
+                </template>
             </el-table-column>
                <el-table-column label="操作" width="150">
                    <template scope="scope">
@@ -72,7 +78,6 @@
                            <el-dropdown-menu slot="dropdown" >
                                <el-dropdown-item  >  <el-button   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
                                <el-dropdown-item  >  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
-                               <el-dropdown-item  >  <el-button   @click="handleDel(scope.$index, scope.row)">删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除</el-button> </el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
 
@@ -207,6 +212,7 @@
         addBrokerCompanyUser,
         batchRemoveBrokerCompanyUser,
         getbkNameList,
+        changeBrokerCompanyUserStatus,
        // getUserNameByID,
 
 
@@ -217,6 +223,10 @@
                 filters:{
                     bk_name:'',
                     bk_username:'',
+                    startdate:'',
+                    enddate:'',
+                    buildingname:'',
+                    serviceType:''
                 },
                 options:[
                     {
@@ -226,6 +236,10 @@
                         value: 2,
                         label: '按年租金'
                     },
+                ],
+                options2:[
+                    {value: 1, label: '启用'},
+                    {value: 2, label: '停用'},
                 ],
                 optionsfw:[
                     {
@@ -427,6 +441,16 @@
                     }
                 });
 
+            },
+            //更改渠道人员状态
+            changeStatus(row){
+                let para ={
+                    id:row.id,
+                    status:row.yjType,
+                }
+                changeBrokerCompanyUserStatus(para).then((res)=>{
+
+                })
             },
             //页面跳转后
             handleCurrentChange(val) {
