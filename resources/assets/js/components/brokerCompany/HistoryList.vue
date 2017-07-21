@@ -105,8 +105,7 @@
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
-                    bk_name: this.filters.bk_name,
-                    username: this.filters.bk_username,
+
                 };
                 this.listLoading = true;
                 getBrokerCompanyHistoryListPage(para).then((res) => {

@@ -189,9 +189,26 @@ class brokerCompanyController extends Controller
         echo $response->getBody();
 
     }
-    public function getUserById(Request $request)
+    public function getGSSXDicList(Request $request)
     {
-       $user= DB::table('users')->where('id', $request->params['id'])->first();
-        return $user->name;
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/qd/comm/compay/jysx/list',[
+            ]
+        );
+        echo $response->getBody();
+    }
+    public function getFWDXDicList(Request $request)
+    {
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+        ]);
+        $response = $client->request('GET', '/api/qd/comm/compay/fwdx/list',[
+            ]
+        );
+        echo $response->getBody();
     }
 }

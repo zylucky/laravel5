@@ -1,5 +1,5 @@
 <template>
-    <div>
+
     <el-row class="container">
             <el-tabs v-model="editableTabsValue2" type="card" closable @tab-remove="removeTab">
                 <el-button v-show="editVisible"
@@ -142,7 +142,6 @@
                 </el-tab-pane>
             </el-tabs>
     </el-row>
-    </div>
 
 </template>
 <script>

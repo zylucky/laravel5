@@ -15,7 +15,7 @@ import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
 import PurchaseContractUpload from "./components/purchaseContract/Upload.vue";
 import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue";
 import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimize.vue";
-import PurchaseContractDump from "./components/purchaseContract/Dump.vue";
+import PurchaseContractDump20170719 from "./components/purchaseContract/Dump20170719.vue";//版本1
 
 
 //出房合同
@@ -176,8 +176,9 @@ let routes = [
         ]
     },
     {
-        path:'/purchaseContract/dump',
-        component: PurchaseContractDump,
+        //版本1
+        path:'/purchaseContract/dump20170719',
+        component: PurchaseContractDump20170719,
         name: '收房合同打印',
         hidden: true
     },

@@ -58,7 +58,7 @@ class brokerCompanyHistoryController extends Controller
     public function store(Request $request)
     {
 
-      //  dd( $request->params);
+       dd( $request->params);
         $client = new Client ([
             'base_uri' => $this->base_url,
             'timeout'  => 2.0,
@@ -106,7 +106,7 @@ class brokerCompanyHistoryController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *删除渠道人员
+     *删除
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

@@ -100,12 +100,12 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="2">
-                        <el-button style="margin-left:6px;" @click.prevent="removeRentItem(item)">删除</el-button>
+                        <el-button style="margin-left:6px;" v-show="editVisible" @click.prevent="removeRentItem(item)">删除</el-button>
                     </el-col>
                 </el-row>
                 </div>
                 <el-form-item>
-                    <el-button  @click="addRentItem">新增承租人</el-button>
+                    <el-button v-show="editVisible"  @click="addRentItem">新增承租人</el-button>
                 </el-form-item>
                 <el-row>
                     <el-col :span="8">
@@ -207,6 +207,7 @@
     export default{
         data(){
             return {
+                editVisible:true,
                 labelPosition:'right',
                 bkNameloading:false,
                 estate: [],//服务器搜索的渠道公司数据放入这个数组中
@@ -287,6 +288,16 @@
                     this.renter.chengzuren.splice(index, 1)
                 }
             }
+        },
+        mounted(){
+            //审核页面input禁用
+            if(this.$route.path=='/saleContract/review'){
+                this.editVisible   =false;
+            }
+            if(this.$route.path=='/saleContract/see'){
+                this.editVisible   =false;
+            }
+
         }
     }
 </script>

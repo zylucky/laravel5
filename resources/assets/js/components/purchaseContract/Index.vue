@@ -379,15 +379,19 @@
             },
             //打印
             handleDump(index,row){
-                let para = {
-                    id:row.id,
-                }
-                dumpingPurchaseContract(para).then((res)=>{
-                    if(res.data.code=="200"){
-                        this.purchaseContractList();
-                        window.open('/#/purchaseContract/dump?id='+row.id)
+                getPurchaseContractInfo({id:row.id}).then((res) => {
+                    var version = res.data.data.version;
+                    let para = {
+                        id:row.id,
                     }
-                });
+                    dumpingPurchaseContract(para).then((res)=>{
+                        if(res.data.code=="200"){
+                            this.purchaseContractList();
+                            window.open('/#/purchaseContract/dump'+version+'?id='+row.id)
+                        }
+                    });
+                })
+
 
 
             },

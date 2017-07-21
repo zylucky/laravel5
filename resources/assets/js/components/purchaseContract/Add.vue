@@ -16,9 +16,9 @@
                         <el-select v-model="contractVersion" placeholder="合同版本">
                             <el-option
                                     v-for="item in options"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
+                                    :key="item.id"
+                                    :label="item.version"
+                                    :value="item.version">
                             </el-option>
                         </el-select>
                     </el-form-item>
@@ -63,15 +63,13 @@
         reviewPurchaseContract,
         getPurchaseContractInfo,
         submitPurchaseContract,
-        getPurchaseContractTiaoKuan
+        getPurchaseContractTiaoKuan,
+        getContractVersionList
     } from '../../api/api';
     export default{
         data(){
             return {
                 options:[
-                    {label:'20170719',value:'20170719'},
-                    {label:'20170720',value:'20170720'},
-                    {label:'20170721',value:'20170721'},
                 ],
                 contractVersion:null,
                 btnType:true,
@@ -328,6 +326,18 @@
 
                 })
             },
+            //获取当前启用的合同版本
+            getVersion(){
+                let para = {
+                    category: 0,
+                    status:1,
+                };
+                this.listLoading = true;
+                getContractVersionList(para).then((res) => {
+                    this.options = res.data.data;
+                    this.contractVersion = this.options[0].version;
+                });
+            },
             fuzhi(res){
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
@@ -422,7 +432,8 @@
             }
             //新增页面获取默认条款
             if(this.$route.path=='/purchaseContract/add'){
-                this.getTiaokuan();
+                //this.getTiaokuan();
+                this.getVersion();
             }
         },
 
