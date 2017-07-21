@@ -33,7 +33,11 @@
                 </el-steps>
                 <el-button type="primary"  v-show="editVisible" @click="save" style="margin-top:100px;">保存</el-button>
                 <el-button type="primary"  v-show="editVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
+                <div style="margin-top:10px;">
+                    <el-button type="primary"    @click="preview" >打印预览</el-button>
+                </div>
                 <div style="margin-left:-50px;">
+
                     <el-button type="primary"  v-show="reviewVisible" @click="review(1)" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
                     <el-button type="warning"  v-show="reviewVisible" @click="review(0)" style="margin-top:100px;">不通过</el-button>
                 </div>
@@ -297,8 +301,6 @@
             getPurchaseContract(id){
                 getPurchaseContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
-                        console.log(res.data.data.zujinList[0].id)
-                        console.log(res.data.data.zujinList)
                         //把数据分别赋值给三个组件的变量
                         this.fuzhi(res);
                     }else {
@@ -337,6 +339,14 @@
                     this.options = res.data.data;
                     this.contractVersion = this.options[0].version;
                 });
+            },
+            preview(){
+                var version = this.contractVersion;
+               let _this = this;
+                let para = {
+                    id:_this.id,
+                }
+                window.open('/#/purchaseContract/dump'+version+'?id='+_this.id)
             },
             fuzhi(res){
                 this.id = res.data.data.id;
@@ -433,8 +443,8 @@
             //新增页面获取默认条款
             if(this.$route.path=='/purchaseContract/add'){
                 //this.getTiaokuan();
-                this.getVersion();
             }
+            this.getVersion();
         },
 
     }

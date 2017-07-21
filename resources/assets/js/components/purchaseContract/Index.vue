@@ -391,9 +391,6 @@
                         }
                     });
                 })
-
-
-
             },
             //合同确认
             handleConfirm(index,row){
@@ -436,6 +433,20 @@
         },
         mounted(){
             this.purchaseContractList();
+//            function showNotice() {
+//                Notification.requestPermission(function (perm) {
+//                    if (perm == "granted") {
+//                        var notification = new Notification("这是一个通知:", {
+//                            dir: "auto",
+//                            lang: "hi",
+//                            tag: "testTag",
+//                            icon: "",
+//                            body: "通知content"
+//                        });
+//                    }
+//                })
+//            }
+//            showNotice();
         }
 
     }
