@@ -32962,6 +32962,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -42338,9 +42344,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["e" /* getSaleContractInfo */])(id).then(function (res) {
                 if (res.data.code == '200') {
+                    if (res.data.data.jieyueXieyi.length > 0) {
+                        _this.fuzhi(res);
+                    }
                     //console.log(res.data.data)
                     //把数据分别赋值给三个组件的变量
-                    _this.fuzhi(res);
+                    _this.fuzhi1(res);
+
+                    //this.fuzhi3(res);
                 } else {
                     _this.$message({
                         message: '获取数据失败',
@@ -42360,16 +42371,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 hetongid: this.hetongid
             };
             var para = Object.assign({}, hetongid, this.jieyueXieyi);
-            console.log(para);
+            //console.log(para);
             //alert(111);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["S" /* addSaleJieyueContractInfo */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     //alert(333);
-                    _this2.fuzhi2(res);
+
                     _this2.$message({
                         message: '保存成功',
                         type: 'success'
                     });
+                    _this2.fuzhi2(res);
                 } else {
                     _this2.$message({
                         message: res.data.msg,
@@ -42386,7 +42398,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 hetongid: this.hetongid
             };
             var para = Object.assign({}, hetongid, this.jieyueXieyi);
-            console.log(para);
+            //console.log(para);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["T" /* jieyueSaleContractInfo */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     history.go(-1);
@@ -42423,25 +42435,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }*/
         },
         fuzhi: function fuzhi(res) {
-            console.log(res.data.data);
+            //console.log(res.data.data);
             this.hetongid = res.data.data.id;
             this.bianhao = res.data.data.bianhao;
             this.xsOffice = res.data.data.xsOffice;
-            console.log(this.xsOffice);
-            console.log(this.jieyueXieyi);
+            //console.log(this.xsOffice);
             this.jieyueXieyi = res.data.data.jieyueXieyi[0];
+            //console.log(this.jieyueXieyi);
         },
         fuzhi1: function fuzhi1(res) {
             //console.log(res.data.data);
             this.hetongid = res.data.data.id;
             this.bianhao = res.data.data.bianhao;
             this.xsOffice = res.data.data.xsOffice;
-            console.log(this.hetongid);
+            //console.log(this.xsOffice);
             //this.jieyueXieyi = res.data.data.jieyueXieyi[0];
         },
         fuzhi2: function fuzhi2(res) {
             //console.log(res.data.data);
-            //this.hetongid = res.data.data.id;
+            this.hetongid = res.data.data.hetongid;
             /*this.bianhao = res.data.data.bianhao;
             this.xsOffice = res.data.data.xsOffice;*/
             //console.log(this.xsOffice);
@@ -105671,46 +105683,39 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(scope) {
-        return [(_vm.ztin(scope.row, [0])) ? _c('el-button', {
+        return [_c('el-dropdown', {
           attrs: {
-            "size": "small"
-          },
+            "menu-align": "start"
+          }
+        }, [_c('el-button', {
+          attrs: {
+            "type": "primary",
+            "size": "normal",
+            "splitButton": "true"
+          }
+        }, [_vm._v("\n                            操作"), _c('i', {
+          staticClass: "el-icon-caret-bottom el-icon--right"
+        })]), _vm._v(" "), _c('el-dropdown-menu', {
+          slot: "dropdown"
+        }, [(_vm.ztin(scope.row, [0])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑")]) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0])) ? _c('el-button', {
-          attrs: {
-            "type": "small",
-            "size": "small"
-          },
+        }, [_vm._v("编辑")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [2])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleDump(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("打印")]) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [2])) ? _c('el-button', {
-          attrs: {
-            "type": "small",
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleDump(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("查看")]) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1])) ? _c('el-button', {
-          attrs: {
-            "type": "small",
-            "size": "small"
-          },
+        }, [_vm._v("查看")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleConfirm(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("完成")]) : _vm._e()]
+        }, [_vm._v("签约完成")])], 1) : _vm._e()], 1)], 1)]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
@@ -107430,13 +107435,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleJieyue(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("解       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("解       约")])], 1) : _vm._e(), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleJieyuewancheng(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("解约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [10])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("解约完成")])], 1), _vm._v(" "), (_vm.ztin(scope.row, [10])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleCheckJieyue(scope.$index, scope.row)
