@@ -23634,8 +23634,8 @@ module.exports = function bind(fn, thisArg) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Upload_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_saleContract_Upload_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Jieyue_vue__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Jieyue_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_saleContract_Jieyue_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Dump_vue__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Dump_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__components_saleContract_Dump_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Dump20170719_vue__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Dump20170719_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__components_saleContract_Dump20170719_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_decoration_List_vue__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_decoration_List_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__components_decoration_List_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_contractVersion_index_vue__ = __webpack_require__(190);
@@ -23774,7 +23774,7 @@ var routes = [{
     name: '合同管理',
     iconCls: 'el-icon-document', //图标样式class
     hidden: fk_contract,
-    children: [{ path: '/purchaseContract', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Index_vue___default.a, name: '收房合同', hidden: fk_contract_purchase }, { path: '/purchaseContract/add', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房录入', hidden: true }, { path: '/purchaseContract/edit', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房编辑', hidden: true }, { path: '/purchaseContract/review', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房审核', hidden: true }, { path: '/purchaseContract/view', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房查看', hidden: true }, { path: '/purchaseContract/optimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房优化', hidden: true }, { path: '/purchaseContract/checkOptimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房协议查看', hidden: true }, { path: '/purchaseContract/upload', component: __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/saleContact', component: __WEBPACK_IMPORTED_MODULE_11__components_saleContract_Index_vue___default.a, name: '出房合同' }, { path: '/saleContact/add', component: __WEBPACK_IMPORTED_MODULE_12__components_saleContract_Add_vue___default.a, name: '出房录入', hidden: true }, { path: '/saleContract/see', component: __WEBPACK_IMPORTED_MODULE_12__components_saleContract_Add_vue___default.a, name: '出房查看', hidden: true }, { path: '/saleContract/edit', component: __WEBPACK_IMPORTED_MODULE_12__components_saleContract_Add_vue___default.a, name: '出房编辑', hidden: true }, { path: '/saleContract/review', component: __WEBPACK_IMPORTED_MODULE_12__components_saleContract_Add_vue___default.a, name: '出房审核', hidden: true }, { path: '/saleContract/jieyue', component: __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Jieyue_vue___default.a, name: '解约协议', hidden: true }, { path: '/saleContract/checkJieyue', component: __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Jieyue_vue___default.a, name: '出房协议查看', hidden: true }, { path: '/saleContact/upload', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/decoration', component: __WEBPACK_IMPORTED_MODULE_16__components_decoration_List_vue___default.a, name: '工程合同' }, { path: '/contractVersion', component: __WEBPACK_IMPORTED_MODULE_17__components_contractVersion_index_vue___default.a, name: '合同版本管理' }]
+    children: [{ path: '/purchaseContract', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Index_vue___default.a, name: '收房合同', hidden: fk_contract_purchase }, { path: '/purchaseContract/add', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房录入', hidden: true }, { path: '/purchaseContract/edit', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房编辑', hidden: true }, { path: '/purchaseContract/review', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房审核', hidden: true }, { path: '/purchaseContract/view', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房查看', hidden: true }, { path: '/purchaseContract/optimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房优化', hidden: true }, { path: '/purchaseContract/checkOptimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房协议查看', hidden: true }, { path: '/purchaseContract/upload', component: __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/saleContact', component: __WEBPACK_IMPORTED_MODULE_11__components_saleContract_Index_vue___default.a, name: '出房合同' }, { path: '/saleContract/add', component: __WEBPACK_IMPORTED_MODULE_12__components_saleContract_Add_vue___default.a, name: '出房录入', hidden: true }, { path: '/saleContract/see', component: __WEBPACK_IMPORTED_MODULE_12__components_saleContract_Add_vue___default.a, name: '出房查看', hidden: true }, { path: '/saleContract/edit', component: __WEBPACK_IMPORTED_MODULE_12__components_saleContract_Add_vue___default.a, name: '出房编辑', hidden: true }, { path: '/saleContract/review', component: __WEBPACK_IMPORTED_MODULE_12__components_saleContract_Add_vue___default.a, name: '出房审核', hidden: true }, { path: '/saleContract/jieyue', component: __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Jieyue_vue___default.a, name: '解约协议', hidden: true }, { path: '/saleContract/checkJieyue', component: __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Jieyue_vue___default.a, name: '出房协议查看', hidden: true }, { path: '/saleContact/upload', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/decoration', component: __WEBPACK_IMPORTED_MODULE_16__components_decoration_List_vue___default.a, name: '工程合同' }, { path: '/contractVersion', component: __WEBPACK_IMPORTED_MODULE_17__components_contractVersion_index_vue___default.a, name: '合同版本管理' }]
 }, {
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a,
@@ -23806,7 +23806,7 @@ var routes = [{
 
 }, {
     path: '/saleContract/dump',
-    component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Dump_vue___default.a,
+    component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Dump20170719_vue___default.a,
     name: '出方合同打印',
     hidden: true
 }, {
@@ -39537,6 +39537,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -39546,6 +39555,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
+            options: [],
+            contractVersion: null,
             btnType: true,
             submsg: '提交',
             shenhe: null, //审核数据
@@ -39574,26 +39585,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     hetongid: null
                 }]
             },
-
-            /* stepNum:1,
-             id:'',
-             property:{
-             officeList: [{
-             omcId:null,
-             loupanOmcId:null,
-             loudongOmcId:null,
-             loupanName:null,
-             loudongName:null,
-             fanghao:null,
-             weizhi: null,
-             chanquanzhenghao: null,
-             jianzhumianji: null,
-             qianyuemianji: null,
-             leixing: null,
-             hetongid:null,
-             }],
-             },*/
-
             renter: {
                 flag: null,
                 options1: [{
@@ -39637,10 +39628,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //xinjianqianyuedate: '',//签约日期
                 shoufangdate: '', //收房日期
                 qianyuedate: '', //签约日期
-                mianzufangshi: [], //免租方式
+
                 mianzuqiList: [{
                     startdate: '', //免租开始
-                    enddate: '' //免租结束
+                    enddate: '', //免租结束
+                    mianzufangshi: '' //免租方式
                 }],
                 fukuanFangshiList: [{
                     startdate: '', //开始
@@ -39691,10 +39683,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["U" /* submitSaleContract */])(para).then(function (res) {
                     if (res.data.code == 200) {
                         history.go(-1);
-                        /*this.$message({//这是Vue中从后台返回来的数据的格式
-                            message:'提交成功',
-                            type:'success'
-                        });*/
                         _this.btnType = true;
                         _this.submsg = '已提交';
                     } else {
@@ -39705,9 +39693,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 });
             } else {
-                console.log(this.property.flag);
-                console.log(this.renter.flag);
-                console.log(this.addDate.flag);
+                //console.log(this.property.flag);
+                //console.log(this.renter.flag);
+                //console.log(this.addDate.flag);
                 if (this.property.flag == false) {
                     this.stepNum = 3;
                 }
@@ -39739,9 +39727,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var bianhao = {
                 bianhao: this.bianhao
             };
-            var para = Object.assign({}, child_property, child_renter, child_date, id, bianhao);
+            var version = {
+                version: this.contractVersion
+            };
+            var para = Object.assign({}, child_property, child_renter, child_date, id, bianhao, version);
             //alert(para);
-            console.log(para);
+            //console.log(para);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["V" /* addSaleContractInfo */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     _this2.fuzhi(res);
@@ -39771,10 +39762,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["W" /* reviewSaleContract */])(this.shenhe).then(function (res) {
                 if (res.data.code == 200) {
-                    /*this.$message({
-                        message: '保存成功',
-                        type: 'success'
-                    });*/
                     history.go(-1);
                     _this3.dialogFormVisible = false;
                 } else {
@@ -39803,16 +39790,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
+
+        //获取当前启用的合同版本
+        getVersion: function getVersion() {
+            var _this5 = this;
+
+            var para = {
+                category: 1,
+                status: 1
+            };
+            this.listLoading = true;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["N" /* getContractVersionList */])(para).then(function (res) {
+                _this5.options = res.data.data;
+                _this5.contractVersion = _this5.options[0].version;
+            });
+        },
         fuzhi: function fuzhi(res) {
             this.id = res.data.data.id;
+            this.contractVersion = res.data.data.version;
             this.property.xsOffice = res.data.data.xsOffice;
             if (res.data.data.chengzuren.length > 0) {
                 this.renter.chengzuren = res.data.data.chengzuren;
             }
-            //this.renter.chengzuren = res.data.data.chengzuren;
             this.renter.chengzufang = res.data.data.chengzufang;
-            /*this.renter.jujianfangtype = res.data.data.jujianfangtype;
-            this.renter.jujianfang = res.data.data.jujianfang;*/
             this.renter.shoukuanren = res.data.data.shoukuanren;
             this.renter.kaihuhang = res.data.data.kaihuhang;
             this.renter.zhanghao = res.data.data.zhanghao;
@@ -39821,19 +39821,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.renter.jujianfangid = res.data.data.jujianfangid;
             this.renter.options1[0].value = res.data.data.jujianfangid;
             this.renter.options1[0].label = res.data.data.jujianfang;
-            /*this.renter.jujianfang = res.data.data.jujianfang;
-            this.renter.jujianfang = res.data.data.jujianfang;
-            this.renter.jujianfang = res.data.data.jujianfang;
-            this.renter.jujianfang = res.data.data.jujianfang;
-            this.renter.jujianfang = res.data.data.jujianfang;*/
-
             this.renter.zuhuleixing = res.data.data.zuhuleixing;
             this.renter.shoukuanren = res.data.data.shoukuanren;
             this.renter.zhanghao = res.data.data.zhanghao;
-            /*this.renter.dailirenTel = res.data.data.dailirenTel;
-            this.renter.dailirenSex = res.data.data.dailirenSex;
-            this.renter.dailirenId = res.data.data.dailirenId;
-            this.renter.dailirenName = res.data.data.dailirenName;*/
             this.renter.qianyuerenName = res.data.data.qianyuerenName;
             this.renter.qianyuerenTel = res.data.data.qianyuerenTel;
             this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
@@ -39858,6 +39848,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.addDate.zujinList = res.data.data.zujinList;
             this.addDate.checkList = res.data.data.checkList;
             this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+            console.log(res.data.data);
         },
         disabledInput: function disabledInput() {
             this.reviewVisible = true;
@@ -39901,6 +39892,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         if (this.$route.path == '/saleContract/see') {
             this.seeDisabledInput();
         }
+        //新增页面获取版本
+        this.getVersion();
     }
 });
 
@@ -39911,114 +39904,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_element_ui_packages_col_src_col__ = __webpack_require__(23);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -40383,51 +40268,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             editDateRules: {
                 startdate: [{ required: true, message: '不能为空' }], zuqistartddate: [{ required: true, message: '不能为空' }], zuqienddate: [{ required: true, message: '不能为空' }], yuezujin: [{ required: true, message: '不能为空' }], price: [{ required: true, message: '不能为空' }], fukuanstartdate: [{ required: true, message: '不能为空' }], fukuanenddate: [{ required: true, message: '不能为空' }], yajinyue: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], zujinyue: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], yajin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], yingfuzongzujin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], hetongyongjin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], tiqianfukuantian: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], yajinfukuanriqi: [{ required: true, message: '不能为空' }], shoufangdate: [{ required: true, message: '不能为空' }], qianyuedate: [{ required: true, message: '不能为空' }], shouqifukuanri: [{ required: true, message: '不能为空' }], erqifukuanri: [{ required: true, message: '不能为空' }], sanqifukuanri: [{ required: true, message: '不能为空' }], jiafangfeiyong: [{ required: true, message: '不能为空' }]
             }
-            /*addDate: {
-                hetongType:1,//合同类型
-                dikoujine:'',//合同金额
-                startdate:'',//租期开始时间
-                enddate:'',//租期结束时间
-                shoufangdate: '',//收房日期
-                qianyuedate: '',//签约日期
-                mianzufangshi: [],//免租方式
-                mianzuqiList: [{
-                    startdate:'',//免租开始
-                    enddate:'',//免租结束
-                }],
-                fukuanFangshiList:[{
-                    startdate:'',//开始
-                    enddate:'',//结束
-                    yajinyue:'',
-                    zujinyue:'',
-                }],
-                yajin:'',//押金
-                yingfuzongzujin:'',//总租金
-                hetongyongjin:'',//佣金
-                tiqianfukuantian:'',//提前付款天数
-                yajinfukuanriqi:'',//押金付款日
-                shouqifukuanri:'',//首期租金付款日
-                erqifukuanri:'',//二期付款
-                sanqifukuanri:'',//三期付款
-                buchongTiaokuanList:'',//补充条款
-                zujinList:[
-                    {
-                        zuqidate:'',
-                        startdate:'',
-                        enddate:'',
-                        yuezujin:'',
-                        price:'',
-                        dizengfangshi:'',
-                        dizengliang:'',
-                    },
-                ],
-                checkList: [],
-                wuyefeizhifu:'',
-                qunuanfeizhifu:'',
-                zhilengzhifu:'',
-                fapiaozhifu:'',
-                qitazhifu:'',
-            },*/
         };
     },
 
@@ -40462,7 +40302,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //增加租期租金
         addRentItem: function addRentItem() {
             this.addDate.zujinList.push({
-                zuqidate: '',
+                startdate: '',
+                enddate: '',
                 yuezujin: '',
                 price: '',
                 dizengfangshi: '',
@@ -40515,31 +40356,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -40919,10 +40735,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 });
             }
-            /*let propertys = this.property.xsOffice ;
-            propertys.forEach((property,index)=>{
-             })*/
-
             this.editableTabsValue2 = activeName;
             this.editableTabs2 = tabs.filter(function (tab) {
                 return tab.name !== targetName;
@@ -40947,8 +40759,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
-//
 //
 //
 //
@@ -41444,7 +41254,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -41661,7 +41470,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["e" /* getSaleContractInfo */])(id).then(function (res) {
                 if (res.data.code == '200') {
                     //把数据分别赋值给三个组件的变量
-                    console.log(res.data);
+                    //console.log(res.data)
                     _this.fuzhi(res);
                 } else {
                     _this.$message({
@@ -41684,19 +41493,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.renter.shoukuanren = res.data.data.shoukuanren;
             this.renter.kaihuhang = res.data.data.kaihuhang;
             this.renter.zhanghao = res.data.data.zhanghao;
-            /*this.renter.jujianfang = res.data.data.jujianfang;
-             this.renter.jujianfang = res.data.data.jujianfang;
-             this.renter.jujianfang = res.data.data.jujianfang;
-             this.renter.jujianfang = res.data.data.jujianfang;
-             this.renter.jujianfang = res.data.data.jujianfang;*/
-
             this.renter.zuhuleixing = res.data.data.zuhuleixing;
             this.renter.shoukuanren = res.data.data.shoukuanren;
             this.renter.zhanghao = res.data.data.zhanghao;
-            /*this.renter.dailirenTel = res.data.data.dailirenTel;
-             this.renter.dailirenSex = res.data.data.dailirenSex;
-             this.renter.dailirenId = res.data.data.dailirenId;
-             this.renter.dailirenName = res.data.data.dailirenName;*/
             this.renter.qianyuerenName = res.data.data.qianyuerenName;
             this.renter.qianyuerenTel = res.data.data.qianyuerenTel;
             this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
@@ -41728,6 +41527,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //获取合同的详细信息
         this.getSaleContract(this.$route.query);
         // document.getElementsByTagName('head').innerHTML('<title>华亮房产 -- 先锋地产机构、专业人、信誉人</title>>');
+        document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
+        function hello() {
+            window.print();
+        }
+
+        setTimeout(hello, 1000);
     }
 });
 
@@ -41946,7 +41751,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //新增
         addContract: function addContract() {
             var _this = this;
-            _this.$router.push("/saleContact/Add");
+            _this.$router.push("/saleContract/add");
         },
         formatStatus: function formatStatus(row, column) {
             var status = [];
@@ -42012,19 +41817,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.$router.push('/saleContact/upload');
         },
         handlSee: function handlSee(index, row) {
-            /*let para = {
-                id:row.id,
-            }*/
             this.$router.push('/saleContract/see?id=' + row.id);
         },
         handleEdit: function handleEdit(index, row) {
             var para = {
                 id: row.id
-                //
-                //var _this = this;
-                //this.$router.push('/saleContact/edit?id='+row.id);
-            };this.$router.push('/saleContract/edit?id=' + row.id);
-            //
+            };
+            this.$router.push('/saleContract/edit?id=' + row.id);
             // this.$router.push('/purchaseContact/add?id='+row.id);
         },
         handleReview: function handleReview(index, row) {
@@ -42034,27 +41833,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_0" /* approvingSaleContract */])(para).then(function (res) {});
             this.$router.push('/saleContract/review?id=' + row.id);
         },
-
-        /*handleJieyue(index, row){
-            this.$confirm('确认将合同设置为解约中吗？', '提示', {
-                type: 'warning'
-            }).then(() => {
-                this.listLoading = true;
-                let para = {id: row.id};
-                alert(11);
-                jieyueSaleContract(para).then((res) => {
-                    this.listLoading = false;
-                    alert(2222);
-                    this.message({
-                        message: '设置成功',
-                        type: 'success'
-                    });
-                    this.saleContractList();
-                    alert(333);
-                });
-            }).catch(() => {
-             });
-        },*/
         handleJieyue: function handleJieyue(index, row) {
             var _this5 = this;
 
@@ -42086,17 +41864,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleDump: function handleDump(index, row) {
             var _this6 = this;
 
-            /*this.$router.push('/saleContract/dump?id='+row.id);*/
-            var para = {
-                id: row.id
-                //this.getPurchaseContractList();
-            };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_2" /* confirmSaleContract */])(para).then(function (res) {
-                if (res.data.code == "200") {
-                    _this6.saleContractList();
-                    window.open('/#/saleContract/dump?id=' + row.id);
-                }
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["e" /* getSaleContractInfo */])({ id: row.id }).then(function (res) {
+                var version = res.data.data.version;
+                var para = {
+                    id: row.id
+                    /*let para = {
+                    id:row.id,
+                    }*/
+                };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_2" /* confirmSaleContract */])(para).then(function (res) {
+                    if (res.data.code == "200") {
+                        _this6.saleContractList();
+                        window.open('/#/saleContract/dump' + version + '?id=' + row.id);
+                    }
+                });
+                //window.open('/#/purchaseContract/dump?id='+row.id)
             });
-            //window.open('/#/purchaseContract/dump?id='+row.id)
         },
         handleDel: function handleDel(index, row) {
             var _this7 = this;
@@ -42417,22 +42199,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         cancel: function cancel() {
-            /*window.open('/#/saleContract/dump?id='+row.id)
-            window.location.href="./Index.vue";*/
             window.history.back(-1);
         },
         disabledInput: function disabledInput() {
             this.reviewVisible = true;
             var allInputs = document.getElementsByTagName('input');
-            //var textArea = document.getElementsByTagName('textarea');
             for (var i = 0; i < allInputs.length; i++) {
                 allInputs[i].disabled = "true";
                 allInputs[i].parentNode.className += " is-disabled";
             }
-            /*for (let i=0; i<textArea.length; i++){
-                textArea[i].disabled="true";
-                textArea[i].parentNode.className += " is-disabled";
-            }*/
         },
         fuzhi: function fuzhi(res) {
             //console.log(res.data.data);
@@ -42448,15 +42223,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.hetongid = res.data.data.id;
             this.bianhao = res.data.data.bianhao;
             this.xsOffice = res.data.data.xsOffice;
-            //console.log(this.xsOffice);
-            //this.jieyueXieyi = res.data.data.jieyueXieyi[0];
         },
         fuzhi2: function fuzhi2(res) {
-            //console.log(res.data.data);
             this.hetongid = res.data.data.hetongid;
-            /*this.bianhao = res.data.data.bianhao;
-            this.xsOffice = res.data.data.xsOffice;*/
-            //console.log(this.xsOffice);
             this.jieyueXieyi = res.data.data.jieyueXieyi[0];
         }
     },
@@ -96524,7 +96293,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(90),
   /* template */
-  __webpack_require__(236),
+  __webpack_require__(237),
   /* styles */
   null,
   /* scopeId */
@@ -96772,7 +96541,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(97),
   /* template */
-  __webpack_require__(238),
+  __webpack_require__(239),
   /* styles */
   null,
   /* scopeId */
@@ -97676,7 +97445,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(121),
   /* template */
-  __webpack_require__(237),
+  __webpack_require__(238),
   /* styles */
   null,
   /* scopeId */
@@ -97964,7 +97733,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(127),
   /* template */
-  __webpack_require__(239),
+  __webpack_require__(236),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -97972,9 +97741,9 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/saleContract/Dump.vue"
+Component.options.__file = "/Users/liyuequn/admin/resources/assets/js/components/saleContract/Dump20170719.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Dump.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Dump20170719.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -97983,9 +97752,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-37043423", Component.options)
+    hotAPI.createRecord("data-v-2de1a0f6", Component.options)
   } else {
-    hotAPI.reload("data-v-37043423", Component.options)
+    hotAPI.reload("data-v-2de1a0f6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -103747,6 +103516,549 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('h2', {
+    staticClass: "tc"
+  }, [_vm._v("北京市房屋租赁合同")]), _vm._v(" "), _c('span', {
+    staticClass: "tc f22"
+  }, [_vm._v("幼狮空间成交版")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('p', [_vm._v("      依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙、丙三方在平等、自愿的基础上，就乙方承租甲方房屋，丙方提供居间服务等事宜，经各方友好协商一致，签订本合同以资信守。")]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._l((_vm.property.xsOffice), function(item, index) {
+    return _c('span', {
+      key: index
+    }, [_c('p', [_vm._v("      （一）房屋坐落于北京市"), _c('input', {
+      staticStyle: {
+        "width": "110px"
+      },
+      attrs: {
+        "type": "text",
+        "contenteditable": "true"
+      }
+    }), _vm._v("区（县）"), _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.weizhi),
+        expression: "item.weizhi"
+      }],
+      staticStyle: {
+        "width": "210px"
+      },
+      attrs: {
+        "type": "text"
+      },
+      domProps: {
+        "value": (item.weizhi)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.weizhi = $event.target.value
+        }
+      }
+    }), _vm._v("，承租区域建筑面积"), _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.jianzhumianji),
+        expression: "item.jianzhumianji"
+      }],
+      staticStyle: {
+        "width": "120px"
+      },
+      attrs: {
+        "type": "text"
+      },
+      domProps: {
+        "value": (item.jianzhumianji)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.jianzhumianji = $event.target.value
+        }
+      }
+    }), _vm._v("平方米（最终以房屋所有权证标注的建筑面积为准），产权证编号： "), _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.chanquanzhenghao),
+        expression: "item.chanquanzhenghao"
+      }],
+      attrs: {
+        "type": "text",
+        "value": ""
+      },
+      domProps: {
+        "value": (item.chanquanzhenghao)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.chanquanzhenghao = $event.target.value
+        }
+      }
+    }), _vm._v("  。")]), _vm._v(" "), _c('p', [_vm._v("      （二）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。")]), _vm._v(" "), _vm._m(4, true), _vm._v(" "), _c('p', [_vm._v("\n              租赁用途：\n        "), _c('input', {
+      staticStyle: {
+        "width": "70px"
+      },
+      attrs: {
+        "type": "text",
+        "value": "办公"
+      }
+    }), _vm._v("，房屋性质"), _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.leixing),
+        expression: "item.leixing"
+      }],
+      staticStyle: {
+        "width": "70px"
+      },
+      attrs: {
+        "type": "text"
+      },
+      domProps: {
+        "value": (item.leixing)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.leixing = $event.target.value
+        }
+      }
+    }), _vm._v("，根据房产性质及政府相关规定可以进行工商注册的房屋，甲方向乙方提供业主身份证及房屋所有权证复印件，乙方自行到相关部门办理工商注册事宜，并由乙方自行承担注册不成功之风险。\n    ")])])
+  }), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _c('p', _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
+    return _c('span', [_vm._v("\n               自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日止。免租期内乙方不支付租金，以便于乙方进行装饰装修及办理入住手续等事宜。免租期内物业管理费、供暖费由 □甲方 □乙方 承担。\n        ")])
+  })), _vm._v(" "), _vm._m(7), _c('p', [_vm._v("      自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止。\n    ")]), _vm._v(" "), _c('p', [_vm._v("      （三）合同期满乙方仍使用该房屋，乙方应提前90天通知甲方，双方协商同意后另行签署新的租赁合同；若乙方未提前90日提出书面续租申请视为乙方放弃续租权，在此期间乙方应配合甲方带领未来租户看房。在同等市场条件下，乙方拥有优先承租权。")]), _vm._v(" "), _vm._m(8), _vm._v(" "), _c('p', [_vm._v("       （一）乙方按照下列标准向甲方支付租金（以人民币进行结算）："), _vm._l((_vm.addDate.zujinList), function(item, index) {
+    return _c('span', [_c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.enddate)) + "  ")]), _vm._v("日，租金为￥"), _c('u', [_vm._v("  " + _vm._s(item.yuezujin) + "  ")]), _vm._v("元/月（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(item.yuezujin)) + "  ")]), _vm._v("元/月）；\n    ")])
+  })], 2), _vm._v(" "), _vm._l((_vm.addDate.fukuanFangshiList), function(item, index) {
+    return _c('span', {
+      key: index
+    }, [_c('p', [_vm._v("\n\n               （二）租金支付方式为：押"), _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.yajinyue),
+        expression: "item.yajinyue"
+      }],
+      staticStyle: {
+        "width": "70px"
+      },
+      attrs: {
+        "type": "text"
+      },
+      domProps: {
+        "value": (item.yajinyue)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.yajinyue = $event.target.value
+        }
+      }
+    }), _vm._v("付"), _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.zujinyue),
+        expression: "item.zujinyue"
+      }],
+      staticStyle: {
+        "width": "70px"
+      },
+      attrs: {
+        "type": "text"
+      },
+      domProps: {
+        "value": (item.zujinyue)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.zujinyue = $event.target.value
+        }
+      }
+    }), _vm._v("；")]), _vm._v(" "), _c('p', [_vm._v("       1、房租押金："), _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (_vm.addDate.yajin),
+        expression: "addDate.yajin"
+      }],
+      staticStyle: {
+        "width": "100px"
+      },
+      attrs: {
+        "type": "text"
+      },
+      domProps: {
+        "value": (_vm.addDate.yajin)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          _vm.addDate.yajin = $event.target.value
+        }
+      }
+    }), _vm._v("元/月（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yajin)) + "  ")]), _vm._v("元/月），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.enddate)) + "  ")]), _vm._v("日前。\n\n    ")])])
+  }), _vm._v(" "), _c('p', [_vm._v("       2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。")]), _vm._v(" "), _c('p', [_vm._v("       3、首期租金：￥"), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.addDate.yingfuzongzujin),
+      expression: "addDate.yingfuzongzujin"
+    }],
+    staticStyle: {
+      "width": "100px"
+    },
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.addDate.yingfuzongzujin)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.addDate.yingfuzongzujin = $event.target.value
+      }
+    }
+  }), _vm._v("元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yingfuzongzujin)) + "  ")]), _vm._v("元整），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前；租金每"), _c('input', {
+    staticStyle: {
+      "width": "25px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("个月支付一次，于付款月起租日 30日前支付下一次租金，即第二期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日前，第三期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日前，合同期每期租金以此类推。\n    ")]), _vm._v(" "), _c('p', [_vm._v("       （三）租金的结算方式为：□ 以转账方式 ；□ 现金支付")]), _vm._v(" "), _c('p', [_vm._v("       （甲方指定收款账户为：")]), _vm._v(" "), _c('p', [_vm._v("       户   名："), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.renter.shoukuanren),
+      expression: "renter.shoukuanren"
+    }],
+    staticStyle: {
+      "width": "150px"
+    },
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.renter.shoukuanren)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.renter.shoukuanren = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('p', [_vm._v("       开户行："), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.renter.kaihuhang),
+      expression: "renter.kaihuhang"
+    }],
+    staticStyle: {
+      "width": "150px"
+    },
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.renter.kaihuhang)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.renter.kaihuhang = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('p', [_vm._v("       账   号："), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.renter.zhanghao),
+      expression: "renter.zhanghao"
+    }],
+    staticStyle: {
+      "width": "150px"
+    },
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.renter.zhanghao)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.renter.zhanghao = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _vm._m(9), _vm._v(" "), _c('p', [_vm._v("       （一）甲方承担在承租期的物业管理费、供暖费。")]), _vm._v(" "), _c('p', [_vm._v("       （二）在承租期内，乙方自行承担在使用期间的相关费用（水费、电费、燃气费、宽带费、停车费等），乙方按物业管理机构提供的交费通知单交费。")]), _vm._v(" "), _c('p', [_vm._v("       （三）在承租期内，乙方自行报装电话、宽带，相关费用由乙方自行承担。")]), _vm._v(" "), _c('p', [_vm._v("       （四）此合同租金仅含物业费、供暖费，出租房屋所产生税费由乙方承担。甲方向乙方提供业主身份证明及房屋所有权证复印件，由乙方自行到税务部门开具租房增值税普通发票。")]), _vm._v(" "), _vm._m(10), _vm._v(" "), _c('p', [_vm._v("       （一）甲方应保证出租房屋的建筑结构和设备设施能达到使用要求，不得影响乙方正常使用。")]), _vm._v(" "), _c('p', [_vm._v("       （二）对于该房屋的主要结构、固定管道线路及固定设施（包括制热、制冷、排风、上下水等设施）发生自然损坏、故障或合理使用而导致的老化、耗损，乙方应及时通知甲方，由甲方对接本项目物业公司及时修复。")]), _vm._v(" "), _vm._m(11), _vm._v(" "), _c('p', [_vm._v("      （一）承租期内，如乙方需要对承租房屋进行装修或改动前应获得甲方书面同意，且装修或改动应符合国家相关法律法规规定以及物业管理规定，但乙方不得拆除、破坏承租区域建筑的主体结构。")]), _vm._v(" "), _c('p', [_vm._v("      （二）由于乙方装修或使用原因，导致房间的主要结构、固定管道线路及设施发生损坏、故障乙方须及时修复或照价赔偿。")]), _vm._v(" "), _vm._m(12), _vm._v(" "), _c('p', [_vm._v("      （一）经甲乙双方协商一致，可以解除本合同。")]), _vm._v(" "), _c('p', [_vm._v("      （二）因不可抗力导致本合同无法继续履行的，本合同自行解除。")]), _vm._v(" "), _c('p', [_vm._v("      （三）甲方有下列情形之一的，乙方有权单方解除合同：")]), _vm._v(" "), _c('p', [_vm._v("       1、交付的房屋存在重大安全问题，导致乙方无法正常使用达15个工作日。")]), _vm._v(" "), _c('p', [_vm._v("       2、房屋主体固定设施严重损坏，致使乙方无法正常使用房屋。")]), _vm._v(" "), _c('p', [_vm._v("       3、甲方不具备出租此房权利。")]), _vm._v(" "), _c('p', [_vm._v("       4、甲方提前终止合同。")]), _vm._v(" "), _c('p', [_vm._v("      （四）乙方有下列情形之一的，甲方有权单方解除合同并立即收回房屋：")]), _vm._v(" "), _c('p', [_vm._v("       1、不按照约定支付租金达3日。")]), _vm._v(" "), _c('p', [_vm._v("       2、将房屋转租、分租、转借给第三方。")]), _vm._v(" "), _c('p', [_vm._v("       3、从事违法活动或危害公共安全，妨碍他人正常工作生活。")]), _vm._v(" "), _c('p', [_vm._v("       4、擅自拆除或破坏房屋建筑主体结构或因乙方装修造成房屋重大安全隐患。")]), _vm._v(" "), _c('p', [_vm._v("       5、乙方提前终止合同。")]), _vm._v(" "), _vm._m(13), _vm._v(" "), _c('p', [_vm._v("      （一）甲方有第八条第（三）款约定的情形之一的，应按2个月租金为标准向乙方支付违约金，同时退还乙方已支付押金及未使用租期租金；乙方有第八条第（四）款约定的情形之一的，应按2个月租金为标准向甲方支付违约金。")]), _vm._v(" "), _c('p', [_vm._v("      （二）租赁期内，甲方收回房屋自用或乙方提前退租应提前3个月通知对方，如未提前通知对方，违约方应向守约方支付两个月房租作为未提前通知的租金补偿，同时乙方应配合甲方带领未来租户看房，本条款与违约责任条款第（一）款同时叠加适用。")]), _vm._v(" "), _c('p', [_vm._v("      （三）乙方在租赁房屋内的工商注册等营业证照，应在租赁期满或合同解除后10日内迁出，逾期未迁出的，乙方须按日向甲方支付租金直至乙方实际将营业证照迁出之日止，甲方退还乙方剩余押金。")]), _vm._v(" "), _c('p', [_vm._v("      （四）由乙方原因违约本合同提前终止（包含租期结束），乙方须在终止或解除日3日内腾空房屋并向甲方返还该房屋，如乙方未能在3日内自行腾出该房屋，甲方有权立即收回房屋及钥匙，有权采取换锁、停水停电、阻止人员在承租区域进出经营等自我救济行为，同时可将屋内乙方物品清出至室外，甲方不承担任何保管及赔偿责任，乙方同意自行承担由此产生的全部后果和责任。")]), _vm._v(" "), _vm._m(14), _vm._v(" "), _c('p', [_vm._v("      （一）甲乙双方一致同意，可通过在本合同中书写的手机号码以短信、微信方式进行相关通知的送达，在短信、微信发送成功后即视为完成送达。")]), _vm._v(" "), _c('p', [_vm._v("      （二）甲乙双方在本合同中书写的地址即为本合同下任何书面通知的有效送达地址，若因接收方拒收或地址错误等情况致使无法送达的，均以付邮日（以邮戳为准）后3日即视为通知方已依本合同给予书面通知。若任何一方联络地址变更的，应及时通知对方。")]), _vm._v(" "), _vm._m(15), _vm._v(" "), _c('p', [_vm._v("      （一）本合同经甲乙双方签字或盖章后生效。本合同（及附件）一式叁份，甲、乙、丙方各持一份。")]), _vm._v(" "), _c('p', [_vm._v("      （二）本合同生效后，各方对合同内容的变更或补充应采取书面形式，作为本合同的附件。")]), _vm._v(" "), _vm._m(16), _vm._v(" "), _c('p', [_vm._v("       以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。")]), _vm._v(" "), _vm._m(17), _vm._v(" "), _vm._m(18), _vm._v(" "), _vm._m(19), _vm._v(" "), _vm._m(20), _vm._v(" "), _vm._m(21), _vm._v(" "), _vm._m(22), _vm._v(" "), _vm._m(23), _vm._v(" "), _vm._m(24), _vm._v(" "), _vm._m(25), _vm._v(" "), _vm._m(26), _vm._v(" "), _vm._m(27), _vm._v(" "), _vm._m(28), _vm._v(" "), _vm._m(29)], 2)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("出租方（甲方）："), _c('input', {
+    staticStyle: {
+      "width": "450px"
+    },
+    attrs: {
+      "type": "text",
+      "disabled": "",
+      "value": "北京幼狮科技有限公司"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("承租方（乙方）："), _c('input', {
+    staticStyle: {
+      "width": "450px"
+    },
+    attrs: {
+      "type": "text",
+      "disabled": "",
+      "value": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("居间方（丙方）："), _c('input', {
+    staticStyle: {
+      "width": "450px"
+    },
+    attrs: {
+      "type": "text",
+      "disabled": "",
+      "value": "北京华亮房地产经纪有限公司"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("      第一条  房屋基本情况")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("\n              第二条  房屋租赁情况\n    ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("\n              第三条  租赁期限及免租期\n    ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("\n              （一）甲方承诺在租赁合同期限内给予乙方"), _c('input', {
+    staticStyle: {
+      "width": "70px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("天的免租期。\n    ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("      （二）本合同房屋租赁期限为"), _c('input', {
+    staticStyle: {
+      "width": "25px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("年。\n    ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("       第四条  租金和押金")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("       第五条  相关费用的承担方式")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("       第六条  甲方的权利义务")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("       第七条  乙方权利义务\n    ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("       第八条  合同解除")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("       第九条  违约责任")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("第十条  送达条款")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("       第十一条  其他")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("       第十二条  补充条款")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("       "), _c('input', {
+    staticStyle: {
+      "width": "550px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("       "), _c('input', {
+    staticStyle: {
+      "width": "550px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("     出租人（甲方）：                                承租人（乙方）：")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("     联系地址："), _c('input', {
+    staticStyle: {
+      "width": "150px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("              联系地址："), _c('input', {
+    staticStyle: {
+      "width": "150px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("     联系方式："), _c('input', {
+    staticStyle: {
+      "width": "150px"
+    },
+    attrs: {
+      "type": "text",
+      "value": "400-078-8800"
+    }
+  }), _vm._v("              联系方式："), _c('input', {
+    staticStyle: {
+      "width": "150px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("     委托代理人 ："), _c('input', {
+    staticStyle: {
+      "width": "125px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("              委托代理人 ："), _c('input', {
+    staticStyle: {
+      "width": "125px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("                   "), _c('input', {
+    staticStyle: {
+      "width": "50px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("年\n        "), _c('input', {
+    staticStyle: {
+      "width": "30px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("月\n        "), _c('input', {
+    staticStyle: {
+      "width": "30px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("日                          "), _c('input', {
+    staticStyle: {
+      "width": "50px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("年\n        "), _c('input', {
+    staticStyle: {
+      "width": "30px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("月\n        "), _c('input', {
+    staticStyle: {
+      "width": "30px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("日")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("     居间方（丙方）：")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("     房地产经纪人："), _c('input', {
+    staticStyle: {
+      "width": "130px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("     资质证书号："), _c('input', {
+    staticStyle: {
+      "width": "200px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("     联系地址："), _c('input', {
+    staticStyle: {
+      "width": "220px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("     联系方式："), _c('input', {
+    staticStyle: {
+      "width": "220px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("                   "), _c('input', {
+    staticStyle: {
+      "width": "50px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("年\n    "), _c('input', {
+    staticStyle: {
+      "width": "30px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("月\n    "), _c('input', {
+    staticStyle: {
+      "width": "30px"
+    },
+    attrs: {
+      "type": "text"
+    }
+  }), _vm._v("日")])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-2de1a0f6", module.exports)
+  }
+}
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('el-row', [_c('div', {
     staticStyle: {
       "margin-top": "30px"
@@ -104293,7 +104605,7 @@ if (false) {
 }
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -104383,7 +104695,7 @@ if (false) {
 }
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -104988,549 +105300,6 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-368dab7a", module.exports)
-  }
-}
-
-/***/ }),
-/* 239 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('h2', {
-    staticClass: "tc"
-  }, [_vm._v("北京市房屋租赁合同")]), _vm._v(" "), _c('span', {
-    staticClass: "tc f22"
-  }, [_vm._v("幼狮空间成交版")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('p', [_vm._v("      依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙、丙三方在平等、自愿的基础上，就乙方承租甲方房屋，丙方提供居间服务等事宜，经各方友好协商一致，签订本合同以资信守。")]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._l((_vm.property.xsOffice), function(item, index) {
-    return _c('span', {
-      key: index
-    }, [_c('p', [_vm._v("      （一）房屋坐落于北京市"), _c('input', {
-      staticStyle: {
-        "width": "110px"
-      },
-      attrs: {
-        "type": "text",
-        "contenteditable": "true"
-      }
-    }), _vm._v("区（县）"), _c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (item.weizhi),
-        expression: "item.weizhi"
-      }],
-      staticStyle: {
-        "width": "210px"
-      },
-      attrs: {
-        "type": "text"
-      },
-      domProps: {
-        "value": (item.weizhi)
-      },
-      on: {
-        "input": function($event) {
-          if ($event.target.composing) { return; }
-          item.weizhi = $event.target.value
-        }
-      }
-    }), _vm._v("，承租区域建筑面积"), _c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (item.jianzhumianji),
-        expression: "item.jianzhumianji"
-      }],
-      staticStyle: {
-        "width": "120px"
-      },
-      attrs: {
-        "type": "text"
-      },
-      domProps: {
-        "value": (item.jianzhumianji)
-      },
-      on: {
-        "input": function($event) {
-          if ($event.target.composing) { return; }
-          item.jianzhumianji = $event.target.value
-        }
-      }
-    }), _vm._v("平方米（最终以房屋所有权证标注的建筑面积为准），产权证编号： "), _c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (item.chanquanzhenghao),
-        expression: "item.chanquanzhenghao"
-      }],
-      attrs: {
-        "type": "text",
-        "value": ""
-      },
-      domProps: {
-        "value": (item.chanquanzhenghao)
-      },
-      on: {
-        "input": function($event) {
-          if ($event.target.composing) { return; }
-          item.chanquanzhenghao = $event.target.value
-        }
-      }
-    }), _vm._v("  。")]), _vm._v(" "), _c('p', [_vm._v("      （二）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。")]), _vm._v(" "), _vm._m(4, true), _vm._v(" "), _c('p', [_vm._v("\n              租赁用途：\n        "), _c('input', {
-      staticStyle: {
-        "width": "70px"
-      },
-      attrs: {
-        "type": "text",
-        "value": "办公"
-      }
-    }), _vm._v("，房屋性质"), _c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (item.leixing),
-        expression: "item.leixing"
-      }],
-      staticStyle: {
-        "width": "70px"
-      },
-      attrs: {
-        "type": "text"
-      },
-      domProps: {
-        "value": (item.leixing)
-      },
-      on: {
-        "input": function($event) {
-          if ($event.target.composing) { return; }
-          item.leixing = $event.target.value
-        }
-      }
-    }), _vm._v("，根据房产性质及政府相关规定可以进行工商注册的房屋，甲方向乙方提供业主身份证及房屋所有权证复印件，乙方自行到相关部门办理工商注册事宜，并由乙方自行承担注册不成功之风险。\n    ")])])
-  }), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _c('p', _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
-    return _c('span', [_vm._v("\n               自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日止。免租期内乙方不支付租金，以便于乙方进行装饰装修及办理入住手续等事宜。免租期内物业管理费、供暖费由 □甲方 □乙方 承担。\n        ")])
-  })), _vm._v(" "), _vm._m(7), _c('p', [_vm._v("      自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止。\n    ")]), _vm._v(" "), _c('p', [_vm._v("      （三）合同期满乙方仍使用该房屋，乙方应提前90天通知甲方，双方协商同意后另行签署新的租赁合同；若乙方未提前90日提出书面续租申请视为乙方放弃续租权，在此期间乙方应配合甲方带领未来租户看房。在同等市场条件下，乙方拥有优先承租权。")]), _vm._v(" "), _vm._m(8), _vm._v(" "), _c('p', [_vm._v("       （一）乙方按照下列标准向甲方支付租金（以人民币进行结算）："), _vm._l((_vm.addDate.zujinList), function(item, index) {
-    return _c('span', [_c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.enddate)) + "  ")]), _vm._v("日，租金为￥"), _c('u', [_vm._v("  " + _vm._s(item.yuezujin) + "  ")]), _vm._v("元/月（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(item.yuezujin)) + "  ")]), _vm._v("元/月）；\n    ")])
-  })], 2), _vm._v(" "), _vm._l((_vm.addDate.fukuanFangshiList), function(item, index) {
-    return _c('span', {
-      key: index
-    }, [_c('p', [_vm._v("\n\n               （二）租金支付方式为：押"), _c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (item.yajinyue),
-        expression: "item.yajinyue"
-      }],
-      staticStyle: {
-        "width": "70px"
-      },
-      attrs: {
-        "type": "text"
-      },
-      domProps: {
-        "value": (item.yajinyue)
-      },
-      on: {
-        "input": function($event) {
-          if ($event.target.composing) { return; }
-          item.yajinyue = $event.target.value
-        }
-      }
-    }), _vm._v("付"), _c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (item.zujinyue),
-        expression: "item.zujinyue"
-      }],
-      staticStyle: {
-        "width": "70px"
-      },
-      attrs: {
-        "type": "text"
-      },
-      domProps: {
-        "value": (item.zujinyue)
-      },
-      on: {
-        "input": function($event) {
-          if ($event.target.composing) { return; }
-          item.zujinyue = $event.target.value
-        }
-      }
-    }), _vm._v("；")]), _vm._v(" "), _c('p', [_vm._v("       1、房租押金："), _c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (_vm.addDate.yajin),
-        expression: "addDate.yajin"
-      }],
-      staticStyle: {
-        "width": "100px"
-      },
-      attrs: {
-        "type": "text"
-      },
-      domProps: {
-        "value": (_vm.addDate.yajin)
-      },
-      on: {
-        "input": function($event) {
-          if ($event.target.composing) { return; }
-          _vm.addDate.yajin = $event.target.value
-        }
-      }
-    }), _vm._v("元/月（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yajin)) + "  ")]), _vm._v("元/月），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.enddate)) + "  ")]), _vm._v("日前。\n\n    ")])])
-  }), _vm._v(" "), _c('p', [_vm._v("       2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。")]), _vm._v(" "), _c('p', [_vm._v("       3、首期租金：￥"), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.addDate.yingfuzongzujin),
-      expression: "addDate.yingfuzongzujin"
-    }],
-    staticStyle: {
-      "width": "100px"
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.addDate.yingfuzongzujin)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.addDate.yingfuzongzujin = $event.target.value
-      }
-    }
-  }), _vm._v("元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yingfuzongzujin)) + "  ")]), _vm._v("元整），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前；租金每"), _c('input', {
-    staticStyle: {
-      "width": "25px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("个月支付一次，于付款月起租日 30日前支付下一次租金，即第二期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日前，第三期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日前，合同期每期租金以此类推。\n    ")]), _vm._v(" "), _c('p', [_vm._v("       （三）租金的结算方式为：□ 以转账方式 ；□ 现金支付")]), _vm._v(" "), _c('p', [_vm._v("       （甲方指定收款账户为：")]), _vm._v(" "), _c('p', [_vm._v("       户   名："), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.renter.shoukuanren),
-      expression: "renter.shoukuanren"
-    }],
-    staticStyle: {
-      "width": "150px"
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.renter.shoukuanren)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.renter.shoukuanren = $event.target.value
-      }
-    }
-  })]), _vm._v(" "), _c('p', [_vm._v("       开户行："), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.renter.kaihuhang),
-      expression: "renter.kaihuhang"
-    }],
-    staticStyle: {
-      "width": "150px"
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.renter.kaihuhang)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.renter.kaihuhang = $event.target.value
-      }
-    }
-  })]), _vm._v(" "), _c('p', [_vm._v("       账   号："), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.renter.zhanghao),
-      expression: "renter.zhanghao"
-    }],
-    staticStyle: {
-      "width": "150px"
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.renter.zhanghao)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.renter.zhanghao = $event.target.value
-      }
-    }
-  })]), _vm._v(" "), _vm._m(9), _vm._v(" "), _c('p', [_vm._v("       （一）甲方承担在承租期的物业管理费、供暖费。")]), _vm._v(" "), _c('p', [_vm._v("       （二）在承租期内，乙方自行承担在使用期间的相关费用（水费、电费、燃气费、宽带费、停车费等），乙方按物业管理机构提供的交费通知单交费。")]), _vm._v(" "), _c('p', [_vm._v("       （三）在承租期内，乙方自行报装电话、宽带，相关费用由乙方自行承担。")]), _vm._v(" "), _c('p', [_vm._v("       （四）此合同租金仅含物业费、供暖费，出租房屋所产生税费由乙方承担。甲方向乙方提供业主身份证明及房屋所有权证复印件，由乙方自行到税务部门开具租房增值税普通发票。")]), _vm._v(" "), _vm._m(10), _vm._v(" "), _c('p', [_vm._v("       （一）甲方应保证出租房屋的建筑结构和设备设施能达到使用要求，不得影响乙方正常使用。")]), _vm._v(" "), _c('p', [_vm._v("       （二）对于该房屋的主要结构、固定管道线路及固定设施（包括制热、制冷、排风、上下水等设施）发生自然损坏、故障或合理使用而导致的老化、耗损，乙方应及时通知甲方，由甲方对接本项目物业公司及时修复。")]), _vm._v(" "), _vm._m(11), _vm._v(" "), _c('p', [_vm._v("      （一）承租期内，如乙方需要对承租房屋进行装修或改动前应获得甲方书面同意，且装修或改动应符合国家相关法律法规规定以及物业管理规定，但乙方不得拆除、破坏承租区域建筑的主体结构。")]), _vm._v(" "), _c('p', [_vm._v("      （二）由于乙方装修或使用原因，导致房间的主要结构、固定管道线路及设施发生损坏、故障乙方须及时修复或照价赔偿。")]), _vm._v(" "), _vm._m(12), _vm._v(" "), _c('p', [_vm._v("      （一）经甲乙双方协商一致，可以解除本合同。")]), _vm._v(" "), _c('p', [_vm._v("      （二）因不可抗力导致本合同无法继续履行的，本合同自行解除。")]), _vm._v(" "), _c('p', [_vm._v("      （三）甲方有下列情形之一的，乙方有权单方解除合同：")]), _vm._v(" "), _c('p', [_vm._v("       1、交付的房屋存在重大安全问题，导致乙方无法正常使用达15个工作日。")]), _vm._v(" "), _c('p', [_vm._v("       2、房屋主体固定设施严重损坏，致使乙方无法正常使用房屋。")]), _vm._v(" "), _c('p', [_vm._v("       3、甲方不具备出租此房权利。")]), _vm._v(" "), _c('p', [_vm._v("       4、甲方提前终止合同。")]), _vm._v(" "), _c('p', [_vm._v("      （四）乙方有下列情形之一的，甲方有权单方解除合同并立即收回房屋：")]), _vm._v(" "), _c('p', [_vm._v("       1、不按照约定支付租金达3日。")]), _vm._v(" "), _c('p', [_vm._v("       2、将房屋转租、分租、转借给第三方。")]), _vm._v(" "), _c('p', [_vm._v("       3、从事违法活动或危害公共安全，妨碍他人正常工作生活。")]), _vm._v(" "), _c('p', [_vm._v("       4、擅自拆除或破坏房屋建筑主体结构或因乙方装修造成房屋重大安全隐患。")]), _vm._v(" "), _c('p', [_vm._v("       5、乙方提前终止合同。")]), _vm._v(" "), _vm._m(13), _vm._v(" "), _c('p', [_vm._v("      （一）甲方有第八条第（三）款约定的情形之一的，应按2个月租金为标准向乙方支付违约金，同时退还乙方已支付押金及未使用租期租金；乙方有第八条第（四）款约定的情形之一的，应按2个月租金为标准向甲方支付违约金。")]), _vm._v(" "), _c('p', [_vm._v("      （二）租赁期内，甲方收回房屋自用或乙方提前退租应提前3个月通知对方，如未提前通知对方，违约方应向守约方支付两个月房租作为未提前通知的租金补偿，同时乙方应配合甲方带领未来租户看房，本条款与违约责任条款第（一）款同时叠加适用。")]), _vm._v(" "), _c('p', [_vm._v("      （三）乙方在租赁房屋内的工商注册等营业证照，应在租赁期满或合同解除后10日内迁出，逾期未迁出的，乙方须按日向甲方支付租金直至乙方实际将营业证照迁出之日止，甲方退还乙方剩余押金。")]), _vm._v(" "), _c('p', [_vm._v("      （四）由乙方原因违约本合同提前终止（包含租期结束），乙方须在终止或解除日3日内腾空房屋并向甲方返还该房屋，如乙方未能在3日内自行腾出该房屋，甲方有权立即收回房屋及钥匙，有权采取换锁、停水停电、阻止人员在承租区域进出经营等自我救济行为，同时可将屋内乙方物品清出至室外，甲方不承担任何保管及赔偿责任，乙方同意自行承担由此产生的全部后果和责任。")]), _vm._v(" "), _vm._m(14), _vm._v(" "), _c('p', [_vm._v("      （一）甲乙双方一致同意，可通过在本合同中书写的手机号码以短信、微信方式进行相关通知的送达，在短信、微信发送成功后即视为完成送达。")]), _vm._v(" "), _c('p', [_vm._v("      （二）甲乙双方在本合同中书写的地址即为本合同下任何书面通知的有效送达地址，若因接收方拒收或地址错误等情况致使无法送达的，均以付邮日（以邮戳为准）后3日即视为通知方已依本合同给予书面通知。若任何一方联络地址变更的，应及时通知对方。")]), _vm._v(" "), _vm._m(15), _vm._v(" "), _c('p', [_vm._v("      （一）本合同经甲乙双方签字或盖章后生效。本合同（及附件）一式叁份，甲、乙、丙方各持一份。")]), _vm._v(" "), _c('p', [_vm._v("      （二）本合同生效后，各方对合同内容的变更或补充应采取书面形式，作为本合同的附件。")]), _vm._v(" "), _vm._m(16), _vm._v(" "), _c('p', [_vm._v("       以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。")]), _vm._v(" "), _vm._m(17), _vm._v(" "), _vm._m(18), _vm._v(" "), _vm._m(19), _vm._v(" "), _vm._m(20), _vm._v(" "), _vm._m(21), _vm._v(" "), _vm._m(22), _vm._v(" "), _vm._m(23), _vm._v(" "), _vm._m(24), _vm._v(" "), _vm._m(25), _vm._v(" "), _vm._m(26), _vm._v(" "), _vm._m(27), _vm._v(" "), _vm._m(28), _vm._v(" "), _vm._m(29)], 2)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("出租方（甲方）："), _c('input', {
-    staticStyle: {
-      "width": "450px"
-    },
-    attrs: {
-      "type": "text",
-      "disabled": "",
-      "value": "北京幼狮科技有限公司"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("承租方（乙方）："), _c('input', {
-    staticStyle: {
-      "width": "450px"
-    },
-    attrs: {
-      "type": "text",
-      "disabled": "",
-      "value": ""
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("居间方（丙方）："), _c('input', {
-    staticStyle: {
-      "width": "450px"
-    },
-    attrs: {
-      "type": "text",
-      "disabled": "",
-      "value": "北京华亮房地产经纪有限公司"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("      第一条  房屋基本情况")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("\n              第二条  房屋租赁情况\n    ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("\n              第三条  租赁期限及免租期\n    ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("\n              （一）甲方承诺在租赁合同期限内给予乙方"), _c('input', {
-    staticStyle: {
-      "width": "70px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("天的免租期。\n    ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("      （二）本合同房屋租赁期限为"), _c('input', {
-    staticStyle: {
-      "width": "25px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("年。\n    ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("       第四条  租金和押金")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("       第五条  相关费用的承担方式")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("       第六条  甲方的权利义务")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("       第七条  乙方权利义务\n    ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("       第八条  合同解除")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("       第九条  违约责任")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("第十条  送达条款")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("       第十一条  其他")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("       第十二条  补充条款")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("       "), _c('input', {
-    staticStyle: {
-      "width": "550px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("       "), _c('input', {
-    staticStyle: {
-      "width": "550px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("     出租人（甲方）：                                承租人（乙方）：")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("     联系地址："), _c('input', {
-    staticStyle: {
-      "width": "150px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("              联系地址："), _c('input', {
-    staticStyle: {
-      "width": "150px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("     联系方式："), _c('input', {
-    staticStyle: {
-      "width": "150px"
-    },
-    attrs: {
-      "type": "text",
-      "value": "400-078-8800"
-    }
-  }), _vm._v("              联系方式："), _c('input', {
-    staticStyle: {
-      "width": "150px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("     委托代理人 ："), _c('input', {
-    staticStyle: {
-      "width": "125px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("              委托代理人 ："), _c('input', {
-    staticStyle: {
-      "width": "125px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("                   "), _c('input', {
-    staticStyle: {
-      "width": "50px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("年\n        "), _c('input', {
-    staticStyle: {
-      "width": "30px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("月\n        "), _c('input', {
-    staticStyle: {
-      "width": "30px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("日                          "), _c('input', {
-    staticStyle: {
-      "width": "50px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("年\n        "), _c('input', {
-    staticStyle: {
-      "width": "30px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("月\n        "), _c('input', {
-    staticStyle: {
-      "width": "30px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("日")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("     居间方（丙方）：")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("     房地产经纪人："), _c('input', {
-    staticStyle: {
-      "width": "130px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("     资质证书号："), _c('input', {
-    staticStyle: {
-      "width": "200px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("     联系地址："), _c('input', {
-    staticStyle: {
-      "width": "220px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("     联系方式："), _c('input', {
-    staticStyle: {
-      "width": "220px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("                   "), _c('input', {
-    staticStyle: {
-      "width": "50px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("年\n    "), _c('input', {
-    staticStyle: {
-      "width": "30px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("月\n    "), _c('input', {
-    staticStyle: {
-      "width": "30px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("日")])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-37043423", module.exports)
   }
 }
 
@@ -106197,11 +105966,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1), _vm._v(" "), _c('el-radio-group', {
       model: {
-        value: (_vm.addDate.mianzufangshi),
+        value: (item.mianzufangshi),
         callback: function($$v) {
-          _vm.addDate.mianzufangshi = $$v
+          item.mianzufangshi = $$v
         },
-        expression: "addDate.mianzufangshi"
+        expression: "item.mianzufangshi"
       }
     }, [_c('el-radio', {
       attrs: {
@@ -107435,13 +107204,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleJieyue(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("解       约")])], 1) : _vm._e(), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("解       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleJieyuewancheng(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("解约完成")])], 1), _vm._v(" "), (_vm.ztin(scope.row, [10])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("解约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [10])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleCheckJieyue(scope.$index, scope.row)
@@ -107638,7 +107407,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 18
+      "span": 20
     }
   }, [_c('add-property', {
     directives: [{
@@ -107675,15 +107444,42 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('div', {
     staticStyle: {
-      "margin-bottom": "81px"
+      "margin-bottom": "51px"
     }
   }), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 6
+      "span": 4
     }
-  }, [_c('div', {
+  }, [_c('el-form', [_c('el-form-item', {
     staticStyle: {
-      "margin-left": "50%"
+      "margin-left": "auto",
+      "width": "70%"
+    },
+    attrs: {
+      "label": "合同版本："
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "合同版本"
+    },
+    model: {
+      value: (_vm.contractVersion),
+      callback: function($$v) {
+        _vm.contractVersion = $$v
+      },
+      expression: "contractVersion"
+    }
+  }, _vm._l((_vm.options), function(item) {
+    return _c('el-option', {
+      key: item.id,
+      attrs: {
+        "label": item.version,
+        "value": item.version
+      }
+    })
+  }))], 1)], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-left": "30%"
     }
   }, [_c('el-steps', {
     attrs: {
@@ -107802,7 +107598,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.review(0)
       }
     }
-  }, [_vm._v("不通过")])], 1)])], 1), _vm._v(" "), _c('el-dialog', {
+  }, [_vm._v("不通过")])], 1)], 1)], 1), _vm._v(" "), _c('el-dialog', {
     attrs: {
       "title": "审核批注",
       "visible": _vm.dialogFormVisible
@@ -116447,13 +116243,13 @@ var content = __webpack_require__(141);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("85029dd2", content, false);
+var update = __webpack_require__(6)("5298dbf1", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-37043423\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Dump.vue", function() {
-     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-37043423\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Dump.vue");
+   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2de1a0f6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Dump20170719.vue", function() {
+     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2de1a0f6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Dump20170719.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
