@@ -60,7 +60,7 @@
                    <!-- </el-form-item>-->
                 </el-col>
                 </el-col>
-                <el-radio-group v-model="addDate.mianzufangshi">
+                <el-radio-group v-model="item.mianzufangshi">
                     <el-radio :label="1">期内免租</el-radio>
                     <el-radio :label="2">期外免租</el-radio>
                 </el-radio-group>

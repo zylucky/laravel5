@@ -137,10 +137,11 @@
                     //xinjianqianyuedate: '',//签约日期
                     shoufangdate: '',//收房日期
                     qianyuedate: '',//签约日期
-                    mianzufangshi: [],//免租方式
+
                     mianzuqiList: [{
                         startdate:'',//免租开始
                         enddate:'',//免租结束
+                        mianzufangshi:'',//免租方式
                     }],
                     fukuanFangshiList:[{
                         startdate:'',//开始
@@ -339,6 +340,7 @@
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+                console.log(res.data.data);
             },
             disabledInput(){
                 this.reviewVisible = true;

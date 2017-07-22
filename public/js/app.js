@@ -40048,10 +40048,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //xinjianqianyuedate: '',//签约日期
                 shoufangdate: '', //收房日期
                 qianyuedate: '', //签约日期
-                mianzufangshi: [], //免租方式
+
                 mianzuqiList: [{
                     startdate: '', //免租开始
-                    enddate: '' //免租结束
+                    enddate: '', //免租结束
+                    mianzufangshi: '' //免租方式
                 }],
                 fukuanFangshiList: [{
                     startdate: '', //开始
@@ -40267,6 +40268,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.addDate.zujinList = res.data.data.zujinList;
             this.addDate.checkList = res.data.data.checkList;
             this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+            console.log(res.data.data);
         },
         disabledInput: function disabledInput() {
             this.reviewVisible = true;
@@ -106135,11 +106137,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1), _vm._v(" "), _c('el-radio-group', {
       model: {
-        value: (_vm.addDate.mianzufangshi),
+        value: (item.mianzufangshi),
         callback: function($$v) {
-          _vm.addDate.mianzufangshi = $$v
+          item.mianzufangshi = $$v
         },
-        expression: "addDate.mianzufangshi"
+        expression: "item.mianzufangshi"
       }
     }, [_c('el-radio', {
       attrs: {
