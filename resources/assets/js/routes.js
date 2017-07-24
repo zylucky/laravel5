@@ -199,7 +199,7 @@ let routes = [
 
     },
     {
-        path:'/saleContract/dump',
+        path:'/saleContract/dump20170719',
         component: SaleContractDump20170719,
         name: '出方合同打印',
         hidden: true

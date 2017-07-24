@@ -108,70 +108,6 @@
                 </el-col>
                 </el-col>
             </el-form-item>
-            <!--付款方式-->
-            <div  v-for="(item, index) in addDate.fukuanFangshiList">
-                <el-row :gutter="5">
-                    <el-col :span="14" style="width:550px;">
-                        <el-form-item label="付款方式"
-                                      :key="item.key"
-                                      required
-                        >
-                                <el-col :span="11">
-                                    <el-form-item  :prop="'fukuanFangshiList.' + index + '.startdate'" :rules="{
-                                            required: true, message: '不能为空'
-                                        }">
-                                    <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate">
-                                    </el-date-picker>
-                                    </el-form-item>
-                                </el-col>
-                                    <el-col :span="11">
-                                        <el-form-item
-                                                :prop="'fukuanFangshiList.' + index + '.enddate'"
-                                                :rules="[
-                                            {  required: true,validator:
-                                            (rule,value,callback)=>{
-                                                var d1= new Date( addDate.fukuanFangshiList[index].startdate);
-                                                var d2= new Date(value);
-                                                if(value==null){
-                                                    callback('不能为空');
-                                                }
-                                                if(d2<d1){
-                                                    callback('结束日期不能小于开始日期');
-                                                }else{
-                                                callback();
-                                                };
-                                                    }, trigger:'blur'}
-                                            ]">
-                                            <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
-                                            </el-date-picker>
-                                        </el-form-item>
-                                    </el-col>
-                        </el-form-item>
-                    </el-col>
-                                </el-col>
-                                <el-col :span="1" :pull="1" style="width: 90px;">
-                                    <el-form-item label="押" label-width="20px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="{
-                                    required: true, message: '不能为空'
-                                }">
-                                        <el-input v-model="item.yajinyue" placeholder="押几"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :span="1" :pull="1" style="margin-left: 15px;width: 90px;">
-                                    <el-form-item label="付" label-width="20px" :prop="'fukuanFangshiList.' + index + '.zujinyue'" :rules="{
-                                    required: true, message: '不能为空'
-                                }">
-                                        <el-input v-model="item.zujinyue" placeholder="付几"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :span="2">
-                                    <el-button v-show="editVisible"  @click.prevent="removePayItem(item)">删除</el-button>
-                                </el-col>
-                    </el-row>
-                </el-form-item>
-            </div>
-            <el-form-item>
-                <el-button v-show="editVisible"  @click="addPayItem">新增付款方式</el-button>
-            </el-form-item>
             <!--租金-->
             <div v-for="(item, index) in addDate.zujinList">
                 <el-row>
@@ -250,6 +186,70 @@
             </div>
             <el-form-item>
                 <el-button v-show="editVisible"  @click="addRentItem">新增租期</el-button>
+            </el-form-item>
+            <!--付款方式-->
+            <div  v-for="(item, index) in addDate.fukuanFangshiList">
+                <el-row :gutter="5">
+                    <el-col :span="14" style="width:550px;">
+                        <el-form-item label="付款方式"
+                                      :key="item.key"
+                                      required
+                        >
+                            <el-col :span="11">
+                                <el-form-item  :prop="'fukuanFangshiList.' + index + '.startdate'" :rules="{
+                                            required: true, message: '不能为空'
+                                        }">
+                                    <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate">
+                                    </el-date-picker>
+                                </el-form-item>
+                            </el-col>
+                            <el-col :span="11">
+                                <el-form-item
+                                        :prop="'fukuanFangshiList.' + index + '.enddate'"
+                                        :rules="[
+                                            {  required: true,validator:
+                                            (rule,value,callback)=>{
+                                                var d1= new Date( addDate.fukuanFangshiList[index].startdate);
+                                                var d2= new Date(value);
+                                                if(value==null){
+                                                    callback('不能为空');
+                                                }
+                                                if(d2<d1){
+                                                    callback('结束日期不能小于开始日期');
+                                                }else{
+                                                callback();
+                                                };
+                                                    }, trigger:'blur'}
+                                            ]">
+                                    <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
+                                    </el-date-picker>
+                                </el-form-item>
+                            </el-col>
+                        </el-form-item>
+                    </el-col>
+                    </el-col>
+                    <el-col :span="1" :pull="1" style="width: 90px;">
+                        <el-form-item label="押" label-width="20px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="{
+                                    required: true, message: '不能为空'
+                                }">
+                            <el-input v-model="item.yajinyue" placeholder="押几"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="1" :pull="1" style="margin-left: 15px;width: 90px;">
+                        <el-form-item label="付" label-width="20px" :prop="'fukuanFangshiList.' + index + '.zujinyue'" :rules="{
+                                    required: true, message: '不能为空'
+                                }">
+                            <el-input v-model="item.zujinyue" placeholder="付几"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="2">
+                        <el-button v-show="editVisible"  @click.prevent="removePayItem(item)">删除</el-button>
+                    </el-col>
+                </el-row>
+                </el-form-item>
+            </div>
+            <el-form-item>
+                <el-button v-show="editVisible"  @click="addPayItem">新增付款方式</el-button>
             </el-form-item>
             <!--押金 总应付租金 合同佣金-->
             <el-row>
