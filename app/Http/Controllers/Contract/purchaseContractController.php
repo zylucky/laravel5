@@ -132,11 +132,13 @@ class purchaseContractController extends Controller
         $data = [
             "cmd"=>0,
             "data"=>[
-                "bianhao"=>$bianhao,
+                "tempname"=>"shenhe",
                 "objareaid"=>(int)$objareaid,
             ],
+            "condition"=>["%bianhao%"=>$bianhao],
             "operatorId"=>15,//操作人
             "operatorName"=>'liyuequn',
+            "reserved"=>null,
         ];
         //2.服务创建审核任务
         $client = new Client([
@@ -145,7 +147,7 @@ class purchaseContractController extends Controller
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         //return $data;
-        $response = $client->request('POST', '/api/wf/createapproval', [
+        $response = $client->request('POST', '/api/wf/createtaskbytemplate', [
             'json' => $data
         ]);
 

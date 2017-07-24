@@ -44,7 +44,15 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 1;
+        $fp = fopen($_FILES["file"]["tmp_name"],"rb");
+        $image = fread($fp,$_FILES["file"]["size"]);
+        $image = base64_encode($image);
+        $data = [
+            'id'=>$_POST['id'],
+            'type'=>$_POST['type'],
+            'image'=>$image,
+        ];
     }
 
     /**
