@@ -10,11 +10,11 @@
             <div>
                 <div v-if="addDate.hetongtype == 1">
                     <el-row>
-                        <el-col :span="8">
+                       <!-- <el-col :span="8">
                             <el-form-item label="收房日" prop="shoufangdate" required>
                                 <el-date-picker type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;"></el-date-picker>
                             </el-form-item>
-                        </el-col>
+                        </el-col>-->
                         <el-col :span="8">
                             <el-form-item label="签约日" prop="qianyuedate" required>
                                 <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>

@@ -69,6 +69,7 @@ Route::post('message/refuseMessage','Message\messageController@refuseMessage');
 
 //出房合同分组
 Route::group(['prefix' => 'saleContract'], function () {
+    Route::get('getchuzuren','Contract\saleContractController@getchuzuren');
     Route::post('submit','Contract\saleContractController@submit');
     Route::get('jieyue','Contract\saleContractController@jieyue');
     Route::get('approving','Contract\saleContractController@approving');
