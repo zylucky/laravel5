@@ -50,7 +50,7 @@ class TestController extends Controller
         $image = base64_encode($image);
         $data = [
             'id'=>$_POST['id'],
-            'type'=>$_POST['type'],
+            'type'=>$_GET['type'],
             'image'=>$image,
         ];
     }

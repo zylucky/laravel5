@@ -6,10 +6,14 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 class purchaseContractController extends Controller
 {
-
+    function __destruct() {
+        //sleep(10);
+        //Storage::deleteDirectory('tmp');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -343,5 +347,35 @@ class purchaseContractController extends Controller
             'json' => $request->params
         ]);
         echo $response->getBody();
+    }
+    /*
+     * 扫描合同复印件列表copyImageList
+     * */
+    public function copyImageList(Request $request){
+        $id = Input::get('id');
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/img/'.$id.'/query', [
+            'json' => $request->params
+        ]);
+        $res = json_decode($response->getBody());
+        $content = base64_decode($res->data[0]->content);
+        //新文件名
+        $_nowdate = date("YmdHis");
+        $rnd = rand(10000, 99999);
+        $new_file_name = $_nowdate . '_' . $rnd . '.' . 'jpg';
+        Storage::disk('local')->put('tmp/'.$new_file_name, $content,'public');
+        $url = Storage::url('tmp/'.$new_file_name);
+        $data2 = [];
+        foreach($res->data as $value){
+            $value->url =$url;
+            $value->content =null;
+            $data2[$value->type][] = $value;
+        }
+        $res->data = $data2;
+        echo json_encode($res);
     }
 }

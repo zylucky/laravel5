@@ -166,7 +166,7 @@
                 },
                 filters: {
                     name: '',
-                    status:null,
+                    status:'',
                 },
                 options:[
                     {value:0, label:'已创建',},

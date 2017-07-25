@@ -31,6 +31,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('terminated','Contract\purchaseContractController@terminated');
     Route::get('releasing','Contract\purchaseContractController@releasing');
     Route::get('released','Contract\purchaseContractController@released');
+    Route::get('copyImageList','Contract\purchaseContractController@copyImageList');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
 //装饰合同
