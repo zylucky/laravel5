@@ -285,6 +285,7 @@
             },
             //获取房号
             remoteMethod3(query) {
+                this.$emit('getshoufanghetong')
                 let para = {
                     lpid: this.property.xsOffice[this.tabIndex-1].loupanOmcId,
                     zdid: this.property.xsOffice[this.tabIndex-1].loudongOmcId,
@@ -341,6 +342,7 @@
                 }
             },
             change3(){
+                this.$emit('getshoufanghetong')
                 //房号
                 for (var x in this.options3){
                     if(this.options3[x].label==this.property.xsOffice[this.tabIndex-1].fanghao){
