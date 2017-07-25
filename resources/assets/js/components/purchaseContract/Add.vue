@@ -16,9 +16,9 @@
                         <el-select v-model="contractVersion" placeholder="合同版本">
                             <el-option
                                     v-for="item in options"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
+                                    :key="item.id"
+                                    :label="item.version"
+                                    :value="item.version">
                             </el-option>
                         </el-select>
                     </el-form-item>
@@ -33,7 +33,11 @@
                 </el-steps>
                 <el-button type="primary"  v-show="editVisible" @click="save" style="margin-top:100px;">保存</el-button>
                 <el-button type="primary"  v-show="editVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
+                <div style="margin-top:10px;">
+                    <el-button type="primary" @click="preview" >打印预览</el-button>
+                </div>
                 <div style="margin-left:-50px;">
+
                     <el-button type="primary"  v-show="reviewVisible" @click="review(1)" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
                     <el-button type="warning"  v-show="reviewVisible" @click="review(0)" style="margin-top:100px;">不通过</el-button>
                 </div>
@@ -63,15 +67,13 @@
         reviewPurchaseContract,
         getPurchaseContractInfo,
         submitPurchaseContract,
-        getPurchaseContractTiaoKuan
+        getPurchaseContractTiaoKuan,
+        getContractVersionList
     } from '../../api/api';
     export default{
         data(){
             return {
                 options:[
-                    {label:'20170719',value:'20170719'},
-                    {label:'20170720',value:'20170720'},
-                    {label:'20170721',value:'20170721'},
                 ],
                 contractVersion:null,
                 btnType:true,
@@ -299,8 +301,6 @@
             getPurchaseContract(id){
                 getPurchaseContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
-                        console.log(res.data.data.zujinList[0].id)
-                        console.log(res.data.data.zujinList)
                         //把数据分别赋值给三个组件的变量
                         this.fuzhi(res);
                     }else {
@@ -327,6 +327,26 @@
                     //console.log(this.tiaoList);
 
                 })
+            },
+            //获取当前启用的合同版本
+            getVersion(){
+                let para = {
+                    category: 0,
+                    status:1,
+                };
+                this.listLoading = true;
+                getContractVersionList(para).then((res) => {
+                    this.options = res.data.data;
+                    this.contractVersion = this.options[0].version;
+                });
+            },
+            preview(){
+                var version = this.contractVersion;
+               let _this = this;
+                let para = {
+                    id:_this.id,
+                }
+                window.open('/#/purchaseContract/dump'+version+'?id='+_this.id)
             },
             fuzhi(res){
                 this.id = res.data.data.id;
@@ -422,8 +442,9 @@
             }
             //新增页面获取默认条款
             if(this.$route.path=='/purchaseContract/add'){
-                this.getTiaokuan();
+                //this.getTiaokuan();
             }
+            this.getVersion();
         },
 
     }

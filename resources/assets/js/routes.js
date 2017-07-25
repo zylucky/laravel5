@@ -15,7 +15,7 @@ import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
 import PurchaseContractUpload from "./components/purchaseContract/Upload.vue";
 import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue";
 import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimize.vue";
-import PurchaseContractDump from "./components/purchaseContract/Dump.vue";
+import PurchaseContractDump20170719 from "./components/purchaseContract/Dump20170719.vue";//版本1
 
 
 //出房合同
@@ -24,7 +24,7 @@ import SaleContractAdd from "./components/saleContract/Add.vue";
 import SaleContractUpload from "./components/saleContract/Upload.vue";
 import SaleContractJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractCheckJieyue from "./components/saleContract/Jieyue.vue";
-import SaleContractDump from "./components/saleContract/Dump.vue";
+import SaleContractDump20170719 from "./components/saleContract/Dump20170719.vue";
 //装饰合同
 import DecorationList from "./components/decoration/List.vue";
 //合同版本
@@ -54,6 +54,7 @@ import Receivable from "./components/Commission/receivableList.vue";
 import PaymentRecord from "./components/report/paymentRecordList.vue";
 import PayableRecord from "./components/report/payableRecordList.vue";
 import Payable from "./components/report/payableList.vue";
+
 
 
 
@@ -131,7 +132,7 @@ let routes = [
 
 
             { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
-            { path:'/saleContact/add',component:SaleContractAdd,name:'出房录入',hidden:true},
+            { path:'/saleContract/add',component:SaleContractAdd,name:'出房录入',hidden:true},
             { path:'/saleContract/see',component:SaleContractAdd,name:'出房查看',hidden:true},
             { path:'/saleContract/edit',component:SaleContractAdd,name:'出房编辑',hidden:true},
             { path:'/saleContract/review',component:SaleContractAdd,name:'出房审核',hidden:true},
@@ -183,8 +184,9 @@ let routes = [
         ]
     },
     {
-        path:'/purchaseContract/dump',
-        component: PurchaseContractDump,
+        //版本1
+        path:'/purchaseContract/dump20170719',
+        component: PurchaseContractDump20170719,
         name: '收房合同打印',
         hidden: true
     },
@@ -205,8 +207,9 @@ let routes = [
 
     },
     {
-        path:'/saleContract/dump',
-        component: SaleContractDump,
+        //版本1
+        path:'/saleContract/dump20170719',
+        component: SaleContractDump20170719,
         name: '出方合同打印',
         hidden: true
      },

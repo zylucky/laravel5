@@ -35,10 +35,16 @@
             </el-table-column>
                <el-table-column label="操作" width="140">
                     <template scope="scope">
-                       <el-button size="small" v-if="ztin(scope.row,[0])" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                        <el-button type="small" v-if="ztin(scope.row,[0])" size="small" @click="handleDump(scope.$index, scope.row)">打印</el-button>
-                        <el-button type="small" v-if="ztin(scope.row,[2])" size="small" @click="handleDump(scope.$index, scope.row)">查看</el-button>
-                        <el-button type="small" v-if="ztin(scope.row,[1])" size="small" @click="handleConfirm(scope.$index, scope.row)">完成</el-button>
+                        <el-dropdown   menu-align="start">
+                            <el-button type="primary" size="normal" splitButton="true">
+                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
+                            </el-button>
+                            <el-dropdown-menu slot="dropdown" >
+                                <el-dropdown-item  v-if="ztin(scope.row,[0])" ><el-button @click="handleEdit(scope.$index, scope.row)">编辑</el-button></el-dropdown-item>
+                                <el-dropdown-item  v-if="ztin(scope.row,[2])" ><el-button @click="handleDump(scope.$index, scope.row)">查看</el-button></el-dropdown-item>
+                                <el-dropdown-item  v-if="ztin(scope.row,[1])" ><el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
                     </template>
                </el-table-column>
            </el-table>

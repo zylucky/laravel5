@@ -51,7 +51,7 @@
             </el-table-column>
             <el-table-column label="操作" >
                 <template scope="scope">
-                    <el-button type="small" size="small" @click="handleSet(scope.$index, scope.row)">查看</el-button>
+                    <el-button type="small" size="small" @click="preview(scope.$index, scope.row)">查看</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -161,6 +161,15 @@
             },
             selsChange: function (sels) {
                 this.sels = sels;
+            },
+            preview(index,row){
+                if(row.category == 0){
+                    window.open('/#/purchaseContract/dump'+row.version)
+                }else if(row.category == 1){
+                    window.open('/#/saleContract/dump'+row.version)
+                }else if(row.category == 2){
+                    //window.open('/#/saleContract/dump'+version)
+                }
             },
         },
         mounted() {

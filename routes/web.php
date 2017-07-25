@@ -19,6 +19,7 @@ Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
 //收房合同分组
 Route::group(['prefix' => 'purchaseContract'], function () {
+    Route::post('addCopyImage','Contract\purchaseContractController@addCopyImage');
     Route::post('review','Contract\purchaseContractController@review');
     Route::post('weiYueInfo','Contract\purchaseContractController@weiYueInfo');
     Route::post('weiYueSave','Contract\purchaseContractController@weiYueSave');
@@ -31,6 +32,8 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('terminated','Contract\purchaseContractController@terminated');
     Route::get('releasing','Contract\purchaseContractController@releasing');
     Route::get('released','Contract\purchaseContractController@released');
+    Route::get('copyImageList','Contract\purchaseContractController@copyImageList');
+    Route::get('deleteCopyImage','Contract\purchaseContractController@deleteCopyImage');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
 //装饰合同
@@ -67,22 +70,24 @@ Route::resource('message','Message\messageController');
 Route::post('message/acceptMessage','Message\messageController@acceptMessage');
 Route::post('message/refuseMessage','Message\messageController@refuseMessage');
 
-//Route::post('saleContract/sub','Contract\saleContractController@sub');
-Route::post('saleContract/submit','Contract\saleContractController@submit');
-Route::get('saleContract/jieyue','Contract\saleContractController@jieyue');
-Route::get('saleContract/approving','Contract\saleContractController@approving');
-Route::get('saleContract/confirm','Contract\saleContractController@confirm');
-Route::get('saleContract/confirmed','Contract\saleContractController@confirmed');
-Route::get('saleContract/violating','Contract\saleContractController@violating');
-Route::get('saleContract/terminated','Contract\saleContractController@terminated');
-Route::get('saleContract/releasing','Contract\saleContractController@releasing');
-Route::get('saleContract/released','Contract\saleContractController@released');
-Route::post('saleContract/review','Contract\saleContractController@review');
-Route::post('saleContract/jieyuesave','Contract\saleContractController@jieyuesave');
-Route::get('saleContract/jieyuelist','Contract\saleContractController@jieyuelist');
-Route::post('saleContract/weiYueInfo','Contract\saleContractController@weiYueInfo');
-Route::post('saleContract/weiYueSave','Contract\saleContractController@weiYueSave');
-
+//出房合同分组
+Route::group(['prefix' => 'saleContract'], function () {
+    Route::get('getchuzuren','Contract\saleContractController@getchuzuren');
+    Route::post('submit','Contract\saleContractController@submit');
+    Route::get('jieyue','Contract\saleContractController@jieyue');
+    Route::get('approving','Contract\saleContractController@approving');
+    Route::get('confirm','Contract\saleContractController@confirm');
+    Route::get('confirmed','Contract\saleContractController@confirmed');
+    Route::get('violating','Contract\saleContractController@violating');
+    Route::get('terminated','Contract\saleContractController@terminated');
+    Route::get('releasing','Contract\saleContractController@releasing');
+    Route::get('released','Contract\saleContractController@released');
+    Route::post('review','Contract\saleContractController@review');
+    Route::post('jieyuesave','Contract\saleContractController@jieyuesave');
+    Route::get('jieyuelist','Contract\saleContractController@jieyuelist');
+    Route::post('weiYueInfo','Contract\saleContractController@weiYueInfo');
+    Route::post('weiYueSave','Contract\saleContractController@weiYueSave');
+});
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 
 //权限

@@ -158,18 +158,26 @@ class saleContractController extends Controller
         echo $response->getBody();
     }
 
-    //删除
-    /*public function delete(){
+    //出房合同获取收房合同的楼盘
+    public function getchuzuren(){
+        //dd(111111);
+        $fangyuanId = Input::get('fangyuanId');
+        //dd($fangyuanId);
         $client = new Client([
             'base_uri' => $this->base_url,
+<<<<<<< HEAD
 
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST', '/api/contract/xs/delete', [
             'json' => $request->params
+=======
+            'timeout' => 2.0,
+>>>>>>> 4ebb5b53b94bbe9ec661915235c0508b3260d1ba
         ]);
+        $response = $client->request('GET','/api/contract/sf/queryChengzufang/'.$fangyuanId);
         echo $response->getBody();
-    }*/
+    }
     //解约协议的保存
     public function jieyuesave(Request $request){
         //dd(222);
@@ -182,45 +190,6 @@ class saleContractController extends Controller
             'json' => $request->params
         ]);
         echo $response->getBody();
-        /*$data = $request->params;
-        if($data['jieyuefangshi'] == "退租"){
-            $data['jieyuefangshi'] = 1;
-        }
-        if($data['jieyuefangshi'] == "扩租"){
-            $data['jieyuefangshi'] = 2;
-        }
-        if($data['jieyuefangshi'] == "缩租"){
-            $data['jieyuefangshi'] = 3;
-        }
-        if($data['zhizhaoqianchu'] == "是"){
-            $data['zhizhaoqianchu'] = 1;
-        }
-        if($data['zhizhaoqianchu'] == "否"){
-            $data['zhizhaoqianchu'] = 0;
-        }
-        $response = $client->request('POST', '/api/contract/xs/jieyueXieyi/save', [
-            'json' => $data,
-        ]);
-        $res = $response->getBody();
-        $res = json_decode($res);
-        //$jieyuefangshi = $res->data->jieyuefangshi;
-        //$zhizhaoqianchu = $res->data->zhizhaoqianchu;
-        if($res->data->jieyuefangshi == 1){
-            $res->data->jieyuefangshi = "退租";
-        }
-        if($res->data->jieyuefangshi == 2){
-            $res->data->jieyuefangshi = "扩租";
-        }
-        if($res->data->jieyuefangshi == 3){
-            $res->data->jieyuefangshi = "缩租";
-        }
-        if($res->data->zhizhaoqianchu == 1){
-            $res->data->zhizhaoqianchu = "是";
-        }
-        if($res->data->zhizhaoqianchu == 0){
-            $res->data->zhizhaoqianchu = "否";
-        }
-        echo json_encode($res);*/
     }
     public function jieyuelist()
     {
@@ -246,11 +215,6 @@ class saleContractController extends Controller
             'json' => $request->params
         ]);
         echo $response->getBody();
-
-
-
-
-
     }
     //合同状态变为：审核中
     public function approving(){
@@ -293,6 +257,7 @@ class saleContractController extends Controller
         ]);
         $response = $client->request('GET', '/api/contract/xs/'.$id);
         echo $response->getBody();
+<<<<<<< HEAD
         /*$client = new Client([
             'base_uri' => $this->base_url,
 
@@ -302,6 +267,8 @@ class saleContractController extends Controller
             'json' => $request->params
         ]);
         echo $response->getBody();*/
+=======
+>>>>>>> 4ebb5b53b94bbe9ec661915235c0508b3260d1ba
     }
     //合同状态变为：正在确认
     public function confirm(){

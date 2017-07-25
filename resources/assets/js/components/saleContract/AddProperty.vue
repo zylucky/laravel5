@@ -79,11 +79,6 @@
                                 </el-col>
                             </el-row>
                             <el-row>
-                                <!--<el-col :span="8">
-                                    <el-form-item label="区域" prop="quyu">
-                                        <el-input v-model="property.xsOffice[index].quyu"></el-input>
-                                    </el-form-item>
-                                </el-col>-->
                                 <el-col :span="16">
                                     <el-form-item label="位置" required prop="weizhi" :span="10">
                                         <el-input v-model="property.xsOffice[index].weizhi"></el-input>
@@ -118,31 +113,11 @@
                                     </el-form-item>
                                 </el-col>
                             </el-row>
-                            <!--<el-row>
-                                <el-col :span="8">
-                                    <el-form-item label="抵押权人">
-                                        <el-radio-group v-model="property.officeList[index].isdiya">
-                                            <el-radio :label="1">是</el-radio>
-                                            <el-radio :label="2">否</el-radio>
-                                        </el-radio-group>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :span="8">
-                                    <el-form-item label="抵押权人" prop="diyaquanren">
-                                        <el-input v-model="property.officeList[index].diyaren"></el-input>
-                                    </el-form-item>
-                                </el-col>
-
-                            </el-row>-->
-
-
                         </el-col>
                     </el-form>
-
                 </el-tab-pane>
             </el-tabs>
     </el-row>
-
 </template>
 <script>
     import {getLoupanList,getLoudongList,getSaleFanghaoList} from '../../api/api';
@@ -310,6 +285,7 @@
             },
             //获取房号
             remoteMethod3(query) {
+                this.$emit('getshoufanghetong')
                 let para = {
                     lpid: this.property.xsOffice[this.tabIndex-1].loupanOmcId,
                     zdid: this.property.xsOffice[this.tabIndex-1].loudongOmcId,
@@ -366,6 +342,7 @@
                 }
             },
             change3(){
+                this.$emit('getshoufanghetong')
                 //房号
                 for (var x in this.options3){
                     if(this.options3[x].label==this.property.xsOffice[this.tabIndex-1].fanghao){
@@ -418,11 +395,6 @@
                         }
                     });
                 }
-                /*let propertys = this.property.xsOffice ;
-                propertys.forEach((property,index)=>{
-
-                })*/
-
                 this.editableTabsValue2 = activeName;
                 this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
             }

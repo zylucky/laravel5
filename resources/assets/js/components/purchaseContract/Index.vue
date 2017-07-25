@@ -53,7 +53,7 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[7])" ><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7,9])" ><el-button @click="handleOptimize(scope.$index, scope.row)">优化协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
-                            <!--<el-dropdown-item  ><el-button type="danger" @click="handleDel(scope.$index, scope.row)">删除合同</el-button></el-dropdown-item>-->
+                            <el-dropdown-item  ><el-button  @click="handleUplod(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -166,7 +166,7 @@
                 },
                 filters: {
                     name: '',
-                    status:null,
+                    status:'',
                 },
                 options:[
                     {value:0, label:'已创建',},
@@ -196,6 +196,9 @@
             contractPayType
         },
         methods: {
+            handleUplod(index,row){
+                this.$router.push('purchaseContract/upload?id='+row.id)
+            },
             changeEnd(value){
                 //获取三个信息：合同ID，违约类型，以及本日期
                 let para = {
@@ -379,17 +382,18 @@
             },
             //打印
             handleDump(index,row){
-                let para = {
-                    id:row.id,
-                }
-                dumpingPurchaseContract(para).then((res)=>{
-                    if(res.data.code=="200"){
-                        this.purchaseContractList();
-                        window.open('/#/purchaseContract/dump?id='+row.id)
+                getPurchaseContractInfo({id:row.id}).then((res) => {
+                    var version = res.data.data.version;
+                    let para = {
+                        id:row.id,
                     }
-                });
-
-
+                    dumpingPurchaseContract(para).then((res)=>{
+                        if(res.data.code=="200"){
+                            this.purchaseContractList();
+                            window.open('/#/purchaseContract/dump'+version+'?id='+row.id)
+                        }
+                    });
+                })
             },
             //合同确认
             handleConfirm(index,row){
@@ -432,6 +436,20 @@
         },
         mounted(){
             this.purchaseContractList();
+//            function showNotice() {
+//                Notification.requestPermission(function (perm) {
+//                    if (perm == "granted") {
+//                        var notification = new Notification("这是一个通知:", {
+//                            dir: "auto",
+//                            lang: "hi",
+//                            tag: "testTag",
+//                            icon: "",
+//                            body: "通知content"
+//                        });
+//                    }
+//                })
+//            }
+//            showNotice();
         }
 
     }
