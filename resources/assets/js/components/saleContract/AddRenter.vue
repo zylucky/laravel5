@@ -4,12 +4,13 @@
         <el-col :span="24">
             <el-form-item label="出租人">
                 <el-radio-group v-model="renter.chengzufang">
-                    <el-radio label="华塑商贸"></el-radio>
-                    <el-radio label="幼狮科技"></el-radio>
-                    <el-radio label="航远房地产"></el-radio>
-                    <el-radio label="航远投资管理"></el-radio>
-                    <el-radio label="彭昆"></el-radio>
-                    <el-radio label="彭亮"></el-radio>
+                    <el-radio :disabled="true" label="华塑商贸"></el-radio>
+                    <el-radio :disabled="true" label="幼狮科技"></el-radio>
+                    <el-radio :disabled="true" label="航远房地产"></el-radio>
+                    <el-radio :disabled="true" label="航远投资管理"></el-radio>
+                    <el-radio :disabled="true" label="彭昆"></el-radio>
+                    <el-radio :disabled="true" label="彭亮"></el-radio>
+                    <el-radio :disabled="true" label="无"></el-radio>
                 </el-radio-group>
 
             </el-form-item>
@@ -285,7 +286,8 @@
                 if (index !== -1) {
                     this.renter.chengzuren.splice(index, 1)
                 }
-            }
+            },
+
         },
         mounted(){
             //审核页面input禁用
@@ -295,6 +297,7 @@
             if(this.$route.path=='/saleContract/see'){
                 this.editVisible   =false;
             }
+            //获取收房合同出租人
 
         }
     }

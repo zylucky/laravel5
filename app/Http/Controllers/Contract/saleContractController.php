@@ -158,6 +158,18 @@ class saleContractController extends Controller
         echo $response->getBody();
     }
 
+    //出房合同获取收房合同的楼盘
+    public function getchuzuren(){
+        //dd(111111);
+        $fangyuanId = Input::get('fangyuanId');
+        //dd($fangyuanId);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout' => 2.0,
+        ]);
+        $response = $client->request('GET','/api/contract/sf/queryChengzufang/'.$fangyuanId);
+        echo $response->getBody();
+    }
     //解约协议的保存
     public function jieyuesave(Request $request){
         //dd(222);
@@ -195,11 +207,6 @@ class saleContractController extends Controller
             'json' => $request->params
         ]);
         echo $response->getBody();
-
-
-
-
-
     }
     //合同状态变为：审核中
     public function approving(){

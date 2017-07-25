@@ -96,6 +96,7 @@ export const copyImageDelete= params => { return axios.get(`${base}/purchaseCont
 //出房合同
 //合同信息
 export const getdayinSaleContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
+export const getContractChuzuren= params => { return axios.get(`${base}/saleContract/getchuzuren`, {params:params}); };//出房合同获取收房合同的楼盘
 export const addSaleContractInfo= params => { return axios.post(`${base}/saleContract`, { params: params }); };
 export const reviewSaleContract= params => { return axios.post(`${base}/saleContract/review`, { params: params }); };
 export const getSaleContractList = params => { return axios.get(`${base}/saleContract`, { params: params }); };

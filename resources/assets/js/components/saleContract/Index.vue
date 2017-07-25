@@ -133,7 +133,7 @@
                 filters: {
                     name: '',
                     region: '',
-                    status:null,
+                    status:'',
                 },
                 weiYueRules:{
                     weiyueleixing: [

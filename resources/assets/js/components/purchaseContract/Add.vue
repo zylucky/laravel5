@@ -34,7 +34,7 @@
                 <el-button type="primary"  v-show="editVisible" @click="save" style="margin-top:100px;">保存</el-button>
                 <el-button type="primary"  v-show="editVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
                 <div style="margin-top:10px;">
-                    <el-button type="primary"    @click="preview" >打印预览</el-button>
+                    <el-button type="primary" @click="preview" >打印预览</el-button>
                 </div>
                 <div style="margin-left:-50px;">
 

@@ -3,8 +3,9 @@
         <el-row>
             <div style="margin-bottom: 50px;"></div>
             <el-col :span="20">
-                <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
-                <add-renter ref="renter" :renter="renter" v-show="stepNum==2"></add-renter>
+                <add-property ref="property" :property="property" v-on:getshoufanghetong="getChuzuren" v-show="stepNum==1"></add-property>
+                <!--标签中v-on:getshoufanghetong="getChuzuren"是监听事件，getshoufanghetong自己定义的监听的名字，getChuzuren是监听到这个事件之后发生操作的名字，v-on监听事件且是监听谁就放的谁上面-->
+                <add-renter ref="renter" :renter="renter" v-show="stepNum==2" ></add-renter>
                 <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
                 <!--<add-tiaokuan ref="tiaokuan" v-show="stepNum==4"></add-tiaokuan>-->
             </el-col>
@@ -32,6 +33,9 @@
                     <el-input type="hidden" prop="id"  auto-complete="off"></el-input>
                     <el-button type="primary" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
                     <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
+                    <div style="margin-top:10px;">
+                        <el-button type="primary" @click="preview" >打印预览</el-button>
+                    </div>
                     <el-button type="primary" v-show="tonguo" @click="review(1)" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
                     <el-button type="warning" v-show="tonguo" @click="review(0)" style="margin-top:100px;">不通过</el-button>
                 </div>
@@ -55,7 +59,7 @@
     import AddRenter from './AddRenter.vue'
     import AddDate from './AddDate.vue'
     import AddTiaokuan from './AddTiaoKuan.vue'
-    import {addSaleContractInfo,getSaleContractInfo,submitSaleContract,reviewSaleContract,getContractVersionList} from '../../api/api';
+    import {addSaleContractInfo,getSaleContractInfo,submitSaleContract,reviewSaleContract,getContractVersionList,getContractChuzuren} from '../../api/api';
     export default{
         data(){
             return {
@@ -71,6 +75,7 @@
                 dialogFormVisible:false,
                 stepNum:1,
                 id:'',
+                //fangyuanId:'',
                 bianhao:'',
                 zhuangtai:'',
                 property:{
@@ -98,7 +103,7 @@
                             label:null,
                         }
                     ],
-                    chengzufang:'华溯商贸',
+                    chengzufang:'',
                     jujianfangtype:1,
                     jujianfang:'',
                     zuhuleixing:1,
@@ -297,6 +302,14 @@
                     this.contractVersion = this.options[0].version;
                 });
             },
+            preview(){
+                var version = this.contractVersion;
+                let _this = this;
+                let para = {
+                    id:_this.id,
+                }
+                window.open('/#/purchaseContract/dump'+version+'?id='+_this.id)
+            },
             fuzhi(res){
                 this.id = res.data.data.id;
                 this.contractVersion = res.data.data.version;
@@ -340,7 +353,7 @@
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
-                console.log(res.data.data);
+                //console.log(res.data.data);
             },
             disabledInput(){
                 this.reviewVisible = true;
@@ -371,6 +384,30 @@
                     textArea[i].parentNode.className += " is-disabled";
                 }
 
+            },
+            //获取收房合同出租人
+            getChuzuren(){
+                let para = {
+                    fangyuanId:this.property.xsOffice[0].omcId,
+                    /*getloupanOmcId:this.property.xsOffice.loupanOmcId,
+                    getloudongOmcId:this.property.xsOffice.loudongOmcId,
+                    getloupanName:this.property.xsOffice.loupanName,
+                    getloudongName:this.property.xsOffice.loudongName,
+                    getfanghao:this.property.xsOffice.fanghao,*/
+                };
+                //console.log(this.property.xsOffice);
+                //console.log(this.property.xsOffice[0].omcId);
+                //console.log(para);
+                getContractChuzuren(para).then((res) => {
+                    if(res.data.code=='200'){
+                        this.renter.chengzufang = res.data.data;
+                    }else{
+                        this.$message({
+                            message: '获取收房数据失败',
+                            type: 'error'
+                        });
+                    }
+                });
             },
         },
         mounted() {
