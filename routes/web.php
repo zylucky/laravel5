@@ -19,6 +19,7 @@ Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
 //收房合同分组
 Route::group(['prefix' => 'purchaseContract'], function () {
+    Route::post('addCopyImage','Contract\purchaseContractController@addCopyImage');
     Route::post('review','Contract\purchaseContractController@review');
     Route::post('weiYueInfo','Contract\purchaseContractController@weiYueInfo');
     Route::post('weiYueSave','Contract\purchaseContractController@weiYueSave');
@@ -32,6 +33,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('releasing','Contract\purchaseContractController@releasing');
     Route::get('released','Contract\purchaseContractController@released');
     Route::get('copyImageList','Contract\purchaseContractController@copyImageList');
+    Route::get('deleteCopyImage','Contract\purchaseContractController@deleteCopyImage');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
 //装饰合同

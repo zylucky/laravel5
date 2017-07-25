@@ -1,10 +1,9 @@
 <template>
     <el-form style="margin-top:2%">
         <el-form-item label="合同">
-            <el-input v-show="false" v-model="form.name"></el-input>
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/test?type=1"
+                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage?type=1"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -13,6 +12,7 @@
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
                     :file-list="hetongList"
+                    :before-upload="beforeAvatarUpload"
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
@@ -21,10 +21,9 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="产权人身份证">
-            <el-input v-show="false" v-model="form.name"></el-input>
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/test/?type=2"
+                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/?type=2"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -41,10 +40,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="营业执照">
-            <el-input v-show="false" v-model="form.name"></el-input>
+            
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/test/"
+                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -61,10 +60,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="法人证件">
-            <el-input v-show="false" v-model="form.name"></el-input>
+            
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/test/"
+                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -81,10 +80,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="房产证">
-            <el-input v-show="false" v-model="form.name"></el-input>
+            
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/test/"
+                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -101,10 +100,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="不动产授权委托书">
-            <el-input v-show="false" v-model="form.name"></el-input>
+            
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/test/"
+                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -121,10 +120,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="业主授权代理人委托书">
-            <el-input v-show="false" v-model="form.name"></el-input>
+            
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/test/"
+                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -141,10 +140,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="委托人身份证">
-            <el-input v-show="false" v-model="form.name"></el-input>
+            
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/test/"
+                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -161,10 +160,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="房屋交割单">
-            <el-input v-show="false" v-model="form.name"></el-input>
+            
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/test/"
+                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -191,14 +190,8 @@
     export default {
         data() {
             return {
-                hetongList: [
-                    {id:2,name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'},
-                    {id:3,name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}
-                ],
-                chanquanrenList: [
-                    {id:2,name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'},
-                    {id:3,name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}
-                ],
+                hetongList: [],
+                chanquanrenList: [],
                 dialogImageUrl: '',
                 dialogVisible: false,
                 form:{
@@ -213,8 +206,24 @@
             };
         },
         methods: {
+            beforeAvatarUpload(file) {
+                const isJPG = file.type === 'image/jpeg';
+                const isLt2M = file.size / 1024 / 1024 < 2;
+                if (!isJPG) {
+                    this.$message.error('上传头像图片只能是 JPG 格式!');
+                }
+                if (!isLt2M) {
+                    this.$message.error('上传头像图片大小不能超过 2MB!');
+                }
+                return isJPG && isLt2M;
+            },
             handleRemove(file, fileList) {
-                console.log(file.id);
+                let para ={
+                    id :file.id,
+                }
+                copyImageDelete(para).then((res)=>{
+
+                });
             },
             handlePictureCardPreview(file) {
                 this.dialogImageUrl = file.url;
@@ -230,8 +239,8 @@
                 }
                 copyImageList(para).then((res)=>{
                     if(res.data.code=='200'){
-                        console.log(res.data.data);
                         this.hetongList = res.data.data[1];//合同
+                        this.chanquanrenList = res.data.data[2];//合同
                     }
                 })
             },
