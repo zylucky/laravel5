@@ -7,28 +7,30 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
-class brokerCompanyHistoryController extends Controller
+class brokerUserController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *显示渠道跟进列表
+     *显示渠道人员列表
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        $name = Input::get('bk_name');
+        $username = Input::get('username');
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
-        $companyId=Input::get('id');
 
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/qd/gj/compay/list',[
+        $response = $client->request('GET', '/api/qd/ziyou/list',[
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-                'compayid'=>1,
+                'compay' =>  $name,
+                'uname'=>$username
             ]
         ]);
         return $response->getBody();
@@ -53,23 +55,21 @@ class brokerCompanyHistoryController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *保存渠道跟进记录
+     *保存渠道人员
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 
-      // dd( $request->params);
-        //"genjinjindo":"一","genjindate":1500364339000,"genjinren":"张三","tPersonId":1,
-        $obj=array_merge($request->params,Array('genjinren'=>"张三",'tPersonId'=>1));
+      //  dd( $request->params);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
 
-        $r = $client->request('POST', '/api/qd/gj/compay/add', [
-            'json' => $obj
+        $r = $client->request('POST', '/api/qd/ziyou/add', [
+            'json' => $request->params
         ]);
         return  $r ->getBody();
     }
@@ -98,19 +98,30 @@ class brokerCompanyHistoryController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *更新
+     *更新渠道人员
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
+        $obj=$request->params;
 
+        //dd($obj);
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+
+        ]);
+
+        $r = $client->request('POST', '/api/qd/ziyou/alter', [
+            'json' => $obj
+        ]);
+        return  $r ->getBody();
     }
 
     /**
      * Remove the specified resource from storage.
-     *删除
+     *删除渠道人员
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -120,5 +131,56 @@ class brokerCompanyHistoryController extends Controller
         return $this->deleteCompany($id);
     }
 
+    public  function deleteCompany($id)
+    {
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+
+        ]);
+        $response = $client->request('GET', '/api/qd/person/{$$}/del');
+        return $response->getBody();
+    }
+    /*
+     * 批量删除
+     * @param Request $request
+     */
+    public function batchRemoveBKUser(Request $request)
+    {
+        $ids = $request->params['ids'];
+
+        $code='200';
+        $arr = explode(',',$ids);
+        foreach ($arr as $item ){
+            $status= $this->deleteCompany($item);
+            if($status->code!='200')
+            {
+                $code=$status->msg;
+            }
+        }
+        return $code;
+    }
+
+
+    //停用启用自由人员状态
+    public function changeBrokerCompanyUserStatus(Request $request)
+    {
+        $obj =$request->params ;
+
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+        ]);
+        if ($obj['status'] == 1) {
+            $response = $client->request('GET', '/api/qd/ziyou/' . $obj['id'] .'/start', [
+                ]
+            );
+            echo $response->getBody();
+        } else {
+            $response = $client->request('GET', '/api/qd/ziyou/' . $obj['id'] . '/stop', [
+                ]
+            );
+            echo $response->getBody();
+        }
+    }
 
 }

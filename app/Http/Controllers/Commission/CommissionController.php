@@ -24,7 +24,7 @@ class CommissionController extends Controller
 
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
 
         $r = $client->request('POST', '/api/qd/apply/add', [

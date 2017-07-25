@@ -25,7 +25,7 @@ class purchaseContractController extends Controller
         }
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
             $response = $client->request('GET', '/api/contract/sf/list',[
                 'query'=>[
@@ -47,7 +47,7 @@ class purchaseContractController extends Controller
     {
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/sf/create');
         echo $response->getBody();
@@ -66,7 +66,7 @@ class purchaseContractController extends Controller
         //数据格式化
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $data = $request->params;
@@ -93,7 +93,7 @@ class purchaseContractController extends Controller
     {
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id);
         $res = $response->getBody();
@@ -116,13 +116,13 @@ class purchaseContractController extends Controller
         //0.将合同提交
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
         //1.根据楼栋的id取获取 objareaID
         $client = new Client ([
             'base_uri' => $this->work_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/wf/getzdareaid?zd='.$zd);
         $objareaid = $response->getBody()->getContents();
@@ -140,7 +140,7 @@ class purchaseContractController extends Controller
         //2.服务创建审核任务
         $client = new Client([
             'base_uri' => $this->work_url,
-            'timeout'  => 2.0,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         //return $data;
@@ -163,7 +163,7 @@ class purchaseContractController extends Controller
     {
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST', '/api/contract/sf/buchongXieyi/save', [
@@ -189,7 +189,7 @@ class purchaseContractController extends Controller
     public function review(Request $request){
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
 
@@ -205,7 +205,7 @@ class purchaseContractController extends Controller
         $data['id'] = $request->params['id'];
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         //条
@@ -233,7 +233,7 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirm');
         echo $response->getBody();
@@ -243,7 +243,7 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirming');
         echo $response->getBody();
@@ -253,7 +253,7 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/violating');
         echo $response->getBody();
@@ -263,7 +263,7 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/terminated');
         echo $response->getBody();
@@ -273,7 +273,7 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/releasing');
         echo $response->getBody();
@@ -285,7 +285,7 @@ class purchaseContractController extends Controller
 
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/released');
         $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$xyid.'/confrim?id='.$xyid);
@@ -296,7 +296,7 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', "/api/contract/sf/$id/approving");
         echo $response->getBody();
@@ -309,7 +309,7 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$id);
         echo $response->getBody();
@@ -318,7 +318,7 @@ class purchaseContractController extends Controller
     public function weiYueInfo(Request $request){
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST', '/api/cw/comm/inithtwy', [
@@ -333,7 +333,7 @@ class purchaseContractController extends Controller
     public function weiYueSave(Request $request){
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST', '/api/contract/sf/weiyue/save', [

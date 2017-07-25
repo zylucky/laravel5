@@ -27,7 +27,7 @@ class payableRecordController extends Controller
         $page= Input::get('page');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/qd/compay/list',[
             'query' => [

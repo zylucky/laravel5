@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
-class brokerCompanyHistoryController extends Controller
+class brokerUserHistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,6 @@ class brokerCompanyHistoryController extends Controller
     {
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
-        $companyId=Input::get('id');
 
         $client = new Client ([
             'base_uri' => $this->base_url,
@@ -28,7 +27,6 @@ class brokerCompanyHistoryController extends Controller
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-                'compayid'=>1,
             ]
         ]);
         return $response->getBody();
@@ -60,16 +58,14 @@ class brokerCompanyHistoryController extends Controller
     public function store(Request $request)
     {
 
-      // dd( $request->params);
-        //"genjinjindo":"一","genjindate":1500364339000,"genjinren":"张三","tPersonId":1,
-        $obj=array_merge($request->params,Array('genjinren'=>"张三",'tPersonId'=>1));
+       dd( $request->params);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
 
         $r = $client->request('POST', '/api/qd/gj/compay/add', [
-            'json' => $obj
+            'json' => $request->params
         ]);
         return  $r ->getBody();
     }

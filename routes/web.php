@@ -108,13 +108,27 @@ Route::group(['prefix' => 'brokerCompany'], function () {
     Route::post('checkbkNameList','BrokerCompany\brokerCompanyController@checkbkNameList');
     Route::post('getGSSXDicList','BrokerCompany\brokerCompanyController@getGSSXDicList');
     Route::post('getFWDXDicList','BrokerCompany\brokerCompanyController@getFWDXDicList');
+    Route::post('getYWQYDicList','BrokerCompany\brokerCompanyController@getYWQYDicList');
+    Route::post('getXZQYDicList','BrokerCompany\brokerCompanyController@getXZQYDicList');
+    Route::post('getJDDicList','BrokerCompany\brokerCompanyController@getJDDicList');
+    Route::post('changeBrokerCompanyStatus','BrokerCompany\brokerCompanyController@changeBrokerCompanyStatus');
+    Route::post('getXYDJDicList','BrokerCompany\brokerCompanyController@getXYDJDicList');
+    Route::post('getYSLXRDicList','BrokerCompany\brokerCompanyController@getYSLXRDicList');
 });
 //渠道公司人员
 Route::group(['prefix' => 'brokerCompanyUser'], function () {
     Route::post('getbkNameList','BrokerCompany\brokerCompanyUserController@getbkNameList');
+    Route::post('changeBrokerCompanyUserStatus','BrokerCompany\brokerCompanyUserController@changeBrokerCompanyUserStatus');
+    Route::post('getQDDJDicList','BrokerCompany\brokerCompanyUserController@getQDDJDicList');
 });
+//自由经纪人
+Route::group(['prefix' => 'brokerUser'], function () {
+    Route::post('changeBrokerUserStatus','BrokerCompany\brokerUserController@changeBrokerCompanyUserStatus');
+});
+Route::resource('brokerUser','BrokerCompany\brokerUserController');
 Route::resource('brokerCompanyHistory','BrokerCompany\brokerCompanyHistoryController');
 Route::resource('brokerCompanyUserHistory','BrokerCompany\brokerCompanyUserHistoryController');
+Route::resource('brokerUserHistory','BrokerCompany\brokerUserHistoryController');
 
 Route::post('Commission/contractPayType','Commission\CommissionController@selectCommissionPayType');
 

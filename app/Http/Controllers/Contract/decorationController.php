@@ -20,7 +20,7 @@ class decorationController extends Controller
         }
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/gc/list',[
             'query'=>[
@@ -37,7 +37,7 @@ class decorationController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/gc/',[
             'query'=>[
@@ -51,7 +51,7 @@ class decorationController extends Controller
     public function submit(Request $request){
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $data = $request->params;
@@ -64,7 +64,7 @@ class decorationController extends Controller
     public function store(Request $request){
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $data = $request->params;
@@ -79,7 +79,7 @@ class decorationController extends Controller
         $status = Input::get('status');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         switch ($status)
         {

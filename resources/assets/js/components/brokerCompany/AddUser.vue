@@ -1,134 +1,52 @@
 <template>
 
-    <el-row >
+    <el-row>
         <div style="margin-bottom: 60px;"></div>
-        <el-form label-Weizhi="right" ref="brokerCompanyUserForm" :rules="brokerCompanyUserFormRules" label-width="180px"
+        <el-form label-Weizhi="right" ref="brokerCompanyUserForm" :rules="brokerCompanyUserFormRules"
+                 label-width="180px"
                  :model="brokerCompanyUserForm" class="demo-dynamic">
             <el-col :span="18">
 
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item required label="姓名" prop="qdPername">
+                        <el-form-item label="姓名" prop="qdPername">
                             <el-input v-model="brokerCompanyUserForm.qdPername"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="职务" prop="yjType">
-                            <el-input v-model="brokerCompanyUserForm.yjType"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="联系电话" prop="yjType">
-                            <el-input v-model="brokerCompanyUserForm.yjType"></el-input>
+                        <el-form-item label="职务" prop="zhiwu">
+                            <el-input v-model="brokerCompanyUserForm.zhiwu"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item required label="渠道公司" prop="yjType">
-                            <el-input v-model="brokerCompanyUserForm.qvDaoCompayXinxi.compayname"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="公司所在楼盘" prop="yjType">
-                            <el-input v-model="brokerCompanyUserForm.yjType"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="业务区域" prop="yjType">
-                            <el-input v-model="brokerCompanyUserForm.yjType"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item required label="幼狮联系人1" prop="yjType">
-                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="幼狮联系人2" prop="yjType">
-                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="幼狮联系人3" prop="yjType">
-                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
 
+                <el-form-item label="联系电话" v-for="(item, index) in brokerCompanyUserForm.telList"
+                              :key="item.key">
                     <el-col :span="8">
-                        <el-form-item label="是否添加微信好友" prop="yjType">
-                            <el-radio-group v-model="brokerCompanyUserForm.yjType">
-                                <el-radio :label="1">是</el-radio>
-                                <el-radio :label="2">否</el-radio>
-                            </el-radio-group>
+                        <el-form-item>
+                            <el-input v-model="brokerCompanyUserForm.telList[index].dianhua"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="添加好友人数" prop="yjType">
-                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="是否带看幼狮" prop="yjType">
-                            <el-radio-group v-model="brokerCompanyUserForm.yjType">
-                                <el-radio :label="1">是</el-radio>
-                                <el-radio :label="2">否</el-radio>
-                            </el-radio-group>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="带看次数" prop="leixing">
-                            <el-input v-model.number="brokerCompanyUserForm.qianyuemianji"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="带看对接人数" prop="qianyuemianji">
-                            <el-input v-model.number="brokerCompanyUserForm.qianyuemianji"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="是否签约过幼狮" prop="compayname">
-                            <el-radio-group v-model="brokerCompanyUserForm.dailirenSex">
-                                <el-radio :label="1">是</el-radio>
-                                <el-radio :label="2">否</el-radio>
-                            </el-radio-group>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="签约次数" prop="yjType">
-                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item required label="签约对接人数" prop="yjType">
-                            <el-input v-model.number="brokerCompanyUserForm.yjType"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-form-item label="渠道等级" prop="yjType">
-                    <el-select v-model="brokerCompanyUserForm.yjType" placeholder="">
-                        <el-option
-                                v-for="item in options"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                        </el-option>
-                    </el-select>
+                    <el-button v-if="index>0" @click.prevent="removeFreeItem(item)">删除</el-button>
                 </el-form-item>
+                <el-form-item>
+                    <el-button v-show="editVisible" @click="addFreeItem">新增</el-button>
+                </el-form-item>
+
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="佣金类型" prop="yjType">
-                            <el-select v-model="brokerCompanyUserForm.yjType" placeholder="">
+                        <el-form-item label="渠道公司名称" prop="tQdCompayId">
+                            <el-select
+                                    v-model="brokerCompanyUserForm.qvDaoCompayXinxi.tQdCompayId"
+                                    filterable
+                                    remote
+                                    id="compayname"
+                                    @change="change1"
+                                    placeholder="渠道公司名称"
+                                    :remote-method="remoteMethod1"
+                                    :loading="bkNameloading">
                                 <el-option
-                                        v-for="item in options"
+                                        v-for="item in options1"
                                         :key="item.value"
                                         :label="item.label"
                                         :value="item.value">
@@ -137,26 +55,154 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="收房佣金占比" prop="yjzbSf">
-                            <el-input v-model.number="brokerCompanyUserForm.yjzbSf" value="" auto-complete="off"></el-input>
+                        <el-form-item label="公司所在楼盘" prop="gsLoupan">
+                            <el-input v-model="brokerCompanyUserForm.qvDaoCompayXinxi.gsLoupan"
+                                      disabled="disabled"></el-input>
+                        </el-form-item>
+                    </el-col>
+
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item required label="幼狮联系人1" prop="yslianxiren1Id">
+                            <el-select
+                                    v-model="brokerCompanyUserForm.yslianxiren1Id"
+                                    filterable
+                                    remote
+                                    @change="changeyslxr1"
+                                    placeholder="请输入幼狮联系人"
+                                    :remote-method="remoteMethodyslxr1"
+                                    :loading="fristyslxrloading1">
+                                <el-option
+                                        v-for="item in optionsyslxr1"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                </el-option>
+                            </el-select>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="出房佣金占比" prop="yjzbCf">
-                            <el-input v-model.number="brokerCompanyUserForm.yjzbCf" auto-complete="off"></el-input>
+                        <el-form-item required label="幼狮联系人2" prop="yslianxiren2Id">
+                            <el-select
+                                    v-model="brokerCompanyUserForm.yslianxiren2Id"
+                                    filterable
+                                    remote
+                                    @change="changeyslxr2"
+                                    placeholder="请输入幼狮联系人"
+                                    :remote-method="remoteMethodyslxr2"
+                                    :loading="fristyslxrloading2">
+                                <el-option
+                                        v-for="item in optionsyslxr2"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item required label="幼狮联系人3" prop="yslianxiren3Id">
+                            <el-select
+                                    v-model="brokerCompanyUserForm.yslianxiren3Id"
+                                    filterable
+                                    remote
+                                    @change="changeyslxr3"
+                                    placeholder="请输入幼狮联系人"
+                                    :remote-method="remoteMethodyslxr3"
+                                    :loading="fristyslxrloading3">
+                                <el-option
+                                        v-for="item in optionsyslxr3"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                </el-option>
+                            </el-select>
                         </el-form-item>
                     </el-col>
                 </el-row>
+                <el-row>
 
+                    <el-col :span="8">
+                        <el-form-item label="是否添加微信好友" prop="shifouweixin">
+                            <el-radio-group v-model="brokerCompanyUserForm.shifouweixin">
+                                <el-radio :label=true>是</el-radio>
+                                <el-radio :label=false>否</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="添加好友人数" prop="tianjiahaoyourenshu">
+                            <el-input v-model.number="brokerCompanyUserForm.tianjiahaoyourenshu"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="是否带看幼狮" prop="shifoudaikanyoushi">
+                            <el-radio-group v-model="brokerCompanyUserForm.shifoudaikanyoushi">
+                                <el-radio :label=true>是</el-radio>
+                                <el-radio :label=false>否</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="带看次数" prop="daikancishu">
+                            <el-input v-model.number="brokerCompanyUserForm.daikancishu"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="带看对接人数" prop="daikanduijierenshu">
+                            <el-input v-model.number="brokerCompanyUserForm.daikanduijierenshu"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="是否签约过幼狮" prop="shifouqianyueyoushifang">
+                            <el-radio-group v-model="brokerCompanyUserForm.shifouqianyueyoushifang">
+                                <el-radio :label=true>是</el-radio>
+                                <el-radio :label=false>否</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="签约次数" prop="qianyuecishu">
+                            <el-input v-model.number="brokerCompanyUserForm.qianyuecishu"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="签约对接人数" prop="qianyueduijierenshu">
+                            <el-input v-model.number="brokerCompanyUserForm.qianyueduijierenshu"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-form-item label="渠道等级" prop="qvdaodengji">
+                    <el-select v-model="brokerCompanyUserForm.qvdaodengji" placeholder="">
+                        <el-option
+                                v-for="item in optionsqddj"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="备注" prop="beizhu">
+                    <el-input type="textarea" v-model="brokerCompanyUserForm.beizhu" auto-complete="off"></el-input>
+                </el-form-item>
             </el-col>
         </el-form>
+        <el-button type="primary" v-show="editVisible" @click="save" style="margin-top:100px;">保存</el-button>
+        <el-button  v-show="editVisible" @click.native="">取消</el-button>
         <el-col>
             <div v-show="showeidt">
                 <el-button @click.native="change">跟进记录</el-button>
-            </div>
+                <add-history v-show="showhistory"></add-history>
+
             <div v-show="showed">
-                <el-form :model="editForm" label-width="180px" :rules="editFormRules" ref="editForm" label-Weizhi="right" >
-                    {{brokerCompanyUserForm.yjzbCf}}
+                <el-form :model="editForm" label-width="180px" :rules="editFormRules" ref="editForm"
+                         label-Weizhi="right">
+
                     <el-row :span="18">
                         <el-form-item label="信息是否有效" prop="shifouyouxiao">
                             <el-radio-group v-model="editForm.shifouyouxiao">
@@ -184,23 +230,39 @@
                     </el-row>
                     <el-row :span="18">
                         <el-form-item label="内容" prop="shuoming">
-                            <el-input type="textarea" v-model="editForm.shuoming" auto-complete="off" style="width:1100px"></el-input>
+                            <el-input type="textarea" v-model="editForm.shuoming" auto-complete="off"
+                                      style="width:1100px"></el-input>
                         </el-form-item>
                     </el-row>
                     <a href="/#/brokerCompanyUserHistory">查看历史记录</a>
                 </el-form>
             </div>
-            <el-button type="primary" v-show="editVisible" @click="save" style="margin-top:20px;">保存</el-button>
-            <el-button @click.native="editFormVisible = false">取消</el-button>
+            </div>
+            <el-button type="primary" v-show="editVisible" @click="savehistory" style="margin-top:20px;">保存</el-button>
+            <el-button v-show="editVisible" @click.native="editFormVisible = false">取消</el-button>
         </el-col>
     </el-row>
 </template>
 <script>
-    import {getLoupanList, getLoudongList, getFanghaoList, getPurchaseContractInfo} from '../../api/api';
+    import {
+        getbkNameList,
+        getLoudongList,
+        getFanghaoList,
+        getPurchaseContractInfo,
+        getYSLXRDicList,
+        addBrokerCompanyUserHistory,
+        getBrokerCompanyUserInfo,
+        editBrokerCompanyUser,
+        addBrokerCompanyUser,
+        getQDDJDicList
+
+    } from '../../api/api';
+    import AddHistory from './UserHistoryList.vue'
     import ElRow from "element-ui/packages/row/src/row";
     export default {
         components: {
-            ElRow
+            ElRow,
+            AddHistory
         },
         data() {
             return {
@@ -208,151 +270,281 @@
                 dialogVisible: false,
                 showed: false,
                 brokerCompanyUserForm: {
-                    omcId: null,
-                    loupanOmcId: null,
-                    loudongOmcId: null,
-                    loupanName: null,
-                    loudongName: null,
-                    fanghao: null,
-                    weizhi: null,
-                    chanquanzhenghao: null,
-                    jianzhumianji: null,
-                    qianyuemianji: null,
-                    leixing: null,
-                    hetongid: null,
-                    quyu: '',
-                    isdiya: 0,
-                    diyaren: '',
-                    value1: null,
-                    qvDaoCompayXinxi:[{
-                        compayname:'',}
-                    ]
-                    ,
+                    "tQdPersonId": '',
+                    "tQdCompayId": '',
+                    "qdPername": '',
+                    "zhiwu": null,
+                    "qdPertel": '',
+                    "yjzbSf":'',
+                    "yjzbCf":'',
+                    "yjType": '',
+                    "qdType": '',
+                    "yslianxiren1": null,
+                    "yslianxiren1Id": null,
+                    "yslianxiren2": null,
+                    "yslianxiren2Id": null,
+                    "yslianxiren3": null,
+                    "yslianxiren3Id": null,
+                    "shifouweixin": null,
+                    "tianjiahaoyourenshu": null,
+                    "shifoudaikanyoushi": null,
+                    "daikancishu": null,
+                    "daikanduijierenshu": null,
+                    "shifouqianyueyoushifang": null,
+                    "qianyuecishu": null,
+                    "qianyueduijierenshu": null,
+                    "qvdaodengji": null,
+                    "beizhu": null,
+                    "zhuangtai": null,
+                    "qvDaoCompayXinxi": {
+                        "tQdCompayId": '',
+                        "compayname": '',
+                        "gsLoupan": '',
+                    },
+                    "telList": [
+                        {
+                            "tQdPersonTelId": '',
+                            "dianhua": '',
+                            "qdType": 0,
+                            "personid": ''
+                        }
+                    ],
+                    "persontype": 0,
+                    "genjinDate": null,
+                    "wanchengdu": '',
                 },
+                list: [],
                 purchaseContract: {
                     type: 0,
                 },
-                brokerCompanyUserFormRules: {
-                    loupanName: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    loudongName: [
-                        {required: true, message: '不能为空'}
-                    ],
-                    fanghao: [
-                        {required: true, message: '不能为空'}
-                    ],
-
-                },
+                optionsqddj:[],
+                optionsyslxr1:[],
+                fristyslxrloading1:false,
+                optionsyslxr2:[],
+                fristyslxrloading2:false,
+                optionsyslxr3:[],
+                fristyslxrloading3:false,
+                brokerCompanyUserFormRules: {},
                 editVisible: true,
-                //楼盘数据
+                bkNameloading: false,
                 options1: [],
-                list1: [],
-                loupanloading: false,
-                estate: [],//服务器搜索的楼盘数据放入这个数组中
-                // 楼栋数据
-                options2: [],
-                list2: [],
-                loudongloading: false,
-                building: [],//服务器搜索的楼盘数据放入这个数组中
-                // 房间数据
-                options3: [],
-                list3: [],
-                fanghaoloading: false,
-                house: [],//服务器搜索的楼盘数据放入这个数组中
-                houseData: [],
-                //房间类型
-                options: [
-                    {
-                        value: 0,
-                        label: '请选择'
-                    }, {
-                        value: 1,
-                        label: '公寓'
-                    }, {
-                        value: 2,
-                        label: '写字楼'
-                    }, {
-                        value: 3,
-                        label: '商铺'
-                    }, {
-                        value: 4,
-                        label: '住宅'
-                    }
-                ],
-                //房源数据初始化
-                showeidt:true,
 
+                //房源数据初始化
+                showeidt: true,
+                showhistory:false,
                 //编辑界面数据
                 editLoading: false,
                 editForm: {
                     tQdCompayId: 0,
                     shifouyouxiao: null,
                     xinxishifouzhunque: null,
-                    shifouzhuanhang:null,
+                    shifouzhuanhang: null,
                     shuoming: '',
                 },
-                editFormRules: {
-                    compayname: [
-                        {required: true, message: '请输入渠道公司名称', trigger: 'blur'},
-                    ],
-
-                },
+                editFormRules: {},
             }
         },
         methods: {
+            //增加
+            addFreeItem() {
+                this.brokerCompanyUserForm.telList.push({
+                    "tQdPersonTelId": '',
+                    "dianhua": '',
+                    "qdType": 0,
+                    "personid": ''
+                });
+            },
+            //获取渠道等级
+            remoteMethodqddj() {
 
-            //显示和隐藏跟进记录
-            change(){
-                if (this.$route.path == '/brokerCompanyUserList/view') {
+                getQDDJDicList().then((res) => {
+                    if (res.status == '200') {
+                        for (var item in res.data.data) {
+                            this.optionsqddj.push({
+                                value: res.data.data[item].enumValue,
+                                label: res.data.data[item].enumKey
+                            });
+                        }
 
-                }else{
-                if (this.showed == false) {
-                    this.showed = true;
-                } else {
-                    this.showed = false;
-                }
+                    } else {
+                        this.$message({
+                            message: '获取公司属性数据失败',
+                            type: 'error'
+                        });
+                    }
+                })
+            },
+            //移除
+            removeFreeItem(item) {
+                var index = this.brokerCompanyUserForm.telList.indexOf(item)
+                if (index !== -1) {
+                    this.brokerCompanyUserForm.telList.splice(index, 1)
                 }
             },
-            //获取楼盘
-            remoteMethod1(query) {
+            //显示和隐藏跟进记录
+            change(){
+                if (this.$route.path =='/brokerCompanyUserList/view') {
+                    if (this.showhistory == false) {
+                        this.showhistory = true;
+                    } else {
+                        this.showhistory = false;
+                    }
+                } else {
+                    if (this.showed == false) {
+                        this.showed = true;
+                    } else {
+                        this.showed = false;
+                    }
+                }
+
+            },
+            //获取幼狮联系人列表
+            remoteMethodyslxr1(query) {
                 let para = {
-                    str: query
+                    uname: query
                 };
-                this.loupanloading = true;
-                getLoupanList(para).then((res) => {
+                this.list = [];
+                this.fristyslxrloading1 = true;
+                getYSLXRDicList(para).then((res) => {
                     let arr = [];
                     arr[0] = '';
                     for (var i in res.data) {
-                        arr[i] = res.data [i];
+                        arr[i] = res.data[i]
                     }
                     this.estate = arr;
-                    this.loupanloading = false;
+                    this.fristyslxrloading1 = false;
                     this.list = this.estate.map((item, index) => {
                         return {value: index, label: item};
                     });
                     if (query !== '') {
-                        this.loupanloading = true;
+                        this.fristyslxrloading1 = true;
                         setTimeout(() => {
-                            this.loupanloading = false;
-                            this.options1 = this.list.filter(item => {
+
+                            this.fristyslxrloading1 = false;
+                            this.optionsyslxr1 = this.list.filter(item => {
                                 return item.label.toLowerCase()
                                         .indexOf(query.toLowerCase()) > -1;
                             });
                         }, 200);
                     } else {
+                        this.optionsyslxr1 = [];
+                    }
+                });
+            },
+            //获取幼狮联系人列表
+            remoteMethodyslxr2(query) {
+                let para = {
+                    uname: query
+                };
+                 this.list = [];
+                this.fristyslxrloading2 = true;
+                getYSLXRDicList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for (var i in res.data) {
+                        arr[i] = res.data[i]
+                    }
+                    this.estate = arr;
+                    this.fristyslxrloading2 = false;
+                    this.list = this.estate.map((item, index) => {
+                        return {value: index, label: item};
+                    });
+                    if (query !== '') {
+                        this.fristyslxrloading2 = true;
+                        setTimeout(() => {
+
+                            this.fristyslxrloading2 = false;
+                            this.optionsyslxr2 = this.list.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query.toLowerCase()) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.optionsyslxr2 = [];
+                    }
+                });
+            },
+            //获取幼狮联系人列表
+            remoteMethodyslxr3(query) {
+                let para = {
+                    uname: query
+                };
+                this.list = [];
+                this.fristyslxrloading3 = true;
+                getYSLXRDicList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for (var i in res.data) {
+                        arr[i] = res.data[i]
+                    }
+                    this.estate = arr;
+                    this.fristyslxrloading3 = false;
+                    this.list = this.estate.map((item, index) => {
+                        return {value: index, label: item};
+                    });
+                    if (query !== '') {
+                        this.fristyslxrloading3 = true;
+                        setTimeout(() => {
+
+                            this.fristyslxrloading3 = false;
+                            this.optionsyslxr3 = this.list.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query.toLowerCase()) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.optionsyslxr3 = [];
+                    }
+                });
+            },
+            //获取渠道公司名称
+            remoteMethod1(query) {
+                let para = {
+                    name: query
+                };
+                this.bkNameloading = true;
+                this.list = [];
+                getbkNameList(para).then((res) => {
+                    for (let i in res.data.data) {
+                        this.list.push({
+                            value: res.data.data[i].tQdCompayId,
+                            label: res.data.data[i].compayname,
+                            lpname: res.data.data[i].compaytest
+                        });
+                    }
+                    this.bkNameloading = false;
+                    if (query !== '') {
+                        this.bkNameloading = true;
+                        setTimeout(() => {
+
+                            this.bkNameloading = false;
+                            this.options1 = this.list.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query.toLowerCase()) > -1;
+                            });
+                        }, 200);
+
+                    } else {
                         this.options1 = [];
                     }
+
                 });
 
             },
             //根据url得到的合同ID，来获取数据
-            getPurchaseContract(id){
-                getPurchaseContractInfo(id).then((res) => {
+            getBrokerCompanyUser(id){
+                getBrokerCompanyUserInfo(id).then((res) => {
                     if (res.data.code == '200') {
-                        //把数据分别赋值给三个组件的变量
-                        this.fuzhi(res);
-
+                        this.options1.push( {value: res.data.data.qvDaoCompayXinxi.tQdCompayId,
+                            label:res.data.data.qvDaoCompayXinxi.compayname,
+                            lpname: res.data.data.qvDaoCompayXinxi.gsLoupan}) ;
+                         this.optionsyslxr1.push( {value: res.data.data.yslianxiren1Id,
+                             label:res.data.data.yslianxiren1}) ;
+                        this.optionsyslxr2.push( {value: res.data.data.yslianxiren2Id,
+                            label:res.data.data.yslianxiren2}) ;
+                        this.optionsyslxr3.push( {value: res.data.data.yslianxiren3Id,
+                            label:res.data.data.yslianxiren3}) ;
+                        this.brokerCompanyUserForm= Object.assign({}, res.data.data );
                     } else {
                         this.$message({
                             message: '获取数据失败',
@@ -361,110 +553,87 @@
                     }
                 })
             },
-            //获取楼栋
-            remoteMethod2(query) {
-                let para = {
-                    loupanOmcId: this.brokerCompanyUserForm.loupanOmcId,
-                };
-                this.loupanloading = true;
-                getLoudongList(para).then((res) => {
-                    let arr = [];
-                    arr[0] = '';
-                    for (var i in res.data) {
-                        arr[i] = res.data [i];
-                    }
-                    this.building = arr;
-                    this.loupanloading = false;
-                    this.list2 = this.building.map((item, index) => {
-                        return {value: index, label: item};
-                    });
-                    if (query !== '') {
-                        this.loupanloading = true;
-                        setTimeout(() => {
-                            this.loupanloading = false;
-                            this.options2 = this.list2.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
-                    } else {
-                        this.options2 = [];
-                    }
-                });
 
-            },
-            //获取房号
-            remoteMethod3(query) {
-                let para = {
-                    lpid: this.brokerCompanyUserForm.loupanOmcId,
-                    zdid: this.brokerCompanyUserForm.loudongOmcId,
-                };
-                this.fanghaoloading = true;
-                getFanghaoList(para).then((res) => {
-                    this.houseData = res.data;
-                    let arr = [];
-                    arr[0] = '';
-                    for (var i in res.data) {
-                        arr[res.data[i].id] = res.data[i].fybh;
-                    }
-                    this.house = arr;
-                    this.fanghaoloading = false;
-                    this.list3 = this.house.map((item, index) => {
-                        return {value: index, label: item};
-                    });
-                    if (query !== '') {
-                        this.fanghaoloading = true;
-                        setTimeout(() => {
-                            this.fanghaoloading = false;
-                            this.options3 = this.list3.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
-                    } else {
-                        this.options3 = [];
-                    }
-                });
-
-            },
-            //得到房间号以后，提取OMC的对应信息
+            //选择渠道公司后绑定楼盘名称
             change1(){
-                //楼盘
+                //渠道公司
                 for (var x in this.options1) {
-                    if (this.options1[x].label == this.brokerCompanyUserForm.loupanName) {
-                        this.brokerCompanyUserForm.loupanOmcId = this.options1[x].value;
-                        this.brokerCompanyUserForm.loudongName = null;//清除楼栋和房号的缓存
-                        this.brokerCompanyUserForm.loudongOmcId = null;//清除楼栋和房号的缓存
-                        this.brokerCompanyUserForm.fanghao = null;//清除楼栋和房号的缓存
-                        this.brokerCompanyUserForm.omcId = null;//清除楼栋和房号的缓存
+                    if (this.options1[x].value == this.brokerCompanyUserForm.qvDaoCompayXinxi.tQdCompayId) {
+                        this.brokerCompanyUserForm.qvDaoCompayXinxi.gsLoupan = this.options1[x].lpname;
                     }
                 }
             },
-            change2(){
-                //楼栋
-                for (var x in this.options2) {
-                    if (this.options2[x].label == this.brokerCompanyUserForm.loudongName) {
-                        this.brokerCompanyUserForm.loudongOmcId = this.options2[x].value;
-                        this.brokerCompanyUserForm.fanghao = null;//清除楼栋和房号的缓存
-                        this.brokerCompanyUserForm.omcId = null;//清除楼栋和房号的缓存
+
+
+            changeyslxr1(){
+                for (var x in this.optionsyslxr1) {
+                    if (this.optionsyslxr1[x].value == this.brokerCompanyUserForm.yslianxiren1Id) {
+                        this.brokerCompanyUserForm.yslianxiren1 = this.optionsyslxr1[x].label;
                     }
                 }
             },
-            change3(){
-                //房号
-                for (var x in this.options3) {
-                    if (this.options3[x].label == this.brokerCompanyUserForm.fanghao) {
-                        this.brokerCompanyUserForm.omcId = this.options3[x].value;
+
+
+            changeyslxr2(){
+                for (var x in this.optionsyslxr2) {
+                    if (this.optionsyslxr2[x].value == this.brokerCompanyUserForm.yslianxiren2Id) {
+                        this.brokerCompanyUserForm.yslianxiren2= this.optionsyslxr2[x].label;
                     }
                 }
-                for (var x in this.houseData) {
-                    if (this.houseData[x].id == this.brokerCompanyUserForm.omcId) {
-                        this.brokerCompanyUserForm.Jianzhumianji = this.houseData[x].fjmj;
-                        this.brokerCompanyUserForm.Qianyuemianji = this.houseData[x].fjmj;
+            },
+
+
+            changeyslxr3(){
+                for (var x in this.optionsyslxr3) {
+                    if (this.optionsyslxr3[x].value == this.brokerCompanyUserForm.yslianxiren3Id) {
+                        this.brokerCompanyUserForm.yslianxiren3 = this.optionsyslxr3[x].label;
                     }
                 }
             },
             save(){
+                this.$refs.brokerCompanyUserForm.validate((valid) => {
+                    if (valid) {
+                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                            let para = Object.assign({}, this.brokerCompanyUserForm);
+                            para.gsChenglishijian=(!para.gsChenglishijian || para.gsChenglishijian == '') ? '' :new Date(para.gsChenglishijian).toLocaleDateString();
+                            para.qianxieyishijian=(!para.qianxieyishijian || para.qianxieyishijian == '') ? '' :new Date(para.qianxieyishijian).toLocaleDateString();
+                            para.tQdCompayId=para.qvDaoCompayXinxi.tQdCompayId;
+                            if (this.brokerCompanyUserForm.tQdPersonId!=''&&this.brokerCompanyUserForm.tQdPersonId!=null) {
+                                editBrokerCompanyUser(para).then((res) => {
+                                    this.$message({
+                                        message: '提交成功',
+                                        type: 'success'
+                                    });
+                                });
+                            }else{
+                                addBrokerCompanyUser(para).then((res) => {
+                                    this.brokerCompanyUserForm.tQdPersonId=res.data.data.tQdPersonId;
+                                    this.$message({
+                                        message: '提交成功',
+                                        type: 'success'
+                                    });
+                                });
+                            }
+                        });
+                    }
+                });
+            },
+            savehistory(){
+                this.$refs.editForm.validate((valid) => {
+                    if (valid) {
+                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                            let para = Object.assign({}, this.editForm);
+                            para.tQdPersonId=this.$route.query.id;
+                            addBrokerCompanyUserHistory(para).then((res) => {
+
+                                this.$message({
+                                    message: '提交成功',
+                                    type: 'success'
+                                });
+                            });
+                        });
+                    }
+                });
             },
 
             handleRemove(file, fileList) {
@@ -476,32 +645,32 @@
             },
             disabledInput(){
                 var allInputs = document.getElementsByTagName('input');
+                var textArea = document.getElementsByTagName('textarea');
                 for (let i = 0; i < allInputs.length; i++) {
                     allInputs[i].disabled = "true";
                     allInputs[i].parentNode.className += " is-disabled";
+                }
+                for (let i = 0; i < textArea.length; i++) {
+                    textArea[i].disabled = "true";
+                    textArea[i].parentNode.className += " is-disabled";
                 }
             },
         },
         mounted() {
             //根据url得到的渠道ID，来获取数据
             if (this.$route.query.id != null) {
-                // this.getPurchaseContract(this.$route.query);
-                console.log( this.$route.query.stage);
-                this.brokerCompanyUserForm= Object.assign({}, this.$route.query.stage );
-                //console.log( this.brokerCompanyUserForm);
-                //console.log( this.brokerCompanyUserForm)
+                 this.getBrokerCompanyUser(this.$route.query);
             }
             //新增页面input禁用
             if (this.$route.path == '/brokerCompanyUserList/add') {
                 this.showeidt = false;
-
             }
             //详情页面input禁用
             if (this.$route.path == '/brokerCompanyUserList/view') {
                 this.editVisible = false;
                 this.disabledInput();
             }
-
+            this.remoteMethodqddj();
 
         }
 

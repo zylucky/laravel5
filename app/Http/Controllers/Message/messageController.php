@@ -23,7 +23,7 @@ class messageController  extends Controller
         $page= Input::get('page');
         $client = new Client ([
             'base_uri' =>$this->work_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('POST', '/api/wf/gettasksto',[
             'json' => [
@@ -125,7 +125,7 @@ class messageController  extends Controller
         //dd($obj);
         $client = new Client ([
             'base_uri' =>$this->work_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('POST', '/api/wf/dotask',[
             'json' =>$obj
@@ -143,7 +143,7 @@ class messageController  extends Controller
        // dd($obj);
         $client = new Client ([
             'base_uri' =>$this->work_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('POST', '/api/wf/dotask',[
             'json' =>$obj

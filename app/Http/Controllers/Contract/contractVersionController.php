@@ -20,7 +20,7 @@ class contractVersionController extends Controller
         }
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/contract/muban/list',[
             'query'=>[
@@ -39,7 +39,7 @@ class contractVersionController extends Controller
         $status = Input::get('status');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         switch ($status)
         {

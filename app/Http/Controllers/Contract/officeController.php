@@ -13,7 +13,7 @@ class officeController extends Controller
     public function loupanList(){
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $loupan = Input::get('str');
         $response = $client->request('GET', '/api/fangyuan/searchloupan',[
@@ -33,7 +33,7 @@ class officeController extends Controller
     public function loudongList(){
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $loupanOmcId = Input::get('loupanOmcId');
         $response = $client->request('GET', '/api/fangyuan/zd',[
@@ -54,7 +54,7 @@ class officeController extends Controller
     public function fanghaoList(){
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $lpid = Input::get('lpid');
         $zdid = Input::get('zdid');
@@ -81,7 +81,7 @@ class officeController extends Controller
     public function salefanghaoList(){
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $lpid = Input::get('lpid');
         $zdid = Input::get('zdid');

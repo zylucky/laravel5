@@ -27,7 +27,7 @@ class accountsReceivableController extends Controller
         $page= Input::get('page');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/qd/compay/list',[
             'query' => [
@@ -66,7 +66,7 @@ class accountsReceivableController extends Controller
         //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
 
         $r = $client->request('POST', '/api/qd/compay/add', [
@@ -112,7 +112,7 @@ class accountsReceivableController extends Controller
         //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
 
         $r = $client->request('POST', '/api/qd/compay/alter', [
@@ -139,7 +139,7 @@ class accountsReceivableController extends Controller
 
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('POST', '/api/qd/compay/del',[
                 'json' => [
