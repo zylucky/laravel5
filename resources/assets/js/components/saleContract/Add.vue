@@ -399,14 +399,21 @@
                 //console.log(this.property.xsOffice[0].omcId);
                 //console.log(para);
                 getContractChuzuren(para).then((res) => {
-                    if(res.data.code=='200'){
-                        this.renter.chengzufang = res.data.data;
+                    if(res.data.code=='102001'){
+                        this.renter.chengzufang = '无';
                     }else{
-                        this.$message({
-                            message: '获取收房数据失败',
-                            type: 'error'
-                        });
+                        if(res.data.code=='200'){
+                            this.renter.chengzufang = res.data.data;
+                            console.log(this.renter.chengzufang);
+                        }else{
+                            console.log(res.data.code);
+                            this.$message({
+                                message: '获取收房数据失败',
+                                type: 'error'
+                            });
+                        }
                     }
+
                 });
             },
         },

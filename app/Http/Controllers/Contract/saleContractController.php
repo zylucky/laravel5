@@ -104,7 +104,7 @@ class saleContractController extends Controller
         //dd(666);
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout' => 2.0,
+
         ]);
         $response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
         echo $response->getBody();
@@ -165,7 +165,7 @@ class saleContractController extends Controller
         //dd($fangyuanId);
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout' => 2.0,
+
         ]);
         $response = $client->request('GET','/api/contract/sf/queryChengzufang/'.$fangyuanId);
         echo $response->getBody();
@@ -200,7 +200,7 @@ class saleContractController extends Controller
         //dd($request);
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout' => 2.0,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST','/api/contract/xs/jieyueXieyi/submit', [

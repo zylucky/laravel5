@@ -138,7 +138,7 @@ let routes = [
             { path:'/saleContract/review',component:SaleContractAdd,name:'出房审核',hidden:true},
             { path:'/saleContract/jieyue',component:SaleContractJieyue,name:'解约协议',hidden:true},
             { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
-            { path:'/saleContact/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true},
+            { path:'/saleContract/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true},
 
 
             { path:'/decoration', component: DecorationList, name: '工程合同'},
