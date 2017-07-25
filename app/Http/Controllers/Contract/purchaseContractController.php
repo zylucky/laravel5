@@ -437,6 +437,6 @@ class purchaseContractController extends Controller
         ]);
         $response = $client->request('GET', '/api/contract/sf/img/'.$id.'/del/');
         echo $response->getBody();
-        
+
     }
 }
