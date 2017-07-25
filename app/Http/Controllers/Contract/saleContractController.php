@@ -104,7 +104,7 @@ class saleContractController extends Controller
         //dd(666);
         $client = new Client([
             'base_uri' => $this->base_url,
-
+            'timeout' => 2.0,
         ]);
         $response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
         echo $response->getBody();
@@ -165,15 +165,7 @@ class saleContractController extends Controller
         //dd($fangyuanId);
         $client = new Client([
             'base_uri' => $this->base_url,
-<<<<<<< HEAD
-
-            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
-        ]);
-        $response = $client->request('POST', '/api/contract/xs/delete', [
-            'json' => $request->params
-=======
             'timeout' => 2.0,
->>>>>>> 4ebb5b53b94bbe9ec661915235c0508b3260d1ba
         ]);
         $response = $client->request('GET','/api/contract/sf/queryChengzufang/'.$fangyuanId);
         echo $response->getBody();
@@ -208,7 +200,7 @@ class saleContractController extends Controller
         //dd($request);
         $client = new Client([
             'base_uri' => $this->base_url,
-
+            'timeout' => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST','/api/contract/xs/jieyueXieyi/submit', [
@@ -257,18 +249,6 @@ class saleContractController extends Controller
         ]);
         $response = $client->request('GET', '/api/contract/xs/'.$id);
         echo $response->getBody();
-<<<<<<< HEAD
-        /*$client = new Client([
-            'base_uri' => $this->base_url,
-
-            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
-        ]);
-        $response = $client->request('POST', '/api/contract/sf/buchongXieyi/save', [
-            'json' => $request->params
-        ]);
-        echo $response->getBody();*/
-=======
->>>>>>> 4ebb5b53b94bbe9ec661915235c0508b3260d1ba
     }
     //合同状态变为：正在确认
     public function confirm(){

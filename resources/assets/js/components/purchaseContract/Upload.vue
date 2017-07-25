@@ -3,7 +3,7 @@
         <el-form-item label="合同">
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage?type=1"
+                    action="/purchaseContract/addCopyImage?type=1"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -23,7 +23,7 @@
         <el-form-item label="产权人身份证">
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/?type=2"
+                    action="/purchaseContract/addCopyImage?type=2"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -40,10 +40,9 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="营业执照">
-            
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
+                    action="/purchaseContract/addCopyImage?type=3"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -51,7 +50,7 @@
                     :on-preview="handlePictureCardPreview"
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
-                    :file-list="chanquanrenList"
+                    :file-list="yingyezhizhao"
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
@@ -60,10 +59,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="法人证件">
-            
+
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
+                    action="/purchaseContract/addCopyImage?type=4"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -71,7 +70,7 @@
                     :on-preview="handlePictureCardPreview"
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
-                    :file-list="chanquanrenList"
+                    :file-list="faren"
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
@@ -80,10 +79,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="房产证">
-            
+
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
+                    action="/purchaseContract/addCopyImage?type=5"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -91,7 +90,7 @@
                     :on-preview="handlePictureCardPreview"
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
-                    :file-list="chanquanrenList"
+                    :file-list="fangchanzheng"
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
@@ -100,10 +99,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="不动产授权委托书">
-            
+
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
+                    action="/purchaseContract/addCopyImage?type=6"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -111,7 +110,7 @@
                     :on-preview="handlePictureCardPreview"
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
-                    :file-list="chanquanrenList"
+                    :file-list="budongchan"
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
@@ -120,10 +119,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="业主授权代理人委托书">
-            
+
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
+                    action="/purchaseContract/addCopyImage?type=7"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -131,7 +130,7 @@
                     :on-preview="handlePictureCardPreview"
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
-                    :file-list="chanquanrenList"
+                    :file-list="yezhushouquan"
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
@@ -140,10 +139,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="委托人身份证">
-            
+
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
+                    action="/purchaseContract/addCopyImage?type=8"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -151,7 +150,7 @@
                     :on-preview="handlePictureCardPreview"
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
-                    :file-list="chanquanrenList"
+                    :file-list="weituoren"
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
@@ -160,10 +159,10 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="房屋交割单">
-            
+
             <br>
             <el-upload
-                    action="http://127.0.0.1:8000/purchaseContract/addCopyImage/"
+                    action="/purchaseContract/addCopyImage?type=9"
                     list-type="picture-card"
                     :headers="headers"
                     :data="data"
@@ -171,7 +170,7 @@
                     :on-preview="handlePictureCardPreview"
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
-                    :file-list="chanquanrenList"
+                    :file-list="jiaogedan"
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
@@ -241,6 +240,13 @@
                     if(res.data.code=='200'){
                         this.hetongList = res.data.data[1];//合同
                         this.chanquanrenList = res.data.data[2];//合同
+                        this.yingyezhizhao = res.data.data[3];//合同
+                        this.faren  = res.data.data[4];//合同
+                        this.fangchanzheng = res.data.data[5];//合同
+                        this.budongchan = res.data.data[6];//合同
+                        this.yezhushouquan = res.data.data[7];//合同
+                        this.weituoren = res.data.data[8];//合同
+                        this.jiaogedan = res.data.data[9];//合同
                     }
                 })
             },
