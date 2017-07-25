@@ -23,7 +23,7 @@ class brokerCompanyUserController extends Controller
 
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/qd/person/list',[
             'query' => [
@@ -61,13 +61,11 @@ class brokerCompanyUserController extends Controller
      */
     public function store(Request $request)
     {
-
-      //  dd( $request->params);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
 
+        ]);
+        //dd( json_decode($request->params)) ;
         $r = $client->request('POST', '/api/qd/person/add', [
             'json' => $request->params
         ]);
@@ -82,7 +80,16 @@ class brokerCompanyUserController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+
+        ]);
+        $response = $client->request('GET', '/api/qd/person/' . $id . '/get', [
+
+
+            ]
+        );
+        echo $response->getBody();
     }
 
     /**
@@ -106,12 +113,11 @@ class brokerCompanyUserController extends Controller
     public function update(Request $request, $id)
     {
         $obj=$request->params;
-        array_pop($obj);
-        array_pop($obj);
+
         //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
 
         $r = $client->request('POST', '/api/qd/person/alter', [
@@ -136,7 +142,7 @@ class brokerCompanyUserController extends Controller
     {
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/qd/person/{$$}/del');
         return $response->getBody();
@@ -166,7 +172,7 @@ class brokerCompanyUserController extends Controller
 
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $bkName =$request->params['name'];
         $response = $client->request('GET', '/api/qd/compay/list',[
@@ -181,20 +187,39 @@ class brokerCompanyUserController extends Controller
         echo  $response->getBody();
 
     }
-
-    //停用启用渠道人员状态
-    public function changeBrokerCompanyUserStatus(Request $request)
+    //渠道等级
+    public function getQDDJDicList(Request $request)
     {
-        $obj =$request->params ;
 
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
-        $response = $client->request('POST', '/api/area/searchcity',[
-                'json' => $obj]
+        $response = $client->request('GET', '/api/qd/comm/person/qddj/list', [
+            ]
         );
         echo $response->getBody();
+    }
+    //停用启用渠道人员状态
+    public function changeBrokerCompanyUserStatus(Request $request)
+    {
+        $obj = $request->params;
+        dd($obj);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+        ]);
+        if ($obj['status'] == 1) {
+            $response = $client->request('GET', '/api/qd/person/' . $obj['id'] .'/start', [
+                ]
+            );
+            echo $response->getBody();
+        } else {
+            $response = $client->request('GET', '/api/qd/person/' . $obj['id'] . '/stop', [
+                ]
+            );
+            echo $response->getBody();
+        }
     }
 
 }

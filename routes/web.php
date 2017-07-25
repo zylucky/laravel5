@@ -107,12 +107,14 @@ Route::group(['prefix' => 'brokerCompany'], function () {
     Route::post('getXZQYDicList','BrokerCompany\brokerCompanyController@getXZQYDicList');
     Route::post('getJDDicList','BrokerCompany\brokerCompanyController@getJDDicList');
     Route::post('changeBrokerCompanyStatus','BrokerCompany\brokerCompanyController@changeBrokerCompanyStatus');
-
+    Route::post('getXYDJDicList','BrokerCompany\brokerCompanyController@getXYDJDicList');
+    Route::post('getYSLXRDicList','BrokerCompany\brokerCompanyController@getYSLXRDicList');
 });
 //渠道公司人员
 Route::group(['prefix' => 'brokerCompanyUser'], function () {
     Route::post('getbkNameList','BrokerCompany\brokerCompanyUserController@getbkNameList');
     Route::post('changeBrokerCompanyUserStatus','BrokerCompany\brokerCompanyUserController@changeBrokerCompanyUserStatus');
+    Route::post('getQDDJDicList','BrokerCompany\brokerCompanyUserController@getQDDJDicList');
 });
 //自由经纪人
 Route::group(['prefix' => 'brokerUser'], function () {

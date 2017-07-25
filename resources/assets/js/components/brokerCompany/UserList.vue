@@ -11,9 +11,9 @@
                 <el-input v-model="filters.buildingname" placeholder="请输入所在楼盘"></el-input>
             </el-form-item>
             <el-form-item label="渠道等级："    >
-                <el-select v-model="filters.serviceType" placeholder="请选择渠道等级"  >
+                <el-select v-model="filters.qvdaodengji" placeholder="请选择渠道等级"  >
                     <el-option
-                            v-for="item in optionsfw"
+                            v-for="item in optionsqddj"
                             :key="item.value"
                             :label="item.label"
                             :value="item.value">
@@ -42,24 +42,24 @@
             </el-table-column>
             <el-table-column prop="qdPername" label="姓名"  >
             </el-table-column>
-            <el-table-column prop="qdPertel" label="职务"  >
+            <el-table-column prop="zhiwu" label="职务"  >
             </el-table-column>
-            <el-table-column prop="qdPertel" label="联系电话"  >
+            <el-table-column prop="telList[0].dianhua" label="联系电话"  >
             </el-table-column>
             <el-table-column prop="qvDaoCompayXinxi.compayname" label="公司名称"  >
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="公司所在楼盘"  >
+            <el-table-column prop="qvDaoCompayXinxi.gsLoupan" label="公司所在楼盘"  >
             </el-table-column>
-            <el-table-column prop="yjType" label="渠道等级"  :formatter="formatYJType" >
+            <el-table-column prop="qvdaodengji" label="渠道等级"   >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="最后跟进日期"  >
+            <el-table-column prop="genjinDate" label="最后跟进日期"  :formatter="changeDate">
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="信息完整度"  >
+            <el-table-column prop="wanchengdu" label="信息完整度"  >
             </el-table-column>
-            <el-table-column prop="yjType" label="状态"  >
+            <el-table-column prop="zhuangtai" label="状态"  >
                 <template scope="scope">
                     <el-switch
-                            v-model="scope.row.yjType"
+                            v-model="scope.row.zhuangtai"
                             on-color="#13ce66"
                             off-color="#ff4949"
                             :on-value=1
@@ -99,107 +99,7 @@
             >
             </el-pagination>
         </el-col>
-        <!--编辑界面-->
-        <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
-            <el-form :model="editForm" label-width="120px" :rules="editFormRules" ref="editForm">
-                <el-input type="hidden" prop="tQdCompayName"  auto-complete="off"></el-input>
-                <el-form-item label="渠道公司名称" prop="tQdCompayId" >
-                    <el-select
-                            v-model="editForm.tQdCompayId"
-                            filterable
-                            remote
-                            @change="change"
-                            placeholder="渠道公司名称"
-                            :remote-method="remoteMethod1"
-                            :loading="bkNameloading">
-                        <el-option
-                                v-for="item in options1"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-                <el-form-item label="姓名" prop="qdPername">
-                    <el-input v-model="editForm.qdPername" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="电话" prop="qdPertel">
-                    <el-input type="tel"  v-model="editForm.qdPertel" auto-complete="off"></el-input>
-                </el-form-item>
 
-                <el-form-item label="收房佣金占比" prop="yjzbSf">
-                    <el-input  v-model.number="editForm.yjzbSf" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item   label="出房佣金占比" prop="yjzbCf">
-                    <el-input v-model.number="editForm.yjzbCf" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="佣金类型"    prop="yjType">
-                    <el-select v-model="editForm.yjType" placeholder=""   >
-                        <el-option
-                                v-for="item in options"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value"
-                        >
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click.native="editFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-            </div>
-        </el-dialog>
-        <!--新增界面-->
-        <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
-            <el-form :model="addForm" label-width="120px" :rules="addFormRules" ref="addForm">
-
-                    <el-form-item label="渠道公司名称"   prop="tQdCompayId"  >
-                        <el-select
-                                v-model="addForm.tQdCompayId"
-                                filterable
-                                remote
-                                placeholder="渠道公司名称"
-                                :remote-method="remoteMethod1"
-                                :loading="bkNameloading">
-                            <el-option
-                                    v-for="item in options1"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-
-                <el-form-item label="姓名" prop="qdPername">
-                    <el-input v-model="addForm.qdPername" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="电话" prop="qdPertel">
-                    <el-input type="tel" v-model="addForm.qdPertel"   auto-complete="off"></el-input>
-                </el-form-item>
-
-                <el-form-item label="收房佣金占比" prop="yjzbSf">
-                    <el-input   v-model.number="addForm.yjzbSf" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="出房佣金占比" prop="yjzbCf">
-                    <el-input  v-model.number="addForm.yjzbCf" auto-complete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="佣金类型"    prop="yjType">
-                    <el-select v-model="addForm.yjType" placeholder="">
-                        <el-option
-                                v-for="item in options"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click.native="addFormVisible = false">取消</el-button>
-                <el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
-            </div>
-        </el-dialog>
 
     </el-row>
 </template>
@@ -213,6 +113,7 @@
         batchRemoveBrokerCompanyUser,
         getbkNameList,
         changeBrokerCompanyUserStatus,
+        getQDDJDicList,
        // getUserNameByID,
 
 
@@ -226,39 +127,14 @@
                     startdate:'',
                     enddate:'',
                     buildingname:'',
-                    serviceType:''
+                    qvdaodengji:''
                 },
-                options:[
-                    {
-                        value: 1,
-                        label: '按月租金'
-                    }, {
-                        value: 2,
-                        label: '按年租金'
-                    },
-                ],
+
                 options2:[
                     {value: 1, label: '启用'},
                     {value: 2, label: '停用'},
                 ],
-                optionsfw:[
-                    {
-                        value: 0,
-                        label: '请选择'
-                    }, {
-                        value: 1,
-                        label: '粘性渠道(A)'
-                    }, {
-                        value: 2,
-                        label: '确定渠道(B)'
-                    },{
-                        value: 3,
-                        label: '不确定渠道(C)'
-                    },{
-                        value: 4,
-                        label: '沉默渠道(D)'
-                    },
-                ],
+
                 //分页类数据
                 total:0,
                 currentPage:0,
@@ -270,7 +146,10 @@
                 sels: [],//列表选中列
                 bkNameloading: false,
                 options1:[],
-
+                optionsqddj:[  {
+                    value: 0,
+                    label: '请选择'
+                }],
 
 
                 editFormVisible: false,//编辑界面是否显示
@@ -397,15 +276,14 @@
             }
         },
         methods:{
-            //佣金类型显示转换
-            formatYJType: function (row, column) {
-                return row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-            },
+
             //时间戳转日期格式
             changeDate(row, column){
-                var newDate = new Date();
-                newDate.setTime(row.createdate);
-                return newDate.toLocaleDateString()
+                if(row.genjinDate!=null) {
+                    var newDate = new Date();
+                    newDate.setTime(row.genjinDate);
+                    return newDate.toLocaleDateString()
+                }
             },
            //获取渠道公司名称
             remoteMethod1(query) {
@@ -442,11 +320,31 @@
                 });
 
             },
+            //获取公司属性
+            remoteMethodqddj() {
+
+                getQDDJDicList().then((res) => {
+                    if (res.status == '200') {
+                        for (var item in res.data.data) {
+                            this.optionsqddj.push({
+                                value: res.data.data[item].enumValue,
+                                label: res.data.data[item].enumKey
+                            });
+                        }
+
+                    } else {
+                        this.$message({
+                            message: '获取公司属性数据失败',
+                            type: 'error'
+                        });
+                    }
+                })
+            },
             //更改渠道人员状态
             changeStatus(row){
                 let para ={
-                    id:row.id,
-                    status:row.yjType,
+                    id:row.tQdPersonId.toString(),
+                    status:row.zhuangtai==null?1:2,
                 }
                 changeBrokerCompanyUserStatus(para).then((res)=>{
 
@@ -462,16 +360,6 @@
                 this.pageSize =val;
                 this.getBrokerCompanyUser();
             },
-            //编辑选择渠道公司将id赋值给隐藏字段
-            change(){
-                //alert(this.editForm.tQdCompayId);
-
-                if(!isNaN(this.editForm.tQdCompayId)){
-
-                this.editForm.tQdCompayName= this.editForm.tQdCompayId;
-                }
-            },
-
             //获取渠道公司列表
             getBrokerCompanyUser() {
                 let para = {
@@ -487,38 +375,9 @@
                     this.listLoading = false;
                 });
             },
-            //删除
-            handleDel: function (index, row) {
-                this.$confirm('确认删除该记录吗?', '提示', {
-                    type: 'warning'
-                }).then(() => {
-                    this.listLoading = true;
-                    //NProgress.start();
-                    let para = { id: row.tQdPersonId  };
-                    removeBrokerCompanyUser(para).then((res) => {
-                        this.listLoading = false;
-                        //NProgress.done();
-                        if(res.data.code=='200')
-                        {
-                            this.$message({
-                                message: '删除成功',
-                                type: 'success'
-                            });
-                        }else{
-                            this.$message({
-                                message: res.data.msg,
-                                type: 'error'
-                            });
-                        }
-                        this.getBrokerCompanyUser();
-                    });
-                }).catch(() => {
-
-                });
-            },
             //显示编辑界面
             handleEdit: function (index, row) {
-                this.$router.push( {path: '/brokerCompanyUserList/edit?id=' + row.tQdPersonId, query:{stage: row}});
+                this.$router.push( {path: '/brokerCompanyUserList/edit?id=' + row.tQdPersonId });
             },
             //显示新增界面
             handleAdd: function () {
@@ -526,98 +385,17 @@
             },
             //显示详情页面s
             handleView: function (index, row) {
-                this.$router.push({path: '/brokerCompanyUserList/view?id=' + row.tQdPersonId, query: {stage: row}});
+                this.$router.push({path: '/brokerCompanyUserList/view?id=' + row.tQdPersonId });
             },
-            //编辑
-            editSubmit: function () {
 
-                this.$refs.editForm.validate((valid) => {
-
-                    if (valid) {
-                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
-                            this.editLoading = true;
-                            let para = Object.assign({}, this.editForm);
-                           // para.yjType= this.editForm.yjType == '按月租金' ?1 : this.editForm.yjType =='按年租金' ?2 : this.editForm.yjType;
-                            para.tQdCompayId=this.editForm.tQdCompayName;
-
-                            //console.log(para);
-                            editBrokerCompanyUser(para).then((res) => {
-                                this.editLoading = false;
-                                this.$message({
-                                    message: '提交成功',
-                                    type: 'success'
-                                });
-                                this.$refs['editForm'].resetFields();
-                                this.editFormVisible = false;
-                                this.getBrokerCompanyUser();
-                            });
-                        });
-                    }
-                });
-            },
-            //新增
-            addSubmit: function () {
-                this.$refs.addForm.validate((valid) => {
-
-                    if (valid) {
-                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
-                            this.addLoading = true;
-                            //NProgress.start();
-                            let para = Object.assign({}, this.addForm);
-
-                            //para.yjType= this.addForm.yjType == '按月租金' ? 1 : 2;
-                            //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                            addBrokerCompanyUser(para).then((res) => {
-                                this.addLoading = false;
-                                //NProgress.done();
-                                this.$message({
-                                    message: '提交成功',
-                                    type: 'success'
-                                });
-                                this.$refs['addForm'].resetFields();
-                                this.addFormVisible = false;
-                                this.getBrokerCompanyUser();
-                            });
-                        });
-                    }
-                });
-            },
             selsChange: function (sels) {
                 this.sels = sels;
             },
-            //批量删除
-            batchRemove: function () {
-                var ids = this.sels.map(item => item.tQdPersonId).toString();
-                this.$confirm('确认删除选中记录吗？', '提示', {
-                    type: 'warning'
-                }).then(() => {
-                    this.listLoading = true;
-                    //NProgress.start();
-                    let para = { ids: ids };
-                    batchRemoveBrokerCompanyUser(para).then((res) => {
-                        this.listLoading = false;
-                        //NProgress.done();
-                        if(res=='200')
-                        {
-                            this.$message({
-                                message: '删除成功',
-                                type: 'success'
-                            });
-                        }else{
-                            this.$message({
-                                message: res,
-                                type: 'error'
-                            });
-                        }
-                        this.getBrokerCompanyUser();
-                    });
-                }).catch(() => {
 
-                });
-            }
         },
         mounted() {
             this.page=1;
+            this.remoteMethodqddj();
             this.getBrokerCompanyUser();
 
         }

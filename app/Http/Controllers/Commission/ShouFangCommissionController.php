@@ -32,7 +32,7 @@ class ShouFangCommissionController extends Controller
         $page= Input::get('page');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/qd/apply/list',[
             'query' => [
@@ -122,7 +122,7 @@ class ShouFangCommissionController extends Controller
        // dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
 
         $r = $client->request('POST', '/api/qd/apply/addApplys', [
@@ -148,7 +148,7 @@ class ShouFangCommissionController extends Controller
         dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/qd/apply/addApplys',[
             'query' =>$obj

@@ -21,7 +21,7 @@ class brokerUserHistoryController extends Controller
 
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/qd/gj/compay/list',[
             'query' => [
@@ -61,7 +61,7 @@ class brokerUserHistoryController extends Controller
        dd( $request->params);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
 
         $r = $client->request('POST', '/api/qd/gj/compay/add', [

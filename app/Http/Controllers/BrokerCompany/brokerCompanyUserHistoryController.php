@@ -22,12 +22,13 @@ class brokerCompanyUserHistoryController extends Controller
 
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/qd/gj/person/list',[
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
+                'personid'=>3,
             ]
         ]);
         return $response->getBody();
@@ -58,15 +59,15 @@ class brokerCompanyUserHistoryController extends Controller
      */
     public function store(Request $request)
     {
-
-        dd( $request->params);
+        $obj=array_merge($request->params,Array('genjinren'=>"张三",'tPersonId'=>1));
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
 
+
         $r = $client->request('POST', '/api/qd/gj/person/add', [
-            'json' => $request->params
+            'json' =>$obj
         ]);
         return  $r ->getBody();
     }
@@ -108,7 +109,7 @@ class brokerCompanyUserHistoryController extends Controller
         //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
 
         $r = $client->request('POST', '/api/qd/person/alter', [

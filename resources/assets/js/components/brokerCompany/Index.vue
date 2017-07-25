@@ -5,29 +5,31 @@
         <el-form   :inline="true" :model="filters"  class="demo-form-inline">
             <el-row>
             <el-form-item label="业务区域：" >
-                <el-select v-model="filters.areaId" placeholder="请选择区域">
+                <el-select v-model="filters.yewuqvyvid" placeholder="请选择区域"   @change="remoteMethoddtqy">
                     <el-option
-                            v-for="item in options"
+                            v-for="item in optionsywqy"
                             :key="item.value"
                             :label="item.label"
                             :value="item.value">
                     </el-option>
                 </el-select>
             </el-form-item>
+
             <el-form-item label=""   >
-                <el-select v-model="filters.mapAreaId" placeholder="请选择地图区域">
+                <el-select v-model="filters.yewupianqvid" placeholder="请选择地图区域">
                     <el-option
-                            v-for="item in options"
+                            v-for="item in optionsdtqy"
                             :key="item.value"
                             :label="item.label"
                             :value="item.value">
                     </el-option>
                 </el-select>
+
             </el-form-item>
             <el-form-item label="经营属性："    >
-                    <el-select v-model="filters.managementAttr" placeholder="请选择经营属性">
+                    <el-select v-model="filters.gongsijingyingshuxing" placeholder="请选择经营属性">
                         <el-option
-                                v-for="item in optionssx"
+                                v-for="item in optionsgssx"
                                 :key="item.value"
                                 :label="item.label"
                                 :value="item.value">
@@ -35,9 +37,9 @@
                     </el-select>
             </el-form-item></el-row><el-row>
             <el-form-item label="协议等级："   >
-                <el-select v-model="filters.serviceType" placeholder="请选择协议等级">
+                <el-select v-model="filters.hezuoxieyidengji" placeholder="请选择协议等级">
                     <el-option
-                            v-for="item in optionsfw"
+                            v-for="item in optionsxydj"
                             :key="item.value"
                             :label="item.label"
                             :value="item.value">
@@ -61,29 +63,29 @@
             <el-table-column prop="compayname" label="公司名称"  >
             </el-table-column>
             <el-table-column label="公司所属业务区域">
-            <el-table-column prop="compaytest"    >
+            <el-table-column prop="yewuqvyv"    >
             </el-table-column>
-            <el-table-column prop="yjzbSf"    >
+            <el-table-column prop="yewupianqv"    >
             </el-table-column>
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="主做区域"  >
+            <el-table-column prop="zhuzuoqvyv" label="主做区域"  >
             </el-table-column>
-            <el-table-column prop="yjType" label="渠道等级"  :formatter="formatYJType" >
+            <el-table-column prop="hezuoxieyidengji" label="渠道等级"  :formatter="formatYJType" >
             </el-table-column>
-            <el-table-column prop="tbPersonIdCreate" label="负责人姓名"     >
+            <el-table-column prop="fuzeren" label="负责人姓名"     >
             </el-table-column>
-            <el-table-column prop="yjType" label="幼狮对接人"  :formatter="formatYJType" >
+            <el-table-column prop="yslianxiren1" label="幼狮对接人"  :formatter="formatYJType" >
             </el-table-column>
-            <el-table-column prop="tbPersonIdCreate" label="是否签署协议"     >
+            <el-table-column prop="shifouhezuoxieyi" label="是否签署协议"     >
             </el-table-column>
-            <el-table-column prop="tbPersonIdCreate" label="最后跟进日期"     >
+            <el-table-column prop="genjinDate" label="最后跟进日期"     >
             </el-table-column>
-            <el-table-column prop="createdate" label="信息完整度"  >
+            <el-table-column prop="wanchengdu" label="信息完整度"  >
             </el-table-column>
-            <el-table-column prop="yjType" label="渠道状态"  >
+            <el-table-column prop="zhuangtai" label="渠道状态"  >
                 <template scope="scope">
                     <el-switch
-                            v-model="scope.row.yjType"
+                            v-model="scope.row.zhuangtai"
                             on-color="#13ce66"
                             off-color="#ff4949"
                             :on-value=1
@@ -140,6 +142,9 @@
         addBrokerCompany,
         checkbkNameList,
         changeBrokerCompanyStatus,
+        getGSSXDicList,
+        getYWQYDicList,
+        getXYDJDicList,
 
     } from '../../api/api';
     import ElRow from "element-ui/packages/row/src/row";
@@ -152,6 +157,11 @@
             return {
                 filters:{
                     bk_name:'',
+                    yewuqvyvid:'',
+                    yewupianqvid:'',
+                    gongsijingyingshuxing:'',
+                    hezuoxieyidengji:'',
+
                 },
                 options:[
                    {
@@ -166,53 +176,25 @@
                     {value: 1, label: '启用'},
                     {value: 2, label: '停用'},
                 ],
-                optionsfw:[
-                    {
-                        value: 0,
-                        label: '请选择'
-                    }, {
-                        value: 1,
-                        label: '开发商'
-                    }, {
-                        value: 2,
-                        label: '个人'
-                    },
+                optionsdtqy:[
                 ],
-                optionssx:[
+                optionsgssx:[
                     {
                         value: 0,
                         label: '请选择'
-                    },{
-                        value: 1,
-                        label: '写字楼租赁'
-                    }, {
-                        value: 2,
-                        label: '住宅租赁'
-                    }, {
-                        value: 2,
-                        label: '公寓租赁'
-                    }, {
-                        value: 2,
-                        label: '商铺租赁'
-                    }, {
-                        value: 2,
-                        label: '别墅租赁'
-                    }, {
-                        value: 2,
-                        label: '写字楼买卖'
-                    }, {
-                        value: 2,
-                        label: '住宅买卖'
-                    }, {
-                        value: 2,
-                        label: '公寓买卖'
-                    }, {
-                        value: 2,
-                        label: '商铺买卖'
-                    }, {
-                        value: 2,
-                        label: '别墅买卖'
-                    },
+                    }
+                ],
+                optionsywqy:[
+                    {
+                        value: 0,
+                        label: '请选择'
+                    }
+                ],
+                optionsxydj:[
+                    {
+                        value: 0,
+                        label: '请选择'
+                    }
                 ],
                 value1: null,
                 //分页类数据
@@ -371,11 +353,92 @@
             //更改渠道公司状态
             changeStatus(row){
                 let para ={
-                    id:row.id,
-                    status:row.yjType,
+                    id:row.tQdCompayId.toString(),
+                    status:row.zhuangtai==null?1:2,
                 }
                 changeBrokerCompanyStatus(para).then((res)=>{
 
+                })
+            },
+            //获取公司属性
+            remoteMethodgssx() {
+                getGSSXDicList().then((res) => {
+                    if (res.status == '200') {
+                        for (var item in res.data.data) {
+                            this.optionsgssx.push({
+                                value: res.data.data[item].enumValue,
+                                label: res.data.data[item].enumKey
+                            });
+                        }
+
+                    } else {
+                        this.$message({
+                            message: '获取公司属性数据失败',
+                            type: 'error'
+                        });
+                    }
+                })
+            },
+            //获取公司业务区域
+            remoteMethodywqy() {
+                let para = {
+                    parentid: 0,
+                };
+                this.optionsywqy = [];
+                getYWQYDicList(para).then((res) => {
+
+                    if (res.status == '200') {
+                        for (var item in res.data.data) {
+
+                            this.optionsywqy.push({value: res.data.data[item].id, label: res.data.data[item].fdName});
+                        }
+                    } else {
+                        this.$message({
+                            message: '获取业务区域数据失败',
+                            type: 'error'
+                        });
+                    }
+                })
+            },
+            //获取公司业务区域id获取地图区域列表
+            remoteMethoddtqy() {
+                let para = {
+                    parentid: this.filters.yewuqvyvid,
+                };
+                this.optionsdtqy = [];
+                this.filters.yewupianqvid = null;//清除地图区域的缓存
+                getYWQYDicList(para).then((res) => {
+                    if (res.status == '200') {
+                        for (var item in res.data.data) {
+                            this.optionsdtqy.push({value: res.data.data[item].id, label: res.data.data[item].fdName});
+                        }
+                    } else {
+                        this.$message({
+                            message: '获取行政区域数据失败',
+                            type: 'error'
+                        });
+                    }
+                })
+            },
+            //获取协议等级
+            remoteMethodXYDJ() {
+                this.optionsxydj = [];
+                this.filters.hezuoxieyidengji = null;//清除街道的缓存
+                getXYDJDicList().then((res) => {
+                    if (res.status == '200') {
+                        for (var item in res.data.data) {
+                            this.optionsxydj.push({
+                                value: res.data.data[item].enumValue,
+                                label: res.data.data[item].enumKey,
+                                yjvalue: parseFloat(res.data.data[item].enumValues)
+                            });
+                        }
+                    } else {
+                        this.$message({
+                            message: '获取协议等级数据失败',
+                            type: 'error'
+                        });
+                    }
                 })
             },
             //获取渠道公司列表
@@ -408,111 +471,11 @@
             handleAdd: function () {
                 this.$router.push('/brokerCompany/add');
             },
-            //编辑
-            editSubmit: function () {
-                this.$refs.editForm.validate((valid) => {
-                    if (valid) {
-                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
-                            this.editLoading = true;
-                            let para = Object.assign({}, this.editForm);
-                          //  para.yjType= this.editForm.yjType == '按月租金' ?1 : this.editForm.yjType =='按年租金' ?2 : this.editForm.yjType;
 
-                            editBrokerCompany(para).then((res) => {
-                                this.editLoading = false;
-                                //alert(JSON.stringify(res));
-                                if(res.data.code=='200')
-                                {
-                                    //alert(0);
-                                    this.$message({
-                                        message: '提交成功' ,
-                                        type:'success'
-                                    });
-                                }else{
-                                    this.$message({
-                                        message: res.data.msg ,
-                                        type:'error'
-                                    });
-                                }
-
-                                this.$refs['editForm'].resetFields();
-                                this.editFormVisible = false;
-                                this.getBrokerCompany();
-                            });
-                        });
-                    }
-                });
-            },
-            //新增
-            addSubmit: function () {
-                this.$refs.addForm.validate((valid) => {
-                  // alert(valid);
-                   // alert(this.addForm.compayname.lazy);
-                    if (valid) {
-                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
-                            this.addLoading = true;
-                            //NProgress.start();
-                            let para = Object.assign({}, this.addForm);
-                           // para.yjType= this.addForm.yjType == '按月租金' ? 1 : 2;
-                            //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                            addBrokerCompany(para).then((res) => {
-                                this.addLoading = false;
-                                //NProgress.done();
-                                if(res.data.code=='200')
-                                {
-                                    //alert(0);
-                                    this.$message({
-                                        message: '提交成功' ,
-                                        type:'success'
-                                    });
-                                }else{
-                                    this.$message({
-                                        message: res.data.msg ,
-                                        type:'error'
-                                    });
-                                }
-                                this.$refs['addForm'].resetFields();
-                                this.addFormVisible = false;
-                                this.getBrokerCompany();
-                            });
-                        });
-                    }
-                });
-            },
             selsChange: function (sels) {
                 this.sels = sels;
             },
-            //批量删除
-            batchRemove: function () {
-                var ids = this.sels.map(item => item.tQdCompayId).toString();
-                this.$confirm('确认删除选中记录吗？', '提示', {
-                    type: 'warning'
-                }).then(() => {
-                    this.listLoading = true;
-                    //NProgress.start();
-                    let para = { ids: ids };
-                   // alert(ids);
-                    batchRemoveBrokerCompany(para).then((res) => {
-                        this.listLoading = false;
-                        //NProgress.done();
-                        if(res=='200')
-                        {
-                        this.$message({
-                            message: '删除成功',
-                            type: 'success'
-                        });
-                        }else{
-                            this.$message({
-                                message: res.data.msg,
-                                type: 'error'
-                            });
-                        }
-                        this.getBrokerCompany();
 
-                    });
-                }).catch(() => {
-
-                });
-            },
             handleRemove(file, fileList) {
                 console.log(file, fileList);
             },
@@ -524,6 +487,9 @@
 
 
         mounted() {
+            this.remoteMethodgssx();
+            this.remoteMethodywqy();
+            this.remoteMethodXYDJ();
             this.page=1;
             this.getBrokerCompany();
 

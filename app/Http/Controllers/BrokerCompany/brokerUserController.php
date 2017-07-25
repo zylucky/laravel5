@@ -23,9 +23,9 @@ class brokerUserController extends Controller
 
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
-        $response = $client->request('GET', '/api/qd/person/list',[
+        $response = $client->request('GET', '/api/qd/ziyou/list',[
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
@@ -65,10 +65,10 @@ class brokerUserController extends Controller
       //  dd( $request->params);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
 
-        $r = $client->request('POST', '/api/qd/person/add', [
+        $r = $client->request('POST', '/api/qd/ziyou/add', [
             'json' => $request->params
         ]);
         return  $r ->getBody();
@@ -106,15 +106,14 @@ class brokerUserController extends Controller
     public function update(Request $request, $id)
     {
         $obj=$request->params;
-        array_pop($obj);
-        array_pop($obj);
+
         //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
 
-        $r = $client->request('POST', '/api/qd/person/alter', [
+        $r = $client->request('POST', '/api/qd/ziyou/alter', [
             'json' => $obj
         ]);
         return  $r ->getBody();
@@ -136,7 +135,7 @@ class brokerUserController extends Controller
     {
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/qd/person/{$$}/del');
         return $response->getBody();
@@ -161,40 +160,27 @@ class brokerUserController extends Controller
         return $code;
     }
 
-    public function getbkNameList(Request $request)
-    {
 
-        $client = new Client([
-            'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
-        ]);
-        $bkName =$request->params['name'];
-        $response = $client->request('GET', '/api/qd/compay/list',[
-                'query' => [
-                    'page'=>1,
-                    'size'=>10,
-                    'compay' =>  $bkName
-                ]
-
-            ]
-        );
-        echo  $response->getBody();
-
-    }
-
-    //停用启用渠道人员状态
+    //停用启用自由人员状态
     public function changeBrokerCompanyUserStatus(Request $request)
     {
         $obj =$request->params ;
 
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
-        $response = $client->request('POST', '/api/area/searchcity',[
-                'json' => $obj]
-        );
-        echo $response->getBody();
+        if ($obj['status'] == 1) {
+            $response = $client->request('GET', '/api/qd/ziyou/' . $obj['id'] .'/start', [
+                ]
+            );
+            echo $response->getBody();
+        } else {
+            $response = $client->request('GET', '/api/qd/ziyou/' . $obj['id'] . '/stop', [
+                ]
+            );
+            echo $response->getBody();
+        }
     }
 
 }

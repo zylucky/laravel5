@@ -29,7 +29,7 @@ class payableController extends Controller
         $page = Input::get('page');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout' => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/cw/yf/list', [
                 'query' => [
@@ -106,7 +106,7 @@ class payableController extends Controller
         dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout' => 2.0,
+
         ]);
 
         $r = $client->request('POST', '/api/qd/compay/alter', [
@@ -128,7 +128,7 @@ class payableController extends Controller
         dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout' => 2.0,
+
         ]);
 
         $r = $client->request('POST', '/api/qd/compay/alter', [

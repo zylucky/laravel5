@@ -18,15 +18,17 @@ class brokerCompanyHistoryController extends Controller
     {
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
+        $companyId=Input::get('id');
 
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
         $response = $client->request('GET', '/api/qd/gj/compay/list',[
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
+                'compayid'=>1,
             ]
         ]);
         return $response->getBody();
@@ -58,14 +60,16 @@ class brokerCompanyHistoryController extends Controller
     public function store(Request $request)
     {
 
-       dd( $request->params);
+      // dd( $request->params);
+        //"genjinjindo":"一","genjindate":1500364339000,"genjinren":"张三","tPersonId":1,
+        $obj=array_merge($request->params,Array('genjinren'=>"张三",'tPersonId'=>1));
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+
         ]);
 
         $r = $client->request('POST', '/api/qd/gj/compay/add', [
-            'json' => $request->params
+            'json' => $obj
         ]);
         return  $r ->getBody();
     }

@@ -27,7 +27,7 @@ class UserController extends Controller
         $username = Input::get('username');
         $client = new Client ([
             'base_uri' => 'http://121.196.195.129:6316',
-            'timeout' => 2.0,
+
         ]);
         $obj=Array('nowpage'=>$page,'pagesize'=>$pageSize);
         $response = $client->request('POST', '/api/oa/persons', [
