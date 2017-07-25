@@ -355,19 +355,19 @@ class purchaseContractController extends Controller
 
         ]);
         $res = json_decode($response->getBody());
-        $content = base64_decode($res->data[0]->content);
-        //新文件名
-        $_nowdate = date("YmdHis");
-        $rnd = rand(10000, 99999);
-        $new_file_name = $_nowdate . '_' . $rnd . '.' . 'jpg';
-        $path = 'image/tmp/';
-        if (!file_exists($path)) {
-            mkdir($path,0755,true);
-        }
-        file_put_contents($path.$new_file_name,$content);
-        $url = $path.$new_file_name;
         $data2 = [];
-        foreach($res->data as $value){
+        foreach ($res->data as $key => $value){
+            $content = base64_decode($res->data[$key]->content);
+            //新文件名
+            $_nowdate = date("YmdHis");
+            $rnd = rand(10000, 99999);
+            $new_file_name = $_nowdate . '_' . $rnd . '.' . 'jpg';
+            $path = 'image/tmp/';
+            if (!file_exists($path)) {
+                mkdir($path,0755,true);
+            }
+            file_put_contents($path.$new_file_name,$content);
+            $url = $path.$new_file_name;
             $value->url =$url;
             $value->content =null;
             $data2[$value->type][] = $value;
@@ -418,7 +418,7 @@ class purchaseContractController extends Controller
         ];
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
+            'timeout'  => 100.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST', '/api/contract/sf/img/upload', [
