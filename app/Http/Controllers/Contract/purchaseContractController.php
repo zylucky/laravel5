@@ -118,7 +118,7 @@ class purchaseContractController extends Controller
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
+        $response1 = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
         //1.根据楼栋的id取获取 objareaID
         $client = new Client ([
             'base_uri' => $this->work_url,
@@ -142,11 +142,11 @@ class purchaseContractController extends Controller
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         //return $data;
-        $response = $client->request('POST', '/api/wf/createtaskbytemplate', [
+        $client->request('POST', '/api/wf/createtaskbytemplate', [
             'json' => $data
         ]);
 
-        echo $response->getBody();
+        echo $response1->getBody();
     }
 
     /**
