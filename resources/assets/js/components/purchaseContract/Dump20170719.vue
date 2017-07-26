@@ -389,23 +389,35 @@
                let arr = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
             },
             year(riqi){
-                return new Date(riqi).getFullYear();
+                if(riqi!=''){
+                    return new Date(riqi).getFullYear();
+                }else{
+                    return '';
+                }
             },
             month(riqi){
-                if(new Date(riqi).getMonth()+1 <10 ){
-                    return '0'+(new Date(riqi).getMonth()+1);
+                if(riqi!=''){
+                    if(new Date(riqi).getMonth()+1 <10 ){
+                        return '0'+(new Date(riqi).getMonth()+1);
+                    }else{
+                        return new Date(riqi).getMonth()+1
+                    }
                 }else{
-                    return new Date(riqi).getMonth()+1
+                    return '';
                 }
-
             },
             day(riqi){
-                if(new Date(riqi).getDate() <10 ){
-                    return '0'+(new Date(riqi).getDate());
-                }else{
-                    return (new Date(riqi).getDate());
+                if(riqi!=''){
+                    if(new Date(riqi).getDate() <10 ){
+                        return '0'+(new Date(riqi).getDate());
+                    }else{
+                        return (new Date(riqi).getDate());
 
+                    }
+                }else{
+                    return '';
                 }
+
             },
             //根据url得到的合同ID，来获取数据
             getPurchaseContract(id){

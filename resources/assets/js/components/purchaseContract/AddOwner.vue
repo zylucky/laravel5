@@ -242,13 +242,13 @@
                 getbkNameList(para).then((res) => {
                     let arr = [];
                     arr[0] = '';
-                    for ( var i in res.data ){
-                        arr[i]=res.data[i]
+                    for ( var i in res.data.data ){
+                        arr[i]=res.data.data[i]
                     }
                     this.estate = arr;
                     this.bkNameloading = false;
                     this.list = this.estate.map((item,index) => {
-                        return { value: index, label: item };
+                        return { value: item.tQdCompayId, label: item.compayname };
                     });
                     if (query !== '') {
                         this.bkNameloading = true;

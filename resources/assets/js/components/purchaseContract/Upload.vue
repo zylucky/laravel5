@@ -1,6 +1,12 @@
 <template>
     <el-form style="margin-top:2%">
-        <el-form-item label="合同">
+        <el-form-item label="合同" :model="copyForm">
+            <el-form-item label="" prop="" >
+                <el-radio-group v-model="copyForm.hetongList">
+                    <el-radio :label="1">全</el-radio>
+                    <el-radio :label="2">不全</el-radio>
+                </el-radio-group>
+            </el-form-item>
             <br>
             <el-upload
                     action="/purchaseContract/addCopyImage?type=1"
@@ -21,6 +27,12 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="产权人身份证">
+            <el-form-item label="" prop="" >
+                <el-radio-group v-model="copyForm.chanquanrenList">
+                    <el-radio :label="1">全</el-radio>
+                    <el-radio :label="2">不全</el-radio>
+                </el-radio-group>
+            </el-form-item>
             <br>
             <el-upload
                     action="/purchaseContract/addCopyImage?type=2"
@@ -40,6 +52,12 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="营业执照">
+            <el-form-item label="" prop="" >
+                <el-radio-group v-model="copyForm.yingyezhizhao">
+                    <el-radio :label="1">全</el-radio>
+                    <el-radio :label="2">不全</el-radio>
+                </el-radio-group>
+            </el-form-item>
             <br>
             <el-upload
                     action="/purchaseContract/addCopyImage?type=3"
@@ -59,7 +77,12 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="法人证件">
-
+            <el-form-item label="" prop="" >
+                <el-radio-group v-model="copyForm.faren">
+                    <el-radio :label="1">全</el-radio>
+                    <el-radio :label="2">不全</el-radio>
+                </el-radio-group>
+            </el-form-item>
             <br>
             <el-upload
                     action="/purchaseContract/addCopyImage?type=4"
@@ -79,7 +102,12 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="房产证">
-
+            <el-form-item label="" prop="" >
+                <el-radio-group v-model="copyForm.fangchanzheng">
+                    <el-radio :label="1">全</el-radio>
+                    <el-radio :label="2">不全</el-radio>
+                </el-radio-group>
+            </el-form-item>
             <br>
             <el-upload
                     action="/purchaseContract/addCopyImage?type=5"
@@ -99,7 +127,12 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="不动产授权委托书">
-
+            <el-form-item label="" prop="" >
+                <el-radio-group v-model="copyForm.budongchan">
+                    <el-radio :label="1">全</el-radio>
+                    <el-radio :label="2">不全</el-radio>
+                </el-radio-group>
+            </el-form-item>
             <br>
             <el-upload
                     action="/purchaseContract/addCopyImage?type=6"
@@ -119,7 +152,12 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="业主授权代理人委托书">
-
+            <el-form-item label="" prop="" >
+                <el-radio-group v-model="copyForm.yezhushouquan">
+                    <el-radio :label="1">全</el-radio>
+                    <el-radio :label="2">不全</el-radio>
+                </el-radio-group>
+            </el-form-item>
             <br>
             <el-upload
                     action="/purchaseContract/addCopyImage?type=7"
@@ -139,7 +177,12 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="委托人身份证">
-
+            <el-form-item label="" prop="" >
+                <el-radio-group v-model="copyForm.weituoren">
+                    <el-radio :label="1">全</el-radio>
+                    <el-radio :label="2">不全</el-radio>
+                </el-radio-group>
+            </el-form-item>
             <br>
             <el-upload
                     action="/purchaseContract/addCopyImage?type=8"
@@ -159,7 +202,12 @@
             </el-dialog>
         </el-form-item>
         <el-form-item label="房屋交割单">
-
+            <el-form-item label="" prop="" >
+                <el-radio-group v-model="copyForm.jiaogedan">
+                    <el-radio :label="1">全</el-radio>
+                    <el-radio :label="2">不全</el-radio>
+                </el-radio-group>
+            </el-form-item>
             <br>
             <el-upload
                     action="/purchaseContract/addCopyImage?type=9"
@@ -178,7 +226,14 @@
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         </el-form-item>
+        <div style="position: fixed;right:10%;top:50%  ">
+            <el-button type="primary"   @click="save" style="margin-top:100px;">保存</el-button>
+            <el-button type="warning"   @click="cansel" style="margin-top:100px;">取消</el-button>
+        </div>
+
     </el-form>
+
+
 </template>
 <script>
     import {
@@ -189,8 +244,26 @@
     export default {
         data() {
             return {
+                copyForm:{
+                    hetongList:null,
+                    chanquanrenList: null,
+                    yingyezhizhao:null,
+                    faren:null,
+                    fangchanzheng:null,
+                    budongchan:null,
+                    yezhushouquan:null,
+                    weituoren:null,
+                    jiaogedan:null,
+                },
                 hetongList: [],
                 chanquanrenList: [],
+                yingyezhizhao:[],
+                faren:[],
+                fangchanzheng:[],
+                budongchan:[],
+                yezhushouquan:[],
+                weituoren:[],
+                jiaogedan:[],
                 dialogImageUrl: '',
                 dialogVisible: false,
                 form:{
@@ -205,6 +278,8 @@
             };
         },
         methods: {
+            save(){},
+            cansel(){},
             beforeAvatarUpload(file) {
                 const isJPG = file.type === 'image/jpeg';
                 const isLt2M = file.size / 1024 / 1024 < 2;
