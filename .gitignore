@@ -12,4 +12,4 @@ Homestead.yaml
 public/js/
 /public/image/
 public/image/tmp/
-!/app/Http/Controllers/Controller.php
+
