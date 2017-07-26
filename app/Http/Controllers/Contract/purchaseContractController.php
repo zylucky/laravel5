@@ -93,13 +93,16 @@ class purchaseContractController extends Controller
     {
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id);
         $res = $response->getBody();
         $res = json_decode($res);
         $res->data->yifangfeiyong = explode(',',$res->data->yifangfeiyong);
         $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
+        $obj = $this->get_month_day($res->data->startdate,$res->data->enddate);
+        $res->data->nian = $obj->y;
+        $res->data->yue = $obj->m;
+        $res->data->ri = $obj->d;
         echo json_encode($res)  ;
     }
 
@@ -421,5 +424,30 @@ class purchaseContractController extends Controller
         $response = $client->request('GET', '/api/contract/sf/img/'.$id.'/del/');
         echo $response->getBody();
 
+    }
+    /*
+     * 资料是否齐全
+     * */
+    public function isCopyComplete(){
+
+    }
+    /**
+     * 计算两个日期之间差几年几个月几天
+     * @param  [string] $date1 [2000-11-05]
+     * @param  [string] $date2 [2000-11-05]
+     * @return [arr]        [
+     *    t => year
+     *    m => month
+     *    d => day
+     * ]
+     */
+    public function get_month_day($startdate,$enddate)
+    {
+        $startdate = $startdate/1000;
+        $startdate = date_create(date('Y-m-d',$startdate));
+        $enddate  = $enddate/1000+86400;//加一天
+        $enddate = date_create(date('Y-m-d',$enddate));
+        $bian = date_diff($startdate,$enddate);
+        return $bian;
     }
 }

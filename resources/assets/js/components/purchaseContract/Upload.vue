@@ -1,6 +1,6 @@
 <template>
-    <el-form style="margin-top:2%">
-        <el-form-item label="合同" :model="copyForm">
+    <el-form style="margin-top:2%" :model="copyForm">
+        <el-form-item label="合同" >
             <el-form-item label="" prop="" >
                 <el-radio-group v-model="copyForm.hetongList">
                     <el-radio :label="1">全</el-radio>
@@ -226,7 +226,7 @@
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         </el-form-item>
-        <div style="position: fixed;right:10%;top:50%  ">
+        <div style="position: fixed;right:10%;top:50%;">
             <el-button type="primary"   @click="save" style="margin-top:100px;">保存</el-button>
             <el-button type="warning"   @click="cansel" style="margin-top:100px;">取消</el-button>
         </div>
@@ -239,6 +239,7 @@
     import {
         copyImageList,
         copyImageDelete,
+        isCopyComplete
     } from  '../../api/api';
 
     export default {
@@ -278,7 +279,10 @@
             };
         },
         methods: {
-            save(){},
+            save(){
+                let para = Object.assign({}, this.copyForm);
+                isCopyComplete().then();
+            },
             cansel(){},
             beforeAvatarUpload(file) {
                 const isJPG = file.type === 'image/jpeg';
