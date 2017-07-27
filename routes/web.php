@@ -72,6 +72,7 @@ Route::post('message/refuseMessage','Message\messageController@refuseMessage');
 
 //出房合同分组
 Route::group(['prefix' => 'saleContract'], function () {
+    Route::post('addCopyImage','Contract\saleContractController@addCopyImage');
     Route::get('getchuzuren','Contract\saleContractController@getchuzuren');
     Route::post('submit','Contract\saleContractController@submit');
     Route::get('jieyue','Contract\saleContractController@jieyue');
@@ -87,6 +88,9 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::get('jieyuelist','Contract\saleContractController@jieyuelist');
     Route::post('weiYueInfo','Contract\saleContractController@weiYueInfo');
     Route::post('weiYueSave','Contract\saleContractController@weiYueSave');
+    Route::get('copyImageList','Contract\saleContractController@copyImageList');
+    Route::get('deleteCopyImage','Contract\saleContractController@deleteCopyImage');
+    Route::post('isCopyComplete','Contract\saleContractController@isCopyComplete');
 });
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 
