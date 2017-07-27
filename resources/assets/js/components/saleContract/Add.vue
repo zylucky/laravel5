@@ -308,9 +308,10 @@
                 let para = {
                     id:_this.id,
                 }
-                window.open('/#/purchaseContract/dump'+version+'?id='+_this.id)
+                window.open('/#/saleContract/dump'+version+'?id='+_this.id)
             },
             fuzhi(res){
+                console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.contractVersion = res.data.data.version;
                 this.property.xsOffice = res.data.data.xsOffice;
@@ -408,7 +409,7 @@
                         }else{
                             console.log(res.data.code);
                             this.$message({
-                                message: '获取收房数据失败',
+                                message: '获取不了收房合同的承租人',
                                 type: 'error'
                             });
                         }
@@ -424,11 +425,19 @@
             }
             //审核页面input禁用
             if(this.$route.path=='/saleContract/review'){
-                this.disabledInput();
+                var _this = this;
+                function  hello() {
+                    _this.disabledInput();
+                }
+                setTimeout(hello,500);
             }
             //查看页面input禁用
             if(this.$route.path=='/saleContract/see'){
-                this.seeDisabledInput();
+                var _this = this;
+                function  hello() {
+                    _this.disabledInput();
+                }
+                setTimeout(hello,500);
             }
             //新增页面获取版本
             this.getVersion();

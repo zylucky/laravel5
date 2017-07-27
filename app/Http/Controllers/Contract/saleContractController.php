@@ -141,7 +141,7 @@ class saleContractController extends Controller
     {
         //
     }
-    /*
+    /*weiYueSave
      * 合同审核
      *
      * */
@@ -333,6 +333,116 @@ class saleContractController extends Controller
             'json' => $request->params
         ]);
         echo $response->getBody();
+    }
+
+
+
+
+
+
+
+
+    /*
+     * 扫描合同复印件列表copyImageList
+     * */
+    public function copyImageList(Request $request){
+        $id = Input::get('id');
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/img/'.$id.'/query', [
+
+        ]);
+        $res = json_decode($response->getBody());
+        $data2 = [];
+        foreach ($res->data as $key => $value){
+            $content = base64_decode($res->data[$key]->content);
+            //新文件名
+            $_nowdate = date("YmdHis");
+            $rnd = rand(10000, 99999);
+            $new_file_name = $_nowdate . '_' . $rnd . '.' . 'jpg';
+            $path = 'image/tmp/';
+            if (!file_exists($path)) {
+                mkdir($path,0755,true);
+            }
+            file_put_contents($path.$new_file_name,$content);
+            $url = $path.$new_file_name;
+            $value->url =$url;
+            $value->content =null;
+            $data2[$value->type][] = $value;
+        }
+        $res->data = $data2;
+        echo json_encode($res);
+        //$this->removeDir($path);
+    }
+
+    public function addCopyImage(){
+        dd(111);
+        //PHP上传失败
+        if (!empty($_FILES['file']['error'])) {
+            switch($_FILES['file']['error']){
+                case '1':
+                    $error = '超过php.ini允许的大小。';
+                    break;
+                case '2':
+                    $error = '超过表单允许的大小。';
+                    break;
+                case '3':
+                    $error = '图片只有部分被上传。';
+                    break;
+                case '4':
+                    $error = '请选择图片。';
+                    break;
+                case '6':
+                    $error = '找不到临时目录。';
+                    break;
+                case '7':
+                    $error = '写文件到硬盘出错。';
+                    break;
+                case '8':
+                    $error = 'File upload stopped by extension。';
+                    break;
+                case '999':
+                default:
+                    $error = '未知错误。';
+            }
+            return $error;
+        }
+        $fp = fopen($_FILES["file"]["tmp_name"],"rb");
+        $image = fread($fp,$_FILES["file"]["size"]);
+        $image = base64_encode($image);
+        $data = [
+            'hetongid'=>$_POST['id'],
+            'type'=>$_GET['type'],
+            'content'=>$image,
+        ];
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/xs/img/upload', [
+            'json' =>$data
+        ]);
+        echo $response->getBody();
+    }
+    /*
+     * 删除图片
+     * */
+    public function deleteCopyImage(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/img/'.$id.'/del/');
+        echo $response->getBody();
+
+    }
+    /*
+     * 资料是否齐全
+     * */
+    public function isCopyComplete(){
+
     }
 
 }
