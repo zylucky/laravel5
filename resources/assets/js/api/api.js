@@ -89,8 +89,9 @@ export const youhuacgPurchaseContract= params => { return axios.get(`${base}/pur
 export const weiYueInfoPurchaseContract= params => { return axios.post(`${base}/purchaseContract/weiYueInfo`, {params:params}); };//合同终止
 export const weiYueSavePurchaseContract= params => { return axios.post(`${base}/purchaseContract/weiYueSave`, {params:params}); };//合同终止保存一些数据
 export const copyImageList= params => { return axios.get(`${base}/purchaseContract/copyImageList`, {params:params}); };//扫描合同复印件列表
-export const copyImageDelete= params => { return axios.get(`${base}/purchaseContract/deleteCopyImage`, {params:params}); };//删除复印件
-export const isCopyComplete= params => { return axios.post(`${base}/purchaseContract/isCopyComplete`, {params:params}); };//删除复印件
+export const copyImageDelete= params => { return axios.get(`${base}/purchaseContract/deleteCopyImage`, {params:params}); };//删除扫描建
+export const isCopyComplete= params => { return axios.post(`${base}/purchaseContract/isCopyComplete`, {params:params}); };//资料是否完整
+export const isCopyCompleteList= params => { return axios.get(`${base}/purchaseContract/getCopyComplete`, {params:params}); };//列表
 
 //出房合同
 //合同信息

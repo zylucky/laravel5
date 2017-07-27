@@ -23,6 +23,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::post('review','Contract\purchaseContractController@review');
     Route::post('weiYueInfo','Contract\purchaseContractController@weiYueInfo');
     Route::post('weiYueSave','Contract\purchaseContractController@weiYueSave');
+    Route::post('isCopyComplete','Contract\purchaseContractController@isCopyComplete');
     Route::get('optimize','Contract\purchaseContractController@getOptimize');
     Route::get('approving','Contract\purchaseContractController@approving');
     Route::post('editTiaoKuan','Contract\purchaseContractController@editTiaoKuan');
@@ -34,6 +35,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('released','Contract\purchaseContractController@released');
     Route::get('copyImageList','Contract\purchaseContractController@copyImageList');
     Route::get('deleteCopyImage','Contract\purchaseContractController@deleteCopyImage');
+    Route::get('getCopyComplete','Contract\purchaseContractController@getCopyComplete');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
 //装饰合同
