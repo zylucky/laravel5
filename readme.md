@@ -1,4 +1,3 @@
-
 项目搭建：<br>
 	第一步：composer install <br>
 	第二步：npm install <br>
@@ -9,3 +8,4 @@
 	第七步：php artisan serve<br>
         账户：admin@qq.com<br>
 	密码：123456<br>
+
