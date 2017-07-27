@@ -49,7 +49,7 @@
                 </el-col>
             </el-row>
             <el-form-item label="业主类型" prop="yezhuleixing" required>
-                <el-radio-group v-model="owner.yezhuleixing">
+                <el-radio-group v-model="owner.yezhuleixing" @change="yezhuleixingChange">
                     <el-radio :label="1">个人</el-radio>
                     <el-radio :label="2">公司</el-radio>
                 </el-radio-group>
@@ -220,6 +220,17 @@
         },
         props:['owner'],
         methods: {
+            yezhuleixingChange(){
+                //只要业主类型发生改变，那么我就将变量初始化
+                this.owner.chanquanrenList = [{
+                    name:'',
+                    faren:'',
+                    zhengjian:'',
+                    tel:'',
+                    sex:1,
+                    hetongid:null,
+                },]
+            },
             valid(){
                 this.$refs.ownerForm.validate((valid) => {
                     this.owner.flag = valid;
@@ -242,13 +253,13 @@
                 getbkNameList(para).then((res) => {
                     let arr = [];
                     arr[0] = '';
-                    for ( var i in res.data ){
-                        arr[i]=res.data[i]
+                    for ( var i in res.data.data ){
+                        arr[i]=res.data.data[i]
                     }
                     this.estate = arr;
                     this.bkNameloading = false;
                     this.list = this.estate.map((item,index) => {
-                        return { value: index, label: item };
+                        return { value: item.tQdCompayId, label: item.compayname };
                     });
                     if (query !== '') {
                         this.bkNameloading = true;

@@ -93,13 +93,16 @@ class purchaseContractController extends Controller
     {
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id);
         $res = $response->getBody();
         $res = json_decode($res);
         $res->data->yifangfeiyong = explode(',',$res->data->yifangfeiyong);
         $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
+        $obj = $this->get_month_day($res->data->startdate,$res->data->enddate);
+        $res->data->nian = $obj->y;
+        $res->data->yue = $obj->m;
+        $res->data->ri = $obj->d;
         echo json_encode($res)  ;
     }
 
@@ -118,11 +121,10 @@ class purchaseContractController extends Controller
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
+        $response1 = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
         //1.根据楼栋的id取获取 objareaID
         $client = new Client ([
             'base_uri' => $this->work_url,
-
         ]);
         $response = $client->request('GET', '/api/wf/getzdareaid?zd='.$zd);
         $objareaid = $response->getBody()->getContents();
@@ -140,15 +142,14 @@ class purchaseContractController extends Controller
         //2.服务创建审核任务
         $client = new Client([
             'base_uri' => $this->work_url,
-
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         //return $data;
-        $response = $client->request('POST', '/api/wf/createtaskbytemplate', [
+        $client->request('POST', '/api/wf/createtaskbytemplate', [
             'json' => $data
         ]);
 
-        echo $response->getBody();
+        echo $response1->getBody();
     }
 
     /**
@@ -163,7 +164,6 @@ class purchaseContractController extends Controller
     {
         $client = new Client([
             'base_uri' => $this->base_url,
-
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST', '/api/contract/sf/buchongXieyi/save', [
@@ -189,7 +189,6 @@ class purchaseContractController extends Controller
     public function review(Request $request){
         $client = new Client([
             'base_uri' => $this->base_url,
-
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
 
@@ -233,7 +232,6 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirm');
         echo $response->getBody();
@@ -243,7 +241,6 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirming');
         echo $response->getBody();
@@ -253,7 +250,6 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/violating');
         echo $response->getBody();
@@ -263,7 +259,6 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/terminated');
         echo $response->getBody();
@@ -273,7 +268,6 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/releasing');
         echo $response->getBody();
@@ -285,7 +279,6 @@ class purchaseContractController extends Controller
 
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/released');
         $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$xyid.'/confrim?id='.$xyid);
@@ -296,7 +289,6 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', "/api/contract/sf/$id/approving");
         echo $response->getBody();
@@ -309,7 +301,6 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$id);
         echo $response->getBody();
@@ -318,7 +309,6 @@ class purchaseContractController extends Controller
     public function weiYueInfo(Request $request){
         $client = new Client([
             'base_uri' => $this->base_url,
-
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST', '/api/cw/comm/inithtwy', [
@@ -333,7 +323,6 @@ class purchaseContractController extends Controller
     public function weiYueSave(Request $request){
         $client = new Client([
             'base_uri' => $this->base_url,
-
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST', '/api/contract/sf/weiyue/save', [
@@ -348,7 +337,6 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('GET', '/api/contract/sf/img/'.$id.'/query', [
@@ -418,7 +406,6 @@ class purchaseContractController extends Controller
         ];
         $client = new Client([
             'base_uri' => $this->base_url,
-            'timeout'  => 100.0,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $response = $client->request('POST', '/api/contract/sf/img/upload', [
@@ -433,10 +420,34 @@ class purchaseContractController extends Controller
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
-            'timeout'  => 2.0,
         ]);
         $response = $client->request('GET', '/api/contract/sf/img/'.$id.'/del/');
         echo $response->getBody();
 
+    }
+    /*
+     * 资料是否齐全
+     * */
+    public function isCopyComplete(){
+
+    }
+    /**
+     * 计算两个日期之间差几年几个月几天
+     * @param  [string] $date1 [2000-11-05]
+     * @param  [string] $date2 [2000-11-05]
+     * @return [arr]        [
+     *    t => year
+     *    m => month
+     *    d => day
+     * ]
+     */
+    public function get_month_day($startdate,$enddate)
+    {
+        $startdate = $startdate/1000;
+        $startdate = date_create(date('Y-m-d',$startdate));
+        $enddate  = $enddate/1000+86400;//加一天
+        $enddate = date_create(date('Y-m-d',$enddate));
+        $bian = date_diff($startdate,$enddate);
+        return $bian;
     }
 }

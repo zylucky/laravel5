@@ -10,7 +10,7 @@
             </el-col>
             <div style="margin-bottom:51px;">
             </div>
-            <el-col :span="4">
+            <el-col :span="4" style="position:fixedtop:10%;right:5%;">
                 <el-form>
                     <el-form-item label="合同版本：" style="margin-left:auto;width: 70%;">
                         <el-select v-model="contractVersion" placeholder="合同版本">
@@ -434,11 +434,19 @@
             if(this.$route.path=='/purchaseContract/review'){
                 this.reviewVisible =true;
                 this.editVisible   =false;
-                this.disabledInput();
+                var _this = this;
+                function  hello() {
+                    _this.disabledInput();
+                }
+                setTimeout(hello,500);
             }
             if(this.$route.path=='/purchaseContract/view'){
                 this.editVisible   =false;
-                this.disabledInput();
+                var _this = this;
+                function  hello() {
+                    _this.disabledInput();
+                }
+                setTimeout(hello,500);
             }
             //新增页面获取默认条款
             if(this.$route.path=='/purchaseContract/add'){
