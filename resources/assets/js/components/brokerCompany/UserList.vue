@@ -44,7 +44,7 @@
             </el-table-column>
             <el-table-column prop="zhiwu" label="职务"  >
             </el-table-column>
-            <el-table-column prop="telList[0].dianhua" label="联系电话"  >
+            <el-table-column prop="telList.0.dianhua" label="联系电话"  >
             </el-table-column>
             <el-table-column prop="qvDaoCompayXinxi.compayname" label="公司名称"  >
             </el-table-column>
@@ -130,10 +130,6 @@
                     qvdaodengji:''
                 },
 
-                options2:[
-                    {value: 1, label: '启用'},
-                    {value: 2, label: '停用'},
-                ],
 
                 //分页类数据
                 total:0,
@@ -320,7 +316,7 @@
                 });
 
             },
-            //获取公司属性
+            //获取渠道等级
             remoteMethodqddj() {
 
                 getQDDJDicList().then((res) => {
@@ -334,7 +330,7 @@
 
                     } else {
                         this.$message({
-                            message: '获取公司属性数据失败',
+                            message: '获取协议等级数据失败',
                             type: 'error'
                         });
                     }
@@ -342,10 +338,12 @@
             },
             //更改渠道人员状态
             changeStatus(row){
+
                 let para ={
                     id:row.tQdPersonId.toString(),
-                    status:row.zhuangtai==null?1:2,
+                    status:row.zhuangtai==0?0:1,
                 }
+
                 changeBrokerCompanyUserStatus(para).then((res)=>{
 
                 })
@@ -367,7 +365,13 @@
                     pageSize: this.pageSize,
                     bk_name: this.filters.bk_name,
                     username: this.filters.bk_username,
+                    startdate: this.filters.startdate!=''?this.filters.startdate.toLocaleDateString():'' ,
+                    enddate: this.filters.enddate!=''?new Date(this.filters.enddate).toLocaleDateString():'',
+                    buildingname: this.filters.buildingname,
+                    qvdaodengji: this.filters.qvdaodengji,
                 };
+                console.log(para);
+                console.log(this.filters);
                 this.listLoading = true;
                 getBrokerCompanyUserListPage(para).then((res) => {
                     this.total = res.data.total;
