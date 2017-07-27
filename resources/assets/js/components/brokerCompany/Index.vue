@@ -70,15 +70,15 @@
             </el-table-column>
             <el-table-column prop="zhuzuoqvyv" label="主做区域"  >
             </el-table-column>
-            <el-table-column prop="hezuoxieyidengji" label="渠道等级"  :formatter="formatYJType" >
+            <el-table-column prop="hezuoxieyidengji" label="渠道等级"    >
             </el-table-column>
             <el-table-column prop="fuzeren" label="负责人姓名"     >
             </el-table-column>
-            <el-table-column prop="yslianxiren1" label="幼狮对接人"  :formatter="formatYJType" >
+            <el-table-column prop="yslianxiren1" label="幼狮对接人"    >
             </el-table-column>
-            <el-table-column prop="shifouhezuoxieyi" label="是否签署协议"     >
+            <el-table-column prop="shifouhezuoxieyi" label="是否签署协议"   :formatter="formatSFQSXY"  >
             </el-table-column>
-            <el-table-column prop="genjinDate" label="最后跟进日期"     >
+            <el-table-column prop="genjinDate" label="最后跟进日期"  :formatter="changeDate"   >
             </el-table-column>
             <el-table-column prop="wanchengdu" label="信息完整度"  >
             </el-table-column>
@@ -324,15 +324,17 @@
         },
         methods:{
             //佣金类型显示转换
-            formatYJType: function (row, column) {
-               return row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
+            formatSFQSXY: function (row, column) {
+               return row.shifouhezuoxieyi == true ? '是' :  '否' ;
             },
 
             //时间戳转日期格式
             changeDate(row, column){
-                var newDate = new Date();
-                newDate.setTime(row.createdate);
-                return newDate.toLocaleDateString()
+                if(row.genjinDate!=null) {
+                    var newDate = new Date();
+                    newDate.setTime(row.genjinDate);
+                    return newDate.toLocaleDateString()
+                }
             },
             handleView: function (index, row) {
                 this.$router.push('/brokerCompany/view?id=' + row.tQdCompayId);
@@ -354,7 +356,7 @@
             changeStatus(row){
                 let para ={
                     id:row.tQdCompayId.toString(),
-                    status:row.zhuangtai==null?1:2,
+                    status:row.zhuangtai==0?0:1,
                 }
                 changeBrokerCompanyStatus(para).then((res)=>{
 
@@ -384,7 +386,7 @@
                 let para = {
                     parentid: 0,
                 };
-                this.optionsywqy = [];
+                //this.optionsywqy = [];
                 getYWQYDicList(para).then((res) => {
 
                     if (res.status == '200') {
@@ -414,7 +416,7 @@
                         }
                     } else {
                         this.$message({
-                            message: '获取行政区域数据失败',
+                            message: '获取地图区域数据失败',
                             type: 'error'
                         });
                     }
@@ -422,7 +424,7 @@
             },
             //获取协议等级
             remoteMethodXYDJ() {
-                this.optionsxydj = [];
+                //this.optionsxydj = [];
                 this.filters.hezuoxieyidengji = null;//清除街道的缓存
                 getXYDJDicList().then((res) => {
                     if (res.status == '200') {
@@ -446,7 +448,12 @@
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
-                    bk_name: this.filters.bk_name
+                    bk_name: this.filters.bk_name,
+                    yewuqvyvid: this.filters.yewuqvyvid,
+                    yewupianqvid: this.filters.yewupianqvid,
+                    gongsijingyingshuxing: this.filters.gongsijingyingshuxing.toString(),
+                    hezuoxieyidengji: this.filters.hezuoxieyidengji,
+
                 };
                 this.listLoading = true;
                 getBrokerCompanyListPage(para).then((res) => {
