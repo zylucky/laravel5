@@ -333,6 +333,7 @@
             //根据合同ID来查询协议
             getOptimize(){
                 getOptimizePurchaseContract(this.$route.query).then((res)=>{
+                    alert(332);
                     this.fuzhi(res);
                 });
             },
@@ -517,7 +518,7 @@
             //type==1的时候查看协议的内容
             if(this.$route.query.type==1){
                 //查询
-                alert(11111);
+                //alert(11111);
                 this.getOptimize();
             }
             //审核页面input禁用
