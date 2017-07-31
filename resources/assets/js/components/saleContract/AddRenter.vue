@@ -55,7 +55,7 @@
                                 remote
                                 @change="jingjirenchangeOnSelect"
                                 placeholder="自由经纪人名称"
-                                :remote-method="remoteMethod1"
+                                :remote-method="remoteMethod2"
                                 :loading="bkNameloading">
                             <el-option
                                     v-for="item in renter.options1"
@@ -322,7 +322,7 @@
 
             },
             //获取自由经济人名称
-            remoteMethod1(query) {
+            remoteMethod2(query) {
                 let para = {
                     name: query
                 };
