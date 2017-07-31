@@ -1,7 +1,7 @@
 <template>
     <div>
     <el-row class="container">
-            <el-tabs v-model="editableTabsValue2" type="card" editable @edit="addTab" @tab-remove="removeTab">
+            <el-tabs v-model="editableTabsValue2" type="card" :editable="flag" addable @edit="addTab" @tab-remove="removeTab">
                 <el-tab-pane
                         v-for="(item, index) in editableTabs2"
                         :key="item.name"
@@ -151,6 +151,7 @@
                 purchaseContract:{
                     type:0,
                 },
+                flag: false,
                 editPropertyRules :{
                     loupanName: [
                         { required: true, message: '不能为空'}
@@ -405,11 +406,15 @@
                     diyaren:'',
                 });
                 this.editableTabsValue2 = newTabName;
+                if(this.editableTabs2.length > 1){
+                    this.flag = true;
+                }
                 }
             },
             removeTab(targetName) {
                 this.property.officeList.pop();
                 let tabs = this.editableTabs2;
+                /*
                 let activeName = this.editableTabsValue2;
                 if (activeName === targetName) {
                     tabs.forEach((tab, index) => {
@@ -421,12 +426,25 @@
                         }
                     });
                 }
+                */
                 let propertys = this.property.officeList ;
                 propertys.forEach((property,index)=>{
 
                 })
-                this.editableTabsValue2 = activeName;
-                this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
+                tabs = tabs.filter(tab => tab.name !== targetName);
+                this.editableTabs2 = tabs.map((tab, idx)=>{
+                    tab.name = (idx + 1) + ''; 
+                    tab.title = '房间'+ (idx + 1);
+                    return tab;
+                });
+                --this.tabIndex;
+                if(parseInt(this.editableTabsValue2) > this.tabIndex - 1){
+                    this.editableTabsValue2 = this.editableTabs2[this.tabIndex-1].name;
+                }
+
+                if(this.editableTabs2.length < 2){
+                    this.flag = false;
+                }
             }
         },
         mounted() {

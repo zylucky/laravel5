@@ -137,11 +137,15 @@
                 </el-row>
             </div>
             <div v-if="renter.zuhuleixing == 2">
-                <el-form-item label="公司名称" :prop="'chengzuren.' + index + '.name'" :rules="[
+                    <el-row>
+                     <el-col :span="18">
+                <el-form-item label="公司名称" :prop="'chengzuren.0.name'" :rules="[
                          { required: true, message: '不能为空' }
                     ]">
                     <el-input v-model="renter.chengzuren[0].name"></el-input>
                 </el-form-item>
+                        </el-col>
+                    </el-row>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="法人" >
