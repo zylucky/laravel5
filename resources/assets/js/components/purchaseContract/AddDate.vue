@@ -123,34 +123,34 @@
                             </el-col>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="2" :pull="1" style="width: 130px;margin-left:-20px;">
-                        <el-form-item label="月租金" label-width="55px"  :prop="'zujinList.' + index + '.yuezujin'" :rules="[{
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="月租金" :prop="'zujinList.' + index + '.yuezujin'" :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]" >
-                            <el-input v-model.number="item.yuezujin" class="pulll10" placeholder="租金"></el-input>
+                            <el-input v-model.number="item.yuezujin" placeholder="租金"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="2" :pull="1" style="width: 94px;margin-left:-10px;">
-                        <el-form-item label="单价" label-width="40px"  :prop="'zujinList.' + index + '.price' " :rules="[{
+                    <el-col :span="8">
+                        <el-form-item label="单价" :prop="'zujinList.' + index + '.price' " :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]">
-                            <el-input v-model.number="item.price" class="pulll10" placeholder="单价"></el-input>
+                            <el-input v-model.number="item.price" placeholder="单价"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="3" :pull="1" style="margin-left:-10px;">
-                        <el-form-item label="递增方式" label-width="70px">
-                            <el-input v-model="item.dizengliang" class="pulll10" placeholder=""></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="2"  style="width: 70px;margin-left:-50px;">
-                        <el-select v-model="addDate.zujinList[index].dizengfangshi"   placeholder="">
-                            <el-option
+                    <el-col :span="8">
+                        <el-form-item label="递增方式">
+                            <el-input v-model="item.dizengliang" style="width:40%" placeholder=""></el-input>
+                            <el-select v-model="addDate.zujinList[index].dizengfangshi" style="width:40%" placeholder="">
+                                <el-option
                                     v-for="item in options"
                                     :key="item.value"
                                     :label="item.label"
                                     :value="item.value">
-                            </el-option>
-                        </el-select>
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
                     </el-col>
                     <el-col :span="2" style="margin-left:5px;">
                         <el-button v-if="index>0" v-show="editVisible" @click.prevent="removeRentItem(item)">删除</el-button>
@@ -198,18 +198,18 @@
                             </el-col>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="1" :pull="1" style="width: 90px;">
-                        <el-form-item label="押" label-width="20px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="[{
+                    <el-col :span="1" :pull="1" style="width: 150px;">
+                        <el-form-item label="押" label-width="40px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]">
-                            <el-input v-model.number="item.yajinyue" placeholder="押几"></el-input>
+                            <el-input v-model.number="item.yajinyue" placeholder="押几" style="margin-left:0"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="1" :pull="1" style="margin-left: 15px;width: 90px;">
-                        <el-form-item label="付" label-width="20px" :prop="'fukuanFangshiList.' + index + '.zujinyue'" :rules="[{
+                    <el-col :span="1" :pull="1" style="margin-left: 15px;width: 150px;">
+                        <el-form-item label="付" label-width="40px" :prop="'fukuanFangshiList.' + index + '.zujinyue'" :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]">
-                            <el-input v-model.number="item.zujinyue" placeholder="付几"></el-input>
+                            <el-input v-model.number="item.zujinyue" placeholder="付几" style="margin-left:0"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1">

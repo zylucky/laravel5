@@ -37373,6 +37373,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -37489,12 +37493,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -37859,30 +37857,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }
         },
-        addTab: function addTab(targetName) {
-            var newTabName = ++this.tabIndex + '';
-            this.editableTabs2.push({
-                title: '房间' + this.tabIndex,
-                name: newTabName,
-                content: 'New Tab content'
-            });
-            this.property.officeList.push({
-                omcId: null,
-                loupanOmcId: null,
-                loudongOmcId: null,
-                loupanName: '',
-                loudongName: '',
-                fanghao: '',
-                weizhi: '',
-                chanquanzhenghao: '',
-                jianzhumianji: '',
-                qianyuemianji: '',
-                leixing: 0,
-                quyu: '',
-                isdiya: 0,
-                diyaren: ''
-            });
-            this.editableTabsValue2 = newTabName;
+        addTab: function addTab(targetName, action) {
+            if (action === 'add') {
+                var newTabName = ++this.tabIndex + '';
+                this.editableTabs2.push({
+                    title: '房间' + this.tabIndex,
+                    name: newTabName,
+                    content: 'New Tab content'
+                });
+
+                this.property.officeList.push({
+                    omcId: null,
+                    loupanOmcId: null,
+                    loudongOmcId: null,
+                    loupanName: '',
+                    loudongName: '',
+                    fanghao: '',
+                    weizhi: '',
+                    chanquanzhenghao: '',
+                    jianzhumianji: '',
+                    qianyuemianji: '',
+                    leixing: 0,
+                    quyu: '',
+                    isdiya: 0,
+                    diyaren: ''
+                });
+                this.editableTabsValue2 = newTabName;
+            }
         },
         removeTab: function removeTab(targetName) {
             this.property.officeList.pop();
@@ -101178,19 +101179,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         },
         expression: "item.enddate"
       }
-    })], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "width": "130px",
-        "margin-left": "-20px"
-      },
+    })], 1)], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
       attrs: {
-        "span": 2,
-        "pull": 1
+        "span": 8
       }
     }, [_c('el-form-item', {
       attrs: {
         "label": "月租金",
-        "label-width": "55px",
         "prop": 'zujinList.' + index + '.yuezujin',
         "rules": [{
           required: true,
@@ -101201,7 +101196,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }]
       }
     }, [_c('el-input', {
-      staticClass: "pulll10",
       attrs: {
         "placeholder": "租金"
       },
@@ -101213,18 +101207,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         expression: "item.yuezujin"
       }
     })], 1)], 1), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "width": "94px",
-        "margin-left": "-10px"
-      },
       attrs: {
-        "span": 2,
-        "pull": 1
+        "span": 8
       }
     }, [_c('el-form-item', {
       attrs: {
         "label": "单价",
-        "label-width": "40px",
         "prop": 'zujinList.' + index + '.price',
         "rules": [{
           required: true,
@@ -101235,7 +101223,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }]
       }
     }, [_c('el-input', {
-      staticClass: "pulll10",
       attrs: {
         "placeholder": "单价"
       },
@@ -101247,20 +101234,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         expression: "item.price"
       }
     })], 1)], 1), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "margin-left": "-10px"
-      },
       attrs: {
-        "span": 3,
-        "pull": 1
+        "span": 8
       }
     }, [_c('el-form-item', {
       attrs: {
-        "label": "递增方式",
-        "label-width": "70px"
+        "label": "递增方式"
       }
     }, [_c('el-input', {
-      staticClass: "pulll10",
+      staticStyle: {
+        "width": "40%"
+      },
       attrs: {
         "placeholder": ""
       },
@@ -101271,15 +101255,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         },
         expression: "item.dizengliang"
       }
-    })], 1)], 1), _vm._v(" "), _c('el-col', {
+    }), _vm._v(" "), _c('el-select', {
       staticStyle: {
-        "width": "70px",
-        "margin-left": "-50px"
+        "width": "40%"
       },
-      attrs: {
-        "span": 2
-      }
-    }, [_c('el-select', {
       attrs: {
         "placeholder": ""
       },
@@ -101298,7 +101277,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           "value": item.value
         }
       })
-    }))], 1), _vm._v(" "), _c('el-col', {
+    }))], 1)], 1), _vm._v(" "), _c('el-col', {
       staticStyle: {
         "margin-left": "5px"
       },
@@ -101410,7 +101389,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
       staticStyle: {
-        "width": "90px"
+        "width": "150px"
       },
       attrs: {
         "span": 1,
@@ -101419,7 +101398,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('el-form-item', {
       attrs: {
         "label": "押",
-        "label-width": "20px",
+        "label-width": "40px",
         "prop": 'fukuanFangshiList.' + index + '.yajinyue',
         "rules": [{
           required: true,
@@ -101430,6 +101409,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }]
       }
     }, [_c('el-input', {
+      staticStyle: {
+        "margin-left": "0"
+      },
       attrs: {
         "placeholder": "押几"
       },
@@ -101443,7 +101425,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })], 1)], 1), _vm._v(" "), _c('el-col', {
       staticStyle: {
         "margin-left": "15px",
-        "width": "90px"
+        "width": "150px"
       },
       attrs: {
         "span": 1,
@@ -101452,7 +101434,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('el-form-item', {
       attrs: {
         "label": "付",
-        "label-width": "20px",
+        "label-width": "40px",
         "prop": 'fukuanFangshiList.' + index + '.zujinyue',
         "rules": [{
           required: true,
@@ -101463,6 +101445,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }]
       }
     }, [_c('el-input', {
+      staticStyle: {
+        "margin-left": "0"
+      },
       attrs: {
         "placeholder": "付几"
       },
@@ -104916,7 +104901,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "editVisible"
     }],
     staticStyle: {
-      "margin-top": "100px"
+      "margin-top": "100px",
+      "margin-bottom": "1em",
+      "padding-left": "2em",
+      "padding-right": "2em"
     },
     attrs: {
       "type": "primary"
@@ -104931,6 +104919,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.editVisible),
       expression: "editVisible"
     }],
+    staticStyle: {
+      "margin-bottom": ".3em",
+      "padding-left": "2em",
+      "padding-right": "2em",
+      "margin-left": "0 !important"
+    },
     attrs: {
       "type": "primary",
       "disabled": _vm.btnType
@@ -105844,9 +105838,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-tabs', {
     attrs: {
       "type": "card",
-      "closable": ""
+      "editable": ""
     },
     on: {
+      "edit": _vm.addTab,
       "tab-remove": _vm.removeTab
     },
     model: {
@@ -105856,22 +105851,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editableTabsValue2"
     }
-  }, [_c('el-button', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.editVisible),
-      expression: "editVisible"
-    }],
-    attrs: {
-      "size": "small"
-    },
-    on: {
-      "click": function($event) {
-        _vm.addTab(_vm.editableTabsValue2)
-      }
-    }
-  }, [_vm._v("\n                添加房源\n            ")]), _vm._v(" "), _vm._l((_vm.editableTabs2), function(item, index) {
+  }, _vm._l((_vm.editableTabs2), function(item, index) {
     return _c('el-tab-pane', {
       key: item.name,
       attrs: {
@@ -106161,7 +106141,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         expression: "property.officeList[index].diyaren"
       }
     })], 1)], 1)], 1)], 1)], 1)], 1)
-  })], 2)], 1)], 1)
+  }))], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -114864,6 +114844,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("女")])], 1)], 1)], 1)], 1)], 2) : _vm._e(), _vm._v(" "), (_vm.owner.yezhuleixing == 2) ? _c('div', [_vm._l((_vm.owner.chanquanrenList), function(item, index) {
     return _c('div', {
       key: index
+    }, [_c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 18
+      }
     }, [_c('el-form-item', {
       attrs: {
         "label": "公司名称",
@@ -114881,7 +114865,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         },
         expression: "owner.chanquanrenList[index].name"
       }
-    })], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
       attrs: {
         "span": 8
       }
