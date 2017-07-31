@@ -235,6 +235,7 @@ class brokerCompanyUserController extends Controller
     public function checkPhone(Request $request)
     {
         $obj = $request->params;
+       // dd($obj);
         $client = new Client([
             'base_uri' => $this->base_url,
         ]);

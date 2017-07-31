@@ -31366,7 +31366,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                         });
                                     } else {
                                         _this12.$message({
-                                            message: 'res.data.msg',
+                                            message: res.data.msg,
                                             type: 'error'
                                         });
                                     };
@@ -31380,7 +31380,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                         });
                                     } else {
                                         _this12.$message({
-                                            message: 'res.data.msg',
+                                            message: res.data.msg,
                                             type: 'error'
                                         });
                                     };
@@ -31411,7 +31411,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 });
                             } else {
                                 _this13.$message({
-                                    message: 'res.data.msg',
+                                    message: res.data.msg,
                                     type: 'error'
                                 });
                             };
@@ -32258,7 +32258,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     });
                                 } else {
                                     _this8.$message({
-                                        message: 'res.data.msg',
+                                        message: res.data.msg,
                                         type: 'error'
                                     });
                                 };
@@ -32272,7 +32272,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     });
                                 } else {
                                     _this8.$message({
-                                        message: 'res.data.msg',
+                                        message: res.data.msg,
                                         type: 'error'
                                     });
                                 };
@@ -32300,7 +32300,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 });
                             } else {
                                 _this9.$message({
-                                    message: 'res.data.msg',
+                                    message: res.data.msg,
                                     type: 'error'
                                 });
                             };
@@ -33074,7 +33074,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                         });
                                     } else {
                                         _this8.$message({
-                                            message: 'res.data.msg',
+                                            message: res.data.msg,
                                             type: 'error'
                                         });
                                     }
@@ -33095,9 +33095,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                         message: '提交成功',
                                         type: 'success'
                                     });
+                                    _this8.brokerCompanyUserForm = Object.assign({}, res.data.data);
                                 } else {
                                     _this8.$message({
-                                        message: 'res.data.msg',
+                                        message: res.data.msg,
                                         type: 'error'
                                     });
                                 }
@@ -33128,7 +33129,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 });
                             } else {
                                 _this9.$message({
-                                    message: 'res.data.msg',
+                                    message: res.data.msg,
                                     type: 'error'
                                 });
                             }
@@ -33512,12 +33513,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //更改自由经纪人人员状态
         changeStatus: function changeStatus(row) {
+            var _this = this;
+
             var para = {
                 id: row.tQdZyPersonId.toString(),
                 status: row.zhuangtai == 0 ? 0 : 1
             };
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["E" /* changeBrokerUserStatus */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["E" /* changeBrokerUserStatus */])(para).then(function (res) {
+                if (res.data.code == 200) {
+                    _this.$message({
+                        message: row.zhuangtai == 0 ? '停用成功' : '启用成功',
+                        type: 'success'
+                    });
+                } else {
+                    _this.$message({
+                        message: res.data.msg,
+                        type: 'error'
+                    });
+                }
+            });
         },
 
         //页面跳转后
@@ -33535,7 +33550,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //获取渠道公司列表
         getBrokerUser: function getBrokerUser() {
-            var _this = this;
+            var _this2 = this;
 
             var para = {
                 page: this.page,
@@ -33549,15 +33564,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["F" /* getBrokerUserListPage */])(para).then(function (res) {
-                _this.total = res.data.total;
-                _this.brokerUser = res.data.data;
-                _this.listLoading = false;
+                _this2.total = res.data.total;
+                _this2.brokerUser = res.data.data;
+                _this2.listLoading = false;
             });
         },
 
         //获取公司业务区域
         remoteMethodywqy: function remoteMethodywqy() {
-            var _this2 = this;
+            var _this3 = this;
 
             var para = {
                 parentid: 0
@@ -33568,10 +33583,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (res.status == '200') {
                     for (var item in res.data.data) {
 
-                        _this2.optionsywqy.push({ value: res.data.data[item].id, label: res.data.data[item].fdName });
+                        _this3.optionsywqy.push({ value: res.data.data[item].id, label: res.data.data[item].fdName });
                     }
                 } else {
-                    _this2.$message({
+                    _this3.$message({
                         message: '获取业务区域数据失败',
                         type: 'error'
                     });
@@ -33581,7 +33596,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //获取公司业务区域id获取地图区域列表
         remoteMethoddtqy: function remoteMethoddtqy() {
-            var _this3 = this;
+            var _this4 = this;
 
             var para = {
                 parentid: this.filters.yewuqvyvid
@@ -33591,10 +33606,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["z" /* getYWQYDicList */])(para).then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
-                        _this3.optionsdtqy.push({ value: res.data.data[item].id, label: res.data.data[item].fdName });
+                        _this4.optionsdtqy.push({ value: res.data.data[item].id, label: res.data.data[item].fdName });
                     }
                 } else {
-                    _this3.$message({
+                    _this4.$message({
                         message: '获取地图区域数据失败',
                         type: 'error'
                     });
@@ -33604,18 +33619,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //获取渠道等级
         remoteMethodqddj: function remoteMethodqddj() {
-            var _this4 = this;
+            var _this5 = this;
 
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["x" /* getQDDJDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
-                        _this4.optionsqddj.push({
+                        _this5.optionsqddj.push({
                             value: res.data.data[item].enumValue,
                             label: res.data.data[item].enumKey
                         });
                     }
                 } else {
-                    _this4.$message({
+                    _this5.$message({
                         message: '获取公司属性数据失败',
                         type: 'error'
                     });
@@ -34108,27 +34123,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //更改渠道公司状态
         changeStatus: function changeStatus(row) {
+            var _this = this;
+
             var para = {
                 id: row.tQdCompayId.toString(),
                 status: row.zhuangtai == 0 ? 0 : 1
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_0" /* changeBrokerCompanyStatus */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_0" /* changeBrokerCompanyStatus */])(para).then(function (res) {
+                if (res.data.code == 200) {
+                    _this.$message({
+                        message: row.zhuangtai == 0 ? '停用成功' : '启用成功',
+                        type: 'success'
+                    });
+                } else {
+                    _this.$message({
+                        message: res.data.msg,
+                        type: 'error'
+                    });
+                }
+            });
         },
 
         //获取公司属性
         remoteMethodgssx: function remoteMethodgssx() {
-            var _this = this;
+            var _this2 = this;
 
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["Q" /* getGSSXDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
-                        _this.optionsgssx.push({
+                        _this2.optionsgssx.push({
                             value: res.data.data[item].enumValue,
                             label: res.data.data[item].enumKey
                         });
                     }
                 } else {
-                    _this.$message({
+                    _this2.$message({
                         message: '获取公司属性数据失败',
                         type: 'error'
                     });
@@ -34138,7 +34167,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //获取公司业务区域
         remoteMethodywqy: function remoteMethodywqy() {
-            var _this2 = this;
+            var _this3 = this;
 
             var para = {
                 parentid: 0
@@ -34149,10 +34178,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (res.status == '200') {
                     for (var item in res.data.data) {
 
-                        _this2.optionsywqy.push({ value: res.data.data[item].id, label: res.data.data[item].fdName });
+                        _this3.optionsywqy.push({ value: res.data.data[item].id, label: res.data.data[item].fdName });
                     }
                 } else {
-                    _this2.$message({
+                    _this3.$message({
                         message: '获取业务区域数据失败',
                         type: 'error'
                     });
@@ -34162,7 +34191,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //获取公司业务区域id获取地图区域列表
         remoteMethoddtqy: function remoteMethoddtqy() {
-            var _this3 = this;
+            var _this4 = this;
 
             var para = {
                 parentid: this.filters.yewuqvyvid
@@ -34172,10 +34201,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["z" /* getYWQYDicList */])(para).then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
-                        _this3.optionsdtqy.push({ value: res.data.data[item].id, label: res.data.data[item].fdName });
+                        _this4.optionsdtqy.push({ value: res.data.data[item].id, label: res.data.data[item].fdName });
                     }
                 } else {
-                    _this3.$message({
+                    _this4.$message({
                         message: '获取地图区域数据失败',
                         type: 'error'
                     });
@@ -34185,21 +34214,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //获取协议等级
         remoteMethodXYDJ: function remoteMethodXYDJ() {
-            var _this4 = this;
+            var _this5 = this;
 
             //this.optionsxydj = [];
             this.filters.hezuoxieyidengji = null; //清除街道的缓存
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["U" /* getXYDJDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
-                        _this4.optionsxydj.push({
+                        _this5.optionsxydj.push({
                             value: res.data.data[item].enumValue,
                             label: res.data.data[item].enumKey,
                             yjvalue: parseFloat(res.data.data[item].enumValues)
                         });
                     }
                 } else {
-                    _this4.$message({
+                    _this5.$message({
                         message: '获取协议等级数据失败',
                         type: 'error'
                     });
@@ -34209,7 +34238,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //获取渠道公司列表
         getBrokerCompany: function getBrokerCompany() {
-            var _this5 = this;
+            var _this6 = this;
 
             var para = {
                 page: this.page,
@@ -34223,9 +34252,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_1" /* getBrokerCompanyListPage */])(para).then(function (res) {
-                _this5.total = res.data.total;
-                _this5.brokerCompany = res.data.data;
-                _this5.listLoading = false;
+                _this6.total = res.data.total;
+                _this6.brokerCompany = res.data.data;
+                _this6.listLoading = false;
             });
         },
 
@@ -34725,13 +34754,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //更改渠道人员状态
         changeStatus: function changeStatus(row) {
+            var _this3 = this;
 
             var para = {
                 id: row.tQdPersonId.toString(),
                 status: row.zhuangtai == 0 ? 0 : 1
             };
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["O" /* changeBrokerCompanyUserStatus */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["O" /* changeBrokerCompanyUserStatus */])(para).then(function (res) {
+                if (res.data.code == 200) {
+                    _this3.$message({
+                        message: row.zhuangtai == 0 ? '停用成功' : '启用成功',
+                        type: 'success'
+                    });
+                } else {
+                    _this3.$message({
+                        message: res.data.msg,
+                        type: 'error'
+                    });
+                }
+            });
         },
 
         //页面跳转后
@@ -34748,7 +34790,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //获取渠道公司列表
         getBrokerCompanyUser: function getBrokerCompanyUser() {
-            var _this3 = this;
+            var _this4 = this;
 
             var para = {
                 page: this.page,
@@ -34763,9 +34805,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["P" /* getBrokerCompanyUserListPage */])(para).then(function (res) {
-                _this3.total = res.data.total;
-                _this3.brokerCompanyUser = res.data.data;
-                _this3.listLoading = false;
+                _this4.total = res.data.total;
+                _this4.brokerCompanyUser = res.data.data;
+                _this4.listLoading = false;
             });
         },
 

@@ -741,7 +741,7 @@
                                             });
                                         } else {
                                             this.$message({
-                                                message: 'res.data.msg',
+                                                message: res.data.msg,
                                                 type: 'error'
                                             });
 
@@ -763,9 +763,10 @@
                                             message: '提交成功',
                                             type: 'success'
                                         });
+                                        this.brokerCompanyUserForm = Object.assign({}, res.data.data);
                                     } else {
                                         this.$message({
-                                            message: 'res.data.msg',
+                                            message: res.data.msg,
                                             type: 'error'
                                         });
 
@@ -796,7 +797,7 @@
                                     });
                                 } else {
                                     this.$message({
-                                        message: 'res.data.msg',
+                                        message: res.data.msg,
                                         type: 'error'
                                     });
 

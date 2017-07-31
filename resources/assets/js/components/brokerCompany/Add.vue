@@ -1034,7 +1034,7 @@
                                         });
                                     }else{
                                         this.$message({
-                                            message: 'res.data.msg',
+                                            message: res.data.msg,
                                             type: 'error'
                                         });
 
@@ -1049,7 +1049,7 @@
                                     });
                                     }else{
                                         this.$message({
-                                            message: 'res.data.msg',
+                                            message: res.data.msg,
                                             type: 'error'
                                         });
 
@@ -1080,7 +1080,7 @@
                                     });
                                 }else{
                                     this.$message({
-                                        message: 'res.data.msg',
+                                        message: res.data.msg,
                                         type: 'error'
                                     });
 

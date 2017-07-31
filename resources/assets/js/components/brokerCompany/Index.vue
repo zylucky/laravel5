@@ -350,7 +350,18 @@
                     status:row.zhuangtai==0?0:1,
                 }
                 changeBrokerCompanyStatus(para).then((res)=>{
+                    if (res.data.code == 200) {
+                        this.$message({
+                            message:row.zhuangtai==0? '停用成功': '启用成功',
+                            type: 'success'
+                        });
+                    } else {
+                        this.$message({
+                            message: res.data.msg,
+                            type: 'error'
+                        });
 
+                    }
                 })
             },
             //获取公司属性
