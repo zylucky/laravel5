@@ -288,6 +288,10 @@ class purchaseContractController extends Controller
         $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$xyid.'/confrim?id='.$xyid);
         echo $response->getBody();
     }
+    //优化协议的列表
+    public function releasedList(){
+        dd(1);
+    }
     //状态变更为审核中
     public function approving(){
         $id = Input::get('id');

@@ -231,6 +231,7 @@ module.exports = function normalizeComponent (
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_43", function() { return weiyuePurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_45", function() { return endPurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_46", function() { return youhuaPurchaseContract; });
+/* unused harmony export youhuaPurchaseContractList */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_33", function() { return youhuacgPurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_40", function() { return weiYueInfoPurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_44", function() { return weiYueSavePurchaseContract; });
@@ -511,6 +512,9 @@ var endPurchaseContract = function endPurchaseContract(params) {
 }; //状态变更为：合同终止
 var youhuaPurchaseContract = function youhuaPurchaseContract(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/purchaseContract/releasing', { params: params });
+}; //状态变更为：优化中
+var youhuaPurchaseContractList = function youhuaPurchaseContractList(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/purchaseContract/releasedList', { params: params });
 }; //状态变更为：优化中
 var youhuacgPurchaseContract = function youhuacgPurchaseContract(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/purchaseContract/released', { params: params });
@@ -38585,6 +38589,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Commission_contractPayType_vue__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Commission_contractPayType_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Commission_contractPayType_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_api_js__ = __webpack_require__(1);
+//
 //
 //
 //
@@ -105640,7 +105645,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleCheckOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("查看协议")])], 1) : _vm._e(), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("当前协议")])], 1) : _vm._e(), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+          on: {
+            "click": function($event) {
+              _vm.checkhistoryOptimize(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("历史协议")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleupload(scope.$index, scope.row)

@@ -52,7 +52,8 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[6,9,10])" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7])" ><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7,9])" ><el-button @click="handleOptimize(scope.$index, scope.row)">优化协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">当前协议</el-button></el-dropdown-item>
+                            <el-dropdown-item   ><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史协议</el-button></el-dropdown-item>
                             <el-dropdown-item  ><el-button  @click="handleupload(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
@@ -126,6 +127,7 @@
         weiyuePurchaseContract,
         endPurchaseContract,
         youhuaPurchaseContract,
+        youhuaPurchaseContractList,
         weiYueInfoPurchaseContract,
         weiYueSavePurchaseContract,
         getPurchaseContractInfo,
