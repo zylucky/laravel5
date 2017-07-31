@@ -24,6 +24,7 @@ class brokerCompanyUserController extends Controller
         $enddate = Input::get('enddate');
         $buildingname = Input::get('buildingname');
         $qvdaodengji = Input::get('qvdaodengji');
+        $cid = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
 
@@ -38,6 +39,8 @@ class brokerCompanyUserController extends Controller
                 'qddj' => $qvdaodengji,
                 'sdate' => $startdate,
                 'edate' => $enddate,
+                'edate' => $enddate,
+                'compayid' => $cid,
             ]
         ]);
         return $response->getBody();
@@ -186,7 +189,8 @@ class brokerCompanyUserController extends Controller
                 'query' => [
                     'page' => 1,
                     'size' => 10,
-                    'compay' => $bkName
+                    'compay' => $bkName,
+                    'zt' => 1,
                 ]
 
             ]
@@ -227,5 +231,33 @@ class brokerCompanyUserController extends Controller
             echo $response->getBody();
         }
     }
-
+    //判断联系方式
+    public function checkPhone(Request $request)
+    {
+        $obj = $request->params;
+       // dd($obj);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/qd/check/' . $obj['phone'] .'/'.$obj['id']. '/tel', [
+            ]
+        );
+        echo $response->getBody();
+    }
+    //判断人员公司与姓名
+    public function checkName(Request $request)
+    {
+        $obj = $request->params;
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/qd/person/checkcompayuname', [
+                'query' => [
+                    'compayid' => $obj['id'],
+                    'uname' => $obj['name']
+                ]
+            ]
+        );
+        echo $response->getBody();
+    }
 }

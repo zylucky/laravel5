@@ -85,9 +85,9 @@
         </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）租金的结算方式为：□ 以转账方式 ；□ 现金支付</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（甲方指定收款账户为：</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户 &nbsp;&nbsp;名：<input type="text" style="width: 150px;" v-model="renter.shoukuanren"></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开户行：<input type="text" style="width: 150px;" v-model="renter.kaihuhang"></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账 &nbsp;&nbsp;号：<input type="text" style="width: 150px;" v-model="renter.zhanghao"></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户 &nbsp;&nbsp;名：<input type="text" style="width: 350px;" v-model="renter.shoukuanren"></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开户行：<input type="text" style="width: 350px;" v-model="renter.kaihuhang"></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账 &nbsp;&nbsp;号：<input type="text" style="width: 350px;" v-model="renter.zhanghao"></p>
         <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第五条  相关费用的承担方式</b></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方承担在承租期的物业管理费、供暖费。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）在承租期内，乙方自行承担在使用期间的相关费用（水费、电费、燃气费、宽带费、停车费等），乙方按物业管理机构提供的交费通知单交费。</p>

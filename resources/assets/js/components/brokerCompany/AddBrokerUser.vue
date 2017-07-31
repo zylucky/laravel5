@@ -9,21 +9,16 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item  label="姓名" prop="xingming">
-                            <el-input v-model="brokerCompanyUserForm.xingming"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item  label="职务" prop="zhiwu">
-                            <el-input v-model="brokerCompanyUserForm.zhiwu"></el-input>
+                            <el-input v-model="brokerCompanyUserForm.xingming" :disabled="isname"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-form-item label="联系电话" v-for="(item, index) in brokerCompanyUserForm.telList"
+                <el-form-item required label="联系电话" v-for="(item, index) in brokerCompanyUserForm.telList"
                               :key="item.key">
                     <el-col :span="8">
                         <el-form-item  :prop="'telList.' + index + '.dianhua' " :rules="[
                                 {required: true, message: '不能为空'},
-                                {type: 'number', message: '必须为数字'}
+                                {required: true, validator: MycheckPhone, trigger: 'blur' },
                                 ]">
                             <el-input v-model.number="brokerCompanyUserForm.telList[index].dianhua"></el-input>
                         </el-form-item>
@@ -126,14 +121,14 @@
 
                     <el-col :span="8">
                         <el-form-item label="是否添加微信好友" prop="shifouweixin">
-                            <el-radio-group v-model="brokerCompanyUserForm.shifouweixin">
+                            <el-radio-group v-model="brokerCompanyUserForm.shifouweixin"  @change="changehaoyou">
                                 <el-radio :label=true>是</el-radio>
                                 <el-radio :label=false>否</el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="添加好友人数" prop="tianjiahaoyourenshu">
+                        <el-form-item label="添加好友人数" prop="tianjiahaoyourenshu" v-if="ishy">
                             <el-input v-model.number="brokerCompanyUserForm.tianjiahaoyourenshu"></el-input>
                         </el-form-item>
                     </el-col>
@@ -141,19 +136,19 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="是否带看幼狮" prop="shifoudaikanyoushi">
-                            <el-radio-group v-model="brokerCompanyUserForm.shifoudaikanyoushi">
+                            <el-radio-group v-model="brokerCompanyUserForm.shifoudaikanyoushi"   @change="changedaikan">
                                 <el-radio :label=true>是</el-radio>
                                 <el-radio :label=false>否</el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="带看次数" prop="daikancishu">
+                        <el-form-item label="带看次数" prop="daikancishu" v-if="isdk">
                             <el-input v-model.number="brokerCompanyUserForm.daikancishu"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="带看对接人数" prop="daikanduijierenshu">
+                        <el-form-item label="带看对接人数" prop="daikanduijierenshu" v-if="isdk">
                             <el-input v-model.number="brokerCompanyUserForm.daikanduijierenshu"></el-input>
                         </el-form-item>
                     </el-col>
@@ -161,19 +156,19 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="是否签约过幼狮" prop="shifoudaikanyoushifang">
-                            <el-radio-group v-model="brokerCompanyUserForm.shifoudaikanyoushifang">
+                            <el-radio-group v-model="brokerCompanyUserForm.shifoudaikanyoushifang"  @change="changeqianyue">
                                 <el-radio :label=true>是</el-radio>
                                 <el-radio :label=false>否</el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="签约次数" prop="qianyuecishu">
+                        <el-form-item label="签约次数" prop="qianyuecishu"  v-if="isqy">
                             <el-input v-model.number="brokerCompanyUserForm.qianyuecishu"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="签约对接人数" prop="qianyueduijierenshu">
+                        <el-form-item label="签约对接人数" prop="qianyueduijierenshu"  v-if="isqy">
                             <el-input v-model.number="brokerCompanyUserForm.qianyueduijierenshu"></el-input>
                         </el-form-item>
                     </el-col>
@@ -219,7 +214,7 @@
             </el-col>
         </el-form>
         <el-button type="primary" v-show="editVisible" @click="save" style="margin-top:100px;">保存</el-button>
-        <el-button  v-show="editVisible" @click.native="">取消</el-button>
+        <el-button  v-show="editVisible" @click.native="fanhui">返回</el-button>
         <el-col>
             <div v-show="showeidt">
                 <el-button @click.native="change">跟进记录</el-button>
@@ -258,10 +253,10 @@
                             <el-input type="textarea" v-model="editForm.shuoming" auto-complete="off" style="width:1100px"></el-input>
                         </el-form-item>
                     </el-row>
-                    <a href="/#/brokerCompanyUserHistory">查看历史记录</a>
+                    <a href='javascript:;' @click="openHistory" >查看历史记录</a>
                 </el-form>
-                <el-button type="primary" v-show="editVisible" @click="save" style="margin-top:20px;">保存</el-button>
-                <el-button v-show="editVisible" @click.native="editFormVisible = false">取消</el-button>
+                <el-button type="primary" v-show="editVisible" @click="savehistory" style="margin-top:20px;">保存</el-button>
+                <el-button v-show="editVisible" @click.native="fanhui">返回</el-button>
             </div>
 
             </div>
@@ -277,6 +272,7 @@
         editBrokerUser,
         addBrokerUserHistory,
         getYSLXRDicList,
+        checkPhone,
     } from '../../api/api';
     import ElRow from "element-ui/packages/row/src/row";
     import AddHistory from './BrokerUserHistoryList.vue'
@@ -292,8 +288,12 @@
                 showed: false,
                 ischanged:false,
                 showhistory:false,
+                ishy: true,
+                isdk: true,
+                isqy: true,
+                isname: false,
                 brokerCompanyUserForm: {
-                    tQdZyPersonId: 1,
+                    tQdZyPersonId: '',
                     xingming: '',
                     zhiwu: '',
                     yewuqvyv: '',
@@ -306,12 +306,12 @@
                     yslianxiren2Id: null,
                     yslianxiren3: null,
                     yslianxiren3Id: null,
-                    shifouweixin: null,
+                    shifouweixin: true,
                     tianjiahaoyourenshu: null,
-                    shifoudaikanyoushi: null,
+                    shifoudaikanyoushi: true,
                     daikancishu: null,
                     daikanduijierenshu: null,
-                    shifoudaikanyoushifang: null,
+                    shifoudaikanyoushifang: true,
                     qianyuecishu: null,
                     qianyueduijierenshu:null,
                     qvdaodengji: null,
@@ -322,7 +322,7 @@
                     zhuangtai: null,
                     telList: [
                         {
-                            tQdPersonTelId: '',
+                            tQdPersonTelId: 0,
                             dianhua: '',
                             qdType: '',
                             personid:''
@@ -362,11 +362,45 @@
                         {required: true, message: '不能为空'},
                     ],
 
-                    tianjiahaoyourenshu:[],
-                    daikancishu:[],
-                    daikanduijierenshu:[],
-                    qianyuecishu:[],
-                    qianyueduijierenshu:[],
+                    tianjiahaoyourenshu: [{required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'}],
+                    daikancishu: [{required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'}],
+                    daikanduijierenshu: [{required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'}],
+                    qianyuecishu: [{required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'}],
+                    qianyueduijierenshu: [{required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'}],
+                    yjzbSf: [
+                        {required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'},
+                        {
+                            required: true, validator: (rule, value, callback) => {
+                            if (value > 1 || value < 0) {
+                                callback(new Error("收房佣金占比只能是0到1之间的数"));
+                            } else {
+                                callback();
+                            }
+                        }, trigger: 'blur'
+                        }
+                    ],
+                    yjzbCf: [
+                        {required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'},
+                        {
+                            required: true, validator: (rule, value, callback) => {
+                            if (value > 1 || value < 0) {
+                                callback(new Error("出房佣金占比只能是0到1之间的数"));
+                            } else {
+                                callback();
+                            }
+                        }, trigger: 'blur'
+                        }
+                    ],
+                    yjType: [
+                        {required: true, message: '不能为空'},
+                    ],
                 },
                 editVisible:true,
                 bkNameloading: false,
@@ -401,15 +435,72 @@
                     shuoming: '',
                 },
                 editFormRules: {
-
+                    shifouyouxiao:[{required: true, message: '不能为空'},],
+                    xinxishifouzhunque:[{required: true, message: '不能为空'},],
+                    shifouzhuanhang:[{required: true, message: '不能为空'},],
                 },
             }
         },
         methods: {
+            MycheckPhone(rule,value,callback){
+                if (/^\d+$/.test(value) == true) {
+                    var telid=0;
+                    for (var x in this.brokerCompanyUserForm.telList) {
+                        if (this.brokerCompanyUserForm.telList[x].dianhua ==value) {
+                            telid= this.brokerCompanyUserForm.telList[x].tQdPersonTelId;
+                        }
+                    }
+                    let para = {
+                        id:telid ,
+                        phone: value,
+                    };
+                    checkPhone(para).then((res) => {
+                        if (res.data.code != '200') {
+                            callback(res.data.msg);
+                        } else {
+                            callback();
+                        }
+                    })
+
+                }else{
+                    callback('必须为数字');
+                }
+            },
+            openHistory(){
+                window.open("/#/brokerUserHistory?id=" + this.$route.query.id);
+            },
+            fanhui(){
+                this.$router.push('/brokerUser');
+            },
+            changehaoyou(){
+                if (this.brokerCompanyUserForm.shifouweixin == true) {
+                    this.ishy = true;
+
+                } else {
+                    this.ishy = false;
+                }
+
+            },
+            changedaikan(){
+                if (this.brokerCompanyUserForm.shifoudaikanyoushi == true) {
+                    this.isdk = true;
+                } else {
+                    this.isdk = false;
+                }
+
+            },
+            changeqianyue(){
+                if (this.brokerCompanyUserForm.shifoudaikanyoushifang == true) {
+                    this.isqy = true;
+                } else {
+                    this.isqy = false;
+                }
+
+            },
             //增加
             addFreeItem() {
                 this.brokerCompanyUserForm.telList.push({
-                    "tQdPersonTelId": '',
+                    "tQdPersonTelId": 0,
                     "dianhua": '',
                     "qdType": '',
                     "personid": ''
@@ -440,6 +531,25 @@
                 if (index !== -1) {
                     this.brokerCompanyUserForm.telList.splice(index, 1)
                 }
+            },
+            checkPhone(rule, value, callback) {
+                if (value != null && value != '') {
+                    let para = {
+                        phone: value,
+                    };
+                    if (value != '') {
+                        checkPhone(para).then((res) => {
+                            if (res.data.code != '200') {
+                                callback(res.data.msg);
+                            } else {
+                                callback();
+                            }
+                        })
+                    }
+                } else {
+                    callback();
+                }
+
             },
             //显示和隐藏跟进记录
             change(){
@@ -664,19 +774,36 @@
                             let para = Object.assign({}, this.brokerCompanyUserForm);
 
                             if (this.brokerCompanyUserForm.tQdZyPersonId!=''&&this.brokerCompanyUserForm.tQdZyPersonId!=null) {
+
                                 editBrokerUser(para).then((res) => {
-                                    this.$message({
-                                        message: '提交成功',
-                                        type: 'success'
-                                    });
+                                    if(res.data.code==200){
+                                        this.$message({
+                                            message: '提交成功',
+                                            type: 'success'
+                                        });
+                                    }else{
+                                        this.$message({
+                                            message: res.data.msg,
+                                            type: 'error'
+                                        });
+
+                                    };
                                 });
                             }else{
                                 addBrokerUser(para).then((res) => {
-                                    this.brokerCompanyUserForm.tQdZyPersonId=res.data.data.tQdZyPersonId;
-                                    this.$message({
-                                        message: '提交成功',
-                                        type: 'success'
-                                    });
+                                    if(res.data.code==200){
+                                        this.$message({
+                                            message: '提交成功',
+                                            type: 'success'
+                                        });
+                                    }else{
+                                        this.$message({
+                                            message: res.data.msg,
+                                            type: 'error'
+                                        });
+
+                                    };
+                                    this.$router.push('/brokerUser');
                                 });
                             }
                         });
@@ -691,10 +818,18 @@
                             para.tQdZyPersonId=this.$route.query.id;
                             addBrokerUserHistory(para).then((res) => {
 
-                                this.$message({
-                                    message: '提交成功',
-                                    type: 'success'
-                                });
+                                if(res.data.code==200){
+                                    this.$message({
+                                        message: '提交成功',
+                                        type: 'success'
+                                    });
+                                }else{
+                                    this.$message({
+                                        message: res.data.msg,
+                                        type: 'error'
+                                    });
+
+                                };
                             });
                         });
                     }
@@ -727,6 +862,7 @@
             //根据url得到的渠道ID，来获取数据
             if (this.$route.query.id != null) {
                 this.getBrokerUser(this.$route.query);
+                this.isname = true;
             }
             //新增页面隐藏跟进记录
             if (this.$route.path == '/brokerUser/add') {

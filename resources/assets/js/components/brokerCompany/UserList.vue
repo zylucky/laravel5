@@ -76,7 +76,7 @@
                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
-                               <el-dropdown-item  >  <el-button   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
+                               <el-dropdown-item  >  <el-button v-if="scope.row.zhuangtai==1"   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
                                <el-dropdown-item  >  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
@@ -122,7 +122,7 @@
         data(){
             return {
                 filters:{
-                    bk_name:'',
+                    bk_name:this.$route.query.name!=null?this.$route.query.name:'',
                     bk_username:'',
                     startdate:'',
                     enddate:'',
@@ -142,10 +142,7 @@
                 sels: [],//列表选中列
                 bkNameloading: false,
                 options1:[],
-                optionsqddj:[  {
-                    value: 0,
-                    label: '请选择'
-                }],
+                optionsqddj:[  ],
 
 
                 editFormVisible: false,//编辑界面是否显示
@@ -345,7 +342,18 @@
                 }
 
                 changeBrokerCompanyUserStatus(para).then((res)=>{
+                    if (res.data.code == 200) {
+                        this.$message({
+                            message:row.zhuangtai==0? '停用成功': '启用成功',
+                            type: 'success'
+                        });
+                    } else {
+                        this.$message({
+                            message: res.data.msg,
+                            type: 'error'
+                        });
 
+                    }
                 })
             },
             //页面跳转后
@@ -369,9 +377,8 @@
                     enddate: this.filters.enddate!=''?new Date(this.filters.enddate).toLocaleDateString():'',
                     buildingname: this.filters.buildingname,
                     qvdaodengji: this.filters.qvdaodengji,
+                    id:this.$route.query.id!=null?this.$route.query.id:'',
                 };
-                console.log(para);
-                console.log(this.filters);
                 this.listLoading = true;
                 getBrokerCompanyUserListPage(para).then((res) => {
                     this.total = res.data.total;

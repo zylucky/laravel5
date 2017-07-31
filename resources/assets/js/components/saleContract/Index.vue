@@ -455,20 +455,20 @@
                                 message: '数据没有保存成功',
                                 type: 'error'
                             });
+                        }else{
+                            this.listLoading = true;
+                            let para = {id:this.id};
+                            endSaleContract(para).then((res) => {
+                                this.listLoading = false;
+                                this.$message({
+                                    message: '设置成功',
+                                    type: 'success'
+                                });
+                                this.saleContractList();
+                            });
                         }
                     });
-                    this.listLoading = true;
-                    let para = {id:this.id};
-                    endSaleContract(para).then((res) => {
-                        this.listLoading = false;
-                        this.$message({
-                            message: '设置成功',
-                            type: 'success'
-                        });
-                        this.saleContractList();
-                    });
                 }).catch(() => {
-
                 });
             },
 
