@@ -12,9 +12,9 @@
                 v-for="(item,index) in property.officeList"
                 :key="index"
         >
-        <p>（一）房屋坐落于北京市<input type="text" contenteditable="true" v-model="item.quyu" style="width:110px;">区（县）<input type="text"  style="width:210px;" v-model="item.weizhi">，建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米；<br>
+        <p>（一）房屋坐落于北京市<input type="text" contenteditable="true" v-model="item.quyu" style="width:110px;">区（县）<u>{{item.weizhi}}</u> ，建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米；<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： <input type="text" value="办公">  。</p>
-        <p>（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号：<input type="text"  style="width:210px;" v-model="item.chanquanzhenghao">，房屋所有权人姓名或名称：
+        <p>（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao}}</u>，房屋所有权人姓名或名称：
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
                 <input type="text" v-model="item.name" style="width:210px;">
             </span>
@@ -29,9 +29,9 @@
             <u>&nbsp;&nbsp;{{year(addDate.enddate)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.enddate)}}&nbsp;&nbsp;</u>月
             <u>&nbsp;&nbsp;{{day(addDate.enddate)}}&nbsp;&nbsp;</u>日止，共计
-            <u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
-            <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日。甲方应于
+            <u>&nbsp;&nbsp;{{nian}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{yue}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{ri}}&nbsp;&nbsp;</u>日。甲方应于
             <u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
             <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。
@@ -297,6 +297,9 @@
                     ],
                     checkList: []
                 },
+                nian:null,
+                yue:null,
+                ri:null,
             }
         },
         methods:{
@@ -408,12 +411,7 @@
             },
             day(riqi){
                 if(riqi!=''){
-                    if(new Date(riqi).getDate() <10 ){
-                        return '0'+(new Date(riqi).getDate());
-                    }else{
-                        return (new Date(riqi).getDate());
-
-                    }
+                    return new Date(riqi).getFullYear();
                 }else{
                     return '';
                 }
@@ -474,6 +472,9 @@
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.yanqizujin = res.data.data.yanqizujin;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+                this.nian = res.data.data.nian;
+                this.yue = res.data.data.yue;
+                this.ri = res.data.data.ri;
 
                 var lists = this.addDate.jiafangfeiyong;
                 var str ='';

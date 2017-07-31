@@ -23,6 +23,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::post('review','Contract\purchaseContractController@review');
     Route::post('weiYueInfo','Contract\purchaseContractController@weiYueInfo');
     Route::post('weiYueSave','Contract\purchaseContractController@weiYueSave');
+    Route::post('isCopyComplete','Contract\purchaseContractController@isCopyComplete');
     Route::get('optimize','Contract\purchaseContractController@getOptimize');
     Route::get('approving','Contract\purchaseContractController@approving');
     Route::post('editTiaoKuan','Contract\purchaseContractController@editTiaoKuan');
@@ -34,6 +35,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('released','Contract\purchaseContractController@released');
     Route::get('copyImageList','Contract\purchaseContractController@copyImageList');
     Route::get('deleteCopyImage','Contract\purchaseContractController@deleteCopyImage');
+    Route::get('getCopyComplete','Contract\purchaseContractController@getCopyComplete');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
 //装饰合同
@@ -72,6 +74,7 @@ Route::post('message/refuseMessage','Message\messageController@refuseMessage');
 
 //出房合同分组
 Route::group(['prefix' => 'saleContract'], function () {
+    Route::post('addCopyImage','Contract\saleContractController@addCopyImage');
     Route::get('getchuzuren','Contract\saleContractController@getchuzuren');
     Route::post('submit','Contract\saleContractController@submit');
     Route::get('jieyue','Contract\saleContractController@jieyue');
@@ -87,6 +90,9 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::get('jieyuelist','Contract\saleContractController@jieyuelist');
     Route::post('weiYueInfo','Contract\saleContractController@weiYueInfo');
     Route::post('weiYueSave','Contract\saleContractController@weiYueSave');
+    Route::get('copyImageList','Contract\saleContractController@copyImageList');
+    Route::get('deleteCopyImage','Contract\saleContractController@deleteCopyImage');
+    Route::post('isCopyComplete','Contract\saleContractController@isCopyComplete');
 });
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 

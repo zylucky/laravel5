@@ -7,14 +7,14 @@
 
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item required label="公司名称" prop="compayname">
+                        <el-form-item label="公司名称" prop="compayname">
                             <el-input v-model="brokerCompanyFrom.compayname" placeholder="请输入公司名称"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="公司所在业务区域" prop="yewuqvyvid">
+                        <el-form-item label="公司所在业务区域" prop="yewuqvyvid">
                             <el-select v-model="brokerCompanyFrom.yewuqvyvid" placeholder=""
-@change="remoteMethoddtqy"
+                                       @change="remoteMethoddtqy"
                             >
                                 <el-option
                                         v-for="item in optionsywqy"
@@ -28,7 +28,7 @@
                     <el-col :span="8">
                         <el-form-item label-width="10px" prop="yewupianqvid">
                             <el-select v-model="brokerCompanyFrom.yewupianqvid" placeholder="地图区域"
-                            @change="changedtqy" >
+                                       @change="changedtqy">
                                 <el-option
                                         v-for="item in optionsdtqy"
                                         :key="item.value"
@@ -42,7 +42,7 @@
                 <el-row>
                     <el-col :span="6">
                         <el-form-item required label="公司详细地址" prop="addr">
-                            <el-input   value="北京市" disabled="disabled"></el-input>
+                            <el-input value="北京市" disabled="disabled"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="5">
@@ -99,21 +99,22 @@
                 <el-form-item label="主做区域" prop="zhuzuoqvyv">
                     <el-checkbox-group v-model="brokerCompanyFrom.zhuzuoqvyv">
                         <el-checkbox v-for="city in optionszzqy" :label="city.label" :key="city.value"
-                                     :value="city.value"  >{{city.label}}
+                                     :value="city.value">{{city.label}}
                         </el-checkbox>
                     </el-checkbox-group>
                 </el-form-item>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="是否有过合作" prop="shifouhezuoguo">
-                            <el-radio-group v-model="brokerCompanyFrom.shifouhezuoguo">
+                            <el-radio-group v-model="brokerCompanyFrom.shifouhezuoguo"
+                                            @change="changeHeZuoCiShu">
                                 <el-radio :label=true>是</el-radio>
                                 <el-radio :label=false>否</el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="合作次数" prop="hezuocishu">
+                        <el-form-item label="合作次数" prop="hezuocishu">
                             <el-input v-model.number="brokerCompanyFrom.hezuocishu"></el-input>
                         </el-form-item>
                     </el-col>
@@ -126,14 +127,14 @@
                 </el-form-item>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item required label="签署合作协议时间" prop="qianxieyishijian">
+                        <el-form-item label="签署合作协议时间" prop="qianxieyishijian">
                             <el-date-picker type="date" placeholder="签署合作协议时间"
                                             v-model="brokerCompanyFrom.qianxieyishijian">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="合作协议等级" prop="hezuoxieyidengji">
+                        <el-form-item label="合作协议等级" prop="hezuoxieyidengji">
                             <el-select v-model="brokerCompanyFrom.hezuoxieyidengji" placeholder="请输入合作协议等级"
                                        @change="changeDJ">
                                 <el-option
@@ -148,7 +149,7 @@
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item required label="幼狮联系人1" prop="yslianxiren1Id">
+                        <el-form-item label="幼狮联系人1" prop="yslianxiren1Id">
                             <el-select
                                     v-model="brokerCompanyFrom.yslianxiren1Id"
                                     filterable
@@ -167,7 +168,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="幼狮联系人2" prop="yslianxiren2Id">
+                        <el-form-item label="幼狮联系人2" prop="yslianxiren2Id">
                             <el-select
                                     v-model="brokerCompanyFrom.yslianxiren2Id"
                                     filterable
@@ -186,7 +187,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="幼狮联系人3" prop="yslianxiren3Id">
+                        <el-form-item label="幼狮联系人3" prop="yslianxiren3Id">
                             <el-select
                                     v-model="brokerCompanyFrom.yslianxiren3Id"
                                     filterable
@@ -207,24 +208,24 @@
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item required label="法人姓名" prop="farenxingming">
+                        <el-form-item label="法人姓名" prop="farenxingming">
                             <el-input v-model="brokerCompanyFrom.farenxingming"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="法人联系方式" prop="farenlianxifangshi">
+                        <el-form-item label="法人联系方式" prop="farenlianxifangshi">
                             <el-input v-model="brokerCompanyFrom.farenlianxifangshi"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item required label="负责人姓名" prop="fuzeren">
+                        <el-form-item label="负责人姓名" prop="fuzeren">
                             <el-input v-model="brokerCompanyFrom.fuzeren"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="负责人联系方式" prop="fuzerenlianxifangshi">
+                        <el-form-item label="负责人联系方式" prop="fuzerenlianxifangshi">
                             <el-input v-model="brokerCompanyFrom.fuzerenlianxifangshi"></el-input>
                         </el-form-item>
                     </el-col>
@@ -268,7 +269,7 @@
                         </el-checkbox>
                     </el-checkbox-group>
                 </el-form-item>
-                <el-form-item required label="综合评价" prop="zonghepingjia">
+                <el-form-item label="综合评价" prop="zonghepingjia">
                     <el-rate v-model="brokerCompanyFrom.zonghepingjia"></el-rate>
                 </el-form-item>
                 <el-form-item label="通讯录" prop="tongxunlu">
@@ -302,7 +303,7 @@
 
         </el-form>
         <el-button type="primary" v-show="editVisible" @click="save" style="margin-top:100px;">保存</el-button>
-        <el-button  v-show="editVisible" @click.native="">取消</el-button>
+        <el-button v-show="editVisible" @click.native="">取消</el-button>
         <el-col>
             <div v-show="showeidt">
                 <el-button @click.native="change">跟进记录</el-button>
@@ -334,7 +335,7 @@
                                           style="width:1100px"></el-input>
                             </el-form-item>
                         </el-row>
-                        <a href="/#/brokerCompanyHistory?id=" >查看历史记录</a>
+                        <a href="/#/brokerCompanyHistory?id=">查看历史记录</a>
                     </el-form>
                     <el-button type="primary" v-show="editVisible" @click="savehistory" style="margin-top:100px;">保存
                     </el-button>
@@ -422,17 +423,98 @@
                     hezuoxieyi: '',
                     beizhu: '',
                     zhuangtai: '',
-
+                    fuzerenlianxifangshi:'',
+                    fuzeren:'',
                 },
                 purchaseContract: {
                     type: 0,
                 },
                 brokerCompanyFromRules: {
                     compayname: [
-                        {required: true, message: '请输入渠道公司名称', trigger: 'blur'},
+                        {required: true, message: '不能为空'},
                     ],
+                    yewuqvyvid: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    yewupianqvid: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    dzXingzhengqvyvId: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    dzJiedaoId: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    dzXiangxi: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    zhuzuoqvyv: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    shifouhezuoguo: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    shifouhezuoxieyi: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    gongsijingyingshuxing: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    fuwuduixiang: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    hezuoxieyidengji: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    yslianxiren1Id: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    gsGuimo: [{
+                        validator: (rule, value, callback) => {
+                            if (value != '') {
+                                if (/^\d+$/.test(value) == false) {
+                                    callback(new Error("必须为数字"));
+                                } else {
+                                    callback();
+                                }
+                            } else {
+                                callback();
+                            }
+                        }, trigger: 'blur'
+                    }
+                    ],
+                    farenlianxifangshi: [{
+                        validator: (rule, value, callback) => {
+                            if (value != '') {
+                                if (/^\d+$/.test(value) == false) {
+                                    callback(new Error("必须为数字"));
+                                } else {
+                                    callback();
+                                }
+                            } else {
+                                callback();
+                            }
+                        }, trigger: 'blur'
+                    }
+                    ],
+                    fuzerenlianxifangshi: [{
+                        validator: (rule, value, callback) => {
+                            if (value != '') {
+                                if (/^\d+$/.test(value) == false) {
+                                    callback(new Error("必须为数字"));
+                                } else {
+                                    callback();
+                                }
+                            } else {
+                                callback();
+                            }
+                        }, trigger: 'blur'
+                    }
+                    ],
+                    hezuocishu:[],
                     yjzbSf: [
-                        {type: 'number', message: '收房佣金占比不能为空且必须为数字', trigger: 'blur'},
+                        {required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'},
                         {
                             required: true, validator: (rule, value, callback) => {
                             if (value > 1 || value < 0) {
@@ -444,7 +526,8 @@
                         }
                     ],
                     yjzbCf: [
-                        {type: 'number', message: '出房佣金占比不能为空且必须为数字', trigger: 'blur'},
+                        {required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'},
                         {
                             required: true, validator: (rule, value, callback) => {
                             if (value > 1 || value < 0) {
@@ -456,15 +539,7 @@
                         }
                     ],
                     yjType: [
-                        {
-                            required: true, validator: (rule, value, callback) => {
-                            if (/^\d+$/.test(value) == false) {
-                                callback(new Error("请输入佣金类型"));
-                            } else {
-                                callback();
-                            }
-                        }, trigger: 'blur'
-                        }
+                        {required: true, message: '不能为空'},
                     ],
                 },
                 options: [
@@ -484,18 +559,18 @@
                 optionsywqy: [],//业务区域
                 optionsdtqy: [],//地图区域
                 optionsjdqy: [],//街道区域
-                optionsyslxr1:[],
-                fristyslxrloading1:false,
-                optionsyslxr2:[],
-                fristyslxrloading2:false,
-                optionsyslxr3:[],
-                fristyslxrloading3:false,
+                optionsyslxr1: [],
+                fristyslxrloading1: false,
+                optionsyslxr2: [],
+                fristyslxrloading2: false,
+                optionsyslxr3: [],
+                fristyslxrloading3: false,
                 optionsxydj: [],//协议等级
                 fristyslxrloading: false,
                 //楼盘数据
                 options1: [],
                 list1: [],
-                ischanged:false,
+                ischanged: false,
 
 
                 //编辑界面数据
@@ -532,6 +607,16 @@
                     }
                 }
             },
+            changeHeZuoCiShu(){
+                if (this.brokerCompanyFrom.shifouhezuoguo == true) {
+                    this.brokerCompanyFromRules.hezuocishu.push({required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'});
+
+                } else {
+                    this.brokerCompanyFromRules.hezuocishu = [];
+                }
+
+            },
             //获取公司属性
             remoteMethodgssx() {
                 getGSSXDicList().then((res) => {
@@ -562,7 +647,7 @@
             changeyslxr2(){
                 for (var x in this.optionsyslxr2) {
                     if (this.optionsyslxr2[x].value == this.brokerCompanyFrom.yslianxiren2Id) {
-                        this.brokerCompanyFrom.yslianxiren2= this.optionsyslxr2[x].label;
+                        this.brokerCompanyFrom.yslianxiren2 = this.optionsyslxr2[x].label;
                     }
                 }
             },
@@ -653,21 +738,29 @@
                 let para = {
                     parentid: this.brokerCompanyFrom.yewuqvyvid,
                 };
-                if(this.ischanged){
-                this.optionsdtqy = [];
-                this.brokerCompanyFrom.yewupianqvid = null;//清除地图区域的缓存
-                getYWQYDicList(para).then((res) => {
-                    if (res.status == '200') {
-                        for (var item in res.data.data) {
-                            this.optionsdtqy.push({value: res.data.data[item].id, label: res.data.data[item].fdName});
-                        }
-                    } else {
-                        this.$message({
-                            message: '获取行政区域数据失败',
-                            type: 'error'
-                        });
+                for (var x in this.optionsywqy) {
+                    if (this.optionsywqy[x].value == this.brokerCompanyFrom.yewuqvyvid) {
+                        this.brokerCompanyFrom.yewuqvyv = this.optionsywqy[x].label;
                     }
-                })
+                }
+                if (this.ischanged) {
+                    this.optionsdtqy = [];
+                    this.brokerCompanyFrom.yewupianqvid = null;//清除地图区域的缓存
+                    getYWQYDicList(para).then((res) => {
+                        if (res.status == '200') {
+                            for (var item in res.data.data) {
+                                this.optionsdtqy.push({
+                                    value: res.data.data[item].id,
+                                    label: res.data.data[item].fdName
+                                });
+                            }
+                        } else {
+                            this.$message({
+                                message: '获取行政区域数据失败',
+                                type: 'error'
+                            });
+                        }
+                    })
                 }
             },
             //获取行政区域id获取街道列表
@@ -675,32 +768,31 @@
                 let para = {
                     code: this.brokerCompanyFrom.dzXingzhengqvyvId,
                 };
-                if(this.ischanged){
-                this.brokerCompanyFrom.dzJiedaoId = null;//清除街道的缓存
-                    this.optionsjdqy=[];
-                getJDDicList(para).then((res) => {
-                    if (res.status == '200') {
+                if (this.ischanged) {
+                    this.brokerCompanyFrom.dzJiedaoId = null;//清除街道的缓存
+                    this.optionsjdqy = [];
+                    getJDDicList(para).then((res) => {
+                        if (res.status == '200') {
 
-                        for (var item in res.data.data) {
-                            this.optionsjdqy.push({
-                                value: res.data.data[item].fdcode,
-                                label: res.data.data[item].fdname
+                            for (var item in res.data.data) {
+                                this.optionsjdqy.push({
+                                    value: res.data.data[item].fdcode,
+                                    label: res.data.data[item].fdname
+                                });
+                            }
+                        } else {
+                            this.$message({
+                                message: '获取街道数据失败',
+                                type: 'error'
                             });
                         }
-                    } else {
-                        this.$message({
-                            message: '获取街道数据失败',
-                            type: 'error'
-                        });
-                    }
-                })
+                    })
                 }
             },
 
             //获取协议等级
             remoteMethodXYDJ() {
                 this.optionsxydj = [];
-                this.brokerCompanyFrom.hezuoxieyidengji = null;//清除街道的缓存
                 getXYDJDicList().then((res) => {
                     if (res.status == '200') {
                         for (var item in res.data.data) {
@@ -836,20 +928,30 @@
             getBrokerCompany(id){
                 getBrokerCompanyInfo(id).then((res) => {
                     if (res.data.code == '200') {
-                        this.optionsyslxr1.push( {value: res.data.data.yslianxiren1Id,
-                            label:res.data.data.yslianxiren1}) ;
-                        this.optionsyslxr2.push( {value: res.data.data.yslianxiren2Id,
-                            label:res.data.data.yslianxiren2}) ;
-                        this.optionsyslxr3.push( {value: res.data.data.yslianxiren3Id,
-                            label:res.data.data.yslianxiren3}) ;
-                        this.optionsdtqy.push( {value: res.data.data.yewupianqvid,
-                           label:res.data.data.yewupianqv}) ;
-                        this.optionsjdqy.push( {value: res.data.data.dzJiedaoId,
-                           label:res.data.data.dzJiedao}) ;
-                        this.brokerCompanyFrom= Object.assign({}, res.data.data );
-                        this.brokerCompanyFrom.gongsijingyingshuxing=this.brokerCompanyFrom.gongsijingyingshuxing==null?[]:this.brokerCompanyFrom.gongsijingyingshuxing.split(',');
-                       this.brokerCompanyFrom.fuwuduixiang=this.brokerCompanyFrom.fuwuduixiang==null?[]:this.brokerCompanyFrom.fuwuduixiang.split(',');
-                        this.brokerCompanyFrom.zhuzuoqvyv=this.brokerCompanyFrom.zhuzuoqvyv==null?[]:this.brokerCompanyFrom.zhuzuoqvyv.split(',');
+                        this.optionsyslxr1.push({
+                            value: res.data.data.yslianxiren1Id,
+                            label: res.data.data.yslianxiren1
+                        });
+                        this.optionsyslxr2.push({
+                            value: res.data.data.yslianxiren2Id,
+                            label: res.data.data.yslianxiren2
+                        });
+                        this.optionsyslxr3.push({
+                            value: res.data.data.yslianxiren3Id,
+                            label: res.data.data.yslianxiren3
+                        });
+                        this.optionsdtqy.push({
+                            value: res.data.data.yewupianqvid,
+                            label: res.data.data.yewupianqv
+                        });
+                        this.optionsjdqy.push({
+                            value: res.data.data.dzJiedaoId,
+                            label: res.data.data.dzJiedao
+                        });
+                        this.brokerCompanyFrom = Object.assign({}, res.data.data);
+                        this.brokerCompanyFrom.gongsijingyingshuxing = this.brokerCompanyFrom.gongsijingyingshuxing == null ? [] : this.brokerCompanyFrom.gongsijingyingshuxing.split(',');
+                        this.brokerCompanyFrom.fuwuduixiang = this.brokerCompanyFrom.fuwuduixiang == null ? [] : this.brokerCompanyFrom.fuwuduixiang.split(',');
+                        this.brokerCompanyFrom.zhuzuoqvyv = this.brokerCompanyFrom.zhuzuoqvyv == null ? [] : this.brokerCompanyFrom.zhuzuoqvyv.split(',');
                     } else {
                         this.$message({
                             message: '获取数据失败',
@@ -860,61 +962,66 @@
             },
 
 
-
             getGSSX(){
-                var str='';
+                var str = '';
                 for (var x in this.optionsgssx) {
-                    for(var y in this.brokerCompanyFrom.gongsijingyingshuxing){
-                    if (this.optionsgssx[x].label == this.brokerCompanyFrom.gongsijingyingshuxing[y]) {
-                        str+= this.optionsgssx[x].label+',';
-                        this.brokerCompanyFrom.gongsijingyingshuxingid +=this.optionsgssx[x].value+',';
-                    }
+                    for (var y in this.brokerCompanyFrom.gongsijingyingshuxing) {
+                        if (this.optionsgssx[x].label == this.brokerCompanyFrom.gongsijingyingshuxing[y]) {
+                            str += this.optionsgssx[x].label + ',';
+                            this.brokerCompanyFrom.gongsijingyingshuxingid += this.optionsgssx[x].value + ',';
+                        }
                     }
                 }
-                this.brokerCompanyFrom.gongsijingyingshuxing= str ;
+                this.brokerCompanyFrom.gongsijingyingshuxing = str;
             },
             getFWDX(){
-                var str='';
+                var str = '';
                 for (var x in this.optionsfwdx) {
-                    for(var y in this.brokerCompanyFrom.fuwuduixiang){
+                    for (var y in this.brokerCompanyFrom.fuwuduixiang) {
                         if (this.optionsfwdx[x].label == this.brokerCompanyFrom.fuwuduixiang[y]) {
-                            str+= this.optionsfwdx[x].label+',';
+                            str += this.optionsfwdx[x].label + ',';
                         }
                     }
                 }
-                this.brokerCompanyFrom.fuwuduixiang= str ;
+                this.brokerCompanyFrom.fuwuduixiang = str;
             },
             getZZQY(){
-                var str='';
+                var str = '';
                 for (var x in this.optionszzqy) {
-                    for(var y in this.brokerCompanyFrom.zhuzuoqvyv){
+                    for (var y in this.brokerCompanyFrom.zhuzuoqvyv) {
                         if (this.optionszzqy[x].label == this.brokerCompanyFrom.zhuzuoqvyv[y]) {
-                            str+= this.optionszzqy[x].label+',';
-                            this.brokerCompanyFrom.zhuzuoqvyvids +=this.optionszzqy[x].value+',';
+                            str += this.optionszzqy[x].label + ',';
+                            this.brokerCompanyFrom.zhuzuoqvyvids += this.optionszzqy[x].value + ',';
                         }
                     }
                 }
-                this.brokerCompanyFrom.zhuzuoqvyv= str ;
+                this.brokerCompanyFrom.zhuzuoqvyv = str;
             },
             save(){
                 this.$refs.brokerCompanyFrom.validate((valid) => {
+                    if((this.brokerCompanyFrom.fuzeren!=''&& this.brokerCompanyFrom.fuzerenlianxifangshi!='')||(this.brokerCompanyFrom.farenlianxifangshi!=''&& this.brokerCompanyFrom.farenxingming!='')){
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
                             this.getGSSX();
                             this.getFWDX();
                             this.getZZQY();
                             let para = Object.assign({}, this.brokerCompanyFrom);
-                            if (this.brokerCompanyFrom.tQdCompayId!=''&&this.brokerCompanyFrom.tQdCompayId!=null) {
+                            if (this.brokerCompanyFrom.tQdCompayId != '' && this.brokerCompanyFrom.tQdCompayId != null) {
                                 editBrokerCompany(para).then((res) => {
+                                    this.brokerCompanyFrom.gongsijingyingshuxing = this.brokerCompanyFrom.gongsijingyingshuxing == null ? [] : this.brokerCompanyFrom.gongsijingyingshuxing.split(',');
+                                    this.brokerCompanyFrom.fuwuduixiang = this.brokerCompanyFrom.fuwuduixiang == null ? [] : this.brokerCompanyFrom.fuwuduixiang.split(',');
+                                    this.brokerCompanyFrom.zhuzuoqvyv = this.brokerCompanyFrom.zhuzuoqvyv == null ? [] : this.brokerCompanyFrom.zhuzuoqvyv.split(',');
                                     this.$message({
                                         message: '提交成功',
                                         type: 'success'
                                     });
                                 });
-                            }else{
+                            } else {
                                 addBrokerCompany(para).then((res) => {
-                                    this.brokerCompanyFrom.tQdCompayId=res.data.data.tQdCompayId;
-                                    //this.brokerCompanyFromRules.compayname.pop();
+                                    this.brokerCompanyFrom.tQdCompayId = res.data.data.tQdCompayId;
+                                    this.brokerCompanyFrom.gongsijingyingshuxing = this.brokerCompanyFrom.gongsijingyingshuxing == null ? [] : this.brokerCompanyFrom.gongsijingyingshuxing.split(',');
+                                    this.brokerCompanyFrom.fuwuduixiang = this.brokerCompanyFrom.fuwuduixiang == null ? [] : this.brokerCompanyFrom.fuwuduixiang.split(',');
+                                    this.brokerCompanyFrom.zhuzuoqvyv = this.brokerCompanyFrom.zhuzuoqvyv == null ? [] : this.brokerCompanyFrom.zhuzuoqvyv.split(',');
 
                                     this.$message({
                                         message: '提交成功',
@@ -924,14 +1031,18 @@
                             }
                         });
                     }
-                });
+                }else{
+                        alert("法人姓名法人联系方式与负责人姓名负责人联系方式必须填其中一组");
+                    }
+                    }
+                );
             },
             savehistory(){
                 this.$refs.editForm.validate((valid) => {
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
                             let para = Object.assign({}, this.editForm);
-                            para.tQdCompayId=this.$route.query.id;
+                            para.tQdCompayId = this.$route.query.id;
                             addBrokerCompanyHistory(para).then((res) => {
 
                                 this.$message({
@@ -961,25 +1072,24 @@
                     textArea[i].disabled = "true";
                     textArea[i].parentNode.className += " is-disabled";
                 }
-
             },
             hello(){
-                this.ischanged=true;
+                this.ischanged = true;
             },
         },
         mounted() {
             //根据url得到的合同ID，来获取数据
             if (this.$route.query.id != null) {
-                  this.getBrokerCompany(this.$route.query);
-            }else{
-                this.brokerCompanyFromRules.compayname.push( {
+                this.getBrokerCompany(this.$route.query);
+            } else {
+                this.brokerCompanyFromRules.compayname.push({
                     validator: (rule, value, callback) => {
                         let para = {
                             name: value
                         };
-                        if (this.brokerCompanyFrom.tQdCompayId!=''&&this.brokerCompanyFrom.tQdCompayId!=null) {
+                        if (this.brokerCompanyFrom.tQdCompayId != '' && this.brokerCompanyFrom.tQdCompayId != null) {
                             callback();
-                        }else{
+                        } else {
                             if (value != '') {
                                 checkbkNameList(para).then((res) => {
                                     //alert( JSON.stringify(res));
@@ -996,7 +1106,7 @@
                 });
 
             }
-            //新增页面input禁用
+            //新增页面隐藏跟进记录
             if (this.$route.path == '/brokerCompany/add') {
                 this.showeidt = false;
             }
@@ -1010,7 +1120,7 @@
             this.remoteMethodzzqy();
             this.remoteMethodfwdx();
             this.remoteMethodXYDJ();
-            setTimeout(this.hello,1000);
+            setTimeout(this.hello, 1000);
         }
     }
 </script>

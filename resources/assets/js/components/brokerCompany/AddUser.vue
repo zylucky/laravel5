@@ -20,11 +20,14 @@
                     </el-col>
                 </el-row>
 
-                <el-form-item label="联系电话" v-for="(item, index) in brokerCompanyUserForm.telList"
+                <el-form-item required label="联系电话" v-for="(item, index) in brokerCompanyUserForm.telList"
                               :key="item.key">
                     <el-col :span="8">
-                        <el-form-item>
-                            <el-input v-model="brokerCompanyUserForm.telList[index].dianhua"></el-input>
+                        <el-form-item  :prop="'telList.' + index + '.dianhua' " :rules="[
+                                {required: true, message: '不能为空'},
+                                {type: 'number', message: '必须为数字'}
+                                ]">
+                            <el-input v-model.number="brokerCompanyUserForm.telList[index].dianhua"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-button v-if="index>0" @click.prevent="removeFreeItem(item)">删除</el-button>
@@ -40,7 +43,6 @@
                                     v-model="brokerCompanyUserForm.qvDaoCompayXinxi.tQdCompayId"
                                     filterable
                                     remote
-                                    id="compayname"
                                     @change="change1"
                                     placeholder="渠道公司名称"
                                     :remote-method="remoteMethod1"
@@ -64,7 +66,7 @@
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item required label="幼狮联系人1" prop="yslianxiren1Id">
+                        <el-form-item  label="幼狮联系人1" prop="yslianxiren1Id">
                             <el-select
                                     v-model="brokerCompanyUserForm.yslianxiren1Id"
                                     filterable
@@ -83,7 +85,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="幼狮联系人2" prop="yslianxiren2Id">
+                        <el-form-item  label="幼狮联系人2" prop="yslianxiren2Id">
                             <el-select
                                     v-model="brokerCompanyUserForm.yslianxiren2Id"
                                     filterable
@@ -102,7 +104,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item required label="幼狮联系人3" prop="yslianxiren3Id">
+                        <el-form-item  label="幼狮联系人3" prop="yslianxiren3Id">
                             <el-select
                                     v-model="brokerCompanyUserForm.yslianxiren3Id"
                                     filterable
@@ -125,7 +127,8 @@
 
                     <el-col :span="8">
                         <el-form-item label="是否添加微信好友" prop="shifouweixin">
-                            <el-radio-group v-model="brokerCompanyUserForm.shifouweixin">
+                            <el-radio-group v-model="brokerCompanyUserForm.shifouweixin"
+                            @change="changehaoyou">
                                 <el-radio :label=true>是</el-radio>
                                 <el-radio :label=false>否</el-radio>
                             </el-radio-group>
@@ -140,7 +143,8 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="是否带看幼狮" prop="shifoudaikanyoushi">
-                            <el-radio-group v-model="brokerCompanyUserForm.shifoudaikanyoushi">
+                            <el-radio-group v-model="brokerCompanyUserForm.shifoudaikanyoushi"
+                                            @change="changedaikan">
                                 <el-radio :label=true>是</el-radio>
                                 <el-radio :label=false>否</el-radio>
                             </el-radio-group>
@@ -160,7 +164,8 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="是否签约过幼狮" prop="shifouqianyueyoushifang">
-                            <el-radio-group v-model="brokerCompanyUserForm.shifouqianyueyoushifang">
+                            <el-radio-group v-model="brokerCompanyUserForm.shifouqianyueyoushifang"
+                                            @change="changeqianyue">
                                 <el-radio :label=true>是</el-radio>
                                 <el-radio :label=false>否</el-radio>
                             </el-radio-group>
@@ -236,19 +241,17 @@
                     </el-row>
                     <a href="/#/brokerCompanyUserHistory">查看历史记录</a>
                 </el-form>
+                <el-button type="primary" v-show="editVisible" @click="savehistory" style="margin-top:20px;">保存</el-button>
+                <el-button v-show="editVisible" @click.native="editFormVisible = false">取消</el-button>
             </div>
             </div>
-            <el-button type="primary" v-show="editVisible" @click="savehistory" style="margin-top:20px;">保存</el-button>
-            <el-button v-show="editVisible" @click.native="editFormVisible = false">取消</el-button>
+
         </el-col>
     </el-row>
 </template>
 <script>
     import {
         getbkNameList,
-        getLoudongList,
-        getFanghaoList,
-        getPurchaseContractInfo,
         getYSLXRDicList,
         addBrokerCompanyUserHistory,
         getBrokerCompanyUserInfo,
@@ -270,53 +273,50 @@
                 dialogVisible: false,
                 showed: false,
                 brokerCompanyUserForm: {
-                    "tQdPersonId": '',
-                    "tQdCompayId": '',
-                    "qdPername": '',
-                    "zhiwu": null,
-                    "qdPertel": '',
-                    "yjzbSf":'',
-                    "yjzbCf":'',
-                    "yjType": '',
-                    "qdType": '',
-                    "yslianxiren1": null,
-                    "yslianxiren1Id": null,
-                    "yslianxiren2": null,
-                    "yslianxiren2Id": null,
-                    "yslianxiren3": null,
-                    "yslianxiren3Id": null,
-                    "shifouweixin": null,
-                    "tianjiahaoyourenshu": null,
-                    "shifoudaikanyoushi": null,
-                    "daikancishu": null,
-                    "daikanduijierenshu": null,
-                    "shifouqianyueyoushifang": null,
-                    "qianyuecishu": null,
-                    "qianyueduijierenshu": null,
-                    "qvdaodengji": null,
-                    "beizhu": null,
-                    "zhuangtai": null,
-                    "qvDaoCompayXinxi": {
-                        "tQdCompayId": '',
-                        "compayname": '',
-                        "gsLoupan": '',
+                    tQdPersonId: '',
+                    tQdCompayId: '',
+                    qdPername: '',
+                    zhiwu: null,
+                    qdPertel: '',
+                    yjzbSf:'',
+                    yjzbCf:'',
+                    yjType: '',
+                    qdType: '',
+                    yslianxiren1: null,
+                    yslianxiren1Id: null,
+                    yslianxiren2: null,
+                    yslianxiren2Id: null,
+                    yslianxiren3: null,
+                    yslianxiren3Id: null,
+                    shifouweixin: null,
+                    tianjiahaoyourenshu: null,
+                    shifoudaikanyoushi: null,
+                    daikancishu: null,
+                    daikanduijierenshu: null,
+                    shifouqianyueyoushifang: null,
+                    qianyuecishu: null,
+                    qianyueduijierenshu: null,
+                    qvdaodengji: null,
+                    beizhu: null,
+                    zhuangtai: null,
+                    qvDaoCompayXinxi: {
+                        tQdCompayId: '',
+                        compayname: '',
+                        gsLoupan: '',
                     },
-                    "telList": [
+                    telList: [
                         {
-                            "tQdPersonTelId": '',
-                            "dianhua": '',
-                            "qdType": 0,
-                            "personid": ''
+                            tQdPersonTelId: '',
+                            dianhua: '',
+                            qdType: '',
+                            personid: ''
                         }
                     ],
-                    "persontype": 0,
-                    "genjinDate": null,
-                    "wanchengdu": '',
+                    persontype: 0,
+                    genjinDate: null,
+                    wanchengdu: '',
                 },
                 list: [],
-                purchaseContract: {
-                    type: 0,
-                },
                 optionsqddj:[],
                 optionsyslxr1:[],
                 fristyslxrloading1:false,
@@ -324,7 +324,38 @@
                 fristyslxrloading2:false,
                 optionsyslxr3:[],
                 fristyslxrloading3:false,
-                brokerCompanyUserFormRules: {},
+                brokerCompanyUserFormRules: {
+                    qdPername: [
+                        {required: true, message: '不能为空'},
+                    ],
+                  tQdCompayId: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    zhiwu: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    yslianxiren1Id: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    shifouweixin: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    shifoudaikanyoushi: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    shifouqianyueyoushifang: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    qvdaodengji: [
+                        {required: true, message: '不能为空'},
+                    ],
+
+                    tianjiahaoyourenshu:[],
+                    daikancishu:[],
+                    daikanduijierenshu:[],
+                    qianyuecishu:[],
+                    qianyueduijierenshu:[],
+                },
                 editVisible: true,
                 bkNameloading: false,
                 options1: [],
@@ -350,9 +381,44 @@
                 this.brokerCompanyUserForm.telList.push({
                     "tQdPersonTelId": '',
                     "dianhua": '',
-                    "qdType": 0,
+                    "qdType": '',
                     "personid": ''
                 });
+            },
+            changehaoyou(){
+                if (this.brokerCompanyUserForm.shifouweixin == true) {
+                    this.brokerCompanyUserFormRules.tianjiahaoyourenshu.push({required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'});
+
+                } else {
+                    this.brokerCompanyUserFormRules.tianjiahaoyourenshu = [];
+
+                }
+
+            },
+            changedaikan(){
+                if (this.brokerCompanyUserForm.shifoudaikanyoushi == true) {
+                    this.brokerCompanyUserFormRules.daikancishu.push({required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'});
+                    this.brokerCompanyUserFormRules.daikanduijierenshu.push({required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'});
+                } else {
+                    this.brokerCompanyUserFormRules.daikancishu = [];
+                    this.brokerCompanyUserFormRules.daikanduijierenshu = [];
+                }
+
+            },
+            changeqianyue(){
+                if (this.brokerCompanyUserForm.shifouqianyueyoushifang == true) {
+                    this.brokerCompanyUserFormRules.qianyuecishu.push({required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'});
+                    this.brokerCompanyUserFormRules.qianyueduijierenshu.push({required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'});
+                } else {
+                    this.brokerCompanyUserFormRules.qianyuecishu = [];
+                    this.brokerCompanyUserFormRules.qianyueduijierenshu = [];
+                }
+
             },
             //获取渠道等级
             remoteMethodqddj() {
@@ -365,7 +431,6 @@
                                 label: res.data.data[item].enumKey
                             });
                         }
-
                     } else {
                         this.$message({
                             message: '获取公司属性数据失败',
@@ -509,7 +574,7 @@
                         this.list.push({
                             value: res.data.data[i].tQdCompayId,
                             label: res.data.data[i].compayname,
-                            lpname: res.data.data[i].compaytest
+                            lpname: res.data.data[i].gsLoupan
                         });
                     }
                     this.bkNameloading = false;
@@ -556,6 +621,7 @@
 
             //选择渠道公司后绑定楼盘名称
             change1(){
+                this.brokerCompanyUserForm.tQdCompayId= this.brokerCompanyUserForm.qvDaoCompayXinxi.tQdCompayId;
                 //渠道公司
                 for (var x in this.options1) {
                     if (this.options1[x].value == this.brokerCompanyUserForm.qvDaoCompayXinxi.tQdCompayId) {
@@ -661,7 +727,7 @@
             if (this.$route.query.id != null) {
                  this.getBrokerCompanyUser(this.$route.query);
             }
-            //新增页面input禁用
+            //新增页面隐藏跟进记录
             if (this.$route.path == '/brokerCompanyUserList/add') {
                 this.showeidt = false;
             }

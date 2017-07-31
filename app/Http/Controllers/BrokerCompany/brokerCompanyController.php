@@ -21,6 +21,11 @@ class brokerCompanyController extends Controller
         $name = Input::get('bk_name');
         $pageSize = Input::get('pageSize');
         $page = Input::get('page');
+        $yewuqvyvid=Input::get('yewuqvyvid');
+        $yewupianqvid=Input::get('yewupianqvid');
+        $gongsijingyingshuxing=Input::get('gongsijingyingshuxing');
+        $hezuoxieyidengji= Input::get('hezuoxieyidengji');
+
         $client = new Client ([
             'base_uri' => $this->base_url,
         ]);
@@ -28,7 +33,11 @@ class brokerCompanyController extends Controller
                 'query' => [
                     'page' => $page,
                     'size' => $pageSize,
-                    'compay' => $name
+                    'compay' => $name,
+                    'ywqyid' => $yewuqvyvid,
+                    'ywpqid' => $yewupianqvid,
+                    'jysx' => $gongsijingyingshuxing,
+                    'xydj' => $hezuoxieyidengji,
                 ]
 
             ]
@@ -314,7 +323,7 @@ class brokerCompanyController extends Controller
             'base_uri' => $this->base_url,
 
         ]);
-        if ($obj['status'] == 1) {
+        if ($obj['status'] == 0) {
             $response = $client->request('GET', '/api/qd/compay/' . $obj['id'] .'/start', [
                 ]
             );
