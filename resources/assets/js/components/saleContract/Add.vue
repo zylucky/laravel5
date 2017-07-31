@@ -372,8 +372,7 @@
 
             },
             seeDisabledInput(){
-                this.reviewVisible = true;
-                this.tonguo = false;
+
                 var allInputs = document.getElementsByTagName('input');
                 var textArea = document.getElementsByTagName('textarea');
                 for (let i=0; i<allInputs.length; i++){
@@ -421,6 +420,8 @@
             }
             //审核页面input禁用
             if(this.$route.path=='/saleContract/review'){
+                this.reviewVisible =true;
+                this.tonguo   =false;
                 var _this = this;
                 function  hello() {
                     _this.disabledInput();
@@ -429,9 +430,11 @@
             }
             //查看页面input禁用
             if(this.$route.path=='/saleContract/see'){
+                this.reviewVisible = true;
+                this.tonguo = false;
                 var _this = this;
                 function  hello() {
-                    _this.disabledInput();
+                    _this.seeDisabledInput();
                 }
                 setTimeout(hello,500);
             }
