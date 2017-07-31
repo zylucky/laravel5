@@ -17,7 +17,7 @@
 
             <el-row>
                 <el-form-item label="居间方类型">
-                    <el-radio-group v-model="renter.jujianfangtype">
+                    <el-radio-group v-model="renter.jujianfangtype" @change="jujianfangtypeChange">
                         <el-radio :label="1">公司</el-radio>
                         <el-radio :label="2">个人</el-radio>
                     </el-radio-group>
@@ -53,7 +53,7 @@
                                 v-model="renter.jujianfangid"
                                 filterable
                                 remote
-                                @change="changeOnSelect"
+                                @change="jingjirenchangeOnSelect"
                                 placeholder="自由经纪人名称"
                                 :remote-method="remoteMethod1"
                                 :loading="bkNameloading">
@@ -86,7 +86,7 @@
                 </el-col>
             </el-row>
             <el-form-item label="租户类型">
-                <el-radio-group v-model="renter.zuhuleixing">
+                <el-radio-group v-model="renter.zuhuleixing" @change="zuhuleixingChange">
                     <el-radio :label="1">个人</el-radio>
                     <el-radio :label="2">公司</el-radio>
                 </el-radio-group>
@@ -225,7 +225,7 @@
     </div>
 </template>
 <script>
-    import {getbkNameList} from '../../api/api';;
+    import {getbkNameList,getNameSaleList} from '../../api/api';;
     export default{
         data(){
             return {
@@ -248,12 +248,40 @@
         },
         props:['renter'],
         methods: {
+            zuhuleixingChange(){
+                //只要业主类型发生改变，那么我就将变量初始化
+                this.renter.chengzuren = [{
+                    name:'',
+                    faren:'',
+                    idNo:'',
+                    tel:'',
+                    sex:1,
+                    hetongid:null,
+                },]
+            },
+            jujianfangtypeChange(){
+                this.renter.jujianfangid = '',
+                this.renter.options1 = [
+                    {
+                        value:null,
+                        label:null,
+                    },
+                ]
+            },
             valid(){
                 this.$refs.renterForm.validate((valid) => {
                     this.renter.flag = valid;
                 });
             },
             changeOnSelect(){
+                var arr = this.renter.options1;
+                for (let i=0;i<arr.length;i++ ){
+                    if(arr[i].value==this.renter.jujianfangid){
+                        this.renter.jujianfang = arr[i].label;
+                    }
+                }
+            },
+            jingjirenchangeOnSelect(){
                 var arr = this.renter.options1;
                 for (let i=0;i<arr.length;i++ ){
                     if(arr[i].value==this.renter.jujianfangid){
@@ -277,6 +305,38 @@
                     this.bkNameloading = false;
                     this.list = this.estate.map((item,index) => {
                         return { value: item.tQdCompayId, label: item.compayname };
+                    });
+                    if (query !== '') {
+                        this.bkNameloading = true;
+                        setTimeout(() => {
+                            this.bkNameloading = false;
+                            this.renter.options1 = this.list.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.renter.options1 = [];
+                    }
+                });
+
+            },
+            //获取自由经济人名称
+            remoteMethod1(query) {
+                let para = {
+                    name: query
+                };
+                this.bkNameloading = true;
+                getNameSaleList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for ( var i in res.data.data ){
+                        arr[i]=res.data.data[i]
+                    }
+                    this.estate = arr;
+                    this.bkNameloading = false;
+                    this.list = this.estate.map((item,index) => {
+                        return { value: item.tQdZyPersonId, label: item.xingming };
                     });
                     if (query !== '') {
                         this.bkNameloading = true;

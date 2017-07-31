@@ -334,14 +334,6 @@ class saleContractController extends Controller
         ]);
         echo $response->getBody();
     }
-
-
-
-
-
-
-
-
     /*
      * 扫描合同复印件列表copyImageList
      * */
@@ -442,6 +434,26 @@ class saleContractController extends Controller
      * 资料是否齐全
      * */
     public function isCopyComplete(){
+
+    }
+    //获取渠道经纪自由人
+    public function getzyrNameList(Request $request)
+    {
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $bkName = $request->params['name'];
+        $response = $client->request('GET', '/api/qd/ziyou/list', [
+                'query' => [
+                    'page' => 1,
+                    'size' => 10,
+                    'zt' => 1,
+                    'uname' => $bkName
+                ]
+
+            ]
+        );
+        echo $response->getBody();
 
     }
 

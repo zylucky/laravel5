@@ -79,6 +79,7 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::get('getchuzuren','Contract\saleContractController@getchuzuren');
     Route::post('submit','Contract\saleContractController@submit');
     Route::get('jieyue','Contract\saleContractController@jieyue');
+    Route::post('getzyrNameList','Contract\saleContractController@getzyrNameList');
     Route::get('approving','Contract\saleContractController@approving');
     Route::get('confirm','Contract\saleContractController@confirm');
     Route::get('confirmed','Contract\saleContractController@confirmed');
