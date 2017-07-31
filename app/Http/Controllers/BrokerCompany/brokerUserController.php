@@ -120,7 +120,7 @@ class brokerUserController extends Controller
     public function update(Request $request, $id)
     {
         $obj=$request->params;
-
+         //dd( json_encode( $request->params, JSON_UNESCAPED_UNICODE));
         //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,

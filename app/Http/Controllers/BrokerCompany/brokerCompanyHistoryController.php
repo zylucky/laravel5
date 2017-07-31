@@ -28,7 +28,7 @@ class brokerCompanyHistoryController extends Controller
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-                'compayid'=>1,
+                'compayid'=>$companyId,
             ]
         ]);
         return $response->getBody();

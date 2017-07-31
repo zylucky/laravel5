@@ -91,7 +91,7 @@
                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
-                               <el-dropdown-item  >  <el-button   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
+                               <el-dropdown-item  >  <el-button v-if="scope.row.zhuangtai==1"  @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
                                <el-dropdown-item  >  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
@@ -160,15 +160,9 @@
                 ],
                 optionsdtqy:[
                 ],
-                optionsqddj:[  {
-                    value: '',
-                    label: '请选择'
-                }],
+                optionsqddj:[   ],
                 optionsywqy:[
-                    {
-                        value: '',
-                        label: '请选择'
-                    }
+
                 ],
 
                 //分页类数据

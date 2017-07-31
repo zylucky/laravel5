@@ -13,11 +13,11 @@
             </el-table-column>
             <el-table-column   prop="genjinren" label="跟进人"  >
             </el-table-column>
-            <el-table-column prop="shifouyouxiao" label="信息是否有效"  >
+            <el-table-column prop="shifouyouxiao" label="信息是否有效"   :formatter="changeyx">
             </el-table-column>
-            <el-table-column prop="xinxishifouzhunque" label="信息是否准确"  >
+            <el-table-column prop="xinxishifouzhunque" label="信息是否准确" :formatter="changezq" >
             </el-table-column>
-            <el-table-column  prop="shifouzhuanhang" label="是否转行"  >
+            <el-table-column  prop="shifouzhuanhang" label="是否转行"  :formatter="changezh" >
             </el-table-column>
             <el-table-column   type="expand">
                        <template scope="props">
@@ -83,17 +83,25 @@
             }
         },
         methods:{
-            //佣金类型显示转换
-            formatYJType: function (row, column) {
-                return row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-            },
             //时间戳转日期格式
             changeDate(row, column){
+
                 var newDate = new Date();
-                newDate.setTime(row.createdate);
+                newDate.setTime(row.genjindate);
                 return newDate.toLocaleDateString()
             },
-
+            //有效
+            changeyx(row, column){
+                return row.shifouyouxiao == 1 ? '有效' : row.shifouyouxiao == 2 ? '无效' : '无法取得联系';
+            },
+            //上报信息
+            changezq(row, column){
+                return row.xinxishifouzhunque == 1 ? '上报信息准确' : row.xinxishifouzhunque == 2 ? '上报信息不准确' : '未知';
+            },
+            //是否转行
+            changezh(row, column){
+                return row.xinxishifouzhunque == 1 ? '未转行' : row.xinxishifouzhunque == 2 ? '转行' : '未知';
+            },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
@@ -111,8 +119,7 @@
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
-                    bk_name: this.filters.bk_name,
-                    username: this.filters.bk_username,
+                    personid: this.$route.query.id,
                 };
                 this.listLoading = true;
                 getBrokerCompanyUserHistoryListPage(para).then((res) => {

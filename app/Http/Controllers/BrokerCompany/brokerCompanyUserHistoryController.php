@@ -19,7 +19,7 @@ class brokerCompanyUserHistoryController extends Controller
 
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
-
+        $personid= Input::get('personid');
         $client = new Client ([
             'base_uri' => $this->base_url,
 
@@ -28,7 +28,7 @@ class brokerCompanyUserHistoryController extends Controller
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-                'personid'=>3,
+                'personid'=>$personid,
             ]
         ]);
         return $response->getBody();
@@ -41,13 +41,6 @@ class brokerCompanyUserHistoryController extends Controller
      */
     public function create()
     {
-//        $info = Input::get();
-//        if($info) {
-//              return [
-//                        'message' => '保存成功',
-//                        'code' => 200,
-//              ];
-//        }
 
     }
 
@@ -64,8 +57,6 @@ class brokerCompanyUserHistoryController extends Controller
             'base_uri' => $this->base_url,
 
         ]);
-
-
         $r = $client->request('POST', '/api/qd/gj/person/add', [
             'json' =>$obj
         ]);
