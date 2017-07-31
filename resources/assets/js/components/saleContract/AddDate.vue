@@ -112,7 +112,7 @@
             <div v-for="(item, index) in addDate.zujinList">
                 <el-row>
                     <el-col :span="9"style="width:550px;">
-                        <el-form-item :label="'租期' + index"
+                        <el-form-item :label="'租期' + (index + 1)"
                                       :key="item.key"
                                       required
                         >

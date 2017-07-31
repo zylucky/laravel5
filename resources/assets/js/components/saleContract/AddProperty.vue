@@ -1,13 +1,6 @@
 <template>
-
     <el-row class="container">
-            <el-tabs v-model="editableTabsValue2" type="card" closable @tab-remove="removeTab">
-                <el-button v-show="editVisible"
-                        size="small"
-                        @click="addTab(editableTabsValue2)"
-                >
-                    添加房源
-                </el-button>
+            <el-tabs v-model="editableTabsValue2" type="card" :editable="flag" addable @edit="addTab" @tab-remove="removeTab">
                 <el-tab-pane
                         v-for="(item, index) in editableTabs2"
                         :key="item.name"
@@ -131,6 +124,7 @@
                 purchaseContract:{
                     type:0,
                 },
+                flag: false,
                 editVisible:true,
                 //楼盘数据
                 options1:[],
@@ -356,7 +350,8 @@
                     }
                 }
             },
-            addTab(targetName) {
+            addTab(targetName, action) {
+                if(action === 'add'){
                 let newTabName = ++this.tabIndex + '';
                 this.editableTabs2.push({
                     title: '房间'+this.tabIndex,//房间号加上次数（一直会加1，以此类推）
@@ -380,10 +375,16 @@
                     diyaren:'',
                 });
                 this.editableTabsValue2 = newTabName;
+
+                if(this.editableTabs2.length > 1){
+                    this.flag = true;
+                }
+                }
             },
             removeTab(targetName) {
                 this.property.xsOffice.pop();//删除
                 let tabs = this.editableTabs2;
+                /*
                 let activeName = this.editableTabsValue2;
                 if (activeName === targetName) {
                     tabs.forEach((tab, index) => {
@@ -396,7 +397,21 @@
                     });
                 }
                 this.editableTabsValue2 = activeName;
+                */
                 this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
+                this.editableTabs2 = this.editableTabs2.map((tab, idx)=>{
+                    tab.name = (idx + 1) + ''; 
+                    tab.title = '房间'+ (idx + 1);
+                    return tab;
+                });
+                --this.tabIndex;
+                if(parseInt(this.editableTabsValue2) > this.tabIndex - 1){
+                    this.editableTabsValue2 = this.editableTabs2[this.tabIndex-1].name;
+                }
+
+                if(this.editableTabs2.length < 2){
+                    this.flag = false;
+                }
             }
         },
         mounted() {
