@@ -284,7 +284,7 @@
                 this.listLoading = true;
                 getSaleContractList(para).then((res) => {
                     //console.log(12222);
-                    console.log(res.data.data);
+                    //console.log(res.data.data);
                     this.total = res.data.total;
                     this.lists = res.data.data;
                     this.listLoading = false;
@@ -443,7 +443,41 @@
 
             },
             //合同终止
-            handleEnd(index, row){
+            handleEnd(index,row){
+                this.$refs.sureForm.validate((valid) => {
+                    if(valid){
+                        this.$confirm('确认终止合同吗?', '提示', {
+                            type: 'warning'
+                        }).then(() => {
+                            let para1 = this.weiYue;
+                            this.weiYue.Visible = false;
+                            weiYueSaveSaleContract(para1).then((res)=>{
+                                if(res.data.code!='200'){
+                                    this.$message({
+                                        message: '数据没有保存成功',
+                                        type: 'error'
+                                    });
+                                }
+                            });
+                            this.listLoading = true;
+                            let para = { id:this.id };
+                            endSaleContract(para).then((res) => {
+                                this.listLoading = false;
+                                //NProgress.done();
+                                this.$message({
+                                    message: '设置成功',
+                                    type: 'success'
+                                });
+                                this.saleContractList();
+                            });
+                        }).catch(() => {
+
+                        });
+                    }
+                });
+
+            },
+            /*handleEnd(index, row){
                 this.$confirm('确认合同终止吗?', '提示', {
                     type: 'warning'
                 }).then(() => {
@@ -455,22 +489,21 @@
                                 message: '数据没有保存成功',
                                 type: 'error'
                             });
-                        }else{
-                            this.listLoading = true;
-                            let para = {id:this.id};
-                            endSaleContract(para).then((res) => {
-                                this.listLoading = false;
-                                this.$message({
-                                    message: '设置成功',
-                                    type: 'success'
-                                });
-                                this.saleContractList();
-                            });
                         }
+                    });
+                    this.listLoading = true;
+                    let para = {id:this.id};
+                    endSaleContract(para).then((res) => {
+                        this.listLoading = false;
+                        this.$message({
+                            message: '设置成功',
+                            type: 'success'
+                        });
+                        this.saleContractList();
                     });
                 }).catch(() => {
                 });
-            },
+            },*/
 
         },
         mounted(){
