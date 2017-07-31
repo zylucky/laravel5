@@ -129,11 +129,15 @@
                 <div v-for="(item, index) in owner.chanquanrenList"
                      :key="index"
                 >
+                    <el-row>
+                     <el-col :span="18">
                     <el-form-item label="公司名称" :prop="'chanquanrenList.' + index + '.name'" :rules="[
                          { required: true, message: '不能为空' }
                     ]">
                         <el-input v-model="owner.chanquanrenList[index].name"></el-input>
                     </el-form-item>
+                        </el-col>
+                    </el-row>
                     <el-row>
                         <el-col :span="8">
                             <el-form-item label="法人" >

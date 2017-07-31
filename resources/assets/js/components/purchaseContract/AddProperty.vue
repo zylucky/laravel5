@@ -1,13 +1,7 @@
 <template>
     <div>
     <el-row class="container">
-            <el-tabs v-model="editableTabsValue2" type="card" closable @tab-remove="removeTab">
-                <el-button v-show="editVisible"
-                        size="small"
-                        @click="addTab(editableTabsValue2)"
-                >
-                    添加房源
-                </el-button>
+            <el-tabs v-model="editableTabsValue2" type="card" editable @edit="addTab" @tab-remove="removeTab">
                 <el-tab-pane
                         v-for="(item, index) in editableTabs2"
                         :key="item.name"
@@ -384,13 +378,15 @@
                     }
                 }
             },
-            addTab(targetName) {
+            addTab(targetName, action) {
+                if(action === 'add'){
                 let newTabName = ++this.tabIndex + '';
                 this.editableTabs2.push({
                     title: '房间'+this.tabIndex,
                     name: newTabName,
                     content: 'New Tab content'
                 });
+                
                 this.property.officeList.push({
                     omcId:null,
                     loupanOmcId:null,
@@ -408,6 +404,7 @@
                     diyaren:'',
                 });
                 this.editableTabsValue2 = newTabName;
+                }
             },
             removeTab(targetName) {
                 this.property.officeList.pop();
