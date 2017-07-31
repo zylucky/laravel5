@@ -150,7 +150,7 @@
                 houseData:[],
                 //房间类型
                 options: [
-                    {
+                     {
                         value: 1,
                         label: '公寓'
                     }, {
@@ -285,12 +285,14 @@
             },
             //获取房号
             remoteMethod3(query) {
-                this.$emit('getshoufanghetong')
                 let para = {
                     lpid: this.property.xsOffice[this.tabIndex-1].loupanOmcId,
                     zdid: this.property.xsOffice[this.tabIndex-1].loudongOmcId,
                 };
                 this.fanghaoloading = true;
+                //console.log(this.property.xsOffice[this.tabIndex-1].loupanOmcId);
+                //console.log(this.property.xsOffice[this.tabIndex-1].loudongOmcId);
+                //console.log(para);
                 getSaleFanghaoList(para).then((res) => {
                     this.houseData = res.data;
                     let arr = [];
@@ -324,7 +326,6 @@
                 for (var x in this.options1){
                     if(this.options1[x].label==this.property.xsOffice[this.tabIndex-1].loupanName){
                         this.property.xsOffice[this.tabIndex-1].loupanOmcId=this.options1[x].value;
-                        this.property.xsOffice[this.tabIndex-1].loupanOmcId=this.options1[x].value;
                         this.property.xsOffice[this.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
                         this.property.xsOffice[this.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
                         this.property.xsOffice[this.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
@@ -342,7 +343,6 @@
                 }
             },
             change3(){
-                this.$emit('getshoufanghetong')
                 //房号
                 for (var x in this.options3){
                     if(this.options3[x].label==this.property.xsOffice[this.tabIndex-1].fanghao){
@@ -355,6 +355,9 @@
                         this.property.xsOffice[this.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
                     }
                 }
+                //console.log(this.property.xsOffice)
+                this.$emit('getshoufanghetong')
+
             },
             addTab(targetName) {
                 let newTabName = ++this.tabIndex + '';
@@ -374,7 +377,7 @@
                     chanquanzhenghao: '',
                     jianzhumianji: '',
                     qianyuemianji: '',
-                    leixing: 0,
+                    leixing:null,
                     quyu:'',
                     isdiya:0,
                     diyaren:'',
@@ -401,10 +404,10 @@
         },
         mounted() {
             //审核页面input禁用
-            if(this.$route.path=='/purchaseContract/review'){
+            if(this.$route.path=='/saleContract/review'){
                 this.editVisible   =false;
             }
-            if(this.$route.path=='/purchaseContract/view'){
+            if(this.$route.path=='/saleContract/see'){
                 this.editVisible   =false;
             }
         }

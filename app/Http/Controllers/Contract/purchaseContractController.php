@@ -97,6 +97,10 @@ class purchaseContractController extends Controller
         $response = $client->request('GET', '/api/contract/sf/'.$id);
         $res = $response->getBody();
         $res = json_decode($res);
+        if($res->code!='200'){
+            echo $response->getBody();
+            exit;
+        }
         $res->data->yifangfeiyong = explode(',',$res->data->yifangfeiyong);
         $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
         $obj = $this->get_month_day($res->data->startdate,$res->data->enddate);
@@ -330,7 +334,7 @@ class purchaseContractController extends Controller
         ]);
         echo $response->getBody();
     }
-    /*
+    /*isCopyComplete
      * 扫描合同复印件列表copyImageList
      * */
     public function copyImageList(Request $request){
@@ -344,25 +348,26 @@ class purchaseContractController extends Controller
         ]);
         $res = json_decode($response->getBody());
         $data2 = [];
-        foreach ($res->data as $key => $value){
-            $content = base64_decode($res->data[$key]->content);
-            //新文件名
-            $_nowdate = date("YmdHis");
-            $rnd = rand(10000, 99999);
-            $new_file_name = $_nowdate . '_' . $rnd . '.' . 'jpg';
-            $path = 'image/tmp/';
-            if (!file_exists($path)) {
-                mkdir($path,0755,true);
+        if($res->data){
+            foreach ($res->data as $key => $value){
+                $content = base64_decode($res->data[$key]->content);
+                //新文件名
+                $_nowdate = date("YmdHis");
+                $rnd = rand(10000, 99999);
+                $new_file_name = $_nowdate . '_' . $rnd . '.' . 'jpg';
+                $path = 'image/tmp/';
+                if (!file_exists($path)) {
+                    mkdir($path,0755,true);
+                }
+                file_put_contents($path.$new_file_name,$content);
+                $url = $path.$new_file_name;
+                $value->url =$url;
+                $value->content =null;
+                $data2[$value->type][] = $value;
             }
-            file_put_contents($path.$new_file_name,$content);
-            $url = $path.$new_file_name;
-            $value->url =$url;
-            $value->content =null;
-            $data2[$value->type][] = $value;
+            $res->data = $data2;
+            echo json_encode($res);
         }
-        $res->data = $data2;
-        echo json_encode($res);
-        //$this->removeDir($path);
     }
 
     public function addCopyImage(){
@@ -427,9 +432,27 @@ class purchaseContractController extends Controller
     }
     /*
      * 资料是否齐全
+     * /api/contract/sf/img/set
      * */
-    public function isCopyComplete(){
-
+    public function isCopyComplete(Request $request){
+//        return $request->params;
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/sf/img/set', [
+            'json' =>$request->params
+        ]);
+        echo $response->getBody();
+    }
+    public function getCopyComplete(){
+        $id = Input::get('id');
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/img/'.$id.'/isComplete');
+        echo $response->getBody();
     }
     /**
      * 计算两个日期之间差几年几个月几天

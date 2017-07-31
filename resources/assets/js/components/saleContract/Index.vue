@@ -1,4 +1,3 @@
-
 <template>
     <el-row >
         <div style="margin-top:30px"></div>
@@ -177,6 +176,7 @@
                 ],
                 //分页类数据
                 total:0,
+                page:null,
                 currentPage:0,
                 pageSize:10,
                 pageSizes:[10, 20, 30, 40, 50, 100],
@@ -269,6 +269,7 @@
             },
             //获取合同列表
             saleContractList() {
+
                 let para = {
                     pn: this.page,
                     cnt: this.pageSize,
@@ -276,9 +277,14 @@
                     selectItem: this.filters.name,
                     zhuangtai:this.filters.status,
                 }
+                //console.log(111);
+                //console.log(this.page);
+                //console.log(this.pageSize);
+                //console.log(para);
                 this.listLoading = true;
                 getSaleContractList(para).then((res) => {
-                    //console.log(res.data.data)
+                    //console.log(12222);
+                    console.log(res.data.data);
                     this.total = res.data.total;
                     this.lists = res.data.data;
                     this.listLoading = false;
@@ -449,20 +455,20 @@
                                 message: '数据没有保存成功',
                                 type: 'error'
                             });
+                        }else{
+                            this.listLoading = true;
+                            let para = {id:this.id};
+                            endSaleContract(para).then((res) => {
+                                this.listLoading = false;
+                                this.$message({
+                                    message: '设置成功',
+                                    type: 'success'
+                                });
+                                this.saleContractList();
+                            });
                         }
                     });
-                    this.listLoading = true;
-                    let para = {id:this.id};
-                    endSaleContract(para).then((res) => {
-                        this.listLoading = false;
-                        this.$message({
-                            message: '设置成功',
-                            type: 'success'
-                        });
-                        this.saleContractList();
-                    });
                 }).catch(() => {
-
                 });
             },
 

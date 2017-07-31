@@ -23,27 +23,50 @@
                     </el-radio-group>
                 </el-form-item>
             </el-row>
-
-            <el-row>
-                <el-form-item label="居间方">
-                    <el-select
-                            id="jujianfang"
-                            v-model="renter.jujianfangid"
-                            filterable
-                            remote
-                            @change="changeOnSelect"
-                            placeholder="渠道公司名称"
-                            :remote-method="remoteMethod1"
-                            :loading="bkNameloading">
-                        <el-option
-                                v-for="item in renter.options1"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-            </el-row>
+            <div v-if="renter.jujianfangtype==1">
+                <el-row>
+                    <el-form-item label="居间方">
+                        <el-select
+                                id="jujianfang"
+                                v-model="renter.jujianfangid"
+                                filterable
+                                remote
+                                @change="changeOnSelect"
+                                placeholder="渠道公司名称"
+                                :remote-method="remoteMethod1"
+                                :loading="bkNameloading">
+                            <el-option
+                                    v-for="item in renter.options1"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-row>
+            </div>
+            <div v-if="renter.jujianfangtype==2">
+                <el-row>
+                    <el-form-item label="自由经纪人">
+                        <el-select
+                                id="jujianfang"
+                                v-model="renter.jujianfangid"
+                                filterable
+                                remote
+                                @change="changeOnSelect"
+                                placeholder="自由经纪人名称"
+                                :remote-method="remoteMethod1"
+                                :loading="bkNameloading">
+                            <el-option
+                                    v-for="item in renter.options1"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-row>
+            </div>
 
             <el-row>
                 <el-col :span="8">
@@ -247,13 +270,13 @@
                 getbkNameList(para).then((res) => {
                     let arr = [];
                     arr[0] = '';
-                    for ( var i in res.data ){
-                        arr[i]=res.data[i]
+                    for ( var i in res.data.data ){
+                        arr[i]=res.data.data[i]
                     }
                     this.estate = arr;
                     this.bkNameloading = false;
                     this.list = this.estate.map((item,index) => {
-                        return { value: index, label: item };
+                        return { value: item.tQdCompayId, label: item.compayname };
                     });
                     if (query !== '') {
                         this.bkNameloading = true;

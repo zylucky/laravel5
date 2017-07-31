@@ -86,7 +86,7 @@
                 <el-row>
                     <el-col :span="9" style="width:550px;">
 
-                        <el-form-item :label="'租期' + index"
+                        <el-form-item :label="'租期' + (index + 1)"
                                       required
                         >
                             <el-col :span="11">
@@ -154,12 +154,10 @@
                     </el-col>
                     <el-col :span="2" style="margin-left:5px;">
                         <el-button v-if="index>0" v-show="editVisible" @click.prevent="removeRentItem(item)">删除</el-button>
+                        <el-button v-if="index==0" v-show="editVisible" @click="addRentItem">新增</el-button>
                     </el-col>
                 </el-row>
             </div>
-            <el-form-item>
-                <el-button  v-show="editVisible" @click="addRentItem">新增</el-button>
-            </el-form-item>
             <!--付款方式-->
             <div  v-for="(item, index) in addDate.fukuanFangshiList">
                 <el-row :gutter="5">
@@ -198,18 +196,18 @@
                             </el-col>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="1" :pull="1" style="width: 90px;">
-                        <el-form-item label="押" label-width="20px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="[{
+                    <el-col :span="1" :pull="1" style="width: 150px;">
+                        <el-form-item label="押" label-width="40px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]">
-                            <el-input v-model.number="item.yajinyue" placeholder="押几"></el-input>
+                            <el-input v-model.number="item.yajinyue" placeholder="押几" style="margin-left:0"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="1" :pull="1" style="margin-left: 15px;width: 90px;">
-                        <el-form-item label="付" label-width="20px" :prop="'fukuanFangshiList.' + index + '.zujinyue'" :rules="[{
+                    <el-col :span="1" :pull="1" style="margin-left: 15px;width: 150px;">
+                        <el-form-item label="付" label-width="40px" :prop="'fukuanFangshiList.' + index + '.zujinyue'" :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]">
-                            <el-input v-model.number="item.zujinyue" placeholder="付几"></el-input>
+                            <el-input v-model.number="item.zujinyue" placeholder="付几" style="margin-left:0"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1">

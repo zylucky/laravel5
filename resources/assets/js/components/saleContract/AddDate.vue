@@ -33,11 +33,11 @@
                         </el-col>
                     </el-row>
                     <el-row>
-                        <el-col :span="8">
+                       <!-- <el-col :span="8">
                             <el-form-item label="收房日" prop="shoufangdate" required>
                                 <el-date-picker type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;"></el-date-picker>
                             </el-form-item>
-                        </el-col>
+                        </el-col>-->
                         <el-col :span="8">
                             <el-form-item label="签约日" prop="qianyuedate" required>
                                 <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
@@ -112,7 +112,7 @@
             <div v-for="(item, index) in addDate.zujinList">
                 <el-row>
                     <el-col :span="9"style="width:550px;">
-                        <el-form-item :label="'租期' + index"
+                        <el-form-item :label="'租期' + (index + 1)"
                                       :key="item.key"
                                       required
                         >
@@ -472,6 +472,9 @@
                     this.addDate.fukuanFangshiList.splice(index, 1)
                 }
             },
+            disabledInput(){
+                this.editVisible=false;
+            },
         },
         mounted(){
             //审核页面input禁用
@@ -479,7 +482,7 @@
                 this.editVisible   =false;
             }
             if(this.$route.path=='/saleContract/see'){
-                this.editVisible   =false;
+               this.editVisible   =false;
             }
         }
     }
