@@ -93,14 +93,14 @@
                 </el-form-item>
                 <el-row>
                     <el-col :span="14">
-                        <el-form-item label="应收金额：" prop="yingfujine">
+                        <el-form-item label="应收金额：" prop="yingshoujine">
                             <el-input v-model="weiYue.yingshoujine"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="14">
-                        <el-form-item label="应付金额：">
+                        <el-form-item label="应付金额：" prop="yingfujine">
                             <el-input v-model="weiYue.yingfujine"></el-input>
                         </el-form-item>
                     </el-col>
