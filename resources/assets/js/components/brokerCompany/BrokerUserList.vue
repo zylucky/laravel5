@@ -53,12 +53,11 @@
             </el-form-item>
         </el-form>
         <el-table :data="brokerUser" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-
             <el-table-column type="index"   width="60">
             </el-table-column>
-            <el-table-column prop="qdPername" label="姓名"  >
+            <el-table-column prop="xingming" label="姓名"  >
             </el-table-column>
-            <el-table-column prop="telList[0].dianhua" label="联系电话"  >
+            <el-table-column prop="telList.0.dianhua" label="联系电话"  >
             </el-table-column>
             <el-table-column label="公司所属业务区域">
                 <el-table-column prop="yewuqvyv"    >
@@ -66,9 +65,9 @@
                 <el-table-column prop="yewupianqv"    >
                 </el-table-column>
             </el-table-column>
-            <el-table-column prop="qvdaodengji" label="渠道等级"  :formatter="formatYJType" >
+            <el-table-column prop="qvdaodengji" label="渠道等级"   >
             </el-table-column>
-            <el-table-column prop="genjinDate" label="最后跟进日期"  >
+            <el-table-column prop="genjinDate" label="最后跟进日期"  :formatter="changeDate" >
             </el-table-column>
             <el-table-column prop="wanchengdu" label="信息完整度"  >
             </el-table-column>
@@ -162,12 +161,12 @@
                 optionsdtqy:[
                 ],
                 optionsqddj:[  {
-                    value: 0,
+                    value: '',
                     label: '请选择'
                 }],
                 optionsywqy:[
                     {
-                        value: 0,
+                        value: '',
                         label: '请选择'
                     }
                 ],
@@ -190,22 +189,20 @@
             }
         },
         methods:{
-            //佣金类型显示转换
-            formatYJType: function (row, column) {
-                return row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-            },
             //时间戳转日期格式
             changeDate(row, column){
-                var newDate = new Date();
-                newDate.setTime(row.createdate);
-                return newDate.toLocaleDateString()
+                if(row.genjinDate!=null) {
+                    var newDate = new Date();
+                    newDate.setTime(row.genjinDate);
+                    return newDate.toLocaleDateString()
+                }
             },
 
             //更改自由经纪人人员状态
             changeStatus(row){
                 let para ={
                     id:row.tQdZyPersonId.toString(),
-                    status:row.zhuangtai==null?1:2,
+                    status:row.zhuangtai==0?0:1,
                 }
 
                 changeBrokerUserStatus(para).then((res)=>{
@@ -229,13 +226,17 @@
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
-                    bk_name: this.filters.bk_name,
                     username: this.filters.bk_username,
+                    yewuqvyvid: this.filters.yewuqvyvid,
+                    yewupianqvid: this.filters.yewupianqvid,
+                    startdate: this.filters.startdate!=''?this.filters.startdate.toLocaleDateString():'' ,
+                    enddate: this.filters.enddate!=''?new Date(this.filters.enddate).toLocaleDateString():'',
+                    qvdaodengji: this.filters.qvdaodengji,
                 };
                 this.listLoading = true;
                 getBrokerUserListPage(para).then((res) => {
                     this.total = res.data.total;
-                    this.brokerCompanyUser = res.data.data;
+                    this.brokerUser = res.data.data;
                     this.listLoading = false;
                 });
             },
@@ -244,7 +245,7 @@
                 let para = {
                     parentid: 0,
                 };
-                this.optionsywqy = [];
+                //this.optionsywqy = [];
                 getYWQYDicList(para).then((res) => {
 
                     if (res.status == '200') {
@@ -274,13 +275,13 @@
                         }
                     } else {
                         this.$message({
-                            message: '获取行政区域数据失败',
+                            message: '获取地图区域数据失败',
                             type: 'error'
                         });
                     }
                 })
             },
-            //获取公司属性
+            //获取渠道等级
             remoteMethodqddj() {
 
                 getQDDJDicList().then((res) => {

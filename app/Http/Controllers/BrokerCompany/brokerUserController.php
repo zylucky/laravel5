@@ -16,7 +16,11 @@ class brokerUserController extends Controller
      */
     public function index()
     {
-        $name = Input::get('bk_name');
+        $yewuqvyvid=Input::get('yewuqvyvid');
+        $yewupianqvid=Input::get('yewupianqvid');
+        $startdate = Input::get('startdate');
+        $enddate = Input::get('enddate');
+        $qvdaodengji = Input::get('qvdaodengji');
         $username = Input::get('username');
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
@@ -29,8 +33,12 @@ class brokerUserController extends Controller
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
-                'compay' =>  $name,
-                'uname'=>$username
+                'uname'=>$username,
+                'ywqyid' => $yewuqvyvid,
+                'ywpqid' => $yewupianqvid,
+                'qddj' => $qvdaodengji,
+                'sdate' => $startdate,
+                'edate' => $enddate,
             ]
         ]);
         return $response->getBody();
@@ -82,7 +90,13 @@ class brokerUserController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/qd/ziyou/' . $id . '/get', [
+            ]
+        );
+        echo $response->getBody();
     }
 
     /**
@@ -170,7 +184,7 @@ class brokerUserController extends Controller
             'base_uri' => $this->base_url,
 
         ]);
-        if ($obj['status'] == 1) {
+        if ($obj['status'] == 0) {
             $response = $client->request('GET', '/api/qd/ziyou/' . $obj['id'] .'/start', [
                 ]
             );

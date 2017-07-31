@@ -19,18 +19,25 @@ class brokerCompanyUserController extends Controller
         $name = Input::get('bk_name');
         $username = Input::get('username');
         $pageSize = Input::get('pageSize');
-        $page= Input::get('page');
-
+        $page = Input::get('page');
+        $startdate = Input::get('startdate');
+        $enddate = Input::get('enddate');
+        $buildingname = Input::get('buildingname');
+        $qvdaodengji = Input::get('qvdaodengji');
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/qd/person/list',[
+        $response = $client->request('GET', '/api/qd/person/list', [
             'query' => [
-                'page'=>$page,
-                'size'=>$pageSize,
-                'compay' =>  $name,
-                'uname'=>$username
+                'page' => $page,
+                'size' => $pageSize,
+                'compay' => $name,
+                'uname' => $username,
+                'loupan' => $buildingname,
+                'qddj' => $qvdaodengji,
+                'sdate' => $startdate,
+                'edate' => $enddate,
             ]
         ]);
         return $response->getBody();
@@ -56,7 +63,7 @@ class brokerCompanyUserController extends Controller
     /**
      * Store a newly created resource in storage.
      *保存渠道人员
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -69,13 +76,13 @@ class brokerCompanyUserController extends Controller
         $r = $client->request('POST', '/api/qd/person/add', [
             'json' => $request->params
         ]);
-        return  $r ->getBody();
+        return $r->getBody();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -95,7 +102,7 @@ class brokerCompanyUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -106,13 +113,13 @@ class brokerCompanyUserController extends Controller
     /**
      * Update the specified resource in storage.
      *更新渠道人员
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $obj=$request->params;
+        $obj = $request->params;
 
         //dd($obj);
         $client = new Client ([
@@ -123,13 +130,13 @@ class brokerCompanyUserController extends Controller
         $r = $client->request('POST', '/api/qd/person/alter', [
             'json' => $obj
         ]);
-        return  $r ->getBody();
+        return $r->getBody();
     }
 
     /**
      * Remove the specified resource from storage.
      *删除渠道人员
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -138,7 +145,7 @@ class brokerCompanyUserController extends Controller
         return $this->deleteCompany($id);
     }
 
-    public  function deleteCompany($id)
+    public function deleteCompany($id)
     {
         $client = new Client ([
             'base_uri' => $this->base_url,
@@ -147,6 +154,7 @@ class brokerCompanyUserController extends Controller
         $response = $client->request('GET', '/api/qd/person/{$$}/del');
         return $response->getBody();
     }
+
     /*
      * 批量删除
      * @param Request $request
@@ -155,13 +163,12 @@ class brokerCompanyUserController extends Controller
     {
         $ids = $request->params['ids'];
 
-        $code='200';
-        $arr = explode(',',$ids);
-        foreach ($arr as $item ){
-            $status= $this->deleteCompany($item);
-            if($status->code!='200')
-            {
-                $code=$status->msg;
+        $code = '200';
+        $arr = explode(',', $ids);
+        foreach ($arr as $item) {
+            $status = $this->deleteCompany($item);
+            if ($status->code != '200') {
+                $code = $status->msg;
             }
         }
         return $code;
@@ -174,43 +181,42 @@ class brokerCompanyUserController extends Controller
             'base_uri' => $this->base_url,
 
         ]);
-        $bkName =$request->params['name'];
-        $response = $client->request('GET', '/api/qd/compay/list',[
+        $bkName = $request->params['name'];
+        $response = $client->request('GET', '/api/qd/compay/list', [
                 'query' => [
-                    'page'=>1,
-                    'size'=>10,
-                    'compay' =>  $bkName
+                    'page' => 1,
+                    'size' => 10,
+                    'compay' => $bkName
                 ]
 
             ]
         );
-        echo  $response->getBody();
+        echo $response->getBody();
 
     }
+
     //渠道等级
     public function getQDDJDicList(Request $request)
     {
-
         $client = new Client([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', '/api/qd/comm/person/qddj/list', [
             ]
         );
         echo $response->getBody();
     }
+
     //停用启用渠道人员状态
     public function changeBrokerCompanyUserStatus(Request $request)
     {
         $obj = $request->params;
-        dd($obj);
+        //  dd($obj);
         $client = new Client([
             'base_uri' => $this->base_url,
-
         ]);
-        if ($obj['status'] == 1) {
-            $response = $client->request('GET', '/api/qd/person/' . $obj['id'] .'/start', [
+        if ($obj['status'] == 0) {
+            $response = $client->request('GET', '/api/qd/person/' . $obj['id'] . '/start', [
                 ]
             );
             echo $response->getBody();

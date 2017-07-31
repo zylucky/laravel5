@@ -334,7 +334,7 @@ class purchaseContractController extends Controller
         ]);
         echo $response->getBody();
     }
-    /*
+    /*isCopyComplete
      * 扫描合同复印件列表copyImageList
      * */
     public function copyImageList(Request $request){
