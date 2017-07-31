@@ -120,6 +120,8 @@ Route::group(['prefix' => 'brokerCompanyUser'], function () {
     Route::post('getbkNameList','BrokerCompany\brokerCompanyUserController@getbkNameList');
     Route::post('changeBrokerCompanyUserStatus','BrokerCompany\brokerCompanyUserController@changeBrokerCompanyUserStatus');
     Route::post('getQDDJDicList','BrokerCompany\brokerCompanyUserController@getQDDJDicList');
+    Route::post('checkPhone','BrokerCompany\brokerCompanyUserController@checkPhone');
+    Route::post('checkName','BrokerCompany\brokerCompanyUserController@checkName');
 });
 //自由经纪人
 Route::group(['prefix' => 'brokerUser'], function () {

@@ -146,7 +146,7 @@ export const changeBrokerCompanyUserStatus = params => { return axios.post(`${ba
 export const getBrokerUserListPage = params => { return axios.get(`${base}/brokerUser`, { params: params }); };
 export const addBrokerUser = params => { return axios.post(`${base}/brokerUser`, { params: params }); };
 export const editBrokerUser = params => { return axios.put(`${base}/brokerUser/`+params.id, { params: params }); };
-export const getBrokerUserHistoryListPage = params => { return axios.get(`${base}/brokerHistory`, { params: params }); };
+export const getBrokerUserHistoryListPage = params => { return axios.get(`${base}/brokerUserHistory`, { params: params }); };
 export const addBrokerUserHistory = params => { return axios.post(`${base}/brokerUserHistory`, { params: params }); };
 export const changeBrokerUserStatus = params => { return axios.post(`${base}/brokerUser/changeBrokerUserStatus`, { params: params }); };
 export const getXYDJDicList = params => { return axios.post(`${base}/brokerCompany/getXYDJDicList`, { params: params }); };
@@ -156,6 +156,8 @@ export const getQDDJDicList = params => { return axios.post(`${base}/brokerCompa
 export const addBrokerCompanyUserHistory= params => { return axios.post(`${base}/brokerCompanyUserHistory`, { params: params }); };
 export const getBrokerCompanyUserInfo = params => { return axios.get(`${base}/brokerCompanyUser/`+params.id, {}); };
 export const getBrokerUserInfo = params => { return axios.get(`${base}/brokerUser/`+params.id, {}); };
+export const checkPhone = params => { return axios.post(`${base}/brokerCompanyUser/checkPhone`, { params: params }); };
+export const checkName = params => { return axios.post(`${base}/brokerCompanyUser/checkName`, { params: params }); };
 //版本控制
 export const getContractVersionList = params =>{ return axios.get(`${base}/contractVersion/index`, { params: params }); };
 export const changeContractVersionStatus = params =>{ return axios.get(`${base}/contractVersion/status`, { params: params }); };

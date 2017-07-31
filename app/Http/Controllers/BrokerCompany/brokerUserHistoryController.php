@@ -18,15 +18,16 @@ class brokerUserHistoryController extends Controller
     {
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
-
+        $ziyouId=Input::get('personid');
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/qd/gj/compay/list',[
+        $response = $client->request('GET', '/api/qd/gj/zyperson/list',[
             'query' => [
                 'page'=>$page,
                 'size'=>$pageSize,
+                'personid'=> $ziyouId
             ]
         ]);
         return $response->getBody();
@@ -39,33 +40,23 @@ class brokerUserHistoryController extends Controller
      */
     public function create()
     {
-//        $info = Input::get();
-//        if($info) {
-//              return [
-//                        'message' => '保存成功',
-//                        'code' => 200,
-//              ];
-//        }
 
     }
 
     /**
      * Store a newly created resource in storage.
-     *保存渠道跟进记录
+     *保存跟进记录
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
-       dd( $request->params);
+        $obj=array_merge($request->params,Array('genjinren'=>"张三",'tPersonId'=>1));
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
-
-        $r = $client->request('POST', '/api/qd/gj/compay/add', [
-            'json' => $request->params
+        $r = $client->request('POST', '/api/qd/gj/zyperson/add', [
+            'json' => $obj
         ]);
         return  $r ->getBody();
     }

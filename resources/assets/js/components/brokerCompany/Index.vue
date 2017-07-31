@@ -102,10 +102,10 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  >  <el-button   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
+                            <el-dropdown-item  >  <el-button  v-if="scope.row.zhuangtai==1"   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
                             <el-dropdown-item  >  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
                             <el-dropdown-item  >  <el-button   @click="handleUser(scope.$index, scope.row)">查看渠道人员</el-button> </el-dropdown-item>
-                            <el-dropdown-item  >  <el-button   @click="handleUpload(scope.$index, scope.row)">上次协议</el-button> </el-dropdown-item>
+                            <el-dropdown-item  >  <el-button   v-if="scope.row.zhuangtai==1"  @click="handleUpload(scope.$index, scope.row)">上次协议</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -179,22 +179,13 @@
                 optionsdtqy:[
                 ],
                 optionsgssx:[
-                    {
-                        value: 0,
-                        label: '请选择'
-                    }
+
                 ],
                 optionsywqy:[
-                    {
-                        value: 0,
-                        label: '请选择'
-                    }
+
                 ],
                 optionsxydj:[
-                    {
-                        value: 0,
-                        label: '请选择'
-                    }
+
                 ],
                 value1: null,
                 //分页类数据
@@ -464,7 +455,7 @@
             },
             //查看渠道人员
             handleUser: function (index, row) {
-                this.$router.push('/brokerCompanyUserList?id=' + row.tQdCompayId);
+                this.$router.push('/brokerCompanyUserList?id=' + row.tQdCompayId+'&name='+row.compayname);
             },
             //上传协议
             handleUpload: function (index, row) {
