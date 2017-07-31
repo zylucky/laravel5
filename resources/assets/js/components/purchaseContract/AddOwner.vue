@@ -91,12 +91,10 @@
                     </el-col>
                     <el-col :span="2">
                         <el-button v-if="index>0" v-show="editVisible" style="margin-left:6px;" @click.prevent="removeRentItem(item)">删除</el-button>
+                        <el-button v-if="index==0" v-show="editVisible"  @click="addRentItem" style="margin-left:-30px">新增产权人</el-button>
                     </el-col>
                 </el-row>
                 </div>
-                <el-form-item>
-                    <el-button v-show="editVisible"  @click="addRentItem">新增产权人</el-button>
-                </el-form-item>
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="代理人" >

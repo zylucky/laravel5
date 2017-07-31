@@ -33,7 +33,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('terminated','Contract\purchaseContractController@terminated');
     Route::get('releasing','Contract\purchaseContractController@releasing');
     Route::get('released','Contract\purchaseContractController@released');
-    Route::get('released','Contract\purchaseContractController@releasedList');
+    Route::get('releasedList','Contract\purchaseContractController@releasedList');
     Route::get('copyImageList','Contract\purchaseContractController@copyImageList');
     Route::get('deleteCopyImage','Contract\purchaseContractController@deleteCopyImage');
     Route::get('getCopyComplete','Contract\purchaseContractController@getCopyComplete');

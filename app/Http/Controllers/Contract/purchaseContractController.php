@@ -290,7 +290,30 @@ class purchaseContractController extends Controller
     }
     //优化协议的列表
     public function releasedList(){
-        dd(1);
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response1 = $client->request('POST', 'api/contract/sf/buchongXieyi/query?hetongId='.$id);
+        //根据合同id获取房间信息
+        $response2 = $client->request('GET', '/api/contract/sf/'.$id);
+        $res = $response2->getBody();
+        $res = json_decode($res);
+        $loupan = $res->data->officeList[0]->loupanName;
+        $loudong = $res->data->officeList[0]->loudongName;
+        $fanghao = $res->data->officeList[0]->fanghao;
+        $bianhao = $res->data->bianhao;
+
+        $res = $response1->getBody();
+        $res = json_decode($res);
+        foreach ($res->data as $key=>$value){
+            $value->loupanName = $loupan;
+            $value->loudongName = $loudong;
+            $value->fanghao = $fanghao;
+            $value->bianhao = $bianhao;
+        }
+      echo json_encode($res);
+
     }
     //状态变更为审核中
     public function approving(){

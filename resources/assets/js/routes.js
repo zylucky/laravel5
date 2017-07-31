@@ -15,6 +15,7 @@ import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
 import PurchaseContractUpload from "./components/purchaseContract/Upload.vue";
 import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue";
 import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimize.vue";
+import PurchaseContractCheckOptimizeList from "./components/purchaseContract/HistoryOptimize.vue";
 import PurchaseContractDump20170719 from "./components/purchaseContract/Dump20170719.vue";//版本1
 
 
@@ -127,6 +128,7 @@ let routes = [
             { path:'/purchaseContract/view',component:PurchaseContractAdd,name:'收房查看',hidden:true},
             { path:'/purchaseContract/optimize',component:PurchaseContractOptimize,name:'收房优化',hidden:true},
             { path:'/purchaseContract/checkOptimize',component:PurchaseContractCheckOptimize,name:'收房协议查看',hidden:true},
+            { path:'/purchaseContract/checkOptimizeList',component:PurchaseContractCheckOptimizeList,name:'历史协议',hidden:true},
             { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
 
 

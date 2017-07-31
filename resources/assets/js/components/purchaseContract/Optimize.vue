@@ -1,7 +1,7 @@
 <template>
     <el-row class="">
         <div style="margin-bottom: 50px;"></div>
-        <h3>建外SOHO-A-2602</h3>
+        <h3>编号：{{bianhao}}</h3>
         <div style="margin-bottom: 50px;"></div>
         <el-form :model="addDate" ref="editForm" :rules="editFormRules" label-width="80px" class="demo-dynamic">
             <el-form-item label="业主类型">
@@ -403,6 +403,7 @@
                     },
                 ],
                 id:null,
+                bianhao:null,
                 owner:{
                     yezhuleixing:1,
                     //产权人
@@ -464,7 +465,6 @@
                     id:this.$route.query.id
                 };
                 getOptimizePurchaseContract(para).then((res)=>{
-//                    console.log(res.data);
                     this.fuzhi(res);
                 });
             },
@@ -494,7 +494,10 @@
                 this.addDate.xieyienddate = res.data.data.xieyienddate
             },
             save(){
-                        let para = {
+                if(this.$route.query.type!=1){
+                    this.id = null;
+                }
+                let para = {
                             id:this.id,
                             hetongid:this.$route.query.id,
                             zujinList:this.addDate.zujinList,
@@ -515,21 +518,21 @@
                             xieyistartdate:this.addDate.xieyistartdate,
                             xieyienddate:this.addDate.xieyienddate,
                         }
-                        optimizePurchaseContract(para).then((res)=>{
-                            if(res.data.code == 200)　{
-                                this.fuzhi(res);
-                                this.btnType=false,
-                                    this.$message({
-                                        message: '保存成功',
-                                        type: 'success'
-                                    });
-                            }else{
-                                this.$message({
-                                    message:res.data.msg,
-                                    type:'error'
-                                })
-                            }
+                optimizePurchaseContract(para).then((res)=>{
+                    if(res.data.code == 200)　{
+                        this.fuzhi(res);
+                        this.btnType=false,
+                            this.$message({
+                                message: '保存成功',
+                                type: 'success'
+                            });
+                    }else{
+                        this.$message({
+                            message:res.data.msg,
+                            type:'error'
                         })
+                    }
+                })
 
 
             },
@@ -640,8 +643,12 @@
             },
         },
         mounted(){
-            //查询
-            this.getOptimize();
+            this.bianhao = this.$route.query.bianhao;
+            //type==1的时候查看协议的内容
+            if(this.$route.query.type==1){
+                //查询
+                this.getOptimize();
+            }
             //审核页面input禁用
             if(this.$route.path=='/purchaseContract/checkOptimize'){
                 this.disabledInput();
