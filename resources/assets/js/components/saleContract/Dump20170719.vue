@@ -4,7 +4,7 @@
         <span class="tc f22">幼狮空间成交版</span>
         <p>出租方（甲方）：<input type="text" style="width: 450px" disabled value='北京幼狮科技有限公司'/></p>
         <p>承租方（乙方）：<input type="text" style="width: 450px" disabled value=""/></p>
-        <p>居间方（丙方）：<input type="text" style="width: 450px" disabled value='北京华亮房地产经纪有限公司'/></p>
+        <p>居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="renter.jujianfang"/></p>
 
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙、丙三方在平等、自愿的基础上，就乙方承租甲方房屋，丙方提供居间服务等事宜，经各方友好协商一致，签订本合同以资信守。</b></p>
         <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一条  房屋基本情况</b></p>
@@ -12,7 +12,7 @@
                 v-for="(item,index) in property.xsOffice"
                 :key="index"
         >
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" contenteditable="true" style="width:110px;">区（县）<input type="text" v-model="item.weizhi" style="width:210px;">，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），产权证编号： <input type="text" v-model="item.chanquanzhenghao" value="">  。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="quyu" style="width:100px;">区（县）<input type="text" v-model="item.weizhi" style="width:300px;">，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），产权证编号： <input type="text" v-model="item.chanquanzhenghao" value="">  。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。</p>
         <p><b>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二条  房屋租赁情况
@@ -207,6 +207,7 @@
                         chanquanzhenghao: null,
                         jianzhumianji: null,
                         qianyuemianji: null,
+
                         leixing: null,
                         hetongid:null,
                     }],
@@ -291,6 +292,7 @@
                     checkList: [],
                     jiafangfeiyong:[],
                 },
+                quyu:null,
             }
         },
         methods:{
@@ -416,6 +418,16 @@
                     }
                 })
             },
+            //获取区域的中
+            getquyu(str1){
+                var str1 = str1;
+                var str2 = "市";
+                var s = str1.indexOf(str2);
+                var str3 = str1.substr(3,s);
+                //alert(111);
+                //alert(str3);
+                return(str3);
+            },
             fuzhi(res){
                 this.id = res.data.data.id;
                 this.property.xsOffice = res.data.data.xsOffice;
@@ -456,6 +468,10 @@
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+                //alert(res.data.data.xsOffice[0].weizhi);
+                var str = res.data.data.xsOffice[0].weizhi;
+                this.quyu = this.getquyu(str);
+                //alert(this.quyu);
             },
         },
         mounted(){
