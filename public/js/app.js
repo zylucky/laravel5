@@ -23897,7 +23897,7 @@ var routes = [{
     name: '合同管理',
     iconCls: 'el-icon-document', //图标样式class
     hidden: fk_contract,
-    children: [{ path: '/purchaseContract', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Index_vue___default.a, name: '收房合同', hidden: fk_contract_purchase }, { path: '/purchaseContract/add', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房录入', hidden: true }, { path: '/purchaseContract/edit', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房编辑', hidden: true }, { path: '/purchaseContract/review', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房审核', hidden: true }, { path: '/purchaseContract/view', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房查看', hidden: true }, { path: '/purchaseContract/optimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房优化', hidden: true }, { path: '/purchaseContract/checkOptimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房协议查看', hidden: true }, { path: '/purchaseContract/checkOptimizeList', component: __WEBPACK_IMPORTED_MODULE_10__components_purchaseContract_HistoryOptimize_vue___default.a, name: '历史协议', hidden: true }, { path: '/purchaseContract/upload', component: __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/saleContact', component: __WEBPACK_IMPORTED_MODULE_12__components_saleContract_Index_vue___default.a, name: '出房合同' }, { path: '/saleContract/add', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Add_vue___default.a, name: '出房录入', hidden: true }, { path: '/saleContract/see', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Add_vue___default.a, name: '出房查看', hidden: true }, { path: '/saleContract/edit', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Add_vue___default.a, name: '出房编辑', hidden: true }, { path: '/saleContract/review', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Add_vue___default.a, name: '出房审核', hidden: true }, { path: '/saleContract/jieyue', component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Jieyue_vue___default.a, name: '解约协议', hidden: true }, { path: '/saleContract/checkJieyue', component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Jieyue_vue___default.a, name: '出房协议查看', hidden: true }, { path: '/saleContract/upload', component: __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/decoration', component: __WEBPACK_IMPORTED_MODULE_17__components_decoration_List_vue___default.a, name: '工程合同' }, { path: '/contractVersion', component: __WEBPACK_IMPORTED_MODULE_18__components_contractVersion_index_vue___default.a, name: '合同版本管理' }]
+    children: [{ path: '/purchaseContract', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Index_vue___default.a, name: '收房合同', hidden: fk_contract_purchase, params: { name: 'liyuequn' } }, { path: '/purchaseContract/add', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房录入', hidden: true }, { path: '/purchaseContract/edit', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房编辑', hidden: true }, { path: '/purchaseContract/review', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房审核', hidden: true }, { path: '/purchaseContract/view', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房查看', hidden: true }, { path: '/purchaseContract/optimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房优化', hidden: true }, { path: '/purchaseContract/checkOptimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房协议查看', hidden: true }, { path: '/purchaseContract/checkOptimizeList', component: __WEBPACK_IMPORTED_MODULE_10__components_purchaseContract_HistoryOptimize_vue___default.a, name: '历史协议', hidden: true }, { path: '/purchaseContract/upload', component: __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/saleContact', component: __WEBPACK_IMPORTED_MODULE_12__components_saleContract_Index_vue___default.a, name: '出房合同' }, { path: '/saleContract/add', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Add_vue___default.a, name: '出房录入', hidden: true }, { path: '/saleContract/see', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Add_vue___default.a, name: '出房查看', hidden: true }, { path: '/saleContract/edit', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Add_vue___default.a, name: '出房编辑', hidden: true }, { path: '/saleContract/review', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Add_vue___default.a, name: '出房审核', hidden: true }, { path: '/saleContract/jieyue', component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Jieyue_vue___default.a, name: '解约协议', hidden: true }, { path: '/saleContract/checkJieyue', component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Jieyue_vue___default.a, name: '出房协议查看', hidden: true }, { path: '/saleContract/upload', component: __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/decoration', component: __WEBPACK_IMPORTED_MODULE_17__components_decoration_List_vue___default.a, name: '工程合同' }, { path: '/contractVersion', component: __WEBPACK_IMPORTED_MODULE_18__components_contractVersion_index_vue___default.a, name: '合同版本管理' }]
 }, {
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a,
@@ -25782,13 +25782,19 @@ router.beforeEach(function (to, from, next) {
     if (to.path == '/login') {
         sessionStorage.removeItem('user');
     }
+    var para = {};
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__api_api__["a" /* getPermissionList */])(para).then(function (res) {
+        if (res.status == '500') {
+            sessionStorage.removeItem('user');
+        }
+    });
     var user = JSON.parse(sessionStorage.getItem('user'));
     if (!user && to.path != '/login') {
         next({ path: '/login' });
     } else {
         next();
-        var para = {};
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__api_api__["a" /* getPermissionList */])(para).then(function (res) {
+        var _para = {};
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__api_api__["a" /* getPermissionList */])(_para).then(function (res) {
             sessionStorage.removeItem('permission');
             sessionStorage.setItem('permission', JSON.stringify(res.data));
         });
@@ -30350,7 +30356,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.sysUserName = user.name || '';
             this.sysUserAvatar = user.avatar || '../../image/default.jpg';
         }
+        console.log(this.$router.options.routes
         //setInterval(this.openMessage,3000)
+
+        );
     }
 });
 
@@ -38990,7 +38999,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         handleView: function handleView(index, row) {
-            this.$router.push('/purchaseContract/checkOptimize?xyid=' + row.id + 'type==1'); //查看
+            this.$router.push('/purchaseContract/checkOptimize?id=' + row.id + '&type=1'); //查看
         },
 
         //页面跳转后
@@ -39390,7 +39399,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: row.id
             };
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_50" /* youhuaPurchaseContract */])(para).then(function (res) {});
-            this.$router.push('/purchaseContract/optimize?id=' + row.id + '&bianhao=' + row.bianhao);
+            this.$router.push('/purchaseContract/optimize?hetongid=' + row.id + '&bianhao=' + row.bianhao);
         },
 
         //修改协议
@@ -39399,10 +39408,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: row.id
             };
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_50" /* youhuaPurchaseContract */])(para).then(function (res) {});
-            this.$router.push('/purchaseContract/optimize?id=' + row.id + '&type=1' + '&bianhao=' + row.bianhao);
+            this.$router.push('/purchaseContract/optimize?hetongid=' + row.id + '&type=1' + '&bianhao=' + row.bianhao);
         },
         handleCheckOptimize: function handleCheckOptimize(index, row) {
-            this.$router.push('/purchaseContract/checkOptimize?id=' + row.id + '&type=1' + '&bianhao=' + row.bianhao);
+            this.$router.push('/purchaseContract/checkoptimize?hetongid=' + row.id + '&type=1' + '&bianhao=' + row.bianhao);
         },
         checkhistoryOptimize: function checkhistoryOptimize(index, row) {
             this.$router.push('/purchaseContract/checkOptimizeList?id=' + row.id + '&bianhao=' + row.bianhao);
@@ -39944,10 +39953,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getOptimize: function getOptimize() {
             var _this2 = this;
 
-            var para = {
-                id: this.$route.query.id
-            };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_35" /* getOptimizePurchaseContract */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_35" /* getOptimizePurchaseContract */])(this.$route.query).then(function (res) {
                 _this2.fuzhi(res);
             });
         },
@@ -40140,7 +40146,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.getOptimize();
         }
         //审核页面input禁用
-        if (this.$route.path == '/purchaseContract/checkOptimize') {
+        if (this.$route.path == '/purchaseContract/checkoptimize') {
             this.disabledInput();
             this.btnShow = false;
         }
@@ -40429,6 +40435,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 message: '保存成功',
                                 type: 'success'
                             });
+                            history.go(-1);
                         } else {
                             _this.$message({
                                 message: res.data.msg,
@@ -40439,7 +40446,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        cansel: function cansel() {},
+        cansel: function cansel() {
+            history.go(-1);
+        },
         beforeAvatarUpload: function beforeAvatarUpload(file) {
             var isJPG = file.type === 'image/jpeg';
             var isLt2M = file.size / 1024 / 1024 < 2;
@@ -106404,25 +106413,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.editOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("修改协议")])], 1) : _vm._e(), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("修改协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9, 10])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleCheckOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("当前协议")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("当前协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9, 10])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.checkhistoryOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("历史协议")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("历史协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleupload(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("扫描件   ")])], 1)], 1)], 1)]
+        }, [_vm._v("扫描件   ")])], 1) : _vm._e()], 1)], 1)]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
@@ -106685,7 +106694,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           "value": item.label
         }
       })
-    }))], 1)], 1), _vm._v("`\n                            "), _c('el-col', {
+    }))], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
         "span": 8
       }

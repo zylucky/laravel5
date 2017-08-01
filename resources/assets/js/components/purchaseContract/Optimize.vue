@@ -461,10 +461,8 @@
         methods:{
             //根据合同ID来查询协议
             getOptimize(){
-                let para = {
-                    id:this.$route.query.id
-                };
-                getOptimizePurchaseContract(para).then((res)=>{
+
+                getOptimizePurchaseContract(this.$route.query).then((res)=>{
                     this.fuzhi(res);
                 });
             },
@@ -650,7 +648,7 @@
                 this.getOptimize();
             }
             //审核页面input禁用
-            if(this.$route.path=='/purchaseContract/checkOptimize'){
+            if(this.$route.path=='/purchaseContract/checkoptimize'){
                 this.disabledInput();
                 this.btnShow=false;
             }

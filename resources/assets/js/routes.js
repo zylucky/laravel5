@@ -121,7 +121,7 @@ let routes = [
         hidden:fk_contract,
         children: [
 
-            { path:'/purchaseContract', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
+            { path:'/purchaseContract', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase,params:{name:'liyuequn'}},
             { path:'/purchaseContract/add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
             { path:'/purchaseContract/edit',component:PurchaseContractAdd,name:'收房编辑',hidden:true},
             { path:'/purchaseContract/review',component:PurchaseContractAdd,name:'收房审核',hidden:true},

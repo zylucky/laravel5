@@ -330,10 +330,17 @@ class purchaseContractController extends Controller
      * */
     public function getOptimize(){
         $id = Input::get('id');
+        $hetongid = Input::get('hetongid');
         $client = new Client ([
             'base_uri' => $this->base_url,
         ]);
-        $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$id);
+
+        if($hetongid){
+            $url = '/api/contract/sf/buchongXieyi?hetongId='.$hetongid;
+        }elseif($id){
+            $url = '/api/contract/sf/buchongXieyi?id='.$id;
+        }
+        $response = $client->request('GET',$url );
         echo $response->getBody();
     }
     //合同终止的时候提交合同ID，然后获取应付信息
