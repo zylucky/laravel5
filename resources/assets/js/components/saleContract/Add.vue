@@ -87,6 +87,7 @@
                         loupanName:null,
                         loudongName:null,
                         fanghao:null,
+                        //quyu:'',
                         weizhi: null,
                         chanquanzhenghao: null,
                         jianzhumianji: null,

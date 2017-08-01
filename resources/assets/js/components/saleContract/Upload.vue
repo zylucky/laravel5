@@ -1,36 +1,34 @@
 <template>
-    <el-form style="margin-top:2%" :model="copyForm">
-        <el-form-item label="合同">
-            <el-form-item label="" prop="" >
-                <el-radio-group v-model="copyForm.hetongList">
-                    <el-radio :label="1">全</el-radio>
-                    <el-radio :label="2">不全</el-radio>
-                </el-radio-group>
-            </el-form-item>
-            <br>
-            <el-upload
-                    action="/saleContract/addCopyImage?type=1"
-                    list-type="picture-card"
-                    :headers="headers"
-                    :data="data"
-                    multiple
-                    :on-preview="handlePictureCardPreview"
-                    :on-remove="handleRemove"
-                    :on-success="handleSuccess"
-                    :file-list="hetongList"
-                    :before-upload="beforeAvatarUpload"
-            >
-                <i class="el-icon-plus"></i>
-            </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
-                <img width="100%" :src="dialogImageUrl" alt="">
-            </el-dialog>
+    <el-form style="margin-top:2%" :model="copyForm" ref="copyForm" :rules="copyRules" label-position="top">
+        <el-form-item label="合同" prop="iscompletehetong" >
+            <el-radio-group v-model="copyForm.iscompletehetong">
+                <el-radio :label="1">全</el-radio>
+                <el-radio :label="0">不全</el-radio>
+            </el-radio-group>
         </el-form-item>
-        <el-form-item label="承租人身份证">
-            <el-form-item label="" prop="" >
-                <el-radio-group v-model="copyForm.chengzuren">
+        <br>
+        <el-upload
+                action="/saleContract/addCopyImage?type=1"
+                list-type="picture-card"
+                :headers="headers"
+                :data="data"
+                multiple
+                :on-preview="handlePictureCardPreview"
+                :on-remove="handleRemove"
+                :on-success="handleSuccess"
+                :file-list="hetongList"
+                :before-upload="beforeAvatarUpload"
+        >
+            <i class="el-icon-plus"></i>
+        </el-upload>
+        <el-dialog v-model="dialogVisible" size="tiny">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+        <div v-if="zuhuleixing==1">
+            <el-form-item label="承租人身份证" prop="" >
+                <el-radio-group v-model="copyForm.iscompleteczrzj">
                     <el-radio :label="1">全</el-radio>
-                    <el-radio :label="2">不全</el-radio>
+                    <el-radio :label="0">不全</el-radio>
                 </el-radio-group>
             </el-form-item>
             <br>
@@ -50,12 +48,12 @@
             <el-dialog v-model="dialogVisible" size="tiny">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
-        </el-form-item>
-        <el-form-item label="营业执照">
-            <el-form-item label="" prop="" >
-                <el-radio-group v-model="copyForm.yingyezhizhao">
+        </div>
+        <div v-if="zuhuleixing==2">
+            <el-form-item label="营业执照" prop="" >
+                <el-radio-group v-model="copyForm.iscompleteyyzz">
                     <el-radio :label="1">全</el-radio>
-                    <el-radio :label="2">不全</el-radio>
+                    <el-radio :label="0">不全</el-radio>
                 </el-radio-group>
             </el-form-item>
             <br>
@@ -75,12 +73,12 @@
             <el-dialog v-model="dialogVisible" size="tiny">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
-        </el-form-item>
-        <el-form-item label="法人证件">
-            <el-form-item label="" prop="" >
-                <el-radio-group v-model="copyForm.faren">
+        </div>
+        <div v-if="zuhuleixing==2">
+            <el-form-item label="法人证件" prop="" >
+                <el-radio-group v-model="copyForm.iscompletefrzj">
                     <el-radio :label="1">全</el-radio>
-                    <el-radio :label="2">不全</el-radio>
+                    <el-radio :label="0">不全</el-radio>
                 </el-radio-group>
             </el-form-item>
             <br>
@@ -100,12 +98,11 @@
             <el-dialog v-model="dialogVisible" size="tiny">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
-        </el-form-item>
-        <el-form-item label="承租人授权代理人委托书">
-            <el-form-item label="" prop="" >
-                <el-radio-group v-model="copyForm.chengzurenshouquan">
+        </div>
+            <el-form-item label="承租人授权代理人委托书" prop="" >
+                <el-radio-group v-model="copyForm.iscompleteczrsqdlrwts">
                     <el-radio :label="1">全</el-radio>
-                    <el-radio :label="2">不全</el-radio>
+                    <el-radio :label="0">不全</el-radio>
                 </el-radio-group>
             </el-form-item>
             <br>
@@ -125,12 +122,10 @@
             <el-dialog v-model="dialogVisible" size="tiny">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
-        </el-form-item>
-        <el-form-item label="委托人身份证">
-            <el-form-item label="" prop="" >
-                <el-radio-group v-model="copyForm.weituoren">
+            <el-form-item label="委托人身份证" prop="" >
+                <el-radio-group v-model="copyForm.iscompletewtrsfz">
                     <el-radio :label="1">全</el-radio>
-                    <el-radio :label="2">不全</el-radio>
+                    <el-radio :label="0">不全</el-radio>
                 </el-radio-group>
             </el-form-item>
             <br>
@@ -150,12 +145,10 @@
             <el-dialog v-model="dialogVisible" size="tiny">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
-        </el-form-item>
-        <el-form-item label="房屋交割单">
-            <el-form-item label="" prop="" >
-                <el-radio-group v-model="copyForm.jiaogedan">
+            <el-form-item label="房屋交割单" prop="" >
+                <el-radio-group v-model="copyForm.iscompletefwjgd">
                     <el-radio :label="1">全</el-radio>
-                    <el-radio :label="2">不全</el-radio>
+                    <el-radio :label="0">不全</el-radio>
                 </el-radio-group>
             </el-form-item>
             <br>
@@ -175,7 +168,6 @@
             <el-dialog v-model="dialogVisible" size="tiny">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
-        </el-form-item>
         <div style="position: fixed;right:10%;top:50%;">
             <el-button type="primary"   @click="save" style="margin-top:100px;">保存</el-button>
             <el-button type="warning"   @click="cansel" style="margin-top:100px;">取消</el-button>
@@ -187,18 +179,25 @@
         copySaleImageList,
         copySaleImageDelete,
         isCopySaleComplete,
+        isCopySaleCompleteList,
+        getSaleContractInfo,
     } from  '../../api/api';
     export default {
         data() {
             return {
+                copyRules:{
+                    iscompletehetong: [
+                        { required: true, message: '不能为空' }
+                    ],
+                },
                 copyForm:{
-                    hetongList:null,
-                    chengzuren: null,
-                    yingyezhizhao:null,
-                    faren:null,
-                    chengzurenshouquan:null,
-                    weituoren:null,
-                    jiaogedan:null,
+                    iscompletehetong:null,
+                    iscompleteczrzj: null,
+                    iscompleteyyzz:null,
+                    iscompletefrzj:null,
+                    iscompleteczrsqdlrwts:null,
+                    iscompletewtrsfz:null,
+                    iscompletefwjgd:null,
                 },
                 hetongList:[],
                 chengzuren: [],
@@ -207,11 +206,12 @@
                 chengzurenshouquan:[],
                 weituoren:[],
                 jiaogedan:[],
+                zuhuleixing:null,
                 dialogImageUrl: [],
                 dialogVisible: false,
-                form:{
+                /*form:{
                     name:[],
-                },
+                },*/
                 headers:{
                     'X-CSRF-TOKEN':window.Laravel.csrfToken
                 },
@@ -222,8 +222,27 @@
         },
         methods: {
             save(){
-                let para = Object.assign({}, this.copyForm);
-                isCopyComplete().then();
+                this.$refs.copyForm.validate((valid) => {
+                    if(valid){
+                        let para = Object.assign({}, this.copyForm,{id:parseInt(this.$route.query.id)});
+                        isCopySaleComplete(para).then((res)=>{
+                            if(res.data.code=='200'){
+                                this.$message({
+                                    message: '保存成功',
+                                    type: 'success'
+                                });
+                            }else{
+                                this.$message({
+                                    message: res.data.msg,
+                                    type: 'error'
+                                });
+                            }
+
+                        });
+                    }
+                });
+
+
             },
             cansel(){},
             beforeAvatarUpload(file) {
@@ -273,6 +292,14 @@
         },
         mounted(){
             this.data.id = this.$route.query.id;
+            getSaleContractInfo(this.$route.query).then((res)=>{
+                //查数据，得租户leixing（得到租户类型就可以判断营业执照显不显示）
+                this.zuhuleixing = res.data.data.zuhuleixing;
+            }),
+            isCopySaleCompleteList(this.$route.query).then((res)=>{
+                //查数据，得租户leixing
+                this.copyForm = res.data.data;
+            })
             this.getCopyImageList();
         }
     }

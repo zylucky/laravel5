@@ -123,6 +123,7 @@ export const weiYueSaveSaleContract= params => { return axios.post(`${base}/sale
 export const copySaleImageList= params => { return axios.get(`${base}/saleContract/copyImageList`, {params:params}); };//扫描合同复印件列表
 export const copySaleImageDelete= params => { return axios.get(`${base}/saleContract/deleteCopyImage`, {params:params}); };//删除复印件
 export const isCopySaleComplete= params => { return axios.post(`${base}/saleContract/isCopyComplete`, {params:params}); };
+export const isCopySaleCompleteList= params => { return axios.get(`${base}/saleContract/getCopyComplete`, {params:params}); };//列表
 
 //获取楼盘，楼栋，房间号
 export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };

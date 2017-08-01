@@ -370,7 +370,7 @@ class saleContractController extends Controller
     }
 
     public function addCopyImage(){
-        dd(111);
+        //dd(111);
         //PHP上传失败
         if (!empty($_FILES['file']['error'])) {
             switch($_FILES['file']['error']){
@@ -433,8 +433,24 @@ class saleContractController extends Controller
     /*
      * 资料是否齐全
      * */
-    public function isCopyComplete(){
-
+    public function isCopyComplete(Request $request){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/xs/img/set', [
+            'json' =>$request->params
+        ]);
+        echo $response->getBody();
+    }
+    public function getCopyComplete(){
+        $id = Input::get('id');
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/img/'.$id.'/isComplete');
+        echo $response->getBody();
     }
     //获取渠道经纪自由人
     public function getzyrNameList(Request $request)
