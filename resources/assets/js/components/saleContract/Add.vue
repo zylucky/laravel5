@@ -1,7 +1,6 @@
 <template>
     <div>
         <el-row>
-            <div style="margin-bottom: 50px;"></div>
             <el-col :span="20">
                 <add-property ref="property" :property="property" v-on:getshoufanghetong="getChuzuren" v-show="stepNum==1"></add-property>
                 <!--标签中v-on:getshoufanghetong="getChuzuren"是监听事件，getshoufanghetong自己定义的监听的名字，getChuzuren是监听到这个事件之后发生操作的名字，v-on监听事件且是监听谁就放的谁上面-->

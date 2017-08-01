@@ -1,8 +1,6 @@
 
 <template>
     <el-row >
-        <div style="margin-top:30px"></div>
-
         <el-table :data="AccountsReceivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column prop="compayname" label="收款日"  >
             </el-table-column>

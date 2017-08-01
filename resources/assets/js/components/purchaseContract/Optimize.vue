@@ -1,6 +1,5 @@
 <template>
     <el-row class="">
-        <div style="margin-bottom: 50px;"></div>
         <h3>编号：{{bianhao}}</h3>
         <div style="margin-bottom: 50px;"></div>
         <el-form :model="addDate" ref="editForm" :rules="editFormRules" label-width="80px" class="demo-dynamic">
