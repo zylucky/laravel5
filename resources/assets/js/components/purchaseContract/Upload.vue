@@ -278,6 +278,7 @@
                                     message: '保存成功',
                                     type: 'success'
                                 });
+                                history.go(-1);
                             }else{
                                 this.$message({
                                     message: res.data.msg,
@@ -290,7 +291,9 @@
                 });
 
             },
-            cansel(){},
+            cansel(){
+                history.go(-1);
+            },
             beforeAvatarUpload(file) {
                 const isJPG = file.type === 'image/jpeg';
                 const isLt2M = file.size / 1024 / 1024 < 2;

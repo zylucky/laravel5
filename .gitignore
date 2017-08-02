@@ -11,5 +11,6 @@ Homestead.json
 Homestead.yaml
 .env
 /app/Http/Controllers/Controller.php
+public/js/
 public/image/tmp/
-
+/public/image/tmp/

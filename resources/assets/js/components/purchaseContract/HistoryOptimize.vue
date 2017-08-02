@@ -63,7 +63,7 @@
                 });
             },
             handleView(index,row){
-                this.$router.push('/purchaseContract/checkOptimize?xyid='+row.id+'type==1');//查看
+                this.$router.push('/purchaseContract/checkOptimize?id='+row.id+'&type=1');//查看
             },
             //页面跳转后
             handleCurrentChange(val) {
