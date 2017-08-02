@@ -41,7 +41,7 @@
                             </el-button>
                             <el-dropdown-menu slot="dropdown" >
                                 <el-dropdown-item  v-if="ztin(scope.row,[0])" ><el-button @click="handleEdit(scope.$index, scope.row)">编辑</el-button></el-dropdown-item>
-                                <el-dropdown-item  v-if="ztin(scope.row,[2])" ><el-button @click="handleDump(scope.$index, scope.row)">查看</el-button></el-dropdown-item>
+                                <el-dropdown-item  v-if="ztin(scope.row,[0,2])" ><el-button @click="handleDump(scope.$index, scope.row)">打印</el-button></el-dropdown-item>
                                 <el-dropdown-item  v-if="ztin(scope.row,[1])" ><el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
@@ -114,7 +114,7 @@
             return {
                 filters:{
                     name:'',
-                    status:null,
+                    status:'',
                 },
                 options:[
                     {

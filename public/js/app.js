@@ -35148,7 +35148,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             filters: {
                 name: '',
-                status: null
+                status: ''
             },
             options: [{
                 value: 0,
@@ -109187,13 +109187,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [2])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("编辑")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 2])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleDump(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("查看")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("打印")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleConfirm(scope.$index, scope.row)
