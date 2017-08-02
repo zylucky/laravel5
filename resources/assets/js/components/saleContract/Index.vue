@@ -1,6 +1,5 @@
 <template>
     <el-row >
-        <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="">
                 <el-input v-model="filters.name" placeholder="请输入项目"></el-input>

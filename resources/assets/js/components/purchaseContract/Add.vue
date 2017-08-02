@@ -1,7 +1,6 @@
 <template>
     <div>
         <el-row>
-            <div style="margin-bottom: 50px;"></div>
             <el-col :span="20">
                 <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" :owner="owner" v-show="stepNum==2"></add-owner>
