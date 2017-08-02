@@ -28296,7 +28296,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -28767,7 +28766,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -29017,8 +29015,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__);
-//
-//
 //
 //
 //
@@ -29750,7 +29746,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -30002,7 +29997,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__);
-//
 //
 //
 //
@@ -33247,8 +33241,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -33351,7 +33343,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
 //
 //
 //
@@ -33731,8 +33722,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -33833,7 +33822,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_element_ui_packages_row_src_row__ = __webpack_require__(13);
-//
 //
 //
 //
@@ -34366,8 +34354,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -34471,7 +34457,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
 //
 //
 //
@@ -34932,7 +34917,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -35040,7 +35024,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
 //
 //
 //
@@ -36463,7 +36446,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AddTiaoKuan_vue__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AddTiaoKuan_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__AddTiaoKuan_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api_api__ = __webpack_require__(1);
-//
 //
 //
 //
@@ -39165,7 +39147,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
  //佣金支付方式
 
@@ -39503,7 +39484,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
 //
 //
 //
@@ -41007,7 +40987,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -42225,7 +42204,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -43214,12 +43192,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -43230,6 +43202,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             purchaseContract: {
                 type: 0
             },
+            flag: false,
             editVisible: true,
             //楼盘数据
             options1: [],
@@ -43446,49 +43419,68 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //console.log(this.property.xsOffice)
             this.$emit('getshoufanghetong');
         },
-        addTab: function addTab(targetName) {
-            var newTabName = ++this.tabIndex + '';
-            this.editableTabs2.push({
-                title: '房间' + this.tabIndex, //房间号加上次数（一直会加1，以此类推）
-                name: newTabName,
-                content: 'New Tab content'
-            });
-            this.property.xsOffice.push({
-                omcId: null,
-                loupanOmcId: null,
-                loudongOmcId: null,
-                loupanName: '',
-                loudongName: '',
-                fanghao: '',
-                weizhi: '',
-                chanquanzhenghao: '',
-                jianzhumianji: '',
-                qianyuemianji: '',
-                leixing: null,
-                //quyu:'',
-                isdiya: 0,
-                diyaren: ''
-            });
-            this.editableTabsValue2 = newTabName;
+        addTab: function addTab(targetName, action) {
+            if (action === "add") {
+                var newTabName = ++this.tabIndex + '';
+                this.editableTabs2.push({
+                    title: '房间' + this.tabIndex, //房间号加上次数（一直会加1，以此类推）
+                    name: newTabName,
+                    content: 'New Tab content'
+                });
+                this.property.xsOffice.push({
+                    omcId: null,
+                    loupanOmcId: null,
+                    loudongOmcId: null,
+                    loupanName: '',
+                    loudongName: '',
+                    fanghao: '',
+                    weizhi: '',
+                    chanquanzhenghao: '',
+                    jianzhumianji: '',
+                    qianyuemianji: '',
+                    leixing: null,
+                    //quyu:'',
+                    isdiya: 0,
+                    diyaren: ''
+                });
+                this.editableTabsValue2 = newTabName;
+                if (this.editableTabs2.length > 1) {
+                    this.flag = true;
+                }
+            }
         },
         removeTab: function removeTab(targetName) {
             this.property.xsOffice.pop(); //删除
             var tabs = this.editableTabs2;
-            var activeName = this.editableTabsValue2;
+            /*
+            let activeName = this.editableTabsValue2;
             if (activeName === targetName) {
-                tabs.forEach(function (tab, index) {
+                tabs.forEach((tab, index) => {
                     if (tab.name === targetName) {
-                        var nextTab = tabs[index + 1] || tabs[index - 1];
+                        let nextTab = tabs[index + 1] || tabs[index - 1];
                         if (nextTab) {
                             activeName = nextTab.name;
                         }
                     }
                 });
             }
-            this.editableTabsValue2 = activeName;
-            this.editableTabs2 = tabs.filter(function (tab) {
+            */
+            tabs = tabs.filter(function (tab) {
                 return tab.name !== targetName;
             });
+            this.editableTabs2 = tabs.map(function (tab, idx) {
+                tab.name = idx + 1 + '';
+                tab.title = '房间' + (idx + 1);
+                return tab;
+            });
+            --this.tabIndex;
+            if (parseInt(this.editableTabsValue2) > this.tabIndex - 1) {
+                this.editableTabsValue2 = this.editableTabs2[this.tabIndex - 1].name;
+            }
+
+            if (this.editableTabs2.length < 2) {
+                this.flag = false;
+            }
         }
     },
     mounted: function mounted() {
@@ -44393,7 +44385,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api_js__ = __webpack_require__(1);
-//
 //
 //
 //
@@ -47902,7 +47893,7 @@ exports = module.exports = __webpack_require__(4)(undefined);
 
 
 // module
-exports.push([module.i, "\n.container[data-v-0fa7816a] {\n  position: absolute;\n  top: 0px;\n  bottom: 0px;\n  width: 100%;\n}\n.container .header[data-v-0fa7816a] {\n    height: 60px;\n    line-height: 60px;\n    background: #20a0ff;\n    color: #fff;\n}\n.container .header .userinfo[data-v-0fa7816a] {\n      text-align: right;\n      padding-right: 35px;\n      float: right;\n}\n.container .header .userinfo .userinfo-inner[data-v-0fa7816a] {\n        cursor: pointer;\n        color: #fff;\n}\n.container .header .userinfo .userinfo-inner img[data-v-0fa7816a] {\n          width: 40px;\n          height: 40px;\n          border-radius: 20px;\n          margin: 10px 0px 10px 10px;\n          float: right;\n}\n.container .header .logo[data-v-0fa7816a] {\n      height: 60px;\n      font-size: 22px;\n      padding-left: 20px;\n      padding-right: 20px;\n      border-color: rgba(238, 241, 146, 0.3);\n      border-right-width: 1px;\n      border-right-style: solid;\n}\n.container .header .logo img[data-v-0fa7816a] {\n        width: 40px;\n        float: left;\n        margin: 10px 10px 10px 18px;\n}\n.container .header .logo .txt[data-v-0fa7816a] {\n        color: #fff;\n}\n.container .header .logo-width[data-v-0fa7816a] {\n      width: 230px;\n}\n.container .header .logo-collapse-width[data-v-0fa7816a] {\n      width: 60px;\n}\n.container .header .tools[data-v-0fa7816a] {\n      padding: 0px 23px;\n      width: 14px;\n      height: 60px;\n      line-height: 60px;\n      cursor: pointer;\n}\n.container .main[data-v-0fa7816a] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: absolute;\n    top: 60px;\n    bottom: 0px;\n    overflow: hidden;\n}\n.container .main aside[data-v-0fa7816a] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 230px;\n              flex: 0 0 230px;\n      width: 230px;\n}\n.container .main aside .el-menu[data-v-0fa7816a] {\n        height: 100%;\n}\n.container .main aside .collapsed[data-v-0fa7816a] {\n        width: 60px;\n}\n.container .main aside .collapsed .item[data-v-0fa7816a] {\n          position: relative;\n}\n.container .main aside .collapsed .submenu[data-v-0fa7816a] {\n          position: absolute;\n          top: 0px;\n          left: 60px;\n          z-index: 99999;\n          height: auto;\n          display: none;\n}\n.container .main .menu-collapsed[data-v-0fa7816a] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 60px;\n              flex: 0 0 60px;\n      width: 60px;\n}\n.container .main .menu-expanded[data-v-0fa7816a] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 230px;\n              flex: 0 0 230px;\n      width: 230px;\n}\n.container .main .content-container[data-v-0fa7816a] {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      overflow-y: scroll;\n      padding: 20px;\n}\n.container .main .content-container .breadcrumb-container .title[data-v-0fa7816a] {\n        width: 200px;\n        float: left;\n        color: #475669;\n}\n.container .main .content-container .breadcrumb-container .breadcrumb-inner[data-v-0fa7816a] {\n        float: right;\n}\n.container .main .content-container .content-wrapper[data-v-0fa7816a] {\n        background-color: #fff;\n        box-sizing: border-box;\n}\n", ""]);
+exports.push([module.i, "\n.container[data-v-0fa7816a] {\n  position: absolute;\n  top: 0px;\n  bottom: 0px;\n  width: 100%;\n}\n.container .header[data-v-0fa7816a] {\n    height: 60px;\n    line-height: 60px;\n    background: #20a0ff;\n    color: #fff;\n}\n.container .header .userinfo[data-v-0fa7816a] {\n      text-align: right;\n      padding-right: 35px;\n      float: right;\n}\n.container .header .userinfo .userinfo-inner[data-v-0fa7816a] {\n        cursor: pointer;\n        color: #fff;\n}\n.container .header .userinfo .userinfo-inner img[data-v-0fa7816a] {\n          width: 40px;\n          height: 40px;\n          border-radius: 20px;\n          margin: 10px 0px 10px 10px;\n          float: right;\n}\n.container .header .logo[data-v-0fa7816a] {\n      height: 60px;\n      font-size: 22px;\n      padding-left: 20px;\n      padding-right: 20px;\n      border-color: rgba(238, 241, 146, 0.3);\n      border-right-width: 1px;\n      border-right-style: solid;\n}\n.container .header .logo img[data-v-0fa7816a] {\n        width: 40px;\n        float: left;\n        margin: 10px 10px 10px 18px;\n}\n.container .header .logo .txt[data-v-0fa7816a] {\n        color: #fff;\n}\n.container .header .logo-width[data-v-0fa7816a] {\n      width: 230px;\n}\n.container .header .logo-collapse-width[data-v-0fa7816a] {\n      width: 60px;\n}\n.container .header .tools[data-v-0fa7816a] {\n      padding: 0px 23px;\n      width: 14px;\n      height: 60px;\n      line-height: 60px;\n      cursor: pointer;\n}\n.container .main[data-v-0fa7816a] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: absolute;\n    top: 60px;\n    bottom: 0px;\n    overflow: hidden;\n}\n.container .main aside[data-v-0fa7816a] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 230px;\n              flex: 0 0 230px;\n      width: 230px;\n}\n.container .main aside .el-menu[data-v-0fa7816a] {\n        height: 100%;\n}\n.container .main aside .collapsed[data-v-0fa7816a] {\n        width: 60px;\n}\n.container .main aside .collapsed .item[data-v-0fa7816a] {\n          position: relative;\n}\n.container .main aside .collapsed .submenu[data-v-0fa7816a] {\n          position: absolute;\n          top: 0px;\n          left: 60px;\n          z-index: 99999;\n          height: auto;\n          display: none;\n}\n.container .main .menu-collapsed[data-v-0fa7816a] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 60px;\n              flex: 0 0 60px;\n      width: 60px;\n}\n.container .main .menu-expanded[data-v-0fa7816a] {\n      -webkit-box-flex: 0;\n          -ms-flex: 0 0 230px;\n              flex: 0 0 230px;\n      width: 230px;\n}\n.container .main .content-container[data-v-0fa7816a] {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      overflow-y: scroll;\n      padding: 20px;\n}\n.container .main .content-container .breadcrumb-container .title[data-v-0fa7816a] {\n        width: 200px;\n        float: left;\n        color: #475669;\n}\n.container .main .content-container .breadcrumb-container .breadcrumb-inner[data-v-0fa7816a] {\n        float: right;\n}\n.container .main .content-container .content-wrapper[data-v-0fa7816a] {\n        background-color: #fff;\n        box-sizing: border-box;\n        margin-top: 2em;\n}\n", ""]);
 
 // exports
 
@@ -101066,11 +101057,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
+  return _c('el-row', [_c('el-form', {
     staticClass: "demo-form-inline",
     attrs: {
       "inline": true,
@@ -101261,11 +101248,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
+  return _c('el-row', [_c('el-form', {
     staticClass: "demo-form-inline",
     attrs: {
       "inline": true,
@@ -102623,11 +102606,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-table', {
+  return _c('el-row', [_c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -102993,7 +102972,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "span": 24
     }
-  }, [_c('strong', {
+  }, [_c('img', {
+    staticStyle: {
+      "float": "left",
+      "margin-right": "10px",
+      "display": "inline-block",
+      "padding-top": "2px"
+    },
+    attrs: {
+      "src": '/image' + _vm.$route.path + '.png',
+      "onerror": "javascript:this.src='/image/default.png';",
+      "alt": _vm.$route.name
+    }
+  }), _c('strong', {
     staticClass: "title"
   }, [_vm._v(_vm._s(_vm.$route.name))]), _vm._v(" "), _c('el-breadcrumb', {
     staticClass: "breadcrumb-inner",
@@ -103372,11 +103363,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-col', {
+  return _c('el-row', [_c('el-col', {
     staticClass: "toolbar",
     staticStyle: {
       "padding-bottom": "0px"
@@ -105584,11 +105571,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-bottom": "50px"
-    }
-  }), _vm._v(" "), _c('el-col', {
+  return _c('div', [_c('el-row', [_c('el-col', {
     attrs: {
       "span": 20
     }
@@ -106275,11 +106258,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
+  return _c('el-row', [_c('el-form', {
     staticClass: "demo-form-inline",
     attrs: {
       "inline": true,
@@ -107573,11 +107552,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-table', {
+  return _c('el-row', [_c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -108904,11 +108879,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-table', {
+  return _c('el-row', [_c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -109046,11 +109017,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
+  return _c('el-row', [_c('el-form', {
     staticClass: "demo-form-inline",
     attrs: {
       "inline": true,
@@ -110680,11 +110647,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
+  return _c('el-row', [_c('el-form', {
     staticClass: "demo-form-inline",
     attrs: {
       "inline": true,
@@ -111097,11 +111060,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-bottom": "50px"
-    }
-  }), _vm._v(" "), _c('el-col', {
+  return _c('div', [_c('el-row', [_c('el-col', {
     attrs: {
       "span": 20
     }
@@ -111366,11 +111325,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', {}, [_c('div', {
-    staticStyle: {
-      "margin-bottom": "50px"
-    }
-  }), _vm._v(" "), _c('h3', [_vm._v("编号：" + _vm._s(_vm.bianhao))]), _vm._v(" "), _c('div', {
+  return _c('el-row', {}, [_c('h3', [_vm._v("编号：" + _vm._s(_vm.bianhao))]), _vm._v(" "), _c('div', {
     staticStyle: {
       "margin-bottom": "50px"
     }
@@ -112308,11 +112263,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
+  return _c('el-row', [_c('el-form', {
     staticClass: "demo-form-inline",
     attrs: {
       "inline": true,
@@ -114041,9 +113992,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-tabs', {
     attrs: {
       "type": "card",
-      "closable": ""
+      "editable": _vm.flag,
+      "addable": ""
     },
     on: {
+      "edit": _vm.addTab,
       "tab-remove": _vm.removeTab
     },
     model: {
@@ -114053,22 +114006,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "editableTabsValue2"
     }
-  }, [_c('el-button', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.editVisible),
-      expression: "editVisible"
-    }],
-    attrs: {
-      "size": "small"
-    },
-    on: {
-      "click": function($event) {
-        _vm.addTab(_vm.editableTabsValue2)
-      }
-    }
-  }, [_vm._v("\n                添加房源\n            ")]), _vm._v(" "), _vm._l((_vm.editableTabs2), function(item, index) {
+  }, _vm._l((_vm.editableTabs2), function(item, index) {
     return _c('el-tab-pane', {
       key: item.name,
       attrs: {
@@ -114299,7 +114237,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       })
     }))], 1)], 1)], 1)], 1)], 1)], 1)
-  })], 2)], 1)
+  }))], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -114314,11 +114252,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-table', {
+  return _c('el-row', [_c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -114604,11 +114538,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
+  return _c('el-row', [_c('el-form', {
     staticClass: "demo-form-inline",
     attrs: {
       "inline": true,
@@ -114895,11 +114825,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
+  return _c('el-row', [_c('el-form', {
     staticClass: "demo-form-inline",
     attrs: {
       "inline": true,
@@ -115976,11 +115902,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
+  return _c('el-row', [_c('el-form', {
     staticClass: "demo-form-inline",
     attrs: {
       "inline": true,
@@ -117032,11 +116954,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-table', {
+  return _c('el-row', [_c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -117866,11 +117784,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', [_c('div', {
-    staticStyle: {
-      "margin-top": "30px"
-    }
-  }), _vm._v(" "), _c('el-form', {
+  return _c('el-row', [_c('el-form', {
     staticClass: "demo-form-inline",
     attrs: {
       "inline": true,
