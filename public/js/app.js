@@ -38985,7 +38985,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         handleView: function handleView(index, row) {
-            this.$router.push('/purchaseContract/checkOptimize?id=' + row.id + '&type=1'); //查看
+            this.$router.push('/purchaseContract/checkoptimize?id=' + row.id + '&type=1'); //查看
         },
 
         //页面跳转后
@@ -106430,7 +106430,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleConfirm(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("签约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 9, 10])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("签约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 10])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleWeiyue(scope.$index, scope.row)
@@ -106454,7 +106454,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.editOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("修改协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9, 10])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("修改协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [10])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleCheckOptimize(scope.$index, scope.row)
