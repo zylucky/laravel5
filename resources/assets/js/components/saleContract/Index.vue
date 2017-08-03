@@ -1,5 +1,6 @@
 <template>
     <el-row >
+        <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="">
                 <el-input v-model="filters.name" placeholder="请输入项目"></el-input>
@@ -47,15 +48,15 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[1,2])"><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[3])"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[5])"><el-button @click="handleConfirm(scope.$index, scope.row)">签约成功</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6])"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,13])"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6])"><el-button @click="handleJieyue(scope.$index, scope.row)">解 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[9])"><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[10])"><el-button @click="handleCheckJieyue(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7])"><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleOptimize(scope.$index, scope.row)">添加补充协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="editOptimize(scope.$index, scope.row)">修改补充协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">当前补充协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史补充协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[7])"><el-button @click="handleOptimize(scope.$index, scope.row)">添加补充协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[12])"><el-button @click="editOptimize(scope.$index, scope.row)">修改补充协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[13])"><el-button @click="handleCheckOptimize(scope.$index, scope.row)">当前补充协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[13])"><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史补充协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[0,6,7])"><el-button @click="handleUplod(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
@@ -129,6 +130,7 @@
         weiYueInfoSaleContract,
         approvingSaleContract,
         getSaleContractInfo,
+        buchongSaleContract,
     } from '../../api/api.js';
     export default {
         data() {
@@ -176,6 +178,8 @@
                     {value:9, label:'解约中',},
                     {value:10, label:'合同终止（解约完成）',},
                     {value:11, label:'合同终止（合同到期）',},
+                    {value:12, label:'优化中',},
+                    {value:13, label:'优化完成履约中',},
                 ],
                 //分页类数据
                 total:0,
@@ -260,6 +264,8 @@
                 status[9] = '解约中';
                 status[10] = '合同终止（解约完成）';
                 status[11] = '合同终止（合同到期）';
+                status[12] = '优化中';
+                status[13] = '优化完成履约中';
                 return status[row.zhuangtai];
             },
             //时间戳转日期格式
@@ -479,6 +485,30 @@
                     }
                 });
 
+            },
+            //添加补充协议
+            handleOptimize(index,row){
+                let para = {
+                    id:row.id,
+                }
+                buchongSaleContract(para).then((res)=>{
+                });
+                this.$router.push('/saleContract/buchong?hetongid='+row.id+'&bianhao='+row.bianhao);
+            },
+            //修改补充协议
+            editOptimize(index,row){
+                let para = {
+                    id:row.id,
+                }
+                buchongSaleContract(para).then((res)=>{
+                });
+                this.$router.push('/saleContract/buchong?hetongid='+row.id+'&type=1'+'&bianhao='+row.bianhao);
+            },
+            handleCheckOptimize(index,row){
+                this.$router.push('/saleContract/checkBuchong?hetongid='+row.id+'&type=1'+'&bianhao='+row.bianhao);
+            },
+            checkhistoryOptimize(index,row){
+                this.$router.push('/saleContract/checkBuchongList?id='+row.id+'&bianhao='+row.bianhao);
             },
             /*handleEnd(index, row){
                 this.$confirm('确认合同终止吗?', '提示', {

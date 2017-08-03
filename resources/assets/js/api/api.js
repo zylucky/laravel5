@@ -69,7 +69,7 @@ export const getPermissionListOfRole = params => { return axios.get(`${base}/per
 export const getPermissionList = params => { return axios.get(`${base}/permission/list`, { params: params }); };
 export const setPermissionList = params => { return axios.post(`${base}/permission/update/`+params.id, { params: params }); };
 
-//合同信息
+//合同信息youhuaPurchaseContractList
 export const addPurchaseContractInfo= params => { return axios.post(`${base}/purchaseContract`, { params: params }); };
 export const reviewPurchaseContract= params => { return axios.post(`${base}/purchaseContract/review`, { params: params }); };
 export const getPurchaseContractList = params => { return axios.get(`${base}/purchaseContract`, { params: params }); };
@@ -113,6 +113,9 @@ export const confirmedSaleContract= params => { return axios.get(`${base}/saleCo
 
 export const weiyueSaleContract= params => { return axios.get(`${base}/saleContract/violating`, {params:params}); };//状态变更为：违约中
 export const endSaleContract= params => { return axios.get(`${base}/saleContract/terminated`, {params:params}); };//状态变更为：合同终止
+export const buchongSaleContract= params => { return axios.get(`${base}/saleContract/TwiceReleasing`, {params:params}); };//状态变更为：补充协议中
+export const buchongsbSaleContract= params => { return axios.get(`${base}/saleContract/TwiceReleased`, {params:params}); };//状态变更为：补充协议完成
+export const buchongSaleContractList= params => { return axios.get(`${base}/saleContract/releasedList`, {params:params}); };//状态变更为：优化中
 export const jieyueSaleContract = params => { return axios.get(`${base}/saleContract/releasing`, { params: params }); };//状态变更为：解约中
 export const jieyuewanSaleContract = params => { return axios.get(`${base}/saleContract/released`, { params: params }); };//状态变更为：解约完成
 export const jieyueSaleContractInfo = params => { return axios.post(`${base}/saleContract/submit`, {params:params}); };

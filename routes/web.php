@@ -85,6 +85,9 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::get('confirmed','Contract\saleContractController@confirmed');
     Route::get('violating','Contract\saleContractController@violating');
     Route::get('terminated','Contract\saleContractController@terminated');
+    Route::get('TwiceReleasing','Contract\saleContractController@TwiceReleasing');
+    Route::get('TwiceReleased','Contract\saleContractController@TwiceReleased');
+    Route::get('releasedList','Contract\saleContractController@releasedList');
     Route::get('releasing','Contract\saleContractController@releasing');
     Route::get('released','Contract\saleContractController@released');
     Route::post('review','Contract\saleContractController@review');
