@@ -496,7 +496,7 @@
                 }
                 let para = {
                             id:this.id,
-                            hetongid:this.$route.query.id,
+                            hetongid:this.$route.query.hetongid,
                             zujinList:this.addDate.zujinList,
                             mianzuqiList:this.addDate.mianzuqiList,
                             fukuanFangshiList:this.addDate.fukuanFangshiList,
@@ -537,7 +537,7 @@
                 this.$refs['editForm'].validate((valid) => {
                         if(valid){
                     let para = {
-                            id:this.$route.query.id,
+                            hetongid:this.$route.query.hetongid,
                             xyid:this.id,
                     }
                     youhuacgPurchaseContract(para).then((res)=>{

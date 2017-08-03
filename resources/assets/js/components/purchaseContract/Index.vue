@@ -22,8 +22,6 @@
             </el-form-item>
         </el-form>
         <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column type="selection" width="55">
-            </el-table-column>
             <el-table-column  prop="bianhao" label="编号" >
             </el-table-column>
             <el-table-column prop="loupanName" label="楼盘"  sortable>

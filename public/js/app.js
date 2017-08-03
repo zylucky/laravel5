@@ -39145,8 +39145,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
  //佣金支付方式
 
@@ -39973,7 +39971,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             var para = {
                 id: this.id,
-                hetongid: this.$route.query.id,
+                hetongid: this.$route.query.hetongid,
                 zujinList: this.addDate.zujinList,
                 mianzuqiList: this.addDate.mianzuqiList,
                 fukuanFangshiList: this.addDate.fukuanFangshiList,
@@ -40013,7 +40011,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$refs['editForm'].validate(function (valid) {
                 if (valid) {
                     var para = {
-                        id: _this4.$route.query.id,
+                        hetongid: _this4.$route.query.hetongid,
                         xyid: _this4.id
                     };
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_39" /* youhuacgPurchaseContract */])(para).then(function (res) {
@@ -106337,11 +106335,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "selection-change": _vm.selsChange
     }
   }, [_c('el-table-column', {
-    attrs: {
-      "type": "selection",
-      "width": "55"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "bianhao",
       "label": "编号"

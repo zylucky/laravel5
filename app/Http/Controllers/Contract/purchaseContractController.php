@@ -278,7 +278,7 @@ class purchaseContractController extends Controller
     }
     //合同状态变为：优化成功  执行两个动作：协议改为已提交的状态，合同改为已经优化的状态
     public function released(){
-        $id = Input::get('id');
+        $id = Input::get('hetongid');
         $xyid = Input::get('xyid');
 
         $client = new Client ([
