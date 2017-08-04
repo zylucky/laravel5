@@ -39059,6 +39059,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -105211,9 +105219,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             }
           }, [_c('span', [_vm._v(_vm._s(_vm.changedate(item.enddate)))])]), _vm._v(" "), _c('el-form-item', {
             attrs: {
-              "label": ""
+              "label": "押"
             }
-          }, [_c('span', [_vm._v("押" + _vm._s(item.yajinyue))]), _vm._v(" "), _c('span', [_vm._v("付" + _vm._s(item.zujinyue))])])], 1) : _vm._e()
+          }, [_c('span', [_vm._v(_vm._s(item.yajinyue))])]), _vm._v(" "), _c('el-form-item', {
+            attrs: {
+              "label": "付"
+            }
+          }, [_c('span', [_vm._v(_vm._s(item.zujinyue))])])], 1) : _vm._e()
         }), _vm._v(" "), _vm._l((props.row.zujinList), function(item, index) {
           return (props.row.zujinList.length > 0) ? _c('el-form', {
             key: index,
@@ -105232,9 +105244,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             }
           }, [_c('span', [_vm._v(_vm._s(_vm.changedate(item.enddate)))])]), _vm._v(" "), _c('el-form-item', {
             attrs: {
-              "label": ""
+              "label": "月租"
             }
-          }, [_c('span', [_vm._v("月租：" + _vm._s(item.yuezujin) + "    ")]), _vm._v(" "), _c('span', [_vm._v("单价：" + _vm._s(item.price))]), _vm._v(" "), _c('span', [_vm._v("递增量：" + _vm._s(item.dizengliang))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.fangshi(item.dizengfangshi)))])])], 1) : _vm._e()
+          }, [_c('span', [_vm._v(_vm._s(item.yuezujin))])]), _vm._v(" "), _c('el-form-item', {
+            attrs: {
+              "label": "单价"
+            }
+          }, [_c('span', [_vm._v(_vm._s(item.price))])]), _vm._v(" "), _c('el-form-item', {
+            attrs: {
+              "label": "递增量"
+            }
+          }, [_c('span', [_vm._v(_vm._s(item.dizengliang))])]), _vm._v(" "), _c('el-form-item', {
+            attrs: {
+              "label": "月租"
+            }
+          }, [_c('span', [_vm._v(_vm._s(item.yuezujin) + _vm._s(_vm.fangshi(item.dizengfangshi)))])])], 1) : _vm._e()
         })]
       }
     }])
@@ -106715,19 +106739,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.editOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("修改协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [10])) ? _c('el-dropdown-item', [_c('el-button', {
-          on: {
-            "click": function($event) {
-              _vm.handleCheckOptimize(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("当前协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9, 10])) ? _c('el-dropdown-item', [_c('el-button', {
-          on: {
-            "click": function($event) {
-              _vm.checkhistoryOptimize(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("历史协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("修改协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleupload(scope.$index, scope.row)

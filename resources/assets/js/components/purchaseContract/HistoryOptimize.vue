@@ -60,9 +60,11 @@
                         <el-form-item label="结束时间">
                             <span>{{ changedate(item.enddate)  }}</span>
                         </el-form-item>
-                        <el-form-item label="">
-                            <span>押{{ item.yajinyue  }}</span>
-                            <span>付{{ item.zujinyue  }}</span>
+                        <el-form-item label="押">
+                            <span>{{ item.yajinyue  }}</span>
+                        </el-form-item>
+                        <el-form-item label="付">
+                            <span>{{ item.zujinyue  }}</span>
                         </el-form-item>
                     </el-form>
                     <el-form label-position="left" inline class="demo-table-expand"
@@ -75,11 +77,17 @@
                         <el-form-item label="结束时间">
                             <span>{{ changedate(item.enddate)  }}</span>
                         </el-form-item>
-                        <el-form-item label="">
-                            <span>月租：{{ item.yuezujin }}&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                            <span>单价：{{ item.price  }}</span>
-                            <span>递增量：{{ item.dizengliang  }}</span>
-                            <span>{{ fangshi(item.dizengfangshi)  }}</span>
+                        <el-form-item label="月租">
+                            <span>{{ item.yuezujin }}</span>
+                        </el-form-item>
+                        <el-form-item label="单价">
+                            <span>{{ item.price }}</span>
+                        </el-form-item>
+                        <el-form-item label="递增量">
+                            <span>{{ item.dizengliang }}</span>
+                        </el-form-item>
+                        <el-form-item label="月租">
+                            <span>{{ item.yuezujin }}{{ fangshi(item.dizengfangshi)  }}</span>
                         </el-form-item>
                     </el-form>
                 </template>
