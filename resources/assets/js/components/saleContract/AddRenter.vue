@@ -43,6 +43,24 @@
                             </el-option>
                         </el-select>
                     </el-form-item>
+                    <el-form-item label="居间方人员">
+                        <el-select
+                                id="jujianfang"
+                                v-model="renter.jujianfangid"
+                                filterable
+                                remote
+                                @change="changeOnSelect"
+                                placeholder="渠道公司人员名称"
+                                :remote-method="remoteMethod1"
+                                :loading="bkNameloading">
+                            <el-option
+                                    v-for="item in renter.options1"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
                 </el-row>
             </div>
             <div v-if="renter.jujianfangtype==2">

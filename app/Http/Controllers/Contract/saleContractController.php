@@ -79,6 +79,7 @@ class saleContractController extends Controller
     public function show($id)
     {
         //dd(10101010);
+        //dd($id);
         $client = new Client ([
             'base_uri' => $this->base_url,
 

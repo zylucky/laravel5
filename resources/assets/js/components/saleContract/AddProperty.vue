@@ -337,6 +337,7 @@
                 }
             },
             change2(){
+                //alert(222);
                 //楼栋
                 for (var x in this.options2){
                     if(this.options2[x].label==this.property.xsOffice[this.tabIndex-1].loudongName){
@@ -346,6 +347,7 @@
                 }
             },
             change3(){
+                //alert(111);
                 //房号
                 for (var x in this.options3){
                     if(this.options3[x].label==this.property.xsOffice[this.tabIndex-1].fanghao){

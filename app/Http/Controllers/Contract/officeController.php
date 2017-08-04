@@ -79,6 +79,7 @@ class officeController extends Controller
     }
     //销售获取房间号
     public function salefanghaoList(){
+        //dd(6666);
         $client = new Client([
             'base_uri' => $this->base_url,
 
@@ -87,6 +88,7 @@ class officeController extends Controller
         $zdid = Input::get('zdid');
         //dd(111);
         //dd($zdid);
+        //dd($lpid);
         $response = $client->request('GET', '/api/fangyuan/xsfy',[
             'query' => [
                 'lpid' => $lpid,
