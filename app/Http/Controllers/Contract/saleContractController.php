@@ -79,6 +79,7 @@ class saleContractController extends Controller
     public function show($id)
     {
         //dd(10101010);
+        //dd($id);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
@@ -217,6 +218,60 @@ class saleContractController extends Controller
         ]);
         $response = $client->request('GET', '/api/contract/xs/'.$id.'/approving');
         echo $response->getBody();
+    }
+    //合同状态变为：补充协议中
+    public function TwiceReleasing(){
+        //dd(11);
+        //$id = Input::get('id');
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/'.$id.'/TwiceReleasing');
+        echo $response->getBody();
+
+    }
+    //合同状态变为：优化成功  执行两个动作：协议改为已提交的状态，合同改为已经优化的状态
+    public function TwiceReleased(){
+        $id = Input::get('hetongid');
+        $xyid = Input::get('xyid');
+
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/'.$id.'/TwiceReleased');
+        $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$xyid.'/confrim?id='.$xyid);
+        echo $response->getBody();
+    }
+    //补充协议的列表
+    public function releasedList(){
+        //dd(22);
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response1 = $client->request('POST', 'api/contract/sf/buchongXieyi/query?hetongId='.$id);
+        //根据合同id获取房间信息
+        $response2 = $client->request('GET', '/api/contract/xs/'.$id);
+        $res = $response2->getBody();
+        $res = json_decode($res);
+        //dd($res);
+        $loupan = $res->data->xsOffice[0]->loupanName;
+        $loudong = $res->data->xsOffice[0]->loudongName;
+        $fanghao = $res->data->xsOffice[0]->fanghao;
+        $bianhao = $res->data->bianhao;
+
+        $res = $response1->getBody();
+        $res = json_decode($res);
+        foreach ($res->data as $key=>$value){
+            $value->loupanName = $loupan;
+            $value->loudongName = $loudong;
+            $value->fanghao = $fanghao;
+            $value->bianhao = $bianhao;
+        }
+        echo json_encode($res);
+
     }
     //合同状态变为：解约中
     public function releasing(){
