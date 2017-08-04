@@ -281,15 +281,16 @@
             //新增产权人
             addRentItem() {
                 this.owner.chanquanrenList.push({
-                    Name:'',
-                    Id:'',
-                    Tel:'',
-                    Sex:null,
+                    name:'',
+                    faren:'',
+                    zhengjian:'',
+                    tel:'',
+                    sex:1,
+                    hetongid:null,
                 });
             },
             //移除产权人
             removeRentItem(item) {
-                this.owner.chanquanrenList.pop();
                 var index = this.owner.chanquanrenList.indexOf(item)
                 if (index !== -1) {
                     this.owner.chanquanrenList.splice(index, 1)

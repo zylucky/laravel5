@@ -412,19 +412,19 @@
                             name:'',
                             zhengjian:'',
                             tel:'',
-                            sex:0,
+                            sex:'',
                             hetongid:null,
                         },
                     ],
                     //代理人
                     dailirenName:'',
                     dailirenTel:'',
-                    dailirenSex:0,
+                    dailirenSex:'',
                     dailirenId:'',
                     //签约人
                     qianyuerenName:'',
                     qianyuerenTel:'',
-                    qianyuerenSex:0,
+                    qianyuerenSex:'',
                     qianyuerenId:'',
                 },
                 addDate: {
@@ -460,7 +460,6 @@
         methods:{
             //根据合同ID来查询协议
             getOptimize(){
-
                 getOptimizePurchaseContract(this.$route.query).then((res)=>{
                     this.fuzhi(res);
                 });
@@ -607,15 +606,16 @@
             //新增产权人
             addOwnerItem() {
                 this.owner.chanquanrenList.push({
-                    Name:'',
-                    Id:'',
-                    Tel:'',
-                    Sex:null,
+                    faren:'',
+                    name:'',
+                    zhengjian:'',
+                    tel:'',
+                    sex:'',
+                    hetongid:null,
                 });
             },
             //移除产权人
             removeOwnerItem(item) {
-                this.owner.chanquanrenList.pop();
                 var index = this.owner.chanquanrenList.indexOf(item)
                 if (index !== -1) {
                     this.owner.chanquanrenList.splice(index, 1)

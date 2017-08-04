@@ -139,7 +139,6 @@
                 this.sysUserName = user.name || '';
                 this.sysUserAvatar = user.avatar || '../../image/default.jpg';
             }
-            console.log(this.$router.options.routes)
            //setInterval(this.openMessage,3000)
 
         }
