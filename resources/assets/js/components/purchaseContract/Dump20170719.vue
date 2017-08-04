@@ -306,6 +306,9 @@
         },
         methods:{
             daxie(money) {
+                if(money==null){
+                    return '';
+                }
             //汉字的数字
             var cnNums = new Array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
             //基本单位
