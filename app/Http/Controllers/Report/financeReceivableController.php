@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Commission;
+namespace App\Http\Controllers\Report;
 
 use App\User;
 use GuzzleHttp\Client;
@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 
-class receivableController extends Controller
+class financeReceivableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,31 +18,30 @@ class receivableController extends Controller
      */
     public function index()
     {
+
         $contractNo = Input::get('contractNo');
-        $xm = Input::get('xm');
-        $yz = Input::get('yz');
-        $zt = Input::get('zt');
+        $buildingname = Input::get('buildingname');
+        $buildname = Input::get('buildname');
+        $roomname = Input::get('roomname');
         $startdate = Input::get('startdate');
         $enddate = Input::get('enddate');
         $pageSize = Input::get('pageSize');
-        $page= Input::get('page');
+        $page = Input::get('page');
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/cw/ys/list',[
-            'query' => [
-                'page'=>$page,
-                'size'=>$pageSize,
-                'sdate'=>$startdate,
-                'edate'=>$enddate,
-                'xm'=>$xm,
-                'yz'=>$yz,
-                'zt'=>$zt,
-                'htno' =>  $contractNo,
+        $response = $client->request('GET', '/api/cw/yf/list', [
+                'query' => [
+                    'page' => $page,
+                    'size' => $pageSize,
+                    'sdate'=>$startdate,
+                    'edate'=>$enddate,
+                    'houseno'=>$roomname,
+                    'htno' =>  $contractNo,
                 ]
 
-       ]
+            ]
         );
         echo $response->getBody();
 
@@ -62,7 +61,7 @@ class receivableController extends Controller
     /**
      * Store a newly created resource in storage.
      *保存
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -74,7 +73,7 @@ class receivableController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -85,7 +84,7 @@ class receivableController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -96,14 +95,14 @@ class receivableController extends Controller
     /**
      * Update the specified resource in storage.
      *更新应收款记录
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
 
-        $obj=array_merge($request->params );
+        $obj = array_merge($request->params);
         dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
@@ -113,79 +112,34 @@ class receivableController extends Controller
         $r = $client->request('POST', '/api/qd/compay/alter', [
             'json' => $obj
         ]);
-        return  $r ->getBody();
+        return $r->getBody();
     }
+
     /**
      * Update the specified resource in storage.
      *保存收款记录
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function saveShouKuan(Request $request)
     {
 
-        //以后用户会从OMC取
-        $user=    Array(
-            'faqirenid'=>1,
-            'faqiren'=>'张三',
-        );
-
-        $obj=array_merge($request->params,$user);
-        //dd($obj);
+        $obj = array_merge($request->params);
+        dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
 
-        $r = $client->request('POST', '/api/cw/yf/submit', [
-            'json' => $obj
-        ]);
-        return $r->getBody();
-    }
-    public function editDate(Request $request)
-    {
-        //以后用户会从OMC取
-        $user=    Array(
-            'personId'=>1,
-            'personName'=>'张三',
-        );
-
-        $obj=array_merge($request->params,$user);
-        // dd($obj);
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-
-        ]);
-
-        $r = $client->request('POST', '/api/cw/yf/alter/fkrq', [
+        $r = $client->request('POST', '/api/qd/compay/alter', [
             'json' => $obj
         ]);
         return $r->getBody();
     }
 
-    public function editMoney(Request $request)
-    {
-        //以后用户会从OMC取
-        $user=    Array(
-            'personId'=>1,
-            'personName'=>'张三',
-        );
-
-        $obj=array_merge($request->params,$user);
-        // dd($obj);
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-
-        ]);
-
-        $r = $client->request('POST', '/api/cw/yf/alter/fkje', [
-            'json' => $obj
-        ]);
-        return $r->getBody();
-    }
     public function destroy($id)
     {
-       // dd($id);
+        // dd($id);
 
 
     }

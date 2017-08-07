@@ -18,23 +18,13 @@ class paymentRecordController extends Controller
      */
     public function index()
     {
-        $contractNo = Input::get('contractNo');
-        $buildingname= Input::get('buildingname');
-        $buildname = Input::get('buildname');
-        $roomname = Input::get('roomname');
-        $ZhuangTai = Input::get('ZhuangTai');
-        $pageSize = Input::get('pageSize');
-        $page= Input::get('page');
+        $id = Input::get('id');
+
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/qd/compay/list',[
-            'query' => [
-                'page'=>$page,
-                'size'=>$pageSize,
-                'compay' =>  $contractNo
-                ]
+        $response = $client->request('GET', '/api/cw/yf/'.$id.'/get',[
 
        ]
         );

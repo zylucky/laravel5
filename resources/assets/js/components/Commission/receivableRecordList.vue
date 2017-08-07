@@ -2,17 +2,23 @@
 <template>
     <el-row >
         <el-table :data="ReceivableRecord" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column prop="compayname" label="收款日"  >
+            <el-table-column prop="hetongbianhao" label="合同编号"  >
             </el-table-column>
-            <el-table-column prop="compaytest" label="收款类型"   >
+            <el-table-column prop="xiangmu" label="项目"  >
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="收款金额" >
+            <el-table-column prop="tijiaodate" label="提交日期"   :formatter="changeTJDate">
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="收款人" >
+            <el-table-column prop="fukuankemu" label="付款科目">
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="收款时间" >
+            <el-table-column prop="tijiaomoney" label="提交金额" >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="收款备注" >
+            <el-table-column prop="fukuanmoney" label="付款金额" >
+            </el-table-column>
+            <el-table-column prop="fukuandate" label="付款日期"  :formatter="changeFKDate">
+            </el-table-column>
+            <el-table-column prop="faqiren" label="发起人" >
+            </el-table-column>
+            <el-table-column prop="skyinhang" label="收款银行及账号"   width="200" :formatter="formatskyh">
             </el-table-column>
            </el-table>
            <div style="margin-top:30px"></div>
@@ -68,17 +74,19 @@
             }
         },
         methods:{
-            //佣金类型显示转换
-            formatYJType: function (row, column) {
-                return row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-            },
+
             //时间戳转日期格式
-            changeDate(row, column){
+            changeTJDate(row, column){
                 var newDate = new Date();
-                newDate.setTime(row.createdate);
+                newDate.setTime(row.tijiaodate);
                 return newDate.toLocaleDateString()
             },
-
+            //时间戳转日期格式
+            changeFKDate(row, column){
+                var newDate = new Date();
+                newDate.setTime(row.fukuandate);
+                return newDate.toLocaleDateString()
+            },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
@@ -94,6 +102,7 @@
             //获取渠道公司列表
             getReceivableRecord() {
                 let para = {
+                    id:this.$route.query.id,
                     page: this.page,
                     pageSize: this.pageSize,
                 };
