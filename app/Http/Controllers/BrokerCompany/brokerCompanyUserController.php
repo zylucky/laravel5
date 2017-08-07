@@ -39,7 +39,6 @@ class brokerCompanyUserController extends Controller
                 'qddj' => $qvdaodengji,
                 'sdate' => $startdate,
                 'edate' => $enddate,
-                'edate' => $enddate,
                 'compayid' => $cid,
             ]
         ]);
@@ -187,12 +186,9 @@ class brokerCompanyUserController extends Controller
         $bkName = $request->params['name'];
         $response = $client->request('GET', '/api/qd/compay/list', [
                 'query' => [
-                    'page' => 1,
-                    'size' => 10,
                     'compay' => $bkName,
                     'zt' => 1,
                 ]
-
             ]
         );
         echo $response->getBody();

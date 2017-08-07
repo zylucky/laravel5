@@ -43,24 +43,26 @@ export const selectCommissionPayType = params => { return axios.post(`${base}/Co
 export const getReceivableListPage = params => { return axios.get(`${base}/receivable`, { params: params }); };
 export const editReceivable = params => { return axios.put(`${base}/receivable/`+params.id, { params: params }); };
 export const saveShouKuan = params => { return axios.post(`${base}/receivable/saveShouKuan` , { params: params }); };
-
+export const rejectPayable = params =>  { return axios.post(`${base}/financePayable/rejectPayable` , { params: params }); };
 export const getReceivableRecordListPage = params => { return axios.get(`${base}/receivableRecord`, { params: params }); };
-
+export const confirmPayable = params =>  { return axios.post(`${base}/financePayable/confirmPayable` , { params: params }); };
 export const getAccountsReceivableListPage = params => { return axios.get(`${base}/accountsReceivable`, { params: params }); };
 export const addReceivable = params => { return axios.post(`${base}/accountsReceivable`, { params: params }); };
 export const removeReceivable = params => { return axios.delete(`${base}/accountsReceivable/`+params.id, {}); };
-
-
+export const editMoney = params => { return axios.post(`${base}/payable/editMoney`, { params: params }); };
+export const editDate = params => { return axios.post(`${base}/payable/editDate`, { params: params }); };
 export const getPayableListPage = params => { return axios.get(`${base}/payable`, { params: params }); };
+export const saveFuKuan = params => { return axios.post(`${base}/payable/saveFuKuan` , { params: params }); };
 export const finishSK= params => { return axios.post(`${base}/shouFangCommission/finishSK` , { params: params }); };
 export const finishFK= params => { return axios.post(`${base}/chuFangCommission/finishFK` , { params: params }); };
-
-
+export const getPayableInfos = params => { return axios.get(`${base}/paymentRecord`, { params: params }); };
+export const getPayableRecordList = params => { return axios.get(`${base}/payableRecord`, { params: params }); };
 export const getMessageListPage = params => { return axios.get(`${base}/message`, { params: params }); };
 export const AcceptMessage= params => { return axios.post(`${base}/message/acceptMessage` , { params: params }); };
 export const RefuseMessage= params => { return axios.post(`${base}/message/refuseMessage` , { params: params }); };
-
-
+export const getFinancePayableListPage = params => { return axios.get(`${base}/financePayable`, { params: params }); };
+export const skeditMoney = params => { return axios.post(`${base}/receivable/editMoney`, { params: params }); };
+export const skeditDate = params => { return axios.post(`${base}/receivable/editDate`, { params: params }); };
 //查系统所有的权限
 export const getPermissionListPage = params => { return axios.get(`${base}/permission/getAll`, { params: params }); };
 //查XX的权限

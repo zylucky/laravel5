@@ -19,7 +19,6 @@
             <el-form-item>
                 <el-button type="primary" icon="search" @click="purchaseContractList">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
-                <!--<el-button type="primary" class="el-icon-upload2" @click="uploadImg">上传</el-button>-->
             </el-form-item>
         </el-form>
         <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">

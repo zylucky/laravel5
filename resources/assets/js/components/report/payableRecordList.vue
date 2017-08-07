@@ -2,43 +2,36 @@
 <template>
     <el-row >
         <div style="margin-top:30px"></div>
-        <el-table :data="ReceivableRecord" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column prop="compayname" label="收款日"  >
+        <el-table :data="PayableRecord" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
+
+            <el-table-column prop="hetongbianhao" label="合同编号"  >
             </el-table-column>
-            <el-table-column prop="compaytest" label="收款类型"   >
+            <el-table-column prop="xiangmu" label="项目"  >
             </el-table-column>
-            <el-table-column prop="yjzbSf" label="收款金额" >
+            <el-table-column prop="tijiaodate" label="提交日期"   :formatter="changeTJDate">
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="收款人" >
+            <el-table-column prop="fukuankemu" label="付款科目">
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="收款时间" >
+            <el-table-column prop="tijiaomoney" label="提交金额" >
             </el-table-column>
-            <el-table-column prop="yjzbCf" label="收款备注" >
+            <el-table-column prop="fukuanmoney" label="付款金额" >
+            </el-table-column>
+            <el-table-column prop="fukuandate" label="付款日期"  :formatter="changeFKDate">
+            </el-table-column>
+            <el-table-column prop="faqiren" label="发起人" >
+            </el-table-column>
+            <el-table-column prop="skyinhang" label="收款银行及账号"   width="200" :formatter="formatskyh">
             </el-table-column>
            </el-table>
-           <div style="margin-top:30px"></div>
-           <!-- 分页-->
-        <el-col :span="24" class="toolbar" >
-            <el-pagination
-                    @size-change="handleSizeChange"
-                    @current-change="handleCurrentChange"
-                    :current-page="currentPage"
-                    :page-size="10"
-                    layout="total, sizes, prev, pager, next, jumper"
-                    :total=total
-                    style="float:right"
-            >
-            </el-pagination>
-        </el-col>
+
     </el-row>
 </template>
 <script>
 
     import {
-        getReceivableRecordListPage,
+        getPayableRecordList,
 
        // getUserNameByID,
-
 
     } from '../../api/api';
     import ElForm from "../../../../../node_modules/element-ui/packages/form/src/form";
@@ -61,7 +54,7 @@
                 currentPage:0,
                 pageSize:10,
                 pageSizes:[10, 20, 30, 40, 50, 100],
-                ReceivableRecord:[],
+                PayableRecord:[],
                 listLoading: false,
                 sels: [],//列表选中列
                 //被选中的权限
@@ -69,39 +62,45 @@
             }
         },
         methods:{
-            //佣金类型显示转换
-            formatYJType: function (row, column) {
-                return row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-            },
+
             //时间戳转日期格式
-            changeDate(row, column){
+            changeTJDate(row, column){
                 var newDate = new Date();
-                newDate.setTime(row.createdate);
+                newDate.setTime(row.tijiaodate);
                 return newDate.toLocaleDateString()
             },
+            //收款账号显示转换
+            formatskyh: function (row, column) {
+                return  row.skyinhang==null?'':row.skyinhang+"\r账号:"+row.skzhanhu==null?'': row.skzhanhu;
 
+            },
+            //时间戳转日期格式
+            changeFKDate(row, column){
+                var newDate = new Date();
+                newDate.setTime(row.fukuandate);
+                return newDate.toLocaleDateString()
+            },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
-                this.getReceivableRecord();
+                this.getPayableRecord();
             },
             //更改每页显示数据
             handleSizeChange(val){
                 this.pageSize =val;
-                this.getReceivableRecord();
+                this.getPayableRecord();
             },
 
 
             //获取渠道公司列表
-            getReceivableRecord() {
+            getPayableRecord() {
                 let para = {
-                    page: this.page,
-                    pageSize: this.pageSize,
+                    id:this.$route.query.id,
                 };
                 this.listLoading = true;
-                getReceivableRecordListPage(para).then((res) => {
+                getPayableRecordList(para).then((res) => {
                     this.total = res.data.total;
-                    this.ReceivableRecord = res.data.data;
+                    this.PayableRecord = res.data.data;
                     this.listLoading = false;
                 });
             },
@@ -113,7 +112,7 @@
         },
         mounted() {
             this.page=1;
-            this.getReceivableRecord();
+            this.getPayableRecord();
 
         }
     }

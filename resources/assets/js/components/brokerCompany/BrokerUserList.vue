@@ -59,11 +59,7 @@
             </el-table-column>
             <el-table-column prop="telList.0.dianhua" label="联系电话"  >
             </el-table-column>
-            <el-table-column label="公司所属业务区域">
-                <el-table-column prop="yewuqvyv"    >
-                </el-table-column>
-                <el-table-column prop="yewupianqv"    >
-                </el-table-column>
+            <el-table-column label="所在业务区域"  :formatter="changeywqy">
             </el-table-column>
             <el-table-column prop="qvdaodengji" label="渠道等级"   >
             </el-table-column>
@@ -91,7 +87,7 @@
                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
-                               <el-dropdown-item  >  <el-button v-if="scope.row.zhuangtai==1"  @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
+                               <el-dropdown-item  >  <el-button    @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
                                <el-dropdown-item  >  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
@@ -191,7 +187,9 @@
                     return newDate.toLocaleDateString()
                 }
             },
-
+            changeywqy(row, column){
+              return row.yewuqvyv+'-'+row.yewupianqv
+            },
             //更改自由经纪人人员状态
             changeStatus(row){
                 let para ={

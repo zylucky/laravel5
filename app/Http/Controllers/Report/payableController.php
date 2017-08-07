@@ -20,9 +20,9 @@ class payableController extends Controller
     {
 
         $contractNo = Input::get('contractNo');
-        $buildingname = Input::get('buildingname');
-        $buildname = Input::get('buildname');
-        $roomname = Input::get('roomname');
+        $xm = Input::get('xm');
+        $yz = Input::get('yz');
+        $zt = Input::get('zt');
         $startdate = Input::get('startdate');
         $enddate = Input::get('enddate');
         $pageSize = Input::get('pageSize');
@@ -37,7 +37,9 @@ class payableController extends Controller
                     'size' => $pageSize,
                     'sdate'=>$startdate,
                     'edate'=>$enddate,
-                    'houseno'=>$roomname,
+                    'xm'=>$xm,
+                    'yz'=>$yz,
+                    'zt'=>$zt,
                     'htno' =>  $contractNo,
                 ]
 
@@ -102,36 +104,72 @@ class payableController extends Controller
     public function update(Request $request, $id)
     {
 
-        $obj = array_merge($request->params);
-        dd($obj);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *保存付款记录
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function saveFuKuan(Request $request)
+    {
+        //以后用户会从OMC取
+        $user=    Array(
+            'faqirenid'=>1,
+            'faqiren'=>'张三',
+        );
+
+        $obj=array_merge($request->params,$user);
+        //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
 
-        $r = $client->request('POST', '/api/qd/compay/alter', [
+        $r = $client->request('POST', '/api/cw/yf/submit', [
             'json' => $obj
         ]);
         return $r->getBody();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *保存收款记录
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function saveShouKuan(Request $request)
+    public function editDate(Request $request)
     {
+        //以后用户会从OMC取
+        $user=    Array(
+            'personId'=>1,
+            'personName'=>'张三',
+        );
 
-        $obj = array_merge($request->params);
-        dd($obj);
+        $obj=array_merge($request->params,$user);
+       // dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
 
-        $r = $client->request('POST', '/api/qd/compay/alter', [
+        $r = $client->request('POST', '/api/cw/yf/alter/fkrq', [
+            'json' => $obj
+        ]);
+        return $r->getBody();
+    }
+
+    public function editMoney(Request $request)
+    {
+        //以后用户会从OMC取
+        $user=    Array(
+            'personId'=>1,
+            'personName'=>'张三',
+        );
+
+        $obj=array_merge($request->params,$user);
+       // dd($obj);
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+
+        ]);
+
+        $r = $client->request('POST', '/api/cw/yf/alter/fkje', [
             'json' => $obj
         ]);
         return $r->getBody();

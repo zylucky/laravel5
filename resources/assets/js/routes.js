@@ -50,11 +50,12 @@ import selectCommissionPayType from "./components/Commission/contractPayType.vue
 import AccountsReceivable from "./components/Commission/accountsReceivableList.vue";
 import ReceivableRecord from "./components/Commission/receivableRecordList.vue";
 import Receivable from "./components/Commission/receivableList.vue";
+import FinanceReceivable from "./components/report/financeReceivableList.vue";
 //应付
 import PaymentRecord from "./components/report/paymentRecordList.vue";
 import PayableRecord from "./components/report/payableRecordList.vue";
 import Payable from "./components/report/payableList.vue";
-
+import FinancePayable from "./components/report/financePayableList.vue";
 
 
 
@@ -197,12 +198,14 @@ let routes = [
         iconCls: 'el-icon-document',//图标样式class
         hidden:false,
         children: [
-            { path:'/receivable',component:Receivable,name:'应收款信息',hidden:false},
+            { path:'/receivable',component:Receivable,name:'结算应收',hidden:false},
             { path:'/accountsReceivable',component:AccountsReceivable,name:'应收款记录',hidden:true},
             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
-            { path:'/payable',component:Payable,name:'应付款信息',hidden:false},
+            { path:'/payable',component:Payable,name:'结算应付',hidden:false},
             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
             { path:'/paymentRecord',component:PaymentRecord,name:'已付款记录',hidden:true},
+            { path:'/financePayable',component:FinancePayable,name:'财务应付',hidden:false},
+            { path:'/financeReceivable',component:FinanceReceivable,name:'财务应收',hidden:false},
         ]
 
     },

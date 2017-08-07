@@ -49,7 +49,6 @@ class ShouFangCommissionController extends Controller
                 'pname' =>  $personname,
                 'yjstate' =>  $ZhuangTai
                 ]
-
        ]
         );
         echo $response->getBody();

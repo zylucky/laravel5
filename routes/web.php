@@ -62,10 +62,17 @@ Route::resource('accountsReceivable','Commission\accountsReceivableController');
 Route::resource('receivableRecord','Commission\receivableRecordController');
 Route::post('receivable/saveShouKuan','Commission\receivableController@saveShouKuan');
 Route::resource('payable','Report\payableController');
-Route::resource('payavleRecord','Report\payavleRecordController');
+Route::resource('payableRecord','Report\payableRecordController');
 Route::resource('paymentRecord','Report\paymentRecordController');
 Route::post('shouFangCommission/finishSK','Commission\ShouFangCommissionController@finishSK');
-
+Route::post('payable/saveFuKuan','Report\payableController@saveFuKuan');
+Route::post('payable/editDate','Report\payableController@editDate');
+Route::post('payable/editMoney','Report\payableController@editMoney');
+Route::resource('financePayable','Report\financePayableController');
+Route::post('financePayable/rejectPayable','Report\financePayableController@rejectPayable');
+Route::post('financePayable/confirmPayable','Report\financePayableController@confirmPayable');
+Route::post('receivable/editDate','Commission\receivableController@editDate');
+Route::post('receivable/editMoney','Commission\receivableController@editMoney');
 //消息列表
 Route::resource('message','Message\messageController');
 

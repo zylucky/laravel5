@@ -1078,6 +1078,12 @@
                                         message: '提交成功',
                                         type: 'success'
                                     });
+                                    this.editForm={
+                                        tQdCompayId: this.$route.query.id,
+                                        shifouyouxiao: null,
+                                        xinxishifouzhunque: null,
+                                        shuoming: '',
+                                    };
                                 }else{
                                     this.$message({
                                         message: res.data.msg,
