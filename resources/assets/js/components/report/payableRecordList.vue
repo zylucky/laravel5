@@ -3,7 +3,15 @@
     <el-row >
         <div style="margin-top:30px"></div>
         <el-table :data="PayableRecord" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-
+            <el-table-column type="expand">
+                <template scope="props">
+                    <el-form label-position="left" inline class="demo-table-expand">
+                        <el-form-item label="备注：">
+                            <span>{{props.row.beizhu}}</span>
+                        </el-form-item>
+                    </el-form>
+                </template>
+            </el-table-column>
             <el-table-column prop="hetongbianhao" label="合同编号"  >
             </el-table-column>
             <el-table-column prop="xiangmu" label="项目"  >
@@ -20,7 +28,7 @@
             </el-table-column>
             <el-table-column prop="faqiren" label="发起人" >
             </el-table-column>
-            <el-table-column prop="skyinhang" label="收款银行及账号"   width="200" :formatter="formatskyh">
+            <el-table-column prop="" label="收款银行及账号"   width="200" :formatter="formatskyh">
             </el-table-column>
            </el-table>
 
@@ -62,7 +70,6 @@
             }
         },
         methods:{
-
             //时间戳转日期格式
             changeTJDate(row, column){
                 var newDate = new Date();
@@ -71,8 +78,7 @@
             },
             //收款账号显示转换
             formatskyh: function (row, column) {
-                return  row.skyinhang==null?'':row.skyinhang+"\r账号:"+row.skzhanhu==null?'': row.skzhanhu;
-
+                return  row.fukuanyinhang+"\r账号:"+row.fukuanzhanghao;
             },
             //时间戳转日期格式
             changeFKDate(row, column){

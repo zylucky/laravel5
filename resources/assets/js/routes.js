@@ -212,7 +212,7 @@ let routes = [
             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
             { path:'/payable',component:Payable,name:'结算应付',hidden:false},
             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
-            { path:'/paymentRecord',component:PaymentRecord,name:'已付款记录',hidden:true},
+            { path:'/paymentRecord',component:PaymentRecord,name:'修改记录',hidden:true},
             { path:'/financePayable',component:FinancePayable,name:'财务应付',hidden:false},
             { path:'/financeReceivable',component:FinanceReceivable,name:'财务应收',hidden:false},
         ]
