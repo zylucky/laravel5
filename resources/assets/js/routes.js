@@ -15,6 +15,7 @@ import PurchaseContractAdd from "./components/purchaseContract/Add.vue";
 import PurchaseContractUpload from "./components/purchaseContract/Upload.vue";
 import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue";
 import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimize.vue";
+import PurchaseContractCheckOptimizeList from "./components/purchaseContract/HistoryOptimize.vue";
 import PurchaseContractDump20170719 from "./components/purchaseContract/Dump20170719.vue";//版本1
 
 
@@ -23,6 +24,9 @@ import SaleContractIndex from "./components/saleContract/Index.vue";
 import SaleContractAdd from "./components/saleContract/Add.vue";
 import SaleContractUpload from "./components/saleContract/Upload.vue";
 import SaleContractJieyue from "./components/saleContract/Jieyue.vue";
+import SaleContractBuchong from "./components/saleContract/Buchong.vue";
+import SaleContractCheckBuchong from "./components/saleContract/Buchong.vue";
+import SaleContractCheckBuchongList from "./components/saleContract/HistoryBuchong.vue";
 import SaleContractCheckJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractDump20170719 from "./components/saleContract/Dump20170719.vue";
 //装饰合同
@@ -121,22 +125,27 @@ let routes = [
         hidden:fk_contract,
         children: [
 
-            { path:'/purchaseContract', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase},
+            { path:'/purchaseContract', component: PurchaseContractIndex, name: '收房合同',hidden:fk_contract_purchase,params:{name:'liyuequn'}},
             { path:'/purchaseContract/add',component:PurchaseContractAdd,name:'收房录入',hidden:true},
             { path:'/purchaseContract/edit',component:PurchaseContractAdd,name:'收房编辑',hidden:true},
             { path:'/purchaseContract/review',component:PurchaseContractAdd,name:'收房审核',hidden:true},
-            { path:'/purchaseContract/view',component:PurchaseContractAdd,name:'收房查看',hidden:true},
+            { path:'/purchaseContract/view',component:PurchaseContractDump20170719,name:'收房查看',hidden:true},
             { path:'/purchaseContract/optimize',component:PurchaseContractOptimize,name:'收房优化',hidden:true},
             { path:'/purchaseContract/checkOptimize',component:PurchaseContractCheckOptimize,name:'收房协议查看',hidden:true},
+            { path:'/purchaseContract/checkOptimizeList',component:PurchaseContractCheckOptimizeList,name:'历史协议',hidden:true},
             { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
 
 
 
-            { path:'/saleContact', component: SaleContractIndex, name: '出房合同'},
+            { path:'/saleContract', component: SaleContractIndex, name: '出房合同'},
             { path:'/saleContract/add',component:SaleContractAdd,name:'出房录入',hidden:true},
             { path:'/saleContract/see',component:SaleContractAdd,name:'出房查看',hidden:true},
+            { path:'/saleContract/dump1',component:SaleContractAdd,name:'出房查看',hidden:true},
             { path:'/saleContract/edit',component:SaleContractAdd,name:'出房编辑',hidden:true},
             { path:'/saleContract/review',component:SaleContractAdd,name:'出房审核',hidden:true},
+            { path:'/saleContract/buchong',component:SaleContractBuchong,name:'出房补充协议',hidden:true},
+            { path:'/saleContract/checkBuchong',component:SaleContractCheckBuchong,name:'出房补充协议查看',hidden:true},
+            { path:'/saleContract/checkBuchongList',component:SaleContractCheckBuchongList,name:'历史补充协议',hidden:true},
             { path:'/saleContract/jieyue',component:SaleContractJieyue,name:'解约协议',hidden:true},
             { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
             { path:'/saleContract/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true},

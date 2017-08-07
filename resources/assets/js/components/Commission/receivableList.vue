@@ -1,7 +1,6 @@
 
 <template>
     <el-row >
-        <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="合同编号:">
                 <el-input v-model="filters.contractNo" placeholder="请输入合同编号"></el-input>

@@ -33,6 +33,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('terminated','Contract\purchaseContractController@terminated');
     Route::get('releasing','Contract\purchaseContractController@releasing');
     Route::get('released','Contract\purchaseContractController@released');
+    Route::get('releasedList','Contract\purchaseContractController@releasedList');
     Route::get('copyImageList','Contract\purchaseContractController@copyImageList');
     Route::get('deleteCopyImage','Contract\purchaseContractController@deleteCopyImage');
     Route::get('getCopyComplete','Contract\purchaseContractController@getCopyComplete');
@@ -85,11 +86,15 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::get('getchuzuren','Contract\saleContractController@getchuzuren');
     Route::post('submit','Contract\saleContractController@submit');
     Route::get('jieyue','Contract\saleContractController@jieyue');
+    Route::post('getzyrNameList','Contract\saleContractController@getzyrNameList');
     Route::get('approving','Contract\saleContractController@approving');
     Route::get('confirm','Contract\saleContractController@confirm');
     Route::get('confirmed','Contract\saleContractController@confirmed');
     Route::get('violating','Contract\saleContractController@violating');
     Route::get('terminated','Contract\saleContractController@terminated');
+    Route::get('TwiceReleasing','Contract\saleContractController@TwiceReleasing');
+    Route::get('TwiceReleased','Contract\saleContractController@TwiceReleased');
+    Route::get('releasedList','Contract\saleContractController@releasedList');
     Route::get('releasing','Contract\saleContractController@releasing');
     Route::get('released','Contract\saleContractController@released');
     Route::post('review','Contract\saleContractController@review');
@@ -100,6 +105,7 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::get('copyImageList','Contract\saleContractController@copyImageList');
     Route::get('deleteCopyImage','Contract\saleContractController@deleteCopyImage');
     Route::post('isCopyComplete','Contract\saleContractController@isCopyComplete');
+    Route::get('getCopyComplete','Contract\saleContractController@getCopyComplete');
 });
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 

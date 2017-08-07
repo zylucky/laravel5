@@ -1,7 +1,6 @@
 
 <template>
     <el-row >
-        <div style="margin-top:30px"></div>
         <el-table :data="ReceivableRecord" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column prop="hetongbianhao" label="合同编号"  >
             </el-table-column>

@@ -2,6 +2,7 @@
 /public/storage
 /public/hot
 /public/js/app.js
+public/js/app.js
 storage/*
 /storage/*.key
 /vendor
@@ -11,6 +12,5 @@ Homestead.yaml
 .env
 /app/Http/Controllers/Controller.php
 public/js/
-/public/image/
 public/image/tmp/
-
+/public/image/tmp/

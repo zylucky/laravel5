@@ -1,6 +1,5 @@
 <template>
     <el-row >
-        <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="">
                 <el-select v-model="filters.category" placeholder="请选择合同类型">

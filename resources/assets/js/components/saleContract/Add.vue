@@ -1,7 +1,6 @@
 <template>
     <div>
         <el-row>
-            <div style="margin-bottom: 50px;"></div>
             <el-col :span="20">
                 <add-property ref="property" :property="property" v-on:getshoufanghetong="getChuzuren" v-show="stepNum==1"></add-property>
                 <!--标签中v-on:getshoufanghetong="getChuzuren"是监听事件，getshoufanghetong自己定义的监听的名字，getChuzuren是监听到这个事件之后发生操作的名字，v-on监听事件且是监听谁就放的谁上面-->
@@ -87,6 +86,7 @@
                         loupanName:null,
                         loudongName:null,
                         fanghao:null,
+                        //quyu:'',
                         weizhi: null,
                         chanquanzhenghao: null,
                         jianzhumianji: null,
@@ -372,8 +372,7 @@
 
             },
             seeDisabledInput(){
-                this.reviewVisible = true;
-                this.tonguo = false;
+
                 var allInputs = document.getElementsByTagName('input');
                 var textArea = document.getElementsByTagName('textarea');
                 for (let i=0; i<allInputs.length; i++){
@@ -421,6 +420,8 @@
             }
             //审核页面input禁用
             if(this.$route.path=='/saleContract/review'){
+                this.reviewVisible =true;
+                this.tonguo   =false;
                 var _this = this;
                 function  hello() {
                     _this.disabledInput();
@@ -429,9 +430,11 @@
             }
             //查看页面input禁用
             if(this.$route.path=='/saleContract/see'){
+                this.reviewVisible = true;
+                this.tonguo = false;
                 var _this = this;
                 function  hello() {
-                    _this.disabledInput();
+                    _this.seeDisabledInput();
                 }
                 setTimeout(hello,500);
             }

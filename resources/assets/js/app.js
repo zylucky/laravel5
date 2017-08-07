@@ -49,6 +49,12 @@ router.beforeEach((to, from, next) => {
     if (to.path == '/login') {
         sessionStorage.removeItem('user');
     }
+    let para ={};
+    getPermissionList(para).then(function(res){
+        if(res.status=='500'){
+            sessionStorage.removeItem('user');
+        }
+    });
     let user = JSON.parse(sessionStorage.getItem('user'));
     if (!user && to.path != '/login') {
         next({ path: '/login' })

@@ -1,7 +1,6 @@
 
 <template>
     <el-row >
-        <div style="margin-top:30px"></div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="">
                 <el-input v-model="filters.name" placeholder="请输入项目"></el-input>
@@ -22,8 +21,6 @@
             </el-form-item>
         </el-form>
         <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column type="selection" width="55">
-            </el-table-column>
             <el-table-column  prop="bianhao" label="编号" >
             </el-table-column>
             <el-table-column prop="loupanName" label="楼盘"  sortable>
@@ -48,11 +45,13 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[1,2])" ><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[3])"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[5])"  > <el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,9,10])" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,10])" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7])" ><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[7,9])" ><el-button @click="handleOptimize(scope.$index, scope.row)">优化协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button  @click="handleupload(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[7])" ><el-button @click="handleOptimize(scope.$index, scope.row)">添加协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[9])" ><el-button @click="editOptimize(scope.$index, scope.row)">修改协议</el-button></el-dropdown-item>
+                            <!--<el-dropdown-item   v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">当前协议</el-button></el-dropdown-item>-->
+                            <!--<el-dropdown-item   v-if="ztin(scope.row,[9,10])" ><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史协议</el-button></el-dropdown-item>-->
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])" ><el-button  @click="handleupload(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -125,6 +124,7 @@
         weiyuePurchaseContract,
         endPurchaseContract,
         youhuaPurchaseContract,
+        youhuaPurchaseContractList,
         weiYueInfoPurchaseContract,
         weiYueSavePurchaseContract,
         getPurchaseContractInfo,
@@ -367,17 +367,29 @@
                 });
 
             },
-            //二次优化
+            //二次优化添加协议
             handleOptimize(index,row){
                 let para = {
                     id:row.id,
                 }
                 youhuaPurchaseContract(para).then((res)=>{
                 });
-                this.$router.push('/purchaseContract/optimize?id='+row.id);
+                this.$router.push('/purchaseContract/optimize?hetongid='+row.id+'&bianhao='+row.bianhao);
+            },
+            //修改协议
+            editOptimize(index,row){
+                let para = {
+                    id:row.id,
+                }
+                youhuaPurchaseContract(para).then((res)=>{
+                });
+                this.$router.push('/purchaseContract/optimize?hetongid='+row.id+'&type=1'+'&bianhao='+row.bianhao);
             },
             handleCheckOptimize(index,row){
-                this.$router.push('/purchaseContract/checkOptimize?id='+row.id);
+                this.$router.push('/purchaseContract/checkoptimize?hetongid='+row.id+'&type=1'+'&bianhao='+row.bianhao);
+            },
+            checkhistoryOptimize(index,row){
+                this.$router.push('/purchaseContract/checkOptimizeList?id='+row.id+'&bianhao='+row.bianhao);
             },
             //打印
             handleDump(index,row){

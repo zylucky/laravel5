@@ -278,7 +278,7 @@ class purchaseContractController extends Controller
     }
     //合同状态变为：优化成功  执行两个动作：协议改为已提交的状态，合同改为已经优化的状态
     public function released(){
-        $id = Input::get('id');
+        $id = Input::get('hetongid');
         $xyid = Input::get('xyid');
 
         $client = new Client ([
@@ -287,6 +287,33 @@ class purchaseContractController extends Controller
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/released');
         $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$xyid.'/confrim?id='.$xyid);
         echo $response->getBody();
+    }
+    //优化协议的列表
+    public function releasedList(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response1 = $client->request('POST', 'api/contract/sf/buchongXieyi/query?hetongId='.$id);
+        //根据合同id获取房间信息
+        $response2 = $client->request('GET', '/api/contract/sf/'.$id);
+        $res = $response2->getBody();
+        $res = json_decode($res);
+        $loupan = $res->data->officeList[0]->loupanName;
+        $loudong = $res->data->officeList[0]->loudongName;
+        $fanghao = $res->data->officeList[0]->fanghao;
+        $bianhao = $res->data->bianhao;
+
+        $res = $response1->getBody();
+        $res = json_decode($res);
+        foreach ($res->data as $key=>$value){
+            $value->loupanName = $loupan;
+            $value->loudongName = $loudong;
+            $value->fanghao = $fanghao;
+            $value->bianhao = $bianhao;
+        }
+      echo json_encode($res);
+
     }
     //状态变更为审核中
     public function approving(){
@@ -303,10 +330,17 @@ class purchaseContractController extends Controller
      * */
     public function getOptimize(){
         $id = Input::get('id');
+        $hetongid = Input::get('hetongid');
         $client = new Client ([
             'base_uri' => $this->base_url,
         ]);
-        $response = $client->request('GET', '/api/contract/sf/buchongXieyi/'.$id);
+
+        if($hetongid){
+            $url = '/api/contract/sf/buchongXieyi?hetongId='.$hetongid;
+        }elseif($id){
+            $url = '/api/contract/sf/buchongXieyi?id='.$id;
+        }
+        $response = $client->request('GET',$url );
         echo $response->getBody();
     }
     //合同终止的时候提交合同ID，然后获取应付信息

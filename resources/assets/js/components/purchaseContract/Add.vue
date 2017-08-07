@@ -1,7 +1,6 @@
 <template>
     <div>
         <el-row>
-            <div style="margin-bottom: 50px;"></div>
             <el-col :span="20">
                 <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" :owner="owner" v-show="stepNum==2"></add-owner>
@@ -10,7 +9,7 @@
             </el-col>
             <div style="margin-bottom:51px;">
             </div>
-            <el-col :span="4" style="position:fixedtop:10%;right:5%;">
+            <el-col :span="4" style="position:fixed;top:15%;right:0%;">
                 <el-form>
                     <el-form-item label="合同版本：" style="margin-left:auto;width: 70%;">
                         <el-select v-model="contractVersion" placeholder="合同版本">

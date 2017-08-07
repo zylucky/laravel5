@@ -30,7 +30,7 @@
                                             </el-option>
                                         </el-select>
                                     </el-form-item>
-                                </el-col>`
+                                </el-col>
                                 <el-col :span="8">
                                     <el-form-item required label="楼栋" prop="loudongName" >
                                         <el-select

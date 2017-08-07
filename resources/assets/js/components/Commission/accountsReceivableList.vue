@@ -7,6 +7,20 @@
         <el-table :data="AccountsReceivable.updateInfos" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column prop="compayname" label="修改人"  >
             </el-table-column>
+            <el-table-column prop="compayname" label="收款日"  >
+            </el-table-column>
+            <el-table-column prop="compayname" label="收款周期"  >
+            </el-table-column>
+            <el-table-column prop="compaytest" label="收款项目"   >
+            </el-table-column>
+            <el-table-column prop="yjzbSf" label="收款金额" >
+            </el-table-column>
+            <el-table-column prop="yjzbCf" label="月租金（元）" >
+            </el-table-column>
+            <el-table-column prop="yjzbCf" label="是否需要发票" >
+            </el-table-column>
+            <el-table-column prop="yjzbCf" label="是否收款" >
+            </el-table-column>
             <el-table-column prop="compayname" label="修改时间"  >
             </el-table-column>
             <el-table-column prop="compaytest" label="修改内容"   >
