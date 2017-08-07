@@ -16,6 +16,7 @@ class TestController extends Controller
      */
     public function index()
     {
+        echo 111;
         $date = date('y-m-d',strtotime('+ 3 months -1 day',strtotime('2016-11-29'))) ;
         dd($date);
         $role = Role::findOrFail(1);
@@ -99,6 +100,8 @@ class TestController extends Controller
     {
         //
     }
+
+
     public function removeDir($dirName)
     {
         if(! is_dir($dirName))

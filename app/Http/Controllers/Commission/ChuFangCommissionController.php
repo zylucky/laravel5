@@ -113,16 +113,21 @@ class ChuFangCommissionController  extends Controller
      */
     public function update(Request $request, $id)
     {
-        $obj=$request->params;
-        array_pop($obj);
-        array_pop($obj);
-        //dd($obj);
+        //以后用户会从OMC取
+        $user=    Array(
+            'tEmpId'=>1,
+            'empname'=>'张三',
+            'empzb'=>null,
+            'acctype'=>'hualiang',
+        );
+        $obj=array_merge($request->params,$user);
+        // dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
 
-        $r = $client->request('POST', '/api/qd/person/alter', [
+        $r = $client->request('POST', '/api/qd/apply/addApplys', [
             'json' => $obj
         ]);
         return  $r ->getBody();
@@ -136,7 +141,6 @@ class ChuFangCommissionController  extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
 
     }
     public function  finishFK(Request $request)
