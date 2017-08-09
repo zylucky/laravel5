@@ -38100,7 +38100,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         day: function day(riqi) {
             if (riqi != '') {
-                return new Date(riqi).getFullYear();
+                return new Date(riqi).getDate();
             } else {
                 return '';
             }
@@ -119580,7 +119580,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             status[2] = '幼师补佣';
             status[3] = '佣金';
             status[4] = '华亮返佣';
-            return status[row.fktype];
+            return status[row.fukuantype];
         },
 
 
@@ -120417,7 +120417,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var status = [];
             status[0] = '押金';
             status[1] = '租金';
-            return status[row.fktype];
+            return status[row.fukuankemu];
         },
 
         //获取渠道公司列表
@@ -120784,7 +120784,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             status[2] = '幼师补佣';
             status[3] = '佣金';
             status[4] = '华亮返佣';
-            return status[row.fktype];
+            return status[row.sktype];
         },
 
         //佣金类型显示转换
@@ -121998,7 +121998,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "fukuantype",
-      "label": "付款科目"
+      "label": "付款科目",
+      "formatter": _vm.formatFKType
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {

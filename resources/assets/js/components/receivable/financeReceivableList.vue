@@ -245,7 +245,7 @@
                 status[2] = '幼师补佣';
                 status[3] = '佣金';
                 status[4] = '华亮返佣';
-                return status[row.fktype];
+                return status[row.sktype];
             },
             //佣金类型显示转换
             formatState: function (row, column) {

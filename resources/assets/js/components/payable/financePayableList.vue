@@ -33,7 +33,7 @@
                 </el-table-column>
                 <el-table-column prop="fukuandate" label="付款日期" :formatter="changeFKDate">
                 </el-table-column>
-                <el-table-column prop="fukuantype" label="付款科目" >
+                <el-table-column prop="fukuantype" label="付款科目" :formatter="formatFKType" >
                 </el-table-column>
                 <el-table-column prop="yingfumoney" label="应付金额">
                 </el-table-column>
@@ -163,7 +163,7 @@
                 status[2] = '幼师补佣';
                 status[3] = '佣金';
                 status[4] = '华亮返佣';
-                return status[row.fktype];
+                return status[row.fukuantype];
             },
 
             //时间戳转日期格式

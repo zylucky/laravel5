@@ -99,7 +99,7 @@
                 let status = [];
                 status[0] = '押金';
                 status[1] = '租金';
-                return status[row.fktype];
+                return status[row.fukuankemu];
             },
             //获取渠道公司列表
             getPayableRecord() {

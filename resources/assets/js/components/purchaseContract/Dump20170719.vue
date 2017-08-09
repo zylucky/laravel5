@@ -416,7 +416,7 @@
             },
             day(riqi){
                 if(riqi!=''){
-                    return new Date(riqi).getFullYear();
+                    return new Date(riqi).getDate();
                 }else{
                     return '';
                 }
