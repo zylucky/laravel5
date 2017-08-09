@@ -52,14 +52,14 @@ import ShouFangCommission from "./components/Commission/ShouFangList.vue";
 import selectCommissionPayType from "./components/Commission/contractPayType.vue";
 //应收
 import AccountsReceivable from "./components/Commission/accountsReceivableList.vue";
-import ReceivableRecord from "./components/Commission/receivableRecordList.vue";
-import Receivable from "./components/Commission/receivableList.vue";
-import FinanceReceivable from "./components/report/financeReceivableList.vue";
+import ReceivableRecord from "./components/receivable/receivableRecordList.vue";
+import Receivable from "./components/receivable/receivableList.vue";
+import FinanceReceivable from "./components/receivable/financeReceivableList.vue";
 //应付
-import PaymentRecord from "./components/report/paymentRecordList.vue";
-import PayableRecord from "./components/report/payableRecordList.vue";
-import Payable from "./components/report/payableList.vue";
-import FinancePayable from "./components/report/financePayableList.vue";
+import PaymentRecord from "./components/payable/paymentRecordList.vue";
+import PayableRecord from "./components/payable/payableRecordList.vue";
+import Payable from "./components/payable/payableList.vue";
+import FinancePayable from "./components/payable/financePayableList.vue";
 
 
 
@@ -207,14 +207,14 @@ let routes = [
         iconCls: 'el-icon-document',//图标样式class
         hidden:false,
         children: [
+            { path:'/payable',component:Payable,name:'结算应付',hidden:false},
+            { path:'/financePayable',component:FinancePayable,name:'财务应付',hidden:false},
             { path:'/receivable',component:Receivable,name:'结算应收',hidden:false},
+            { path:'/financeReceivable',component:FinanceReceivable,name:'财务应收',hidden:false},
             { path:'/accountsReceivable',component:AccountsReceivable,name:'应收款记录',hidden:true},
             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
-            { path:'/payable',component:Payable,name:'结算应付',hidden:false},
             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
             { path:'/paymentRecord',component:PaymentRecord,name:'修改记录',hidden:true},
-            { path:'/financePayable',component:FinancePayable,name:'财务应付',hidden:false},
-            { path:'/financeReceivable',component:FinanceReceivable,name:'财务应收',hidden:false},
         ]
 
     },

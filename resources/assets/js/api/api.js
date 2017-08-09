@@ -41,8 +41,10 @@ export const editShouFangCommission = params => { return axios.put(`${base}/shou
 export const selectCommissionPayType = params => { return axios.post(`${base}/Commission/contractPayType`, { params: params }); };
 
 export const getReceivableListPage = params => { return axios.get(`${base}/receivable`, { params: params }); };
+export const getReceiveList = params => { return axios.get(`${base}/financeReceivable`, { params: params }); };//财务实收款列表
 export const editReceivable = params => { return axios.put(`${base}/receivable/`+params.id, { params: params }); };
 export const saveShouKuan = params => { return axios.post(`${base}/receivable/saveShouKuan` , { params: params }); };
+export const financeSaveShouKuan = params => { return axios.post(`${base}/financeReceivable/saveShouKuan` , { params: params }); };
 export const rejectPayable = params =>  { return axios.post(`${base}/financePayable/rejectPayable` , { params: params }); };
 export const getReceivableRecordListPage = params => { return axios.get(`${base}/receivableRecord`, { params: params }); };
 export const confirmPayable = params =>  { return axios.post(`${base}/financePayable/confirmPayable` , { params: params }); };

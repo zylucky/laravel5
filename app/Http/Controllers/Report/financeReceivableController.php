@@ -13,38 +13,28 @@ class financeReceivableController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *显示应收款列表
+     *显示实收款列表
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-
-        $contractNo = Input::get('contractNo');
-        $buildingname = Input::get('buildingname');
-        $buildname = Input::get('buildname');
-        $roomname = Input::get('roomname');
-        $startdate = Input::get('startdate');
-        $enddate = Input::get('enddate');
+        $fkyh = Input::get('fkyh');
+        $fkzh = Input::get('fkzh');
         $pageSize = Input::get('pageSize');
         $page = Input::get('page');
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
-        $response = $client->request('GET', '/api/cw/yf/list', [
+        $response = $client->request('GET', '/api/cw/ys/caiwulist', [
                 'query' => [
                     'page' => $page,
                     'size' => $pageSize,
-                    'sdate'=>$startdate,
-                    'edate'=>$enddate,
-                    'houseno'=>$roomname,
-                    'htno' =>  $contractNo,
+                    'fkyh' =>$fkyh,
+                    'fkzh' =>$fkzh,
                 ]
-
             ]
         );
         echo $response->getBody();
-
     }
 
     /**
@@ -125,13 +115,10 @@ class financeReceivableController extends Controller
     {
 
         $obj = array_merge($request->params);
-        dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
-
-        $r = $client->request('POST', '/api/qd/compay/alter', [
+        $r = $client->request('POST', '/api/cw/ys/caiwuadd', [
             'json' => $obj
         ]);
         return $r->getBody();

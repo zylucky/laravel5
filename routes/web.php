@@ -59,9 +59,11 @@ Route::resource('brokerCompanyUser','BrokerCompany\brokerCompanyUserController')
 Route::resource('chuFangCommission','Commission\ChuFangCommissionController');
 Route::resource('shouFangCommission','Commission\ShouFangCommissionController');
 Route::resource('receivable','Commission\receivableController');
+Route::resource('financeReceivable','Report\financeReceivableController');
 Route::resource('accountsReceivable','Commission\accountsReceivableController');
 Route::resource('receivableRecord','Commission\receivableRecordController');
 Route::post('receivable/saveShouKuan','Commission\receivableController@saveShouKuan');
+Route::post('financeReceivable/saveShouKuan','Report\financeReceivableController@saveShouKuan');
 Route::resource('payable','Report\payableController');
 Route::resource('payableRecord','Report\payableRecordController');
 Route::resource('paymentRecord','Report\paymentRecordController');

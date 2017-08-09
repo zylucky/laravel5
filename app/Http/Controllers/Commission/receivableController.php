@@ -18,9 +18,9 @@ class receivableController extends Controller
      */
     public function index()
     {
-        $contractNo = Input::get('contractNo');
+        $htno = Input::get('htno');
         $xm = Input::get('xm');
-        $yz = Input::get('yz');
+        $zh = Input::get('zh');
         $zt = Input::get('zt');
         $startdate = Input::get('startdate');
         $enddate = Input::get('enddate');
@@ -28,7 +28,6 @@ class receivableController extends Controller
         $page= Input::get('page');
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response = $client->request('GET', '/api/cw/ys/list',[
             'query' => [
@@ -37,9 +36,9 @@ class receivableController extends Controller
                 'sdate'=>$startdate,
                 'edate'=>$enddate,
                 'xm'=>$xm,
-                'yz'=>$yz,
+                'zh'=>$zh,
                 'zt'=>$zt,
-                'htno' =>  $contractNo,
+                'htno' =>$htno,
                 ]
 
        ]

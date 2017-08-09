@@ -1,7 +1,6 @@
 
 <template>
     <el-row >
-        <div style="margin-top:30px"></div>
         <el-table :data="PayableRecord" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="expand">
                 <template scope="props">
@@ -18,7 +17,7 @@
             </el-table-column>
             <el-table-column prop="tijiaodate" label="提交日期"   :formatter="changeTJDate">
             </el-table-column>
-            <el-table-column prop="fukuankemu" label="付款科目">
+            <el-table-column prop="fukuankemu" label="付款科目" :formatter="formatFKType">
             </el-table-column>
             <el-table-column prop="tijiaomoney" label="提交金额" >
             </el-table-column>
@@ -96,8 +95,12 @@
                 this.pageSize =val;
                 this.getPayableRecord();
             },
-
-
+            formatFKType(row, column){
+                let status = [];
+                status[0] = '押金';
+                status[1] = '租金';
+                return status[row.fktype];
+            },
             //获取渠道公司列表
             getPayableRecord() {
                 let para = {

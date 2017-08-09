@@ -1,8 +1,6 @@
 
 <template>
     <el-row >
-        <div style="margin-top:30px"></div>
-
            <!-- 分页-->
         <el-table :data="paymentRecord.updateInfos" highlight-current-row v-loading="UpdatelistLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column prop="personname" label="修改人"  >
