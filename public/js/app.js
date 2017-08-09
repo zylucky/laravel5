@@ -119521,9 +119521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             filters: {
                 contractNo: '',
-                buildingname: '',
-                buildname: '',
-                roomname: '',
+                xm: '',
                 startdate: '',
                 enddate: '',
                 zt: ''
@@ -119648,9 +119646,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 page: this.page,
                 pageSize: this.pageSize,
                 contractNo: this.filters.contractNo,
-                buildingname: this.filters.buildingname,
-                buildname: this.filters.buildname,
-                roomname: this.filters.roomname,
+                xm: this.filters.xm,
                 startdate: this.filters.startdate,
                 enddate: this.filters.enddate,
                 zt: this.filters.zt
@@ -119806,8 +119802,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__);
-//
-//
 //
 //
 //
@@ -120200,7 +120194,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 fukuankemu: row.fktype,
                 tijiaomoney: '',
                 fukuandate: '',
-                huming: '彭亮',
+                huming: '',
                 beizhu: '',
                 fukuanyinhang: '',
                 fukuanzhanghao: ''
@@ -122596,7 +122590,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-row', [_c('el-col', {
     attrs: {
-      "span": 10
+      "span": 7
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -122615,16 +122609,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "editDateForm.tiQianDays"
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticStyle: {
+      "text-align": "right",
+      "margin-top": "8px"
+    },
     attrs: {
       "span": 1
     }
-  }, [_c('el-form-item', {
+  }, [_vm._v("\n                    天\n                ")]), _vm._v(" "), _c('el-col', {
     attrs: {
-      "label": "天"
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 8
+      "span": 10
     }
   }, [_c('el-form-item', {
     attrs: {

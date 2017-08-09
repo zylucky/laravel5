@@ -97,9 +97,7 @@
             return {
                 filters: {
                     contractNo: '',
-                    buildingname: '',
-                    buildname: '',
-                    roomname: '',
+                    xm:'',
                     startdate: '',
                     enddate: '',
                     zt:'',
@@ -223,9 +221,7 @@
                     page: this.page,
                     pageSize: this.pageSize,
                     contractNo: this.filters.contractNo,
-                    buildingname: this.filters.buildingname,
-                    buildname: this.filters.buildname,
-                    roomname: this.filters.roomname,
+                    xm: this.filters.xm,
                     startdate: this.filters.startdate,
                     enddate: this.filters.enddate,
                     zt:this.filters.zt,

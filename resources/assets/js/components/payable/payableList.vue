@@ -140,17 +140,15 @@
         <el-dialog title="编辑付款日期" v-model="editDateFormVisible" :close-on-click-modal="false">
             <el-form :model="editDateForm" label-width="120px" :rules="editDateFormRules" ref="editDateForm"  >
                 <el-row>
-                    <el-col :span="10">
+                    <el-col :span="7">
                         <el-form-item label="提前付款：" prop="tiQianDays">
-                            <el-input    v-model.number="editDateForm.tiQianDays" auto-complete="off"></el-input>
+                            <el-input v-model.number="editDateForm.tiQianDays" auto-complete="off"></el-input>
                         </el-form-item>
                     </el-col>
-
-                    <el-col :span="1"> <el-form-item label="天" >
-                    </el-form-item>
+                    <el-col :span="1" style="text-align: right;margin-top: 8px;">
+                        天
                     </el-col>
-
-                    <el-col :span="8">
+                    <el-col :span="10">
                         <el-form-item label="" prop="isBenQi">
                             <el-radio-group v-model="editDateForm.isBenQi">
                                 <el-radio class="radio" label=true>本期</el-radio>
@@ -410,7 +408,7 @@
                     fukuankemu:row.fktype,
                     tijiaomoney:'',
                     fukuandate:'',
-                    huming:'彭亮',
+                    huming:'',
                     beizhu:'',
                     fukuanyinhang:'',
                     fukuanzhanghao:'',
