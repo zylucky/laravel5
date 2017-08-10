@@ -527,5 +527,49 @@ class saleContractController extends Controller
         echo $response->getBody();
 
     }
+    //付款账号的提交
+    public function zhanghaoSave(Request $request){
+        dd(33333);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/xs/', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
+    //获取账号数据列表
+    public function getZhanghaoList(Request $request)
+    {
+        dd(222);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $bkName = $request->params['name'];
+        $response = $client->request('GET', '/api/qd/ziyou/list', [
+                'query' => [
+                    'page' => 1,
+                    'size' => 10,
+                    'zt' => 1,
+                    'uname' => $bkName
+                ]
+
+            ]
+        );
+        echo $response->getBody();
+
+    }
+    public function deleteZhanghao(){
+        dd(111);
+        $id = Input::get('id');
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/img/'.$id.'/isComplete');
+        echo $response->getBody();
+    }
 
 }

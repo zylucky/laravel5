@@ -29,6 +29,8 @@ import SaleContractCheckBuchong from "./components/saleContract/Buchong.vue";
 import SaleContractCheckBuchongList from "./components/saleContract/HistoryBuchong.vue";
 import SaleContractCheckJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractDump20170719 from "./components/saleContract/Dump20170719.vue";
+import SaleContractZhanghao from "./components/saleContract/Zhanghao.vue";
+import SaleContractHedan from "./components/saleContract/Hedan.vue";
 //装饰合同
 import DecorationList from "./components/decoration/List.vue";
 //合同版本
@@ -139,8 +141,7 @@ let routes = [
 
             { path:'/saleContract', component: SaleContractIndex, name: '出房合同'},
             { path:'/saleContract/add',component:SaleContractAdd,name:'出房录入',hidden:true},
-            { path:'/saleContract/see',component:SaleContractAdd,name:'出房查看',hidden:true},
-            { path:'/saleContract/dump1',component:SaleContractAdd,name:'出房查看',hidden:true},
+            { path:'/saleContract/see',component:SaleContractDump20170719,name:'出房查看',hidden:true},
             { path:'/saleContract/edit',component:SaleContractAdd,name:'出房编辑',hidden:true},
             { path:'/saleContract/review',component:SaleContractAdd,name:'出房审核',hidden:true},
             { path:'/saleContract/buchong',component:SaleContractBuchong,name:'出房补充协议',hidden:true},
@@ -149,6 +150,8 @@ let routes = [
             { path:'/saleContract/jieyue',component:SaleContractJieyue,name:'解约协议',hidden:true},
             { path:'/saleContract/checkJieyue',component:SaleContractCheckJieyue,name:'出房协议查看',hidden:true},
             { path:'/saleContract/upload',component:SaleContractUpload,name:'上传扫描件',hidden:true},
+            { path:'/saleContract/zhanghao',component:SaleContractZhanghao,name:'出房付款账号',hidden:true},
+            { path:'/saleContract/hedan',component:SaleContractHedan,name:'出房合单管理',hidden:true},
 
 
             { path:'/decoration', component: DecorationList, name: '工程合同'},

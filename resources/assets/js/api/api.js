@@ -120,7 +120,7 @@ export const weiyueSaleContract= params => { return axios.get(`${base}/saleContr
 export const endSaleContract= params => { return axios.get(`${base}/saleContract/terminated`, {params:params}); };//状态变更为：合同终止
 export const buchongSaleContract= params => { return axios.get(`${base}/saleContract/TwiceReleasing`, {params:params}); };//状态变更为：补充协议中
 export const buchongsbSaleContract= params => { return axios.get(`${base}/saleContract/TwiceReleased`, {params:params}); };//状态变更为：补充协议完成
-export const buchongSaleContractList= params => { return axios.get(`${base}/saleContract/releasedList`, {params:params}); };//状态变更为：优化中
+export const buchongSaleContractList= params => { return axios.get(`${base}/saleContract/releasedList`, {params:params}); };//获取补充协议列表
 export const jieyueSaleContract = params => { return axios.get(`${base}/saleContract/releasing`, { params: params }); };//状态变更为：解约中
 export const jieyuewanSaleContract = params => { return axios.get(`${base}/saleContract/released`, { params: params }); };//状态变更为：解约完成
 export const jieyueSaleContractInfo = params => { return axios.post(`${base}/saleContract/submit`, {params:params}); };
@@ -132,6 +132,9 @@ export const copySaleImageList= params => { return axios.get(`${base}/saleContra
 export const copySaleImageDelete= params => { return axios.get(`${base}/saleContract/deleteCopyImage`, {params:params}); };//删除复印件
 export const isCopySaleComplete= params => { return axios.post(`${base}/saleContract/isCopyComplete`, {params:params}); };
 export const isCopySaleCompleteList= params => { return axios.get(`${base}/saleContract/getCopyComplete`, {params:params}); };//列表
+export const zhanghaoSaveSaleContract= params => { return axios.post(`${base}/saleContract/zhanghaoSave`, {params:params}); };//保存付款账号的数据
+export const getZhanghaoSaleContractList= params => { return axios.get(`${base}/saleContract/getZhanghaoList`, {params:params}); };//获取账号数据的列表
+export const removeZhanghaoSaleContract= params => { return axios.get(`${base}/saleContract/deleteZhanghao`, {params:params}); };//删除扫描建
 
 //获取楼盘，楼栋，房间号
 export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };

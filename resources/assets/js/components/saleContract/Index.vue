@@ -49,13 +49,15 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[3])"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[5])"><el-button @click="handleConfirm(scope.$index, scope.row)">签约成功</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,13])"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6])"><el-button @click="handleJieyue(scope.$index, scope.row)">解 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,13])"><el-button @click="handleJieyue(scope.$index, scope.row)">解 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[9])"><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[10])"><el-button @click="handleCheckJieyue(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7])"><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7])"><el-button @click="handleOptimize(scope.$index, scope.row)">添加补充协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[12])"><el-button @click="editOptimize(scope.$index, scope.row)">修改补充协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[13])"><el-button @click="handleCheckOptimize(scope.$index, scope.row)">当前补充协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  ><el-button @click="handleZhanghao(scope.$index, scope.row)">付款账号</el-button></el-dropdown-item>
+                            <el-dropdown-item  ><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[12,13])"><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史补充协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])"><el-button @click="handleUplod(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                         </el-dropdown-menu>
@@ -179,7 +181,7 @@
                     {value:10, label:'合同终止（解约完成）',},
                     {value:11, label:'合同终止（合同到期）',},
                     {value:12, label:'优化中',},
-                    {value:13, label:'优化完成履约中',},
+                    {value:13, label:'已优化，履约中',},
                 ],
                 //分页类数据
                 total:0,
@@ -265,7 +267,7 @@
                 status[10] = '合同终止（解约完成）';
                 status[11] = '合同终止（合同到期）';
                 status[12] = '优化中';
-                status[13] = '优化完成履约中';
+                status[13] = '已优化，履约中';
                 return status[row.zhuangtai];
             },
             //时间戳转日期格式
@@ -278,11 +280,9 @@
             },
             //获取合同列表
             saleContractList() {
-
                 let para = {
                     pn: this.page,
                     cnt: this.pageSize,
-                    /*name:'',*/
                     selectItem: this.filters.name,
                     zhuangtai:this.filters.status,
                 }
@@ -318,10 +318,7 @@
                 _this.$router.push('/saleContact/upload');
             },
             handlSee(index, row){
-                getSaleContractInfo({id:row.id}).then((res) => {
-                    var version = res.data.data.version;
-                    this.$router.push('/saleContract/dump1'+version+'?id=' + row.id);
-                })
+                this.$router.push('/saleContract/see?id=' + row.id);
                 //window.open('/#/saleContract/dump'+version+'?id=' + row.id);
 
             },
@@ -514,6 +511,14 @@
             },
             checkhistoryOptimize(index,row){
                 this.$router.push('/saleContract/checkBuchongList?id='+row.id+'&bianhao='+row.bianhao);
+            },
+            //账号管理
+            handleZhanghao(index,row){
+                this.$router.push('/saleContract/zhanghao?id='+row.id);
+            },
+            //合单管理
+            handleHedan(index,row){
+                this.$router.push('/saleContract/hedan?id='+row.id+'&bianhao='+row.bianhao);
             },
             /*handleEnd(index, row){
                 this.$confirm('确认合同终止吗?', '提示', {
