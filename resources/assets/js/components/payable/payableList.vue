@@ -24,7 +24,7 @@
             </el-form-item>
         </el-form>
           合计  应付金额：{{DataSum.sumMoney}} 提交金额：{{DataSum.tijiaoMoney}}  实付金额：{{DataSum.shijiMoney}}
-        <span style="color:red;font-size: 10px;">
+        <span style="color:red;font-size: 14px;">
             (注：红色日期表示付款已延期，请尽快处理)
         </span>
         <el-tabs v-model="activeName2" type="border-card" @tab-click="handleClick">
@@ -35,23 +35,23 @@
             <el-tab-pane label="已完成" name="fifth"></el-tab-pane>
             <el-tab-pane label="已驳回" name="sixth"></el-tab-pane>
             <el-table :data="Payable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-                <el-table-column prop="htbianhao" label="合同编号"     >
+                <el-table-column prop="htbianhao" label="合同编号" width="200"    >
                 </el-table-column>
                 <el-table-column prop="xiangmu" label="项目" >
                 </el-table-column>
                 <el-table-column prop="yezhu" label="业主"  width="100" >
                 </el-table-column>
-                <el-table-column prop="fkfangshi" label="付款方式"   >
+                <el-table-column prop="fkfangshi" label="付款方式"  width="100" >
                 </el-table-column>
                 <el-table-column prop="monthmoney" label="月租金"  >
                 </el-table-column>
-                <el-table-column prop="fkdate" label="付款日期" :formatter="changeDate" >
+                <el-table-column prop="fkdate" label="付款日期" width="100" :formatter="changeDate" >
                 </el-table-column>
-                <el-table-column prop="fktype" label="付款科目"    :formatter="formatFKType">
+                <el-table-column prop="fktype" label="付款科目" width="100"   :formatter="formatFKType">
                 </el-table-column>
-                <el-table-column prop="fkmoney" label="应付金额" >
+                <el-table-column prop="fkmoney" label="应付金额" width="100">
                 </el-table-column>
-                <el-table-column prop="tijiaomoney" label="提交金额"  width="80">
+                <el-table-column prop="tijiaomoney" label="提交金额"  width="100">
                 </el-table-column>
                 <el-table-column prop="shifumoney" label="实付金额"  width="100" >
                 </el-table-column>
