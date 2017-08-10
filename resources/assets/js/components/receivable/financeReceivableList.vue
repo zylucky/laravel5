@@ -67,7 +67,7 @@
                     <el-button type="primary" icon="search"  v-on:click="getReceivableJS">搜索</el-button>
                 </el-form-item>
             </el-form>
-            <el-table height="500" :data="ReceivableJS" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
+            <el-table height="500" :data="ReceivableJS" highlight-current-row v-loading="listLoading" ref="multipleTable" element-loading-text="拼命加载中" @select="selsChange" style="width: 100%;">
                 <el-table-column type="selection" width="55">
                 </el-table-column>
                 <el-table-column prop="htbianhao" label="合同编号" width="200">
