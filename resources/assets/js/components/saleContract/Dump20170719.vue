@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="whole">
         <h2 class="tc">北京市房屋租赁合同</h2>
         <span class="tc f22">幼狮空间成交版</span>
         <p>出租方（甲方）：<input type="text" style="width: 450px" disabled value='北京幼狮科技有限公司'/></p>
@@ -127,10 +127,27 @@
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同生效后，各方对合同内容的变更或补充应采取书面形式，作为本合同的附件。</p>
         <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十二条  补充条款</b></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 550px;"></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 550px;"></p>
+        <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 550px;"></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 550px;"></p>-->
 
-        <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出租人（甲方）：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;承租人（乙方）：</b></p>
+
+
+
+        <div v-if="historyBuchong">
+            <h3>补充协议：</h3>
+            <history-buchong></history-buchong>
+        </div>
+        <div v-if="listJieyue">
+            <h3>解约协议：</h3>
+
+            <list-jieyue></list-jieyue>
+        </div>
+
+
+
+
+
+        <!--<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出租人（甲方）：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;承租人（乙方）：</b></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系地址：<input type="text" style="width: 150px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系地址：<input type="text" style="width: 150px;"></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系方式：<input type="text" style="width: 150px;" value="400-078-8800">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系方式：<input type="text" style="width: 150px;"></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;委托代理人 ：<input type="text" style="width: 125px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;委托代理人 ：<input type="text" style="width: 125px;"></p>
@@ -146,18 +163,13 @@
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系方式：<input type="text" style="width: 220px;"></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 50px;">年
         <input type="text" style="width: 30px;">月
-        <input type="text" style="width: 30px;">日</p>
+        <input type="text" style="width: 30px;">日</p>-->
     </div>
 
 </template>
 <style>
-    body{
-        text-align: center;
-        height: 100%;
-        position: relative;
-    }
-    div{
-        position: absolute;
+
+    .whole{
         margin: auto;
         top: 0;
         right: 0;
@@ -167,10 +179,10 @@
         height: 20%;
     }
     .tc{text-align:center;}
-    h1{
+    .whole h1{
         font-size:40px;
     }
-    span {
+    .whole span {
         display: block;}
     .f22{
         font-size: 20px;
@@ -178,22 +190,28 @@
     p{
         font-size: 18px; text-align:left;
         line-height: 2;}
-    input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center}
-    u{
+    .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center}
+    .whole u{
         font-size:20px!important;
     }
-    input[disabled]{
+    .whole input[disabled]{
         background-color:white;
     }
+
 </style>
 <script>
     import {getSaleContractInfo} from '../../api/api';;
+    import HistoryBuchong from './HistoryBuchong.vue';
+    import ListJieyue from './ListJieyue.vue';
     export default{
         components:{
-
+            HistoryBuchong,
+            ListJieyue,
         },
         data(){
             return {
+                historyBuchong:false,
+                listJieyue:false,
                 property:{
                     flag:null,
                     xsOffice: [{
@@ -293,6 +311,9 @@
                     jiafangfeiyong:[],
                 },
                 quyu:null,
+                nian:null,
+                yue:null,
+                ri:null,
             }
         },
         methods:{
@@ -385,23 +406,30 @@
                 let arr = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
             },
             year(riqi){
-                return new Date(riqi).getFullYear();
+                if(riqi!=''){
+                    return new Date(riqi).getFullYear();
+                }else{
+                    return '';
+                }
             },
             month(riqi){
-                if(new Date(riqi).getMonth()+1 <10 ){
-                    return '0'+(new Date(riqi).getMonth()+1);
+                if(riqi!=''){
+                    if(new Date(riqi).getMonth()+1 <10 ){
+                        return '0'+(new Date(riqi).getMonth()+1);
+                    }else{
+                        return new Date(riqi).getMonth()+1
+                    }
                 }else{
-                    return new Date(riqi).getMonth()+1
+                    return '';
                 }
-
             },
             day(riqi){
-                if(new Date(riqi).getDate() <10 ){
-                    return '0'+(new Date(riqi).getDate());
+                if(riqi!=''){
+                    return new Date(riqi).getFullYear();
                 }else{
-                    return (new Date(riqi).getDate());
-
+                    return '';
                 }
+
             },
             //根据url得到的合同ID，来获取数据
             getSaleContract(id){
@@ -483,8 +511,16 @@
             function  hello() {
                 window.print()
             }
-
-            setTimeout(hello,1000);
+            if(this.$route.path!='/saleContract/see'){
+                setTimeout(hello,1000);
+            }else{
+                this.listJieyue = true;
+            }
+            if(this.$route.path!='/saleContract/see'){
+                setTimeout(hello,1000);
+            }else{
+                this.historyBuchong = true;
+            }
         }
     }
 </script>

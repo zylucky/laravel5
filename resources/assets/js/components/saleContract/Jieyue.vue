@@ -255,7 +255,7 @@
             if(this.$route.query.id!=null){
                 this.getSaleContract(this.$route.query);
             }
-            if(this.$route.path=='/saleContract/checkJieyue'){
+            if(this.$route.path=='/saleContract/see'){
                 this.disabledInput();
                 this.btnShow=false;
             }
