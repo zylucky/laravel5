@@ -3,13 +3,13 @@
     <el-row >
         <el-form :inline="true" :model="filters" class="demo-form-inline" label-width="80px">
             <el-form-item label="合同编号:">
-                <el-input v-model="filters.contractNo" placeholder="请输入合同编号"></el-input>
+                <el-input v-model="filters.htno" placeholder="请输入合同编号"></el-input>
             </el-form-item>
             <el-form-item label="项目名称:">
                 <el-input v-model="filters.xm" placeholder="请输入项目名称"></el-input>
             </el-form-item>
             <el-form-item label="租户名称:">
-                <el-input v-model="filters.yz" placeholder="请输入租户名称"></el-input>
+                <el-input v-model="filters.zh" placeholder="请输入租户名称"></el-input>
             </el-form-item><br/>
             <el-form-item label="付款日期:">
                 <el-date-picker  style="width:170px;" type = "date" placeholder="请选择开始日期" v-model="filters.startdate">
@@ -24,7 +24,7 @@
             </el-form-item>
         </el-form>
         合计  应付金额：{{DataSum.sumMoney}} 提交金额：{{DataSum.tijiaoMoney}}  实付金额：{{DataSum.shijiMoney}}
-        <span style="color:red;font-size: 10px;">
+        <span style="color:red;font-size: 14px;">
             （注：红色日期表示收款已延期，请尽快处理）
         </span>
         <el-tabs v-model="activeName2" type="border-card" @tab-click="handleClick">

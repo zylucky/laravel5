@@ -31,7 +31,7 @@
                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
-                               <el-dropdown-item  ><el-button   @click="handleRokeBack(scope.$index, scope.row)">认领</el-button></el-dropdown-item>
+                               <el-dropdown-item  ><el-button   @click="handleRokeBack(scope.row)">认领</el-button></el-dropdown-item>
                                <el-dropdown-item  > <el-button  @click="handleOpen(scope.$index, scope.row)">上传凭证</el-button> </el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
@@ -55,13 +55,13 @@
         <el-dialog title="应收款列表" v-model="rokeBackFormVisible" :close-on-click-modal="false" size="large">
             <el-form :inline="true" :model="filters" class="demo-form-inline">
                 <el-form-item label="合同编号:">
-                    <el-input v-model="filters.contractNo" placeholder="请输入付款银行"></el-input>
+                    <el-input v-model="filters.contractNo" placeholder="请输入合同编号"></el-input>
                 </el-form-item>
                 <el-form-item label="项目名称:">
-                    <el-input v-model="filters.xm" placeholder="请输入付款账号"></el-input>
+                    <el-input v-model="filters.xm" placeholder="请输入项目名称"></el-input>
                 </el-form-item>
                 <el-form-item label="租户名称:">
-                    <el-input v-model="filters.yz" placeholder="请输入租户名称"></el-input>
+                    <el-input v-model="filters.zh" placeholder="请输入租户名称"></el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" icon="search"  v-on:click="getReceivableJS">搜索</el-button>
@@ -157,12 +157,18 @@
 
     </el-row>
 </template>
+<style>
+    .el-table .info-row {
+        background: #ffff00;
+    }
+</style>
 <script>
     import {
         getReceiveList,
         getReceivableListPage,
         editReceivable,
         financeSaveShouKuan,
+        renling,
         addBrokerCompanyUser,
         batchRemoveBrokerCompanyUser,
         getbkNameList,
@@ -176,6 +182,9 @@
                 filters:{
                     fkyh: '',
                     fkzh:'',
+                    contractNo:'',
+                    xm:'',
+                    zg:'',
                 },
                 options:[
                     {
@@ -231,11 +240,23 @@
                 totaljs:0,
                 currentPagejs:0,
                 pageSizejs:10,
+                renlingData :{
+                    tCwSrId:null,
+                    tCwSrCaiwuId:null,
+                },
             }
         },
         methods:{
-            handleRokeBack(){
+            tableRowClassName(row, index) {
+                if (row.tCwSrCaiwuId === this.renlingData.tCwSrCaiwuId) {
+                    return 'info-row';
+                }else{
+                    return '';
+                }
+            },
+            handleRokeBack(row){
                 this.rokeBackFormVisible = true;
+                this.renlingData.tCwSrCaiwuId=row.tCwSrCaiwuId;
                 this.getReceivableJS();
             },
             formatFKType(row, column){
@@ -356,13 +377,37 @@
             },
             //认领提交
             rokeBackSubmit: function () {
-                console.log()
-
+                if(this.renlingData.tCwSrId!=null){
+                    this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                        let para = this.renlingData;
+                        renling(para).then((res)=>{
+                            if(res.data.code=='200'){
+                                this.$message({
+                                    message: '提交成功',
+                                    type: 'success'
+                                });
+                                this.getReceivable();
+                                this.rokeBackFormVisible = false;
+                            }else{
+                                this.$message({
+                                    message: '提交失败',
+                                    type: 'error'
+                                });
+                            }
+                        });
+                        this.renlingData = {
+                            tCwSrId:null,
+                            tCwSrCaiwuId:null,
+                        };
+                    });
+                }else{
+                    alert('至少点击选中一项')
+                }
             },
-            selsChange: function (sels,row) {
-                this.$refs.multipleTable.clearSelection();
-                this.$refs.multipleTable.toggleRowSelection(row);
-            },
+            //选中以后
+            handleCurrentChange1(val) {
+                this.renlingData.tCwSrId=val.tCwSrId;
+            }
         },
         mounted() {
             this.page=1;

@@ -50,14 +50,20 @@ class financeReceivableController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *保存
+     *认领保存
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
-
+        $obj =$request->params;
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $r = $client->request('POST', '/api/cw/ys/caiwurenling', [
+            'json' => $obj
+        ]);
+        echo  $r->getBody();
     }
 
     /**
