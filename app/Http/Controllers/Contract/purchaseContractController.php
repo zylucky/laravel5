@@ -507,4 +507,60 @@ class purchaseContractController extends Controller
         $bian = date_diff($startdate,$enddate);
         return $bian;
     }
+    //付款账号的提交
+    public function zhanghaoSave(Request $request){
+        //dd(33333);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/yhzh/add', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
+    //付款账号的提交
+    public function zhanghaoAlter(Request $request){
+        //dd(33333);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/yhzh/alter', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
+    //获取账号数据列表
+    public function getZhanghaoList()
+    {
+        //dd(222);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/contract/yhzh/list');
+        echo $response->getBody();
+
+
+
+        /*$client = new Client ([
+            'base_uri' => $this->base_url,
+
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/create');
+        echo $response->getBody();*/
+
+    }
+    public function deleteZhanghao(){
+        dd(111);
+        $id = Input::get('id');
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/img/'.$id.'/isComplete');
+        echo $response->getBody();
+    }
 }

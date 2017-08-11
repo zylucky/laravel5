@@ -38,13 +38,13 @@
             </el-table-column>
             <el-table-column prop="xinbianhao" label="编号"   sortable>
             </el-table-column>
-            <el-table-column prop="loupanName" label="楼盘"   sortable>
+            <el-table-column prop="Loupan_name" label="楼盘"   sortable>
             </el-table-column>
-            <el-table-column prop="loudongName" label="楼栋"   >
+            <el-table-column prop="Loudong_name" label="楼栋"   >
             </el-table-column>
-            <el-table-column prop="fanghao" label="房间号"  >
+            <el-table-column prop="Fanghao" label="房间号"  >
             </el-table-column>
-            <el-table-column prop="createtime" label="解约时间" :formatter="changeDate"   sortable>
+            <el-table-column prop="ZhongzhiDate" label="解约时间" :formatter="changeDate"   sortable>
             </el-table-column>
         </el-table>
     </div>
@@ -68,19 +68,13 @@
         methods:{
             //获取这个解约协议页面的数据
             getListSaleContract(id){
-                alert(66);
+                alert(11);
                 console.log(id);
                 getjieyueSaleContractInfo(id).then((res)=>{
-                    alert(777);
                     this.jieyueList = res.data.data;
-                    console.log(res.data.data);
-                });
-                getSaleContractInfo(id).then((res1)=>{
-                    alert(888);
-                    this.jieyueList = res1.data.data;
-                    console.log(res.data.data);
-                });
 
+                    console.log(res.data.data);
+                });
             },
             handleView(index,row){
                 this.$router.push('/saleContract/checkBuchong?id='+row.id+'&type=1');//查看

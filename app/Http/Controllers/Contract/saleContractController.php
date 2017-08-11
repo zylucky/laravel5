@@ -186,13 +186,12 @@ class saleContractController extends Controller
     }
     public function jieyuelist()
     {
-        //dd(10101010);
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/contract/xs/jieyueXieyi/'.$id);
+        $response = $client->request('GET', '/api/contract/xs/releaseContract/query?id='.$id);
         echo $response->getBody();
     }
     //解约协议的提交
