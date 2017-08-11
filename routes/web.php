@@ -37,6 +37,10 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('copyImageList','Contract\purchaseContractController@copyImageList');
     Route::get('deleteCopyImage','Contract\purchaseContractController@deleteCopyImage');
     Route::get('getCopyComplete','Contract\purchaseContractController@getCopyComplete');
+    Route::post('zhanghaoSave','Contract\purchaseContractController@zhanghaoSave');
+    Route::get('getZhanghaoList','Contract\purchaseContractController@getZhanghaoList');
+    Route::get('deleteZhanghao','Contract\purchaseContractController@deleteZhanghao');
+    Route::post('zhanghaoAlter','Contract\purchaseContractController@zhanghaoAlter');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
 //装饰合同

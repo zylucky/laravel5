@@ -74,7 +74,7 @@ export const getPermissionListOfRole = params => { return axios.get(`${base}/per
 export const getPermissionList = params => { return axios.get(`${base}/permission/list`, { params: params }); };
 export const setPermissionList = params => { return axios.post(`${base}/permission/update/`+params.id, { params: params }); };
 
-//合同信息youhuaPurchaseContractList
+//合同信息
 export const addPurchaseContractInfo= params => { return axios.post(`${base}/purchaseContract`, { params: params }); };
 export const reviewPurchaseContract= params => { return axios.post(`${base}/purchaseContract/review`, { params: params }); };
 export const getPurchaseContractList = params => { return axios.get(`${base}/purchaseContract`, { params: params }); };
@@ -98,6 +98,10 @@ export const copyImageList= params => { return axios.get(`${base}/purchaseContra
 export const copyImageDelete= params => { return axios.get(`${base}/purchaseContract/deleteCopyImage`, {params:params}); };//删除扫描建
 export const isCopyComplete= params => { return axios.post(`${base}/purchaseContract/isCopyComplete`, {params:params}); };//资料是否完整
 export const isCopyCompleteList= params => { return axios.get(`${base}/purchaseContract/getCopyComplete`, {params:params}); };//列表
+export const zhanghaoSavePurchaseContract= params => { return axios.post(`${base}/purchaseContract/zhanghaoSave`, {params:params}); };//保存付款账号的数据
+export const getZhanghaoPurchaseContractList= params => { return axios.get(`${base}/purchaseContract/getZhanghaoList`, {params:params}); };//获取账号数据的列表
+export const removeZhanghaoPurchaseContract= params => { return axios.get(`${base}/purchaseContract/deleteZhanghao`, {params:params}); };//删除扫描建
+export const zhanghaoUpdataPurchaseContract= params => { return axios.post(`${base}/purchaseContract/zhanghaoAlter`, {params:params}); };//修改付款账号的数据
 
 //出房合同
 //合同信息
@@ -106,7 +110,7 @@ export const reviewSaleContract= params => { return axios.post(`${base}/saleCont
 export const getSaleContractList = params => { return axios.get(`${base}/saleContract`, { params: params }); };
 export const getSaleContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
 export const getNameSaleList = params =>{ return axios.post(`${base}/saleContract/getzyrNameList`, { params: params }); };//获取渠道自由经纪人
-export const getjieyueSaleContractInfo = params => { return axios.get(`${base}/saleContract/jieyuelist`, {params:params}); };
+export const getjieyueSaleContractInfo = params => { return axios.get(`${base}/saleContract/jieyuelist`, {params:params}); };//获取解约协议列表
 export const getdayinSaleContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
 export const getContractChuzuren= params => { return axios.get(`${base}/saleContract/getchuzuren`, {params:params}); };//出房合同获取收房合同的楼盘
 export const submitSaleContract = params => {return axios.get(`${base}/saleContract/`+params.id+'/edit', {}); };
