@@ -24,7 +24,7 @@ class accountsReceivableController extends Controller
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/cw/yf/'.$id.'/get',[
+        $response = $client->request('GET',  '/api/cw/ys/'.$id.'/getalterlist',[
 
             ]
         );

@@ -18,14 +18,17 @@ class receivableRecordController extends Controller
      */
     public function index()
     {
-        $pageSize = Input::get('pageSize');
-        $page= Input::get('page');
         $id = Input::get('id');
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/cw/yf/'.$id.'/submitlist',[
+        $response = $client->request('GET', '/api/cw/ys/submit/list',[
+                'query' => [
+
+                    'srid'=>$id,
+
+                ]
             ]
         );
         echo $response->getBody();
@@ -98,4 +101,23 @@ class receivableRecordController extends Controller
 
     }
 
+    /**
+     * 取消认领
+     * @param Request $request
+     * @return \Psr\Http\Message\StreamInterface
+     */
+    public function cancelClaim(Request $request)
+    {
+        $obj = array_merge($request->params);
+        // dd($obj);
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+
+        ]);
+
+        $r = $client->request('GET', '/api/cw/ys/submit/'.$obj['id'].'/qvxiaorenling', [
+
+        ]);
+        return $r->getBody();
+    }
 }

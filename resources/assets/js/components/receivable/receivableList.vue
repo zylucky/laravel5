@@ -11,12 +11,12 @@
             <el-form-item label="租户名称:">
                 <el-input v-model="filters.zh" placeholder="请输入租户名称"></el-input>
             </el-form-item><br/>
-            <el-form-item label="付款日期:">
-                <el-date-picker  style="width:170px;" type = "date" placeholder="请选择开始日期" v-model="filters.startdate">
+            <el-form-item label="收款日期:">
+                <el-date-picker    type = "date" placeholder="请选择开始日期" v-model="filters.startdate">
                 </el-date-picker>
             </el-form-item>
             <el-form-item label="至">
-                <el-date-picker  style="width:170px;"type = "date" placeholder="请选择结束日期" v-model="filters.enddate">
+                <el-date-picker   type = "date" placeholder="请选择结束日期" v-model="filters.enddate">
                 </el-date-picker>
             </el-form-item>
             <el-form-item>
@@ -45,7 +45,7 @@
             </el-table-column>
             <el-table-column prop="monthmoney" label="月租金"  >
             </el-table-column>
-            <el-table-column prop="skdate" label="收款日期" :formatter="changeDate"  width="100">
+            <el-table-column prop="skdate" label="收款日期" :formatter="changeDate"  width="120">
             </el-table-column>
             <el-table-column prop="sktype" label="收款科目"    :formatter="formatFKType" width="100">
             </el-table-column>
@@ -55,7 +55,7 @@
             </el-table-column>
             <el-table-column prop="shishoumoney" label="实收金额"  width="100">
             </el-table-column>
-            <el-table-column prop="xiugaizhuangtai" label="修改状态"  :formatter="formatUpdateState"  width="100">
+            <el-table-column prop="shiugaizhuangtai" label="修改状态"    width="100">
             </el-table-column>
             <el-table-column prop="srstate" label="支付状态"  :formatter="formatState"  width="100">
             </el-table-column>
@@ -66,11 +66,11 @@
                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
-                               <el-dropdown-item  ><el-button   @click="handleRokeBack(scope.$index, scope.row)">提交收款</el-button></el-dropdown-item>
-                               <el-dropdown-item  > <el-button  @click="handleOpen(scope.$index, scope.row)">查看详情</el-button> </el-dropdown-item>
-                               <el-dropdown-item  > <el-button  @click="handleOpenUp(scope.$index, scope.row)">提交记录</el-button> </el-dropdown-item>
-                               <el-dropdown-item  ><el-button   @click="handleEdit(scope.$index, scope.row)">编辑付款日期</el-button></el-dropdown-item>
-                               <el-dropdown-item  ><el-button   @click="handleMoneyEdit(scope.$index, scope.row)">编辑付款金额</el-button></el-dropdown-item>
+                               <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,4])"  ><el-button   @click="handleRokeBack(scope.$index, scope.row)">提交收款</el-button></el-dropdown-item>
+                               <el-dropdown-item  v-if="scope.row.shiugaizhuangtai=='已修改'" > <el-button  @click="handleOpen(scope.$index, scope.row)">修改记录</el-button> </el-dropdown-item>
+                               <el-dropdown-item  v-if="ztin(scope.row,[1,2,3,4])"  > <el-button  @click="handleOpenUp(scope.$index, scope.row)">提交记录</el-button> </el-dropdown-item>
+                               <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,4])"><el-button   @click="handleEdit(scope.$index, scope.row)">编辑收款日期</el-button></el-dropdown-item>
+                               <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,4])"><el-button   @click="handleMoneyEdit(scope.$index, scope.row)">编辑收款金额</el-button></el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
                    </template>
@@ -91,41 +91,34 @@
             </el-pagination>
         </el-col>
         </el-tabs>
-        <el-dialog title="提交付款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
+        <el-dialog title="提交收款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
             <el-form :model="rokeBackForm" label-width="120px" :rules="rokeBackFormRules" ref="rokeBackForm"  >
                 <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="付款金额：" prop="tijiaomoney">
+                    <el-col :span="11">
+                        <el-form-item label="收款金额：" prop="tijiaomoney">
                             <el-input    v-model.number="rokeBackForm.tijiaomoney" auto-complete="off"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="8">
-                        <el-form-item label="付款时间：" prop="fukuandate">
-                            <el-date-picker type = "date" v-model="rokeBackForm.fukuandate" auto-complete="off">
-                            </el-date-picker>
+                    <el-col :span="11">
+                        <el-form-item label="付款方户名：" prop="fkzhanghu">
+                            <el-input    v-model="rokeBackForm.fkzhanghu" auto-complete="off"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="付款方户名：" prop="huming">
-                            <el-input    v-model="rokeBackForm.huming" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="16">
-                        <el-form-item label="付款银行：" prop="fukuanyinhang">
-                            <el-input   v-model="rokeBackForm.fukuanyinhang" auto-complete="off"></el-input>
+
+                    <el-col :span="11">
+                    <el-form-item label="付款银行：" prop="fkyinhang">
+                        <el-input   v-model="rokeBackForm.fkyinhang" auto-complete="off"></el-input>
+                    </el-form-item>
+                </el-col>
+                    <el-col :span="11">
+                        <el-form-item label="付款账号：" prop="fkzhanghao">
+                            <el-input    v-model="rokeBackForm.fkzhanghao" auto-complete="off"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
 
-                <el-form-item label="付款账号：" prop="fukuanzhanghao">
-                    <el-input    v-model="rokeBackForm.fukuanzhanghao" auto-complete="off"></el-input>
-                </el-form-item>
-
-                <el-form-item   label="备注：" prop="beizhu">
-                    <el-input type="textarea" v-model="rokeBackForm.beizhu" auto-complete="off"></el-input>
-                </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click.native="rokeBackFormVisible = false">取消</el-button>
@@ -134,20 +127,19 @@
         </el-dialog>
 
 
-        <el-dialog title="编辑付款日期" v-model="editDateFormVisible" :close-on-click-modal="false">
+
+        <el-dialog title="编辑收款日期" v-model="editDateFormVisible" :close-on-click-modal="false">
             <el-form :model="editDateForm" label-width="120px" :rules="editDateFormRules" ref="editDateForm"  >
                 <el-row>
-                    <el-col :span="10">
-                        <el-form-item label="提前付款：" prop="tiQianDays">
-                            <el-input    v-model.number="editDateForm.tiQianDays" auto-complete="off"></el-input>
+                    <el-col :span="7">
+                        <el-form-item label="提前收款：" prop="tiQianDays">
+                            <el-input v-model.number="editDateForm.tiQianDays" auto-complete="off"></el-input>
                         </el-form-item>
                     </el-col>
-
-                    <el-col :span="1"> <el-form-item label="天" >
-                    </el-form-item>
+                    <el-col :span="1" style="text-align: right;margin-top: 8px;">
+                        天
                     </el-col>
-
-                    <el-col :span="8">
+                    <el-col :span="10">
                         <el-form-item label="" prop="isBenQi">
                             <el-radio-group v-model="editDateForm.isBenQi">
                                 <el-radio class="radio" label=true>本期</el-radio>
@@ -164,12 +156,12 @@
             </div>
         </el-dialog>
 
-        <el-dialog title="编辑付款金额" v-model="editMoneyFormVisible" :close-on-click-modal="false">
+        <el-dialog title="编辑收款金额" v-model="editMoneyFormVisible" :close-on-click-modal="false">
             <el-form :model="editMoneyForm" label-width="120px" :rules="editMoneyFormRules" ref="editMoneyForm"  >
                 <el-row>
                     <el-col :span="16">
-                        <el-form-item label="本期付款金额：" prop="shouKuanMoney">
-                            <el-input   v-model.number="editMoneyForm.shouKuanMoney" auto-complete="off"></el-input>
+                        <el-form-item label="本期收款金额：" prop="fuKuanMoney">
+                            <el-input   v-model.number="editMoneyForm.fuKuanMoney" auto-complete="off"></el-input>
                         </el-form-item>
                     </el-col>
 
@@ -248,17 +240,22 @@
                 rokeBackLoading: false,
                 rokeBackFormRules: {
                     tijiaomoney:[{required: true, message: '不能为空'},
-                        {type: 'number', message: '必须为数字'}],
-                    fukuandate: [
+                        {type: 'number', message: '必须为数字', trigger: 'blur'},
+                        {  required: true, validator: (rule, value, callback) => {
+                            if ( value <= 0) {
+                                callback(new Error("必须大于0"));
+                            } else {
+                                callback();
+                            }
+                        }, trigger: 'blur'
+                        }],
+                    fkzhanghu: [
                         {required: true, message: '不能为空'},
                     ],
-                    huming: [
+                    fkyinhang: [
                         {required: true, message: '不能为空'},
                     ],
-                    fukuanyinhang: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    fukuanzhanghao: [
+                    fkzhanghao: [
                         {required: true, message: '不能为空'},
                     ],
                 },
@@ -283,12 +280,20 @@
                 editMoneyFormVisible: false,//编辑界面是否显示
                 editMoneyFormLoading: false,
                 editMoneyFormRules: {
-                    shouKuanMoney: [{required: true, message: '不能为空'},
-                        {type: 'number', message: '必须为数字'}],
+                    fuKuanMoney: [{required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字', trigger: 'blur'},
+                        {  required: true, validator: (rule, value, callback) => {
+                            if ( value < 0) {
+                                callback(new Error("不能小于0"));
+                            } else {
+                                callback();
+                            }
+                        }, trigger: 'blur'
+                        }],
                 },
                 //编辑界面数据
                 editMoneyForm: {
-                    shouKuanMoney:'',
+                    fuKuanMoney:'',
                     yuanMoney:'',
                     tCwSrId:'',
                     hetongId:'',
@@ -297,14 +302,10 @@
                 //付款界面数据
                 rokeBackForm: {
                     tCwSrId:'',
-                    hetongbianhao:'',
-                    xiangmu:'',
-                    fukuankemu:'',
                     tijiaomoney:'',
-                    fukuandate:'',
-                    beizhu:'',
-                    fukuanyinhang:'',
-                    fukuanzhanghao:'',
+                    fkzhanghu:'',
+                    fkyinhang:'',
+                    fkzhanghao:'',
                 },
 
 
@@ -313,6 +314,14 @@
             }
         },
         methods:{
+            ztin(row,arr){
+                var status = arr.indexOf(row.srstate);
+                if(status>-1){
+                    return true;
+                }else{
+                    return false;
+                }
+            },
             //标签切换时
             handleClick(tab, event) {
                 var ztStatus = null;
@@ -331,13 +340,7 @@
                 status[1] = '房租';
                 return status[row.sktype];
             },
-            //修改状态显示转换
-            formatUpdateState: function (row, column) {
-                let status = [];
-                status[0] = '正常';
-                status[1] = '已修改';
-                return status[row.xiugaizhuangtai];
-            },
+
             //状态显示转换
             formatState: function (row, column) {
                 let status = [];
@@ -348,10 +351,7 @@
                 status[4] = '已驳回';
                 return status[row.srstate];
             },
-            //收款账号显示转换
-            formatskyh: function (row, column) {
-                return  row.skyinhang+"\r账号:"+row.skzhanghu;
-            },
+
             //时间戳转日期格式
             changeDate(row, column){
                 var newDate = new Date();
@@ -411,7 +411,7 @@
                 this.editMoneyFormVisible = true;
                 this.editMoneyForm = Object.assign({}, row);
                 this.editMoneyForm = {
-                    shouKuanMoney:'',
+                    fuKuanMoney:'',
                     yuanMoney:'',
                     tCwSrId:row.tCwSrId,
                     hetongId:row.hetongid,
@@ -423,15 +423,10 @@
                 this.rokeBackForm  = Object.assign({}, row);
                 this.rokeBackForm = {
                     tCwSrId:row.tCwSrId,
-                    hetongbianhao:row.htbianhao,
-                    xiangmu: row.loupanName==null?'':row.loupanName+row.loudongName==null?'': row.loudongName+row.houseno==null?'': row.houseno,
-                    fukuankemu:row.fktype,
                     tijiaomoney:'',
-                    fukuandate:'',
-                    huming:'彭亮',
-                    beizhu:'',
-                    fukuanyinhang:'',
-                    fukuanzhanghao:'',
+                    fkzhanghu:'',
+                    fkyinhang:'',
+                    fkzhanghao:'',
                 };
             },
             //编辑
@@ -443,11 +438,18 @@
                             let para = Object.assign({}, this.editDateForm);
                             skeditDate(para).then((res) => {
                                 this.editDateFormLoading = false;
+                                if(res.data.code==200) {
                                 this.$message({
                                     message: '提交成功',
                                     type: 'success'
                                 });
                                 this.$refs['editDateForm'].resetFields();
+                                } else{
+                                    this.$message({
+                                        message: res.data.msg,
+                                        type: 'error'
+                                    });
+                                }
                                 this.editDateFormVisible = false;
                                 this.getReceivable();
                             });
@@ -463,11 +465,18 @@
                             let para = Object.assign({}, this.editMoneyForm);
                             skeditMoney(para).then((res) => {
                                 this.editMoneyFormLoading = false;
+                                if(res.data.code==200) {
                                 this.$message({
                                     message: '提交成功',
                                     type: 'success'
                                 });
                                 this.$refs['editMoneyForm'].resetFields();
+                                } else{
+                                    this.$message({
+                                        message: res.data.msg,
+                                        type: 'error'
+                                    });
+                                }
                                 this.editMoneyFormVisible = false;
                                 this.getReceivable();
                             });
@@ -484,12 +493,18 @@
                             let para = Object.assign({}, this.rokeBackForm);
                             saveShouKuan(para).then((res) => {
                                 this.rokeBackLoading = false;
-                                //NProgress.done();
+                                if(res.data.code==200) {
                                 this.$message({
                                     message: '提交成功',
                                     type: 'success'
                                 });
                                 this.$refs['rokeBackForm'].resetFields();
+                            } else{
+                                this.$message({
+                                    message: res.data.msg,
+                                    type: 'error'
+                                });
+                            }
                                 this.rokeBackFormVisible = false;
                                 this.getReceivable();
                             });
@@ -499,10 +514,10 @@
             },
             //打开应付记录页面
             handleOpen: function (index, row)  {
-                window.open('#/accountsReceivable?id=' + row.tCwSrId);
+                this.$router.push('/accountsReceivable?id=' + row.tCwSrId);
             },
             handleOpenUp: function (index, row) {
-                window.open('#/receivableRecord?id=' + row.tCwSrId);
+                this.$router.push('/receivableRecord?id=' + row.tCwSrId);
             },
 
             selsChange: function (sels) {
