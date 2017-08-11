@@ -24,7 +24,7 @@
             <el-tab-pane label="全部" name="first"></el-tab-pane>
             <el-tab-pane label="已付款" name="second"></el-tab-pane>
             <el-tab-pane label="未付款" name="third"></el-tab-pane>
-
+            <el-tab-pane label="不支付" name="four"></el-tab-pane>
             <el-table :data="Payable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
                       @selection-change="selsChange" style="width: 100%;">
                 <el-table-column prop="hetongbianhao" label="合同编号" width="200">
@@ -50,11 +50,11 @@
                                 操作<i class="el-icon-caret-bottom el-icon--right"></i>
                             </el-button>
                             <el-dropdown-menu slot="dropdown">
-                                <el-dropdown-item>
-                                    <el-button @click="handleRokeBack(scope.$index, scope.row)">确认付款</el-button>
+                                <el-dropdown-item  v-if="scope.row.zhuangtai==1">
+                                    <el-button  @click="handleRokeBack(scope.$index, scope.row)">确认付款</el-button>
                                 </el-dropdown-item>
-                                <el-dropdown-item>
-                                    <el-button @click="handleReject(scope.$index, scope.row)">驳回付款</el-button>
+                                <el-dropdown-item  v-if="scope.row.zhuangtai==1">
+                                    <el-button  @click="handleReject(scope.$index, scope.row)">驳回付款</el-button>
                                 </el-dropdown-item>
                                 <el-dropdown-item>
                                     <el-button @click="handleOpen(scope.$index, scope.row)">上传凭证</el-button>
@@ -196,6 +196,9 @@
                 }else if (tab.index == 2) {
                     this.filters.zt = 1;
                     this.getPayable();
+                }else if (tab.index == 3) {
+                    this.filters.zt = 3;
+                    this.getPayable();
                 }
             },
             //页面跳转后
@@ -240,10 +243,17 @@
                         id: row.tCwFcCaiwuId,
                     };;
                     confirmPayable(para).then((res) => {
+                        if(res.data.code==200) {
+                            this.$message({
+                                message: '确认成功',
+                                type: 'success'
+                            });
+                        } else{
                         this.$message({
-                            message: '确认成功',
-                            type: 'success'
+                            message: res.data.msg,
+                            type: 'error'
                         });
+                        }
                         this.getPayable();
                     });
                 });
@@ -256,10 +266,17 @@
                         id: row.tCwFcCaiwuId,
                     };;
                     rejectPayable(para).then((res) => {
+                        if(res.data.code==200) {
                         this.$message({
                             message: '驳回成功',
                             type: 'success'
                         });
+                        } else{
+                            this.$message({
+                                message: res.data.msg,
+                                type: 'error'
+                            });
+                        }
                         this.getPayable();
                     });
                 });

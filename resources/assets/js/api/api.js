@@ -39,7 +39,7 @@ export const editChuFangCommission = params => { return axios.put(`${base}/chuFa
 export const getShouFangCommissionListPage = params => { return axios.get(`${base}/shouFangCommission`, { params: params }); };
 export const editShouFangCommission = params => { return axios.put(`${base}/shouFangCommission/`+params.id, { params: params }); };
 export const selectCommissionPayType = params => { return axios.post(`${base}/Commission/contractPayType`, { params: params }); };
-
+export const cancelClaim = params => { return axios.post(`${base}/receivableRecord/cancelClaim`, { params: params }); };
 export const getReceivableListPage = params => { return axios.get(`${base}/receivable`, { params: params }); };
 export const getReceiveList = params => { return axios.get(`${base}/financeReceivable`, { params: params }); };//财务实收款列表
 export const financeSaveShouKuan = params => { return axios.post(`${base}/financeReceivable/saveShouKuan` , { params: params }); };

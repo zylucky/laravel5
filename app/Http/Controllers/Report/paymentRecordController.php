@@ -19,14 +19,12 @@ class paymentRecordController extends Controller
     public function index()
     {
         $id = Input::get('id');
-
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
         $response = $client->request('GET', '/api/cw/yf/'.$id.'/get',[
-
-       ]
+        ]
         );
         echo $response->getBody();
 
