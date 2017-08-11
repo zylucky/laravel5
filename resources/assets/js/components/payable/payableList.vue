@@ -12,11 +12,11 @@
                 <el-input v-model="filters.yz" placeholder="请输入业主名称"></el-input>
             </el-form-item><br/>
             <el-form-item label="付款日期:">
-            <el-date-picker style="width:170px;" type = "date" placeholder="请选择开始日期" v-model="filters.startdate">
+            <el-date-picker  type = "date" placeholder="请选择开始日期" v-model="filters.startdate">
             </el-date-picker>
             </el-form-item>
             <el-form-item label="至">
-            <el-date-picker style="width:170px;" type = "date" placeholder="请选择结束日期" v-model="filters.enddate">
+            <el-date-picker type = "date" placeholder="请选择结束日期" v-model="filters.enddate">
             </el-date-picker>
             </el-form-item>
             <el-form-item>
@@ -35,17 +35,17 @@
             <el-tab-pane label="已完成" name="fifth"></el-tab-pane>
             <el-tab-pane label="已驳回" name="sixth"></el-tab-pane>
             <el-table :data="Payable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-                <el-table-column prop="htbianhao" label="合同编号" width="200"    >
+                <el-table-column prop="htbianhao" label="合同编号" width="190"    >
                 </el-table-column>
-                <el-table-column prop="xiangmu" label="项目" >
+                <el-table-column prop="xiangmu" label="项目" width="110" >
                 </el-table-column>
-                <el-table-column prop="yezhu" label="业主"  width="100" >
+                <el-table-column prop="yezhu" label="业主"  width="80" >
                 </el-table-column>
                 <el-table-column prop="fkfangshi" label="付款方式"  width="100" >
                 </el-table-column>
-                <el-table-column prop="monthmoney" label="月租金"  >
+                <el-table-column prop="monthmoney" label="月租金" width="80" >
                 </el-table-column>
-                <el-table-column prop="fkdate" label="付款日期" width="100" :formatter="changeDate" >
+                <el-table-column prop="fkdate" label="付款日期" width="120" :formatter="changeDate" >
                 </el-table-column>
                 <el-table-column prop="fktype" label="付款科目" width="100"   :formatter="formatFKType">
                 </el-table-column>
@@ -68,11 +68,11 @@
                                    操作<i class="el-icon-caret-bottom el-icon--right"></i>
                                </el-button>
                                <el-dropdown-menu slot="dropdown" >
-                                   <el-dropdown-item  ><el-button   @click="handleRokeBack(scope.$index, scope.row)">提交付款</el-button></el-dropdown-item>
-                                   <el-dropdown-item  > <el-button  @click="handleOpen(scope.$index, scope.row)">查看详情</el-button> </el-dropdown-item>
+                                   <el-dropdown-item v-if="ztin(scope.row,[0,1,2,4])" ><el-button   @click="handleRokeBack(scope.$index, scope.row)">提交付款</el-button></el-dropdown-item>
+                                   <el-dropdown-item  v-if="scope.row.xiugaizhuangtai=='已修改'"> <el-button  @click="handleOpen(scope.$index, scope.row)">修改记录</el-button> </el-dropdown-item>
                                    <el-dropdown-item  v-if="ztin(scope.row,[1,2,3,4])"  > <el-button  @click="handleOpenUp(scope.$index, scope.row)">提交记录</el-button> </el-dropdown-item>
-                                   <el-dropdown-item  ><el-button   @click="handleEdit(scope.$index, scope.row)">编辑付款日期</el-button></el-dropdown-item>
-                                   <el-dropdown-item  ><el-button   @click="handleMoneyEdit(scope.$index, scope.row)">编辑付款金额</el-button></el-dropdown-item>
+                                   <el-dropdown-item   v-if="ztin(scope.row,[0,1,2,4])"><el-button   @click="handleEdit(scope.$index, scope.row)">编辑付款日期</el-button></el-dropdown-item>
+                                   <el-dropdown-item   v-if="ztin(scope.row,[0,1,2,4])"><el-button   @click="handleMoneyEdit(scope.$index, scope.row)">编辑付款金额</el-button></el-dropdown-item>
                                </el-dropdown-menu>
                            </el-dropdown>
                        </template>
@@ -250,7 +250,15 @@
                 rokeBackLoading: false,
                 rokeBackFormRules: {
                     tijiaomoney:[{required: true, message: '不能为空'},
-                        {type: 'number', message: '必须为数字'}],
+                        {type: 'number', message: '必须为数字', trigger: 'blur'},
+                        {  required: true, validator: (rule, value, callback) => {
+                            if ( value <= 0) {
+                                callback(new Error("必须大于0"));
+                            } else {
+                                callback();
+                            }
+                        }, trigger: 'blur'
+                        }],
                     fukuandate: [
                         {required: true, message: '不能为空'},
                     ],
@@ -286,7 +294,15 @@
                 editMoneyFormLoading: false,
                 editMoneyFormRules: {
                     shouKuanMoney: [{required: true, message: '不能为空'},
-                        {type: 'number', message: '必须为数字'}],
+                        {type: 'number', message: '必须为数字', trigger: 'blur'},
+                        {  required: true, validator: (rule, value, callback) => {
+                            if ( value < 0) {
+                                callback(new Error("不能小于0"));
+                            } else {
+                                callback();
+                            }
+                        }, trigger: 'blur'
+                        }]
                 },
                 //编辑界面数据
                 editMoneyForm: {
@@ -447,11 +463,19 @@
                             let para = Object.assign({}, this.editDateForm);
                             editDate(para).then((res) => {
                                 this.editDateFormLoading = false;
-                                this.$message({
-                                    message: '提交成功',
-                                    type: 'success'
-                                });
-                                this.$refs['editDateForm'].resetFields();
+                                if(res.data.code==200) {
+                                    this.$message({
+                                        message: '提交成功',
+                                        type: 'success'
+                                    });
+                                    this.$refs['editDateForm'].resetFields();
+
+                                }else{
+                                    this.$message({
+                                        message: res.data.msg,
+                                        type: 'error'
+                                    });
+                                }
                                 this.editDateFormVisible = false;
                                 this.getPayable();
                             });
@@ -467,11 +491,19 @@
                             let para = Object.assign({}, this.editMoneyForm);
                             editMoney(para).then((res) => {
                                 this.editMoneyFormLoading = false;
+                                if(res.data.code==200) {
                                 this.$message({
                                     message: '提交成功',
                                     type: 'success'
                                 });
                                 this.$refs['editMoneyForm'].resetFields();
+
+                                }else{
+                                    this.$message({
+                                        message: res.data.msg,
+                                        type: 'error'
+                                    });
+                                }
                                 this.editMoneyFormVisible = false;
                                 this.getPayable();
                             });
@@ -488,12 +520,18 @@
                             let para = Object.assign({}, this.rokeBackForm);
                             saveFuKuan(para).then((res) => {
                                 this.rokeBackLoading = false;
-                                //NProgress.done();
+                                if(res.data.code==200) {
                                 this.$message({
                                     message: '提交成功',
                                     type: 'success'
                                 });
                                 this.$refs['rokeBackForm'].resetFields();
+                                }else{
+                                    this.$message({
+                                        message: res.data.msg,
+                                        type: 'error'
+                                    });
+                                }
                                 this.rokeBackFormVisible = false;
                                 this.getPayable();
                             });

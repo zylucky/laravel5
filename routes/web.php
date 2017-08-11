@@ -76,6 +76,7 @@ Route::post('financePayable/rejectPayable','Report\financePayableController@reje
 Route::post('financePayable/confirmPayable','Report\financePayableController@confirmPayable');
 Route::post('receivable/editDate','Commission\receivableController@editDate');
 Route::post('receivable/editMoney','Commission\receivableController@editMoney');
+Route::post('receivableRecord/cancelClaim','Commission\receivableRecordController@cancelClaim');
 //消息列表
 Route::resource('message','Message\messageController');
 

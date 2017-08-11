@@ -31,7 +31,7 @@
                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
-                               <el-dropdown-item  ><el-button   @click="handleRokeBack(scope.row)">认领</el-button></el-dropdown-item>
+                               <el-dropdown-item   v-if="scope.row.zhuangtai==0"><el-button   @click="handleRokeBack(scope.row)">认领</el-button></el-dropdown-item>
                                <el-dropdown-item  > <el-button  @click="handleOpen(scope.$index, scope.row)">上传凭证</el-button> </el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
@@ -52,7 +52,7 @@
             >
             </el-pagination>
         </el-col>
-        <el-dialog title="应收款列表" v-model="rokeBackFormVisible" :close-on-click-modal="false" size="large">
+        <el-dialog title="应收款列表" v-model="rokeBackFormVisible" :close-on-click-modal="false"  size="large">
             <el-form :inline="true" :model="filters" class="demo-form-inline">
                 <el-form-item label="合同编号:">
                     <el-input v-model="filters.contractNo" placeholder="请输入合同编号"></el-input>
@@ -64,47 +64,47 @@
                     <el-input v-model="filters.zh" placeholder="请输入租户名称"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" icon="search"  v-on:click="getReceivableJS">搜索</el-button>
+                    <el-button type="primary" icon="search"  v-on:click="getReceivableRL">搜索</el-button>
                 </el-form-item>
             </el-form>
-            <el-table height="500" :data="ReceivableJS" highlight-current-row v-loading="listLoading" ref="multipleTable" element-loading-text="拼命加载中" @select="selsChange" style="width: 100%;">
-                <el-table-column type="selection" width="55">
-                </el-table-column>
+            <el-table  :data="ReceivableRL" highlight-current-row v-loading="RLlistLoading" ref="multipleTable" element-loading-text="拼命加载中"
+                      @current-change="handleCurrentChange1" @selection-change="handleCurrentChange1" @select="selsChange"  style="width: 100%;">
+
                 <el-table-column prop="htbianhao" label="合同编号" width="200">
                 </el-table-column>
-                <el-table-column prop="xiangmu" label="项目" width="200">
+                <el-table-column prop="xiangmu" label="项目" width="260">
                 </el-table-column>
-                <el-table-column prop="zuhu" label="租户" >
+                <el-table-column prop="zuhu" label="租户"  >
                 </el-table-column>
-                <el-table-column prop="skfangshi" label="付款方式"  width="100" >
+                <el-table-column prop="skfangshi" label="付款方式"    >
                 </el-table-column>
                 <el-table-column prop="monthmoney" label="月租金"  >
                 </el-table-column>
-                <el-table-column prop="skdate" label="收款日期" :formatter="changeDate2" width="100">
+                <el-table-column prop="skdate" label="收款日期" :formatter="changeDate2"  >
                 </el-table-column>
-                <el-table-column prop="sktype" label="收款科目"    :formatter="formatFKType" width="100">
+                <el-table-column prop="sktype" label="收款科目"    :formatter="formatFKType"  >
                 </el-table-column>
-                <el-table-column prop="skmoney" label="应收房租" width="100">
+                <el-table-column prop="skmoney" label="应收房租"  >
                 </el-table-column>
-                <el-table-column prop="tijiaomoney" label="提交金额"  width="100">
+                <el-table-column prop="tijiaomoney" label="提交金额"   >
                 </el-table-column>
-                <el-table-column prop="shishoumoney" label="实收金额"  width="100">
+                <el-table-column prop="shishoumoney" label="实收金额"  >
                 </el-table-column>
-                <el-table-column prop="xiugaizhuangtai" label="修改状态"   width="100">
+                <el-table-column prop="xiugaizhuangtai" label="修改状态"    >
                 </el-table-column>
-                <el-table-column prop="srstate" label="支付状态"  :formatter="formatState"  width="100">
+                <el-table-column prop="srstate" label="支付状态"  :formatter="formatRLState" >
                 </el-table-column>
             </el-table>
             <div style="margin-top:30px"></div>
             <!-- 分页-->
             <el-col :span="24" class="toolbar" >
                 <el-pagination
-                        @size-change="handleSizeChange"
-                        @current-change="handleCurrentChange"
-                        :current-page="currentPage"
+                        @size-change="handleSizeChangerl"
+                        @current-change="handleCurrentChangerl"
+                        :current-page="currentPagerl"
                         :page-size="10"
                         layout="total, sizes, prev, pager, next, jumper"
-                        :total=total
+                        :total=totalrl
                         style="float:right"
                 >
                 </el-pagination>
@@ -161,6 +161,9 @@
     .el-table .info-row {
         background: #ffff00;
     }
+    .el-dialog .el-table__body tr.current-row>td {
+        background: rgba(185, 221, 249, .75)!important;
+    }
 </style>
 <script>
     import {
@@ -201,8 +204,8 @@
                 pageSize:10,
                 pageSizes:[10, 20, 30, 40, 50, 100],
                 financeReceivable:[],
-                ReceivableJS:[],
-                JSlistLoading:false,
+                ReceivableRL:[],
+                RLlistLoading:false,
                 listLoading: false,
                 sels: [],//列表选中列
                 rokeBackFormVisible: false,//收款界面是否显示
@@ -237,9 +240,9 @@
                     shoukuanmoney:'',
                     zhuangtai:'',
                 },
-                totaljs:0,
-                currentPagejs:0,
-                pageSizejs:10,
+                totalrl:0,
+                currentPagerl:0,
+                pageSizerl:10,
                 renlingData :{
                     tCwSrId:null,
                     tCwSrCaiwuId:null,
@@ -257,7 +260,8 @@
             handleRokeBack(row){
                 this.rokeBackFormVisible = true;
                 this.renlingData.tCwSrCaiwuId=row.tCwSrCaiwuId;
-                this.getReceivableJS();
+                this.pagerl = 1;
+                this.getReceivableRL();
             },
             formatFKType(row, column){
                 let status = [];
@@ -268,14 +272,24 @@
                 status[4] = '华亮返佣';
                 return status[row.sktype];
             },
-            //佣金类型显示转换
+            //支付状态显示转换
             formatState: function (row, column) {
                 let status = [];
-                status[0] = '未付';
-                status[1] = '已付';
+                status[0] = '未认领';
+                status[1] = '已认领';
                 return status[row.zhuangtai];
             },
-            //佣金类型显示转换
+            //认领支付状态显示转换
+            formatRLState: function (row, column) {
+                let status = [];
+                status[0] = '未提交';
+                status[1] = '已提交';
+                status[2] = '部分已付';
+                status[3] = '已完成';
+                status[4] = '已驳回';
+                return status[row.srstate];
+            },
+            //银行账号转换
             formatskyh: function (row, column) {
                 return  row.fukuanyinhang+'\r账号'+row.fukuanzhanghao;
             },
@@ -313,14 +327,14 @@
                 this.getReceivable();
             },
             //页面跳转后
-            handleCurrentChangejs(val) {
-                this.pagejs = val;
-                this.getReceivableJS();
+            handleCurrentChangerl(val) {
+                this.pagerl = val;
+                this.getReceivableRL();
             },
             //更改每页显示数据
-            handleSizeChangejs(val){
-                this.pageSizejs =val;
-                this.getReceivableJS();
+            handleSizeChangerl(val){
+                this.pageSizerl =val;
+                this.getReceivableRL();
             },
             //获取实收款列表
             getReceivable() {
@@ -338,19 +352,19 @@
                 });
             },
             //获取应付款列表
-            getReceivableJS() {
+            getReceivableRL() {
                 let para = {
-                    page: this.pagejs,
-                    pageSize: this.pageSizejs,
+                    page: this.pagerl,
+                    pageSize: this.pageSizerl,
                     contractNo: this.filters.contractNo,
                     xm: this.filters.xm,
                     yz: this.filters.yz,
                 };
-                this.JSlistLoading = true;
+                this.RLlistLoading = true;
                 getReceivableListPage(para).then((res) => {
-                    this.totaljs = res.data.total;
-                    this.ReceivableJS = res.data.data;
-                    this.JSlistLoading = false;
+                    this.totalrl = res.data.total;
+                    this.ReceivableRL = res.data.data;
+                    this.RLlistLoading = false;
                 });
             },
             //新增实收页面
@@ -362,13 +376,23 @@
                 this.$refs.addForm.validate((valid) => {
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                            this.addFormLoading = true;
                             let para = Object.assign({}, this.addForm);
                             financeSaveShouKuan(para).then((res) => {
+                                this.addFormLoading = false;
+                                if(res.data.code==200) {
                                 this.$message({
                                     message: '提交成功',
                                     type: 'success'
                                 });
-                                this.$refs['rokeBackForm'].resetFields();
+                                this.$refs['addForm'].resetFields();
+                                } else{
+                                    this.$message({
+                                        message: res.data.msg,
+                                        type: 'error'
+                                    });
+                                }
+                                this.addFormVisible = false;
                                 this.getReceivable();
                             });
                         });
@@ -386,14 +410,15 @@
                                     message: '提交成功',
                                     type: 'success'
                                 });
-                                this.getReceivable();
-                                this.rokeBackFormVisible = false;
+
                             }else{
                                 this.$message({
                                     message: '提交失败',
                                     type: 'error'
                                 });
                             }
+                            this.getReceivable();
+                            this.rokeBackFormVisible = false;
                         });
                         this.renlingData = {
                             tCwSrId:null,
@@ -407,7 +432,12 @@
             //选中以后
             handleCurrentChange1(val) {
                 this.renlingData.tCwSrId=val.tCwSrId;
-            }
+
+            },
+            selsChange(val,row){
+                this.$refs.multipleTable.clearSelection();
+                this.$refs.multipleTable.toggleRowSelection(row);
+            },
         },
         mounted() {
             this.page=1;
