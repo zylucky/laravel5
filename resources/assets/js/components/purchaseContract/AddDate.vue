@@ -54,29 +54,29 @@
             <el-row>
                 <el-col :span="9" style="width:550px;">
                     <el-form-item label="总租期" required>
-                    <el-col :span="11">
-                        <el-form-item prop="startdate">
-                            <el-date-picker
-                                    v-model="addDate.startdate"
-                                    type="date"
-                                    placeholder="开始时间"
-                                    @change="zqchange1()"
-                            >
-                            </el-date-picker>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="11">
-                        <el-form-item prop="enddate">
-                            <el-date-picker
-                                    v-model="addDate.enddate"
-                                    type="date"
-                                    placeholder="结束时间"
-                                    @change="zqchange2()"
-                            >
-                            </el-date-picker>
-                        </el-form-item>
-                    </el-col>
-                </el-form-item>
+                        <el-col :span="11">
+                            <el-form-item prop="startdate">
+                                <el-date-picker
+                                        v-model="addDate.startdate"
+                                        type="date"
+                                        placeholder="开始时间"
+                                        @change="zqchange1()"
+                                >
+                                </el-date-picker>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="11">
+                            <el-form-item prop="enddate">
+                                <el-date-picker
+                                        v-model="addDate.enddate"
+                                        type="date"
+                                        placeholder="结束时间"
+                                        @change="zqchange2()"
+                                >
+                                </el-date-picker>
+                            </el-form-item>
+                        </el-col>
+                    </el-form-item>
                 </el-col>
             </el-row>
             <!--租金-->
@@ -311,6 +311,11 @@
                         ></el-date-picker>
                     </el-form-item>
                 </el-col>
+                <el-col :span="8">
+                    <el-form-item label="实际月租金" prop="shijiyuezujin" >
+                        <el-input v-model.number="addDate.shijiyuezujin" placeholder="实际月租金"></el-input>
+                    </el-form-item>
+                </el-col>
             </el-row>
             <!--各种费用-->
             <el-form-item label="甲方承担" prop="jiafangfeiyong" required>
@@ -419,6 +424,9 @@
                     ],
                     yongjin: [
                         { required: true, message: '不能为空' },
+                        { type: 'number', message: '必须为数字'},
+                    ],
+                    shijiyuezujin: [
                         { type: 'number', message: '必须为数字'},
                     ],
                     tiqianfukuantian: [
