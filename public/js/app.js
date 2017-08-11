@@ -36333,6 +36333,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -36453,6 +36462,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        tableClassName: function tableClassName(fkdate) {
+            //return 'info-row';
+            if (fkdate > new Date()) {
+                return 'info-row';
+            } else {
+                return '';
+            }
+        },
         ztin: function ztin(row, arr) {
             var status = arr.indexOf(row.fkstate);
             if (status > -1) {
@@ -36479,9 +36496,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return status[row.fkstate];
         },
         //时间戳转日期格式
-        changeDate: function changeDate(row, column) {
+        changeDate: function changeDate(fkdate) {
             var newDate = new Date();
-            newDate.setTime(row.fkdate);
+            newDate.setTime(fkdate);
             return newDate.toLocaleDateString();
         },
 
@@ -42481,6 +42498,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -42594,6 +42621,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        tableClassName: function tableClassName(skdate) {
+            //return 'info-row';
+            if (skdate > new Date()) {
+                return 'info-row';
+            } else {
+                return '';
+            }
+        },
         ztin: function ztin(row, arr) {
             var status = arr.indexOf(row.srstate);
             if (status > -1) {
@@ -42634,9 +42669,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         //时间戳转日期格式
-        changeDate: function changeDate(row, column) {
+        changeDate: function changeDate(skdate) {
             var newDate = new Date();
-            newDate.setTime(row.skdate);
+            newDate.setTime(skdate);
             return newDate.toLocaleDateString();
         },
 
@@ -45472,6 +45507,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 ;
 
@@ -45695,7 +45735,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         day: function day(riqi) {
             if (riqi != '') {
-                return new Date(riqi).getFullYear();
+                return new Date(riqi).getDate();
             } else {
                 return '';
             }
@@ -45722,8 +45762,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //获取区域的中
         getquyu: function getquyu(str1) {
             var str1 = str1;
-            var str2 = "市";
+            var str2 = "区";
             var s = str1.indexOf(str2);
+            s = s - 1;
             var str3 = str1.substr(3, s);
             //alert(111);
             //alert(str3);
@@ -102501,13 +102542,17 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(329)
+}
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(115),
   /* template */
   __webpack_require__(249),
   /* styles */
-  null,
+  injectStyle,
   /* scopeId */
   null,
   /* moduleIdentifier (server only) */
@@ -103117,13 +103162,17 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(330)
+}
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(132),
   /* template */
   __webpack_require__(279),
   /* styles */
-  null,
+  injectStyle,
   /* scopeId */
   null,
   /* moduleIdentifier (server only) */
@@ -105864,9 +105913,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "fkdate",
       "label": "付款日期",
-      "width": "120",
-      "formatter": _vm.changeDate
-    }
+      "width": "120"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('p', {
+          class: _vm.tableClassName(scope.row.fkdate)
+        }, [_vm._v("  " + _vm._s(_vm.changeDate(scope.row.fkdate)))])]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "fktype",
@@ -110669,7 +110725,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.quyu = $event.target.value
         }
       }
-    }), _vm._v("区（县）"), _c('input', {
+    }), _vm._v("（县）"), _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -110741,29 +110797,39 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "type": "text",
         "value": "办公"
       }
-    }), _vm._v("，房屋性质"), _c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (item.leixing),
-        expression: "item.leixing"
-      }],
+    }), _vm._v("，房屋性质\n        "), (item.leixing == 1) ? _c('input', {
       staticStyle: {
         "width": "70px"
       },
       attrs: {
-        "type": "text"
-      },
-      domProps: {
-        "value": (item.leixing)
-      },
-      on: {
-        "input": function($event) {
-          if ($event.target.composing) { return; }
-          item.leixing = $event.target.value
-        }
+        "type": "text",
+        "value": "公寓"
       }
-    }), _vm._v("，根据房产性质及政府相关规定可以进行工商注册的房屋，甲方向乙方提供业主身份证及房屋所有权证复印件，乙方自行到相关部门办理工商注册事宜，并由乙方自行承担注册不成功之风险。\n    ")])])
+    }) : _vm._e(), _vm._v(" "), (item.leixing == 2) ? _c('input', {
+      staticStyle: {
+        "width": "70px"
+      },
+      attrs: {
+        "type": "text",
+        "value": "写字楼"
+      }
+    }) : _vm._e(), _vm._v(" "), (item.leixing == 3) ? _c('input', {
+      staticStyle: {
+        "width": "70px"
+      },
+      attrs: {
+        "type": "text",
+        "value": "商铺"
+      }
+    }) : _vm._e(), _vm._v(" "), (item.leixing == 4) ? _c('input', {
+      staticStyle: {
+        "width": "70px"
+      },
+      attrs: {
+        "type": "text",
+        "value": "住宅"
+      }
+    }) : _vm._e(), _vm._v("\n        ，根据房产性质及政府相关规定可以进行工商注册的房屋，甲方向乙方提供业主身份证及房屋所有权证复印件，乙方自行到相关部门办理工商注册事宜，并由乙方自行承担注册不成功之风险。\n    ")])])
   }), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _c('p', _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
     return _c('span', [_vm._v("\n               自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日止。免租期内乙方不支付租金，以便于乙方进行装饰装修及办理入住手续等事宜。免租期内物业管理费、供暖费由 □甲方 □乙方 承担。\n        ")])
   })), _vm._v(" "), _vm._m(6), _c('p', [_vm._v("      自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止。\n    ")]), _vm._v(" "), _c('p', [_vm._v("      （三）合同期满乙方仍使用该房屋，乙方应提前90天通知甲方，双方协商同意后另行签署新的租赁合同；若乙方未提前90日提出书面续租申请视为乙方放弃续租权，在此期间乙方应配合甲方带领未来租户看房。在同等市场条件下，乙方拥有优先承租权。")]), _vm._v(" "), _vm._m(7), _vm._v(" "), _c('p', [_vm._v("       （一）乙方按照下列标准向甲方支付租金（以人民币进行结算）："), _vm._l((_vm.addDate.zujinList), function(item, index) {
@@ -114164,13 +114230,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleJieyuewancheng(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("解约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [10])) ? _c('el-dropdown-item', [_c('el-button', {
-          on: {
-            "click": function($event) {
-              _vm.handleCheckJieyue(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("查看协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("解约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.openEndDialog(scope.$index, scope.row)
@@ -114589,9 +114649,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "skdate",
       "label": "收款日期",
-      "formatter": _vm.changeDate,
       "width": "120"
-    }
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('p', {
+          class: _vm.tableClassName(scope.row.skdate)
+        }, [_vm._v("  " + _vm._s(_vm.changeDate(scope.row.skdate)))])]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "sktype",
@@ -126730,6 +126797,86 @@ if (false) {
   if (module.hot.data) {
      require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-1687addf", module.exports)
   }
+}
+
+/***/ }),
+/* 327 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.el-table .info-row {\n    color:red;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 328 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.el-table .info-row {\n    color:red;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 329 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(327);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("7272c20d", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0e6140ac\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./payableList.vue", function() {
+     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0e6140ac\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./payableList.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 330 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(328);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("84c44882", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bd4c2e6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./receivableList.vue", function() {
+     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bd4c2e6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./receivableList.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
 }
 
 /***/ })
