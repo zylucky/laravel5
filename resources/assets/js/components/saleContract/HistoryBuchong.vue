@@ -151,10 +151,11 @@
             },
             getList(){
                 buchongSaleContractList(this.$route.query).then((res)=>{
-                    alert(22);
+                    //alert(22);
                     this.youhuaList = res.data.data;
                     this.total = res.total;
                     console.log(this.$route.query);
+                    console.log(res.data.data);
                 });
             },
             handleView(index,row){
