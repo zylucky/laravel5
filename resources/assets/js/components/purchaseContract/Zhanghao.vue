@@ -4,7 +4,7 @@
             <div style="margin-top:30px;list-style-type:none;"></div>
             <li v-for="officeList in officeList" style="list-style-type:none;" >
                 <el-row>
-                    <el-col :span="4">
+                    <el-col :span="6">
                         <span>合同编号：{{bianhao}}</span>
                     </el-col>
                     <el-col :span="4">
@@ -27,59 +27,31 @@
         </el-row>
         <el-row>
             <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-                <!--<el-table-column prop="zhanghu" label="收款方户名" width="300" >
-                 <el-input v-model="zhanghu"></el-input>
-                </el-table-column>-->
                 <el-table-column
                         label="收款方户名"
-                        width="365">
+                        width="200">
                     <template scope="scope">
-                        <el-input v-model="scope.row.zhanghu" @blur="updataZhanghao(scope.$index, scope.row)"></el-input>
+                        <el-input v-model="scope.row.zhanghu" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
                 <el-table-column
                         label="收款方银行"
-                        width="365">
+                        width="300">
                     <template scope="scope">
-                        <el-input v-model="scope.row.yinhang" @blur="updataZhanghao(scope.$index, scope.row)"></el-input>
+                        <el-input v-model="scope.row.yinhang" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
                 <el-table-column
                         label="收款账号"
-                        width="365">
+                        width="300">
                     <template scope="scope">
-                        <el-input v-model="scope.row.zhanghao" @blur="updataZhanghao(scope.$index, scope.row)"></el-input>
+                        <el-input v-model="scope.row.zhanghao" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
-                <!--<el-table-column
-                        label="添加时间"
-                        width="365">
-                    <template scope="scope">
-                        <el-input v-model="scope.row.tianjiadate"></el-input>
-                    </template>
-                </el-table-column>-->
-                <el-table-column prop="tianjiadate" label="添加时间"  sortable>
-                </el-table-column>-->
-                <!--<el-table-column prop="yinhang" label="收款方银行"  sortable>
+                <el-table-column prop="tianjiadate" label="添加时间"  :formatter="changeDate"  sortable>
                 </el-table-column>
-                <el-table-column prop="zhanghao" label="收款账号"   sortable>
+                <el-table-column prop="laiyuantype"  label="来源"   :formatter="formatStatus" sortable>
                 </el-table-column>
-                <el-table-column prop="tianjiadate" label="添加时间"  sortable>
-                </el-table-column>-->
-
-
-
-
-
-
-
-                <!--<el-row>
-                    <el-col :span="20">
-                        <el-form-item label="">
-                            <el-input v-model="zhanghu"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>-->
                 <el-table-column label="操作" width="170">
                     <template scope="scope">
                         <el-dropdown   menu-align="start">
@@ -110,26 +82,24 @@
         </el-col>
         <el-dialog size="tiny" title="付款账号管理" v-model="Visible" :close-on-click-modal="false">
             <el-form  label-width="120px"  ref="sureForm" :rules="zhanghaoRules" :model="zhanghao">
-                <el-input type="hidden" prop="hetongid"  v-model="hetongid" auto-complete="off"></el-input>
-                <el-input type="hidden" prop="qbianhao"  v-model="qbianhao" auto-complete="off"></el-input>
                 <el-row>
                     <el-col :span="20">
                         <el-form-item label="付款方户名：" prop="zhanghu" required>
-                            <el-input v-model="zhanghu"></el-input>
+                            <el-input v-model="zhanghao.zhanghu"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="20">
-                        <el-form-item label="付款银行：" prop="yinheng" required>
-                            <el-input v-model="yinheng"></el-input>
+                        <el-form-item label="付款银行：" prop="yinhang" required>
+                            <el-input v-model="zhanghao.yinhang"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="20">
                         <el-form-item label="付款账号：" prop="zhanghao" required>
-                            <el-input v-model="zhanghao"></el-input>
+                            <el-input v-model="zhanghao.zhanghao"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -155,34 +125,27 @@
                 listLoading:false,
                 bianhao:null,
                 officeList:[{
-                    //hetongtype:null,
                     loupanName:null,
                     loudongName:null,
                     fanghao:null,
                 }],
-                /*zhanghao:{
-                    id:null,
-                    Visible:false,
-                    tHetongId:null,
-                    zhanghu:null,
-                    yinheng:null,
-                    zhanghao:null,
-                    Loading:null,
-                },*/
                 id:null,
                 Visible:false,
-                hetongid:null,
-                qbianhao:null,
-                zhanghu:null,
-                yinheng:null,
-                zhanghao:null,
+                zhanghao:{
+                    hetongid:null,
+                    hetongbianhao:null,
+                    zhanghu:null,
+                    yinhang:null,
+                    zhanghao:null,
+                    hetongtid: 0,
+                },
                 tianjiadate:null,
                 Loading:null,
                 zhanghaoRules:{
                     zhanghu: [
                         { required: true, message: '不能为空'}
                     ],
-                    yinheng: [
+                    yinhang: [
                         { required: true, message: '不能为空'}
                     ],
                     zhanghao: [
@@ -199,6 +162,24 @@
             }
         },
         methods: {
+            hanshu(row){
+                return row.laiyuantype==3?true:false;
+            },
+            //时间戳转日期格式
+            changeDate(row, column){
+                var newDate = new Date();
+                newDate.setTime(row.tianjiadate);
+                if(row.tianjiadate!=null){
+                    return newDate.toLocaleDateString()
+                }
+            },
+            formatStatus(row, column){
+                let status = [];
+                status[1] = '合同';
+                status[2] = '新增';
+                status[3] = '财务';
+                return status[row.laiyuantype];
+            },
             //获取付款账号的数据列表
             purchaseZhanghaoContractList() {
                 let para = {
@@ -207,35 +188,24 @@
                     htid: this.$route.query.id,
                     httid:0,
                 }
-                //console.log(111);
-                //console.log(this.page);
-                //console.log(this.pageSize);
-                //console.log(para);
                 this.listLoading = true;
                 getZhanghaoPurchaseContractList(para).then((res) => {
-                    //console.log(12222);
-                    console.log(res.data.data);
                     this.total = res.data.total;
-                    //this.fuzhi1(res);
                     this.lists = res.data.data;
                     this.listLoading = false;
-
                 });
             },
             handleSizeChange(val) {
-                /*console.log(`每页 ${val} 条`);*/
                 this.pageSize = val;
                 this.purchaseZhanghaoContractList();
             },
             handleCurrentChange(val) {
-                /*console.log(`当前页: ${val}`);*/
                 this.page = val;
                 this.purchaseZhanghaoContractList();
             },
             getPurchaseContract(id){
                 getPurchaseContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
-                        //alert(11);
                         this.fuzhi(res);
                     }else {
                         this.$message({
@@ -256,25 +226,17 @@
             handleEnd(index,row){
                 this.$refs.sureForm.validate((valid) => {
                     if(valid){
-                        let para1 = {
-                            zhanghao:this.zhanghao,
-                            yinheng:this.yinheng,
-                            zhanghu:this.zhanghu,
-                            hetongid:this.hetongid,
-                            hetongtid:0,
-                            hetongbianhao:this.qbianhao,
-                        }
-                        console.log(para1);
-                        alert(222);
+                        let para1 = this.zhanghao;
                         this.Visible = false;
                         zhanghaoSavePurchaseContract(para1).then((res)=>{
-                            alert(11);
                             if(res.data.code!='200'){
                                 this.$message({
                                     message: '数据没有保存成功',
                                     type: 'error'
                                 });
                             }
+                            this.purchaseZhanghaoContractList();
+
                         });
                     }
                 });
@@ -282,18 +244,13 @@
             },
             //失去焦点事件
             updataZhanghao(index, row){
-                alert(333);
-                console.log(1111);
-                console.log(index, row);
                 let para = {
                     tHtYinhangzhanghaoId: row.tHtYinhangzhanghaoId,
                     zhanghu: row.zhanghu,
                     yinhang: row.yinhang,
                     zhanghao: row.zhanghao,
                 };
-                console.log(para);
                 zhanghaoUpdataPurchaseContract(para).then((res)=>{
-                    alert(11);
                     if(res.data.code!='200'){
                         this.$message({
                             message: '数据没有保存成功',
@@ -309,46 +266,31 @@
                     type: 'warning'
                 }).then(() => {
                     this.listLoading = true;
-                    let para = {id: row.id};
-                    removeZhanghaopurchaseContract(para).then((res) => {
+                    let para = {id: row.tHtYinhangzhanghaoId};
+                    removeZhanghaoPurchaseContract(para).then((res) => {
                         this.listLoading = false;
-                        this.message({
+                        this.$message({
                             message: '删除成功',
                             type: 'success'
                         });
-                        this.getUsers();
+                        this.purchaseZhanghaoContractList();
                     });
-                }).catch(() => {
-
+                }).catch((res) => {
+                    console.log(res)
                 });
             },
             fuzhi(res){
-                //console.log(res.data.data);
                 this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
-                this.qbianhao = res.data.data.bianhao;
                 this.officeList = res.data.data.officeList;
-                //console.log(this.officeList);
-                //console.log(this.jieyueXieyi);
+                console.log(this.officeList)
             },
-            /*fuzhi1(res){
-                console.log(333333);
-                console.log(res.data.data);
-                this.yinheng = res.data.data.yinheng;
-                this.zhanghao = res.data.data.zhanghao;
-                this.zhanghu = res.data.data.zhanghu;
-                this.tianjiadate = res.data.data.tianjiadate;
-                console.log(this.zhanghu);
-                console.log(res.data.data.zhanghu[0]);
-                //console.log(this.jieyueXieyi);
-            },*/
         },
         mounted(){
             this.purchaseZhanghaoContractList();
+            this.zhanghao.hetongid = this.$route.query.id;
             //根据url得到的合同ID，来获取数据
             if(this.$route.query.id!=null){
-                //alert(11);
-                //console.log(this.$route.query);
                 this.getPurchaseContract(this.$route.query);
             }
         }
