@@ -65,38 +65,39 @@
             >
             </el-pagination>
         </el-col>
-        <el-dialog size="small" title="新增签单人" v-model="Visible" :close-on-click-modal="false" style="height:800px;margin-top:150px;over-flow:hidden;">
+        <el-dialog title="新增签单人" v-model="Visible" :close-on-click-modal="false" style="max-height:700px;margin-top:150px;over-flow:hidden;">
             <el-form  label-width="150px"  ref="sureForm" :rules="zhanghaoRules" :model="qiandanren">
                 <el-input type="hidden" prop="tHetongId"  v-model="qiandanren.tHetongId" auto-complete="off"></el-input>
-                <div style="height:500px;border:0px solid #8391a5;overflow:auto;">
+                <div style="max-height:400px;border:0px solid #8391a5;overflow:auto;">
                 <div v-for="(item, index) in qiandanren" style="height:150px;">
                     <el-row>
                         <el-col :span="10">
                             <el-form-item label="签单人姓名">
-                                <el-input v-model="qiandanren.qiandanname"></el-input>
+                                <el-input v-model="qiandanren[index].qiandanname"></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="10">
                             <el-form-item label="签单人所占比例">
-                                <el-input v-model="qiandanren.bilei"></el-input>
+                                <el-input v-model="qiandanren[index].bilei"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
                         <el-col :span="10">
                             <el-form-item label="签单人上级领导">
-                                <el-input v-model="qiandanren.lingdao"></el-input>
+                                <el-input v-model="qiandanren[index].lingdao"></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="10">
                             <el-form-item label="签单人部门">
-                                <el-input v-model="qiandanren.bumen"></el-input>
+                                <el-input v-model="qiandanren[index].bumen"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                 </div>
                 </div>
                 <el-button v-show="editVisible"  @click="addqiandan" style="position:fixed;bottom:1%;left:6%;">添加</el-button>
+                <el-button v-show="editVisible"  @click.prevent="removeQiandan(item)" style="position:fixed;bottom:1%;left:12%;">删除</el-button>
             </el-form>
             </div>
             <div slot="footer" class="dialog-footer" style="position:fixed;bottom:1%;left:80%;">
@@ -197,6 +198,13 @@
                     lingdao:'',
                     bumen:'',
                 });
+            },
+            removeQiandan(item) {
+                this.qiandanren.pop();
+                var index = this.qiandanren.indexOf(item)
+                if (index !== -1) {
+                    this.qiandanren.splice(index, 1)
+                }
             },
             getSaleContract(id){
                 getSaleContractInfo(id).then((res)=>{

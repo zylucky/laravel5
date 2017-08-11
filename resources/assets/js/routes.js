@@ -17,6 +17,8 @@ import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue
 import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimize.vue";
 import PurchaseContractCheckOptimizeList from "./components/purchaseContract/HistoryOptimize.vue";
 import PurchaseContractDump20170719 from "./components/purchaseContract/Dump20170719.vue";//版本1
+import PurchaseContractZhanghao from "./components/purchaseContract/Zhanghao.vue";
+import PurchaseContractHedan from "./components/saleContract/Hedan.vue";
 
 
 //出房合同
@@ -136,6 +138,8 @@ let routes = [
             { path:'/purchaseContract/checkOptimize',component:PurchaseContractCheckOptimize,name:'收房协议查看',hidden:true},
             { path:'/purchaseContract/checkOptimizeList',component:PurchaseContractCheckOptimizeList,name:'历史协议',hidden:true},
             { path:'/purchaseContract/upload',component:PurchaseContractUpload,name:'上传扫描件',hidden:true},
+            { path:'/purchaseContract/zhanghao',component:PurchaseContractZhanghao,name:'收房收款账号',hidden:true},
+            { path:'/purchaseContract/hedan',component:PurchaseContractHedan,name:'收房合单管理',hidden:true},
 
 
 
