@@ -5,33 +5,57 @@
             <el-table-column type="expand">
                 <template scope="props">
                     <el-form label-position="left" inline class="demo-table-expand">
-                        <el-form-item label="解约方式">
-                            <span>{{ props.row.jieyuefangshi  }}</span>
+                        <el-form-item label="解约方式" v-if="props.row.Jieyuefangshi == 1">
+                            <span>退租</span>
+                        </el-form-item>
+                        <el-form-item label="解约方式" v-if="props.row.Jieyuefangshi == 2">
+                            <span>扩租</span>
+                        </el-form-item>
+                        <el-form-item label="解约方式" v-if="props.row.Jieyuefangshi == 3">
+                            <span>缩租</span>
+                        </el-form-item>
+                        <el-form-item label="工商营业执照迁出" v-if="props.row.Zhizhaoqianchu == 0">
+                            <span>否</span>
+                        </el-form-item>
+                        <el-form-item label="工商营业执照迁出" v-if="props.row.Zhizhaoqianchu == 1">
+                            <span>是</span>
+                        </el-form-item>
+                        <el-form-item label="交房日期">
+                            <span>{{ props.row.JiaofangDate }}</span>
                         </el-form-item>
                         <el-form-item label="合同终止日期">
-                            <span>{{ changedate(props.row.zhongzhidate)  }}</span>
+                            <span>{{ props.row.ZhongzhiDate  }}</span>
                         </el-form-item>
                     </el-form>
-                    <el-form label-position="left" inline class="demo-table-expand"
+                    <!--<el-form label-position="left" inline class="demo-table-expand"
                              v-if="props.row.zujinList.length>0 "
                              v-for=" (item,index) in props.row.zujinList"
                              :key="index">
-                        <!--<el-form-item label="合同终止日期">
+                        &lt;!&ndash;<el-form-item label="合同终止日期">
                             <span>{{ changedate(item.startdate)  }}</span>
-                        </el-form-item>-->
+                        </el-form-item>&ndash;&gt;
                         <el-form-item label="交房日期">
                             <span>{{ changedate(item.enddate)  }}</span>
                         </el-form-item>
                         <el-form-item label="">
-
+                        </el-form-item>
+                    </el-form>-->
+                    <el-form label-position="left" inline class="demo-table-expand">
+                        <el-form-item label="退还押金">
+                            <span>{{ props.row.Tuihuanyajin}}</span>
+                        </el-form-item>
+                        <el-form-item label="退还剩余房租">
+                            <span>{{props.row.Tuihuanfangzu}}</span>
+                        </el-form-item>
+                        <el-form-item label="应收杂费">
+                            <span>{{ props.row.Yingshouzafei}}</span>
                         </el-form-item>
                     </el-form>
-                    <span>交房日期：{{ props.row.jiaofangdate }}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <!--<span>交房日期：{{ props.row.jiaofangdate }}&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span>工商营业执照迁出：{{props.row.zhizhaoqianchu}}</span>
                     <span>退还押金：{{ props.row.tuihuanyajin}}</span>
                     <span>退还剩余房租：{{props.row.tuihuanfangzu}}</span>
-                    <span>应收杂费：{{ props.row.yingshouzafei}}</span>
-
+                    <span>应收杂费：{{ props.row.yingshouzafei}}</span>-->
                 </template>
             </el-table-column>
             <el-table-column type="index" width="60">
@@ -44,7 +68,7 @@
             </el-table-column>
             <el-table-column prop="Fanghao" label="房间号"  >
             </el-table-column>
-            <el-table-column prop="ZhongzhiDate" label="解约时间" :formatter="changeDate"   sortable>
+            <el-table-column prop="ZhongzhiDate" label="解约时间" sortable>
             </el-table-column>
         </el-table>
     </div>
