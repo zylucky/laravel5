@@ -114,9 +114,17 @@
                             label:null,
                         }
                     ],
+                    options2:[
+                        {
+                            value:null,
+                            label:null,
+                        }
+                    ],
                     chengzufang:'',
                     jujianfang:'',
                     jujianfangid:null,
+                    qudaorenid:'',
+                    qudaoren:'',
                     yezhuleixing:1,
                     //产权人
                     chanquanrenList:[
@@ -145,6 +153,7 @@
                     qianyuerenId:'',
                 },
                 addDate: {
+                    shijiyuezujin:null,
                     flag:null,
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
@@ -239,6 +248,7 @@
                 this.submsg  = '提交';
                     var child_property = this.$refs.property.property;//
                     var child_owner  = this.$refs.owner.owner;//业主信息
+                console.log(child_owner)
                     var child_date = this.$refs.date.addDate;//日期
                     var tiaokuan = {
                         tiaoList:this.$refs.tiaokuan.tiaoList,
@@ -360,9 +370,13 @@
 
                 this.owner.jujianfang = res.data.data.jujianfang;//
                 this.owner.jujianfangid = res.data.data.jujianfangid;
+//                this.owner.qudaoren = res.data.data.qudaoren;//
+//                this.owner.qudaorenid = res.data.data.qudaorenid;
 
                 this.owner.options1[0].value = res.data.data.jujianfangid;
                 this.owner.options1[0].label = res.data.data.jujianfang;
+//                this.owner.options2[0].value = res.data.data.qudaorenid;
+//                this.owner.options2[0].label = res.data.data.qudaoren;
 
                 this.owner.yezhuleixing = res.data.data.yezhuleixing;
                 this.owner.shoukuanren = res.data.data.shoukuanren;
@@ -386,6 +400,7 @@
                 this.addDate.yajin = res.data.data.yajin;
                 this.addDate.zongyingfuzujin = res.data.data.zongyingfuzujin;
                 this.addDate.yongjin = res.data.data.yongjin;
+                this.addDate.shijiyuezujin = res.data.data.shijiyuezujin;
                 this.addDate.tiqianfukuantian = res.data.data.tiqianfukuantian;
                 this.addDate.beianqixian = res.data.data.beianqixian;
                 this.addDate.yajinfukuanri = res.data.data.yajinfukuanri;

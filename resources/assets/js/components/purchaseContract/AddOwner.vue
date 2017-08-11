@@ -13,24 +13,48 @@
                 </el-radio-group>
 
             </el-form-item>
-            <el-form-item label="居间方">
-                <el-select
-                        id="jujianfang"
-                        v-model="owner.jujianfangid"
-                        filterable
-                        remote
-                        @change="changeOnSelect"
-                        placeholder="渠道公司名称"
-                        :remote-method="remoteMethod1"
-                        :loading="bkNameloading">
-                    <el-option
-                            v-for="item in owner.options1"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-            </el-form-item>
+            <el-row>
+                <el-col  :span="8">
+                    <el-form-item label="居间方">
+                        <el-select
+                                id="jujianfang"
+                                v-model="owner.jujianfangid"
+                                filterable
+                                remote
+                                @change="changeOnSelect1"
+                                placeholder="渠道公司名称"
+                                :remote-method="remoteMethod1"
+                                :loading="bkNameloading">
+                            <el-option
+                                    v-for="item in owner.options1"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-col>
+                <el-col  :span="8">
+                    <el-form-item label="渠道人员">
+                    <el-select
+                            id="jujianfang"
+                            v-model="owner.qudaorenid"
+                            filterable
+                            remote
+                            @change="changeOnSelect2"
+                            placeholder="渠道人员"
+                            :remote-method="remoteMethod2"
+                            :loading="bkryNameloading">
+                        <el-option
+                                v-for="item in owner.options2"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                </el-col>
+            </el-row>
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="收款人" prop="shoukuanren" required>
@@ -199,12 +223,16 @@
     </div>
 </template>
 <script>
-    import {getbkNameList} from '../../api/api';;
+    import {
+        getbkNameList,
+        getBrokerCompanyUserListPage,
+    } from '../../api/api';;
     export default{
         data(){
             return {
                 labelPosition:'right',
                 bkNameloading:false,
+                bkryNameloading:false,
                 estate: [],//服务器搜索的渠道公司数据放入这个数组中
                 editVisible:true,
                 editOwnerRules :{
@@ -238,11 +266,19 @@
                     this.owner.flag = valid;
                 });
             },
-            changeOnSelect(){
+            changeOnSelect1(){
                 var arr = this.owner.options1;
                 for (let i=0;i<arr.length;i++ ){
                     if(arr[i].value==this.owner.jujianfangid){
                         this.owner.jujianfang = arr[i].label;
+                    }
+                }
+            },
+            changeOnSelect2(){
+                var arr = this.owner.options2;
+                for (let i=0;i<arr.length;i++ ){
+                    if(arr[i].value==this.owner.qudaorenid){
+                        this.owner.qudaoren = arr[i].label;
                     }
                 }
             },
@@ -274,6 +310,39 @@
                         }, 200);
                     } else {
                         this.owner.options1 = [];
+                    }
+                });
+
+            },
+            //获取渠道人员
+            remoteMethod2(query) {
+                let para = {
+                    username: query,
+                    id:this.owner.jujianfangid!=null?this.owner.jujianfangid:'',
+                };
+                this.bkryNameloading = true;
+                getBrokerCompanyUserListPage(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for ( var i in res.data.data ){
+                        arr[i]=res.data.data[i]
+                    }
+                    this.estate = arr;
+                    this.bkryNameloading = false;
+                    this.list = this.estate.map((item,index) => {
+                        return { value: item.tQdPersonId, label: item.qdPername };
+                    });
+                    if (query !== '') {
+                        this.bkryNameloading = true;
+                        setTimeout(() => {
+                            this.bkryNameloading = false;
+                            this.owner.options2 = this.list.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.owner.options2 = [];
                     }
                 });
 
