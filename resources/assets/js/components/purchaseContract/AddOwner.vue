@@ -17,7 +17,6 @@
                 <el-col  :span="8">
                     <el-form-item label="居间方">
                         <el-select
-                                id="jujianfang"
                                 v-model="owner.jujianfangid"
                                 filterable
                                 remote
@@ -37,7 +36,6 @@
                 <el-col  :span="8">
                     <el-form-item label="渠道人员">
                     <el-select
-                            id="jujianfang"
                             v-model="owner.qudaorenid"
                             filterable
                             remote
@@ -273,6 +271,8 @@
                         this.owner.jujianfang = arr[i].label;
                     }
                 }
+                this.owner.qudaoren=null;
+                this.owner.qudaorenid=null;
             },
             changeOnSelect2(){
                 var arr = this.owner.options2;
@@ -303,10 +303,7 @@
                         this.bkNameloading = true;
                         setTimeout(() => {
                             this.bkNameloading = false;
-                            this.owner.options1 = this.list.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query) > -1;
-                            });
+                            this.owner.options1 = this.list;
                         }, 200);
                     } else {
                         this.owner.options1 = [];
@@ -336,10 +333,7 @@
                         this.bkryNameloading = true;
                         setTimeout(() => {
                             this.bkryNameloading = false;
-                            this.owner.options2 = this.list.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query) > -1;
-                            });
+                            this.owner.options2 = this.list;
                         }, 200);
                     } else {
                         this.owner.options2 = [];

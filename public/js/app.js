@@ -38224,8 +38224,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -38271,6 +38269,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.owner.jujianfang = arr[i].label;
                 }
             }
+            this.owner.qudaoren = null;
+            this.owner.qudaorenid = null;
         },
         changeOnSelect2: function changeOnSelect2() {
             var arr = this.owner.options2;
@@ -38304,9 +38304,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.bkNameloading = true;
                     setTimeout(function () {
                         _this2.bkNameloading = false;
-                        _this2.owner.options1 = _this2.list.filter(function (item) {
-                            return item.label.toLowerCase().indexOf(query) > -1;
-                        });
+                        _this2.owner.options1 = _this2.list;
                     }, 200);
                 } else {
                     _this2.owner.options1 = [];
@@ -38338,9 +38336,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this3.bkryNameloading = true;
                     setTimeout(function () {
                         _this3.bkryNameloading = false;
-                        _this3.owner.options2 = _this3.list.filter(function (item) {
-                            return item.label.toLowerCase().indexOf(query) > -1;
-                        });
+                        _this3.owner.options2 = _this3.list;
                     }, 200);
                 } else {
                     _this3.owner.options2 = [];
@@ -119087,7 +119083,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-select', {
     attrs: {
-      "id": "jujianfang",
       "filterable": "",
       "remote": "",
       "placeholder": "渠道公司名称",
@@ -119122,7 +119117,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-select', {
     attrs: {
-      "id": "jujianfang",
       "filterable": "",
       "remote": "",
       "placeholder": "渠道人员",
