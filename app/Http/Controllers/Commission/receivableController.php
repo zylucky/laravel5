@@ -125,18 +125,18 @@ class receivableController extends Controller
 
         //以后用户会从OMC取
         $user=    Array(
-            'faqirenid'=>1,
-            'faqiren'=>'张三',
+            'personid'=>1,
+            'persnoname'=>'张三',
         );
 
         $obj=array_merge($request->params,$user);
-        //dd($obj);
+        // dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
 
-        $r = $client->request('POST', '/api/cw/yf/submit', [
+        $r = $client->request('POST', '/api/cw/ys/submit', [
             'json' => $obj
         ]);
         return $r->getBody();
@@ -150,13 +150,13 @@ class receivableController extends Controller
         );
 
         $obj=array_merge($request->params,$user);
-        // dd($obj);
+     //  dd(  json_encode($obj));
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
 
-        $r = $client->request('POST', '/api/cw/yf/alter/fkrq', [
+        $r = $client->request('POST', '/api/cw/ys/alter/skrq', [
             'json' => $obj
         ]);
         return $r->getBody();
@@ -171,13 +171,13 @@ class receivableController extends Controller
         );
 
         $obj=array_merge($request->params,$user);
-        // dd($obj);
+         //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
 
-        $r = $client->request('POST', '/api/cw/yf/alter/fkje', [
+        $r = $client->request('POST', '/api/cw/ys/alter/skje', [
             'json' => $obj
         ]);
         return $r->getBody();

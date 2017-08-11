@@ -365,7 +365,7 @@
                 this.pageSize =val;
                 this.getBrokerCompanyUser();
             },
-            //获取渠道公司列表
+            //获取渠道人员列表
             getBrokerCompanyUser() {
                 let para = {
                     page: this.page,

@@ -1,50 +1,39 @@
 
 <template>
     <el-row >
-        <el-table :data="ReceivableRecord" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column prop="hetongbianhao" label="合同编号"  >
+        <el-table :data="ReceivableRecord" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"  style="width: 100%;">
+            <el-table-column prop="hetongbianhao" label="合同编号" width="200"  >
             </el-table-column>
-            <el-table-column prop="xiangmu" label="项目"  >
+            <el-table-column prop="xiangmu" label="项目" width="200"  >
             </el-table-column>
-            <el-table-column prop="tijiaodate" label="提交日期"   :formatter="changeTJDate">
+            <el-table-column prop="tijiaoriqi" label="提交日期" width="150"   :formatter="changeTJDate">
             </el-table-column>
-            <el-table-column prop="fukuankemu" label="付款科目">
+            <el-table-column prop="kemu" label="收款科目" width="150"  :formatter="formatFKType">
             </el-table-column>
-            <el-table-column prop="tijiaomoney" label="提交金额" >
+            <el-table-column prop="tijiaomoney" label="提交金额" width="150" >
             </el-table-column>
-            <el-table-column prop="fukuanmoney" label="付款金额" >
+            <el-table-column prop="shoukuanmoney" label="收款金额" width="150" >
             </el-table-column>
-            <el-table-column prop="fukuandate" label="付款日期"  :formatter="changeFKDate">
+            <el-table-column prop="shoukuandate" label="收款日期"  :formatter="changeSKDate">
             </el-table-column>
-            <el-table-column prop="faqiren" label="发起人" >
+            <el-table-column prop="persnoname" label="发起人" width="150" >
             </el-table-column>
-            <el-table-column prop="skyinhang" label="收款银行及账号"   width="200" :formatter="formatskyh">
+            <el-table-column   label="付款银行及账号"   width="200" :formatter="formatskyh">
+            </el-table-column>
+            <el-table-column label="操作" width="150">
+                <template scope="scope">
+                    <el-button   @click="handleRokeBack(scope.$index, scope.row)">取消认领</el-button>
+                </template>
             </el-table-column>
            </el-table>
-           <div style="margin-top:30px"></div>
-           <!-- 分页-->
-        <el-col :span="24" class="toolbar" >
-            <el-pagination
-                    @size-change="handleSizeChange"
-                    @current-change="handleCurrentChange"
-                    :current-page="currentPage"
-                    :page-size="10"
-                    layout="total, sizes, prev, pager, next, jumper"
-                    :total=total
-                    style="float:right"
-            >
-            </el-pagination>
-        </el-col>
+
     </el-row>
 </template>
 <script>
 
     import {
         getReceivableRecordListPage,
-
-       // getUserNameByID,
-
-
+        cancelClaim,
     } from '../../api/api';
     import ElForm from "../../../../../node_modules/element-ui/packages/form/src/form";
     export default{
@@ -61,16 +50,10 @@
                     },
                 ],
                 showed:false,
-                //分页类数据
-                total:0,
-                currentPage:0,
-                pageSize:10,
-                pageSizes:[10, 20, 30, 40, 50, 100],
+
                 ReceivableRecord:[],
                 listLoading: false,
-                sels: [],//列表选中列
-                //被选中的权限
-                checked:[],
+
             }
         },
         methods:{
@@ -78,33 +61,31 @@
             //时间戳转日期格式
             changeTJDate(row, column){
                 var newDate = new Date();
-                newDate.setTime(row.tijiaodate);
+                newDate.setTime(row.tijiaoriqi);
                 return newDate.toLocaleDateString()
             },
             //时间戳转日期格式
-            changeFKDate(row, column){
+            changeSKDate(row, column){
                 var newDate = new Date();
-                newDate.setTime(row.fukuandate);
+                newDate.setTime(row.shoukuandate);
                 return newDate.toLocaleDateString()
             },
-            //页面跳转后
-            handleCurrentChange(val) {
-                this.page = val;
-                this.getReceivableRecord();
-            },
-            //更改每页显示数据
-            handleSizeChange(val){
-                this.pageSize =val;
-                this.getReceivableRecord();
-            },
 
-
+            formatFKType(row, column){
+                let status = [];
+                status[0] = '押金';
+                status[1] = '租金';
+                return status[row.kemu];
+            },
+            //收款账号显示转换
+            formatskyh: function (row, column) {
+                return  row.fkyinhang+"\r账号:"+row.fkzhanghao;
+            },
             //获取渠道公司列表
             getReceivableRecord() {
                 let para = {
                     id:this.$route.query.id,
-                    page: this.page,
-                    pageSize: this.pageSize,
+
                 };
                 this.listLoading = true;
                 getReceivableRecordListPage(para).then((res) => {
@@ -113,14 +94,25 @@
                     this.listLoading = false;
                 });
             },
-
-            selsChange: function (sels) {
-                this.sels = sels;
+            //显示确认收款界面
+            handleRokeBack: function (index, row) {
+                this.$confirm('确认取消认领吗？', '提示', {}).then(() => {
+                    let para = {
+                        id:row.tCwSrSubmitId,
+                    }
+                    cancelClaim(para).then((res) => {
+                        this.$message({
+                            message: '提交成功',
+                            type: 'success'
+                        });
+                        this.getMessage();
+                    });
+                });
             },
 
         },
         mounted() {
-            this.page=1;
+
             this.getReceivableRecord();
 
         }
