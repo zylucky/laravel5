@@ -12,7 +12,7 @@
                 v-for="(item,index) in property.xsOffice"
                 :key="index"
         >
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="quyu" style="width:100px;">（县）<input type="text" v-model="item.weizhi" style="width:300px;">，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），产权证编号： <input type="text" v-model="item.chanquanzhenghao" value="">  。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="quyu" style="width:100px;">区（县）<input type="text" v-model="item.weizhi" style="width:300px;">，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），产权证编号： <input type="text" v-model="item.chanquanzhenghao" value="">  。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。</p>
         <p><b>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二条  房屋租赁情况
@@ -456,7 +456,6 @@
                 var str1 = str1;
                 var str2 = "区";
                 var s = str1.indexOf(str2);
-                s = s-1;
                 var str3 = str1.substr(3,s);
                 //alert(111);
                 //alert(str3);
