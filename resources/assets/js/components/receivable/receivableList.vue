@@ -45,7 +45,10 @@
             </el-table-column>
             <el-table-column prop="monthmoney" label="月租金"  >
             </el-table-column>
-            <el-table-column prop="skdate" label="收款日期" :formatter="changeDate"  width="120">
+            <el-table-column prop="skdate" label="收款日期"   width="120">
+                <template scope="scope">
+                    <p :class="tableClassName(scope.row.skdate)">  {{ changeDate(scope.row.skdate) }}</p>
+                </template>
             </el-table-column>
             <el-table-column prop="sktype" label="收款科目"    :formatter="formatFKType" width="100">
             </el-table-column>
@@ -175,6 +178,13 @@
         </el-dialog>
     </el-row>
 </template>
+<style>
+    .el-table .info-row {
+        color:red;
+    }
+
+</style>
+
 <script>
 
     import {
@@ -314,6 +324,14 @@
             }
         },
         methods:{
+            tableClassName(skdate){
+                //return 'info-row';
+                if(skdate>new Date()){
+                    return 'info-row';
+                }else{
+                    return '';
+                }
+            },
             ztin(row,arr){
                 var status = arr.indexOf(row.srstate);
                 if(status>-1){
@@ -353,9 +371,9 @@
             },
 
             //时间戳转日期格式
-            changeDate(row, column){
+            changeDate(skdate){
                 var newDate = new Date();
-                newDate.setTime(row.skdate);
+                newDate.setTime(skdate);
                 return newDate.toLocaleDateString()
             },
             //页面跳转后
