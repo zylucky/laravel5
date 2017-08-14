@@ -19,7 +19,12 @@
         </b></p>
         <p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租赁用途：
-            <input type="text" style="width: 70px;" value="办公">，房屋性质<input type="text" style="width: 70px;" v-model="item.leixing">，根据房产性质及政府相关规定可以进行工商注册的房屋，甲方向乙方提供业主身份证及房屋所有权证复印件，乙方自行到相关部门办理工商注册事宜，并由乙方自行承担注册不成功之风险。
+            <input type="text" style="width: 70px;" value="办公">，房屋性质
+            <input type="text" style="width: 70px;" v-if="item.leixing == 1" value="公寓">
+            <input type="text" style="width: 70px;" v-if="item.leixing == 2" value="写字楼">
+            <input type="text" style="width: 70px;" v-if="item.leixing == 3" value="商铺">
+            <input type="text" style="width: 70px;" v-if="item.leixing == 4" value="住宅">
+            ，根据房产性质及政府相关规定可以进行工商注册的房屋，甲方向乙方提供业主身份证及房屋所有权证复印件，乙方自行到相关部门办理工商注册事宜，并由乙方自行承担注册不成功之风险。
         </p>
         </span>
         <p><b>
@@ -425,7 +430,7 @@
             },
             day(riqi){
                 if(riqi!=''){
-                    return new Date(riqi).getFullYear();
+                    return new Date(riqi).getDate();
                 }else{
                     return '';
                 }
@@ -449,7 +454,7 @@
             //获取区域的中
             getquyu(str1){
                 var str1 = str1;
-                var str2 = "市";
+                var str2 = "区";
                 var s = str1.indexOf(str2);
                 var str3 = str1.substr(3,s);
                 //alert(111);
@@ -511,12 +516,7 @@
             function  hello() {
                 window.print()
             }
-            if(this.$route.path!='/saleContract/see'){
-                setTimeout(hello,1000);
-            }else{
-                this.listJieyue = true;
-            }
-            if(this.$route.path!='/saleContract/see'){
+            if(this.$route.path!='/saleContract/see'&&this.$route.query.isdump==1){
                 setTimeout(hello,1000);
             }else{
                 this.historyBuchong = true;

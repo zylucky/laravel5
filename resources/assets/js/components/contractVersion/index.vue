@@ -163,9 +163,9 @@
             },
             preview(index,row){
                 if(row.category == 0){
-                    window.open('/#/purchaseContract/dump'+row.version)
+                    window.open('/#/purchaseContract/dump'+row.version+'?isdump=0')
                 }else if(row.category == 1){
-                    window.open('/#/saleContract/dump'+row.version)
+                    window.open('/#/saleContract/dump'+row.version+'?isdump=0')
                 }else if(row.category == 2){
                     //window.open('/#/saleContract/dump'+version)
                 }
