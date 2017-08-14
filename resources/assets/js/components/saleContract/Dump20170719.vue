@@ -517,12 +517,7 @@
             function  hello() {
                 window.print()
             }
-            if(this.$route.path!='/saleContract/see'){
-                setTimeout(hello,1000);
-            }else{
-                this.listJieyue = true;
-            }
-            if(this.$route.path!='/saleContract/see'){
+            if(this.$route.path!='/saleContract/see'&&this.$route.query.isdump==1){
                 setTimeout(hello,1000);
             }else{
                 this.historyBuchong = true;
