@@ -33,7 +33,6 @@
             <el-tab-pane label="已提交" name="third"></el-tab-pane>
             <el-tab-pane label="部分已付" name="fourth"></el-tab-pane>
             <el-tab-pane label="已完成" name="fifth"></el-tab-pane>
-            <el-tab-pane label="已驳回" name="sixth"></el-tab-pane>
         <el-table  :data="Receivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column prop="htbianhao" label="合同编号"     width="200">
             </el-table-column>
@@ -47,7 +46,7 @@
             </el-table-column>
             <el-table-column prop="skdate" label="收款日期"   width="120">
                 <template scope="scope">
-                    <p :class="tableClassName(scope.row.skdate)">  {{ changeDate(scope.row.skdate) }}</p>
+                    <p :class="tableClassName(scope.row.skdate,scope.row.srstate)">  {{ changeDate(scope.row.skdate) }}</p>
                 </template>
             </el-table-column>
             <el-table-column prop="sktype" label="收款科目"    :formatter="formatFKType" width="100">
@@ -324,9 +323,9 @@
             }
         },
         methods:{
-            tableClassName(skdate){
+            tableClassName(skdate,srstate){
                 //return 'info-row';
-                if(skdate>new Date()){
+                if(skdate<new Date()&&srstate!=3){
                     return 'info-row';
                 }else{
                     return '';
