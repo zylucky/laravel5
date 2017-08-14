@@ -46113,7 +46113,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var str1 = str1;
             var str2 = "区";
             var s = str1.indexOf(str2);
-            s = s - 1;
             var str3 = str1.substr(3, s);
             //alert(111);
             //alert(str3);
@@ -111419,7 +111418,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.quyu = $event.target.value
         }
       }
-    }), _vm._v("（县）"), _c('input', {
+    }), _vm._v("区（县）"), _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
