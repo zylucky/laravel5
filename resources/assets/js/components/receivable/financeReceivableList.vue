@@ -90,7 +90,7 @@
                 </el-table-column>
                 <el-table-column prop="shishoumoney" label="实收金额"  >
                 </el-table-column>
-                <el-table-column prop="xiugaizhuangtai" label="修改状态"    >
+                <el-table-column prop="shiugaizhuangtai" label="修改状态"    >
                 </el-table-column>
                 <el-table-column prop="srstate" label="支付状态"  :formatter="formatRLState" >
                 </el-table-column>
@@ -158,11 +158,9 @@
     </el-row>
 </template>
 <style>
-    .el-table .info-row {
-        background: #ffff00;
-    }
+
     .el-dialog .el-table__body tr.current-row>td {
-        background: rgba(185, 221, 249, .75)!important;
+        background: rgba(26, 135, 249, 0.75) !important;
     }
 </style>
 <script>

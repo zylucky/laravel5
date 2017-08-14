@@ -36511,9 +36511,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        tableClassName: function tableClassName(fkdate) {
+        tableClassName: function tableClassName(fkdate, fkstate) {
             //return 'info-row';
-            if (fkdate > new Date()) {
+            if (fkdate < new Date() && fkstate != 3) {
                 return 'info-row';
             } else {
                 return '';
@@ -42397,8 +42397,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -42983,9 +42981,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        tableClassName: function tableClassName(skdate) {
+        tableClassName: function tableClassName(skdate, srstate) {
             //return 'info-row';
-            if (skdate > new Date()) {
+            if (skdate < new Date() && srstate != 3) {
                 return 'info-row';
             } else {
                 return '';
@@ -50868,7 +50866,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, "\n.el-table .info-row {\n    background: #ffff00;\n}\n.el-dialog .el-table__body tr.current-row>td {\n    background: rgba(185, 221, 249, .75)!important;\n}\n", ""]);
+exports.push([module.i, "\n.el-dialog .el-table__body tr.current-row>td {\n    background: rgba(26, 135, 249, 0.75) !important;\n}\n", ""]);
 
 // exports
 
@@ -110956,7 +110954,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "padding-top": "2px"
     },
     attrs: {
-      "src": '/image' + _vm.$route.path + '.png',
+      "width": "16px",
+      "height": "16px",
+      "src": '/image' + _vm.$route.path + '.ico',
       "onerror": "javascript:this.src='/image/default.png';",
       "alt": _vm.$route.name
     }
@@ -111200,7 +111200,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       key: "default",
       fn: function(scope) {
         return [_c('p', {
-          class: _vm.tableClassName(scope.row.skdate)
+          class: _vm.tableClassName(scope.row.skdate, scope.row.srstate)
         }, [_vm._v("  " + _vm._s(_vm.changeDate(scope.row.skdate)))])]
       }
     }])
@@ -121344,7 +121344,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       key: "default",
       fn: function(scope) {
         return [_c('p', {
-          class: _vm.tableClassName(scope.row.fkdate)
+          class: _vm.tableClassName(scope.row.fkdate, scope.row.fkstate)
         }, [_vm._v("  " + _vm._s(_vm.changeDate(scope.row.fkdate)))])]
       }
     }])
@@ -122351,7 +122351,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "xiugaizhuangtai",
+      "prop": "shiugaizhuangtai",
       "label": "修改状态"
     }
   }), _vm._v(" "), _c('el-table-column', {
