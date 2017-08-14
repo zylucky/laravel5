@@ -47,7 +47,7 @@
                 </el-table-column>
                 <el-table-column prop="fkdate" label="付款日期" width="120"   >
                     <template scope="scope">
-                        <p :class="tableClassName(scope.row.fkdate)">  {{ changeDate(scope.row.fkdate) }}</p>
+                        <p :class="tableClassName(scope.row.fkdate,scope.row.fkstate)">  {{ changeDate(scope.row.fkdate) }}</p>
                     </template>
                 </el-table-column>
                 <el-table-column prop="fktype" label="付款科目" width="100"   :formatter="formatFKType">
@@ -339,9 +339,9 @@
             }
         },
         methods:{
-            tableClassName(fkdate){
+            tableClassName(fkdate,fkstate){
                 //return 'info-row';
-                if(fkdate>new Date()){
+                if(fkdate<new Date()&&fkstate!=3){
                     return 'info-row';
                 }else{
                     return '';
