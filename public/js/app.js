@@ -29654,8 +29654,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -42681,7 +42679,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form__);
-//
 //
 //
 //
@@ -110800,7 +110797,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "span": 10
     }
-  }, [_vm._v("\n                " + _vm._s(_vm.collapsed ? '' : _vm.sysName) + "\n            ")]), _vm._v(" "), _c('el-col', {
+  }, [_vm._v("\n            " + _vm._s(_vm.collapsed ? '' : _vm.sysName) + "\n        ")]), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 10
     }
@@ -110950,7 +110947,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "span": 24
     }
-  }, [_vm._v("\n<<<<<<< HEAD\n                    "), _c('img', {
+  }, [_c('img', {
     staticStyle: {
       "float": "left",
       "margin-right": "10px",
@@ -110966,23 +110963,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('strong', {
     staticClass: "title"
-  }, [_vm._v(_vm._s(_vm.$route.name))]), _vm._v("\n=======\n                    "), _c('img', {
-    staticStyle: {
-      "float": "left",
-      "margin-right": "10px",
-      "display": "inline-block",
-      "padding-top": "2px"
-    },
-    attrs: {
-      "width": "16px;",
-      "height": "16px;",
-      "src": '/image' + _vm.$route.path + '.ico',
-      "onerror": "javascript:this.src='/image/default.png';",
-      "alt": _vm.$route.name
-    }
-  }), _c('strong', {
-    staticClass: "title"
-  }, [_vm._v(_vm._s(_vm.$route.name))]), _vm._v("\n>>>>>>> 7a240ac00ee09a2d0a55a3be4dbd670fcf3d1e51\n                    "), _c('el-breadcrumb', {
+  }, [_vm._v(_vm._s(_vm.$route.name))]), _vm._v(" "), _c('el-breadcrumb', {
     staticClass: "breadcrumb-inner",
     attrs: {
       "separator": "/"
@@ -110995,7 +110976,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           path: item.path
         }
       }
-    }, [_vm._v("\n                            " + _vm._s(item.name) + "\n                        ")])
+    }, [_vm._v("\n                        " + _vm._s(item.name) + "\n                    ")])
   }))], 1), _vm._v(" "), _c('el-col', {
     staticClass: "content-wrapper",
     attrs: {
@@ -111158,11 +111139,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": "已完成",
       "name": "fifth"
-    }
-  }), _vm._v(" "), _c('el-tab-pane', {
-    attrs: {
-      "label": "已驳回",
-      "name": "sixth"
     }
   }), _vm._v(" "), _c('el-table', {
     directives: [{

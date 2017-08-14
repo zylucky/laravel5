@@ -33,7 +33,6 @@
             <el-tab-pane label="已提交" name="third"></el-tab-pane>
             <el-tab-pane label="部分已付" name="fourth"></el-tab-pane>
             <el-tab-pane label="已完成" name="fifth"></el-tab-pane>
-            <el-tab-pane label="已驳回" name="sixth"></el-tab-pane>
         <el-table  :data="Receivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column prop="htbianhao" label="合同编号"     width="200">
             </el-table-column>
