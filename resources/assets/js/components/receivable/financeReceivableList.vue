@@ -32,6 +32,7 @@
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
                                <el-dropdown-item   v-if="scope.row.zhuangtai==0"><el-button   @click="handleRokeBack(scope.row)">认领</el-button></el-dropdown-item>
+                               <el-dropdown-item  ><el-button   @click="handleView(scope.$index, scope.row)">查看备注</el-button></el-dropdown-item>
                                <el-dropdown-item  > <el-button  @click="handleOpen(scope.$index, scope.row)">上传凭证</el-button> </el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
@@ -52,6 +53,11 @@
             >
             </el-pagination>
         </el-col>
+        <el-dialog title="查看备注" v-model="viewDateFormVisible" :close-on-click-modal="false">
+            <el-form :model="viewDateForm" label-width="120px"   ref="viewDateForm"  >
+                    {{viewDateForm.beizhu==null?'无数据':viewDateForm.beizhu}}
+            </el-form>
+        </el-dialog>
         <el-dialog title="应收款列表" v-model="rokeBackFormVisible" :close-on-click-modal="false"  size="large">
             <el-form :inline="true" :model="filters" class="demo-form-inline">
                 <el-form-item label="合同编号:">
@@ -238,6 +244,11 @@
                     shoukuanmoney:'',
                     zhuangtai:'',
                 },
+                viewDateFormVisible: false,//查看界面是否显示
+                //查看界面数据
+                viewDateForm: {
+                    beizhu:'',
+                },
                 totalrl:0,
                 currentPagerl:0,
                 pageSizerl:10,
@@ -368,6 +379,11 @@
             //新增实收页面
             handleAdd: function (index, row) {
                 this.addFormVisible = true;
+            },
+            //显示查看备注页面
+            handleView: function (index, row) {
+                this.viewDateFormVisible = true;
+                this.viewDateForm  = Object.assign({}, row);
             },
             //提交数据
             addFormSubmit(){

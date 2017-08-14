@@ -42395,6 +42395,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -42447,6 +42453,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 shoukuandate: '',
                 shoukuanmoney: '',
                 zhuangtai: ''
+            },
+            viewDateFormVisible: false, //查看界面是否显示
+            //查看界面数据
+            viewDateForm: {
+                beizhu: ''
             },
             totalrl: 0,
             currentPagerl: 0,
@@ -42592,6 +42603,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //新增实收页面
         handleAdd: function handleAdd(index, row) {
             this.addFormVisible = true;
+        },
+        //显示查看备注页面
+        handleView: function handleView(index, row) {
+            this.viewDateFormVisible = true;
+            this.viewDateForm = Object.assign({}, row);
         },
         //提交数据
         addFormSubmit: function addFormSubmit() {
@@ -122169,6 +122185,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }, [_vm._v("认领")])], 1) : _vm._e(), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
+              _vm.handleView(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("查看备注")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+          on: {
+            "click": function($event) {
               _vm.handleOpen(scope.$index, scope.row)
             }
           }
@@ -122199,6 +122221,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "current-change": _vm.handleCurrentChange
     }
   })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "查看备注",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.viewDateFormVisible),
+      callback: function($$v) {
+        _vm.viewDateFormVisible = $$v
+      },
+      expression: "viewDateFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "viewDateForm",
+    attrs: {
+      "model": _vm.viewDateForm,
+      "label-width": "120px"
+    }
+  }, [_vm._v("\n                " + _vm._s(_vm.viewDateForm.beizhu == null ? '无数据' : _vm.viewDateForm.beizhu) + "\n        ")])], 1), _vm._v(" "), _c('el-dialog', {
     attrs: {
       "title": "应收款列表",
       "close-on-click-modal": false,
