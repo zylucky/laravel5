@@ -123,7 +123,7 @@
                     chengzufang:'',
                     jujianfang:'',
                     jujianfangid:null,
-                    qudaorenid:'',
+                    qudaorenid:null,
                     qudaoren:'',
                     yezhuleixing:1,
                     //产权人
@@ -370,14 +370,13 @@
 
                 this.owner.jujianfang = res.data.data.jujianfang;//
                 this.owner.jujianfangid = res.data.data.jujianfangid;
-//                this.owner.qudaoren = res.data.data.qudaoren;//
-//                this.owner.qudaorenid = res.data.data.qudaorenid;
+                this.owner.qudaoren = res.data.data.qudaoren;//
+                this.owner.qudaorenid = res.data.data.qudaorenid;
 
                 this.owner.options1[0].value = res.data.data.jujianfangid;
                 this.owner.options1[0].label = res.data.data.jujianfang;
-//                this.owner.options2[0].value = res.data.data.qudaorenid;
-//                this.owner.options2[0].label = res.data.data.qudaoren;
-
+                this.owner.options2[0].value = res.data.data.qudaorenid;
+                this.owner.options2[0].label = res.data.data.qudaoren;
                 this.owner.yezhuleixing = res.data.data.yezhuleixing;
                 this.owner.shoukuanren = res.data.data.shoukuanren;
                 this.owner.kaihuhang = res.data.data.kaihuhang;
