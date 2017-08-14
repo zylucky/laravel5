@@ -153,7 +153,7 @@
                     qianyuerenId:'',
                 },
                 addDate: {
-                    shijiyuezujin:null,
+                    actualrent:null,
                     flag:null,
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
@@ -399,7 +399,7 @@
                 this.addDate.yajin = res.data.data.yajin;
                 this.addDate.zongyingfuzujin = res.data.data.zongyingfuzujin;
                 this.addDate.yongjin = res.data.data.yongjin;
-                this.addDate.shijiyuezujin = res.data.data.shijiyuezujin;
+                this.addDate.actualrent = res.data.data.actualrent;
                 this.addDate.tiqianfukuantian = res.data.data.tiqianfukuantian;
                 this.addDate.beianqixian = res.data.data.beianqixian;
                 this.addDate.yajinfukuanri = res.data.data.yajinfukuanri;

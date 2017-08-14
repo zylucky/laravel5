@@ -312,8 +312,8 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="实际月租金" prop="shijiyuezujin" >
-                        <el-input v-model.number="addDate.shijiyuezujin" placeholder="实际月租金"></el-input>
+                    <el-form-item label="实际月租金" prop="actualrent" >
+                        <el-input v-model.number="addDate.actualrent" placeholder="实际月租金"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -426,7 +426,7 @@
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
                     ],
-                    shijiyuezujin: [
+                    actualrent: [
                         { type: 'number', message: '必须为数字'},
                     ],
                     tiqianfukuantian: [

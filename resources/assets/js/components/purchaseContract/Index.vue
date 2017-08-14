@@ -126,7 +126,6 @@
         weiyuePurchaseContract,
         endPurchaseContract,
         youhuaPurchaseContract,
-        youhuaPurchaseContractList,
         weiYueInfoPurchaseContract,
         weiYueSavePurchaseContract,
         getPurchaseContractInfo,
