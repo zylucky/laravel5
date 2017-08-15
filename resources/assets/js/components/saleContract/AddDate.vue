@@ -78,7 +78,8 @@
                             <el-date-picker
                                     v-model="addDate.startdate"
                                     type="date"
-                                    placeholder="开始时间">
+                                    placeholder="开始时间"
+                                    @change="zqchange1()">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
@@ -102,7 +103,8 @@
                             <el-date-picker
                                     v-model="addDate.enddate"
                                     type="date"
-                                    placeholder="结束时间">
+                                    placeholder="结束时间"
+                                    @change="zqchange2()">
                             </el-date-picker>
                         </el-form-item>
                 </el-col>
@@ -416,6 +418,62 @@
         methods: {
             onSubmit() {
 
+            },
+            zqchange1(){
+                if(this.$route.path=='/saleContract/add'){
+                    //时间一改变就对zujinList的日期进行填充
+                    //先获取的开始和结束时间
+                    var d1=new Date(this.addDate.startdate);
+                    var d2=new Date(this.addDate.enddate);
+                    var cha = parseInt(d2.getFullYear())-parseInt(d1.getFullYear());
+                    //每次变数据清空当前的列表
+                    this.addDate.zujinList.splice(0,this.addDate.zujinList.length);//清空数组
+                    for(var i =0;i<cha;i++){
+                        this.addRentItem();
+                        if(i==0){
+                            this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear());
+                            let dx = new Date(this.addDate.zujinList[i].startdate);//将时间复制，然后加一年
+                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear()+1);
+                            let dy = new Date(this.addDate.zujinList[i].enddate);//将时间复制，然后减一天
+                            this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate()-1);
+                        }
+                        if(i>0){
+                            this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear()+1);
+                            let dx = new Date(this.addDate.zujinList[i].startdate);//将时间复制，然后加一年
+                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear()+1);
+                            let dy = new Date(this.addDate.zujinList[i].enddate);//将时间复制，然后减一天
+                            this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate()-1);
+                        }
+                    }
+                }
+            },
+            zqchange2(){
+                if(this.$route.path=='/saleContract/add') {
+                    //时间一改变就对zujinList的日期进行填充
+                    //先获取的开始和结束时间
+                    var d1 = new Date(this.addDate.startdate);
+                    var d2 = new Date(this.addDate.enddate);
+                    var cha = parseInt(d2.getFullYear()) - parseInt(d1.getFullYear());
+                    //每次变数据清空当前的列表
+                    this.addDate.zujinList.splice(0, this.addDate.zujinList.length);//清空数组
+                    for (var i = 0; i < cha; i++) {
+                        this.addRentItem();
+                        if (i == 0) {
+                            this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear());
+                            let dx = new Date(this.addDate.zujinList[i].startdate);//将时间复制，然后加一年
+                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear() + 1);
+                            let dy = new Date(this.addDate.zujinList[i].enddate);//将时间复制，然后减一天
+                            this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate() - 1);
+                        }
+                        if (i > 0) {
+                            this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear() + 1);
+                            let dx = new Date(this.addDate.zujinList[i].startdate);//将时间复制，然后加一年
+                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear() + 1);
+                            let dy = new Date(this.addDate.zujinList[i].enddate);//将时间复制，然后减一天
+                            this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate() - 1);
+                        }
+                    }
+                }
             },
             //增加免租期
             addFreeItem() {

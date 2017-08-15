@@ -102,6 +102,10 @@ export const zhanghaoSavePurchaseContract= params => { return axios.post(`${base
 export const getZhanghaoPurchaseContractList= params => { return axios.get(`${base}/purchaseContract/getZhanghaoList`, {params:params}); };//获取账号数据的列表
 export const removeZhanghaoPurchaseContract= params => { return axios.get(`${base}/purchaseContract/deleteZhanghao`, {params:params}); };//删除扫描建
 export const zhanghaoUpdataPurchaseContract= params => { return axios.post(`${base}/purchaseContract/zhanghaoAlter`, {params:params}); };//修改付款账号的数据
+export const getHedanPurchaseContractList= params => { return axios.get(`${base}/purchaseContract/getHedanList`, {params:params}); };//获取账号数据的列表
+export const hedanSavePurchaseContract= params => { return axios.post(`${base}/purchaseContract/hedanSave`, {params:params}); };//保存付款账号的数据
+export const removeHedanPurchaseContract= params => { return axios.get(`${base}/purchaseContract/deleteHedan`, {params:params}); };//删除扫描建
+export const hedanUpdataPurchaseContract= params => { return axios.get(`${base}/purchaseContract/updataHedan`, {params:params}); };//删除扫描建
 
 //出房合同
 //合同信息
@@ -136,9 +140,10 @@ export const copySaleImageList= params => { return axios.get(`${base}/saleContra
 export const copySaleImageDelete= params => { return axios.get(`${base}/saleContract/deleteCopyImage`, {params:params}); };//删除复印件
 export const isCopySaleComplete= params => { return axios.post(`${base}/saleContract/isCopyComplete`, {params:params}); };
 export const isCopySaleCompleteList= params => { return axios.get(`${base}/saleContract/getCopyComplete`, {params:params}); };//列表
-export const zhanghaoSaveSaleContract= params => { return axios.post(`${base}/saleContract/zhanghaoSave`, {params:params}); };//保存付款账号的数据
-export const getZhanghaoSaleContractList= params => { return axios.get(`${base}/saleContract/getZhanghaoList`, {params:params}); };//获取账号数据的列表
-export const removeZhanghaoSaleContract= params => { return axios.get(`${base}/saleContract/deleteZhanghao`, {params:params}); };//删除扫描建
+export const getHedanSaleContractList= params => { return axios.get(`${base}/saleContract/getHedanList`, {params:params}); };//获取账号数据的列表
+export const hedanSaveSaleContract= params => { return axios.post(`${base}/saleContract/hedanSave`, {params:params}); };//保存付款账号的数据
+export const removeHedanSaleContract= params => { return axios.get(`${base}/saleContract/deleteHedan`, {params:params}); };//删除扫描建
+export const hedanUpdataSaleContract= params => { return axios.get(`${base}/saleContract/updataHedan`, {params:params}); };//删除扫描建
 
 //获取楼盘，楼栋，房间号
 export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };

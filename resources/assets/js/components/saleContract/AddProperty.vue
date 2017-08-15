@@ -73,11 +73,11 @@
                                 </el-col>
                             </el-row>
                             <el-row>
-                                <!--<el-col :span="8">
+                                <el-col :span="8">
                                     <el-form-item required label="区域" prop="quyu">
                                         <el-input v-model="property.xsOffice[index].quyu"></el-input>
                                     </el-form-item>
-                                </el-col>-->
+                                </el-col>
                                 <el-col :span="16">
                                     <el-form-item label="位置" required prop="weizhi" :span="10">
                                         <el-input v-model="property.xsOffice[index].weizhi"></el-input>
