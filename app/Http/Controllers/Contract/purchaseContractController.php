@@ -554,4 +554,52 @@ class purchaseContractController extends Controller
         $response = $client->request('GET', '/api/contract/yhzh/'.$id.'/delete');
         echo $response->getBody();
     }
+    //合单的提交
+    public function hedanSave(Request $request){
+        //dd(33333);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/sf/splitbill/create', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
+    //获取合单数据列表
+    public function getHedanList()
+    {
+        //dd(12121);
+        $id = Input::get('htid');
+        //dd($id);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/splitbill/query?id='.$id);
+        echo $response->getBody();
+
+    }
+    public function deleteHedan(){
+        //dd(111);
+        $id = Input::get('id');
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/splitbill/delete?id='.$id);
+        echo $response->getBody();
+    }
+    public function updataHedan(){
+        //dd(111);
+        $id = Input::get('id');
+        $colname = Input::get('colname');
+        $value = Input::get('value');
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/splitbill/update');
+        echo $response->getBody();
+    }
 }

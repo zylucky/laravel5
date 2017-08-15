@@ -453,7 +453,7 @@
             },
             //合单管理
             handleHedan(index,row){
-                this.$router.push('/purchaseContract/hedan?id='+row.id+'&bianhao='+row.bianhao);
+                this.$router.push('/purchaseContract/hedan?id='+row.id);
             },
         },
         mounted(){

@@ -123,7 +123,7 @@
                     chengzufang:'',
                     jujianfang:'',
                     jujianfangid:null,
-                    qudaorenid:'',
+                    qudaorenid:null,
                     qudaoren:'',
                     yezhuleixing:1,
                     //产权人
@@ -153,7 +153,7 @@
                     qianyuerenId:'',
                 },
                 addDate: {
-                    shijiyuezujin:null,
+                    actualrent:null,
                     flag:null,
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
@@ -370,14 +370,13 @@
 
                 this.owner.jujianfang = res.data.data.jujianfang;//
                 this.owner.jujianfangid = res.data.data.jujianfangid;
-//                this.owner.qudaoren = res.data.data.qudaoren;//
-//                this.owner.qudaorenid = res.data.data.qudaorenid;
+                this.owner.qudaoren = res.data.data.qudaoren;//
+                this.owner.qudaorenid = res.data.data.qudaorenid;
 
                 this.owner.options1[0].value = res.data.data.jujianfangid;
                 this.owner.options1[0].label = res.data.data.jujianfang;
-//                this.owner.options2[0].value = res.data.data.qudaorenid;
-//                this.owner.options2[0].label = res.data.data.qudaoren;
-
+                this.owner.options2[0].value = res.data.data.qudaorenid;
+                this.owner.options2[0].label = res.data.data.qudaoren;
                 this.owner.yezhuleixing = res.data.data.yezhuleixing;
                 this.owner.shoukuanren = res.data.data.shoukuanren;
                 this.owner.kaihuhang = res.data.data.kaihuhang;
@@ -400,7 +399,7 @@
                 this.addDate.yajin = res.data.data.yajin;
                 this.addDate.zongyingfuzujin = res.data.data.zongyingfuzujin;
                 this.addDate.yongjin = res.data.data.yongjin;
-                this.addDate.shijiyuezujin = res.data.data.shijiyuezujin;
+                this.addDate.actualrent = res.data.data.actualrent;
                 this.addDate.tiqianfukuantian = res.data.data.tiqianfukuantian;
                 this.addDate.beianqixian = res.data.data.beianqixian;
                 this.addDate.yajinfukuanri = res.data.data.yajinfukuanri;

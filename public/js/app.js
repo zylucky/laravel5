@@ -168,21 +168,21 @@ module.exports = function normalizeComponent (
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_90", function() { return requestLogin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_89", function() { return logout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_88", function() { return getUserListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_95", function() { return requestLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_94", function() { return logout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_93", function() { return getUserListPage; });
 /* unused harmony export removeUser */
 /* unused harmony export addUser */
 /* unused harmony export editUser */
 /* unused harmony export batchRemoveUser */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_80", function() { return getRoleListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_81", function() { return removeRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_83", function() { return addRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_82", function() { return editRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_84", function() { return batchRemoveRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_86", function() { return getTotalRoleList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_87", function() { return getRoleList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_85", function() { return setRoleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_85", function() { return getRoleListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_86", function() { return removeRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_88", function() { return addRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_87", function() { return editRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_89", function() { return batchRemoveRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_91", function() { return getTotalRoleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_92", function() { return getRoleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_90", function() { return setRoleList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_10", function() { return getBrokerCompanyListPage; });
 /* unused harmony export removeBrokerCompany */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_6", function() { return addBrokerCompany; });
@@ -226,73 +226,78 @@ module.exports = function normalizeComponent (
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return getFinancePayableListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return skeditMoney; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return skeditDate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_77", function() { return getPermissionListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_79", function() { return getPermissionListOfRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_82", function() { return getPermissionListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_84", function() { return getPermissionListOfRole; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getPermissionList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_78", function() { return setPermissionList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_63", function() { return addPurchaseContractInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_64", function() { return reviewPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_69", function() { return getPurchaseContractList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_52", function() { return getPurchaseContractInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_62", function() { return submitPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_65", function() { return getPurchaseContractTiaoKuan; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_66", function() { return editPurchaseContractTiaoKuan; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_76", function() { return confirmPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_29", function() { return optimizePurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_28", function() { return getOptimizePurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_70", function() { return approvingPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_75", function() { return dumpingPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_71", function() { return weiyuePurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_73", function() { return endPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_74", function() { return youhuaPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_60", function() { return youhuaPurchaseContractList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_61", function() { return youhuacgPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_68", function() { return weiYueInfoPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_72", function() { return weiYueSavePurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_58", function() { return copyImageList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_57", function() { return copyImageDelete; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_56", function() { return isCopyComplete; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_59", function() { return isCopyCompleteList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_53", function() { return zhanghaoSavePurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_51", function() { return getZhanghaoPurchaseContractList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_55", function() { return removeZhanghaoPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_54", function() { return zhanghaoUpdataPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_33", function() { return addSaleContractInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_34", function() { return reviewSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_41", function() { return getSaleContractList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_83", function() { return setPermissionList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_68", function() { return addPurchaseContractInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_69", function() { return reviewPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_74", function() { return getPurchaseContractList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_57", function() { return getPurchaseContractInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_67", function() { return submitPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_70", function() { return getPurchaseContractTiaoKuan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_71", function() { return editPurchaseContractTiaoKuan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_81", function() { return confirmPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_34", function() { return optimizePurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_33", function() { return getOptimizePurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_75", function() { return approvingPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_80", function() { return dumpingPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_76", function() { return weiyuePurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_78", function() { return endPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_79", function() { return youhuaPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_65", function() { return youhuaPurchaseContractList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_66", function() { return youhuacgPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_73", function() { return weiYueInfoPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_77", function() { return weiYueSavePurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_63", function() { return copyImageList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_62", function() { return copyImageDelete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_61", function() { return isCopyComplete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_64", function() { return isCopyCompleteList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_23", function() { return zhanghaoSavePurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_22", function() { return getZhanghaoPurchaseContractList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_25", function() { return removeZhanghaoPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_24", function() { return zhanghaoUpdataPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_56", function() { return getHedanPurchaseContractList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_58", function() { return hedanSavePurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_60", function() { return removeHedanPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_59", function() { return hedanUpdataPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_38", function() { return addSaleContractInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_39", function() { return reviewSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_46", function() { return getSaleContractList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_18", function() { return getSaleContractInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_36", function() { return getNameSaleList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_31", function() { return getjieyueSaleContractInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_41", function() { return getNameSaleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_36", function() { return getjieyueSaleContractInfo; });
 /* unused harmony export getdayinSaleContractInfo */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_35", function() { return getContractChuzuren; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_32", function() { return submitSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_40", function() { return getContractChuzuren; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_37", function() { return submitSaleContract; });
 /* unused harmony export getJieyueSaleContract */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_42", function() { return approvingSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_44", function() { return confirmSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_46", function() { return confirmedSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_47", function() { return weiyueSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_49", function() { return endSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_50", function() { return buchongSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_30", function() { return buchongsbSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_27", function() { return buchongSaleContractList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_43", function() { return jieyueSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_47", function() { return approvingSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_49", function() { return confirmSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_51", function() { return confirmedSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_52", function() { return weiyueSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_54", function() { return endSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_55", function() { return buchongSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_35", function() { return buchongsbSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_32", function() { return buchongSaleContractList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_48", function() { return jieyueSaleContract; });
 /* unused harmony export jieyuewanSaleContract */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_26", function() { return jieyueSaleContractInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_25", function() { return addSaleJieyueContractInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_45", function() { return removeSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_40", function() { return weiYueInfoSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_48", function() { return weiYueSaveSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_23", function() { return copySaleImageList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_22", function() { return copySaleImageDelete; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_21", function() { return isCopySaleComplete; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_24", function() { return isCopySaleCompleteList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_19", function() { return zhanghaoSaveSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_17", function() { return getZhanghaoSaleContractList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_20", function() { return removeZhanghaoSaleContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_37", function() { return getLoupanList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_38", function() { return getLoudongList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_67", function() { return getFanghaoList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_39", function() { return getSaleFanghaoList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_31", function() { return jieyueSaleContractInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_30", function() { return addSaleJieyueContractInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_50", function() { return removeSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_45", function() { return weiYueInfoSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_53", function() { return weiYueSaveSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_28", function() { return copySaleImageList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_27", function() { return copySaleImageDelete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_26", function() { return isCopySaleComplete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_29", function() { return isCopySaleCompleteList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_17", function() { return getHedanSaleContractList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_19", function() { return hedanSaveSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_21", function() { return removeHedanSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_20", function() { return hedanUpdataSaleContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_42", function() { return getLoupanList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_43", function() { return getLoudongList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_72", function() { return getFanghaoList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_44", function() { return getSaleFanghaoList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_13", function() { return getDecorationList; });
 /* unused harmony export getDecorationDetail */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_14", function() { return submitDecoration; });
@@ -613,6 +618,18 @@ var removeZhanghaoPurchaseContract = function removeZhanghaoPurchaseContract(par
 var zhanghaoUpdataPurchaseContract = function zhanghaoUpdataPurchaseContract(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/purchaseContract/zhanghaoAlter', { params: params });
 }; //修改付款账号的数据
+var getHedanPurchaseContractList = function getHedanPurchaseContractList(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/purchaseContract/getHedanList', { params: params });
+}; //获取账号数据的列表
+var hedanSavePurchaseContract = function hedanSavePurchaseContract(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/purchaseContract/hedanSave', { params: params });
+}; //保存付款账号的数据
+var removeHedanPurchaseContract = function removeHedanPurchaseContract(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/purchaseContract/deleteHedan', { params: params });
+}; //删除扫描建
+var hedanUpdataPurchaseContract = function hedanUpdataPurchaseContract(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/purchaseContract/updataHedan', { params: params });
+}; //删除扫描建
 
 //出房合同
 //合同信息
@@ -705,14 +722,17 @@ var isCopySaleComplete = function isCopySaleComplete(params) {
 var isCopySaleCompleteList = function isCopySaleCompleteList(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/saleContract/getCopyComplete', { params: params });
 }; //列表
-var zhanghaoSaveSaleContract = function zhanghaoSaveSaleContract(params) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/saleContract/zhanghaoSave', { params: params });
-}; //保存付款账号的数据
-var getZhanghaoSaleContractList = function getZhanghaoSaleContractList(params) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/saleContract/getZhanghaoList', { params: params });
+var getHedanSaleContractList = function getHedanSaleContractList(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/saleContract/getHedanList', { params: params });
 }; //获取账号数据的列表
-var removeZhanghaoSaleContract = function removeZhanghaoSaleContract(params) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/saleContract/deleteZhanghao', { params: params });
+var hedanSaveSaleContract = function hedanSaveSaleContract(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/saleContract/hedanSave', { params: params });
+}; //保存付款账号的数据
+var removeHedanSaleContract = function removeHedanSaleContract(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/saleContract/deleteHedan', { params: params });
+}; //删除扫描建
+var hedanUpdataSaleContract = function hedanUpdataSaleContract(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/saleContract/updataHedan', { params: params });
 }; //删除扫描建
 
 //获取楼盘，楼栋，房间号
@@ -23836,8 +23856,8 @@ module.exports = function bind(fn, thisArg) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_purchaseContract_Dump20170719_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_purchaseContract_Dump20170719_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_purchaseContract_Zhanghao_vue__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_purchaseContract_Zhanghao_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_purchaseContract_Zhanghao_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Hedan_vue__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Hedan_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_saleContract_Hedan_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_purchaseContract_Hedan_vue__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_purchaseContract_Hedan_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_purchaseContract_Hedan_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Index_vue__ = __webpack_require__(243);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_saleContract_Index_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Add_vue__ = __webpack_require__(237);
@@ -23854,52 +23874,54 @@ module.exports = function bind(fn, thisArg) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_saleContract_Dump20170719_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__components_saleContract_Dump20170719_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_saleContract_Zhanghao_vue__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_saleContract_Zhanghao_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21__components_saleContract_Zhanghao_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_decoration_List_vue__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_decoration_List_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22__components_decoration_List_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_contractVersion_index_vue__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_contractVersion_index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23__components_contractVersion_index_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_brokerCompany_Index_vue__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_brokerCompany_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24__components_brokerCompany_Index_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_brokerCompany_UserList_vue__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_brokerCompany_UserList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_25__components_brokerCompany_UserList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_brokerCompany_Add_vue__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_brokerCompany_Add_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_26__components_brokerCompany_Add_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_AddUser_vue__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_AddUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_AddUser_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_brokerCompany_HistoryList_vue__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_brokerCompany_HistoryList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_28__components_brokerCompany_HistoryList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_brokerCompany_UserHistoryList_vue__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_brokerCompany_UserHistoryList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_29__components_brokerCompany_UserHistoryList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_brokerCompany_BrokerUserList_vue__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_brokerCompany_BrokerUserList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_30__components_brokerCompany_BrokerUserList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_AddBrokerUser_vue__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_AddBrokerUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_AddBrokerUser_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_BrokerUserHistoryList_vue__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_BrokerUserHistoryList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_BrokerUserHistoryList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_Commission_Index_vue__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_Commission_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_33__components_Commission_Index_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_Commission_ShouFangList_vue__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_Commission_ShouFangList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_34__components_Commission_ShouFangList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_Commission_contractPayType_vue__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_Commission_contractPayType_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_35__components_Commission_contractPayType_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_Commission_accountsReceivableList_vue__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_Commission_accountsReceivableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_36__components_Commission_accountsReceivableList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_receivable_receivableRecordList_vue__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_receivable_receivableRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_37__components_receivable_receivableRecordList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_receivable_receivableList_vue__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_receivable_receivableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_38__components_receivable_receivableList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_receivable_financeReceivableList_vue__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_receivable_financeReceivableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_39__components_receivable_financeReceivableList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__components_payable_paymentRecordList_vue__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__components_payable_paymentRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_40__components_payable_paymentRecordList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__components_payable_payableRecordList_vue__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__components_payable_payableRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_41__components_payable_payableRecordList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__components_payable_payableList_vue__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__components_payable_payableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_42__components_payable_payableList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__components_payable_financePayableList_vue__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__components_payable_financePayableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_43__components_payable_financePayableList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__components_message_Index_vue__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__components_message_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_44__components_message_Index_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_saleContract_Hedan_vue__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_saleContract_Hedan_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22__components_saleContract_Hedan_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_decoration_List_vue__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_decoration_List_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23__components_decoration_List_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_contractVersion_index_vue__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_contractVersion_index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24__components_contractVersion_index_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_brokerCompany_Index_vue__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_brokerCompany_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_25__components_brokerCompany_Index_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_brokerCompany_UserList_vue__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_brokerCompany_UserList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_26__components_brokerCompany_UserList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_Add_vue__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_Add_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_Add_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_brokerCompany_AddUser_vue__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_brokerCompany_AddUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_28__components_brokerCompany_AddUser_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_brokerCompany_HistoryList_vue__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_brokerCompany_HistoryList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_29__components_brokerCompany_HistoryList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_brokerCompany_UserHistoryList_vue__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_brokerCompany_UserHistoryList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_30__components_brokerCompany_UserHistoryList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_BrokerUserList_vue__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_BrokerUserList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_BrokerUserList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddBrokerUser_vue__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddBrokerUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddBrokerUser_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_brokerCompany_BrokerUserHistoryList_vue__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_brokerCompany_BrokerUserHistoryList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_33__components_brokerCompany_BrokerUserHistoryList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_Commission_Index_vue__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_Commission_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_34__components_Commission_Index_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_Commission_ShouFangList_vue__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_Commission_ShouFangList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_35__components_Commission_ShouFangList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_Commission_contractPayType_vue__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_Commission_contractPayType_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_36__components_Commission_contractPayType_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_Commission_accountsReceivableList_vue__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_Commission_accountsReceivableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_37__components_Commission_accountsReceivableList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_receivable_receivableRecordList_vue__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_receivable_receivableRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_38__components_receivable_receivableRecordList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_receivable_receivableList_vue__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_receivable_receivableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_39__components_receivable_receivableList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__components_receivable_financeReceivableList_vue__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__components_receivable_financeReceivableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_40__components_receivable_financeReceivableList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__components_payable_paymentRecordList_vue__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__components_payable_paymentRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_41__components_payable_paymentRecordList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__components_payable_payableRecordList_vue__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__components_payable_payableRecordList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_42__components_payable_payableRecordList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__components_payable_payableList_vue__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__components_payable_payableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_43__components_payable_payableList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__components_payable_financePayableList_vue__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__components_payable_financePayableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_44__components_payable_financePayableList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__components_message_Index_vue__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__components_message_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_45__components_message_Index_vue__);
 /**
  * Created by liyuequn on 2017/5/15.
  */
@@ -24014,14 +24036,14 @@ var routes = [{
     name: '合同管理',
     iconCls: 'el-icon-document', //图标样式class
     hidden: fk_contract,
-    children: [{ path: '/purchaseContract', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Index_vue___default.a, name: '收房合同', hidden: fk_contract_purchase, params: { name: 'liyuequn' } }, { path: '/purchaseContract/add', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房录入', hidden: true }, { path: '/purchaseContract/edit', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房编辑', hidden: true }, { path: '/purchaseContract/review', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房审核', hidden: true }, { path: '/purchaseContract/view', component: __WEBPACK_IMPORTED_MODULE_11__components_purchaseContract_Dump20170719_vue___default.a, name: '收房查看', hidden: true }, { path: '/purchaseContract/optimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房优化', hidden: true }, { path: '/purchaseContract/checkOptimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房协议查看', hidden: true }, { path: '/purchaseContract/checkOptimizeList', component: __WEBPACK_IMPORTED_MODULE_10__components_purchaseContract_HistoryOptimize_vue___default.a, name: '历史协议', hidden: true }, { path: '/purchaseContract/upload', component: __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/purchaseContract/zhanghao', component: __WEBPACK_IMPORTED_MODULE_12__components_purchaseContract_Zhanghao_vue___default.a, name: '收房收款账号', hidden: true }, { path: '/purchaseContract/hedan', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Hedan_vue___default.a, name: '收房合单管理', hidden: true }, { path: '/saleContract', component: __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Index_vue___default.a, name: '出房合同' }, { path: '/saleContract/add', component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Add_vue___default.a, name: '出房录入', hidden: true }, { path: '/saleContract/see', component: __WEBPACK_IMPORTED_MODULE_20__components_saleContract_Dump20170719_vue___default.a, name: '出房查看', hidden: true }, { path: '/saleContract/edit', component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Add_vue___default.a, name: '出房编辑', hidden: true }, { path: '/saleContract/review', component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Add_vue___default.a, name: '出房审核', hidden: true }, { path: '/saleContract/buchong', component: __WEBPACK_IMPORTED_MODULE_18__components_saleContract_Buchong_vue___default.a, name: '出房补充协议', hidden: true }, { path: '/saleContract/checkBuchong', component: __WEBPACK_IMPORTED_MODULE_18__components_saleContract_Buchong_vue___default.a, name: '出房补充协议查看', hidden: true }, { path: '/saleContract/checkBuchongList', component: __WEBPACK_IMPORTED_MODULE_19__components_saleContract_HistoryBuchong_vue___default.a, name: '历史补充协议', hidden: true }, { path: '/saleContract/jieyue', component: __WEBPACK_IMPORTED_MODULE_17__components_saleContract_Jieyue_vue___default.a, name: '解约协议', hidden: true }, { path: '/saleContract/checkJieyue', component: __WEBPACK_IMPORTED_MODULE_17__components_saleContract_Jieyue_vue___default.a, name: '出房协议查看', hidden: true }, { path: '/saleContract/upload', component: __WEBPACK_IMPORTED_MODULE_16__components_saleContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/saleContract/zhanghao', component: __WEBPACK_IMPORTED_MODULE_21__components_saleContract_Zhanghao_vue___default.a, name: '出房付款账号', hidden: true }, { path: '/saleContract/hedan', component: __WEBPACK_IMPORTED_MODULE_13__components_saleContract_Hedan_vue___default.a, name: '出房合单管理', hidden: true }, { path: '/decoration', component: __WEBPACK_IMPORTED_MODULE_22__components_decoration_List_vue___default.a, name: '工程合同' }, { path: '/contractVersion', component: __WEBPACK_IMPORTED_MODULE_23__components_contractVersion_index_vue___default.a, name: '合同版本管理' }]
+    children: [{ path: '/purchaseContract', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Index_vue___default.a, name: '收房合同', hidden: fk_contract_purchase, params: { name: 'liyuequn' } }, { path: '/purchaseContract/add', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房录入', hidden: true }, { path: '/purchaseContract/edit', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房编辑', hidden: true }, { path: '/purchaseContract/review', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房审核', hidden: true }, { path: '/purchaseContract/view', component: __WEBPACK_IMPORTED_MODULE_11__components_purchaseContract_Dump20170719_vue___default.a, name: '收房查看', hidden: true }, { path: '/purchaseContract/optimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房优化', hidden: true }, { path: '/purchaseContract/checkOptimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房协议查看', hidden: true }, { path: '/purchaseContract/checkOptimizeList', component: __WEBPACK_IMPORTED_MODULE_10__components_purchaseContract_HistoryOptimize_vue___default.a, name: '历史协议', hidden: true }, { path: '/purchaseContract/upload', component: __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/purchaseContract/zhanghao', component: __WEBPACK_IMPORTED_MODULE_12__components_purchaseContract_Zhanghao_vue___default.a, name: '收房收款账号', hidden: true }, { path: '/purchaseContract/hedan', component: __WEBPACK_IMPORTED_MODULE_13__components_purchaseContract_Hedan_vue___default.a, name: '收房合单管理', hidden: true }, { path: '/saleContract', component: __WEBPACK_IMPORTED_MODULE_14__components_saleContract_Index_vue___default.a, name: '出房合同' }, { path: '/saleContract/add', component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Add_vue___default.a, name: '出房录入', hidden: true }, { path: '/saleContract/see', component: __WEBPACK_IMPORTED_MODULE_20__components_saleContract_Dump20170719_vue___default.a, name: '出房查看', hidden: true }, { path: '/saleContract/edit', component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Add_vue___default.a, name: '出房编辑', hidden: true }, { path: '/saleContract/review', component: __WEBPACK_IMPORTED_MODULE_15__components_saleContract_Add_vue___default.a, name: '出房审核', hidden: true }, { path: '/saleContract/buchong', component: __WEBPACK_IMPORTED_MODULE_18__components_saleContract_Buchong_vue___default.a, name: '出房补充协议', hidden: true }, { path: '/saleContract/checkBuchong', component: __WEBPACK_IMPORTED_MODULE_18__components_saleContract_Buchong_vue___default.a, name: '出房补充协议查看', hidden: true }, { path: '/saleContract/checkBuchongList', component: __WEBPACK_IMPORTED_MODULE_19__components_saleContract_HistoryBuchong_vue___default.a, name: '历史补充协议', hidden: true }, { path: '/saleContract/jieyue', component: __WEBPACK_IMPORTED_MODULE_17__components_saleContract_Jieyue_vue___default.a, name: '解约协议', hidden: true }, { path: '/saleContract/checkJieyue', component: __WEBPACK_IMPORTED_MODULE_17__components_saleContract_Jieyue_vue___default.a, name: '出房协议查看', hidden: true }, { path: '/saleContract/upload', component: __WEBPACK_IMPORTED_MODULE_16__components_saleContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/saleContract/zhanghao', component: __WEBPACK_IMPORTED_MODULE_21__components_saleContract_Zhanghao_vue___default.a, name: '出房付款账号', hidden: true }, { path: '/saleContract/hedan', component: __WEBPACK_IMPORTED_MODULE_22__components_saleContract_Hedan_vue___default.a, name: '出房合单管理', hidden: true }, { path: '/decoration', component: __WEBPACK_IMPORTED_MODULE_23__components_decoration_List_vue___default.a, name: '工程合同' }, { path: '/contractVersion', component: __WEBPACK_IMPORTED_MODULE_24__components_contractVersion_index_vue___default.a, name: '合同版本管理' }]
 }, {
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a,
     name: '渠道管理',
     iconCls: 'el-icon-document', //图标样式class
     hidden: fk_brokerCompany,
-    children: [{ path: '/brokerCompany', component: __WEBPACK_IMPORTED_MODULE_24__components_brokerCompany_Index_vue___default.a, name: '渠道公司管理', hidden: fk_brokerCompanyList }, { path: '/brokerCompany/add', component: __WEBPACK_IMPORTED_MODULE_26__components_brokerCompany_Add_vue___default.a, name: '渠道公司录入', hidden: true }, { path: '/brokerCompany/edit', component: __WEBPACK_IMPORTED_MODULE_26__components_brokerCompany_Add_vue___default.a, name: '渠道公司编辑', hidden: true }, { path: '/brokerCompany/view', component: __WEBPACK_IMPORTED_MODULE_26__components_brokerCompany_Add_vue___default.a, name: '渠道公司查看', hidden: true }, { path: '/brokerCompanyUserList', component: __WEBPACK_IMPORTED_MODULE_25__components_brokerCompany_UserList_vue___default.a, name: '渠道公司人员管理', hidden: fk_brokerCompanyUserList }, { path: '/brokerCompanyUserList/add', component: __WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员录入', hidden: true }, { path: '/brokerCompanyUserList/edit', component: __WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员编辑', hidden: true }, { path: '/brokerCompanyUserList/view', component: __WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员查看', hidden: true }, { path: '/brokerCompanyHistory', component: __WEBPACK_IMPORTED_MODULE_28__components_brokerCompany_HistoryList_vue___default.a, name: '渠道公司跟进记录', hidden: true }, { path: '/brokerCompanyUserHistory', component: __WEBPACK_IMPORTED_MODULE_29__components_brokerCompany_UserHistoryList_vue___default.a, name: '渠道公司人员跟进记录', hidden: true }, { path: '/brokerUser', component: __WEBPACK_IMPORTED_MODULE_30__components_brokerCompany_BrokerUserList_vue___default.a, name: '自由经纪人管理', hidden: false }, { path: '/brokerUser/add', component: __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人录入', hidden: true }, { path: '/brokerUser/edit', component: __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人编辑', hidden: true }, { path: '/brokerUser/view', component: __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人查看', hidden: true }, { path: '/brokerUserHistory', component: __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_BrokerUserHistoryList_vue___default.a, name: '自由经纪人跟进记录', hidden: true }]
+    children: [{ path: '/brokerCompany', component: __WEBPACK_IMPORTED_MODULE_25__components_brokerCompany_Index_vue___default.a, name: '渠道公司管理', hidden: fk_brokerCompanyList }, { path: '/brokerCompany/add', component: __WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_Add_vue___default.a, name: '渠道公司录入', hidden: true }, { path: '/brokerCompany/edit', component: __WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_Add_vue___default.a, name: '渠道公司编辑', hidden: true }, { path: '/brokerCompany/view', component: __WEBPACK_IMPORTED_MODULE_27__components_brokerCompany_Add_vue___default.a, name: '渠道公司查看', hidden: true }, { path: '/brokerCompanyUserList', component: __WEBPACK_IMPORTED_MODULE_26__components_brokerCompany_UserList_vue___default.a, name: '渠道公司人员管理', hidden: fk_brokerCompanyUserList }, { path: '/brokerCompanyUserList/add', component: __WEBPACK_IMPORTED_MODULE_28__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员录入', hidden: true }, { path: '/brokerCompanyUserList/edit', component: __WEBPACK_IMPORTED_MODULE_28__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员编辑', hidden: true }, { path: '/brokerCompanyUserList/view', component: __WEBPACK_IMPORTED_MODULE_28__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员查看', hidden: true }, { path: '/brokerCompanyHistory', component: __WEBPACK_IMPORTED_MODULE_29__components_brokerCompany_HistoryList_vue___default.a, name: '渠道公司跟进记录', hidden: true }, { path: '/brokerCompanyUserHistory', component: __WEBPACK_IMPORTED_MODULE_30__components_brokerCompany_UserHistoryList_vue___default.a, name: '渠道公司人员跟进记录', hidden: true }, { path: '/brokerUser', component: __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_BrokerUserList_vue___default.a, name: '自由经纪人管理', hidden: false }, { path: '/brokerUser/add', component: __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人录入', hidden: true }, { path: '/brokerUser/edit', component: __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人编辑', hidden: true }, { path: '/brokerUser/view', component: __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人查看', hidden: true }, { path: '/brokerUserHistory', component: __WEBPACK_IMPORTED_MODULE_33__components_brokerCompany_BrokerUserHistoryList_vue___default.a, name: '自由经纪人跟进记录', hidden: true }]
 }, {
 
     path: '/',
@@ -24029,7 +24051,7 @@ var routes = [{
     name: '佣金管理',
     iconCls: 'el-icon-document', //图标样式class
     hidden: false,
-    children: [{ path: '/shouFangCommission', component: __WEBPACK_IMPORTED_MODULE_34__components_Commission_ShouFangList_vue___default.a, name: '收房佣金管理', hidden: false }, { path: '/chuFangCommission', component: __WEBPACK_IMPORTED_MODULE_33__components_Commission_Index_vue___default.a, name: '出房佣金管理', hidden: false }, { path: '/contractPayType', component: __WEBPACK_IMPORTED_MODULE_35__components_Commission_contractPayType_vue___default.a, name: '佣金支付方式', hidden: true }]
+    children: [{ path: '/shouFangCommission', component: __WEBPACK_IMPORTED_MODULE_35__components_Commission_ShouFangList_vue___default.a, name: '收房佣金管理', hidden: false }, { path: '/chuFangCommission', component: __WEBPACK_IMPORTED_MODULE_34__components_Commission_Index_vue___default.a, name: '出房佣金管理', hidden: false }, { path: '/contractPayType', component: __WEBPACK_IMPORTED_MODULE_36__components_Commission_contractPayType_vue___default.a, name: '佣金支付方式', hidden: true }]
 }, {
     //版本1
     path: '/purchaseContract/dump20170719',
@@ -24042,7 +24064,7 @@ var routes = [{
     name: '应收应付',
     iconCls: 'el-icon-document', //图标样式class
     hidden: false,
-    children: [{ path: '/payable', component: __WEBPACK_IMPORTED_MODULE_42__components_payable_payableList_vue___default.a, name: '应付款管理', hidden: false }, { path: '/financePayable', component: __WEBPACK_IMPORTED_MODULE_43__components_payable_financePayableList_vue___default.a, name: '实付款管理', hidden: false }, { path: '/receivable', component: __WEBPACK_IMPORTED_MODULE_38__components_receivable_receivableList_vue___default.a, name: '应收款管理', hidden: false }, { path: '/financeReceivable', component: __WEBPACK_IMPORTED_MODULE_39__components_receivable_financeReceivableList_vue___default.a, name: '实收款管理', hidden: false }, { path: '/accountsReceivable', component: __WEBPACK_IMPORTED_MODULE_36__components_Commission_accountsReceivableList_vue___default.a, name: '修改记录', hidden: true }, { path: '/receivableRecord', component: __WEBPACK_IMPORTED_MODULE_37__components_receivable_receivableRecordList_vue___default.a, name: '已收款记录', hidden: true }, { path: '/payableRecord', component: __WEBPACK_IMPORTED_MODULE_41__components_payable_payableRecordList_vue___default.a, name: '应付款记录', hidden: true }, { path: '/paymentRecord', component: __WEBPACK_IMPORTED_MODULE_40__components_payable_paymentRecordList_vue___default.a, name: '修改记录', hidden: true }]
+    children: [{ path: '/payable', component: __WEBPACK_IMPORTED_MODULE_43__components_payable_payableList_vue___default.a, name: '应付款管理', hidden: false }, { path: '/financePayable', component: __WEBPACK_IMPORTED_MODULE_44__components_payable_financePayableList_vue___default.a, name: '实付款管理', hidden: false }, { path: '/receivable', component: __WEBPACK_IMPORTED_MODULE_39__components_receivable_receivableList_vue___default.a, name: '应收款管理', hidden: false }, { path: '/financeReceivable', component: __WEBPACK_IMPORTED_MODULE_40__components_receivable_financeReceivableList_vue___default.a, name: '实收款管理', hidden: false }, { path: '/accountsReceivable', component: __WEBPACK_IMPORTED_MODULE_37__components_Commission_accountsReceivableList_vue___default.a, name: '修改记录', hidden: true }, { path: '/receivableRecord', component: __WEBPACK_IMPORTED_MODULE_38__components_receivable_receivableRecordList_vue___default.a, name: '已收款记录', hidden: true }, { path: '/payableRecord', component: __WEBPACK_IMPORTED_MODULE_42__components_payable_payableRecordList_vue___default.a, name: '应付款记录', hidden: true }, { path: '/paymentRecord', component: __WEBPACK_IMPORTED_MODULE_41__components_payable_paymentRecordList_vue___default.a, name: '修改记录', hidden: true }]
 
 }, {
     //版本1
@@ -24056,7 +24078,7 @@ var routes = [{
     name: '任务管理',
     iconCls: 'el-icon-message', //图标样式class
     hidden: false,
-    children: [{ path: '/message', component: __WEBPACK_IMPORTED_MODULE_44__components_message_Index_vue___default.a, name: '我的待办事项', hidden: false }]
+    children: [{ path: '/message', component: __WEBPACK_IMPORTED_MODULE_45__components_message_Index_vue___default.a, name: '我的待办事项', hidden: false }]
 
 }];
 
@@ -29527,7 +29549,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (valid) {
                     _this2.logining = true;
                     var loginParams = { email: _this2.ruleForm2.account, password: _this2.ruleForm2.checkPass };
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_90" /* requestLogin */])(loginParams).then(function (data) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_95" /* requestLogin */])(loginParams).then(function (data) {
 
                         _this2.logining = false;
                         //NProgress.done();
@@ -29686,7 +29708,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //type: 'warning'
             }).then(function () {
                 sessionStorage.removeItem('user');
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_89" /* logout */])().then();
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_94" /* logout */])().then();
                 _this.$router.push('/login');
             }).catch(function () {});
         },
@@ -37112,7 +37134,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 chengzufang: '',
                 jujianfang: '',
                 jujianfangid: null,
-                qudaorenid: '',
+                qudaorenid: null,
                 qudaoren: '',
                 yezhuleixing: 1,
                 //产权人
@@ -37140,7 +37162,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 qianyuerenId: ''
             },
             addDate: {
-                shijiyuezujin: null,
+                actualrent: null,
                 flag: null,
                 startdate: '', //租期开始时间
                 enddate: '', //租期结束时间
@@ -37204,7 +37226,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     bianhao: this.bianhao,
                     zd: this.property.officeList[0].loudongOmcId
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_62" /* submitPurchaseContract */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_67" /* submitPurchaseContract */])(para).then(function (res) {
                     if (res.data.code == 200) {
                         _this2.$message({
                             message: '提交成功',
@@ -37259,7 +37281,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 version: this.contractVersion
             };
             var para = Object.assign({}, child_property, child_owner, child_date, id, tiaokuan, bianhao, version);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_63" /* addPurchaseContractInfo */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_68" /* addPurchaseContractInfo */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     //保存完以后可以得到一个返回的ID
                     //把数据分别赋值给三个组件的变量
@@ -37288,7 +37310,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         review2: function review2() {
             var _this4 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_64" /* reviewPurchaseContract */])(this.shenhe).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_69" /* reviewPurchaseContract */])(this.shenhe).then(function (res) {
                 if (res.data.code == 200) {
                     //                        this.$message({
                     //                            message: '保存成功',
@@ -37309,7 +37331,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getPurchaseContract: function getPurchaseContract(id) {
             var _this5 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_52" /* getPurchaseContractInfo */])(id).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_57" /* getPurchaseContractInfo */])(id).then(function (res) {
                 if (res.data.code == '200') {
                     //把数据分别赋值给三个组件的变量
                     _this5.fuzhi(res);
@@ -37326,7 +37348,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getTiaokuan: function getTiaokuan() {
             var _this6 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_65" /* getPurchaseContractTiaoKuan */])().then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_70" /* getPurchaseContractTiaoKuan */])().then(function (res) {
                 for (var x in res.data.data.tiaoList) {
                     res.data.data.tiaoList[x].show = false;
                     for (var y in res.data.data.tiaoList[x].kuanList) {
@@ -37376,14 +37398,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.owner.jujianfang = res.data.data.jujianfang; //
             this.owner.jujianfangid = res.data.data.jujianfangid;
-            //                this.owner.qudaoren = res.data.data.qudaoren;//
-            //                this.owner.qudaorenid = res.data.data.qudaorenid;
+            this.owner.qudaoren = res.data.data.qudaoren; //
+            this.owner.qudaorenid = res.data.data.qudaorenid;
 
             this.owner.options1[0].value = res.data.data.jujianfangid;
             this.owner.options1[0].label = res.data.data.jujianfang;
-            //                this.owner.options2[0].value = res.data.data.qudaorenid;
-            //                this.owner.options2[0].label = res.data.data.qudaoren;
-
+            this.owner.options2[0].value = res.data.data.qudaorenid;
+            this.owner.options2[0].label = res.data.data.qudaoren;
             this.owner.yezhuleixing = res.data.data.yezhuleixing;
             this.owner.shoukuanren = res.data.data.shoukuanren;
             this.owner.kaihuhang = res.data.data.kaihuhang;
@@ -37406,7 +37427,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.addDate.yajin = res.data.data.yajin;
             this.addDate.zongyingfuzujin = res.data.data.zongyingfuzujin;
             this.addDate.yongjin = res.data.data.yongjin;
-            this.addDate.shijiyuezujin = res.data.data.shijiyuezujin;
+            this.addDate.actualrent = res.data.data.actualrent;
             this.addDate.tiqianfukuantian = res.data.data.tiqianfukuantian;
             this.addDate.beianqixian = res.data.data.beianqixian;
             this.addDate.yajinfukuanri = res.data.data.yajinfukuanri;
@@ -37887,7 +37908,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 yajin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
                 zongyingfuzujin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
                 yongjin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
-                shijiyuezujin: [{ type: 'number', message: '必须为数字' }],
+                actualrent: [{ type: 'number', message: '必须为数字' }],
                 tiqianfukuantian: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
                 beianqixian: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], yajinfukuanri: [{ required: true, message: '不能为空' }], shoufangdate: [{ required: true, message: '不能为空' }], qianyuedate: [{ required: true, message: '不能为空' }], shouqifukuanri: [{ required: true, message: '不能为空' }], erqifukuanri: [{ required: true, message: '不能为空' }], sanqifukuanri: [{ required: true, message: '不能为空' }], jiafangfeiyong: [{ required: true, message: '不能为空' }], yifangfeiyong: [{ required: true, message: '不能为空' }]
             }
@@ -38330,14 +38351,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             for (var i = 0; i < arr.length; i++) {
                 if (arr[i].value == this.owner.jujianfangid) {
                     this.owner.jujianfang = arr[i].label;
+                    this.owner.qudaoren = null;
+                    this.owner.qudaorenid = null;
                 }
             }
-            this.owner.qudaoren = null;
-            this.owner.qudaorenid = null;
         },
         changeOnSelect2: function changeOnSelect2() {
             var arr = this.owner.options2;
             for (var i = 0; i < arr.length; i++) {
+                console.log(this.owner.qudaorenid);
                 if (arr[i].value == this.owner.qudaorenid) {
                     this.owner.qudaoren = arr[i].label;
                 }
@@ -38679,7 +38701,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 str: query
             };
             this.loupanloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_37" /* getLoupanList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_42" /* getLoupanList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -38712,7 +38734,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 loupanOmcId: this.property.officeList[this.tabIndex - 1].loupanOmcId
             };
             this.loupanloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_38" /* getLoudongList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_43" /* getLoudongList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -38747,7 +38769,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.fanghaoloading = true;
             //console.log(para);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_67" /* getFanghaoList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_72" /* getFanghaoList */])(para).then(function (res) {
                 _this4.houseData = res.data;
                 var arr = [];
                 arr[0] = '';
@@ -39009,7 +39031,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             //发送条款的ID到后端
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_66" /* editPurchaseContractTiaoKuan */])(tiao).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_71" /* editPurchaseContractTiaoKuan */])(tiao).then(function (res) {
                 if (res.data.code == 200) {
                     _this.$message({
                         message: '保存成功',
@@ -39463,7 +39485,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getPurchaseContract: function getPurchaseContract(id) {
             var _this = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_52" /* getPurchaseContractInfo */])(id).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_57" /* getPurchaseContractInfo */])(id).then(function (res) {
                 if (res.data.code == '200') {
                     //把数据分别赋值给三个组件的变量
                     _this.fuzhi(res);
@@ -39720,7 +39742,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getList: function getList() {
             var _this = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_60" /* youhuaPurchaseContractList */])(this.$route.query).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_65" /* youhuaPurchaseContractList */])(this.$route.query).then(function (res) {
                 _this.youhuaList = res.data.data;
                 _this.total = res.total;
             });
@@ -39958,7 +39980,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 weiYueType: this.weiYue.weiyueleixing,
                 zhongZhiDate: new Date(this.weiYue.zhongzhidate).toLocaleDateString()
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_68" /* weiYueInfoPurchaseContract */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_73" /* weiYueInfoPurchaseContract */])(para).then(function (res) {
                 if (res.data.code != '200') {
                     _this.$message({
                         message: '获取应付信息失败',
@@ -40020,7 +40042,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 zhuangtai: this.filters.status
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_69" /* getPurchaseContractList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_74" /* getPurchaseContractList */])(para).then(function (res) {
                 //console.log(res.data)
                 _this2.total = res.data.total;
                 _this2.lists = res.data.data;
@@ -40052,7 +40074,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: row.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_70" /* approvingPurchaseContract */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_75" /* approvingPurchaseContract */])(para).then(function (res) {});
             this.$router.push('/purchaseContract/review?id=' + row.id);
         },
 
@@ -40070,7 +40092,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function () {
                 _this3.listLoading = true;
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_71" /* weiyuePurchaseContract */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_76" /* weiyuePurchaseContract */])(para).then(function (res) {
                     _this3.listLoading = false;
                     _this3.weiYue.formVisible = false;
                     //NProgress.done();
@@ -40103,7 +40125,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }).then(function () {
                         var para1 = _this4.weiYue;
                         _this4.weiYue.Visible = false;
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_72" /* weiYueSavePurchaseContract */])(para1).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_77" /* weiYueSavePurchaseContract */])(para1).then(function (res) {
                             if (res.data.code != '200') {
                                 _this4.$message({
                                     message: '数据没有保存成功',
@@ -40113,7 +40135,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         });
                         _this4.listLoading = true;
                         var para = { id: _this4.id };
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_73" /* endPurchaseContract */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_78" /* endPurchaseContract */])(para).then(function (res) {
                             _this4.listLoading = false;
                             //NProgress.done();
                             _this4.$message({
@@ -40132,7 +40154,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: row.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_74" /* youhuaPurchaseContract */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_79" /* youhuaPurchaseContract */])(para).then(function (res) {});
             this.$router.push('/purchaseContract/optimize?hetongid=' + row.id + '&bianhao=' + row.bianhao);
         },
 
@@ -40141,7 +40163,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: row.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_74" /* youhuaPurchaseContract */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_79" /* youhuaPurchaseContract */])(para).then(function (res) {});
             this.$router.push('/purchaseContract/optimize?hetongid=' + row.id + '&type=1' + '&bianhao=' + row.bianhao);
         },
         handleCheckOptimize: function handleCheckOptimize(index, row) {
@@ -40155,12 +40177,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleDump: function handleDump(index, row) {
             var _this5 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_52" /* getPurchaseContractInfo */])({ id: row.id }).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_57" /* getPurchaseContractInfo */])({ id: row.id }).then(function (res) {
                 var version = res.data.data.version;
                 var para = {
                     id: row.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_75" /* dumpingPurchaseContract */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_80" /* dumpingPurchaseContract */])(para).then(function (res) {
                     if (res.data.code == "200") {
                         _this5.purchaseContractList();
                         window.open('/#/purchaseContract/dump' + version + '?id=' + row.id);
@@ -40173,7 +40195,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleConfirm: function handleConfirm(index, row) {
             var _this6 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_52" /* getPurchaseContractInfo */])({ id: row.id }).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_57" /* getPurchaseContractInfo */])({ id: row.id }).then(function (res) {
                 if (res.data.code == '200') {
                     //把数据分别赋值给三个组件的变量
                     if (res.data.data.jujianfangid == null) {
@@ -40183,7 +40205,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             var para1 = {
                                 id: row.id
                                 //直接执行签约完成的状态
-                            };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_76" /* confirmPurchaseContract */])(para1).then(function (res) {
+                            };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_81" /* confirmPurchaseContract */])(para1).then(function (res) {
                                 if (res.data.code == '200') {
                                     _this6.$message({
                                         message: '签约完成',
@@ -40215,7 +40237,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //合单管理
         handleHedan: function handleHedan(index, row) {
-            this.$router.push('/purchaseContract/hedan?id=' + row.id + '&bianhao=' + row.bianhao);
+            this.$router.push('/purchaseContract/hedan?id=' + row.id);
         }
     },
     mounted: function mounted() {
@@ -40697,7 +40719,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getOptimize: function getOptimize() {
             var _this2 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_28" /* getOptimizePurchaseContract */])(this.$route.query).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_33" /* getOptimizePurchaseContract */])(this.$route.query).then(function (res) {
                 _this2.fuzhi(res);
             });
         },
@@ -40752,7 +40774,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 xieyistartdate: this.addDate.xieyistartdate,
                 xieyienddate: this.addDate.xieyienddate
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_29" /* optimizePurchaseContract */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_34" /* optimizePurchaseContract */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     _this3.fuzhi(res);
                     _this3.btnType = false, _this3.$message({
@@ -40776,7 +40798,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         hetongid: _this4.$route.query.hetongid,
                         xyid: _this4.id
                     };
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_61" /* youhuacgPurchaseContract */])(para).then(function (res) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_66" /* youhuacgPurchaseContract */])(para).then(function (res) {
                         if (res.data.code == '200') {
                             _this4.$router.push('/purchaseContract');
                         }
@@ -41174,7 +41196,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$refs.copyForm.validate(function (valid) {
                 if (valid) {
                     var para = Object.assign({}, _this.copyForm, { id: parseInt(_this.$route.query.id) });
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_56" /* isCopyComplete */])(para).then(function (res) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_61" /* isCopyComplete */])(para).then(function (res) {
                         if (res.data.code == '200') {
                             _this.$message({
                                 message: '保存成功',
@@ -41209,7 +41231,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: file.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_57" /* copyImageDelete */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_62" /* copyImageDelete */])(para).then(function (res) {});
         },
         handlePictureCardPreview: function handlePictureCardPreview(file) {
             this.dialogImageUrl = file.url;
@@ -41225,7 +41247,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: this.$route.query.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_58" /* copyImageList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* copyImageList */])(para).then(function (res) {
                 if (res.data.code == '200') {
                     _this2.hetongList = res.data.data[1]; //合同
                     _this2.chanquanrenList = res.data.data[2]; //合同
@@ -41244,10 +41266,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this3 = this;
 
         this.data.id = this.$route.query.id;
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_52" /* getPurchaseContractInfo */])(this.$route.query).then(function (res) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_57" /* getPurchaseContractInfo */])(this.$route.query).then(function (res) {
             //查数据，得业主leixing
             _this3.yezhuleixing = res.data.data.yezhuleixing;
-        }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_59" /* isCopyCompleteList */])(this.$route.query).then(function (res) {
+        }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* isCopyCompleteList */])(this.$route.query).then(function (res) {
             //查数据，得业主leixing
             _this3.copyForm = res.data.data;
         });
@@ -41448,7 +41470,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 httid: 0
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_51" /* getZhanghaoPurchaseContractList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_22" /* getZhanghaoPurchaseContractList */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.lists = res.data.data;
                 _this.listLoading = false;
@@ -41465,7 +41487,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getPurchaseContract: function getPurchaseContract(id) {
             var _this2 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_52" /* getPurchaseContractInfo */])(id).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_57" /* getPurchaseContractInfo */])(id).then(function (res) {
                 if (res.data.code == '200') {
                     _this2.fuzhi(res);
                 } else {
@@ -41493,7 +41515,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (valid) {
                     var para1 = _this3.zhanghao;
                     _this3.Visible = false;
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_53" /* zhanghaoSavePurchaseContract */])(para1).then(function (res) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_23" /* zhanghaoSavePurchaseContract */])(para1).then(function (res) {
                         if (res.data.code != '200') {
                             _this3.$message({
                                 message: '数据没有保存成功',
@@ -41516,7 +41538,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 yinhang: row.yinhang,
                 zhanghao: row.zhanghao
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_54" /* zhanghaoUpdataPurchaseContract */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_24" /* zhanghaoUpdataPurchaseContract */])(para).then(function (res) {
                 if (res.data.code != '200') {
                     _this4.$message({
                         message: '数据没有保存成功',
@@ -41535,7 +41557,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function () {
                 _this5.listLoading = true;
                 var para = { id: row.tHtYinhangzhanghaoId };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_55" /* removeZhanghaoPurchaseContract */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_25" /* removeZhanghaoPurchaseContract */])(para).then(function (res) {
                     _this5.listLoading = false;
                     _this5.$message({
                         message: '删除成功',
@@ -41601,7 +41623,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             var para = {};
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_77" /* getPermissionListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_82" /* getPermissionListPage */])(para).then(function (res) {
                 _this.data2 = res.data;
             });
         }
@@ -41781,7 +41803,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: _this.roleId,
                     permissions: _this.$refs.tree.getCheckedKeys()
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_78" /* setPermissionList */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_83" /* setPermissionList */])(para).then(function (res) {
                     _this.$message({
                         message: '提交成功',
                         type: 'success'
@@ -41800,11 +41822,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: row.id
 
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_79" /* getPermissionListOfRole */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_84" /* getPermissionListOfRole */])(para).then(function (res) {
                 _this2.checked = res.data;
             });
             var para2 = {};
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_77" /* getPermissionListPage */])(para2).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_82" /* getPermissionListPage */])(para2).then(function (res) {
                 _this2.data2 = res.data;
             });
         },
@@ -41831,7 +41853,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: this.filters.name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_80" /* getRoleListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_85" /* getRoleListPage */])(para).then(function (res) {
                 _this3.total = res.data.total;
                 _this3.Roles = res.data.data;
                 _this3.listLoading = false;
@@ -41848,7 +41870,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this4.listLoading = true;
                 //NProgress.start();
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_81" /* removeRole */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_86" /* removeRole */])(para).then(function (res) {
                     _this4.listLoading = false;
                     //NProgress.done();
                     _this4.$message({
@@ -41881,7 +41903,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this5.$confirm('确认提交吗？', '提示', {}).then(function () {
                         _this5.editLoading = true;
                         var para = Object.assign({}, _this5.editForm);
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_82" /* editRole */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_87" /* editRole */])(para).then(function (res) {
                             _this5.editLoading = false;
                             _this5.$message({
                                 message: '提交成功',
@@ -41906,7 +41928,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         //NProgress.start();
                         var para = Object.assign({}, _this6.addForm);
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_83" /* addRole */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_88" /* addRole */])(para).then(function (res) {
                             _this6.addLoading = false;
                             //NProgress.done();
                             _this6.$message({
@@ -41937,7 +41959,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this7.listLoading = true;
                 //NProgress.start();
                 var para = { ids: ids };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_84" /* batchRemoveRole */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_89" /* batchRemoveRole */])(para).then(function (res) {
                     _this7.listLoading = false;
                     //NProgress.done();
                     _this7.$message({
@@ -42102,7 +42124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: _this.userId,
                     value: _this.Roles
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_85" /* setRoleList */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_90" /* setRoleList */])(para).then(function (res) {
                     _this.roleLoading = false;
                     _this.$message({
                         message: '保存成功',
@@ -42119,7 +42141,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: query
             };
             this.roleLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_86" /* getTotalRoleList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_91" /* getTotalRoleList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -42157,7 +42179,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: this.userId
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_87" /* getRoleList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_92" /* getRoleList */])(para).then(function (res) {
                 var arr = [];
                 for (var i in res.data) {
                     arr.push(res.data[i]);
@@ -42197,7 +42219,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 username: this.filters.username
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_88" /* getUserListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_93" /* getUserListPage */])(para).then(function (res) {
                 _this4.total = res.data.total;
                 _this4.users = res.data.data;
                 _this4.listLoading = false;
@@ -43562,7 +43584,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     id: this.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_32" /* submitSaleContract */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_37" /* submitSaleContract */])(para).then(function (res) {
                     if (res.data.code == 200) {
                         history.go(-1);
                         _this2.btnType = true;
@@ -43615,7 +43637,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = Object.assign({}, child_property, child_renter, child_date, id, bianhao, version);
             //alert(para);
             //console.log(para);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_33" /* addSaleContractInfo */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_38" /* addSaleContractInfo */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     _this3.fuzhi(res);
                     _this3.$message({
@@ -43642,7 +43664,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         review2: function review2() {
             var _this4 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_34" /* reviewSaleContract */])(this.shenhe).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_39" /* reviewSaleContract */])(this.shenhe).then(function (res) {
                 if (res.data.code == 200) {
                     history.go(-1);
                     _this4.dialogFormVisible = false;
@@ -43780,7 +43802,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //console.log(this.property.xsOffice[0].omcId);
             //console.log(this.property.xsOffice[0].omcId);
             //console.log(para);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_35" /* getContractChuzuren */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_40" /* getContractChuzuren */])(para).then(function (res) {
                 if (res.data.code == '102001') {
                     _this7.renter.chengzufang = '无';
                 } else {
@@ -44186,6 +44208,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -44209,6 +44233,62 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['addDate'], //这块是父页面和子页面出数据时声明（定义的）
     methods: {
         onSubmit: function onSubmit() {},
+        zqchange1: function zqchange1() {
+            if (this.$route.path == '/saleContract/add') {
+                //时间一改变就对zujinList的日期进行填充
+                //先获取的开始和结束时间
+                var d1 = new Date(this.addDate.startdate);
+                var d2 = new Date(this.addDate.enddate);
+                var cha = parseInt(d2.getFullYear()) - parseInt(d1.getFullYear());
+                //每次变数据清空当前的列表
+                this.addDate.zujinList.splice(0, this.addDate.zujinList.length); //清空数组
+                for (var i = 0; i < cha; i++) {
+                    this.addRentItem();
+                    if (i == 0) {
+                        this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear());
+                        var dx = new Date(this.addDate.zujinList[i].startdate); //将时间复制，然后加一年
+                        this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear() + 1);
+                        var dy = new Date(this.addDate.zujinList[i].enddate); //将时间复制，然后减一天
+                        this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate() - 1);
+                    }
+                    if (i > 0) {
+                        this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear() + 1);
+                        var _dx = new Date(this.addDate.zujinList[i].startdate); //将时间复制，然后加一年
+                        this.addDate.zujinList[i].enddate = _dx.setFullYear(_dx.getFullYear() + 1);
+                        var _dy = new Date(this.addDate.zujinList[i].enddate); //将时间复制，然后减一天
+                        this.addDate.zujinList[i].enddate = _dy.setDate(_dx.getDate() - 1);
+                    }
+                }
+            }
+        },
+        zqchange2: function zqchange2() {
+            if (this.$route.path == '/saleContract/add') {
+                //时间一改变就对zujinList的日期进行填充
+                //先获取的开始和结束时间
+                var d1 = new Date(this.addDate.startdate);
+                var d2 = new Date(this.addDate.enddate);
+                var cha = parseInt(d2.getFullYear()) - parseInt(d1.getFullYear());
+                //每次变数据清空当前的列表
+                this.addDate.zujinList.splice(0, this.addDate.zujinList.length); //清空数组
+                for (var i = 0; i < cha; i++) {
+                    this.addRentItem();
+                    if (i == 0) {
+                        this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear());
+                        var dx = new Date(this.addDate.zujinList[i].startdate); //将时间复制，然后加一年
+                        this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear() + 1);
+                        var dy = new Date(this.addDate.zujinList[i].enddate); //将时间复制，然后减一天
+                        this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate() - 1);
+                    }
+                    if (i > 0) {
+                        this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear() + 1);
+                        var _dx2 = new Date(this.addDate.zujinList[i].startdate); //将时间复制，然后加一年
+                        this.addDate.zujinList[i].enddate = _dx2.setFullYear(_dx2.getFullYear() + 1);
+                        var _dy2 = new Date(this.addDate.zujinList[i].enddate); //将时间复制，然后减一天
+                        this.addDate.zujinList[i].enddate = _dy2.setDate(_dx2.getDate() - 1);
+                    }
+                }
+            }
+        },
 
         //增加免租期
         addFreeItem: function addFreeItem() {
@@ -44508,7 +44588,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 str: query
             };
             this.loupanloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_37" /* getLoupanList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_42" /* getLoupanList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -44541,7 +44621,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 loupanOmcId: this.property.xsOffice[this.tabIndex - 1].loupanOmcId
             };
             this.loupanloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_38" /* getLoudongList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_43" /* getLoudongList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -44578,7 +44658,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //console.log(this.property.xsOffice[this.tabIndex-1].loupanOmcId);
             //console.log(this.property.xsOffice[this.tabIndex-1].loudongOmcId);
             //console.log(para);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_39" /* getSaleFanghaoList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_44" /* getSaleFanghaoList */])(para).then(function (res) {
                 _this4.houseData = res.data;
                 var arr = [];
                 arr[0] = '';
@@ -45070,7 +45150,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: query
             };
             this.bkNameloading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_36" /* getNameSaleList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_41" /* getNameSaleList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data.data) {
@@ -45460,7 +45540,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getOptimize: function getOptimize() {
             var _this2 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_28" /* getOptimizePurchaseContract */])(this.$route.query).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_33" /* getOptimizePurchaseContract */])(this.$route.query).then(function (res) {
                 alert(332);
                 _this2.fuzhi(res);
             });
@@ -45518,7 +45598,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 xieyienddate: this.addDate.xieyienddate
             };
             console.log(para);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_29" /* optimizePurchaseContract */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_34" /* optimizePurchaseContract */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     _this3.fuzhi(res);
                     _this3.btnType = false, _this3.$message({
@@ -45542,7 +45622,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         hetongid: _this4.$route.query.hetongid,
                         xyid: _this4.id
                     };
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_30" /* buchongsbSaleContract */])(para).then(function (res) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_35" /* buchongsbSaleContract */])(para).then(function (res) {
                         if (res.data.code == '200') {
                             _this4.$router.push('/saleContract');
                         }
@@ -46317,6 +46397,151 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -46332,16 +46557,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 loudongName: null,
                 fanghao: null
             }],
+            loupanloading: false,
+            fanghaoloading: false,
             Visible: false,
-            qiandanren: [{
-                id: null,
-                tHetongId: null,
-                qiandanname: null,
-                bilei: null,
-                lingdao: null,
-                bumen: null,
-                Loading: null
-            }],
+            hetongid: null,
+            hedan: {
+                qiandanren: [{
+                    //id:null,
+                    contractid: null,
+                    signpersonnelname: '', //签单人姓名
+                    ratio: null, //签单人所占比例
+                    leaderpersonnelname: null, //签单人上级领导
+                    departmentname: null //签单人部门
+                    //Loading:null,
+                }]
+            },
             zhanghaoRules: {
                 huming: [{ required: true, message: '不能为空' }],
                 yinheng: [{ required: true, message: '不能为空' }],
@@ -46358,21 +46588,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        hanshu: function hanshu(row) {
+            return row.laiyuantype == 3 ? true : false;
+        },
+
+        //时间戳转日期格式
+        changeDate: function changeDate(row, column) {
+            var newDate = new Date();
+            newDate.setTime(row.tianjiadate);
+            if (row.tianjiadate != null) {
+                return newDate.toLocaleDateString();
+            }
+        },
+
         //获取付款账号的数据列表
-        saleZhanghaoContractList: function saleZhanghaoContractList() {
+        saleHedanContractList: function saleHedanContractList() {
             var _this = this;
 
             var para = {
                 pn: this.page,
                 cnt: this.pageSize,
-                selectItem: this.filters.name,
-                zhuangtai: this.filters.status
-                //console.log(111);
-                //console.log(this.page);
-                //console.log(this.pageSize);
-                //console.log(para);
-            };this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_17" /* getZhanghaoSaleContractList */])(para).then(function (res) {
+                htid: this.$route.query.id
+            };
+            console.log(para);
+            //console.log(this.page);
+            //console.log(this.pageSize);
+            //alert(222);
+            this.listLoading = true;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_17" /* getHedanSaleContractList */])(para).then(function (res) {
                 //console.log(12222);
                 //console.log(res.data.data);
                 _this.total = res.data.total;
@@ -46380,32 +46623,171 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.listLoading = false;
             });
         },
+
+        //获取楼盘
+        /*remoteMethod1(query) {
+            let para = {
+                str: query
+            };
+            this.loupanloading = true;
+            getLoupanList(para).then((res) => {
+                let arr = [];
+                arr[0] = '';
+                for ( var i in res.data ){
+                    arr[i]=res.data [i];
+                }
+                this.estate = arr;
+                this.loupanloading = false;
+                this.list = this.estate.map((item,index) => {
+                    return { value: index, label: item };
+                });
+                if (query !== '') {
+                    this.loupanloading = true;
+                    setTimeout(() => {
+                        this.loupanloading = false;
+                        this.options1 = this.list.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
+                    }, 200);
+                } else {
+                    this.options1 = [];
+                }
+            });
+         },
+        //获取楼栋
+        remoteMethod2(query) {
+            let para = {
+                loupanOmcId:this.property.xsOffice[this.tabIndex-1].loupanOmcId,
+            };
+            this.loupanloading = true;
+            getLoudongList(para).then((res) => {
+                let arr = [];
+                arr[0] = '';
+                for ( var i in res.data ){
+                    arr[i]=res.data [i];
+                }
+                this.building = arr;
+                this.loupanloading = false;
+                this.list2 = this.building.map((item,index) => {
+                    return { value: index, label: item };
+                });
+                if (query !== '') {
+                    this.loupanloading = true;
+                    setTimeout(() => {
+                        this.loupanloading = false;
+                        this.options2 = this.list2.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
+                    }, 200);
+                } else {
+                    this.options2 = [];
+                }
+            });
+         },
+        //获取房号
+        remoteMethod3(query) {
+            let para = {
+                lpid: this.property.xsOffice[this.tabIndex-1].loupanOmcId,
+                zdid: this.property.xsOffice[this.tabIndex-1].loudongOmcId,
+            };
+            this.fanghaoloading = true;
+            //console.log(this.property.xsOffice[this.tabIndex-1].loupanOmcId);
+            //console.log(this.property.xsOffice[this.tabIndex-1].loudongOmcId);
+            //console.log(para);
+            getSaleFanghaoList(para).then((res) => {
+                this.houseData = res.data;
+                let arr = [];
+                arr[0] = '';
+                for ( var i in res.data ){
+                    arr[res.data[i].id]=res.data[i].fybh;
+                }
+                this.house = arr;
+                this.fanghaoloading = false;
+                this.list3 = this.house.map((item,index) => {
+                    return { value: index, label: item };
+                });
+                if (query !== '') {
+                    this.fanghaoloading = true;
+                    setTimeout(() => {
+                        this.fanghaoloading = false;
+                        this.options3 = this.list3.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
+                    }, 200);
+                } else {
+                    this.options3 = [];
+                }
+            });
+         },
+         //得到房间号以后，提取OMC的对应信息
+        change1(){
+            //楼盘
+            for (var x in this.options1){
+                if(this.options1[x].label==  this.hedan.qiandanren[this.tabIndex-1].signpersonnelname){
+                    this.property.xsOffice[this.tabIndex-1].loupanOmcId=this.options1[x].value;
+                    this.property.xsOffice[this.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
+                    this.property.xsOffice[this.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
+                    this.property.xsOffice[this.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                    this.property.xsOffice[this.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
+                }
+            }
+        },
+        change2(){
+            //alert(222);
+            //楼栋
+            for (var x in this.options2){
+                if(this.options2[x].label==this.hedan.qiandanren[this.tabIndex-1].leaderpersonnelname){
+                    this.property.xsOffice[this.tabIndex-1].loudongOmcId=this.options2[x].value;
+                 }
+            }
+        },
+        change3(){
+            //alert(111);
+            //房号
+            for (var x in this.options3){
+                if(this.options3[x].label==this.hedan.qiandanren[this.tabIndex-1].departmentname){
+                    this.property.xsOffice[this.tabIndex-1].omcId=this.options3[x].value;
+                }
+            }
+            for (var x in this.houseData){
+                if(this.houseData[x].id==this.property.xsOffice[this.tabIndex-1].omcId){
+                    this.property.xsOffice[this.tabIndex-1].Jianzhumianji=this.houseData[x].fjmj;
+                    this.property.xsOffice[this.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
+                }
+            }
+            //console.log(this.property.xsOffice)
+            this.$emit('getshoufanghetong')
+         },*/
         handleSizeChange: function handleSizeChange(val) {
             /*console.log(`每页 ${val} 条`);*/
             this.pageSize = val;
-            this.saleZhanghaoContractList();
+            this.saleHedanContractList();
         },
         handleCurrentChange: function handleCurrentChange(val) {
             /*console.log(`当前页: ${val}`);*/
             this.page = val;
-            this.saleZhanghaoContractList();
+            this.saleHedanContractList();
         },
 
         //增加租期租金
         addqiandan: function addqiandan() {
-            //console.log(this.qiandanren);
-            this.qiandanren.push({
-                qiandanname: '',
-                bilei: '',
-                lingdao: '',
-                bumen: ''
+            //console.log(this.hedan.qiandanren);
+            this.hedan.qiandanren.push({
+                contractid: this.hedan.qiandanren[0].contractid,
+                signpersonnelname: '',
+                ratio: '',
+                leaderpersonnelname: '',
+                departmentname: ''
             });
         },
         removeQiandan: function removeQiandan(item) {
-            this.qiandanren.pop();
-            var index = this.qiandanren.indexOf(item);
+            this.hedan.qiandanren.pop();
+            var index = this.hedan.qiandanren.indexOf(item);
             if (index !== -1) {
-                this.qiandanren.splice(index, 1);
+                this.hedan.qiandanren.splice(index, 1);
             }
         },
         getSaleContract: function getSaleContract(id) {
@@ -46431,48 +46813,92 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.Visible = true;
         },
 
-        //合同终止
+        //新增的提交
         handleEnd: function handleEnd(index, row) {
             var _this3 = this;
 
             this.$refs.sureForm.validate(function (valid) {
                 if (valid) {
-                    var para1 = _this3.qiandanren;
+                    var para1 = _this3.hedan.qiandanren;
+                    //console.log(para1);
                     _this3.Visible = false;
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_19" /* zhanghaoSaveSaleContract */])(para1).then(function (res) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_19" /* hedanSaveSaleContract */])(para1).then(function (res) {
                         if (res.data.code != '200') {
                             _this3.$message({
                                 message: '数据没有保存成功',
                                 type: 'error'
                             });
                         }
+                        _this3.saleHedanContractList();
                     });
                 }
             });
         },
 
-        //账号删除
-        handleDel: function handleDel(index, row) {
+        //失去焦点事件
+        updataHedan: function updataHedan(index, row) {
             var _this4 = this;
+
+            var para = {
+                id: row.id,
+                signpersonnelname: row.signpersonnelname,
+                ratio: row.ratio,
+                leaderpersonnelname: row.leaderpersonnelname,
+                departmentname: row.departmentname
+            };
+            //alert(22);
+            console.log(para);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_20" /* hedanUpdataSaleContract */])(para).then(function (res) {
+                if (res.data.code != '200') {
+                    _this4.$message({
+                        message: '数据没有保存成功',
+                        type: 'error'
+                    });
+                }
+            });
+        },
+
+        //签单人删除
+        /*handleDel(index, row){
+            this.$confirm('确认删除该记录吗？', '提示', {
+                type: 'warning'
+            }).then(() => {
+                this.listLoading = true;
+                let para = {id: row.id};
+                removeHedanSaleContract(para).then((res) => {
+                    alert(11);
+                    this.listLoading = false;
+                    this.message({
+                        message: '删除成功',
+                        type: 'success'
+                    });
+                    this.saleHedanContractList();
+                });
+            }).catch(() => {
+             });
+        },*/
+        handleDel: function handleDel(index, row) {
+            var _this5 = this;
 
             this.$confirm('确认删除该记录吗？', '提示', {
                 type: 'warning'
             }).then(function () {
-                _this4.listLoading = true;
+                _this5.listLoading = true;
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_20" /* removeZhanghaoSaleContract */])(para).then(function (res) {
-                    _this4.listLoading = false;
-                    _this4.message({
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_21" /* removeHedanSaleContract */])(para).then(function (res) {
+                    _this5.listLoading = false;
+                    _this5.$message({
                         message: '删除成功',
                         type: 'success'
                     });
-                    _this4.getUsers();
+                    _this5.saleHedanContractList();
                 });
             }).catch(function () {});
         },
         fuzhi: function fuzhi(res) {
             //console.log(res.data.data);
-            this.hetongid = res.data.data.id;
+            this.hedan.qiandanren.contractid = res.data.data.id;
+            //this.hetongid = res.data.data.id;
             this.bianhao = res.data.data.bianhao;
             this.xsOffice = res.data.data.xsOffice;
             //console.log(this.xsOffice);
@@ -46480,10 +46906,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
-        this.saleZhanghaoContractList();
+        this.saleHedanContractList();
+        this.hetongid = this.$route.query.id;
+        this.hedan.qiandanren[0].contractid = this.$route.query.id;
         //根据url得到的合同ID，来获取数据
         if (this.$route.query.id != null) {
-            //alert(11);
             //console.log(this.$route.query);
             this.getSaleContract(this.$route.query);
         }
@@ -46652,7 +47079,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getList: function getList() {
             var _this = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_27" /* buchongSaleContractList */])(this.$route.query).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_32" /* buchongSaleContractList */])(this.$route.query).then(function (res) {
                 //alert(22);
                 _this.youhuaList = res.data.data;
                 _this.total = res.total;
@@ -46887,7 +47314,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 weiYueType: this.weiYue.weiyueleixing,
                 zhongZhiDate: new Date(this.weiYue.zhongzhidate).toLocaleDateString()
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_40" /* weiYueInfoSaleContract */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_45" /* weiYueInfoSaleContract */])(para).then(function (res) {
                 if (res.data.code != '200') {
                     _this2.$message({
                         message: '获取应付信息失败',
@@ -46973,7 +47400,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //console.log(this.pageSize);
                 //console.log(para);
             };this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_41" /* getSaleContractList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_46" /* getSaleContractList */])(para).then(function (res) {
                 //console.log(12222);
                 //console.log(res.data.data);
                 _this4.total = res.data.total;
@@ -47014,7 +47441,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: row.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_42" /* approvingSaleContract */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_47" /* approvingSaleContract */])(para).then(function (res) {});
             this.$router.push('/saleContract/review?id=' + row.id);
         },
         handleJieyue: function handleJieyue(index, row) {
@@ -47025,7 +47452,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function () {
                 _this5.listLoading = true;
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_43" /* jieyueSaleContract */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_48" /* jieyueSaleContract */])(para).then(function (res) {
                     _this5.listLoading = false;
                     _this5.$message({
                         message: '设置成功',
@@ -47039,7 +47466,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: row.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_43" /* jieyueSaleContract */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_48" /* jieyueSaleContract */])(para).then(function (res) {});
             this.$router.push('/saleContract/jieyue?id=' + row.id);
         },
         handleCheckJieyue: function handleCheckJieyue(index, row) {
@@ -47055,7 +47482,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     /*let para = {
                     id:row.id,
                     }*/
-                };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_44" /* confirmSaleContract */])(para).then(function (res) {
+                };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_49" /* confirmSaleContract */])(para).then(function (res) {
                     if (res.data.code == "200") {
                         _this6.saleContractList();
                         window.open('/#/saleContract/dump' + version + '?id=' + row.id);
@@ -47072,7 +47499,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function () {
                 _this7.listLoading = true;
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_45" /* removeSaleContract */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_50" /* removeSaleContract */])(para).then(function (res) {
                     _this7.listLoading = false;
                     _this7.message({
                         message: '删除成功',
@@ -47094,7 +47521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this8.listLoading = true;
                 var para = { id: row.id };
                 //alert(11);
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_46" /* confirmedSaleContract */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_51" /* confirmedSaleContract */])(para).then(function (res) {
                     //alert(22);
                     _this8.listLoading = false;
                     //alert(33);
@@ -47114,7 +47541,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function () {
                 _this9.listLoading = true;
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_47" /* weiyueSaleContract */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_52" /* weiyueSaleContract */])(para).then(function (res) {
                     _this9.listLoading = false;
                     _this9.$message({
                         message: '设置成功',
@@ -47145,7 +47572,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }).then(function () {
                         var para1 = _this10.weiYue;
                         _this10.weiYue.Visible = false;
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_48" /* weiYueSaveSaleContract */])(para1).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_53" /* weiYueSaveSaleContract */])(para1).then(function (res) {
                             if (res.data.code != '200') {
                                 _this10.$message({
                                     message: '数据没有保存成功',
@@ -47155,7 +47582,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         });
                         _this10.listLoading = true;
                         var para = { id: _this10.id };
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_49" /* endSaleContract */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_54" /* endSaleContract */])(para).then(function (res) {
                             _this10.listLoading = false;
                             //NProgress.done();
                             _this10.$message({
@@ -47174,7 +47601,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: row.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_50" /* buchongSaleContract */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_55" /* buchongSaleContract */])(para).then(function (res) {});
             this.$router.push('/saleContract/buchong?hetongid=' + row.id + '&bianhao=' + row.bianhao);
         },
 
@@ -47183,7 +47610,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: row.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_50" /* buchongSaleContract */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_55" /* buchongSaleContract */])(para).then(function (res) {});
             this.$router.push('/saleContract/buchong?hetongid=' + row.id + '&type=1' + '&bianhao=' + row.bianhao);
         },
         handleCheckOptimize: function handleCheckOptimize(index, row) {
@@ -47378,7 +47805,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = Object.assign({}, hetongid, this.jieyueXieyi);
             //console.log(para);
             //alert(111);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_25" /* addSaleJieyueContractInfo */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_30" /* addSaleJieyueContractInfo */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     //alert(333);
 
@@ -47404,7 +47831,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             var para = Object.assign({}, hetongid, this.jieyueXieyi);
             //console.log(para);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_26" /* jieyueSaleContractInfo */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_31" /* jieyueSaleContractInfo */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     history.go(-1);
                     _this3.$message({ //这是Vue中从后台返回来的数据的格式
@@ -47570,7 +47997,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             //alert(11);
             console.log(id);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_31" /* getjieyueSaleContractInfo */])(id).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_36" /* getjieyueSaleContractInfo */])(id).then(function (res) {
                 _this.jieyueList = res.data.data;
 
                 console.log(res.data.data);
@@ -47850,7 +48277,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$refs.copyForm.validate(function (valid) {
                 if (valid) {
                     var para = Object.assign({}, _this.copyForm, { id: parseInt(_this.$route.query.id) });
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_21" /* isCopySaleComplete */])(para).then(function (res) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_26" /* isCopySaleComplete */])(para).then(function (res) {
                         if (res.data.code == '200') {
                             _this.$message({
                                 message: '保存成功',
@@ -47882,7 +48309,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: file.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_22" /* copySaleImageDelete */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_27" /* copySaleImageDelete */])(para).then(function (res) {});
             //console.log(file.id);
         },
         handlePictureCardPreview: function handlePictureCardPreview(file) {
@@ -47899,7 +48326,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: this.$route.query.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_23" /* copySaleImageList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_28" /* copySaleImageList */])(para).then(function (res) {
                 if (res.data.code == '200') {
                     _this2.hetongList = res.data.data[1]; //合同
                     _this2.chengzuren = res.data.data[2]; //合同
@@ -47919,7 +48346,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_18" /* getSaleContractInfo */])(this.$route.query).then(function (res) {
             //查数据，得租户leixing（得到租户类型就可以判断营业执照显不显示）
             _this3.zuhuleixing = res.data.data.zuhuleixing;
-        }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_24" /* isCopySaleCompleteList */])(this.$route.query).then(function (res) {
+        }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_29" /* isCopySaleCompleteList */])(this.$route.query).then(function (res) {
             //查数据，得租户leixing
             _this3.copyForm = res.data.data;
         });
@@ -48032,37 +48459,50 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            filters: {
-                name: '',
-                region: '',
-                status: ''
-            },
             lists: [],
             listLoading: false,
             bianhao: null,
             xsOffice: [{
-                //hetongtype:null,
                 loupanName: null,
                 loudongName: null,
                 fanghao: null
             }],
+            id: null,
+            Visible: false,
             zhanghao: {
-                id: null,
-                Visible: false,
-                tHetongId: null,
-                huming: null,
-                yinheng: null,
+                hetongid: null,
+                hetongbianhao: null,
+                zhanghu: null,
+                yinhang: null,
                 zhanghao: null,
-                Loading: null
+                hetongtid: 0
             },
+            tianjiadate: null,
+            Loading: null,
             zhanghaoRules: {
-                huming: [{ required: true, message: '不能为空' }],
-                yinheng: [{ required: true, message: '不能为空' }],
+                zhanghu: [{ required: true, message: '不能为空' }],
+                yinhang: [{ required: true, message: '不能为空' }],
                 zhanghao: [{ required: true, message: '不能为空' }]
             },
             //分页类数据
@@ -48076,38 +48516,65 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        hanshu: function hanshu(row) {
+            return row.laiyuantype == 3 ? true : false;
+        },
+
+        //时间戳转日期格式
+        changeDate: function changeDate(row, column) {
+            var newDate = new Date();
+            newDate.setTime(row.tianjiadate);
+            if (row.tianjiadate != null) {
+                return newDate.toLocaleDateString();
+            }
+        },
+        formatStatus: function formatStatus(row, column) {
+            var status = [];
+            status[1] = '合同';
+            status[2] = '新增';
+            status[3] = '财务';
+            return status[row.laiyuantype];
+        },
+
         //获取付款账号的数据列表
-        saleZhanghaoContractList: function saleZhanghaoContractList() {
+        purchaseZhanghaoContractList: function purchaseZhanghaoContractList() {
             var _this = this;
 
             var para = {
-                pn: this.page,
-                cnt: this.pageSize,
-                selectItem: this.filters.name,
-                zhuangtai: this.filters.status
-                //console.log(111);
-                //console.log(this.page);
-                //console.log(this.pageSize);
-                //console.log(para);
-            };this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_17" /* getZhanghaoSaleContractList */])(para).then(function (res) {
-                //console.log(12222);
-                //console.log(res.data.data);
+                page: this.page,
+                size: this.pageSize,
+                htid: this.$route.query.id,
+                httid: 1
+            };
+            this.listLoading = true;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_22" /* getZhanghaoPurchaseContractList */])(para).then(function (res) {
+                //console.log(res.data);
                 _this.total = res.data.total;
                 _this.lists = res.data.data;
                 _this.listLoading = false;
             });
         },
         handleSizeChange: function handleSizeChange(val) {
-            /*console.log(`每页 ${val} 条`);*/
             this.pageSize = val;
-            this.saleZhanghaoContractList();
+            this.purchaseZhanghaoContractList();
         },
         handleCurrentChange: function handleCurrentChange(val) {
-            /*console.log(`当前页: ${val}`);*/
             this.page = val;
-            this.saleZhanghaoContractList();
+            this.purchaseZhanghaoContractList();
         },
+
+        /*getSaleContract(id){
+            getSaleContractInfo(id).then((res)=>{
+                if(res.data.code=='200'){
+                    this.fuzhi(res);
+                }else {
+                    this.$message({
+                        message: '获取数据失败',
+                        type: 'error'
+                    });
+                }
+            })
+        },*/
         getSaleContract: function getSaleContract(id) {
             var _this2 = this;
 
@@ -48128,24 +48595,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //新增
         addContract: function addContract() {
-            this.zhanghao.Visible = true;
+            this.Visible = true;
         },
 
-        //合同终止
+        //新增的提交
         handleEnd: function handleEnd(index, row) {
             var _this3 = this;
 
             this.$refs.sureForm.validate(function (valid) {
                 if (valid) {
                     var para1 = _this3.zhanghao;
-                    _this3.zhanghao.Visible = false;
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_19" /* zhanghaoSaveSaleContract */])(para1).then(function (res) {
+                    _this3.Visible = false;
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_23" /* zhanghaoSavePurchaseContract */])(para1).then(function (res) {
                         if (res.data.code != '200') {
                             _this3.$message({
                                 message: '数据没有保存成功',
                                 type: 'error'
                             });
                         }
+                        _this3.purchaseZhanghaoContractList();
+                    });
+                }
+            });
+        },
+
+        //失去焦点事件
+        updataZhanghao: function updataZhanghao(index, row) {
+            var _this4 = this;
+
+            var para = {
+                tHtYinhangzhanghaoId: row.tHtYinhangzhanghaoId,
+                zhanghu: row.zhanghu,
+                yinhang: row.yinhang,
+                zhanghao: row.zhanghao
+            };
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_24" /* zhanghaoUpdataPurchaseContract */])(para).then(function (res) {
+                if (res.data.code != '200') {
+                    _this4.$message({
+                        message: '数据没有保存成功',
+                        type: 'error'
                     });
                 }
             });
@@ -48153,38 +48641,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //账号删除
         handleDel: function handleDel(index, row) {
-            var _this4 = this;
+            var _this5 = this;
 
             this.$confirm('确认删除该记录吗？', '提示', {
                 type: 'warning'
             }).then(function () {
-                _this4.listLoading = true;
-                var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_20" /* removeZhanghaoSaleContract */])(para).then(function (res) {
-                    _this4.listLoading = false;
-                    _this4.message({
+                _this5.listLoading = true;
+                var para = { id: row.tHtYinhangzhanghaoId };
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_25" /* removeZhanghaoPurchaseContract */])(para).then(function (res) {
+                    _this5.listLoading = false;
+                    _this5.$message({
                         message: '删除成功',
                         type: 'success'
                     });
-                    _this4.getUsers();
+                    _this5.purchaseZhanghaoContractList();
                 });
-            }).catch(function () {});
+            }).catch(function (res) {
+                console.log(res);
+            });
         },
         fuzhi: function fuzhi(res) {
-            //console.log(res.data.data);
             this.hetongid = res.data.data.id;
             this.bianhao = res.data.data.bianhao;
             this.xsOffice = res.data.data.xsOffice;
-            //console.log(this.xsOffice);
-            //console.log(this.jieyueXieyi);
+            //console.log(this.xsOffice)
         }
     },
     mounted: function mounted() {
-        this.saleZhanghaoContractList();
+        this.purchaseZhanghaoContractList();
+        this.zhanghao.hetongid = this.$route.query.id;
         //根据url得到的合同ID，来获取数据
         if (this.$route.query.id != null) {
-            //alert(11);
-            //console.log(this.$route.query);
             this.getSaleContract(this.$route.query);
         }
     }
@@ -106161,13 +106648,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1, 2])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("编辑合同")])], 1) : _vm._e(), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleReview(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("审核合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [3])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("审核合同")])], 1), _vm._v(" "), (_vm.ztin(scope.row, [3])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleDump(scope.$index, scope.row)
@@ -107816,6 +108303,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       })
     }))], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 8
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "required": "",
+        "label": "区域",
+        "prop": "quyu"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.property.xsOffice[index].quyu),
+        callback: function($$v) {
+          _vm.property.xsOffice[index].quyu = $$v
+        },
+        expression: "property.xsOffice[index].quyu"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
         "span": 16
       }
@@ -115704,6 +116209,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "date",
       "placeholder": "开始时间"
     },
+    on: {
+      "change": function($event) {
+        _vm.zqchange1()
+      }
+    },
     model: {
       value: (_vm.addDate.startdate),
       callback: function($$v) {
@@ -115739,6 +116249,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "type": "date",
       "placeholder": "结束时间"
+    },
+    on: {
+      "change": function($event) {
+        _vm.zqchange2()
+      }
     },
     model: {
       value: (_vm.addDate.enddate),
@@ -119866,18 +120381,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "实际月租金",
-      "prop": "shijiyuezujin"
+      "prop": "actualrent"
     }
   }, [_c('el-input', {
     attrs: {
       "placeholder": "实际月租金"
     },
     model: {
-      value: (_vm.addDate.shijiyuezujin),
+      value: (_vm.addDate.actualrent),
       callback: function($$v) {
-        _vm.addDate.shijiyuezujin = _vm._n($$v)
+        _vm.addDate.actualrent = _vm._n($$v)
       },
-      expression: "addDate.shijiyuezujin"
+      expression: "addDate.actualrent"
     }
   })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
@@ -120865,32 +121380,117 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-table-column', {
     attrs: {
-      "prop": "bianhao",
       "label": "签单人",
       "width": "200"
-    }
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-input', {
+          attrs: {
+            "disabled": _vm.hanshu(scope.row)
+          },
+          on: {
+            "blur": function($event) {
+              _vm.updataHedan(scope.$index, scope.row)
+            }
+          },
+          model: {
+            value: (scope.row.signpersonnelname),
+            callback: function($$v) {
+              scope.row.signpersonnelname = $$v
+            },
+            expression: "scope.row.signpersonnelname"
+          }
+        })]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "loupanName",
       "label": "合单占比",
-      "sortable": ""
-    }
+      "width": "300"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-input', {
+          attrs: {
+            "disabled": _vm.hanshu(scope.row)
+          },
+          on: {
+            "blur": function($event) {
+              _vm.updataHedan(scope.$index, scope.row)
+            }
+          },
+          model: {
+            value: (scope.row.ratio),
+            callback: function($$v) {
+              scope.row.ratio = $$v
+            },
+            expression: "scope.row.ratio"
+          }
+        })]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "loudongName",
       "label": "签单人领导",
-      "sortable": ""
-    }
+      "width": "300"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-input', {
+          attrs: {
+            "disabled": _vm.hanshu(scope.row)
+          },
+          on: {
+            "blur": function($event) {
+              _vm.updataHedan(scope.$index, scope.row)
+            }
+          },
+          model: {
+            value: (scope.row.leaderpersonnelname),
+            callback: function($$v) {
+              scope.row.leaderpersonnelname = $$v
+            },
+            expression: "scope.row.leaderpersonnelname"
+          }
+        })]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "fanghao",
       "label": "签单人部门",
-      "sortable": ""
-    }
+      "width": "300"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-input', {
+          attrs: {
+            "disabled": _vm.hanshu(scope.row)
+          },
+          on: {
+            "blur": function($event) {
+              _vm.updataHedan(scope.$index, scope.row)
+            }
+          },
+          model: {
+            value: (scope.row.departmentname),
+            callback: function($$v) {
+              scope.row.departmentname = $$v
+            },
+            expression: "scope.row.departmentname"
+          }
+        })]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "fanghao",
+      "prop": "tianjiadate",
       "label": "新增时间",
+      "formatter": _vm.changeDate,
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
@@ -120911,7 +121511,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             "size": "normal",
             "splitButton": "true"
           }
-        }, [_vm._v("\n                            操作"), _c('i', {
+        }, [_vm._v("\n                                操作"), _c('i', {
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
@@ -120966,33 +121566,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label-width": "150px",
       "rules": _vm.zhanghaoRules,
-      "model": _vm.qiandanren
+      "model": _vm.hedan
     }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "hidden",
-      "prop": "tHetongId",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.qiandanren.tHetongId),
-      callback: function($$v) {
-        _vm.qiandanren.tHetongId = $$v
-      },
-      expression: "qiandanren.tHetongId"
-    }
-  }), _vm._v(" "), _c('div', {
+  }, [_c('div', {
     staticStyle: {
       "max-height": "400px",
       "border": "0px solid #8391a5",
       "overflow": "auto"
     }
-  }, _vm._l((_vm.qiandanren), function(item, index) {
+  }, _vm._l((_vm.hedan.qiandanren), function(item, index) {
     return _c('div', {
       staticStyle: {
         "height": "150px"
       }
-    }, [_c('el-row', [_c('el-col', {
+    }, [_c('el-row', [_c('el-input', {
+      attrs: {
+        "type": "hidden",
+        "prop": "contractid",
+        "auto-complete": "off"
+      },
+      model: {
+        value: (_vm.hedan.qiandanren.contractid),
+        callback: function($$v) {
+          _vm.hedan.qiandanren.contractid = $$v
+        },
+        expression: "hedan.qiandanren.contractid"
+      }
+    }), _vm._v(" "), _c('el-col', {
       attrs: {
         "span": 10
       }
@@ -121002,11 +121602,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-input', {
       model: {
-        value: (_vm.qiandanren[index].qiandanname),
+        value: (_vm.hedan.qiandanren[index].signpersonnelname),
         callback: function($$v) {
-          _vm.qiandanren[index].qiandanname = $$v
+          _vm.hedan.qiandanren[index].signpersonnelname = $$v
         },
-        expression: "qiandanren[index].qiandanname"
+        expression: "hedan.qiandanren[index].signpersonnelname"
       }
     })], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
@@ -121018,11 +121618,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-input', {
       model: {
-        value: (_vm.qiandanren[index].bilei),
+        value: (_vm.hedan.qiandanren[index].ratio),
         callback: function($$v) {
-          _vm.qiandanren[index].bilei = $$v
+          _vm.hedan.qiandanren[index].ratio = $$v
         },
-        expression: "qiandanren[index].bilei"
+        expression: "hedan.qiandanren[index].ratio"
       }
     })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
       attrs: {
@@ -121034,11 +121634,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-input', {
       model: {
-        value: (_vm.qiandanren[index].lingdao),
+        value: (_vm.hedan.qiandanren[index].leaderpersonnelname),
         callback: function($$v) {
-          _vm.qiandanren[index].lingdao = $$v
+          _vm.hedan.qiandanren[index].leaderpersonnelname = $$v
         },
-        expression: "qiandanren[index].lingdao"
+        expression: "hedan.qiandanren[index].leaderpersonnelname"
       }
     })], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
@@ -121050,11 +121650,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-input', {
       model: {
-        value: (_vm.qiandanren[index].bumen),
+        value: (_vm.hedan.qiandanren[index].departmentname),
         callback: function($$v) {
-          _vm.qiandanren[index].bumen = $$v
+          _vm.hedan.qiandanren[index].departmentname = $$v
         },
-        expression: "qiandanren[index].bumen"
+        expression: "hedan.qiandanren[index].departmentname"
       }
     })], 1)], 1)], 1)], 1)
   })), _vm._v(" "), _c('el-button', {
@@ -121107,7 +121707,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(" 取消")]), _vm._v(" "), _c('el-button', {
     attrs: {
       "type": "primary",
-      "loading": _vm.qiandanren.Loading
+      "loading": _vm.hedan.qiandanren.Loading
     },
     nativeOn: {
       "click": function($event) {
@@ -121802,7 +122402,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-row', [_c('el-col', {
       attrs: {
-        "span": 4
+        "span": 6
       }
     }, [_c('span', [_vm._v("合同编号：" + _vm._s(_vm.bianhao))])]), _vm._v(" "), _c('el-col', {
       attrs: {
@@ -121858,26 +122458,97 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-table-column', {
     attrs: {
-      "prop": "bianhao",
       "label": "收款方户名",
-      "width": "300"
-    }
+      "width": "200"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-input', {
+          attrs: {
+            "disabled": _vm.hanshu(scope.row)
+          },
+          on: {
+            "blur": function($event) {
+              _vm.updataZhanghao(scope.$index, scope.row)
+            }
+          },
+          model: {
+            value: (scope.row.zhanghu),
+            callback: function($$v) {
+              scope.row.zhanghu = $$v
+            },
+            expression: "scope.row.zhanghu"
+          }
+        })]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "loupanName",
       "label": "收款方银行",
-      "sortable": ""
-    }
+      "width": "300"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-input', {
+          attrs: {
+            "disabled": _vm.hanshu(scope.row)
+          },
+          on: {
+            "blur": function($event) {
+              _vm.updataZhanghao(scope.$index, scope.row)
+            }
+          },
+          model: {
+            value: (scope.row.yinhang),
+            callback: function($$v) {
+              scope.row.yinhang = $$v
+            },
+            expression: "scope.row.yinhang"
+          }
+        })]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "loudongName",
       "label": "收款账号",
+      "width": "300"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-input', {
+          attrs: {
+            "disabled": _vm.hanshu(scope.row)
+          },
+          on: {
+            "blur": function($event) {
+              _vm.updataZhanghao(scope.$index, scope.row)
+            }
+          },
+          model: {
+            value: (scope.row.zhanghao),
+            callback: function($$v) {
+              scope.row.zhanghao = $$v
+            },
+            expression: "scope.row.zhanghao"
+          }
+        })]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "tianjiadate",
+      "label": "添加时间",
+      "formatter": _vm.changeDate,
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "fanghao",
-      "label": "添加时间",
+      "prop": "laiyuantype",
+      "label": "来源",
+      "formatter": _vm.formatStatus,
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
@@ -121938,11 +122609,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "close-on-click-modal": false
     },
     model: {
-      value: (_vm.zhanghao.Visible),
+      value: (_vm.Visible),
       callback: function($$v) {
-        _vm.zhanghao.Visible = $$v
+        _vm.Visible = $$v
       },
-      expression: "zhanghao.Visible"
+      expression: "Visible"
     }
   }, [_c('el-form', {
     ref: "sureForm",
@@ -121951,35 +122622,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "rules": _vm.zhanghaoRules,
       "model": _vm.zhanghao
     }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "hidden",
-      "prop": "tHetongId",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.zhanghao.tHetongId),
-      callback: function($$v) {
-        _vm.zhanghao.tHetongId = $$v
-      },
-      expression: "zhanghao.tHetongId"
-    }
-  }), _vm._v(" "), _c('el-row', [_c('el-col', {
+  }, [_c('el-row', [_c('el-col', {
     attrs: {
       "span": 20
     }
   }, [_c('el-form-item', {
     attrs: {
       "label": "付款方户名：",
-      "prop": "huming"
+      "prop": "zhanghu",
+      "required": ""
     }
   }, [_c('el-input', {
     model: {
-      value: (_vm.zhanghao.huming),
+      value: (_vm.zhanghao.zhanghu),
       callback: function($$v) {
-        _vm.zhanghao.huming = $$v
+        _vm.zhanghao.zhanghu = $$v
       },
-      expression: "zhanghao.huming"
+      expression: "zhanghao.zhanghu"
     }
   })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
@@ -121988,15 +122647,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "付款银行：",
-      "prop": "yinheng"
+      "prop": "yinhang",
+      "required": ""
     }
   }, [_c('el-input', {
     model: {
-      value: (_vm.zhanghao.yinheng),
+      value: (_vm.zhanghao.yinhang),
       callback: function($$v) {
-        _vm.zhanghao.yinheng = $$v
+        _vm.zhanghao.yinhang = $$v
       },
-      expression: "zhanghao.yinheng"
+      expression: "zhanghao.yinhang"
     }
   })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
@@ -122005,7 +122665,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "付款账号：",
-      "prop": "zhanghao"
+      "prop": "zhanghao",
+      "required": ""
     }
   }, [_c('el-input', {
     model: {
@@ -122021,13 +122682,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-button', {
     nativeOn: {
       "click": function($event) {
-        _vm.zhanghao.Visible = false
+        _vm.Visible = false
       }
     }
   }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
     attrs: {
       "type": "primary",
-      "loading": _vm.zhanghao.Loading
+      "loading": _vm.Loading
     },
     nativeOn: {
       "click": function($event) {
@@ -126968,6 +127629,823 @@ module.exports = function(module) {
 __webpack_require__(52);
 module.exports = __webpack_require__(53);
 
+
+/***/ }),
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            editVisible: true,
+            lists: [],
+            htype: 1, //合同的类型
+            listLoading: false,
+            bianhao: null,
+            officeList: [{
+                //hetongtype:null,
+                loupanName: null,
+                loudongName: null,
+                fanghao: null
+            }],
+            Visible: false,
+            hetongid: null,
+            hedan: {
+                qiandanren: [{
+                    //id:null,
+                    contractid: null,
+                    signpersonnelname: '', //签单人姓名
+                    ratio: null, //签单人所占比例
+                    leaderpersonnelname: null, //签单人上级领导
+                    departmentname: null //签单人部门
+                    //Loading:null,
+                }]
+            },
+            zhanghaoRules: {
+                huming: [{ required: true, message: '不能为空' }],
+                yinheng: [{ required: true, message: '不能为空' }],
+                zhanghao: [{ required: true, message: '不能为空' }]
+            },
+            //分页类数据
+            total: 0,
+            page: null,
+            currentPage: 0,
+            pageSize: 10,
+            pageSizes: [10, 20, 30, 40, 50, 100],
+            sels: [] //列表选中列
+        };
+    },
+
+    methods: {
+        hanshu: function hanshu(row) {
+            return row.laiyuantype == 3 ? true : false;
+        },
+
+        //时间戳转日期格式
+        changeDate: function changeDate(row, column) {
+            var newDate = new Date();
+            newDate.setTime(row.tianjiadate);
+            if (row.tianjiadate != null) {
+                return newDate.toLocaleDateString();
+            }
+        },
+
+        //获取付款账号的数据列表
+        saleHedanContractList: function saleHedanContractList() {
+            var _this = this;
+
+            var para = {
+                pn: this.page,
+                cnt: this.pageSize,
+                htid: this.$route.query.id
+            };
+            console.log(para);
+            //console.log(this.page);
+            //console.log(this.pageSize);
+            //alert(222);
+            this.listLoading = true;
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_56" /* getHedanPurchaseContractList */])(para).then(function (res) {
+                //console.log(12222);
+                //console.log(res.data.data);
+                _this.total = res.data.total;
+                _this.lists = res.data.data;
+                _this.listLoading = false;
+            });
+        },
+        handleSizeChange: function handleSizeChange(val) {
+            /*console.log(`每页 ${val} 条`);*/
+            this.pageSize = val;
+            this.saleHedanContractList();
+        },
+        handleCurrentChange: function handleCurrentChange(val) {
+            /*console.log(`当前页: ${val}`);*/
+            this.page = val;
+            this.saleHedanContractList();
+        },
+
+        //增加租期租金
+        addqiandan: function addqiandan() {
+            //console.log(this.hedan.qiandanren);
+            this.hedan.qiandanren.push({
+                contractid: this.hedan.qiandanren[0].contractid,
+                signpersonnelname: '',
+                ratio: '',
+                leaderpersonnelname: '',
+                departmentname: ''
+            });
+        },
+        removeQiandan: function removeQiandan(item) {
+            this.hedan.qiandanren.pop();
+            var index = this.hedan.qiandanren.indexOf(item);
+            if (index !== -1) {
+                this.hedan.qiandanren.splice(index, 1);
+            }
+        },
+        getSaleContract: function getSaleContract(id) {
+            var _this2 = this;
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_57" /* getPurchaseContractInfo */])(id).then(function (res) {
+                if (res.data.code == '200') {
+                    _this2.fuzhi(res);
+                } else {
+                    _this2.$message({
+                        message: '获取数据失败',
+                        type: 'error'
+                    });
+                }
+            });
+        },
+
+        selsChange: function selsChange(sels) {
+            this.sels = sels;
+        },
+        //新增
+        addContract: function addContract() {
+            this.Visible = true;
+        },
+
+        //新增的提交
+        handleEnd: function handleEnd(index, row) {
+            var _this3 = this;
+
+            this.$refs.sureForm.validate(function (valid) {
+                if (valid) {
+                    var para1 = _this3.hedan.qiandanren;
+                    //console.log(para1);
+                    _this3.Visible = false;
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_58" /* hedanSavePurchaseContract */])(para1).then(function (res) {
+                        if (res.data.code != '200') {
+                            _this3.$message({
+                                message: '数据没有保存成功',
+                                type: 'error'
+                            });
+                        }
+                        _this3.saleHedanContractList();
+                    });
+                }
+            });
+        },
+
+        //失去焦点事件
+        updataHedan: function updataHedan(index, row) {
+            var _this4 = this;
+
+            var para = {
+                id: row.id,
+                signpersonnelname: row.signpersonnelname,
+                ratio: row.ratio,
+                leaderpersonnelname: row.leaderpersonnelname,
+                departmentname: row.departmentname
+            };
+            //alert(22);
+            console.log(para);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_59" /* hedanUpdataPurchaseContract */])(para).then(function (res) {
+                if (res.data.code != '200') {
+                    _this4.$message({
+                        message: '数据没有保存成功',
+                        type: 'error'
+                    });
+                }
+            });
+        },
+
+        //签单人删除
+        handleDel: function handleDel(index, row) {
+            var _this5 = this;
+
+            this.$confirm('确认删除该记录吗？', '提示', {
+                type: 'warning'
+            }).then(function () {
+                _this5.listLoading = true;
+                var para = { id: row.id };
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_60" /* removeHedanPurchaseContract */])(para).then(function (res) {
+                    _this5.listLoading = false;
+                    _this5.$message({
+                        message: '删除成功',
+                        type: 'success'
+                    });
+                    _this5.saleHedanContractList();
+                });
+            }).catch(function () {});
+        },
+        fuzhi: function fuzhi(res) {
+            //console.log(res.data.data);
+            this.hedan.qiandanren.contractid = res.data.data.id;
+            //this.hetongid = res.data.data.id;
+            this.bianhao = res.data.data.bianhao;
+            this.officeList = res.data.data.officeList;
+            //console.log(this.xsOffice);
+            //console.log(this.jieyueXieyi);
+        }
+    },
+    mounted: function mounted() {
+        this.saleHedanContractList();
+        this.hetongid = this.$route.query.id;
+        this.hedan.qiandanren[0].contractid = this.$route.query.id;
+        //根据url得到的合同ID，来获取数据
+        if (this.$route.query.id != null) {
+            //console.log(this.$route.query);
+            this.getSaleContract(this.$route.query);
+        }
+    }
+});
+
+/***/ }),
+/* 332 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(331),
+  /* template */
+  __webpack_require__(333),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "D:\\phpStudy\\WWW\\laravel\\resources\\assets\\js\\components\\purchaseContract\\Hedan.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Hedan.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5ac75a79", Component.options)
+  } else {
+    hotAPI.reload("data-v-5ac75a79", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 333 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', [_c('el-row', [_c('div', {
+    staticStyle: {
+      "margin-top": "30px"
+    }
+  }), _vm._v(" "), _vm._l((_vm.officeList), function(officeList) {
+    return _c('li', {
+      staticStyle: {
+        "list-style-type": "none"
+      }
+    }, [_c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 4
+      }
+    }, [_c('span', [_vm._v("合同编号：" + _vm._s(_vm.bianhao))])]), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 4
+      }
+    }, [_c('span', [_vm._v("合同类型：出房合同")])]), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 4
+      }
+    }, [_c('span', [_vm._v("楼盘：" + _vm._s(officeList.loupanName))])]), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 4
+      }
+    }, [_c('span', [_vm._v("楼栋：" + _vm._s(officeList.loudongName))])]), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 4
+      }
+    }, [_c('span', [_vm._v("房间号： " + _vm._s(officeList.fanghao))])]), _vm._v(" "), _c('el-col', {
+      staticStyle: {
+        "margin-rigjt": "0",
+        "float": "right",
+        "margin-top": "50"
+      },
+      attrs: {
+        "span": 0
+      }
+    }, [_c('el-button', {
+      staticClass: "el-icon-plus",
+      attrs: {
+        "type": "primary"
+      },
+      on: {
+        "click": _vm.addContract
+      }
+    }, [_vm._v(" 新增")])], 1)], 1)], 1)
+  })], 2), _vm._v(" "), _c('el-row', [_c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.lists,
+      "highlight-current-row": "",
+      "element-loading-text": "拼命加载中"
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "label": "签单人",
+      "width": "200"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-input', {
+          attrs: {
+            "disabled": _vm.hanshu(scope.row)
+          },
+          on: {
+            "blur": function($event) {
+              _vm.updataHedan(scope.$index, scope.row)
+            }
+          },
+          model: {
+            value: (scope.row.signpersonnelname),
+            callback: function($$v) {
+              scope.row.signpersonnelname = $$v
+            },
+            expression: "scope.row.signpersonnelname"
+          }
+        })]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "合单占比",
+      "width": "300"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-input', {
+          attrs: {
+            "disabled": _vm.hanshu(scope.row)
+          },
+          on: {
+            "blur": function($event) {
+              _vm.updataHedan(scope.$index, scope.row)
+            }
+          },
+          model: {
+            value: (scope.row.ratio),
+            callback: function($$v) {
+              scope.row.ratio = $$v
+            },
+            expression: "scope.row.ratio"
+          }
+        })]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "签单人领导",
+      "width": "300"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-input', {
+          attrs: {
+            "disabled": _vm.hanshu(scope.row)
+          },
+          on: {
+            "blur": function($event) {
+              _vm.updataHedan(scope.$index, scope.row)
+            }
+          },
+          model: {
+            value: (scope.row.leaderpersonnelname),
+            callback: function($$v) {
+              scope.row.leaderpersonnelname = $$v
+            },
+            expression: "scope.row.leaderpersonnelname"
+          }
+        })]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "签单人部门",
+      "width": "300"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-input', {
+          attrs: {
+            "disabled": _vm.hanshu(scope.row)
+          },
+          on: {
+            "blur": function($event) {
+              _vm.updataHedan(scope.$index, scope.row)
+            }
+          },
+          model: {
+            value: (scope.row.departmentname),
+            callback: function($$v) {
+              scope.row.departmentname = $$v
+            },
+            expression: "scope.row.departmentname"
+          }
+        })]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "tianjiadate",
+      "label": "新增时间",
+      "formatter": _vm.changeDate,
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "170"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-dropdown', {
+          attrs: {
+            "menu-align": "start"
+          }
+        }, [_c('el-button', {
+          attrs: {
+            "type": "primary",
+            "size": "normal",
+            "splitButton": "true"
+          }
+        }, [_vm._v("\n                            操作"), _c('i', {
+          staticClass: "el-icon-caret-bottom el-icon--right"
+        })]), _vm._v(" "), _c('el-dropdown-menu', {
+          slot: "dropdown"
+        }, [_c('el-dropdown-item', [_c('el-button', {
+          on: {
+            "click": function($event) {
+              _vm.handleDel(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("删除")])], 1)], 1)], 1)]
+      }
+    }])
+  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "current-page": _vm.currentPage,
+      "page-sizes": _vm.pageSizes,
+      "page-size": _vm.pageSize,
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "total": _vm.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    staticStyle: {
+      "max-height": "700px",
+      "margin-top": "150px",
+      "over-flow": "hidden"
+    },
+    attrs: {
+      "title": "新增签单人",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.Visible),
+      callback: function($$v) {
+        _vm.Visible = $$v
+      },
+      expression: "Visible"
+    }
+  }, [_c('el-form', {
+    ref: "sureForm",
+    attrs: {
+      "label-width": "150px",
+      "rules": _vm.zhanghaoRules,
+      "model": _vm.hedan
+    }
+  }, [_c('div', {
+    staticStyle: {
+      "max-height": "400px",
+      "border": "0px solid #8391a5",
+      "overflow": "auto"
+    }
+  }, _vm._l((_vm.hedan.qiandanren), function(item, index) {
+    return _c('div', {
+      staticStyle: {
+        "height": "150px"
+      }
+    }, [_c('el-row', [_c('el-input', {
+      attrs: {
+        "type": "hidden",
+        "prop": "contractid",
+        "auto-complete": "off"
+      },
+      model: {
+        value: (_vm.hedan.qiandanren.contractid),
+        callback: function($$v) {
+          _vm.hedan.qiandanren.contractid = $$v
+        },
+        expression: "hedan.qiandanren.contractid"
+      }
+    }), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 10
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "签单人姓名"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.hedan.qiandanren[index].signpersonnelname),
+        callback: function($$v) {
+          _vm.hedan.qiandanren[index].signpersonnelname = $$v
+        },
+        expression: "hedan.qiandanren[index].signpersonnelname"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 10
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "签单人所占比例"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.hedan.qiandanren[index].ratio),
+        callback: function($$v) {
+          _vm.hedan.qiandanren[index].ratio = $$v
+        },
+        expression: "hedan.qiandanren[index].ratio"
+      }
+    })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+      attrs: {
+        "span": 10
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "签单人上级领导"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.hedan.qiandanren[index].leaderpersonnelname),
+        callback: function($$v) {
+          _vm.hedan.qiandanren[index].leaderpersonnelname = $$v
+        },
+        expression: "hedan.qiandanren[index].leaderpersonnelname"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 10
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "label": "签单人部门"
+      }
+    }, [_c('el-input', {
+      model: {
+        value: (_vm.hedan.qiandanren[index].departmentname),
+        callback: function($$v) {
+          _vm.hedan.qiandanren[index].departmentname = $$v
+        },
+        expression: "hedan.qiandanren[index].departmentname"
+      }
+    })], 1)], 1)], 1)], 1)
+  })), _vm._v(" "), _c('el-button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.editVisible),
+      expression: "editVisible"
+    }],
+    staticStyle: {
+      "position": "fixed",
+      "bottom": "1%",
+      "left": "6%"
+    },
+    on: {
+      "click": _vm.addqiandan
+    }
+  }, [_vm._v("添加")]), _vm._v(" "), _c('el-button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.editVisible),
+      expression: "editVisible"
+    }],
+    staticStyle: {
+      "position": "fixed",
+      "bottom": "1%",
+      "left": "12%"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.removeQiandan(_vm.item)
+      }
+    }
+  }, [_vm._v("删除")])], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    staticStyle: {
+      "position": "fixed",
+      "bottom": "1%",
+      "left": "80%"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.Visible = false
+      }
+    }
+  }, [_vm._v(" 取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.hedan.qiandanren.Loading
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.handleEnd($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-5ac75a79", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

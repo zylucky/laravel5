@@ -75,11 +75,9 @@ class saleContractController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    //出房合同点编辑后显示数据的方法
+    //出房合同点编辑后显示数据的方法(根据合同的id去查询合同的详情)
     public function show($id)
     {
-        //dd(10101010);
-        //dd($id);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
@@ -527,47 +525,51 @@ class saleContractController extends Controller
 
     }
     //付款账号的提交
-    public function zhanghaoSave(Request $request){
-        dd(33333);
+    public function hedanSave(Request $request){
+        //dd(33333);
         $client = new Client([
             'base_uri' => $this->base_url,
 
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $response = $client->request('POST', '/api/contract/xs/', [
+        $response = $client->request('POST', '/api/contract/xs/splitbill/create', [
             'json' => $request->params
         ]);
         echo $response->getBody();
     }
     //获取账号数据列表
-    public function getZhanghaoList(Request $request)
+    public function getHedanList()
     {
-        dd(222);
+        //dd(12121);
+        $id = Input::get('htid');
+        //dd($id);
         $client = new Client([
             'base_uri' => $this->base_url,
         ]);
-        $bkName = $request->params['name'];
-        $response = $client->request('GET', '/api/qd/ziyou/list', [
-                'query' => [
-                    'page' => 1,
-                    'size' => 10,
-                    'zt' => 1,
-                    'uname' => $bkName
-                ]
-
-            ]
-        );
+        $response = $client->request('GET', '/api/contract/xs/splitbill/query?id='.$id);
         echo $response->getBody();
 
     }
-    public function deleteZhanghao(){
-        dd(111);
+    public function deleteHedan(){
+        //dd(111);
         $id = Input::get('id');
         $client = new Client([
             'base_uri' => $this->base_url,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $response = $client->request('GET', '/api/contract/xs/img/'.$id.'/isComplete');
+        $response = $client->request('GET', '/api/contract/xs/splitbill/delete?id='.$id);
+        echo $response->getBody();
+    }
+    public function updataHedan(){
+        //dd(111);
+        $id = Input::get('id');
+        $colname = Input::get('colname');
+        $value = Input::get('value');
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/splitbill/update');
         echo $response->getBody();
     }
 
