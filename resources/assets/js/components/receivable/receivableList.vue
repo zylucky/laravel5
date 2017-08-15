@@ -46,7 +46,7 @@
             </el-table-column>
             <el-table-column prop="skdate" label="收款日期"   width="120">
                 <template scope="scope">
-                    <p :class="tableClassName(scope.row.skdate,scope.row.srstate)">  {{ changeDate(scope.row.skdate) }}</p>
+                    <span :class="tableClassName(scope.row.skdate,scope.row.srstate)">  {{ changeDate(scope.row.skdate) }}</span>
                 </template>
             </el-table-column>
             <el-table-column prop="sktype" label="收款科目"    :formatter="formatFKType" width="100">

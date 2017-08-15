@@ -45,7 +45,8 @@ class ChuFangCommissionController  extends Controller
                     'yjedate' =>  $yjenddate,
                     'houseno' =>  $roomname,
                     'pname' =>  $compayname,
-                    'yjstate' =>  $ZhuangTai
+                    'yjstate' =>  $ZhuangTai,
+                    'httype' => 1
                 ]
 
             ]
@@ -118,7 +119,6 @@ class ChuFangCommissionController  extends Controller
             'tEmpId'=>1,
             'empname'=>'张三',
             'empzb'=>null,
-            'acctype'=>'hualiang',
         );
         $obj=array_merge($request->params,$user);
         // dd($obj);

@@ -24042,7 +24042,7 @@ var routes = [{
     name: '应收应付',
     iconCls: 'el-icon-document', //图标样式class
     hidden: false,
-    children: [{ path: '/payable', component: __WEBPACK_IMPORTED_MODULE_42__components_payable_payableList_vue___default.a, name: '结算应付', hidden: false }, { path: '/financePayable', component: __WEBPACK_IMPORTED_MODULE_43__components_payable_financePayableList_vue___default.a, name: '财务应付', hidden: false }, { path: '/receivable', component: __WEBPACK_IMPORTED_MODULE_38__components_receivable_receivableList_vue___default.a, name: '结算应收', hidden: false }, { path: '/financeReceivable', component: __WEBPACK_IMPORTED_MODULE_39__components_receivable_financeReceivableList_vue___default.a, name: '财务应收', hidden: false }, { path: '/accountsReceivable', component: __WEBPACK_IMPORTED_MODULE_36__components_Commission_accountsReceivableList_vue___default.a, name: '修改记录', hidden: true }, { path: '/receivableRecord', component: __WEBPACK_IMPORTED_MODULE_37__components_receivable_receivableRecordList_vue___default.a, name: '已收款记录', hidden: true }, { path: '/payableRecord', component: __WEBPACK_IMPORTED_MODULE_41__components_payable_payableRecordList_vue___default.a, name: '应付款记录', hidden: true }, { path: '/paymentRecord', component: __WEBPACK_IMPORTED_MODULE_40__components_payable_paymentRecordList_vue___default.a, name: '修改记录', hidden: true }]
+    children: [{ path: '/payable', component: __WEBPACK_IMPORTED_MODULE_42__components_payable_payableList_vue___default.a, name: '应付款管理', hidden: false }, { path: '/financePayable', component: __WEBPACK_IMPORTED_MODULE_43__components_payable_financePayableList_vue___default.a, name: '实付款管理', hidden: false }, { path: '/receivable', component: __WEBPACK_IMPORTED_MODULE_38__components_receivable_receivableList_vue___default.a, name: '应收款管理', hidden: false }, { path: '/financeReceivable', component: __WEBPACK_IMPORTED_MODULE_39__components_receivable_financeReceivableList_vue___default.a, name: '实收款管理', hidden: false }, { path: '/accountsReceivable', component: __WEBPACK_IMPORTED_MODULE_36__components_Commission_accountsReceivableList_vue___default.a, name: '修改记录', hidden: true }, { path: '/receivableRecord', component: __WEBPACK_IMPORTED_MODULE_37__components_receivable_receivableRecordList_vue___default.a, name: '已收款记录', hidden: true }, { path: '/payableRecord', component: __WEBPACK_IMPORTED_MODULE_41__components_payable_payableRecordList_vue___default.a, name: '应付款记录', hidden: true }, { path: '/paymentRecord', component: __WEBPACK_IMPORTED_MODULE_40__components_payable_paymentRecordList_vue___default.a, name: '修改记录', hidden: true }]
 
 }, {
     //版本1
@@ -28584,7 +28584,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -28608,11 +28607,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             options: [{
                 value: 1,
-
-                label: '未申请'
+                label: '未付款'
             }, {
                 value: 2,
-                label: '已收款'
+                label: '已付款'
             }, {
                 value: 3,
                 label: '已完成'
@@ -28635,16 +28633,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             rokeBackFormVisible: false, //返佣界面是否显示
             rokeBackLoading: false,
             rokeBackFormRules: {
-                empmoney: { required: true, message: '实际支付佣金', trigger: 'blur' },
+                empmoney: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
 
-                fkrq: [{ type: 'date', required: true, message: '请输入付款日期', trigger: 'change' }]
+                skdate: [{ type: 'date', required: true, message: '请输入付款日期', trigger: 'change' }]
 
             },
             //确认付款界面数据
             rokeBackForm: {
                 tQdApplyId: '',
                 empmoney: '',
-                fkrq: ''
+                skdate: ''
             },
             bk_name: '',
             //被选中的权限
@@ -28656,16 +28654,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //状态显示转换
         formatYJType: function formatYJType(row, column) {
             var status = [];
-            status[1] = '未收款';
-            status[2] = '已收款';
+            status[1] = '未付款';
+            status[2] = '已付款';
             status[3] = '已完成';
             return status[row.yjstate];
         },
         //状态显示转换
         formatState: function formatState(yjstate) {
             var status = [];
-            status[1] = '未收款';
-            status[2] = '已收款';
+            status[1] = '未付款';
+            status[2] = '已付款';
             status[3] = '已完成';
             return status[yjstate];
         },
@@ -28731,6 +28729,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 yjstartdate: this.filters.yjstartdate,
                 yjenddate: this.filters.yjenddate,
                 compayname: this.filters.compayname
+
             };
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["y" /* getChuFangCommissionListPage */])(para).then(function (res) {
@@ -28745,10 +28744,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleEdit: function handleEdit(index, row) {
             this.editFormVisible = true;
             this.editForm = Object.assign({}, row);
-            //  this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-
-            this.editForm.yjzbCf = row.yjzbCf.toString();
-            this.editForm.yjzbSf = row.yjzbSf.toString();
         },
 
         //显示和隐藏高级搜索
@@ -29100,9 +29095,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             rokeBackFormVisible: false, //返佣界面是否显示
             rokeBackLoading: false,
             rokeBackFormRules: {
-                empmoney: { required: true, message: '请输入业主实付佣金', trigger: 'blur' },
+                empmoney: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
 
-                skrq: [{ type: 'date', required: true, message: '请输入收款日期', trigger: 'change' }]
+                skdate: [{ type: 'date', required: true, message: '请输入收款日期', trigger: 'change' }]
 
             },
 
@@ -29116,7 +29111,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //compayname: '',
                 tQdApplyId: '',
                 empmoney: '',
-                skrq: ''
+                skdate: ''
 
             },
 
@@ -29274,7 +29269,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.rokeBackForm = {
                 tQdApplyId: row.tQdApplyId,
                 empmoney: '',
-                skrq: ''
+                skdate: ''
 
             };
         },
@@ -42588,9 +42583,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 page: this.pagerl,
                 pageSize: this.pageSizerl,
-                contractNo: this.filters.contractNo,
+                htno: this.filters.contractNo,
                 xm: this.filters.xm,
-                yz: this.filters.yz
+                zh: this.filters.zh
             };
             this.RLlistLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["k" /* getReceivableListPage */])(para).then(function (res) {
@@ -108140,11 +108135,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-table-column', {
     attrs: {
-      "type": "selection",
-      "width": "50"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
       "prop": "htqiandingdate",
       "label": "合同签订日期",
       "formatter": _vm.changeDate,
@@ -108378,7 +108368,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": "首期租金：",
       "prop": "sqzj"
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.yjzbCf) + "\n                    ")])], 1), _vm._v(" "), _c('el-col', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.htzujin) + "\n                    ")])], 1), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 11
     }
@@ -108422,20 +108412,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-input', {
     attrs: {
-      "type": "number",
       "auto-complete": "off"
     },
     model: {
       value: (_vm.rokeBackForm.empmoney),
       callback: function($$v) {
-        _vm.rokeBackForm.empmoney = $$v
+        _vm.rokeBackForm.empmoney = _vm._n($$v)
       },
       expression: "rokeBackForm.empmoney"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "付款日期",
-      "prop": "fkrq"
+      "prop": "skdate"
     }
   }, [_c('el-date-picker', {
     attrs: {
@@ -108443,11 +108432,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "auto-complete": "off"
     },
     model: {
-      value: (_vm.rokeBackForm.fkrq),
+      value: (_vm.rokeBackForm.skdate),
       callback: function($$v) {
-        _vm.rokeBackForm.fkrq = $$v
+        _vm.rokeBackForm.skdate = $$v
       },
-      expression: "rokeBackForm.fkrq"
+      expression: "rokeBackForm.skdate"
     }
   })], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "dialog-footer",
@@ -110121,7 +110110,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "prop": "htqiandingdate",
       "label": "合同签订日期",
       "formatter": _vm.changeDate,
-      "sortable": ""
+      "sortable": "",
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -110178,7 +110168,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "yjstate",
       "label": "状态",
-      "formatter": _vm.formatYJType
+      "formatter": _vm.formatYJType,
+      "width": "80"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -110427,20 +110418,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-input', {
     attrs: {
-      "type": "number",
       "auto-complete": "off"
     },
     model: {
       value: (_vm.rokeBackForm.empmoney),
       callback: function($$v) {
-        _vm.rokeBackForm.empmoney = $$v
+        _vm.rokeBackForm.empmoney = _vm._n($$v)
       },
       expression: "rokeBackForm.empmoney"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "收款日期",
-      "prop": "skrq"
+      "prop": "skdate"
     }
   }, [_c('el-date-picker', {
     attrs: {
@@ -110448,11 +110438,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "auto-complete": "off"
     },
     model: {
-      value: (_vm.rokeBackForm.skrq),
+      value: (_vm.rokeBackForm.skdate),
       callback: function($$v) {
-        _vm.rokeBackForm.skrq = $$v
+        _vm.rokeBackForm.skdate = $$v
       },
-      expression: "rokeBackForm.skrq"
+      expression: "rokeBackForm.skdate"
     }
   })], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "dialog-footer",
@@ -111211,7 +111201,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(scope) {
-        return [_c('p', {
+        return [_c('span', {
           class: _vm.tableClassName(scope.row.skdate, scope.row.srstate)
         }, [_vm._v("  " + _vm._s(_vm.changeDate(scope.row.skdate)))])]
       }
@@ -121355,7 +121345,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(scope) {
-        return [_c('p', {
+        return [_c('span', {
           class: _vm.tableClassName(scope.row.fkdate, scope.row.fkstate)
         }, [_vm._v("  " + _vm._s(_vm.changeDate(scope.row.fkdate)))])]
       }

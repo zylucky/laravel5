@@ -114,7 +114,6 @@ class ShouFangCommissionController extends Controller
             'tEmpId'=>1,
             'empname'=>'张三',
             'empzb'=>null,
-            'acctype'=>'hualiang',
         );
 
         $obj=array_merge($request->params,$user);
