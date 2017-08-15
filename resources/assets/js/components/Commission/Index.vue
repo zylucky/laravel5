@@ -47,8 +47,7 @@
         </el-form>
         <el-table :data="ChuFang" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
                   @selection-change="selsChange" style="width: 100%;">
-            <el-table-column type="selection" width="50">
-            </el-table-column>
+
             <el-table-column prop="htqiandingdate" label="合同签订日期" :formatter="changeDate" sortable>
             </el-table-column>
             <el-table-column prop="loupanname" label="楼盘" >
@@ -165,7 +164,7 @@
                 <el-row>
                     <el-col :span="11">
                         <el-form-item label="首期租金：" prop="sqzj">
-                            {{editForm.yjzbCf}}
+                            {{editForm.htzujin}}
                         </el-form-item>
                     </el-col>
                     <el-col :span="11">
@@ -186,11 +185,11 @@
         <el-dialog title="确认付款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
             <el-form :model="rokeBackForm" label-width="120px" :rules="rokeBackFormRules" ref="rokeBackForm">
                 <el-form-item label="实际支付佣金" prop="empmoney">
-                    <el-input type="number" v-model="rokeBackForm.empmoney" auto-complete="off"></el-input>
+                    <el-input  v-model.number="rokeBackForm.empmoney" auto-complete="off"></el-input>
 
                 </el-form-item>
-                <el-form-item label="付款日期" prop="fkrq">
-                    <el-date-picker type = "date" v-model="rokeBackForm.fkrq"   auto-complete="off">
+                <el-form-item label="付款日期" prop="skdate">
+                    <el-date-picker type = "date" v-model="rokeBackForm.skdate"   auto-complete="off">
                     </el-date-picker>
 
                 </el-form-item>
@@ -234,12 +233,11 @@
                 options: [
                     {
                         value: 1,
-
-                        label: '未申请'
+                        label: '未付款'
                     }, 
                     {
                         value: 2,
-                        label: '已收款'
+                        label: '已付款'
                     }, {
                         value: 3,
                         label: '已完成'
@@ -265,9 +263,10 @@
                 rokeBackFormVisible: false,//返佣界面是否显示
                 rokeBackLoading: false,
                 rokeBackFormRules: {
-                    empmoney:{  required: true, message: '实际支付佣金', trigger: 'blur' },
+                    empmoney:[{required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'}],
 
-                    fkrq: [
+                    skdate: [
                         { type: 'date', required: true, message: '请输入付款日期', trigger: 'change' }
                     ],
 
@@ -276,7 +275,7 @@
                 rokeBackForm: {
                     tQdApplyId: '',
                     empmoney: '',
-                    fkrq:''
+                    skdate:''
                 },
                 bk_name: '',
                 //被选中的权限
@@ -287,16 +286,16 @@
             //状态显示转换
             formatYJType: function (row, column) {
                 let status = [];
-                status[1] = '未收款';
-                status[2] = '已收款';
+                status[1] = '未付款';
+                status[2] = '已付款';
                 status[3] = '已完成';
                 return status[row.yjstate];
             },
             //状态显示转换
             formatState: function (yjstate) {
                 let status = [];
-                status[1] = '未收款';
-                status[2] = '已收款';
+                status[1] = '未付款';
+                status[2] = '已付款';
                 status[3] = '已完成';
                 return status[yjstate];
             },
@@ -355,6 +354,7 @@
                     yjstartdate: this.filters.yjstartdate,
                     yjenddate: this.filters.yjenddate,
                     compayname:this.filters.compayname,
+
                 };
                 this.listLoading = true;
                 getChuFangCommissionListPage(para).then((res) => {
@@ -368,11 +368,6 @@
             handleEdit: function (index, row) {
                 this.editFormVisible = true;
                 this.editForm = Object.assign({}, row);
-                //  this.editForm.yjType= row.yjType == 1 ? '按月租金' : row.yjType == 2 ? '按年租金' : '未知';
-
-                this.editForm.yjzbCf = row.yjzbCf.toString();
-                this.editForm.yjzbSf = row.yjzbSf.toString();
-
 
             },
 

@@ -50,7 +50,7 @@
         <el-table :data="ShouFang" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
                   @selection-change="selsChange" style="width: 100%;">
 
-            <el-table-column prop="htqiandingdate" label="合同签订日期" :formatter="changeDate" sortable>
+            <el-table-column prop="htqiandingdate" label="合同签订日期" :formatter="changeDate" sortable  width="150">
             </el-table-column>
             <el-table-column prop="loupanname" label="楼盘">
             </el-table-column>
@@ -72,7 +72,7 @@
             </el-table-column>
             <el-table-column prop="fukuanriqi" label="佣金结算日" :formatter="changeJSDate">
             </el-table-column>
-            <el-table-column prop="yjstate" label="状态" :formatter="formatYJType">
+            <el-table-column prop="yjstate" label="状态" :formatter="formatYJType" width="80">
             </el-table-column>
             <el-table-column label="操作" width="140">
                 <template scope="scope">
@@ -202,10 +202,10 @@
         <el-dialog title="确认收款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
             <el-form :model="rokeBackForm" label-width="120px" :rules="rokeBackFormRules" ref="rokeBackForm">
                 <el-form-item label="业主实付佣金" prop="empmoney">
-                    <el-input type="number" v-model="rokeBackForm.empmoney" auto-complete="off"></el-input>
+                    <el-input    v-model.number="rokeBackForm.empmoney" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="收款日期" prop="skrq">
-                    <el-date-picker type = "date" v-model="rokeBackForm.skrq"   auto-complete="off">
+                <el-form-item label="收款日期" prop="skdate">
+                    <el-date-picker type = "date" v-model="rokeBackForm.skdate"   auto-complete="off">
                     </el-date-picker>
                 </el-form-item>
             </el-form>
@@ -272,9 +272,10 @@
                 rokeBackFormVisible: false,//返佣界面是否显示
                 rokeBackLoading: false,
                 rokeBackFormRules: {
-                    empmoney:{  required: true, message: '请输入业主实付佣金', trigger: 'blur' },
+                    empmoney:[{required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'}],
 
-                    skrq: [
+                    skdate: [
                         { type: 'date', required: true, message: '请输入收款日期', trigger: 'change' }
                     ],
 
@@ -291,7 +292,7 @@
                     //compayname: '',
                     tQdApplyId: '',
                     empmoney: '',
-                    skrq:''
+                    skdate:''
 
                 },
 
@@ -436,7 +437,7 @@
                 this.rokeBackForm= {
                     tQdApplyId: row.tQdApplyId,
                     empmoney: '',
-                    skrq:''
+                    skdate:''
 
                 }
             },

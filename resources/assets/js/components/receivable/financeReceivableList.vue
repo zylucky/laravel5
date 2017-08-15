@@ -365,9 +365,9 @@
                 let para = {
                     page: this.pagerl,
                     pageSize: this.pageSizerl,
-                    contractNo: this.filters.contractNo,
+                    htno: this.filters.contractNo,
                     xm: this.filters.xm,
-                    yz: this.filters.yz,
+                    zh: this.filters.zh,
                 };
                 this.RLlistLoading = true;
                 getReceivableListPage(para).then((res) => {

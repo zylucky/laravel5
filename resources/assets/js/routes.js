@@ -214,10 +214,10 @@ let routes = [
         iconCls: 'el-icon-document',//图标样式class
         hidden:false,
         children: [
-            { path:'/payable',component:Payable,name:'结算应付',hidden:false},
-            { path:'/financePayable',component:FinancePayable,name:'财务应付',hidden:false},
-            { path:'/receivable',component:Receivable,name:'结算应收',hidden:false},
-            { path:'/financeReceivable',component:FinanceReceivable,name:'财务应收',hidden:false},
+            { path:'/payable',component:Payable,name:'应付款管理',hidden:false},
+            { path:'/financePayable',component:FinancePayable,name:'实付款管理',hidden:false},
+            { path:'/receivable',component:Receivable,name:'应收款管理',hidden:false},
+            { path:'/financeReceivable',component:FinanceReceivable,name:'实收款管理',hidden:false},
             { path:'/accountsReceivable',component:AccountsReceivable,name:'修改记录',hidden:true},
             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
