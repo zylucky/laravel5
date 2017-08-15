@@ -18,7 +18,7 @@ import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimiz
 import PurchaseContractCheckOptimizeList from "./components/purchaseContract/HistoryOptimize.vue";
 import PurchaseContractDump20170719 from "./components/purchaseContract/Dump20170719.vue";//版本1
 import PurchaseContractZhanghao from "./components/purchaseContract/Zhanghao.vue";
-import PurchaseContractHedan from "./components/saleContract/Hedan.vue";
+import PurchaseContractHedan from "./components/purchaseContract/Hedan.vue";
 
 
 //出房合同

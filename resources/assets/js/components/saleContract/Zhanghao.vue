@@ -4,7 +4,7 @@
             <div style="margin-top:30px;list-style-type:none;"></div>
             <li v-for="xsOffice in xsOffice" style="list-style-type:none;" >
                 <el-row>
-                    <el-col :span="4">
+                    <el-col :span="6">
                         <span>合同编号：{{bianhao}}</span>
                     </el-col>
                     <el-col :span="4">
@@ -27,13 +27,30 @@
         </el-row>
         <el-row>
             <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-                <el-table-column prop="bianhao" label="收款方户名" width="300" >
+                <el-table-column
+                        label="收款方户名"
+                        width="200">
+                    <template scope="scope">
+                        <el-input v-model="scope.row.zhanghu" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
+                    </template>
                 </el-table-column>
-                <el-table-column prop="loupanName" label="收款方银行"  sortable>
+                <el-table-column
+                        label="收款方银行"
+                        width="300">
+                    <template scope="scope">
+                        <el-input v-model="scope.row.yinhang" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
+                    </template>
                 </el-table-column>
-                <el-table-column prop="loudongName" label="收款账号"   sortable>
+                <el-table-column
+                        label="收款账号"
+                        width="300">
+                    <template scope="scope">
+                        <el-input v-model="scope.row.zhanghao" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
+                    </template>
                 </el-table-column>
-                <el-table-column prop="fanghao" label="添加时间"  sortable>
+                <el-table-column prop="tianjiadate" label="添加时间"  :formatter="changeDate"  sortable>
+                </el-table-column>
+                <el-table-column prop="laiyuantype"  label="来源"   :formatter="formatStatus" sortable>
                 </el-table-column>
                 <el-table-column label="操作" width="170">
                     <template scope="scope">
@@ -63,34 +80,33 @@
             >
             </el-pagination>
         </el-col>
-        <el-dialog size="tiny" title="付款账号管理" v-model="zhanghao.Visible" :close-on-click-modal="false">
+        <el-dialog size="tiny" title="付款账号管理" v-model="Visible" :close-on-click-modal="false">
             <el-form  label-width="120px"  ref="sureForm" :rules="zhanghaoRules" :model="zhanghao">
-                <el-input type="hidden" prop="tHetongId"  v-model="zhanghao.tHetongId" auto-complete="off"></el-input>
                 <el-row>
                     <el-col :span="20">
-                        <el-form-item label="付款方户名：" prop="huming">
-                            <el-input v-model="zhanghao.huming"></el-input>
+                        <el-form-item label="付款方户名：" prop="zhanghu" required>
+                            <el-input v-model="zhanghao.zhanghu"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="20">
-                        <el-form-item label="付款银行：" prop="yinheng">
-                            <el-input v-model="zhanghao.yinheng"></el-input>
+                        <el-form-item label="付款银行：" prop="yinhang" required>
+                            <el-input v-model="zhanghao.yinhang"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="20">
-                        <el-form-item label="付款账号：" prop="zhanghao">
+                        <el-form-item label="付款账号：" prop="zhanghao" required>
                             <el-input v-model="zhanghao.zhanghao"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click.native="zhanghao.Visible = false">取消</el-button>
-                <el-button type="primary" @click.native="handleEnd" :loading="zhanghao.Loading">提交</el-button>
+                <el-button @click.native="Visible = false">取消</el-button>
+                <el-button type="primary" @click.native="handleEnd" :loading="Loading">提交</el-button>
             </div>
         </el-dialog>
     </el-row>
@@ -98,40 +114,38 @@
 
 <script>
     import {getSaleContractInfo,
-        zhanghaoSaveSaleContract,
-        getZhanghaoSaleContractList,
-        removeZhanghaoSaleContract} from '../../api/api';
+        zhanghaoSavePurchaseContract,
+        getZhanghaoPurchaseContractList,
+        removeZhanghaoPurchaseContract,
+        zhanghaoUpdataPurchaseContract} from '../../api/api';
     export default {
         data() {
             return {
-                filters: {
-                    name: '',
-                    region: '',
-                    status:'',
-                },
                 lists:[],
                 listLoading:false,
                 bianhao:null,
                 xsOffice:[{
-                    //hetongtype:null,
                     loupanName:null,
                     loudongName:null,
                     fanghao:null,
                 }],
+                id:null,
+                Visible:false,
                 zhanghao:{
-                    id:null,
-                    Visible:false,
-                    tHetongId:null,
-                    huming:null,
-                    yinheng:null,
+                    hetongid:null,
+                    hetongbianhao:null,
+                    zhanghu:null,
+                    yinhang:null,
                     zhanghao:null,
-                    Loading:null,
+                    hetongtid: 0,
                 },
+                tianjiadate:null,
+                Loading:null,
                 zhanghaoRules:{
-                    huming: [
+                    zhanghu: [
                         { required: true, message: '不能为空'}
                     ],
-                    yinheng: [
+                    yinhang: [
                         { required: true, message: '不能为空'}
                     ],
                     zhanghao: [
@@ -148,38 +162,60 @@
             }
         },
         methods: {
-            //获取付款账号的数据列表
-            saleZhanghaoContractList() {
-                let para = {
-                    pn: this.page,
-                    cnt: this.pageSize,
-                    selectItem: this.filters.name,
-                    zhuangtai:this.filters.status,
+            hanshu(row){
+                return row.laiyuantype==3?true:false;
+            },
+            //时间戳转日期格式
+            changeDate(row, column){
+                var newDate = new Date();
+                newDate.setTime(row.tianjiadate);
+                if(row.tianjiadate!=null){
+                    return newDate.toLocaleDateString()
                 }
-                //console.log(111);
-                //console.log(this.page);
-                //console.log(this.pageSize);
-                //console.log(para);
+            },
+            formatStatus(row, column){
+                let status = [];
+                status[1] = '合同';
+                status[2] = '新增';
+                status[3] = '财务';
+                return status[row.laiyuantype];
+            },
+            //获取付款账号的数据列表
+            purchaseZhanghaoContractList() {
+                let para = {
+                    page: this.page,
+                    size: this.pageSize,
+                    htid: this.$route.query.id,
+                    httid:1,
+                }
                 this.listLoading = true;
-                getZhanghaoSaleContractList(para).then((res) => {
-                    //console.log(12222);
-                    //console.log(res.data.data);
+                getZhanghaoPurchaseContractList(para).then((res) => {
+                    //console.log(res.data);
                     this.total = res.data.total;
                     this.lists = res.data.data;
                     this.listLoading = false;
-
                 });
             },
             handleSizeChange(val) {
-                /*console.log(`每页 ${val} 条`);*/
                 this.pageSize = val;
-                this.saleZhanghaoContractList();
+                this.purchaseZhanghaoContractList();
             },
             handleCurrentChange(val) {
-                /*console.log(`当前页: ${val}`);*/
                 this.page = val;
-                this.saleZhanghaoContractList();
+                this.purchaseZhanghaoContractList();
             },
+            /*getSaleContract(id){
+                getSaleContractInfo(id).then((res)=>{
+                    if(res.data.code=='200'){
+                        this.fuzhi(res);
+                    }else {
+                        this.$message({
+                            message: '获取数据失败',
+                            type: 'error'
+                        });
+                    }
+                })
+            },*/
             getSaleContract(id){
                 getSaleContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
@@ -197,21 +233,41 @@
             },
             //新增
             addContract(){
-                this.zhanghao.Visible = true;
+                this.Visible = true;
             },
-            //合同终止
+            //新增的提交
             handleEnd(index,row){
                 this.$refs.sureForm.validate((valid) => {
                     if(valid){
                         let para1 = this.zhanghao;
-                        this.zhanghao.Visible = false;
-                        zhanghaoSaveSaleContract(para1).then((res)=>{
+                        this.Visible = false;
+                        zhanghaoSavePurchaseContract(para1).then((res)=>{
                             if(res.data.code!='200'){
                                 this.$message({
                                     message: '数据没有保存成功',
                                     type: 'error'
                                 });
                             }
+                            this.purchaseZhanghaoContractList();
+
+                        });
+                    }
+                });
+
+            },
+            //失去焦点事件
+            updataZhanghao(index, row){
+                let para = {
+                    tHtYinhangzhanghaoId: row.tHtYinhangzhanghaoId,
+                    zhanghu: row.zhanghu,
+                    yinhang: row.yinhang,
+                    zhanghao: row.zhanghao,
+                };
+                zhanghaoUpdataPurchaseContract(para).then((res)=>{
+                    if(res.data.code!='200'){
+                        this.$message({
+                            message: '数据没有保存成功',
+                            type: 'error'
                         });
                     }
                 });
@@ -223,34 +279,31 @@
                     type: 'warning'
                 }).then(() => {
                     this.listLoading = true;
-                    let para = {id: row.id};
-                    removeZhanghaoSaleContract(para).then((res) => {
+                    let para = {id: row.tHtYinhangzhanghaoId};
+                    removeZhanghaoPurchaseContract(para).then((res) => {
                         this.listLoading = false;
-                        this.message({
+                        this.$message({
                             message: '删除成功',
                             type: 'success'
                         });
-                        this.getUsers();
+                        this.purchaseZhanghaoContractList();
                     });
-                }).catch(() => {
-
+                }).catch((res) => {
+                    console.log(res)
                 });
             },
             fuzhi(res){
-                //console.log(res.data.data);
                 this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;
-                //console.log(this.xsOffice);
-                //console.log(this.jieyueXieyi);
+                //console.log(this.xsOffice)
             },
         },
         mounted(){
-            this.saleZhanghaoContractList();
+            this.purchaseZhanghaoContractList();
+            this.zhanghao.hetongid = this.$route.query.id;
             //根据url得到的合同ID，来获取数据
             if(this.$route.query.id!=null){
-                //alert(11);
-                //console.log(this.$route.query);
                 this.getSaleContract(this.$route.query);
             }
         }

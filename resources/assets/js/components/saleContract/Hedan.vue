@@ -25,6 +25,65 @@
                 </el-row>
             </li>
         </el-row>
+
+
+
+        <el-row>
+            <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
+                <el-table-column
+                        label="签单人"
+                        width="200">
+                    <template scope="scope">
+                        <el-input v-model="scope.row.signpersonnelname" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                        label="合单占比"
+                        width="300">
+                    <template scope="scope">
+                        <el-input v-model="scope.row.ratio" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                        label="签单人领导"
+                        width="300">
+                    <template scope="scope">
+                        <el-input v-model="scope.row.leaderpersonnelname" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                        label="签单人部门"
+                        width="300">
+                    <template scope="scope">
+                        <el-input v-model="scope.row.departmentname" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="tianjiadate" label="新增时间"  :formatter="changeDate"  sortable>
+                </el-table-column>
+                <el-table-column label="操作" width="170">
+                    <template scope="scope">
+                        <el-dropdown   menu-align="start">
+                            <el-button type="primary" size="normal" splitButton="true">
+                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
+                            </el-button>
+                            <el-dropdown-menu slot="dropdown" >
+                                <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </el-row>
+
+
+
+
+
+
+
+
+
+<!--
         <el-row>
             <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
                 <el-table-column prop="bianhao" label="签单人" width="200" >
@@ -41,7 +100,7 @@
                     <template scope="scope">
                         <el-dropdown   menu-align="start">
                             <el-button type="primary" size="normal" splitButton="true">
-                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
+                                操作<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>
                             </el-button>
                             <el-dropdown-menu slot="dropdown" >
                                 <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
@@ -50,8 +109,13 @@
                     </template>
                 </el-table-column>
             </el-table>
-        </el-row>
+        </el-row>-->
+
+
+
+
         <!-- 分页-->
+
         <el-col :span="24" class="toolbar" >
             <el-pagination
                     @size-change="handleSizeChange"
@@ -66,31 +130,112 @@
             </el-pagination>
         </el-col>
         <el-dialog title="新增签单人" v-model="Visible" :close-on-click-modal="false" style="max-height:700px;margin-top:150px;over-flow:hidden;">
-            <el-form  label-width="150px"  ref="sureForm" :rules="zhanghaoRules" :model="qiandanren">
-                <el-input type="hidden" prop="tHetongId"  v-model="qiandanren.tHetongId" auto-complete="off"></el-input>
+            <el-form  label-width="150px"  ref="sureForm" :rules="zhanghaoRules" :model="hedan">
+
+
+
+
+
+                <!--<el-form label-Weizhi="right" ref="sureForm" :rules="zhanghaoRules" label-width="100px" :model="hedan">
+                    <el-col :span="24">
+                        <el-row>
+                            <el-col :span="8">
+                                <el-form-item label="请输入签单人姓名">
+                                    <el-select
+                                            v-model="hedan.qiandanren[index].signpersonnelname"
+                                            filterable
+                                            default-first-option
+                                            remote
+                                            @change="change1"
+                                            placeholder="楼盘"
+                                            :remote-method="remoteMethod1"
+                                            :loading="loupanloading">
+                                        <el-option
+                                                v-for="item in options1"
+                                                :key="item.value"
+                                                :label="item.label"
+                                                :value="item.label">
+                                        </el-option>
+                                    </el-select>
+                                </el-form-item>
+                            </el-col>
+                            <el-col :span="8">
+                                <el-form-item label="请输入签单人上级领导">
+                                    <el-select
+                                            v-model="hedan.qiandanren[index].leaderpersonnelname"
+                                            filterable
+                                            default-first-option
+                                            remote
+                                            @change="change2"
+                                            placeholder="楼栋"
+                                            :remote-method="remoteMethod2"
+                                            :loading="loupanloading">
+                                        <el-option
+                                                v-for="item in options2"
+                                                :key="item.value"
+                                                :label="item.label"
+                                                :value="item.label">
+                                        </el-option>
+                                    </el-select>
+                                </el-form-item>
+                            </el-col>
+                            <el-col :span="8">
+                                <el-form-item label="请输入签单人部门">
+                                    <el-select
+                                            v-model="hedan.qiandanren[index].departmentname"
+                                            filterable
+                                            default-first-option
+                                            remote
+                                            @change="change3"
+                                            placeholder="房间号"
+                                            :remote-method="remoteMethod3"
+                                            :loading="fanghaoloading">
+                                        <el-option
+                                                v-for="item in options3"
+                                                :key="item.value"
+                                                :label="item.label"
+                                                :value="item.label">
+                                        </el-option>
+                                    </el-select>
+                                </el-form-item>
+                            </el-col>
+                        </el-row>
+                    </el-col>
+                </el-form>
+-->
+
+
+
+
+
+
+
+
+
                 <div style="max-height:400px;border:0px solid #8391a5;overflow:auto;">
-                <div v-for="(item, index) in qiandanren" style="height:150px;">
+                <div v-for="(item, index) in hedan.qiandanren" style="height:150px;">
                     <el-row>
+                        <el-input type="hidden" prop="contractid"  v-model="hedan.qiandanren.contractid" auto-complete="off"></el-input>
                         <el-col :span="10">
                             <el-form-item label="签单人姓名">
-                                <el-input v-model="qiandanren[index].qiandanname"></el-input>
+                                <el-input v-model="hedan.qiandanren[index].signpersonnelname"></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="10">
                             <el-form-item label="签单人所占比例">
-                                <el-input v-model="qiandanren[index].bilei"></el-input>
+                                <el-input v-model="hedan.qiandanren[index].ratio"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
                         <el-col :span="10">
                             <el-form-item label="签单人上级领导">
-                                <el-input v-model="qiandanren[index].lingdao"></el-input>
+                                <el-input v-model="hedan.qiandanren[index].leaderpersonnelname"></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="10">
                             <el-form-item label="签单人部门">
-                                <el-input v-model="qiandanren[index].bumen"></el-input>
+                                <el-input v-model="hedan.qiandanren[index].departmentname"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -102,7 +247,7 @@
             </div>
             <div slot="footer" class="dialog-footer" style="position:fixed;bottom:1%;left:80%;">
                 <el-button @click.native="Visible = false" style=""> 取消</el-button>
-                <el-button type="primary" @click.native="handleEnd" :loading="qiandanren.Loading" style="">提交</el-button>
+                <el-button type="primary" @click.native="handleEnd" :loading="hedan.qiandanren.Loading" style="">提交</el-button>
             </div>
         </el-dialog>
     </el-row>
@@ -110,9 +255,10 @@
 
 <script>
     import {getSaleContractInfo,
-        zhanghaoSaveSaleContract,
-        getZhanghaoSaleContractList,
-        removeZhanghaoSaleContract} from '../../api/api';
+        hedanSaveSaleContract,
+        getHedanSaleContractList,
+        removeHedanSaleContract,
+        hedanUpdataSaleContract,} from '../../api/api';
     export default {
         data() {
             return {
@@ -126,16 +272,23 @@
                     loudongName:null,
                     fanghao:null,
                 }],
+                loupanloading: false,
+                fanghaoloading: false,
                 Visible:false,
-                qiandanren:[{
-                    id:null,
-                    tHetongId:null,
-                    qiandanname:null,
-                    bilei:null,
-                    lingdao:null,
-                    bumen:null,
-                    Loading:null,
-                }],
+                hetongid:null,
+                hedan:{
+                    qiandanren:[
+                        {
+                            //id:null,
+                            contractid:null,
+                            signpersonnelname:'',//签单人姓名
+                            ratio:null,//签单人所占比例
+                            leaderpersonnelname:null,//签单人上级领导
+                            departmentname:null,//签单人部门
+                            //Loading:null,
+                        }
+                    ],
+                },
                 zhanghaoRules:{
                     huming: [
                         { required: true, message: '不能为空'}
@@ -157,20 +310,30 @@
             }
         },
         methods: {
+            hanshu(row){
+                return row.laiyuantype==3?true:false;
+            },
+            //时间戳转日期格式
+            changeDate(row, column){
+                var newDate = new Date();
+                newDate.setTime(row.tianjiadate);
+                if(row.tianjiadate!=null){
+                    return newDate.toLocaleDateString()
+                }
+            },
             //获取付款账号的数据列表
-            saleZhanghaoContractList() {
+            saleHedanContractList() {
                 let para = {
                     pn: this.page,
                     cnt: this.pageSize,
-                    selectItem: this.filters.name,
-                    zhuangtai:this.filters.status,
+                    htid: this.$route.query.id,
                 }
-                //console.log(111);
+                console.log(para);
                 //console.log(this.page);
                 //console.log(this.pageSize);
-                //console.log(para);
+                //alert(222);
                 this.listLoading = true;
-                getZhanghaoSaleContractList(para).then((res) => {
+                getHedanSaleContractList(para).then((res) => {
                     //console.log(12222);
                     //console.log(res.data.data);
                     this.total = res.data.total;
@@ -179,31 +342,175 @@
 
                 });
             },
+            //获取楼盘
+            /*remoteMethod1(query) {
+                let para = {
+                    str: query
+                };
+                this.loupanloading = true;
+                getLoupanList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for ( var i in res.data ){
+                        arr[i]=res.data [i];
+                    }
+                    this.estate = arr;
+                    this.loupanloading = false;
+                    this.list = this.estate.map((item,index) => {
+                        return { value: index, label: item };
+                    });
+                    if (query !== '') {
+                        this.loupanloading = true;
+                        setTimeout(() => {
+                            this.loupanloading = false;
+                            this.options1 = this.list.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query.toLowerCase()) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.options1 = [];
+                    }
+                });
+
+            },
+            //获取楼栋
+            remoteMethod2(query) {
+                let para = {
+                    loupanOmcId:this.property.xsOffice[this.tabIndex-1].loupanOmcId,
+                };
+                this.loupanloading = true;
+                getLoudongList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for ( var i in res.data ){
+                        arr[i]=res.data [i];
+                    }
+                    this.building = arr;
+                    this.loupanloading = false;
+                    this.list2 = this.building.map((item,index) => {
+                        return { value: index, label: item };
+                    });
+                    if (query !== '') {
+                        this.loupanloading = true;
+                        setTimeout(() => {
+                            this.loupanloading = false;
+                            this.options2 = this.list2.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query.toLowerCase()) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.options2 = [];
+                    }
+                });
+
+            },
+            //获取房号
+            remoteMethod3(query) {
+                let para = {
+                    lpid: this.property.xsOffice[this.tabIndex-1].loupanOmcId,
+                    zdid: this.property.xsOffice[this.tabIndex-1].loudongOmcId,
+                };
+                this.fanghaoloading = true;
+                //console.log(this.property.xsOffice[this.tabIndex-1].loupanOmcId);
+                //console.log(this.property.xsOffice[this.tabIndex-1].loudongOmcId);
+                //console.log(para);
+                getSaleFanghaoList(para).then((res) => {
+                    this.houseData = res.data;
+                    let arr = [];
+                    arr[0] = '';
+                    for ( var i in res.data ){
+                        arr[res.data[i].id]=res.data[i].fybh;
+                    }
+                    this.house = arr;
+                    this.fanghaoloading = false;
+                    this.list3 = this.house.map((item,index) => {
+                        return { value: index, label: item };
+                    });
+                    if (query !== '') {
+                        this.fanghaoloading = true;
+                        setTimeout(() => {
+                            this.fanghaoloading = false;
+                            this.options3 = this.list3.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query.toLowerCase()) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.options3 = [];
+                    }
+                });
+
+            },
+
+            //得到房间号以后，提取OMC的对应信息
+            change1(){
+                //楼盘
+                for (var x in this.options1){
+                    if(this.options1[x].label==  this.hedan.qiandanren[this.tabIndex-1].signpersonnelname){
+                        this.property.xsOffice[this.tabIndex-1].loupanOmcId=this.options1[x].value;
+                        this.property.xsOffice[this.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
+                        this.property.xsOffice[this.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
+                        this.property.xsOffice[this.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                        this.property.xsOffice[this.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
+                    }
+                }
+            },
+            change2(){
+                //alert(222);
+                //楼栋
+                for (var x in this.options2){
+                    if(this.options2[x].label==this.hedan.qiandanren[this.tabIndex-1].leaderpersonnelname){
+                        this.property.xsOffice[this.tabIndex-1].loudongOmcId=this.options2[x].value;
+
+                    }
+                }
+            },
+            change3(){
+                //alert(111);
+                //房号
+                for (var x in this.options3){
+                    if(this.options3[x].label==this.hedan.qiandanren[this.tabIndex-1].departmentname){
+                        this.property.xsOffice[this.tabIndex-1].omcId=this.options3[x].value;
+                    }
+                }
+                for (var x in this.houseData){
+                    if(this.houseData[x].id==this.property.xsOffice[this.tabIndex-1].omcId){
+                        this.property.xsOffice[this.tabIndex-1].Jianzhumianji=this.houseData[x].fjmj;
+                        this.property.xsOffice[this.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
+                    }
+                }
+                //console.log(this.property.xsOffice)
+                this.$emit('getshoufanghetong')
+
+            },*/
             handleSizeChange(val) {
                 /*console.log(`每页 ${val} 条`);*/
                 this.pageSize = val;
-                this.saleZhanghaoContractList();
+                this.saleHedanContractList();
             },
             handleCurrentChange(val) {
                 /*console.log(`当前页: ${val}`);*/
                 this.page = val;
-                this.saleZhanghaoContractList();
+                this.saleHedanContractList();
             },
             //增加租期租金
             addqiandan() {
-                //console.log(this.qiandanren);
-                this.qiandanren.push({
-                    qiandanname:'',
-                    bilei:'',
-                    lingdao:'',
-                    bumen:'',
+                //console.log(this.hedan.qiandanren);
+                this.hedan.qiandanren.push({
+                    contractid:this.hedan.qiandanren[0].contractid,
+                    signpersonnelname:'',
+                    ratio:'',
+                    leaderpersonnelname:'',
+                    departmentname:'',
                 });
             },
             removeQiandan(item) {
-                this.qiandanren.pop();
-                var index = this.qiandanren.indexOf(item)
+                this.hedan.qiandanren.pop();
+                var index = this.hedan.qiandanren.indexOf(item)
                 if (index !== -1) {
-                    this.qiandanren.splice(index, 1)
+                    this.hedan.qiandanren.splice(index, 1)
                 }
             },
             getSaleContract(id){
@@ -225,46 +532,87 @@
             addContract(){
                 this.Visible = true;
             },
-            //合同终止
+            //新增的提交
             handleEnd(index,row){
                 this.$refs.sureForm.validate((valid) => {
                     if(valid){
-                        let para1 = this.qiandanren;
+                        let para1 = this.hedan.qiandanren;
+                        //console.log(para1);
                         this.Visible = false;
-                        zhanghaoSaveSaleContract(para1).then((res)=>{
+                        hedanSaveSaleContract(para1).then((res)=>{
                             if(res.data.code!='200'){
                                 this.$message({
                                     message: '数据没有保存成功',
                                     type: 'error'
                                 });
                             }
+                            this.saleHedanContractList();
                         });
                     }
                 });
 
             },
-            //账号删除
+            //失去焦点事件
+            updataHedan(index, row){
+                let para = {
+                    id: row.id,
+                    signpersonnelname: row.signpersonnelname,
+                    ratio: row.ratio,
+                    leaderpersonnelname: row.leaderpersonnelname,
+                    departmentname: row.departmentname,
+                };
+                //alert(22);
+                console.log(para);
+                hedanUpdataSaleContract(para).then((res)=>{
+                    if(res.data.code!='200'){
+                        this.$message({
+                            message: '数据没有保存成功',
+                            type: 'error'
+                        });
+                    }
+                });
+            },
+            //签单人删除
+            /*handleDel(index, row){
+                this.$confirm('确认删除该记录吗？', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    this.listLoading = true;
+                    let para = {id: row.id};
+                    removeHedanSaleContract(para).then((res) => {
+                        alert(11);
+                        this.listLoading = false;
+                        this.message({
+                            message: '删除成功',
+                            type: 'success'
+                        });
+                        this.saleHedanContractList();
+                    });
+                }).catch(() => {
+
+                });
+            },*/
             handleDel(index, row){
                 this.$confirm('确认删除该记录吗？', '提示', {
                     type: 'warning'
                 }).then(() => {
                     this.listLoading = true;
                     let para = {id: row.id};
-                    removeZhanghaoSaleContract(para).then((res) => {
+                    removeHedanSaleContract(para).then((res) => {
                         this.listLoading = false;
-                        this.message({
+                        this.$message({
                             message: '删除成功',
                             type: 'success'
                         });
-                        this.getUsers();
+                        this.saleHedanContractList();
                     });
                 }).catch(() => {
-
                 });
             },
             fuzhi(res){
                 //console.log(res.data.data);
-                this.hetongid = res.data.data.id;
+                this.hedan.qiandanren.contractid = res.data.data.id;
+                //this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;
                 //console.log(this.xsOffice);
@@ -272,10 +620,11 @@
             },
         },
         mounted(){
-            this.saleZhanghaoContractList();
+            this.saleHedanContractList();
+            this.hetongid = this.$route.query.id;
+            this.hedan.qiandanren[0].contractid = this.$route.query.id;
             //根据url得到的合同ID，来获取数据
             if(this.$route.query.id!=null){
-                //alert(11);
                 //console.log(this.$route.query);
                 this.getSaleContract(this.$route.query);
             }
