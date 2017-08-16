@@ -511,7 +511,7 @@
             function  hello() {
                 window.print()
             }
-            if(this.$route.path!='/purchaseContract/view'&&this.$route.query.isdump==1){
+            if(this.$route.query.isdump==1){
                 setTimeout(hello,1000);
             }else{
                 this.historyOptimize = true;
