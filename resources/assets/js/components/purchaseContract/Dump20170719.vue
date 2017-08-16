@@ -167,7 +167,7 @@
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）本合同经甲乙双方签字盖章后生效。本合同（及附件）一式三份，甲乙双方各持一份，丙方留存备案一份，每份具有相同法律效力。</p>
             <div v-if="historyOptimize">
                 <h3>补充协议：</h3>
-                <history-optimize></history-optimize>
+                <history-optimize ></history-optimize>
             </div>
 
         </div>
@@ -215,6 +215,7 @@
         data(){
             return {
                 historyOptimize:false,
+                dumpShow:false,
                 property:{
                     officeList: [{
                         omcId:null,
@@ -512,6 +513,7 @@
                 window.print()
             }
             if(this.$route.query.isdump==1){
+                this.historyOptimize = false;
                 setTimeout(hello,1000);
             }else{
                 this.historyOptimize = true;
