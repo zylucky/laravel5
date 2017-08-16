@@ -152,7 +152,7 @@
                         天
                     </el-col>
                     <el-col :span="10">
-                        <el-form-item label="" prop="isBenQi">
+                        <el-form-item  label="" prop="isBenQi">
                             <el-radio-group v-model="editDateForm.isBenQi">
                                 <el-radio class="radio" label=true>本期</el-radio>
                                 <el-radio class="radio" label=false>所有</el-radio>

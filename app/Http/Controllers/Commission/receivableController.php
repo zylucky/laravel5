@@ -130,7 +130,7 @@ class receivableController extends Controller
         );
 
         $obj=array_merge($request->params,$user);
-        // dd($obj);
+        // dd( json_encode( $obj));
         $client = new Client ([
             'base_uri' => $this->base_url,
 
