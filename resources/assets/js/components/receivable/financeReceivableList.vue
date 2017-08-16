@@ -279,10 +279,9 @@
             formatFKType(row, column){
                 let status = [];
                 status[0] = '押金';
-                status[1] = '租金';
-                status[2] = '幼师补佣';
-                status[3] = '佣金';
-                status[4] = '华亮返佣';
+                status[1] = '房租';
+                status[5] = '杂费';
+               
                 return status[row.sktype];
             },
             //支付状态显示转换

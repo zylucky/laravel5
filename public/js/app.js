@@ -42815,10 +42815,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         formatFKType: function formatFKType(row, column) {
             var status = [];
             status[0] = '押金';
-            status[1] = '租金';
-            status[2] = '幼师补佣';
-            status[3] = '佣金';
-            status[4] = '华亮返佣';
+            status[1] = '房租';
+            status[5] = '杂费';
+
             return status[row.sktype];
         },
 
@@ -43225,15 +43224,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 xm: '',
                 startdate: '',
                 enddate: '',
-                zt: ''
+                zt: 0
             },
-            options: [{
-                value: 1,
-                label: '押金'
-            }, {
-                value: 2,
-                label: '房租'
-            }],
+
             optionszt: [{
                 value: 0,
                 label: '未提交'
@@ -43259,7 +43252,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             DataSum: [],
             listLoading: false,
             sels: [], //列表选中列
-            activeName2: 'first',
+            activeName2: 'second',
             rokeBackFormVisible: false, //收款界面是否显示
             rokeBackLoading: false,
             rokeBackFormRules: {
@@ -43326,7 +43319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         tableClassName: function tableClassName(skdate, srstate) {
             //return 'info-row';
-            if (skdate < new Date() && srstate != 3) {
+            if (skdate < new Date() && srstate != 2) {
                 return 'info-row';
             } else {
                 return '';
@@ -43362,6 +43355,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var status = [];
             status[0] = '押金';
             status[1] = '房租';
+            status[5] = '杂费';
             return status[row.sktype];
         },
 
@@ -43648,7 +43642,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         formatFKType: function formatFKType(row, column) {
             var status = [];
             status[0] = '押金';
-            status[1] = '租金';
+            status[1] = '房租';
+            status[5] = '杂费';
             return status[row.kemu];
         },
 
@@ -43685,7 +43680,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         message: '提交成功',
                         type: 'success'
                     });
-                    _this2.getMessage();
+                    _this2.getReceivableRecord();
                 });
             });
         }
@@ -116572,7 +116567,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [(_vm.ztin(scope.row, [0, 1, 2, 4])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [(_vm.ztin(scope.row, [0, 1, 3, 4])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleRokeBack(scope.$index, scope.row)
@@ -116590,13 +116585,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleOpenUp(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("提交记录")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("提交记录")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 3, 4])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑收款日期")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("编辑收款日期")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 3, 4])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleMoneyEdit(scope.$index, scope.row)
