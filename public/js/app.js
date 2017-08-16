@@ -39226,6 +39226,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             historyOptimize: false,
+            dumpShow: false,
             property: {
                 officeList: [{
                     omcId: null,
@@ -39524,6 +39525,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             window.print();
         }
         if (this.$route.query.isdump == 1) {
+            this.historyOptimize = false;
             setTimeout(hello, 1000);
         } else {
             this.historyOptimize = true;
