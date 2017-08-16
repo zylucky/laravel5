@@ -12,11 +12,11 @@
                     v-for="(item,index) in property.officeList"
                     :key="index"
             >
-        <p>（一）房屋坐落于北京市<input type="text" contenteditable="true" v-model="item.quyu" style="width:110px;">区（县）<u>{{item.weizhi}}</u> ，建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米；<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： <input type="text" value="办公">  。</p>
+        <p>（一）房屋坐落于北京市 <u>{{item.quyu}}</u> 区（县）<u>{{item.weizhi}}</u> ，建筑面积<u>{{item.jianzhumianji}}</u>平方米,实际承租面积为<u>{{item.qianyuemianji}}</u>平方米<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： 办公  。</p>
         <p>（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao}}</u>，房屋所有权人姓名或名称：
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
-                <input type="text" v-model="item.name" style="width:210px;">
+                <u>{{item.name}}</u>
             </span>
             ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为：<input type="text"  style="width:210px;" v-model="item.diyaren">。</p>
         </span>

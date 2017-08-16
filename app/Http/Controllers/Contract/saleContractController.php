@@ -86,7 +86,55 @@ class saleContractController extends Controller
         $res = $response->getBody();
         $res = json_decode($res);
         $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
+        if($res->code!='200'){
+            echo $response->getBody();
+            exit;
+        }
+        $obj = $this->get_month_day($res->data->startdate,$res->data->enddate);
+        //$res = json_encode($res);
+        //dd($res->data->mianzuqiList);
+        $mian = $res->data->mianzuqiList;
+        $obj1 = $this->get_day($mian);
+        //dd($res->data->mianzuqiList);
+        $res->data->nian = $obj->y;
+        $res->data->yue = $obj->m;
+        $res->data->ri = $obj->d;
+        $res->data->da = $obj1;
         echo json_encode($res);
+    }
+    /**
+     * 计算两个日期之间差几年几个月几天
+     * @param  [string] $date1 [2000-11-05]
+     * @param  [string] $date2 [2000-11-05]
+     * @return [arr]        [
+     *    t => year
+     *    m => month
+     *    d => day
+     * ]
+     */
+    public function get_month_day($startdate,$enddate)
+    {
+        $startdate = $startdate/1000;
+        $startdate = date_create(date('Y-m-d',$startdate));
+        $enddate  = $enddate/1000+86400;//加一天
+        $enddate = date_create(date('Y-m-d',$enddate));
+        $bian = date_diff($startdate,$enddate);
+        return $bian;
+    }
+    public function get_day($data)
+    {
+        //dd($data);
+        $date = array();
+        for($a=0;$a<count($data);$a++){
+            //dd($data[$a]->startdate);
+            //$data[$a]->startdate = $data[$a]->startdate/1000;
+            //$data[$a]->enddate  = $data[$a]->enddate/1000+86400;//加一天
+            $bian = $data[$a]->enddate - $data[$a]->startdate;
+            //dd($bian);
+            $date[] = $bian/(1000*60*60*24)+1;
+        }
+        $data = array_sum($date);
+        return $data;
     }
 
 
