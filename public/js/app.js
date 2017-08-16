@@ -43232,7 +43232,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 xm: '',
                 startdate: '',
                 enddate: '',
-                zt: ''
+                zt: 0
             },
             options: [{
                 value: 1,
@@ -43266,7 +43266,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             DataSum: [],
             listLoading: false,
             sels: [], //列表选中列
-            activeName2: 'first',
+            activeName2: 'second',
             rokeBackFormVisible: false, //收款界面是否显示
             rokeBackLoading: false,
             rokeBackFormRules: {
@@ -43333,7 +43333,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         tableClassName: function tableClassName(skdate, srstate) {
             //return 'info-row';
-            if (skdate < new Date() && srstate != 3) {
+            if (skdate < new Date() && srstate != 2) {
                 return 'info-row';
             } else {
                 return '';

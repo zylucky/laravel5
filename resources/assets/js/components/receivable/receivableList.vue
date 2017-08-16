@@ -67,11 +67,11 @@
                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
-                               <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,4])"  ><el-button   @click="handleRokeBack(scope.$index, scope.row)">提交收款</el-button></el-dropdown-item>
+                               <el-dropdown-item  v-if="ztin(scope.row,[0,1,3,4])"  ><el-button   @click="handleRokeBack(scope.$index, scope.row)">提交收款</el-button></el-dropdown-item>
                                <el-dropdown-item  v-if="scope.row.shiugaizhuangtai=='已修改'" > <el-button  @click="handleOpen(scope.$index, scope.row)">修改记录</el-button> </el-dropdown-item>
                                <el-dropdown-item  v-if="ztin(scope.row,[1,2,3,4])"  > <el-button  @click="handleOpenUp(scope.$index, scope.row)">提交记录</el-button> </el-dropdown-item>
-                               <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,4])"><el-button   @click="handleEdit(scope.$index, scope.row)">编辑收款日期</el-button></el-dropdown-item>
-                               <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,4])"><el-button   @click="handleMoneyEdit(scope.$index, scope.row)">编辑收款金额</el-button></el-dropdown-item>
+                               <el-dropdown-item  v-if="ztin(scope.row,[0,1,3,4])"><el-button   @click="handleEdit(scope.$index, scope.row)">编辑收款日期</el-button></el-dropdown-item>
+                               <el-dropdown-item  v-if="ztin(scope.row,[0,1,3,4])"><el-button   @click="handleMoneyEdit(scope.$index, scope.row)">编辑收款金额</el-button></el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
                    </template>
@@ -203,7 +203,7 @@
                     xm:'',
                     startdate:'',
                     enddate:'',
-                    zt:'',
+                    zt:0,
                 },
                 options:[
                     {
@@ -243,7 +243,7 @@
                 DataSum:[],
                 listLoading: false,
                 sels: [],//列表选中列
-                activeName2:'first',
+                activeName2:'second',
                 rokeBackFormVisible: false,//收款界面是否显示
                 rokeBackLoading: false,
                 rokeBackFormRules: {
@@ -324,7 +324,7 @@
         methods:{
             tableClassName(skdate,srstate){
                 //return 'info-row';
-                if(skdate<new Date()&&srstate!=3){
+                if(skdate<new Date()&&srstate!=2){
                     return 'info-row';
                 }else{
                     return '';
