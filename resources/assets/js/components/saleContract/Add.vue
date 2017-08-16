@@ -143,11 +143,7 @@
                     shoufangdate: '',//收房日期
                     qianyuedate: '',//签约日期
 
-                    mianzuqiList: [{
-                        startdate:'',//免租开始
-                        enddate:'',//免租结束
-                        mianzufangshi:'',//免租方式
-                    }],
+                    mianzuqiList: [],
                     fukuanFangshiList:[{
                         startdate:'',//开始
                         enddate:'',//结束
