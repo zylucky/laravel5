@@ -143,7 +143,12 @@
                     shoufangdate: '',//收房日期
                     qianyuedate: '',//签约日期
 
-                    mianzuqiList: [],
+                    /*mianzuqiList: [{
+                        startdate:'',//免租开始
+                        enddate:'',//免租结束
+                        mianzufangshi:'',//免租方式
+                    }],*/
+                    mianzuqiList:[],
                     fukuanFangshiList:[{
                         startdate:'',//开始
                         enddate:'',//结束
@@ -307,7 +312,7 @@
                 window.open('/#/saleContract/dump'+version+'?id='+_this.id)
             },
             fuzhi(res){
-                //console.log(res.data.data);
+                console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.contractVersion = res.data.data.version;
                 this.property.xsOffice = res.data.data.xsOffice;
