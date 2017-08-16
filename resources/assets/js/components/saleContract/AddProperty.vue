@@ -90,17 +90,17 @@
                             </el-form-item>
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item label="承租面积" required prop="jianzhumianji" >
+                                    <el-form-item label="建筑面积" required prop="jianzhumianji" >
                                         <el-input v-model.number="property.xsOffice[index].jianzhumianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="签约面积" required prop="qianyuemianji">
+                                    <el-form-item label="承租面积" required prop="qianyuemianji">
                                         <el-input v-model.number="property.xsOffice[index].qianyuemianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item label="房屋类型" required prop="leixing">
+                                    <el-form-item required label="房屋类型" prop="leixing">
                                         <el-select v-model="property.xsOffice[index].leixing" clearable placeholder="请选择">
                                             <el-option
                                                     v-for="item in options"
@@ -110,6 +110,16 @@
                                             </el-option>
                                         </el-select>
                                     </el-form-item>
+                                    <!--<el-form-item label="房屋类型" required prop="leixing">
+                                        <el-select v-model="property.xsOffice[index].leixing" clearable placeholder="请选择">
+                                            <el-option
+                                                    v-for="item in options"
+                                                    :key="item.value"
+                                                    :label="item.label"
+                                                    :value="item.value">
+                                            </el-option>
+                                        </el-select>
+                                    </el-form-item>-->
                                 </el-col>
                             </el-row>
                         </el-col>
@@ -383,7 +393,7 @@
                     chanquanzhenghao: '',
                     jianzhumianji: '',
                     qianyuemianji: '',
-                    leixing:null,
+                    leixing: 0,
                     //quyu:'',
                     isdiya:0,
                     diyaren:'',
