@@ -30,7 +30,6 @@
         <el-tabs v-model="activeName2" type="border-card" @tab-click="handleClick">
             <el-tab-pane label="全部" name="first"></el-tab-pane>
             <el-tab-pane label="未提交" name="second"></el-tab-pane>
-            <el-tab-pane label="已提交" name="third"></el-tab-pane>
             <el-tab-pane label="部分已付" name="fourth"></el-tab-pane>
             <el-tab-pane label="已完成" name="fifth"></el-tab-pane>
         <el-table  :data="Receivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
@@ -225,10 +224,10 @@
                     },
                     {
                         value: 2,
-                        label: '部分已付'
+                        label: '已完成'
                     }, {
                         value: 3,
-                        label: '已完成'
+                        label: '部分已付'
                     },
                     {
                         value: 4,
@@ -341,15 +340,20 @@
             },
             //标签切换时
             handleClick(tab, event) {
-                var ztStatus = null;
-                if(tab.index==0){
-                    ztStatus = '';
-                }else{
-                    ztStatus = tab.index -1;
-                }
-                this.filters.zt = ztStatus;
-                this.getReceivable();
 
+                if (tab.index == 0) {
+                    this.filters.zt = '';
+                    this.getReceivable();
+                }else if(tab.index == 1) {
+                    this.filters.zt = 0;
+                    this.getReceivable();
+                }else if (tab.index == 2) {
+                    this.filters.zt = 3;
+                    this.getReceivable();
+                }else if (tab.index == 3) {
+                    this.filters.zt = 2;
+                    this.getReceivable();
+                }
             },
             formatFKType(row, column){
                 let status = [];
@@ -363,8 +367,8 @@
                 let status = [];
                 status[0] = '未提交';
                 status[1] = '已提交';
-                status[2] = '部分已付';
-                status[3] = '已完成';
+                status[2] = '已完成';
+                status[3] = '部分已付';
                 status[4] = '已驳回';
                 return status[row.srstate];
             },

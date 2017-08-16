@@ -20,6 +20,10 @@
             </el-table-column>
             <el-table-column prop="fukuanzhanghu" label="付款方户名"  >
             </el-table-column>
+            <el-table-column prop="tijiaomoney" label="已认领金额"   >
+            </el-table-column>
+            <el-table-column prop="shishoumoney" label="剩余金额"  >
+            </el-table-column>
             <el-table-column  label="付款银行及账号"   :formatter="formatskyh">
             </el-table-column>
             <el-table-column prop="zhuangtai" label="状态"  :formatter="formatState"  >
@@ -286,6 +290,7 @@
                 let status = [];
                 status[0] = '未认领';
                 status[1] = '已认领';
+                status[2] = '部分认领';
                 return status[row.zhuangtai];
             },
             //认领支付状态显示转换
@@ -293,8 +298,8 @@
                 let status = [];
                 status[0] = '未提交';
                 status[1] = '已提交';
-                status[2] = '部分已付';
-                status[3] = '已完成';
+                status[2] = '已完成';
+                status[3] = '部分已付';
                 status[4] = '已驳回';
                 return status[row.srstate];
             },
@@ -368,6 +373,7 @@
                     htno: this.filters.contractNo,
                     xm: this.filters.xm,
                     zh: this.filters.zh,
+                    zt:10,
                 };
                 this.RLlistLoading = true;
                 getReceivableListPage(para).then((res) => {

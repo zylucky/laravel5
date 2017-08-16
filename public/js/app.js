@@ -42724,6 +42724,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -42821,6 +42825,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var status = [];
             status[0] = '未认领';
             status[1] = '已认领';
+            status[2] = '部分认领';
             return status[row.zhuangtai];
         },
         //认领支付状态显示转换
@@ -42828,8 +42833,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var status = [];
             status[0] = '未提交';
             status[1] = '已提交';
-            status[2] = '部分已付';
-            status[3] = '已完成';
+            status[2] = '已完成';
+            status[3] = '部分已付';
             status[4] = '已驳回';
             return status[row.srstate];
         },
@@ -42913,7 +42918,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 pageSize: this.pageSizerl,
                 htno: this.filters.contractNo,
                 xm: this.filters.xm,
-                zh: this.filters.zh
+                zh: this.filters.zh,
+                zt: 10
             };
             this.RLlistLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["k" /* getReceivableListPage */])(para).then(function (res) {
@@ -43203,7 +43209,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -43235,10 +43240,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 label: '已提交'
             }, {
                 value: 2,
-                label: '部分已付'
+                label: '已完成'
             }, {
                 value: 3,
-                label: '已完成'
+                label: '部分已付'
             }, {
                 value: 4,
                 label: '已驳回'
@@ -43336,14 +43341,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //标签切换时
         handleClick: function handleClick(tab, event) {
-            var ztStatus = null;
+
             if (tab.index == 0) {
-                ztStatus = '';
-            } else {
-                ztStatus = tab.index - 1;
+                this.filters.zt = '';
+                this.getReceivable();
+            } else if (tab.index == 1) {
+                this.filters.zt = 0;
+                this.getReceivable();
+            } else if (tab.index == 2) {
+                this.filters.zt = 3;
+                this.getReceivable();
+            } else if (tab.index == 3) {
+                this.filters.zt = 2;
+                this.getReceivable();
             }
-            this.filters.zt = ztStatus;
-            this.getReceivable();
         },
         formatFKType: function formatFKType(row, column) {
             var status = [];
@@ -43358,8 +43369,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var status = [];
             status[0] = '未提交';
             status[1] = '已提交';
-            status[2] = '部分已付';
-            status[3] = '已完成';
+            status[2] = '已完成';
+            status[3] = '部分已付';
             status[4] = '已驳回';
             return status[row.srstate];
         },
@@ -110036,6 +110047,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
+      "prop": "tijiaomoney",
+      "label": "已认领金额"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "shishoumoney",
+      "label": "剩余金额"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
       "label": "付款银行及账号",
       "formatter": _vm.formatskyh
     }
@@ -116193,11 +116214,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": "未提交",
       "name": "second"
-    }
-  }), _vm._v(" "), _c('el-tab-pane', {
-    attrs: {
-      "label": "已提交",
-      "name": "third"
     }
   }), _vm._v(" "), _c('el-tab-pane', {
     attrs: {
