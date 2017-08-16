@@ -25,42 +25,70 @@
             </el-row>
             <div v-if="renter.jujianfangtype==1">
                 <el-row>
-                    <el-form-item label="居间方">
-                        <el-select
-                                id="jujianfang"
-                                v-model="renter.jujianfangid"
-                                filterable
-                                remote
-                                @change="changeOnSelect"
-                                placeholder="渠道公司名称"
-                                :remote-method="remoteMethod1"
-                                :loading="bkNameloading">
-                            <el-option
-                                    v-for="item in renter.options1"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                    <el-form-item label="居间方人员">
-                        <el-select
-                                id="jujianfang"
-                                v-model="renter.jujianfangid"
-                                filterable
-                                remote
-                                @change="changeOnSelect"
-                                placeholder="渠道公司人员名称"
-                                :remote-method="remoteMethod1"
-                                :loading="bkNameloading">
-                            <el-option
-                                    v-for="item in renter.options1"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
+                    <el-col  :span="8">
+                        <el-form-item label="居间方">
+                            <el-select
+                                    id="jujianfang"
+                                    v-model="renter.jujianfangid"
+                                    filterable
+                                    remote
+                                    @change="changeOnSelect1"
+                                    placeholder="渠道公司名称"
+                                    :remote-method="remoteMethod1"
+                                    :loading="bkNameloading">
+                                <el-option
+                                        v-for="item in renter.options1"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col  :span="8">
+
+
+                        <el-form-item label="渠道人员">
+                            <el-select
+                                    v-model="renter.qudaorenid"
+                                    filterable
+                                    remote
+                                    @change="changeOnSelect3"
+                                    placeholder="渠道人员"
+                                    :remote-method="remoteMethod3"
+                                    :loading="bkryNameloading">
+                                <el-option
+                                        v-for="item in renter.options2"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+
+
+
+
+
+                        <!--<el-form-item label="居间方人员">
+                            <el-select
+                                    id="jujianfang"
+                                    v-model="renter.jujianfangid"
+                                    filterable
+                                    remote
+                                    @change="changeOnSelect3"
+                                    placeholder="渠道公司人员名称"
+                                    :remote-method="remoteMethod3"
+                                    :loading="bkNameloading">
+                                <el-option
+                                        v-for="item in renter.options1"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>-->
+                    </el-col>
                 </el-row>
             </div>
             <div v-if="renter.jujianfangtype==2">
@@ -243,13 +271,14 @@
     </div>
 </template>
 <script>
-    import {getbkNameList,getNameSaleList} from '../../api/api';;
+    import {getbkNameList,getNameSaleList,getBrokerCompanyUserListPage} from '../../api/api';;
     export default{
         data(){
             return {
                 editVisible:true,
                 labelPosition:'right',
                 bkNameloading:false,
+                bkryNameloading:false,
                 estate: [],//服务器搜索的渠道公司数据放入这个数组中
                 editRenterRules :{
                     shoukuanren: [
@@ -291,11 +320,22 @@
                     this.renter.flag = valid;
                 });
             },
-            changeOnSelect(){
+            changeOnSelect1(){
                 var arr = this.renter.options1;
                 for (let i=0;i<arr.length;i++ ){
                     if(arr[i].value==this.renter.jujianfangid){
                         this.renter.jujianfang = arr[i].label;
+                        this.renter.qudaoren=null;
+                        this.renter.qudaorenid=null;
+                    }
+                }
+            },
+            changeOnSelect3(){
+                var arr = this.renter.options2;
+                for (let i=0;i<arr.length;i++ ){
+                    console.log(this.renter.qudaorenid)
+                    if(arr[i].value==this.renter.qudaorenid){
+                        this.renter.qudaoren = arr[i].label;
                     }
                 }
             },
@@ -335,6 +375,36 @@
                         }, 200);
                     } else {
                         this.renter.options1 = [];
+                    }
+                });
+
+            },
+            //获取渠道人员
+            remoteMethod3(query) {
+                let para = {
+                    username: query,
+                    id:this.renter.jujianfangid!=null?this.renter.jujianfangid:'',
+                };
+                this.bkryNameloading = true;
+                getBrokerCompanyUserListPage(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for ( var i in res.data.data ){
+                        arr[i]=res.data.data[i]
+                    }
+                    this.estate = arr;
+                    this.bkryNameloading = false;
+                    this.list = this.estate.map((item,index) => {
+                        return { value: item.tQdPersonId, label: item.qdPername };
+                    });
+                    if (query !== '') {
+                        this.bkryNameloading = true;
+                        setTimeout(() => {
+                            this.bkryNameloading = false;
+                            this.renter.options2 = this.list;
+                        }, 200);
+                    } else {
+                        this.renter.options2 = [];
                     }
                 });
 
