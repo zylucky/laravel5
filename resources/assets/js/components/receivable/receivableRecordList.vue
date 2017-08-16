@@ -74,7 +74,8 @@
             formatFKType(row, column){
                 let status = [];
                 status[0] = '押金';
-                status[1] = '租金';
+                status[1] = '房租';
+                status[5] = '杂费';
                 return status[row.kemu];
             },
             //收款账号显示转换
