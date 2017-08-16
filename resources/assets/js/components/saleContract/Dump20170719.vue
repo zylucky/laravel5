@@ -12,7 +12,7 @@
                 v-for="(item,index) in property.xsOffice"
                 :key="index"
         >
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="quyu" style="width:100px;">区（县）<input type="text" v-model="item.weizhi" style="width:300px;">，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），产权证编号： <input type="text" v-model="item.chanquanzhenghao" value="">  。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:100px;">区（县）<input type="text" v-model="item.weizhi" style="width:300px;">，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:120px;" v-model="item.qianyuemianji">平方米，产权证编号： <input type="text" v-model="item.chanquanzhenghao" value="">  。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。</p>
         <p><b>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二条  房屋租赁情况
@@ -32,7 +32,7 @@
         </b></p>
 
         <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方承诺在租赁合同期限内给予乙方<input type="text" style="width:70px;">天的免租期。
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方承诺在租赁合同期限内给予乙方<input type="text" v-model="da" style="width:70px;">天的免租期。
         </p>
         <p>
             <span v-for="(item,index) in addDate.mianzuqiList">
@@ -45,7 +45,7 @@
             </span>
         </p>
         </span>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同房屋租赁期限为<input type="text" style="width:25px;">年。
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同房屋租赁期限为<input type="text" v-model="nian" style="width:25px;">年<input type="text" v-model="yue" style="width:25px;">月<input type="text" v-model="ri" style="width:25px;">日。
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自<u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日至
@@ -319,6 +319,7 @@
                 nian:null,
                 yue:null,
                 ri:null,
+                da:null,
             }
         },
         methods:{
@@ -462,6 +463,7 @@
                 return(str3);
             },
             fuzhi(res){
+                console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.property.xsOffice = res.data.data.xsOffice;
                 if(res.data.data.chengzuren.length>0){
@@ -482,6 +484,9 @@
                 this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
                 this.renter.qianyuerenId = res.data.data.qianyuerenId;
                 this.addDate.hetongtype = res.data.data.hetongtype;
+                /*if(){
+
+                }*/
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;
@@ -501,6 +506,10 @@
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+                this.nian = res.data.data.nian;
+                this.yue = res.data.data.yue;
+                this.ri = res.data.data.ri;
+                this.da = res.data.data.da;
                 //alert(res.data.data.xsOffice[0].weizhi);
                 var str = res.data.data.xsOffice[0].weizhi;
                 this.quyu = this.getquyu(str);
