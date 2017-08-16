@@ -103,9 +103,18 @@
                             label:null,
                         }
                     ],
+                    options2:[
+                        {
+                            value:null,
+                            label:null,
+                        }
+                    ],
                     chengzufang:'',
                     jujianfangtype:1,
                     jujianfang:'',
+                    jujianfangid:null,
+                    qudaorenid:null,
+                    qudaoren:'',
                     zuhuleixing:1,
                     //产权人
                     chengzuren:[
