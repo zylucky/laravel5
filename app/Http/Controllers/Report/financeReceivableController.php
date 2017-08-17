@@ -20,6 +20,7 @@ class financeReceivableController extends Controller
     {
         $fkyh = Input::get('fkyh');
         $fkzh = Input::get('fkzh');
+        $zt = Input::get('zt');
         $pageSize = Input::get('pageSize');
         $page = Input::get('page');
         $client = new Client ([
@@ -31,6 +32,7 @@ class financeReceivableController extends Controller
                     'size' => $pageSize,
                     'fkyh' =>$fkyh,
                     'fkzh' =>$fkzh,
+                    'zt'=>$zt,
                 ]
             ]
         );

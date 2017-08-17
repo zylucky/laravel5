@@ -42739,6 +42739,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -42750,6 +42756,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             filters: {
                 fkyh: '',
                 fkzh: '',
+                zt: '',
                 contractNo: '',
                 xm: '',
                 zg: ''
@@ -42761,6 +42768,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 value: 2,
                 label: '房租'
             }],
+            activeName2: 'first',
             //分页类数据
             total: 0,
             currentPage: 0,
@@ -42824,10 +42832,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         formatFKType: function formatFKType(row, column) {
             var status = [];
             status[0] = '押金';
-            status[1] = '租金';
-            status[2] = '幼师补佣';
-            status[3] = '佣金';
-            status[4] = '华亮返佣';
+            status[1] = '房租';
+            status[5] = '杂费';
+
             return status[row.sktype];
         },
 
@@ -42870,10 +42877,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //标签切换时
         handleClick: function handleClick(tab, event) {
             if (tab.index == 0) {
-                this.page = 2;
+                this.filters.zt = '';
                 this.getReceivable();
-            } else {
-                this.page = 1;
+            } else if (tab.index == 1) {
+                this.filters.zt = 0;
+                this.getReceivable();
+            } else if (tab.index == 2) {
+                this.filters.zt = 2;
+                this.getReceivable();
+            } else if (tab.index == 3) {
+                this.filters.zt = 1;
                 this.getReceivable();
             }
         },
@@ -42910,7 +42923,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 page: this.page,
                 pageSize: this.pageSize,
                 fkyh: this.filters.fkyh,
-                fkzh: this.filters.fkzh
+                fkzh: this.filters.fkzh,
+                zt: this.filters.zt
             };
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["j" /* getReceiveList */])(para).then(function (res) {
@@ -43236,13 +43250,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 enddate: '',
                 zt: 0
             },
-            options: [{
-                value: 1,
-                label: '押金'
-            }, {
-                value: 2,
-                label: '房租'
-            }],
+
             optionszt: [{
                 value: 0,
                 label: '未提交'
@@ -43371,6 +43379,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var status = [];
             status[0] = '押金';
             status[1] = '房租';
+            status[5] = '杂费';
             return status[row.sktype];
         },
 
@@ -43657,7 +43666,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         formatFKType: function formatFKType(row, column) {
             var status = [];
             status[0] = '押金';
-            status[1] = '租金';
+            status[1] = '房租';
+            status[5] = '杂费';
             return status[row.kemu];
         },
 
@@ -123620,7 +123630,41 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleAdd
     }
-  }, [_vm._v("新增")])], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("新增")])], 1)], 1), _vm._v(" "), _c('el-tabs', {
+    attrs: {
+      "type": "border-card"
+    },
+    on: {
+      "tab-click": _vm.handleClick
+    },
+    model: {
+      value: (_vm.activeName2),
+      callback: function($$v) {
+        _vm.activeName2 = $$v
+      },
+      expression: "activeName2"
+    }
+  }, [_c('el-tab-pane', {
+    attrs: {
+      "label": "全部",
+      "name": "first"
+    }
+  }), _vm._v(" "), _c('el-tab-pane', {
+    attrs: {
+      "label": "未认领",
+      "name": "second"
+    }
+  }), _vm._v(" "), _c('el-tab-pane', {
+    attrs: {
+      "label": "部分认领",
+      "name": "fourth"
+    }
+  }), _vm._v(" "), _c('el-tab-pane', {
+    attrs: {
+      "label": "已认领",
+      "name": "fifth"
+    }
+  }), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -123654,12 +123698,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "tijiaomoney",
+      "prop": "renlingmoney",
       "label": "已认领金额"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "shishoumoney",
+      "prop": "shengyvmoney",
       "label": "剩余金额"
     }
   }), _vm._v(" "), _c('el-table-column', {
@@ -123739,7 +123783,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "size-change": _vm.handleSizeChange,
       "current-change": _vm.handleCurrentChange
     }
-  })], 1), _vm._v(" "), _c('el-dialog', {
+  })], 1)], 1), _vm._v(" "), _c('el-dialog', {
     attrs: {
       "title": "查看备注",
       "close-on-click-modal": false
