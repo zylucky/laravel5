@@ -65,11 +65,11 @@
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> 元/月（￥：<u>&nbsp;&nbsp;{{item.yuezujin}}&nbsp;&nbsp;</u>元/月）；
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{item.yuezujin}}&nbsp;&nbsp;</u>元/月）；
             <br>
         </span>
             </p>
-            <p>如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> 元/月（￥：<u>&nbsp;&nbsp;{{addDate.yanqizujin}}&nbsp;&nbsp;</u>元/月）。
+            <p>如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{addDate.yanqizujin}}&nbsp;&nbsp;</u>元/月）。
                 <br>
                 租金的支付方式：
                 <span v-for="(item,index) in addDate.fukuanFangshiList"

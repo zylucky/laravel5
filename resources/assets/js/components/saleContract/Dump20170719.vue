@@ -12,7 +12,7 @@
                 v-for="(item,index) in property.xsOffice"
                 :key="index"
         >
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:100px;">区（县）<input type="text" v-model="item.weizhi" style="width:300px;">，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:120px;" v-model="item.qianyuemianji">平方米，产权证编号： <input type="text" v-model="item.chanquanzhenghao" value="">  。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:100px;">区（县）<input type="text" v-model="item.weizhi" style="width:300px;">，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:120px;" v-model="item.qianyuemianji">平方米，产权证编号： <input type="text" style="width:520px;" v-model="item.chanquanzhenghao" value="">  。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。</p>
         <p><b>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二条  房屋租赁情况
@@ -60,7 +60,7 @@
             <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
             <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日，租金为￥<u>&nbsp;&nbsp;{{item.yuezujin}}&nbsp;&nbsp;</u>元/月（大写：<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u>元/月）；
+            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日，租金为￥<u>&nbsp;&nbsp;{{item.yuezujin}}&nbsp;&nbsp;</u>元/月（大写：<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u>/月）；
         </span>
         </p>
         <span v-for="(item,index) in addDate.fukuanFangshiList"
@@ -69,20 +69,20 @@
         <p>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）租金支付方式为：押<input type="text" style="width: 70px;" v-model="item.yajinyue">付<input type="text" style="width: 70px;" v-model="item.zujinyue">；</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：<input type="text" style="width: 100px;" v-model="addDate.yajin">元/月（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yajin)}}&nbsp;&nbsp;</u>元/月），支付时间为
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：<input type="text" style="width: 100px;" v-model="addDate.yajin">元/月（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yajin)}}&nbsp;&nbsp;</u>/月），支付时间为
 
-            <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
-            <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日前。
+            <u>&nbsp;&nbsp;{{year(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>日前。
 
         </p>
         </span>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、首期租金：￥<input type="text" style="width: 100px;" v-model="addDate.yingfuzongzujin">元（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yingfuzongzujin)}}&nbsp;&nbsp;</u>元整），支付时间为
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、首期租金：￥<input type="text" style="width: 100px;" v-model="addDate.yingfuzongzujin">元（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yingfuzongzujin)}}&nbsp;&nbsp;</u>），支付时间为
 
             <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每<input type="text" style="width: 25px;">个月支付一次，于付款月起租日 30日前支付下一次租金，即第二期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每<input type="text" v-model="addDate.fukuanFangshiList[0].zujinyue" style="width:70px;">个月支付一次，于付款月起租日 30日前支付下一次租金，即第二期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>月
             <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日前，第三期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月
@@ -484,26 +484,37 @@
                 this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
                 this.renter.qianyuerenId = res.data.data.qianyuerenId;
                 this.addDate.hetongtype = res.data.data.hetongtype;
-                /*if(){
-
-                }*/
-                this.addDate.startdate = res.data.data.startdate;
-                this.addDate.enddate = res.data.data.enddate;
-                this.addDate.shoufangdate = res.data.data.shoufangdate;
-                this.addDate.qianyueDate = res.data.data.qianyueDate;
+                if(res.data.data.startdate != ''){
+                    this.addDate.startdate = res.data.data.startdate;
+                }
+                if(res.data.data.enddate != ''){
+                    this.addDate.enddate = res.data.data.enddate;
+                }
+                if(res.data.data.shoufangdate != ''){
+                    this.addDate.shoufangdate = res.data.data.shoufangdate;
+                }
+                if(res.data.data.qianyueDate != ''){
+                    this.addDate.qianyueDate = res.data.data.qianyueDate;
+                }
                 this.addDate.mianzufangshi = res.data.data.mianzufangshi;
-                this.addDate.mianzuqiList = res.data.data.mianzuqiList;
+                if(res.data.data.mianzuqiList != ''){
+                    this.addDate.mianzuqiList = res.data.data.mianzuqiList;
+                }
                 this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;
                 this.addDate.yajin = res.data.data.yajin;
                 this.addDate.yingfuzongzujin = res.data.data.yingfuzongzujin;
                 this.addDate.hetongyongjin = res.data.data.hetongyongjin;
                 this.addDate.tiqianfukuantian = res.data.data.tiqianfukuantian;
-                this.addDate.yajinfukuanriqi = res.data.data.yajinfukuanriqi;
+                if(res.data.data.yajinfukuanriqi != ''){
+                    this.addDate.yajinfukuanriqi = res.data.data.yajinfukuanriqi;
+                }
                 this.addDate.shouqifukuanri = res.data.data.shouqifukuanri;
                 this.addDate.erqifukuanri = res.data.data.erqifukuanri;
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
                 this.addDate.buchongTiaokuanList = res.data.data.buchongTiaokuanList;
-                this.addDate.zujinList = res.data.data.zujinList;
+                if(res.data.data.zujinList != ''){
+                    this.addDate.zujinList = res.data.data.zujinList;
+                }
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
                 this.nian = res.data.data.nian;
@@ -525,7 +536,8 @@
             function  hello() {
                 window.print()
             }
-            if(this.$route.path!='/saleContract/see'&&this.$route.query.isdump==1){
+            if(this.$route.query.isdump==1){
+                this.historyBuchong = false;
                 setTimeout(hello,1000);
             }else{
                 this.historyBuchong = true;
