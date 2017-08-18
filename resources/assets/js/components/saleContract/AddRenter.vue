@@ -12,9 +12,7 @@
                     <el-radio :disabled="true" label="彭亮"></el-radio>
                     <el-radio :disabled="true" label="无"></el-radio>
                 </el-radio-group>
-
             </el-form-item>
-
             <el-row>
                 <el-form-item label="居间方类型">
                     <el-radio-group v-model="renter.jujianfangtype" @change="jujianfangtypeChange">
@@ -46,8 +44,6 @@
                         </el-form-item>
                     </el-col>
                     <el-col  :span="8">
-
-
                         <el-form-item label="渠道人员">
                             <el-select
                                     v-model="renter.qudaorenid"
@@ -65,11 +61,6 @@
                                 </el-option>
                             </el-select>
                         </el-form-item>
-
-
-
-
-
                         <!--<el-form-item label="居间方人员">
                             <el-select
                                     id="jujianfang"
@@ -308,12 +299,19 @@
             },
             jujianfangtypeChange(){
                 this.renter.jujianfangid = '',
+                    this.renter.qudaorenid = '',
                 this.renter.options1 = [
                     {
                         value:null,
                         label:null,
                     },
-                ]
+                ];
+                this.renter.options2 = [
+                    {
+                        value:null,
+                        label:null,
+                    },
+                ];
             },
             valid(){
                 this.$refs.renterForm.validate((valid) => {
