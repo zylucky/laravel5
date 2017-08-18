@@ -13,6 +13,11 @@
                 <el-button type="primary" class="el-icon-plus"    @click="handleAdd">新增</el-button>
             </el-form-item>
         </el-form>
+        <el-tabs v-model="activeName2" type="border-card" @tab-click="handleClick">
+            <el-tab-pane label="全部" name="first"></el-tab-pane>
+            <el-tab-pane label="未认领" name="second"></el-tab-pane>
+            <el-tab-pane label="部分认领" name="fourth"></el-tab-pane>
+            <el-tab-pane label="已认领" name="fifth"></el-tab-pane>
         <el-table height="500" :data="financeReceivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"   style="width: 100%;">
             <el-table-column prop="shoukuandate" label="收款日期" :formatter="changeDate1" >
             </el-table-column>
@@ -20,9 +25,9 @@
             </el-table-column>
             <el-table-column prop="fukuanzhanghu" label="付款方户名"  >
             </el-table-column>
-            <el-table-column prop="tijiaomoney" label="已认领金额"   >
+            <el-table-column prop="renlingmoney" label="已认领金额"   >
             </el-table-column>
-            <el-table-column prop="shishoumoney" label="剩余金额"  >
+            <el-table-column prop="shengyvmoney" label="剩余金额"  >
             </el-table-column>
             <el-table-column  label="付款银行及账号"   :formatter="formatskyh">
             </el-table-column>
@@ -57,6 +62,7 @@
             >
             </el-pagination>
         </el-col>
+        </el-tabs>
         <el-dialog title="查看备注" v-model="viewDateFormVisible" :close-on-click-modal="false">
             <el-form :model="viewDateForm" label-width="120px"   ref="viewDateForm"  >
                     {{viewDateForm.beizhu==null?'无数据':viewDateForm.beizhu}}
@@ -193,6 +199,7 @@
                 filters:{
                     fkyh: '',
                     fkzh:'',
+                    zt:'',
                     contractNo:'',
                     xm:'',
                     zg:'',
@@ -206,6 +213,7 @@
                         label: '房租'
                     },
                 ],
+                activeName2:'first',
                 //分页类数据
                 total:0,
                 currentPage:0,
@@ -281,7 +289,7 @@
                 status[0] = '押金';
                 status[1] = '房租';
                 status[5] = '杂费';
-               
+
                 return status[row.sktype];
             },
             //支付状态显示转换
@@ -320,14 +328,19 @@
             },
             //标签切换时
             handleClick(tab, event) {
-             if(tab.index==0){
-                 this.page = 2;
-                 this.getReceivable();
-             }
-             else{
-                 this.page = 1;
-                 this.getReceivable();
-             }
+                if (tab.index == 0) {
+                    this.filters.zt = '';
+                    this.getReceivable();
+                }else if(tab.index == 1) {
+                    this.filters.zt = 0;
+                    this.getReceivable();
+                }else if (tab.index == 2) {
+                    this.filters.zt = 2;
+                    this.getReceivable();
+                }else if (tab.index == 3) {
+                    this.filters.zt = 1;
+                    this.getReceivable();
+                }
             },
             //页面跳转后
             handleCurrentChange(val) {
@@ -356,6 +369,7 @@
                     pageSize: this.pageSize,
                     fkyh: this.filters.fkyh,
                     fkzh: this.filters.fkzh,
+                    zt: this.filters.zt,
                 };
                 this.listLoading = true;
                 getReceiveList(para).then((res) => {

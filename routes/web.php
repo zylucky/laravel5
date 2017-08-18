@@ -121,6 +121,8 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::get('getHedanList','Contract\saleContractController@getHedanList');
     Route::get('deleteHedan','Contract\saleContractController@deleteHedan');
     Route::get('updataHedan','Contract\saleContractController@updataHedan');
+    Route::post('getHedanqiannameList','Contract\saleContractController@getHedanqiannameList');
+    Route::post('getHedanbumenList','Contract\saleContractController@getHedanbumenList');
 });
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 //权限
