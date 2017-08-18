@@ -56,6 +56,7 @@
                                         <el-select
                                                 v-model="property.officeList[index].fanghao"
                                                 filterable
+                                                allow-create
                                                 default-first-option
                                                 remote
                                                 @change="change3"
@@ -140,7 +141,7 @@
 
 </template>
 <script>
-    import {getLoupanList,getLoudongList,getFanghaoList} from '../../api/api';
+    import {getLoupanList,getLoudongList,getFanghaoList,createFanghao} from '../../api/api';
     export default {
         components:{
 
@@ -373,12 +374,28 @@
                         this.property.officeList[this.tabIndex-1].omcId=this.options3[x].value;
                     }
                 }
+                if(this.property.officeList[this.tabIndex-1].omcId==null){
+
+                    let  para = {
+                        loupanOmcId:this.property.officeList[this.tabIndex-1].loupanOmcId,
+                        loudongOmcId:this.property.officeList[this.tabIndex-1].loudongOmcId,
+                        fanghao:this.property.officeList[this.tabIndex-1].fanghao,
+                    }
+                    createFanghao(para).then((res=>{
+                        this.property.officeList[this.tabIndex-1].omcId = res.data.data;
+                        this.$message({
+                            message: '楼盘字典中不存在该房源，已自动创建',
+                            type: 'success'
+                        });
+                    }))
+                }
                 for (var x in this.houseData){
                     if(this.houseData[x].id==this.property.officeList[this.tabIndex-1].omcId){
                         this.property.officeList[this.tabIndex-1].jianzhumianji=this.houseData[x].fjmj;
                         this.property.officeList[this.tabIndex-1].qianyuemianji=this.houseData[x].fjmj;
                     }
                 }
+
             },
             addTab(targetName, action) {
                 if(action === 'add'){
