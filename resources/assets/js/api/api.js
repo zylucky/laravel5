@@ -143,7 +143,7 @@ export const isCopySaleCompleteList= params => { return axios.get(`${base}/saleC
 export const getHedanSaleContractList= params => { return axios.get(`${base}/saleContract/getHedanList`, {params:params}); };//获取账号数据的列表
 export const hedanSaveSaleContract= params => { return axios.post(`${base}/saleContract/hedanSave`, {params:params}); };//保存付款账号的数据
 export const removeHedanSaleContract= params => { return axios.get(`${base}/saleContract/deleteHedan`, {params:params}); };//删除扫描建
-export const hedanUpdataSaleContract= params => { return axios.get(`${base}/saleContract/updataHedan`, {params:params}); };//修改合单信息
+export const hedanUpdataSaleContract= params => { return axios.post(`${base}/saleContract/updataHedan`, {params:params}); };//修改合单信息
 export const getHedanqiannameSaleList = params => { return axios.post(`${base}/saleContract/getHedanqiannameList`, { params: params }); };//获取签单人姓名列表
 export const getHedanbumenSaleList = params => { return axios.post(`${base}/saleContract/getHedanbumenList`, { params: params }); };//
 

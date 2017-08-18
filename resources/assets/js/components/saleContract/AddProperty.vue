@@ -343,6 +343,7 @@
                         this.property.xsOffice[this.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
                         this.property.xsOffice[this.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
                         this.property.xsOffice[this.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
+                        alert(222);
                     }
                 }
             },

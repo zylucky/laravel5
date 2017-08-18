@@ -64,11 +64,6 @@ class saleContractController extends Controller
         $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
         echo json_encode($res);
     }
-
-
-
-
-
     /**
      * Display the specified resource.
      * 根据合同ID获取合同的信息
@@ -608,16 +603,16 @@ class saleContractController extends Controller
         $response = $client->request('GET', '/api/contract/xs/splitbill/delete?id='.$id);
         echo $response->getBody();
     }
-    public function updataHedan(){
+    public function updataHedan(Request $request){
         //dd(111);
-        $id = Input::get('id');
-        $colname = Input::get('colname');
-        $value = Input::get('value');
         $client = new Client([
             'base_uri' => $this->base_url,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $response = $client->request('GET', '/api/contract/xs/splitbill/update');
+        $response = $client->request('POST', '/api/contract/xs/splitbill/update', [
+            'json' => $request->params
+        ]);
         echo $response->getBody();
     }
 
