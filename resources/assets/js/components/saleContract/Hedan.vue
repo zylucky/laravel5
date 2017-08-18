@@ -67,12 +67,12 @@
                 <el-table-column label="操作" width="170">
                     <template scope="scope">
                         <el-dropdown   menu-align="start">
-                            <el-button type="primary" size="normal" splitButton="true">
-                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
+                            <el-button @click="handleDel(scope.$index, scope.row)" type="primary" size="normal" splitButton="true">
+                                删除<!--<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>-->
                             </el-button>
-                            <el-dropdown-menu slot="dropdown" >
+                            <!--<el-dropdown-menu slot="dropdown" >
                                 <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
-                            </el-dropdown-menu>
+                            </el-dropdown-menu>-->
                         </el-dropdown>
                     </template>
                 </el-table-column>
@@ -124,16 +124,15 @@
                 <div style="max-height:400px;border:0px solid #8391a5;overflow:auto;">
                 <div v-for="(item, index) in hedan.qiandanren" style="height:150px;">
                     <el-row>
-
                         <el-col :span="9">
-                            <el-form-item label="签单人姓名" :prop="'qiandanren.' + index + '.signpersonnelnameId' " :rules="[
+                            <el-form-item label="签单人姓名" :prop="'qiandanren.' + index + '.signpersonnelname' " :rules="[
                                 {
                                     required: true, message: '不能为空'
                                 }
                                 ]"
                             >
                                 <el-select
-                                        v-model="item.signpersonnelnameId"
+                                        v-model="item.signpersonnelname"
                                         filterable
                                         remote
                                         @change="changeyslxr1"
@@ -162,14 +161,14 @@
                     </el-row>
                     <el-row>
                         <el-col :span="9">
-                            <el-form-item label="签单人上级领导" :prop="'qiandanren.' + index + '.leaderpersonnelnameId'" :rules="[
+                            <el-form-item label="签单人上级领导" :prop="'qiandanren.' + index + '.leaderpersonnelname'" :rules="[
                                 {
                                     required: true, message: '不能为空'
                                 }
                                 ]"
                             >
                                 <el-select
-                                        v-model="item.leaderpersonnelnameId"
+                                        v-model="item.leaderpersonnelname"
                                         filterable
                                         remote
                                         @change="changeyslxr2"
@@ -186,14 +185,14 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="9">
-                            <el-form-item label="签单人部门" :prop="'qiandanren.' + index + '.departmentnameId'" :rules="[
+                            <el-form-item label="签单人部门" :prop="'qiandanren.' + index + '.departmentname'" :rules="[
                                 {
                                     required: true, message: '不能为空'
                                 }
                                 ]"
                             >
                                 <el-select
-                                        v-model="item.departmentnameId"
+                                        v-model="item.departmentname"
                                         filterable
                                         remote
                                         @change="changeyslxr3"
@@ -256,8 +255,6 @@
                     loudongName:null,
                     fanghao:null,
                 }],
-                loupanloading: false,
-                fanghaoloading: false,
                 Visible:false,
                 hetongid:null,
                 createtime:null,
@@ -330,22 +327,22 @@
 
             changeyslxr1(){
                 for (var x in this.optionsyslxr1) {
-                    if (this.optionsyslxr1[x].value == this.hedan.qiandanren.signpersonnelnameId) {
-                        this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].label;
+                    if (this.optionsyslxr1[x].value == this.hedan.qiandanren.signpersonnelname) {
+                        this.hedan.qiandanren[index].signpersonnelnameId = this.optionsyslxr1[x].label;
                     }
                 }
             },
             changeyslxr2(){
                 for (var x in this.optionsyslxr2) {
-                    if (this.optionsyslxr2[x].value == this.hedan.qiandanren.leaderpersonnelnameId) {
-                        this.hedan.qiandanren[index].leaderpersonnelname = this.optionsyslxr2[x].label;
+                    if (this.optionsyslxr2[x].value == this.hedan.qiandanren.leaderpersonnelname) {
+                        this.hedan.qiandanren[index].leaderpersonnelnameId = this.optionsyslxr2[x].label;
                     }
                 }
             },
             changeyslxr3(){
                 for (var x in this.optionsyslxr3) {
-                    if (this.optionsyslxr3[x].value == this.hedan.qiandanren.departmentnameId) {
-                        this.hedan.qiandanren[index].departmentname = this.optionsyslxr3[x].label;
+                    if (this.optionsyslxr3[x].value == this.hedan.qiandanren.departmentname) {
+                        this.hedan.qiandanren[index].departmentnameId = this.optionsyslxr3[x].label;
                     }
                 }
             },
@@ -502,7 +499,7 @@
                 this.$refs.sureForm.validate((valid) => {
                     if(valid){
                         let para1 = this.hedan.qiandanren;
-                        //console.log(para1);
+                        console.log(para1);
                         this.Visible = false;
                         hedanSaveSaleContract(para1).then((res)=>{
                             if(res.data.code!='200'){
