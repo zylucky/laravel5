@@ -55,17 +55,17 @@
                         <el-input v-model="scope.row.departmentname" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
-                <el-table-column prop="tianjiadate" label="新增时间"  :formatter="changeDate"  sortable>
+                <el-table-column prop="createtime" label="新增时间"  sortable>
                 </el-table-column>
                 <el-table-column label="操作" width="170">
                     <template scope="scope">
                         <el-dropdown   menu-align="start">
-                            <el-button type="primary" size="normal" splitButton="true">
-                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
+                            <el-button @click="handleDel(scope.$index, scope.row)" type="primary" size="normal" splitButton="true">
+                                删除<!--<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>-->
                             </el-button>
-                            <el-dropdown-menu slot="dropdown" >
+                            <!--<el-dropdown-menu slot="dropdown" >
                                 <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
-                            </el-dropdown-menu>
+                            </el-dropdown-menu>-->
                         </el-dropdown>
                     </template>
                 </el-table-column>
@@ -86,24 +86,95 @@
             </el-pagination>
         </el-col>
         <el-dialog title="新增签单人" v-model="Visible" :close-on-click-modal="false" style="max-height:700px;margin-top:150px;over-flow:hidden;">
-            <el-form  label-width="150px"  ref="sureForm" :rules="zhanghaoRules" :model="hedan">
+            <el-form  label-width="150px"  ref="sureForm" :rules="hedanRules" :model="hedan">
                 <div style="max-height:400px;border:0px solid #8391a5;overflow:auto;">
                     <div v-for="(item, index) in hedan.qiandanren" style="height:150px;">
                         <el-row>
-                            <el-input type="hidden" prop="contractid"  v-model="hedan.qiandanren.contractid" auto-complete="off"></el-input>
-                            <el-col :span="10">
-                                <el-form-item label="签单人姓名">
-                                    <el-input v-model="hedan.qiandanren[index].signpersonnelname"></el-input>
+                            <el-col :span="9">
+                                <el-form-item label="签单人姓名" :prop="'qiandanren.' + index + '.signpersonnelname' " :rules="[
+                                {
+                                    required: true, message: '不能为空'
+                                }
+                                ]"
+                                >
+                                    <el-select
+                                            v-model="item.signpersonnelname"
+                                            filterable
+                                            remote
+                                            @change="changeyslxr1"
+                                            placeholder="请输入签单人姓名"
+                                            :remote-method="remoteMethodyslxr1"
+                                            :loading="fristyslxrloading1">
+                                        <el-option
+                                                v-for="item in optionsyslxr1"
+                                                :key="item.value"
+                                                :label="item.label"
+                                                :value="item.value">
+                                        </el-option>
+                                    </el-select>
                                 </el-form-item>
                             </el-col>
-                            <el-col :span="10">
-                                <el-form-item label="签单人所占比例">
-                                    <el-input v-model="hedan.qiandanren[index].ratio"></el-input>
+                            <el-col :span="9">
+                                <el-form-item label="签单人所占比例" :prop="'qiandanren.' + index + '.ratio' " :rules="[
+                                {
+                                    required: true, message: '不能为空'
+                                }
+                                ]"
+                                >
+                                    <el-input v-model="item.ratio" placeholder="请输入签单人所占比例"></el-input>
                                 </el-form-item>
                             </el-col>
                         </el-row>
                         <el-row>
-                            <el-col :span="10">
+                            <el-col :span="9">
+                                <el-form-item label="签单人上级领导" :prop="'qiandanren.' + index + '.leaderpersonnelname'" :rules="[
+                                {
+                                    required: true, message: '不能为空'
+                                }
+                                ]"
+                                >
+                                    <el-select
+                                            v-model="item.leaderpersonnelname"
+                                            filterable
+                                            remote
+                                            @change="changeyslxr2"
+                                            placeholder="请输入签单人上级领导"
+                                            :remote-method="remoteMethodyslxr2"
+                                            :loading="fristyslxrloading1">
+                                        <el-option
+                                                v-for="item in optionsyslxr2"
+                                                :key="item.value"
+                                                :label="item.label"
+                                                :value="item.value">
+                                        </el-option>
+                                    </el-select>
+                                </el-form-item>
+                            </el-col>
+                            <el-col :span="9">
+                                <el-form-item label="签单人部门" :prop="'qiandanren.' + index + '.departmentname'" :rules="[
+                                {
+                                    required: true, message: '不能为空'
+                                }
+                                ]"
+                                >
+                                    <el-select
+                                            v-model="item.departmentname"
+                                            filterable
+                                            remote
+                                            @change="changeyslxr3"
+                                            placeholder="请输入签单人部门"
+                                            :remote-method="remoteMethodyslxr3"
+                                            :loading="fristyslxrloading2">
+                                        <el-option
+                                                v-for="item in optionsyslxr3"
+                                                :key="item.value"
+                                                :label="item.label"
+                                                :value="item.value">
+                                        </el-option>
+                                    </el-select>
+                                </el-form-item>
+                            </el-col>
+                            <!--<el-col :span="10">
                                 <el-form-item label="签单人上级领导">
                                     <el-input v-model="hedan.qiandanren[index].leaderpersonnelname"></el-input>
                                 </el-form-item>
@@ -112,7 +183,7 @@
                                 <el-form-item label="签单人部门">
                                     <el-input v-model="hedan.qiandanren[index].departmentname"></el-input>
                                 </el-form-item>
-                            </el-col>
+                            </el-col>-->
                         </el-row>
                     </div>
                 </div>
@@ -130,6 +201,8 @@
 
 <script>
     import {getPurchaseContractInfo,
+        getHedanqiannameSaleList,
+        getHedanbumenSaleList,
         hedanSavePurchaseContract,
         getHedanPurchaseContractList,
         removeHedanPurchaseContract,
@@ -150,29 +223,30 @@
                 }],
                 Visible:false,
                 hetongid:null,
+                createtime:null,
                 hedan:{
                     qiandanren:[
                         {
                             //id:null,
                             contractid:null,
                             signpersonnelname:'',//签单人姓名
+                            signpersonnelnameId:'',
                             ratio:null,//签单人所占比例
                             leaderpersonnelname:null,//签单人上级领导
+                            leaderpersonnelnameId:'',
                             departmentname:null,//签单人部门
+                            departmentnameId:'',
                             //Loading:null,
                         }
                     ],
                 },
-                zhanghaoRules:{
-                    huming: [
-                        { required: true, message: '不能为空'}
-                    ],
-                    yinheng: [
-                        { required: true, message: '不能为空'}
-                    ],
-                    zhanghao: [
-                        { required: true, message: '不能为空'}
-                    ],
+                fristyslxrloading1: false,
+                fristyslxrloading2:false,
+                optionsyslxr1: [],
+                optionsyslxr2: [],
+                optionsyslxr3: [],
+                hedanRules:{
+
                 },
                 //分页类数据
                 total:0,
@@ -216,6 +290,126 @@
 
                 });
             },
+
+            changeyslxr1(){
+                for (var x in this.optionsyslxr1) {
+                    if (this.optionsyslxr1[x].value == this.hedan.qiandanren.signpersonnelname) {
+                        this.hedan.qiandanren[index].signpersonnelnameId = this.optionsyslxr1[x].label;
+                    }
+                }
+            },
+            changeyslxr2(){
+                for (var x in this.optionsyslxr2) {
+                    if (this.optionsyslxr2[x].value == this.hedan.qiandanren.leaderpersonnelname) {
+                        this.hedan.qiandanren[index].leaderpersonnelnameId = this.optionsyslxr2[x].label;
+                    }
+                }
+            },
+            changeyslxr3(){
+                for (var x in this.optionsyslxr3) {
+                    if (this.optionsyslxr3[x].value == this.hedan.qiandanren.departmentname) {
+                        this.hedan.qiandanren[index].departmentnameId = this.optionsyslxr3[x].label;
+                    }
+                }
+            },
+
+            //获取领导人列表
+            remoteMethodyslxr1(query) {
+                let para = {
+                    uname: query
+                };
+                this.list = [];
+                this.fristyslxrloading1 = true;
+                getHedanqiannameSaleList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for (var i in res.data) {
+                        arr[i] = res.data[i]
+                    }
+                    this.estate = arr;
+                    this.fristyslxrloading1 = false;
+                    this.list = this.estate.map((item, index) => {
+                        return {value: index, label: item};
+                    });
+                    if (query !== '') {
+                        this.fristyslxrloading1 = true;
+                        setTimeout(() => {
+
+                            this.fristyslxrloading1 = false;
+                            this.optionsyslxr1 = this.list.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query.toLowerCase()) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.optionsyslxr1 = [];
+                    }
+                });
+            },
+            remoteMethodyslxr2(query) {
+                let para = {
+                    uname: query
+                };
+                this.list = [];
+                this.fristyslxrloading1 = true;
+                getHedanqiannameSaleList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for (var i in res.data) {
+                        arr[i] = res.data[i]
+                    }
+                    this.estate = arr;
+                    this.fristyslxrloading1 = false;
+                    this.list = this.estate.map((item, index) => {
+                        return {value: index, label: item};
+                    });
+                    if (query !== '') {
+                        this.fristyslxrloading1 = true;
+                        setTimeout(() => {
+
+                            this.fristyslxrloading1 = false;
+                            this.optionsyslxr2 = this.list.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query.toLowerCase()) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.optionsyslxr2 = [];
+                    }
+                });
+            },
+            remoteMethodyslxr3(query) {
+                let para = {
+                    dname: query
+                };
+                this.list = [];
+                this.fristyslxrloading2 = true;
+                getHedanbumenSaleList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for (var i in res.data) {
+                        arr[i] = res.data[i]
+                    }
+                    this.estate = arr;
+                    this.fristyslxrloading2 = false;
+                    this.list = this.estate.map((item, index) => {
+                        return {value: index, label: item};
+                    });
+                    if (query !== '') {
+                        this.fristyslxrloading2 = true;
+                        setTimeout(() => {
+
+                            this.fristyslxrloading2 = false;
+                            this.optionsyslxr3 = this.list.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query.toLowerCase()) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.optionsyslxr3 = [];
+                    }
+                });
+            },
             handleSizeChange(val) {
                 /*console.log(`每页 ${val} 条`);*/
                 this.pageSize = val;
@@ -238,10 +432,12 @@
                 });
             },
             removeQiandan(item) {
-                this.hedan.qiandanren.pop();
-                var index = this.hedan.qiandanren.indexOf(item)
-                if (index !== -1) {
-                    this.hedan.qiandanren.splice(index, 1)
+                if(this.hedan.qiandanren.length > 1) {
+                    this.hedan.qiandanren.pop();
+                    var index = this.hedan.qiandanren.indexOf(item)
+                    if (index !== -1) {
+                        this.hedan.qiandanren.splice(index, 1)
+                    }
                 }
             },
             getSaleContract(id){
