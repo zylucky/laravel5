@@ -107369,19 +107369,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleupload(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("扫描件   ")])], 1) : _vm._e(), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("扫描件   ")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleZhanghao(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("收款账号")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("收款账号")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleHedan(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("合单管理")])], 1)], 1)], 1)]
+        }, [_vm._v("合单管理")])], 1) : _vm._e()], 1)], 1)]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
@@ -124037,19 +124037,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleCheckOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("当前补充协议")])], 1) : _vm._e(), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("当前补充协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleZhanghao(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("付款账号")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("付款账号")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleHedan(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("合单管理")])], 1), _vm._v(" "), (_vm.ztin(scope.row, [12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("合单管理")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.checkhistoryOptimize(scope.$index, scope.row)

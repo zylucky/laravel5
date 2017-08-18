@@ -56,8 +56,8 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[7])"><el-button @click="handleOptimize(scope.$index, scope.row)">添加补充协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[12])"><el-button @click="editOptimize(scope.$index, scope.row)">修改补充协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[13])"><el-button @click="handleCheckOptimize(scope.$index, scope.row)">当前补充协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleZhanghao(scope.$index, scope.row)">付款账号</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])"><el-button @click="handleZhanghao(scope.$index, scope.row)">付款账号</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])"><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[12,13])"><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史补充协议</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])"><el-button @click="handleUplod(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                         </el-dropdown-menu>

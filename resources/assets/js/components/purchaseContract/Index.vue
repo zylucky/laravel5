@@ -52,8 +52,8 @@
                             <!--<el-dropdown-item   v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">当前协议</el-button></el-dropdown-item>-->
                             <!--<el-dropdown-item   v-if="ztin(scope.row,[9,10])" ><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史协议</el-button></el-dropdown-item>-->
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])" ><el-button  @click="handleupload(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleZhanghao(scope.$index, scope.row)">收款账号</el-button></el-dropdown-item>
-                            <el-dropdown-item  ><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])"><el-button @click="handleZhanghao(scope.$index, scope.row)">收款账号</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])"><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
