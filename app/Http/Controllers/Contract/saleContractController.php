@@ -621,4 +621,43 @@ class saleContractController extends Controller
         echo $response->getBody();
     }
 
+    //获取签单人姓名列表
+    public function getHedanqiannameList(Request $request){
+        $uname = $request->params['uname'];
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+        ]);
+        $response = $client->request('GET', '/api/base/search/personfuzzy?uname='.$uname);
+        $obj = json_decode($response->getBody());
+        //dd($obj);
+        $json = [];
+        if ($obj->code == 200) {
+            foreach ($obj->data as $key => $value) {
+                $json[$value->id] = $value->name;
+            }
+            return $json;
+        }
+    }
+    //获取签单人姓名列表
+    public function getHedanbumenList(Request $request){
+        $dname = $request->params['dname'];
+        //dd($dname);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+        ]);
+        $response = $client->request('GET', '/api/base/search/departmentfuzzy?dname='.$dname);
+        //echo $response->getBody();
+        $obj = json_decode($response->getBody());
+        //dd($obj);
+        $json = [];
+        if ($obj->code == 200) {
+            foreach ($obj->data as $key => $value) {
+                $json[$value->id] = $value->deptname;
+            }
+            return $json;
+        }
+    }
+
 }
