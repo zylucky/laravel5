@@ -40245,6 +40245,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             htype: 1, //合同的类型
             listLoading: false,
             bianhao: null,
+            tabIndex: 1,
             officeList: [{
                 //hetongtype:null,
                 loupanName: null,
@@ -40322,6 +40323,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         changeyslxr1: function changeyslxr1() {
             for (var x in this.optionsyslxr1) {
+                console.log(this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname);
+                console.log(this.optionsyslxr1);
+                //alert(this.tabIndex);
                 if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname) {
                     this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname = this.optionsyslxr1[x].label;
                 }
@@ -47750,10 +47754,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         changeyslxr1: function changeyslxr1() {
             for (var x in this.optionsyslxr1) {
-                //console.log(this.hedan.qiandanren[0].signpersonnelname);
+                //console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
                 //console.log(this.optionsyslxr1);
+                //alert(this.tabIndex);
                 if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname) {
                     this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname = this.optionsyslxr1[x].label;
+                    //alert(55);
                 }
                 /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
                     this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
