@@ -215,6 +215,7 @@
                 htype:1,//合同的类型
                 listLoading:false,
                 bianhao:null,
+                tabIndex:1,
                 officeList:[{
                     //hetongtype:null,
                     loupanName:null,
@@ -293,6 +294,9 @@
 
             changeyslxr1(){
                 for (var x in this.optionsyslxr1) {
+                    console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
+                    console.log(this.optionsyslxr1);
+                    //alert(this.tabIndex);
                     if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex-1].signpersonnelname) {
                         this.hedan.qiandanren[this.tabIndex-1].signpersonnelname = this.optionsyslxr1[x].label;
                     }
