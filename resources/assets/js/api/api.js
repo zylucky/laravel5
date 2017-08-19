@@ -105,7 +105,7 @@ export const zhanghaoUpdataPurchaseContract= params => { return axios.post(`${ba
 export const getHedanPurchaseContractList= params => { return axios.get(`${base}/purchaseContract/getHedanList`, {params:params}); };//获取账号数据的列表
 export const hedanSavePurchaseContract= params => { return axios.post(`${base}/purchaseContract/hedanSave`, {params:params}); };//保存付款账号的数据
 export const removeHedanPurchaseContract= params => { return axios.get(`${base}/purchaseContract/deleteHedan`, {params:params}); };//删除扫描建
-export const hedanUpdataPurchaseContract= params => { return axios.get(`${base}/purchaseContract/updataHedan`, {params:params}); };//删除扫描建
+export const hedanUpdataPurchaseContract= params => { return axios.post(`${base}/purchaseContract/updataHedan`, {params:params}); };//删除扫描建
 
 //出房合同
 //合同信息
