@@ -9,9 +9,9 @@
             </el-col>
             <div style="margin-bottom:51px;">
             </div>
-            <el-col :span="4" style="position:fixed;top:15%;right:0%;">
-                <el-form>
-                    <el-form-item label="合同版本：" style="margin-left:auto;width: 70%;">
+            <el-col :span="4" style="top:15%;right:0%;">
+                <el-form style="margin-left:auto;width: 70%;">
+                    <el-form-item label="合同版本：" style="">
                         <el-select v-model="contractVersion" placeholder="合同版本">
                             <el-option
                                     v-for="item in options"

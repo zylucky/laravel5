@@ -398,14 +398,14 @@
                let arr = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
             },
             year(riqi){
-                if(riqi!=''){
+                if(riqi!=null){
                     return new Date(riqi).getFullYear();
                 }else{
                     return '';
                 }
             },
             month(riqi){
-                if(riqi!=''){
+                if(riqi!=null){
                     if(new Date(riqi).getMonth()+1 <10 ){
                         return '0'+(new Date(riqi).getMonth()+1);
                     }else{
@@ -416,7 +416,7 @@
                 }
             },
             day(riqi){
-                if(riqi!=''){
+                if(riqi!=null){
                     return new Date(riqi).getDate();
                 }else{
                     return '';

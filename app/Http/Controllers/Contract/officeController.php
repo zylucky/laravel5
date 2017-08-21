@@ -108,5 +108,23 @@ class officeController extends Controller
             echo $obj->msg;
         }
     }
+    //建立房间的接口
+    public function createFanghao()
+    {
+
+        $data['lpid'] = Input::get('loupanOmcId');
+        $data['zdid'] = Input::get('loudongOmcId');
+        $data['fybh'] = Input::get('fanghao');
+        //1.建立房间
+        $client = new Client([
+            'base_uri' => '116.62.68.26:8080',
+        ]);
+        //return $data;
+        $response1 = $client->request('POST', '/yhcms/web/zdfyxx/getFyErp.do', [
+            'json' => $data
+        ]);
+        echo $response1->getBody();
+
+    }
 
 }

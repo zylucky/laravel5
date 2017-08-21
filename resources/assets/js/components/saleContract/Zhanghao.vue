@@ -29,38 +29,38 @@
             <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
                 <el-table-column
                         label="收款方户名"
-                        width="200">
+                        width="350">
                     <template scope="scope">
                         <el-input v-model="scope.row.zhanghu" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
                 <el-table-column
                         label="收款方银行"
-                        width="300">
+                        width="350">
                     <template scope="scope">
                         <el-input v-model="scope.row.yinhang" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
                 <el-table-column
                         label="收款账号"
-                        width="300">
+                        width="350">
                     <template scope="scope">
                         <el-input v-model="scope.row.zhanghao" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
                 <el-table-column prop="tianjiadate" label="添加时间"  :formatter="changeDate"  sortable>
                 </el-table-column>
-                <el-table-column prop="laiyuantype"  label="来源"   :formatter="formatStatus" sortable>
-                </el-table-column>
+                <!--<el-table-column prop="laiyuantype"  label="来源"   :formatter="formatStatus" sortable>
+                </el-table-column>-->
                 <el-table-column label="操作" width="170">
                     <template scope="scope">
                         <el-dropdown   menu-align="start">
-                            <el-button type="primary" size="normal" splitButton="true">
-                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
+                            <el-button v-show="!hanshu(scope.row)" @click="handleDel(scope.$index, scope.row)" type="primary" size="normal" splitButton="true">
+                                删除<!--<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>-->
                             </el-button>
-                            <el-dropdown-menu slot="dropdown" >
+                           <!-- <el-dropdown-menu slot="dropdown" >
                                 <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
-                            </el-dropdown-menu>
+                            </el-dropdown-menu>-->
                         </el-dropdown>
                     </template>
                 </el-table-column>
@@ -81,7 +81,7 @@
             </el-pagination>
         </el-col>
         <el-dialog size="tiny" title="付款账号管理" v-model="Visible" :close-on-click-modal="false">
-            <el-form  label-width="120px"  ref="sureForm" :rules="zhanghaoRules" :model="zhanghao">
+            <el-form  label-width="120px"  ref="zhanghao" :rules="zhanghaoRules" :model="zhanghao">
                 <el-row>
                     <el-col :span="20">
                         <el-form-item label="付款方户名：" prop="zhanghu" required>
@@ -237,7 +237,7 @@
             },
             //新增的提交
             handleEnd(index,row){
-                this.$refs.sureForm.validate((valid) => {
+                this.$refs.zhanghao.validate((valid) => {
                     if(valid){
                         let para1 = this.zhanghao;
                         this.Visible = false;
@@ -248,6 +248,7 @@
                                     type: 'error'
                                 });
                             }
+                            this.resetForm('zhanghao');
                             this.purchaseZhanghaoContractList();
 
                         });
@@ -298,6 +299,9 @@
                 this.xsOffice = res.data.data.xsOffice;
                 //console.log(this.xsOffice)
             },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            }
         },
         mounted(){
             this.purchaseZhanghaoContractList();

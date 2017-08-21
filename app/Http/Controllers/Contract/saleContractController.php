@@ -64,11 +64,6 @@ class saleContractController extends Controller
         $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
         echo json_encode($res);
     }
-
-
-
-
-
     /**
      * Display the specified resource.
      * 根据合同ID获取合同的信息
@@ -608,17 +603,56 @@ class saleContractController extends Controller
         $response = $client->request('GET', '/api/contract/xs/splitbill/delete?id='.$id);
         echo $response->getBody();
     }
-    public function updataHedan(){
+    public function updataHedan(Request $request){
         //dd(111);
-        $id = Input::get('id');
-        $colname = Input::get('colname');
-        $value = Input::get('value');
         $client = new Client([
             'base_uri' => $this->base_url,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $response = $client->request('GET', '/api/contract/xs/splitbill/update');
+        $response = $client->request('POST', '/api/contract/xs/splitbill/update', [
+            'json' => $request->params
+        ]);
         echo $response->getBody();
+    }
+
+    //获取签单人姓名列表
+    public function getHedanqiannameList(Request $request){
+        $uname = $request->params['uname'];
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+        ]);
+        $response = $client->request('GET', '/api/base/search/personfuzzy?uname='.$uname);
+        $obj = json_decode($response->getBody());
+        //dd($obj);
+        $json = [];
+        if ($obj->code == 200) {
+            foreach ($obj->data as $key => $value) {
+                $json[$value->id] = $value->name;
+            }
+            return $json;
+        }
+    }
+    //获取签单人姓名列表
+    public function getHedanbumenList(Request $request){
+        $dname = $request->params['dname'];
+        //dd($dname);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+        ]);
+        $response = $client->request('GET', '/api/base/search/departmentfuzzy?dname='.$dname);
+        //echo $response->getBody();
+        $obj = json_decode($response->getBody());
+        //dd($obj);
+        $json = [];
+        if ($obj->code == 200) {
+            foreach ($obj->data as $key => $value) {
+                $json[$value->id] = $value->deptname;
+            }
+            return $json;
+        }
     }
 
 }

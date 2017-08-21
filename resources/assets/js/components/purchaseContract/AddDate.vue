@@ -312,7 +312,7 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="实际月租金" prop="actualrent" >
+                    <el-form-item label="实际月租金" prop="actualrent" required>
                         <el-input v-model.number="addDate.actualrent" placeholder="实际月租金"></el-input>
                     </el-form-item>
                 </el-col>
@@ -451,6 +451,8 @@
                     ],jiafangfeiyong: [
                         { required: true, message: '不能为空' }
                     ],yifangfeiyong: [
+                        { required: true, message: '不能为空' }
+                    ],actualrent: [
                         { required: true, message: '不能为空' }
                     ],
                 },

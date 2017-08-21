@@ -44,7 +44,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::post('hedanSave','Contract\purchaseContractController@hedanSave');
     Route::get('getHedanList','Contract\purchaseContractController@getHedanList');
     Route::get('deleteHedan','Contract\purchaseContractController@deleteHedan');
-    Route::get('updataHedan','Contract\purchaseContractController@updataHedan');
+    Route::post('updataHedan','Contract\purchaseContractController@updataHedan');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
 //装饰合同
@@ -120,7 +120,9 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::post('hedanSave','Contract\saleContractController@hedanSave');
     Route::get('getHedanList','Contract\saleContractController@getHedanList');
     Route::get('deleteHedan','Contract\saleContractController@deleteHedan');
-    Route::get('updataHedan','Contract\saleContractController@updataHedan');
+    Route::post('updataHedan','Contract\saleContractController@updataHedan');
+    Route::post('getHedanqiannameList','Contract\saleContractController@getHedanqiannameList');
+    Route::post('getHedanbumenList','Contract\saleContractController@getHedanbumenList');
 });
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 //权限
@@ -186,6 +188,7 @@ Route::group(['prefix' => 'office'], function () {
     Route::get('loudongList','Contract\officeController@loudongList');
     Route::get('fanghaoList','Contract\officeController@fanghaoList');
     Route::get('salefanghaoList','Contract\officeController@salefanghaoList');
+    Route::get('createFanghao','Contract\officeController@createFanghao');
 });
 
 //hello world1
