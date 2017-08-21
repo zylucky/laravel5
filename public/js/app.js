@@ -40235,6 +40235,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -40307,11 +40361,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 pn: this.page,
                 cnt: this.pageSize,
                 htid: this.$route.query.id
-                //console.log(para);
-                //console.log(this.page);
-                //console.log(this.pageSize);
-                //alert(222);
-            };this.listLoading = true;
+            };
+            this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_58" /* getHedanPurchaseContractList */])(para).then(function (res) {
                 //console.log(12222);
                 //console.log(res.data.data);
@@ -40322,9 +40373,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         changeyslxr1: function changeyslxr1() {
             for (var x in this.optionsyslxr1) {
-                //console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
-                //console.log(this.optionsyslxr1);
-                //alert(this.tabIndex);
                 if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname) {
                     this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname = this.optionsyslxr1[x].label;
                 }
@@ -40459,7 +40507,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //增加租期租金
         addqiandan: function addqiandan() {
-            this.tabIndex = ++this.tabIndex + '';
+            this.tabIndex = this.tabIndex + 1;
             //console.log(this.hedan.qiandanren);
             this.hedan.qiandanren.push({
                 contractid: this.hedan.qiandanren[0].contractid,
@@ -40520,15 +40568,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }
                         _this6.saleHedanContractList();
                         _this6.resetForm('hedan');
+                        location.reload('http://127.0.0.1:8000/#/purchaseContract');
                     });
                 }
             });
         },
 
         //失去焦点事件
-        updataHedan: function updataHedan(index, row) {
+        updataHedan1: function updataHedan1(index, row) {
             var _this7 = this;
 
+            for (var x in this.optionsyslxr1) {
+                if (this.optionsyslxr1[x].value == row.signpersonnelname) {
+                    row.signpersonnelname = this.optionsyslxr1[x].label;
+                    //alert(55);
+                }
+            }
             var para = {
                 id: row.id,
                 signpersonnelname: row.signpersonnelname,
@@ -40536,8 +40591,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 leaderpersonnelname: row.leaderpersonnelname,
                 departmentname: row.departmentname
             };
-            //alert(22);
-            //console.log(para);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_61" /* hedanUpdataPurchaseContract */])(para).then(function (res) {
                 if (res.data.code != '200') {
                     _this7.$message({
@@ -40547,34 +40600,99 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
+        updataHedan: function updataHedan(index, row) {
+            var _this8 = this;
+
+            var para = {
+                id: row.id,
+                signpersonnelname: row.signpersonnelname,
+                ratio: row.ratio,
+                leaderpersonnelname: row.leaderpersonnelname,
+                departmentname: row.departmentname
+            };
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_61" /* hedanUpdataPurchaseContract */])(para).then(function (res) {
+                if (res.data.code != '200') {
+                    _this8.$message({
+                        message: '数据没有保存成功',
+                        type: 'error'
+                    });
+                }
+            });
+        },
+        updataHedan2: function updataHedan2(index, row) {
+            var _this9 = this;
+
+            for (var x in this.optionsyslxr2) {
+                if (this.optionsyslxr2[x].value == row.leaderpersonnelname) {
+                    row.leaderpersonnelname = this.optionsyslxr2[x].label;
+                    //alert(55);
+                }
+            }
+            var para = {
+                id: row.id,
+                signpersonnelname: row.signpersonnelname,
+                ratio: row.ratio,
+                leaderpersonnelname: row.leaderpersonnelname,
+                departmentname: row.departmentname
+            };
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_61" /* hedanUpdataPurchaseContract */])(para).then(function (res) {
+                if (res.data.code != '200') {
+                    _this9.$message({
+                        message: '数据没有保存成功',
+                        type: 'error'
+                    });
+                }
+            });
+        },
+        updataHedan3: function updataHedan3(index, row) {
+            var _this10 = this;
+
+            for (var x in this.optionsyslxr3) {
+                if (this.optionsyslxr3[x].value == row.departmentname) {
+                    row.departmentname = this.optionsyslxr3[x].label;
+                    //alert(55);
+                }
+            }
+            var para = {
+                id: row.id,
+                signpersonnelname: row.signpersonnelname,
+                ratio: row.ratio,
+                leaderpersonnelname: row.leaderpersonnelname,
+                departmentname: row.departmentname
+            };
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_61" /* hedanUpdataPurchaseContract */])(para).then(function (res) {
+                if (res.data.code != '200') {
+                    _this10.$message({
+                        message: '数据没有保存成功',
+                        type: 'error'
+                    });
+                }
+            });
+        },
 
         //签单人删除
         handleDel: function handleDel(index, row) {
-            var _this8 = this;
+            var _this11 = this;
 
             this.$confirm('确认删除该记录吗？', '提示', {
                 type: 'warning'
             }).then(function () {
-                _this8.listLoading = true;
+                _this11.listLoading = true;
                 var para = { id: row.id };
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_62" /* removeHedanPurchaseContract */])(para).then(function (res) {
-                    _this8.listLoading = false;
-                    _this8.$message({
+                    _this11.listLoading = false;
+                    _this11.$message({
                         message: '删除成功',
                         type: 'success'
                     });
-                    _this8.saleHedanContractList();
+                    _this11.saleHedanContractList();
                 });
             }).catch(function () {});
         },
         fuzhi: function fuzhi(res) {
-            //console.log(res.data.data);
             this.hedan.qiandanren.contractid = res.data.data.id;
-            //this.hetongid = res.data.data.id;
             this.bianhao = res.data.data.bianhao;
             this.officeList = res.data.data.officeList;
-            //console.log(this.xsOffice);
-            //console.log(this.jieyueXieyi);
         },
         resetForm: function resetForm(formName) {
             this.$refs[formName].resetFields();
@@ -42410,6 +42528,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -42425,6 +42544,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }],
             id: null,
             Visible: false,
+            editVisible: true,
             zhanghao: {
                 hetongid: null,
                 hetongbianhao: null,
@@ -42452,7 +42572,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         hanshu: function hanshu(row) {
-            return row.laiyuantype == 3 ? true : false;
+            if (row.laiyuantype == 1 || row.laiyuantype == 3) {
+                return true;
+            } else {
+                return false;
+            }
         },
 
         //时间戳转日期格式
@@ -47772,12 +47896,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47868,6 +47986,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
                 //console.log(this.optionsyslxr1);
                 //alert(this.tabIndex);
+                //alert(33333);
                 if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname) {
                     this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname = this.optionsyslxr1[x].label;
                     //alert(55);
@@ -47895,20 +48014,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 /*if (this.optionsyslxr3[x].value == this.hedan.qiandanren.departmentname) {
                     this.hedan.qiandanren[index].departmentnameId = this.optionsyslxr3[x].label;
                 }*/
-            }
-        },
-        changeyslxr4: function changeyslxr4() {
-            for (var x in this.optionsyslxr1) {
-                console.log(this.hedan.qiandanren);
-                //console.log(this.optionsyslxr1);
-                alert(111);
-                if (this.optionsyslxr1[x].value == this.hedan.qiandanren.signpersonnelname) {
-                    this.hedan.qiandanren.signpersonnelname = this.optionsyslxr1[x].label;
-                    //alert(55);
-                }
-                /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
-                 this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
-                  }*/
             }
         },
 
@@ -48024,9 +48129,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.saleHedanContractList();
         },
 
-        //增加签单人
+        //添加签单人
         addqiandan: function addqiandan() {
-            this.tabIndex = ++this.tabIndex + '';
+            this.tabIndex = this.tabIndex + 1;
             //console.log(this.hedan.qiandanren);
             this.hedan.qiandanren.push({
                 contractid: this.hedan.qiandanren[0].contractid,
@@ -48077,7 +48182,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$refs.hedan.validate(function (valid) {
                 if (valid) {
                     var para1 = _this6.hedan.qiandanren;
-                    console.log(para1);
+                    //console.log(para1);
                     _this6.Visible = false;
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_21" /* hedanSaveSaleContract */])(para1).then(function (res) {
                         if (res.data.code != '200') {
@@ -48088,15 +48193,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }
                         _this6.saleHedanContractList();
                         _this6.resetForm('hedan');
+                        location.reload('http://127.0.0.1:8000/#/saleContract');
                     });
                 }
             });
         },
 
         //失去焦点事件
-        updataHedan: function updataHedan(index, row) {
+        updataHedan1: function updataHedan1(index, row) {
             var _this7 = this;
 
+            for (var x in this.optionsyslxr1) {
+                //console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
+                //console.log(this.optionsyslxr1);
+                //alert(this.tabIndex);
+                if (this.optionsyslxr1[x].value == row.signpersonnelname) {
+                    row.signpersonnelname = this.optionsyslxr1[x].label;
+                    //alert(55);
+                }
+                /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
+                 this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
+                  }*/
+            }
             var para = {
                 id: row.id,
                 signpersonnelname: row.signpersonnelname,
@@ -48109,6 +48227,93 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_22" /* hedanUpdataSaleContract */])(para).then(function (res) {
                 if (res.data.code != '200') {
                     _this7.$message({
+                        message: '数据没有保存成功',
+                        type: 'error'
+                    });
+                }
+            });
+        },
+        updataHedan: function updataHedan(index, row) {
+            var _this8 = this;
+
+            var para = {
+                id: row.id,
+                signpersonnelname: row.signpersonnelname,
+                ratio: row.ratio,
+                leaderpersonnelname: row.leaderpersonnelname,
+                departmentname: row.departmentname
+            };
+            //alert(22);
+            //console.log(para);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_22" /* hedanUpdataSaleContract */])(para).then(function (res) {
+                if (res.data.code != '200') {
+                    _this8.$message({
+                        message: '数据没有保存成功',
+                        type: 'error'
+                    });
+                }
+            });
+        },
+        updataHedan2: function updataHedan2(index, row) {
+            var _this9 = this;
+
+            for (var x in this.optionsyslxr2) {
+                //console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
+                //console.log(this.optionsyslxr1);
+                //alert(this.tabIndex);
+                if (this.optionsyslxr2[x].value == row.leaderpersonnelname) {
+                    row.leaderpersonnelname = this.optionsyslxr2[x].label;
+                    //alert(55);
+                }
+                /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
+                 this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
+                  }*/
+            }
+            var para = {
+                id: row.id,
+                signpersonnelname: row.signpersonnelname,
+                ratio: row.ratio,
+                leaderpersonnelname: row.leaderpersonnelname,
+                departmentname: row.departmentname
+            };
+            //alert(22);
+            //console.log(para);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_22" /* hedanUpdataSaleContract */])(para).then(function (res) {
+                if (res.data.code != '200') {
+                    _this9.$message({
+                        message: '数据没有保存成功',
+                        type: 'error'
+                    });
+                }
+            });
+        },
+        updataHedan3: function updataHedan3(index, row) {
+            var _this10 = this;
+
+            for (var x in this.optionsyslxr3) {
+                //console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
+                //console.log(this.optionsyslxr1);
+                //alert(this.tabIndex);
+                if (this.optionsyslxr3[x].value == row.departmentname) {
+                    row.departmentname = this.optionsyslxr3[x].label;
+                    //alert(55);
+                }
+                /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
+                 this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
+                  }*/
+            }
+            var para = {
+                id: row.id,
+                signpersonnelname: row.signpersonnelname,
+                ratio: row.ratio,
+                leaderpersonnelname: row.leaderpersonnelname,
+                departmentname: row.departmentname
+            };
+            //alert(22);
+            //console.log(para);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_22" /* hedanUpdataSaleContract */])(para).then(function (res) {
+                if (res.data.code != '200') {
+                    _this10.$message({
                         message: '数据没有保存成功',
                         type: 'error'
                     });
@@ -48136,20 +48341,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
              });
         },*/
         handleDel: function handleDel(index, row) {
-            var _this8 = this;
+            var _this11 = this;
 
             this.$confirm('确认删除该记录吗？', '提示', {
                 type: 'warning'
             }).then(function () {
-                _this8.listLoading = true;
+                _this11.listLoading = true;
                 var para = { id: row.id };
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_23" /* removeHedanSaleContract */])(para).then(function (res) {
-                    _this8.listLoading = false;
-                    _this8.$message({
+                    _this11.listLoading = false;
+                    _this11.$message({
                         message: '删除成功',
                         type: 'success'
                     });
-                    _this8.saleHedanContractList();
+                    _this11.saleHedanContractList();
                 });
             }).catch(function () {});
         },
@@ -117461,6 +117666,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             "menu-align": "start"
           }
         }, [_c('el-button', {
+          directives: [{
+            name: "show",
+            rawName: "v-show",
+            value: (!_vm.hanshu(scope.row)),
+            expression: "!hanshu(scope.row)"
+          }],
           attrs: {
             "type": "primary",
             "size": "normal",
@@ -117471,7 +117682,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleDel(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("\n                            操作")])], 1)]
+        }, [_vm._v("\n                            删除")])], 1)]
       }
     }])
   })], 1)], 1), _vm._v(" "), _c('el-col', {
@@ -118736,6 +118947,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       key: "default",
       fn: function(scope) {
         return [_c('el-input', {
+          directives: [{
+            name: "show",
+            rawName: "v-show",
+            value: (_vm.editVisible),
+            expression: "editVisible"
+          }],
           attrs: {
             "disabled": _vm.hanshu(scope.row)
           },
@@ -118828,6 +119045,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             "menu-align": "start"
           }
         }, [_c('el-button', {
+          directives: [{
+            name: "show",
+            rawName: "v-show",
+            value: (!_vm.hanshu(scope.row)),
+            expression: "!hanshu(scope.row)"
+          }],
           attrs: {
             "type": "primary",
             "size": "normal",
@@ -118838,7 +119061,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleDel(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("\n                                操作")])], 1)]
+        }, [_vm._v("\n                                删除")])], 1)]
       }
     }])
   })], 1)], 1), _vm._v(" "), _c('el-col', {
@@ -121262,7 +121485,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "click": _vm.addContract
       }
     }, [_vm._v(" 新增")])], 1)], 1)], 1)
-  })], 2), _vm._v(" "), _c('el-row', [_c('el-table', {
+  })], 2), _vm._v(" "), _c('el-row', [_c('el-form', {
+    ref: "hedan",
+    attrs: {
+      "label-width": "150px",
+      "rules": _vm.hedanRules,
+      "model": _vm.hedan
+    }
+  }, [_c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -121280,147 +121510,210 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "selection-change": _vm.selsChange
     }
-  }, [_c('el-table-column', {
-    attrs: {
-      "label": "签单人",
-      "width": "200"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-input', {
-          attrs: {
-            "disabled": _vm.hanshu(scope.row)
-          },
-          on: {
-            "blur": function($event) {
-              _vm.updataHedan(scope.$index, scope.row)
-            }
-          },
-          model: {
-            value: (scope.row.signpersonnelname),
-            callback: function($$v) {
-              scope.row.signpersonnelname = $$v
+  }, _vm._l((_vm.hedan.qiandanren), function(item, index) {
+    return _c('div', [_c('el-row', [_c('el-table-column', {
+      attrs: {
+        "label": "签单人"
+      },
+      scopedSlots: _vm._u([{
+        key: "default",
+        fn: function(scope) {
+          return [_c('el-col', [_c('el-form-item', [_c('el-select', {
+            staticStyle: {
+              "position": "relative",
+              "left": "-150px",
+              "top": "10px",
+              "height": "35px",
+              "width": "250px"
             },
-            expression: "scope.row.signpersonnelname"
-          }
-        })]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "合单占比",
-      "width": "300"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-input', {
-          attrs: {
-            "disabled": _vm.hanshu(scope.row)
-          },
-          on: {
-            "blur": function($event) {
-              _vm.updataHedan(scope.$index, scope.row)
-            }
-          },
-          model: {
-            value: (scope.row.ratio),
-            callback: function($$v) {
-              scope.row.ratio = $$v
+            attrs: {
+              "filterable": "",
+              "remote": "",
+              "placeholder": "请输入签单人姓名",
+              "remote-method": _vm.remoteMethodyslxr1,
+              "loading": _vm.fristyslxrloading1
             },
-            expression: "scope.row.ratio"
-          }
-        })]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "签单人领导",
-      "width": "300"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-input', {
-          attrs: {
-            "disabled": _vm.hanshu(scope.row)
-          },
-          on: {
-            "blur": function($event) {
-              _vm.updataHedan(scope.$index, scope.row)
-            }
-          },
-          model: {
-            value: (scope.row.leaderpersonnelname),
-            callback: function($$v) {
-              scope.row.leaderpersonnelname = $$v
+            on: {
+              "change": function($event) {
+                _vm.updataHedan1(scope.$index, scope.row)
+              }
             },
-            expression: "scope.row.leaderpersonnelname"
-          }
-        })]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "签单人部门",
-      "width": "300"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-input', {
-          attrs: {
-            "disabled": _vm.hanshu(scope.row)
-          },
-          on: {
-            "blur": function($event) {
-              _vm.updataHedan(scope.$index, scope.row)
+            model: {
+              value: (scope.row.signpersonnelname),
+              callback: function($$v) {
+                scope.row.signpersonnelname = $$v
+              },
+              expression: "scope.row.signpersonnelname"
             }
-          },
-          model: {
-            value: (scope.row.departmentname),
-            callback: function($$v) {
-              scope.row.departmentname = $$v
+          }, _vm._l((_vm.optionsyslxr1), function(item) {
+            return _c('el-option', {
+              key: item.value,
+              attrs: {
+                "label": item.label,
+                "value": item.value
+              }
+            })
+          }))], 1)], 1)]
+        }
+      }])
+    }), _vm._v(" "), _c('el-table-column', {
+      attrs: {
+        "label": "合单占比",
+        "width": "300"
+      },
+      scopedSlots: _vm._u([{
+        key: "default",
+        fn: function(scope) {
+          return [_c('el-input', {
+            attrs: {
+              "disabled": _vm.hanshu(scope.row)
             },
-            expression: "scope.row.departmentname"
-          }
-        })]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "createtime",
-      "label": "新增时间",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "170"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-dropdown', {
-          attrs: {
-            "menu-align": "start"
-          }
-        }, [_c('el-button', {
-          attrs: {
-            "type": "primary",
-            "size": "normal",
-            "splitButton": "true"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleDel(scope.$index, scope.row)
+            on: {
+              "blur": function($event) {
+                _vm.updataHedan(scope.$index, scope.row)
+              }
+            },
+            model: {
+              value: (scope.row.ratio),
+              callback: function($$v) {
+                scope.row.ratio = $$v
+              },
+              expression: "scope.row.ratio"
             }
-          }
-        }, [_vm._v("\n                            删除")])], 1)]
+          })]
+        }
+      }])
+    }), _vm._v(" "), _c('el-table-column', {
+      attrs: {
+        "label": "签单人领导",
+        "width": "300"
+      },
+      scopedSlots: _vm._u([{
+        key: "default",
+        fn: function(scope) {
+          return [_c('el-col', [_c('el-form-item', [_c('el-select', {
+            staticStyle: {
+              "position": "relative",
+              "left": "-150px",
+              "top": "10px",
+              "height": "35px",
+              "width": "250px"
+            },
+            attrs: {
+              "filterable": "",
+              "remote": "",
+              "placeholder": "请输入签单人上级领导",
+              "remote-method": _vm.remoteMethodyslxr2,
+              "loading": _vm.fristyslxrloading1
+            },
+            on: {
+              "change": function($event) {
+                _vm.updataHedan2(scope.$index, scope.row)
+              }
+            },
+            model: {
+              value: (scope.row.leaderpersonnelname),
+              callback: function($$v) {
+                scope.row.leaderpersonnelname = $$v
+              },
+              expression: "scope.row.leaderpersonnelname"
+            }
+          }, _vm._l((_vm.optionsyslxr2), function(item) {
+            return _c('el-option', {
+              key: item.value,
+              attrs: {
+                "label": item.label,
+                "value": item.value
+              }
+            })
+          }))], 1)], 1)]
+        }
+      }])
+    }), _vm._v(" "), _c('el-table-column', {
+      attrs: {
+        "label": "签单人部门",
+        "width": "300"
+      },
+      scopedSlots: _vm._u([{
+        key: "default",
+        fn: function(scope) {
+          return [_c('el-col', [_c('el-form-item', [_c('el-select', {
+            staticStyle: {
+              "position": "relative",
+              "left": "-150px",
+              "top": "10px",
+              "height": "35px",
+              "width": "250px"
+            },
+            attrs: {
+              "filterable": "",
+              "remote": "",
+              "placeholder": "请输入签单人部门",
+              "remote-method": _vm.remoteMethodyslxr3,
+              "loading": _vm.fristyslxrloading2
+            },
+            on: {
+              "change": function($event) {
+                _vm.updataHedan3(scope.$index, scope.row)
+              }
+            },
+            model: {
+              value: (scope.row.departmentname),
+              callback: function($$v) {
+                scope.row.departmentname = $$v
+              },
+              expression: "scope.row.departmentname"
+            }
+          }, _vm._l((_vm.optionsyslxr3), function(item) {
+            return _c('el-option', {
+              key: item.value,
+              attrs: {
+                "label": item.label,
+                "value": item.value
+              }
+            })
+          }))], 1)], 1)]
+        }
+      }])
+    }), _vm._v(" "), _c('el-table-column', {
+      attrs: {
+        "prop": "createtime",
+        "label": "新增时间",
+        "sortable": ""
       }
-    }])
-  })], 1)], 1), _vm._v(" "), _c('el-col', {
+    }), _vm._v(" "), _c('el-table-column', {
+      attrs: {
+        "label": "操作",
+        "width": "170"
+      },
+      scopedSlots: _vm._u([{
+        key: "default",
+        fn: function(scope) {
+          return [_c('el-dropdown', {
+            attrs: {
+              "menu-align": "start"
+            }
+          }, [_c('el-button', {
+            attrs: {
+              "type": "primary",
+              "size": "normal",
+              "splitButton": "true"
+            }
+          }, [_vm._v("\n                                        删除"), _c('i', {
+            staticClass: "el-icon-caret-bottom el-icon&#45;&#45;right"
+          })]), _vm._v(" "), _c('el-dropdown-menu', {
+            slot: "dropdown"
+          }, [_c('el-dropdown-item', [_c('el-button', {
+            on: {
+              "click": function($event) {
+                _vm.handleDel(scope.$index, scope.row)
+              }
+            }
+          }, [_vm._v("删除")])], 1)], 1)], 1)]
+        }
+      }])
+    })], 1)], 1)
+  }))], 1)], 1), _vm._v(" "), _c('el-col', {
     staticClass: "toolbar",
     attrs: {
       "span": 24
@@ -121991,8 +122284,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             },
             on: {
               "change": function($event) {
-                _vm.changeyslxr4;
-                _vm.updataHedan(scope.$index, scope.row)
+                _vm.updataHedan1(scope.$index, scope.row)
               }
             },
             model: {
@@ -122065,8 +122357,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             },
             on: {
               "change": function($event) {
-                _vm.changeyslxr2;
-                _vm.updataHedan(scope.$index, scope.row)
+                _vm.updataHedan2(scope.$index, scope.row)
               }
             },
             model: {
@@ -122112,8 +122403,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             },
             on: {
               "change": function($event) {
-                _vm.changeyslxr3;
-                _vm.updataHedan(scope.$index, scope.row)
+                _vm.updataHedan3(scope.$index, scope.row)
               }
             },
             model: {
@@ -122244,7 +122534,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "loading": _vm.fristyslxrloading1
       },
       on: {
-        "change": function($event) {}
+        "change": _vm.changeyslxr1
       },
       model: {
         value: (item.signpersonnelname),

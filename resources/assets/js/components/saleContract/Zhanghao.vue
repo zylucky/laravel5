@@ -55,8 +55,8 @@
                 <el-table-column label="操作" width="170">
                     <template scope="scope">
                         <el-dropdown   menu-align="start">
-                            <el-button @click="handleDel(scope.$index, scope.row)" type="primary" size="normal" splitButton="true">
-                                操作<!--<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>-->
+                            <el-button v-show="!hanshu(scope.row)" @click="handleDel(scope.$index, scope.row)" type="primary" size="normal" splitButton="true">
+                                删除<!--<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>-->
                             </el-button>
                            <!-- <el-dropdown-menu slot="dropdown" >
                                 <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>

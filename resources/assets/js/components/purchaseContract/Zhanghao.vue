@@ -27,11 +27,12 @@
         </el-row>
         <el-row>
             <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
+                <!--<if condition="laiyuantype eq 2">-->
                     <el-table-column
                             label="收款方户名"
                             width="350">
                         <template scope="scope">
-                            <el-input v-model="scope.row.zhanghu" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
+                            <el-input v-model="scope.row.zhanghu" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)" v-show="editVisible"></el-input>
                         </template>
                     </el-table-column>
                     <el-table-column
@@ -55,8 +56,8 @@
                     <el-table-column label="操作" width="170">
                         <template scope="scope">
                             <el-dropdown   menu-align="start">
-                                <el-button @click="handleDel(scope.$index, scope.row)" type="primary" size="normal" splitButton="true">
-                                    操作<!--<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>-->
+                                <el-button v-show="!hanshu(scope.row)" type="primary" size="normal" splitButton="true" @click="handleDel(scope.$index, scope.row)">
+                                    删除<!--<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>-->
                                 </el-button>
                                 <!--<el-dropdown-menu slot="dropdown" >
                                     <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
@@ -131,6 +132,7 @@
                 }],
                 id:null,
                 Visible:false,
+                editVisible:true,
                 zhanghao:{
                     hetongid:null,
                     hetongbianhao:null,
@@ -163,7 +165,11 @@
         },
         methods: {
             hanshu(row){
-                return row.laiyuantype==3?true:false;
+                if(row.laiyuantype==1 || row.laiyuantype==3){
+                    return true;
+                }else{
+                    return false;
+                }
             },
             //时间戳转日期格式
             changeDate(row, column){
