@@ -120,7 +120,7 @@
             </el-pagination>
         </el-col>
         <el-dialog title="新增签单人" v-model="Visible" :close-on-click-modal="false" style="max-height:700px;margin-top:150px;over-flow:hidden;">
-            <el-form  label-width="150px"  ref="sureForm" :rules="hedanRules" :model="hedan">
+            <el-form  label-width="150px"  ref="hedan" :rules="hedanRules" :model="hedan">
                 <div style="max-height:400px;border:0px solid #8391a5;overflow:auto;">
                 <div v-for="(item, index) in hedan.qiandanren" style="height:150px;">
                     <el-row>
@@ -248,6 +248,7 @@
                 lists:[],
                 list:[],
                 listLoading:false,
+                tabIndex:1,
                 bianhao:null,
                 xsOffice:[{
                     //hetongtype:null,
@@ -310,10 +311,10 @@
                     cnt: this.pageSize,
                     htid: this.$route.query.id,
                 }
-                console.log(para);
+                //console.log(para);
                 //console.log(this.page);
                 //console.log(this.pageSize);
-                //alert(222);
+                //(222);
                 this.listLoading = true;
                 getHedanSaleContractList(para).then((res) => {
                     //console.log(12222);
@@ -327,31 +328,46 @@
 
             changeyslxr1(){
                 for (var x in this.optionsyslxr1) {
-                    if (this.optionsyslxr1[x].value == this.hedan.qiandanren.signpersonnelname) {
-                        this.hedan.qiandanren[index].signpersonnelnameId = this.optionsyslxr1[x].label;
+                    //console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
+                    //console.log(this.optionsyslxr1);
+                    //alert(this.tabIndex);
+                    if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex-1].signpersonnelname) {
+                        this.hedan.qiandanren[this.tabIndex-1].signpersonnelname = this.optionsyslxr1[x].label;
+                        //alert(55);
                     }
+                    /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
+                        this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
+
+                    }*/
                 }
             },
             changeyslxr2(){
                 for (var x in this.optionsyslxr2) {
-                    if (this.optionsyslxr2[x].value == this.hedan.qiandanren.leaderpersonnelname) {
-                        this.hedan.qiandanren[index].leaderpersonnelnameId = this.optionsyslxr2[x].label;
+                    if (this.optionsyslxr2[x].value == this.hedan.qiandanren[this.tabIndex-1].leaderpersonnelname) {
+                        this.hedan.qiandanren[this.tabIndex-1].leaderpersonnelname = this.optionsyslxr2[x].label;
                     }
+                    /*if (this.optionsyslxr2[x].value == this.hedan.qiandanren.leaderpersonnelname) {
+                        this.hedan.qiandanren[index].leaderpersonnelnameId = this.optionsyslxr2[x].label;
+                    }*/
                 }
             },
             changeyslxr3(){
                 for (var x in this.optionsyslxr3) {
-                    if (this.optionsyslxr3[x].value == this.hedan.qiandanren.departmentname) {
-                        this.hedan.qiandanren[index].departmentnameId = this.optionsyslxr3[x].label;
+                    if (this.optionsyslxr3[x].value == this.hedan.qiandanren[this.tabIndex-1].departmentname) {
+                        this.hedan.qiandanren[this.tabIndex-1].departmentname = this.optionsyslxr3[x].label;
                     }
+                    /*if (this.optionsyslxr3[x].value == this.hedan.qiandanren.departmentname) {
+                        this.hedan.qiandanren[index].departmentnameId = this.optionsyslxr3[x].label;
+                    }*/
                 }
             },
 
-            //获取幼狮联系人列表
+            //获取签单人列表
             remoteMethodyslxr1(query) {
                 let para = {
                     uname: query
                 };
+                //console.log(para);
                 this.list = [];
                 this.fristyslxrloading1 = true;
                 getHedanqiannameSaleList(para).then((res) => {
@@ -368,12 +384,12 @@
                     if (query !== '') {
                         this.fristyslxrloading1 = true;
                         setTimeout(() => {
-
                             this.fristyslxrloading1 = false;
                             this.optionsyslxr1 = this.list.filter(item => {
                                 return item.label.toLowerCase()
                                         .indexOf(query.toLowerCase()) > -1;
                             });
+                            //console.log(this.optionsyslxr1);
                         }, 200);
                     } else {
                         this.optionsyslxr1 = [];
@@ -432,7 +448,6 @@
                     if (query !== '') {
                         this.fristyslxrloading2 = true;
                         setTimeout(() => {
-
                             this.fristyslxrloading2 = false;
                             this.optionsyslxr3 = this.list.filter(item => {
                                 return item.label.toLowerCase()
@@ -454,8 +469,9 @@
                 this.page = val;
                 this.saleHedanContractList();
             },
-            //增加租期租金
+            //增加签单人
             addqiandan() {
+                this.tabIndex = ++this.tabIndex + '';
                 //console.log(this.hedan.qiandanren);
                 this.hedan.qiandanren.push({
                     contractid:this.hedan.qiandanren[0].contractid,
@@ -470,6 +486,7 @@
                 if(this.hedan.qiandanren.length > 1){
                     this.hedan.qiandanren.pop();
                     var index = this.hedan.qiandanren.indexOf(item)
+                    --this.tabIndex;
                     if (index !== -1) {
                         this.hedan.qiandanren.splice(index, 1)
                     }
@@ -496,10 +513,10 @@
             },
             //新增的提交
             handleEnd(index,row){
-                this.$refs.sureForm.validate((valid) => {
+                this.$refs.hedan.validate((valid) => {
                     if(valid){
                         let para1 = this.hedan.qiandanren;
-                        console.log(para1);
+                        //console.log(para1);
                         this.Visible = false;
                         hedanSaveSaleContract(para1).then((res)=>{
                             if(res.data.code!='200'){
@@ -509,6 +526,7 @@
                                 });
                             }
                             this.saleHedanContractList();
+                            this.resetForm('hedan');
                         });
                     }
                 });
@@ -524,7 +542,7 @@
                     departmentname: row.departmentname,
                 };
                 //alert(22);
-                console.log(para);
+                //console.log(para);
                 hedanUpdataSaleContract(para).then((res)=>{
                     if(res.data.code!='200'){
                         this.$message({
@@ -572,7 +590,7 @@
                 });
             },
             fuzhi(res){
-                console.log(res.data.data);
+                //console.log(res.data.data);
                 this.hedan.qiandanren.contractid = res.data.data.id;
                 //this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
@@ -580,6 +598,9 @@
                 //console.log(this.xsOffice);
                 //console.log(this.jieyueXieyi);
             },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            }
         },
         mounted(){
             this.saleHedanContractList();
