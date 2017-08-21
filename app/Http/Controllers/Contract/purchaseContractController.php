@@ -590,16 +590,16 @@ class purchaseContractController extends Controller
         $response = $client->request('GET', '/api/contract/sf/splitbill/delete?id='.$id);
         echo $response->getBody();
     }
-    public function updataHedan(){
-        //dd(111);
-        $id = Input::get('id');
-        $colname = Input::get('colname');
-        $value = Input::get('value');
+    public function updataHedan(Request $request){
+        //dd(22);
         $client = new Client([
             'base_uri' => $this->base_url,
+
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $response = $client->request('GET', '/api/contract/sf/splitbill/update');
+        $response = $client->request('POST', '/api/contract/sf/splitbill/update', [
+            'json' => $request->params
+        ]);
         echo $response->getBody();
     }
 }
