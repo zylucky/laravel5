@@ -378,7 +378,6 @@
         },
         data() {
             return {
-                checkedCities: ['元'],
                 isdis:true,
                 iscompayname:false,
                 isqydis:true,
