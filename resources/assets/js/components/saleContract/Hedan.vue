@@ -27,9 +27,6 @@
         </el-row>
         <el-form  label-width="150px"  ref="hedan" :rules="hedanRules" :model="hedan">
                 <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-
-
-
                     <!--<el-table-column
                             label="签单人"
                             width="200">
@@ -72,10 +69,6 @@
                             </el-dropdown>
                         </template>
                     </el-table-column>-->
-
-
-
-
                     <div v-for="(item, index) in hedan.qiandanren"> <!--style="height:150px;"-->
                         <el-row>
                             <el-table-column
@@ -86,14 +79,15 @@
                                     <el-col>
                                         <el-form-item>
                                             <el-select
-                                                    style="position:relative;left:-150px;top:10px;height:35px;width:250px;"
                                                     v-model="scope.row.signpersonnelname"
                                                     filterable
                                                     remote
-                                                    @change="changeyslxr4;updataHedan(scope.$index, scope.row)"
+                                                    @change="updataHedan1(scope.$index, scope.row)"
                                                     placeholder="请输入签单人姓名"
                                                     :remote-method="remoteMethodyslxr1"
-                                                    :loading="fristyslxrloading1">
+                                                    :loading="fristyslxrloading1"
+                                                    style="position:relative;left:-150px;top:10px;height:35px;width:250px;"
+                                            >
                                                 <el-option
                                                         v-for="item in optionsyslxr1"
                                                         :key="item.value"
@@ -123,7 +117,7 @@
                                                     v-model="scope.row.leaderpersonnelname"
                                                     filterable
                                                     remote
-                                                    @change="changeyslxr2;updataHedan(scope.$index, scope.row)"
+                                                    @change="updataHedan2(scope.$index, scope.row)"
                                                     placeholder="请输入签单人上级领导"
                                                     :remote-method="remoteMethodyslxr2"
                                                     :loading="fristyslxrloading1">
@@ -149,7 +143,7 @@
                                                     v-model="scope.row.departmentname"
                                                     filterable
                                                     remote
-                                                    @change="changeyslxr3;updataHedan(scope.$index, scope.row)"
+                                                    @change="updataHedan3(scope.$index, scope.row)"
                                                     placeholder="请输入签单人部门"
                                                     :remote-method="remoteMethodyslxr3"
                                                     :loading="fristyslxrloading2">
@@ -246,7 +240,7 @@
                                         v-model="item.signpersonnelname"
                                         filterable
                                         remote
-                                        @change=""
+                                        @change="changeyslxr1"
                                         placeholder="请输入签单人姓名"
                                         :remote-method="remoteMethodyslxr1"
                                         :loading="fristyslxrloading1">
@@ -442,6 +436,7 @@
                     //console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
                     //console.log(this.optionsyslxr1);
                     //alert(this.tabIndex);
+                    //alert(33333);
                     if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex-1].signpersonnelname) {
                         this.hedan.qiandanren[this.tabIndex-1].signpersonnelname = this.optionsyslxr1[x].label;
                         //alert(55);
@@ -470,21 +465,6 @@
                     /*if (this.optionsyslxr3[x].value == this.hedan.qiandanren.departmentname) {
                         this.hedan.qiandanren[index].departmentnameId = this.optionsyslxr3[x].label;
                     }*/
-                }
-            },
-            changeyslxr4(){
-                for (var x in this.optionsyslxr1) {
-                    console.log(this.hedan.qiandanren);
-                    //console.log(this.optionsyslxr1);
-                    alert(111);
-                    if (this.optionsyslxr1[x].value == this.hedan.qiandanren.signpersonnelname) {
-                        this.hedan.qiandanren.signpersonnelname = this.optionsyslxr1[x].label;
-                        //alert(55);
-                    }
-                    /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
-                     this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
-
-                     }*/
                 }
             },
 
@@ -595,9 +575,9 @@
                 this.page = val;
                 this.saleHedanContractList();
             },
-            //增加签单人
+            //添加签单人
             addqiandan() {
-                this.tabIndex = ++this.tabIndex + '';
+                this.tabIndex = this.tabIndex + 1;
                 //console.log(this.hedan.qiandanren);
                 this.hedan.qiandanren.push({
                     contractid:this.hedan.qiandanren[0].contractid,
@@ -642,7 +622,7 @@
                 this.$refs.hedan.validate((valid) => {
                     if(valid){
                         let para1 = this.hedan.qiandanren;
-                        console.log(para1);
+                        //console.log(para1);
                         this.Visible = false;
                         hedanSaveSaleContract(para1).then((res)=>{
                             if(res.data.code!='200'){
@@ -653,13 +633,110 @@
                             }
                             this.saleHedanContractList();
                             this.resetForm('hedan');
+                            location.reload('http://127.0.0.1:8000/#/saleContract');
                         });
                     }
                 });
 
             },
             //失去焦点事件
+            updataHedan1(index, row){
+                for (var x in this.optionsyslxr1) {
+                    //console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
+                    //console.log(this.optionsyslxr1);
+                    //alert(this.tabIndex);
+                    if (this.optionsyslxr1[x].value == row.signpersonnelname) {
+                        row.signpersonnelname = this.optionsyslxr1[x].label;
+                        //alert(55);
+                    }
+                    /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
+                     this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
+
+                     }*/
+                }
+                let para = {
+                    id: row.id,
+                    signpersonnelname: row.signpersonnelname,
+                    ratio: row.ratio,
+                    leaderpersonnelname: row.leaderpersonnelname,
+                    departmentname: row.departmentname,
+                };
+                //alert(22);
+                //console.log(para);
+                hedanUpdataSaleContract(para).then((res)=>{
+                    if(res.data.code!='200'){
+                        this.$message({
+                            message: '数据没有保存成功',
+                            type: 'error'
+                        });
+                    }
+                });
+            },
             updataHedan(index, row){
+                let para = {
+                    id: row.id,
+                    signpersonnelname: row.signpersonnelname,
+                    ratio: row.ratio,
+                    leaderpersonnelname: row.leaderpersonnelname,
+                    departmentname: row.departmentname,
+                };
+                //alert(22);
+                //console.log(para);
+                hedanUpdataSaleContract(para).then((res)=>{
+                    if(res.data.code!='200'){
+                        this.$message({
+                            message: '数据没有保存成功',
+                            type: 'error'
+                        });
+                    }
+                });
+            },
+            updataHedan2(index, row){
+                for (var x in this.optionsyslxr2) {
+                    //console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
+                    //console.log(this.optionsyslxr1);
+                    //alert(this.tabIndex);
+                    if (this.optionsyslxr2[x].value == row.leaderpersonnelname) {
+                        row.leaderpersonnelname = this.optionsyslxr2[x].label;
+                        //alert(55);
+                    }
+                    /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
+                     this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
+
+                     }*/
+                }
+                let para = {
+                    id: row.id,
+                    signpersonnelname: row.signpersonnelname,
+                    ratio: row.ratio,
+                    leaderpersonnelname: row.leaderpersonnelname,
+                    departmentname: row.departmentname,
+                };
+                //alert(22);
+                //console.log(para);
+                hedanUpdataSaleContract(para).then((res)=>{
+                    if(res.data.code!='200'){
+                        this.$message({
+                            message: '数据没有保存成功',
+                            type: 'error'
+                        });
+                    }
+                });
+            },
+            updataHedan3(index, row){
+                for (var x in this.optionsyslxr3) {
+                    //console.log(this.hedan.qiandanren[this.tabIndex-1].signpersonnelname);
+                    //console.log(this.optionsyslxr1);
+                    //alert(this.tabIndex);
+                    if (this.optionsyslxr3[x].value == row.departmentname) {
+                        row.departmentname = this.optionsyslxr3[x].label;
+                        //alert(55);
+                    }
+                    /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
+                     this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
+
+                     }*/
+                }
                 let para = {
                     id: row.id,
                     signpersonnelname: row.signpersonnelname,
