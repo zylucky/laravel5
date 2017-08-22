@@ -535,15 +535,26 @@ class purchaseContractController extends Controller
     public function getZhanghaoList()
     {
         $htid = Input::get('htid');
+        $page = Input::get('page');
+        $size = Input::get('size');
+        $httid = Input::get('httid');
         $client = new Client([
             'base_uri' => $this->base_url,
         ]);
         $response = $client->request('GET', '/api/contract/yhzh/list',
             [
-                'query' => ['htid' => $htid]
+                'query' => [
+                    'htid' => $htid,
+                    'httid' =>  $httid,
+                    'page' => $page,
+                    'size' => $size,
+                ]
             ]
     );
         echo $response->getBody();
+        /*if(!$page){
+            $pn = 1;
+        }*/
     }
     public function deleteZhanghao(Request $request){
         $id = Input::get('id');
@@ -572,11 +583,13 @@ class purchaseContractController extends Controller
     {
         //dd(12121);
         $id = Input::get('htid');
+        $pn = Input::get('pn');
+        $cnt = Input::get('cnt');
         //dd($id);
         $client = new Client([
             'base_uri' => $this->base_url,
         ]);
-        $response = $client->request('GET', '/api/contract/sf/splitbill/query?id='.$id);
+        $response = $client->request('GET', '/api/contract/sf/splitbill/query?id='.$id.'&pn='.$pn.'&cnt='.$cnt);
         echo $response->getBody();
 
     }
