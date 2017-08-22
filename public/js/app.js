@@ -36435,7 +36435,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }, trigger: 'blur'
                 }],
                 fukuandate: [{ required: true, message: '不能为空' }],
-                huming: [{ required: true, message: '不能为空' }],
+                zhanghu: [{ required: true, message: '不能为空' }],
                 fukuanyinhang: [{ required: true, message: '不能为空' }],
                 fukuanzhanghao: [{ required: true, message: '不能为空' }]
             },
@@ -36483,7 +36483,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 fukuandate: '',
                 beizhu: '',
                 fukuanyinhang: '',
-                fukuanzhanghao: ''
+                fukuanzhanghao: '',
+                zhanghu: ''
             },
 
             //被选中的权限
@@ -36600,7 +36601,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 fukuankemu: row.fktype,
                 tijiaomoney: '',
                 fukuandate: '',
-                huming: '',
                 beizhu: '',
                 fukuanyinhang: '',
                 fukuanzhanghao: ''
@@ -108076,18 +108076,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "收款方户名：",
-      "prop": "huming"
+      "prop": "zhanghu"
     }
   }, [_c('el-input', {
     attrs: {
       "auto-complete": "off"
     },
     model: {
-      value: (_vm.rokeBackForm.huming),
+      value: (_vm.rokeBackForm.zhanghu),
       callback: function($$v) {
-        _vm.rokeBackForm.huming = $$v
+        _vm.rokeBackForm.zhanghu = $$v
       },
-      expression: "rokeBackForm.huming"
+      expression: "rokeBackForm.zhanghu"
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {

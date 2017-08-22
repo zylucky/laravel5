@@ -114,8 +114,8 @@
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="收款方户名：" prop="zhuanghu">
-                            <el-input    v-model="rokeBackForm.zhuanghu" auto-complete="off"></el-input>
+                        <el-form-item label="收款方户名：" prop="zhanghu">
+                            <el-input    v-model="rokeBackForm.zhanghu" auto-complete="off"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="16">
@@ -271,7 +271,7 @@
                     fukuandate: [
                         {required: true, message: '不能为空'},
                     ],
-                    zhuanghu: [
+                    zhanghu: [
                         {required: true, message: '不能为空'},
                     ],
                     fukuanyinhang: [
@@ -332,7 +332,7 @@
                     beizhu:'',
                     fukuanyinhang:'',
                     fukuanzhanghao:'',
-                    zhuanghu:'',
+                    zhanghu:'',
                 },
 
                 //被选中的权限
@@ -442,7 +442,6 @@
                     fukuankemu:row.fktype,
                     tijiaomoney:'',
                     fukuandate:'',
-                    huming:'',
                     beizhu:'',
                     fukuanyinhang:'',
                     fukuanzhanghao:'',
