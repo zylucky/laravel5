@@ -17,7 +17,7 @@
             <el-tab-pane label="全部" name="first"></el-tab-pane>
             <el-tab-pane label="未认领" name="second"></el-tab-pane>
             <el-tab-pane label="部分认领" name="fourth"></el-tab-pane>
-            <el-tab-pane label="已认领" name="fifth"></el-tab-pane>
+            <el-tab-pane label="认领完成" name="fifth"></el-tab-pane>
         <el-table height="500" :data="financeReceivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"   style="width: 100%;">
             <el-table-column prop="shoukuandate" label="收款日期" :formatter="changeDate1" >
             </el-table-column>
@@ -289,14 +289,14 @@
                 status[0] = '押金';
                 status[1] = '房租';
                 status[5] = '杂费';
-
+                status[10] = '意向金';
                 return status[row.sktype];
             },
             //支付状态显示转换
             formatState: function (row, column) {
                 let status = [];
                 status[0] = '未认领';
-                status[1] = '已认领';
+                status[1] = '认领完成';
                 status[2] = '部分认领';
                 return status[row.zhuangtai];
             },

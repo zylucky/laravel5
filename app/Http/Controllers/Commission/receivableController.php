@@ -67,6 +67,18 @@ class receivableController extends Controller
     public function store(Request $request)
     {
 
+        $obj= $request->params ;
+        unset($obj['omcId'])  ;
+        //dd( json_encode($obj));
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+
+        ]);
+
+        $r = $client->request('POST', '/api/cw/ys/yixiangadd', [
+            'json' => $obj
+        ]);
+        return $r->getBody();
 
     }
 
@@ -91,7 +103,6 @@ class receivableController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *更新应收款记录
@@ -102,14 +113,15 @@ class receivableController extends Controller
     public function update(Request $request, $id)
     {
 
-        $obj=array_merge($request->params );
-        dd($obj);
+        $obj=$request->params;
+        unset($obj['omcId'])  ;
+        //dd( json_encode($obj));
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
 
-        $r = $client->request('POST', '/api/qd/compay/alter', [
+        $r = $client->request('POST', '/api/cw/ys/yixiangalter', [
             'json' => $obj
         ]);
         return  $r ->getBody();
@@ -182,6 +194,7 @@ class receivableController extends Controller
         ]);
         return $r->getBody();
     }
+
     public function destroy($id)
     {
        // dd($id);

@@ -45,6 +45,7 @@ export const getReceiveList = params => { return axios.get(`${base}/financeRecei
 export const financeSaveShouKuan = params => { return axios.post(`${base}/financeReceivable/saveShouKuan` , { params: params }); };
 export const renling = params => { return axios.post(`${base}/financeReceivable` , { params: params }); };
 export const editReceivable = params => { return axios.put(`${base}/receivable/`+params.id, { params: params }); };
+export const addYXJReceivable = params => { return axios.post(`${base}/receivable`, { params: params }); };
 export const saveShouKuan = params => { return axios.post(`${base}/receivable/saveShouKuan` , { params: params }); };
 export const rejectPayable = params =>  { return axios.post(`${base}/financePayable/rejectPayable` , { params: params }); };
 export const getReceivableRecordListPage = params => { return axios.get(`${base}/receivableRecord`, { params: params }); };
