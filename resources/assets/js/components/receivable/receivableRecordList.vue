@@ -76,6 +76,7 @@
                 status[0] = '押金';
                 status[1] = '房租';
                 status[5] = '杂费';
+                status[10] = '意向金';
                 return status[row.kemu];
             },
             //收款账号显示转换
