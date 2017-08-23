@@ -32,6 +32,8 @@
             </el-table-column>
             <el-table-column prop="fanghao" label="房间号"  sortable>
             </el-table-column>
+            <el-table-column prop="subleaseno">
+            </el-table-column>
             <el-table-column prop="zhuangtai" label="状态" :formatter="formatStatus"  sortable>
             </el-table-column>
             <el-table-column prop="qianyuedate" label="签约日" :formatter="changeDate"  sortable>
@@ -293,7 +295,7 @@
                 this.listLoading = true;
                 getSaleContractList(para).then((res) => {
                     //console.log(12222);
-                    //console.log(res.data.data);
+                    console.log(res.data.data);
                     this.total = res.data.total;
                     this.lists = res.data.data;
                     this.listLoading = false;
