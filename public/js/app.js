@@ -38677,13 +38677,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return { value: index, label: item };
                 });
                 if (query !== '') {
-                    _this2.loupanloading = true;
-                    setTimeout(function () {
-                        _this2.loupanloading = false;
-                        _this2.options1 = _this2.list.filter(function (item) {
-                            return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
-                        });
-                    }, 200);
+                    _this2.options1 = _this2.list.filter(function (item) {
+                        return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
+                    });
                 } else {
                     _this2.options1 = [];
                 }
@@ -38710,13 +38706,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return { value: index, label: item };
                 });
                 if (query !== '') {
-                    _this3.loupanloading = true;
-                    setTimeout(function () {
-                        _this3.loupanloading = false;
-                        _this3.options2 = _this3.list2.filter(function (item) {
-                            return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
-                        });
-                    }, 200);
+                    _this3.options2 = _this3.list2.filter(function (item) {
+                        return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
+                    });
                 } else {
                     _this3.options2 = [];
                 }
@@ -38746,13 +38738,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return { value: index, label: item };
                 });
                 if (query !== '') {
-                    _this4.fanghaoloading = true;
-                    setTimeout(function () {
-                        _this4.fanghaoloading = false;
-                        _this4.options3 = _this4.list3.filter(function (item) {
-                            return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
-                        });
-                    }, 200);
+                    _this4.options3 = _this4.list3.filter(function (item) {
+                        return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
+                    });
                 } else {
                     _this4.options3 = [];
                 }
