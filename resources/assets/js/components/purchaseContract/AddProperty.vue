@@ -263,14 +263,10 @@
                         return { value: index, label: item };
                     });
                     if (query !== '') {
-                        this.loupanloading = true;
-                        setTimeout(() => {
-                            this.loupanloading = false;
-                            this.options1 = this.list.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
+                        this.options1 = this.list.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
                     } else {
                         this.options1 = [];
                     }
@@ -295,14 +291,10 @@
                         return { value: index, label: item };
                     });
                     if (query !== '') {
-                        this.loupanloading = true;
-                        setTimeout(() => {
-                            this.loupanloading = false;
-                            this.options2 = this.list2.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
+                        this.options2 = this.list2.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
                     } else {
                         this.options2 = [];
                     }
@@ -330,18 +322,15 @@
                         return { value: index, label: item };
                     });
                     if (query !== '') {
-                        this.fanghaoloading = true;
-                        setTimeout(() => {
-                            this.fanghaoloading = false;
-                            this.options3 = this.list3.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
+                        this.options3 = this.list3.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
                     } else {
                         this.options3 = [];
                     }
                 });
+
 
             },
             //得到房间号以后，提取OMC的对应信息

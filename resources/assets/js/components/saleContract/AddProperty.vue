@@ -11,7 +11,7 @@
                     <el-form label-Weizhi="right" ref="propertyForm" :rules="editPropertyRules" label-width="100px" :model="property.xsOffice[index]">
                         <el-col :span="24">
                             <el-row>
-                                <el-col :span="8">
+                                <el-col :span="5">
                                     <el-form-item label="楼盘" required prop="loupanName">
                                         <el-select
                                                 v-model="property.xsOffice[index].loupanName"
@@ -31,7 +31,7 @@
                                         </el-select>
                                     </el-form-item>
                                 </el-col>
-                                <el-col :span="8">
+                                <el-col :span="5">
                                     <el-form-item label="楼栋" required prop="loudongName" >
                                         <el-select
                                                 v-model="property.xsOffice[index].loudongName"
@@ -51,7 +51,7 @@
                                         </el-select>
                                     </el-form-item>
                                 </el-col>
-                                <el-col :span="8">
+                                <el-col :span="5">
                                     <el-form-item label="房间号" required prop="fanghao">
                                         <el-select
                                                 v-model="property.xsOffice[index].fanghao"
@@ -59,7 +59,7 @@
                                                 default-first-option
                                                 remote
                                                 @change="change3"
-                                                placeholder="房间号"
+                                                placeholder="主房间号"
                                                 :remote-method="remoteMethod3"
                                                 :loading="fanghaoloading">
                                             <el-option
@@ -69,6 +69,11 @@
                                                     :value="item.label">
                                             </el-option>
                                         </el-select>
+                                    </el-form-item>
+                                </el-col>
+                                <el-col :span="5">
+                                    <el-form-item prop="subleaseno">
+                                        <el-input placeholder="子房间号" v-model="property.subleaseno"></el-input>
                                     </el-form-item>
                                 </el-col>
                             </el-row>
@@ -343,7 +348,7 @@
                         this.property.xsOffice[this.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
                         this.property.xsOffice[this.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
                         this.property.xsOffice[this.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
-                        alert(222);
+                        //alert(222);
                     }
                 }
             },

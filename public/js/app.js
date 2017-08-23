@@ -38690,13 +38690,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return { value: index, label: item };
                 });
                 if (query !== '') {
-                    _this2.loupanloading = true;
-                    setTimeout(function () {
-                        _this2.loupanloading = false;
-                        _this2.options1 = _this2.list.filter(function (item) {
-                            return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
-                        });
-                    }, 200);
+                    _this2.options1 = _this2.list.filter(function (item) {
+                        return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
+                    });
                 } else {
                     _this2.options1 = [];
                 }
@@ -38723,13 +38719,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return { value: index, label: item };
                 });
                 if (query !== '') {
-                    _this3.loupanloading = true;
-                    setTimeout(function () {
-                        _this3.loupanloading = false;
-                        _this3.options2 = _this3.list2.filter(function (item) {
-                            return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
-                        });
-                    }, 200);
+                    _this3.options2 = _this3.list2.filter(function (item) {
+                        return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
+                    });
                 } else {
                     _this3.options2 = [];
                 }
@@ -38759,13 +38751,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return { value: index, label: item };
                 });
                 if (query !== '') {
-                    _this4.fanghaoloading = true;
-                    setTimeout(function () {
-                        _this4.fanghaoloading = false;
-                        _this4.options3 = _this4.list3.filter(function (item) {
-                            return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
-                        });
-                    }, 200);
+                    _this4.options3 = _this4.list3.filter(function (item) {
+                        return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
+                    });
                 } else {
                     _this4.options3 = [];
                 }
@@ -44576,6 +44564,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             bianhao: '',
             zhuangtai: '',
             property: {
+                subleaseno: null,
                 flag: null,
                 xsOffice: [{
                     omcId: null,
@@ -44834,6 +44823,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.id = res.data.data.id;
             this.contractVersion = res.data.data.version;
             this.property.xsOffice = res.data.data.xsOffice;
+            this.property.subleaseno = res.data.data.subleaseno;
             if (res.data.data.chengzuren.length > 0) {
                 this.renter.chengzuren = res.data.data.chengzuren;
             }
@@ -45616,6 +45606,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45816,7 +45811,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.property.xsOffice[this.tabIndex - 1].loudongOmcId = null; //清除楼栋和房号的缓存
                     this.property.xsOffice[this.tabIndex - 1].fanghao = null; //清除楼栋和房号的缓存
                     this.property.xsOffice[this.tabIndex - 1].omcId = null; //清除楼栋和房号的缓存
-                    alert(222);
+                    //alert(222);
                 }
             }
         },
@@ -48667,6 +48662,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48810,7 +48807,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_52" /* getSaleContractList */])(para).then(function (res) {
                 //console.log(12222);
-                //console.log(res.data.data);
+                console.log(res.data.data);
                 _this4.total = res.data.total;
                 _this4.lists = res.data.data;
                 _this4.listLoading = false;
@@ -108204,6 +108201,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
+      "prop": "subleaseno"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
       "prop": "zhuangtai",
       "label": "状态",
       "formatter": _vm.formatStatus,
@@ -109783,7 +109784,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-row', [_c('el-col', {
       attrs: {
-        "span": 8
+        "span": 5
       }
     }, [_c('el-form-item', {
       attrs: {
@@ -109820,7 +109821,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       })
     }))], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
-        "span": 8
+        "span": 5
       }
     }, [_c('el-form-item', {
       attrs: {
@@ -109857,7 +109858,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       })
     }))], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
-        "span": 8
+        "span": 5
       }
     }, [_c('el-form-item', {
       attrs: {
@@ -109870,7 +109871,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "filterable": "",
         "default-first-option": "",
         "remote": "",
-        "placeholder": "房间号",
+        "placeholder": "主房间号",
         "remote-method": _vm.remoteMethod3,
         "loading": _vm.fanghaoloading
       },
@@ -109892,7 +109893,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           "value": item.label
         }
       })
-    }))], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    }))], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 5
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "prop": "subleaseno"
+      }
+    }, [_c('el-input', {
+      attrs: {
+        "placeholder": "子房间号"
+      },
+      model: {
+        value: (_vm.property.subleaseno),
+        callback: function($$v) {
+          _vm.property.subleaseno = $$v
+        },
+        expression: "property.subleaseno"
+      }
+    })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
       attrs: {
         "span": 8
       }

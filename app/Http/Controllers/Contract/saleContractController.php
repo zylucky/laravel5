@@ -585,11 +585,13 @@ class saleContractController extends Controller
     {
         //dd(12121);
         $id = Input::get('htid');
+        $pn = Input::get('pn');
+        $cnt = Input::get('cnt');
         //dd($id);
         $client = new Client([
             'base_uri' => $this->base_url,
         ]);
-        $response = $client->request('GET', '/api/contract/xs/splitbill/query?id='.$id);
+        $response = $client->request('GET', '/api/contract/xs/splitbill/query?id='.$id.'&pn='.$pn.'&cnt='.$cnt);
         echo $response->getBody();
 
     }

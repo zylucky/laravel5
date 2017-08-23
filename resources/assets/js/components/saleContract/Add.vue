@@ -78,6 +78,7 @@
                 bianhao:'',
                 zhuangtai:'',
                 property:{
+                    subleaseno:null,
                     flag:null,
                     xsOffice: [{
                         omcId:null,
@@ -325,6 +326,7 @@
                 this.id = res.data.data.id;
                 this.contractVersion = res.data.data.version;
                 this.property.xsOffice = res.data.data.xsOffice;
+                this.property.subleaseno = res.data.data.subleaseno;
                 if(res.data.data.chengzuren.length>0){
                     this.renter.chengzuren = res.data.data.chengzuren;
                 }
