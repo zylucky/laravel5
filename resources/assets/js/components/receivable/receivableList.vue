@@ -80,13 +80,13 @@
                                     <el-button @click="handleOpenUp(scope.$index, scope.row)">提交记录</el-button>
                                 </el-dropdown-item>
                                 <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])">
-                                    <el-button  v-if="scope.row.sktype<10"  @click="handleEdit(scope.$index, scope.row)">编辑收款日期</el-button>
+                                    <el-button  v-if="scope.row.sktype<20"  @click="handleEdit(scope.$index, scope.row)">编辑收款日期</el-button>
                                 </el-dropdown-item>
                                 <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])">
-                                    <el-button v-if="scope.row.sktype<10" @click="handleMoneyEdit(scope.$index, scope.row)">编辑收款金额</el-button>
+                                    <el-button v-if="scope.row.sktype<20" @click="handleMoneyEdit(scope.$index, scope.row)">编辑收款金额</el-button>
                                 </el-dropdown-item>
                                 <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])">
-                                    <el-button v-if="scope.row.sktype==10" @click="handleEditYS(scope.$index, scope.row)">编辑</el-button>
+                                    <el-button v-if="scope.row.sktype==20" @click="handleEditYS(scope.$index, scope.row)">编辑</el-button>
                                 </el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
@@ -144,7 +144,7 @@
         </el-dialog>
 
         <el-dialog :title="YXJ" v-model="addFormVisible" :close-on-click-modal="false">
-            <el-form :model="addForm" label-width="120px" :rules="addFormRules" ref="addForm">
+            <el-form :model="addForm" label-width="100px" :rules="addFormRules" ref="addForm">
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="楼盘"  prop="loupanName">
@@ -208,16 +208,23 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
+                <el-row>
+                    <el-col :span="8">
                 <el-form-item label="租户：" prop="zuhu">
                     <el-input v-model="addForm.zuhu" auto-complete="off"></el-input>
                 </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                <el-form-item label="应收金额：" prop="skmoney">
+                    <el-input v-model.number="addForm.skmoney" auto-complete="off"></el-input>
+                </el-form-item>
+                    </el-col>
+                </el-row>
                 <el-form-item label="付款日期：" prop="skdate">
                     <el-date-picker type="date" v-model="addForm.skdate" auto-complete="off">
                     </el-date-picker>
                 </el-form-item>
-                <el-form-item label="应收金额：" prop="skmoney">
-                    <el-input v-model.number="addForm.skmoney" auto-complete="off"></el-input>
-                </el-form-item>
+
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click.native="addFormVisible = false">取消</el-button>
@@ -499,7 +506,7 @@
                 status[0] = '押金';
                 status[1] = '房租';
                 status[5] = '杂费';
-                status[10] = '意向金';
+                status[20] = '意向金';
                 return status[row.sktype];
             },
 
@@ -548,8 +555,6 @@
                         return {value: index, label: item};
                     });
                     if (query !== '') {
-                        this.loupanloading = true;
-                        this.loupanloading = false;
                         this.options1 = this.list.filter(item => {
                             return item.label.toLowerCase()
                                     .indexOf(query.toLowerCase()) > -1;
@@ -578,8 +583,6 @@
                         return {value: index, label: item};
                     });
                     if (query !== '') {
-                        this.loupanloading = true;
-                        this.loupanloading = false;
                         this.options2 = this.list2.filter(item => {
                             return item.label.toLowerCase()
                                     .indexOf(query.toLowerCase()) > -1;
@@ -611,8 +614,6 @@
                         return {value: index, label: item};
                     });
                     if (query !== '') {
-                        this.housenoloading = true;
-                        this.housenoloading = false;
                         this.options3 = this.list3.filter(item => {
                             return item.label.toLowerCase()
                                     .indexOf(query.toLowerCase()) > -1;
@@ -653,11 +654,11 @@
                         this.addForm.omcId=this.options3[x].value;
                     }
                 }
-                if (this.addForm.omcId == null) {
+                if (this.addForm.omcId == null&& this.addForm.houseno!=null) {
                     let para = {
                         loupanOmcId: this.addForm.loupanid,
                         loudongOmcId: this.addForm.loudongid,
-                        houseno: this.addForm.houseno,
+                        fanghao: this.addForm.houseno,
                     }
                     createFanghao(para).then((res => {
                         this.addForm.omcId = res.data.data;

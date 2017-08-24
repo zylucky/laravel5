@@ -158,9 +158,7 @@
                 let status = [];
                 status[0] = '押金';
                 status[1] = '租金';
-                status[2] = '幼师补佣';
-                status[3] = '佣金';
-                status[4] = '华亮返佣';
+                status[20] = '意向金';
                 return status[row.fukuantype];
             },
 

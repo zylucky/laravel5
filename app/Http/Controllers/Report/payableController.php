@@ -69,7 +69,18 @@ class payableController extends Controller
     public function store(Request $request)
     {
 
+        $obj= $request->params ;
+        unset($obj['omcId'])  ;
+        //dd( json_encode($obj));
+        $client = new Client ([
+            'base_uri' => $this->base_url,
 
+        ]);
+
+        $r = $client->request('POST', '/api/cw/yf/yx/add', [
+            'json' => $obj
+        ]);
+        return $r->getBody();
     }
 
     /**
@@ -104,6 +115,18 @@ class payableController extends Controller
     public function update(Request $request, $id)
     {
 
+        $obj=$request->params;
+        unset($obj['omcId'])  ;
+        //dd( json_encode($obj));
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+
+        ]);
+
+        $r = $client->request('POST', '/api/cw/yf/yx/alter', [
+            'json' => $obj
+        ]);
+        return  $r ->getBody();
     }
 
     /**
