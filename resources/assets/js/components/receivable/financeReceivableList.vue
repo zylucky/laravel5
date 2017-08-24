@@ -289,7 +289,7 @@
                 status[0] = '押金';
                 status[1] = '房租';
                 status[5] = '杂费';
-                status[10] = '意向金';
+                status[20] = '意向金';
                 return status[row.sktype];
             },
             //支付状态显示转换
