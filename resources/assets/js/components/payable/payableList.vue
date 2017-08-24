@@ -211,13 +211,13 @@
                 </el-row>
                 <el-row>
                     <el-col :span="12">
-                <el-form-item label="付款日期：" prop="fkdate">
-                    <el-date-picker type="date" v-model="addForm.fkdate" auto-complete="off">
+                <el-form-item label="付款日期：" prop="fkdate" >
+                    <el-date-picker type="date" v-model="addForm.fkdate" auto-complete="off"  style="width:100%">
                     </el-date-picker>
                 </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                <el-form-item label="应收金额：" prop="fkmoney">
+                <el-form-item label="应付金额：" prop="fkmoney">
                     <el-input v-model.number="addForm.fkmoney" auto-complete="off"></el-input>
                 </el-form-item>
                     </el-col>
@@ -471,7 +471,7 @@
                     skzhanhu: [
                         {required: true, message: '不能为空'},
                     ],
-                    skdate: [
+                    fkdate: [
                         {required: true, message: '不能为空'},
                     ],
                     zhanghao: [

@@ -36630,7 +36630,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             addFormRules: {
                 fkmoney: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
                 skzhanhu: [{ required: true, message: '不能为空' }],
-                skdate: [{ required: true, message: '不能为空' }],
+                fkdate: [{ required: true, message: '不能为空' }],
                 zhanghao: [{ required: true, message: '不能为空' }],
                 skyinhang: [{ required: true, message: '不能为空' }]
             },
@@ -125175,6 +125175,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "prop": "fkdate"
     }
   }, [_c('el-date-picker', {
+    staticStyle: {
+      "width": "100%"
+    },
     attrs: {
       "type": "date",
       "auto-complete": "off"
@@ -125192,7 +125195,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "应收金额：",
+      "label": "应付金额：",
       "prop": "fkmoney"
     }
   }, [_c('el-input', {
