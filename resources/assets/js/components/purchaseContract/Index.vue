@@ -404,6 +404,7 @@
                         if(res.data.code=="200"){
                             this.purchaseContractList();
                             window.open('/#/purchaseContract/dump'+version+'?id='+row.id+'&isdump=1')
+                            window.open('/#/purchaseContract/dump'+version+'pub?id='+row.id+'&isdump=1')
                         }
                     });
                 })

@@ -17,6 +17,7 @@ import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue
 import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimize.vue";
 import PurchaseContractCheckOptimizeList from "./components/purchaseContract/HistoryOptimize.vue";
 import PurchaseContractDump20170719 from "./components/purchaseContract/Dump20170719.vue";//版本1
+import PurchaseContractDump20170719pub from "./components/purchaseContract/Dump20170719_pub.vue";//版本1补充条款
 import PurchaseContractZhanghao from "./components/purchaseContract/Zhanghao.vue";
 import PurchaseContractHedan from "./components/purchaseContract/Hedan.vue";
 
@@ -205,6 +206,13 @@ let routes = [
         path:'/purchaseContract/dump20170719',
         component: PurchaseContractDump20170719,
         name: '收房合同打印',
+        hidden: true
+    },
+    {
+        //版本1
+        path:'/purchaseContract/dump20170719pub',
+        component: PurchaseContractDump20170719pub,
+        name: '收房打印补充条款',
         hidden: true
     },
     {
