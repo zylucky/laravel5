@@ -21,6 +21,7 @@
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getPayable">搜索</el-button>
+                <el-button type="primary" class="el-icon-plus" @click="handleAdd">新增</el-button>
             </el-form-item>
         </el-form>
           合计  应付金额：{{DataSum.sumMoney}} 提交金额：{{DataSum.tijiaoMoney}}  实付金额：{{DataSum.shijiMoney}}
@@ -74,8 +75,11 @@
                                    <el-dropdown-item v-if="ztin(scope.row,[0,1,2,4])" ><el-button   @click="handleRokeBack(scope.$index, scope.row)">提交付款</el-button></el-dropdown-item>
                                    <el-dropdown-item  v-if="scope.row.xiugaizhuangtai=='已修改'"> <el-button  @click="handleOpen(scope.$index, scope.row)">修改记录</el-button> </el-dropdown-item>
                                    <el-dropdown-item  v-if="ztin(scope.row,[1,2,3,4])"  > <el-button  @click="handleOpenUp(scope.$index, scope.row)">提交记录</el-button> </el-dropdown-item>
-                                   <el-dropdown-item   v-if="ztin(scope.row,[0,1,2,4])"><el-button   @click="handleEdit(scope.$index, scope.row)">编辑付款日期</el-button></el-dropdown-item>
-                                   <el-dropdown-item   v-if="ztin(scope.row,[0,1,2,4])"><el-button   @click="handleMoneyEdit(scope.$index, scope.row)">编辑付款金额</el-button></el-dropdown-item>
+                                   <el-dropdown-item   v-if="ztin(scope.row,[0,1,2,4])"><el-button  v-if="scope.row.fktype<20"  @click="handleEdit(scope.$index, scope.row)">编辑付款日期</el-button></el-dropdown-item>
+                                   <el-dropdown-item   v-if="ztin(scope.row,[0,1,2,4])"><el-button   v-if="scope.row.fktype<20" @click="handleMoneyEdit(scope.$index, scope.row)">编辑付款金额</el-button></el-dropdown-item>
+                                   <el-dropdown-item v-if="ztin(scope.row,[0,1,2,4])">
+                                       <el-button v-if="scope.row.fktype==20" @click="handleEditYS(scope.$index, scope.row)">编辑</el-button>
+                                   </el-dropdown-item>
                                </el-dropdown-menu>
                            </el-dropdown>
                        </template>
@@ -140,6 +144,106 @@
         </el-dialog>
 
 
+        <el-dialog :title="YXJ" v-model="addFormVisible" :close-on-click-modal="false">
+            <el-form :model="addForm" label-width="120px" :rules="addFormRules" ref="addForm">
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="楼盘"  prop="loupanName">
+                            <el-select
+                                    v-model="addForm.loupanName"
+                                    filterable
+                                    default-first-option
+                                    remote
+                                    @change="change1"
+                                    placeholder="楼盘"
+                                    :remote-method="remoteMethod1"
+                                    :loading="loupanloading">
+                                <el-option
+                                        v-for="item in options1"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.label">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item  label="楼栋" prop="loudongName">
+                            <el-select
+                                    v-model="addForm.loudongName"
+                                    filterable
+                                    default-first-option
+                                    remote
+                                    @change="change2"
+                                    placeholder="楼栋"
+                                    :remote-method="remoteMethod2"
+                                    :loading="loupanloading">
+                                <el-option
+                                        v-for="item in options2"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.label">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item  label="房间号" prop="houseno">
+                            <el-select
+                                    v-model="addForm.houseno"
+                                    filterable
+                                    allow-create
+                                    default-first-option
+                                    remote
+                                    @change="change3"
+                                    placeholder="房间号"
+                                    :remote-method="remoteMethod3"
+                                    :loading="housenoloading">
+                                <el-option
+                                        v-for="item in options3"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.label">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="12">
+                <el-form-item label="付款日期：" prop="fkdate" >
+                    <el-date-picker type="date" v-model="addForm.fkdate" auto-complete="off"  style="width:100%">
+                    </el-date-picker>
+                </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                <el-form-item label="应付金额：" prop="fkmoney">
+                    <el-input v-model.number="addForm.fkmoney" auto-complete="off"></el-input>
+                </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="12">
+                <el-form-item label="付款方户名：" prop="skzhanhu">
+                    <el-input v-model="addForm.skzhanhu" auto-complete="off"></el-input>
+                </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                <el-form-item label="收款银行：" prop="skyinhang">
+                    <el-input v-model="addForm.skyinhang" auto-complete="off"></el-input>
+                </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-form-item label="收款账号：" prop="zhanghao">
+                    <el-input v-model="addForm.zhanghao" auto-complete="off"></el-input>
+                </el-form-item>
+
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click.native="addFormVisible = false">取消</el-button>
+                <el-button type="primary" @click.native="addFormSubmit" :loading="addFormLoading">保存</el-button>
+            </div>
+        </el-dialog>
         <el-dialog title="编辑付款日期" v-model="editDateFormVisible" :close-on-click-modal="false">
             <el-form :model="editDateForm" label-width="120px" :rules="editDateFormRules" ref="editDateForm"  >
                 <el-row>
@@ -200,6 +304,12 @@
         editDate,
         saveFuKuan,
         editMoney,
+        getLoupanList,
+        getLoudongList,
+        getFanghaoList,
+        createFanghao,
+        editPayable,
+        addPayable
     } from '../../api/api';
     import ElForm from "../../../../../node_modules/element-ui/packages/form/src/form";
     export default{
@@ -244,6 +354,22 @@
                         label: '已驳回'
                     }
                 ],
+                //楼盘数据
+                options1: [],
+                list1: [],
+                loupanloading: false,
+                estate: [],//服务器搜索的楼盘数据放入这个数组中
+                // 楼栋数据
+                options2: [],
+                list2: [],
+                loudongloading: false,
+                building: [],//服务器搜索的楼盘数据放入这个数组中
+                // 房间数据
+                options3: [],
+                list3: [],
+                housenoloading: false,
+                house: [],//服务器搜索的楼盘数据放入这个数组中
+                houseData: [],
                 //分页类数据
                 total:0,
                 currentPage:0,
@@ -334,7 +460,41 @@
                     fukuanzhanghao:'',
                     zhanghu:'',
                 },
+                YXJ: '',
+                addFormVisible: false,//新增界面是否显示
+                addFormLoading: false,
+                addFormRules: {
+                    fkmoney: [
+                        {required: true, message: '不能为空'},
+                        {type: 'number', message: '必须为数字'}
+                    ],
+                    skzhanhu: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    fkdate: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    zhanghao: [
+                        {required: true, message: '不能为空'},
+                    ],
+                    skyinhang: [
+                        {required: true, message: '不能为空'},
+                    ],
+                },
 
+                //新增界面数据
+                addForm: {
+                    loupanid: '',
+                    loudongid: '',
+                    fkmoney: '',
+                    loupanName: '',
+                    loudongName: '',
+                    houseno: '',
+                    skzhanhu: '',
+                    fkdate: '',
+                    skyinhang: '',
+                    zhanghao: '',
+                },
                 //被选中的权限
                 checked:[],
             }
@@ -407,6 +567,138 @@
             handleOpenUp: function (index, row) {
                 this.$router.push('/payableRecord?id=' + row.tCwFcId);
             },
+            //获取楼盘
+            remoteMethod1(query) {
+                let para = {
+                    str: query
+                };
+                this.loupanloading = true;
+                getLoupanList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for (var i in res.data) {
+                        arr[i] = res.data [i];
+                    }
+                    this.estate = arr;
+                    this.loupanloading = false;
+                    this.list = this.estate.map((item, index) => {
+                        return {value: index, label: item};
+                    });
+                    if (query !== '') {
+                        this.options1 = this.list.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
+                    } else {
+                        this.options1 = [];
+                    }
+                });
+
+            },
+            //获取楼栋
+            remoteMethod2(query) {
+                let para = {
+                    loupanOmcId: this.addForm.loupanid,
+                };
+                this.loupanloading = true;
+                getLoudongList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for (var i in res.data) {
+                        arr[i] = res.data [i];
+                    }
+                    this.building = arr;
+                    this.loupanloading = false;
+                    this.list2 = this.building.map((item, index) => {
+                        return {value: index, label: item};
+                    });
+                    if (query !== '') {
+                        this.options2 = this.list2.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
+                    } else {
+                        this.options2 = [];
+                    }
+                });
+
+            },
+            //获取房号
+            remoteMethod3(query) {
+                let para = {
+                    lpid: this.addForm.loupanid,
+                    zdid: this.addForm.loudongid,
+                };
+                this.housenoloading = true;
+                //console.log(para);
+                getFanghaoList(para).then((res) => {
+                    this.houseData = res.data;
+                    let arr = [];
+                    arr[0] = '';
+                    for (var i in res.data) {
+                        arr[res.data[i].id] = res.data[i].fybh;
+                    }
+                    this.house = arr;
+                    this.housenoloading = false;
+                    this.list3 = this.house.map((item, index) => {
+                        return {value: index, label: item};
+                    });
+                    if (query !== '') {
+                        this.options3 = this.list3.filter(item => {
+                            return item.label.toLowerCase()
+                                    .indexOf(query.toLowerCase()) > -1;
+                        });
+                    } else {
+                        this.options3 = [];
+                    }
+                });
+
+            },
+            //得到房间号以后，提取OMC的对应信息
+            change1(){
+                //楼盘
+                for (var x in this.options1) {
+                    if (this.options1[x].label == this.addForm.loupanName) {
+                        this.addForm.loupanid = this.options1[x].value;
+                        this.addForm.loudongName = null;//清除楼栋和房号的缓存
+                        this.addForm.loudongid = null;//清除楼栋和房号的缓存
+                        this.addForm.houseno = null;//清除楼栋和房号的缓存
+                        this.addForm.omcId = null;//清除楼栋和房号的缓存
+                    }
+                }
+            },
+            change2(){
+                //楼栋
+                for (var x in this.options2) {
+                    if (this.options2[x].label == this.addForm.loudongName) {
+                        this.addForm.loudongid = this.options2[x].value;
+                        this.addForm.houseno = null;//清除楼栋和房号的缓存
+                        this.addForm.omcId = null;//清除楼栋和房号的缓存
+                    }
+                }
+            },
+            change3(){
+                //房号
+                for (var x in this.options3){
+                    if(this.options3[x].label==this.addForm.houseno){
+                        this.addForm.omcId=this.options3[x].value;
+                    }
+                }
+                if (this.addForm.omcId == null&& this.addForm.houseno!=null) {
+                    let para = {
+                        loupanOmcId: this.addForm.loupanid,
+                        loudongOmcId: this.addForm.loudongid,
+                        fanghao: this.addForm.houseno,
+                    }
+                    createFanghao(para).then((res => {
+                        this.addForm.omcId = res.data.data;
+                        this.$message({
+                            message: '楼盘字典中不存在该房源，已自动创建',
+                            type: 'success'
+                        });
+                    }))
+                }
+            },
             //获取应付款列表
             getPayable() {
                 let para = {
@@ -430,6 +722,40 @@
                     }
                     this.listLoading = false;
                 });
+            },
+            //新增应收页面
+            handleAdd: function (index, row) {
+                this.addFormVisible = true;
+                this.YXJ = '新增';
+                this.addForm = {
+                    loupanid: null,
+                    loudongid: null,
+                    fkmoney: '',
+                    loupanName: '',
+                    loudongName: '',
+                    houseno: null,
+                    skzhanhu: '',
+                    fkdate: '',
+                    skyinhang: '',
+                    zhanghao: ''
+                };
+            },
+            //编辑应收页面
+            handleEditYS: function (index, row) {
+                this.YXJ = '编辑';
+                this.addFormVisible = true;
+                this.addForm.tCwFcId = row.tCwFcId;
+                this.addForm.omcId = 1;
+                this.addForm.loupanid = row.loupanid;
+                this.addForm.loudongid = row.loudongid;
+                this.addForm.fkmoney = row.fkmoney;
+                this.addForm.loupanName = row.loupanName;
+                this.addForm.loudongName = row.loudongName;
+                this.addForm.houseno = row.houseno;
+                this.addForm.skzhanhu = row.skzhanhu;
+                this.addForm.skyinhang = row.skyinhang;
+                this.addForm.zhanghao = row.zhanghao;
+                this.addForm.fkdate = row.fkdate;
             },
             //显示付款界面
             handleRokeBack: function (index, row) {
@@ -470,6 +796,56 @@
                     tCwFcId:row.tCwFcId,
                     hetongId:row.hetongid,
                 };
+            },
+            //提交数据
+            addFormSubmit(){
+                this.$refs.addForm.validate((valid) => {
+                    if (valid) {
+                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                                this.addFormLoading = true;
+                                let para = Object.assign({}, this.addForm);
+                                if (para.tCwFcId != null && para.tCwFcId != '') {
+                                    editPayable(para).then((res) => {
+                                        this.addFormLoading = false;
+                                        if (res.data.code == 200) {
+                                            this.$message({
+                                                message: '提交成功',
+                                                type: 'success'
+                                            });
+                                            this.$refs['addForm'].resetFields();
+                                        } else {
+                                            this.$message({
+                                                message: res.data.msg,
+                                                type: 'error'
+                                            });
+                                        }
+                                        this.addFormVisible = false;
+                                        this.getPayable();
+                                    });
+                                } else {
+                                    addPayable(para).then((res) => {
+                                        this.addFormLoading = false;
+                                        if (res.data.code == 200) {
+                                            this.$message({
+                                                message: '提交成功',
+                                                type: 'success'
+                                            });
+                                            this.$refs['addForm'].resetFields();
+                                        } else {
+                                            this.$message({
+                                                message: res.data.msg,
+                                                type: 'error'
+                                            });
+                                        }
+                                        this.addFormVisible = false;
+                                        this.getPayable();
+                                    });
+                                }
+                            }
+                        );
+
+                    }
+                });
             },
             //编辑
             editDateFormSubmit: function () {
