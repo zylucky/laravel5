@@ -36,7 +36,14 @@
             </el-table-column>
             <el-table-column prop="qianyuedate" label="签约日" :formatter="changeDate"  sortable>
             </el-table-column>
-            <el-table-column prop="yongyouid" label="用友编号" sortable>
+            <!--<el-table-column prop="yongyouid" label="用友编号" sortable>
+            </el-table-column>-->
+            <el-table-column
+                    label="用友编号"
+                    width="200">
+                <template scope="scope">
+                    <el-input v-model="scope.row.yongyouid" @blur="updatayongyouid(scope.$index, scope.row)"></el-input>
+                </template>
             </el-table-column>
             <el-table-column label="操作" width="170">
                 <template scope="scope">
@@ -123,6 +130,7 @@
 </template>
 <script>
     import {
+        yongyouUpdataSaleContract,
         getSaleContractList,
         removeSaleContract,
         confirmSaleContract,
@@ -158,6 +166,7 @@
                         { required: true, message: '不能为空'}
                     ],
                 },
+                yongyouid:'',
                 weiYue:{
                     id:null,
                     Visible:false,
@@ -303,6 +312,20 @@
                     this.lists = res.data.data;
                     this.listLoading = false;
 
+                });
+            },
+            updatayongyouid(index, row) {
+                let para = {
+                    id: row.id,
+                    yongyouid: row.yongyouid,
+                };
+                yongyouUpdataSaleContract(para).then((res)=>{
+                    if(res.data.code!='200'){
+                        this.$message({
+                            message: '数据没有保存成功',
+                            type: 'error'
+                        });
+                    }
                 });
             },
             handleSizeChange(val) {
