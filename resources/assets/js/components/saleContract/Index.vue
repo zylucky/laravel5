@@ -30,13 +30,13 @@
             </el-table-column>
             <el-table-column prop="loudongName" label="楼栋"   sortable>
             </el-table-column>
-            <el-table-column prop="fanghao" label="房间号"  sortable>
-            </el-table-column>
-            <el-table-column prop="subleaseno">
+            <el-table-column prop="fanghao" label="房间号" :formatter="fangjia"  sortable>
             </el-table-column>
             <el-table-column prop="zhuangtai" label="状态" :formatter="formatStatus"  sortable>
             </el-table-column>
             <el-table-column prop="qianyuedate" label="签约日" :formatter="changeDate"  sortable>
+            </el-table-column>
+            <el-table-column prop="yongyouid" label="用友编号" sortable>
             </el-table-column>
             <el-table-column label="操作" width="170">
                 <template scope="scope">
@@ -200,6 +200,9 @@
 
         },
         methods: {
+            fangjia(row, column){
+                return  row.fanghao+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
+            },
             handleUplod(index,row){
                 this.$router.push('saleContract/upload?id='+row.id)
             },

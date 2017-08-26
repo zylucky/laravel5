@@ -114,7 +114,7 @@ export const hedanUpdataPurchaseContract= params => { return axios.post(`${base}
 export const addSaleContractInfo= params => { return axios.post(`${base}/saleContract`, { params: params }); };
 export const reviewSaleContract= params => { return axios.post(`${base}/saleContract/review`, { params: params }); };
 export const getSaleContractList = params => { return axios.get(`${base}/saleContract`, { params: params }); };
-export const getSaleContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
+export const getSaleContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };//获取合同详情
 export const getNameSaleList = params =>{ return axios.post(`${base}/saleContract/getzyrNameList`, { params: params }); };//获取渠道自由经纪人
 export const getjieyueSaleContractInfo = params => { return axios.get(`${base}/saleContract/jieyuelist`, {params:params}); };//获取解约协议列表
 export const getdayinSaleContractInfo = params => { return axios.get(`${base}/saleContract/`+params.id, {}); };
