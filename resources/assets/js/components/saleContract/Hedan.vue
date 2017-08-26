@@ -17,7 +17,7 @@
                         <span >楼栋：{{xsOffice.loudongName}}</span>
                     </el-col>
                     <el-col :span="4">
-                        <span>房间号： {{xsOffice.fanghao}}</span>
+                        <span>房间号： {{xsOffice.fanghao}}{{subleaseno}}</span>
                     </el-col>
                     <el-col :span="0" style="margin-rigjt:0;float:right;margin-top:50;">
                         <el-button type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
@@ -355,6 +355,7 @@
                 listLoading:false,
                 tabIndex:1,
                 bianhao:null,
+                subleaseno:null,
                 xsOffice:[{
                     //hetongtype:null,
                     loupanName:null,
@@ -798,6 +799,7 @@
                 //this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;
+                this.subleaseno = res.data.data.subleaseno;
                 //console.log(this.xsOffice);
                 //console.log(this.jieyueXieyi);
             },

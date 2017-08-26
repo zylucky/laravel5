@@ -103,6 +103,7 @@
                                     <el-form-item label="承租面积" required prop="qianyuemianji">
                                         <el-input v-model.number="property.xsOffice[index].qianyuemianji"></el-input>
                                     </el-form-item>
+                                    <span style="border:0px solid red;font-size:12px;position:relative;left:180px;top:-23px;color:#ff4949;">剩余承租面积&nbsp;&nbsp; 100 &nbsp;㎡</span>
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item required label="房屋类型" prop="leixing">
