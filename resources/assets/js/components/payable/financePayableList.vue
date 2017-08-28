@@ -27,19 +27,19 @@
             <el-tab-pane label="不支付" name="four"></el-tab-pane>
             <el-table :data="Payable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
                       @selection-change="selsChange" style="width: 100%;">
-                <el-table-column prop="hetongbianhao" label="合同编号" width="200">
+                <el-table-column prop="hetongbianhao" label="合同编号" >
                 </el-table-column>
-                <el-table-column prop="xiangmu" label="项目" width="200">
+                <el-table-column prop="xiangmu" label="项目" >
                 </el-table-column>
-                <el-table-column prop="fukuandate" label="付款日期" width="100" :formatter="changeFKDate">
+                <el-table-column prop="fukuandate" label="付款日期"  :formatter="changeFKDate" width="150">
                 </el-table-column>
-                <el-table-column prop="fukuantype" label="付款科目" width="100" :formatter="formatFKType" >
+                <el-table-column prop="fukuantype" label="付款科目"  :formatter="formatFKType" width="150" >
                 </el-table-column>
-                <el-table-column prop="yingfumoney" label="应付金额" width="100">
+                <el-table-column prop="yingfumoney" label="应付金额" width="150">
                 </el-table-column>
-                <el-table-column prop="faqiren" label="发起人">
+                <el-table-column prop="faqiren" label="发起人" width="150">
                 </el-table-column>
-                <el-table-column prop="shoukuanyinhangzhanghao" label="收款银行及账号" width="200"  >
+                <el-table-column prop="shoukuanyinhangzhanghao" label="收款银行及账号"  >
                 </el-table-column>
                 <el-table-column prop="zhuangtai" label="状态" :formatter="formatState" width="100">
                 </el-table-column>

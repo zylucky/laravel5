@@ -122060,45 +122060,43 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-table-column', {
     attrs: {
       "prop": "hetongbianhao",
-      "label": "合同编号",
-      "width": "200"
+      "label": "合同编号"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "xiangmu",
-      "label": "项目",
-      "width": "200"
+      "label": "项目"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "fukuandate",
       "label": "付款日期",
-      "width": "100",
-      "formatter": _vm.changeFKDate
+      "formatter": _vm.changeFKDate,
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "fukuantype",
       "label": "付款科目",
-      "width": "100",
-      "formatter": _vm.formatFKType
+      "formatter": _vm.formatFKType,
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "yingfumoney",
       "label": "应付金额",
-      "width": "100"
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "faqiren",
-      "label": "发起人"
+      "label": "发起人",
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "shoukuanyinhangzhanghao",
-      "label": "收款银行及账号",
-      "width": "200"
+      "label": "收款银行及账号"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
