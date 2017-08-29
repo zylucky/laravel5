@@ -31,7 +31,7 @@
             </el-table-column>
             <el-table-column prop="version" label="合同版本"  sortable>
             </el-table-column>
-            <el-table-column prop="comment" label="版本名称"  sortable>
+            <el-table-column prop="comment" label="版本名称" width="300"   sortable>
             </el-table-column>
             <el-table-column prop="category" label="合同类型" :formatter="formatCategory"  sortable>
             </el-table-column>

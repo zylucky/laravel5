@@ -223,9 +223,9 @@ module.exports = function normalizeComponent (
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "J", function() { return finishFK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getPayableInfos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getPayableRecordList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getMessageListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return AcceptMessage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return RefuseMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getMessageListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return AcceptMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return RefuseMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return getFinancePayableListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return skeditMoney; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return skeditDate; });
@@ -338,7 +338,7 @@ module.exports = function normalizeComponent (
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_1", function() { return checkName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_22", function() { return getContractVersionList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_21", function() { return changeContractVersionStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getPayOrder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getPayOrder; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
@@ -24112,7 +24112,7 @@ var routes = [{
     name: '应收应付',
     iconCls: 'el-icon-document', //图标样式class
     hidden: false,
-    children: [{ path: '/payable', component: __WEBPACK_IMPORTED_MODULE_44__components_payable_payableList_vue___default.a, name: '应付款管理', hidden: false }, { path: '/financePayable', component: __WEBPACK_IMPORTED_MODULE_45__components_payable_financePayableList_vue___default.a, name: '实付款管理', hidden: false }, { path: '/receivable', component: __WEBPACK_IMPORTED_MODULE_40__components_receivable_receivableList_vue___default.a, name: '应收款管理', hidden: false }, { path: '/financeReceivable', component: __WEBPACK_IMPORTED_MODULE_41__components_receivable_financeReceivableList_vue___default.a, name: '实收款管理', hidden: false }, { path: '/accountsReceivable', component: __WEBPACK_IMPORTED_MODULE_38__components_Commission_accountsReceivableList_vue___default.a, name: '修改记录', hidden: true }, { path: '/receivableRecord', component: __WEBPACK_IMPORTED_MODULE_39__components_receivable_receivableRecordList_vue___default.a, name: '已收款记录', hidden: true }, { path: '/payableRecord', component: __WEBPACK_IMPORTED_MODULE_43__components_payable_payableRecordList_vue___default.a, name: '应付款记录', hidden: true }, { path: '/paymentRecord', component: __WEBPACK_IMPORTED_MODULE_42__components_payable_paymentRecordList_vue___default.a, name: '修改记录', hidden: true }, { path: '/payOrder', component: __WEBPACK_IMPORTED_MODULE_46__components_payable_payorder_vue___default.a, name: '支付凭证', hidden: true }]
+    children: [{ path: '/payable', component: __WEBPACK_IMPORTED_MODULE_44__components_payable_payableList_vue___default.a, name: '应付款管理', hidden: false }, { path: '/financePayable', component: __WEBPACK_IMPORTED_MODULE_45__components_payable_financePayableList_vue___default.a, name: '实付款管理', hidden: false }, { path: '/receivable', component: __WEBPACK_IMPORTED_MODULE_40__components_receivable_receivableList_vue___default.a, name: '应收款管理', hidden: false }, { path: '/financeReceivable', component: __WEBPACK_IMPORTED_MODULE_41__components_receivable_financeReceivableList_vue___default.a, name: '实收款管理', hidden: false }, { path: '/accountsReceivable', component: __WEBPACK_IMPORTED_MODULE_38__components_Commission_accountsReceivableList_vue___default.a, name: '修改记录', hidden: true }, { path: '/receivableRecord', component: __WEBPACK_IMPORTED_MODULE_39__components_receivable_receivableRecordList_vue___default.a, name: '已收款记录', hidden: true }, { path: '/payableRecord', component: __WEBPACK_IMPORTED_MODULE_43__components_payable_payableRecordList_vue___default.a, name: '应付款记录', hidden: true }, { path: '/paymentRecord', component: __WEBPACK_IMPORTED_MODULE_42__components_payable_paymentRecordList_vue___default.a, name: '修改记录', hidden: true }]
 
 }, {
     //版本1
@@ -24128,6 +24128,12 @@ var routes = [{
     hidden: false,
     children: [{ path: '/message', component: __WEBPACK_IMPORTED_MODULE_47__components_message_Index_vue___default.a, name: '我的待办事项', hidden: false }]
 
+}, {
+    //支付凭证
+    path: '/payOrder',
+    component: __WEBPACK_IMPORTED_MODULE_46__components_payable_payorder_vue___default.a,
+    name: '支付凭证',
+    hidden: true
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
@@ -34943,7 +34949,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 bk_name: this.filters.bk_name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["b" /* getMessageListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["c" /* getMessageListPage */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.messageDate = res.data.data;
                 _this.listLoading = false;
@@ -34958,7 +34964,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     id: row.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["c" /* AcceptMessage */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["d" /* AcceptMessage */])(para).then(function (res) {
                     _this2.$message({
                         message: '提交成功',
                         type: 'success'
@@ -34975,7 +34981,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     id: row.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["d" /* RefuseMessage */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["e" /* RefuseMessage */])(para).then(function (res) {
                     _this3.$message({
                         message: '提交成功',
                         type: 'success'
@@ -37185,6 +37191,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -37265,7 +37276,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.listLoading = false;
             });
         },
-
+        handleDump: function handleDump(index, row) {
+            window.open('/#/payOrder?id=' + row.tCwFcSubmitId);
+        },
 
         selsChange: function selsChange(sels) {
             this.sels = sels;
@@ -109227,6 +109240,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "comment",
       "label": "版本名称",
+      "width": "300",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
@@ -126894,6 +126908,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "200",
       "formatter": _vm.formatskyh
     }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "150"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-button', {
+          on: {
+            "click": function($event) {
+              _vm.handleDump(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("打印凭证")])]
+      }
+    }])
   })], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -131289,6 +131320,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -131297,17 +131332,113 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: { ElForm: __WEBPACK_IMPORTED_MODULE_1__node_modules_element_ui_packages_form_src_form___default.a },
     data: function data() {
         return {
-            Payable: []
+            Payable: [],
+            nowDate: ''
         };
     },
 
     methods: {
-        //时间戳转日期格式
-        changeDate: function changeDate(fkdate) {
-            var newDate = new Date();
-            newDate.setTime(fkdate);
-            return newDate.toLocaleDateString();
+        daxie: function daxie(money) {
+            if (money == null) {
+                return '';
+            }
+            //汉字的数字
+            var cnNums = new Array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
+            //基本单位
+            var cnIntRadice = new Array('', '拾', '佰', '仟');
+            //对应整数部分扩展单位
+            var cnIntUnits = new Array('', '万', '亿', '兆');
+            //对应小数部分单位
+            var cnDecUnits = new Array('角', '分', '毫', '厘');
+            //整数金额时后面跟的字符
+            var cnInteger = '整';
+            //整型完以后的单位
+            var cnIntLast = '元';
+            //最大处理的数字
+            var maxNum = 999999999999999.9999;
+            //金额整数部分
+            var integerNum;
+            //金额小数部分
+            var decimalNum;
+            //输出的中文金额字符串
+            var chineseStr = '';
+            //分离金额后用的数组，预定义
+            var parts;
+            if (money == '') {
+                return '';
+            }
+            money = parseFloat(money);
+            if (money >= maxNum) {
+                //超出最大处理数字
+                return '';
+            }
+            if (money == 0) {
+                chineseStr = cnNums[0] + cnIntLast + cnInteger;
+                return chineseStr;
+            }
+            //转换为字符串
+            money = money.toString();
+            if (money.indexOf('.') == -1) {
+                integerNum = money;
+                decimalNum = '';
+            } else {
+                parts = money.split('.');
+                integerNum = parts[0];
+                decimalNum = parts[1].substr(0, 4);
+            }
+            //获取整型部分转换
+            if (parseInt(integerNum, 10) > 0) {
+                var zeroCount = 0;
+                var IntLen = integerNum.length;
+                for (var i = 0; i < IntLen; i++) {
+                    var n = integerNum.substr(i, 1);
+                    var p = IntLen - i - 1;
+                    var q = p / 4;
+                    var m = p % 4;
+                    if (n == '0') {
+                        zeroCount++;
+                    } else {
+                        if (zeroCount > 0) {
+                            chineseStr += cnNums[0];
+                        }
+                        //归零
+                        zeroCount = 0;
+                        chineseStr += cnNums[parseInt(n)] + cnIntRadice[m];
+                    }
+                    if (m == 0 && zeroCount < 4) {
+                        chineseStr += cnIntUnits[q];
+                    }
+                }
+                chineseStr += cnIntLast;
+            }
+            //小数部分
+            if (decimalNum != '') {
+                var decLen = decimalNum.length;
+                for (var i = 0; i < decLen; i++) {
+                    var n = decimalNum.substr(i, 1);
+                    if (n != '0') {
+                        chineseStr += cnNums[Number(n)] + cnDecUnits[i];
+                    }
+                }
+            }
+            if (chineseStr == '') {
+                chineseStr += cnNums[0] + cnIntLast + cnInteger;
+            } else if (decimalNum == '') {
+                chineseStr += cnInteger;
+            }
+            return chineseStr;
         },
+
+
+        //时间戳转日期格式
+        changeDate: function changeDate(value) {
+            if (value != '' || value != null) {
+                var newDate = new Date();
+                newDate.setTime(value);
+                return newDate.toLocaleDateString();
+            }
+        },
+
 
         //获取应付款列表
         getPayable: function getPayable() {
@@ -131317,14 +131448,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: this.$route.query.id
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["e" /* getPayOrder */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["b" /* getPayOrder */])(para).then(function (res) {
                 _this.Payable = res.data.data;
                 _this.listLoading = false;
             });
         }
     },
     mounted: function mounted() {
+        function hello() {
+            window.print();
+        }
+        document.title = '支出凭证';
         this.getPayable();
+        this.nowDate = new Date().toLocaleDateString();
+        setTimeout(hello, 1000);
     }
 });
 
@@ -131405,7 +131542,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "padding": "0",
       "margin": "0"
     }
-  }, [_vm._v("打印时间：'.$time.'")])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', {
+  }, [_vm._v("打印时间：" + _vm._s(_vm.nowDate))])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', {
     attrs: {
       "height": "40"
     }
@@ -131413,7 +131550,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "align": "left"
     }
-  }, [_vm._v("用友编号：" + _vm._s(_vm.Payable.fukuanyinhang))])]), _vm._v(" "), _c('td', [_vm._v("     " + _vm._s(_vm.Payable.fukuandate))]), _vm._v(" "), _c('td', {
+  }, [_vm._v("用友编号：" + _vm._s(_vm.Payable.fukuanyinhang))])]), _vm._v(" "), _c('td', [_vm._v("     " + _vm._s(_vm.changeDate(_vm.Payable.fukuandate)))]), _vm._v(" "), _c('td', {
     attrs: {
       "height": "40",
       "colspan": "2"
@@ -131436,7 +131573,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "border-bottom": "1px solid #555",
       "padding-bottom": "2px"
     }
-  }, [_vm._v("    ")]), _vm._v("个月房租"), _c('br'), _vm._v(" "), _c('b', [_vm._v("月租金:")]), _vm._v(_vm._s(_vm.Payable.monthmoney) + "元"), _c('br'), _vm._v(" "), _c('b', [_vm._v("单价:")]), _vm._v(_vm._s(_vm.Payable.price)), _c('br')])])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v("    ")]), _vm._v("个月房租"), _c('br'), _vm._v(" "), _c('b', [_vm._v("月租金:")]), _vm._v(_vm._s(_vm.Payable.monthmoney) + "       元"), _c('br'), _vm._v(" "), _c('b', [_vm._v("单价:")]), _vm._v(_vm._s(_vm.Payable.price) + "       元/m²/天"), _c('br')])])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "height": "30"
     }
@@ -131445,7 +131582,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "height": "30",
       "colspan": "3"
     }
-  }, [_c('div', [_vm._v(_vm._s(_vm.Payable.tijiaomoney) + "          ¥"), _c('u', {
+  }, [_c('div', [_vm._v(_vm._s(_vm.daxie(_vm.Payable.tijiaomoney)) + "          ¥"), _c('u', {
     staticStyle: {
       "text-decoration": "none",
       "border-bottom": "1px solid #555",
@@ -131479,6 +131616,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "colspan": "3"
     }
   }, [_c('div', [_vm._v(_vm._s(_vm.Payable.fukuanyinhang))])])]), _vm._v(" "), _c('tr', [_c('td', {
+    attrs: {
+      "height": "25"
+    }
+  }, [_c('div', [_c('b', [_vm._v("业主支付方式")])])]), _vm._v(" "), _c('td', {
+    attrs: {
+      "height": "25",
+      "colspan": "3"
+    }
+  }, [_c('div', [_vm._v(_vm._s(_vm.Payable.yezhuzhifufangshi))])])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "height": "80"
     }
