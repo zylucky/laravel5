@@ -229,7 +229,6 @@ let routes = [
             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
             { path:'/paymentRecord',component:PaymentRecord,name:'修改记录',hidden:true},
-            { path:'/payOrder',component:PayOrder,name:'支付凭证',hidden:true},
         ]
 
     },
@@ -251,7 +250,13 @@ let routes = [
          ]
 
      },
-
+    {
+        //支付凭证
+        path:'/payOrder',
+        component: PayOrder,
+        name: '支付凭证',
+        hidden: true
+    },
 
 
 ]
