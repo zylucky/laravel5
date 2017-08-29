@@ -17,6 +17,7 @@ import PurchaseContractOptimize from "./components/purchaseContract/Optimize.vue
 import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimize.vue";
 import PurchaseContractCheckOptimizeList from "./components/purchaseContract/HistoryOptimize.vue";
 import PurchaseContractDump20170719 from "./components/purchaseContract/Dump20170719.vue";//版本1
+import PurchaseContractDump20170719pub from "./components/purchaseContract/Dump20170719_pub.vue";//版本1补充条款
 import PurchaseContractZhanghao from "./components/purchaseContract/Zhanghao.vue";
 import PurchaseContractHedan from "./components/purchaseContract/Hedan.vue";
 
@@ -64,8 +65,7 @@ import PaymentRecord from "./components/payable/paymentRecordList.vue";
 import PayableRecord from "./components/payable/payableRecordList.vue";
 import Payable from "./components/payable/payableList.vue";
 import FinancePayable from "./components/payable/financePayableList.vue";
-
-
+import PayOrder from "./components/payable/payorder.vue" ;
 
 //消息管理
 import MessageList from "./components/message/Index.vue";
@@ -208,6 +208,13 @@ let routes = [
         hidden: true
     },
     {
+        //版本1
+        path:'/purchaseContract/dump20170719pub',
+        component: PurchaseContractDump20170719pub,
+        name: '收房打印补充条款',
+        hidden: true
+    },
+    {
         path: '/',
         component: navigation,
         name: '应收应付',
@@ -222,6 +229,7 @@ let routes = [
             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
             { path:'/paymentRecord',component:PaymentRecord,name:'修改记录',hidden:true},
+            { path:'/payOrder',component:PayOrder,name:'支付凭证',hidden:true},
         ]
 
     },

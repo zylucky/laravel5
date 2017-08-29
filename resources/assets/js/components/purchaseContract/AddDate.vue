@@ -356,7 +356,7 @@
             <!--补充条款-->
             <el-col :span="24">
                 <el-form-item label="补充条款"  prop="buchongtiaokuan">
-                    <el-input type="textarea" row="5px" v-model="addDate.buchongtiaokuan"></el-input>
+                    <el-input type="textarea" row="5px" v-model="addDate.yingyezhizhao"></el-input>
                 </el-form-item>
             </el-col>
         </el-form>

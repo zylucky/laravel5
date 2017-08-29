@@ -10,7 +10,7 @@
                         <span >楼栋：{{xsOffice.loudongName}}</span>
                     </el-col>
                     <el-col :span="8">
-                        <span>房间号： {{xsOffice.fanghao}}</span>
+                        <span>房间号： {{xsOffice.fanghao}}{{subleaseno}}</span>
                     </el-col>
                 </el-row>
             </li>
@@ -97,6 +97,7 @@
                 id:'',
                 btnShow:true,
                 reviewVisible:false,//审核显示
+                subleaseno:null,
                 xsOffice:[{
                     loupanName:null,
                     loudongName:null,
@@ -235,6 +236,7 @@
                 this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;
+                this.subleaseno = res.data.data.subleaseno;
                 //console.log(this.xsOffice);
                 this.jieyueXieyi = res.data.data.jieyueXieyi[0];
                 //console.log(this.jieyueXieyi);
@@ -244,6 +246,7 @@
                 this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
                 this.xsOffice = res.data.data.xsOffice;
+                this.subleaseno = res.data.data.subleaseno;
             },
             fuzhi2(res){
                 this.hetongid = res.data.data.hetongid;
