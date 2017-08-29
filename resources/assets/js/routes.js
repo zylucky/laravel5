@@ -65,8 +65,7 @@ import PaymentRecord from "./components/payable/paymentRecordList.vue";
 import PayableRecord from "./components/payable/payableRecordList.vue";
 import Payable from "./components/payable/payableList.vue";
 import FinancePayable from "./components/payable/financePayableList.vue";
-
-
+import PayOrder from "./components/payable/payorder.vue" ;
 
 //消息管理
 import MessageList from "./components/message/Index.vue";
@@ -230,6 +229,7 @@ let routes = [
             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},
             { path:'/paymentRecord',component:PaymentRecord,name:'修改记录',hidden:true},
+            { path:'/payOrder',component:PayOrder,name:'支付凭证',hidden:true},
         ]
 
     },

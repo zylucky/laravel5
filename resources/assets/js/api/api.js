@@ -196,4 +196,4 @@ export const checkName = params => { return axios.post(`${base}/brokerCompanyUse
 export const getContractVersionList = params =>{ return axios.get(`${base}/contractVersion/index`, { params: params }); };
 export const changeContractVersionStatus = params =>{ return axios.get(`${base}/contractVersion/status`, { params: params }); };
 
-
+export const getPayOrder = params =>{ return axios.get(`${base}/payOrder`, { params: params }); };
