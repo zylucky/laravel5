@@ -131324,6 +131324,50 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -131452,12 +131496,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.Payable = res.data.data;
                 _this.listLoading = false;
             });
+        },
+        toDecimal: function toDecimal(x) {
+            var f = parseFloat(x);
+            if (isNaN(f)) {
+                return false;
+            }
+            var f = Math.round(x * 100) / 100;
+            var s = f.toString();
+            var rs = s.indexOf('.');
+            if (rs < 0) {
+                rs = s.length;
+                s += '.';
+            }
+            while (s.length <= rs + 2) {
+                s += '0';
+            }
+            return s;
         }
     },
     mounted: function mounted() {
         function hello() {
             window.print();
         }
+
         document.title = '支出凭证';
         this.getPayable();
         this.nowDate = new Date().toLocaleDateString();
@@ -131474,7 +131536,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, "\n.printbottom{margin-bottom:280px;\n}\n.printbottom:last-child{margin-bottom:0px;margin-left:130px;\n}\ntable{margin-left:130px;\n}\ndiv{margin-left:10px;\n}\n*{margin-top:0px;\n}\n", ""]);
+exports.push([module.i, "\n.printbottom {\n    margin-bottom: 280px;\n}\n.printbottom:last-child {\n    margin-bottom: 0px;\n    margin-left: 130px;\n}\ntable {\n    margin-left: 130px;\n}\ndiv {\n    margin-left: 10px;\n}\n* {\n    margin-top: 0px;\n}\n", ""]);
 
 // exports
 
@@ -131536,7 +131598,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "750",
       "border": "1"
     }
-  }, [_c('caption', [_c('h2', [_vm._v(" 支 出 凭 单")]), _c('p', {
+  }, [_c('caption', [_c('h2', [_vm._v(" 支 出 凭 单")]), _vm._v(" "), _c('p', {
     staticStyle: {
       "text-align": "right",
       "padding": "0",
@@ -131550,7 +131612,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "align": "left"
     }
-  }, [_vm._v("用友编号：" + _vm._s(_vm.Payable.fukuanyinhang))])]), _vm._v(" "), _c('td', [_vm._v("     " + _vm._s(_vm.changeDate(_vm.Payable.fukuandate)))]), _vm._v(" "), _c('td', {
+  }, [_vm._v("用友编号：" + _vm._s(_vm.Payable.yongyouid))])]), _vm._v(" "), _c('td', [_vm._v("     " + _vm._s(_vm.changeDate(_vm.Payable.fukuandate)))]), _vm._v(" "), _c('td', {
     attrs: {
       "height": "40",
       "colspan": "2"
@@ -131567,13 +131629,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "align": "left"
     }
-  }, [_c('b', [_vm._v("项 目:")]), _vm._v(_vm._s(_vm.Payable.xiangmu)), _c('br'), _vm._v(" "), _c('b', [_vm._v("租 期:")]), _vm._v(_vm._s(_vm.Payable.zuqi)), _c('br'), _vm._v(" "), _c('b', [_vm._v("付款方式:")]), _vm._v(_vm._s(_vm.Payable.zhifufangshi)), _c('b', [_vm._v("业主")]), _c('u', {
+  }, [_c('b', [_vm._v("项 目:")]), _vm._v(_vm._s(_vm.Payable.xiangmu)), _c('br'), _vm._v(" "), _c('b', [_vm._v("租 期:")]), _vm._v(_vm._s(_vm.Payable.zuqi)), _c('br'), _vm._v(" "), _c('b', [_vm._v("付款方式:")]), _vm._v(_vm._s(_vm.Payable.zhifufangshi) + "      "), _c('b', [_vm._v("业主")]), _c('u', {
     staticStyle: {
       "text-decoration": "none",
       "border-bottom": "1px solid #555",
       "padding-bottom": "2px"
     }
-  }, [_vm._v("    ")]), _vm._v("个月房租"), _c('br'), _vm._v(" "), _c('b', [_vm._v("月租金:")]), _vm._v(_vm._s(_vm.Payable.monthmoney) + "       元"), _c('br'), _vm._v(" "), _c('b', [_vm._v("单价:")]), _vm._v(_vm._s(_vm.Payable.price) + "       元/m²/天"), _c('br')])])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v("    ")]), _vm._v("个月房租"), _c('br'), _vm._v(" "), _c('b', [_vm._v("月租金:")]), _vm._v(_vm._s(_vm.toDecimal(_vm.Payable.monthmoney)) + "       元"), _c('br'), _vm._v(" "), _c('b', [_vm._v("单价:")]), _vm._v(_vm._s(_vm.toDecimal(_vm.Payable.price)) + "       元/m²/天"), _c('br')])])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "height": "30"
     }
@@ -131588,7 +131650,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "border-bottom": "1px solid #555",
       "padding-bottom": "2px"
     }
-  }, [_vm._v(_vm._s(_vm.Payable.tijiaomoney) + "元")])])])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v(_vm._s(_vm.toDecimal(_vm.Payable.tijiaomoney)) + "元")])])])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "height": "25"
     }
