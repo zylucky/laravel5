@@ -87,6 +87,14 @@
                 bianhao:'',
                 zhuangtai:'',
                 property:{
+                    editableTabs2:[
+                        {
+                            title: '房间1',
+                            name: '1',
+                            content: 'New Tab content'
+                        }
+                    ],
+                    tabIndex:1,
                     flag:null,
                     officeList: [{
                         omcId:null,
@@ -363,6 +371,16 @@
                 this.bianhao = res.data.data.bianhao;
                 this.contractVersion = res.data.data.version;
                 this.property.officeList = res.data.data.officeList;
+                this.property.editableTabs2 = [];
+                this.property.officeList.forEach((property,index)=>{
+                    index ++;
+                    this.property.tabIndex = index;
+                    this.property.editableTabs2.push({
+                        title: '房间'+index,
+                        name: index+'',
+                        content: 'New Tab content'
+                    })
+                })
                 if(res.data.data.chanquanrenList.length>0){
                     this.owner.chanquanrenList = res.data.data.chanquanrenList;
                 }

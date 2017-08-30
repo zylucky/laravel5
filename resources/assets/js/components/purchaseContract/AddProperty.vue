@@ -3,7 +3,7 @@
     <el-row class="container">
             <el-tabs v-model="editableTabsValue2" type="card" :editable="flag" addable @edit="addTab" @tab-remove="removeTab">
                 <el-tab-pane
-                        v-for="(item, index) in editableTabs2"
+                        v-for="(item, index) in property.editableTabs2"
                         :key="item.name"
                         :label="item.title"
                         :name="item.name"
@@ -220,12 +220,6 @@
                 //房源数据初始化
 
                 editableTabsValue2: '1',
-                editableTabs2: [{
-                    title: '房间1',
-                    name: '1',
-                    content: 'Tab 1 content'
-                }],
-                tabIndex: 1,
 
             }
         },
@@ -276,7 +270,7 @@
             //获取楼栋
             remoteMethod2(query) {
                 let para = {
-                    loupanOmcId:this.property.officeList[this.tabIndex-1].loupanOmcId,
+                    loupanOmcId:this.property.officeList[this.property.tabIndex-1].loupanOmcId,
                 };
                 this.loupanloading = true;
                 getLoudongList(para).then((res) => {
@@ -304,8 +298,8 @@
             //获取房号
             remoteMethod3(query) {
                 let para = {
-                    lpid: this.property.officeList[this.tabIndex-1].loupanOmcId,
-                    zdid: this.property.officeList[this.tabIndex-1].loudongOmcId,
+                    lpid: this.property.officeList[this.property.tabIndex-1].loupanOmcId,
+                    zdid: this.property.officeList[this.property.tabIndex-1].loudongOmcId,
                 };
                 this.fanghaoloading = true;
                 //console.log(para);
@@ -337,41 +331,42 @@
             change1(){
                 //楼盘
                 for (var x in this.options1){
-                    if(this.options1[x].label==this.property.officeList[this.tabIndex-1].loupanName){
-                        this.property.officeList[this.tabIndex-1].loupanOmcId=this.options1[x].value;
-                        this.property.officeList[this.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
-                        this.property.officeList[this.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
-                        this.property.officeList[this.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
-                        this.property.officeList[this.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
+
+                    if(this.options1[x].label==this.property.officeList[this.property.tabIndex-1].loupanName){
+                        this.property.officeList[this.property.tabIndex-1].loupanOmcId=this.options1[x].value;
+                        this.property.officeList[this.property.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
+                        this.property.officeList[this.property.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
+                        this.property.officeList[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                        this.property.officeList[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
                     }
                 }
             },
             change2(){
                 //楼栋
                 for (var x in this.options2){
-                    if(this.options2[x].label==this.property.officeList[this.tabIndex-1].loudongName){
-                        this.property.officeList[this.tabIndex-1].loudongOmcId=this.options2[x].value;
-                        this.property.officeList[this.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
-                        this.property.officeList[this.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
+                    if(this.options2[x].label==this.property.officeList[this.property.tabIndex-1].loudongName){
+                        this.property.officeList[this.property.tabIndex-1].loudongOmcId=this.options2[x].value;
+                        this.property.officeList[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                        this.property.officeList[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
                     }
                 }
             },
             change3(){
                 //房号
                 for (var x in this.options3){
-                    if(this.options3[x].label==this.property.officeList[this.tabIndex-1].fanghao){
-                        this.property.officeList[this.tabIndex-1].omcId=this.options3[x].value;
+                    if(this.options3[x].label==this.property.officeList[this.property.tabIndex-1].fanghao){
+                        this.property.officeList[this.property.tabIndex-1].omcId=this.options3[x].value;
                     }
                 }
-                if(this.property.officeList[this.tabIndex-1].omcId==null){
+                if(this.property.officeList[this.property.tabIndex-1].omcId==null){
 
                     let  para = {
-                        loupanOmcId:this.property.officeList[this.tabIndex-1].loupanOmcId,
-                        loudongOmcId:this.property.officeList[this.tabIndex-1].loudongOmcId,
-                        fanghao:this.property.officeList[this.tabIndex-1].fanghao,
+                        loupanOmcId:this.property.officeList[this.property.tabIndex-1].loupanOmcId,
+                        loudongOmcId:this.property.officeList[this.property.tabIndex-1].loudongOmcId,
+                        fanghao:this.property.officeList[this.property.tabIndex-1].fanghao,
                     }
                     createFanghao(para).then((res=>{
-                        this.property.officeList[this.tabIndex-1].omcId = res.data.data;
+                        this.property.officeList[this.property.tabIndex-1].omcId = res.data.data;
                         this.$message({
                             message: '楼盘字典中不存在该房源，已自动创建',
                             type: 'success'
@@ -379,29 +374,29 @@
                     }))
                 }
                 for (var x in this.houseData){
-                    if(this.houseData[x].id==this.property.officeList[this.tabIndex-1].omcId){
-                        this.property.officeList[this.tabIndex-1].jianzhumianji=this.houseData[x].fjmj;
-                        this.property.officeList[this.tabIndex-1].qianyuemianji=this.houseData[x].fjmj;
+                    if(this.houseData[x].id==this.property.officeList[this.property.tabIndex-1].omcId){
+                        this.property.officeList[this.property.tabIndex-1].jianzhumianji=this.houseData[x].fjmj;
+                        this.property.officeList[this.property.tabIndex-1].qianyuemianji=this.houseData[x].fjmj;
                     }
                 }
 
             },
             addTab(targetName, action) {
                 if(action === 'add'){
-                let newTabName = ++this.tabIndex + '';
-                this.editableTabs2.push({
-                    title: '房间'+this.tabIndex,
+                let newTabName = ++this.property.tabIndex + '';
+                this.property.editableTabs2.push({
+                    title: '房间'+this.property.tabIndex,
                     name: newTabName,
                     content: 'New Tab content'
                 });
-                
+
                 this.property.officeList.push({
                     omcId:null,
                     loupanOmcId:null,
                     loudongOmcId:null,
-                    loupanName:'',
-                    loudongName: '',
-                    fanghao: '',
+                    loupanName:null,
+                    loudongName: null,
+                    fanghao: null,
                     weizhi: '',
                     chanquanzhenghao: '',
                     jianzhumianji: '',
@@ -412,14 +407,14 @@
                     diyaren:'',
                 });
                 this.editableTabsValue2 = newTabName;
-                if(this.editableTabs2.length > 1){
+                if(this.property.editableTabs2.length > 1){
                     this.flag = true;
                 }
                 }
             },
             removeTab(targetName) {
                 this.property.officeList.pop();
-                let tabs = this.editableTabs2;
+                let tabs = this.property.editableTabs2;
                 /*
                 let activeName = this.editableTabsValue2;
                 if (activeName === targetName) {
@@ -438,17 +433,17 @@
 
                 })
                 tabs = tabs.filter(tab => tab.name !== targetName);
-                this.editableTabs2 = tabs.map((tab, idx)=>{
-                    tab.name = (idx + 1) + ''; 
+                this.property.editableTabs2 = tabs.map((tab, idx)=>{
+                    tab.name = (idx + 1) + '';
                     tab.title = '房间'+ (idx + 1);
                     return tab;
                 });
-                --this.tabIndex;
-                if(parseInt(this.editableTabsValue2) > this.tabIndex - 1){
-                    this.editableTabsValue2 = this.editableTabs2[this.tabIndex-1].name;
+                --this.property.tabIndex;
+                if(parseInt(this.editableTabsValue2) > this.property.tabIndex - 1){
+                    this.editableTabsValue2 = this.property.editableTabs2[this.property.tabIndex-1].name;
                 }
 
-                if(this.editableTabs2.length < 2){
+                if(this.property.editableTabs2.length < 2){
                     this.flag = false;
                 }
             }
