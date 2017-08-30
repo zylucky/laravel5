@@ -615,4 +615,17 @@ class purchaseContractController extends Controller
         ]);
         echo $response->getBody();
     }
+    //用友编号的保存
+    public function saveyongyou(Request $request){
+        //dd(111);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', '/api/contract/sf/saveyongyou', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
 }

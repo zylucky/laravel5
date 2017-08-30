@@ -45,6 +45,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('getHedanList','Contract\purchaseContractController@getHedanList');
     Route::get('deleteHedan','Contract\purchaseContractController@deleteHedan');
     Route::post('updataHedan','Contract\purchaseContractController@updataHedan');
+    Route::post('saveyongyou','Contract\purchaseContractController@saveyongyou');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
 //装饰合同
@@ -123,6 +124,7 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::post('updataHedan','Contract\saleContractController@updataHedan');
     Route::post('getHedanqiannameList','Contract\saleContractController@getHedanqiannameList');
     Route::post('getHedanbumenList','Contract\saleContractController@getHedanbumenList');
+    Route::post('saveyongyou','Contract\saleContractController@saveyongyou');
 });
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 //权限
@@ -190,5 +192,5 @@ Route::group(['prefix' => 'office'], function () {
     Route::get('salefanghaoList','Contract\officeController@salefanghaoList');
     Route::get('createFanghao','Contract\officeController@createFanghao');
 });
-
+Route::resource('payOrder','Report\payOrderController');
 //hello world1

@@ -66,7 +66,7 @@
             </el-table-column>
             <el-table-column prop="Loudong_name" label="楼栋"   >
             </el-table-column>
-            <el-table-column prop="Fanghao" label="房间号"  >
+            <el-table-column prop="Fanghao" label="房间号" :formatter="fangjia"  >
             </el-table-column>
             <el-table-column prop="ZhongzhiDate" label="解约时间" sortable>
             </el-table-column>
@@ -90,6 +90,9 @@
             }
         },
         methods:{
+            fangjia(row, column){
+                return  row.fanghao+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
+            },
             //获取这个解约协议页面的数据
             getListSaleContract(id){
                 //alert(11);

@@ -29,6 +29,11 @@
             </el-table-column>
             <el-table-column prop="" label="收款银行及账号"   width="200" :formatter="formatskyh">
             </el-table-column>
+            <el-table-column label="操作" width="150">
+                <template scope="scope">
+                    <el-button   @click="handleDump(scope.$index, scope.row)">打印凭证</el-button>
+                </template>
+            </el-table-column>
            </el-table>
 
     </el-row>
@@ -113,7 +118,9 @@
                     this.listLoading = false;
                 });
             },
-
+            handleDump(index,row){
+                    window.open('/#/payOrder?id='+row.tCwFcSubmitId)
+            },
             selsChange: function (sels) {
                 this.sels = sels;
             },

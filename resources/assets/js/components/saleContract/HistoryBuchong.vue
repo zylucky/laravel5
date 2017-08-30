@@ -98,7 +98,7 @@
             </el-table-column>
             <el-table-column prop="loudongName" label="楼栋"   >
             </el-table-column>
-            <el-table-column prop="fanghao" label="房间号"  >
+            <el-table-column prop="fanghao" label="房间号" :formatter="fangjia"  >
             </el-table-column>
             <el-table-column prop="createtime" label="优化时间" :formatter="changeDate"   sortable>
             </el-table-column>
@@ -137,6 +137,9 @@
             }
         },
         methods:{
+            fangjia(row, column){
+                return  row.fanghao+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
+            },
             fangshi(fangshi){
                 return fangshi==1?'%':'元';
             },
