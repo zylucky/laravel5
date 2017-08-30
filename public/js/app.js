@@ -38727,14 +38727,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         yezhuleixingChange: function yezhuleixingChange() {
             //只要业主类型发生改变，那么我就将变量初始化
-            this.owner.chanquanrenList = [{
-                name: '',
-                faren: '',
-                zhengjian: '',
-                tel: '',
-                sex: 1,
-                hetongid: null
-            }];
+            if (this.$route.path == '/purchaseContract/add') {
+                this.owner.chanquanrenList = [{
+                    name: '',
+                    faren: '',
+                    zhengjian: '',
+                    tel: '',
+                    sex: 1,
+                    hetongid: null
+                }];
+            }
         },
         valid: function valid() {
             var _this = this;
