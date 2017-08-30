@@ -41907,25 +41907,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 xieyistartdate: '', //协议开始时间
                 xieyienddate: '', //协议结束时间
                 mianzufangshi: [], //免租方式
-                mianzuqiList: [{
-                    startdate: '', //免租开始
-                    enddate: '', //免租结束
-                    mianzufangshi: ''
-                }],
-                fukuanFangshiList: [{
-                    startdate: '', //开始
-                    enddate: '', //结束
-                    yajinyue: '',
-                    zujinyue: ''
-                }],
-                zujinList: [{
-                    startdate: '',
-                    enddate: '',
-                    yuezujin: '',
-                    price: '',
-                    dizengfangshi: '',
-                    dizengliang: ''
-                }]
+                mianzuqiList: [],
+                fukuanFangshiList: [],
+                zujinList: []
             }
         };
     },
