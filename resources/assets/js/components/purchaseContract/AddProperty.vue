@@ -1,7 +1,7 @@
 <template>
     <div>
     <el-row class="container">
-            <el-tabs v-model="editableTabsValue2" type="card" :editable="flag" addable @edit="addTab" @tab-remove="removeTab">
+            <el-tabs v-model="editableTabsValue2" type="card" :editable="editflag" addable @edit="addTab" @tab-remove="removeTab">
                 <el-tab-pane
                         v-for="(item, index) in property.editableTabs2"
                         :key="item.name"
@@ -153,6 +153,7 @@
                     type:0,
                 },
                 flag: false,
+                editflag: false,
                 editPropertyRules :{
                     loupanName: [
                         { required: true, message: '不能为空'}
@@ -407,9 +408,9 @@
                     diyaren:'',
                 });
                 this.editableTabsValue2 = newTabName;
-                if(this.property.editableTabs2.length > 1){
-                    this.flag = true;
-                }
+                    if(this.property.editableTabs2.length > 1){
+                        this.editflag = true;
+                    }
                 }
             },
             removeTab(targetName) {
@@ -456,6 +457,15 @@
             if(this.$route.path=='/purchaseContract/view'){
                 this.editVisible   =false;
             }
+            var _this =this;
+            function hello() {
+                if(_this.property.editableTabs2.length > 1){
+                    _this.editflag = true;
+                }
+            }
+            setTimeout(hello,500);
+
+
         }
 
     }

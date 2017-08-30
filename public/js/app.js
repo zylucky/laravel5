@@ -39017,6 +39017,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 type: 0
             },
             flag: false,
+            editflag: false,
             editPropertyRules: {
                 loupanName: [{ required: true, message: '不能为空' }],
                 loudongName: [{ required: true, message: '不能为空' }],
@@ -39068,7 +39069,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         valid: function valid() {
-            var _this = this;
+            var _this2 = this;
 
             var flag = true;
             var flag1 = true;
@@ -39080,14 +39081,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     if (flag == false) {
                         flag1 = false;
                     }
-                    _this.property.flag = flag1;
+                    _this2.property.flag = flag1;
                 });
             }
         },
 
         //获取楼盘
         remoteMethod1: function remoteMethod1(query) {
-            var _this2 = this;
+            var _this3 = this;
 
             var para = {
                 str: query
@@ -39099,24 +39100,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 for (var i in res.data) {
                     arr[i] = res.data[i];
                 }
-                _this2.estate = arr;
-                _this2.loupanloading = false;
-                _this2.list = _this2.estate.map(function (item, index) {
+                _this3.estate = arr;
+                _this3.loupanloading = false;
+                _this3.list = _this3.estate.map(function (item, index) {
                     return { value: index, label: item };
                 });
                 if (query !== '') {
-                    _this2.options1 = _this2.list.filter(function (item) {
+                    _this3.options1 = _this3.list.filter(function (item) {
                         return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
                     });
                 } else {
-                    _this2.options1 = [];
+                    _this3.options1 = [];
                 }
             });
         },
 
         //获取楼栋
         remoteMethod2: function remoteMethod2(query) {
-            var _this3 = this;
+            var _this4 = this;
 
             var para = {
                 loupanOmcId: this.property.officeList[this.property.tabIndex - 1].loupanOmcId
@@ -39128,24 +39129,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 for (var i in res.data) {
                     arr[i] = res.data[i];
                 }
-                _this3.building = arr;
-                _this3.loupanloading = false;
-                _this3.list2 = _this3.building.map(function (item, index) {
+                _this4.building = arr;
+                _this4.loupanloading = false;
+                _this4.list2 = _this4.building.map(function (item, index) {
                     return { value: index, label: item };
                 });
                 if (query !== '') {
-                    _this3.options2 = _this3.list2.filter(function (item) {
+                    _this4.options2 = _this4.list2.filter(function (item) {
                         return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
                     });
                 } else {
-                    _this3.options2 = [];
+                    _this4.options2 = [];
                 }
             });
         },
 
         //获取房号
         remoteMethod3: function remoteMethod3(query) {
-            var _this4 = this;
+            var _this5 = this;
 
             var para = {
                 lpid: this.property.officeList[this.property.tabIndex - 1].loupanOmcId,
@@ -39154,23 +39155,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.fanghaoloading = true;
             //console.log(para);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["q" /* getFanghaoList */])(para).then(function (res) {
-                _this4.houseData = res.data;
+                _this5.houseData = res.data;
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
                     arr[res.data[i].id] = res.data[i].fybh;
                 }
-                _this4.house = arr;
-                _this4.fanghaoloading = false;
-                _this4.list3 = _this4.house.map(function (item, index) {
+                _this5.house = arr;
+                _this5.fanghaoloading = false;
+                _this5.list3 = _this5.house.map(function (item, index) {
                     return { value: index, label: item };
                 });
                 if (query !== '') {
-                    _this4.options3 = _this4.list3.filter(function (item) {
+                    _this5.options3 = _this5.list3.filter(function (item) {
                         return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
                     });
                 } else {
-                    _this4.options3 = [];
+                    _this5.options3 = [];
                 }
             });
         },
@@ -39200,7 +39201,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         change3: function change3() {
-            var _this5 = this;
+            var _this6 = this;
 
             //房号
             for (var x in this.options3) {
@@ -39216,8 +39217,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     fanghao: this.property.officeList[this.property.tabIndex - 1].fanghao
                 };
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["r" /* createFanghao */])(para).then(function (res) {
-                    _this5.property.officeList[_this5.property.tabIndex - 1].omcId = res.data.data;
-                    _this5.$message({
+                    _this6.property.officeList[_this6.property.tabIndex - 1].omcId = res.data.data;
+                    _this6.$message({
                         message: '楼盘字典中不存在该房源，已自动创建',
                         type: 'success'
                     });
@@ -39257,7 +39258,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
                 this.editableTabsValue2 = newTabName;
                 if (this.property.editableTabs2.length > 1) {
-                    this.flag = true;
+                    this.editflag = true;
                 }
             }
         },
@@ -39305,6 +39306,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         if (this.$route.path == '/purchaseContract/view') {
             this.editVisible = false;
         }
+        var _this = this;
+        function hello() {
+            if (_this.property.editableTabs2.length > 1) {
+                _this.editflag = true;
+            }
+        }
+        setTimeout(hello, 500);
     }
 });
 
@@ -114155,7 +114163,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-tabs', {
     attrs: {
       "type": "card",
-      "editable": _vm.flag,
+      "editable": _vm.editflag,
       "addable": ""
     },
     on: {
