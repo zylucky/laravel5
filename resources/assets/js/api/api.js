@@ -157,6 +157,7 @@ export const getLoudongList = params =>{ return axios.get(`${base}/office/loudon
 export const getFanghaoList = params =>{ return axios.get(`${base}/office/fanghaoList`, { params: params }); };
 export const getSaleFanghaoList = params =>{ return axios.get(`${base}/office/salefanghaoList`, { params: params }); };
 export const createFanghao = params =>{ return axios.get(`${base}/office/createFanghao`, { params: params }); };
+export const getSaleFanghaoChengzu = params =>{ return axios.get(`${base}/office/shengyuechengzu`, { params: params }); };
 
 //工程合同
 export const getDecorationList = params =>{ return axios.get(`${base}/decoration/index`, { params: params }); };

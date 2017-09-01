@@ -210,7 +210,11 @@
         },
         methods: {
             fangjia(row, column){
-                return  row.fanghao+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
+                if(row.subleaseno == null){
+                    return  row.fanghao;
+                }else{
+                    return  row.fanghao+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
+                }
             },
             handleUplod(index,row){
                 this.$router.push('saleContract/upload?id='+row.id)

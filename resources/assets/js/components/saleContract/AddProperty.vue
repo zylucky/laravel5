@@ -73,7 +73,7 @@
                                 </el-col>
                                 <el-col :span="5">
                                     <el-form-item prop="subleaseno">
-                                        <el-input placeholder="子房间号" v-model="property.subleaseno"></el-input>
+                                        <el-input placeholder="子房间号" v-model="property.xsOffice[index].subleaseno"></el-input>
                                     </el-form-item>
                                 </el-col>
                             </el-row>
@@ -101,9 +101,9 @@
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item label="承租面积" required prop="qianyuemianji">
-                                        <el-input v-model.number="property.xsOffice[index].qianyuemianji"></el-input>
+                                        <el-input v-model.number="property.xsOffice[index].qianyuemianji" @blur="shangyue(scope.$index, scope.row)"></el-input>
                                     </el-form-item>
-                                    <span style="border:0px solid red;font-size:12px;position:relative;left:180px;top:-23px;color:#ff4949;">剩余承租面积&nbsp;&nbsp; 100 &nbsp;㎡</span>
+                                    <span style="border:0px solid red;font-size:12px;position:relative;left:180px;top:-23px;color:#ff4949;">剩余承租面积&nbsp;&nbsp; <i v-text="syczmj"></i> &nbsp;㎡</span>
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item required label="房屋类型" prop="leixing">
@@ -135,7 +135,7 @@
     </el-row>
 </template>
 <script>
-    import {getLoupanList,getLoudongList,getSaleFanghaoList} from '../../api/api';
+    import {getLoupanList,getLoudongList,getSaleFanghaoList,getSaleFanghaoChengzu} from '../../api/api';
     export default {
         components:{
 
@@ -143,6 +143,7 @@
         props:['property'],
         data() {
             return {
+                syczmj:0,
                 purchaseContract:{
                     type:0,
                 },
@@ -238,6 +239,45 @@
                     })
                 }
             },
+            shangyue(index,row){
+                let para = {
+                    fanghao:row.fanghao,
+                    qianyuemianji:row.qianyuemianji,
+                }
+                getSaleFanghaoChengzu(para).then((res) => {
+                    this.houseData = res.data;
+                    let arr = [];
+                    arr[0] = '';
+                    for ( var i in res.data ){
+                        arr[res.data[i].id]=res.data[i].fybh;
+                    }
+                    this.house = arr;
+                    this.fanghaoloading = false;
+                    this.list3 = this.house.map((item,index) => {
+                        return { value: index, label: item };
+                    });
+                    if (query !== '') {
+                        this.fanghaoloading = true;
+                        setTimeout(() => {
+                            this.fanghaoloading = false;
+                            this.options3 = this.list3.filter(item => {
+                                return item.label.toLowerCase()
+                                        .indexOf(query.toLowerCase()) > -1;
+                            });
+                        }, 200);
+                    } else {
+                        this.options3 = [];
+                    }
+                });
+
+
+
+
+
+
+
+
+            },
             //获取楼盘
             remoteMethod1(query) {
                 let para = {
@@ -314,6 +354,9 @@
                 //console.log(para);
                 getSaleFanghaoList(para).then((res) => {
                     this.houseData = res.data;
+                    console.log(22222);
+                    console.log(para);
+                    console.log(res.data);
                     let arr = [];
                     arr[0] = '';
                     for ( var i in res.data ){
