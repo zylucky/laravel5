@@ -411,7 +411,7 @@
                     if(property=='A'){
                         if(checkString(house_no[index])){
                             this.$message({
-                                message: '第'+index+'位应该是字母',
+                                message: '第'+(index+1)+'位应该是字母',
                                 type: 'error'
                             });
                             flag = false;
@@ -427,7 +427,7 @@
                     } else if(property=='-') {
                         if(house_no[index]!='-'){
                             this.$message({
-                                message: '第'+index+'位应该是-',
+                                message: '第'+(index+1)+'位应该是-',
                                 type: 'error'
                             });
                             flag = false;
@@ -435,7 +435,7 @@
                     }else if(property=='/') {
                         if(house_no[index]!='/'){
                             this.$message({
-                                message: '第'+index+'位应该是/',
+                                message: '第'+(index+1)+'位应该是/',
                                 type: 'error'
                             });
                             flag = false;
