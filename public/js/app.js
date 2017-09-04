@@ -38147,6 +38147,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.id = res.data.data.id;
             this.zhuangtai = res.data.data.zhuangtai;
+            if (this.zhuangtai == 4) {
+                this.$notify({
+                    title: '提示',
+                    message: '审核拒绝：' + res.data.data.shenheJiluList[res.data.data.shenheJiluList.length - 1].content,
+                    duration: 0,
+                    type: 'warning'
+                });
+            }
             this.bianhao = res.data.data.bianhao;
             this.contractVersion = res.data.data.version;
             this.property.officeList = res.data.data.officeList;
@@ -42636,7 +42644,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
 //
 //
 //
@@ -128117,8 +128124,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "on-preview": _vm.handlePictureCardPreview,
       "on-remove": _vm.handleRemove,
       "on-success": _vm.handleSuccess,
-      "file-list": _vm.hetongList,
-      "before-upload": _vm.beforeAvatarUpload
+      "file-list": _vm.hetongList
     }
   }, [_c('i', {
     staticClass: "el-icon-plus"

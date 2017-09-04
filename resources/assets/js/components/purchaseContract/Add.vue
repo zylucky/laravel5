@@ -369,6 +369,14 @@
             fuzhi(res){
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
+                if(this.zhuangtai==4){
+                    this.$notify({
+                        title: '提示',
+                        message: '审核拒绝：'+res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content,
+                        duration: 0,
+                        type: 'warning',
+                    });
+                }
                 this.bianhao = res.data.data.bianhao;
                 this.contractVersion = res.data.data.version;
                 this.property.officeList = res.data.data.officeList;
@@ -463,6 +471,7 @@
             //根据url得到的合同ID，来获取数据
             if(this.$route.query.id!=null){
                 this.getPurchaseContract(this.$route.query);
+
             }
             //审核页面input禁用
             if(this.$route.path=='/purchaseContract/review'){
