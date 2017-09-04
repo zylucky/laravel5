@@ -39591,7 +39591,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_38" /* getLoudongRules */])(para).then(function (res) {
                 _this6.$notify({
                     title: '提示',
-                    message: '创建房间号的规则为' + res.data.data.gzys,
+                    message: '创建房间号的规则为' + res.data.data.gzys + '(0代表数字，A代表字母)',
                     duration: 0
                 });
                 _this6.gzys = res.data.data.gzys;
@@ -39697,6 +39697,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         this.property.officeList[this.property.tabIndex - 1].qianyuemianji = this.houseData[x].fjmj;
                     }
                 }
+            } else {
+                this.property.officeList[this.property.tabIndex - 1].fanghao = null;
             }
         },
         addTab: function addTab(targetName, action) {

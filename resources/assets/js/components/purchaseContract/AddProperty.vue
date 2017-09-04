@@ -364,7 +364,7 @@
                 getLoudongRules(para).then((res)=>{
                     this.$notify({
                         title: '提示',
-                        message: '创建房间号的规则为'+res.data.data.gzys,
+                        message: '创建房间号的规则为'+res.data.data.gzys+'(0代表数字，A代表字母)',
                         duration: 0
                     });
                     this.gzys = res.data.data.gzys;
@@ -465,10 +465,9 @@
                             this.property.officeList[this.property.tabIndex-1].qianyuemianji=this.houseData[x].fjmj;
                         }
                     }
+                }else{
+                    this.property.officeList[this.property.tabIndex-1].fanghao=null;
                 }
-
-
-
             },
             addTab(targetName, action) {
                 if(action === 'add'){
