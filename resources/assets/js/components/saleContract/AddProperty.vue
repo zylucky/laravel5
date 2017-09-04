@@ -1,9 +1,9 @@
 <template>
 
     <el-row class="container">
-            <el-tabs v-model="editableTabsValue2" type="card" :editable="flag" addable @edit="addTab" @tab-remove="removeTab">
+            <el-tabs v-model="editableTabsValue2" type="card" :editable="editflag" addable @edit="addTab" @tab-remove="removeTab">
                 <el-tab-pane
-                        v-for="(item, index) in editableTabs2"
+                        v-for="(item, index) in property.editableTabs2"
                         :key="item.name"
                         :label="item.title"
                         :name="item.name"
@@ -148,6 +148,7 @@
                     type:0,
                 },
                 flag:false,
+                editflag:false,
                 editVisible:true,
                 //楼盘数据
                 options1:[],
@@ -426,9 +427,9 @@
             },
             addTab(targetName,action) {
                 if(action === "add"){
-                let newTabName = ++this.tabIndex + '';
-                this.editableTabs2.push({
-                    title: '房间'+this.tabIndex,//房间号加上次数（一直会加1，以此类推）
+                let newTabName = ++this.property.tabIndex + '';
+                this.property.editableTabs2.push({
+                    title: '房间'+this.property.tabIndex,//房间号加上次数（一直会加1，以此类推）
                     name: newTabName,
                     content: 'New Tab content'
                 });
@@ -444,19 +445,19 @@
                     jianzhumianji: '',
                     qianyuemianji: '',
                     leixing: 0,
-                    //quyu:'',
+                    quyu:'',
                     isdiya:0,
                     diyaren:'',
                 });
                 this.editableTabsValue2 = newTabName;
-                if(this.editableTabs2.length > 1){
-                    this.flag = true;
+                if(this.property.editableTabs2.length > 1){
+                    this.editflag = true;
                 }
                 }
             },
             removeTab(targetName) {
                 this.property.xsOffice.pop();//删除
-                let tabs = this.editableTabs2;
+                let tabs = this.property.editableTabs2;
                 /*
                 let activeName = this.editableTabsValue2;
                 if (activeName === targetName) {
@@ -470,18 +471,22 @@
                     });
                 }
                 */
+                let propertys = this.property.xsOffice ;
+                propertys.forEach((property,index)=>{
+
+                })
                 tabs = tabs.filter(tab => tab.name !== targetName);
-                this.editableTabs2 = tabs.map((tab, idx)=>{
+                this.property.editableTabs2 = tabs.map((tab, idx)=>{
                     tab.name = (idx + 1) + ''; 
                     tab.title = '房间'+ (idx + 1);
                     return tab;
                 });
-                --this.tabIndex;
-                if(parseInt(this.editableTabsValue2) > this.tabIndex - 1){
-                    this.editableTabsValue2 = this.editableTabs2[this.tabIndex-1].name;
+                --this.property.tabIndex;
+                if(parseInt(this.editableTabsValue2) > this.property.tabIndex - 1){
+                    this.editableTabsValue2 = this.property.editableTabs2[this.property.tabIndex-1].name;
                 }
 
-                if(this.editableTabs2.length < 2){
+                if(this.property.editableTabs2.length < 2){
                     this.flag = false;
                 }
             }
@@ -494,6 +499,13 @@
             if(this.$route.path=='/saleContract/see'){
                 this.editVisible   =false;
             }
+            var _this =this;
+            function hello() {
+                if(_this.property.editableTabs2.length > 1){
+                    _this.editflag = true;
+                }
+            }
+            setTimeout(hello,500);
         }
 
     }

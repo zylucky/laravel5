@@ -78,6 +78,14 @@
                 bianhao:'',
                 zhuangtai:'',
                 property:{
+                    editableTabs2:[
+                        {
+                            title: '房间1',
+                            name: '1',
+                            content: 'New Tab content'
+                        }
+                    ],
+                    tabIndex:1,
                     syczmj:'',
                     subleaseno:null,
                     flag:null,
