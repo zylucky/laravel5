@@ -294,17 +294,13 @@
                 //审核
                 this.shenhe = {
                     hetongid:this.id,
-                    content:this.content,
                     result:result,
                 };
             },
             review2(){
-                reviewPurchaseContract(this.shenhe).then((res) => {
+                let para = Object.assign({},{content:this.content},this.shenhe);
+                reviewPurchaseContract(para).then((res) => {
                     if(res.data.code == 200)　{
-//                        this.$message({
-//                            message: '保存成功',
-//                            type: 'success'
-//                        });
                         history.go(-1);
                         this.dialogFormVisible = false;
                     }else{

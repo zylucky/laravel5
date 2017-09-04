@@ -38060,19 +38060,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //审核
             this.shenhe = {
                 hetongid: this.id,
-                content: this.content,
                 result: result
             };
         },
         review2: function review2() {
             var _this4 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_35" /* reviewPurchaseContract */])(this.shenhe).then(function (res) {
+            var para = Object.assign({}, { content: this.content }, this.shenhe);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_35" /* reviewPurchaseContract */])(para).then(function (res) {
                 if (res.data.code == 200) {
-                    //                        this.$message({
-                    //                            message: '保存成功',
-                    //                            type: 'success'
-                    //                        });
                     history.go(-1);
                     _this4.dialogFormVisible = false;
                 } else {
@@ -41917,8 +41913,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_47" /* dumpingPurchaseContract */])(para).then(function (res) {
                     if (res.data.code == "200") {
                         _this7.purchaseContractList();
-                        window.open('/#/purchaseContract/dump' + version + '?id=' + row.id + '&isdump=1');
-                        window.open('/#/purchaseContract/dump' + version + 'pub?id=' + row.id + '&isdump=1');
+                        window.open('/#/purchaseContract/dump' + 's' + version + '?id=' + row.id + '&isdump=1');
+                        window.open('/#/purchaseContract/dump' + 's' + version + 'pub?id=' + row.id + '&isdump=1');
                     }
                 });
             });

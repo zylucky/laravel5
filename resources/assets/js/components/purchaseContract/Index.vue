@@ -438,8 +438,8 @@
                     dumpingPurchaseContract(para).then((res)=>{
                         if(res.data.code=="200"){
                             this.purchaseContractList();
-                            window.open('/#/purchaseContract/dump'+version+'?id='+row.id+'&isdump=1')
-                            window.open('/#/purchaseContract/dump'+version+'pub?id='+row.id+'&isdump=1')
+                            window.open('/#/purchaseContract/dump'+'s'+version+'?id='+row.id+'&isdump=1')
+                            window.open('/#/purchaseContract/dump'+'s'+version+'pub?id='+row.id+'&isdump=1')
                         }
                     });
                 })
