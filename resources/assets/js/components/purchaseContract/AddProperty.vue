@@ -407,37 +407,24 @@
                 var house_no = this.property.officeList[this.property.tabIndex-1].fanghao;
                 var flag = true;
                 this.gzys2 = this.gzys.split('');
+                if(this.gzys2.length!=fanghao.length){
+                    flag =false;
+                }
                 this.gzys2.forEach((property,index)=>{
                     if(property=='A'){
                         if(checkString(house_no[index])){
-                            this.$message({
-                                message: '第'+(index+1)+'位应该是字母',
-                                type: 'error'
-                            });
                             flag = false;
                         }
                     }else if(property=='0') {
                         if(checknumber((house_no[index]))){
-                            this.$message({
-                                message: '第'+(index+1)+'位应该是数字',
-                                type: 'error'
-                            });
                             flag = false;
                         }
                     } else if(property=='-') {
                         if(house_no[index]!='-'){
-                            this.$message({
-                                message: '第'+(index+1)+'位应该是-',
-                                type: 'error'
-                            });
                             flag = false;
                         }
                     }else if(property=='/') {
                         if(house_no[index]!='/'){
-                            this.$message({
-                                message: '第'+(index+1)+'位应该是/',
-                                type: 'error'
-                            });
                             flag = false;
                         }
                     }
@@ -466,6 +453,10 @@
                         }
                     }
                 }else{
+                    this.$message({
+                        message: '房间号不符合规则！',
+                        type: 'error'
+                    });
                     this.property.officeList[this.property.tabIndex-1].fanghao=null;
                 }
             },
