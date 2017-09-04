@@ -194,11 +194,9 @@
                     htid: this.$route.query.id,
                     httid:0,
                 }
-                this.listLoading = true;
                 getZhanghaoPurchaseContractList(para).then((res) => {
                     this.total = res.data.total;
                     this.lists = res.data.data;
-                    console.log(res.data.data[0].laiyuantype);
                     this.listLoading = false;
                 });
             },

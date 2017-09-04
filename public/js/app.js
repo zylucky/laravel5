@@ -37889,6 +37889,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 qudaorenid: null,
                 qudaoren: '',
                 yezhuleixing: 1,
+                yezhuleixing2: 1,
                 //产权人
                 chanquanrenList: [{
                     name: '',
@@ -38170,6 +38171,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.owner.options2[0].value = res.data.data.qudaorenid;
             this.owner.options2[0].label = res.data.data.qudaoren;
             this.owner.yezhuleixing = res.data.data.yezhuleixing;
+            this.owner.yezhuleixing2 = res.data.data.yezhuleixing;
             this.owner.shoukuanren = res.data.data.shoukuanren;
             this.owner.kaihuhang = res.data.data.kaihuhang;
             this.owner.zhanghao = res.data.data.zhanghao;
@@ -39096,7 +39098,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         yezhuleixingChange: function yezhuleixingChange() {
             //只要业主类型发生改变，那么我就将变量初始化
-            if (this.$route.path == '/purchaseContract/add') {
+            if (this.$route.path == '/purchaseContract/add' || this.owner.yezhuleixing != this.owner.yezhuleixing2) {
                 this.owner.chanquanrenList = [{
                     name: '',
                     faren: '',
@@ -43087,11 +43089,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 htid: this.$route.query.id,
                 httid: 0
             };
-            this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["N" /* getZhanghaoPurchaseContractList */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.lists = res.data.data;
-                console.log(res.data.data[0].laiyuantype);
                 _this.listLoading = false;
             });
         },
@@ -114677,6 +114677,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "prop": "zhuangtai",
       "label": "状态",
       "formatter": _vm.formatStatus,
+      "width": "200",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
