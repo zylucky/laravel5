@@ -359,7 +359,7 @@
                 }
                 //get rules of building
                 let para ={
-                    loupanOmcId:this.property.officeList[this.property.tabIndex-1].loupanOmcId,
+                    loudongOmcId:this.property.officeList[this.property.tabIndex-1].loudongOmcId,
                 }
                 getLoudongRules(para).then((res)=>{
                     this.$notify({

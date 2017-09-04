@@ -39586,7 +39586,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             //get rules of building
             var para = {
-                loupanOmcId: this.property.officeList[this.property.tabIndex - 1].loupanOmcId
+                loudongOmcId: this.property.officeList[this.property.tabIndex - 1].loudongOmcId
             };
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_38" /* getLoudongRules */])(para).then(function (res) {
                 _this6.$notify({

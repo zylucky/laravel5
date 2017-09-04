@@ -138,14 +138,6 @@ class officeController extends Controller
         $response1 = $client->request('POST', '/yhcms/web/jcsj/getLpZdgz.do', [
             'json' => $data
         ]);
-        $json = [
-            'success'=>true,
-            'message'=>'',
-            'data'=>[
-                'gzys'=>'0000'
-            ],
-        ];
-        return $json;
         echo $response1->getBody();
 
     }
