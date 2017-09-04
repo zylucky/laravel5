@@ -182,7 +182,11 @@
                     shouqifukuanri:'',//首期租金付款日
                     erqifukuanri:'',//二期付款
                     sanqifukuanri:'',//三期付款
-                    buchongTiaokuanList:'',//补充条款
+                    buchongTiaokuanList:[
+                        {
+                            content:'',
+                        }
+                    ],//补充条款
                     zujinList:[
                         {
                             startdate:'',
@@ -328,7 +332,7 @@
                 let para = {
                     id:_this.id,
                 }
-                window.open('/#/saleContract/dump'+version+'?id='+_this.id)
+                window.open('/#/saleContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
                 console.log(res.data.data);
@@ -380,6 +384,7 @@
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+
                 //console.log(res.data.data);
             },
             disabledInput(){
