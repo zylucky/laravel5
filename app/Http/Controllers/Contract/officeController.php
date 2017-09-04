@@ -126,5 +126,20 @@ class officeController extends Controller
         echo $response1->getBody();
 
     }
+    //获取剩余承租面积的接口
+    public function shengyuechengzu()
+    {
+
+        $data['fanghao'] = Input::get('fanghao');
+        $data['qianyuemianji'] = Input::get('qianyuemianji');
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $response1 = $client->request('POST', '/yhcms/web/zdfyxx/getFyErp.do', [
+            'json' => $data
+        ]);
+        echo $response1->getBody();
+
+    }
 
 }

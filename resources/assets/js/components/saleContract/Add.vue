@@ -78,6 +78,7 @@
                 bianhao:'',
                 zhuangtai:'',
                 property:{
+                    syczmj:'',
                     subleaseno:null,
                     flag:null,
                     xsOffice: [{
@@ -328,8 +329,13 @@
                 this.property.xsOffice = res.data.data.xsOffice;
                 this.property.subleaseno = res.data.data.subleaseno;
                 if(res.data.data.chengzuren.length>0){
+                    //alert(22222);
                     this.renter.chengzuren = res.data.data.chengzuren;
+                    //alert(33333);
                 }
+                /*if(res.data.data.chengzuren.length>0){
+                    this.renter.chengzuren = res.data.data.chengzuren;
+                }*/
                 this.renter.chengzufang = res.data.data.chengzufang;
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.kaihuhang = res.data.data.kaihuhang;

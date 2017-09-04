@@ -191,6 +191,7 @@ Route::group(['prefix' => 'office'], function () {
     Route::get('fanghaoList','Contract\officeController@fanghaoList');
     Route::get('salefanghaoList','Contract\officeController@salefanghaoList');
     Route::get('createFanghao','Contract\officeController@createFanghao');
+    Route::get('shengyuechengzu','Contract\officeController@shengyuechengzu');
 });
 Route::resource('payOrder','Report\payOrderController');
 //hello world1
