@@ -68,7 +68,7 @@
                                     sessionStorage.removeItem('permission');
                                     sessionStorage.setItem('permission', JSON.stringify(res.data));
                                     if(res){
-                                        _this.$router.push({ path: '/message' });
+                                        _this.$router.push({ path: '/purchaseContract' });
                                         //console.log(this.$router.options.routes = routes);
                                         window.location.reload()
                                     }
