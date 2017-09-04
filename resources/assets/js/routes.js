@@ -158,7 +158,7 @@ let routes = [
             { path:'/saleContract/hedan',component:SaleContractHedan,name:'出房合单管理',hidden:true},
 
 
-            { path:'/decoration', component: DecorationList, name: '工程合同'},
+            // { path:'/decoration', component: DecorationList, name: '工程合同'},
             { path:'/contractVersion', component: ContractVersionList, name: '合同版本管理'},
 
         ]

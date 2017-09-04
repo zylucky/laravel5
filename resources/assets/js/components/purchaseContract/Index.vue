@@ -394,12 +394,16 @@
             },
             //二次优化添加协议
             handleOptimize(index,row){
-                let para = {
-                    id:row.id,
-                }
-                youhuaPurchaseContract(para).then((res)=>{
-                });
-                this.$router.push('/purchaseContract/optimize?hetongid='+row.id+'&bianhao='+row.bianhao);
+                this.$confirm('确认优化合同吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    let para = {
+                        id:row.id,
+                    }
+                    youhuaPurchaseContract(para).then((res)=>{
+                    });
+                    this.$router.push('/purchaseContract/optimize?hetongid='+row.id+'&bianhao='+row.bianhao);
+                })
             },
             //修改协议
             editOptimize(index,row){

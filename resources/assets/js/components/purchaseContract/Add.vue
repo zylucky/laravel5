@@ -363,7 +363,7 @@
                 let para = {
                     id:_this.id,
                 }
-                window.open('/#/purchaseContract/dump'+version+'?id='+_this.id)
+                window.open('/#/purchaseContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
                 this.id = res.data.data.id;

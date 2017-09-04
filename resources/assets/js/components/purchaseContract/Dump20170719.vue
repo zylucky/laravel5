@@ -538,6 +538,8 @@
             if(this.$route.query.isdump==1){
                 this.historyOptimize = false;
                 setTimeout(hello,1000);
+            }else if(this.$route.query.isdump==2) {
+                this.historyOptimize = false;
             }else{
                 this.historyOptimize = true;
             }
