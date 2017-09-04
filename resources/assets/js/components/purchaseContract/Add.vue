@@ -368,7 +368,7 @@
                 if(this.zhuangtai==4){
                     this.$notify({
                         title: '提示',
-                        message: '审核拒绝：'+res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content,
+                        message: res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content==null?'审核拒绝：无':'审核拒绝：'+res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content,
                         duration: 0,
                         type: 'warning',
                     });
