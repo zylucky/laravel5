@@ -168,39 +168,39 @@ module.exports = function normalizeComponent (
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_50", function() { return requestLogin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_49", function() { return logout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_106", function() { return getUserListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_107", function() { return removeUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_109", function() { return addUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_108", function() { return editUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_110", function() { return batchRemoveUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_98", function() { return getRoleListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_99", function() { return removeRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_101", function() { return addRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_100", function() { return editRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_102", function() { return batchRemoveRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_105", function() { return getTotalRoleList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_104", function() { return getRoleList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_103", function() { return setRoleList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_90", function() { return getBrokerCompanyListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_51", function() { return requestLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_50", function() { return logout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_107", function() { return getUserListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_108", function() { return removeUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_110", function() { return addUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_109", function() { return editUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_111", function() { return batchRemoveUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_99", function() { return getRoleListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_100", function() { return removeRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_102", function() { return addRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_101", function() { return editRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_103", function() { return batchRemoveRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_106", function() { return getTotalRoleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_105", function() { return getRoleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_104", function() { return setRoleList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_91", function() { return getBrokerCompanyListPage; });
 /* unused harmony export removeBrokerCompany */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_85", function() { return addBrokerCompany; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_84", function() { return editBrokerCompany; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_86", function() { return addBrokerCompany; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_85", function() { return editBrokerCompany; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_7", function() { return getBrokerCompanyUserListPage; });
 /* unused harmony export removeBrokerCompanyUser */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_75", function() { return addBrokerCompanyUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_76", function() { return editBrokerCompanyUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_76", function() { return addBrokerCompanyUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_77", function() { return editBrokerCompanyUser; });
 /* unused harmony export batchRemoveBrokerCompanyUser */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_6", function() { return getbkNameList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_87", function() { return checkbkNameList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_57", function() { return getChuFangCommissionListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_59", function() { return editChuFangCommission; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_88", function() { return checkbkNameList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_58", function() { return getChuFangCommissionListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_60", function() { return editChuFangCommission; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return editPayable; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return addPayable; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_54", function() { return getShouFangCommissionListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_56", function() { return editShouFangCommission; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_48", function() { return selectCommissionPayType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_55", function() { return getShouFangCommissionListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_57", function() { return editShouFangCommission; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_49", function() { return selectCommissionPayType; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return cancelClaim; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getReceivableListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return getReceiveList; });
@@ -219,39 +219,39 @@ module.exports = function normalizeComponent (
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return editDate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return getPayableListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return saveFuKuan; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_55", function() { return finishSK; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_58", function() { return finishFK; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_56", function() { return finishSK; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_59", function() { return finishFK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getPayableInfos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getPayableRecordList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_51", function() { return getMessageListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_52", function() { return AcceptMessage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_53", function() { return RefuseMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_52", function() { return getMessageListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_53", function() { return AcceptMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_54", function() { return RefuseMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return getFinancePayableListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return skeditMoney; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return skeditDate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_97", function() { return getPermissionListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_96", function() { return getPermissionListOfRole; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_98", function() { return getPermissionListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_97", function() { return getPermissionListOfRole; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getPermissionList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_95", function() { return setPermissionList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_96", function() { return setPermissionList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_34", function() { return addPurchaseContractInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_35", function() { return reviewPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_39", function() { return getPurchaseContractList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_40", function() { return getPurchaseContractList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return getPurchaseContractInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_33", function() { return submitPurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_36", function() { return getPurchaseContractTiaoKuan; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_37", function() { return editPurchaseContractTiaoKuan; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_47", function() { return confirmPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_48", function() { return confirmPurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Z", function() { return optimizePurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Y", function() { return getOptimizePurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_41", function() { return approvingPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_46", function() { return dumpingPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_42", function() { return weiyuePurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_44", function() { return endPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_45", function() { return youhuaPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_42", function() { return approvingPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_47", function() { return dumpingPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_43", function() { return weiyuePurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_45", function() { return endPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_46", function() { return youhuaPurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_31", function() { return youhuaPurchaseContractList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_32", function() { return youhuacgPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_38", function() { return weiYueInfoPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_43", function() { return weiYueSavePurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_39", function() { return weiYueInfoPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_44", function() { return weiYueSavePurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_29", function() { return copyImageList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_28", function() { return copyImageDelete; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_27", function() { return isCopyComplete; });
@@ -264,7 +264,7 @@ module.exports = function normalizeComponent (
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_24", function() { return hedanSavePurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_26", function() { return removeHedanPurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_25", function() { return hedanUpdataPurchaseContract; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_40", function() { return yongyouUpdataPurchaseContract; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_41", function() { return yongyouUpdataPurchaseContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_3", function() { return addSaleContractInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_4", function() { return reviewSaleContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_12", function() { return getSaleContractList; });
@@ -303,40 +303,41 @@ module.exports = function normalizeComponent (
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_13", function() { return yongyouUpdataSaleContract; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return getLoupanList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return getLoudongList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_38", function() { return getLoudongRules; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return getFanghaoList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_10", function() { return getSaleFanghaoList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return createFanghao; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_9", function() { return getSaleFanghaoChengzu; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_91", function() { return getDecorationList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_92", function() { return getDecorationList; });
 /* unused harmony export getDecorationDetail */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_92", function() { return submitDecoration; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_93", function() { return storeDecoration; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_94", function() { return statusDecoration; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_71", function() { return getBrokerCompanyUserHistoryListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_72", function() { return getBrokerCompanyHistoryListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_86", function() { return addBrokerCompanyHistory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_78", function() { return getGSSXDicList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_79", function() { return getFWDXDicList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_64", function() { return getYWQYDicList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_80", function() { return getXZQYDicList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_81", function() { return getJDDicList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_89", function() { return changeBrokerCompanyStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_88", function() { return changeBrokerCompanyUserStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_70", function() { return getBrokerUserListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_67", function() { return addBrokerUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_66", function() { return editBrokerUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_60", function() { return getBrokerUserHistoryListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_68", function() { return addBrokerUserHistory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_69", function() { return changeBrokerUserStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_82", function() { return getXYDJDicList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_63", function() { return getYSLXRDicList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_83", function() { return getBrokerCompanyInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_62", function() { return getQDDJDicList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_77", function() { return addBrokerCompanyUserHistory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_74", function() { return getBrokerCompanyUserInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_65", function() { return getBrokerUserInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_61", function() { return checkPhone; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_73", function() { return checkName; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_93", function() { return submitDecoration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_94", function() { return storeDecoration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_95", function() { return statusDecoration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_72", function() { return getBrokerCompanyUserHistoryListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_73", function() { return getBrokerCompanyHistoryListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_87", function() { return addBrokerCompanyHistory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_79", function() { return getGSSXDicList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_80", function() { return getFWDXDicList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_65", function() { return getYWQYDicList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_81", function() { return getXZQYDicList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_82", function() { return getJDDicList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_90", function() { return changeBrokerCompanyStatus; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_89", function() { return changeBrokerCompanyUserStatus; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_71", function() { return getBrokerUserListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_68", function() { return addBrokerUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_67", function() { return editBrokerUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_61", function() { return getBrokerUserHistoryListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_69", function() { return addBrokerUserHistory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_70", function() { return changeBrokerUserStatus; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_83", function() { return getXYDJDicList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_64", function() { return getYSLXRDicList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_84", function() { return getBrokerCompanyInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_63", function() { return getQDDJDicList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_78", function() { return addBrokerCompanyUserHistory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_75", function() { return getBrokerCompanyUserInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_66", function() { return getBrokerUserInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_62", function() { return checkPhone; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_74", function() { return checkName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "F", function() { return getContractVersionList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return changeContractVersionStatus; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getPayOrder; });
@@ -765,12 +766,15 @@ var yongyouUpdataSaleContract = function yongyouUpdataSaleContract(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/saleContract/saveyongyou', { params: params });
 }; //用友编号的保存
 
-//获取楼盘，楼栋，房间号
+//获取楼盘，楼栋，房间号,rules
 var getLoupanList = function getLoupanList(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/office/loupanList', { params: params });
 };
 var getLoudongList = function getLoudongList(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/office/loudongList', { params: params });
+};
+var getLoudongRules = function getLoudongRules(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/office/loudongRules', { params: params });
 };
 var getFanghaoList = function getFanghaoList(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/office/fanghaoList', { params: params });
@@ -28840,7 +28844,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_57" /* getChuFangCommissionListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_58" /* getChuFangCommissionListPage */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.ChuFang = res.data.data;
                 _this.listLoading = false;
@@ -28876,7 +28880,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     tQdApplyId: row.tQdApplyId
                     //console.log(para);
-                };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_58" /* finishFK */])(para).then(function (res) {
+                };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_59" /* finishFK */])(para).then(function (res) {
                     _this2.editLoading = false;
                     _this2.$message({
                         message: '提交成功',
@@ -28898,7 +28902,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         _this3.rokeBackLoading = true;
                         var para = Object.assign({}, _this3.rokeBackForm);
                         // para.tQdApplyId = this.editForm.tQdApplyId;
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_59" /* editChuFangCommission */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_60" /* editChuFangCommission */])(para).then(function (res) {
                             _this3.rokeBackLoading = false;
                             //NProgress.done();
                             _this3.$message({
@@ -29317,7 +29321,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_54" /* getShouFangCommissionListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_55" /* getShouFangCommissionListPage */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.ShouFang = res.data.data;
                 _this.listLoading = false;
@@ -29333,7 +29337,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     tQdApplyId: row.tQdApplyId
                     //console.log(para);
-                };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_55" /* finishSK */])(para).then(function (res) {
+                };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_56" /* finishSK */])(para).then(function (res) {
                     _this2.editLoading = false;
                     _this2.$message({
                         message: '提交成功',
@@ -29355,7 +29359,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         _this3.rokeBackLoading = true;
                         var para = Object.assign({}, _this3.rokeBackForm);
                         // para.tQdApplyId = this.editForm.tQdApplyId;
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_56" /* editShouFangCommission */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_57" /* editShouFangCommission */])(para).then(function (res) {
                             _this3.rokeBackLoading = false;
                             //NProgress.done();
                             _this3.$message({
@@ -29550,7 +29554,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         };
                         var para = Object.assign({}, _this.sureForm, hetongId);
 
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_48" /* selectCommissionPayType */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_49" /* selectCommissionPayType */])(para).then(function (res) {
                             _this.sureLoading = false;
                             //alert(JSON.stringify(res));
                             if (res.data.code == '200') {
@@ -29635,7 +29639,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (valid) {
                     _this2.logining = true;
                     var loginParams = { email: _this2.ruleForm2.account, password: _this2.ruleForm2.checkPass };
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_50" /* requestLogin */])(loginParams).then(function (data) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_51" /* requestLogin */])(loginParams).then(function (data) {
 
                         _this2.logining = false;
                         //NProgress.done();
@@ -29794,7 +29798,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //type: 'warning'
             }).then(function () {
                 sessionStorage.removeItem('user');
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_49" /* logout */])().then();
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_50" /* logout */])().then();
                 _this.$router.push('/login');
             }).catch(function () {});
         },
@@ -30416,7 +30420,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remoteMethodgssx: function remoteMethodgssx() {
             var _this = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_78" /* getGSSXDicList */])().then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_79" /* getGSSXDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this.optionsgssx.push({
@@ -30472,7 +30476,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remoteMethodfwdx: function remoteMethodfwdx() {
             var _this2 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_79" /* getFWDXDicList */])().then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_80" /* getFWDXDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this2.optionsfwdx.push({
@@ -30497,7 +30501,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 parentid: 0
             };
             this.optionsywqy = [];
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYWQYDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_65" /* getYWQYDicList */])(para).then(function (res) {
 
                 if (res.status == '200') {
                     for (var item in res.data.data) {
@@ -30521,7 +30525,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 code: 110000
             };
             this.optionszzqy = [];
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_80" /* getXZQYDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_81" /* getXZQYDicList */])(para).then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this4.optionszzqy.push({
@@ -30553,7 +30557,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.ischanged) {
                 this.optionsdtqy = [];
                 this.brokerCompanyFrom.yewupianqvid = null; //清除地图区域的缓存
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYWQYDicList */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_65" /* getYWQYDicList */])(para).then(function (res) {
                     if (res.status == '200') {
                         for (var item in res.data.data) {
                             _this5.optionsdtqy.push({
@@ -30581,7 +30585,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.ischanged) {
                 this.brokerCompanyFrom.dzJiedaoId = null; //清除街道的缓存
                 this.optionsjdqy = [];
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_81" /* getJDDicList */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_82" /* getJDDicList */])(para).then(function (res) {
                     if (res.status == '200') {
 
                         for (var item in res.data.data) {
@@ -30606,7 +30610,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this7 = this;
 
             this.optionsxydj = [];
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_82" /* getXYDJDicList */])().then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_83" /* getXYDJDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this7.optionsxydj.push({
@@ -30647,7 +30651,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.list = [];
             this.fristyslxrloading1 = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getYSLXRDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYSLXRDicList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -30682,7 +30686,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.list = [];
             this.fristyslxrloading2 = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getYSLXRDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYSLXRDicList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -30717,7 +30721,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.list = [];
             this.fristyslxrloading3 = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getYSLXRDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYSLXRDicList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -30747,7 +30751,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getBrokerCompany: function getBrokerCompany(id) {
             var _this11 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_83" /* getBrokerCompanyInfo */])(id).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_84" /* getBrokerCompanyInfo */])(id).then(function (res) {
                 if (res.data.code == '200') {
                     _this11.optionsyslxr1.push({
                         value: res.data.data.yslianxiren1Id,
@@ -30828,7 +30832,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             _this12.getZZQY();
                             var para = Object.assign({}, _this12.brokerCompanyFrom);
                             if (_this12.brokerCompanyFrom.tQdCompayId != '' && _this12.brokerCompanyFrom.tQdCompayId != null) {
-                                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_84" /* editBrokerCompany */])(para).then(function (res) {
+                                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_85" /* editBrokerCompany */])(para).then(function (res) {
                                     _this12.brokerCompanyFrom.gongsijingyingshuxing = _this12.brokerCompanyFrom.gongsijingyingshuxing == null ? [] : _this12.brokerCompanyFrom.gongsijingyingshuxing.split(',');
                                     _this12.brokerCompanyFrom.fuwuduixiang = _this12.brokerCompanyFrom.fuwuduixiang == null ? [] : _this12.brokerCompanyFrom.fuwuduixiang.split(',');
                                     _this12.brokerCompanyFrom.zhuzuoqvyv = _this12.brokerCompanyFrom.zhuzuoqvyv == null ? [] : _this12.brokerCompanyFrom.zhuzuoqvyv.split(',');
@@ -30845,7 +30849,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     };
                                 });
                             } else {
-                                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_85" /* addBrokerCompany */])(para).then(function (res) {
+                                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_86" /* addBrokerCompany */])(para).then(function (res) {
                                     if (res.data.code == 200) {
                                         _this12.$message({
                                             message: '提交成功',
@@ -30875,7 +30879,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this13.$confirm('确认提交吗？', '提示', {}).then(function () {
                         var para = Object.assign({}, _this13.editForm);
                         para.tQdCompayId = _this13.$route.query.id;
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_86" /* addBrokerCompanyHistory */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_87" /* addBrokerCompanyHistory */])(para).then(function (res) {
 
                             if (res.data.code == 200) {
                                 _this13.$message({
@@ -30944,7 +30948,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         callback();
                     } else {
                         if (value != '') {
-                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_87" /* checkbkNameList */])(para).then(function (res) {
+                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_88" /* checkbkNameList */])(para).then(function (res) {
                                 //alert( JSON.stringify(res));
                                 if (res.data.code != '200') {
                                     callback(new Error(res.data.msg));
@@ -31396,7 +31400,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: telid,
                     phone: value
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_61" /* checkPhone */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_62" /* checkPhone */])(para).then(function (res) {
                     if (res.data.code != '200') {
                         callback(res.data.msg);
                     } else {
@@ -31449,7 +31453,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remoteMethodqddj: function remoteMethodqddj() {
             var _this = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_62" /* getQDDJDicList */])().then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getQDDJDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this.optionsqddj.push({
@@ -31479,7 +31483,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     phone: value
                 };
                 if (value != '') {
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_61" /* checkPhone */])(para).then(function (res) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_62" /* checkPhone */])(para).then(function (res) {
                         if (res.data.code != '200') {
                             callback(res.data.msg);
                         } else {
@@ -31525,7 +31529,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.list = [];
             this.fristyslxrloading1 = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getYSLXRDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYSLXRDicList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -31560,7 +31564,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.list = [];
             this.fristyslxrloading2 = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getYSLXRDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYSLXRDicList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -31595,7 +31599,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.list = [];
             this.fristyslxrloading3 = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getYSLXRDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYSLXRDicList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -31629,7 +31633,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 parentid: 0
             };
             this.optionsywqy = [];
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYWQYDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_65" /* getYWQYDicList */])(para).then(function (res) {
 
                 if (res.status == '200') {
                     for (var item in res.data.data) {
@@ -31660,7 +31664,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.ischanged) {
                 this.optionsdtqy = [];
                 this.brokerCompanyUserForm.yewupianqvId = null; //清除地图区域的缓存
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYWQYDicList */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_65" /* getYWQYDicList */])(para).then(function (res) {
                     if (res.status == '200') {
                         for (var item in res.data.data) {
                             _this6.optionsdtqy.push({ value: res.data.data[item].id, label: res.data.data[item].fdName });
@@ -31679,7 +31683,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getBrokerUser: function getBrokerUser(id) {
             var _this7 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_65" /* getBrokerUserInfo */])(id).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_66" /* getBrokerUserInfo */])(id).then(function (res) {
                 if (res.data.code == '200') {
                     _this7.optionsyslxr1.push({ value: res.data.data.yslianxiren1Id,
                         label: res.data.data.yslianxiren1 });
@@ -31729,7 +31733,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                         if (_this8.brokerCompanyUserForm.tQdZyPersonId != '' && _this8.brokerCompanyUserForm.tQdZyPersonId != null) {
 
-                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_66" /* editBrokerUser */])(para).then(function (res) {
+                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_67" /* editBrokerUser */])(para).then(function (res) {
                                 if (res.data.code == 200) {
                                     _this8.$message({
                                         message: '提交成功',
@@ -31743,7 +31747,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 };
                             });
                         } else {
-                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_67" /* addBrokerUser */])(para).then(function (res) {
+                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_68" /* addBrokerUser */])(para).then(function (res) {
                                 if (res.data.code == 200) {
                                     _this8.$message({
                                         message: '提交成功',
@@ -31770,7 +31774,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this9.$confirm('确认提交吗？', '提示', {}).then(function () {
                         var para = Object.assign({}, _this9.editForm);
                         para.tQdZyPersonId = _this9.$route.query.id;
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_68" /* addBrokerUserHistory */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_69" /* addBrokerUserHistory */])(para).then(function (res) {
 
                             if (res.data.code == 200) {
                                 _this9.$message({
@@ -32229,7 +32233,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: telid,
                     phone: value
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_61" /* checkPhone */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_62" /* checkPhone */])(para).then(function (res) {
                     if (res.data.code != '200') {
                         callback(res.data.msg);
                     } else {
@@ -32266,7 +32270,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remoteMethodqddj: function remoteMethodqddj() {
             var _this = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_62" /* getQDDJDicList */])().then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getQDDJDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this.optionsqddj.push({
@@ -32298,7 +32302,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: this.brokerCompanyUserForm.tQdCompayId
             };
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_73" /* checkName */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_74" /* checkName */])(para).then(function (res) {
                 if (res.data.total > 0) {
                     _this2.ischeckname = res.data.msg;
                     console.log(_this2.ischeckname);
@@ -32332,7 +32336,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.list = [];
             this.fristyslxrloading1 = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getYSLXRDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYSLXRDicList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -32367,7 +32371,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.list = [];
             this.fristyslxrloading2 = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getYSLXRDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYSLXRDicList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -32402,7 +32406,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.list = [];
             this.fristyslxrloading3 = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getYSLXRDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYSLXRDicList */])(para).then(function (res) {
                 var arr = [];
                 arr[0] = '';
                 for (var i in res.data) {
@@ -32465,7 +32469,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getBrokerCompanyUser: function getBrokerCompanyUser(id) {
             var _this7 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_74" /* getBrokerCompanyUserInfo */])(id).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_75" /* getBrokerCompanyUserInfo */])(id).then(function (res) {
                 if (res.data.code == '200') {
                     _this7.options1.push({
                         value: res.data.data.qvDaoCompayXinxi.tQdCompayId,
@@ -32536,7 +32540,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             name: _this8.brokerCompanyUserForm.qdPername,
                             id: _this8.brokerCompanyUserForm.tQdCompayId
                         };
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_73" /* checkName */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_74" /* checkName */])(para).then(function (res) {
                             if (res.data.total > 0) {
                                 _this8.ischeckname = res.data.msg;
                             }
@@ -32545,7 +32549,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 para.gsChenglishijian = !para.gsChenglishijian || para.gsChenglishijian == '' ? '' : new Date(para.gsChenglishijian).toLocaleDateString();
                                 para.qianxieyishijian = !para.qianxieyishijian || para.qianxieyishijian == '' ? '' : new Date(para.qianxieyishijian).toLocaleDateString();
                                 para.tQdCompayId = para.qvDaoCompayXinxi.tQdCompayId;
-                                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_75" /* addBrokerCompanyUser */])(para).then(function (res) {
+                                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_76" /* addBrokerCompanyUser */])(para).then(function (res) {
                                     if (res.data.code == 200) {
                                         _this8.$message({
                                             message: '提交成功',
@@ -32568,7 +32572,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             para.gsChenglishijian = !para.gsChenglishijian || para.gsChenglishijian == '' ? '' : new Date(para.gsChenglishijian).toLocaleDateString();
                             para.qianxieyishijian = !para.qianxieyishijian || para.qianxieyishijian == '' ? '' : new Date(para.qianxieyishijian).toLocaleDateString();
                             para.tQdCompayId = para.qvDaoCompayXinxi.tQdCompayId;
-                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_76" /* editBrokerCompanyUser */])(para).then(function (res) {
+                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_77" /* editBrokerCompanyUser */])(para).then(function (res) {
                                 if (res.data.code == 200) {
                                     _this8.$message({
                                         message: '提交成功',
@@ -32599,7 +32603,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this9.$confirm('确认提交吗？', '提示', {}).then(function () {
                         var para = Object.assign({}, _this9.editForm);
                         para.tQdPersonId = _this9.$route.query.id;
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_77" /* addBrokerCompanyUserHistory */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_78" /* addBrokerCompanyUserHistory */])(para).then(function (res) {
 
                             if (res.data.code == 200) {
                                 _this9.$message({
@@ -32786,7 +32790,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 personid: this.$route.query.id
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_60" /* getBrokerUserHistoryListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_61" /* getBrokerUserHistoryListPage */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.brokerCompanyUserHistroy = res.data.data;
                 _this.listLoading = false;
@@ -32994,7 +32998,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 status: row.zhuangtai == 0 ? 0 : 1
             };
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_69" /* changeBrokerUserStatus */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_70" /* changeBrokerUserStatus */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     _this.$message({
                         message: row.zhuangtai == 0 ? '停用成功' : '启用成功',
@@ -33037,7 +33041,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 qvdaodengji: this.filters.qvdaodengji
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_70" /* getBrokerUserListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_71" /* getBrokerUserListPage */])(para).then(function (res) {
                 _this2.total = res.data.total;
                 _this2.brokerUser = res.data.data;
                 _this2.listLoading = false;
@@ -33052,7 +33056,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 parentid: 0
             };
             //this.optionsywqy = [];
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYWQYDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_65" /* getYWQYDicList */])(para).then(function (res) {
 
                 if (res.status == '200') {
                     for (var item in res.data.data) {
@@ -33077,7 +33081,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.optionsdtqy = [];
             this.filters.yewupianqvid = null; //清除地图区域的缓存
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYWQYDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_65" /* getYWQYDicList */])(para).then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this4.optionsdtqy.push({ value: res.data.data[item].id, label: res.data.data[item].fdName });
@@ -33095,7 +33099,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remoteMethodqddj: function remoteMethodqddj() {
             var _this5 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_62" /* getQDDJDicList */])().then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getQDDJDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this5.optionsqddj.push({
@@ -33262,7 +33266,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             console.log(para);
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_72" /* getBrokerCompanyHistoryListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_73" /* getBrokerCompanyHistoryListPage */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.brokerCompanyHistory = res.data.data;
                 _this.listLoading = false;
@@ -33506,7 +33510,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             name: value
                         };
                         if (value != '') {
-                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_87" /* checkbkNameList */])(para).then(function (res) {
+                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_88" /* checkbkNameList */])(para).then(function (res) {
                                 //alert( JSON.stringify(res));
                                 if (res.data.code != '200') {
                                     callback(new Error(res.data.msg));
@@ -33599,7 +33603,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: row.tQdCompayId.toString(),
                 status: row.zhuangtai == 0 ? 0 : 1
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_89" /* changeBrokerCompanyStatus */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_90" /* changeBrokerCompanyStatus */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     _this.$message({
                         message: row.zhuangtai == 0 ? '停用成功' : '启用成功',
@@ -33618,7 +33622,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remoteMethodgssx: function remoteMethodgssx() {
             var _this2 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_78" /* getGSSXDicList */])().then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_79" /* getGSSXDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this2.optionsgssx.push({
@@ -33643,7 +33647,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 parentid: 0
             };
             //this.optionsywqy = [];
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYWQYDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_65" /* getYWQYDicList */])(para).then(function (res) {
 
                 if (res.status == '200') {
                     for (var item in res.data.data) {
@@ -33668,7 +33672,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.optionsdtqy = [];
             this.filters.yewupianqvid = null; //清除地图区域的缓存
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_64" /* getYWQYDicList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_65" /* getYWQYDicList */])(para).then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this4.optionsdtqy.push({ value: res.data.data[item].id, label: res.data.data[item].fdName });
@@ -33688,7 +33692,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             //this.optionsxydj = [];
             this.filters.hezuoxieyidengji = null; //清除街道的缓存
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_82" /* getXYDJDicList */])().then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_83" /* getXYDJDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this5.optionsxydj.push({
@@ -33721,7 +33725,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_90" /* getBrokerCompanyListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_91" /* getBrokerCompanyListPage */])(para).then(function (res) {
                 _this6.total = res.data.total;
                 _this6.brokerCompany = res.data.data;
                 _this6.listLoading = false;
@@ -33897,7 +33901,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 personid: this.$route.query.id
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_71" /* getBrokerCompanyUserHistoryListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_72" /* getBrokerCompanyUserHistoryListPage */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.brokerCompanyUserHistroy = res.data.data;
                 _this.listLoading = false;
@@ -34202,7 +34206,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remoteMethodqddj: function remoteMethodqddj() {
             var _this2 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_62" /* getQDDJDicList */])().then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_63" /* getQDDJDicList */])().then(function (res) {
                 if (res.status == '200') {
                     for (var item in res.data.data) {
                         _this2.optionsqddj.push({
@@ -34228,7 +34232,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 status: row.zhuangtai == 0 ? 0 : 1
             };
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_88" /* changeBrokerCompanyUserStatus */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_89" /* changeBrokerCompanyUserStatus */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     _this3.$message({
                         message: row.zhuangtai == 0 ? '停用成功' : '启用成功',
@@ -34691,7 +34695,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 status: this.filters.status
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_91" /* getDecorationList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_92" /* getDecorationList */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.decoration = res.data.data;
                 _this.listLoading = false;
@@ -34720,7 +34724,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         _this2.editLoading = true;
                         var para = Object.assign({}, _this2.editForm);
                         para.id = _this2.editForm.id;
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_92" /* submitDecoration */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_93" /* submitDecoration */])(para).then(function (res) {
                             _this2.editLoading = false;
                             _this2.$message({
                                 message: '提交成功',
@@ -34743,7 +34747,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this3.$confirm('确认提交吗？', '提示', {}).then(function () {
                         _this3.addLoading = true;
                         var para = Object.assign({}, _this3.addForm);
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_93" /* storeDecoration */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_94" /* storeDecoration */])(para).then(function (res) {
                             _this3.addLoading = false;
                             _this3.$message({
                                 message: '提交成功',
@@ -34765,7 +34769,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: row.id,
                 status: 1
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_94" /* statusDecoration */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_95" /* statusDecoration */])(para).then(function (res) {
                 if (res.data.code == "200") {
                     _this4.getDecoration();
                     window.open('/#/purchaseContract/dump?id=' + row.id);
@@ -34782,7 +34786,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$confirm('合同状态将更为签约完成?', '提示', {
                 type: 'warning'
             }).then(function () {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_94" /* statusDecoration */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_95" /* statusDecoration */])(para).then(function (res) {
                     if (res.data.code == "200") {
                         _this5.getDecoration();
                     }
@@ -35021,7 +35025,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 bk_name: this.filters.bk_name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_51" /* getMessageListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_52" /* getMessageListPage */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.messageDate = res.data.data;
                 _this.listLoading = false;
@@ -35036,7 +35040,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     id: row.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_52" /* AcceptMessage */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_53" /* AcceptMessage */])(para).then(function (res) {
                     _this2.$message({
                         message: '提交成功',
                         type: 'success'
@@ -35053,7 +35057,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     id: row.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_53" /* RefuseMessage */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_54" /* RefuseMessage */])(para).then(function (res) {
                     _this3.$message({
                         message: '提交成功',
                         type: 'success'
@@ -39385,10 +39389,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {},
     props: ['property'],
     data: function data() {
+        var checkRule = function checkRule(rule, value, callback) {
+            if (!value) {
+                return callback(new Error('年龄不能为空'));
+            }
+        };
         return {
             purchaseContract: {
                 type: 0
             },
+            gzys: '',
             flag: false,
             editflag: false,
             editPropertyRules: {
@@ -39564,6 +39574,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         change2: function change2() {
+            var _this6 = this;
+
             //楼栋
             for (var x in this.options2) {
                 if (this.options2[x].label == this.property.officeList[this.property.tabIndex - 1].loudongName) {
@@ -39572,9 +39584,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.property.officeList[this.property.tabIndex - 1].omcId = null; //清除楼栋和房号的缓存
                 }
             }
+            //get rules of building
+            var para = {
+                loupanOmcId: this.property.officeList[this.property.tabIndex - 1].loupanOmcId
+            };
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_38" /* getLoudongRules */])(para).then(function (res) {
+                _this6.$notify({
+                    title: '提示',
+                    message: '创建房间号的规则为' + res.data.data.gzys,
+                    duration: 0
+                });
+                _this6.gzys = res.data.data.gzys;
+            });
         },
         change3: function change3() {
-            var _this6 = this;
+            var _this7 = this;
 
             //房号
             for (var x in this.options3) {
@@ -39582,25 +39606,96 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.property.officeList[this.property.tabIndex - 1].omcId = this.options3[x].value;
                 }
             }
-            if (this.property.officeList[this.property.tabIndex - 1].omcId == null) {
 
-                var para = {
-                    loupanOmcId: this.property.officeList[this.property.tabIndex - 1].loupanOmcId,
-                    loudongOmcId: this.property.officeList[this.property.tabIndex - 1].loudongOmcId,
-                    fanghao: this.property.officeList[this.property.tabIndex - 1].fanghao
-                };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["o" /* createFanghao */])(para).then(function (res) {
-                    _this6.property.officeList[_this6.property.tabIndex - 1].omcId = res.data.data;
-                    _this6.$message({
-                        message: '楼盘字典中不存在该房源，已自动创建',
-                        type: 'success'
-                    });
-                });
+            //1.第一步把放号分割，判断每一位是否符合规则
+            function checknumber(String) {
+                var Letters = "1234567890";
+                var i;
+                var c;
+                for (i = 0; i < String.length; i++) {
+                    //Letters.length() ->>>>取字符长度
+                    c = String.charAt(i);
+                    if (Letters.indexOf(c) == -1) {
+                        //在"Letters"中找不到"c"   见下面的此函数的返回值
+                        return true;
+                    }
+                }
+                return false;
             }
-            for (var x in this.houseData) {
-                if (this.houseData[x].id == this.property.officeList[this.property.tabIndex - 1].omcId) {
-                    this.property.officeList[this.property.tabIndex - 1].jianzhumianji = this.houseData[x].fjmj;
-                    this.property.officeList[this.property.tabIndex - 1].qianyuemianji = this.houseData[x].fjmj;
+            function checkString(String) {
+                var Letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                var i;
+                var c;
+                for (i = 0; i < String.length; i++) {
+                    //Letters.length() ->>>>取字符长度
+                    c = String.charAt(i);
+                    if (Letters.indexOf(c) == -1) {
+                        //在"Letters"中找不到"c"   见下面的此函数的返回值
+                        return true;
+                    }
+                }
+                return false;
+            }
+            var fanghao = this.property.officeList[this.property.tabIndex - 1].fanghao.split('');
+            var house_no = this.property.officeList[this.property.tabIndex - 1].fanghao;
+            var flag = true;
+            this.gzys2 = this.gzys.split('');
+            this.gzys2.forEach(function (property, index) {
+                if (property == 'A') {
+                    if (checkString(house_no[index])) {
+                        _this7.$message({
+                            message: '第' + index + '位应该是字母',
+                            type: 'error'
+                        });
+                        flag = false;
+                    }
+                } else if (property == '0') {
+                    if (checknumber(house_no[index])) {
+                        _this7.$message({
+                            message: '第' + (index + 1) + '位应该是数字',
+                            type: 'error'
+                        });
+                        flag = false;
+                    }
+                } else if (property == '-') {
+                    if (house_no[index] != '-') {
+                        _this7.$message({
+                            message: '第' + index + '位应该是-',
+                            type: 'error'
+                        });
+                        flag = false;
+                    }
+                } else if (property == '/') {
+                    if (house_no[index] != '/') {
+                        _this7.$message({
+                            message: '第' + index + '位应该是/',
+                            type: 'error'
+                        });
+                        flag = false;
+                    }
+                }
+            });
+            if (flag) {
+                if (this.property.officeList[this.property.tabIndex - 1].omcId == null) {
+
+                    var para = {
+                        loupanOmcId: this.property.officeList[this.property.tabIndex - 1].loupanOmcId,
+                        loudongOmcId: this.property.officeList[this.property.tabIndex - 1].loudongOmcId,
+                        fanghao: this.property.officeList[this.property.tabIndex - 1].fanghao
+                    };
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["o" /* createFanghao */])(para).then(function (res) {
+                        _this7.property.officeList[_this7.property.tabIndex - 1].omcId = res.data.data;
+                        _this7.$message({
+                            message: '楼盘字典中不存在该房源，已自动创建',
+                            type: 'success'
+                        });
+                    });
+                }
+                for (var x in this.houseData) {
+                    if (this.houseData[x].id == this.property.officeList[this.property.tabIndex - 1].omcId) {
+                        this.property.officeList[this.property.tabIndex - 1].jianzhumianji = this.houseData[x].fjmj;
+                        this.property.officeList[this.property.tabIndex - 1].qianyuemianji = this.houseData[x].fjmj;
+                    }
                 }
             }
         },
@@ -41523,6 +41618,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
  //佣金支付方式
 
@@ -41572,6 +41670,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         contractPayType: __WEBPACK_IMPORTED_MODULE_0__Commission_contractPayType_vue___default.a
     },
     methods: {
+        /*Estate(value){
+            console.log(value)
+            var ss = '建外soho,望京soho'.split(",");
+             return ss;
+        },*/
         handleupload: function handleupload(index, row) {
             this.$router.push('purchaseContract/upload?id=' + row.id);
         },
@@ -41585,7 +41688,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 weiYueType: this.weiYue.weiyueleixing,
                 zhongZhiDate: new Date(this.weiYue.zhongzhidate).toLocaleDateString()
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_38" /* weiYueInfoPurchaseContract */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_39" /* weiYueInfoPurchaseContract */])(para).then(function (res) {
                 if (res.data.code != '200') {
                     _this.$message({
                         message: '获取应付信息失败',
@@ -41647,8 +41750,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 zhuangtai: this.filters.status
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_39" /* getPurchaseContractList */])(para).then(function (res) {
-                console.log(res.data);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_40" /* getPurchaseContractList */])(para).then(function (res) {
                 _this2.total = res.data.total;
                 _this2.lists = res.data.data;
                 _this2.listLoading = false;
@@ -41663,7 +41765,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: row.id,
                 yongyouid: row.yongyouid
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_40" /* yongyouUpdataPurchaseContract */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_41" /* yongyouUpdataPurchaseContract */])(para).then(function (res) {
                 if (res.data.code != '200') {
                     _this3.$message({
                         message: '数据没有保存成功',
@@ -41697,7 +41799,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: row.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_41" /* approvingPurchaseContract */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_42" /* approvingPurchaseContract */])(para).then(function (res) {});
             this.$router.push('/purchaseContract/review?id=' + row.id);
         },
 
@@ -41715,7 +41817,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function () {
                 _this4.listLoading = true;
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_42" /* weiyuePurchaseContract */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_43" /* weiyuePurchaseContract */])(para).then(function (res) {
                     _this4.listLoading = false;
                     _this4.weiYue.formVisible = false;
                     //NProgress.done();
@@ -41748,7 +41850,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }).then(function () {
                         var para1 = _this5.weiYue;
                         _this5.weiYue.Visible = false;
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_43" /* weiYueSavePurchaseContract */])(para1).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_44" /* weiYueSavePurchaseContract */])(para1).then(function (res) {
                             if (res.data.code != '200') {
                                 _this5.$message({
                                     message: '数据没有保存成功',
@@ -41758,7 +41860,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         });
                         _this5.listLoading = true;
                         var para = { id: _this5.id };
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_44" /* endPurchaseContract */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_45" /* endPurchaseContract */])(para).then(function (res) {
                             _this5.listLoading = false;
                             //NProgress.done();
                             _this5.$message({
@@ -41782,7 +41884,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     id: row.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_45" /* youhuaPurchaseContract */])(para).then(function (res) {});
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_46" /* youhuaPurchaseContract */])(para).then(function (res) {});
                 _this6.$router.push('/purchaseContract/optimize?hetongid=' + row.id + '&bianhao=' + row.bianhao);
             });
         },
@@ -41792,7 +41894,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: row.id
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_45" /* youhuaPurchaseContract */])(para).then(function (res) {});
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_46" /* youhuaPurchaseContract */])(para).then(function (res) {});
             this.$router.push('/purchaseContract/optimize?hetongid=' + row.id + '&type=1' + '&bianhao=' + row.bianhao);
         },
         handleCheckOptimize: function handleCheckOptimize(index, row) {
@@ -41811,7 +41913,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     id: row.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_46" /* dumpingPurchaseContract */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_47" /* dumpingPurchaseContract */])(para).then(function (res) {
                     if (res.data.code == "200") {
                         _this7.purchaseContractList();
                         window.open('/#/purchaseContract/dump' + version + '?id=' + row.id + '&isdump=1');
@@ -41835,7 +41937,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             var para1 = {
                                 id: row.id
                                 //直接执行签约完成的状态
-                            };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_47" /* confirmPurchaseContract */])(para1).then(function (res) {
+                            };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_48" /* confirmPurchaseContract */])(para1).then(function (res) {
                                 if (res.data.code == '200') {
                                     _this8.$message({
                                         message: '签约完成',
@@ -43246,7 +43348,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             var para = {};
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_97" /* getPermissionListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_98" /* getPermissionListPage */])(para).then(function (res) {
                 _this.data2 = res.data;
             });
         }
@@ -43426,7 +43528,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: _this.roleId,
                     permissions: _this.$refs.tree.getCheckedKeys()
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_95" /* setPermissionList */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_96" /* setPermissionList */])(para).then(function (res) {
                     _this.$message({
                         message: '提交成功',
                         type: 'success'
@@ -43445,11 +43547,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: row.id
 
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_96" /* getPermissionListOfRole */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_97" /* getPermissionListOfRole */])(para).then(function (res) {
                 _this2.checked = res.data;
             });
             var para2 = {};
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_97" /* getPermissionListPage */])(para2).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_98" /* getPermissionListPage */])(para2).then(function (res) {
                 _this2.data2 = res.data;
             });
         },
@@ -43476,7 +43578,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: this.filters.name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_98" /* getRoleListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_99" /* getRoleListPage */])(para).then(function (res) {
                 _this3.total = res.data.total;
                 _this3.Roles = res.data.data;
                 _this3.listLoading = false;
@@ -43493,7 +43595,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this4.listLoading = true;
                 //NProgress.start();
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_99" /* removeRole */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_100" /* removeRole */])(para).then(function (res) {
                     _this4.listLoading = false;
                     //NProgress.done();
                     _this4.$message({
@@ -43526,7 +43628,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this5.$confirm('确认提交吗？', '提示', {}).then(function () {
                         _this5.editLoading = true;
                         var para = Object.assign({}, _this5.editForm);
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_100" /* editRole */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_101" /* editRole */])(para).then(function (res) {
                             _this5.editLoading = false;
                             _this5.$message({
                                 message: '提交成功',
@@ -43551,7 +43653,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         //NProgress.start();
                         var para = Object.assign({}, _this6.addForm);
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_101" /* addRole */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_102" /* addRole */])(para).then(function (res) {
                             _this6.addLoading = false;
                             //NProgress.done();
                             _this6.$message({
@@ -43582,7 +43684,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this7.listLoading = true;
                 //NProgress.start();
                 var para = { ids: ids };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_102" /* batchRemoveRole */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_103" /* batchRemoveRole */])(para).then(function (res) {
                     _this7.listLoading = false;
                     //NProgress.done();
                     _this7.$message({
@@ -43802,7 +43904,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: _this.userId,
                     value: _this.Roles
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_103" /* setRoleList */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_104" /* setRoleList */])(para).then(function (res) {
                     _this.roleLoading = false;
                     _this.$message({
                         message: '保存成功',
@@ -43841,7 +43943,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 id: this.userId
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_104" /* getRoleList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_105" /* getRoleList */])(para).then(function (res) {
                 var arr = [];
                 for (var i in res.data) {
                     arr.push(res.data[i]);
@@ -43858,7 +43960,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: this.filters.name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_105" /* getTotalRoleList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_106" /* getTotalRoleList */])(para).then(function (res) {
                 var arr = [];
                 for (var i in res.data) {
                     arr.push(res.data[i]);
@@ -43897,7 +43999,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: this.filters.name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_106" /* getUserListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_107" /* getUserListPage */])(para).then(function (res) {
                 _this5.total = res.data.total;
                 _this5.users = res.data.data;
                 _this5.listLoading = false;
@@ -43914,7 +44016,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this6.listLoading = true;
                 //NProgress.start();
                 var para = { id: row.id };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_107" /* removeUser */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_108" /* removeUser */])(para).then(function (res) {
                     _this6.listLoading = false;
                     //NProgress.done();
                     _this6.$message({
@@ -43952,7 +44054,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         //NProgress.start();
                         var para = Object.assign({}, _this7.editForm);
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_108" /* editUser */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_109" /* editUser */])(para).then(function (res) {
                             _this7.editLoading = false;
                             //NProgress.done();
                             _this7.$message({
@@ -43978,7 +44080,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         //NProgress.start();
                         var para = Object.assign({}, _this8.addForm);
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_109" /* addUser */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_110" /* addUser */])(para).then(function (res) {
                             _this8.addLoading = false;
                             //NProgress.done();
                             _this8.$message({
@@ -44009,7 +44111,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this9.listLoading = true;
                 //NProgress.start();
                 var para = { ids: ids };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_110" /* batchRemoveUser */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_111" /* batchRemoveUser */])(para).then(function (res) {
                     _this9.listLoading = false;
                     //NProgress.done();
                     _this9.$message({
@@ -108767,7 +108869,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-input', {
     attrs: {
-      "placeholder": "总应付押金"
+      "placeholder": "总应付租金"
     },
     model: {
       value: (_vm.addDate.zongyingfuzujin),
@@ -114658,7 +114760,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "loupanName",
       "label": "楼盘",
-      "sortable": ""
+      "sortable": "",
+      "width": "200"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -115174,7 +115277,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "allow-create": "",
         "default-first-option": "",
         "remote": "",
-        "placeholder": "房间号",
+        "placeholder": _vm.gzys,
         "remote-method": _vm.remoteMethod3,
         "loading": _vm.fanghaoloading
       },

@@ -126,6 +126,29 @@ class officeController extends Controller
         echo $response1->getBody();
 
     }
+    public function loudongRules()
+    {
+
+        $data['parameters']['id']= Input::get('loudongOmcId');
+        //1.建立房间
+        $client = new Client([
+            'base_uri' => '192.168.0.222:8080',
+        ]);
+        //return $data;
+        $response1 = $client->request('POST', '/yhcms/web/jcsj/getLpZdgz.do', [
+            'json' => $data
+        ]);
+        $json = [
+            'success'=>true,
+            'message'=>'',
+            'data'=>[
+                'gzys'=>'0000'
+            ],
+        ];
+        return $json;
+        echo $response1->getBody();
+
+    }
     //获取剩余承租面积的接口
     public function shengyuechengzu()
     {

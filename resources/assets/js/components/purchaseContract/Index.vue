@@ -23,7 +23,10 @@
         <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column  prop="bianhao" label="编号" width="200" >
             </el-table-column>
-            <el-table-column prop="loupanName" label="楼盘"  sortable>
+            <el-table-column prop="loupanName" label="楼盘"  sortable width="200" >
+                <!--<template scope="scope">-->
+                    <!--<span v-for="(item,index) in  Estate(scope.row.loupanName)">{{item}}</span>-->
+                <!--</template>-->
             </el-table-column>
             <el-table-column prop="loudongName" label="楼栋"   sortable>
             </el-table-column>
@@ -205,6 +208,12 @@
             contractPayType
         },
         methods: {
+            /*Estate(value){
+                console.log(value)
+                var ss = '建外soho,望京soho'.split(",");
+
+                return ss;
+            },*/
             handleupload(index,row){
                 this.$router.push('purchaseContract/upload?id='+row.id)
             },
@@ -275,7 +284,6 @@
                 }
                 this.listLoading = true;
                 getPurchaseContractList(para).then((res) => {
-                    console.log(res.data)
                     this.total = res.data.total;
                     this.lists = res.data.data;
                     this.listLoading = false;

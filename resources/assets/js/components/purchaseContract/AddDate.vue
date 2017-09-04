@@ -228,7 +228,7 @@
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="总应付租金" prop="zongyingfuzujin" required>
-                        <el-input v-model.number="addDate.zongyingfuzujin" placeholder="总应付押金"></el-input>
+                        <el-input v-model.number="addDate.zongyingfuzujin" placeholder="总应付租金"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
