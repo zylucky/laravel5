@@ -271,8 +271,11 @@
                 for (let i=0;i<arr.length;i++ ){
                     if(arr[i].value==this.owner.jujianfangid){
                         this.owner.jujianfang = arr[i].label;
-                        this.owner.qudaoren=null;
-                        this.owner.qudaorenid=null;
+                        if(this.owner.jujianfangid!=this.owner.jujianfangid2){
+                            this.owner.qudaoren=null;
+                            this.owner.qudaorenid=null;
+                        }
+
                     }
                 }
 
@@ -280,7 +283,6 @@
             changeOnSelect2(){
                 var arr = this.owner.options2;
                 for (let i=0;i<arr.length;i++ ){
-                    console.log(this.owner.qudaorenid)
                     if(arr[i].value==this.owner.qudaorenid){
                         this.owner.qudaoren = arr[i].label;
                     }

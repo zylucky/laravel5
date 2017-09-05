@@ -309,7 +309,6 @@
                     zdid: this.property.officeList[this.property.tabIndex-1].loudongOmcId,
                 };
                 this.fanghaoloading = true;
-                //console.log(para);
                 getFanghaoList(para).then((res) => {
                     this.houseData = res.data;
                     let arr = [];
@@ -338,7 +337,6 @@
             change1(){
                 //楼盘
                 for (var x in this.options1){
-
                     if(this.options1[x].label==this.property.officeList[this.property.tabIndex-1].loupanName){
                         this.property.officeList[this.property.tabIndex-1].loupanOmcId=this.options1[x].value;
                         this.property.officeList[this.property.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
@@ -371,7 +369,9 @@
                 })
             },
             change3(){
-                this.property.officeList[this.property.tabIndex-1].omcId=null;
+                if(this.$route.path=='/purchaseContract/add') {
+                    this.property.officeList[this.property.tabIndex-1].omcId=null;
+                }
                 //房号
                 for (var x in this.options3){
                     if(this.options3[x].label==this.property.officeList[this.property.tabIndex-1].fanghao){
@@ -408,7 +408,7 @@
                 var house_no = this.property.officeList[this.property.tabIndex-1].fanghao;
                 var flag = true;
                 this.gzys2 = this.gzys.split('');
-                if(this.gzys2.length!=fanghao.length){
+                if(this.gzys.length!=0&&this.gzys.length!=house_no.length){
                     flag =false;
                 }
                 this.gzys2.forEach((property,index)=>{
@@ -458,7 +458,7 @@
                         message: '房间号不符合规则！',
                         type: 'error'
                     });
-                    this.property.officeList[this.property.tabIndex-1].fanghao=null;
+                    //this.property.officeList[this.property.tabIndex-1].fanghao=null;
                 }
             },
             addTab(targetName, action) {
