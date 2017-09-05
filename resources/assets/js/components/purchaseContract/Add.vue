@@ -97,22 +97,21 @@
                     tabIndex:1,
                     flag:null,
                     officeList: [{
-                        omcId:null,
-                        loupanOmcId:null,
-                        loudongOmcId:null,
-                        loupanName:null,
-                        loudongName:null,
-                        fanghao:null,
-                        weizhi: null,
-                        chanquanzhenghao: null,
-                        jianzhumianji: null,
-                        qianyuemianji: null,
-                        leixing: null,
-                        hetongid:null,
-                        quyu:'',
-                        isdiya:0,
-                        diyaren:'',
-                    }],
+                            chanquanzhenghao:null,
+                            diyaren:null,
+                            fanghao:null,
+                            hetongid: null,
+                            isdiya: null,
+                            jianzhumianji: null,
+                            leixing:null,
+                            loudongName:null,
+                            loudongOmcId:null,
+                            loupanName:null,
+                            loupanOmcId:null,
+                            omcId:null,
+                            qianyuemianji:null,
+                            quyu:null,
+                        },],
                 },
                 owner:{
                     flag:null,
@@ -131,6 +130,7 @@
                     chengzufang:'',
                     jujianfang:'',
                     jujianfangid:null,
+                    jujianfangid2:null,
                     qudaorenid:null,
                     qudaoren:'',
                     yezhuleixing:1,
@@ -257,7 +257,6 @@
                 this.submsg  = '提交';
                     var child_property = this.$refs.property.property;//
                     var child_owner  = this.$refs.owner.owner;//业主信息
-                console.log(child_owner)
                     var child_date = this.$refs.date.addDate;//日期
                     var tiaokuan = {
                         tiaoList:this.$refs.tiaokuan.tiaoList,
@@ -363,6 +362,7 @@
                 window.open('/#/purchaseContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
+                console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
                 if(this.zhuangtai==4){
@@ -393,6 +393,7 @@
 
                 this.owner.jujianfang = res.data.data.jujianfang;//
                 this.owner.jujianfangid = res.data.data.jujianfangid;
+                this.owner.jujianfangid2 = res.data.data.jujianfangid;
                 this.owner.qudaoren = res.data.data.qudaoren;//
                 this.owner.qudaorenid = res.data.data.qudaorenid;
 

@@ -78,6 +78,14 @@
                 bianhao:'',
                 zhuangtai:'',
                 property:{
+                    editableTabs2:[
+                        {
+                            title: '房间1',
+                            name: '1',
+                            content: 'New Tab content'
+                        }
+                    ],
+                    tabIndex:1,
                     syczmj:'',
                     subleaseno:null,
                     flag:null,
@@ -174,7 +182,11 @@
                     shouqifukuanri:'',//首期租金付款日
                     erqifukuanri:'',//二期付款
                     sanqifukuanri:'',//三期付款
-                    buchongTiaokuanList:'',//补充条款
+                    buchongTiaokuanList:[
+                        {
+                            content:'',
+                        }
+                    ],//补充条款
                     zujinList:[
                         {
                             startdate:'',
@@ -320,10 +332,10 @@
                 let para = {
                     id:_this.id,
                 }
-                window.open('/#/saleContract/dump'+version+'?id='+_this.id)
+                window.open('/#/saleContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
-                console.log(res.data.data);
+                //console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.contractVersion = res.data.data.version;
                 this.property.xsOffice = res.data.data.xsOffice;
@@ -372,6 +384,7 @@
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+
                 //console.log(res.data.data);
             },
             disabledInput(){
@@ -408,10 +421,6 @@
                 let para = {
                     fangyuanId:this.property.xsOffice[0].omcId,
                 };
-                //console.log(this.property.xsOffice);
-                //console.log(this.property.xsOffice[0].omcId);
-                //console.log(this.property.xsOffice[0].omcId);
-                //console.log(para);
                 getContractChuzuren(para).then((res) => {
                     if(res.data.code=='102001'){
                         this.renter.chengzufang = '无';
@@ -458,6 +467,7 @@
             }
             //新增页面获取版本
             this.getVersion();
+            /*fadsfadf*/
         },
 
     }

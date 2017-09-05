@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token"  content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'YoushiSpace') }}</title>
+    <title>幼狮空间ERP</title>
 
     <!-- Styles -->
 
