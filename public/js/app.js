@@ -132795,19 +132795,33 @@ module.exports = __webpack_require__(53);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(359)
+}
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(344),
   /* template */
   __webpack_require__(346),
   /* styles */
-  null,
+  injectStyle,
   /* scopeId */
   null,
   /* moduleIdentifier (server only) */
@@ -132904,9 +132918,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v("委托人身份证复印件\n        "), _c('br'), _vm._v(" "), _c('table', {
     staticStyle: {
       "border-collapse": "collapse"
-    },
-    attrs: {
-      "border": "2"
     }
   }, [_c('tr', [_c('th', {
     attrs: {
@@ -132962,7 +132973,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "align": "center"
     }
-  }, [_vm._v("0000 0000 0000 0000 000")])]), _vm._v(" "), _c('tr', [_c('th', {
+  }, [_vm._v("0000 0000 0000 0000 000")]), _vm._v(" "), _c('td', {
+    staticStyle: {
+      "border": "0"
+    }
+  }, [_vm._v("用途")])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
       "height": "28",
       "align": "left"
@@ -133992,6 +134007,46 @@ if(false) {
  if(!content.locals) {
    module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-53865598\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Dump20170719_pub.vue", function() {
      var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-53865598\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./Dump20170719_pub.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 358 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\ntable td{\n    border: 1px solid;\n}\ntable th{\n    border: 1px solid;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 359 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(358);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("9627f7b6", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-29b4bea1\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./summary.vue", function() {
+     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.4@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-29b4bea1\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.1@vue-loader/lib/selector.js?type=styles&index=0!./summary.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });

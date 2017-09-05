@@ -11,7 +11,7 @@
             <input type="checkbox" style="margin-left:67px;">业主授权代理人委托书
             <input type="checkbox"style="margin-left:19px;">委托人身份证复印件
             <br>
-            <table border="2"  style="border-collapse: collapse;">
+            <table  style="border-collapse: collapse;">
                 <tr >
                     <th width="95" height="28" align="left">业主</th>
                     <td width="220" align="center">张三</td>
@@ -29,6 +29,8 @@
                     <td  align="center"></td>
                     <th  align="left">账号</th>
                     <td  align="center">0000 0000 0000 0000 000</td>
+                    <td style="border:0 ">用途</td>
+
                 </tr>
                 <tr>
                     <th  height="28" align="left">委托管理期限</th>
@@ -162,6 +164,14 @@
 
 
 </template>
+<style>
+    table td{
+        border: 1px solid;
+    }
+    table th{
+        border: 1px solid;
+    }
+</style>
 <script>
 
 </script>
