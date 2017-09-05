@@ -225,7 +225,7 @@
     </el-row>
 </template>
 <script>
-    import {optimizePurchaseContract,getOptimizePurchaseContract,buchongsbSaleContract} from  '../../api/api';
+    import {optimizeSaleContract,getOptimizeSaleContract,buchongsbSaleContract} from  '../../api/api';
     export default{
         data(){
             return{
@@ -332,7 +332,7 @@
         methods:{
             //根据合同ID来查询协议
             getOptimize(){
-                getOptimizePurchaseContract(this.$route.query).then((res)=>{
+                getOptimizeSaleContract(this.$route.query).then((res)=>{
                     //alert(332);
                     this.fuzhi(res);
                 });
@@ -389,7 +389,7 @@
                     xieyienddate:this.addDate.xieyienddate,
                 }
                 console.log(para);
-                optimizePurchaseContract(para).then((res)=>{
+                optimizeSaleContract(para).then((res)=>{
                     if(res.data.code == 200)　{
                         this.fuzhi(res);
                         this.btnType=false,

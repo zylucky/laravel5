@@ -129,6 +129,8 @@ export const confirmedSaleContract= params => { return axios.get(`${base}/saleCo
 
 export const weiyueSaleContract= params => { return axios.get(`${base}/saleContract/violating`, {params:params}); };//状态变更为：违约中
 export const endSaleContract= params => { return axios.get(`${base}/saleContract/terminated`, {params:params}); };//状态变更为：合同终止
+export const optimizeSaleContract= params => { return axios.post(`${base}/saleContract/buchongsave`, { params: params }); };//二次优化
+export const getOptimizeSaleContract= params => { return axios.get(`${base}/saleContract/optimize`, {params:params}); };//二次优化
 export const buchongSaleContract= params => { return axios.get(`${base}/saleContract/TwiceReleasing`, {params:params}); };//状态变更为：补充协议中
 export const buchongsbSaleContract= params => { return axios.get(`${base}/saleContract/TwiceReleased`, {params:params}); };//状态变更为：补充协议完成
 export const buchongSaleContractList= params => { return axios.get(`${base}/saleContract/releasedList`, {params:params}); };//获取补充协议列表
