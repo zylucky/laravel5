@@ -40,7 +40,7 @@
                 </el-table-column>
                 <el-table-column prop="xiangmu" label="项目" width="110" >
                 </el-table-column>
-                <el-table-column prop="yezhu" label="业主"  width="80" >
+                <el-table-column prop="yezhu" label="业主/租户"  width="80" >
                 </el-table-column>
                 <el-table-column prop="fkfangshi" label="付款方式"  width="100" >
                 </el-table-column>
