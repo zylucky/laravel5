@@ -33,6 +33,7 @@ import SaleContractCheckBuchong from "./components/saleContract/Buchong.vue";
 import SaleContractCheckBuchongList from "./components/saleContract/HistoryBuchong.vue";
 import SaleContractCheckJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractDump20170719 from "./components/saleContract/Dump20170719.vue";
+import SaleContractDump20170719pub from "./components/saleContract/Dump20170719_pub.vue";//版本1补充条款
 import SaleContractZhanghao from "./components/saleContract/Zhanghao.vue";
 import SaleContractHedan from "./components/saleContract/Hedan.vue";
 import SaleContractSummary from "./components/saleContract/summary.vue";//新版摘要
@@ -247,6 +248,13 @@ let routes = [
         name: '出方合同打印',
         hidden: true
      },
+    {
+        //版本1
+        path:'/saleContract/dump20170719pub',
+        component: SaleContractDump20170719pub,
+        name: '出房打印补充条款',
+        hidden: true
+    },
     /*{
          path: '/',
          component: navigation,

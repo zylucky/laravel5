@@ -225,7 +225,7 @@
     </el-row>
 </template>
 <script>
-    import {optimizePurchaseContract,getOptimizePurchaseContract,buchongsbSaleContract} from  '../../api/api';
+    import {optimizeSaleContract,getOptimizeSaleContract,buchongsbSaleContract} from  '../../api/api';
     export default{
         data(){
             return{
@@ -305,18 +305,20 @@
                     xieyistartdate:'',//协议开始时间
                     xieyienddate:'',//协议结束时间
                     mianzufangshi: [],//免租方式
-                    mianzuqiList: [{
+                    /*mianzuqiList: [{
                         startdate:'',//免租开始
                         enddate:'',//免租结束
                         mianzufangshi:'',
-                    }],
-                    fukuanFangshiList:[{
+                    }],*/
+                    mianzuqiList:[],
+                    /*fukuanFangshiList:[{
                         startdate:'',//开始
                         enddate:'',//结束
                         yajinyue:'',
                         zujinyue:'',
-                    }],
-                    zujinList:[
+                    }],*/
+                    fukuanFangshiList:[],
+                    /*zujinList:[
                         {
                             startdate:'',
                             enddate:'',
@@ -325,14 +327,15 @@
                             dizengfangshi:'',
                             dizengliang:'',
                         },
-                    ],
+                    ],*/
+                    zujinList:[],
                 },
             }
         },
         methods:{
             //根据合同ID来查询协议
             getOptimize(){
-                getOptimizePurchaseContract(this.$route.query).then((res)=>{
+                getOptimizeSaleContract(this.$route.query).then((res)=>{
                     //alert(332);
                     this.fuzhi(res);
                 });
@@ -389,7 +392,7 @@
                     xieyienddate:this.addDate.xieyienddate,
                 }
                 console.log(para);
-                optimizePurchaseContract(para).then((res)=>{
+                optimizeSaleContract(para).then((res)=>{
                     if(res.data.code == 200)　{
                         this.fuzhi(res);
                         this.btnType=false,

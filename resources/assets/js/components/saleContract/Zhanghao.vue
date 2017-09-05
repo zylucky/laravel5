@@ -138,7 +138,7 @@
                     zhanghu:null,
                     yinhang:null,
                     zhanghao:null,
-                    hetongtid: 0,
+                    hetongtid: 1,
                 },
                 tianjiadate:null,
                 Loading:null,

@@ -405,13 +405,11 @@
                     let para = {
                         id: row.id,
                     }
-                    /*let para = {
-                    id:row.id,
-                }*/
                     confirmSaleContract(para).then((res)=>{
                     if(res.data.code=="200"){
                         this.saleContractList();
                         window.open('/#/saleContract/dump'+version+'?id=' + row.id+'&isdump=1');
+                        window.open('/#/saleContract/dump'+version+'pub?id=' + row.id+'&isdump=1');
                         }
                     });
                     //window.open('/#/purchaseContract/dump?id='+row.id)
