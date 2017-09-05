@@ -130,8 +130,28 @@
         <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十一条  其他</b></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）本合同经甲乙双方签字或盖章后生效。本合同（及附件）一式叁份，甲、乙、丙方各持一份。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同生效后，各方对合同内容的变更或补充应采取书面形式，作为本合同的附件。</p>
-        <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十二条  补充条款</b></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。</p>
+        <!--<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十二条  补充条款</b></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。</p>-->
+        <p>
+            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十二条  补充条款</b> <br>
+            &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
+            <u>{{addDate.buchongTiaokuanList[0].content}}</u>
+            <br>
+            <input type="text" name="" disabled style="width:600px;" value="以下空白">
+            <br><br>
+
+            <b> 业主方（甲方）：<input type="text" name="" style="width:265px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">管理方（乙方）：</font><u>北京华亮房地产经纪有限公司</u></b>　<br>
+            <b>委托代理人：<input type="text" name="" style="width:305px;font-size:10px" value=""></b><br>
+            联系地址：<input type="text" name="" style="width:320px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系地址：</font><input type="text" name="" style="width:320px" value="">
+            <br>联系方式：<input type="text" name="" style="width:320px;" disabled value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系方式：</font><input type="text" name="" style="width:320px;font-size:10px" value=""><br>
+            <font>_______年____月____日</font>
+            <font style="margin-left: 370px" >_______年____月____日</font><br>
+            <br>
+            <b> 居间方（丙方）：</b> <input type="text" name="" style="width:119px;font-size:10px" value="">
+            <br>联系地址：<input type="text" name="" style="width:315px;font-size:10px" value="">
+            <br>联系方式：<input type="text" name="" style="width:315px;font-size:10px" value=""><br>
+            <font>_______年____月____日</font>
+        </p>
         <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 550px;"></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 550px;"></p>-->
 
@@ -274,6 +294,11 @@
                     qianyuerenId:'',
                 },
                 addDate: {
+                    buchongTiaokuanList:[
+                        {
+                            content:'',
+                        }
+                    ],//补充条款
                     hetongtype:1,//合同类型
                     dikoujine:'',//合同金额
                     startdate:'',//租期开始时间
@@ -301,7 +326,6 @@
                     shouqifukuanri:'',//首期租金付款日
                     erqifukuanri:'',//二期付款
                     sanqifukuanri:'',//三期付款
-                    buchongTiaokuanList:'',//补充条款
                     zujinList:[
                         {
                             startdate:'',
@@ -539,6 +563,8 @@
             if(this.$route.query.isdump==1){
                 this.historyBuchong = false;
                 setTimeout(hello,1000);
+            }else if(this.$route.query.isdump==2){
+                this.historyBuchong = false;
             }else{
                 this.historyBuchong = true;
             }
