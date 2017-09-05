@@ -164,7 +164,7 @@ let routes = [
 
         ]
     },
-    /*{
+    {
         path: '/',
         component: navigation,
         name: '渠道管理',
@@ -187,8 +187,8 @@ let routes = [
             { path:'/brokerUser/view',component:BrokerUserAdd,name:'自由经纪人查看',hidden:true},
             { path:'/brokerUserHistory',component:BrokerUserHistory,name:'自由经纪人跟进记录',hidden:true},
         ]
-    },*/
-    /*{
+    },
+    {
 
         path: '/',
         component: navigation,
@@ -200,7 +200,7 @@ let routes = [
             { path:'/chuFangCommission',component:ChuFangCommission,name:'出房佣金管理',hidden:false},
             { path:'/contractPayType',component:selectCommissionPayType,name:'佣金支付方式',hidden:true},
         ]
-    },*/
+    },
     {
         //版本1
         path:'/purchaseContract/dump20170719',

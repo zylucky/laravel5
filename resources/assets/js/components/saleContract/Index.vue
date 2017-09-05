@@ -223,7 +223,7 @@
                 //获取三个信息：合同ID，违约类型，以及本日期
                 let para = {
                     hetongId:this.id,
-                    hetongType:0,
+                    hetongType:1,
                     weiYueType:this.weiYue.weiyueleixing,
                     zhongZhiDate:new Date(this.weiYue.zhongzhidate).toLocaleDateString(),
                 }
