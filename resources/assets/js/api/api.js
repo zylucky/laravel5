@@ -151,12 +151,14 @@ export const getHedanqiannameSaleList = params => { return axios.post(`${base}/s
 export const getHedanbumenSaleList = params => { return axios.post(`${base}/saleContract/getHedanbumenList`, { params: params }); };//
 export const yongyouUpdataSaleContract = params => { return axios.post(`${base}/saleContract/saveyongyou`, { params: params }); };//用友编号的保存
 
-//获取楼盘，楼栋，房间号
+//获取楼盘，楼栋，房间号,rules
 export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };
 export const getLoudongList = params =>{ return axios.get(`${base}/office/loudongList`, { params: params }); };
+export const getLoudongRules = params =>{ return axios.get(`${base}/office/loudongRules`, { params: params }); };
 export const getFanghaoList = params =>{ return axios.get(`${base}/office/fanghaoList`, { params: params }); };
 export const getSaleFanghaoList = params =>{ return axios.get(`${base}/office/salefanghaoList`, { params: params }); };
 export const createFanghao = params =>{ return axios.get(`${base}/office/createFanghao`, { params: params }); };
+export const getSaleFanghaoChengzu = params =>{ return axios.get(`${base}/office/shengyuechengzu`, { params: params }); };
 
 //工程合同
 export const getDecorationList = params =>{ return axios.get(`${base}/decoration/index`, { params: params }); };

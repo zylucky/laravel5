@@ -54,7 +54,7 @@
                 <div class="grid-content bg-purple-light">
                 <el-col :span="24" class="breadcrumb-container">
 
-                    <img width="16px" height="16px" :src="'/image'+$route.path+'.ico'" onerror="javascript:this.src='/image/default.png';" :alt=$route.name style="float: left;margin-right: 10px;display: inline-block; padding-top: 2px;"><strong class="title">{{$route.name}}</strong>
+                    <img width="16px" height="16px" :src="'/image'+$route.path+'.png'" onerror="javascript:this.src='/image/default.png';" :alt=$route.name style="float: left;margin-right: 10px;display: inline-block; padding-top: 2px;"><strong class="title">{{$route.name}}</strong>
 
                     <el-breadcrumb separator="/" class="breadcrumb-inner">
                         <el-breadcrumb-item :to="{ path: item.path }" v-for="item in $route.matched" :key="item.path">

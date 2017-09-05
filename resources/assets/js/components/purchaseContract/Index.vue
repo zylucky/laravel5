@@ -23,13 +23,16 @@
         <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column  prop="bianhao" label="编号" width="200" >
             </el-table-column>
-            <el-table-column prop="loupanName" label="楼盘"  sortable>
+            <el-table-column prop="loupanName" label="楼盘"  sortable width="200" >
+                <!--<template scope="scope">-->
+                    <!--<span v-for="(item,index) in  Estate(scope.row.loupanName)">{{item}}</span>-->
+                <!--</template>-->
             </el-table-column>
             <el-table-column prop="loudongName" label="楼栋"   sortable>
             </el-table-column>
             <el-table-column prop="fanghao" label="房间号"  sortable>
             </el-table-column>
-            <el-table-column prop="zhuangtai" label="状态" :formatter="formatStatus" sortable>
+            <el-table-column prop="zhuangtai" label="状态" :formatter="formatStatus"  width="200" sortable>
             </el-table-column>
             <el-table-column prop="qianyuedate" label="签约日" :formatter="changeDate"  sortable>
             </el-table-column>
@@ -205,6 +208,12 @@
             contractPayType
         },
         methods: {
+            /*Estate(value){
+                console.log(value)
+                var ss = '建外soho,望京soho'.split(",");
+
+                return ss;
+            },*/
             handleupload(index,row){
                 this.$router.push('purchaseContract/upload?id='+row.id)
             },
@@ -275,7 +284,6 @@
                 }
                 this.listLoading = true;
                 getPurchaseContractList(para).then((res) => {
-                    console.log(res.data)
                     this.total = res.data.total;
                     this.lists = res.data.data;
                     this.listLoading = false;
@@ -394,12 +402,16 @@
             },
             //二次优化添加协议
             handleOptimize(index,row){
-                let para = {
-                    id:row.id,
-                }
-                youhuaPurchaseContract(para).then((res)=>{
-                });
-                this.$router.push('/purchaseContract/optimize?hetongid='+row.id+'&bianhao='+row.bianhao);
+                this.$confirm('确认优化合同吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    let para = {
+                        id:row.id,
+                    }
+                    youhuaPurchaseContract(para).then((res)=>{
+                    });
+                    this.$router.push('/purchaseContract/optimize?hetongid='+row.id+'&bianhao='+row.bianhao);
+                })
             },
             //修改协议
             editOptimize(index,row){
@@ -426,8 +438,8 @@
                     dumpingPurchaseContract(para).then((res)=>{
                         if(res.data.code=="200"){
                             this.purchaseContractList();
-                            window.open('/#/purchaseContract/dump'+version+'?id='+row.id+'&isdump=1')
-                            window.open('/#/purchaseContract/dump'+version+'pub?id='+row.id+'&isdump=1')
+                            window.open('/#/purchaseContract/dump'+'s'+version+'?id='+row.id+'&isdump=1')
+                            window.open('/#/purchaseContract/dump'+'s'+version+'pub?id='+row.id+'&isdump=1')
                         }
                     });
                 })

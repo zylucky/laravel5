@@ -250,14 +250,16 @@
         methods: {
             yezhuleixingChange(){
                 //只要业主类型发生改变，那么我就将变量初始化
-                this.owner.chanquanrenList = [{
-                    name:'',
-                    faren:'',
-                    zhengjian:'',
-                    tel:'',
-                    sex:1,
-                    hetongid:null,
-                },]
+                if(this.$route.path=='/purchaseContract/add'||this.owner.yezhuleixing!=this.owner.yezhuleixing2){
+                    this.owner.chanquanrenList = [{
+                        name:'',
+                        faren:'',
+                        zhengjian:'',
+                        tel:'',
+                        sex:1,
+                        hetongid:null,
+                    },]
+                }
             },
             valid(){
                 this.$refs.ownerForm.validate((valid) => {

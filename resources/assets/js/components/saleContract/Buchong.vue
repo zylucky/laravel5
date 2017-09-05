@@ -333,7 +333,7 @@
             //根据合同ID来查询协议
             getOptimize(){
                 getOptimizePurchaseContract(this.$route.query).then((res)=>{
-                    alert(332);
+                    //alert(332);
                     this.fuzhi(res);
                 });
             },

@@ -87,6 +87,14 @@
                 bianhao:'',
                 zhuangtai:'',
                 property:{
+                    editableTabs2:[
+                        {
+                            title: '房间1',
+                            name: '1',
+                            content: 'New Tab content'
+                        }
+                    ],
+                    tabIndex:1,
                     flag:null,
                     officeList: [{
                         omcId:null,
@@ -126,6 +134,7 @@
                     qudaorenid:null,
                     qudaoren:'',
                     yezhuleixing:1,
+                    yezhuleixing2:1,
                     //产权人
                     chanquanrenList:[
                         {
@@ -285,17 +294,13 @@
                 //审核
                 this.shenhe = {
                     hetongid:this.id,
-                    content:this.content,
                     result:result,
                 };
             },
             review2(){
-                reviewPurchaseContract(this.shenhe).then((res) => {
+                let para = Object.assign({},{content:this.content},this.shenhe);
+                reviewPurchaseContract(para).then((res) => {
                     if(res.data.code == 200)　{
-//                        this.$message({
-//                            message: '保存成功',
-//                            type: 'success'
-//                        });
                         history.go(-1);
                         this.dialogFormVisible = false;
                     }else{
@@ -355,14 +360,32 @@
                 let para = {
                     id:_this.id,
                 }
-                window.open('/#/purchaseContract/dump'+version+'?id='+_this.id)
+                window.open('/#/purchaseContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
+                if(this.zhuangtai==4){
+                    this.$notify({
+                        title: '提示',
+                        message: res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content==null?'审核拒绝：无':'审核拒绝：'+res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content,
+                        duration: 0,
+                        type: 'warning',
+                    });
+                }
                 this.bianhao = res.data.data.bianhao;
                 this.contractVersion = res.data.data.version;
                 this.property.officeList = res.data.data.officeList;
+                this.property.editableTabs2 = [];
+                this.property.officeList.forEach((property,index)=>{
+                    index ++;
+                    this.property.tabIndex = index;
+                    this.property.editableTabs2.push({
+                        title: '房间'+index,
+                        name: index+'',
+                        content: 'New Tab content'
+                    })
+                })
                 if(res.data.data.chanquanrenList.length>0){
                     this.owner.chanquanrenList = res.data.data.chanquanrenList;
                 }
@@ -378,6 +401,7 @@
                 this.owner.options2[0].value = res.data.data.qudaorenid;
                 this.owner.options2[0].label = res.data.data.qudaoren;
                 this.owner.yezhuleixing = res.data.data.yezhuleixing;
+                this.owner.yezhuleixing2 = res.data.data.yezhuleixing;
                 this.owner.shoukuanren = res.data.data.shoukuanren;
                 this.owner.kaihuhang = res.data.data.kaihuhang;
                 this.owner.zhanghao = res.data.data.zhanghao;
@@ -443,6 +467,7 @@
             //根据url得到的合同ID，来获取数据
             if(this.$route.query.id!=null){
                 this.getPurchaseContract(this.$route.query);
+
             }
             //审核页面input禁用
             if(this.$route.path=='/purchaseContract/review'){
