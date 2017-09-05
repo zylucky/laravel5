@@ -335,7 +335,7 @@
                 window.open('/#/saleContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
-                console.log(res.data.data);
+                //console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.contractVersion = res.data.data.version;
                 this.property.xsOffice = res.data.data.xsOffice;
@@ -421,10 +421,6 @@
                 let para = {
                     fangyuanId:this.property.xsOffice[0].omcId,
                 };
-                //console.log(this.property.xsOffice);
-                //console.log(this.property.xsOffice[0].omcId);
-                //console.log(this.property.xsOffice[0].omcId);
-                //console.log(para);
                 getContractChuzuren(para).then((res) => {
                     if(res.data.code=='102001'){
                         this.renter.chengzufang = '无';
@@ -471,6 +467,7 @@
             }
             //新增页面获取版本
             this.getVersion();
+            /*fadsfadf*/
         },
 
     }
