@@ -38,11 +38,11 @@
             <el-table :data="Payable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
                 <el-table-column prop="htbianhao" label="合同编号" width="190"    >
                 </el-table-column>
-                <el-table-column prop="xiangmu" label="项目" width="110" >
+                <el-table-column prop="xiangmu" label="项目" width="130" >
                 </el-table-column>
-                <el-table-column prop="yezhu" label="业主"  width="80" >
+                <el-table-column prop="yezhu" label="业主/租户"  width="100" >
                 </el-table-column>
-                <el-table-column prop="fkfangshi" label="付款方式"  width="100" >
+                <el-table-column prop="fkfangshi" label="付款方式"  width="95" >
                 </el-table-column>
                 <el-table-column prop="monthmoney" label="月租金" width="80" >
                 </el-table-column>
@@ -51,19 +51,19 @@
                         <span :class="tableClassName(scope.row.fkdate,scope.row.fkstate)">  {{ changeDate(scope.row.fkdate) }}</span>
                     </template>
                 </el-table-column>
-                <el-table-column prop="fktype" label="付款科目" width="100"   :formatter="formatFKType">
+                <el-table-column prop="fktype" label="付款科目" width="95"   :formatter="formatFKType">
                 </el-table-column>
-                <el-table-column prop="fkmoney" label="应付金额" width="100">
+                <el-table-column prop="fkmoney" label="应付金额" width="95">
                 </el-table-column>
-                <el-table-column prop="tijiaomoney" label="提交金额"  width="100">
+                <el-table-column prop="tijiaomoney" label="提交金额"  width="95">
                 </el-table-column>
-                <el-table-column prop="shifumoney" label="实付金额"  width="100" >
+                <el-table-column prop="shifumoney" label="实付金额"  width="95" >
                 </el-table-column>
-                <el-table-column prop="skinfo" label="收款银行及账号"   width="200">
+                <el-table-column prop="skinfo" label="收款银行及账号"   width="180">
                 </el-table-column>
-                <el-table-column prop="xiugaizhuangtai" label="修改状态"   width="100">
+                <el-table-column prop="xiugaizhuangtai" label="修改状态"   width="95">
                 </el-table-column>
-                <el-table-column prop="fkstate" label="支付状态"  :formatter="formatState"  width="100">
+                <el-table-column prop="fkstate" label="支付状态"  :formatter="formatState"  width="95">
                 </el-table-column>
                 <el-table-column label="操作" width="120">
                        <template scope="scope">
