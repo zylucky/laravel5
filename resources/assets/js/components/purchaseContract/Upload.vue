@@ -16,7 +16,6 @@
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
                     :file-list="hetongList"
-                    :before-upload="beforeAvatarUpload"
             >
                 <i class="el-icon-plus"></i>
             </el-upload>

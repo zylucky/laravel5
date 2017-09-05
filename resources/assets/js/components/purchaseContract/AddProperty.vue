@@ -371,6 +371,7 @@
                 })
             },
             change3(){
+                this.property.officeList[this.property.tabIndex-1].omcId=null;
                 //房号
                 for (var x in this.options3){
                     if(this.options3[x].label==this.property.officeList[this.property.tabIndex-1].fanghao){

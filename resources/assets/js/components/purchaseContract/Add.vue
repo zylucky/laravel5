@@ -294,17 +294,13 @@
                 //审核
                 this.shenhe = {
                     hetongid:this.id,
-                    content:this.content,
                     result:result,
                 };
             },
             review2(){
-                reviewPurchaseContract(this.shenhe).then((res) => {
+                let para = Object.assign({},{content:this.content},this.shenhe);
+                reviewPurchaseContract(para).then((res) => {
                     if(res.data.code == 200)　{
-//                        this.$message({
-//                            message: '保存成功',
-//                            type: 'success'
-//                        });
                         history.go(-1);
                         this.dialogFormVisible = false;
                     }else{
@@ -370,6 +366,14 @@
                 console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
+                if(this.zhuangtai==4){
+                    this.$notify({
+                        title: '提示',
+                        message: res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content==null?'审核拒绝：无':'审核拒绝：'+res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content,
+                        duration: 0,
+                        type: 'warning',
+                    });
+                }
                 this.bianhao = res.data.data.bianhao;
                 this.contractVersion = res.data.data.version;
                 this.property.officeList = res.data.data.officeList;
@@ -464,6 +468,7 @@
             //根据url得到的合同ID，来获取数据
             if(this.$route.query.id!=null){
                 this.getPurchaseContract(this.$route.query);
+
             }
             //审核页面input禁用
             if(this.$route.path=='/purchaseContract/review'){
