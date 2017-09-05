@@ -259,6 +259,38 @@ class saleContractController extends Controller
         $response = $client->request('GET', '/api/contract/xs/'.$id.'/approving');
         echo $response->getBody();
     }
+    //补充协议的保存
+    public function buchongsave(Request $request){
+        //dd(111111);
+        //dd($request);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST','/api/contract/xs/buchongXieyi/save', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
+    //获取补充协议的数据
+    public function optimize(){
+        //dd(222);
+        $id = Input::get('id');
+        $hetongid = Input::get('hetongid');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        if($hetongid){
+            $url = '/api/contract/xs/buchongXieyi?hetongId='.$hetongid;
+        }elseif($id){
+            $url = '/api/contract/xs/buchongXieyi?id='.$id;
+        }
+        $response = $client->request('GET',$url );
+        echo $response->getBody();
+    }
+
+
     //合同状态变为：补充协议中
     public function TwiceReleasing(){
         //dd(11);
