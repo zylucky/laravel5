@@ -18,6 +18,7 @@ import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimiz
 import PurchaseContractCheckOptimizeList from "./components/purchaseContract/HistoryOptimize.vue";
 import PurchaseContractDump20170719 from "./components/purchaseContract/Dump20170719.vue";//版本1
 import PurchaseContractDump20170719pub from "./components/purchaseContract/Dump20170719_pub.vue";//版本1补充条款
+import PurchaseContractSummary from "./components/purchaseContract/summary.vue";//新版摘要
 import PurchaseContractZhanghao from "./components/purchaseContract/Zhanghao.vue";
 import PurchaseContractHedan from "./components/purchaseContract/Hedan.vue";
 
@@ -34,6 +35,8 @@ import SaleContractCheckJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractDump20170719 from "./components/saleContract/Dump20170719.vue";
 import SaleContractZhanghao from "./components/saleContract/Zhanghao.vue";
 import SaleContractHedan from "./components/saleContract/Hedan.vue";
+import SaleContractSummary from "./components/saleContract/summary.vue";//新版摘要
+
 //装饰合同
 import DecorationList from "./components/decoration/List.vue";
 //合同版本
@@ -143,6 +146,7 @@ let routes = [
 
 
 
+
             { path:'/saleContract', component: SaleContractIndex, name: '出房合同'},
             { path:'/saleContract/add',component:SaleContractAdd,name:'出房录入',hidden:true},
             { path:'/saleContract/see',component:SaleContractDump20170719,name:'出房查看',hidden:true},
@@ -163,6 +167,7 @@ let routes = [
 
         ]
     },
+
     {
         path: '/',
         component: navigation,
@@ -214,6 +219,9 @@ let routes = [
         name: '收房打印补充条款',
         hidden: true
     },
+    { path:'/purchaseContract/summary',component:PurchaseContractSummary,name:'收房摘要',hidden:true},
+    { path:'/saleContract/summary',component:SaleContractSummary,name:'出房摘要',hidden:true},
+
     {
         path: '/',
         component: navigation,
