@@ -305,18 +305,20 @@
                     xieyistartdate:'',//协议开始时间
                     xieyienddate:'',//协议结束时间
                     mianzufangshi: [],//免租方式
-                    mianzuqiList: [{
+                    /*mianzuqiList: [{
                         startdate:'',//免租开始
                         enddate:'',//免租结束
                         mianzufangshi:'',
-                    }],
-                    fukuanFangshiList:[{
+                    }],*/
+                    mianzuqiList:[],
+                    /*fukuanFangshiList:[{
                         startdate:'',//开始
                         enddate:'',//结束
                         yajinyue:'',
                         zujinyue:'',
-                    }],
-                    zujinList:[
+                    }],*/
+                    fukuanFangshiList:[],
+                    /*zujinList:[
                         {
                             startdate:'',
                             enddate:'',
@@ -325,7 +327,8 @@
                             dizengfangshi:'',
                             dizengliang:'',
                         },
-                    ],
+                    ],*/
+                    zujinList:[],
                 },
             }
         },
