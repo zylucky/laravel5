@@ -1,9 +1,7 @@
 <template>
     <el-row>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
-            <el-form-item label="">
-                <el-input v-model="filters.contractNo" placeholder="合同编号"></el-input>
-            </el-form-item>
+
             <el-form-item label="">
                 <el-input v-model="filters.buildingname" placeholder="楼盘名称"></el-input>
             </el-form-item>
@@ -31,9 +29,6 @@
                         </el-option>
                     </el-select>
                 </el-form-item>
-                <el-form-item label="">
-                    <el-input v-model="filters.compayname" placeholder="渠道公司"></el-input>
-                </el-form-item>
                 <el-date-picker type="date" placeholder="合同日期" v-model="filters.startdate">
                 </el-date-picker>
                 <el-date-picker type="date" placeholder="至" v-model="filters.enddate">
@@ -56,13 +51,13 @@
             </el-table-column>
             <el-table-column prop="houseno" label="房间号" >
             </el-table-column>
-            <el-table-column prop="htzujin" label="合同月租金" >
+            <el-table-column prop="htzujin" label="实际月租金" >
             </el-table-column>
             <el-table-column prop="htyongjin" label="合同佣金" width="200" >
             </el-table-column>
-            <el-table-column prop="tQdCompayId" label="渠道公司" width="200" >
+            <el-table-column prop="shijiyongjin" label="协议佣金" width="100" >
             </el-table-column>
-            <el-table-column prop="qdpersons" label="渠道人员" >
+            <el-table-column prop="htyezhushifuyj" label="实付佣金" width="100" >
             </el-table-column>
             <el-table-column prop="yjstate" label="状态" :formatter="formatYJType">
             </el-table-column>
@@ -74,7 +69,7 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  > <el-button   v-if="scope.row.yjstate==2" @click="handleFinish(scope.$index, scope.row)">完&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button   v-if="scope.row.yjstate<3" @click="handleFinish(scope.$index, scope.row)">完&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button  v-if="scope.row.yjstate<3" @click="handleRokeBack(scope.$index, scope.row)">确认付款</el-button> </el-dropdown-item>
                             <el-dropdown-item  ><el-button  @click="handleEdit(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button></el-dropdown-item>
                         </el-dropdown-menu>

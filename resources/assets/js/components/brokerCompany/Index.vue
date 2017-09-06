@@ -63,7 +63,7 @@
             </el-table-column>
             <el-table-column label="公司所属业务区域"  :formatter="changeywqy" width="200px">
             </el-table-column>
-            <el-table-column prop="zhuzuoqvyv" label="主做区域"  >
+            <el-table-column prop="zhuzuoqvyv" label="主做区域"  :formatter="formatZZQY"  >
             </el-table-column>
             <el-table-column prop="hezuoxieyidengji" label="渠道等级"    >
             </el-table-column>
@@ -314,7 +314,9 @@
                return row.shifouhezuoxieyi == true ? '是' :  '否' ;
             },
             changeywqy(row, column){
-                return row.yewuqvyv+'-'+row.yewupianqv
+                if(row.yewuqvyv!=null) {
+                    return  row.yewuqvyv + '-' + row.yewupianqv ;
+                }
             },
             //时间戳转日期格式
             changeDate(row, column){
@@ -322,6 +324,11 @@
                     var newDate = new Date();
                     newDate.setTime(row.genjinDate);
                     return newDate.toLocaleDateString()
+                }
+            },
+            formatZZQY(row, column){
+                if(row.zhuzuoqvyv!=null&&row.zhuzuoqvyv!='') {
+                    return row.zhuzuoqvyv.substring(row.zhuzuoqvyv.length - 1) == ',' ? row.zhuzuoqvyv.substring(0, row.zhuzuoqvyv.length - 1) : row.zhuzuoqvyv;
                 }
             },
             handleView: function (index, row) {
