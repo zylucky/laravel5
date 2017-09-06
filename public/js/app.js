@@ -46507,6 +46507,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         content:'',
                     }
                 ],//补充条款*/
+                iscompletefrzj: '', //补充条款
                 actualrent: '',
                 zujinList: [{
                     startdate: '',
@@ -46673,7 +46674,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             window.open('/#/saleContract/dump' + version + '?id=' + _this.id + '&isdump=2');
         },
         fuzhi: function fuzhi(res) {
-            //console.log(res.data.data);
+            console.log(res.data.data);
             this.id = res.data.data.id;
             this.contractVersion = res.data.data.version;
             this.property.xsOffice = res.data.data.xsOffice;
@@ -46721,6 +46722,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.addDate.actualrent = res.data.data.actualrent;
             this.addDate.zujinList = res.data.data.zujinList;
             this.addDate.checkList = res.data.data.checkList;
+            this.addDate.iscompletefrzj = res.data.data.iscompletefrzj;
             this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
 
             //console.log(res.data.data);
@@ -51065,7 +51067,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             //console.log(res.data.data)
                             //把数据分别赋值给三个组件的变量
                             var _para = {
-                                id: "",
+                                id: 0,
                                 fyid: res.data.data.xsOffice[0].omcId,
                                 name: res.data.data.chengzuren[0].name,
                                 phone: res.data.data.chengzuren[0].tel,
@@ -120360,7 +120362,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "补充条款",
-      "prop": "actualrent"
+      "prop": "iscompletefrzj"
     }
   }, [_c('el-input', {
     attrs: {
@@ -120368,11 +120370,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "row": "5px"
     },
     model: {
-      value: (_vm.addDate.actualrent),
+      value: (_vm.addDate.iscompletefrzj),
       callback: function($$v) {
-        _vm.addDate.actualrent = $$v
+        _vm.addDate.iscompletefrzj = $$v
       },
-      expression: "addDate.actualrent"
+      expression: "addDate.iscompletefrzj"
     }
   })], 1)], 1)], 2)], 1)
 },staticRenderFns: []}
