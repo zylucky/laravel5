@@ -392,7 +392,7 @@
                 this.$confirm('确认提交完成收款吗？', '提示', {}).then(() => {
                     this.editLoading = true;
                     let para = {
-                        tQdApplyId:row.tQdApplyId,
+                        id:row.tQdApplyId,
                     }
                     //console.log(para);
                     finishSK(para).then((res) => {
