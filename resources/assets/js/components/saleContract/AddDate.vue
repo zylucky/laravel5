@@ -322,6 +322,11 @@
                         ></el-date-picker>
                     </el-form-item>
                 </el-col>
+                <el-col :span="8">
+                    <el-form-item label="实际月租金" prop="actualrent" required>
+                        <el-input v-model.number="addDate.actualrent" placeholder="实际月租金"></el-input>
+                    </el-form-item>
+                </el-col>
             </el-row>
             <!--各种费用-->
             <el-form-item label="费用" prop="jiafangfeiyong" required>
@@ -335,8 +340,8 @@
             </el-form-item>
             <!--补充条款-->
             <el-col :span="24">
-                <el-form-item label="补充条款"  prop="buchongTiaokuanList">
-                    <el-input type="textarea" row="5px" v-model="addDate.buchongTiaokuanList.content"></el-input>
+                <el-form-item label="补充条款"  prop="actualrent">
+                    <el-input type="textarea" row="5px" v-model="addDate.actualrent"></el-input>
                 </el-form-item>
             </el-col>
         </el-form>
@@ -410,7 +415,9 @@
                         { required: true, message: '不能为空' }
                     ],jiafangfeiyong: [
                         { required: true, message: '不能为空' }
-                    ],
+                    ],actualrent: [
+                    { required: true, message: '不能为空' }
+                ],
                 },
             }
         },
