@@ -142,6 +142,7 @@
         weiYueInfoSaleContract,
         approvingSaleContract,
         getSaleContractInfo,
+        getSaleContractOmc,
         buchongSaleContract,
     } from '../../api/api.js';
     export default {
@@ -311,7 +312,7 @@
                 this.listLoading = true;
                 getSaleContractList(para).then((res) => {
                     //console.log(12222);
-                    console.log(res.data.data);
+                    //console.log(res.data.data);
                     this.total = res.data.total;
                     this.lists = res.data.data;
                     this.listLoading = false;
@@ -450,6 +451,45 @@
                             message: '设置成功',
                             type: 'success'
                         });
+                        getSaleContractInfo(para).then((res)=>{
+                            if(res.data.code=='200'){
+                                //console.log(res.data.data)
+                                //把数据分别赋值给三个组件的变量
+                                let para = {
+                                    id:"",
+                                    fyid:res.data.data.xsOffice[0].omcId,
+                                    name:res.data.data.chengzuren[0].name,
+                                    phone:res.data.data.chengzuren[0].tel,
+                                    wdfh:res.data.data.xsOffice[0].fanghao,
+                                    xzhzj:res.data.data.zujinList[0].yuezujin,
+                                    zq1:res.data.data.startdate,
+                                    zq2:res.data.data.enddate,
+                                    fkfs:"押"+res.data.data.fukuanFangshiList[0].yajinyue+"付"+res.data.data.fukuanFangshiList[0].zujinyue,
+                                    zlmj:res.data.data.xsOffice[0].qianyuemianji,
+                                };
+                                console.log(para);
+                                getSaleContractOmc(para).then((res)=>{
+                                    if(res.data.success=='true'){
+                                        //console.log(res.data.data)
+                                        //把数据分别赋值给三个组件的变量
+                                        this.$message({
+                                            message: '传输数据成功',
+                                            type: 'success'
+                                        });
+                                    }else {
+                                        this.$message({
+                                            message: '传输数据失败',
+                                            type: 'error'
+                                        });
+                                    }
+                                })
+                            }else {
+                                this.$message({
+                                    message: '获取数据失败',
+                                    type: 'error'
+                                });
+                            }
+                        })
                         this.saleContractList();
                     });
                 }).catch(() => {

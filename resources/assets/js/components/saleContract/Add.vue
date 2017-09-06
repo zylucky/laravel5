@@ -182,11 +182,12 @@
                     shouqifukuanri:'',//首期租金付款日
                     erqifukuanri:'',//二期付款
                     sanqifukuanri:'',//三期付款
-                    buchongTiaokuanList:[
+                    /*buchongTiaokuanList:[
                         {
                             content:'',
                         }
-                    ],//补充条款
+                    ],//补充条款*/
+                    actualrent:'',
                     zujinList:[
                         {
                             startdate:'',
@@ -335,7 +336,7 @@
                 window.open('/#/saleContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
-                console.log(res.data.data);
+                //console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.contractVersion = res.data.data.version;
                 this.property.xsOffice = res.data.data.xsOffice;
@@ -380,7 +381,7 @@
                 this.addDate.shouqifukuanri = res.data.data.shouqifukuanri;
                 this.addDate.erqifukuanri = res.data.data.erqifukuanri;
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
-                this.addDate.buchongTiaokuanList = res.data.data.buchongTiaokuanList;
+                this.addDate.actualrent = res.data.data.actualrent;
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;

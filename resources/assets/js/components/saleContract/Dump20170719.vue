@@ -39,9 +39,9 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
             <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
-            <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
-            <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日止。免租期内乙方不支付租金，以便于乙方进行装饰装修及办理入住手续等事宜。免租期内物业管理费、供暖费由 □甲方 □乙方 承担。
+            <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止。免租期内乙方不支付租金，以便于乙方进行装饰装修及办理入住手续等事宜。免租期内物业管理费、供暖费由 □甲方 □乙方 承担。
             </span>
         </p>
         </span>
@@ -135,7 +135,7 @@
         <p>
             <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十二条  补充条款</b> <br>
             &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
-            <u>{{addDate.buchongTiaokuanList.content}}</u>
+            <u>{{addDate.actualrent}}</u>
             <br>
             <input type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
@@ -318,6 +318,7 @@
                         yajinyue:'',
                         zujinyue:'',
                     }],
+                    actualrent:'',
                     yajin:'',//押金
                     yingfuzongzujin:'',//总租金
                     hetongyongjin:'',//佣金
@@ -487,6 +488,7 @@
                 return(str3);
             },
             fuzhi(res){
+                console.log(2222);
                 console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.property.xsOffice = res.data.data.xsOffice;
@@ -508,6 +510,7 @@
                 this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
                 this.renter.qianyuerenId = res.data.data.qianyuerenId;
                 this.addDate.hetongtype = res.data.data.hetongtype;
+                this.addDate.actualrent = res.data.data.actualrent;
                 if(res.data.data.startdate != ''){
                     this.addDate.startdate = res.data.data.startdate;
                 }
@@ -567,6 +570,7 @@
                 this.historyBuchong = false;
             }else{
                 this.historyBuchong = true;
+                this.listJieyue = true;
             }
         }
     }

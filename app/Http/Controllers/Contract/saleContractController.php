@@ -701,5 +701,19 @@ class saleContractController extends Controller
         ]);
         echo $response->getBody();
     }
+    //给omc那边传递的数据接口
+    public function omcdata(Request $request){
+        //dd(99999);
+        //dd($request);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('POST', 'http://yhcms.tunnel.qydev.com/yhcms/web/jcsj/addFyZhxx.do', [
+            'json' => $request->params
+        ]);
+        echo $response->getBody();
+    }
 
 }
