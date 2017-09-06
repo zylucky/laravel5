@@ -112,7 +112,7 @@ let routes = [
         name: '',
         hidden: true
     },
-    /*{
+    {
      path: '/',
      component: navigation,
      name: '权限管理',
@@ -124,7 +124,7 @@ let routes = [
          { path: '/fun', component: Permission, name: '权限',hidden:fk_permission_per },
      ]
 
-     },*/
+     },
     {
         path: '/',
         component: navigation,
@@ -208,14 +208,14 @@ let routes = [
     },
     {
         //版本1
-        path:'/purchaseContract/dump20170719',
+        path:'/purchaseContract/dumps20170719',
         component: PurchaseContractDump20170719,
         name: '收房合同打印',
         hidden: true
     },
     {
         //版本1
-        path:'/purchaseContract/dump20170719pub',
+        path:'/purchaseContract/dumps20170719pub',
         component: PurchaseContractDump20170719pub,
         name: '收房打印补充条款',
         hidden: true
@@ -243,14 +243,14 @@ let routes = [
     },
     {
         //版本1
-        path:'/saleContract/dump20170719',
+        path:'/saleContract/dumpx20170719',
         component: SaleContractDump20170719,
         name: '出方合同打印',
         hidden: true
      },
     {
         //版本1
-        path:'/saleContract/dump20170719pub',
+        path:'/saleContract/dumpx20170719pub',
         component: SaleContractDump20170719pub,
         name: '出房打印补充条款',
         hidden: true
