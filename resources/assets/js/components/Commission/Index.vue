@@ -74,7 +74,7 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  > <el-button   v-if="scope.row.yjstate==1" @click="handleFinish(scope.$index, scope.row)">完&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button   v-if="scope.row.yjstate==2" @click="handleFinish(scope.$index, scope.row)">完&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button  v-if="scope.row.yjstate<3" @click="handleRokeBack(scope.$index, scope.row)">确认付款</el-button> </el-dropdown-item>
                             <el-dropdown-item  ><el-button  @click="handleEdit(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button></el-dropdown-item>
                         </el-dropdown-menu>
@@ -191,7 +191,6 @@
                 <el-form-item label="付款日期" prop="skdate">
                     <el-date-picker type = "date" v-model="rokeBackForm.skdate"   auto-complete="off">
                     </el-date-picker>
-
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -388,7 +387,7 @@
                 this.$confirm('确认提交完成付款吗？', '提示', {}).then(() => {
                     this.editLoading = true;
                     let para = {
-                        tQdApplyId:row.tQdApplyId,
+                        id:row.tQdApplyId,
                     }
                     //console.log(para);
                     finishFK(para).then((res) => {
@@ -433,7 +432,8 @@
                 this.rokeBackForm= {
                     tQdApplyId: row.tQdApplyId,
                     empmoney: '',
-                    fkrq:''
+                    skdate:''
+
                 }
             },
         },
