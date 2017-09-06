@@ -2,9 +2,6 @@
     <el-row>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="">
-                <el-input v-model="filters.contractNo" placeholder="合同编号"></el-input>
-            </el-form-item>
-            <el-form-item label="">
                 <el-input v-model="filters.buildingname" placeholder="楼盘名称"></el-input>
             </el-form-item>
             <el-form-item label="">
@@ -28,9 +25,6 @@
                                 :value="item.value">
                         </el-option>
                     </el-select>
-                </el-form-item>
-                <el-form-item label="">
-                    <el-input v-model="filters.personname" placeholder="渠道人员"></el-input>
                 </el-form-item>
                 <el-date-picker type="date" placeholder="合同日期" v-model="filters.startdate">
                 </el-date-picker>
@@ -68,8 +62,6 @@
             </el-table-column>
             <el-table-column prop="yongjinchae" label="佣金差额">
             </el-table-column>
-            <el-table-column prop="qdpersons" label="渠道人员">
-            </el-table-column>
             <el-table-column prop="fukuanriqi" label="佣金结算日" :formatter="changeJSDate">
             </el-table-column>
             <el-table-column prop="yjstate" label="状态" :formatter="formatYJType" width="80">
@@ -81,7 +73,7 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  > <el-button  v-if="scope.row.yjstate==2" @click="handleFinish(scope.$index, scope.row)">完&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button  v-if="scope.row.yjstate<3" @click="handleFinish(scope.$index, scope.row)">完&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button  v-if="scope.row.yjstate<3" @click="handleRokeBack(scope.$index, scope.row)">确认收款</el-button> </el-dropdown-item>
                             <el-dropdown-item  ><el-button @click="handleEdit(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button></el-dropdown-item>
                         </el-dropdown-menu>
@@ -191,10 +183,7 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-form-item label="备注：" prop="qdpersons">
-                    {{editForm.qdpersons}}
 
-                </el-form-item>
             </el-form>
         </el-dialog>
 
@@ -390,19 +379,15 @@
             //完成按钮
             handleFinish: function (index, row) {
                 this.$confirm('确认提交完成收款吗？', '提示', {}).then(() => {
-                    this.editLoading = true;
                     let para = {
                         id:row.tQdApplyId,
                     }
                     //console.log(para);
                     finishSK(para).then((res) => {
-                        this.editLoading = false;
                         this.$message({
                             message: '提交成功',
                             type: 'success'
                         });
-                        this.$refs['editForm'].resetFields();
-                        this.editFormVisible = false;
                         this.getShouFang();
                     });
                 });

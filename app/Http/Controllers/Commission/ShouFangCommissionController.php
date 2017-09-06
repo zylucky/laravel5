@@ -149,7 +149,6 @@ class ShouFangCommissionController extends Controller
 
         ]);
         $response = $client->request('GET', '/api/qd/apply/'.$obj["id"].'/confirm',[
-            'query' =>$obj
         ]);
         return  $response ->getBody();
     }

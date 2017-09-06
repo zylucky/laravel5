@@ -197,7 +197,7 @@
             </el-form-item>
             </el-col>
         </el-form>
-        <el-button type="primary" v-show="editVisible" @click="save" style="margin-top:100px;">提交</el-button>
+        <el-button type="primary" v-show="editVisible" @click="save" style="margin-left:50%;">提交</el-button>
         <el-button v-show="editVisible" @click.native="fanhui">返回</el-button>
         <el-col>
             <div v-show="showeidt">
@@ -241,7 +241,7 @@
                         </el-row>
                         <a href='javascript:;' @click="openHistory">查看历史记录</a>
                     </el-form>
-                    <el-button type="primary" v-show="editVisible" @click="savehistory" style="margin-top:20px;">保存
+                    <el-button type="primary" v-show="editVisible" @click="savehistory" style="margin-left:37%;">保存
                     </el-button>
                     <el-button v-show="editVisible" @click.native="fanhui">返回</el-button>
                 </div>

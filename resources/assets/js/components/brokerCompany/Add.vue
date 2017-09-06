@@ -40,7 +40,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="6">
+                    <el-col :span="8">
                         <el-form-item required label="公司详细地址" prop="addr">
                             <el-input value="北京市" disabled="disabled"></el-input>
                         </el-form-item>
@@ -302,11 +302,12 @@
                 <el-form-item label="备注" prop="beizhu">
                     <el-input type="textarea" v-model="brokerCompanyFrom.beizhu" auto-complete="off"></el-input>
                 </el-form-item>
+                <el-button type="primary" v-show="editVisible" @click="save" style="margin-left:50%;">提交</el-button>
+                <el-button v-show="editVisible" @click.native="fanhui">返回</el-button>
             </el-col>
 
         </el-form>
-        <el-button type="primary" v-show="editVisible" @click="save" style="margin-top:100px;">提交</el-button>
-        <el-button v-show="editVisible" @click.native="fanhui">返回</el-button>
+
         <el-col>
             <div v-show="showeidt">
                 <el-button @click.native="change">跟进记录</el-button>
@@ -340,7 +341,7 @@
                         </el-row>
                         <a href='javascript:;'  @click="openHistory">查看历史记录</a>
                     </el-form>
-                    <el-button type="primary" v-show="editVisible" @click="savehistory" style="margin-top:100px;">保存
+                    <el-button type="primary" v-show="editVisible" @click="savehistory" style="margin-left:37%;">保存
                     </el-button>
                     <el-button @click.native="fanhui">返回</el-button>
                 </div>

@@ -95,7 +95,7 @@
             },
             //是否转行
             changezh(row, column){
-                return row.xinxishifouzhunque == 1 ? '未转行' : row.xinxishifouzhunque == 2 ? '转行' : '未知';
+                return row.shifouzhuanhang== 1 ? '未转行' : row.shifouzhuanhang == 2 ? '转行' : '未知';
             },
             //页面跳转后
             handleCurrentChange(val) {
