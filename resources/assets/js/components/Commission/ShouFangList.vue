@@ -38,8 +38,7 @@
         </el-form>
 
         <span style="color:red;">
-注：负数=幼狮支出 正数=幼狮盈利 零=持平       未收款 ：佣金差额=合同佣金-华亮佣金 实际结款金额=佣金差额-其它金额<br/>
-已收款 ：佣金差额=业主实际支付佣金-华亮佣金
+注：佣金差额=业主实际支付佣金-华亮佣金       负数=幼狮支出 正数=幼狮盈利 零=持平
 </span>
         <el-table :data="ShouFang" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
                   @selection-change="selsChange" style="width: 100%;">
@@ -52,7 +51,7 @@
             </el-table-column>
             <el-table-column prop="houseno" label="房间号">
             </el-table-column>
-            <el-table-column prop="htzujin" label="合同月租金">
+            <el-table-column prop="htzujin" label="实际月租金">
             </el-table-column>
             <el-table-column prop="htyongjin" label="合同佣金">
             </el-table-column>
@@ -130,7 +129,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="11">
-                        <el-form-item label="合同月租金：" prop="htzujin">
+                        <el-form-item label="实际月租金：" prop="htzujin">
                             {{editForm.htzujin}}
                         </el-form-item>
                     </el-col>
@@ -161,8 +160,8 @@
                 </el-row>
                 <el-row>
                     <el-col :span="11">
-                        <el-form-item label="渠道公司：" prop="qd">
-                            {{editForm.qdpersons}}
+                        <el-form-item label="渠道公司：" prop="qdcompay">
+                            {{editForm.qdcompay}}
                         </el-form-item>
                     </el-col>
                     <el-col :span="11">

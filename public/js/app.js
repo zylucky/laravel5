@@ -28695,6 +28695,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -28875,18 +28879,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.$confirm('确认提交完成付款吗？', '提示', {}).then(function () {
-                _this2.editLoading = true;
                 var para = {
                     id: row.tQdApplyId
                     //console.log(para);
                 };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["I" /* finishFK */])(para).then(function (res) {
-                    _this2.editLoading = false;
                     _this2.$message({
                         message: '提交成功',
                         type: 'success'
                     });
-                    _this2.$refs['editForm'].resetFields();
-                    _this2.editFormVisible = false;
                     _this2.getChuFangCommission();
                 });
             });
@@ -28943,7 +28943,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_element_ui_packages_col_src_col__ = __webpack_require__(24);
-//
 //
 //
 //
@@ -46297,8 +46296,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.renter.jujianfangtype = res.data.data.jujianfangtype;
             this.renter.jujianfang = res.data.data.jujianfang; //
             this.renter.jujianfangid = res.data.data.jujianfangid;
-            this.renter.options1[0].value = res.data.data.jujianfangid;
-            this.renter.options1[0].label = res.data.data.jujianfang;
+            for (var x in res.data.data.jujianfangid) {
+                this.renter.options1[x].value = res.data.data.jujianfangid;
+                this.renter.options1[x].label = res.data.data.jujianfang;
+            }
             this.renter.zuhuleixing = res.data.data.zuhuleixing;
             this.renter.shoukuanren = res.data.data.shoukuanren;
             this.renter.zhanghao = res.data.data.zhanghao;
@@ -49144,6 +49145,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -49624,6 +49626,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //alert(33333);
                 if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname) {
                     this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname = this.optionsyslxr1[x].label;
+                    console.log(55);
                     //alert(55);
                 }
                 /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
@@ -49809,6 +49812,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addContract: function addContract() {
             this.Visible = true;
         },
+        dianji: function dianji() {
+            location.reload('http://127.0.0.1:8000/#/saleContract');
+        },
+        quexiao: function quexiao() {
+            this.resetForm('hedan');
+            location.reload('http://127.0.0.1:8000/#/saleContract');
+            this.Visible = false;
+        },
 
         //新增的提交
         handleEnd: function handleEnd(index, row) {
@@ -49933,6 +49944,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     row.departmentname = this.optionsyslxr3[x].label;
                     //alert(55);
                 }
+                //1211222222alert(55);
                 /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
                  this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
                   }*/
@@ -50167,7 +50179,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         fangjia: function fangjia(row, column) {
-            return row.fanghao + row.subleaseno; //在这里面拼接数据的时候，在js中拼接
+            if (row.subleaseno == null) {
+                //console.log(row.fanghao);
+                return row.fanghao;
+            } else {
+                return row.fanghao + row.subleaseno; //在这里面拼接数据的时候，在js中拼接
+            }
         },
         fangshi: function fangshi(_fangshi) {
             return _fangshi == 1 ? '%' : '元';
@@ -51177,7 +51194,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         fangjia: function fangjia(row, column) {
-            return row.fanghao + row.subleaseno; //在这里面拼接数据的时候，在js中拼接
+            if (row.subleaseno == null) {
+                //console.log(row.Fanghao);
+                return row.Fanghao;
+            } else {
+                return row.Fanghao + row.subleaseno; //在这里面拼接数据的时候，在js中拼接
+            }
         },
 
         //获取这个解约协议页面的数据
@@ -109041,13 +109063,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleUser(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("查看渠道人员")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
-          on: {
-            "click": function($event) {
-              _vm.handleUpload(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("上传协议")])], 1)], 1)], 1)]
+        }, [_vm._v("查看渠道人员")])], 1)], 1)], 1)]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
@@ -112996,68 +113012,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "brokerCompanyFrom.zonghepingjia"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "通讯录",
-      "prop": "tongxunlu"
-    }
-  }, [_c('el-upload', {
-    attrs: {
-      "action": "https://jsonplaceholder.typicode.com/posts/",
-      "list-type": "picture-card",
-      "on-preview": _vm.handlePictureCardPreview,
-      "on-remove": _vm.handleRemove
-    }
-  }, [_c('i', {
-    staticClass: "el-icon-plus"
-  })])], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "size": "tiny"
-    },
-    model: {
-      value: (_vm.dialogVisible),
-      callback: function($$v) {
-        _vm.dialogVisible = $$v
-      },
-      expression: "dialogVisible"
-    }
-  }, [_c('img', {
-    attrs: {
-      "width": "100%",
-      "src": _vm.dialogImageUrl,
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "合作协议",
-      "prop": "hezuoxieyi"
-    }
-  }, [_c('el-upload', {
-    attrs: {
-      "action": "https://jsonplaceholder.typicode.com/posts/",
-      "list-type": "picture-card",
-      "on-preview": _vm.handlePictureCardPreview,
-      "on-remove": _vm.handleRemove
-    }
-  }, [_c('i', {
-    staticClass: "el-icon-plus"
-  })])], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "size": "tiny"
-    },
-    model: {
-      value: (_vm.dialogVisible),
-      callback: function($$v) {
-        _vm.dialogVisible = $$v
-      },
-      expression: "dialogVisible"
-    }
-  }, [_c('img', {
-    attrs: {
-      "width": "100%",
-      "src": _vm.dialogImageUrl,
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "备注",
       "prop": "beizhu"
@@ -119416,7 +119370,17 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('p', [_c('b', [_vm._v("  第十二条  补充条款")]), _vm._v(" "), _c('br'), _vm._v("\n          以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。"), _c('br'), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.buchongtiaokuan))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('input', {
+  return _c('div', [_c('p', [_c('b', [_vm._v("  第十二条  补充条款")]), _vm._v(" "), _c('br'), _vm._v("\n          以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。"), _c('br'), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.buchongtiaokuan))]), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.buchongtiaokuan == null || _vm.iscompletefrzj == '') ? _c('input', {
+    staticStyle: {
+      "width": "600px"
+    },
+    attrs: {
+      "type": "text",
+      "name": "",
+      "disabled": "",
+      "value": "以下空白"
+    }
+  }) : _vm._e(), _vm._v(" "), _c('input', {
     staticStyle: {
       "width": "600px"
     },
@@ -126246,6 +126210,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
+      "prop": "fukuanriqi",
+      "label": "佣金结算日",
+      "formatter": _vm.changeJSDate
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
       "prop": "yjstate",
       "label": "状态",
       "formatter": _vm.formatYJType
@@ -126387,7 +126357,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "合同月租金：",
+      "label": "实际月租金：",
       "prop": "htzujin"
     }
   }, [_vm._v("\n                            " + _vm._s(_vm.editForm.htzujin) + "\n                        ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
@@ -126405,19 +126375,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "付款方式：",
-      "prop": "yzj"
+      "label": "协议佣金：",
+      "prop": "shijiyongjin"
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.yjzbCf) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.shijiyongjin) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 11
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "实付佣金：",
+      "prop": "htyezhushifuyj"
+    }
+  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.htyezhushifuyj) + "\n                    ")])], 1), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
       "label": "渠道公司：",
-      "prop": "tQdCompayId"
+      "prop": "qdcompay"
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.tQdCompayId) + "\n                    ")])], 1), _vm._v(" "), _c('el-col', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.qdcompay) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
       "span": 11
     }
@@ -126426,25 +126405,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": "渠道公司人员：",
       "prop": "qdpersons"
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.qdpersons) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.qdpersons) + "\n                    ")])], 1), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "首期租金：",
-      "prop": "sqzj"
+      "label": "佣金结算日：",
+      "prop": "fukuanriqi"
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.htzujin) + "\n                    ")])], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 11
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "押金：",
-      "prop": "yj"
-    }
-  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.yjzbCf) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.changeXQDate(_vm.editForm.fukuanriqi)) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
       "span": 11
     }
@@ -126453,7 +126423,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": "状态：",
       "prop": "yjstate"
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.formatState(_vm.editForm.yjstate)) + "\n                    ")])], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-dialog', {
+  }, [_vm._v("\n                    " + _vm._s(_vm.formatState(_vm.editForm.yjstate)) + "\n                ")])], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-dialog', {
     attrs: {
       "title": "确认付款",
       "close-on-click-modal": false
@@ -129733,7 +129703,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "color": "red"
     }
-  }, [_vm._v("\n注：负数=幼狮支出 正数=幼狮盈利 零=持平       未收款 ：佣金差额=合同佣金-华亮佣金 实际结款金额=佣金差额-其它金额"), _c('br'), _vm._v("\n已收款 ：佣金差额=业主实际支付佣金-华亮佣金\n")]), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("\n注：佣金差额=业主实际支付佣金-华亮佣金       负数=幼狮支出 正数=幼狮盈利 零=持平\n")]), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -129777,7 +129747,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "htzujin",
-      "label": "合同月租金"
+      "label": "实际月租金"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -129953,7 +129923,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "合同月租金：",
+      "label": "实际月租金：",
       "prop": "htzujin"
     }
   }, [_vm._v("\n                            " + _vm._s(_vm.editForm.htzujin) + "\n                        ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
@@ -129999,9 +129969,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "渠道公司：",
-      "prop": "qd"
+      "prop": "qdcompay"
     }
-  }, [_vm._v("\n                            " + _vm._s(_vm.editForm.qdpersons) + "\n                        ")])], 1), _vm._v(" "), _c('el-col', {
+  }, [_vm._v("\n                            " + _vm._s(_vm.editForm.qdcompay) + "\n                        ")])], 1), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 11
     }
@@ -131245,7 +131215,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "title": "新增签单人",
-      "close-on-click-modal": false
+      "close-on-click-modal": false,
+      "before-close": _vm.dianji
     },
     model: {
       value: (_vm.Visible),
@@ -131458,7 +131429,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-button', {
     nativeOn: {
       "click": function($event) {
-        _vm.Visible = false
+        _vm.quexiao($event)
       }
     }
   }, [_vm._v(" 取消")]), _vm._v(" "), _c('el-button', {

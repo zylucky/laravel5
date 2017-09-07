@@ -357,8 +357,10 @@
                 this.renter.jujianfangtype = res.data.data.jujianfangtype;
                 this.renter.jujianfang = res.data.data.jujianfang;//
                 this.renter.jujianfangid = res.data.data.jujianfangid;
-                this.renter.options1[0].value = res.data.data.jujianfangid;
-                this.renter.options1[0].label = res.data.data.jujianfang;
+                for (let x in res.data.data.jujianfangid){
+                    this.renter.options1[x].value = res.data.data.jujianfangid;
+                    this.renter.options1[x].label = res.data.data.jujianfang;
+                }
                 this.renter.zuhuleixing = res.data.data.zuhuleixing;
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.zhanghao = res.data.data.zhanghao;

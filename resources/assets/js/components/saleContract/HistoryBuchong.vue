@@ -138,7 +138,12 @@
         },
         methods:{
             fangjia(row, column){
-                return  row.fanghao+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
+                if(row.subleaseno == null){
+                    //console.log(row.fanghao);
+                    return  row.fanghao;
+                }else{
+                    return  row.fanghao+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
+                }
             },
             fangshi(fangshi){
                 return fangshi==1?'%':'元';

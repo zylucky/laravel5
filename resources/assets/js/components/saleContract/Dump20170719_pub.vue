@@ -5,6 +5,7 @@
             &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
             <u>{{buchongtiaokuan}}</u>
             <br>
+            <input v-if="buchongtiaokuan==null||iscompletefrzj==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <input type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
 

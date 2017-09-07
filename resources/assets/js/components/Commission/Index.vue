@@ -59,6 +59,8 @@
             </el-table-column>
             <el-table-column prop="htyezhushifuyj" label="实付佣金" width="100" >
             </el-table-column>
+            <el-table-column prop="fukuanriqi" label="佣金结算日" :formatter="changeJSDate">
+            </el-table-column>
             <el-table-column prop="yjstate" label="状态" :formatter="formatYJType">
             </el-table-column>
 
@@ -127,7 +129,7 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="11">
-                            <el-form-item label="合同月租金：" prop="htzujin">
+                            <el-form-item label="实际月租金：" prop="htzujin">
                                 {{editForm.htzujin}}
                             </el-form-item>
                         </el-col>
@@ -139,41 +141,43 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="11">
-                        <el-form-item label="付款方式：" prop="yzj">
-                            {{editForm.yjzbCf}}
+                        <el-form-item label="协议佣金：" prop="shijiyongjin">
+                            {{editForm.shijiyongjin}}
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="11">
-                        <el-form-item label="渠道公司：" prop="tQdCompayId">
-                            {{editForm.tQdCompayId}}
+                        <el-form-item label="实付佣金：" prop="htyezhushifuyj">
+                            {{editForm.htyezhushifuyj}}
                         </el-form-item>
                     </el-col>
+                    <el-col :span="11">
+                        <el-form-item label="渠道公司：" prop="qdcompay">
+                            {{editForm.qdcompay}}
+                        </el-form-item>
+                    </el-col>
+
+                </el-row>
+                <el-row>
                     <el-col :span="11">
                         <el-form-item label="渠道公司人员：" prop="qdpersons">
                             {{editForm.qdpersons}}
                         </el-form-item>
                     </el-col>
+                    <el-col :span="11">
+                        <el-form-item label="佣金结算日：" prop="fukuanriqi">
+                            {{changeXQDate(editForm.fukuanriqi)}}
+                        </el-form-item>
+                    </el-col>
+
                 </el-row>
                 <el-row>
-                    <el-col :span="11">
-                        <el-form-item label="首期租金：" prop="sqzj">
-                            {{editForm.htzujin}}
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="11">
-                        <el-form-item label="押金：" prop="yj">
-                            {{editForm.yjzbCf}}
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="11">
-                        <el-form-item label="状态：" prop="yjstate">
-                            {{formatState(editForm.yjstate)}}
-                        </el-form-item>
-                    </el-col>
+                <el-col :span="11">
+                    <el-form-item label="状态：" prop="yjstate">
+                        {{formatState(editForm.yjstate)}}
+                    </el-form-item>
+                </el-col>
                 </el-row>
             </el-form>
         </el-dialog>
@@ -380,19 +384,15 @@
             //完成按钮
             handleFinish: function (index, row) {
                 this.$confirm('确认提交完成付款吗？', '提示', {}).then(() => {
-                    this.editLoading = true;
                     let para = {
                         id:row.tQdApplyId,
                     }
                     //console.log(para);
                     finishFK(para).then((res) => {
-                        this.editLoading = false;
                         this.$message({
                             message: '提交成功',
                             type: 'success'
                         });
-                        this.$refs['editForm'].resetFields();
-                        this.editFormVisible = false;
                         this.getChuFangCommission();
                     });
                 });
