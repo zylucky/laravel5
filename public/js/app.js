@@ -28699,6 +28699,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -113867,6 +113876,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
+      "prop": "fukuanriqi",
+      "label": "佣金结算日",
+      "formatter": _vm.changeJSDate
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
       "prop": "yjstate",
       "label": "状态",
       "formatter": _vm.formatYJType
@@ -114062,10 +114077,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
+      "label": "佣金结算日：",
+      "prop": "fukuanriqi"
+    }
+  }, [_vm._v("\n                        " + _vm._s(_vm.changeXQDate(_vm.editForm.fukuanriqi)) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 11
+    }
+  }, [_c('el-form-item', {
+    attrs: {
       "label": "状态：",
       "prop": "yjstate"
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.formatState(_vm.editForm.yjstate)) + "\n                    ")])], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-dialog', {
+  }, [_vm._v("\n                    " + _vm._s(_vm.formatState(_vm.editForm.yjstate)) + "\n                ")])], 1)], 1)], 1)], 1), _vm._v(" "), _c('el-dialog', {
     attrs: {
       "title": "确认付款",
       "close-on-click-modal": false
