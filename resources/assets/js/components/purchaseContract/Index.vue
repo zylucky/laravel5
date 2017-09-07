@@ -64,6 +64,7 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])" ><el-button  @click="handleupload(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])"><el-button @click="handleZhanghao(scope.$index, scope.row)">收款账号</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])"><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])"><el-button @click="handleSummary(scope.$index, scope.row)">打印核心数据</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -443,6 +444,10 @@
                         }
                     });
                 })
+            },
+            //打印核心数据
+            handleSummary(index,row){
+                window.open('/#/purchaseContract/summary?id='+row.id);
             },
             //合同确认
             handleConfirm(index,row){

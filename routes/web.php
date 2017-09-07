@@ -44,6 +44,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::post('hedanSave','Contract\purchaseContractController@hedanSave');
     Route::get('getHedanList','Contract\purchaseContractController@getHedanList');
     Route::get('deleteHedan','Contract\purchaseContractController@deleteHedan');
+    Route::get('summary','Contract\purchaseContractController@summary');
     Route::post('updataHedan','Contract\purchaseContractController@updataHedan');
     Route::post('saveyongyou','Contract\purchaseContractController@saveyongyou');
 });
