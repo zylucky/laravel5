@@ -50024,9 +50024,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -126447,12 +126444,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         key: "default",
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
-            staticStyle: {
-              "boeder": "1px solid red",
-              "top": "10px",
-              "height": "35px",
-              "width": "150px"
-            },
             attrs: {
               "filterable": "",
               "remote": "",
@@ -126519,11 +126510,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         key: "default",
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
-            staticStyle: {
-              "top": "10px",
-              "height": "35px",
-              "width": "150px"
-            },
             attrs: {
               "filterable": "",
               "remote": "",
@@ -126563,11 +126549,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         key: "default",
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
-            staticStyle: {
-              "top": "10px",
-              "height": "35px",
-              "width": "150px"
-            },
             attrs: {
               "filterable": "",
               "remote": "",
