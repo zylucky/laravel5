@@ -628,4 +628,15 @@ class purchaseContractController extends Controller
         ]);
         echo $response->getBody();
     }
+    public function summary(){
+        $id = Input::get('id');
+        $httype = Input::get('httype');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/cw/proof/get?htid='.$id.'&httype='.$httype);
+        echo $response->getBody();
+
+    }
+
 }

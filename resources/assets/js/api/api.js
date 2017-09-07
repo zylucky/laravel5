@@ -109,6 +109,7 @@ export const hedanSavePurchaseContract= params => { return axios.post(`${base}/p
 export const removeHedanPurchaseContract= params => { return axios.get(`${base}/purchaseContract/deleteHedan`, {params:params}); };//删除扫描建
 export const hedanUpdataPurchaseContract= params => { return axios.post(`${base}/purchaseContract/updataHedan`, {params:params}); };//删除扫描建
 export const yongyouUpdataPurchaseContract = params => { return axios.post(`${base}/purchaseContract/saveyongyou`, { params: params }); };//用友编号的保存
+export const summaryPurchaseContract = params => { return axios.get(`${base}/purchaseContract/summary`, { params: params }); };//合同摘要核心数据
 
 //出房合同
 //合同信息
