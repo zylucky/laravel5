@@ -220,7 +220,7 @@
                 if(row.subleaseno == null){
                     return  row.fanghao;
                 }else{
-                    return  row.fanghao+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
+                    return  row.fanghao+"-"+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
                 }
             },
             handleUplod(index,row){
@@ -459,36 +459,36 @@
                         });
                         getSaleContractInfo(para).then((res)=>{
                             if(res.data.code=='200'){
-                                //console.log(res.data.data)
-                                //把数据分别赋值给三个组件的变量
-                                let para = {
-                                    id:0,
-                                    fyid:res.data.data.xsOffice[0].omcId,
-                                    name:res.data.data.chengzuren[0].name,
-                                    phone:res.data.data.chengzuren[0].tel,
-                                    wdfh:res.data.data.xsOffice[0].fanghao,
-                                    xzhzj:res.data.data.zujinList[0].yuezujin,
-                                    zq1:res.data.data.startdate,
-                                    zq2:res.data.data.enddate,
-                                    fkfs:"押"+res.data.data.fukuanFangshiList[0].yajinyue+"付"+res.data.data.fukuanFangshiList[0].zujinyue,
-                                    zlmj:res.data.data.xsOffice[0].qianyuemianji,
-                                };
-                                console.log(para);
-                                getSaleContractOmc(para).then((res)=>{
-                                    if(res.data.success=='true'){
-                                        //console.log(res.data.data)
-                                        //把数据分别赋值给三个组件的变量
-                                        this.$message({
-                                            message: '传输数据成功',
-                                            type: 'success'
-                                        });
-                                    }else {
-                                        this.$message({
-                                            message: '传输数据失败',
-                                            type: 'error'
-                                        });
-                                    }
-                                })
+                                for (let x=0;x < res.data.data.xsOffice.length;x++){
+                                    let para = {
+                                        id:0,
+                                        fyid:res.data.data.xsOffice[x].omcId,
+                                        name:res.data.data.chengzuren[0].name,
+                                        phone:res.data.data.chengzuren[0].tel,
+                                        wdfh:res.data.data.xsOffice[x].fanghao+"-"+res.data.data.xsOffice[x].subleaseno,
+                                        xzhzj:res.data.data.zujinList[0].yuezujin,
+                                        zq1:res.data.data.startdate,
+                                        zq2:res.data.data.enddate,
+                                        fkfs:"押"+res.data.data.fukuanFangshiList[0].yajinyue+"付"+res.data.data.fukuanFangshiList[0].zujinyue,
+                                        zlmj:res.data.data.xsOffice[x].qianyuemianji,
+                                    };
+                                    console.log(para);
+                                    getSaleContractOmc(para).then((res)=>{
+                                        if(res.data.success){
+                                            //console.log(res.data.data)
+                                            //把数据分别赋值给三个组件的变量
+                                            this.$message({
+                                                message: '传输数据成功',
+                                                type: 'success'
+                                            });
+                                        }else {
+                                            this.$message({
+                                                message: '传输数据失败',
+                                                type: 'error'
+                                            });
+                                        }
+                                    })
+                                }
                             }else {
                                 this.$message({
                                     message: '获取数据失败',

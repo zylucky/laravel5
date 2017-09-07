@@ -95,7 +95,7 @@
                     //console.log(row.Fanghao);
                     return  row.Fanghao;
                 }else{
-                    return  row.Fanghao+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
+                    return  row.Fanghao+"-"+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
                 }
             },
             //获取这个解约协议页面的数据
