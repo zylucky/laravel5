@@ -224,7 +224,7 @@
             >
             </el-pagination>
         </el-col>
-        <el-dialog title="新增签单人" v-model="Visible" :close-on-click-modal="false" style="max-height:700px;margin-top:150px;over-flow:hidden;">
+        <el-dialog title="新增签单人" v-model="Visible" :close-on-click-modal="false" :before-close="dianji" style="max-height:700px;margin-top:150px;over-flow:hidden;">
             <el-form  label-width="150px"  ref="hedan" :rules="hedanRules" :model="hedan">
                 <div style="max-height:400px;border:0px solid #8391a5;overflow:auto;">
                 <div v-for="(item, index) in hedan.qiandanren" style="height:150px;">
@@ -331,7 +331,7 @@
             </el-form>
             </div>
             <div slot="footer" class="dialog-footer" style="position:fixed;bottom:1%;left:80%;">
-                <el-button @click.native="Visible = false" style=""> 取消</el-button>
+                <el-button @click.native="quexiao" style=""> 取消</el-button>
                 <el-button type="primary" @click.native="handleEnd" :loading="hedan.qiandanren.Loading" style="">提交</el-button>
             </div>
         </el-dialog>
@@ -440,6 +440,7 @@
                     //alert(33333);
                     if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex-1].signpersonnelname) {
                         this.hedan.qiandanren[this.tabIndex-1].signpersonnelname = this.optionsyslxr1[x].label;
+                        console.log(55);
                         //alert(55);
                     }
                     /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
@@ -617,6 +618,15 @@
             //新增
             addContract(){
                 this.Visible = true;
+            },
+            dianji(){
+                location.reload('http://127.0.0.1:8000/#/saleContract');
+
+            },
+            quexiao(){
+                this.resetForm('hedan');
+                location.reload('http://127.0.0.1:8000/#/saleContract');
+                this.Visible = false;
             },
             //新增的提交
             handleEnd(index,row){
