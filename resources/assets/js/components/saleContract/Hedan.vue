@@ -86,7 +86,7 @@
                                                     placeholder="请输入签单人姓名"
                                                     :remote-method="remoteMethodyslxr1"
                                                     :loading="fristyslxrloading1"
-                                                    style="boeder:1px solid red;margin-left:-150px;top:10px;height:35px;width:250px;"
+                                                    style="boeder:1px solid red;margin-left:-150px;top:10px;height:35px;width:150px;"
                                             >
                                                 <el-option
                                                         v-for="item in optionsyslxr1"
@@ -101,7 +101,7 @@
                             </el-table-column>
                             <el-table-column
                                     label="合单占比"
-                                    width="300">
+                                    width="200">
                                 <template scope="scope"> <!--style="position:relative;top:0px;height:30px;"-->
                                     <el-input v-model="scope.row.ratio" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                                 </template>
@@ -113,7 +113,7 @@
                                     <el-col>
                                         <el-form-item>
                                             <el-select
-                                                    style="margin-left:-150px;top:10px;height:35px;width:250px;"
+                                                    style="margin-left:-150px;top:10px;height:35px;width:150px;"
                                                     v-model="scope.row.leaderpersonnelname"
                                                     filterable
                                                     remote
@@ -139,7 +139,7 @@
                                     <el-col>
                                         <el-form-item>
                                             <el-select
-                                                    style="margin-left:-150px;top:10px;height:35px;width:250px;"
+                                                    style="margin-left:-150px;top:10px;height:35px;width:150px;"
                                                     v-model="scope.row.departmentname"
                                                     filterable
                                                     remote

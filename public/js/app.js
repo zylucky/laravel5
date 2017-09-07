@@ -126452,7 +126452,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               "margin-left": "-150px",
               "top": "10px",
               "height": "35px",
-              "width": "250px"
+              "width": "150px"
             },
             attrs: {
               "filterable": "",
@@ -126487,7 +126487,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }), _vm._v(" "), _c('el-table-column', {
       attrs: {
         "label": "合单占比",
-        "width": "300"
+        "width": "200"
       },
       scopedSlots: _vm._u([{
         key: "default",
@@ -126524,7 +126524,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               "margin-left": "-150px",
               "top": "10px",
               "height": "35px",
-              "width": "250px"
+              "width": "150px"
             },
             attrs: {
               "filterable": "",
@@ -126569,7 +126569,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               "margin-left": "-150px",
               "top": "10px",
               "height": "35px",
-              "width": "250px"
+              "width": "150px"
             },
             attrs: {
               "filterable": "",
