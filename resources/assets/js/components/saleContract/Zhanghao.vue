@@ -28,21 +28,21 @@
         <el-row>
             <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
                 <el-table-column
-                        label="收款方户名"
+                        label="付款方户名"
                         width="350">
                     <template scope="scope">
                         <el-input v-model="scope.row.zhanghu" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
                 <el-table-column
-                        label="收款方银行"
+                        label="付款方银行"
                         width="350">
                     <template scope="scope">
                         <el-input v-model="scope.row.yinhang" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
                 <el-table-column
-                        label="收款账号"
+                        label="付款账号"
                         width="350">
                     <template scope="scope">
                         <el-input v-model="scope.row.zhanghao" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>

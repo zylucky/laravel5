@@ -132,14 +132,14 @@
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同生效后，各方对合同内容的变更或补充应采取书面形式，作为本合同的附件。</p>
         <!--<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十二条  补充条款</b></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。</p>-->
-        <p>
+        <!--<p>
             <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十二条  补充条款</b> <br>
             &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
             <u>{{addDate.iscompletefrzj}}</u>
             <br>
             <input type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
-        </p>
+        </p>-->
          <!--   <b> 业主方（甲方）：<input type="text" name="" style="width:265px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">管理方（乙方）：</font><u>北京华亮房地产经纪有限公司</u></b>　<br>
             <b>委托代理人：<input type="text" name="" style="width:305px;font-size:10px" value=""></b><br>
             联系地址：<input type="text" name="" style="width:320px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系地址：</font><input type="text" name="" style="width:320px" value="">

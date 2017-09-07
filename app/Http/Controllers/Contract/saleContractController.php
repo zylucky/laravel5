@@ -320,19 +320,20 @@ class saleContractController extends Controller
     public function releasedList(){
         //dd(22);
         $id = Input::get('id');
+        //dd($id);
         $client = new Client ([
             'base_uri' => $this->base_url,
         ]);
-        $response1 = $client->request('POST', 'api/contract/sf/buchongXieyi/query?hetongId='.$id);
-        //根据合同id获取房间信息
+        $response1 = $client->request('POST', 'api/contract/xs/buchongXieyi/query?hetongId='.$id);
+        //根据合同id获取房间信息m
         $response2 = $client->request('GET', '/api/contract/xs/'.$id);
         $res = $response2->getBody();
         $res = json_decode($res);
-        //dd($res);
         $loupan = $res->data->xsOffice[0]->loupanName;
         $loudong = $res->data->xsOffice[0]->loudongName;
         $fanghao = $res->data->xsOffice[0]->fanghao;
         $bianhao = $res->data->bianhao;
+        $subleaseno = $res->data->xsOffice[0]->subleaseno;
 
         $res = $response1->getBody();
         $res = json_decode($res);
@@ -340,6 +341,7 @@ class saleContractController extends Controller
             $value->loupanName = $loupan;
             $value->loudongName = $loudong;
             $value->fanghao = $fanghao;
+            $value->subleaseno = $subleaseno;
             $value->bianhao = $bianhao;
         }
         echo json_encode($res);
