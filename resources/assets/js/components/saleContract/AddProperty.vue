@@ -242,7 +242,7 @@
             },
             shangyue(){
                 let para = {
-                    id:this.property.xsOffice.fanghao,
+                    id:this.property.xsOffice[0].omcId,
                 }
                 //console.log(para);
                 getSaleFanghaoChengzu(para).then((res) => {

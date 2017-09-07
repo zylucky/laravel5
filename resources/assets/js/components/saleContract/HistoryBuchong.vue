@@ -157,7 +157,7 @@
                     //alert(22);
                     this.youhuaList = res.data.data;
                     this.total = res.total;
-                    console.log(this.$route.query);
+                    //console.log(this.$route.query);
                     console.log(res.data.data);
                 });
             },
