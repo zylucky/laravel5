@@ -187,6 +187,7 @@
                             content:'',
                         }
                     ],//补充条款*/
+                    iscompletefrzj:'',//补充条款
                     actualrent:'',
                     zujinList:[
                         {
@@ -336,7 +337,7 @@
                 window.open('/#/saleContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
-                //console.log(res.data.data);
+                console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.contractVersion = res.data.data.version;
                 this.property.xsOffice = res.data.data.xsOffice;
@@ -384,6 +385,7 @@
                 this.addDate.actualrent = res.data.data.actualrent;
                 this.addDate.zujinList = res.data.data.zujinList;
                 this.addDate.checkList = res.data.data.checkList;
+                this.addDate.iscompletefrzj = res.data.data.iscompletefrzj;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
 
                 //console.log(res.data.data);

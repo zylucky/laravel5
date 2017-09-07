@@ -456,7 +456,7 @@
                                 //console.log(res.data.data)
                                 //把数据分别赋值给三个组件的变量
                                 let para = {
-                                    id:"",
+                                    id:0,
                                     fyid:res.data.data.xsOffice[0].omcId,
                                     name:res.data.data.chengzuren[0].name,
                                     phone:res.data.data.chengzuren[0].tel,

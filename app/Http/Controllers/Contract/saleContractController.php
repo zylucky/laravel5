@@ -710,7 +710,7 @@ class saleContractController extends Controller
 
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $response = $client->request('POST', 'http://yhcms.tunnel.qydev.com/yhcms/web/jcsj/addFyZhxx.do', [
+        $response = $client->request('POST', 'http://192.168.0.222:8080/yhcms/web/jcsj/addFyZhxx.do', [
             'json' => $request->params
         ]);
         echo $response->getBody();
