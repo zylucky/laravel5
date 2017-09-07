@@ -29154,7 +29154,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -115212,68 +115211,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "通讯录",
-      "prop": "tongxunlu"
-    }
-  }, [_c('el-upload', {
-    attrs: {
-      "action": "https://jsonplaceholder.typicode.com/posts/",
-      "list-type": "picture-card",
-      "on-preview": _vm.handlePictureCardPreview,
-      "on-remove": _vm.handleRemove
-    }
-  }, [_c('i', {
-    staticClass: "el-icon-plus"
-  })])], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "size": "tiny"
-    },
-    model: {
-      value: (_vm.dialogVisible),
-      callback: function($$v) {
-        _vm.dialogVisible = $$v
-      },
-      expression: "dialogVisible"
-    }
-  }, [_c('img', {
-    attrs: {
-      "width": "100%",
-      "src": _vm.dialogImageUrl,
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "合作协议",
-      "prop": "hezuoxieyi"
-    }
-  }, [_c('el-upload', {
-    attrs: {
-      "action": "https://jsonplaceholder.typicode.com/posts/",
-      "list-type": "picture-card",
-      "on-preview": _vm.handlePictureCardPreview,
-      "on-remove": _vm.handleRemove
-    }
-  }, [_c('i', {
-    staticClass: "el-icon-plus"
-  })])], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "size": "tiny"
-    },
-    model: {
-      value: (_vm.dialogVisible),
-      callback: function($$v) {
-        _vm.dialogVisible = $$v
-      },
-      expression: "dialogVisible"
-    }
-  }, [_c('img', {
-    attrs: {
-      "width": "100%",
-      "src": _vm.dialogImageUrl,
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('el-form-item', {
-    attrs: {
       "label": "备注",
       "prop": "beizhu"
     }
@@ -115742,7 +115679,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "color": "red"
     }
-  }, [_vm._v("\n注：负数=幼狮支出 正数=幼狮盈利 零=持平       未收款 ：佣金差额=合同佣金-华亮佣金 实际结款金额=佣金差额-其它金额"), _c('br'), _vm._v("\n已收款 ：佣金差额=业主实际支付佣金-华亮佣金\n")]), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("\n注：佣金差额=业主实际支付佣金-华亮佣金       负数=幼狮支出 正数=幼狮盈利 零=持平 \n")]), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -130216,13 +130153,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleUser(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("查看渠道人员")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
-          on: {
-            "click": function($event) {
-              _vm.handleUpload(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("上传协议")])], 1)], 1)], 1)]
+        }, [_vm._v("查看渠道人员")])], 1)], 1)], 1)]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {

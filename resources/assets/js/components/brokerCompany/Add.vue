@@ -275,7 +275,7 @@
                 <el-form-item label="综合评价" prop="zonghepingjia">
                     <el-rate v-model="brokerCompanyFrom.zonghepingjia" :disabled="isckdis"   ></el-rate>
                 </el-form-item>
-                <el-form-item label="通讯录" prop="tongxunlu">
+                <!--<el-form-item label="通讯录" prop="tongxunlu">
                     <el-upload
                             action="https://jsonplaceholder.typicode.com/posts/"
                             list-type="picture-card"
@@ -298,7 +298,7 @@
                 </el-form-item>
                 <el-dialog v-model="dialogVisible" size="tiny">
                     <img width="100%" :src="dialogImageUrl" alt="">
-                </el-dialog>
+                </el-dialog>-->
                 <el-form-item label="备注" prop="beizhu">
                     <el-input type="textarea" v-model="brokerCompanyFrom.beizhu" auto-complete="off"></el-input>
                 </el-form-item>

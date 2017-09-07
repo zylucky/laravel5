@@ -92,7 +92,7 @@ Route::resource('message','Message\messageController');
 
 Route::post('message/acceptMessage','Message\messageController@acceptMessage');
 Route::post('message/refuseMessage','Message\messageController@refuseMessage');
-
+Route::post('chuFangCommission/finishFK','Commission\ChuFangCommissionController@finishFK');
 //出房合同分组
 Route::group(['prefix' => 'saleContract'], function () {
     Route::post('addCopyImage','Contract\saleContractController@addCopyImage');
