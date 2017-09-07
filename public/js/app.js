@@ -28699,11 +28699,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -114018,7 +114013,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "合同月租金：",
+      "label": "实际月租金：",
       "prop": "htzujin"
     }
   }, [_vm._v("\n                            " + _vm._s(_vm.editForm.htzujin) + "\n                        ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
@@ -114036,19 +114031,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "付款方式：",
-      "prop": "yzj"
+      "label": "协议佣金：",
+      "prop": "shijiyongjin"
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.yjzbCf) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.shijiyongjin) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    attrs: {
+      "span": 11
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "实付佣金：",
+      "prop": "htyezhushifuyj"
+    }
+  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.htyezhushifuyj) + "\n                    ")])], 1), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 11
     }
   }, [_c('el-form-item', {
     attrs: {
       "label": "渠道公司：",
-      "prop": "tQdCompayId"
+      "prop": "qdcompay"
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.tQdCompayId) + "\n                    ")])], 1), _vm._v(" "), _c('el-col', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.qdcompay) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
     attrs: {
       "span": 11
     }
@@ -114057,25 +114061,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": "渠道公司人员：",
       "prop": "qdpersons"
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.qdpersons) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 11
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "首期租金：",
-      "prop": "sqzj"
-    }
-  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.htzujin) + "\n                    ")])], 1), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 11
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "押金：",
-      "prop": "yj"
-    }
-  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.yjzbCf) + "\n                    ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.editForm.qdpersons) + "\n                    ")])], 1), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 11
     }
@@ -115800,7 +115786,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "htzujin",
-      "label": "合同月租金"
+      "label": "实际月租金"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -115976,7 +115962,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "合同月租金：",
+      "label": "实际月租金：",
       "prop": "htzujin"
     }
   }, [_vm._v("\n                            " + _vm._s(_vm.editForm.htzujin) + "\n                        ")])], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
@@ -116022,9 +116008,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "渠道公司：",
-      "prop": "qd"
+      "prop": "qdcompay"
     }
-  }, [_vm._v("\n                            " + _vm._s(_vm.editForm.qdpersons) + "\n                        ")])], 1), _vm._v(" "), _c('el-col', {
+  }, [_vm._v("\n                            " + _vm._s(_vm.editForm.qdcompay) + "\n                        ")])], 1), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 11
     }

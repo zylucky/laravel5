@@ -127,7 +127,7 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="11">
-                            <el-form-item label="合同月租金：" prop="htzujin">
+                            <el-form-item label="实际月租金：" prop="htzujin">
                                 {{editForm.htzujin}}
                             </el-form-item>
                         </el-col>
@@ -139,36 +139,31 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="11">
-                        <el-form-item label="付款方式：" prop="yzj">
-                            {{editForm.yjzbCf}}
+                        <el-form-item label="协议佣金：" prop="shijiyongjin">
+                            {{editForm.shijiyongjin}}
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="11">
-                        <el-form-item label="渠道公司：" prop="tQdCompayId">
-                            {{editForm.tQdCompayId}}
+                        <el-form-item label="实付佣金：" prop="htyezhushifuyj">
+                            {{editForm.htyezhushifuyj}}
                         </el-form-item>
                     </el-col>
+                    <el-col :span="11">
+                        <el-form-item label="渠道公司：" prop="qdcompay">
+                            {{editForm.qdcompay}}
+                        </el-form-item>
+                    </el-col>
+
+                </el-row>
+                <el-row>
                     <el-col :span="11">
                         <el-form-item label="渠道公司人员：" prop="qdpersons">
                             {{editForm.qdpersons}}
                         </el-form-item>
                     </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="11">
-                        <el-form-item label="首期租金：" prop="sqzj">
-                            {{editForm.htzujin}}
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="11">
-                        <el-form-item label="押金：" prop="yj">
-                            {{editForm.yjzbCf}}
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
+
                     <el-col :span="11">
                         <el-form-item label="状态：" prop="yjstate">
                             {{formatState(editForm.yjstate)}}
