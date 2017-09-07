@@ -135,12 +135,12 @@
         <p>
             <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十二条  补充条款</b> <br>
             &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
-            <u>{{addDate.actualrent}}</u>
+            <u>{{addDate.iscompletefrzj}}</u>
             <br>
             <input type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
-
-            <b> 业主方（甲方）：<input type="text" name="" style="width:265px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">管理方（乙方）：</font><u>北京华亮房地产经纪有限公司</u></b>　<br>
+        </p>
+         <!--   <b> 业主方（甲方）：<input type="text" name="" style="width:265px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">管理方（乙方）：</font><u>北京华亮房地产经纪有限公司</u></b>　<br>
             <b>委托代理人：<input type="text" name="" style="width:305px;font-size:10px" value=""></b><br>
             联系地址：<input type="text" name="" style="width:320px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系地址：</font><input type="text" name="" style="width:320px" value="">
             <br>联系方式：<input type="text" name="" style="width:320px;" disabled value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系方式：</font><input type="text" name="" style="width:320px;font-size:10px" value=""><br>
@@ -150,8 +150,8 @@
             <b> 居间方（丙方）：</b> <input type="text" name="" style="width:119px;font-size:10px" value="">
             <br>联系地址：<input type="text" name="" style="width:315px;font-size:10px" value="">
             <br>联系方式：<input type="text" name="" style="width:315px;font-size:10px" value=""><br>
-            <font>_______年____月____日</font>
-        </p>
+            <font>_______年____月____日</font>-->
+
         <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 550px;"></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 550px;"></p>-->
 
@@ -294,6 +294,7 @@
                     qianyuerenId:'',
                 },
                 addDate: {
+                    iscompletefrzj:'',
                     buchongTiaokuanList:[
                         {
                             content:'',
@@ -488,8 +489,8 @@
                 return(str3);
             },
             fuzhi(res){
-                console.log(2222);
-                console.log(res.data.data);
+                //console.log(2222);
+                //console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.property.xsOffice = res.data.data.xsOffice;
                 if(res.data.data.chengzuren.length>0){
@@ -538,7 +539,7 @@
                 this.addDate.shouqifukuanri = res.data.data.shouqifukuanri;
                 this.addDate.erqifukuanri = res.data.data.erqifukuanri;
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
-                this.addDate.buchongTiaokuanList = res.data.data.buchongTiaokuanList;
+                this.addDate.iscompletefrzj = res.data.data.iscompletefrzj;
                 if(res.data.data.zujinList != ''){
                     this.addDate.zujinList = res.data.data.zujinList;
                 }
