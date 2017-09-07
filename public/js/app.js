@@ -43784,6 +43784,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para2 = {};
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_91" /* getPermissionListPage */])(para2).then(function (res) {
                 _this2.data2 = res.data;
+                console.log(_this2.data2);
             });
         },
 

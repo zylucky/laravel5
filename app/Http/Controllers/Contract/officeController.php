@@ -117,7 +117,8 @@ class officeController extends Controller
         $data['fybh'] = Input::get('fanghao');
         //1.建立房间
         $client = new Client([
-            'base_uri' => '116.62.68.26:8080',
+            'base_uri' => '192.168.0.222:8080',
+
         ]);
         //return $data;
         $response1 = $client->request('POST', '/yhcms/web/zdfyxx/getFyErp.do', [
@@ -132,8 +133,8 @@ class officeController extends Controller
         $data['parameters']['id']= Input::get('loudongOmcId');
         //1.建立房间
         $client = new Client([
-            //'base_uri' => '192.168.0.222:8080',
-            'base_uri' => '116.62.68.26:8080',
+            'base_uri' => '192.168.0.222:8080',
+            //'base_uri' => '116.62.68.26:8080',
         ]);
         //return $data;
         $response1 = $client->request('POST', '/yhcms/web/jcsj/getLpZdgz.do', [

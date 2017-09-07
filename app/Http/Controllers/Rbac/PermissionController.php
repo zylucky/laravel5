@@ -31,6 +31,25 @@ class PermissionController extends Controller
         $input = $request->params;
         $lists = $input['permissions'];
         $data = [];
+        $permissions = DB::table('permissions')
+            ->whereNotIn('id', $lists)
+            ->select('parent_id')
+            ->get()->toArray();
+        echo '<pre>';
+        var_dump($permissions);exit;
+        foreach ($permissions as $key=>$value){
+            if($value->parent_id==0){
+                unset($permissions[$key]);
+            }
+        }
+        dd($permissions);
+
+        $permissions2 = DB::table('permissions')
+            ->whereNotIn('id', $permissions)
+            ->select('parent_id')
+            ->get();
+
+        dd($permissions2);
         foreach ($lists as $key => $list){
             $data[$key]['permission_id']=$list;
             $data[$key]['role_id']=$id;
