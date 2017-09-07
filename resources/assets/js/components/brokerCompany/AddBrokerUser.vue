@@ -187,7 +187,7 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="佣金类型" prop="yjType">
-                            <el-select v-model="brokerCompanyUserForm.yjType" placeholder="请输入佣金类型">
+                            <el-select v-model="brokerCompanyUserForm.yjType" placeholder="请输入佣金类型"  @change="changeDJ">
                                 <el-option
                                         v-for="item in options"
                                         :key="item.value"
@@ -765,6 +765,17 @@
                     if (this.optionsyslxr3[x].value == this.brokerCompanyUserForm.yslianxiren3Id) {
                         this.brokerCompanyUserForm.yslianxiren3 = this.optionsyslxr3[x].label;
                     }
+                }
+            },
+            changeDJ()
+            {
+                // alert(this.brokerCompanyFrom.yjType );
+                if (this.brokerCompanyUserForm.yjType == 2) {
+                    this.brokerCompanyUserForm.yjzbSf = 0.08;
+                    this.brokerCompanyUserForm.yjzbCf = 0.08;
+                } else {
+                    this.brokerCompanyUserForm.yjzbSf = 0.96;
+                    this.brokerCompanyUserForm.yjzbCf = 0.96;
                 }
             },
             save(){

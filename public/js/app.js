@@ -31710,6 +31710,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }
         },
+        changeDJ: function changeDJ() {
+            // alert(this.brokerCompanyFrom.yjType );
+            if (this.brokerCompanyUserForm.yjType == 2) {
+                this.brokerCompanyUserForm.yjzbSf = 0.08;
+                this.brokerCompanyUserForm.yjzbCf = 0.08;
+            } else {
+                this.brokerCompanyUserForm.yjzbSf = 0.96;
+                this.brokerCompanyUserForm.yjzbCf = 0.96;
+            }
+        },
         save: function save() {
             var _this8 = this;
 
@@ -114058,7 +114068,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 5
+      "span": 4
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -114089,7 +114099,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   }))], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 5
+      "span": 4
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -114120,7 +114130,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   }))], 1)], 1), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 7
+      "span": 5
     }
   }, [_c('el-form-item', {
     attrs: {
@@ -126725,6 +126735,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-select', {
     attrs: {
       "placeholder": "请输入佣金类型"
+    },
+    on: {
+      "change": _vm.changeDJ
     },
     model: {
       value: (_vm.brokerCompanyUserForm.yjType),
