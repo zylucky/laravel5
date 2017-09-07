@@ -149,7 +149,7 @@ class officeController extends Controller
         $client = new Client([
             'base_uri' => $this->base_url,
         ]);
-        $response1 = $client->request('POST', 'http://192.168.0.222:8080/yhcms/web/jcsj/getByMj.do', [
+        $response1 = $client->request('POST', 'http://yhcms.tunnel.qydev.com/yhcms/web/jcsj/getByMj.do', [
             'json' => $data
         ]);
         echo $response1->getBody();

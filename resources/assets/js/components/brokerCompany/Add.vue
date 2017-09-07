@@ -45,7 +45,7 @@
                             <el-input value="北京市" disabled="disabled"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="5">
+                    <el-col :span="4">
                         <el-form-item label-width="10px" prop="dzXingzhengqvyvId">
                             <el-select v-model="brokerCompanyFrom.dzXingzhengqvyvId" placeholder="请选择行政区"
                                        @change="remoteMethodJD">
@@ -58,7 +58,7 @@
                             </el-select>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="5">
+                    <el-col :span="4">
                         <el-form-item label-width="10px" prop="dzJiedaoId">
                             <el-select v-model="brokerCompanyFrom.dzJiedaoId" placeholder="请选择街道"
                                        @change="changejdqy">
@@ -71,7 +71,7 @@
                             </el-select>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="7">
+                    <el-col :span="5">
                         <el-form-item label-width="10px" prop="dzXiangxi">
                             <el-input v-model="brokerCompanyFrom.dzXiangxi" placeholder="请输入公司详细地址"></el-input>
                         </el-form-item>
