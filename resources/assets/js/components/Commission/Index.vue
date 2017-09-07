@@ -59,6 +59,8 @@
             </el-table-column>
             <el-table-column prop="htyezhushifuyj" label="实付佣金" width="100" >
             </el-table-column>
+            <el-table-column prop="fukuanriqi" label="佣金结算日" :formatter="changeJSDate">
+            </el-table-column>
             <el-table-column prop="yjstate" label="状态" :formatter="formatYJType">
             </el-table-column>
 
@@ -163,12 +165,19 @@
                             {{editForm.qdpersons}}
                         </el-form-item>
                     </el-col>
-
                     <el-col :span="11">
-                        <el-form-item label="状态：" prop="yjstate">
-                            {{formatState(editForm.yjstate)}}
+                        <el-form-item label="佣金结算日：" prop="fukuanriqi">
+                            {{changeXQDate(editForm.fukuanriqi)}}
                         </el-form-item>
                     </el-col>
+
+                </el-row>
+                <el-row>
+                <el-col :span="11">
+                    <el-form-item label="状态：" prop="yjstate">
+                        {{formatState(editForm.yjstate)}}
+                    </el-form-item>
+                </el-col>
                 </el-row>
             </el-form>
         </el-dialog>
