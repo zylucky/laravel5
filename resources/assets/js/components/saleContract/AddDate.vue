@@ -338,7 +338,7 @@
                     <el-checkbox label="（五）其它"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
-            <!--补充条款-->
+            <!--补充条款1111-->
             <el-col :span="24">
                 <el-form-item label="补充条款"  prop="iscompletefrzj">
                     <el-input type="textarea" row="5px" v-model="addDate.iscompletefrzj"></el-input>

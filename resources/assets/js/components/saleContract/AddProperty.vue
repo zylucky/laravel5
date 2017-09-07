@@ -71,8 +71,8 @@
                                         </el-select>
                                     </el-form-item>
                                 </el-col>
-                                <el-col :span="5">
-                                    <el-form-item prop="subleaseno">
+                                <el-col :span="4">
+                                    <el-form-item label="——" prop="subleaseno">
                                         <el-input placeholder="子房间号" v-model="property.xsOffice[index].subleaseno"></el-input>
                                     </el-form-item>
                                 </el-col>
@@ -103,7 +103,7 @@
                                     <el-form-item label="承租面积" required prop="qianyuemianji">
                                         <el-input v-model.number="property.xsOffice[index].qianyuemianji"></el-input>
                                     </el-form-item>
-                                    <span style="border:0px solid red;font-size:12px;position:relative;left:180px;top:-23px;color:#ff4949;">剩余承租面积&nbsp;&nbsp; <i v-text="syczmj"></i> &nbsp;㎡</span>
+                                    <span style="border:0px solid red;font-size:12px;position:relative;left:180px;top:-23px;color:#ff4949;">剩余承租面积&nbsp;&nbsp; <i v-text="syczmj"></i>㎡</span>
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item required label="房屋类型" prop="leixing">
@@ -246,7 +246,16 @@
                 }
                 //console.log(para);
                 getSaleFanghaoChengzu(para).then((res) => {
-                    this.syczmj = res.data.data;
+                    if(!res.data.success){
+                        this.$message({
+                            message: res.data.message,
+                            type: 'error'
+                        });
+                    }else{
+                        this.syczmj = res.data.data.kzmj;
+                        //console.log(res.data.data.kzmj);
+                        //console.log(this.syczmj);
+                    }
                     /*let arr = [];
                     arr[0] = '';
                     for ( var i in res.data ){

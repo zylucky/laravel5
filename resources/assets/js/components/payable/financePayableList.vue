@@ -56,9 +56,9 @@
                                 <el-dropdown-item  v-if="scope.row.zhuangtai==1&&fun('rejectPayable')">
                                     <el-button  @click="handleReject(scope.$index, scope.row)">驳回付款</el-button>
                                 </el-dropdown-item>
-                                <el-dropdown-item>
+                              <!--  <el-dropdown-item>
                                     <el-button @click="handleOpen(scope.$index, scope.row)">上传凭证</el-button>
-                                </el-dropdown-item>
+                                </el-dropdown-item>-->
                             </el-dropdown-menu>
                         </el-dropdown>
                     </template>
