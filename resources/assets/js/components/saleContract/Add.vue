@@ -338,7 +338,17 @@
             },
             fuzhi(res){
                 console.log(res.data.data);
+
                 this.id = res.data.data.id;
+                this.zhuangtai = res.data.data.zhuangtai;
+                /*if(this.zhuangtai==4){
+                    this.$notify({
+                        title: '提示',
+                        message: res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content==null?'审核拒绝：无':'审核拒绝：'+res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content,
+                        duration: 0,
+                        type: 'warning',
+                    });
+                }*/
                 this.contractVersion = res.data.data.version;
                 this.property.xsOffice = res.data.data.xsOffice;
                 this.property.subleaseno = res.data.data.subleaseno;
@@ -357,8 +367,10 @@
                 this.renter.jujianfangtype = res.data.data.jujianfangtype;
                 this.renter.jujianfang = res.data.data.jujianfang;//
                 this.renter.jujianfangid = res.data.data.jujianfangid;
-                this.renter.options1[0].value = res.data.data.jujianfangid;
-                this.renter.options1[0].label = res.data.data.jujianfang;
+                for (let x in res.data.data.jujianfangid){
+                    this.renter.options1[x].value = res.data.data.jujianfangid;
+                    this.renter.options1[x].label = res.data.data.jujianfang;
+                }
                 this.renter.zuhuleixing = res.data.data.zuhuleixing;
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.zhanghao = res.data.data.zhanghao;

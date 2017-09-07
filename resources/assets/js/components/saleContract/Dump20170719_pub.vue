@@ -5,7 +5,7 @@
             &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
             <u>{{buchongtiaokuan}}</u>
             <br>
-            <input type="text" name="" disabled style="width:600px;" value="以下空白">
+            <input v-if="buchongtiaokuan==null||iscompletefrzj==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
 
             <b> 业主方（甲方）：<input type="text" name="" style="width:265px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">管理方（乙方）：</font> <input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>

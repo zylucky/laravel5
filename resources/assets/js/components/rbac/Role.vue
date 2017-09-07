@@ -196,6 +196,7 @@
                 };
                 getPermissionListPage(para2).then((res) => {
                     this.data2 = res.data;
+                    console.log(this.data2)
                 });
             },
             //页面跳转后
