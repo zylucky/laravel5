@@ -362,7 +362,7 @@
                 window.open('/#/purchaseContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
-                console.log(res.data.data);
+                //console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
                 if(this.zhuangtai==4){

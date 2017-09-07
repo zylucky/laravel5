@@ -153,6 +153,7 @@ export const hedanUpdataSaleContract= params => { return axios.post(`${base}/sal
 export const getHedanqiannameSaleList = params => { return axios.post(`${base}/saleContract/getHedanqiannameList`, { params: params }); };//获取签单人姓名列表
 export const getHedanbumenSaleList = params => { return axios.post(`${base}/saleContract/getHedanbumenList`, { params: params }); };//
 export const yongyouUpdataSaleContract = params => { return axios.post(`${base}/saleContract/saveyongyou`, { params: params }); };//用友编号的保存
+export const getSaleContractOmc = params => { return axios.post(`${base}/saleContract/omcdata`, { params: params }); };//给omc那边传递的数据接口
 
 //获取楼盘，楼栋，房间号,rules
 export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };

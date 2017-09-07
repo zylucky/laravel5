@@ -146,12 +146,12 @@ class ChuFangCommissionController  extends Controller
     public function  finishFK(Request $request)
     {
         $obj= $request->params ;
-        dd($obj);
+        //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/qd/apply/addApplys',[
+        $response = $client->request('GET', '/api/qd/apply/'.$obj["id"].'/confirm',[
             'query' =>$obj
         ]);
         return  $response ->getBody();

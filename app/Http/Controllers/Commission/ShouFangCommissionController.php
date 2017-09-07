@@ -143,13 +143,12 @@ class ShouFangCommissionController extends Controller
     public function  finishSK(Request $request)
     {
         $obj= $request->params ;
-        dd($obj);
+       // dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,
 
         ]);
-        $response = $client->request('GET', '/api/qd/apply/addApplys',[
-            'query' =>$obj
+        $response = $client->request('GET', '/api/qd/apply/'.$obj["id"].'/confirm',[
         ]);
         return  $response ->getBody();
     }
