@@ -52,7 +52,7 @@
             </el-table-column>
             <el-table-column prop="houseno" label="房间号">
             </el-table-column>
-            <el-table-column prop="htzujin" label="合同月租金">
+            <el-table-column prop="htzujin" label="实际月租金">
             </el-table-column>
             <el-table-column prop="htyongjin" label="合同佣金">
             </el-table-column>
@@ -130,7 +130,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="11">
-                        <el-form-item label="合同月租金：" prop="htzujin">
+                        <el-form-item label="实际月租金：" prop="htzujin">
                             {{editForm.htzujin}}
                         </el-form-item>
                     </el-col>
@@ -161,8 +161,8 @@
                 </el-row>
                 <el-row>
                     <el-col :span="11">
-                        <el-form-item label="渠道公司：" prop="qd">
-                            {{editForm.qdpersons}}
+                        <el-form-item label="渠道公司：" prop="qdcompay">
+                            {{editForm.qdcompay}}
                         </el-form-item>
                     </el-col>
                     <el-col :span="11">
