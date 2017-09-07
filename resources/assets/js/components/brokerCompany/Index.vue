@@ -100,7 +100,7 @@
                             <el-dropdown-item  >  <el-button   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
                             <el-dropdown-item  >  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
                             <el-dropdown-item  >  <el-button   @click="handleUser(scope.$index, scope.row)">查看渠道人员</el-button> </el-dropdown-item>
-                            <el-dropdown-item  >  <el-button   @click="handleUpload(scope.$index, scope.row)">上传协议</el-button> </el-dropdown-item>
+                            
                         </el-dropdown-menu>
                     </el-dropdown>
 
