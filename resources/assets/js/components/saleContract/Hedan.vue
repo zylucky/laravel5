@@ -79,6 +79,7 @@
                                     <el-col>
                                         <el-form-item>
                                             <el-select
+                                                    style="top:10px"
                                                     v-model="scope.row.signpersonnelname"
                                                     filterable
                                                     remote
@@ -112,6 +113,7 @@
                                     <el-col>
                                         <el-form-item>
                                             <el-select
+                                                    style="top:10px"
                                                     v-model="scope.row.leaderpersonnelname"
                                                     filterable
                                                     remote
@@ -137,6 +139,7 @@
                                     <el-col>
                                         <el-form-item>
                                             <el-select
+                                                    style="top:10px"
                                                     v-model="scope.row.departmentname"
                                                     filterable
                                                     remote
