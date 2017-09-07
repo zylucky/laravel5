@@ -142,7 +142,7 @@
                     //console.log(row.fanghao);
                     return  row.fanghao;
                 }else{
-                    return  row.fanghao+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
+                    return  row.fanghao+"-"+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
                 }
             },
             fangshi(fangshi){
