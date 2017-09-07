@@ -126449,7 +126449,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
               "boeder": "1px solid red",
-              "margin-left": "-150px",
               "top": "10px",
               "height": "35px",
               "width": "150px"
@@ -126521,7 +126520,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
-              "margin-left": "-150px",
               "top": "10px",
               "height": "35px",
               "width": "150px"
@@ -126566,7 +126564,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
-              "margin-left": "-150px",
               "top": "10px",
               "height": "35px",
               "width": "150px"
