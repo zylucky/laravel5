@@ -165,12 +165,13 @@
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）本合同生效后，各方对合同内容的变更或补充应采取书面形式，作为本合同的附件；附件与本合同具有同等的法律效力。甲乙双方一致同意，未加盖乙方正式印鉴的任何书面承诺、口头承诺、条款变更等行为均不视为乙方行为，对双方不产生法律约束力。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同生效后，甲方应以一个月租金收益为标准向丙方支付居间服务费用。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）本合同经甲乙双方签字盖章后生效。本合同（及附件）一式三份，甲乙双方各持一份，丙方留存备案一份，每份具有相同法律效力。</p>
-            <p>
+            <p v-if="historyOptimize">
                 <b>&nbsp;&nbsp;第十四条  补充条款</b> <br>
                 &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
                 <u>{{yingyezhizhao}}</u>
                 <br>
-                <input type="text" name="" disabled style="width:600px;" value="以下空白">
+
+                <input v-if="yingyezhizhao==''" type="text" name="" disabled style="width:600px;" value="以下空白">
                 <br><br>
 
                 <b> 业主方（甲方）：<input type="text" name="" style="width:265px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">管理方（乙方）：</font> <input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>

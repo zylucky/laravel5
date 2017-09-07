@@ -503,7 +503,7 @@
                     //先获取的开始和结束时间
                     var d1=new Date(this.addDate.startdate);
                     var d2=new Date(this.addDate.enddate);
-                    var cha = parseInt(d2.getFullYear())-parseInt(d1.getFullYear());
+                    var cha = (parseInt(d2.getFullYear())-parseInt(d1.getFullYear()))/2;
                     //每次变数据清空当前的列表
                     this.addDate.zujinList.splice(0,this.addDate.zujinList.length);//清空数组
                     for(var i =0;i<cha;i++){
@@ -511,14 +511,14 @@
                         if(i==0){
                             this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear());
                             let dx = new Date(this.addDate.zujinList[i].startdate);//将时间复制，然后加一年
-                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear()+1);
+                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear()+2);
                             let dy = new Date(this.addDate.zujinList[i].enddate);//将时间复制，然后减一天
                             this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate()-1);
                         }
                         if(i>0){
-                            this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear()+1);
+                            this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear()+2);
                             let dx = new Date(this.addDate.zujinList[i].startdate);//将时间复制，然后加一年
-                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear()+1);
+                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear()+2);
                             let dy = new Date(this.addDate.zujinList[i].enddate);//将时间复制，然后减一天
                             this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate()-1);
                         }
@@ -531,7 +531,7 @@
                     //先获取的开始和结束时间
                     var d1 = new Date(this.addDate.startdate);
                     var d2 = new Date(this.addDate.enddate);
-                    var cha = parseInt(d2.getFullYear()) - parseInt(d1.getFullYear());
+                    var cha = (parseInt(d2.getFullYear()) - parseInt(d1.getFullYear()))/2;
                     //每次变数据清空当前的列表
                     this.addDate.zujinList.splice(0, this.addDate.zujinList.length);//清空数组
                     for (var i = 0; i < cha; i++) {
@@ -539,14 +539,14 @@
                         if (i == 0) {
                             this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear());
                             let dx = new Date(this.addDate.zujinList[i].startdate);//将时间复制，然后加一年
-                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear() + 1);
+                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear() + 2);
                             let dy = new Date(this.addDate.zujinList[i].enddate);//将时间复制，然后减一天
                             this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate() - 1);
                         }
                         if (i > 0) {
-                            this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear() + 1);
+                            this.addDate.zujinList[i].startdate = d1.setFullYear(d1.getFullYear() + 2);
                             let dx = new Date(this.addDate.zujinList[i].startdate);//将时间复制，然后加一年
-                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear() + 1);
+                            this.addDate.zujinList[i].enddate = dx.setFullYear(dx.getFullYear() + 2);
                             let dy = new Date(this.addDate.zujinList[i].enddate);//将时间复制，然后减一天
                             this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate() - 1);
                         }

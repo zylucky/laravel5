@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>
-            <b>&nbsp;&nbsp;第十三条  补充条款</b> <br>
+            <b>&nbsp;&nbsp;第十二条  补充条款</b> <br>
             &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
             <u>{{buchongtiaokuan}}</u>
             <br>
@@ -73,7 +73,7 @@
                 getSaleContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
                         //把数据分别赋值给三个组件的变量
-                        this.buchongtiaokuan = res.data.data.yingyezhizhao;
+                        this.buchongtiaokuan = res.data.data.iscompletefrzj;
                     }else {
                         this.$message({
                             message: '获取数据失败',

@@ -109,6 +109,7 @@ export const hedanSavePurchaseContract= params => { return axios.post(`${base}/p
 export const removeHedanPurchaseContract= params => { return axios.get(`${base}/purchaseContract/deleteHedan`, {params:params}); };//删除扫描建
 export const hedanUpdataPurchaseContract= params => { return axios.post(`${base}/purchaseContract/updataHedan`, {params:params}); };//删除扫描建
 export const yongyouUpdataPurchaseContract = params => { return axios.post(`${base}/purchaseContract/saveyongyou`, { params: params }); };//用友编号的保存
+export const summaryPurchaseContract = params => { return axios.get(`${base}/purchaseContract/summary`, { params: params }); };//合同摘要核心数据
 
 //出房合同
 //合同信息
@@ -152,6 +153,7 @@ export const hedanUpdataSaleContract= params => { return axios.post(`${base}/sal
 export const getHedanqiannameSaleList = params => { return axios.post(`${base}/saleContract/getHedanqiannameList`, { params: params }); };//获取签单人姓名列表
 export const getHedanbumenSaleList = params => { return axios.post(`${base}/saleContract/getHedanbumenList`, { params: params }); };//
 export const yongyouUpdataSaleContract = params => { return axios.post(`${base}/saleContract/saveyongyou`, { params: params }); };//用友编号的保存
+export const getSaleContractOmc = params => { return axios.post(`${base}/saleContract/omcdata`, { params: params }); };//给omc那边传递的数据接口
 
 //获取楼盘，楼栋，房间号,rules
 export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };

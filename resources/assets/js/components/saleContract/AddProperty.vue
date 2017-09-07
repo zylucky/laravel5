@@ -101,7 +101,7 @@
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item label="承租面积" required prop="qianyuemianji">
-                                        <el-input v-model.number="property.xsOffice[index].qianyuemianji" @blur="shangyue(scope.$index, scope.row)"></el-input>
+                                        <el-input v-model.number="property.xsOffice[index].qianyuemianji"></el-input>
                                     </el-form-item>
                                     <span style="border:0px solid red;font-size:12px;position:relative;left:180px;top:-23px;color:#ff4949;">剩余承租面积&nbsp;&nbsp; <i v-text="syczmj"></i> &nbsp;㎡</span>
                                 </el-col>
@@ -240,24 +240,20 @@
                     })
                 }
             },
-            shangyue(index,row){
+            shangyue(){
                 let para = {
-                    fanghao:row.fanghao,
-                    qianyuemianji:row.qianyuemianji,
+                    id:this.property.xsOffice[0].omcId,
                 }
+                //console.log(para);
                 getSaleFanghaoChengzu(para).then((res) => {
-                    this.houseData = res.data;
-                    let arr = [];
+                    this.syczmj = res.data.data;
+                    /*let arr = [];
                     arr[0] = '';
                     for ( var i in res.data ){
                         arr[res.data[i].id]=res.data[i].fybh;
                     }
-                    this.house = arr;
-                    this.fanghaoloading = false;
-                    this.list3 = this.house.map((item,index) => {
-                        return { value: index, label: item };
-                    });
-                    if (query !== '') {
+                    this.house = arr;*/
+                   /* if (query !== '') {
                         this.fanghaoloading = true;
                         setTimeout(() => {
                             this.fanghaoloading = false;
@@ -268,16 +264,8 @@
                         }, 200);
                     } else {
                         this.options3 = [];
-                    }
+                    }*/
                 });
-
-
-
-
-
-
-
-
             },
             //获取楼盘
             remoteMethod1(query) {
@@ -350,14 +338,8 @@
                     zdid: this.property.xsOffice[this.tabIndex-1].loudongOmcId,
                 };
                 this.fanghaoloading = true;
-                //console.log(this.property.xsOffice[this.tabIndex-1].loupanOmcId);
-                //console.log(this.property.xsOffice[this.tabIndex-1].loudongOmcId);
-                //console.log(para);
                 getSaleFanghaoList(para).then((res) => {
                     this.houseData = res.data;
-                    console.log(22222);
-                    console.log(para);
-                    console.log(res.data);
                     let arr = [];
                     arr[0] = '';
                     for ( var i in res.data ){
@@ -423,6 +405,7 @@
                 }
                 //console.log(this.property.xsOffice)
                 this.$emit('getshoufanghetong')
+                this.shangyue();
 
             },
             addTab(targetName,action) {
