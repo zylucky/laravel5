@@ -87,17 +87,31 @@ function fun(funKey) {
 
 }
 
-var fk_permission ,fk_permission_user ,fk_permission_role ,fk_permission_per ,fk_contract ,fk_contract_purchase ,fk_brokerCompany ,fk_brokerCompanyList
-,fk_brokerCompanyUserList ;
+var fk_permission ,fk_permission_user ,fk_permission_role ,fk_permission_per ,
+    fk_contract ,fk_contract_purchase  ,fk_contract_sale ,fk_version,
+    fk_brokerCompany ,fk_brokerCompanyList,fk_brokerCompanyUserList,fk_brokerUserList,
+    fk_commission,fk_shouFangCommission,fk_chuFangCommission,
+    fk_account,fk_payableList,fk_financePayableList,fk_receivableList,fk_financeReceivableList;
 fun('permission')==true? fk_permission = false:fk_permission = true;
 fun('permission')==true? fk_permission_user = false:fk_permission_user = true;
 fun('permission')==true? fk_permission_role = false:fk_permission_role = true;
 fun('permission')==true? fk_permission_per = false:fk_permission_per = true;
 fun('contract')==true? fk_contract = false:fk_contract = true;
 fun('purchaseContract')==true? fk_contract_purchase = false:fk_contract_purchase = true;
+fun('saleContract')==true? fk_contract_sale = false:fk_contract_sale = true;
+fun('version')==true? fk_version = false:fk_version = true;
 fun('brokerCompany')==true? fk_brokerCompany = false:fk_brokerCompany = true;
 fun('brokerCompanyList')==true? fk_brokerCompanyList = false:fk_brokerCompanyList = true;
 fun('brokerCompanyUserList')==true? fk_brokerCompanyUserList = false:fk_brokerCompanyUserList = true;
+fun('brokerUserList')==true? fk_brokerUserList = false:fk_brokerUserList = true;
+fun('commission')==true? fk_commission = false:fk_commission = true;
+fun('shouFangCommission')==true? fk_shouFangCommission = false:fk_shouFangCommission = true;
+fun('chuFangCommission')==true? fk_chuFangCommission = false:fk_chuFangCommission = true;
+fun('account')==true? fk_account = false:fk_account = true;
+fun('payableList')==true? fk_payableList = false:fk_payableList = true;
+fun('financePayableList')==true? fk_financePayableList = false:fk_financePayableList = true;
+fun('receivableList')==true? fk_receivableList = false:fk_receivableList = true;
+fun('financeReceivableList')==true? fk_financeReceivableList = false:fk_financeReceivableList = true;
 
 let routes = [
     {
@@ -148,7 +162,7 @@ let routes = [
 
 
 
-            { path:'/saleContract', component: SaleContractIndex, name: '出房合同'},
+            { path:'/saleContract', component: SaleContractIndex, name: '出房合同',hidden:fk_contract_sale},
             { path:'/saleContract/add',component:SaleContractAdd,name:'出房录入',hidden:true},
             { path:'/saleContract/see',component:SaleContractDump20170719,name:'出房查看',hidden:true},
             { path:'/saleContract/edit',component:SaleContractAdd,name:'出房编辑',hidden:true},
@@ -164,7 +178,7 @@ let routes = [
 
 
             // { path:'/decoration', component: DecorationList, name: '工程合同'},
-            { path:'/contractVersion', component: ContractVersionList, name: '合同版本管理'},
+            { path:'/contractVersion', component: ContractVersionList, name: '合同版本管理',hidden:fk_version},
 
         ]
     },
@@ -186,7 +200,7 @@ let routes = [
             { path:'/brokerCompanyUserList/view',component:BrokerCompanyUserAdd,name:'渠道公司人员查看',hidden:true},
             { path:'/brokerCompanyHistory',component:BrokerCompanyHistory,name:'渠道公司跟进记录',hidden:true},
             { path:'/brokerCompanyUserHistory',component:BrokerCompanyUserHistory,name:'渠道公司人员跟进记录',hidden:true},
-            { path:'/brokerUser',component:BrokerUser,name:'自由经纪人管理',hidden:false},
+            { path:'/brokerUser',component:BrokerUser,name:'自由经纪人管理',hidden:fk_brokerUserList},
             { path:'/brokerUser/add',component:BrokerUserAdd,name:'自由经纪人录入',hidden:true},
             { path:'/brokerUser/edit',component:BrokerUserAdd,name:'自由经纪人编辑',hidden:true},
             { path:'/brokerUser/view',component:BrokerUserAdd,name:'自由经纪人查看',hidden:true},
@@ -199,10 +213,10 @@ let routes = [
         component: navigation,
         name: '佣金管理',
         iconCls: 'el-icon-document',//图标样式class
-        hidden:false,
+        hidden:fk_commission,
         children: [
-            { path:'/shouFangCommission', component: ShouFangCommission, name: '收房佣金管理',hidden:false},
-            { path:'/chuFangCommission',component:ChuFangCommission,name:'出房佣金管理',hidden:false},
+            { path:'/shouFangCommission', component: ShouFangCommission, name: '收房佣金管理',hidden:fk_shouFangCommission},
+            { path:'/chuFangCommission',component:ChuFangCommission,name:'出房佣金管理',hidden:fk_chuFangCommission},
             { path:'/contractPayType',component:selectCommissionPayType,name:'佣金支付方式',hidden:true},
         ]
     },
@@ -228,12 +242,12 @@ let routes = [
         component: navigation,
         name: '应收应付',
         iconCls: 'el-icon-document',//图标样式class
-        hidden:false,
+        hidden:fk_account,
         children: [
-            { path:'/payable',component:Payable,name:'应付款管理',hidden:false},
-            { path:'/financePayable',component:FinancePayable,name:'实付款管理',hidden:false},
-            { path:'/receivable',component:Receivable,name:'应收款管理',hidden:false},
-            { path:'/financeReceivable',component:FinanceReceivable,name:'实收款管理',hidden:false},
+            { path:'/payable',component:Payable,name:'应付款管理',hidden:fk_payableList},
+            { path:'/financePayable',component:FinancePayable,name:'实付款管理',hidden:fk_financePayableList},
+            { path:'/receivable',component:Receivable,name:'应收款管理',hidden:fk_receivableList},
+            { path:'/financeReceivable',component:FinanceReceivable,name:'实收款管理',hidden:fk_financeReceivableList},
             { path:'/accountsReceivable',component:AccountsReceivable,name:'修改记录',hidden:true},
             { path:'/receivableRecord',component:ReceivableRecord,name:'已收款记录',hidden:true},
             { path:'/payableRecord',component:PayableRecord,name:'应付款记录',hidden:true},

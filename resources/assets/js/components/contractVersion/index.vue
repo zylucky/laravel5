@@ -52,7 +52,7 @@
             </el-table-column>
             <el-table-column label="操作" >
                 <template scope="scope">
-                    <el-button type="small" size="small" @click="preview(scope.$index, scope.row)">查看</el-button>
+                    <el-button v-if="fun('versionView')" type="small" size="small" @click="preview(scope.$index, scope.row)">查看</el-button>
                 </template>
             </el-table-column>
         </el-table>

@@ -17,7 +17,7 @@
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search" @click="purchaseContractList">搜索</el-button>
-                <el-button type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
+                <el-button v-if="fun('purchaseContractAdd')" type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
             </el-form-item>
         </el-form>
         <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
@@ -50,21 +50,21 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  ><el-button @click="handleView(scope.$index, scope.row)">查看合同</el-button> </el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[0,4,5])" ><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[1,2])" ><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[3])"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[5])"  > <el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,10])" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[7])" ><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[7])" ><el-button @click="handleOptimize(scope.$index, scope.row)">添加协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[9])" ><el-button @click="editOptimize(scope.$index, scope.row)">修改协议</el-button></el-dropdown-item>
+                            <el-dropdown-item v-if="fun('purchaseContractIndex')"  ><el-button @click="handleView(scope.$index, scope.row)">查看合同</el-button> </el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[0,4,5])&&fun('purchaseContactUpdate')" ><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[1,2])&&fun('purchaseContactAudit')" ><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[3])&&fun('purchaseContactDump')"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[5])&&fun('purchaseContactConfirm')"  > <el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,10])&&fun('purchaseContactWeiyue')" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[7])&&fun('purchaseContactEnd')" ><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[7])&&fun('addOptimize')" ><el-button @click="handleOptimize(scope.$index, scope.row)">添加协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[9])&&fun('editOptimize')" ><el-button @click="editOptimize(scope.$index, scope.row)">修改协议</el-button></el-dropdown-item>
                             <!--<el-dropdown-item   v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">当前协议</el-button></el-dropdown-item>-->
                             <!--<el-dropdown-item   v-if="ztin(scope.row,[9,10])" ><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史协议</el-button></el-dropdown-item>-->
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])" ><el-button  @click="handleupload(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])"><el-button @click="handleZhanghao(scope.$index, scope.row)">收款账号</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])"><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])"><el-button @click="handleSummary(scope.$index, scope.row)">打印核心数据</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactUpload')" ><el-button  @click="handleupload(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactZH')"><el-button @click="handleZhanghao(scope.$index, scope.row)">收款账号</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactHD')"><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactSummary')"><el-button @click="handleSummary(scope.$index, scope.row)">打印核心数据</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 

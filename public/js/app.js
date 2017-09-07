@@ -24076,16 +24076,27 @@ function fun(funKey) {
     }
 }
 
-var fk_permission, fk_permission_user, fk_permission_role, fk_permission_per, fk_contract, fk_contract_purchase, fk_brokerCompany, fk_brokerCompanyList, fk_brokerCompanyUserList;
+var fk_permission, fk_permission_user, fk_permission_role, fk_permission_per, fk_contract, fk_contract_purchase, fk_contract_sale, fk_version, fk_brokerCompany, fk_brokerCompanyList, fk_brokerCompanyUserList, fk_brokerUserList, fk_commission, fk_shouFangCommission, fk_chuFangCommission, fk_account, fk_payableList, fk_financePayableList, fk_receivableList, fk_financeReceivableList;
 fun('permission') == true ? fk_permission = false : fk_permission = true;
 fun('permission') == true ? fk_permission_user = false : fk_permission_user = true;
 fun('permission') == true ? fk_permission_role = false : fk_permission_role = true;
 fun('permission') == true ? fk_permission_per = false : fk_permission_per = true;
 fun('contract') == true ? fk_contract = false : fk_contract = true;
 fun('purchaseContract') == true ? fk_contract_purchase = false : fk_contract_purchase = true;
+fun('saleContract') == true ? fk_contract_sale = false : fk_contract_sale = true;
+fun('version') == true ? fk_version = false : fk_version = true;
 fun('brokerCompany') == true ? fk_brokerCompany = false : fk_brokerCompany = true;
 fun('brokerCompanyList') == true ? fk_brokerCompanyList = false : fk_brokerCompanyList = true;
 fun('brokerCompanyUserList') == true ? fk_brokerCompanyUserList = false : fk_brokerCompanyUserList = true;
+fun('brokerUserList') == true ? fk_brokerUserList = false : fk_brokerUserList = true;
+fun('commission') == true ? fk_commission = false : fk_commission = true;
+fun('shouFangCommission') == true ? fk_shouFangCommission = false : fk_shouFangCommission = true;
+fun('chuFangCommission') == true ? fk_chuFangCommission = false : fk_chuFangCommission = true;
+fun('account') == true ? fk_account = false : fk_account = true;
+fun('payableList') == true ? fk_payableList = false : fk_payableList = true;
+fun('financePayableList') == true ? fk_financePayableList = false : fk_financePayableList = true;
+fun('receivableList') == true ? fk_receivableList = false : fk_receivableList = true;
+fun('financeReceivableList') == true ? fk_financeReceivableList = false : fk_financeReceivableList = true;
 
 var routes = [{
     path: '/login',
@@ -24111,25 +24122,25 @@ var routes = [{
     name: '合同管理',
     iconCls: 'el-icon-document', //图标样式class
     hidden: fk_contract,
-    children: [{ path: '/purchaseContract', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Index_vue___default.a, name: '收房合同', hidden: fk_contract_purchase, params: { name: 'liyuequn' } }, { path: '/purchaseContract/add', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房录入', hidden: true }, { path: '/purchaseContract/edit', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房编辑', hidden: true }, { path: '/purchaseContract/review', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房审核', hidden: true }, { path: '/purchaseContract/view', component: __WEBPACK_IMPORTED_MODULE_11__components_purchaseContract_Dump20170719_vue___default.a, name: '收房查看', hidden: true }, { path: '/purchaseContract/optimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房优化', hidden: true }, { path: '/purchaseContract/checkOptimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房协议查看', hidden: true }, { path: '/purchaseContract/checkOptimizeList', component: __WEBPACK_IMPORTED_MODULE_10__components_purchaseContract_HistoryOptimize_vue___default.a, name: '历史协议', hidden: true }, { path: '/purchaseContract/upload', component: __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/purchaseContract/zhanghao', component: __WEBPACK_IMPORTED_MODULE_14__components_purchaseContract_Zhanghao_vue___default.a, name: '收房收款账号', hidden: true }, { path: '/purchaseContract/hedan', component: __WEBPACK_IMPORTED_MODULE_15__components_purchaseContract_Hedan_vue___default.a, name: '收房合单管理', hidden: true }, { path: '/saleContract', component: __WEBPACK_IMPORTED_MODULE_16__components_saleContract_Index_vue___default.a, name: '出房合同' }, { path: '/saleContract/add', component: __WEBPACK_IMPORTED_MODULE_17__components_saleContract_Add_vue___default.a, name: '出房录入', hidden: true }, { path: '/saleContract/see', component: __WEBPACK_IMPORTED_MODULE_22__components_saleContract_Dump20170719_vue___default.a, name: '出房查看', hidden: true }, { path: '/saleContract/edit', component: __WEBPACK_IMPORTED_MODULE_17__components_saleContract_Add_vue___default.a, name: '出房编辑', hidden: true }, { path: '/saleContract/review', component: __WEBPACK_IMPORTED_MODULE_17__components_saleContract_Add_vue___default.a, name: '出房审核', hidden: true }, { path: '/saleContract/buchong', component: __WEBPACK_IMPORTED_MODULE_20__components_saleContract_Buchong_vue___default.a, name: '出房补充协议', hidden: true }, { path: '/saleContract/checkBuchong', component: __WEBPACK_IMPORTED_MODULE_20__components_saleContract_Buchong_vue___default.a, name: '出房补充协议查看', hidden: true }, { path: '/saleContract/checkBuchongList', component: __WEBPACK_IMPORTED_MODULE_21__components_saleContract_HistoryBuchong_vue___default.a, name: '历史补充协议', hidden: true }, { path: '/saleContract/jieyue', component: __WEBPACK_IMPORTED_MODULE_19__components_saleContract_Jieyue_vue___default.a, name: '解约协议', hidden: true }, { path: '/saleContract/checkJieyue', component: __WEBPACK_IMPORTED_MODULE_19__components_saleContract_Jieyue_vue___default.a, name: '出房协议查看', hidden: true }, { path: '/saleContract/upload', component: __WEBPACK_IMPORTED_MODULE_18__components_saleContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/saleContract/zhanghao', component: __WEBPACK_IMPORTED_MODULE_24__components_saleContract_Zhanghao_vue___default.a, name: '出房付款账号', hidden: true }, { path: '/saleContract/hedan', component: __WEBPACK_IMPORTED_MODULE_25__components_saleContract_Hedan_vue___default.a, name: '出房合单管理', hidden: true },
+    children: [{ path: '/purchaseContract', component: __WEBPACK_IMPORTED_MODULE_6__components_purchaseContract_Index_vue___default.a, name: '收房合同', hidden: fk_contract_purchase, params: { name: 'liyuequn' } }, { path: '/purchaseContract/add', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房录入', hidden: true }, { path: '/purchaseContract/edit', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房编辑', hidden: true }, { path: '/purchaseContract/review', component: __WEBPACK_IMPORTED_MODULE_7__components_purchaseContract_Add_vue___default.a, name: '收房审核', hidden: true }, { path: '/purchaseContract/view', component: __WEBPACK_IMPORTED_MODULE_11__components_purchaseContract_Dump20170719_vue___default.a, name: '收房查看', hidden: true }, { path: '/purchaseContract/optimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房优化', hidden: true }, { path: '/purchaseContract/checkOptimize', component: __WEBPACK_IMPORTED_MODULE_9__components_purchaseContract_Optimize_vue___default.a, name: '收房协议查看', hidden: true }, { path: '/purchaseContract/checkOptimizeList', component: __WEBPACK_IMPORTED_MODULE_10__components_purchaseContract_HistoryOptimize_vue___default.a, name: '历史协议', hidden: true }, { path: '/purchaseContract/upload', component: __WEBPACK_IMPORTED_MODULE_8__components_purchaseContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/purchaseContract/zhanghao', component: __WEBPACK_IMPORTED_MODULE_14__components_purchaseContract_Zhanghao_vue___default.a, name: '收房收款账号', hidden: true }, { path: '/purchaseContract/hedan', component: __WEBPACK_IMPORTED_MODULE_15__components_purchaseContract_Hedan_vue___default.a, name: '收房合单管理', hidden: true }, { path: '/saleContract', component: __WEBPACK_IMPORTED_MODULE_16__components_saleContract_Index_vue___default.a, name: '出房合同', hidden: fk_contract_sale }, { path: '/saleContract/add', component: __WEBPACK_IMPORTED_MODULE_17__components_saleContract_Add_vue___default.a, name: '出房录入', hidden: true }, { path: '/saleContract/see', component: __WEBPACK_IMPORTED_MODULE_22__components_saleContract_Dump20170719_vue___default.a, name: '出房查看', hidden: true }, { path: '/saleContract/edit', component: __WEBPACK_IMPORTED_MODULE_17__components_saleContract_Add_vue___default.a, name: '出房编辑', hidden: true }, { path: '/saleContract/review', component: __WEBPACK_IMPORTED_MODULE_17__components_saleContract_Add_vue___default.a, name: '出房审核', hidden: true }, { path: '/saleContract/buchong', component: __WEBPACK_IMPORTED_MODULE_20__components_saleContract_Buchong_vue___default.a, name: '出房补充协议', hidden: true }, { path: '/saleContract/checkBuchong', component: __WEBPACK_IMPORTED_MODULE_20__components_saleContract_Buchong_vue___default.a, name: '出房补充协议查看', hidden: true }, { path: '/saleContract/checkBuchongList', component: __WEBPACK_IMPORTED_MODULE_21__components_saleContract_HistoryBuchong_vue___default.a, name: '历史补充协议', hidden: true }, { path: '/saleContract/jieyue', component: __WEBPACK_IMPORTED_MODULE_19__components_saleContract_Jieyue_vue___default.a, name: '解约协议', hidden: true }, { path: '/saleContract/checkJieyue', component: __WEBPACK_IMPORTED_MODULE_19__components_saleContract_Jieyue_vue___default.a, name: '出房协议查看', hidden: true }, { path: '/saleContract/upload', component: __WEBPACK_IMPORTED_MODULE_18__components_saleContract_Upload_vue___default.a, name: '上传扫描件', hidden: true }, { path: '/saleContract/zhanghao', component: __WEBPACK_IMPORTED_MODULE_24__components_saleContract_Zhanghao_vue___default.a, name: '出房付款账号', hidden: true }, { path: '/saleContract/hedan', component: __WEBPACK_IMPORTED_MODULE_25__components_saleContract_Hedan_vue___default.a, name: '出房合单管理', hidden: true },
 
     // { path:'/decoration', component: DecorationList, name: '工程合同'},
-    { path: '/contractVersion', component: __WEBPACK_IMPORTED_MODULE_28__components_contractVersion_index_vue___default.a, name: '合同版本管理' }]
+    { path: '/contractVersion', component: __WEBPACK_IMPORTED_MODULE_28__components_contractVersion_index_vue___default.a, name: '合同版本管理', hidden: fk_version }]
 }, {
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a,
     name: '渠道管理',
     iconCls: 'el-icon-document', //图标样式class
     hidden: fk_brokerCompany,
-    children: [{ path: '/brokerCompany', component: __WEBPACK_IMPORTED_MODULE_29__components_brokerCompany_Index_vue___default.a, name: '渠道公司管理', hidden: fk_brokerCompanyList }, { path: '/brokerCompany/add', component: __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_Add_vue___default.a, name: '渠道公司录入', hidden: true }, { path: '/brokerCompany/edit', component: __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_Add_vue___default.a, name: '渠道公司编辑', hidden: true }, { path: '/brokerCompany/view', component: __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_Add_vue___default.a, name: '渠道公司查看', hidden: true }, { path: '/brokerCompanyUserList', component: __WEBPACK_IMPORTED_MODULE_30__components_brokerCompany_UserList_vue___default.a, name: '渠道公司人员管理', hidden: fk_brokerCompanyUserList }, { path: '/brokerCompanyUserList/add', component: __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员录入', hidden: true }, { path: '/brokerCompanyUserList/edit', component: __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员编辑', hidden: true }, { path: '/brokerCompanyUserList/view', component: __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员查看', hidden: true }, { path: '/brokerCompanyHistory', component: __WEBPACK_IMPORTED_MODULE_33__components_brokerCompany_HistoryList_vue___default.a, name: '渠道公司跟进记录', hidden: true }, { path: '/brokerCompanyUserHistory', component: __WEBPACK_IMPORTED_MODULE_34__components_brokerCompany_UserHistoryList_vue___default.a, name: '渠道公司人员跟进记录', hidden: true }, { path: '/brokerUser', component: __WEBPACK_IMPORTED_MODULE_35__components_brokerCompany_BrokerUserList_vue___default.a, name: '自由经纪人管理', hidden: false }, { path: '/brokerUser/add', component: __WEBPACK_IMPORTED_MODULE_36__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人录入', hidden: true }, { path: '/brokerUser/edit', component: __WEBPACK_IMPORTED_MODULE_36__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人编辑', hidden: true }, { path: '/brokerUser/view', component: __WEBPACK_IMPORTED_MODULE_36__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人查看', hidden: true }, { path: '/brokerUserHistory', component: __WEBPACK_IMPORTED_MODULE_37__components_brokerCompany_BrokerUserHistoryList_vue___default.a, name: '自由经纪人跟进记录', hidden: true }]
+    children: [{ path: '/brokerCompany', component: __WEBPACK_IMPORTED_MODULE_29__components_brokerCompany_Index_vue___default.a, name: '渠道公司管理', hidden: fk_brokerCompanyList }, { path: '/brokerCompany/add', component: __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_Add_vue___default.a, name: '渠道公司录入', hidden: true }, { path: '/brokerCompany/edit', component: __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_Add_vue___default.a, name: '渠道公司编辑', hidden: true }, { path: '/brokerCompany/view', component: __WEBPACK_IMPORTED_MODULE_31__components_brokerCompany_Add_vue___default.a, name: '渠道公司查看', hidden: true }, { path: '/brokerCompanyUserList', component: __WEBPACK_IMPORTED_MODULE_30__components_brokerCompany_UserList_vue___default.a, name: '渠道公司人员管理', hidden: fk_brokerCompanyUserList }, { path: '/brokerCompanyUserList/add', component: __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员录入', hidden: true }, { path: '/brokerCompanyUserList/edit', component: __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员编辑', hidden: true }, { path: '/brokerCompanyUserList/view', component: __WEBPACK_IMPORTED_MODULE_32__components_brokerCompany_AddUser_vue___default.a, name: '渠道公司人员查看', hidden: true }, { path: '/brokerCompanyHistory', component: __WEBPACK_IMPORTED_MODULE_33__components_brokerCompany_HistoryList_vue___default.a, name: '渠道公司跟进记录', hidden: true }, { path: '/brokerCompanyUserHistory', component: __WEBPACK_IMPORTED_MODULE_34__components_brokerCompany_UserHistoryList_vue___default.a, name: '渠道公司人员跟进记录', hidden: true }, { path: '/brokerUser', component: __WEBPACK_IMPORTED_MODULE_35__components_brokerCompany_BrokerUserList_vue___default.a, name: '自由经纪人管理', hidden: fk_brokerUserList }, { path: '/brokerUser/add', component: __WEBPACK_IMPORTED_MODULE_36__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人录入', hidden: true }, { path: '/brokerUser/edit', component: __WEBPACK_IMPORTED_MODULE_36__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人编辑', hidden: true }, { path: '/brokerUser/view', component: __WEBPACK_IMPORTED_MODULE_36__components_brokerCompany_AddBrokerUser_vue___default.a, name: '自由经纪人查看', hidden: true }, { path: '/brokerUserHistory', component: __WEBPACK_IMPORTED_MODULE_37__components_brokerCompany_BrokerUserHistoryList_vue___default.a, name: '自由经纪人跟进记录', hidden: true }]
 }, {
 
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a,
     name: '佣金管理',
     iconCls: 'el-icon-document', //图标样式class
-    hidden: false,
-    children: [{ path: '/shouFangCommission', component: __WEBPACK_IMPORTED_MODULE_39__components_Commission_ShouFangList_vue___default.a, name: '收房佣金管理', hidden: false }, { path: '/chuFangCommission', component: __WEBPACK_IMPORTED_MODULE_38__components_Commission_Index_vue___default.a, name: '出房佣金管理', hidden: false }, { path: '/contractPayType', component: __WEBPACK_IMPORTED_MODULE_40__components_Commission_contractPayType_vue___default.a, name: '佣金支付方式', hidden: true }]
+    hidden: fk_commission,
+    children: [{ path: '/shouFangCommission', component: __WEBPACK_IMPORTED_MODULE_39__components_Commission_ShouFangList_vue___default.a, name: '收房佣金管理', hidden: fk_shouFangCommission }, { path: '/chuFangCommission', component: __WEBPACK_IMPORTED_MODULE_38__components_Commission_Index_vue___default.a, name: '出房佣金管理', hidden: fk_chuFangCommission }, { path: '/contractPayType', component: __WEBPACK_IMPORTED_MODULE_40__components_Commission_contractPayType_vue___default.a, name: '佣金支付方式', hidden: true }]
 }, {
     //版本1
     path: '/purchaseContract/dumps20170719',
@@ -24147,8 +24158,8 @@ var routes = [{
     component: __WEBPACK_IMPORTED_MODULE_0__components_Navigation_vue___default.a,
     name: '应收应付',
     iconCls: 'el-icon-document', //图标样式class
-    hidden: false,
-    children: [{ path: '/payable', component: __WEBPACK_IMPORTED_MODULE_47__components_payable_payableList_vue___default.a, name: '应付款管理', hidden: false }, { path: '/financePayable', component: __WEBPACK_IMPORTED_MODULE_48__components_payable_financePayableList_vue___default.a, name: '实付款管理', hidden: false }, { path: '/receivable', component: __WEBPACK_IMPORTED_MODULE_43__components_receivable_receivableList_vue___default.a, name: '应收款管理', hidden: false }, { path: '/financeReceivable', component: __WEBPACK_IMPORTED_MODULE_44__components_receivable_financeReceivableList_vue___default.a, name: '实收款管理', hidden: false }, { path: '/accountsReceivable', component: __WEBPACK_IMPORTED_MODULE_41__components_Commission_accountsReceivableList_vue___default.a, name: '修改记录', hidden: true }, { path: '/receivableRecord', component: __WEBPACK_IMPORTED_MODULE_42__components_receivable_receivableRecordList_vue___default.a, name: '已收款记录', hidden: true }, { path: '/payableRecord', component: __WEBPACK_IMPORTED_MODULE_46__components_payable_payableRecordList_vue___default.a, name: '应付款记录', hidden: true }, { path: '/paymentRecord', component: __WEBPACK_IMPORTED_MODULE_45__components_payable_paymentRecordList_vue___default.a, name: '修改记录', hidden: true }]
+    hidden: fk_account,
+    children: [{ path: '/payable', component: __WEBPACK_IMPORTED_MODULE_47__components_payable_payableList_vue___default.a, name: '应付款管理', hidden: fk_payableList }, { path: '/financePayable', component: __WEBPACK_IMPORTED_MODULE_48__components_payable_financePayableList_vue___default.a, name: '实付款管理', hidden: fk_financePayableList }, { path: '/receivable', component: __WEBPACK_IMPORTED_MODULE_43__components_receivable_receivableList_vue___default.a, name: '应收款管理', hidden: fk_receivableList }, { path: '/financeReceivable', component: __WEBPACK_IMPORTED_MODULE_44__components_receivable_financeReceivableList_vue___default.a, name: '实收款管理', hidden: fk_financeReceivableList }, { path: '/accountsReceivable', component: __WEBPACK_IMPORTED_MODULE_41__components_Commission_accountsReceivableList_vue___default.a, name: '修改记录', hidden: true }, { path: '/receivableRecord', component: __WEBPACK_IMPORTED_MODULE_42__components_receivable_receivableRecordList_vue___default.a, name: '已收款记录', hidden: true }, { path: '/payableRecord', component: __WEBPACK_IMPORTED_MODULE_46__components_payable_payableRecordList_vue___default.a, name: '应付款记录', hidden: true }, { path: '/paymentRecord', component: __WEBPACK_IMPORTED_MODULE_45__components_payable_paymentRecordList_vue___default.a, name: '修改记录', hidden: true }]
 
 }, {
     //版本1
@@ -108532,13 +108543,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [(scope.row.zhuangtai == 1) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [(scope.row.zhuangtai == 1 && _vm.fun('surePayable')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleRokeBack(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("确认付款")])], 1) : _vm._e(), _vm._v(" "), (scope.row.zhuangtai == 1) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("确认付款")])], 1) : _vm._e(), _vm._v(" "), (scope.row.zhuangtai == 1 && _vm.fun('rejectPayable')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleReject(scope.$index, scope.row)
@@ -108738,7 +108749,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(scope) {
-        return [_c('el-button', {
+        return [(_vm.fun('versionView')) ? _c('el-button', {
           attrs: {
             "type": "small",
             "size": "small"
@@ -108748,7 +108759,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.preview(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("查看")])]
+        }, [_vm._v("查看")]) : _vm._e()]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
@@ -108913,7 +108924,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getBrokerCompany
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('brokerCompanyAdd')) ? _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -108921,7 +108932,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleAdd
     }
-  }, [_vm._v(" 新增")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 新增")]) : _vm._e()], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -109045,25 +109056,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [_c('el-dropdown-item', [_c('el-button', {
+        }, [(_vm.fun('brokerCompanyEdit')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("跟进/编辑")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("跟进/编辑")])], 1) : _vm._e(), _vm._v(" "), (_vm.fun('brokerCompanyView')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleView(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("详        情")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("详        情")])], 1) : _vm._e(), _vm._v(" "), (_vm.fun('queryUser')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleUser(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("查看渠道人员")])], 1)], 1)], 1)]
+        }, [_vm._v("查看渠道人员")])], 1) : _vm._e()], 1)], 1)]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
@@ -110453,7 +110464,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getPayable
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('payableAdd')) ? _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -110461,7 +110472,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleAdd
     }
-  }, [_vm._v("新增")])], 1)], 1), _vm._v("\n      合计  应付金额：" + _vm._s(_vm.DataSum.sumMoney) + " 提交金额：" + _vm._s(_vm.DataSum.tijiaoMoney) + "  实付金额：" + _vm._s(_vm.DataSum.shijiMoney) + "\n    "), _c('span', {
+  }, [_vm._v("新增")]) : _vm._e()], 1)], 1), _vm._v("\n      合计  应付金额：" + _vm._s(_vm.DataSum.sumMoney) + " 提交金额：" + _vm._s(_vm.DataSum.tijiaoMoney) + "  实付金额：" + _vm._s(_vm.DataSum.shijiMoney) + "\n    "), _c('span', {
     staticStyle: {
       "color": "red",
       "font-size": "14px"
@@ -110638,37 +110649,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [(_vm.ztin(scope.row, [0, 1, 2, 4])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [(_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableEidtDate')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleRokeBack(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("提交付款")])], 1) : _vm._e(), _vm._v(" "), (scope.row.xiugaizhuangtai == '已修改') ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("提交付款")])], 1) : _vm._e(), _vm._v(" "), (scope.row.xiugaizhuangtai == '已修改' && _vm.fun('payableRecord')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleOpen(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("修改记录")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1, 2, 3, 4])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("修改记录")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1, 2, 3, 4]) && _vm.fun('submitRecord')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleOpenUp(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("提交记录")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4])) ? _c('el-dropdown-item', [(scope.row.fktype < 20) ? _c('el-button', {
+        }, [_vm._v("提交记录")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableEidtDate')) ? _c('el-dropdown-item', [(scope.row.fktype < 20) ? _c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑付款日期")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4])) ? _c('el-dropdown-item', [(scope.row.fktype < 20) ? _c('el-button', {
+        }, [_vm._v("编辑付款日期")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableEidtMoney')) ? _c('el-dropdown-item', [(scope.row.fktype < 20) ? _c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleMoneyEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑付款金额")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4])) ? _c('el-dropdown-item', [(scope.row.fktype == 20) ? _c('el-button', {
+        }, [_vm._v("编辑付款金额")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableEidtDate')) ? _c('el-dropdown-item', [(scope.row.fktype == 20) ? _c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEditYS(scope.$index, scope.row)
@@ -115994,7 +116005,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.purchaseContractList
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('purchaseContractAdd')) ? _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -116002,7 +116013,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.addContract
     }
-  }, [_vm._v(" 新增")])], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 新增")]) : _vm._e()], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -116106,79 +116117,79 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [_c('el-dropdown-item', [_c('el-button', {
+        }, [(_vm.fun('purchaseContractIndex')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleView(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("查看合同")])], 1), _vm._v(" "), (_vm.ztin(scope.row, [0, 4, 5])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("查看合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 4, 5]) && _vm.fun('purchaseContactUpdate')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1, 2])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("编辑合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1, 2]) && _vm.fun('purchaseContactAudit')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleReview(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("审核合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [3])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("审核合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [3]) && _vm.fun('purchaseContactDump')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleDump(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("打印合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [5])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("打印合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [5]) && _vm.fun('purchaseContactConfirm')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleConfirm(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("签约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 10])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("签约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 10]) && _vm.fun('purchaseContactWeiyue')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleWeiyue(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("违       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("违       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7]) && _vm.fun('purchaseContactEnd')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.openEndDialog(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("合同终止")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("合同终止")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7]) && _vm.fun('addOptimize')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("添加协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("添加协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9]) && _vm.fun('editOptimize')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.editOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("修改协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("修改协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11]) && _vm.fun('purchaseContactUpload')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleupload(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("扫描件   ")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("扫描件   ")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11]) && _vm.fun('purchaseContactZH')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleZhanghao(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("收款账号")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("收款账号")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11]) && _vm.fun('purchaseContactHD')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleHedan(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("合单管理")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("合单管理")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11]) && _vm.fun('purchaseContactSummary')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleSummary(scope.$index, scope.row)
@@ -121229,7 +121240,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.saleContractList
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('saleContractAdd')) ? _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -121237,7 +121248,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.addContract
     }
-  }, [_vm._v(" 新增")])], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 新增")]) : _vm._e()], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -121340,91 +121351,91 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [_c('el-dropdown-item', [_c('el-button', {
+        }, [(_vm.fun('saleContractIndex')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handlSee(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("查看合同")])], 1), _vm._v(" "), (_vm.ztin(scope.row, [0, 4, 5])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("查看合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 4, 5]) && _vm.fun('saleContactUpdate')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1, 2])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("编辑合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1, 2]) && _vm.fun('saleContactAudit')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleReview(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("审核合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [3])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("审核合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [3]) && _vm.fun('saleContactDump')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleDump(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("打印合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [5])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("打印合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [5]) && _vm.fun('saleContactConfirm')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleConfirm(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("签约成功")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 13])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("签约成功")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 13]) && _vm.fun('saleContactWeiyue')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleWeiyue(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("违       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 13])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("违       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 13]) && _vm.fun('saleContactJieyue')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleJieyue(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("解       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("解       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9]) && _vm.fun('saleContactJieyueFinish')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleJieyuewancheng(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("解约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("解约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7]) && _vm.fun('saleContactEnd')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.openEndDialog(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("合同终止")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("合同终止")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7]) && _vm.fun('addSaleOptimize')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("添加补充协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [12])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("添加补充协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [12]) && _vm.fun('editSaleOptimize')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.editOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("修改补充协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("修改补充协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13]) && _vm.fun('saleContactZH')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleZhanghao(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("付款账号")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("付款账号")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13]) && _vm.fun('saleContactHD')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleHedan(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("合单管理")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("合单管理")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13]) && _vm.fun('saleContactUpload')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleUplod(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("扫描件   ")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("扫描件   ")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13]) && _vm.fun('saleContactSummary')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleSummary(scope.$index, scope.row)
@@ -125813,7 +125824,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getBrokerCompanyUser
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('brokerCompanyUserAdd')) ? _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -125821,7 +125832,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleAdd
     }
-  }, [_vm._v(" 新增")])], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 新增")]) : _vm._e()], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -125937,19 +125948,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [_c('el-dropdown-item', [_c('el-button', {
+        }, [(_vm.fun('brokerCompanyEdit')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("跟进/编辑")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("跟进/编辑")])], 1) : _vm._e(), _vm._v(" "), (_vm.fun('brokerCompanyUserView')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleView(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("详        情")])], 1)], 1)], 1)]
+        }, [_vm._v("详        情")])], 1) : _vm._e()], 1)], 1)]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {
@@ -127748,7 +127759,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getBrokerUser
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('brokerUserAdd')) ? _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -127756,7 +127767,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleAdd
     }
-  }, [_vm._v(" 新增")])], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 新增")]) : _vm._e()], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -127862,19 +127873,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [_c('el-dropdown-item', [_c('el-button', {
+        }, [(_vm.fun('brokerUserEdit')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("跟进/编辑")])], 1), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("跟进/编辑")])], 1) : _vm._e(), _vm._v(" "), (_vm.fun('brokerUserView')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleView(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("详        情")])], 1)], 1)], 1)]
+        }, [_vm._v("详        情")])], 1) : _vm._e()], 1)], 1)]
       }
     }])
   })], 1), _vm._v(" "), _c('div', {

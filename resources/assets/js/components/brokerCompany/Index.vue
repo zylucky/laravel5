@@ -51,7 +51,7 @@
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getBrokerCompany">搜索</el-button>
-                <el-button type="primary" class="el-icon-plus"    @click="handleAdd"    > 新增</el-button>
+                <el-button type="primary" class="el-icon-plus" v-if="fun('brokerCompanyAdd')"    @click="handleAdd"    > 新增</el-button>
             </el-form-item>
         </el-row>
         </el-form>
@@ -97,9 +97,9 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  >  <el-button   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
-                            <el-dropdown-item  >  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
-                            <el-dropdown-item  >  <el-button   @click="handleUser(scope.$index, scope.row)">查看渠道人员</el-button> </el-dropdown-item>
+                            <el-dropdown-item v-if="fun('brokerCompanyEdit')" >  <el-button   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
+                            <el-dropdown-item v-if="fun('brokerCompanyView')">  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
+                            <el-dropdown-item v-if="fun('queryUser')">  <el-button    @click="handleUser(scope.$index, scope.row)">查看渠道人员</el-button> </el-dropdown-item>
                             
                         </el-dropdown-menu>
                     </el-dropdown>

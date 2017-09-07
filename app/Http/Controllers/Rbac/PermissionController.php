@@ -31,25 +31,6 @@ class PermissionController extends Controller
         $input = $request->params;
         $lists = $input['permissions'];
         $data = [];
-        $permissions = DB::table('permissions')
-            ->whereNotIn('id', $lists)
-            ->select('parent_id')
-            ->get()->toArray();
-        echo '<pre>';
-        var_dump($permissions);exit;
-        foreach ($permissions as $key=>$value){
-            if($value->parent_id==0){
-                unset($permissions[$key]);
-            }
-        }
-        dd($permissions);
-
-        $permissions2 = DB::table('permissions')
-            ->whereNotIn('id', $permissions)
-            ->select('parent_id')
-            ->get();
-
-        dd($permissions2);
         foreach ($lists as $key => $list){
             $data[$key]['permission_id']=$list;
             $data[$key]['role_id']=$id;
@@ -69,18 +50,48 @@ class PermissionController extends Controller
         //获取当前用户的角色
         $roles = $user->roles;
         //获取所有的权限
-        $permissions = [];
+        $permissionIds = [];
         foreach ($roles as $role){
             foreach($role->permissions->toArray() as $permission ){
-                $permissions[] = $permission['fun_key'];
+                $permissionIds[] = $permission['id'];
             }
         }
-        $permissions = array_unique($permissions);
+        $permissionIds = array_unique($permissionIds);
+        $permissions = DB::table('permissions')
+            ->whereIn('id', $permissionIds)
+            ->select('parent_id')
+            ->get();
+        $newArr = [];
+        foreach ($permissions as $key=>$value){
+            $newArr[]= $value->parent_id;
+        }
+        $permissions2 = DB::table('permissions')
+            ->whereIn('id', $newArr)
+            ->select('parent_id')
+            ->get();
+        foreach ($permissions2 as $key=>$value){
+            $newArr[]= $value->parent_id;
+        }
+        $lists= array_merge($newArr,$permissionIds);
+        $lists = array_unique($lists);
+        foreach ($lists as $key=>$value){
+            if($value==0){
+                unset($lists[$key]);
+            }
+        }
+        $permissions = [];
+        $dbs = DB::table('permissions')
+            ->whereIn('id', $lists)
+            ->select('fun_key')
+            ->get();
+        foreach ($dbs as $value){
+            $permissions[]=$value->fun_key;
+        }
         return $permissions;
-    }    /*
+    }
+    /*
      *  获取当前用户的权限列表
      * */
-
     public function getPermission($id)
     {
         //获取当前角色

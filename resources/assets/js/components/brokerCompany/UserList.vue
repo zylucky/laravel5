@@ -32,7 +32,7 @@
 
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getBrokerCompanyUser">搜索</el-button>
-                <el-button type="primary" class="el-icon-plus" @click="handleAdd"> 新增</el-button>
+                <el-button v-if="fun('brokerCompanyUserAdd')" type="primary" class="el-icon-plus" @click="handleAdd"> 新增</el-button>
             </el-form-item>
         </el-form>
         <el-table :data="brokerCompanyUser" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
@@ -75,8 +75,8 @@
                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
-                               <el-dropdown-item  >  <el-button    @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
-                               <el-dropdown-item  >  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
+                               <el-dropdown-item  v-if="fun('brokerCompanyEdit')">  <el-button    @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
+                               <el-dropdown-item  v-if="fun('brokerCompanyUserView')">  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
                            </el-dropdown-menu>
                        </el-dropdown>
 

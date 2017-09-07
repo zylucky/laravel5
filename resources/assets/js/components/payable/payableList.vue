@@ -21,7 +21,7 @@
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getPayable">搜索</el-button>
-                <el-button type="primary" class="el-icon-plus" @click="handleAdd">新增</el-button>
+                <el-button v-if="fun('payableAdd')" type="primary" class="el-icon-plus" @click="handleAdd">新增</el-button>
             </el-form-item>
         </el-form>
           合计  应付金额：{{DataSum.sumMoney}} 提交金额：{{DataSum.tijiaoMoney}}  实付金额：{{DataSum.shijiMoney}}
@@ -72,12 +72,12 @@
                                    操作<i class="el-icon-caret-bottom el-icon--right"></i>
                                </el-button>
                                <el-dropdown-menu slot="dropdown" >
-                                   <el-dropdown-item v-if="ztin(scope.row,[0,1,2,4])" ><el-button   @click="handleRokeBack(scope.$index, scope.row)">提交付款</el-button></el-dropdown-item>
-                                   <el-dropdown-item  v-if="scope.row.xiugaizhuangtai=='已修改'"> <el-button  @click="handleOpen(scope.$index, scope.row)">修改记录</el-button> </el-dropdown-item>
-                                   <el-dropdown-item  v-if="ztin(scope.row,[1,2,3,4])"  > <el-button  @click="handleOpenUp(scope.$index, scope.row)">提交记录</el-button> </el-dropdown-item>
-                                   <el-dropdown-item   v-if="ztin(scope.row,[0,1,2,4])"><el-button  v-if="scope.row.fktype<20"  @click="handleEdit(scope.$index, scope.row)">编辑付款日期</el-button></el-dropdown-item>
-                                   <el-dropdown-item   v-if="ztin(scope.row,[0,1,2,4])"><el-button   v-if="scope.row.fktype<20" @click="handleMoneyEdit(scope.$index, scope.row)">编辑付款金额</el-button></el-dropdown-item>
-                                   <el-dropdown-item v-if="ztin(scope.row,[0,1,2,4])">
+                                   <el-dropdown-item v-if="ztin(scope.row,[0,1,2,4])&&fun('payableEidtDate')" ><el-button   @click="handleRokeBack(scope.$index, scope.row)">提交付款</el-button></el-dropdown-item>
+                                   <el-dropdown-item  v-if="scope.row.xiugaizhuangtai=='已修改'&&fun('payableRecord') "> <el-button  @click="handleOpen(scope.$index, scope.row)">修改记录</el-button> </el-dropdown-item>
+                                   <el-dropdown-item  v-if="ztin(scope.row,[1,2,3,4])&&fun('submitRecord')"  > <el-button  @click="handleOpenUp(scope.$index, scope.row)">提交记录</el-button> </el-dropdown-item>
+                                   <el-dropdown-item   v-if="ztin(scope.row,[0,1,2,4])&&fun('payableEidtDate')"><el-button  v-if="scope.row.fktype<20"  @click="handleEdit(scope.$index, scope.row)">编辑付款日期</el-button></el-dropdown-item>
+                                   <el-dropdown-item   v-if="ztin(scope.row,[0,1,2,4])&&fun('payableEidtMoney')"><el-button   v-if="scope.row.fktype<20" @click="handleMoneyEdit(scope.$index, scope.row)">编辑付款金额</el-button></el-dropdown-item>
+                                   <el-dropdown-item v-if="ztin(scope.row,[0,1,2,4])&&fun('payableEidtDate')">
                                        <el-button v-if="scope.row.fktype==20" @click="handleEditYS(scope.$index, scope.row)">编辑</el-button>
                                    </el-dropdown-item>
                                </el-dropdown-menu>

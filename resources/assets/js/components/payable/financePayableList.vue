@@ -50,10 +50,10 @@
                                 操作<i class="el-icon-caret-bottom el-icon--right"></i>
                             </el-button>
                             <el-dropdown-menu slot="dropdown">
-                                <el-dropdown-item  v-if="scope.row.zhuangtai==1">
+                                <el-dropdown-item  v-if="scope.row.zhuangtai==1&&fun('surePayable')">
                                     <el-button  @click="handleRokeBack(scope.$index, scope.row)">确认付款</el-button>
                                 </el-dropdown-item>
-                                <el-dropdown-item  v-if="scope.row.zhuangtai==1">
+                                <el-dropdown-item  v-if="scope.row.zhuangtai==1&&fun('rejectPayable')">
                                     <el-button  @click="handleReject(scope.$index, scope.row)">驳回付款</el-button>
                                 </el-dropdown-item>
                                 <el-dropdown-item>

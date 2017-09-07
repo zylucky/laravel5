@@ -17,7 +17,7 @@
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search" @click="saleContractList">搜索</el-button>
-                <el-button type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
+                <el-button v-if="fun('saleContractAdd')" type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
                 <!--<el-button type="primary" class="el-icon-upload2" @click="uploadImg">上传</el-button>-->
             </el-form-item>
         </el-form>
@@ -52,24 +52,24 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  ><el-button @click="handlSee(scope.$index, scope.row)">查看合同</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[0,4,5])"><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[1,2])"><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[3])"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[5])"><el-button @click="handleConfirm(scope.$index, scope.row)">签约成功</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,13])"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,13])"><el-button @click="handleJieyue(scope.$index, scope.row)">解 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[9])"><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
+                            <el-dropdown-item v-if="fun('saleContractIndex')" ><el-button @click="handlSee(scope.$index, scope.row)">查看合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[0,4,5])&&fun('saleContactUpdate')"><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[1,2])&&fun('saleContactAudit')"><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[3])&&fun('saleContactDump')"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[5])&&fun('saleContactConfirm')"><el-button @click="handleConfirm(scope.$index, scope.row)">签约成功</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,13])&&fun('saleContactWeiyue')"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,13])&&fun('saleContactJieyue')"><el-button @click="handleJieyue(scope.$index, scope.row)">解 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[9])&&fun('saleContactJieyueFinish')"><el-button @click="handleJieyuewancheng(scope.$index, scope.row)">解约完成</el-button></el-dropdown-item>
                             <!--<el-dropdown-item  v-if="ztin(scope.row,[10])"><el-button @click="handleCheckJieyue(scope.$index, scope.row)">查看协议</el-button></el-dropdown-item>-->
-                            <el-dropdown-item  v-if="ztin(scope.row,[7])"><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[7])"><el-button @click="handleOptimize(scope.$index, scope.row)">添加补充协议</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[12])"><el-button @click="editOptimize(scope.$index, scope.row)">修改补充协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[7])&&fun('saleContactEnd')"><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[7])&&fun('addSaleOptimize')"><el-button @click="handleOptimize(scope.$index, scope.row)">添加补充协议</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[12])&&fun('editSaleOptimize')"><el-button @click="editOptimize(scope.$index, scope.row)">修改补充协议</el-button></el-dropdown-item>
                             <!--<el-dropdown-item  v-if="ztin(scope.row,[13])"><el-button @click="handleCheckOptimize(scope.$index, scope.row)">当前补充协议</el-button></el-dropdown-item>-->
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])"><el-button @click="handleZhanghao(scope.$index, scope.row)">付款账号</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])"><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactZH')"><el-button @click="handleZhanghao(scope.$index, scope.row)">付款账号</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactHD')"><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
                             <!--<el-dropdown-item  v-if="ztin(scope.row,[12,13])"><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史补充协议</el-button></el-dropdown-item>-->
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])"><el-button @click="handleUplod(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])"><el-button @click="handleSummary(scope.$index, scope.row)">打印核心数据</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactUpload')"><el-button @click="handleUplod(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactSummary')"><el-button @click="handleSummary(scope.$index, scope.row)">打印核心数据</el-button></el-dropdown-item>
 
                         </el-dropdown-menu>
                     </el-dropdown>
