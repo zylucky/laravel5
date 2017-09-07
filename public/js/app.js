@@ -29336,18 +29336,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.$confirm('确认提交完成付款吗？', '提示', {}).then(function () {
-                _this2.editLoading = true;
                 var para = {
                     id: row.tQdApplyId
                     //console.log(para);
                 };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["I" /* finishFK */])(para).then(function (res) {
-                    _this2.editLoading = false;
                     _this2.$message({
                         message: '提交成功',
                         type: 'success'
                     });
-                    _this2.$refs['editForm'].resetFields();
-                    _this2.editFormVisible = false;
                     _this2.getChuFangCommission();
                 });
             });
@@ -50403,6 +50399,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     row.departmentname = this.optionsyslxr3[x].label;
                     //alert(55);
                 }
+                //12112alert(55);
                 /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
                  this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
                   }*/
@@ -113332,7 +113329,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "color": "red"
     }
-  }, [_vm._v("\n注：佣金差额=业主实际支付佣金-华亮佣金       负数=幼狮支出 正数=幼狮盈利 零=持平 \n")]), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("\n注：佣金差额=业主实际支付佣金-华亮佣金       负数=幼狮支出 正数=幼狮盈利 零=持平\n")]), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",

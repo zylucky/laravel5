@@ -375,19 +375,15 @@
             //完成按钮
             handleFinish: function (index, row) {
                 this.$confirm('确认提交完成付款吗？', '提示', {}).then(() => {
-                    this.editLoading = true;
                     let para = {
                         id:row.tQdApplyId,
                     }
                     //console.log(para);
                     finishFK(para).then((res) => {
-                        this.editLoading = false;
                         this.$message({
                             message: '提交成功',
                             type: 'success'
                         });
-                        this.$refs['editForm'].resetFields();
-                        this.editFormVisible = false;
                         this.getChuFangCommission();
                     });
                 });

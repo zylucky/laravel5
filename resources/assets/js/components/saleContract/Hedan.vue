@@ -743,6 +743,7 @@
                         row.departmentname = this.optionsyslxr3[x].label;
                         //alert(55);
                     }
+                    //12112alert(55);
                     /*if (this.optionsyslxr1[x].label == this.hedan.qiandanren.signpersonnelname) {
                      this.hedan.qiandanren[index].signpersonnelname = this.optionsyslxr1[x].value;
 

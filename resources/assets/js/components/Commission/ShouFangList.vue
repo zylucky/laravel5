@@ -38,7 +38,7 @@
         </el-form>
 
         <span style="color:red;">
-注：佣金差额=业主实际支付佣金-华亮佣金       负数=幼狮支出 正数=幼狮盈利 零=持平 
+注：佣金差额=业主实际支付佣金-华亮佣金       负数=幼狮支出 正数=幼狮盈利 零=持平
 </span>
         <el-table :data="ShouFang" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
                   @selection-change="selsChange" style="width: 100%;">
