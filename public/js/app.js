@@ -119307,19 +119307,49 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
+<<<<<<< HEAD
+        }, [(_vm.ztin(scope.row, [0, 1, 3, 4]) && _vm.fun('receivableAdd')) ? _c('el-dropdown-item', [_c('el-button', {
+=======
         }, [(scope.row.zhuangtai == 1) ? _c('el-dropdown-item', [_c('el-button', {
+>>>>>>> 223a1a2843e7ea28c90691d6362494e4e1f1d589
           on: {
             "click": function($event) {
               _vm.handleRokeBack(scope.$index, scope.row)
             }
           }
+<<<<<<< HEAD
+        }, [_vm._v("提交收款")])], 1) : _vm._e(), _vm._v(" "), (scope.row.shiugaizhuangtai == '已修改' && _vm.fun('receivableAdd')) ? _c('el-dropdown-item', [_c('el-button', {
+          on: {
+            "click": function($event) {
+              _vm.handleOpen(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("修改记录")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1, 2, 3, 4]) && _vm.fun('receivableAdd')) ? _c('el-dropdown-item', [_c('el-button', {
+          on: {
+            "click": function($event) {
+              _vm.handleOpenUp(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("提交记录")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 3, 4]) && _vm.fun('receivableAdd')) ? _c('el-dropdown-item', [(scope.row.sktype < 20) ? _c('el-button', {
+          on: {
+            "click": function($event) {
+              _vm.handleEdit(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("编辑收款日期")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 3, 4]) && _vm.fun('receivableAdd')) ? _c('el-dropdown-item', [(scope.row.sktype < 20) ? _c('el-button', {
+=======
         }, [_vm._v("确认付款")])], 1) : _vm._e(), _vm._v(" "), (scope.row.zhuangtai == 1) ? _c('el-dropdown-item', [_c('el-button', {
+>>>>>>> 223a1a2843e7ea28c90691d6362494e4e1f1d589
           on: {
             "click": function($event) {
               _vm.handleReject(scope.$index, scope.row)
             }
           }
+<<<<<<< HEAD
+        }, [_vm._v("编辑收款金额")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 3, 4]) && _vm.fun('receivableAdd')) ? _c('el-dropdown-item', [(scope.row.sktype == 20) ? _c('el-button', {
+=======
         }, [_vm._v("驳回付款")])], 1) : _vm._e(), _vm._v(" "), _c('el-dropdown-item', [_c('el-button', {
+>>>>>>> 223a1a2843e7ea28c90691d6362494e4e1f1d589
           on: {
             "click": function($event) {
               _vm.handleOpen(scope.$index, scope.row)
@@ -127374,6 +127404,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleDel(scope.$index, scope.row)
             }
           }
+<<<<<<< HEAD
+        }, [_vm._v("驳回付款")])], 1) : _vm._e()], 1)], 1)]
+=======
         }, [_c('i', {
           staticClass: "el-icon-delete"
         })]), _vm._v(" "), _c('el-button', {
@@ -127389,6 +127422,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }, [_c('i', {
           staticClass: "el-icon-setting"
         })])]
+>>>>>>> 223a1a2843e7ea28c90691d6362494e4e1f1d589
       }
     }])
   })], 1), _vm._v(" "), _c('el-dialog', {

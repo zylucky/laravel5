@@ -10,7 +10,7 @@
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getReceivable">搜索</el-button>
-                <el-button type="primary" class="el-icon-plus"    @click="handleAdd">新增</el-button>
+                <el-button type="primary" class="el-icon-plus"  v-if="fun('claimAdd')"  @click="handleAdd">新增</el-button>
             </el-form-item>
         </el-form>
         <el-tabs v-model="activeName2" type="border-card" @tab-click="handleClick">
@@ -40,9 +40,9 @@
                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
-                               <el-dropdown-item   v-if="scope.row.zhuangtai==0||scope.row.zhuangtai==2"><el-button   @click="handleRokeBack(scope.row)">认领</el-button></el-dropdown-item>
-                               <el-dropdown-item  ><el-button   @click="handleView(scope.$index, scope.row)">查看备注</el-button></el-dropdown-item>
-                               <el-dropdown-item  > <el-button  @click="handleOpen(scope.$index, scope.row)">上传凭证</el-button> </el-dropdown-item>
+                               <el-dropdown-item   v-if="scope.row.zhuangtai==0||scope.row.zhuangtai==2" ><el-button   @click="handleRokeBack(scope.row)">认领</el-button></el-dropdown-item>
+                               <el-dropdown-item v-if="fun('queryMemo')" ><el-button   @click="handleView(scope.$index, scope.row)">查看备注</el-button></el-dropdown-item>
+
                            </el-dropdown-menu>
                        </el-dropdown>
                    </template>
