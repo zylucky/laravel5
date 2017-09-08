@@ -284,12 +284,14 @@
                 //审核
                 this.shenhe = {
                     hetongid:this.id,
-                    content:this.content,
                     result:result,
                 };
             },
+            //审核通过
             review2(){
-                    reviewSaleContract(this.shenhe).then((res) => {
+                let para = Object.assign({},{content:this.content},this.shenhe);
+                //console.log(para);
+                    reviewSaleContract(para).then((res) => {
                     if(res.data.code == 200)　{
                         history.go(-1);
                         this.dialogFormVisible = false;
@@ -337,20 +339,29 @@
                 window.open('/#/saleContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
-                console.log(res.data.data);
-
+                //console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
-                /*if(this.zhuangtai==4){
+                if(this.zhuangtai==4){
                     this.$notify({
                         title: '提示',
                         message: res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content==null?'审核拒绝：无':'审核拒绝：'+res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content,
                         duration: 0,
                         type: 'warning',
                     });
-                }*/
+                }
                 this.contractVersion = res.data.data.version;
                 this.property.xsOffice = res.data.data.xsOffice;
+                this.property.editableTabs2 = [];
+                this.property.xsOffice.forEach((property,index)=>{
+                    index ++;
+                    this.property.tabIndex = index;
+                    this.property.editableTabs2.push({
+                        title: '房间'+index,
+                        name: index+'',
+                        content: 'New Tab content'
+                    })
+                })
                 this.property.subleaseno = res.data.data.subleaseno;
                 if(res.data.data.chengzuren.length>0){
                     //alert(22222);
