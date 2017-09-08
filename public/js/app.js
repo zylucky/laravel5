@@ -116054,12 +116054,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "loudongName",
       "label": "楼栋",
+      "width": "100",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "fanghao",
       "label": "房间号",
+      "width": "100",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
@@ -116074,6 +116076,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "qianyuedate",
       "label": "签约日",
+      "width": "150",
       "formatter": _vm.changeDate,
       "sortable": ""
     }

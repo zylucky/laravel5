@@ -28,13 +28,13 @@
                     <!--<span v-for="(item,index) in  Estate(scope.row.loupanName)">{{item}}</span>-->
                 <!--</template>-->
             </el-table-column>
-            <el-table-column prop="loudongName" label="楼栋"   sortable>
+            <el-table-column prop="loudongName" label="楼栋" width="100"  sortable>
             </el-table-column>
-            <el-table-column prop="fanghao" label="房间号"  sortable>
+            <el-table-column prop="fanghao" label="房间号" width="100" sortable>
             </el-table-column>
             <el-table-column prop="zhuangtai" label="状态" :formatter="formatStatus"  width="200" sortable>
             </el-table-column>
-            <el-table-column prop="qianyuedate" label="签约日" :formatter="changeDate"  sortable>
+            <el-table-column prop="qianyuedate" label="签约日" width="150" :formatter="changeDate"  sortable>
             </el-table-column>
             <el-table-column
                     label="用友编号"
