@@ -190,7 +190,6 @@
                     name: '1',
                     content: 'Tab 1 content'
                 }],
-                tabIndex: 1,
                 editPropertyRules: {
                     loupanName: [
                         { required: true, message: '不能为空'}
@@ -311,7 +310,7 @@
             //获取楼栋
             remoteMethod2(query) {
                 let para = {
-                    loupanOmcId:this.property.xsOffice[this.tabIndex-1].loupanOmcId,
+                    loupanOmcId:this.property.xsOffice[this.property.tabIndex-1].loupanOmcId,
                 };
                 this.loupanloading = true;
                 getLoudongList(para).then((res) => {
@@ -343,8 +342,8 @@
             //获取房号
             remoteMethod3(query) {
                 let para = {
-                    lpid: this.property.xsOffice[this.tabIndex-1].loupanOmcId,
-                    zdid: this.property.xsOffice[this.tabIndex-1].loudongOmcId,
+                    lpid: this.property.xsOffice[this.property.tabIndex-1].loupanOmcId,
+                    zdid: this.property.xsOffice[this.property.tabIndex-1].loudongOmcId,
                 };
                 this.fanghaoloading = true;
                 getSaleFanghaoList(para).then((res) => {
@@ -378,12 +377,12 @@
             change1(){
                 //楼盘
                 for (var x in this.options1){
-                    if(this.options1[x].label==this.property.xsOffice[this.tabIndex-1].loupanName){
-                        this.property.xsOffice[this.tabIndex-1].loupanOmcId=this.options1[x].value;
-                        this.property.xsOffice[this.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
-                        this.property.xsOffice[this.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
-                        this.property.xsOffice[this.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
-                        this.property.xsOffice[this.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
+                    if(this.options1[x].label==this.property.xsOffice[this.property.tabIndex-1].loupanName){
+                        this.property.xsOffice[this.property.tabIndex-1].loupanOmcId=this.options1[x].value;
+                        this.property.xsOffice[this.property.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
+                        this.property.xsOffice[this.property.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
+                        this.property.xsOffice[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                        this.property.xsOffice[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
                         //alert(222);
                     }
                 }
@@ -392,8 +391,8 @@
                 //alert(222);
                 //楼栋
                 for (var x in this.options2){
-                    if(this.options2[x].label==this.property.xsOffice[this.tabIndex-1].loudongName){
-                        this.property.xsOffice[this.tabIndex-1].loudongOmcId=this.options2[x].value;
+                    if(this.options2[x].label==this.property.xsOffice[this.property.tabIndex-1].loudongName){
+                        this.property.xsOffice[this.property.tabIndex-1].loudongOmcId=this.options2[x].value;
 
                     }
                 }
@@ -402,14 +401,14 @@
                 //alert(111);
                 //房号
                 for (var x in this.options3){
-                    if(this.options3[x].label==this.property.xsOffice[this.tabIndex-1].fanghao){
-                        this.property.xsOffice[this.tabIndex-1].omcId=this.options3[x].value;
+                    if(this.options3[x].label==this.property.xsOffice[this.property.tabIndex-1].fanghao){
+                        this.property.xsOffice[this.property.tabIndex-1].omcId=this.options3[x].value;
                     }
                 }
                 for (var x in this.houseData){
-                    if(this.houseData[x].id==this.property.xsOffice[this.tabIndex-1].omcId){
-                        this.property.xsOffice[this.tabIndex-1].Jianzhumianji=this.houseData[x].fjmj;
-                        this.property.xsOffice[this.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
+                    if(this.houseData[x].id==this.property.xsOffice[this.property.tabIndex-1].omcId){
+                        this.property.xsOffice[this.property.tabIndex-1].Jianzhumianji=this.houseData[x].fjmj;
+                        this.property.xsOffice[this.property.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
                     }
                 }
                 //console.log(this.property.xsOffice)
