@@ -407,14 +407,6 @@
                     yezhuleixing:1,
                     //产权人
                     chanquanrenList:[
-                        {
-                            faren:'',
-                            name:'',
-                            zhengjian:'',
-                            tel:'',
-                            sex:'',
-                            hetongid:null,
-                        },
                     ],
                     //代理人
                     dailirenName:'',
