@@ -40,7 +40,7 @@
                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
                            </el-button>
                            <el-dropdown-menu slot="dropdown" >
-                               <el-dropdown-item   v-if="scope.row.zhuangtai==0||scope.row.zhuangtai==2" ><el-button   @click="handleRokeBack(scope.row)">认领</el-button></el-dropdown-item>
+                               <el-dropdown-item   v-if="scope.row.zhuangtai==0||scope.row.zhuangtai==2" ><el-button v-if="fun('claim')"   @click="handleRokeBack(scope.row)">认领</el-button></el-dropdown-item>
                                <el-dropdown-item v-if="fun('queryMemo')" ><el-button   @click="handleView(scope.$index, scope.row)">查看备注</el-button></el-dropdown-item>
 
                            </el-dropdown-menu>

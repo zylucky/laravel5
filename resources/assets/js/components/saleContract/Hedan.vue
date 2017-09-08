@@ -79,6 +79,7 @@
                                     <el-col>
                                         <el-form-item>
                                             <el-select
+                                                    style="top:10px"
                                                     v-model="scope.row.signpersonnelname"
                                                     filterable
                                                     remote
@@ -86,7 +87,6 @@
                                                     placeholder="请输入签单人姓名"
                                                     :remote-method="remoteMethodyslxr1"
                                                     :loading="fristyslxrloading1"
-                                                    style="position:relative;left:-150px;top:10px;height:35px;width:250px;"
                                             >
                                                 <el-option
                                                         v-for="item in optionsyslxr1"
@@ -101,7 +101,7 @@
                             </el-table-column>
                             <el-table-column
                                     label="合单占比"
-                                    width="300">
+                                    width="200">
                                 <template scope="scope"> <!--style="position:relative;top:0px;height:30px;"-->
                                     <el-input v-model="scope.row.ratio" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                                 </template>
@@ -113,7 +113,7 @@
                                     <el-col>
                                         <el-form-item>
                                             <el-select
-                                                    style="position:relative;left:-150px;top:10px;height:35px;width:250px;"
+                                                    style="top:10px"
                                                     v-model="scope.row.leaderpersonnelname"
                                                     filterable
                                                     remote
@@ -139,7 +139,7 @@
                                     <el-col>
                                         <el-form-item>
                                             <el-select
-                                                    style="position:relative;left:-150px;top:10px;height:35px;width:250px;"
+                                                    style="top:10px"
                                                     v-model="scope.row.departmentname"
                                                     filterable
                                                     remote

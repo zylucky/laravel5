@@ -44,7 +44,7 @@
                                                     placeholder="请输入签单人姓名"
                                                     :remote-method="remoteMethodyslxr1"
                                                     :loading="fristyslxrloading1"
-                                                    style="position:relative;left:-150px;top:10px;height:35px;width:250px;"
+                                                    style="top:10px"
                                             >
                                                 <el-option
                                                         v-for="item in optionsyslxr1"
@@ -71,7 +71,7 @@
                                     <el-col>
                                         <el-form-item>
                                             <el-select
-                                                    style="position:relative;left:-150px;top:10px;height:35px;width:250px;"
+                                                    style="top:10px"
                                                     v-model="scope.row.leaderpersonnelname"
                                                     filterable
                                                     remote
@@ -97,7 +97,7 @@
                                     <el-col>
                                         <el-form-item>
                                             <el-select
-                                                    style="position:relative;left:-150px;top:10px;height:35px;width:250px;"
+                                                    style="top:10px"
                                                     v-model="scope.row.departmentname"
                                                     filterable
                                                     remote

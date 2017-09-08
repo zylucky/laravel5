@@ -46226,14 +46226,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //审核
             this.shenhe = {
                 hetongid: this.id,
-                content: this.content,
                 result: result
             };
         },
+
+        //审核通过
         review2: function review2() {
             var _this4 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_45" /* reviewSaleContract */])(this.shenhe).then(function (res) {
+            var para = Object.assign({}, { content: this.content }, this.shenhe);
+            //console.log(para);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_45" /* reviewSaleContract */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     history.go(-1);
                     _this4.dialogFormVisible = false;
@@ -46288,17 +46291,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         fuzhi: function fuzhi(res) {
             console.log(res.data.data);
-
             this.id = res.data.data.id;
             this.zhuangtai = res.data.data.zhuangtai;
-            /*if(this.zhuangtai==4){
+            if (this.zhuangtai == 4) {
                 this.$notify({
                     title: '提示',
-                    message: res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content==null?'审核拒绝：无':'审核拒绝：'+res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content,
+                    message: res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length - 1].content == null ? '审核拒绝：无' : '审核拒绝：' + res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length - 1].content,
                     duration: 0,
-                    type: 'warning',
+                    type: 'warning'
                 });
-            }*/
+            }
             this.contractVersion = res.data.data.version;
             this.property.xsOffice = res.data.data.xsOffice;
             this.property.subleaseno = res.data.data.subleaseno;
@@ -50733,7 +50735,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     fkfs: "押" + res.data.data.fukuanFangshiList[0].yajinyue + "付" + res.data.data.fukuanFangshiList[0].zujinyue,
                                     zlmj: res.data.data.xsOffice[x].qianyuemianji
                                 };
-                                console.log(_para);
+                                //console.log(para);
                                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_58" /* getSaleContractOmc */])(_para).then(function (res) {
                                     if (res.data.success) {
                                         //console.log(res.data.data)
@@ -110476,7 +110478,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getPayable
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('payableAdd')) ? _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('payableAddYXJ')) ? _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -110661,7 +110663,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [(_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableEidtDate')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [(_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableAdd')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleRokeBack(scope.$index, scope.row)
@@ -110691,7 +110693,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleMoneyEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑付款金额")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableEidtDate')) ? _c('el-dropdown-item', [(scope.row.fktype == 20) ? _c('el-button', {
+        }, [_vm._v("编辑付款金额")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableEidt')) ? _c('el-dropdown-item', [(scope.row.fktype == 20) ? _c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEditYS(scope.$index, scope.row)
@@ -114045,13 +114047,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [(scope.row.zhuangtai == 0 || scope.row.zhuangtai == 2) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [(scope.row.zhuangtai == 0 || scope.row.zhuangtai == 2) ? _c('el-dropdown-item', [(_vm.fun('claim')) ? _c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleRokeBack(scope.row)
             }
           }
-        }, [_vm._v("认领")])], 1) : _vm._e(), _vm._v(" "), (_vm.fun('queryMemo')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("认领")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.fun('queryMemo')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleView(scope.$index, scope.row)
@@ -121239,7 +121241,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.saleContractList
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('saleContractAdd')) ? _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -121247,7 +121249,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.addContract
     }
-  }, [_vm._v(" 新增")]) : _vm._e()], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 新增")])], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -121350,91 +121352,91 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [(_vm.fun('saleContractIndex')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handlSee(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("查看合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 4, 5]) && _vm.fun('saleContactUpdate')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("查看合同")])], 1), _vm._v(" "), (_vm.ztin(scope.row, [0, 4, 5])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1, 2]) && _vm.fun('saleContactAudit')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("编辑合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [1, 2])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleReview(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("审核合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [3]) && _vm.fun('saleContactDump')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("审核合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [3])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleDump(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("打印合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [5]) && _vm.fun('saleContactConfirm')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("打印合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [5])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleConfirm(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("签约成功")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 13]) && _vm.fun('saleContactWeiyue')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("签约成功")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 13])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleWeiyue(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("违       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 13]) && _vm.fun('saleContactJieyue')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("违       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 13])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleJieyue(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("解       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9]) && _vm.fun('saleContactJieyueFinish')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("解       约")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleJieyuewancheng(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("解约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7]) && _vm.fun('saleContactEnd')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("解约完成")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.openEndDialog(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("合同终止")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7]) && _vm.fun('addSaleOptimize')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("合同终止")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [7])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("添加补充协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [12]) && _vm.fun('editSaleOptimize')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("添加补充协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [12])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.editOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("修改补充协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13]) && _vm.fun('saleContactZH')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("修改补充协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleZhanghao(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("付款账号")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13]) && _vm.fun('saleContactHD')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("付款账号")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleHedan(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("合单管理")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13]) && _vm.fun('saleContactUpload')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("合单管理")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleUplod(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("扫描件   ")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13]) && _vm.fun('saleContactSummary')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("扫描件   ")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [6, 7, 8, 9, 10, 11, 12, 13])) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleSummary(scope.$index, scope.row)
@@ -121712,7 +121714,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getReceivable
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('receivableAddYXJ')) ? _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -121720,7 +121722,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleAdd
     }
-  }, [_vm._v("新增")])], 1)], 1), _vm._v("\n    合计  应付金额：" + _vm._s(_vm.DataSum.sumMoney) + " 提交金额：" + _vm._s(_vm.DataSum.tijiaoMoney) + "  实付金额：" + _vm._s(_vm.DataSum.shijiMoney) + "\n    "), _c('span', {
+  }, [_vm._v("新增")]) : _vm._e()], 1)], 1), _vm._v("\n    合计  应付金额：" + _vm._s(_vm.DataSum.sumMoney) + " 提交金额：" + _vm._s(_vm.DataSum.tijiaoMoney) + "  实付金额：" + _vm._s(_vm.DataSum.shijiMoney) + "\n    "), _c('span', {
     staticStyle: {
       "color": "red",
       "font-size": "14px"
@@ -127168,11 +127170,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
-              "position": "relative",
-              "left": "-150px",
-              "top": "10px",
-              "height": "35px",
-              "width": "250px"
+              "top": "10px"
             },
             attrs: {
               "filterable": "",
@@ -127241,11 +127239,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
-              "position": "relative",
-              "left": "-150px",
-              "top": "10px",
-              "height": "35px",
-              "width": "250px"
+              "top": "10px"
             },
             attrs: {
               "filterable": "",
@@ -127287,11 +127281,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
-              "position": "relative",
-              "left": "-150px",
-              "top": "10px",
-              "height": "35px",
-              "width": "250px"
+              "top": "10px"
             },
             attrs: {
               "filterable": "",
@@ -131010,11 +131000,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
-              "position": "relative",
-              "left": "-150px",
-              "top": "10px",
-              "height": "35px",
-              "width": "250px"
+              "top": "10px"
             },
             attrs: {
               "filterable": "",
@@ -131049,7 +131035,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }), _vm._v(" "), _c('el-table-column', {
       attrs: {
         "label": "合单占比",
-        "width": "300"
+        "width": "200"
       },
       scopedSlots: _vm._u([{
         key: "default",
@@ -131083,11 +131069,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
-              "position": "relative",
-              "left": "-150px",
-              "top": "10px",
-              "height": "35px",
-              "width": "250px"
+              "top": "10px"
             },
             attrs: {
               "filterable": "",
@@ -131129,11 +131111,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
-              "position": "relative",
-              "left": "-150px",
-              "top": "10px",
-              "height": "35px",
-              "width": "250px"
+              "top": "10px"
             },
             attrs: {
               "filterable": "",
