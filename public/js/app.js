@@ -42416,6 +42416,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }, trigger: 'blur' }]
             },
             btnShow: true,
+            btndisabled: false,
             btnType: true,
             submsg: '提交',
             options: [{
@@ -42518,7 +42519,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_73" /* optimizePurchaseContract */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     _this3.fuzhi(res);
-                    _this3.btnType = false, _this3.$message({
+                    _this3.btnType = false, _this3.btndisabled = true, _this3.$message({
                         message: '保存成功',
                         type: 'success'
                     });
@@ -123615,6 +123616,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "margin-top": "100px"
     },
     attrs: {
+      "disabled": _vm.btndisabled,
       "type": "primary"
     },
     on: {

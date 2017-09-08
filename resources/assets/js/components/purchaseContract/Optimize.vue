@@ -348,7 +348,7 @@
             </el-form-item>
         </el-form>
         <el-button v-if="btnShow"  @click="cancel" style="margin-top:80px;margin-left: 40%;">取消</el-button>
-        <el-button v-if="btnShow" type="primary"  @click="save" style="margin-top:100px;">保存</el-button>
+        <el-button v-if="btnShow" :disabled="btndisabled" type="primary"  @click="save" style="margin-top:100px;">保存</el-button>
         <el-button v-if="btnShow" type="primary" :disabled="btnType"  @click="submit" style="margin-top:100px;">{{submsg}}</el-button>
     </el-row>
 </template>
@@ -390,6 +390,7 @@
                     ],
                 },
                 btnShow:true,
+                btndisabled:false,
                 btnType:true,
                 submsg:'提交',
                 options:[
@@ -494,6 +495,7 @@
                     if(res.data.code == 200)　{
                         this.fuzhi(res);
                         this.btnType=false,
+                        this.btndisabled=true,
                             this.$message({
                                 message: '保存成功',
                                 type: 'success'
