@@ -57,7 +57,7 @@
                 <tr>
                     <td  align="center" height="28"></td>
                     <th  align="left" colspan="2">提前【{{data.tiqianfukuantian}}】天付款</th>
-                    <td style="border:0 ">业务：李四</td>
+                    <td style="border:0 ">业务：{{data.yewu}}</td>
                 </tr>
                 <tr>
                     <td  align="center" height="28"></td>

@@ -116761,7 +116761,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "border": "0"
     }
-  }, [_vm._v("业务：李四")])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v("业务：" + _vm._s(_vm.data.yewu))])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
       "height": "28"
