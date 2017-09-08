@@ -23,18 +23,18 @@
         <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column  prop="bianhao" label="编号" width="200" >
             </el-table-column>
-            <el-table-column prop="loupanName" label="楼盘"  sortable width="200" >
+            <el-table-column prop="loupanName" label="楼盘"  sortable >
                 <!--<template scope="scope">-->
                     <!--<span v-for="(item,index) in  Estate(scope.row.loupanName)">{{item}}</span>-->
                 <!--</template>-->
             </el-table-column>
-            <el-table-column prop="loudongName" label="楼栋" width="100"  sortable>
+            <el-table-column prop="loudongName" label="楼栋"   sortable>
             </el-table-column>
-            <el-table-column prop="fanghao" label="房间号" width="100" sortable>
+            <el-table-column prop="fanghao" label="房间号"  sortable>
             </el-table-column>
-            <el-table-column prop="zhuangtai" label="状态" :formatter="formatStatus"  width="200" sortable>
+            <el-table-column prop="zhuangtai" label="状态" :formatter="formatStatus"   sortable>
             </el-table-column>
-            <el-table-column prop="qianyuedate" label="签约日" width="150" :formatter="changeDate"  sortable>
+            <el-table-column prop="qianyuedate" label="签约日"  :formatter="changeDate"  sortable>
             </el-table-column>
             <el-table-column
                     label="用友编号"
