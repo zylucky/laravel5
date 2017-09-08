@@ -46692,14 +46692,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //审核
             this.shenhe = {
                 hetongid: this.id,
-                content: this.content,
                 result: result
             };
         },
+
+        //审核通过
         review2: function review2() {
             var _this4 = this;
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_45" /* reviewSaleContract */])(this.shenhe).then(function (res) {
+            var para = Object.assign({}, { content: this.content }, this.shenhe);
+            //console.log(para);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["_45" /* reviewSaleContract */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     history.go(-1);
                     _this4.dialogFormVisible = false;
@@ -46754,17 +46757,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         fuzhi: function fuzhi(res) {
             console.log(res.data.data);
-
             this.id = res.data.data.id;
             this.zhuangtai = res.data.data.zhuangtai;
-            /*if(this.zhuangtai==4){
+            if (this.zhuangtai == 4) {
                 this.$notify({
                     title: '提示',
-                    message: res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content==null?'审核拒绝：无':'审核拒绝：'+res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content,
+                    message: res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length - 1].content == null ? '审核拒绝：无' : '审核拒绝：' + res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length - 1].content,
                     duration: 0,
-                    type: 'warning',
+                    type: 'warning'
                 });
-            }*/
+            }
             this.contractVersion = res.data.data.version;
             this.property.xsOffice = res.data.data.xsOffice;
             this.property.subleaseno = res.data.data.subleaseno;
