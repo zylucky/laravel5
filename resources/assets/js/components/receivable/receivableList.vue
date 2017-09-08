@@ -21,7 +21,7 @@
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search" v-on:click="getReceivable">搜索</el-button>
-                <el-button type="primary" class="el-icon-plus" @click="handleAdd">新增</el-button>
+                <el-button type="primary" class="el-icon-plus" v-if="fun('receivableAddYXJ')" @click="handleAdd">新增</el-button>
             </el-form-item>
         </el-form>
         合计  应付金额：{{DataSum.sumMoney}} 提交金额：{{DataSum.tijiaoMoney}}  实付金额：{{DataSum.shijiMoney}}
