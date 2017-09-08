@@ -395,6 +395,7 @@
                     yjzbSf: '',
                     yjzbCf: '',
                     yjType: 2,
+                    yjType1: '',
                     yewuqvyv: '',
                     yewuqvyvid: '',
                     yewupianqv: '',
@@ -414,6 +415,7 @@
                     shifouhezuoxieyi: true,
                     qianxieyishijian: '',
                     hezuoxieyidengji: '',
+                    hezuoxieyidengji1:'',
                     yslianxiren1: '',
                     yslianxiren1Id: '',
                     yslianxiren2: '',
@@ -622,6 +624,7 @@
                     this.isdis=true;
                 } else {
                     this.isdis=false;
+                    this.brokerCompanyFrom.hezuocishu=null;
                 }
 
             },
@@ -630,6 +633,8 @@
                     this.isqydis=true;
                 } else {
                     this.isqydis=false;
+                    this.brokerCompanyFrom.qianxieyishijian=null;
+                    this.brokerCompanyFrom.hezuoxieyidengji=null;
                 }
 
             },
@@ -828,8 +833,10 @@
             },
             changeDJ()
             {
-                // alert(this.brokerCompanyFrom.yjType );
-                if (this.brokerCompanyFrom.yjType == 2) {
+                //alert(this.brokerCompanyFrom.yjType1 );
+                if(this.brokerCompanyFrom.yjType!=this.brokerCompanyFrom.yjType1|| this.brokerCompanyFrom.hezuoxieyidengji1!=this.brokerCompanyFrom.hezuoxieyidengji){
+                    //alert(this.brokerCompanyFrom.hezuoxieyidengji );
+                if (this.brokerCompanyFrom.yjType == 2&&this.brokerCompanyFrom.hezuoxieyidengji!=null) {
                     for (var x in this.optionsxydj) {
                         if (this.optionsxydj[x].label == this.brokerCompanyFrom.hezuoxieyidengji) {
                             this.brokerCompanyFrom.yjzbSf = this.optionsxydj[x].yjvalue;
@@ -839,6 +846,9 @@
                 } else {
                     this.brokerCompanyFrom.yjzbSf = null;
                     this.brokerCompanyFrom.yjzbCf = null;
+                }
+                    this.brokerCompanyFrom.yjType1=this.brokerCompanyFrom.yjType;
+                    this.brokerCompanyFrom.hezuoxieyidengji1=this.brokerCompanyFrom.hezuoxieyidengji;
                 }
             },
             //获取幼狮联系人列表
@@ -968,6 +978,8 @@
                         this.brokerCompanyFrom.gongsijingyingshuxing = this.brokerCompanyFrom.gongsijingyingshuxing == null ? [] : this.brokerCompanyFrom.gongsijingyingshuxing.split(',');
                         this.brokerCompanyFrom.fuwuduixiang = this.brokerCompanyFrom.fuwuduixiang == null ? [] : this.brokerCompanyFrom.fuwuduixiang.split(',');
                         this.brokerCompanyFrom.zhuzuoqvyv = this.brokerCompanyFrom.zhuzuoqvyv == null ? [] : this.brokerCompanyFrom.zhuzuoqvyv.split(',');
+                        this.brokerCompanyFrom.yjType1=this.brokerCompanyFrom.yjType;
+                        this.brokerCompanyFrom.hezuoxieyidengji1=this.brokerCompanyFrom.hezuoxieyidengji;
                     } else {
                         this.$message({
                             message: '获取数据失败',
