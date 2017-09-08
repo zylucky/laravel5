@@ -118530,13 +118530,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [(scope.row.zhuangtai == 0 || scope.row.zhuangtai == 2) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [(scope.row.zhuangtai == 0 || scope.row.zhuangtai == 2) ? _c('el-dropdown-item', [(_vm.fun('claim')) ? _c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleRokeBack(scope.row)
             }
           }
-        }, [_vm._v("认领")])], 1) : _vm._e(), _vm._v(" "), (_vm.fun('queryMemo')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("认领")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.fun('queryMemo')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleView(scope.$index, scope.row)
@@ -125701,11 +125701,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
-              "position": "relative",
-              "left": "-150px",
-              "top": "10px",
-              "height": "35px",
-              "width": "250px"
+              "top": "10px"
             },
             attrs: {
               "filterable": "",
@@ -125774,11 +125770,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
-              "position": "relative",
-              "left": "-150px",
-              "top": "10px",
-              "height": "35px",
-              "width": "250px"
+              "top": "10px"
             },
             attrs: {
               "filterable": "",
@@ -125820,11 +125812,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         fn: function(scope) {
           return [_c('el-col', [_c('el-form-item', [_c('el-select', {
             staticStyle: {
-              "position": "relative",
-              "left": "-150px",
-              "top": "10px",
-              "height": "35px",
-              "width": "250px"
+              "top": "10px"
             },
             attrs: {
               "filterable": "",
@@ -128329,7 +128317,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getReceivable
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('receivableAddYXJ')) ? _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -128337,7 +128325,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleAdd
     }
-  }, [_vm._v("新增")])], 1)], 1), _vm._v("\n    合计  应付金额：" + _vm._s(_vm.DataSum.sumMoney) + " 提交金额：" + _vm._s(_vm.DataSum.tijiaoMoney) + "  实付金额：" + _vm._s(_vm.DataSum.shijiMoney) + "\n    "), _c('span', {
+  }, [_vm._v("新增")]) : _vm._e()], 1)], 1), _vm._v("\n    合计  应付金额：" + _vm._s(_vm.DataSum.sumMoney) + " 提交金额：" + _vm._s(_vm.DataSum.tijiaoMoney) + "  实付金额：" + _vm._s(_vm.DataSum.shijiMoney) + "\n    "), _c('span', {
     staticStyle: {
       "color": "red",
       "font-size": "14px"
@@ -129576,7 +129564,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getPayable
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('payableAdd')) ? _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('payableAddYXJ')) ? _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -129761,7 +129749,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [(_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableEidtDate')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [(_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableAdd')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleRokeBack(scope.$index, scope.row)
@@ -129791,7 +129779,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleMoneyEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("编辑付款金额")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableEidtDate')) ? _c('el-dropdown-item', [(scope.row.fktype == 20) ? _c('el-button', {
+        }, [_vm._v("编辑付款金额")]) : _vm._e()], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 4]) && _vm.fun('payableEidt')) ? _c('el-dropdown-item', [(scope.row.fktype == 20) ? _c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleEditYS(scope.$index, scope.row)
