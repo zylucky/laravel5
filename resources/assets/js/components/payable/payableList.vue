@@ -80,6 +80,9 @@
                                    <el-dropdown-item v-if="ztin(scope.row,[0,1,2,4])&&fun('payableEidt')">
                                        <el-button v-if="scope.row.fktype==20" @click="handleEditYS(scope.$index, scope.row)">编辑</el-button>
                                    </el-dropdown-item>
+                                   <el-dropdown-item v-if="ztin(scope.row,[0,1,2,4])&&fun('payableFinish')">
+                                       <el-button @click="handleFinish(scope.$index, scope.row)">完成</el-button>
+                                   </el-dropdown-item>
                                </el-dropdown-menu>
                            </el-dropdown>
                        </template>
@@ -309,7 +312,8 @@
         getFanghaoList,
         createFanghao,
         editPayable,
-        addPayable
+        addPayable,
+        finishPayable
     } from '../../api/api';
     import ElForm from "../../../../../node_modules/element-ui/packages/form/src/form";
     export default{
@@ -766,11 +770,12 @@
                     hetongbianhao:row.htbianhao,
                     xiangmu: row.loupanName==null?'':row.loupanName+row.loudongName==null?'': row.loudongName+row.houseno==null?'': row.houseno,
                     fukuankemu:row.fktype,
-                    tijiaomoney:'',
+                    tijiaomoney:row.fkmoney,
                     fukuandate:'',
                     beizhu:'',
-                    fukuanyinhang:'',
-                    fukuanzhanghao:'',
+                    fukuanyinhang:row.skyinhang,
+                    fukuanzhanghao:row.zhanghao,
+                    zhanghu:row.skzhanhu,
                 };
             },
             //显示编辑界面
@@ -785,6 +790,29 @@
                     hetongId:row.hetongid,
                 };
             },
+            //显示完成弹框
+            handleFinish: function (index, row) {
+                this.$confirm('确认完成吗？', '提示', {}).then(() => {
+                    let para = {
+                        id: row.tCwFcId,
+                    };
+                    finishPayable(para).then((res) => {
+                        if(res.data.code==200) {
+                            this.$message({
+                                message: '完成成功',
+                                type: 'success'
+                            });
+                        } else{
+                            this.$message({
+                                message: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                        this.getPayable();
+                    });
+                });
+            },
+
             //显示编辑界面
             handleMoneyEdit: function (index, row) {
 

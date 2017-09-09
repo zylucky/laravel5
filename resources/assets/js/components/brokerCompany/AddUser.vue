@@ -436,6 +436,7 @@
 
                 } else {
                     this.ishy = false;
+                    this.brokerCompanyUserForm.tianjiahaoyourenshu =null;
                 }
 
             },
@@ -445,6 +446,8 @@
                     this.isdk = true;
                 } else {
                     this.isdk = false;
+                    this.brokerCompanyUserForm.daikancishu =null;
+                    this.brokerCompanyUserForm.daikanduijierenshu =null;
                 }
 
             },
@@ -453,6 +456,8 @@
                     this.isqy = true;
                 } else {
                     this.isqy = false;
+                    this.brokerCompanyUserForm.qianyuecishu =null;
+                    this.brokerCompanyUserForm.qianyueduijierenshu =null;
                 }
 
             },

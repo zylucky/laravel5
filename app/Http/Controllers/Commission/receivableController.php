@@ -202,5 +202,16 @@ class receivableController extends Controller
 
     }
 
+    public function  finishReceivable(Request $request)
+    {
+        $obj= $request->params ;
+        // dd($obj);
+        $client = new Client ([
+            'base_uri' => $this->base_url,
 
+        ]);
+        $response = $client->request('GET', '/api/cw/ys/'.$obj["id"].'/finish',[
+        ]);
+        return  $response ->getBody();
+    }
 }

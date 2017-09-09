@@ -121,11 +121,14 @@
                     ],
                     chengzufang:'',
                     jujianfangtype:1,
+                    jujianfangtype2:1,
                     jujianfang:'',
                     jujianfangid:null,
+                    jujianfangid2:null,
                     qudaorenid:null,
                     qudaoren:'',
                     zuhuleixing:1,
+                    zuhuleixing2:1,
                     //产权人
                     chengzuren:[
                         {
@@ -339,7 +342,7 @@
                 window.open('/#/saleContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
-                //console.log(res.data.data);
+                console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
                 if(this.zhuangtai==4){
@@ -364,9 +367,7 @@
                 })
                 this.property.subleaseno = res.data.data.subleaseno;
                 if(res.data.data.chengzuren.length>0){
-                    //alert(22222);
                     this.renter.chengzuren = res.data.data.chengzuren;
-                    //alert(33333);
                 }
                 /*if(res.data.data.chengzuren.length>0){
                     this.renter.chengzuren = res.data.data.chengzuren;
@@ -376,13 +377,23 @@
                 this.renter.kaihuhang = res.data.data.kaihuhang;
                 this.renter.zhanghao = res.data.data.zhanghao;
                 this.renter.jujianfangtype = res.data.data.jujianfangtype;
-                this.renter.jujianfang = res.data.data.jujianfang;//
+                this.renter.jujianfangtype2 = res.data.data.jujianfangtype;
                 this.renter.jujianfangid = res.data.data.jujianfangid;
-                for (let x in res.data.data.jujianfangid){
+                this.renter.jujianfang = res.data.data.jujianfang;
+                this.renter.jujianfangid2 = res.data.data.jujianfangid;
+                this.renter.qudaoren = res.data.data.qudaoren;
+                this.renter.qudaorenid = res.data.data.qudaorenid;
+
+                this.renter.options1[0].value = res.data.data.jujianfangid;
+                this.renter.options1[0].label = res.data.data.jujianfang;
+                this.renter.options2[0].value = res.data.data.qudaorenid;
+                this.renter.options2[0].label = res.data.data.qudaoren;
+                /*for (let x in res.data.data.jujianfangid){
                     this.renter.options1[x].value = res.data.data.jujianfangid;
                     this.renter.options1[x].label = res.data.data.jujianfang;
-                }
+                }*/
                 this.renter.zuhuleixing = res.data.data.zuhuleixing;
+                this.renter.zuhuleixing2 = res.data.data.zuhuleixing;
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.zhanghao = res.data.data.zhanghao;
                 this.renter.qianyuerenName = res.data.data.qianyuerenName;
