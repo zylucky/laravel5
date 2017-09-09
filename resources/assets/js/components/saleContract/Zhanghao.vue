@@ -19,9 +19,9 @@
                     <el-col :span="4">
                         <span>房间号： {{xsOffice.fanghao}}{{subleaseno}}</span>
                     </el-col>
-                    <el-col :span="0" style="margin-rigjt:0;float:right;margin-top:50;">
+                    <!--<el-col :span="0" style="margin-rigjt:0;float:right;margin-top:50;">
                         <el-button type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
-                    </el-col>
+                    </el-col>-->
                 </el-row>
             </li>
         </el-row>
@@ -52,18 +52,18 @@
                 </el-table-column>
                 <!--<el-table-column prop="laiyuantype"  label="来源"   :formatter="formatStatus" sortable>
                 </el-table-column>-->
-                <el-table-column label="操作" width="170">
+               <!-- <el-table-column label="操作" width="170">
                     <template scope="scope">
                         <el-dropdown   menu-align="start">
                             <el-button v-show="!hanshu(scope.row)" @click="handleDel(scope.$index, scope.row)" type="primary" size="normal" splitButton="true">
-                                删除<!--<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>-->
+                                删除&lt;!&ndash;<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>&ndash;&gt;
                             </el-button>
-                           <!-- <el-dropdown-menu slot="dropdown" >
+                           &lt;!&ndash; <el-dropdown-menu slot="dropdown" >
                                 <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
-                            </el-dropdown-menu>-->
+                            </el-dropdown-menu>&ndash;&gt;
                         </el-dropdown>
                     </template>
-                </el-table-column>
+                </el-table-column>-->
             </el-table>
         </el-row>
         <!-- 分页-->

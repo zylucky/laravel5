@@ -61,24 +61,6 @@
                                 </el-option>
                             </el-select>
                         </el-form-item>
-                        <!--<el-form-item label="居间方人员">
-                            <el-select
-                                    id="jujianfang"
-                                    v-model="renter.jujianfangid"
-                                    filterable
-                                    remote
-                                    @change="changeOnSelect3"
-                                    placeholder="渠道公司人员名称"
-                                    :remote-method="remoteMethod3"
-                                    :loading="bkNameloading">
-                                <el-option
-                                        v-for="item in renter.options1"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value">
-                                </el-option>
-                            </el-select>
-                        </el-form-item>-->
                     </el-col>
                 </el-row>
             </div>
@@ -337,7 +319,7 @@
         methods: {
             zuhuleixingChange(){
                 //只要业主类型发生改变，那么我就将变量初始化
-                if(this.$route.path=='/saleContract/add'||this.renter.zuhuleixing!=this.renter.zuhuleixing){
+                if(this.$route.path=='/saleContract/add'||this.renter.zuhuleixing!=this.renter.zuhuleixing2){
                     this.renter.chengzuren = [{
                         name: '',
                         faren: '',
@@ -349,20 +331,26 @@
                 }
             },
             jujianfangtypeChange(){
-                this.renter.jujianfangid = '',
-                    this.renter.qudaorenid = '',
-                this.renter.options1 = [
-                    {
-                        value:null,
-                        label:null,
-                    },
-                ];
-                this.renter.options2 = [
-                    {
-                        value:null,
-                        label:null,
-                    },
-                ];
+                if(this.$route.path=='/saleContract/add'||this.renter.jujianfangtype!=this.renter.jujianfangtype2) {
+                    alert(1111);
+                    this.renter.jujianfangid = null,
+                    this.renter.jujianfangid2 = null,
+                    this.renter.qudaorenid = null,
+                    this.renter.jujianfang = null,
+                    this.renter.qudaoren = null,
+                    this.renter.options1 = [
+                        {
+                            value: null,
+                            label: null,
+                        },
+                    ];
+                    this.renter.options2 = [
+                        {
+                            value: null,
+                            label: null,
+                        },
+                    ];
+                }
             },
             valid(){
                 this.$refs.renterForm.validate((valid) => {
@@ -374,15 +362,16 @@
                 for (let i=0;i<arr.length;i++ ){
                     if(arr[i].value==this.renter.jujianfangid){
                         this.renter.jujianfang = arr[i].label;
-                        this.renter.qudaoren=null;
-                        this.renter.qudaorenid=null;
+                        if(this.renter.jujianfangid!=this.renter.jujianfangid2){
+                            this.renter.qudaoren=null;
+                            this.renter.qudaorenid=null;
+                        }
                     }
                 }
             },
             changeOnSelect3(){
                 var arr = this.renter.options2;
                 for (let i=0;i<arr.length;i++ ){
-                    console.log(this.renter.qudaorenid)
                     if(arr[i].value==this.renter.qudaorenid){
                         this.renter.qudaoren = arr[i].label;
                     }
@@ -428,6 +417,51 @@
                 });
 
             },
+
+
+
+
+
+
+
+            /*remoteMethod1(query) {
+                let para = {
+                    name: query
+                };
+                this.bkNameloading = true;
+                getbkNameList(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for ( var i in res.data.data ){
+                        arr[i]=res.data.data[i]
+                    }
+                    this.estate = arr;
+                    this.bkNameloading = false;
+                    this.list = this.estate.map((item,index) => {
+                        return { value: item.tQdCompayId, label: item.compayname };
+                    });
+                    if (query !== '') {
+                        this.bkNameloading = true;
+                        setTimeout(() => {
+                            this.bkNameloading = false;
+                            this.renter.options1 = this.list;
+                        }, 200);
+                    } else {
+                        this.renter.options1 = [];
+                    }
+                });
+
+            },*/
+
+
+
+
+
+
+
+
+
+
             //获取渠道人员
             remoteMethod3(query) {
                 let para = {

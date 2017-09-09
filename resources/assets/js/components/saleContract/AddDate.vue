@@ -25,13 +25,13 @@
             </div>
             <div>
                 <div v-if="addDate.hetongtype == 2">
-                    <el-row>
+                   <!-- <el-row>
                         <el-col :span="8">
                             <el-form-item label="原房屋抵扣金额" prop="dikoujine" required>
                                 <el-input v-model="addDate.dikoujine" placeholder="原房屋抵扣金额"></el-input>
                             </el-form-item>
                         </el-col>
-                    </el-row>
+                    </el-row>-->
                     <el-row>
                        <!-- <el-col :span="8">
                             <el-form-item label="收房日" prop="shoufangdate" required>
