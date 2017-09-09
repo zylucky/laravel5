@@ -88,6 +88,9 @@
                                 <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableEidt')">
                                     <el-button v-if="scope.row.sktype==20" @click="handleEditYS(scope.$index, scope.row)">编辑</el-button>
                                 </el-dropdown-item>
+                                <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableFinish')">
+                                    <el-button @click="handleFinish(scope.$index, scope.row)">完成</el-button>
+                                </el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
                     </template>
@@ -300,7 +303,8 @@
         getLoupanList,
         getLoudongList,
         getFanghaoList,
-        createFanghao
+        createFanghao,
+        finishReceivable
     } from '../../api/api';
     import ElForm from "../../../../../node_modules/element-ui/packages/form/src/form";
     export default{
@@ -536,6 +540,28 @@
             handleSizeChange(val){
                 this.pageSize = val;
                 this.getReceivable();
+            },
+            //显示完成弹框
+            handleFinish: function (index, row) {
+                this.$confirm('确认完成吗？', '提示', {}).then(() => {
+                    let para = {
+                        id: row.tCwSrId,
+                    };
+                    finishReceivable(para).then((res) => {
+                        if(res.data.code==200) {
+                            this.$message({
+                                message: '完成成功',
+                                type: 'success'
+                            });
+                        } else{
+                            this.$message({
+                                message: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                        this.getReceivable();
+                    });
+                });
             },
             //获取楼盘
             remoteMethod1(query) {
