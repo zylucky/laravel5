@@ -46528,11 +46528,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }],
                 chengzufang: '',
                 jujianfangtype: 1,
+                jujianfangtype2: 1,
                 jujianfang: '',
                 jujianfangid: null,
+                jujianfangid2: null,
                 qudaorenid: null,
                 qudaoren: '',
                 zuhuleixing: 1,
+                zuhuleixing2: 1,
                 //产权人
                 chengzuren: [{
                     faren: '',
@@ -46764,7 +46767,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fuzhi: function fuzhi(res) {
             var _this7 = this;
 
-            //console.log(res.data.data);
+            console.log(res.data.data);
             this.id = res.data.data.id;
             this.zhuangtai = res.data.data.zhuangtai;
             if (this.zhuangtai == 4) {
@@ -46789,9 +46792,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             this.property.subleaseno = res.data.data.subleaseno;
             if (res.data.data.chengzuren.length > 0) {
-                //alert(22222);
                 this.renter.chengzuren = res.data.data.chengzuren;
-                //alert(33333);
             }
             /*if(res.data.data.chengzuren.length>0){
                 this.renter.chengzuren = res.data.data.chengzuren;
@@ -46801,13 +46802,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.renter.kaihuhang = res.data.data.kaihuhang;
             this.renter.zhanghao = res.data.data.zhanghao;
             this.renter.jujianfangtype = res.data.data.jujianfangtype;
-            this.renter.jujianfang = res.data.data.jujianfang; //
+            this.renter.jujianfangtype2 = res.data.data.jujianfangtype;
             this.renter.jujianfangid = res.data.data.jujianfangid;
-            for (var x in res.data.data.jujianfangid) {
+            this.renter.jujianfang = res.data.data.jujianfang;
+            this.renter.jujianfangid2 = res.data.data.jujianfangid;
+            this.renter.qudaoren = res.data.data.qudaoren;
+            this.renter.qudaorenid = res.data.data.qudaorenid;
+
+            this.renter.options1[0].value = res.data.data.jujianfangid;
+            this.renter.options1[0].label = res.data.data.jujianfang;
+            this.renter.options2[0].value = res.data.data.qudaorenid;
+            this.renter.options2[0].label = res.data.data.qudaoren;
+            /*for (let x in res.data.data.jujianfangid){
                 this.renter.options1[x].value = res.data.data.jujianfangid;
                 this.renter.options1[x].label = res.data.data.jujianfang;
-            }
+            }*/
             this.renter.zuhuleixing = res.data.data.zuhuleixing;
+            this.renter.zuhuleixing2 = res.data.data.zuhuleixing;
             this.renter.shoukuanren = res.data.data.shoukuanren;
             this.renter.zhanghao = res.data.data.zhanghao;
             this.renter.qianyuerenName = res.data.data.qianyuerenName;
@@ -48238,24 +48249,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48278,7 +48271,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         zuhuleixingChange: function zuhuleixingChange() {
             //只要业主类型发生改变，那么我就将变量初始化
-            if (this.$route.path == '/saleContract/add' || this.renter.zuhuleixing != this.renter.zuhuleixing) {
+            if (this.$route.path == '/saleContract/add' || this.renter.zuhuleixing != this.renter.zuhuleixing2) {
                 this.renter.chengzuren = [{
                     name: '',
                     faren: '',
@@ -48290,14 +48283,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         jujianfangtypeChange: function jujianfangtypeChange() {
-            this.renter.jujianfangid = '', this.renter.qudaorenid = '', this.renter.options1 = [{
-                value: null,
-                label: null
-            }];
-            this.renter.options2 = [{
-                value: null,
-                label: null
-            }];
+            if (this.$route.path == '/saleContract/add' || this.renter.jujianfangtype != this.renter.jujianfangtype2) {
+                alert(1111);
+                this.renter.jujianfangid = null, this.renter.jujianfangid2 = null, this.renter.qudaorenid = null, this.renter.jujianfang = null, this.renter.qudaoren = null, this.renter.options1 = [{
+                    value: null,
+                    label: null
+                }];
+                this.renter.options2 = [{
+                    value: null,
+                    label: null
+                }];
+            }
         },
         valid: function valid() {
             var _this = this;
@@ -48311,15 +48307,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             for (var i = 0; i < arr.length; i++) {
                 if (arr[i].value == this.renter.jujianfangid) {
                     this.renter.jujianfang = arr[i].label;
-                    this.renter.qudaoren = null;
-                    this.renter.qudaorenid = null;
+                    if (this.renter.jujianfangid != this.renter.jujianfangid2) {
+                        this.renter.qudaoren = null;
+                        this.renter.qudaorenid = null;
+                    }
                 }
             }
         },
         changeOnSelect3: function changeOnSelect3() {
             var arr = this.renter.options2;
             for (var i = 0; i < arr.length; i++) {
-                console.log(this.renter.qudaorenid);
                 if (arr[i].value == this.renter.qudaorenid) {
                     this.renter.qudaoren = arr[i].label;
                 }
@@ -48366,6 +48363,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
+
+
+        /*remoteMethod1(query) {
+            let para = {
+                name: query
+            };
+            this.bkNameloading = true;
+            getbkNameList(para).then((res) => {
+                let arr = [];
+                arr[0] = '';
+                for ( var i in res.data.data ){
+                    arr[i]=res.data.data[i]
+                }
+                this.estate = arr;
+                this.bkNameloading = false;
+                this.list = this.estate.map((item,index) => {
+                    return { value: item.tQdCompayId, label: item.compayname };
+                });
+                if (query !== '') {
+                    this.bkNameloading = true;
+                    setTimeout(() => {
+                        this.bkNameloading = false;
+                        this.renter.options1 = this.list;
+                    }, 200);
+                } else {
+                    this.renter.options1 = [];
+                }
+            });
+         },*/
 
         //获取渠道人员
         remoteMethod3: function remoteMethod3(query) {
@@ -119965,27 +119991,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "原房屋抵扣金额",
-      "prop": "dikoujine",
-      "required": ""
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "原房屋抵扣金额"
-    },
-    model: {
-      value: (_vm.addDate.dikoujine),
-      callback: function($$v) {
-        _vm.addDate.dikoujine = $$v
-      },
-      expression: "addDate.dikoujine"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('el-form-item', {
-    attrs: {
       "label": "签约日",
       "prop": "qianyuedate",
       "required": ""
@@ -121183,24 +121188,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "span": 4
       }
-    }, [_c('span', [_vm._v("房间号： " + _vm._s(xsOffice.fanghao) + _vm._s(_vm.subleaseno))])]), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "margin-rigjt": "0",
-        "float": "right",
-        "margin-top": "50"
-      },
-      attrs: {
-        "span": 0
-      }
-    }, [_c('el-button', {
-      staticClass: "el-icon-plus",
-      attrs: {
-        "type": "primary"
-      },
-      on: {
-        "click": _vm.addContract
-      }
-    }, [_vm._v(" 新增")])], 1)], 1)], 1)
+    }, [_c('span', [_vm._v("房间号： " + _vm._s(xsOffice.fanghao) + _vm._s(_vm.subleaseno))])])], 1)], 1)
   })], 2), _vm._v(" "), _c('el-row', [_c('el-table', {
     directives: [{
       name: "loading",
@@ -121307,38 +121295,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "formatter": _vm.changeDate,
       "sortable": ""
     }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "170"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-dropdown', {
-          attrs: {
-            "menu-align": "start"
-          }
-        }, [_c('el-button', {
-          directives: [{
-            name: "show",
-            rawName: "v-show",
-            value: (!_vm.hanshu(scope.row)),
-            expression: "!hanshu(scope.row)"
-          }],
-          attrs: {
-            "type": "primary",
-            "size": "normal",
-            "splitButton": "true"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleDel(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("\n                            删除")])], 1)]
-      }
-    }])
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     staticClass: "toolbar",
     attrs: {
@@ -122612,24 +122568,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "span": 4
       }
-    }, [_c('span', [_vm._v("房间号： " + _vm._s(officeList.fanghao))])]), _vm._v(" "), _c('el-col', {
-      staticStyle: {
-        "margin-rigjt": "0",
-        "float": "right",
-        "margin-top": "50"
-      },
-      attrs: {
-        "span": 0
-      }
-    }, [_c('el-button', {
-      staticClass: "el-icon-plus",
-      attrs: {
-        "type": "primary"
-      },
-      on: {
-        "click": _vm.addContract
-      }
-    }, [_vm._v(" 新增")])], 1)], 1)], 1)
+    }, [_c('span', [_vm._v("房间号： " + _vm._s(officeList.fanghao))])])], 1)], 1)
   })], 2), _vm._v(" "), _c('el-row', [_c('el-table', {
     directives: [{
       name: "loading",
@@ -122742,38 +122681,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "formatter": _vm.changeDate,
       "sortable": ""
     }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "170"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-dropdown', {
-          attrs: {
-            "menu-align": "start"
-          }
-        }, [_c('el-button', {
-          directives: [{
-            name: "show",
-            rawName: "v-show",
-            value: (!_vm.hanshu(scope.row)),
-            expression: "!hanshu(scope.row)"
-          }],
-          attrs: {
-            "type": "primary",
-            "size": "normal",
-            "splitButton": "true"
-          },
-          on: {
-            "click": function($event) {
-              _vm.handleDel(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("\n                                删除")])], 1)]
-      }
-    }])
   })], 1)], 1), _vm._v(" "), _c('el-col', {
     staticClass: "toolbar",
     attrs: {
