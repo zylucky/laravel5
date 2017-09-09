@@ -204,6 +204,18 @@ class payableController extends Controller
 
 
     }
+    public function  finishPayable(Request $request)
+    {
+        $obj= $request->params ;
+        // dd($obj);
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+
+        ]);
+        $response = $client->request('GET', '/api/cw/yf/'.$obj["id"].'/finish',[
+        ]);
+        return  $response ->getBody();
+    }
 
 
 }
