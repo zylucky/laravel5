@@ -75,7 +75,8 @@ export const getPermissionListOfRole = params => { return axios.get(`${base}/per
 //查寻当前用户的权限
 export const getPermissionList = params => { return axios.get(`${base}/permission/list`, { params: params }); };
 export const setPermissionList = params => { return axios.post(`${base}/permission/update/`+params.id, { params: params }); };
-
+export const finishPayable = params => { return axios.post(`${base}/payable/finishPayable`, { params: params }); };
+export const finishReceivable = params => { return axios.post(`${base}/receivable/finishReceivable`, { params: params }); };
 //合同信息
 export const addPurchaseContractInfo= params => { return axios.post(`${base}/purchaseContract`, { params: params }); };
 export const reviewPurchaseContract= params => { return axios.post(`${base}/purchaseContract/review`, { params: params }); };
