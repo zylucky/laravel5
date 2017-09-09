@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div class="whole">
         <p>
             <b>&nbsp;&nbsp;第十四条  补充条款</b> <br>
             &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
 
-            <input type="text" name="" disabled style="width:600px;" value="以下空白">
+            <input v-if="buchongtiaokuan==null||yingyezhizhao==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
 
             <b> 出租人（甲方）：<input type="text" name="" style="width:119px;font-size:10px" value="">承租人（乙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
@@ -24,7 +24,7 @@
 </template>
 
 <style>
-    div{
+    .whole{
         position: absolute;
         margin: auto;
         top: 0;
@@ -34,24 +34,60 @@
         width: 85%;
         height: 20%;
     }
-    .tc{text-align:center;}
-    h1{
+    .whole h1{
         font-size:40px;
     }
-    span {
+    .whole span {
         display: block;}
     .f22{
         font-size: 20px;
     }
-    p{
+    .whole p{
         font-size: 20px; text-align:left;
         line-height: 2;}
-    input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center}
-    u{
+    .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center}
+    .whole u{
         font-size:20px!important;
     }
-    input[disabled]{
+    .whole input[disabled]{
         background-color:white;
         color:#000000;
     }
 </style>
+<script>
+    import {getPurchaseContractInfo} from '../../api/api';
+    export default {
+        data(){
+            return {
+                buchongtiaokuan:null,
+            }
+        },
+        methods:{
+            //根据url得到的合同ID，来获取数据
+            getPurchaseContract(id){
+                getPurchaseContractInfo(id).then((res)=>{
+                    if(res.data.code=='200'){
+                        //把数据分别赋值给三个组件的变量
+                        this.buchongtiaokuan = res.data.data.yingyezhizhao;
+                    }else {
+                        this.$message({
+                            message: '获取数据失败',
+                            type: 'error'
+                        });
+                    }
+                })
+            },
+        },
+        mounted(){
+            this.getPurchaseContract(this.$route.query);
+            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
+            function  hello() {
+                window.print()
+            }
+            if(this.$route.query.isdump==1){
+                setTimeout(hello,1000);
+            }
+        }
+
+    }
+</script>

@@ -32,9 +32,9 @@
                 <u>&nbsp;&nbsp;{{nian}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{yue}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{ri}}&nbsp;&nbsp;</u>日。甲方应于
-                <u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
-                <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。
+                <u>&nbsp;&nbsp;{{year(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。
                 <br>
                 （二）甲方承诺给予乙方 <input type="text" style="width:25px;">个月的招商装修期，即自
                 <span v-for="(item,index) in addDate.mianzuqiList">
@@ -270,19 +270,19 @@
                         },
                     ],
                     //收款人
-                    shoukuanren:'彭亮',
-                    zhanghao:'1234 4567 7891 0123',
+                    shoukuanren:'',
+                    zhanghao:'',
                     kaihuhang:'',
                     //代理人
-                    dailirenName:'李朝晖',
-                    dailirenTel:'18511909125',
+                    dailirenName:'',
+                    dailirenTel:'',
                     dailirenSex:1,
-                    dailirenId:'37158119900124317X',
+                    dailirenId:'',
                     //签约人
-                    qianyuerenName:'lizhaohui',
-                    qianyuerenTel:'18511909124',
+                    qianyuerenName:'',
+                    qianyuerenTel:'',
                     qianyuerenSex:1,
-                    qianyuerenId:'37158119900124317X',
+                    qianyuerenId:'',
                 },
                 addDate: {
                     startdate:'',//租期开始时间
@@ -421,14 +421,14 @@
                let arr = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
             },
             year(riqi){
-                if(riqi!=null){
+                if(riqi!=null&&riqi!=''){
                     return new Date(riqi).getFullYear();
                 }else{
                     return '';
                 }
             },
             month(riqi){
-                if(riqi!=null){
+                if(riqi!=null&&riqi!=''){
                     if(new Date(riqi).getMonth()+1 <10 ){
                         return '0'+(new Date(riqi).getMonth()+1);
                     }else{
@@ -439,7 +439,7 @@
                 }
             },
             day(riqi){
-                if(riqi!=null){
+                if(riqi!=null&&riqi!=''){
                     return new Date(riqi).getDate();
                 }else{
                     return '';

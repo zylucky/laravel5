@@ -4,42 +4,94 @@
     <span class="tc f22">经纪成交版</span>
     <p>出租方（甲方）：<input type="text" style="width: 450px" disabled value=''/> </p>
     <p>承租方（乙方）：<input type="text" style="width: 450px" disabled value=""/>  </p>
-    <p>居间方（丙方）：<input type="text" style="width: 450px" disabled value='北京华亮房地产经纪有限公司'/></p>
+    <p>居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="owner.jujianfang"/></p>
     <br><br>
 
     <p>&nbsp;&nbsp;依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙、丙三方在平等、自愿的基础上，就乙方承租甲方房屋，丙方提供居间服务等事宜，经各方友好协商一致，签订本合同以资信守。</p>
     <p><b>&nbsp;&nbsp; 第一条  房屋基本情况</b>
-        <br>&nbsp;（一）房屋坐落于北京市<u></u>,承租区域建筑面积<u></u>平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<u></u>平方米。<br>
-        &nbsp;（二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号：<u></u>，房屋所有权人姓名或名称
-        <u></u>，房屋（
+        <span
+                v-for="(item,index) in property.officeList"
+                :key="index"
+        >
+       &nbsp;（一）房屋坐落于北京市<u>{{item.weizhi}}</u>,承租区域建筑面积<u>{{item.jianzhumianji}}</u>平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<u>{{item.qianyuemianji}}</u>平方米。<br>
+        &nbsp;（二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号：<u>{{item.chanquanzhenghao}}</u>，房屋所有权人姓名或名称
+            <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
+                <u>{{item.name}}</u>
+            </span>房屋（
         口是/口否）已设定了抵押。甲方保证出租的房屋权属无瑕疵、无债务纠纷，房屋设施符合出租条件。<br><br>
+         </span>
         <b>&nbsp;&nbsp; 第二条  房屋租赁情况</b><br>
         &nbsp;&nbsp;租赁用途：<u> 办公 </u>，甲方应当协助乙方（或实际使用人）办理营业证照。<br>
         <br><b>&nbsp;&nbsp; 第三条  租赁期限及免租期</b><br>
-        合同期限内（一）甲方承诺在租赁合同期限内给予乙方
-
-        &nbsp;&nbsp;&nbsp;&nbsp;甲方承诺在租赁合同期限内给予乙方的免租期，<br>自<u></u>年<u> </u>月<u></u>日至<u></u>年<u> </u>月<u></u>日止。免租期内乙方不支付租金，以便于乙方与入住方协商洽谈、进行装饰装修及办理入住手续等事宜。免租期内物业管理费用、供暖费和制冷费由甲方自行缴纳。<br>
-        &nbsp;（二）本合同房屋租赁期限为年月日，<br>自<u></u>年<u></u>月<u></u>日至<u></u>年<u></u>月<u></u>日止。<br>
-        &nbsp;（三）甲方应于<u>  </u>月<u></u>日将房屋按约定条件交付给乙方。《房屋交割清单》经甲乙双方交验签字（盖章）确认及将房门钥匙移交视为交付完成。<br>
+        合同期限内（一）甲方承诺在租赁合同期限内给予乙方<input type="text" style="width:25px;">个月的免租期，<br>自
+        <span v-for="(item,index) in addDate.mianzuqiList">
+                <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
+                <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>止；
+            </span>
+        日止。免租期内乙方不支付租金，以便于乙方与入住方协商洽谈、进行装饰装修及办理入住手续等事宜。免租期内物业管理费用、供暖费和制冷费由甲方自行缴纳。<br>
+        &nbsp;（二）本合同房屋租赁期限为
+        <u>&nbsp;&nbsp;{{nian}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{yue}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{ri}}&nbsp;&nbsp;</u>日，<br>自<u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日至
+        <u>&nbsp;&nbsp;{{year(addDate.enddate)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{month(addDate.enddate)}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{day(addDate.enddate)}}&nbsp;&nbsp;</u>日止。<br>
+        &nbsp;（三）甲方应于<u>&nbsp;&nbsp;{{year(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{month(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{day(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>日前将房屋按约定条件交付给乙方。《房屋交割清单》经甲乙双方交验签字（盖章）确认及将房门钥匙移交视为交付完成。<br>
         &nbsp;（四）若合同期满乙方仍有承租人需使用该房屋，乙方应提前90天通知甲方，双方协商认可后签订延长期合同，本合同期限最长可自动顺延一年。在同等市场条件下，乙方拥有优先承租权。<br><br>
 
         <b>&nbsp;&nbsp; 第四条 租金和押金</b><br>
         &nbsp;（一）乙方按照下列标准向甲方支付租金（以人民币进行结算）：<br>
-
+        <span v-for="(item,index) in addDate.zujinList">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                自<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
+                <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{item.yuezujin}}&nbsp;&nbsp;</u>元/月）；
+            <br>
+        </span>
         &nbsp;（二）租金支付方式为：<br>
+        <span v-for="(item,index) in addDate.fukuanFangshiList"
+              :key="index"
+        >
+                <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
+                <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日
+                每 <u>{{(item.zujinyue)}}</u> 月支付一次。
+            </span>
+        &nbsp;1、房屋押金：<u> ¥ {{addDate.yajin}}&nbsp;&nbsp;</u>元，（大写：<u>{{daxie(addDate.yajin)}}&nbsp;&nbsp;
 
-        &nbsp;1、房屋押金：<u> ¥ </u>元，（大写：<u>
-
-            </u>元整，支付时间为<u>  </u>年<u> </u>月<u>  </u>日支付;<br>
+            </u>元整，支付时间为<u>&nbsp;&nbsp;{{year(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{month(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{day(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>日日支付;<br>
         &nbsp;2、押金是乙方向甲方支付的合法履约的保证金。租赁期满后5日内甲方退还乙方。<br>
-        &nbsp;3、首期租金：<u> ¥ </u>日；租金每<u></u>个月支付一次，于付款月起租日______日前支付下一次租金，即第二期租金的支付时间为：<u>
-        </u>第三期租金的支付时间为   ，合同期每期租金以此类推。<br>
+        &nbsp;3、首期租金：支付时间为
+        <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每<u></u>个月支付一次，于付款月起租日 <u>{{addDate.tiqianfukuantian}}</u> 日前支付下一次租金，
+        即第二期租金的支付时间为：<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{month(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日第三期租金的支付时间为 <u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{day(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>日  ，合同期每期租金以此类推。<br>
 
         &nbsp;（三）租金的结算方式 口 以转账方式 口 现金支付<br>
         &nbsp;甲方指定收款账户为：<br>
-        &nbsp;名&nbsp;称：<input type="text" style="width:500px;text-align:left" disabled value=""><br>
-        &nbsp;开户行：<input type="text" style="width:500px;text-align:left" disabled value=""><br>
-        &nbsp;账&nbsp;号：<input type="text" style="width:500px;text-align:left" disabled value=""><br><br>
+        &nbsp;名&nbsp;称：<input type="text" style="width:500px;text-align:left" disabled v-model="owner.shoukuanren"><br>
+        &nbsp;开户行：<input type="text" style="width:500px;text-align:left" disabled v-model="owner.kaihuhang"><br>
+        &nbsp;账&nbsp;号：<input type="text" style="width:500px;text-align:left" disabled v-model="owner.zhanghao"><br><br>
         <b>&nbsp;&nbsp; 第五条 相关费用的承担方式</b> <br>
         &nbsp;（一） 甲方自行承担在承租期内及免租期内的物业管理费、供暖费、制冷费。<br>
         &nbsp;（二）在承租期内，乙方自行承担在使用期间的相关费用（水费、电费、燃气费、宽带费、停车费等），乙方按物业管理机构提供的交费通知单交费。<br>
@@ -175,16 +227,16 @@
                         },
                     ],
                     //收款人
-                    shoukuanren:'彭亮',
-                    zhanghao:'1234 4567 7891 0123',
+                    shoukuanren:'',
+                    zhanghao:'',
                     kaihuhang:'',
                     //代理人
-                    dailirenName:'李朝晖',
-                    dailirenTel:'18511909125',
+                    dailirenName:'',
+                    dailirenTel:'',
                     dailirenSex:1,
-                    dailirenId:'37158119900124317X',
+                    dailirenId:'',
                     //签约人
-                    qianyuerenName:'lizhaohui',
+                    qianyuerenName:'',
                     qianyuerenTel:'18511909124',
                     qianyuerenSex:1,
                     qianyuerenId:'37158119900124317X',
@@ -326,14 +378,14 @@
                 let arr = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
             },
             year(riqi){
-                if(riqi!=null){
+                if(riqi!=null&&riqi!=''){
                     return new Date(riqi).getFullYear();
                 }else{
                     return '';
                 }
             },
             month(riqi){
-                if(riqi!=null){
+                if(riqi!=null&&riqi!=''){
                     if(new Date(riqi).getMonth()+1 <10 ){
                         return '0'+(new Date(riqi).getMonth()+1);
                     }else{
@@ -344,7 +396,7 @@
                 }
             },
             day(riqi){
-                if(riqi!=null){
+                if(riqi!=null&&riqi!=''){
                     return new Date(riqi).getDate();
                 }else{
                     return '';

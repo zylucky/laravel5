@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="whole">
         <p>
             <b>&nbsp;&nbsp;第十四条  补充条款</b> <br>
             &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
@@ -23,12 +23,7 @@
     </div>
 </template>
 <style>
-    body{
-        text-align: center;
-        height: 100%;
-        position: relative;
-    }
-    div{
+    .whole{
         position: absolute;
         margin: auto;
         top: 0;
@@ -39,22 +34,22 @@
         height: 20%;
     }
     .tc{text-align:center;}
-    h1{
+   .whole h1{
         font-size:40px;
     }
-    span {
+    .whole span {
         display: block;}
     .f22{
         font-size: 20px;
     }
-    p{
+    .whole p{
         font-size: 20px; text-align:left;
         line-height: 2;}
-    input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center}
-    u{
+    .whole  input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center}
+    .whole u{
         font-size:20px!important;
     }
-    input[disabled]{
+    .whole input[disabled]{
         background-color:white;
         color:#000000;
     }
