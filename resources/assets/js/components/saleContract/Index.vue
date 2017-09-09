@@ -466,7 +466,7 @@
                                         name:res.data.data.chengzuren[0].name,
                                         phone:res.data.data.chengzuren[0].tel,
                                         wdfh:res.data.data.xsOffice[x].fanghao+"-"+res.data.data.xsOffice[x].subleaseno,
-                                        xzhzj:res.data.data.zujinList[0].yuezujin,
+                                        xzhzj:res.data.data.zujinList[0].price,
                                         zq1:res.data.data.startdate,
                                         zq2:res.data.data.enddate,
                                         fkfs:"押"+res.data.data.fukuanFangshiList[0].yajinyue+"付"+res.data.data.fukuanFangshiList[0].zujinyue,

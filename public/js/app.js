@@ -42471,6 +42471,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }, trigger: 'blur' }]
             },
             btnShow: true,
+            btndisabled: false,
             btnType: true,
             submsg: '提交',
             options: [{
@@ -42485,14 +42486,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             owner: {
                 yezhuleixing: 1,
                 //产权人
-                chanquanrenList: [{
-                    faren: '',
-                    name: '',
-                    zhengjian: '',
-                    tel: '',
-                    sex: '',
-                    hetongid: null
-                }],
+                chanquanrenList: [],
                 //代理人
                 dailirenName: '',
                 dailirenTel: '',
@@ -42580,7 +42574,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_75" /* optimizePurchaseContract */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     _this3.fuzhi(res);
-                    _this3.btnType = false, _this3.$message({
+                    _this3.btnType = false, _this3.btndisabled = true, _this3.$message({
                         message: '保存成功',
                         type: 'success'
                     });
@@ -47261,7 +47255,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: '1',
                 content: 'Tab 1 content'
             }],
-            tabIndex: 1,
             editPropertyRules: {
                 loupanName: [{ required: true, message: '不能为空' }],
                 loudongName: [{ required: true, message: '不能为空' }],
@@ -47372,7 +47365,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this5 = this;
 
             var para = {
-                loupanOmcId: this.property.xsOffice[this.tabIndex - 1].loupanOmcId
+                loupanOmcId: this.property.xsOffice[this.property.tabIndex - 1].loupanOmcId
             };
             this.loupanloading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["o" /* getLoudongList */])(para).then(function (res) {
@@ -47405,8 +47398,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this6 = this;
 
             var para = {
-                lpid: this.property.xsOffice[this.tabIndex - 1].loupanOmcId,
-                zdid: this.property.xsOffice[this.tabIndex - 1].loudongOmcId
+                lpid: this.property.xsOffice[this.property.tabIndex - 1].loupanOmcId,
+                zdid: this.property.xsOffice[this.property.tabIndex - 1].loudongOmcId
             };
             this.fanghaoloading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_51" /* getSaleFanghaoList */])(para).then(function (res) {
@@ -47439,12 +47432,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         change1: function change1() {
             //楼盘
             for (var x in this.options1) {
-                if (this.options1[x].label == this.property.xsOffice[this.tabIndex - 1].loupanName) {
-                    this.property.xsOffice[this.tabIndex - 1].loupanOmcId = this.options1[x].value;
-                    this.property.xsOffice[this.tabIndex - 1].loudongName = null; //清除楼栋和房号的缓存
-                    this.property.xsOffice[this.tabIndex - 1].loudongOmcId = null; //清除楼栋和房号的缓存
-                    this.property.xsOffice[this.tabIndex - 1].fanghao = null; //清除楼栋和房号的缓存
-                    this.property.xsOffice[this.tabIndex - 1].omcId = null; //清除楼栋和房号的缓存
+                if (this.options1[x].label == this.property.xsOffice[this.property.tabIndex - 1].loupanName) {
+                    this.property.xsOffice[this.property.tabIndex - 1].loupanOmcId = this.options1[x].value;
+                    this.property.xsOffice[this.property.tabIndex - 1].loudongName = null; //清除楼栋和房号的缓存
+                    this.property.xsOffice[this.property.tabIndex - 1].loudongOmcId = null; //清除楼栋和房号的缓存
+                    this.property.xsOffice[this.property.tabIndex - 1].fanghao = null; //清除楼栋和房号的缓存
+                    this.property.xsOffice[this.property.tabIndex - 1].omcId = null; //清除楼栋和房号的缓存
                     //alert(222);
                 }
             }
@@ -47453,8 +47446,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //alert(222);
             //楼栋
             for (var x in this.options2) {
-                if (this.options2[x].label == this.property.xsOffice[this.tabIndex - 1].loudongName) {
-                    this.property.xsOffice[this.tabIndex - 1].loudongOmcId = this.options2[x].value;
+                if (this.options2[x].label == this.property.xsOffice[this.property.tabIndex - 1].loudongName) {
+                    this.property.xsOffice[this.property.tabIndex - 1].loudongOmcId = this.options2[x].value;
                 }
             }
         },
@@ -47462,14 +47455,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //alert(111);
             //房号
             for (var x in this.options3) {
-                if (this.options3[x].label == this.property.xsOffice[this.tabIndex - 1].fanghao) {
-                    this.property.xsOffice[this.tabIndex - 1].omcId = this.options3[x].value;
+                if (this.options3[x].label == this.property.xsOffice[this.property.tabIndex - 1].fanghao) {
+                    this.property.xsOffice[this.property.tabIndex - 1].omcId = this.options3[x].value;
                 }
             }
             for (var x in this.houseData) {
-                if (this.houseData[x].id == this.property.xsOffice[this.tabIndex - 1].omcId) {
-                    this.property.xsOffice[this.tabIndex - 1].Jianzhumianji = this.houseData[x].fjmj;
-                    this.property.xsOffice[this.tabIndex - 1].Qianyuemianji = this.houseData[x].fjmj;
+                if (this.houseData[x].id == this.property.xsOffice[this.property.tabIndex - 1].omcId) {
+                    this.property.xsOffice[this.property.tabIndex - 1].Jianzhumianji = this.houseData[x].fjmj;
+                    this.property.xsOffice[this.property.tabIndex - 1].Qianyuemianji = this.houseData[x].fjmj;
                 }
             }
             //console.log(this.property.xsOffice)
@@ -48352,6 +48345,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             btnShow: true,
             btnType: true,
+            btndisabled: false,
             submsg: '提交',
             options: [{
                 value: 1,
@@ -48486,7 +48480,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_42" /* optimizeSaleContract */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     _this3.fuzhi(res);
-                    _this3.btnType = false, _this3.$message({
+                    _this3.btnType = false, _this3.btndisabled = true, _this3.$message({
                         message: '保存成功',
                         type: 'success'
                     });
@@ -50835,7 +50829,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     name: res.data.data.chengzuren[0].name,
                                     phone: res.data.data.chengzuren[0].tel,
                                     wdfh: res.data.data.xsOffice[x].fanghao + "-" + res.data.data.xsOffice[x].subleaseno,
-                                    xzhzj: res.data.data.zujinList[0].yuezujin,
+                                    xzhzj: res.data.data.zujinList[0].price,
                                     zq1: res.data.data.startdate,
                                     zq2: res.data.data.enddate,
                                     fkfs: "押" + res.data.data.fukuanFangshiList[0].yajinyue + "付" + res.data.data.fukuanFangshiList[0].zujinyue,
@@ -113152,7 +113146,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "border": "0"
     }
-  }, [_vm._v("业务：李四")])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v("业务：" + _vm._s(_vm.data.yewu))])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
       "height": "28"
@@ -119787,6 +119781,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "margin-top": "100px"
     },
     attrs: {
+      "disabled": _vm.btndisabled,
       "type": "primary"
     },
     on: {
@@ -124794,6 +124789,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "margin-top": "100px"
     },
     attrs: {
+      "disabled": _vm.btndisabled,
       "type": "primary"
     },
     on: {
