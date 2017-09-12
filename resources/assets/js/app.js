@@ -64,7 +64,11 @@ router.beforeEach((to, from, next) => {
         getPermissionList(para).then(function(res){
             sessionStorage.removeItem('permission');
             sessionStorage.setItem('permission', JSON.stringify(res.data));
+        }).catch(function (error) {
+            //console.log(error)
+            next({ path: '/login' })
         });
+
         Vue.prototype.fun = function (funKey){
             let res = JSON.parse(sessionStorage.getItem('permission'));
             //获取权限列表
