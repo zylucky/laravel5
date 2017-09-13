@@ -127,7 +127,10 @@
                         <el-form-item label="月租金" label-width="55px"  :prop="'zujinList.' + index + '.yuezujin'" :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]" >
-                            <el-input v-model.number="item.yuezujin" class="pulll10" placeholder="租金"></el-input>
+                            <el-input v-model.number="item.yuezujin" class="pulll10"
+                                      placeholder="租金"
+                                      @change="perPrice(index,item.yuezujin)"
+                            ></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1" style="width: 94px;margin-left:-10px;">
@@ -200,7 +203,7 @@
                         <el-form-item label="押" label-width="40px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]">
-                            <el-input v-model.number="item.yajinyue" placeholder="押几" style="margin-left:0"></el-input>
+                            <el-input v-model.number="item.yajinyue" placeholder="押几" @change="yajin(index,item.yajinyue)" style="margin-left:0"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="1" :pull="1" style="margin-left: 15px;width: 150px;">
@@ -226,11 +229,11 @@
                         <el-input v-model.number="addDate.yajin" placeholder="押金"></el-input>
                     </el-form-item>
                 </el-col>
-                <el-col :span="8">
-                    <el-form-item label="总应付租金" prop="zongyingfuzujin" required>
-                        <el-input v-model.number="addDate.zongyingfuzujin" placeholder="总应付租金"></el-input>
-                    </el-form-item>
-                </el-col>
+                <!--<el-col :span="8">-->
+                    <!--<el-form-item label="总应付租金" prop="zongyingfuzujin" required>-->
+                        <!--<el-input v-model.number="addDate.zongyingfuzujin" placeholder="总应付租金"></el-input>-->
+                    <!--</el-form-item>-->
+                <!--</el-col>-->
                 <el-col :span="8">
                     <el-form-item label="合同佣金" prop="yongjin" required>
                         <el-input v-model.number="addDate.yongjin" placeholder="合同佣金"></el-input>
@@ -360,6 +363,7 @@
                 </el-form-item>
             </el-col>
         </el-form>
+        <el-form :model="property"></el-form>
     </el-row>
 
 </template>
@@ -458,7 +462,7 @@
                 },
             }
         },
-        props:['addDate'],
+        props:['addDate','property'],
         methods: {
             changeDate(value){
                 var newDate = new Date();
@@ -603,6 +607,20 @@
                     this.addDate.fukuanFangshiList.splice(index, 1)
                 }
             },
+            //计算单价
+            perPrice(index,value){
+                //1.先计算面积综合
+                var areaToal = 0;
+                this.property.officeList.forEach((property,index)=>{
+                    areaToal += property.qianyuemianji;
+                })
+                //2.计算单价
+                var perPrice = (value*12/365/areaToal).toFixed(2);
+                this.addDate.zujinList[index].price = parseFloat(perPrice);
+            },
+            yajin(index,value){
+                this.addDate.yajin = this.addDate.fukuanFangshiList[0].yajinyue*(this.addDate.zujinList[0].yuezujin)
+            }
 
         },
         mounted(){

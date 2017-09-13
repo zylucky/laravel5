@@ -75,33 +75,33 @@
                             </el-row>
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item required label="区域" prop="quyu">
+                                    <el-form-item  label="区域" prop="quyu">
                                         <el-input v-model="property.officeList[index].quyu"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="16">
-                                    <el-form-item required label="位置" prop="weizhi" :span="10">
+                                    <el-form-item  label="位置" prop="weizhi" :span="10">
                                         <el-input v-model="property.officeList[index].weizhi"></el-input>
                                     </el-form-item>
                                 </el-col>
                             </el-row>
 
-                            <el-form-item required label="产权证编号" prop="chanquanzhenghao">
+                            <el-form-item  label="产权证编号" prop="chanquanzhenghao">
                                 <el-input v-model="property.officeList[index].chanquanzhenghao"></el-input>
                             </el-form-item>
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item required label="建筑面积" prop="jianzhumianji"  >
+                                    <el-form-item  label="建筑面积" prop="jianzhumianji"  >
                                         <el-input   v-model.number="property.officeList[index].jianzhumianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item required label="承租面积" prop="qianyuemianji">
+                                    <el-form-item  label="承租面积" prop="qianyuemianji">
                                         <el-input  v-model.number="property.officeList[index].qianyuemianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item required label="房屋类型" prop="leixing">
+                                    <el-form-item  label="房屋类型" prop="leixing">
                                         <el-select v-model="property.officeList[index].leixing" clearable placeholder="请选择">
                                             <el-option
                                                     v-for="item in options"
@@ -170,26 +170,26 @@
                     fanghao:[
                         { required: true, message:'不能为空'}
                     ],
-                    quyu:[
-                        { required: true, message:'不能为空'}
-                    ],
-                    weizhi:[
-                        { required: true, message:'不能为空'}
-                    ],
-                    chanquanzhenghao:[
-                        { required: true, message:'不能为空'}
-                    ],
-                    jianzhumianji:[
-                        { required: true, message: '不能为空'},
-                        { type: 'number', message: '必须为数字'},
-                    ],
-                    leixing:[
-                        { required: true, message:'不能为空'}
-                    ],
-                    qianyuemianji:[
-                        { required: true, message:'不能为空'},
-                        { type: 'number', message: '必须为数字'},
-                    ]
+//                    quyu:[
+//                        { required: true, message:'不能为空'}
+//                    ],
+//                    weizhi:[
+//                        { required: true, message:'不能为空'}
+//                    ],
+//                    chanquanzhenghao:[
+//                        { required: true, message:'不能为空'}
+//                    ],
+//                    jianzhumianji:[
+//                        { required: true, message: '不能为空'},
+//                        { type: 'number', message: '必须为数字'},
+//                    ],
+//                    leixing:[
+//                        { required: true, message:'不能为空'}
+//                    ],
+//                    qianyuemianji:[
+//                        { required: true, message:'不能为空'},
+//                        { type: 'number', message: '必须为数字'},
+//                    ]
                 },
                 editVisible:true,
                 //楼盘数据

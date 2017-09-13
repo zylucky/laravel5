@@ -12,13 +12,13 @@
                     v-for="(item,index) in property.officeList"
                     :key="index"
             >
-        <p>（一）房屋坐落于北京市 <u>{{item.quyu}}</u> 区（县）<u>{{item.weizhi}}</u> ，建筑面积<u>{{item.jianzhumianji}}</u>平方米,实际承租面积为<u>{{item.qianyuemianji}}</u>平方米<br>
+        <p>（一）房屋坐落于北京市 <u>{{item.quyu?item.quyu:'______________'}}</u> 区（县）<u>{{item.weizhi?item.quyu:'_____________________________'}}</u> ，建筑面积<u>{{item.jianzhumianji}}</u>平方米,实际承租面积为<u>{{item.qianyuemianji}}</u>平方米。<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： 办公  。</p>
-        <p>（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao}}</u>，房屋所有权人姓名或名称：
+        <p>（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_________________________'}}</u>，房屋所有权人姓名或名称：
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
                 <u>{{item.name}}</u>
             </span>
-            ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为：<input type="text"  style="width:210px;" v-model="item.diyaren">。</p>
+            ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为：<u>{{item.diyaren?item.diyaren:'_______________'}}</u>。</p>
         </span>
             <p><b>第二条  委托管理期限</b></p>
             <p>
@@ -41,9 +41,9 @@
                 <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
-                <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
-                <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>止；
+                <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>止；
             </span>
                 招商装修期内，甲方不向乙方收取任何租金收益，以便于乙方寻找潜在实际使用人、协商洽谈、装饰装修、办理入住等事宜；招商装修期内物业管理费、供暖费及制冷费由甲方自行缴纳。
                 <br>
@@ -424,7 +424,7 @@
                 if(riqi!=null&&riqi!=''){
                     return new Date(riqi).getFullYear();
                 }else{
-                    return '';
+                    return "";
                 }
             },
             month(riqi){

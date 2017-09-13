@@ -4,7 +4,7 @@
             <el-col :span="20">
                 <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" :owner="owner" v-show="stepNum==2"></add-owner>
-                <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
+                <add-date ref="date" :addDate="addDate" :property="property"  v-show="stepNum==3"></add-date>
                 <add-tiaokuan ref="tiaokuan" :tiaoList="tiaoList" v-show="stepNum==4"></add-tiaokuan>
             </el-col>
             <div style="margin-bottom:51px;">
@@ -133,7 +133,7 @@
                     jujianfangid2:null,
                     qudaorenid:null,
                     qudaoren:'',
-                    yezhuleixing:1,
+                    yezhuleixing:'',
                     yezhuleixing2:1,
                     //产权人
                     chanquanrenList:[

@@ -70,7 +70,7 @@
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-form-item label="业主类型" prop="yezhuleixing" required>
+            <el-form-item label="业主类型" prop="yezhuleixing" >
                 <el-radio-group v-model="owner.yezhuleixing" @change="yezhuleixingChange">
                     <el-radio :label="1">个人</el-radio>
                     <el-radio :label="2">公司</el-radio>
@@ -83,11 +83,11 @@
                 >
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="产权人" :prop="'chanquanrenList.' + index + '.name'"
-                                      :rules="[
-                                      { required: true, message: '不能为空' }
-                                        ]"
-                                      required>
+                        <el-form-item label="产权人" :prop="'chanquanrenList.' + index + '.name'" >
+                                      <!--:rules="[-->
+                                      <!--{ required: true, message: '不能为空' }-->
+                                        <!--]"-->
+
                             <el-input v-model="owner.chanquanrenList[index].name"></el-input>
                         </el-form-item>
                     </el-col>
@@ -151,9 +151,10 @@
                 >
                     <el-row>
                      <el-col :span="18">
-                    <el-form-item label="公司名称" :prop="'chanquanrenList.' + index + '.name'" :rules="[
-                         { required: true, message: '不能为空' }
-                    ]">
+                    <el-form-item label="公司名称" :prop="'chanquanrenList.' + index + '.name'" >
+                                  <!--:rules="[-->
+                         <!--{ required: true, message: '不能为空' }-->
+                    <!--]"-->
                         <el-input v-model="owner.chanquanrenList[index].name"></el-input>
                     </el-form-item>
                         </el-col>

@@ -147,6 +147,31 @@
         （三）
        本合同生效后，各方对合同内容的变更或补充应采取书面形式，作为本合同的附件。甲方应签署附件《不动产授权委托书》，该委托书与本合同具有同等的法律效力。<br><br>
     </p>
+        <p v-if="historyOptimize">
+            <b>&nbsp;&nbsp;第十四条  补充条款</b> <br>
+            &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
+            <u>{{yingyezhizhao}}</u>
+            <br>
+
+            <input v-if="yingyezhizhao==null||yingyezhizhao==''" type="text" name="" disabled style="width:600px;" value="以下空白">
+            <br><br>
+
+            <b> 业主方（甲方）：<input type="text" name="" style="width:265px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">管理方（乙方）：</font> <input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
+            <b>委托代理人：<input type="text" name="" style="width:305px;font-size:10px" value=""></b><br>
+            联系地址：<input type="text" name="" style="width:320px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系地址：</font><input type="text" name="" style="width:320px" value="">
+            <br>联系方式：<input type="text" name="" style="width:320px;" disabled value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系方式：</font><input type="text" name="" style="width:320px;font-size:10px" value=""><br>
+            <font>_______年____月____日</font>
+            <font style="margin-left: 370px" >_______年____月____日</font><br>
+            <br>
+            <b> 居间方（丙方）：</b><u>北京华亮房地产经纪有限公司</u>
+            <br>联系地址：<input type="text" name="" style="width:315px;font-size:10px" value="">
+            <br>联系方式：<input type="text" name="" style="width:315px;font-size:10px" value=""><br>
+            <font>_______年____月____日</font>
+        </p>
+        <div v-if="historyOptimize">
+            <h3>补充协议：</h3>
+            <history-optimize ></history-optimize>
+        </div>
 
 </div>
 </template>
@@ -185,7 +210,7 @@
 <script>
     import {getPurchaseContractInfo} from '../../api/api';
     import HistoryOptimize from './HistoryOptimize.vue';
-    import DumpContract from './Dump20170719_pub.vue';
+    import DumpContract from './Dump20170406_pub.vue';
 
     export default{
         components:{
@@ -237,9 +262,9 @@
                     dailirenId:'',
                     //签约人
                     qianyuerenName:'',
-                    qianyuerenTel:'18511909124',
+                    qianyuerenTel:'',
                     qianyuerenSex:1,
-                    qianyuerenId:'37158119900124317X',
+                    qianyuerenId:'',
                 },
                 addDate: {
                     startdate:'',//租期开始时间
