@@ -37991,7 +37991,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 jujianfangid2: null,
                 qudaorenid: null,
                 qudaoren: '',
-                yezhuleixing: '',
+                yezhuleixing: 1,
                 yezhuleixing2: 1,
                 //产权人
                 chanquanrenList: [{
