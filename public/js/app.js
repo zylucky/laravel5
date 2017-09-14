@@ -39578,15 +39578,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //                    weizhi:[
                 //                        { required: true, message:'不能为空'}
                 //                    ],
-                chanquanzhenghao: [{ required: true, message: '不能为空' }],
-                jianzhumianji: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }]
+                //                    chanquanzhenghao:[
+                //                        { required: true, message:'不能为空'}
+                //                    ],
+                jianzhumianji: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
                 //                    leixing:[
                 //                        { required: true, message:'不能为空'}
                 //                    ],
-                //                    qianyuemianji:[
-                //                        { required: true, message:'不能为空'},
-                //                        { type: 'number', message: '必须为数字'},
-                //                    ]
+                qianyuemianji: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }]
             },
             editVisible: true,
             //楼盘数据
