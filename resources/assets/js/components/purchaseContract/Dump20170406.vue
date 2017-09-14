@@ -13,10 +13,10 @@
                 v-for="(item,index) in property.officeList"
                 :key="index"
         >
-       &nbsp;（一）房屋坐落于北京市<u>{{item.weizhi}}</u>,承租区域建筑面积<u>{{item.jianzhumianji}}</u>平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<u>{{item.qianyuemianji}}</u>平方米。<br>
-        &nbsp;（二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号：<u>{{item.chanquanzhenghao}}</u>，房屋所有权人姓名或名称
+       &nbsp;（一）房屋坐落于北京市<u>{{item.weizhi?item.weizhi:'_______________________________'}}</u>,承租区域建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'________'}}</u>平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<u>{{item.qianyuemianji?item.qianyuemianji:'_______'}}</u>平方米。<br>
+        &nbsp;（二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_____________________________'}}</u>，房屋所有权人姓名或名称
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
-                <u>{{item.name}}</u>
+                <u>{{item.name?item.name:'___________'}}</u>
             </span>房屋（
         口是/口否）已设定了抵押。甲方保证出租的房屋权属无瑕疵、无债务纠纷，房屋设施符合出租条件。<br><br>
          </span>
@@ -56,7 +56,7 @@
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{item.yuezujin}}&nbsp;&nbsp;</u>元/月）；
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(item.yuezujin)?toDecimal(item.yuezujin):'__________'}}&nbsp;&nbsp;</u>元/月）；
             <br>
         </span>
         &nbsp;（二）租金支付方式为：<br>
@@ -71,7 +71,7 @@
                 <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日
                 每 <u>{{(item.zujinyue)}}</u> 月支付一次。
             </span>
-        &nbsp;1、房屋押金：<u> ¥ {{addDate.yajin}}&nbsp;&nbsp;</u>元，（大写：<u>{{daxie(addDate.yajin)}}&nbsp;&nbsp;
+        &nbsp;1、房屋押金：<u> ¥ {{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'_____________'}}&nbsp;&nbsp;</u>元，（大写：<u>{{daxie(addDate.yajin)}}&nbsp;&nbsp;
 
             </u>元整，支付时间为<u>&nbsp;&nbsp;{{year(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>月
@@ -141,7 +141,7 @@
         &nbsp;（二）甲乙双方在本合同中书写的地址即为本合同下任何书面通知的有效送达地址，若因接收方拒收或地址错误等情况致使无法送达的，均以付邮日（以邮戳为准）后3日即视为通知方已依本合同给予书面通知。若任何一方联络地址变更的，应及时通知对方。
         <br><br>
         <b>&nbsp;&nbsp; 第十三条  其他</b> <br>
-        （一）本合同签订当日，甲方向丙方支付居间服务费：<u></u>元。<br>
+        （一）本合同签订当日，甲方向丙方支付居间服务费：<u>{{ toDecimal(addDate.yongjin)?toDecimal(addDate.yongjin):'__________' }}</u>元。<br>
         （二）
         本合同经甲乙双方签字或盖章后生效。本合同（及附件）一式贰份，甲、乙、丙方各持一份。<br>
         （三）
@@ -176,11 +176,10 @@
 </div>
 </template>
 <style>
-
     .whole{
             position: absolute;
             margin: auto;
-            top: 0;
+            top: -350px;
             right: 0;
             left:0;
             bottom: 0;
@@ -311,6 +310,23 @@
             }
         },
         methods:{
+            toDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            },
             daxie(money) {
                 if(money==null){
                     return '';
@@ -515,12 +531,8 @@
             //获取合同的详细信息
             this.getPurchaseContract(this.$route.query);
             document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
-            function  hello() {
-                window.print()
-            }
             if(this.$route.query.isdump==1){
                 this.historyOptimize = false;
-                setTimeout(hello,1000);
             }else if(this.$route.query.isdump==2) {
                 this.historyOptimize = false;
             }else{

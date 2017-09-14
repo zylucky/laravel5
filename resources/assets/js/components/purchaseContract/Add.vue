@@ -354,7 +354,6 @@
                 this.listLoading = true;
                 getContractVersionList(para).then((res) => {
                     this.options = res.data.data;
-                    this.contractVersion = this.options[0].version;
                 });
             },
             preview(){
