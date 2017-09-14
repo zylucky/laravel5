@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\models\Role;
 use GuzzleHttp\Client;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Qiniu\Auth;
 
@@ -16,6 +17,11 @@ class TestController extends Controller
      */
     public function index()
     {
+        return User::create([
+            'name' =>'qudao',
+            'email' => 'qudao',
+            'password' => bcrypt('qudao123'),
+        ]);
         echo 111;
         $date = date('y-m-d',strtotime('+ 3 months -1 day',strtotime('2016-11-29'))) ;
         dd($date);

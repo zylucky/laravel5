@@ -25,7 +25,7 @@ class brokerCompanyController extends Controller
         $yewupianqvid=Input::get('yewupianqvid');
         $gongsijingyingshuxing=Input::get('gongsijingyingshuxing');
         $hezuoxieyidengji= Input::get('hezuoxieyidengji');
-
+        $xm= Input::get('xm');
         $client = new Client ([
             'base_uri' => $this->base_url,
         ]);
@@ -38,6 +38,7 @@ class brokerCompanyController extends Controller
                     'ywpqid' => $yewupianqvid,
                     'jysx' => $gongsijingyingshuxing,
                     'xydj' => $hezuoxieyidengji,
+                    'xm' => $xm,
                 ]
 
             ]

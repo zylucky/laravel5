@@ -57,7 +57,7 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="公司所在楼盘" prop="gsLoupan">
+                    <el-form-item label="项目名称" prop="gsLoupan">
                         <el-input v-model="brokerCompanyUserForm.qvDaoCompayXinxi.gsLoupan"
                                   disabled="disabled"></el-input>
                     </el-form-item>
@@ -182,7 +182,7 @@
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-form-item label="渠道等级" prop="qvdaodengji">
+            <el-form-item label="粘性等级" prop="qvdaodengji">
                 <el-select v-model="brokerCompanyUserForm.qvdaodengji" placeholder="">
                     <el-option
                             v-for="item in optionsqddj"

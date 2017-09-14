@@ -49,6 +49,9 @@
             <el-form-item label="公司名称：">
                 <el-input v-model="filters.bk_name" placeholder="请输入公司名称"></el-input>
             </el-form-item>
+            <el-form-item label="项目名称：">
+                <el-input v-model="filters.xm" placeholder="请输入项目名称"></el-input>
+            </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getBrokerCompany">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus" v-if="fun('brokerCompanyAdd')"    @click="handleAdd"    > 新增</el-button>
@@ -156,6 +159,7 @@
                     yewupianqvid:'',
                     gongsijingyingshuxing:'',
                     hezuoxieyidengji:'',
+                    xm:'',
 
                 },
                 options:[
@@ -194,113 +198,6 @@
                 brokerCompany:[],
                 listLoading: false,
                 sels: [],//列表选中列
-
-                editFormVisible: false,//编辑界面是否显示
-                editLoading: false,
-                editFormRules: {
-                    compayname: [
-                        { required: true, message: '请输入渠道公司名称', trigger: 'blur' },
-                    ],
-                    yjzbSf: [
-                        { type: 'number', message: '收房佣金占比不能为空且必须为数字',trigger: 'blur' },
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("收房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                    yjzbCf: [
-                        { type: 'number', message: '出房佣金占比不能为空且必须为数字',trigger: 'blur'},
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("出房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                    yjType: [
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(/^\d+$/.test(value) == false){
-                                callback(new Error("请输入佣金类型"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                },
-                //编辑界面数据
-                editForm: {
-                    tQdCompayId: 0,
-                    compayname: '',
-                    yjzbSf: '',
-                    yjzbCf: '',
-                    compaytest:'',
-                    yjType:1,
-                },
-                addFormVisible: false,//新增界面是否显示
-                addLoading: false,
-                addFormRules: {
-                    compayname: [
-                        { required: true, message: '请输入渠道公司名称', trigger: 'blur'  },
-                        {validator:(rule,value,callback)=>{
-                            let para = {
-                                name: value
-                            };
-                            if(value!=''){
-                                checkbkNameList(para).then((res) => {
-                                    //alert( JSON.stringify(res));
-                                    if(res.data.code!='200')
-                                    {
-                                        callback(new Error(res.data.msg));
-                                    }else{
-                                        callback();
-                                    }
-                                })
-                            }
-                        }, trigger:'blur'}
-                    ],
-                    yjzbSf: [
-                        { type: 'number', message: '收房佣金占比不能为空且必须为数字',trigger: 'blur' },
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("收房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                    yjzbCf: [
-                        { type: 'number', message: '出房佣金占比不能为空且必须为数字',trigger: 'blur'},
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("出房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                    yjType: [
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(/^\d+$/.test(value) == false){
-                                callback(new Error("请输入佣金类型"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-
-                },
-                //新增界面数据
-                addForm: {
-                    compayname: '',
-                    yjzbSf:'',
-                    yjzbCf:'',
-                    compaytest:'',
-                    yjType:1,
-                },
 
                 tQdCompayId:0,
                 bk_name:'',
@@ -459,7 +356,7 @@
                     yewupianqvid: this.filters.yewupianqvid,
                     gongsijingyingshuxing: this.filters.gongsijingyingshuxing.toString(),
                     hezuoxieyidengji: this.filters.hezuoxieyidengji,
-
+                    xm:this.filters.xm,
                 };
                 this.listLoading = true;
                 getBrokerCompanyListPage(para).then((res) => {
