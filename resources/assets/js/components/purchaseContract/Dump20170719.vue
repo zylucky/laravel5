@@ -12,13 +12,13 @@
                     v-for="(item,index) in property.officeList"
                     :key="index"
             >
-        <p>（一）房屋坐落于北京市 <u>{{item.quyu}}</u> 区（县）<u>{{item.weizhi}}</u> ，建筑面积<u>{{item.jianzhumianji}}</u>平方米,实际承租面积为<u>{{item.qianyuemianji}}</u>平方米<br>
+        <p>（一）房屋坐落于北京市 <u>{{item.quyu?item.quyu:'______________'}}</u> 区（县）<u>{{item.weizhi?item.quyu:'_____________________________'}}</u> ，建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'______'}}</u>平方米,实际承租面积为<u>{{item.qianyuemianji?item.qianyuemianji:'______'}}</u>平方米。<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： 办公  。</p>
-        <p>（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao}}</u>，房屋所有权人姓名或名称：
+        <p>（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_________________________'}}</u>，房屋所有权人姓名或名称：
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
                 <u>{{item.name}}</u>
             </span>
-            ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为：<input type="text"  style="width:210px;" v-model="item.diyaren">。</p>
+            ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为：<u>{{item.diyaren?item.diyaren:'_______________'}}</u>。</p>
         </span>
             <p><b>第二条  委托管理期限</b></p>
             <p>
@@ -41,9 +41,9 @@
                 <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
-                <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
-                <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>止；
+                <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>止；
             </span>
                 招商装修期内，甲方不向乙方收取任何租金收益，以便于乙方寻找潜在实际使用人、协商洽谈、装饰装修、办理入住等事宜；招商装修期内物业管理费、供暖费及制冷费由甲方自行缴纳。
                 <br>
@@ -65,11 +65,11 @@
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{item.yuezujin}}&nbsp;&nbsp;</u>元/月）；
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(item.yuezujin)?toDecimal(item.yuezujin):'___'}}&nbsp;&nbsp;</u>元/月）；
             <br>
         </span>
             </p>
-            <p>如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{addDate.yanqizujin}}&nbsp;&nbsp;</u>元/月）。
+            <p>如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(addDate.yanqizujin)?toDecimal(addDate.yanqizujin):'____'}}&nbsp;&nbsp;</u>元/月）。
                 <br>
                 租金的支付方式：
                 <span v-for="(item,index) in addDate.fukuanFangshiList"
@@ -81,7 +81,7 @@
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日
-                每 <u>{{(item.zujinyue)}}</u> 月支付一次。
+                每 <u>{{(item.zujinyue?item.zujinyue:'_____')}}</u> 月支付一次。
             </span>
 
                 租金中包含物业管理费、供暖费及制冷费。
@@ -107,7 +107,7 @@
                 <br>
                 （二）保证金：人民币（大写）
                 <u>&nbsp;&nbsp;{{daxie(addDate.yajin)}}&nbsp;&nbsp;</u> （￥：
-                <u>&nbsp;&nbsp;{{(addDate.yajin)}}&nbsp;&nbsp;</u> 元），乙方在甲乙双方签署本合同当日向甲方支付，如甲方提供的房屋所有权证复印件和身份证复印件不全，则乙方仅支付甲方百分之五十的保证金，剩余百分之五十的保证金于甲方补齐房屋所有权证复印件及身份证复印件后支付。管理期满或合同解除后，保证金除抵扣应由乙方承担的费用，剩余部分应如数返还给乙方。</p>
+                <u>&nbsp;&nbsp;{{(toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'_______')}}&nbsp;&nbsp;</u> 元），乙方在甲乙双方签署本合同当日向甲方支付，如甲方提供的房屋所有权证复印件和身份证复印件不全，则乙方仅支付甲方百分之五十的保证金，剩余百分之五十的保证金于甲方补齐房屋所有权证复印件及身份证复印件后支付。管理期满或合同解除后，保证金除抵扣应由乙方承担的费用，剩余部分应如数返还给乙方。</p>
             <p><b>第四条  资产管理服务费</b></p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲、乙双方一致同意，乙方按照风险自担的方式收取资产管理服务费。即乙方对房屋进行出租及为实际使用人提供增值服务而取得的收入中，超出向甲方支付固定租金收益的溢价部分，将作为乙方的服务费，由乙方直接收取；如未产生溢价的，甲方亦不向乙方支付任何服务费用，该风险由乙方自行承担。</p>
             <p><b>第五条  相关费用的承担方式</b></p>
@@ -211,9 +211,6 @@
     }
     .whole span {
         display: block;}
-    .f22{
-        font-size: 20px;
-    }
     p{
         font-size: 18px; text-align:left;
         line-height: 2;}
@@ -329,6 +326,23 @@
             }
         },
         methods:{
+            toDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            },
             daxie(money) {
                 if(money==null){
                     return '';
@@ -424,7 +438,7 @@
                 if(riqi!=null&&riqi!=''){
                     return new Date(riqi).getFullYear();
                 }else{
-                    return '';
+                    return "";
                 }
             },
             month(riqi){
@@ -533,12 +547,12 @@
             //获取合同的详细信息
             this.getPurchaseContract(this.$route.query);
             document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
-            function  hello() {
-                window.print()
-            }
+            //            function  hello() {
+            //                window.print()
+            //            }
             if(this.$route.query.isdump==1){
                 this.historyOptimize = false;
-                setTimeout(hello,1000);
+                //setTimeout(hello,1000);
             }else if(this.$route.query.isdump==2) {
                 this.historyOptimize = false;
             }else{

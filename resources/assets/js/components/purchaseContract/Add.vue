@@ -4,8 +4,9 @@
             <el-col :span="20">
                 <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" :owner="owner" v-show="stepNum==2"></add-owner>
-                <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
-                <add-tiaokuan ref="tiaokuan" :tiaoList="tiaoList" v-show="stepNum==4"></add-tiaokuan>
+                <add-date ref="date" :addDate="addDate" :property="property"  v-show="stepNum==3"></add-date>
+                <history-optimize  v-show="stepNum==4"></history-optimize>
+                <!--<add-tiaokuan ref="tiaokuan" :tiaoList="tiaoList" v-show="stepNum==4"></add-tiaokuan>-->
             </el-col>
             <div style="margin-bottom:51px;">
             </div>
@@ -23,11 +24,12 @@
                     </el-form-item>
                 </el-form>
                 <div style="margin-left: 30%">
-                <el-steps :space="100" direction="vertical" :active="stepNum">
+                <el-steps :space="80" direction="vertical" :active="stepNum">
                     <a href="javascript:;" onfocus="this.blur();" @click="stepNum=1"><el-step title="房间信息"></el-step></a>
                     <a href="javascript:;" onfocus="this.blur();" @click="stepNum=2"><el-step title="业主信息"></el-step></a>
                     <a href="javascript:;" onfocus="this.blur();" @click="stepNum=3"><el-step title="租期信息"></el-step></a>
-                    <!--<a href="javascript:" onfocus="this.blur();" @click="stepNum=4"><el-step title="条款信息"></el-step></a>-->
+                    <!--<a href="javascript:;"  onfocus="this.blur();" @click="stepNum=4"><el-step title="补充协议"></el-step></a>-->
+                    <a href="javascript:" v-if="this.$route.path=='/purchaseContract/view'"  onfocus="this.blur();" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>
 
                 </el-steps>
                 <el-button type="primary"  v-show="editVisible" @click="save" style="margin-top:100px;margin-bottom:1em;padding-left:2em;padding-right:2em">保存</el-button>
@@ -60,6 +62,7 @@
     import AddProperty from './AddProperty.vue'
     import AddOwner from './AddOwner.vue'
     import AddDate from './AddDate.vue'
+    import HistoryOptimize from './HistoryOptimize.vue'
     import AddTiaokuan from './AddTiaoKuan.vue'
     import {
         addPurchaseContractInfo,
@@ -76,6 +79,7 @@
                 ],
                 contractVersion:null,
                 btnType:true,
+                btnView:false,
                 submsg:'提交',
                 shenhe:null,//审核数据
                 reviewVisible:false,//审核显示
@@ -211,6 +215,7 @@
             AddOwner,
             AddDate,
             AddTiaokuan,
+            HistoryOptimize
         },
         methods:{
             submit(){
@@ -252,15 +257,13 @@
                 }
             },
             save() {
-
-                this.btnType = false;
                 this.submsg  = '提交';
                     var child_property = this.$refs.property.property;//
                     var child_owner  = this.$refs.owner.owner;//业主信息
                     var child_date = this.$refs.date.addDate;//日期
-                    var tiaokuan = {
-                        tiaoList:this.$refs.tiaokuan.tiaoList,
-                    };//条款
+//                    var tiaokuan = {
+//                        tiaoList:this.$refs.tiaokuan.tiaoList,
+//                    };//条款
                     var id = {
                        id: this.id
                     };
@@ -270,11 +273,12 @@
                     var version ={
                         version:this.contractVersion,
                     }
-                    let para = Object.assign({}, child_property,child_owner,child_date,id,tiaokuan,bianhao,version);
+                    let para = Object.assign({}, child_property,child_owner,child_date,id,bianhao,version);
                     addPurchaseContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         //保存完以后可以得到一个返回的ID
                         //把数据分别赋值给三个组件的变量
+                        this.btnType = false;
                         this.fuzhi(res);
                         this.$message({
                             message: '保存成功',
@@ -325,22 +329,22 @@
                 })
             },
             //获取条款信息
-            getTiaokuan(){
-                getPurchaseContractTiaoKuan().then((res)=>{
-                    for (let x in res.data.data.tiaoList){
-                        res.data.data.tiaoList[x].show = false;
-                        for (let y in res.data.data.tiaoList[x].kuanList){
-                            res.data.data.tiaoList[x].kuanList[y].show = false;
-                            for (let z in res.data.data.tiaoList[x].kuanList[y].xiangList){
-                                res.data.data.tiaoList[x].kuanList[y].xiangList[z].show = false;
-                            }
-                        }
-                    }
-                    this.tiaoList = res.data.data.tiaoList;
-                    //console.log(this.tiaoList);
-
-                })
-            },
+//            getTiaokuan(){
+//                getPurchaseContractTiaoKuan().then((res)=>{
+//                    for (let x in res.data.data.tiaoList){
+//                        res.data.data.tiaoList[x].show = false;
+//                        for (let y in res.data.data.tiaoList[x].kuanList){
+//                            res.data.data.tiaoList[x].kuanList[y].show = false;
+//                            for (let z in res.data.data.tiaoList[x].kuanList[y].xiangList){
+//                                res.data.data.tiaoList[x].kuanList[y].xiangList[z].show = false;
+//                            }
+//                        }
+//                    }
+//                    this.tiaoList = res.data.data.tiaoList;
+//                    //console.log(this.tiaoList);
+//
+//                })
+//            },
             //获取当前启用的合同版本
             getVersion(){
                 let para = {
@@ -350,7 +354,6 @@
                 this.listLoading = true;
                 getContractVersionList(para).then((res) => {
                     this.options = res.data.data;
-                    this.contractVersion = this.options[0].version;
                 });
             },
             preview(){
@@ -468,7 +471,6 @@
             //根据url得到的合同ID，来获取数据
             if(this.$route.query.id!=null){
                 this.getPurchaseContract(this.$route.query);
-
             }
             //审核页面input禁用
             if(this.$route.path=='/purchaseContract/review'){
