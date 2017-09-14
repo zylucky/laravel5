@@ -257,15 +257,13 @@
                 }
             },
             save() {
-
-                this.btnType = false;
                 this.submsg  = '提交';
                     var child_property = this.$refs.property.property;//
                     var child_owner  = this.$refs.owner.owner;//业主信息
                     var child_date = this.$refs.date.addDate;//日期
-                    var tiaokuan = {
-                        tiaoList:this.$refs.tiaokuan.tiaoList,
-                    };//条款
+//                    var tiaokuan = {
+//                        tiaoList:this.$refs.tiaokuan.tiaoList,
+//                    };//条款
                     var id = {
                        id: this.id
                     };
@@ -275,11 +273,12 @@
                     var version ={
                         version:this.contractVersion,
                     }
-                    let para = Object.assign({}, child_property,child_owner,child_date,id,tiaokuan,bianhao,version);
+                    let para = Object.assign({}, child_property,child_owner,child_date,id,bianhao,version);
                     addPurchaseContractInfo(para).then((res) => {
                     if(res.data.code == 200)　{
                         //保存完以后可以得到一个返回的ID
                         //把数据分别赋值给三个组件的变量
+                        this.btnType = false;
                         this.fuzhi(res);
                         this.$message({
                             message: '保存成功',
@@ -330,22 +329,22 @@
                 })
             },
             //获取条款信息
-            getTiaokuan(){
-                getPurchaseContractTiaoKuan().then((res)=>{
-                    for (let x in res.data.data.tiaoList){
-                        res.data.data.tiaoList[x].show = false;
-                        for (let y in res.data.data.tiaoList[x].kuanList){
-                            res.data.data.tiaoList[x].kuanList[y].show = false;
-                            for (let z in res.data.data.tiaoList[x].kuanList[y].xiangList){
-                                res.data.data.tiaoList[x].kuanList[y].xiangList[z].show = false;
-                            }
-                        }
-                    }
-                    this.tiaoList = res.data.data.tiaoList;
-                    //console.log(this.tiaoList);
-
-                })
-            },
+//            getTiaokuan(){
+//                getPurchaseContractTiaoKuan().then((res)=>{
+//                    for (let x in res.data.data.tiaoList){
+//                        res.data.data.tiaoList[x].show = false;
+//                        for (let y in res.data.data.tiaoList[x].kuanList){
+//                            res.data.data.tiaoList[x].kuanList[y].show = false;
+//                            for (let z in res.data.data.tiaoList[x].kuanList[y].xiangList){
+//                                res.data.data.tiaoList[x].kuanList[y].xiangList[z].show = false;
+//                            }
+//                        }
+//                    }
+//                    this.tiaoList = res.data.data.tiaoList;
+//                    //console.log(this.tiaoList);
+//
+//                })
+//            },
             //获取当前启用的合同版本
             getVersion(){
                 let para = {
