@@ -38798,7 +38798,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 yongjin: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
                 actualrent: [{ type: 'number', message: '必须为数字' }],
                 tiqianfukuantian: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
-                beianqixian: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], yajinfukuanri: [{ required: true, message: '不能为空' }], shoufangdate: [{ required: true, message: '不能为空' }], qianyuedate: [{ required: true, message: '不能为空' }], shouqifukuanri: [{ required: true, message: '不能为空' }], erqifukuanri: [{ required: true, message: '不能为空' }], sanqifukuanri: [{ required: true, message: '不能为空' }], jiafangfeiyong: [{ required: true, message: '不能为空' }], yifangfeiyong: [{ required: true, message: '不能为空' }] }, "actualrent", [{ required: true, message: '不能为空' }])
+                beianqixian: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }], yajinfukuanri: [{ required: true, message: '不能为空' }],
+                //                    shoufangdate: [
+                //                        { required: true, message: '不能为空' }
+                //                    ],qianyuedate: [
+                //                        { required: true, message: '不能为空' }
+                //                    ],
+                shouqifukuanri: [{ required: true, message: '不能为空' }], erqifukuanri: [{ required: true, message: '不能为空' }], sanqifukuanri: [{ required: true, message: '不能为空' }]
+            }, "actualrent", [{ required: true, message: '不能为空' }])
         };
     },
 
@@ -110875,8 +110882,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "收房日",
-      "prop": "shoufangdate",
-      "required": ""
+      "prop": "shoufangdate"
     }
   }, [_c('el-date-picker', {
     staticStyle: {
@@ -110884,8 +110890,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "type": "date",
-      "placeholder": "选择日期",
-      "disabled": _vm.lydisabled
+      "placeholder": "选择日期"
     },
     model: {
       value: (_vm.addDate.shoufangdate),
@@ -110901,8 +110906,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "签约日",
-      "prop": "qianyuedate",
-      "required": ""
+      "prop": "qianyuedate"
     }
   }, [_c('el-date-picker', {
     staticStyle: {
@@ -110910,8 +110914,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "type": "date",
-      "placeholder": "选择日期",
-      "disabled": _vm.lydisabled
+      "placeholder": "选择日期"
     },
     model: {
       value: (_vm.addDate.qianyuedate),
@@ -111023,8 +111026,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })], 1)], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "甲方承担",
-      "prop": "jiafangfeiyong",
-      "required": ""
+      "prop": "jiafangfeiyong"
     }
   }, [_c('el-checkbox-group', {
     attrs: {
@@ -111093,8 +111095,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "乙方承担",
-      "prop": "yifangfeiyong",
-      "required": ""
+      "prop": "yifangfeiyong"
     }
   }, [_c('el-checkbox-group', {
     attrs: {
@@ -117409,7 +117410,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleReview(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("审核合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [0, 1, 2, 3]) && _vm.fun('purchaseContactDump')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("审核合同")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [3]) && _vm.fun('purchaseContactDump')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleDump(scope.$index, scope.row)
@@ -118545,6 +118546,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "prop": "jianzhumianji"
       }
     }, [_c('el-input', {
+      attrs: {
+        "disabled": _vm.lydisabled
+      },
       model: {
         value: (_vm.property.officeList[index].jianzhumianji),
         callback: function($$v) {
@@ -118563,6 +118567,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "prop": "qianyuemianji"
       }
     }, [_c('el-input', {
+      attrs: {
+        "disabled": _vm.lydisabled
+      },
       model: {
         value: (_vm.property.officeList[index].qianyuemianji),
         callback: function($$v) {
@@ -130257,7 +130264,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         staticStyle: {
           "display": "inline"
         }
-      }, [_c('u', [_vm._v(_vm._s(item.name))])])
+      }, [_c('u', [_vm._v(_vm._s(item.name ? item.name : '__________'))])])
     }), _vm._v("\n    ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为："), _c('u', [_vm._v(_vm._s(item.diyaren ? item.diyaren : '_______________'))]), _vm._v("。")], 2)])
   }), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('p', [_vm._v("\n        （一）委托管理期限自\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止，共计\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.nian) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.yue) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.ri) + "  ")]), _vm._v("日。甲方应于\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。\n        "), _c('br'), _vm._v("\n        （二）甲方承诺给予乙方 "), _c('input', {
     staticStyle: {

@@ -99,12 +99,12 @@
                             <el-row>
                                 <el-col :span="8">
                                     <el-form-item  required label="建筑面积" prop="jianzhumianji"  >
-                                        <el-input   v-model.number="property.officeList[index].jianzhumianji"></el-input>
+                                        <el-input :disabled="lydisabled"  v-model.number="property.officeList[index].jianzhumianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item required  label="承租面积" prop="qianyuemianji">
-                                        <el-input  v-model.number="property.officeList[index].qianyuemianji"></el-input>
+                                        <el-input :disabled="lydisabled" v-model.number="property.officeList[index].qianyuemianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
