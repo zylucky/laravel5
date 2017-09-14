@@ -5,7 +5,8 @@
                 <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" :owner="owner" v-show="stepNum==2"></add-owner>
                 <add-date ref="date" :addDate="addDate" :property="property"  v-show="stepNum==3"></add-date>
-                <add-tiaokuan ref="tiaokuan" :tiaoList="tiaoList" v-show="stepNum==4"></add-tiaokuan>
+                <history-optimize  v-show="stepNum==4"></history-optimize>
+                <!--<add-tiaokuan ref="tiaokuan" :tiaoList="tiaoList" v-show="stepNum==4"></add-tiaokuan>-->
             </el-col>
             <div style="margin-bottom:51px;">
             </div>
@@ -23,11 +24,12 @@
                     </el-form-item>
                 </el-form>
                 <div style="margin-left: 30%">
-                <el-steps :space="100" direction="vertical" :active="stepNum">
+                <el-steps :space="80" direction="vertical" :active="stepNum">
                     <a href="javascript:;" onfocus="this.blur();" @click="stepNum=1"><el-step title="房间信息"></el-step></a>
                     <a href="javascript:;" onfocus="this.blur();" @click="stepNum=2"><el-step title="业主信息"></el-step></a>
                     <a href="javascript:;" onfocus="this.blur();" @click="stepNum=3"><el-step title="租期信息"></el-step></a>
-                    <!--<a href="javascript:" onfocus="this.blur();" @click="stepNum=4"><el-step title="条款信息"></el-step></a>-->
+                    <!--<a href="javascript:;"  onfocus="this.blur();" @click="stepNum=4"><el-step title="补充协议"></el-step></a>-->
+                    <a href="javascript:" v-if="this.$route.path=='/purchaseContract/view'"  onfocus="this.blur();" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>
 
                 </el-steps>
                 <el-button type="primary"  v-show="editVisible" @click="save" style="margin-top:100px;margin-bottom:1em;padding-left:2em;padding-right:2em">保存</el-button>
@@ -60,6 +62,7 @@
     import AddProperty from './AddProperty.vue'
     import AddOwner from './AddOwner.vue'
     import AddDate from './AddDate.vue'
+    import HistoryOptimize from './HistoryOptimize.vue'
     import AddTiaokuan from './AddTiaoKuan.vue'
     import {
         addPurchaseContractInfo,
@@ -76,6 +79,7 @@
                 ],
                 contractVersion:null,
                 btnType:true,
+                btnView:false,
                 submsg:'提交',
                 shenhe:null,//审核数据
                 reviewVisible:false,//审核显示
@@ -211,6 +215,7 @@
             AddOwner,
             AddDate,
             AddTiaokuan,
+            HistoryOptimize
         },
         methods:{
             submit(){
@@ -468,7 +473,6 @@
             //根据url得到的合同ID，来获取数据
             if(this.$route.query.id!=null){
                 this.getPurchaseContract(this.$route.query);
-
             }
             //审核页面input禁用
             if(this.$route.path=='/purchaseContract/review'){

@@ -28,9 +28,9 @@
                 <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
-                <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
-                <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>止；
+                <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>止；
             </span>
         日止。免租期内乙方不支付租金，以便于乙方与入住方协商洽谈、进行装饰装修及办理入住手续等事宜。免租期内物业管理费用、供暖费和制冷费由甲方自行缴纳。<br>
         &nbsp;（二）本合同房屋租赁期限为

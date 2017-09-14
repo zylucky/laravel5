@@ -56,17 +56,34 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="收款人" prop="shoukuanren" required>
-                        <el-input v-model="owner.shoukuanren"></el-input>
+                        <el-input v-model="owner.shoukuanren" :disabled="lydisabled"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="10">
                     <el-form-item label="开户行" prop="kaihuhang" required>
-                        <el-input v-model="owner.kaihuhang"></el-input>
+                        <el-input v-model="owner.kaihuhang" :disabled="lydisabled"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="账号" prop="zhanghao" required>
-                        <el-input v-model="owner.zhanghao"></el-input>
+                        <input v-model="owner.zhanghao" :disabled="lydisabled"
+                               style="-webkit-appearance: none;
+                                    -moz-appearance: none;
+                                    appearance: none;
+                                    background-color: #fff;
+                                    background-image: none;
+                                    border-radius: 4px;
+                                    border: 1px solid #bfcbd9;
+                                    box-sizing: border-box;
+                                    color: #1f2d3d;
+                                    font-size: inherit;
+                                    height: 36px;
+                                    line-height: 1;
+                                    outline: 0;
+                                    padding: 3px 10px;
+                                    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+                                    width: 100%;"
+                               onkeyup="this.value=this.value.replace(/\D/g,'').replace(/....(?!$)/g,'$& ')" >
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -232,6 +249,7 @@
                 labelPosition:'right',
                 bkNameloading:false,
                 bkryNameloading:false,
+                lydisabled:false,
                 estate: [],//服务器搜索的渠道公司数据放入这个数组中
                 editVisible:true,
                 editOwnerRules :{
@@ -374,6 +392,9 @@
             }
             if(this.$route.path=='/purchaseContract/view'){
                 this.editVisible   =false;
+            }
+            if(this.$route.path=='/purchaseContract/edit'&&this.$route.query.status>=6){
+                this.lydisabled = true;
             }
 
         }

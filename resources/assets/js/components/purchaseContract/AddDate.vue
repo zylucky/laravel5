@@ -61,6 +61,7 @@
                                         type="date"
                                         placeholder="开始时间"
                                         @change="zqchange1()"
+                                        :disabled="lydisabled"
                                 >
                                 </el-date-picker>
                             </el-form-item>
@@ -72,6 +73,7 @@
                                         type="date"
                                         placeholder="结束时间"
                                         @change="zqchange2()"
+                                        :disabled="lydisabled"
                                 >
                                 </el-date-picker>
                             </el-form-item>
@@ -96,7 +98,7 @@
                                 }
                                 ]"
                                 >
-                                    <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate">
+                                    <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate" :disabled="lydisabled">
                                     </el-date-picker>
                                 </el-form-item>
                             </el-col>
@@ -117,7 +119,7 @@
                                         }, trigger:'blur'}
                                 ]"
                                 >
-                                    <el-date-picker  type = "date" placeholder="结束时间" v-model="item.enddate">
+                                    <el-date-picker  type = "date" placeholder="结束时间" v-model="item.enddate" :disabled="lydisabled">
                                     </el-date-picker>
                                 </el-form-item>
                             </el-col>
@@ -130,6 +132,7 @@
                             <el-input v-model.number="item.yuezujin" class="pulll10"
                                       placeholder="租金"
                                       @change="perPrice(index,item.yuezujin)"
+                                      :disabled="lydisabled"
                             ></el-input>
                         </el-form-item>
                     </el-col>
@@ -137,12 +140,12 @@
                         <el-form-item label="单价" label-width="40px"  :prop="'zujinList.' + index + '.price' " :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]">
-                            <el-input v-model.number="item.price" class="pulll10" placeholder="单价"></el-input>
+                            <el-input v-model.number="item.price" class="pulll10" placeholder="单价" :disabled="lydisabled"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="3" :pull="1" style="margin-left:-10px;">
                         <el-form-item label="递增方式" label-width="70px">
-                            <el-input v-model="item.dizengliang" class="pulll10" placeholder=""></el-input>
+                            <el-input v-model="item.dizengliang" class="pulll10" placeholder="" :disabled="lydisabled"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="2"  style="width: 70px;margin-left:-50px;">
@@ -173,7 +176,7 @@
                                 <el-form-item  :prop="'fukuanFangshiList.' + index + '.startdate'" :rules="{
                                     required: true, message: '不能为空'
                                 }">
-                            <el-date-picker type = "date"  placeholder="开始时间" v-model="item.startdate">
+                            <el-date-picker type = "date"  placeholder="开始时间" v-model="item.startdate" :disabled="lydisabled">
                             </el-date-picker>
                                 </el-form-item>
                             </el-col>
@@ -193,7 +196,7 @@
                                     };
                                         }, trigger:'blur'}
                                 ]">
-                            <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
+                            <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate" :disabled="lydisabled">
                             </el-date-picker>
                                 </el-form-item>
                             </el-col>
@@ -203,14 +206,14 @@
                         <el-form-item label="押" label-width="40px" :prop="'fukuanFangshiList.' + index + '.yajinyue'" :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]">
-                            <el-input v-model.number="item.yajinyue" placeholder="押几" @change="yajin(index,item.yajinyue)" style="margin-left:0"></el-input>
+                            <el-input v-model.number="item.yajinyue" placeholder="押几" @change="yajin(index,item.yajinyue)" :disabled="lydisabled" style="margin-left:0"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="1" :pull="1" style="margin-left: 15px;width: 150px;">
                         <el-form-item label="付" label-width="40px" :prop="'fukuanFangshiList.' + index + '.zujinyue'" :rules="[{
                                     required: true, message: '不能为空'
                                 },{ type: 'number', message: '必须为数字'}]">
-                            <el-input v-model.number="item.zujinyue" placeholder="付几" style="margin-left:0"></el-input>
+                            <el-input v-model.number="item.zujinyue" placeholder="付几" style="margin-left:0" :disabled="lydisabled"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1">
@@ -226,7 +229,7 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="押金" prop="yajin" required>
-                        <el-input v-model.number="addDate.yajin" placeholder="押金"></el-input>
+                        <el-input v-model.number="addDate.yajin" placeholder="押金" :disabled="lydisabled"></el-input>
                     </el-form-item>
                 </el-col>
                 <!--<el-col :span="8">-->
@@ -236,7 +239,12 @@
                 <!--</el-col>-->
                 <el-col :span="8">
                     <el-form-item label="合同佣金" prop="yongjin" required>
-                        <el-input v-model.number="addDate.yongjin" placeholder="合同佣金"></el-input>
+                        <el-input v-model.number="addDate.yongjin" placeholder="合同佣金" :disabled="lydisabled"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="8">
+                    <el-form-item label="实际月租金" prop="actualrent" required>
+                        <el-input v-model.number="addDate.actualrent" placeholder="实际月租金" :disabled="lydisabled"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -244,12 +252,12 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="提前几天付款" prop="tiqianfukuantian" required>
-                        <el-input placeholder="提前几天付款" v-model.number="addDate.tiqianfukuantian" style="width: 100%;"></el-input>
+                        <el-input placeholder="提前几天付款" v-model.number="addDate.tiqianfukuantian" :disabled="lydisabled" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="备案期限" prop="beianqixian" required>
-                        <el-input placeholder="备案期限" v-model.number="addDate.beianqixian" style="width: 100%;"></el-input>
+                        <el-input placeholder="备案期限" v-model.number="addDate.beianqixian" style="width: 100%;" :disabled="lydisabled"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
@@ -259,6 +267,7 @@
                                 placeholder="选择日期"
                                 v-model="addDate.yajinfukuanri"
                                 style="width: 100%;"
+                                :disabled="lydisabled"
                         >
                         </el-date-picker>
                     </el-form-item>
@@ -268,12 +277,12 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="收房日" prop="shoufangdate" required>
-                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;"></el-date-picker>
+                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;" :disabled="lydisabled"></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="签约日" prop="qianyuedate" required>
-                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
+                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;" :disabled="lydisabled"></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
@@ -291,6 +300,7 @@
                                 v-model="addDate.shouqifukuanri"
                                 placeholder="首期租金日期"
                                 style="width: 100%"
+                                :disabled="lydisabled"
                         ></el-date-picker>
                     </el-form-item>
                 </el-col>
@@ -301,6 +311,7 @@
                                 v-model="addDate.erqifukuanri"
                                 placeholder="二期租金日期"
                                 style="width: 100%"
+                                :disabled="lydisabled"
                         ></el-date-picker>
                     </el-form-item>
                 </el-col>
@@ -311,12 +322,8 @@
                                 v-model="addDate.sanqifukuanri"
                                 placeholder="三期租金日期"
                                 style="width: 100%"
+                                :disabled="lydisabled"
                         ></el-date-picker>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="8">
-                    <el-form-item label="实际月租金" prop="actualrent" required>
-                        <el-input v-model.number="addDate.actualrent" placeholder="实际月租金"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -325,6 +332,7 @@
                 <el-checkbox-group
                         v-model="addDate.jiafangfeiyong"
                         @change="changeOnCheck(1)"
+                        :disabled="lydisabled"
                 >
                     <el-checkbox label="（1）供暖费"></el-checkbox>
                     <el-checkbox label="（2）制冷费"></el-checkbox>
@@ -341,7 +349,7 @@
                 </el-checkbox-group>
             </el-form-item>
             <el-form-item label="乙方承担" prop="yifangfeiyong" required >
-                <el-checkbox-group v-model="addDate.yifangfeiyong" @change="changeOnCheck(2)">
+                <el-checkbox-group v-model="addDate.yifangfeiyong" @change="changeOnCheck(2)" :disabled="lydisabled">
                     <el-checkbox label="（1）供暖费"></el-checkbox>
                     <el-checkbox label="（2）制冷费"></el-checkbox>
                     <el-checkbox label="（3）物业管理费"></el-checkbox>
@@ -393,6 +401,7 @@
                     "（12）其他"
                 ],
                 editVisible:true,
+                lydisabled:false,
                 options:[
                     {
                         value: 1,
@@ -631,6 +640,10 @@
             if(this.$route.path=='/purchaseContract/view'){
                 this.editVisible   =false;
             }
+            if(this.$route.path=='/purchaseContract/edit'&&this.$route.query.status>=6){
+                this.lydisabled = true;
+            }
+
         }
     }
 </script>

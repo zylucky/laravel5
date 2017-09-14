@@ -65,11 +65,11 @@
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{item.yuezujin}}&nbsp;&nbsp;</u>元/月）；
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(item.yuezujin)}}&nbsp;&nbsp;</u>元/月）；
             <br>
         </span>
             </p>
-            <p>如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{addDate.yanqizujin}}&nbsp;&nbsp;</u>元/月）。
+            <p>如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(addDate.yanqizujin)?toDecimal(addDate.yanqizujin):''}}&nbsp;&nbsp;</u>元/月）。
                 <br>
                 租金的支付方式：
                 <span v-for="(item,index) in addDate.fukuanFangshiList"
@@ -107,7 +107,7 @@
                 <br>
                 （二）保证金：人民币（大写）
                 <u>&nbsp;&nbsp;{{daxie(addDate.yajin)}}&nbsp;&nbsp;</u> （￥：
-                <u>&nbsp;&nbsp;{{(addDate.yajin)}}&nbsp;&nbsp;</u> 元），乙方在甲乙双方签署本合同当日向甲方支付，如甲方提供的房屋所有权证复印件和身份证复印件不全，则乙方仅支付甲方百分之五十的保证金，剩余百分之五十的保证金于甲方补齐房屋所有权证复印件及身份证复印件后支付。管理期满或合同解除后，保证金除抵扣应由乙方承担的费用，剩余部分应如数返还给乙方。</p>
+                <u>&nbsp;&nbsp;{{(toDecimal(addDate.yajin))}}&nbsp;&nbsp;</u> 元），乙方在甲乙双方签署本合同当日向甲方支付，如甲方提供的房屋所有权证复印件和身份证复印件不全，则乙方仅支付甲方百分之五十的保证金，剩余百分之五十的保证金于甲方补齐房屋所有权证复印件及身份证复印件后支付。管理期满或合同解除后，保证金除抵扣应由乙方承担的费用，剩余部分应如数返还给乙方。</p>
             <p><b>第四条  资产管理服务费</b></p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲、乙双方一致同意，乙方按照风险自担的方式收取资产管理服务费。即乙方对房屋进行出租及为实际使用人提供增值服务而取得的收入中，超出向甲方支付固定租金收益的溢价部分，将作为乙方的服务费，由乙方直接收取；如未产生溢价的，甲方亦不向乙方支付任何服务费用，该风险由乙方自行承担。</p>
             <p><b>第五条  相关费用的承担方式</b></p>
@@ -329,6 +329,23 @@
             }
         },
         methods:{
+            toDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            },
             daxie(money) {
                 if(money==null){
                     return '';
