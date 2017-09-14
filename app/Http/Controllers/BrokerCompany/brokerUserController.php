@@ -24,7 +24,7 @@ class brokerUserController extends Controller
         $username = Input::get('username');
         $pageSize = Input::get('pageSize');
         $page= Input::get('page');
-
+        $tel= Input::get('bk_dianhua');
         $client = new Client ([
             'base_uri' => $this->base_url,
 
@@ -39,6 +39,7 @@ class brokerUserController extends Controller
                 'qddj' => $qvdaodengji,
                 'sdate' => $startdate,
                 'edate' => $enddate,
+                'tel'=>$tel,
             ]
         ]);
         return $response->getBody();

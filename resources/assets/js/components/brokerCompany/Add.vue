@@ -79,8 +79,8 @@
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="公司所在楼盘" prop="gsLoupan">
-                            <el-input v-model="brokerCompanyFrom.gsLoupan" placeholder="请输入公司所在楼盘"></el-input>
+                        <el-form-item label="项目名称" prop="gsLoupan">
+                            <el-input v-model="brokerCompanyFrom.gsLoupan" placeholder="请输入项目名称"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">

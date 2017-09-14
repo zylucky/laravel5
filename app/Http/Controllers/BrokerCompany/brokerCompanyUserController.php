@@ -25,6 +25,7 @@ class brokerCompanyUserController extends Controller
         $buildingname = Input::get('buildingname');
         $qvdaodengji = Input::get('qvdaodengji');
         $cid = Input::get('id');
+        $tel= Input::get('bk_dianhua');
         $client = new Client ([
             'base_uri' => $this->base_url,
 
@@ -40,6 +41,7 @@ class brokerCompanyUserController extends Controller
                 'sdate' => $startdate,
                 'edate' => $enddate,
                 'compayid' => $cid,
+                'tel'=>$tel,
             ]
         ]);
         return $response->getBody();

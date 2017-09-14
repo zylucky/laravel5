@@ -6,11 +6,11 @@
             <el-form-item label="公司名称：">
                 <el-input v-model="filters.bk_name" placeholder="请输入公司名称"></el-input>
             </el-form-item>
-            <el-form-item label="所在楼盘："   >
-                <el-input v-model="filters.buildingname" placeholder="请输入所在楼盘"></el-input>
+            <el-form-item label="项目名称："   >
+                <el-input v-model="filters.buildingname" placeholder="请输入项目名称"></el-input>
             </el-form-item>
-            <el-form-item label="渠道等级："    >
-                <el-select v-model="filters.qvdaodengji" placeholder="请选择渠道等级"  >
+            <el-form-item label="粘性等级："    >
+                <el-select v-model="filters.qvdaodengji" placeholder="请选择粘性等级"  >
                     <el-option
                             v-for="item in optionsqddj"
                             :key="item.value"
@@ -20,16 +20,12 @@
                 </el-select>
             </el-form-item>
             <br/>
-            <el-form-item label="最后跟进日期：">
-            <el-date-picker type="date" placeholder="最后跟进日期" v-model="filters.startdate">
-            </el-date-picker>
-            <el-date-picker type="date" placeholder="至" v-model="filters.enddate">
-            </el-date-picker>
-            </el-form-item>
             <el-form-item label="渠道姓名：">
                 <el-input v-model="filters.bk_username" placeholder="请输入渠道人员姓名"></el-input>
             </el-form-item>
-
+            <el-form-item label="联系电话：">
+                <el-input v-model="filters.bk_dianhua" placeholder="请输入联系电话"></el-input>
+            </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getBrokerCompanyUser">搜索</el-button>
                 <el-button v-if="fun('brokerCompanyUserAdd')" type="primary" class="el-icon-plus" @click="handleAdd"> 新增</el-button>
@@ -47,9 +43,9 @@
             </el-table-column>
             <el-table-column prop="qvDaoCompayXinxi.compayname" label="公司名称"  >
             </el-table-column>
-            <el-table-column prop="qvDaoCompayXinxi.gsLoupan" label="公司所在楼盘"  >
+            <el-table-column prop="qvDaoCompayXinxi.gsLoupan" label="项目名称"  >
             </el-table-column>
-            <el-table-column prop="qvdaodengji" label="渠道等级"   >
+            <el-table-column prop="qvdaodengji" label="粘性等级"   >
             </el-table-column>
             <el-table-column prop="genjinDate" label="最后跟进日期"  :formatter="changeDate">
             </el-table-column>
@@ -126,7 +122,8 @@
                     startdate:'',
                     enddate:'',
                     buildingname:'',
-                    qvdaodengji:''
+                    qvdaodengji:'',
+                    bk_dianhua:'',
                 },
 
 
@@ -142,124 +139,6 @@
                 bkNameloading: false,
                 options1:[],
                 optionsqddj:[  ],
-
-
-                editFormVisible: false,//编辑界面是否显示
-                editLoading: false,
-                editFormRules: {
-                    tQdCompayId:[
-                        { required: true,validator:(rule,value,callback)=>{
-                            if(value==''){
-                               callback(new Error('输入渠道公司名称' ));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                    qdPername: [
-                        { required: true, message: '请输入渠道公司人员姓名', trigger: 'blur' }
-                    ],
-                    qdPertel: [
-                        { required: true, message: '请输入人员电话', trigger: 'blur' }
-                    ],
-                    yjzbSf: [
-                        { type: 'number', message: '收房佣金占比不能为空且必须为数字',trigger: 'blur' },
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("收房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                    yjzbCf: [
-                        { type: 'number', message: '出房佣金占比不能为空且必须为数字',trigger: 'blur'},
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("出房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                    yjType: [
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(/^\d+$/.test(value) == false){
-                                callback(new Error("请输入佣金类型"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                },
-                //编辑界面数据
-                editForm: {
-                    //compayname: '',
-                    tQdCompayId:'',
-                    qdPername:'',
-                    qdPertel:'',
-                    yjzbSf:'',
-                    yjzbCf:'',
-                    yjType:'',
-                },
-                addFormVisible: false,//新增界面是否显示
-                addLoading: false,
-                addFormRules: {
-                    tQdCompayId:[
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(/^\d+$/.test(value) == false){
-                                callback(new Error('请输入渠道公司名称'));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                    qdPername: [
-                        { required: true, message: '请输入渠道公司人员姓名', trigger: 'blur' }
-                    ],
-                    qdPertel: [
-                        { required: true, message: '请输入人员电话', trigger: 'blur' }
-                    ],
-                    yjzbSf: [
-                        { type: 'number', message: '收房佣金占比不能为空且必须为数字',trigger: 'blur' },
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("收房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                    yjzbCf: [
-                        { type: 'number', message: '出房佣金占比不能为空且必须为数字',trigger: 'blur'},
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(value>1||value<0){
-                                callback(new Error("出房佣金占比只能是0到1之间的数"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                    yjType: [
-                        {required: true,validator:(rule,value,callback)=>{
-                            if(/^\d+$/.test(value) == false){
-                                callback(new Error("请输入佣金类型"));
-                            }else{
-                                callback();
-                            }
-                        }, trigger:'blur'}
-                    ],
-                },
-                //新增界面数据
-                addForm: {
-                    tQdCompayId: '',
-                    qdPername:'',
-                    qdPertel:'',
-                    yjzbSf:'',
-                    yjzbCf:'',
-                    yjType:1,
-
-                },
 
                 bk_id:0,
                 bk_name:'',
@@ -377,6 +256,7 @@
                     buildingname: this.filters.buildingname,
                     qvdaodengji: this.filters.qvdaodengji,
                     id:this.$route.query.id!=null?this.$route.query.id:'',
+                    bk_dianhua:this.filters.bk_dianhua
                 };
                 this.listLoading = true;
                 getBrokerCompanyUserListPage(para).then((res) => {

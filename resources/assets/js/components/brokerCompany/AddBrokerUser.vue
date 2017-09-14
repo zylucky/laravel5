@@ -173,7 +173,7 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-form-item label="渠道等级" prop="qvdaodengji">
+                <el-form-item label="粘性等级" prop="qvdaodengji">
                     <el-select v-model="brokerCompanyUserForm.qvdaodengji" placeholder="">
                         <el-option
                                 v-for="item in optionsqddj"

@@ -17,6 +17,7 @@ class UserController extends Controller
         return $users =  User::when($name, function ($query) use ($name) {
             return $query->where('name','like',"$name%");
         })->paginate($pageSize);
+
     }
     public function delete()
     {
