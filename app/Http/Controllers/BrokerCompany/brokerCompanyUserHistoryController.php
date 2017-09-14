@@ -52,7 +52,9 @@ class brokerCompanyUserHistoryController extends Controller
      */
     public function store(Request $request)
     {
-        $obj=array_merge($request->params,Array('genjinren'=>"张三",'tPersonId'=>1));
+        // 获取当前用户
+        $user = Auth::user();
+        $obj=array_merge($request->params,Array('genjinren'=>$user->name,'tPersonId'=>$user->id));
         $client = new Client ([
             'base_uri' => $this->base_url,
 

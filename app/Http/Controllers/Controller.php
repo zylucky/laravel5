@@ -15,5 +15,6 @@ class Controller extends BaseController
     //public $work_url = 'http://192.168.0.222:6316';
     public $omc_url = 'http://47.92.145.21:8080';
     //public $omc_url = 'http://192.168.0.222:8080';
+
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

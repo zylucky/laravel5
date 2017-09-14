@@ -62,7 +62,9 @@ class brokerCompanyHistoryController extends Controller
 
       // dd( $request->params);
         //"genjinjindo":"一","genjindate":1500364339000,"genjinren":"张三","tPersonId":1,
-        $obj=array_merge($request->params,Array('genjinren'=>"张三",'tPersonId'=>1));
+        // 获取当前用户
+        $user = Auth::user();
+        $obj=array_merge($request->params,Array('genjinren'=>$user->name,'tPersonId'=>$user->id));
         $client = new Client ([
             'base_uri' => $this->base_url,
 

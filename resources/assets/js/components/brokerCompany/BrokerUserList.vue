@@ -25,8 +25,8 @@
                 </el-select>
 
             </el-form-item>
-            <el-form-item label="渠道等级："    >
-                <el-select v-model="filters.qvdaodengji" placeholder="请选择渠道等级"  >
+            <el-form-item label="粘性等级："    >
+                <el-select v-model="filters.qvdaodengji" placeholder="请选择粘性等级"  >
                     <el-option
                             v-for="item in optionsqddj"
                             :key="item.value"
@@ -36,14 +36,11 @@
                 </el-select>
             </el-form-item>
             <br/>
-            <el-form-item label="最后跟进日期：">
-            <el-date-picker type="date" placeholder="最后跟进日期" v-model="filters.startdate">
-            </el-date-picker>
-            <el-date-picker type="date" placeholder="至" v-model="filters.enddate">
-            </el-date-picker>
-            </el-form-item>
             <el-form-item label="渠道姓名：">
                 <el-input v-model="filters.bk_username" placeholder="请输入渠道人员姓名"></el-input>
+            </el-form-item>
+            <el-form-item label="联系电话：">
+                <el-input v-model="filters.bk_dianhua" placeholder="请输入联系电话"></el-input>
             </el-form-item>
 
             <el-form-item>
@@ -60,7 +57,7 @@
             </el-table-column>
             <el-table-column label="所在业务区域"  :formatter="changeywqy">
             </el-table-column>
-            <el-table-column prop="qvdaodengji" label="渠道等级"   >
+            <el-table-column prop="qvdaodengji" label="粘性等级"   >
             </el-table-column>
             <el-table-column prop="genjinDate" label="最后跟进日期"  :formatter="changeDate" >
             </el-table-column>
@@ -139,6 +136,7 @@
                     qvdaodengji:'',
                     yewuqvyvid:'',
                     yewupianqvid:'',
+                    bk_dianhua:'',
                 },
                 options:[
                     {
@@ -234,6 +232,7 @@
                     startdate: this.filters.startdate!=''?this.filters.startdate.toLocaleDateString():'' ,
                     enddate: this.filters.enddate!=''?new Date(this.filters.enddate).toLocaleDateString():'',
                     qvdaodengji: this.filters.qvdaodengji,
+                    bk_dianhua:this.filters.bk_dianhua
                 };
                 this.listLoading = true;
                 getBrokerUserListPage(para).then((res) => {

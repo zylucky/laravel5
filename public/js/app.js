@@ -32985,9 +32985,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 
@@ -33001,7 +32998,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 buildingname: '',
                 qvdaodengji: '',
                 yewuqvyvid: '',
-                yewupianqvid: ''
+                yewupianqvid: '',
+                bk_dianhua: ''
             },
             options: [{
                 value: 1,
@@ -33095,7 +33093,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 yewupianqvid: this.filters.yewupianqvid,
                 startdate: this.filters.startdate != '' ? this.filters.startdate.toLocaleDateString() : '',
                 enddate: this.filters.enddate != '' ? new Date(this.filters.enddate).toLocaleDateString() : '',
-                qvdaodengji: this.filters.qvdaodengji
+                qvdaodengji: this.filters.qvdaodengji,
+                bk_dianhua: this.filters.bk_dianhua
             };
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["Z" /* getBrokerUserListPage */])(para).then(function (res) {
@@ -33480,6 +33479,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -33496,7 +33498,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 yewuqvyvid: '',
                 yewupianqvid: '',
                 gongsijingyingshuxing: '',
-                hezuoxieyidengji: ''
+                hezuoxieyidengji: '',
+                xm: ''
 
             },
             options: [{
@@ -33523,91 +33526,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             brokerCompany: [],
             listLoading: false,
             sels: [], //列表选中列
-
-            editFormVisible: false, //编辑界面是否显示
-            editLoading: false,
-            editFormRules: {
-                compayname: [{ required: true, message: '请输入渠道公司名称', trigger: 'blur' }],
-                yjzbSf: [{ type: 'number', message: '收房佣金占比不能为空且必须为数字', trigger: 'blur' }, { required: true, validator: function validator(rule, value, callback) {
-                        if (value > 1 || value < 0) {
-                            callback(new Error("收房佣金占比只能是0到1之间的数"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                yjzbCf: [{ type: 'number', message: '出房佣金占比不能为空且必须为数字', trigger: 'blur' }, { required: true, validator: function validator(rule, value, callback) {
-                        if (value > 1 || value < 0) {
-                            callback(new Error("出房佣金占比只能是0到1之间的数"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                yjType: [{ required: true, validator: function validator(rule, value, callback) {
-                        if (/^\d+$/.test(value) == false) {
-                            callback(new Error("请输入佣金类型"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }]
-            },
-            //编辑界面数据
-            editForm: {
-                tQdCompayId: 0,
-                compayname: '',
-                yjzbSf: '',
-                yjzbCf: '',
-                compaytest: '',
-                yjType: 1
-            },
-            addFormVisible: false, //新增界面是否显示
-            addLoading: false,
-            addFormRules: {
-                compayname: [{ required: true, message: '请输入渠道公司名称', trigger: 'blur' }, { validator: function validator(rule, value, callback) {
-                        var para = {
-                            name: value
-                        };
-                        if (value != '') {
-                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_19" /* checkbkNameList */])(para).then(function (res) {
-                                //alert( JSON.stringify(res));
-                                if (res.data.code != '200') {
-                                    callback(new Error(res.data.msg));
-                                } else {
-                                    callback();
-                                }
-                            });
-                        }
-                    }, trigger: 'blur' }],
-                yjzbSf: [{ type: 'number', message: '收房佣金占比不能为空且必须为数字', trigger: 'blur' }, { required: true, validator: function validator(rule, value, callback) {
-                        if (value > 1 || value < 0) {
-                            callback(new Error("收房佣金占比只能是0到1之间的数"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                yjzbCf: [{ type: 'number', message: '出房佣金占比不能为空且必须为数字', trigger: 'blur' }, { required: true, validator: function validator(rule, value, callback) {
-                        if (value > 1 || value < 0) {
-                            callback(new Error("出房佣金占比只能是0到1之间的数"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                yjType: [{ required: true, validator: function validator(rule, value, callback) {
-                        if (/^\d+$/.test(value) == false) {
-                            callback(new Error("请输入佣金类型"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }]
-
-            },
-            //新增界面数据
-            addForm: {
-                compayname: '',
-                yjzbSf: '',
-                yjzbCf: '',
-                compaytest: '',
-                yjType: 1
-            },
 
             tQdCompayId: 0,
             bk_name: '',
@@ -33785,8 +33703,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 yewuqvyvid: this.filters.yewuqvyvid,
                 yewupianqvid: this.filters.yewupianqvid,
                 gongsijingyingshuxing: this.filters.gongsijingyingshuxing.toString(),
-                hezuoxieyidengji: this.filters.hezuoxieyidengji
-
+                hezuoxieyidengji: this.filters.hezuoxieyidengji,
+                xm: this.filters.xm
             };
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_21" /* getBrokerCompanyListPage */])(para).then(function (res) {
@@ -34092,10 +34010,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -34108,7 +34022,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 startdate: '',
                 enddate: '',
                 buildingname: '',
-                qvdaodengji: ''
+                qvdaodengji: '',
+                bk_dianhua: ''
             },
 
             //分页类数据
@@ -34123,95 +34038,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             bkNameloading: false,
             options1: [],
             optionsqddj: [],
-
-            editFormVisible: false, //编辑界面是否显示
-            editLoading: false,
-            editFormRules: {
-                tQdCompayId: [{ required: true, validator: function validator(rule, value, callback) {
-                        if (value == '') {
-                            callback(new Error('输入渠道公司名称'));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                qdPername: [{ required: true, message: '请输入渠道公司人员姓名', trigger: 'blur' }],
-                qdPertel: [{ required: true, message: '请输入人员电话', trigger: 'blur' }],
-                yjzbSf: [{ type: 'number', message: '收房佣金占比不能为空且必须为数字', trigger: 'blur' }, { required: true, validator: function validator(rule, value, callback) {
-                        if (value > 1 || value < 0) {
-                            callback(new Error("收房佣金占比只能是0到1之间的数"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                yjzbCf: [{ type: 'number', message: '出房佣金占比不能为空且必须为数字', trigger: 'blur' }, { required: true, validator: function validator(rule, value, callback) {
-                        if (value > 1 || value < 0) {
-                            callback(new Error("出房佣金占比只能是0到1之间的数"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                yjType: [{ required: true, validator: function validator(rule, value, callback) {
-                        if (/^\d+$/.test(value) == false) {
-                            callback(new Error("请输入佣金类型"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }]
-            },
-            //编辑界面数据
-            editForm: {
-                //compayname: '',
-                tQdCompayId: '',
-                qdPername: '',
-                qdPertel: '',
-                yjzbSf: '',
-                yjzbCf: '',
-                yjType: ''
-            },
-            addFormVisible: false, //新增界面是否显示
-            addLoading: false,
-            addFormRules: {
-                tQdCompayId: [{ required: true, validator: function validator(rule, value, callback) {
-                        if (/^\d+$/.test(value) == false) {
-                            callback(new Error('请输入渠道公司名称'));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                qdPername: [{ required: true, message: '请输入渠道公司人员姓名', trigger: 'blur' }],
-                qdPertel: [{ required: true, message: '请输入人员电话', trigger: 'blur' }],
-                yjzbSf: [{ type: 'number', message: '收房佣金占比不能为空且必须为数字', trigger: 'blur' }, { required: true, validator: function validator(rule, value, callback) {
-                        if (value > 1 || value < 0) {
-                            callback(new Error("收房佣金占比只能是0到1之间的数"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                yjzbCf: [{ type: 'number', message: '出房佣金占比不能为空且必须为数字', trigger: 'blur' }, { required: true, validator: function validator(rule, value, callback) {
-                        if (value > 1 || value < 0) {
-                            callback(new Error("出房佣金占比只能是0到1之间的数"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }],
-                yjType: [{ required: true, validator: function validator(rule, value, callback) {
-                        if (/^\d+$/.test(value) == false) {
-                            callback(new Error("请输入佣金类型"));
-                        } else {
-                            callback();
-                        }
-                    }, trigger: 'blur' }]
-            },
-            //新增界面数据
-            addForm: {
-                tQdCompayId: '',
-                qdPername: '',
-                qdPertel: '',
-                yjzbSf: '',
-                yjzbCf: '',
-                yjType: 1
-
-            },
 
             bk_id: 0,
             bk_name: '',
@@ -34336,7 +34162,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 enddate: this.filters.enddate != '' ? new Date(this.filters.enddate).toLocaleDateString() : '',
                 buildingname: this.filters.buildingname,
                 qvdaodengji: this.filters.qvdaodengji,
-                id: this.$route.query.id != null ? this.$route.query.id : ''
+                id: this.$route.query.id != null ? this.$route.query.id : '',
+                bk_dianhua: this.filters.bk_dianhua
             };
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_9" /* getBrokerCompanyUserListPage */])(para).then(function (res) {
@@ -109934,6 +109761,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "filters.bk_name"
     }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "项目名称："
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "请输入项目名称"
+    },
+    model: {
+      value: (_vm.filters.xm),
+      callback: function($$v) {
+        _vm.filters.xm = $$v
+      },
+      expression: "filters.xm"
+    }
   })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary",
@@ -113815,12 +113657,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "公司所在楼盘",
+      "label": "项目名称",
       "prop": "gsLoupan"
     }
   }, [_c('el-input', {
     attrs: {
-      "placeholder": "请输入公司所在楼盘"
+      "placeholder": "请输入项目名称"
     },
     model: {
       value: (_vm.brokerCompanyFrom.gsLoupan),
@@ -119503,7 +119345,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "公司所在楼盘",
+      "label": "项目名称",
       "prop": "gsLoupan"
     }
   }, [_c('el-input', {
@@ -119793,7 +119635,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1) : _vm._e()], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "渠道等级",
+      "label": "粘性等级",
       "prop": "qvdaodengji"
     }
   }, [_c('el-select', {
@@ -126995,11 +126837,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "所在楼盘："
+      "label": "项目名称："
     }
   }, [_c('el-input', {
     attrs: {
-      "placeholder": "请输入所在楼盘"
+      "placeholder": "请输入项目名称"
     },
     model: {
       value: (_vm.filters.buildingname),
@@ -127010,11 +126852,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "渠道等级："
+      "label": "粘性等级："
     }
   }, [_c('el-select', {
     attrs: {
-      "placeholder": "请选择渠道等级"
+      "placeholder": "请选择粘性等级"
     },
     model: {
       value: (_vm.filters.qvdaodengji),
@@ -127033,34 +126875,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   }))], 1), _vm._v(" "), _c('br'), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "最后跟进日期："
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "最后跟进日期"
-    },
-    model: {
-      value: (_vm.filters.startdate),
-      callback: function($$v) {
-        _vm.filters.startdate = $$v
-      },
-      expression: "filters.startdate"
-    }
-  }), _vm._v(" "), _c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "至"
-    },
-    model: {
-      value: (_vm.filters.enddate),
-      callback: function($$v) {
-        _vm.filters.enddate = $$v
-      },
-      expression: "filters.enddate"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
       "label": "渠道姓名："
     }
   }, [_c('el-input', {
@@ -127073,6 +126887,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.filters.bk_username = $$v
       },
       expression: "filters.bk_username"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "联系电话："
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "请输入联系电话"
+    },
+    model: {
+      value: (_vm.filters.bk_dianhua),
+      callback: function($$v) {
+        _vm.filters.bk_dianhua = $$v
+      },
+      expression: "filters.bk_dianhua"
     }
   })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
@@ -127136,12 +126965,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "qvDaoCompayXinxi.gsLoupan",
-      "label": "公司所在楼盘"
+      "label": "项目名称"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "qvdaodengji",
-      "label": "渠道等级"
+      "label": "粘性等级"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -128959,11 +128788,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   }))], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "渠道等级："
+      "label": "粘性等级："
     }
   }, [_c('el-select', {
     attrs: {
-      "placeholder": "请选择渠道等级"
+      "placeholder": "请选择粘性等级"
     },
     model: {
       value: (_vm.filters.qvdaodengji),
@@ -128982,34 +128811,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   }))], 1), _vm._v(" "), _c('br'), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "最后跟进日期："
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "最后跟进日期"
-    },
-    model: {
-      value: (_vm.filters.startdate),
-      callback: function($$v) {
-        _vm.filters.startdate = $$v
-      },
-      expression: "filters.startdate"
-    }
-  }), _vm._v(" "), _c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "至"
-    },
-    model: {
-      value: (_vm.filters.enddate),
-      callback: function($$v) {
-        _vm.filters.enddate = $$v
-      },
-      expression: "filters.enddate"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
       "label": "渠道姓名："
     }
   }, [_c('el-input', {
@@ -129022,6 +128823,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.filters.bk_username = $$v
       },
       expression: "filters.bk_username"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "联系电话："
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "请输入联系电话"
+    },
+    model: {
+      value: (_vm.filters.bk_dianhua),
+      callback: function($$v) {
+        _vm.filters.bk_dianhua = $$v
+      },
+      expression: "filters.bk_dianhua"
     }
   })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
@@ -129080,7 +128896,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "qvdaodengji",
-      "label": "渠道等级"
+      "label": "粘性等级"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -129624,7 +129440,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1) : _vm._e()], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "渠道等级",
+      "label": "粘性等级",
       "prop": "qvdaodengji"
     }
   }, [_c('el-select', {
