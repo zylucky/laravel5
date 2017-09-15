@@ -300,7 +300,7 @@
                     zhiwu: [
                         {required: true, message: '不能为空'},
                     ],
-                    yslianxiren1Id: [
+                    yslianxiren1: [
                         {required: true, message: '不能为空'},
                     ],
                     shifouweixin: [
