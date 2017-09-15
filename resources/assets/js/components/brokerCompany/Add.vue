@@ -777,7 +777,7 @@
                             }
                         } else {
                             this.$message({
-                                message: '获取行政区域数据失败',
+                                message: '获取地图区域数据失败',
                                 type: 'error'
                             });
                         }
@@ -789,6 +789,11 @@
                 let para = {
                     code: this.brokerCompanyFrom.dzXingzhengqvyvId,
                 };
+                for (var x in this.optionszzqy) {
+                    if (this.optionszzqy[x].value == this.brokerCompanyFrom.dzXingzhengqvyvId) {
+                        this.brokerCompanyFrom.dzXingzhengqvyv = this.optionszzqy[x].label;
+                    }
+                }
                 if (this.ischanged) {
                     this.brokerCompanyFrom.dzJiedaoId = null;//清除街道的缓存
                     this.optionsjdqy = [];
