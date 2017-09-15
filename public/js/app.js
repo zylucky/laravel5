@@ -31369,7 +31369,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 yslianxiren1: [{ required: true, message: '不能为空' }],
                 shifouweixin: [{ required: true, message: '不能为空' }],
                 shifoudaikanyoushi: [{ required: true, message: '不能为空' }],
-                shifouqianyueyoushifang: [{ required: true, message: '不能为空' }],
+                shifoudaikanyoushifang: [{ required: true, message: '不能为空' }],
                 qvdaodengji: [{ required: true, message: '不能为空' }],
 
                 tianjiahaoyourenshu: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
@@ -32059,7 +32059,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 qdPername: [{ required: true, message: '不能为空' }],
                 tQdCompayId: [{ required: true, message: '不能为空' }],
                 zhiwu: [{ required: true, message: '不能为空' }],
-                yslianxiren1Id: [{ required: true, message: '不能为空' }],
+                yslianxiren1: [{ required: true, message: '不能为空' }],
                 shifouweixin: [{ required: true, message: '不能为空' }],
                 shifoudaikanyoushi: [{ required: true, message: '不能为空' }],
                 shifouqianyueyoushifang: [{ required: true, message: '不能为空' }],
