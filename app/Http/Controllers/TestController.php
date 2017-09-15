@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Excel;
 use Qiniu\Auth;
 
 class TestController extends Controller
@@ -18,6 +19,20 @@ class TestController extends Controller
      */
     public function index()
     {
+        $cellData = [
+            ['学号','姓名','成绩'],
+            ['10001','AAAAA','99'],
+            ['10002','BBBBB','92'],
+            ['10003','CCCCC','95'],
+            ['10004','DDDDD','89'],
+            ['10005','EEEEE','96'],
+        ];
+        Excel::create('学生成绩',function($excel) use ($cellData){
+            $excel->sheet('score', function($sheet) use ($cellData){
+                $sheet->rows($cellData);
+            });
+        })->export('xls');
+       exit;
        $hello =  DB::connection('mysql2')->table('t_shoufanghetong')->find(3091);
        dd($hello);
 
