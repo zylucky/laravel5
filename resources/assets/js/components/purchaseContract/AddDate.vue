@@ -276,13 +276,13 @@
             <!--交房日、签约日-->
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="收房日" prop="shoufangdate" required>
-                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;" :disabled="lydisabled"></el-date-picker>
+                    <el-form-item label="收房日" prop="shoufangdate" >
+                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;" ></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="签约日" prop="qianyuedate" required>
-                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;" :disabled="lydisabled"></el-date-picker>
+                    <el-form-item label="签约日" prop="qianyuedate" >
+                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;" ></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
@@ -328,7 +328,7 @@
                 </el-col>
             </el-row>
             <!--各种费用-->
-            <el-form-item label="甲方承担" prop="jiafangfeiyong" required>
+            <el-form-item label="甲方承担" prop="jiafangfeiyong" >
                 <el-checkbox-group
                         v-model="addDate.jiafangfeiyong"
                         @change="changeOnCheck(1)"
@@ -348,7 +348,7 @@
                     <el-checkbox label="（12）其他"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
-            <el-form-item label="乙方承担" prop="yifangfeiyong" required >
+            <el-form-item label="乙方承担" prop="yifangfeiyong"  >
                 <el-checkbox-group v-model="addDate.yifangfeiyong" @change="changeOnCheck(2)" :disabled="lydisabled">
                     <el-checkbox label="（1）供暖费"></el-checkbox>
                     <el-checkbox label="（2）制冷费"></el-checkbox>
@@ -451,21 +451,25 @@
                         { type: 'number', message: '必须为数字'},
                     ],yajinfukuanri: [
                         { required: true, message: '不能为空' },
-                    ],shoufangdate: [
-                        { required: true, message: '不能为空' }
-                    ],qianyuedate: [
-                        { required: true, message: '不能为空' }
-                    ],shouqifukuanri: [
+                    ],
+//                    shoufangdate: [
+//                        { required: true, message: '不能为空' }
+//                    ],qianyuedate: [
+//                        { required: true, message: '不能为空' }
+//                    ],
+                    shouqifukuanri: [
                         { required: true, message: '不能为空' }
                     ],erqifukuanri: [
                         { required: true, message: '不能为空' }
                     ],sanqifukuanri: [
                         { required: true, message: '不能为空' }
-                    ],jiafangfeiyong: [
-                        { required: true, message: '不能为空' }
-                    ],yifangfeiyong: [
-                        { required: true, message: '不能为空' }
-                    ],actualrent: [
+                    ],
+//                    jiafangfeiyong: [
+//                        { required: true, message: '不能为空' }
+//                    ],yifangfeiyong: [
+//                        { required: true, message: '不能为空' }
+//                    ],
+                    actualrent: [
                         { required: true, message: '不能为空' }
                     ],
                 },
