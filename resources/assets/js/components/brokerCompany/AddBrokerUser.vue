@@ -60,60 +60,18 @@
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item  label="幼狮联系人1" prop="yslianxiren1Id">
-                            <el-select
-                                    v-model="brokerCompanyUserForm.yslianxiren1Id"
-                                    filterable
-                                    remote
-                                    @change="changeyslxr1"
-                                    placeholder="请输入幼狮联系人"
-                                    :remote-method="remoteMethodyslxr1"
-                                    :loading="fristyslxrloading1">
-                                <el-option
-                                        v-for="item in optionsyslxr1"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value">
-                                </el-option>
-                            </el-select>
+                        <el-form-item  label="幼狮联系人1" prop="yslianxiren1">
+                            <el-input v-model="brokerCompanyUserForm.yslianxiren1"  ></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item  label="幼狮联系人2" prop="yslianxiren2Id">
-                            <el-select
-                                    v-model="brokerCompanyUserForm.yslianxiren2Id"
-                                    filterable
-                                    remote
-                                    @change="changeyslxr2"
-                                    placeholder="请输入幼狮联系人"
-                                    :remote-method="remoteMethodyslxr2"
-                                    :loading="fristyslxrloading2">
-                                <el-option
-                                        v-for="item in optionsyslxr2"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value">
-                                </el-option>
-                            </el-select>
+                        <el-form-item  label="幼狮联系人2" prop="yslianxiren2">
+                            <el-input v-model="brokerCompanyUserForm.yslianxiren2"  ></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item  label="幼狮联系人3" prop="yslianxiren3Id">
-                            <el-select
-                                    v-model="brokerCompanyUserForm.yslianxiren3Id"
-                                    filterable
-                                    remote
-                                    @change="changeyslxr3"
-                                    placeholder="请输入幼狮联系人"
-                                    :remote-method="remoteMethodyslxr3"
-                                    :loading="fristyslxrloading3">
-                                <el-option
-                                        v-for="item in optionsyslxr3"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value">
-                                </el-option>
-                            </el-select>
+                        <el-form-item  label="幼狮联系人3" prop="yslianxiren3">
+                            <el-input v-model="brokerCompanyUserForm.yslianxiren3"  ></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -346,7 +304,7 @@
                     yewupianqvId: [
                         {required: true, message: '不能为空'},
                     ],
-                    yslianxiren1Id: [
+                    yslianxiren1: [
                         {required: true, message: '不能为空'},
                     ],
                     shifouweixin: [
@@ -355,7 +313,7 @@
                     shifoudaikanyoushi: [
                         {required: true, message: '不能为空'},
                     ],
-                    shifouqianyueyoushifang: [
+                    shifoudaikanyoushifang: [
                         {required: true, message: '不能为空'},
                     ],
                     qvdaodengji: [
@@ -580,105 +538,6 @@
                     }
                 }
             },
-            //获取幼狮联系人列表
-            remoteMethodyslxr1(query) {
-                let para = {
-                    uname: query
-                };
-                this.list = [];
-                this.fristyslxrloading1 = true;
-                getYSLXRDicList(para).then((res) => {
-                    let arr = [];
-                    arr[0] = '';
-                    for (var i in res.data) {
-                        arr[i] = res.data[i]
-                    }
-                    this.estate = arr;
-                    this.fristyslxrloading1 = false;
-                    this.list = this.estate.map((item, index) => {
-                        return {value: index, label: item};
-                    });
-                    if (query !== '') {
-                        this.fristyslxrloading1 = true;
-                        setTimeout(() => {
-
-                            this.fristyslxrloading1 = false;
-                            this.optionsyslxr1 = this.list.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
-                    } else {
-                        this.optionsyslxr1 = [];
-                    }
-                });
-            },
-            //获取幼狮联系人列表
-            remoteMethodyslxr2(query) {
-                let para = {
-                    uname: query
-                };
-                this.list = [];
-                this.fristyslxrloading2 = true;
-                getYSLXRDicList(para).then((res) => {
-                    let arr = [];
-                    arr[0] = '';
-                    for (var i in res.data) {
-                        arr[i] = res.data[i]
-                    }
-                    this.estate = arr;
-                    this.fristyslxrloading2 = false;
-                    this.list = this.estate.map((item, index) => {
-                        return {value: index, label: item};
-                    });
-                    if (query !== '') {
-                        this.fristyslxrloading2 = true;
-                        setTimeout(() => {
-
-                            this.fristyslxrloading2 = false;
-                            this.optionsyslxr2 = this.list.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
-                    } else {
-                        this.optionsyslxr2 = [];
-                    }
-                });
-            },
-            //获取幼狮联系人列表
-            remoteMethodyslxr3(query) {
-                let para = {
-                    uname: query
-                };
-                this.list = [];
-                this.fristyslxrloading3 = true;
-                getYSLXRDicList(para).then((res) => {
-                    let arr = [];
-                    arr[0] = '';
-                    for (var i in res.data) {
-                        arr[i] = res.data[i]
-                    }
-                    this.estate = arr;
-                    this.fristyslxrloading3 = false;
-                    this.list = this.estate.map((item, index) => {
-                        return {value: index, label: item};
-                    });
-                    if (query !== '') {
-                        this.fristyslxrloading3 = true;
-                        setTimeout(() => {
-
-                            this.fristyslxrloading3 = false;
-                            this.optionsyslxr3 = this.list.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
-                    } else {
-                        this.optionsyslxr3 = [];
-                    }
-                });
-            },
             //获取公司业务区域
             remoteMethodywqy() {
                 let para = {
@@ -732,12 +591,6 @@
             getBrokerUser(id){
                 getBrokerUserInfo(id).then((res) => {
                     if (res.data.code == '200') {
-                        this.optionsyslxr1.push( {value: res.data.data.yslianxiren1Id,
-                            label:res.data.data.yslianxiren1}) ;
-                        this.optionsyslxr2.push( {value: res.data.data.yslianxiren2Id,
-                            label:res.data.data.yslianxiren2}) ;
-                        this.optionsyslxr3.push( {value: res.data.data.yslianxiren3Id,
-                            label:res.data.data.yslianxiren3}) ;
                         this.optionsdtqy.push( {value: res.data.data.yewupianqvId,
                             label:res.data.data.yewupianqv}) ;
                         this.brokerCompanyUserForm= Object.assign({}, res.data.data );
@@ -750,28 +603,7 @@
                 })
             },
 
-            changeyslxr1(){
-                for (var x in this.optionsyslxr1) {
-                    if (this.optionsyslxr1[x].value == this.brokerCompanyUserForm.yslianxiren1Id) {
-                        this.brokerCompanyUserForm.yslianxiren1 = this.optionsyslxr1[x].label;
-                    }
-                }
-            },
-            changeyslxr2(){
-                for (var x in this.optionsyslxr2) {
-                    if (this.optionsyslxr2[x].value == this.brokerCompanyUserForm.yslianxiren2Id) {
-                        this.brokerCompanyUserForm.yslianxiren2= this.optionsyslxr2[x].label;
-                    }
-                }
-            },
 
-            changeyslxr3(){
-                for (var x in this.optionsyslxr3) {
-                    if (this.optionsyslxr3[x].value == this.brokerCompanyUserForm.yslianxiren3Id) {
-                        this.brokerCompanyUserForm.yslianxiren3 = this.optionsyslxr3[x].label;
-                    }
-                }
-            },
             changeDJ()
             {
                 // alert(this.brokerCompanyFrom.yjType );

@@ -6,6 +6,7 @@ use App\models\Role;
 use GuzzleHttp\Client;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Qiniu\Auth;
 
 class TestController extends Controller
@@ -17,51 +18,10 @@ class TestController extends Controller
      */
     public function index()
     {
-        $server1 = '192.168.1.1';
-        $server2 = '192.168.1.2';
-        $server3 = '192.168.1.3';
-        $server4 = '192.168.1.4';
-        $server5 = '192.168.1.5';
-        $server6 = '192.168.1.6';
-        $key1= 'key1';
-        $key2= 'key2';
-        $data = [];
-        $data2 = [];
-        $data[$server1] =  $this->mHash($server1);
-        $data[$server2] =  $this->mHash($server2);
-        $data[$server3] =  $this->mHash($server3);
-        $data[$server4] =  $this->mHash($server4);
-        $data[$server5] =  $this->mHash($server5);
-        $data[$server6] =  $this->mHash($server6);
-        $data[$key1] =$this->mHash($key1);
-        $data[$key2] =$this->mHash($key2);
-        $data2 = $data;
-        $data3 = [];
-        rsort($data);
-        foreach ($data as $key =>$value){
-            foreach ($data2 as $key2=>$value2){
-                if($value2==$value){
-                   $data3[$key2] = $value;
-                }
-            }
-        }
-        dd($data3);exit;
-        return User::create([
-            'name' =>'qudao',
-            'email' => 'qudao',
-            'password' => bcrypt('qudao123'),
-        ]);
-        echo 111;
-        $date = date('y-m-d',strtotime('+ 3 months -1 day',strtotime('2016-11-29'))) ;
-        dd($date);
-        $role = Role::findOrFail(1);
-        dd($role);
-        //
-        return view('test');exit;
-
+       $hello =  DB::connection('mysql2')->table('t_shoufanghetong')->find(3091);
+       dd($hello);
 
     }
-
     /**
      * Show the form for creating a new resource.
      *
