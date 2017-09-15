@@ -313,7 +313,7 @@
                     shifoudaikanyoushi: [
                         {required: true, message: '不能为空'},
                     ],
-                    shifouqianyueyoushifang: [
+                    shifoudaikanyoushifang: [
                         {required: true, message: '不能为空'},
                     ],
                     qvdaodengji: [
