@@ -4,13 +4,13 @@
         <el-col :span="24">
             <el-form-item label="出租人">
                 <el-radio-group v-model="renter.chengzufang">
-                    <el-radio :disabled="true" label="华塑商贸"></el-radio>
-                    <el-radio :disabled="true" label="幼狮科技"></el-radio>
-                    <el-radio :disabled="true" label="航远房地产"></el-radio>
-                    <el-radio :disabled="true" label="航远投资管理"></el-radio>
-                    <el-radio :disabled="true" label="彭昆"></el-radio>
-                    <el-radio :disabled="true" label="彭亮"></el-radio>
-                    <el-radio :disabled="true" label="无"></el-radio>
+                    <el-radio  label="华塑商贸"></el-radio>
+                    <el-radio  label="幼狮科技"></el-radio>
+                    <el-radio  label="航远房地产"></el-radio>
+                    <el-radio  label="航远投资管理"></el-radio>
+                    <el-radio  label="彭昆"></el-radio>
+                    <el-radio  label="彭亮"></el-radio>
+                    <el-radio  label="无"></el-radio>
                 </el-radio-group>
             </el-form-item>
             <el-row>
@@ -90,21 +90,38 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="收款人" prop="shoukuanren" required>
-                        <el-input v-model="renter.shoukuanren"></el-input>
+                        <el-input v-model="renter.shoukuanren" :disabled="lydisabled"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="10">
                     <el-form-item label="开户行" prop="kaihuhang" required>
-                        <el-input v-model="renter.kaihuhang"></el-input>
+                        <el-input v-model="renter.kaihuhang" :disabled="lydisabled"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="账号" prop="zhanghao" required>
-                        <el-input v-model="renter.zhanghao"></el-input>
+                        <input v-model="renter.zhanghao" :disabled="lydisabled"
+                               style="-webkit-appearance: none;
+                                    -moz-appearance: none;
+                                    appearance: none;
+                                    background-color: #fff;
+                                    background-image: none;
+                                    border-radius: 4px;
+                                    border: 1px solid #bfcbd9;
+                                    box-sizing: border-box;
+                                    color: #1f2d3d;
+                                    font-size: inherit;
+                                    height: 36px;
+                                    line-height: 1;
+                                    outline: 0;
+                                    padding: 3px 10px;
+                                    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+                                    width: 100%;"
+                               onkeyup="this.value=this.value.replace(/\D/g,'').replace(/....(?!$)/g,'$& ')" >
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-form-item label="租户类型" prop="zuhuleixing" required>
+            <el-form-item label="租户类型" prop="zuhuleixing" >
                 <el-radio-group v-model="renter.zuhuleixing" @change="zuhuleixingChange">
                     <el-radio :label="1">个人</el-radio>
                     <el-radio :label="2">公司</el-radio>
@@ -116,11 +133,11 @@
                 >
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="承租人" :prop="'chengzuren.' + index + '.name'"
-                                      :rules="[
+                        <el-form-item label="承租人" :prop="'chengzuren.' + index + '.name'">
+                                      <!--:rules="[
                                       { required: true, message: '不能为空' }
-                                        ]"
-                                      required>
+                                        ]"-->
+
                             <el-input v-model="renter.chengzuren[index].name"></el-input>
                         </el-form-item>
                     </el-col>
@@ -186,9 +203,10 @@
                 >
                     <el-row>
                         <el-col :span="18">
-                            <el-form-item label="公司名称" :prop="'chengzuren.' + index + '.name'" :rules="[
+                            <el-form-item label="公司名称" :prop="'chengzuren.' + index + '.name'" >
+                            <!--    :rules="[
                          { required: true, message: '不能为空' }
-                        ]">
+                        ]">-->
                                 <el-input v-model="renter.chengzuren[0].name"></el-input>
                             </el-form-item>
                         </el-col>
@@ -221,45 +239,6 @@
                         </el-col>
                     </el-row>
                 </div>
-<!--
-                <div v-for="(item, index) in renter.chengzuren"
-                    :key="index"
-                >
-                <el-row>
-                    <el-col :span="10">
-                        <el-form-item label="公司名称" :prop="'chengzuren' + index + '.name'" :rules="[
-                         { required: true, message: '不能为空' }
-                        ]">
-                            <el-input v-model="renter.chengzuren[index].name"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item label="法人" >
-                            <el-input v-model="renter.chengzuren[index].faren"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="10">
-                        <el-form-item label="身份证号" >
-                            <el-input v-model="renter.chengzuren[index].idNo"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="联系方式" >
-                            <el-input v-model="renter.chengzuren[index].tel"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item label="性别">
-                            <el-radio-group v-model="renter.chengzuren[index].sex">
-                                <el-radio :label="1">男</el-radio>
-                                <el-radio :label="2">女</el-radio>
-                            </el-radio-group>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                </div>-->
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="签约人" >
@@ -298,6 +277,7 @@
         data(){
             return {
                 editVisible:true,
+                lydisabled:false,
                 labelPosition:'right',
                 bkNameloading:false,
                 bkryNameloading:false,
@@ -550,6 +530,9 @@
             }
             if(this.$route.path=='/saleContract/see'){
                 this.editVisible   =false;
+            }
+            if(this.$route.path=='/saleContract/edit'&&this.$route.query.status>=6){
+                this.lydisabled = true;
             }
             //获取收房合同出租人
 

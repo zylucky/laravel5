@@ -17,6 +17,35 @@ class TestController extends Controller
      */
     public function index()
     {
+        $server1 = '192.168.1.1';
+        $server2 = '192.168.1.2';
+        $server3 = '192.168.1.3';
+        $server4 = '192.168.1.4';
+        $server5 = '192.168.1.5';
+        $server6 = '192.168.1.6';
+        $key1= 'key1';
+        $key2= 'key2';
+        $data = [];
+        $data2 = [];
+        $data[$server1] =  $this->mHash($server1);
+        $data[$server2] =  $this->mHash($server2);
+        $data[$server3] =  $this->mHash($server3);
+        $data[$server4] =  $this->mHash($server4);
+        $data[$server5] =  $this->mHash($server5);
+        $data[$server6] =  $this->mHash($server6);
+        $data[$key1] =$this->mHash($key1);
+        $data[$key2] =$this->mHash($key2);
+        $data2 = $data;
+        $data3 = [];
+        rsort($data);
+        foreach ($data as $key =>$value){
+            foreach ($data2 as $key2=>$value2){
+                if($value2==$value){
+                   $data3[$key2] = $value;
+                }
+            }
+        }
+        dd($data3);exit;
         return User::create([
             'name' =>'qudao',
             'email' => 'qudao',
@@ -126,5 +155,14 @@ class TestController extends Controller
         closedir($handle);
 
         return rmdir($dirName) ;
+    }
+    public function  mHash($key){
+        $md5=substr(md5($key),0,8);
+        $seed=31;
+        $hash=0;
+        for ($i=0;$i<8;$i++){
+            $hash=$hash*$seed+ord($md5{$i});
+        }
+        return $hash&0x7FFFFFFF;
     }
 }

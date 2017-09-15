@@ -365,7 +365,7 @@
                 let para = {
                     id:row.id,
                 }
-                this.$router.push('/saleContract/edit?id=' + row.id);
+                this.$router.push('/saleContract/edit?id=' + row.id+'&status='+row.zhuangtai);
                 // this.$router.push('/purchaseContact/add?id='+row.id);
             },
             handleReview(index, row){

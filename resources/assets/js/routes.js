@@ -166,7 +166,7 @@ let routes = [
 
             { path:'/saleContract', component: SaleContractIndex, name: '出房合同',hidden:fk_contract_sale},
             { path:'/saleContract/add',component:SaleContractAdd,name:'出房录入',hidden:true},
-            { path:'/saleContract/see',component:SaleContractDump20170719,name:'出房查看',hidden:true},
+            { path:'/saleContract/see',component:SaleContractAdd,name:'出房查看',hidden:true},
             { path:'/saleContract/edit',component:SaleContractAdd,name:'出房编辑',hidden:true},
             { path:'/saleContract/review',component:SaleContractAdd,name:'出房审核',hidden:true},
             { path:'/saleContract/buchong',component:SaleContractBuchong,name:'出房补充协议',hidden:true},

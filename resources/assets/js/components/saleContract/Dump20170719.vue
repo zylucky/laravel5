@@ -36,12 +36,12 @@
         </p>
         <p>
             <span v-for="(item,index) in addDate.mianzuqiList">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
-            <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
-            <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
-            <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止。免租期内乙方不支付租金，以便于乙方进行装饰装修及办理入住手续等事宜。免租期内物业管理费、供暖费由 □甲方 □乙方 承担。
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自<u>&nbsp;&nbsp;{{year(item.startdate)?year(item.startdate):''}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.startdate)?month(item.startdate):''}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.startdate)?day(item.startdate):''}}&nbsp;&nbsp;</u>日至
+            <u>&nbsp;&nbsp;{{year(item.enddate)?year(item.enddate):''}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{month(item.enddate)?month(item.enddate):''}}&nbsp;&nbsp;</u>月
+            <u>&nbsp;&nbsp;{{day(item.enddate)?day(item.enddate):''}}&nbsp;&nbsp;</u>日止。免租期内乙方不支付租金，以便于乙方进行装饰装修及办理入住手续等事宜。免租期内物业管理费、供暖费由 □甲方 □乙方 承担。
             </span>
         </p>
         </span>
@@ -350,6 +350,9 @@
         },
         methods:{
             daxie(money) {
+                if(!money){
+                    return '';
+                }
                 //汉字的数字
                 var cnNums = new Array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
                 //基本单位
@@ -438,14 +441,14 @@
                 let arr = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
             },
             year(riqi){
-                if(riqi!=''){
+                if(riqi!=null){
                     return new Date(riqi).getFullYear();
                 }else{
                     return '';
                 }
             },
             month(riqi){
-                if(riqi!=''){
+                if(riqi!=null){
                     if(new Date(riqi).getMonth()+1 <10 ){
                         return '0'+(new Date(riqi).getMonth()+1);
                     }else{
@@ -456,7 +459,7 @@
                 }
             },
             day(riqi){
-                if(riqi!=''){
+                if(riqi!=null){
                     return new Date(riqi).getDate();
                 }else{
                     return '';
