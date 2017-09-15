@@ -20,6 +20,7 @@
                                                 remote
                                                 @change="change1"
                                                 placeholder="楼盘"
+                                                :disabled="lydisabled"
                                                 :remote-method="remoteMethod1"
                                                 :loading="loupanloading">
                                             <el-option
@@ -41,6 +42,7 @@
                                                 @change="change2"
                                                 placeholder="楼栋"
                                                 :remote-method="remoteMethod2"
+                                                :disabled="lydisabled"
                                                 :loading="loupanloading">
                                             <el-option
                                                     v-for="item in options2"
@@ -60,6 +62,7 @@
                                                 remote
                                                 @change="change3"
                                                 placeholder="主房间号"
+                                                :disabled="lydisabled"
                                                 :remote-method="remoteMethod3"
                                                 :loading="fanghaoloading">
                                             <el-option
@@ -79,34 +82,38 @@
                             </el-row>
                             <el-row>
                                 <el-col :span="8">
-                                    <el-form-item required label="区域" prop="quyu">
+                                    <el-form-item  label="区域" prop="quyu">
                                         <el-input v-model="property.xsOffice[index].quyu"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="16">
-                                    <el-form-item label="位置" required prop="weizhi" :span="10">
+                                    <el-form-item label="位置"  prop="weizhi" :span="10">
                                         <el-input v-model="property.xsOffice[index].weizhi"></el-input>
                                     </el-form-item>
                                 </el-col>
                             </el-row>
 
-                            <el-form-item label="产权证编号" required prop="chanquanzhenghao">
+                            <el-form-item label="产权证编号"  prop="chanquanzhenghao">
                                 <el-input v-model="property.xsOffice[index].chanquanzhenghao"></el-input>
                             </el-form-item>
                             <el-row>
                                 <el-col :span="8">
                                     <el-form-item label="建筑面积" required prop="jianzhumianji" >
-                                        <el-input v-model.number="property.xsOffice[index].jianzhumianji"></el-input>
+                                        <el-input v-model.number="property.xsOffice[index].jianzhumianji"
+                                                  :disabled="lydisabled"
+                                        ></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item label="承租面积" required prop="qianyuemianji">
-                                        <el-input v-model.number="property.xsOffice[index].qianyuemianji"></el-input>
+                                        <el-input v-model.number="property.xsOffice[index].qianyuemianji"
+                                                  :disabled="lydisabled"
+                                        ></el-input>
                                     </el-form-item>
                                     <span style="border:0px solid red;font-size:12px;position:relative;left:180px;top:-23px;color:#ff4949;">剩余承租面积&nbsp;&nbsp; <i v-text="syczmj"></i>㎡</span>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-form-item required label="房屋类型" prop="leixing">
+                                    <el-form-item  label="房屋类型" prop="leixing">
                                         <el-select v-model="property.xsOffice[index].leixing" clearable placeholder="请选择">
                                             <el-option
                                                     v-for="item in options"
@@ -116,16 +123,6 @@
                                             </el-option>
                                         </el-select>
                                     </el-form-item>
-                                    <!--<el-form-item label="房屋类型" required prop="leixing">
-                                        <el-select v-model="property.xsOffice[index].leixing" clearable placeholder="请选择">
-                                            <el-option
-                                                    v-for="item in options"
-                                                    :key="item.value"
-                                                    :label="item.label"
-                                                    :value="item.value">
-                                            </el-option>
-                                        </el-select>
-                                    </el-form-item>-->
                                 </el-col>
                             </el-row>
                         </el-col>
@@ -150,6 +147,7 @@
                 flag:false,
                 editflag:false,
                 editVisible:true,
+                lydisabled: false,
                 //楼盘数据
                 options1:[],
                 list1: [],
@@ -201,21 +199,21 @@
                         { required: true, message:'不能为空'}
                     ],
                     /*quyu:[
+                     { required: true, message:'不能为空'}
+                     ],*/
+/*                    weizhi:[
                         { required: true, message:'不能为空'}
                     ],*/
-                    weizhi:[
+                   /* chanquanzhenghao:[
                         { required: true, message:'不能为空'}
-                    ],
-                    chanquanzhenghao:[
-                        { required: true, message:'不能为空'}
-                    ],
+                    ],*/
                     jianzhumianji:[
                         { required: true, message: '不能为空'},
                         { type: 'number', message: '必须为数字'},
                     ],
-                    leixing:[
+                   /* leixing:[
                         { required: true, message:'不能为空'}
-                    ],
+                    ],*/
                     qianyuemianji:[
                         { required: true, message:'不能为空'},
                         { type: 'number', message: '必须为数字'},
@@ -497,6 +495,9 @@
                 }
             }
             setTimeout(hello,500);
+            if(this.$route.path=='/saleContract/edit'&&this.$route.query.status>=6){
+                this.lydisabled = true;
+            }
         }
 
     }

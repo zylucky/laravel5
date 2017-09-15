@@ -10,6 +10,7 @@
         "laravel/framework": "5.4.*",
         "laravel/passport": "^2.0",
         "laravel/tinker": "~1.0",
+        "maatwebsite/excel": "~2.1.0",
         "nesbot/carbon": "^1.22",
         "nwidart/db-exporter": "1.*",
         "predis/predis": "^1.1",

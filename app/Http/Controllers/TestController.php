@@ -6,6 +6,8 @@ use App\models\Role;
 use GuzzleHttp\Client;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Excel;
 use Qiniu\Auth;
 
 class TestController extends Controller
@@ -17,41 +19,24 @@ class TestController extends Controller
      */
     public function index()
     {
-
-        echo $this->mHash('192.168.1.1');
-        echo $this->mHash('192.168.1.2');
-        echo $this->mHash('192.168.1.3');
-        echo $this->mHash('192.168.1.4');
-        echo $this->mHash('192.168.1.5');
-        echo $this->mHash('192.168.1.6');
-        echo $this->mHash('key1');
-        echo $this->mHash('key2');
-
-        return User::create([
-            'name' =>'qudao',
-            'email' => 'qudao',
-            'password' => bcrypt('qudao123'),
-        ]);
-        echo 111;
-        $date = date('y-m-d',strtotime('+ 3 months -1 day',strtotime('2016-11-29'))) ;
-        dd($date);
-        $role = Role::findOrFail(1);
-        dd($role);
-        //
-        return view('test');exit;
-
+        $cellData = [
+            ['学号','姓名','成绩'],
+            ['10001','AAAAA','99'],
+            ['10002','BBBBB','92'],
+            ['10003','CCCCC','95'],
+            ['10004','DDDDD','89'],
+            ['10005','EEEEE','96'],
+        ];
+        Excel::create('学生成绩',function($excel) use ($cellData){
+            $excel->sheet('score', function($sheet) use ($cellData){
+                $sheet->rows($cellData);
+            });
+        })->export('xls');
+       exit;
+       $hello =  DB::connection('mysql2')->table('t_shoufanghetong')->find(3091);
+       dd($hello);
 
     }
-    public function  mHash($key){
-        $md5=substr(md5($key),0,8);
-        $seed=31;
-        $hash=0;
-        for ($i=0;$i<8;$i++){
-            $hash=$hash*$seed+ord($md5{$i});
-        }
-        return $hash&0x7FFFFFFF;
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -145,5 +130,14 @@ class TestController extends Controller
         closedir($handle);
 
         return rmdir($dirName) ;
+    }
+    public function  mHash($key){
+        $md5=substr(md5($key),0,8);
+        $seed=31;
+        $hash=0;
+        for ($i=0;$i<8;$i++){
+            $hash=$hash*$seed+ord($md5{$i});
+        }
+        return $hash&0x7FFFFFFF;
     }
 }

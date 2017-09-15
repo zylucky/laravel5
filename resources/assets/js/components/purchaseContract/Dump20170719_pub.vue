@@ -26,7 +26,7 @@
     .whole{
         position: absolute;
         margin: auto;
-        top: 0;
+        top: -650px;
         right: 0;
         left:0;
         bottom: 0;
@@ -81,12 +81,6 @@
         mounted(){
             this.getPurchaseContract(this.$route.query);
             document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
-            function  hello() {
-                window.print()
-            }
-            if(this.$route.query.isdump==1){
-                setTimeout(hello,1000);
-            }
         }
 
     }

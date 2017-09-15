@@ -5,7 +5,9 @@
                 <add-property ref="property" :property="property" v-on:getshoufanghetong="getChuzuren" v-show="stepNum==1"></add-property>
                 <!--标签中v-on:getshoufanghetong="getChuzuren"是监听事件，getshoufanghetong自己定义的监听的名字，getChuzuren是监听到这个事件之后发生操作的名字，v-on监听事件且是监听谁就放的谁上面-->
                 <add-renter ref="renter" :renter="renter" v-show="stepNum==2" ></add-renter>
-                <add-date ref="date" :addDate="addDate" v-show="stepNum==3"></add-date>
+                <add-date ref="date" :property="property" :addDate="addDate" v-show="stepNum==3"></add-date>
+                <history-buchong v-show="stepNum==4"></history-buchong>
+                <list-jieyue v-show="stepNum==5"></list-jieyue>
                 <!--<add-tiaokuan ref="tiaokuan" v-show="stepNum==4"></add-tiaokuan>-->
             </el-col>
             <div style="margin-bottom:51px;"></div>
@@ -27,7 +29,8 @@
                         <a href="javascript:;" @click="stepNum=1"><el-step  title="房间信息"></el-step></a>
                         <a href="javascript:;" @click="stepNum=2"><el-step  title="租户信息"></el-step></a>
                         <a href="javascript:;" @click="stepNum=3"><el-step  title="租期信息"></el-step></a>
-                        <!--<a href="javascript:;" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>-->
+                        <a href="javascript:;" v-if="this.$route.path=='/saleContract/see'" @click="stepNum=4"><el-step  title="补充协议"></el-step></a>
+                        <a href="javascript:;" v-if="this.$route.path=='/saleContract/see'" @click="stepNum=5"><el-step  title="解约协议"></el-step></a>
                     </el-steps>
                     <el-input type="hidden" prop="id"  auto-complete="off"></el-input>
                     <el-button type="primary" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
@@ -58,6 +61,8 @@
     import AddRenter from './AddRenter.vue'
     import AddDate from './AddDate.vue'
     import AddTiaokuan from './AddTiaoKuan.vue'
+    import HistoryBuchong from './HistoryBuchong.vue';
+    import ListJieyue from './ListJieyue.vue';
     import {addSaleContractInfo,getSaleContractInfo,submitSaleContract,reviewSaleContract,getContractVersionList,getContractChuzuren} from '../../api/api';
     export default{
         data(){
@@ -96,7 +101,7 @@
                         loupanName:null,
                         loudongName:null,
                         fanghao:null,
-                        //quyu:'',
+                        quyu:'',
                         weizhi: null,
                         chanquanzhenghao: null,
                         jianzhumianji: null,
@@ -212,6 +217,8 @@
             AddRenter,
             AddDate,
             AddTiaokuan,
+            HistoryBuchong,
+            ListJieyue,
         },
         methods:{
             submit(){
@@ -342,7 +349,6 @@
                 window.open('/#/saleContract/dump'+version+'?id='+_this.id+'&isdump=2')
             },
             fuzhi(res){
-                console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
                 if(this.zhuangtai==4){
@@ -463,10 +469,11 @@
                         this.renter.chengzufang = '无';
                     }else{
                         if(res.data.code=='200'){
-                            this.renter.chengzufang = res.data.data;
-                            //console.log(this.renter.chengzufang);
+                            this.renter.chengzufang = res.data.data.diyaren;
+                            this.property.xsOffice[0].weizhi = res.data.data.weizhi;
+                            this.property.xsOffice[0].quyu = res.data.data.quyu;
+                            this.property.xsOffice[0].chanquanzhenghao = res.data.data.chanquanzhenghao;
                         }else{
-                            //console.log(res.data.code);
                             this.$message({
                                 message: '获取不了收房合同的承租人',
                                 type: 'error'
