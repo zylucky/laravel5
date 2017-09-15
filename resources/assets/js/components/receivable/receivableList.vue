@@ -28,6 +28,7 @@
         <span style="color:red;font-size: 14px;">
             （注：红色日期表示收款已延期，请尽快处理）
         </span>
+
         <el-tabs v-model="activeName2" type="border-card" @tab-click="handleClick">
             <el-tab-pane label="全部" name="first"></el-tab-pane>
             <el-tab-pane label="未提交" name="second"></el-tab-pane>
@@ -340,6 +341,7 @@
                         label: '已驳回'
                     }
                 ],
+                downloadLoading:false,
                 //楼盘数据
                 options1: [],
                 list1: [],
@@ -439,7 +441,7 @@
                     fkyinhang: '',
                     fkzhanghao: '',
                 },
-
+                headerDate:['合同编号','项目','租户','付款方式','月租金','收款日期','收款科目','应收房租','提交金额','实收金额','修改状态','支付状态','操作'],
                 addFormVisible: false,//新增界面是否显示
                 addFormLoading: false,
                 addFormRules: {
@@ -513,7 +515,6 @@
                 status[20] = '意向金';
                 return status[row.sktype];
             },
-
             //状态显示转换
             formatState: function (row, column) {
                 let status = [];

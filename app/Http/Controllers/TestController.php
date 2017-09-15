@@ -17,6 +17,16 @@ class TestController extends Controller
      */
     public function index()
     {
+
+        echo $this->mHash('192.168.1.1');
+        echo $this->mHash('192.168.1.2');
+        echo $this->mHash('192.168.1.3');
+        echo $this->mHash('192.168.1.4');
+        echo $this->mHash('192.168.1.5');
+        echo $this->mHash('192.168.1.6');
+        echo $this->mHash('key1');
+        echo $this->mHash('key2');
+
         return User::create([
             'name' =>'qudao',
             'email' => 'qudao',
@@ -31,6 +41,15 @@ class TestController extends Controller
         return view('test');exit;
 
 
+    }
+    public function  mHash($key){
+        $md5=substr(md5($key),0,8);
+        $seed=31;
+        $hash=0;
+        for ($i=0;$i<8;$i++){
+            $hash=$hash*$seed+ord($md5{$i});
+        }
+        return $hash&0x7FFFFFFF;
     }
 
     /**
