@@ -6,8 +6,11 @@ use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
+use Excel;
+use Mockery\Exception;
 
 class brokerCompanyController extends Controller
 {
@@ -336,5 +339,62 @@ class brokerCompanyController extends Controller
             echo $response->getBody();
         }
     }
+    //停用启用渠道公司状态
+    public function ExportExcel(Request $request)
+    {
+        $obj = $request->params;
+        $name = $obj['bk_name'];
+        $yewuqvyvid=$obj['yewuqvyvid'];
+        $yewupianqvid=$obj['yewupianqvid'];
+        $gongsijingyingshuxing=$obj['gongsijingyingshuxing'];
+        $hezuoxieyidengji=$obj['hezuoxieyidengji'];
+        $xm=$obj['xm'];
+        $sql="select CompayName,CONCAT(yewuqvyv,yewupianqv)ywqy,CONCAT('北京市',dz_xingzhengqvyv,dz_jiedao,dz_xiangxi)addr,gs_loupan,gs_guimo,gs_chenglishijian,zhuzuoqvyv,
+IF(shifouhezuoguo=0,'否','是')sfhz,hezuocishu,IF(shifouhezuoxieyi=0,'否','是')sfqy,qianxieyishijian,hezuoxieyidengji,yslianxiren1,yslianxiren2,yslianxiren3, farenxingming,farenlianxifangshi,fuzeren,fuzerenlianxifangshi,
+case YJ_Type when 1 then '按月租金' when 2 then '按年租金' end,
+YJZB_SF,YJZB_CF,gongsijingyingshuxing,fuwuduixiang
+from t_qd_compay where 1=1 ";
 
+        if(!empty($name)){
+            $sql=$sql." and CompayName like '%".$name."%' ";
+
+        }
+        if(!empty($yewuqvyvid)){
+            $sql=$sql." and yewuqvyvid =".$yewuqvyvid;
+
+        }
+        if(!empty($yewupianqvid)){
+            $sql=$sql." and yewupianqvid =".$yewupianqvid;
+
+        }
+        if(!empty($gongsijingyingshuxing)){
+            $sql=$sql." and INSTR(gongsijingyingshuxingId,'".$gongsijingyingshuxing.",')>0" ;
+
+        }
+        if(!empty($hezuoxieyidengji)){
+            $sql=$sql." and hezuoxieyidengji =".$hezuoxieyidengji ;
+
+        }
+        if(!empty($xm)){
+            $sql=$sql." and gs_loupan like '%".$xm."%' ";
+
+        }
+        try{
+        $bk = DB::connection('mysql2')->select($sql);
+        $cellData= $this->objToArray($bk);
+        $headerData=['公司名称','业务区域','公司详细地址','项目名称','公司规模','公司成立时间','主做区域','是否有过合作','合作次数',
+            '是否签署协议','签署协议时间','合作协议等级','幼狮联系人1','幼狮联系人2','幼狮联系人3','法人姓名','法人联系方式','负责人姓名',
+            '负责人联系方式','佣金类型','收房佣金占比','出房用尽占比','公司经营属性','服务对象'];
+        array_unshift($cellData,$headerData);
+        //dd($cellData);
+        Excel::create('渠道公司',function($excel) use ($cellData){
+            $excel->sheet('score', function($sheet) use ($cellData){
+                $sheet->rows($cellData);
+            });
+        })->export('xls');
+        }catch (Exception $ex){
+            echo $ex->getMessage();
+        }
+        echo "导出成功";
+    }
 }

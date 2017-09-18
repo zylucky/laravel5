@@ -64,7 +64,7 @@ Route::group(['prefix' => 'contractVersion'], function () {
 });
 
 //Route::get('purchaseContract/review','Contract\purchaseContractController@review');
-Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');
+
 Route::resource('brokerCompanyUser','BrokerCompany\brokerCompanyUserController');
 Route::resource('chuFangCommission','Commission\ChuFangCommissionController');
 Route::resource('shouFangCommission','Commission\ShouFangCommissionController');
@@ -149,6 +149,7 @@ Route::group(['prefix' => 'message'], function () {
 });
 //渠道公司
 Route::group(['prefix' => 'brokerCompany'], function () {
+    Route::get('ExportExcel','BrokerCompany\brokerCompanyController@ExportExcel');
     Route::post('checkbkNameList','BrokerCompany\brokerCompanyController@checkbkNameList');
     Route::post('getGSSXDicList','BrokerCompany\brokerCompanyController@getGSSXDicList');
     Route::post('getFWDXDicList','BrokerCompany\brokerCompanyController@getFWDXDicList');
@@ -158,6 +159,7 @@ Route::group(['prefix' => 'brokerCompany'], function () {
     Route::post('changeBrokerCompanyStatus','BrokerCompany\brokerCompanyController@changeBrokerCompanyStatus');
     Route::post('getXYDJDicList','BrokerCompany\brokerCompanyController@getXYDJDicList');
     Route::post('getYSLXRDicList','BrokerCompany\brokerCompanyController@getYSLXRDicList');
+
 });
 //渠道公司人员
 Route::group(['prefix' => 'brokerCompanyUser'], function () {
@@ -166,10 +168,12 @@ Route::group(['prefix' => 'brokerCompanyUser'], function () {
     Route::post('getQDDJDicList','BrokerCompany\brokerCompanyUserController@getQDDJDicList');
     Route::post('checkPhone','BrokerCompany\brokerCompanyUserController@checkPhone');
     Route::post('checkName','BrokerCompany\brokerCompanyUserController@checkName');
+    Route::post('ExportExcel','BrokerCompany\brokerCompanyUserController@ExportExcel');
 });
 //自由经纪人
 Route::group(['prefix' => 'brokerUser'], function () {
     Route::post('changeBrokerUserStatus','BrokerCompany\brokerUserController@changeBrokerCompanyUserStatus');
+    Route::post('ExportExcel','BrokerCompany\brokerUserController@ExportExcel');
 });
 Route::resource('brokerUser','BrokerCompany\brokerUserController');
 Route::resource('brokerCompanyHistory','BrokerCompany\brokerCompanyHistoryController');
@@ -202,4 +206,5 @@ Route::group(['prefix' => 'office'], function () {
     Route::get('loudongRules','Contract\officeController@loudongRules');
 });
 Route::resource('payOrder','Report\payOrderController');
+Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');
 //hello world1

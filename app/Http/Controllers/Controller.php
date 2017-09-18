@@ -17,4 +17,14 @@ class Controller extends BaseController
     //public $omc_url = 'http://192.168.0.222:8080';
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public function objToArray($data){
+        //1.获取数据
+        $data2 = [];
+        foreach ($data as $key=>$value){
+            foreach ($value as $k=>$v){
+                $data2[$key][] = $v;
+            }
+        }
+        return $data2;
+    }
 }

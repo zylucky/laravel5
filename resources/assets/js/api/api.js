@@ -199,6 +199,9 @@ export const getBrokerCompanyUserInfo = params => { return axios.get(`${base}/br
 export const getBrokerUserInfo = params => { return axios.get(`${base}/brokerUser/`+params.id, {}); };
 export const checkPhone = params => { return axios.post(`${base}/brokerCompanyUser/checkPhone`, { params: params }); };
 export const checkName = params => { return axios.post(`${base}/brokerCompanyUser/checkName`, { params: params }); };
+export const exportBrokerCompany = params => { return axios.get(`${base}/brokerCompany/ExportExcel`, { params: params }); };
+export const exportBrokerCompanyUser = params => { return axios.post(`${base}/brokerCompanyUser/ExportExcel`, { params: params }); };
+export const exportBrokerUser = params => { return axios.post(`${base}/brokerUser/ExportExcel`, { params: params }); };
 //版本控制
 export const getContractVersionList = params =>{ return axios.get(`${base}/contractVersion/index`, { params: params }); };
 export const changeContractVersionStatus = params =>{ return axios.get(`${base}/contractVersion/status`, { params: params }); };
