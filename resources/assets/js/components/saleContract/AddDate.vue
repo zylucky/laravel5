@@ -337,7 +337,7 @@
                 </el-col>
             </el-row>
             <!--各种费用-->
-            <el-form-item label="费用" prop="jiafangfeiyong" >
+            <!--<el-form-item label="费用" prop="jiafangfeiyong" >
                 <el-checkbox-group  v-model="addDate.jiafangfeiyong">
                     <el-checkbox label="（一）物业费"></el-checkbox>
                     <el-checkbox label="（二）取暖费"></el-checkbox>
@@ -345,7 +345,7 @@
                     <el-checkbox label="（四）发票"></el-checkbox>
                     <el-checkbox label="（五）其它"></el-checkbox>
                 </el-checkbox-group>
-            </el-form-item>
+            </el-form-item>-->
             <!--补充条款1111-->
             <el-col :span="24">
                 <el-form-item label="补充条款"  prop="iscompletefrzj">
