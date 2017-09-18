@@ -383,8 +383,7 @@
                 this.$router.push('/brokerCompany/add');
             },
             handleExport: function () {
-
-                window.open("http://127.0.0.1:8000/brokerCompany/ExportExcel?bk_name="+this.filters.bk_name
+                window.open("/brokerCompany/ExportExcel?bk_name="+this.filters.bk_name
                     +"&yewuqvyvid="+this.filters.yewuqvyvid+"&yewupianqvid="+this.filters.yewupianqvid+"&gongsijingyingshuxing="+this.filters.gongsijingyingshuxing.toString()+"&xm="+this.filters.xm);
             },
             selsChange: function (sels) {
