@@ -38542,6 +38542,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
         if (this.$route.path == '/purchaseContract/edit' && this.$route.query.status >= 6) {
             this.lydisabled = true;
+            this.editVisible = false;
         }
     }
 });
@@ -110091,7 +110092,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "span": 2
       }
-    }, [(index > 0 && _vm.lydisabled) ? _c('el-button', {
+    }, [(index > 0) ? _c('el-button', {
       directives: [{
         name: "show",
         rawName: "v-show",
@@ -110279,7 +110280,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "span": 2,
         "pull": 1
       }
-    }, [(index > 0 && _vm.lydisabled) ? _c('el-button', {
+    }, [(index > 0) ? _c('el-button', {
       directives: [{
         name: "show",
         rawName: "v-show",
