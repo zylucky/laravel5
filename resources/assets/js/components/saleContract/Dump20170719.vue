@@ -60,7 +60,7 @@
             <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
             <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日，租金为￥<u>&nbsp;&nbsp;{{item.yuezujin}}&nbsp;&nbsp;</u>元/月（大写：<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u>/月）；
+            <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日，租金为￥<u>&nbsp;&nbsp;{{toDecimal(item.yuezujin)?toDecimal(item.yuezujin):'_________'}}&nbsp;&nbsp;</u>元/月（大写：<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u>/月）；
         </span>
         </p>
         <span v-for="(item,index) in addDate.fukuanFangshiList"
@@ -68,8 +68,8 @@
         >
         <p>
 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）租金支付方式为：押<input type="text" style="width: 70px;" v-model="item.yajinyue">付<input type="text" style="width: 70px;" v-model="item.zujinyue">；</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：<input type="text" style="width: 100px;" v-model="addDate.yajin">元/月（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yajin)}}&nbsp;&nbsp;</u>/月），支付时间为
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）租金支付方式为：押 <u>{{intToChinese(item.yajinyue)}}</u> 付 <u>{{intToChinese(item.zujinyue)}}</u> ；</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：<u>{{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'________'}}</u>元/月（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yajin)}}&nbsp;&nbsp;</u>/月），支付时间为
 
             <u>&nbsp;&nbsp;{{year(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>月
@@ -78,11 +78,11 @@
         </p>
         </span>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、首期租金：￥<input type="text" style="width: 100px;" v-model="addDate.yingfuzongzujin">元（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yingfuzongzujin)}}&nbsp;&nbsp;</u>），支付时间为
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、首期租金：￥ <u>{{toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)}}</u> 元（大写：<u>&nbsp;&nbsp;{{daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)}}&nbsp;&nbsp;</u>），支付时间为
 
             <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每<input type="text" v-model="addDate.fukuanFangshiList[0].zujinyue" style="width:70px;">个月支付一次，于付款月起租日 30日前支付下一次租金，即第二期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每 <u>{{intToChinese(addDate.fukuanFangshiList[0].zujinyue)}}</u>个月支付一次，于付款月起租日 30日前支付下一次租金，即第二期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>月
             <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日前，第三期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月
@@ -349,6 +349,23 @@
             }
         },
         methods:{
+            toDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            },
             daxie(money) {
                 if(!money){
                     return '';
@@ -481,6 +498,35 @@
                     }
                 })
             },
+             intToChinese( str ) {
+                str = str+'';
+                var len = str.length-1;
+                var idxs = ['','十','百','千','万','十','百','千','亿','十','百','千','万','十','百','千','亿'];
+                var num = ['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+                return str.replace(/([1-9]|0+)/g,function( $, $1, idx, full) {
+                    var pos = 0;
+                    if( $1[0] != '0' ){
+                        pos = len-idx;
+                        if( idx == 0 && $1[0] == 1 && idxs[len-idx] == '十'){
+                            return idxs[len-idx];
+                        }
+                        return num[$1[0]] + idxs[len-idx];
+                    } else {
+                        var left = len - idx;
+                        var right = len - idx + $1.length;
+                        if( Math.floor(right/4) - Math.floor(left/4) > 0 ){
+                            pos = left - left%4;
+                        }
+                        if( pos ){
+                            return idxs[pos] + num[$1[0]];
+                        } else if( idx + $1.length >= len ){
+                            return '';
+                        }else {
+                            return num[$1[0]]
+                        }
+                    }
+                });
+             },
             //获取区域的中
             getquyu(str1){
                 var str1 = str1;

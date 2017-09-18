@@ -55,7 +55,21 @@ from t_qd_compay");
        $hello =  DB::connection('mysql2')->table('t_shoufanghetong')->find(3091);
        dd($hello);
 
+
+
     }
+
+    public function objToArray($data){
+        //1.获取数据
+        $data2 = [];
+        foreach ($data as $key=>$value){
+            foreach ($value as $k=>$v){
+                $data2[$key][] = $v;
+            }
+        }
+        return $data2;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

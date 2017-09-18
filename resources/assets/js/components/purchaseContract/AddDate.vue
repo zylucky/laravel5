@@ -159,7 +159,7 @@
                         </el-select>
                     </el-col>
                     <el-col :span="2" style="margin-left:5px;">
-                        <el-button v-if="index>0" v-show="editVisible" @click.prevent="removeRentItem(item)">删除</el-button>
+                        <el-button v-if="index>0&&lydisabled" v-show="editVisible" @click.prevent="removeRentItem(item)">删除</el-button>
                         <el-button v-if="index==0" v-show="editVisible" @click="addRentItem">新增</el-button>
                     </el-col>
                 </el-row>
@@ -217,7 +217,7 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1">
-                        <el-button v-if="index>0" v-show="editVisible"  @click.prevent="removePayItem(item)">删除</el-button>
+                        <el-button v-if="index>0&&lydisabled" v-show="editVisible"  @click.prevent="removePayItem(item)">删除</el-button>
                     </el-col>
                 </el-row>
             </div>
