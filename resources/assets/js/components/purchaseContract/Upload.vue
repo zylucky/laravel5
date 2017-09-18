@@ -19,7 +19,7 @@
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
+            <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
             <div v-if="yezhuleixing==1">
@@ -42,7 +42,7 @@
                 >
                     <i class="el-icon-plus"></i>
                 </el-upload>
-                <el-dialog v-model="dialogVisible" size="tiny">
+                <el-dialog v-model="dialogVisible" size="large">
                     <img width="100%" :src="dialogImageUrl" alt="">
                 </el-dialog>
             </div>
@@ -67,7 +67,7 @@
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
+            <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         </div>
@@ -92,7 +92,7 @@
                 >
                     <i class="el-icon-plus"></i>
                 </el-upload>
-                <el-dialog v-model="dialogVisible" size="tiny">
+                <el-dialog v-model="dialogVisible" size="large">
                     <img width="100%" :src="dialogImageUrl" alt="">
                 </el-dialog>
         </div>
@@ -116,7 +116,7 @@
         >
             <i class="el-icon-plus"></i>
         </el-upload>
-        <el-dialog v-model="dialogVisible" size="tiny">
+        <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
         </el-dialog>
 
@@ -139,7 +139,7 @@
         >
             <i class="el-icon-plus"></i>
         </el-upload>
-        <el-dialog v-model="dialogVisible" size="tiny">
+        <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
         </el-dialog>
 
@@ -162,7 +162,7 @@
         >
             <i class="el-icon-plus"></i>
         </el-upload>
-        <el-dialog v-model="dialogVisible" size="tiny">
+        <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
         </el-dialog>
 
@@ -185,7 +185,7 @@
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
+            <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
 
@@ -208,7 +208,7 @@
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
+            <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         <div style="position: fixed;right:10%;top:50%;">
