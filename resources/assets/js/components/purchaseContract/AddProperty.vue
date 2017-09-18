@@ -440,7 +440,7 @@
 
                 })
                 if(flag){
-                    if(this.property.officeList[this.property.tabIndex-1].omcId==null){
+                    if(this.property.officeList[this.property.tabIndex-1].omcId==null&&this.$route.path=='/purchaseContract/add'){
 
                         let  para = {
                             loupanOmcId:this.property.officeList[this.property.tabIndex-1].loupanOmcId,
