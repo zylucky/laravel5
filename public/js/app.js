@@ -32940,7 +32940,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$router.push({ path: '/brokerUser/view?id=' + row.tQdZyPersonId });
         },
         handleExport: function handleExport() {
-            window.open("/brokerCompany/ExportExcel?bk_name=" + this.filters.bk_name + "&yewuqvyvid=" + this.filters.yewuqvyvid + "&yewupianqvid=" + this.filters.yewupianqvid + "&gongsijingyingshuxing=" + this.filters.gongsijingyingshuxing.toString() + "&xm=" + this.filters.xm);
+            window.open("/brokerUser/ExportExcel?username=" + this.filters.username + "&yewuqvyvid=" + this.filters.yewuqvyvid + "&yewupianqvid=" + this.filters.yewupianqvid + "&qvdaodengji=" + this.filters.qvdaodengji + "&bk_dianhua=" + this.filters.bk_dianhua);
         },
         selsChange: function selsChange(sels) {
             this.sels = sels;
@@ -38577,6 +38577,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
         if (this.$route.path == '/purchaseContract/edit' && this.$route.query.status >= 6) {
             this.lydisabled = true;
+            this.editVisible = false;
         }
     }
 });
@@ -126698,7 +126699,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "span": 2
       }
-    }, [(index > 0 && _vm.lydisabled) ? _c('el-button', {
+    }, [(index > 0) ? _c('el-button', {
       directives: [{
         name: "show",
         rawName: "v-show",
@@ -126886,7 +126887,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "span": 2,
         "pull": 1
       }
-    }, [(index > 0 && _vm.lydisabled) ? _c('el-button', {
+    }, [(index > 0) ? _c('el-button', {
       directives: [{
         name: "show",
         rawName: "v-show",

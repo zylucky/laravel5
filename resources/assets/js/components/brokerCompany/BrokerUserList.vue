@@ -316,8 +316,8 @@
                 this.$router.push({path: '/brokerUser/view?id=' + row.tQdZyPersonId});
             },
             handleExport: function () {
-                window.open("/brokerCompany/ExportExcel?bk_name="+this.filters.bk_name
-                    +"&yewuqvyvid="+this.filters.yewuqvyvid+"&yewupianqvid="+this.filters.yewupianqvid+"&gongsijingyingshuxing="+this.filters.gongsijingyingshuxing.toString()+"&xm="+this.filters.xm);
+                window.open("/brokerUser/ExportExcel?username="+this.filters.username
+                    +"&yewuqvyvid="+this.filters.yewuqvyvid+"&yewupianqvid="+this.filters.yewupianqvid+"&qvdaodengji="+this.filters.qvdaodengji +"&bk_dianhua="+this.filters.bk_dianhua);
             },
             selsChange: function (sels) {
                 this.sels = sels;

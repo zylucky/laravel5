@@ -202,21 +202,21 @@ class brokerUserController extends Controller
     //导出Excel
     public function ExportExcel()
     {
-        $name = Input::get('bk_name');
-        $yewuqvyvid = Input::get('yewuqvyvid');
-        $yewupianqvid = Input::get('yewupianqvid');
-        $gongsijingyingshuxing = Input::get('gongsijingyingshuxing');
-        $hezuoxieyidengji = Input::get('hezuoxieyidengji');
-        $xm = Input::get('xm');
-        $sql = " select QD_PerName, zhiwu,tel,CompayName,gs_loupan, p.yslianxiren1, p.yslianxiren2,p.yslianxiren3, 
-     IF(shifouweixin=0,'否','是'), tianjiahaoyourenshu, IF(shifoudaikanyoushi=0,'否','是'), daikancishu, 
-    daikanduijierenshu, IF(shifouqianyueyoushifang=0,'否','是'), qianyuecishu, qianyueduijierenshu, qvdaodengji,p.beizhu
-    from t_qd_person p LEFT JOIN t_qd_compay qd on p.T_QD_Compay_ID = qd.T_QD_Compay_ID
-	left join (select personId,GROUP_CONCAT(dianhua)tel from t_qd_person_tel where qd_type=1 GROUP BY personId)dianhua on p.t_qd_person_id=dianhua.personId
-    where 1=1  ";
+        $yewuqvyvid=Input::get('yewuqvyvid');
+        $yewupianqvid=Input::get('yewupianqvid');
+        $qvdaodengji = Input::get('qvdaodengji');
+        $username = Input::get('username');
+        $tel= Input::get('bk_dianhua');
+        $sql = " select  xingming, tel,CONCAT(yewuqvyv,yewupianqv)ywqy, yslianxiren1,yslianxiren2,  yslianxiren3,
+    IF(shifouweixin,'否','是'), tianjiahaoyourenshu, IF(shifoudaikanyoushi,'否','是'), daikancishu, daikanduijierenshu, 
+    IF(shifoudaikanyoushifang,'否','是'), qianyuecishu, qianyueduijierenshu, qvdaodengji,  case YJ_Type when 1 then '按月租金' when 2 then '按年租金' end, 
+    YJZB_SF, YJZB_CF,beizhu
+    from t_qd_zy_person p
+	left join (select personId,GROUP_CONCAT(dianhua)tel from t_qd_person_tel where qd_type=2 GROUP BY personId)dianhua 
+	on p.t_qd_zy_person_id=dianhua.personId where 1=1  ";
 
-        if (!empty($name)) {
-            $sql = $sql . " and CompayName like '%" . $name . "%' ";
+        if (!empty($username)) {
+            $sql = $sql . " and xingming like '%" . $username . "%' ";
 
         }
         if (!empty($yewuqvyvid)) {
@@ -227,28 +227,23 @@ class brokerUserController extends Controller
             $sql = $sql . " and yewupianqvid =" . $yewupianqvid;
 
         }
-        if (!empty($gongsijingyingshuxing)) {
-            $sql = $sql . " and INSTR(gongsijingyingshuxingId,'" . $gongsijingyingshuxing . ",')>0";
+        if (!empty($qvdaodengji)) {
+            $sql = $sql . " and qvdaodengji =" . $qvdaodengji;
 
         }
-        if (!empty($hezuoxieyidengji)) {
-            $sql = $sql . " and hezuoxieyidengji =" . $hezuoxieyidengji;
-
-        }
-        if (!empty($xm)) {
-            $sql = $sql . " and gs_loupan like '%" . $xm . "%' ";
+        if (!empty($tel)) {
+            $sql = $sql . " and tel like '%" . $tel . "%' ";
 
         }
         try {
             $bk = DB::connection('mysql2')->select($sql);
             $cellData = $this->objToArray($bk);
             if (count($cellData) > 0) {
-                $headerData = ['公司名称', '业务区域', '公司详细地址', '项目名称', '公司规模', '公司成立时间', '主做区域', '是否有过合作', '合作次数',
-                    '是否签署协议', '签署协议时间', '合作协议等级', '幼狮联系人1', '幼狮联系人2', '幼狮联系人3', '法人姓名', '法人联系方式', '负责人姓名',
-                    '负责人联系方式', '佣金类型', '收房佣金占比', '出房用尽占比', '公司经营属性', '服务对象'];
+                $headerData = ['姓名','联系电话','业务区域','','幼狮联系人1','幼狮联系人2','幼狮联系人3','是否添加微信好友','添加好友人数','是否带看幼狮','带看次数','带看对接人数',
+                    '是否签约过幼狮','签约次数','签约对接人数','粘性等级','佣金类型','收房佣金占比','出房佣金占比','备注'];
                 array_unshift($cellData, $headerData);
                 //dd($cellData);
-                Excel::create('渠道公司' . date("YmdHis"), function ($excel) use ($cellData) {
+                Excel::create('自由经纪人' . date("YmdHis"), function ($excel) use ($cellData) {
                     $excel->sheet('score', function ($sheet) use ($cellData) {
                         $sheet->rows($cellData);
                     });
