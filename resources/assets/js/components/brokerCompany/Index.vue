@@ -55,6 +55,7 @@
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getBrokerCompany">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus" v-if="fun('brokerCompanyAdd')"    @click="handleAdd"    > 新增</el-button>
+                <el-button type="primary" class="el-icon-plus" v-if="fun('brokerCompanyExport')"    @click="handleExport"    > 导出</el-button>
             </el-form-item>
         </el-row>
         </el-form>
@@ -143,7 +144,7 @@
         getGSSXDicList,
         getYWQYDicList,
         getXYDJDicList,
-
+        exportBrokerCompany
     } from '../../api/api';
     import ElRow from "element-ui/packages/row/src/row";
 
@@ -381,7 +382,11 @@
             handleAdd: function () {
                 this.$router.push('/brokerCompany/add');
             },
+            handleExport: function () {
 
+                window.open("http://127.0.0.1:8000/brokerCompany/ExportExcel?bk_name="+this.filters.bk_name
+                    +"&yewuqvyvid="+this.filters.yewuqvyvid+"&yewupianqvid="+this.filters.yewupianqvid+"&gongsijingyingshuxing="+this.filters.gongsijingyingshuxing.toString()+"&xm="+this.filters.xm);
+            },
             selsChange: function (sels) {
                 this.sels = sels;
             },
