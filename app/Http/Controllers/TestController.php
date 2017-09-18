@@ -79,16 +79,7 @@ from t_qd_compay");
     {
 
     }
-    public function objToArray($data){
-        //1.获取数据
-        $data2 = [];
-        foreach ($data as $key=>$value){
-            foreach ($value as $k=>$v){
-                $data2[$key][] = $v;
-            }
-        }
-        return $data2;
-    }
+
     /**
      * Store a newly created resource in storage.
      *

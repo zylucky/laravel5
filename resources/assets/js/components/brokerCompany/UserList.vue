@@ -29,6 +29,7 @@
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getBrokerCompanyUser">搜索</el-button>
                 <el-button v-if="fun('brokerCompanyUserAdd')" type="primary" class="el-icon-plus" @click="handleAdd"> 新增</el-button>
+                <el-button type="primary" class="el-icon-plus" v-if="fun('brokerCompanyUserExport')"    @click="handleExport"    > 导出</el-button>
             </el-form-item>
         </el-form>
         <el-table :data="brokerCompanyUser" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
@@ -277,7 +278,10 @@
             handleView: function (index, row) {
                 this.$router.push({path: '/brokerCompanyUserList/view?id=' + row.tQdPersonId });
             },
-
+            handleExport: function () {
+                window.open("/brokerCompanyUser/ExportExcel?bk_name="+this.filters.bk_name
+                    +"&username="+this.filters.bk_username+"&buildingname="+this.filters.buildingname+"&qvdaodengji="+this.filters.qvdaodengji+"&bk_dianhua="+this.filters.bk_dianhua);
+            },
             selsChange: function (sels) {
                 this.sels = sels;
             },
