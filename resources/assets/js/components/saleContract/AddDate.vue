@@ -1,34 +1,13 @@
 <template>
     <el-row class="container">
         <el-form :model="addDate" ref="addDateForm" :rules="editDateRules"  label-width="100px" class="demo-dynamic">
-            <el-form-item label="合同类型" required>
-                <el-radio-group v-model="addDate.hetongtype">
-                    <el-radio :label="1">双方合同</el-radio>
-                    <el-radio :label="2">三方合同</el-radio>
-                </el-radio-group>
-            </el-form-item>
-            <div>
-                <div v-if="addDate.hetongtype == 1">
-                    <el-row>
-                        <el-col :span="8">
-                            <el-form-item label="签约日" prop="qianyuedate" >
-                                <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                </div>
-            </div>
-            <div>
-                <div v-if="addDate.hetongtype == 2">
-                    <el-row>
-                        <el-col :span="8">
-                            <el-form-item label="签约日" prop="qianyuedate" >
-                                <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                </div>
-            </div>
+            <el-row>
+                <el-col :span="8">
+                    <el-form-item label="签约日" prop="qianyuedate" >
+                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
+                    </el-form-item>
+                </el-col>
+            </el-row>
             <el-form-item label="免租期" v-for="(item, index) in addDate.mianzuqiList"
                           :key="item.key"
                           >

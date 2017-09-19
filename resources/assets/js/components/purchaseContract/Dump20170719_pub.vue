@@ -13,12 +13,17 @@
             联系地址：<input type="text" name="" style="width:320px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系地址：</font><input type="text" name="" style="width:320px" value="">
             <br>联系方式：<input type="text" name="" style="width:320px;" disabled value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系方式：</font><input type="text" name="" style="width:320px;font-size:10px" value=""><br>
             <font>_______年____月____日</font>&nbsp;&nbsp;
-            <font style="margin-left: 150px" >_______年____月____日</font><br>
+            <font style="margin-left: 350px" >
+                _______年____月____日
+            </font><br>
             <br>
-            <b> 居间方（丙方）：</b><u>北京华亮房地产经纪有限公司</u>
-            <br>联系地址：<input type="text" name="" style="width:315px;font-size:10px" value="">
-            <br>联系方式：<input type="text" name="" style="width:315px;font-size:10px" value=""><br>
-            <font>_______年____月____日</font>
+            <p v-if="farenzhengjian=='s'">
+                <b> 居间方（丙方）：</b><u>北京华亮房地产经纪有限公司</u>
+                <br>联系地址：<input type="text" name="" style="width:315px;font-size:10px" value="">
+                <br>联系方式：<input type="text" name="" style="width:315px;font-size:10px" value="">
+                <br>
+                <font>_______年____月____日</font>
+            </p>
         </p>
     </div>
 </template>
@@ -33,18 +38,16 @@
         width: 85%;
         height: 20%;
     }
-    .tc{text-align:center;}
    .whole h1{
         font-size:40px;
     }
     .whole span {
-        display: block;}
-    .f22{
-        font-size: 20px;
+        display: block;
     }
     .whole p{
         font-size: 20px; text-align:left;
-        line-height: 2;}
+        line-height: 2;
+    }
     .whole  input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center}
     .whole u{
         font-size:20px!important;
@@ -60,6 +63,7 @@
         data(){
             return {
                 buchongtiaokuan:null,
+                farenzhengjian:null,
             }
         },
         methods:{
@@ -69,6 +73,7 @@
                     if(res.data.code=='200'){
                         //把数据分别赋值给三个组件的变量
                         this.buchongtiaokuan = res.data.data.yingyezhizhao;
+                        this.farenzhengjian = res.data.data.farenzhengjian;
                     }else {
                         this.$message({
                             message: '获取数据失败',

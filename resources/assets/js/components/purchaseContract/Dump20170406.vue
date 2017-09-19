@@ -4,10 +4,10 @@
     <span class="tc f22">经纪成交版</span>
     <p>出租方（甲方）：<input type="text" style="width: 450px" disabled value=''/> </p>
     <p>承租方（乙方）：<input type="text" style="width: 450px" disabled value=""/>  </p>
-    <p>居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="owner.jujianfang"/></p>
+    <p v-if="owner.farenzhengjian=='s'">居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="owner.jujianfang"/></p>
     <br><br>
 
-    <p>&nbsp;&nbsp;依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙、丙三方在平等、自愿的基础上，就乙方承租甲方房屋，丙方提供居间服务等事宜，经各方友好协商一致，签订本合同以资信守。</p>
+    <p>&nbsp;&nbsp;依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙{{msg01}}方在平等、自愿的基础上，就乙方承租甲方房屋，{{msg02}}经各方友好协商一致，签订本合同以资信守。</p>
     <p><b>&nbsp;&nbsp; 第一条  房屋基本情况</b>
         <span
                 v-for="(item,index) in property.officeList"
@@ -141,10 +141,12 @@
         &nbsp;（二）甲乙双方在本合同中书写的地址即为本合同下任何书面通知的有效送达地址，若因接收方拒收或地址错误等情况致使无法送达的，均以付邮日（以邮戳为准）后3日即视为通知方已依本合同给予书面通知。若任何一方联络地址变更的，应及时通知对方。
         <br><br>
         <b>&nbsp;&nbsp; 第十三条  其他</b> <br>
+            <span v-if="owner.farenzhengjian=='s'">
         （一）本合同签订当日，甲方向丙方支付居间服务费：<u>{{ toDecimal(addDate.yongjin)?toDecimal(addDate.yongjin):'__________' }}</u>元。<br>
-        （二）
-        本合同经甲乙双方签字或盖章后生效。本合同（及附件）一式贰份，甲、乙、丙方各持一份。<br>
-        （三）
+            </span>
+        （{{msg04}}）
+        本合同经甲乙双方签字或盖章后生效。本合同（及附件）一式{{msg03}}方各持一份。<br>
+        （{{msg05}}）
        本合同生效后，各方对合同内容的变更或补充应采取书面形式，作为本合同的附件。甲方应签署附件《不动产授权委托书》，该委托书与本合同具有同等的法律效力。<br><br>
     </p>
         <p v-if="historyOptimize">
@@ -155,7 +157,6 @@
 
             <input v-if="yingyezhizhao==null||yingyezhizhao==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
-
             <b> 业主方（甲方）：<input type="text" name="" style="width:265px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">管理方（乙方）：</font> <input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
             <b>委托代理人：<input type="text" name="" style="width:305px;font-size:10px" value=""></b><br>
             联系地址：<input type="text" name="" style="width:320px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系地址：</font><input type="text" name="" style="width:320px" value="">
@@ -163,10 +164,12 @@
             <font>_______年____月____日</font>
             <font style="margin-left: 370px" >_______年____月____日</font><br>
             <br>
-            <b> 居间方（丙方）：</b><u>北京华亮房地产经纪有限公司</u>
-            <br>联系地址：<input type="text" name="" style="width:315px;font-size:10px" value="">
-            <br>联系方式：<input type="text" name="" style="width:315px;font-size:10px" value=""><br>
-            <font>_______年____月____日</font>
+            <P v-if="owner.farenzhengjian=='s'">
+                <b> 居间方（丙方）：</b><u>北京华亮房地产经纪有限公司</u>
+                <br>联系地址：<input type="text" name="" style="width:315px;font-size:10px" value="">
+                <br>联系方式：<input type="text" name="" style="width:315px;font-size:10px" value=""><br>
+                <font>_______年____月____日</font>
+            </P>
         </p>
         <div v-if="historyOptimize">
             <h3>补充协议：</h3>
@@ -217,6 +220,11 @@
         },
         data(){
             return {
+                msg01:'、丙三',
+                msg02:'丙方提供居间服务等事宜，',
+                msg03:'三份，甲、乙、丙',
+                msg04:'二',
+                msg05:'三',
                 historyOptimize:false,
                 dumpShow:false,
                 property:{
@@ -239,6 +247,7 @@
                     chengzufang:'华溯商贸',
                     jujianfang:'',
                     yezhuleixing:1,
+                    farenzhengjian:'',
                     //产权人
                     chanquanrenList:[
                         {
@@ -467,6 +476,14 @@
                 this.owner.chengzufang = res.data.data.chengzufang;
                 this.owner.jujianfang = res.data.data.jujianfang;
                 this.owner.yezhuleixing = res.data.data.yezhuleixing;
+                this.owner.farenzhengjian = res.data.data.farenzhengjian;
+                if(this.owner.farenzhengjian=='l'){
+                    this.msg01='两',
+                        this.msg02='',
+                        this.msg03='贰份，甲、乙',
+                        this.msg04='一',
+                        this.msg05='二'
+                }
                 this.owner.shoukuanren = res.data.data.shoukuanren;
                 this.owner.kaihuhang = res.data.data.kaihuhang;
                 this.owner.zhanghao = res.data.data.zhanghao;

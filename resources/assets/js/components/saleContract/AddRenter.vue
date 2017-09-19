@@ -13,26 +13,75 @@
                     <el-radio  label="无"></el-radio>
                 </el-radio-group>
             </el-form-item>
-            <el-row>
-                <el-form-item label="居间方类型">
-                    <el-radio-group v-model="renter.jujianfangtype" @change="jujianfangtypeChange">
-                        <el-radio :label="1">公司</el-radio>
-                        <el-radio :label="2">个人</el-radio>
-                    </el-radio-group>
-                </el-form-item>
-            </el-row>
-            <div v-if="renter.jujianfangtype==1">
+            <el-form-item label="合同类型" required>
+                <el-radio-group v-model="renter.hetongtype">
+                    <el-radio :label="1">双方合同</el-radio>
+                    <el-radio :label="2">三方合同</el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <div v-if="renter.hetongtype==2">
                 <el-row>
-                    <el-col  :span="8">
-                        <el-form-item label="居间方">
+                    <el-form-item label="居间方类型">
+                        <el-radio-group v-model="renter.jujianfangtype" @change="jujianfangtypeChange">
+                            <el-radio :label="1">公司</el-radio>
+                            <el-radio :label="2">个人</el-radio>
+                        </el-radio-group>
+                    </el-form-item>
+                </el-row>
+                <div v-if="renter.jujianfangtype==1">
+                    <el-row>
+                        <el-col  :span="8">
+                            <el-form-item label="居间方">
+                                <el-select
+                                        id="jujianfang"
+                                        v-model="renter.jujianfangid"
+                                        filterable
+                                        remote
+                                        @change="changeOnSelect1"
+                                        placeholder="渠道公司名称"
+                                        :remote-method="remoteMethod1"
+                                        :loading="bkNameloading">
+                                    <el-option
+                                            v-for="item in renter.options1"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                        </el-col>
+                        <el-col  :span="8">
+                            <el-form-item label="渠道人员">
+                                <el-select
+                                        v-model="renter.qudaorenid"
+                                        filterable
+                                        remote
+                                        @change="changeOnSelect3"
+                                        placeholder="渠道人员"
+                                        :remote-method="remoteMethod3"
+                                        :loading="bkryNameloading">
+                                    <el-option
+                                            v-for="item in renter.options2"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                </div>
+                <div v-if="renter.jujianfangtype==2">
+                    <el-row>
+                        <el-form-item label="自由经纪人">
                             <el-select
                                     id="jujianfang"
                                     v-model="renter.jujianfangid"
                                     filterable
                                     remote
-                                    @change="changeOnSelect1"
-                                    placeholder="渠道公司名称"
-                                    :remote-method="remoteMethod1"
+                                    @change="jingjirenchangeOnSelect"
+                                    placeholder="自由经纪人名称"
+                                    :remote-method="remoteMethod2"
                                     :loading="bkNameloading">
                                 <el-option
                                         v-for="item in renter.options1"
@@ -42,49 +91,8 @@
                                 </el-option>
                             </el-select>
                         </el-form-item>
-                    </el-col>
-                    <el-col  :span="8">
-                        <el-form-item label="渠道人员">
-                            <el-select
-                                    v-model="renter.qudaorenid"
-                                    filterable
-                                    remote
-                                    @change="changeOnSelect3"
-                                    placeholder="渠道人员"
-                                    :remote-method="remoteMethod3"
-                                    :loading="bkryNameloading">
-                                <el-option
-                                        v-for="item in renter.options2"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value">
-                                </el-option>
-                            </el-select>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-            </div>
-            <div v-if="renter.jujianfangtype==2">
-                <el-row>
-                    <el-form-item label="自由经纪人">
-                        <el-select
-                                id="jujianfang"
-                                v-model="renter.jujianfangid"
-                                filterable
-                                remote
-                                @change="jingjirenchangeOnSelect"
-                                placeholder="自由经纪人名称"
-                                :remote-method="remoteMethod2"
-                                :loading="bkNameloading">
-                            <el-option
-                                    v-for="item in renter.options1"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-row>
+                    </el-row>
+                </div>
             </div>
 
             <el-row>

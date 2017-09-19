@@ -12,9 +12,14 @@
                     <el-radio label="彭亮"></el-radio>
                     <el-radio  label="无"></el-radio>
                 </el-radio-group>
-
             </el-form-item>
-            <el-row>
+            <el-form-item label="合同类型" prop="farenzhengjian" >
+                <el-radio-group v-model="owner.farenzhengjian">
+                    <el-radio label="l">两方</el-radio>
+                    <el-radio label="s">三方</el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-row v-if="owner.farenzhengjian=='s'">
                 <el-col  :span="8">
                     <el-form-item label="居间方">
                         <el-select

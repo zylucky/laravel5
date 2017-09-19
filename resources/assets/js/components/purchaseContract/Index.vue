@@ -3,10 +3,10 @@
     <el-row >
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="">
-                <el-input v-model="filters.name" placeholder="请输入项目"></el-input>
+                <el-input v-model="filters.name" @keyup.enter.native="purchaseContractList" placeholder="请输入项目"></el-input>
             </el-form-item>
             <el-form-item label="">
-                <el-select v-model="filters.status" placeholder="请选择合同状态">
+                <el-select v-model="filters.status" @change="purchaseContractList" placeholder="请选择合同状态">
                     <el-option
                             v-for="item in options"
                             :key="item.value"
@@ -495,7 +495,7 @@
             //合单管理
             handleHedan(index,row){
                 this.$router.push('/purchaseContract/hedan?id='+row.id);
-            },
+            }
         },
         mounted(){
             this.purchaseContractList();
