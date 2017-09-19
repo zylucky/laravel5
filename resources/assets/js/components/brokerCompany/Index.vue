@@ -383,8 +383,8 @@
                 this.$router.push('/brokerCompany/add');
             },
             handleExport: function () {
-                window.open("/brokerCompany/ExportExcel?bk_name="+this.filters.bk_name
-                    +"&yewuqvyvid="+this.filters.yewuqvyvid+"&yewupianqvid="+this.filters.yewupianqvid+"&gongsijingyingshuxing="+this.filters.gongsijingyingshuxing.toString()+"&xm="+this.filters.xm);
+                window.open("/brokerCompany/ExportExcel?bk_name="+this.filters.bk_name  +"&yewuqvyvid="+this.filters.yewuqvyvid+"&yewupianqvid="+this.filters.yewupianqvid
+                    +"&gongsijingyingshuxing="+this.filters.gongsijingyingshuxing.toString()+"&xm="+this.filters.xm+"&hezuoxieyidengji="+this.filters.hezuoxieyidengji);
             },
             selsChange: function (sels) {
                 this.sels = sels;

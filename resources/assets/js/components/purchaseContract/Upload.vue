@@ -282,7 +282,7 @@
                                 this.$message({
                                     message: res.data.msg,
                                     type: 'error'
-                                });
+                                }) ;
                             }
 
                         });

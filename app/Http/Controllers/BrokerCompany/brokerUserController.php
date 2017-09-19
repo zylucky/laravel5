@@ -235,6 +235,7 @@ class brokerUserController extends Controller
             $sql = $sql . " and tel like '%" . $tel . "%' ";
 
         }
+        //dd($sql);
         try {
             $bk = DB::connection('mysql2')->select($sql);
             $cellData = $this->objToArray($bk);
