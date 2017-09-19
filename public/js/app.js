@@ -37806,6 +37806,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__api_api__["_24" /* getContractVersionList */])(para).then(function (res) {
                 _this6.options = res.data.data;
+                if (_this6.contractVersion == null) {
+                    _this6.contractVersion = _this6.options[0].version;
+                }
             });
         },
         preview: function preview() {
@@ -46753,7 +46756,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__api_api__["_24" /* getContractVersionList */])(para).then(function (res) {
                 _this6.options = res.data.data;
-                _this6.contractVersion = _this6.options[0].version;
+                if (_this6.contractVersion == null) {
+                    _this6.contractVersion = _this6.options[0].version;
+                }
             });
         },
         preview: function preview() {
@@ -131016,7 +131021,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "el-icon-plus"
   })]), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "size": "tiny"
+      "size": "large"
     },
     model: {
       value: (_vm.dialogVisible),
@@ -131068,7 +131073,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "el-icon-plus"
   })]), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "size": "tiny"
+      "size": "large"
     },
     model: {
       value: (_vm.dialogVisible),
@@ -131120,7 +131125,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "el-icon-plus"
   })]), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "size": "tiny"
+      "size": "large"
     },
     model: {
       value: (_vm.dialogVisible),
@@ -131172,7 +131177,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "el-icon-plus"
   })]), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "size": "tiny"
+      "size": "large"
     },
     model: {
       value: (_vm.dialogVisible),
@@ -131224,7 +131229,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "el-icon-plus"
   })]), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "size": "tiny"
+      "size": "large"
     },
     model: {
       value: (_vm.dialogVisible),
@@ -131276,7 +131281,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "el-icon-plus"
   })]), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "size": "tiny"
+      "size": "large"
     },
     model: {
       value: (_vm.dialogVisible),
@@ -131328,7 +131333,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "el-icon-plus"
   })]), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "size": "tiny"
+      "size": "large"
     },
     model: {
       value: (_vm.dialogVisible),
@@ -131380,7 +131385,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "el-icon-plus"
   })]), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "size": "tiny"
+      "size": "large"
     },
     model: {
       value: (_vm.dialogVisible),
@@ -131432,7 +131437,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "el-icon-plus"
   })]), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "size": "tiny"
+      "size": "large"
     },
     model: {
       value: (_vm.dialogVisible),
