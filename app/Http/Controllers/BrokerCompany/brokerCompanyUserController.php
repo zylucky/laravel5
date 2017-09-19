@@ -299,6 +299,7 @@ class brokerCompanyUserController extends Controller
         try {
             $bk = DB::connection('mysql2')->select($sql);
             $cellData = $this->objToArray($bk);
+            dd(count($cellData) );
             //dd($cellData);
             if (count($cellData) > 0) {
                 $headerData = ['姓名','职务','联系电话','渠道公司名称','项目名称','幼狮联系人1','幼狮联系人2','幼狮联系人3','是否添加微信好友','添加好友人数',

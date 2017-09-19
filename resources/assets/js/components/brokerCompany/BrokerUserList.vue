@@ -186,7 +186,9 @@
                 }
             },
             changeywqy(row, column){
-              return row.yewuqvyv+'-'+row.yewupianqv
+                if(row.yewuqvyv!=null) {
+                    return row.yewuqvyv + '-' + row.yewupianqv
+                }
             },
             //更改自由经纪人人员状态
             changeStatus(row){
@@ -316,7 +318,7 @@
                 this.$router.push({path: '/brokerUser/view?id=' + row.tQdZyPersonId});
             },
             handleExport: function () {
-                window.open("/brokerUser/ExportExcel?username="+this.filters.username
+                window.open("/brokerUser/ExportExcel?username="+this.filters.bk_username
                     +"&yewuqvyvid="+this.filters.yewuqvyvid+"&yewupianqvid="+this.filters.yewupianqvid+"&qvdaodengji="+this.filters.qvdaodengji +"&bk_dianhua="+this.filters.bk_dianhua);
             },
             selsChange: function (sels) {
