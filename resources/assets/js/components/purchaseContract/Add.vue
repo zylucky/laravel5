@@ -139,6 +139,7 @@
                     qudaoren:'',
                     yezhuleixing:1,
                     yezhuleixing2:1,
+                    farenzhengjian:'s',
                     //产权人
                     chanquanrenList:[
                         {
@@ -405,6 +406,7 @@
                 this.owner.options2[0].value = res.data.data.qudaorenid;
                 this.owner.options2[0].label = res.data.data.qudaoren;
                 this.owner.yezhuleixing = res.data.data.yezhuleixing;
+                this.owner.farenzhengjian = res.data.data.farenzhengjian;
                 this.owner.yezhuleixing2 = res.data.data.yezhuleixing;
                 this.owner.shoukuanren = res.data.data.shoukuanren;
                 this.owner.kaihuhang = res.data.data.kaihuhang;

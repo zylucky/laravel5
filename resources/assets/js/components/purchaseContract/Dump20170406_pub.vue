@@ -13,12 +13,14 @@
             <br>委托代理人 ：<input type="text" name="" style="width:150px;font-size:10px" value="">委托代理人：<input type="text" name="" style="width:165px;font-size:10px" value=""><br>
             <font></font>
             <font style="margin-left: 17%" ></font><br>
-            <b> 居间方（丙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b><br>
-            房地产经纪人：<input type="text" name="" style="width:140px;font-size:10px" value="">
-            <br>资质证书号：<input type="text" name="" style="width:160px;font-size:10px" value="">
-            <br>联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">
-            <br>联系方式：<input type="text" name="" style="width:180px;font-size:10px" value=""><br>
-            <font></font>
+            <p v-if="farenzhengjian=='s'">
+                <b> 居间方（丙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b><br>
+                房地产经纪人：<input type="text" name="" style="width:140px;font-size:10px" value="">
+                <br>资质证书号：<input type="text" name="" style="width:160px;font-size:10px" value="">
+                <br>联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">
+                <br>联系方式：<input type="text" name="" style="width:180px;font-size:10px" value=""><br>
+                <font></font>
+            </p>
         </p>
     </div>
 </template>
@@ -60,6 +62,7 @@
         data(){
             return {
                 buchongtiaokuan:null,
+                farenzhengjian:null,
             }
         },
         methods:{
@@ -69,6 +72,7 @@
                     if(res.data.code=='200'){
                         //把数据分别赋值给三个组件的变量
                         this.buchongtiaokuan = res.data.data.yingyezhizhao;
+                        this.farenzhengjian = res.data.data.farenzhengjian;
                     }else {
                         this.$message({
                             message: '获取数据失败',

@@ -159,9 +159,9 @@
                     qianyuerenTel:'',
                     qianyuerenSex:1,
                     qianyuerenId:'',
+                    hetongtype:1,//合同类型
                 },
                 addDate: {
-                    hetongtype:1,//合同类型
                     dikoujine:'',//合同金额
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
@@ -406,7 +406,7 @@
                 this.renter.qianyuerenTel = res.data.data.qianyuerenTel;
                 this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
                 this.renter.qianyuerenId = res.data.data.qianyuerenId;
-                this.addDate.hetongtype = res.data.data.hetongtype;
+                this.renter.hetongtype = res.data.data.hetongtype;
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;

@@ -4,9 +4,9 @@
         <span class="tc f22">幼狮空间成交版</span>
         <p>出租方（甲方）：<input type="text" style="width: 450px" disabled value='北京幼狮科技有限公司'/></p>
         <p>承租方（乙方）：<input type="text" style="width: 450px" disabled value=""/></p>
-        <p>居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="renter.jujianfang"/></p>
+        <p v-if="hetongtype==2">居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="renter.jujianfang"/></p>
 
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙、丙三方在平等、自愿的基础上，就乙方承租甲方房屋，丙方提供居间服务等事宜，经各方友好协商一致，签订本合同以资信守。</b></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙{{msg01}}方在平等、自愿的基础上，就乙方承租甲方房屋，{{msg02}}经各方友好协商一致，签订本合同以资信守。</p>
         <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一条  房屋基本情况</b></p>
         <span
                 v-for="(item,index) in property.xsOffice"
@@ -128,7 +128,7 @@
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲乙双方一致同意，可通过在本合同中书写的手机号码以短信、微信方式进行相关通知的送达，在短信、微信发送成功后即视为完成送达。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲乙双方在本合同中书写的地址即为本合同下任何书面通知的有效送达地址，若因接收方拒收或地址错误等情况致使无法送达的，均以付邮日（以邮戳为准）后3日即视为通知方已依本合同给予书面通知。若任何一方联络地址变更的，应及时通知对方。</p>
         <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十一条  其他</b></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）本合同经甲乙双方签字或盖章后生效。本合同（及附件）一式叁份，甲、乙、丙方各持一份。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）本合同经甲乙双方签字或盖章后生效。本合同（及附件）一式{{msg04}}份，甲、乙{{msg03}}方各持一份。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同生效后，各方对合同内容的变更或补充应采取书面形式，作为本合同的附件。</p>
         <!--<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十二条  补充条款</b></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。</p>-->
@@ -235,8 +235,13 @@
         },
         data(){
             return {
+                msg01:'、丙三',
+                msg02:'丙方提供居间服务等事宜，',
+                msg03:'、丙',
+                msg04:'叁',
                 historyBuchong:false,
                 listJieyue:false,
+                hetongtype:1,//合同类型
                 property:{
                     flag:null,
                     xsOffice: [{
@@ -300,7 +305,6 @@
                             content:'',
                         }
                     ],//补充条款
-                    hetongtype:1,//合同类型
                     dikoujine:'',//合同金额
                     startdate:'',//租期开始时间
                     enddate:'',//租期结束时间
@@ -559,7 +563,13 @@
                 this.renter.qianyuerenTel = res.data.data.qianyuerenTel;
                 this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
                 this.renter.qianyuerenId = res.data.data.qianyuerenId;
-                this.addDate.hetongtype = res.data.data.hetongtype;
+                this.hetongtype = res.data.data.hetongtype;
+                if(this.hetongtype==1){
+                    this.msg01='两';
+                    this.msg02='';
+                    this.msg03='';
+                    this.msg04='两';
+                }
                 this.addDate.actualrent = res.data.data.actualrent;
                 if(res.data.data.startdate != ''){
                     this.addDate.startdate = res.data.data.startdate;
