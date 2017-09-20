@@ -329,7 +329,7 @@
             //获取协议等级
             remoteMethodXYDJ() {
                 //this.optionsxydj = [];
-                this.filters.hezuoxieyidengji = null;//清除街道的缓存
+               // this.filters.hezuoxieyidengji = null;//清除街道的缓存
                 getXYDJDicList().then((res) => {
                     if (res.status == '200') {
                         for (var item in res.data.data) {
@@ -384,7 +384,7 @@
             },
             handleExport: function () {
                 window.open("/brokerCompany/ExportExcel?bk_name="+this.filters.bk_name  +"&yewuqvyvid="+this.filters.yewuqvyvid+"&yewupianqvid="+this.filters.yewupianqvid
-                    +"&gongsijingyingshuxing="+this.filters.gongsijingyingshuxing.toString()+"&xm="+this.filters.xm+"&hezuoxieyidengji="+this.filters.hezuoxieyidengji);
+                    +"&gongsijingyingshuxing="+this.filters.gongsijingyingshuxing+"&xm="+this.filters.xm+"&hezuoxieyidengji="+this.filters.hezuoxieyidengji);
             },
             selsChange: function (sels) {
                 this.sels = sels;
