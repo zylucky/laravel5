@@ -26336,11 +26336,11 @@ router.beforeEach(function (to, from, next) {
     } else {
         next();
         var _para = {};
+
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__api_api__["a" /* getPermissionList */])(_para).then(function (res) {
             sessionStorage.removeItem('permission');
             sessionStorage.setItem('permission', JSON.stringify(res.data));
         }).catch(function (error) {
-            //console.log(error)
             next({ path: '/login' });
         });
 

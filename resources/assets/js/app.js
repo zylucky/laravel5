@@ -61,12 +61,12 @@ router.beforeEach((to, from, next) => {
     } else {
         next()
         let para ={}
+
         getPermissionList(para).then(function(res){
             sessionStorage.removeItem('permission');
             sessionStorage.setItem('permission', JSON.stringify(res.data));
         }).catch(function (error) {
-            //console.log(error)
-         next({ path: '/login' })
+            next({ path: '/login' })
         });
 
         Vue.prototype.fun = function (funKey){
