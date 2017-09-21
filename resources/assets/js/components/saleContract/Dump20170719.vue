@@ -2,7 +2,7 @@
     <div class="whole">
         <h2 class="tc">北京市房屋租赁合同</h2>
         <span class="tc f22">幼狮空间成交版</span>
-        <p>出租方（甲方）：<input type="text" style="width: 450px" disabled value='北京幼狮科技有限公司'/></p>
+        <p>出租方（甲方）：<input type="text" style="width: 450px" disabled v-model="renter.chuzufang"/></p>
         <p>承租方（乙方）：<input type="text" style="width: 450px" disabled value=""/></p>
         <p v-if="hetongtype==2">居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="renter.jujianfang"/></p>
 
@@ -12,7 +12,7 @@
                 v-for="(item,index) in property.xsOffice"
                 :key="index"
         >
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:100px;">区（县）<input type="text" v-model="item.weizhi" style="width:300px;">，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:120px;" v-model="item.qianyuemianji">平方米，产权证编号： <input type="text" style="width:520px;" v-model="item.chanquanzhenghao" value="">  。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:100px;">区（县）<u>{{item.weizhi?item.weizhi:'__________________________________'}}</u>，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:120px;" v-model="item.qianyuemianji">平方米，产权证编号： <u>{{item.chanquanzhenghao?item.chanquanzhenghao:'___________________________________'}}</u>  。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。</p>
         <p><b>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二条  房屋租赁情况
@@ -82,14 +82,14 @@
 
             <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每 <u>{{intToChinese(addDate.fukuanFangshiList[0].zujinyue)}}</u>个月支付一次，于付款月起租日 30日前支付下一次租金，即第二期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每 <u>{{intToChinese(addDate.fukuanFangshiList[0].zujinyue)}}</u>个月支付一次，于付款月起租日 <u>{{addDate.tiqianfukuantian?addDate.tiqianfukuantian:'____'}}</u> 日前支付下一次租金，即第二期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>月
             <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日前，第三期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月
             <u>&nbsp;&nbsp;{{day(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>日前，合同期每期租金以此类推。
         </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）租金的结算方式为：□ 以转账方式 ；□ 现金支付</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（甲方指定收款账户为：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲方指定收款账户为：</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户 &nbsp;&nbsp;名：<input type="text" style="width: 350px;" v-model="renter.shoukuanren"></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开户行：<input type="text" style="width: 350px;" v-model="renter.kaihuhang"></p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账 &nbsp;&nbsp;号：<input type="text" style="width: 350px;" v-model="renter.zhanghao"></p>
@@ -214,7 +214,8 @@
     }
     p{
         font-size: 18px; text-align:left;
-        line-height: 2;}
+        display: block;
+    }
     .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center}
     .whole u{
         font-size:20px!important;
@@ -551,6 +552,7 @@
                 }
                 //this.renter.chengzuren = res.data.data.chengzuren;
                 this.renter.chengzufang = res.data.data.chengzufang;
+                this.renter.chuzufang = res.data.data.chuzufang?res.data.data.chuzufang+'有限公司':'';
                 this.renter.jujianfangtype = res.data.data.jujianfangtype;
                 this.renter.jujianfang = res.data.data.jujianfang;
                 this.renter.shoukuanren = res.data.data.shoukuanren;
@@ -619,7 +621,7 @@
             //获取合同的详细信息
             this.getSaleContract(this.$route.query);
             // document.getElementsByTagName('head').innerHTML('<title>华亮房产 -- 先锋地产机构、专业人、信誉人</title>>');
-            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
+            document.title = '幼狮科技 -- 先锋地产机构、专业人、信誉人'+this.$route.query.bianhao;
             function  hello() {
                 window.print()
             }
