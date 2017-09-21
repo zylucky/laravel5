@@ -1,0 +1,157 @@
+<template>
+    <el-form style="margin-top:2%" :model="copyForm" ref="copyForm" :rules="copyRules" label-position="top">
+        <el-upload
+                action="/purchaseContract/addCopyImage?type=9"
+                list-type="picture-card"
+                :headers="headers"
+                :data="data"
+                multiple
+                :on-preview="handlePictureCardPreview"
+                :on-remove="handleRemove"
+                :on-success="handleSuccess"
+                :file-list="jiaogedan"
+        >
+            <i class="el-icon-plus"></i>
+        </el-upload>
+        <el-dialog v-model="dialogVisible" size="large">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+    </el-form>
+</template>
+<script>
+    import {
+        copyImageList,
+        copyImageDelete,
+        isCopyComplete,
+        isCopyCompleteList,
+        getPurchaseContractInfo,
+    } from  '../../api/api';
+
+    export default {
+        data() {
+            return {
+                copyRules:{
+                    iscompletehetong: [
+                        { required: true, message: '不能为空' }
+                    ],
+                },
+                copyForm:{
+                    iscompletehetong:null,
+                    iscompletecqrsfz: null,
+                    iscompleteyyzz:null,
+                    iscompletefrzz:null,
+                    iscompletefcz:null,
+                    iscompletebdcsqwts:null,
+                    iscompleteyzsqdlrwts:null,
+                    iscompletewtrsfz:null,
+                    iscompletefwjgd:null,
+                },
+                hetongList: [],
+                chanquanrenList: [],
+                yingyezhizhao:[],
+                faren:[],
+                fangchanzheng:[],
+                budongchan:[],
+                yezhushouquan:[],
+                weituoren:[],
+                jiaogedan:[],
+                yezhuleixing:null,
+                dialogImageUrl: '',
+                dialogVisible: false,
+                headers:{
+                    'X-CSRF-TOKEN':window.Laravel.csrfToken
+                },
+                data:{
+                    id:null,
+                },
+            };
+        },
+        methods: {
+            save(){
+                this.$refs.copyForm.validate((valid) => {
+                    if(valid){
+                        let para = Object.assign({}, this.copyForm,{id:parseInt(this.$route.query.id)});
+                        isCopyComplete(para).then((res)=>{
+                            if(res.data.code=='200'){
+                                this.$message({
+                                    message: '保存成功',
+                                    type: 'success'
+                                });
+                                history.go(-1);
+                            }else{
+                                this.$message({
+                                    message: res.data.msg,
+                                    type: 'error'
+                                }) ;
+                            }
+
+                        });
+                    }
+                });
+
+            },
+            cansel(){
+                history.go(-1);
+            },
+            beforeAvatarUpload(file) {
+                const isJPG = file.type === 'image/jpeg';
+                const isLt2M = file.size / 1024 / 1024 < 2;
+                if (!isJPG) {
+                    this.$message.error('上传头像图片只能是 JPG 格式!');
+                }
+                if (!isLt2M) {
+                    this.$message.error('上传头像图片大小不能超过 2MB!');
+                }
+                return isJPG && isLt2M;
+            },
+            handleRemove(file, fileList) {
+                let para ={
+                    id :file.id,
+                }
+                copyImageDelete(para).then((res)=>{
+
+                });
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
+            handleSuccess(response, file, fileList){
+                //响应值
+                console.log(response)
+            },
+            getCopyImageList(){
+                let para = {
+                    id:this.$route.query.id
+                }
+                copyImageList(para).then((res)=>{
+                    if(res.data.code=='200'){
+                        this.hetongList = res.data.data[1];//合同
+                        this.chanquanrenList = res.data.data[2];//合同
+                        this.yingyezhizhao = res.data.data[3];//合同
+                        this.faren  = res.data.data[4];//合同
+                        this.fangchanzheng = res.data.data[5];//合同
+                        this.budongchan = res.data.data[6];//合同
+                        this.yezhushouquan = res.data.data[7];//合同
+                        this.weituoren = res.data.data[8];//合同
+                        this.jiaogedan = res.data.data[9];//合同
+                    }
+                })
+            },
+        },
+        mounted(){
+            this.data.id = this.$route.query.id;
+            getPurchaseContractInfo(this.$route.query).then((res)=>{
+                //查数据，得业主leixing
+                this.yezhuleixing = res.data.data.yezhuleixing;
+            }),
+                isCopyCompleteList(this.$route.query).then((res)=>{
+                    //查数据，得业主leixing
+                    this.copyForm = res.data.data;
+                })
+            this.getCopyImageList();
+        }
+
+
+    }
+</script>

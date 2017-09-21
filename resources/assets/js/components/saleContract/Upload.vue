@@ -21,7 +21,7 @@
         >
             <i class="el-icon-plus"></i>
         </el-upload>
-        <el-dialog v-model="dialogVisible" size="tiny">
+        <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
         </el-dialog>
         <div v-if="zuhuleixing==1">
@@ -45,7 +45,7 @@
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
+            <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         </div>
@@ -70,7 +70,7 @@
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
+            <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         </div>
@@ -95,7 +95,7 @@
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
+            <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         </div>
@@ -119,7 +119,7 @@
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
+            <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
             <el-form-item label="委托人身份证" prop="" >
@@ -142,32 +142,6 @@
             >
                 <i class="el-icon-plus"></i>
             </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
-                <img width="100%" :src="dialogImageUrl" alt="">
-            </el-dialog>
-            <el-form-item label="房屋交割单" prop="" >
-                <el-radio-group v-model="copyForm.iscompletefwjgd">
-                    <el-radio :label="1">全</el-radio>
-                    <el-radio :label="0">不全</el-radio>
-                </el-radio-group>
-            </el-form-item>
-            <br>
-            <el-upload
-                    action="/saleContract/addCopyImage?type=7"
-                    list-type="picture-card"
-                    :headers="headers"
-                    :data="data"
-                    multiple
-                    :on-preview="handlePictureCardPreview"
-                    :on-remove="handleRemove"
-                    :on-success="handleSuccess"
-                    :file-list="jiaogedan"
-            >
-                <i class="el-icon-plus"></i>
-            </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
-                <img width="100%" :src="dialogImageUrl" alt="">
-            </el-dialog>
         <div style="position: fixed;right:10%;top:50%;">
             <el-button type="primary"   @click="save" style="margin-top:100px;">保存</el-button>
             <el-button type="warning"   @click="cansel" style="margin-top:100px;">取消</el-button>
