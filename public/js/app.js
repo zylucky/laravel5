@@ -40336,6 +40336,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -40968,8 +40969,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
-//
 //
 //
 //
@@ -114476,9 +114475,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "disabled": "",
       "value": "以下空白"
     }
-  }) : _vm._e(), _vm._v(" "), _c('br'), _c('br'), _vm._v(" "), _c('b', [_vm._v(" 业主方（甲方）："), _c('input', {
+  }) : _vm._e(), _vm._v(" "), _c('br'), _c('br'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(1), _c('br'), _vm._v("\n        联系地址："), _c('input', {
     staticStyle: {
-      "width": "265px",
+      "width": "180px",
       "font-size": "10px"
     },
     attrs: {
@@ -114486,37 +114485,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": "",
       "value": ""
     }
-  }), _vm._v("  "), _c('font', {
+  }), _vm._v("  联系地址："), _c('input', {
     staticStyle: {
-      "margin-left": "150px"
-    }
-  }, [_vm._v("管理方（乙方）：")]), _vm._v(" "), _c('input', {
-    staticStyle: {
-      "width": "119px",
-      "font-size": "10px"
-    },
-    attrs: {
-      "type": "text",
-      "name": "",
-      "value": ""
-    }
-  })], 1), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(0), _c('br'), _vm._v("\n        联系地址："), _c('input', {
-    staticStyle: {
-      "width": "320px",
-      "font-size": "10px"
-    },
-    attrs: {
-      "type": "text",
-      "name": "",
-      "value": ""
-    }
-  }), _vm._v("  "), _c('font', {
-    staticStyle: {
-      "margin-left": "150px"
-    }
-  }, [_vm._v("联系地址：")]), _c('input', {
-    staticStyle: {
-      "width": "320px"
+      "width": "185px"
     },
     attrs: {
       "type": "text",
@@ -114525,7 +114496,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('br'), _vm._v("联系方式："), _c('input', {
     staticStyle: {
-      "width": "320px"
+      "width": "180px"
     },
     attrs: {
       "type": "text",
@@ -114533,13 +114504,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "disabled": "",
       "value": ""
     }
-  }), _vm._v("  "), _c('font', {
+  }), _vm._v("  联系方式："), _c('input', {
     staticStyle: {
-      "margin-left": "150px"
-    }
-  }, [_vm._v("联系方式：")]), _c('input', {
-    staticStyle: {
-      "width": "320px",
+      "width": "185px",
       "font-size": "10px"
     },
     attrs: {
@@ -114547,13 +114514,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": "",
       "value": ""
     }
-  }), _c('br'), _vm._v(" "), _c('font', [_vm._v("_______年____月____日")]), _vm._v("  \n        "), _c('font', {
+  }), _c('br'), _vm._v(" "), _c('font', [_vm._v("_______年____月____日")]), _vm._v(" "), _c('font', {
     staticStyle: {
-      "margin-left": "350px"
+      "margin-left": "6%"
     }
-  }, [_vm._v("\n            _______年____月____日\n        ")]), _c('br'), _vm._v(" "), _c('br')], 1), (_vm.farenzhengjian == 's') ? _c('p', [_c('b', [_vm._v(" 居间方（丙方）：")]), _c('u', [_vm._v("北京华亮房地产经纪有限公司")]), _vm._v(" "), _c('br'), _vm._v("联系地址："), _c('input', {
+  }, [_vm._v("_______年____月____日")]), _c('br'), _vm._v(" "), _c('br')], 1), (_vm.farenzhengjian == 's') ? _c('p', [_c('b', [_vm._v(" 居间方（丙方）：")]), _c('u', [_vm._v("北京华亮房地产经纪有限公司")]), _vm._v(" "), _c('br'), _vm._v("联系地址："), _c('input', {
     staticStyle: {
-      "width": "315px",
+      "width": "180px",
       "font-size": "10px"
     },
     attrs: {
@@ -114563,7 +114530,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('br'), _vm._v("联系方式："), _c('input', {
     staticStyle: {
-      "width": "315px",
+      "width": "180px",
       "font-size": "10px"
     },
     attrs: {
@@ -114573,9 +114540,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('br'), _vm._v(" "), _c('font', [_vm._v("_______年____月____日")])], 1) : _vm._e(), _vm._v(" "), _c('p')])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('b', [_vm._v(" 业主方（甲方）："), _c('input', {
+    staticStyle: {
+      "width": "119px",
+      "font-size": "10px"
+    },
+    attrs: {
+      "type": "text",
+      "name": "",
+      "value": ""
+    }
+  }), _vm._v("  管理方（乙方）："), _c('input', {
+    staticStyle: {
+      "width": "119px",
+      "font-size": "10px"
+    },
+    attrs: {
+      "type": "text",
+      "name": "",
+      "value": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('b', [_vm._v("委托代理人："), _c('input', {
     staticStyle: {
-      "width": "305px",
+      "width": "160px",
       "font-size": "10px"
     },
     attrs: {
@@ -129389,7 +129378,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "disabled": "",
       "value": "以下空白"
     }
-  }) : _vm._e(), _vm._v(" "), _c('br'), _c('br'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('br'), _vm._v("\n        联系地址："), _c('input', {
+  }) : _vm._e(), _vm._v(" "), _c('br'), _c('br'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(1), _c('br'), _vm._v("\n        联系地址："), _c('input', {
     staticStyle: {
       "width": "180px",
       "font-size": "10px"
@@ -129399,7 +129388,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": "",
       "value": ""
     }
-  }), _vm._v("联系地址："), _c('input', {
+  }), _vm._v("  联系地址："), _c('input', {
     staticStyle: {
       "width": "185px"
     },
@@ -129418,7 +129407,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "disabled": "",
       "value": ""
     }
-  }), _vm._v("联系方式："), _c('input', {
+  }), _vm._v("  联系方式："), _c('input', {
     staticStyle: {
       "width": "185px",
       "font-size": "10px"
@@ -129428,31 +129417,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": "",
       "value": ""
     }
-  }), _vm._v(" "), _c('br'), _vm._v("委托代理人 ："), _c('input', {
+  }), _c('br'), _vm._v(" "), _c('font', [_vm._v("_______年____月____日")]), _vm._v(" "), _c('font', {
     staticStyle: {
-      "width": "150px",
-      "font-size": "10px"
-    },
-    attrs: {
-      "type": "text",
-      "name": "",
-      "value": ""
+      "margin-left": "6%"
     }
-  }), _vm._v("委托代理人："), _c('input', {
-    staticStyle: {
-      "width": "165px",
-      "font-size": "10px"
-    },
-    attrs: {
-      "type": "text",
-      "name": "",
-      "value": ""
-    }
-  }), _c('br'), _vm._v(" "), _c('font'), _vm._v(" "), _c('font', {
-    staticStyle: {
-      "margin-left": "17%"
-    }
-  }), _c('br')], 1), (_vm.farenzhengjian == 's') ? _c('p', [_vm._m(1), _c('br'), _vm._v("\n            房地产经纪人："), _c('input', {
+  }, [_vm._v("_______年____月____日")]), _c('br'), _vm._v(" "), _c('br')], 1), (_vm.farenzhengjian == 's') ? _c('p', [_vm._m(2), _c('br'), _vm._v("\n            房地产经纪人："), _c('input', {
     staticStyle: {
       "width": "140px",
       "font-size": "10px"
@@ -129494,7 +129463,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('br'), _vm._v(" "), _c('font')], 1) : _vm._e(), _vm._v(" "), _c('p')])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('b', [_vm._v(" 出租人（甲方）："), _c('input', {
+  return _c('b', [_vm._v(" 业主方（甲方）："), _c('input', {
     staticStyle: {
       "width": "119px",
       "font-size": "10px"
@@ -129504,9 +129473,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": "",
       "value": ""
     }
-  }), _vm._v("承租人（乙方）："), _c('input', {
+  }), _vm._v("  管理方（乙方）："), _c('input', {
     staticStyle: {
       "width": "119px",
+      "font-size": "10px"
+    },
+    attrs: {
+      "type": "text",
+      "name": "",
+      "value": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('b', [_vm._v("委托代理人："), _c('input', {
+    staticStyle: {
+      "width": "160px",
       "font-size": "10px"
     },
     attrs: {

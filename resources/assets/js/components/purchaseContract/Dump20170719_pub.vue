@@ -8,19 +8,17 @@
             <input v-if="buchongtiaokuan==null||yingyezhizhao==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
 
-            <b> 业主方（甲方）：<input type="text" name="" style="width:265px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">管理方（乙方）：</font> <input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
-            <b>委托代理人：<input type="text" name="" style="width:305px;font-size:10px" value=""></b><br>
-            联系地址：<input type="text" name="" style="width:320px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系地址：</font><input type="text" name="" style="width:320px" value="">
-            <br>联系方式：<input type="text" name="" style="width:320px;" disabled value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系方式：</font><input type="text" name="" style="width:320px;font-size:10px" value=""><br>
-            <font>_______年____月____日</font>&nbsp;&nbsp;
-            <font style="margin-left: 350px" >
-                _______年____月____日
-            </font><br>
+            <b> 业主方（甲方）：<input type="text" name="" style="width:119px;font-size:10px" value="">&nbsp;&nbsp;管理方（乙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
+            <b>委托代理人：<input type="text" name="" style="width:160px;font-size:10px" value=""></b><br>
+            联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">&nbsp;&nbsp;联系地址：<input type="text" name="" style="width:185px" value="">
+            <br>联系方式：<input type="text" name="" style="width:180px;" disabled value="">&nbsp;&nbsp;联系方式：<input type="text" name="" style="width:185px;font-size:10px" value=""><br>
+            <font>_______年____月____日</font>
+            <font style="margin-left: 6%" >_______年____月____日</font><br>
             <br>
             <p v-if="farenzhengjian=='s'">
                 <b> 居间方（丙方）：</b><u>北京华亮房地产经纪有限公司</u>
-                <br>联系地址：<input type="text" name="" style="width:315px;font-size:10px" value="">
-                <br>联系方式：<input type="text" name="" style="width:315px;font-size:10px" value="">
+                <br>联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">
+                <br>联系方式：<input type="text" name="" style="width:180px;font-size:10px" value="">
                 <br>
                 <font>_______年____月____日</font>
             </p>
