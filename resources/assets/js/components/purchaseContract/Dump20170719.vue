@@ -12,7 +12,7 @@
                     v-for="(item,index) in property.officeList"
                     :key="index"
             >
-        <p>（一）房屋坐落于北京市 <u>{{item.quyu?item.quyu:'______________'}}</u> 区（县）<u>{{item.weizhi?item.quyu:'_____________________________'}}</u> ，建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'______'}}</u>平方米,实际承租面积为<u>{{item.qianyuemianji?item.qianyuemianji:'______'}}</u>平方米。<br>
+        <p>（一）房屋坐落于北京市 <u>{{item.quyu?item.quyu:'_____'}}</u> 区（县）<u>{{item.weizhi?item.quyu:'_____________________'}}</u> ，建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'______'}}</u>平方米,实际承租面积为<u>{{item.qianyuemianji?item.qianyuemianji:'______'}}</u>平方米。<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： 办公  。</p>
         <p>（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_________________________'}}</u>，房屋所有权人姓名或名称：
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
@@ -29,14 +29,14 @@
                 <u>&nbsp;&nbsp;{{year(addDate.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(addDate.enddate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.enddate)}}&nbsp;&nbsp;</u>日止，共计
-                <u>&nbsp;&nbsp;{{nian}}&nbsp;&nbsp;</u>年
-                <u>&nbsp;&nbsp;{{yue}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{ri}}&nbsp;&nbsp;</u>日。甲方应于
+                <u>&nbsp;&nbsp;{{nian?nian:'__'}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{yue?yue:'__'}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{ri>1||ri==0?ri:'__'}}&nbsp;&nbsp;</u>日。甲方应于
                 <u>&nbsp;&nbsp;{{year(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。
                 <br>
-                （二）甲方承诺给予乙方 <input type="text" style="width:25px;">个月的招商装修期，即自
+                （二）甲方承诺给予乙方 <u>{{free?free:'__'}}</u> 个月的招商装修期，即自
                 <span v-for="(item,index) in addDate.mianzuqiList" style="display: inline;">
                 <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
@@ -107,7 +107,7 @@
                 账&nbsp;&nbsp;&nbsp;号：  <input type="text" style="width:500px;text-align:left" v-model="owner.zhanghao">
                 <br>
                 （二）保证金：人民币（大写）
-                <u>&nbsp;&nbsp;{{daxie(addDate.yajin)}}&nbsp;&nbsp;</u> （￥：
+                <u>&nbsp;&nbsp;{{daxie(addDate.yajin)?daxie(addDate.yajin):'______'}}&nbsp;&nbsp;</u> （￥：
                 <u>&nbsp;&nbsp;{{(toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'_______')}}&nbsp;&nbsp;</u> 元），乙方在甲乙双方签署本合同当日向甲方支付，如甲方提供的房屋所有权证复印件和身份证复印件不全，则乙方仅支付甲方百分之五十的保证金，剩余百分之五十的保证金于甲方补齐房屋所有权证复印件及身份证复印件后支付。管理期满或合同解除后，保证金除抵扣应由乙方承担的费用，剩余部分应如数返还给乙方。</p>
             <p><b>第四条  资产管理服务费</b></p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲、乙双方一致同意，乙方按照风险自担的方式收取资产管理服务费。即乙方对房屋进行出租及为实际使用人提供增值服务而取得的收入中，超出向甲方支付固定租金收益的溢价部分，将作为乙方的服务费，由乙方直接收取；如未产生溢价的，甲方亦不向乙方支付任何服务费用，该风险由乙方自行承担。</p>
@@ -241,6 +241,7 @@
                 historyOptimize:false,
                 dumpShow:false,
                 beiantixian:'',
+                free:'',
                 property:{
                     officeList: [{
                         omcId:null,
@@ -534,6 +535,7 @@
                 this.ri = res.data.data.ri;
                 this.yingyezhizhao = res.data.data.yingyezhizhao;
                 this.beiantixian = res.data.data.beiantixian;
+                this.free = res.data.data.free;
 
                 var lists = this.addDate.jiafangfeiyong;
                 var str ='';

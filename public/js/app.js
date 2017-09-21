@@ -39940,6 +39940,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             msg04: '二',
             msg05: '三',
             beianqixian: '',
+            free: '',
             historyOptimize: false,
             dumpShow: false,
             property: {
@@ -40233,6 +40234,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.ri = res.data.data.ri;
             this.yingyezhizhao = res.data.data.yingyezhizhao;
             this.beianqixian = res.data.data.beianqixian;
+            this.free = res.data.data.free;
 
             var lists = this.addDate.jiafangfeiyong;
             var str = '';
@@ -40626,6 +40628,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             historyOptimize: false,
             dumpShow: false,
             beiantixian: '',
+            free: '',
             property: {
                 officeList: [{
                     omcId: null,
@@ -40920,6 +40923,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.ri = res.data.data.ri;
             this.yingyezhizhao = res.data.data.yingyezhizhao;
             this.beiantixian = res.data.data.beiantixian;
+            this.free = res.data.data.free;
 
             var lists = this.addDate.jiafangfeiyong;
             var str = '';
@@ -40969,7 +40973,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
 //
 //
 //
@@ -49293,6 +49296,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 ;
 
@@ -55201,7 +55207,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.whole{\n        margin: auto;\n        top:0;\n        right: 0;\n        left:0;\n        bottom: 0;\n        width: 85%;\n        height: 20%;\n}\n.tc{text-align:center;\n}\n.whole h1{\n        font-size:40px;\n}\n.whole span {\n        display: block;\n}\n.f22{\n        font-size: 20px;\n}\n.whole  p{\n        font-size: 20px; text-align:left;\n        line-height: 2;\n}\ninput{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center\n}\n.whole u{\n        font-size:20px!important;\n}\n.whole input[disabled]{\n        background-color:white;\n}\n", ""]);
+exports.push([module.i, "\n.whole{\n        margin: auto;\n        top:0;\n        right: 0;\n        left:0;\n        bottom: 0;\n        width: 90%;\n        height: 20%;\n}\n.tc{text-align:center;\n}\n.whole h1{\n        font-size:40px;\n}\n.whole span {\n        display: block;\n}\n.f22{\n        font-size: 20px;\n}\n.whole  p{\n        font-size: 20px; text-align:left;\n        line-height: 2;\n}\ninput{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center\n}\n.whole u{\n        font-size:20px!important;\n}\n.whole input[disabled]{\n        background-color:white;\n}\n", ""]);
 
 // exports
 
@@ -55257,7 +55263,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.whole{\n     position: absolute;\n     margin: auto;\n     top: -650px;\n     right: 0;\n     left:0;\n     bottom: 0;\n     width: 85%;\n     height: 20%;\n}\n.whole h1{\n     font-size:40px;\n}\n.whole span {\n     display: block;\n}\n.whole p{\n     font-size: 20px; text-align:left;\n     line-height: 2;\n}\n.whole  input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center\n}\n.whole u{\n     font-size:20px!important;\n}\n.whole input[disabled]{\n     background-color:white;\n     color:#000000;\n}\n", ""]);
+exports.push([module.i, "\n.whole{\n     margin: auto;\n     top:0px;\n     right: 0;\n     left:0;\n     bottom: 0;\n     width: 90%;\n     height: 20%;\n}\n.whole h1{\n     font-size:40px;\n}\n.whole span {\n     display: block;\n}\n.whole p{\n     font-size: 20px; text-align:left;\n     line-height: 2;\n}\n.whole  input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center\n}\n.whole u{\n     font-size:20px!important;\n}\n.whole input[disabled]{\n     background-color:white;\n     color:#000000;\n}\n", ""]);
 
 // exports
 
@@ -55481,7 +55487,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.whole{\n    position: absolute;\n    margin: auto;\n    top: -650px;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 85%;\n    height: 20%;\n}\n.whole h1{\n    font-size:40px;\n}\n.whole span {\n    display: block;\n}\n.f22{\n    font-size: 20px;\n}\n.whole p{\n    font-size: 20px; text-align:left;\n    line-height: 2;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center\n}\n.whole u{\n    font-size:20px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n    color:#000000;\n}\n", ""]);
+exports.push([module.i, "\n.whole{\n    position: absolute;\n    margin: auto;\n    top: -650px;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 90%;\n    height: 20%;\n}\n.whole h1{\n    font-size:40px;\n}\n.whole span {\n    display: block;\n}\n.f22{\n    font-size: 20px;\n}\n.whole p{\n    font-size: 20px; text-align:left;\n    line-height: 2;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center\n}\n.whole u{\n    font-size:20px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n    color:#000000;\n}\n", ""]);
 
 // exports
 
@@ -110852,27 +110858,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })]) : _vm._e(), _vm._v(" "), _c('br'), _c('br'), _vm._v(" "), _c('p', [_vm._v("  依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙" + _vm._s(_vm.msg01) + "方在平等、自愿的基础上，就乙方承租甲方房屋，" + _vm._s(_vm.msg02) + "经各方友好协商一致，签订本合同以资信守。")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("   第一条  房屋基本情况")]), _vm._v(" "), _vm._l((_vm.property.officeList), function(item, index) {
     return _c('span', {
       key: index
-    }, [_vm._v("\n        （一）房屋坐落于北京市"), _c('u', [_vm._v(_vm._s(item.weizhi ? item.weizhi : '_____________________________________'))]), _vm._v(",承租区域建筑面积"), _c('u', [_vm._v(_vm._s(item.jianzhumianji ? item.jianzhumianji : '________'))]), _vm._v("平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积"), _c('u', [_vm._v(_vm._s(item.qianyuemianji ? item.qianyuemianji : '_______'))]), _vm._v("平方米。"), _c('br'), _vm._v("\n         （二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号："), _c('u', [_vm._v(_vm._s(item.chanquanzhenghao ? item.chanquanzhenghao : '_____________________________'))]), _vm._v("，房屋所有权人姓名或名称\n            "), _vm._l((_vm.owner.chanquanrenList), function(item, index) {
+    }, [_vm._v("\n        （一）房屋坐落于北京市"), _c('u', [_vm._v(_vm._s(item.weizhi ? item.weizhi : '___________________________'))]), _vm._v(",承租区域建筑面积"), _c('u', [_vm._v(_vm._s(item.jianzhumianji ? item.jianzhumianji : '________'))]), _vm._v("平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积"), _c('u', [_vm._v(_vm._s(item.qianyuemianji ? item.qianyuemianji : '_______'))]), _vm._v("平方米。"), _c('br'), _vm._v("\n         （二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号："), _c('u', [_vm._v(_vm._s(item.chanquanzhenghao ? item.chanquanzhenghao : '_____________________________'))]), _vm._v("，房屋所有权人姓名或名称\n            "), _vm._l((_vm.owner.chanquanrenList), function(item, index) {
       return _c('span', {
         staticStyle: {
           "display": "inline"
         }
       }, [_c('u', [_vm._v(_vm._s(item.name ? item.name : '___________'))])])
     }), _vm._v("房屋（\n        口是/口否）已设定了抵押。甲方保证出租的房屋权属无瑕疵、无债务纠纷，房屋设施符合出租条件。"), _c('br'), _c('br')], 2)
-  }), _vm._v(" "), _c('b', [_vm._v("   第二条  房屋租赁情况")]), _c('br'), _vm._v("\n          租赁用途："), _c('u', [_vm._v(" 办公 ")]), _vm._v("，甲方应当协助乙方（或实际使用人）办理营业证照。"), _c('br'), _vm._v(" "), _c('br'), _c('b', [_vm._v("   第三条  租赁期限及免租期")]), _c('br'), _vm._v("\n        合同期限内（一）甲方承诺在租赁合同期限内给予乙方"), _c('input', {
-    staticStyle: {
-      "width": "25px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("个月的免租期，\n        "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
+  }), _vm._v(" "), _c('b', [_vm._v("   第二条  房屋租赁情况")]), _c('br'), _vm._v("\n          租赁用途："), _c('u', [_vm._v(" 办公 ")]), _vm._v("，甲方应当协助乙方（或实际使用人）办理营业证照。"), _c('br'), _vm._v(" "), _c('br'), _c('b', [_vm._v("   第三条  租赁期限及免租期")]), _c('br'), _vm._v("\n        合同期限内（一）甲方承诺在租赁合同期限内给予乙方" + _vm._s(_vm.free ? _vm.free : '__') + "个月的免租期，\n        "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
     return _c('span', {
       staticStyle: {
         "display": "inline"
       }
     }, [_vm._v("\n                自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日至\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.enddate)) + "  ")]), _vm._v("年\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.enddate)) + "  ")]), _vm._v("月\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.enddate)) + "  ")]), _vm._v("止；\n        ")])
-  }), _vm._v("\n        免租期内乙方不支付租金，以便于乙方与入住方协商洽谈、进行装饰装修及办理入住手续等事宜。免租期内物业管理费用、供暖费和制冷费由甲方自行缴纳。"), _c('br'), _vm._v("\n         （二）本合同房屋租赁期限为\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.nian) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.yue) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.ri) + "  ")]), _vm._v("日，自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止。"), _c('br'), _vm._v("\n         （三）甲方应于"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("日前将房屋按约定条件交付给乙方。《房屋交割清单》经甲乙双方交验签字（盖章）确认及将房门钥匙移交视为交付完成。"), _c('br'), _vm._v("\n         （四）若合同期满乙方仍有承租人需使用该房屋，乙方应提前90天通知甲方，双方协商认可后签订延长期合同，本合同期限最长可自动顺延一年。在同等市场条件下，乙方拥有优先承租权。"), _c('br'), _c('br'), _vm._v(" "), _c('b', [_vm._v("   第四条 租金和押金")]), _c('br'), _vm._v("\n         （一）乙方按照下列标准向甲方支付租金（以人民币进行结算）："), _c('br'), _vm._v(" "), _vm._l((_vm.addDate.zujinList), function(item, index) {
+  }), _vm._v("\n        免租期内乙方不支付租金，以便于乙方与入住方协商洽谈、进行装饰装修及办理入住手续等事宜。免租期内物业管理费用、供暖费和制冷费由甲方自行缴纳。"), _c('br'), _vm._v("\n         （二）本合同房屋租赁期限为\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.nian ? _vm.nian : '__') + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.yue ? _vm.yue : '__') + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.ri > 1 || _vm.ri == 0 ? _vm.ri : '__') + "  ")]), _vm._v("日，自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止。"), _c('br'), _vm._v("\n         （三）甲方应于"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("日前将房屋按约定条件交付给乙方。《房屋交割清单》经甲乙双方交验签字（盖章）确认及将房门钥匙移交视为交付完成。"), _c('br'), _vm._v("\n         （四）若合同期满乙方仍有承租人需使用该房屋，乙方应提前90天通知甲方，双方协商认可后签订延长期合同，本合同期限最长可自动顺延一年。在同等市场条件下，乙方拥有优先承租权。"), _c('br'), _c('br'), _vm._v(" "), _c('b', [_vm._v("   第四条 租金和押金")]), _c('br'), _vm._v("\n         （一）乙方按照下列标准向甲方支付租金（以人民币进行结算）："), _c('br'), _vm._v(" "), _vm._l((_vm.addDate.zujinList), function(item, index) {
     return _c('span', [_vm._v("\n                     \n                自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日至\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.enddate)) + "  ")]), _vm._v("年\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.enddate)) + "  ")]), _vm._v("月\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.enddate)) + "  ")]), _vm._v("日止，租金为人民币（大写）"), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(item.yuezujin)) + "  ")]), _vm._v(" /月（￥："), _c('u', [_vm._v("  " + _vm._s(_vm.toDecimal(item.yuezujin) ? _vm.toDecimal(item.yuezujin) : '__________') + "  ")]), _vm._v("元/月）；\n            "), _c('br')])
   }), _vm._v("\n         （二）租金支付方式为：\n        "), _vm._l((_vm.addDate.fukuanFangshiList), function(item, index) {
     return _c('span', {
@@ -110881,7 +110880,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "display": "inline"
       }
     }, [_c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日至\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.enddate)) + "  ")]), _vm._v("年\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.enddate)) + "  ")]), _vm._v("月\n                "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.enddate)) + "  ")]), _vm._v("日\n                每 "), _c('u', [_vm._v(_vm._s(item.zujinyue ? item.zujinyue : '____'))]), _vm._v(" 月支付一次。\n            ")])
-  }), _vm._v("\n         1、房屋押金："), _c('u', [_vm._v(" ¥ " + _vm._s(_vm.toDecimal(_vm.addDate.yajin) ? _vm.toDecimal(_vm.addDate.yajin) : '_____________') + "  ")]), _vm._v("元，（大写)："), _c('u', [_vm._v(_vm._s(_vm.daxie(_vm.addDate.yajin) ? _vm.daxie(_vm.addDate.yajin) : '__________') + "  \n\n            ")]), _vm._v("元整，支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("日日支付;"), _c('br'), _vm._v("\n         2、押金是乙方向甲方支付的合法履约的保证金。租赁期满后5日内甲方退还乙方。"), _c('br'), _vm._v("\n         3、首期租金：¥ " + _vm._s(_vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) > 0 ? _vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '___________') + "元，（大写)：" + _vm._s(_vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) ? _vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '____________') + "支付时间为\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前；租金每"), _c('u'), _vm._v("个月支付一次，于付款月起租日 "), _c('u', [_vm._v(_vm._s(_vm.addDate.tiqianfukuantian))]), _vm._v(" 日前支付下一次租金，\n        即第二期租金的支付时间为："), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日第三期租金的支付时间为 "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日  ，合同期每期租金以此类推。"), _c('br'), _vm._v("\n\n         （三）租金的结算方式 口 以转账方式 口 现金支付"), _c('br'), _vm._v("\n         甲方指定收款账户为："), _c('br'), _vm._v("\n         名 称："), _c('input', {
+  }), _vm._v("\n         1、房屋押金："), _c('u', [_vm._v(" ¥ " + _vm._s(_vm.toDecimal(_vm.addDate.yajin) ? _vm.toDecimal(_vm.addDate.yajin) : '_____________') + "  ")]), _vm._v("元，（大写)："), _c('u', [_vm._v(_vm._s(_vm.daxie(_vm.addDate.yajin) ? _vm.daxie(_vm.addDate.yajin) : '__________') + "  \n\n            ")]), _vm._v("元整，支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("日支付;"), _c('br'), _vm._v("\n         2、押金是乙方向甲方支付的合法履约的保证金。租赁期满后5日内甲方退还乙方。"), _c('br'), _vm._v("\n         3、首期租金：¥ " + _vm._s(_vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) > 0 ? _vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '___________') + "元，（大写)：" + _vm._s(_vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) ? _vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '____________') + "支付时间为\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前；租金每"), _c('u', [_vm._v(_vm._s(_vm.addDate.fukuanFangshiList[0].zujinyue ? _vm.addDate.fukuanFangshiList[0].zujinyue : '_____'))]), _vm._v("个月支付一次，于付款月起租日 "), _c('u', [_vm._v(_vm._s(_vm.addDate.tiqianfukuantian))]), _vm._v(" 日前支付下一次租金，\n        即第二期租金的支付时间为："), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日;第三期租金的支付时间为 "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日  ，合同期每期租金以此类推。"), _c('br'), _vm._v("\n\n         （三）租金的结算方式 口 以转账方式 口 现金支付"), _c('br'), _vm._v("\n         甲方指定收款账户为："), _c('br'), _vm._v("\n         名 称："), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -118357,7 +118356,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         expression: "item.quyu"
       }],
       staticStyle: {
-        "width": "100px"
+        "width": "50px"
       },
       attrs: {
         "type": "text"
@@ -118371,7 +118370,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.quyu = $event.target.value
         }
       }
-    }), _vm._v("区（县）"), _c('u', [_vm._v(_vm._s(item.weizhi ? item.weizhi : '__________________________________'))]), _vm._v("，承租区域建筑面积"), _c('input', {
+    }), _vm._v("区（县）"), _c('u', [_vm._v(_vm._s(item.weizhi ? item.weizhi : '_________________'))]), _vm._v("，承租区域建筑面积"), _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -118480,79 +118479,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v("天的免租期。\n    ")]), _vm._v(" "), _c('p', _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
     return _c('span', [_vm._v("\n               自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate) ? _vm.year(item.startdate) : '') + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate) ? _vm.month(item.startdate) : '') + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate) ? _vm.day(item.startdate) : '') + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.enddate) ? _vm.year(item.enddate) : '') + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.enddate) ? _vm.month(item.enddate) : '') + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.enddate) ? _vm.day(item.enddate) : '') + "  ")]), _vm._v("日止。免租期内乙方不支付租金，以便于乙方进行装饰装修及办理入住手续等事宜。免租期内物业管理费、供暖费由 □甲方 □乙方 承担。\n        ")])
-  })), _vm._v(" "), _c('p', [_vm._v("      （二）本合同房屋租赁期限为"), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.nian),
-      expression: "nian"
-    }],
-    staticStyle: {
-      "width": "25px"
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.nian)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.nian = $event.target.value
-      }
-    }
-  }), _vm._v("年"), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.yue),
-      expression: "yue"
-    }],
-    staticStyle: {
-      "width": "25px"
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.yue)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.yue = $event.target.value
-      }
-    }
-  }), _vm._v("月"), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.ri),
-      expression: "ri"
-    }],
-    staticStyle: {
-      "width": "25px"
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.ri)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.ri = $event.target.value
-      }
-    }
-  }), _vm._v("日。\n    ")]), _c('p', [_vm._v("      自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止。\n    ")]), _vm._v(" "), _c('p', [_vm._v("      （三）合同期满乙方仍使用该房屋，乙方应提前90天通知甲方，双方协商同意后另行签署新的租赁合同；若乙方未提前90日提出书面续租申请视为乙方放弃续租权，在此期间乙方应配合甲方带领未来租户看房。在同等市场条件下，乙方拥有优先承租权。")]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('p', [_vm._v("       （一）乙方按照下列标准向甲方支付租金（以人民币进行结算）："), _vm._l((_vm.addDate.zujinList), function(item, index) {
+  })), _vm._v(" "), _c('p', [_vm._v("      （二）本合同房屋租赁期限为\n        " + _vm._s(_vm.nian ? _vm.nian : '__') + "年\n        " + _vm._s(_vm.yue ? _vm.yue : '__') + "月\n        " + _vm._s(_vm.ri > 1 || _vm.ri == 0 ? _vm.ri : '__') + "日。\n    ")]), _c('p', [_vm._v("      自"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n    "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止。\n    ")]), _vm._v(" "), _c('p', [_vm._v("      （三）合同期满乙方仍使用该房屋，乙方应提前90天通知甲方，双方协商同意后另行签署新的租赁合同；若乙方未提前90日提出书面续租申请视为乙方放弃续租权，在此期间乙方应配合甲方带领未来租户看房。在同等市场条件下，乙方拥有优先承租权。")]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('p', [_vm._v("       （一）乙方按照下列标准向甲方支付租金（以人民币进行结算）："), _vm._l((_vm.addDate.zujinList), function(item, index) {
     return _c('span', [_c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.enddate)) + "  ")]), _vm._v("日，租金为￥"), _c('u', [_vm._v("  " + _vm._s(_vm.toDecimal(item.yuezujin) ? _vm.toDecimal(item.yuezujin) : '_________') + "  ")]), _vm._v("元/月（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(item.yuezujin)) + "  ")]), _vm._v("/月）；\n    ")])
   })], 2), _vm._v(" "), _vm._l((_vm.addDate.fukuanFangshiList), function(item, index) {
     return _c('span', {
       key: index
-    }, [_c('p', [_vm._v("\n\n               （二）租金支付方式为：押 "), _c('u', [_vm._v(_vm._s(_vm.intToChinese(item.yajinyue)))]), _vm._v(" 付 "), _c('u', [_vm._v(_vm._s(_vm.intToChinese(item.zujinyue)))]), _vm._v(" ；")]), _vm._v(" "), _c('p', [_vm._v("       1、房租押金："), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.yajin) ? _vm.toDecimal(_vm.addDate.yajin) : '________'))]), _vm._v("元/月（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yajin)) + "  ")]), _vm._v("/月），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("日前。\n\n    ")])])
-  }), _vm._v(" "), _c('p', [_vm._v("       2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。")]), _vm._v(" "), _c('p', [_vm._v("       3、首期租金：￥ "), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue)))]), _vm._v(" 元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue)) + "  ")]), _vm._v("），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前；租金每 "), _c('u', [_vm._v(_vm._s(_vm.intToChinese(_vm.addDate.fukuanFangshiList[0].zujinyue)))]), _vm._v("个月支付一次，于付款月起租日 "), _c('u', [_vm._v(_vm._s(_vm.addDate.tiqianfukuantian ? _vm.addDate.tiqianfukuantian : '____'))]), _vm._v(" 日前支付下一次租金，即第二期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日前，第三期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日前，合同期每期租金以此类推。\n    ")]), _vm._v(" "), _c('p', [_vm._v("       （三）租金的结算方式为：□ 以转账方式 ；□ 现金支付")]), _vm._v(" "), _c('p', [_vm._v("       甲方指定收款账户为：")]), _vm._v(" "), _c('p', [_vm._v("       户   名："), _c('input', {
+    }, [_c('p', [_vm._v("\n\n               （二）租金支付方式为：押 "), _c('u', [_vm._v(_vm._s(item.yajinyue ? _vm.intToChinese(item.yajinyue) : '__'))]), _vm._v(" 付 "), _c('u', [_vm._v(_vm._s(item.zujinyue ? _vm.intToChinese(item.zujinyue) : '__'))]), _vm._v(" ；")]), _vm._v(" "), _c('p', [_vm._v("       1、房租押金："), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.yajin) ? _vm.toDecimal(_vm.addDate.yajin) : '________'))]), _vm._v("元/月（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yajin)) + "  ")]), _vm._v("/月），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("日前。\n\n    ")])])
+  }), _vm._v(" "), _c('p', [_vm._v("       2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。")]), _vm._v(" "), _c('p', [_vm._v("       3、首期租金：￥ "), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) > 0 ? _vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '_____'))]), _vm._v(" 元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) ? _vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '_____'))]), _vm._v("），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前；租金每 "), _c('u', [_vm._v(_vm._s(_vm.addDate.fukuanFangshiList[0].zujinyue ? _vm.intToChinese(_vm.addDate.fukuanFangshiList[0].zujinyue) : '__'))]), _vm._v("个月支付一次，于付款月起租日 "), _c('u', [_vm._v(_vm._s(_vm.addDate.tiqianfukuantian ? _vm.addDate.tiqianfukuantian : '____'))]), _vm._v(" 日前支付下一次租金，即第二期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日前，第三期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日前，合同期每期租金以此类推。\n    ")]), _vm._v(" "), _c('p', [_vm._v("       （三）租金的结算方式为：□ 以转账方式 ；□ 现金支付")]), _vm._v(" "), _c('p', [_vm._v("       甲方指定收款账户为：")]), _vm._v(" "), _c('p', [_vm._v("       户   名："), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -129667,21 +129600,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })]) : _vm._e(), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._l((_vm.property.officeList), function(item, index) {
     return _c('span', {
       key: index
-    }, [_c('p', [_vm._v("（一）房屋坐落于北京市 "), _c('u', [_vm._v(_vm._s(item.quyu ? item.quyu : '______________'))]), _vm._v(" 区（县）"), _c('u', [_vm._v(_vm._s(item.weizhi ? item.quyu : '_____________________________'))]), _vm._v(" ，建筑面积"), _c('u', [_vm._v(_vm._s(item.jianzhumianji ? item.jianzhumianji : '______'))]), _vm._v("平方米,实际承租面积为"), _c('u', [_vm._v(_vm._s(item.qianyuemianji ? item.qianyuemianji : '______'))]), _vm._v("平方米。"), _c('br'), _vm._v("\n         房屋用途为： 办公  。")]), _vm._v(" "), _c('p', [_vm._v("（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号："), _c('u', [_vm._v(_vm._s(item.chanquanzhenghao ? item.chanquanzhenghao : '_________________________'))]), _vm._v("，房屋所有权人姓名或名称：\n    "), _vm._l((_vm.owner.chanquanrenList), function(item, index) {
+    }, [_c('p', [_vm._v("（一）房屋坐落于北京市 "), _c('u', [_vm._v(_vm._s(item.quyu ? item.quyu : '_____'))]), _vm._v(" 区（县）"), _c('u', [_vm._v(_vm._s(item.weizhi ? item.quyu : '_____________________'))]), _vm._v(" ，建筑面积"), _c('u', [_vm._v(_vm._s(item.jianzhumianji ? item.jianzhumianji : '______'))]), _vm._v("平方米,实际承租面积为"), _c('u', [_vm._v(_vm._s(item.qianyuemianji ? item.qianyuemianji : '______'))]), _vm._v("平方米。"), _c('br'), _vm._v("\n         房屋用途为： 办公  。")]), _vm._v(" "), _c('p', [_vm._v("（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号："), _c('u', [_vm._v(_vm._s(item.chanquanzhenghao ? item.chanquanzhenghao : '_________________________'))]), _vm._v("，房屋所有权人姓名或名称：\n    "), _vm._l((_vm.owner.chanquanrenList), function(item, index) {
       return _c('span', {
         staticStyle: {
           "display": "inline"
         }
       }, [_c('u', [_vm._v(_vm._s(item.name ? item.name : '__________'))])])
     }), _vm._v("\n    ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为："), _c('u', [_vm._v(_vm._s(item.diyaren ? item.diyaren : '_______________'))]), _vm._v("。")], 2)])
-  }), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('p', [_vm._v("\n        （一）委托管理期限自\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止，共计\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.nian) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.yue) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.ri) + "  ")]), _vm._v("日。甲方应于\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。\n        "), _c('br'), _vm._v("\n        （二）甲方承诺给予乙方 "), _c('input', {
-    staticStyle: {
-      "width": "25px"
-    },
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v("个月的招商装修期，即自\n        "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
+  }), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('p', [_vm._v("\n        （一）委托管理期限自\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止，共计\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.nian ? _vm.nian : '__') + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.yue ? _vm.yue : '__') + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.ri > 1 || _vm.ri == 0 ? _vm.ri : '__') + "  ")]), _vm._v("日。甲方应于\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。\n        "), _c('br'), _vm._v("\n        （二）甲方承诺给予乙方 "), _c('u', [_vm._v(_vm._s(_vm.free ? _vm.free : '__'))]), _vm._v(" 个月的招商装修期，即自\n        "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
     return _c('span', {
       staticStyle: {
         "display": "inline"
@@ -129765,7 +129691,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.owner.zhanghao = $event.target.value
       }
     }
-  }), _vm._v(" "), _c('br'), _vm._v("\n        （二）保证金：人民币（大写）\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yajin)) + "  ")]), _vm._v(" （￥：\n        "), _c('u', [_vm._v("  " + _vm._s((_vm.toDecimal(_vm.addDate.yajin) ? _vm.toDecimal(_vm.addDate.yajin) : '_______')) + "  ")]), _vm._v(" 元），乙方在甲乙双方签署本合同当日向甲方支付，如甲方提供的房屋所有权证复印件和身份证复印件不全，则乙方仅支付甲方百分之五十的保证金，剩余百分之五十的保证金于甲方补齐房屋所有权证复印件及身份证复印件后支付。管理期满或合同解除后，保证金除抵扣应由乙方承担的费用，剩余部分应如数返还给乙方。")], 2), _vm._v(" "), _vm._m(6), _vm._v(" "), _c('p', [_vm._v("      甲、乙双方一致同意，乙方按照风险自担的方式收取资产管理服务费。即乙方对房屋进行出租及为实际使用人提供增值服务而取得的收入中，超出向甲方支付固定租金收益的溢价部分，将作为乙方的服务费，由乙方直接收取；如未产生溢价的，甲方亦不向乙方支付任何服务费用，该风险由乙方自行承担。")]), _vm._v(" "), _vm._m(7), _vm._v(" "), _c('p', [_vm._v("      （一）管理期限内的下列费用中， "), _c('u', [_vm._v(_vm._s(_vm.addDate.jiafangfeiyong ? _vm.addDate.jiafangfeiyong : '_____________'))]), _vm._v("  由甲方承担， 其他费用 由乙方（或实际使用人）承担：(1)供暖费 (2)制冷费 (3)物业管理费 (4)水费 (5)电费 (6)燃气费 (7)电话费 (8)电视收视费 (9)上网费 (10)卫生费 (11)车位费 （12）其他\n        "), _c('input', {
+  }), _vm._v(" "), _c('br'), _vm._v("\n        （二）保证金：人民币（大写）\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yajin) ? _vm.daxie(_vm.addDate.yajin) : '______') + "  ")]), _vm._v(" （￥：\n        "), _c('u', [_vm._v("  " + _vm._s((_vm.toDecimal(_vm.addDate.yajin) ? _vm.toDecimal(_vm.addDate.yajin) : '_______')) + "  ")]), _vm._v(" 元），乙方在甲乙双方签署本合同当日向甲方支付，如甲方提供的房屋所有权证复印件和身份证复印件不全，则乙方仅支付甲方百分之五十的保证金，剩余百分之五十的保证金于甲方补齐房屋所有权证复印件及身份证复印件后支付。管理期满或合同解除后，保证金除抵扣应由乙方承担的费用，剩余部分应如数返还给乙方。")], 2), _vm._v(" "), _vm._m(6), _vm._v(" "), _c('p', [_vm._v("      甲、乙双方一致同意，乙方按照风险自担的方式收取资产管理服务费。即乙方对房屋进行出租及为实际使用人提供增值服务而取得的收入中，超出向甲方支付固定租金收益的溢价部分，将作为乙方的服务费，由乙方直接收取；如未产生溢价的，甲方亦不向乙方支付任何服务费用，该风险由乙方自行承担。")]), _vm._v(" "), _vm._m(7), _vm._v(" "), _c('p', [_vm._v("      （一）管理期限内的下列费用中， "), _c('u', [_vm._v(_vm._s(_vm.addDate.jiafangfeiyong ? _vm.addDate.jiafangfeiyong : '_____________'))]), _vm._v("  由甲方承担， 其他费用 由乙方（或实际使用人）承担：(1)供暖费 (2)制冷费 (3)物业管理费 (4)水费 (5)电费 (6)燃气费 (7)电话费 (8)电视收视费 (9)上网费 (10)卫生费 (11)车位费 （12）其他\n        "), _c('input', {
     staticStyle: {
       "width": "100px"
     },

@@ -12,7 +12,7 @@
                 v-for="(item,index) in property.xsOffice"
                 :key="index"
         >
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:100px;">区（县）<u>{{item.weizhi?item.weizhi:'__________________________________'}}</u>，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:120px;" v-model="item.qianyuemianji">平方米，产权证编号： <u>{{item.chanquanzhenghao?item.chanquanzhenghao:'___________________________________'}}</u>  。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:50px;">区（县）<u>{{item.weizhi?item.weizhi:'_________________'}}</u>，承租区域建筑面积<input type="text"  style="width:120px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:120px;" v-model="item.qianyuemianji">平方米，产权证编号： <u>{{item.chanquanzhenghao?item.chanquanzhenghao:'___________________________________'}}</u>  。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。</p>
         <p><b>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二条  房屋租赁情况
@@ -45,7 +45,10 @@
             </span>
         </p>
         </span>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同房屋租赁期限为<input type="text" v-model="nian" style="width:25px;">年<input type="text" v-model="yue" style="width:25px;">月<input type="text" v-model="ri" style="width:25px;">日。
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同房屋租赁期限为
+            {{nian?nian:'__'}}年
+            {{yue?yue:'__'}}月
+            {{ri>1||ri==0?ri:'__'}}日。
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自<u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日至
@@ -68,7 +71,7 @@
         >
         <p>
 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）租金支付方式为：押 <u>{{intToChinese(item.yajinyue)}}</u> 付 <u>{{intToChinese(item.zujinyue)}}</u> ；</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）租金支付方式为：押 <u>{{item.yajinyue?intToChinese(item.yajinyue):'__'}}</u> 付 <u>{{item.zujinyue?intToChinese(item.zujinyue):'__'}}</u> ；</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：<u>{{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'________'}}</u>元/月（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yajin)}}&nbsp;&nbsp;</u>/月），支付时间为
 
             <u>&nbsp;&nbsp;{{year(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>年
@@ -78,11 +81,11 @@
         </p>
         </span>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、首期租金：￥ <u>{{toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)}}</u> 元（大写：<u>&nbsp;&nbsp;{{daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)}}&nbsp;&nbsp;</u>），支付时间为
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、首期租金：￥ <u>{{toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)>0?toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'_____'}}</u> 元（大写：<u>&nbsp;&nbsp;{{daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)?daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'_____'}}</u>），支付时间为
 
             <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每 <u>{{intToChinese(addDate.fukuanFangshiList[0].zujinyue)}}</u>个月支付一次，于付款月起租日 <u>{{addDate.tiqianfukuantian?addDate.tiqianfukuantian:'____'}}</u> 日前支付下一次租金，即第二期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每 <u>{{addDate.fukuanFangshiList[0].zujinyue?intToChinese(addDate.fukuanFangshiList[0].zujinyue):'__'}}</u>个月支付一次，于付款月起租日 <u>{{addDate.tiqianfukuantian?addDate.tiqianfukuantian:'____'}}</u> 日前支付下一次租金，即第二期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>月
             <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日前，第三期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月

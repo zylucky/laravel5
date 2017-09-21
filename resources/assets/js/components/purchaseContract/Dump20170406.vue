@@ -13,7 +13,7 @@
                 v-for="(item,index) in property.officeList"
                 :key="index"
         >
-       &nbsp;（一）房屋坐落于北京市<u>{{item.weizhi?item.weizhi:'_____________________________________'}}</u>,承租区域建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'________'}}</u>平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<u>{{item.qianyuemianji?item.qianyuemianji:'_______'}}</u>平方米。<br>
+       &nbsp;（一）房屋坐落于北京市<u>{{item.weizhi?item.weizhi:'___________________________'}}</u>,承租区域建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'________'}}</u>平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<u>{{item.qianyuemianji?item.qianyuemianji:'_______'}}</u>平方米。<br>
         &nbsp;（二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_____________________________'}}</u>，房屋所有权人姓名或名称
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
                 <u>{{item.name?item.name:'___________'}}</u>
@@ -23,7 +23,7 @@
         <b>&nbsp;&nbsp; 第二条  房屋租赁情况</b><br>
         &nbsp;&nbsp;租赁用途：<u> 办公 </u>，甲方应当协助乙方（或实际使用人）办理营业证照。<br>
         <br><b>&nbsp;&nbsp; 第三条  租赁期限及免租期</b><br>
-        合同期限内（一）甲方承诺在租赁合同期限内给予乙方<input type="text" style="width:25px;">个月的免租期，
+        合同期限内（一）甲方承诺在租赁合同期限内给予乙方{{free?free:'__'}}个月的免租期，
         <span v-for="(item,index) in addDate.mianzuqiList" style="display:inline">
                 自<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
@@ -34,9 +34,9 @@
         </span>
         免租期内乙方不支付租金，以便于乙方与入住方协商洽谈、进行装饰装修及办理入住手续等事宜。免租期内物业管理费用、供暖费和制冷费由甲方自行缴纳。<br>
         &nbsp;（二）本合同房屋租赁期限为
-        <u>&nbsp;&nbsp;{{nian}}&nbsp;&nbsp;</u>年
-        <u>&nbsp;&nbsp;{{yue}}&nbsp;&nbsp;</u>月
-        <u>&nbsp;&nbsp;{{ri}}&nbsp;&nbsp;</u>日，自<u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{nian?nian:'__'}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{yue?yue:'__'}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{ri>1||ri==0?ri:'__'}}&nbsp;&nbsp;</u>日，自<u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日至
         <u>&nbsp;&nbsp;{{year(addDate.enddate)}}&nbsp;&nbsp;</u>年
@@ -76,15 +76,15 @@
 
             </u>元整，支付时间为<u>&nbsp;&nbsp;{{year(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>月
-        <u>&nbsp;&nbsp;{{day(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>日日支付;<br>
+        <u>&nbsp;&nbsp;{{day(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>日支付;<br>
         &nbsp;2、押金是乙方向甲方支付的合法履约的保证金。租赁期满后5日内甲方退还乙方。<br>
         &nbsp;3、首期租金：¥ {{toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)>0?toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'___________'}}元，（大写)：{{daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)?daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'____________'}}支付时间为
         <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
-        <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每<u></u>个月支付一次，于付款月起租日 <u>{{addDate.tiqianfukuantian}}</u> 日前支付下一次租金，
+        <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每<u>{{addDate.fukuanFangshiList[0].zujinyue?addDate.fukuanFangshiList[0].zujinyue:'_____'}}</u>个月支付一次，于付款月起租日 <u>{{addDate.tiqianfukuantian}}</u> 日前支付下一次租金，
         即第二期租金的支付时间为：<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>月
-        <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日第三期租金的支付时间为 <u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日;第三期租金的支付时间为 <u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>日  ，合同期每期租金以此类推。<br>
 
@@ -186,7 +186,7 @@
             right: 0;
             left:0;
             bottom: 0;
-            width: 85%;
+            width: 90%;
             height: 20%;
         }
         .tc{text-align:center;}
@@ -226,6 +226,7 @@
                 msg04:'二',
                 msg05:'三',
                 beianqixian:'',
+                free:'',
                 historyOptimize:false,
                 dumpShow:false,
                 property:{
@@ -522,6 +523,7 @@
                 this.ri = res.data.data.ri;
                 this.yingyezhizhao = res.data.data.yingyezhizhao;
                 this.beianqixian = res.data.data.beianqixian;
+                this.free = res.data.data.free;
 
                 var lists = this.addDate.jiafangfeiyong;
                 var str ='';

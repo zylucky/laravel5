@@ -104,9 +104,16 @@ class purchaseContractController extends Controller
         $res->data->yifangfeiyong = explode(',',$res->data->yifangfeiyong);
         $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
         $obj = $this->get_month_day($res->data->startdate,$res->data->enddate);
+        $free='';
+        if(count($res->data->mianzuqiList)>0){
+            foreach ($res->data->mianzuqiList as $key=>$value){
+                $free += $this->get_month_day($value->startdate,$value->enddate)->m;
+            }
+        }
         $res->data->nian = $obj->y;
         $res->data->yue = $obj->m;
         $res->data->ri = $obj->d;
+        $res->data->free = $free;
         echo json_encode($res)  ;
     }
 

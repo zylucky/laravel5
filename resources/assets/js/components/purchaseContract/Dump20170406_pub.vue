@@ -34,7 +34,7 @@
         right: 0;
         left:0;
         bottom: 0;
-        width: 85%;
+        width: 90%;
         height: 20%;
     }
     .whole h1{
