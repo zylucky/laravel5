@@ -200,7 +200,7 @@
             font-size: 20px;
         }
     .whole  p{
-            font-size: 20px; text-align:left;
+        font-size: 20px; text-align:left;
             line-height: 2;}
         input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center}
     .whole u{
