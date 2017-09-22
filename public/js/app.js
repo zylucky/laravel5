@@ -49699,7 +49699,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //获取合同的详细信息
         this.getSaleContract(this.$route.query);
         // document.getElementsByTagName('head').innerHTML('<title>华亮房产 -- 先锋地产机构、专业人、信誉人</title>>');
-        document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
+        document.title = '华亮房产 -- 先锋&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;地产机构、专业人、信誉人';
         function hello() {
             window.print();
         }

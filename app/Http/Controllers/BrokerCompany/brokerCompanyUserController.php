@@ -310,7 +310,7 @@ class brokerCompanyUserController extends Controller
                     $excel->sheet('score', function ($sheet) use ($cellData) {
                         $sheet->rows($cellData);
                     });
-                })->export('xls');
+                })->export('xls') ;
                 echo "导出成功";
             } else {
                 echo "无符合条件的数据";
