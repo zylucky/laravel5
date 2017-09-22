@@ -207,16 +207,16 @@
     }
     .tc{text-align:center;}
     .whole h1{
-        font-size:40px;
+        font-size:32px;
     }
     .whole span {
         display: block;}
     p{
         font-size: 18px; text-align:left;
         line-height: 2;}
-    .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center}
+    .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center}
     .whole u{
-        font-size:20px!important;
+        font-size:14px!important;
     }
     .whole input[disabled]{
         background-color:white;

@@ -40366,9 +40366,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -49916,9 +49913,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -55496,7 +55490,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.whole{\n        margin: auto;\n        top:0;\n        right: 0;\n        left:0;\n        bottom: 0;\n        width: 90%;\n        height: 20%;\n}\n.tc{text-align:center;\n}\n.whole h1{\n        font-size:40px;\n}\n.whole span {\n        display: block;\n}\n.f22{\n        font-size: 20px;\n}\n.whole  p{\n    font-size: 20px; text-align:left;\n        line-height: 2;\n}\ninput{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center\n}\n.whole u{\n        font-size:20px!important;\n}\n.whole input[disabled]{\n        background-color:white;\n}\n", ""]);
+exports.push([module.i, "\n.whole{\n        margin: auto;\n        top:0;\n        right: 0;\n        left:0;\n        bottom: 0;\n        width: 90%;\n        height: 20%;\n}\n.tc{text-align:center;\n}\n.whole h1{\n        font-size:30px;\n}\n.whole span {\n        display: block;\n}\n.f22{\n        font-size: 14px;\n}\n.whole  p{\n    font-size: 14px; text-align:left;\n        line-height: 2;\n}\ninput{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center\n}\n.whole u{\n        font-size:14px!important;\n}\n.whole input[disabled]{\n        background-color:white;\n}\n", ""]);
 
 // exports
 
@@ -55552,7 +55546,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.whole{\n     margin: auto;\n     top:0px;\n     right: 0;\n     left:0;\n     bottom: 0;\n     width: 90%;\n     height: 20%;\n}\n.whole h1{\n     font-size:40px;\n}\n.whole span {\n     display: block;\n}\n.whole p{\n     font-size: 20px; text-align:left;\n     line-height: 2;\n}\n.whole  input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center\n}\n.whole u{\n     font-size:20px!important;\n}\n.whole input[disabled]{\n     background-color:white;\n     color:#000000;\n}\n", ""]);
+exports.push([module.i, "\n.whole{\n     margin: auto;\n     top:0px;\n     right: 0;\n     left:0;\n     bottom: 0;\n     width: 90%;\n     height: 20%;\n}\n.whole h1{\n     font-size:32px;\n}\n.whole span {\n     display: block;\n}\n.whole p{\n     font-size: 14px; text-align:left;\n     line-height: 2;\n}\n.whole  input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 14px!important;text-align:center\n}\n.whole u{\n     font-size:14px!important;\n}\n.whole input[disabled]{\n     background-color:white;\n     color:#000000;\n}\n", ""]);
 
 // exports
 
@@ -55664,7 +55658,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.whole{\n    margin: auto;\n    top: 0;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 92%;\n    height: 20%;\n}\n.tc{text-align:center;\n}\n.whole h1{\n    font-size:40px;\n}\n.whole span {\n    display: block;\n}\n.f22{\n    font-size: 20px;\n}\np{\n    font-size: 18px; text-align:left;\n    line-height: 2;\n    display: block;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center\n}\n.whole u{\n    font-size:20px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n}\n\n", ""]);
+exports.push([module.i, "\n.whole{\n    margin: auto;\n    top: 0;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 92%;\n    height: 20%;\n}\n.tc{text-align:center;\n}\n.whole h1{\n    font-size:30px;\n}\n.whole span {\n    display: block;\n}\n.f22{\n    font-size: 14px;\n}\np{\n    font-size: 14px; text-align:left;\n    line-height: 2;\n    display: block;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center\n}\n.whole u{\n    font-size:14px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n}\n\n", ""]);
 
 // exports
 
@@ -55706,7 +55700,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\nbody{\n    text-align: center;\n    height: 100%;\n    position: relative;\n}\ndiv{\n    margin: auto;\n    top: 0;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 90%;\n    height: 20%;\n}\n.tc{text-align:center;\n}\nh1{\n    font-size:40px;\n}\nspan {\n    display: block;\n}\n.f22{\n    font-size: 20px;\n}\np{\n    font-size: 20px; text-align:left;\n    line-height: 2;\n}\ninput{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center\n}\nu{\n    font-size:20px!important;\n}\ninput[disabled]{\n    background-color:white;\n    color:#000000;\n}\n", ""]);
+exports.push([module.i, "\nbody{\n    text-align: center;\n    height: 100%;\n    position: relative;\n}\ndiv{\n    margin: auto;\n    top: 0;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 90%;\n    height: 20%;\n}\n.tc{text-align:center;\n}\nh1{\n    font-size:28px;\n}\nspan {\n    display: block;\n}\np{\n    font-size: 14px; text-align:left;\n    line-height: 2;\n}\ninput{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 14px!important;text-align:center\n}\nu{\n    font-size:14px!important;\n}\ninput[disabled]{\n    background-color:white;\n    color:#000000;\n}\n", ""]);
 
 // exports
 
@@ -55776,7 +55770,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.whole{\n    position: absolute;\n    margin: auto;\n    top: -650px;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 90%;\n    height: 20%;\n}\n.whole h1{\n    font-size:40px;\n}\n.whole span {\n    display: block;\n}\n.f22{\n    font-size: 20px;\n}\n.whole p{\n    font-size: 20px; text-align:left;\n    line-height: 2;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center\n}\n.whole u{\n    font-size:20px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n    color:#000000;\n}\n", ""]);
+exports.push([module.i, "\n.whole{\n    position: absolute;\n    margin: auto;\n    top: -650px;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 90%;\n    height: 20%;\n}\n.whole h1{\n    font-size:28px;\n}\n.whole span {\n    display: block;\n}\n.whole p{\n    font-size: 14px; text-align:left;\n    line-height: 2;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center\n}\n.whole u{\n    font-size:14px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n    color:#000000;\n}\n", ""]);
 
 // exports
 
@@ -55790,7 +55784,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.whole{\n    margin: auto;\n    top: 0;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 92%;\n    height: 20%;\n}\n.tc{text-align:center;\n}\n.whole h1{\n    font-size:40px;\n}\n.whole span {\n    display: block;\n}\np{\n    font-size: 18px; text-align:left;\n    line-height: 2;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center\n}\n.whole u{\n    font-size:20px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n}\n", ""]);
+exports.push([module.i, "\n.whole{\n    margin: auto;\n    top: 0;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 92%;\n    height: 20%;\n}\n.tc{text-align:center;\n}\n.whole h1{\n    font-size:32px;\n}\n.whole span {\n    display: block;\n}\np{\n    font-size: 18px; text-align:left;\n    line-height: 2;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center\n}\n.whole u{\n    font-size:14px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n}\n", ""]);
 
 // exports
 
