@@ -8,16 +8,19 @@
             <input v-if="buchongtiaokuan==null||iscompletefrzj==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
 
-            <b> 业主方（甲方）：<input type="text" name="" style="width:265px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">管理方（乙方）：</font> <input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
-            <b>委托代理人：<input type="text" name="" style="width:305px;font-size:10px" value=""></b><br>
-            联系地址：<input type="text" name="" style="width:320px;font-size:10px" value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系地址：</font><input type="text" name="" style="width:320px" value="">
-            <br>联系方式：<input type="text" name="" style="width:320px;" disabled value="">&nbsp;&nbsp;<font style="margin-left: 150px;">联系方式：</font><input type="text" name="" style="width:320px;font-size:10px" value=""><br>
+            <b> 出租人（甲方）：<input type="text" name="" style="width:119px;font-size:10px" value="">承租人（乙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
+            联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">联系地址：<input type="text" name="" style="width:185px" value="">
+            <br>联系方式：<input type="text" name="" style="width:180px;" disabled value="400-078-8800">联系方式：<input type="text" name="" style="width:185px;font-size:10px" value="">
+            <br>委托代理人 ：<input type="text" name="" style="width:150px;font-size:10px" value="">委托代理人：<input type="text" name="" style="width:165px;font-size:10px" value=""><br>
+
             <font>_______年____月____日</font>&nbsp;&nbsp;
-            <font style="margin-left: 150px" >_______年____月____日</font><br>
+            <font style="margin-left: 8%" >_______年____月____日</font><br>
             <br>
-            <b> 居间方（丙方）：</b><u>北京华亮房地产经纪有限公司</u>
-            <br>联系地址：<input type="text" name="" style="width:315px;font-size:10px" value="">
-            <br>联系方式：<input type="text" name="" style="width:315px;font-size:10px" value=""><br>
+            <b> 居间方（丙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b><br>
+            房地产经纪人：<input type="text" name="" style="width:140px;font-size:10px" value="">
+            <br>资质证书号：<input type="text" name="" style="width:160px;font-size:10px" value="">
+            <br>联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">
+            <br>联系方式：<input type="text" name="" style="width:180px;font-size:10px" value=""><br>
             <font>_______年____月____日</font>
         </p>
     </div>
@@ -29,13 +32,12 @@
         position: relative;
     }
     div{
-        position: absolute;
         margin: auto;
         top: 0;
         right: 0;
         left:0;
         bottom: 0;
-        width: 85%;
+        width: 90%;
         height: 20%;
     }
     .tc{text-align:center;}
@@ -85,7 +87,7 @@
         },
         mounted(){
             this.getSaleContract(this.$route.query);
-            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
+            document.title = '北京幼狮科技有限公司 -- 为梦想、造支点 合同编号：'+this.$route.query.bianhao;
             function  hello() {
                 window.print()
             }
