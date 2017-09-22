@@ -40366,6 +40366,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -40999,6 +41004,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -55490,7 +55500,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.whole{\n        margin: auto;\n        top:0;\n        right: 0;\n        left:0;\n        bottom: 0;\n        width: 90%;\n        height: 20%;\n}\n.tc{text-align:center;\n}\n.whole h1{\n        font-size:30px;\n}\n.whole span {\n        display: block;\n}\n.f22{\n        font-size: 14px;\n}\n.whole  p{\n    font-size: 14px; text-align:left;\n        line-height: 2;\n}\ninput{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center\n}\n.whole u{\n        font-size:14px!important;\n}\n.whole input[disabled]{\n        background-color:white;\n}\n", ""]);
+exports.push([module.i, "\n.whole{\n        margin: auto;\n        top:0;\n        right: 0;\n        left:0;\n        bottom: 0;\n        width: 94%;\n        height: 20%;\n}\n.tc{text-align:center;\n}\n.whole h1{\n        font-size:30px;\n}\n.whole span {\n        display: block;\n}\n.f22{\n        font-size: 14px;\n}\n.whole  p{\n    font-size: 14px; text-align:left;\n        line-height: 2;\n}\ninput{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center\n}\n.whole u{\n        font-size:14px!important;\n}\n.whole input[disabled]{\n        background-color:white;\n}\n", ""]);
 
 // exports
 
@@ -55546,7 +55556,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.whole{\n     margin: auto;\n     top:0px;\n     right: 0;\n     left:0;\n     bottom: 0;\n     width: 90%;\n     height: 20%;\n}\n.whole h1{\n     font-size:32px;\n}\n.whole span {\n     display: block;\n}\n.whole p{\n     font-size: 14px; text-align:left;\n     line-height: 2;\n}\n.whole  input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 14px!important;text-align:center\n}\n.whole u{\n     font-size:14px!important;\n}\n.whole input[disabled]{\n     background-color:white;\n     color:#000000;\n}\n", ""]);
+exports.push([module.i, "\nbody{\n     text-align: center;\n     height: 100%;\n     position: relative;\n}\n.whole{\n     margin: auto;\n     top:0px;\n     right: 0;\n     left:0;\n     bottom: 0;\n     width: 90%;\n     height: 20%;\n}\n.whole h1{\n     font-size:32px;\n}\n.whole span {\n     display: block;\n}\n.whole p{\n     font-size: 14px; text-align:left;\n     line-height: 2;\n}\n.whole  input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 14px!important;text-align:center\n}\n.whole u{\n     font-size:14px!important;\n}\n.whole input[disabled]{\n     background-color:white;\n     color:#000000;\n}\n", ""]);
 
 // exports
 
@@ -55770,7 +55780,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.whole{\n    position: absolute;\n    margin: auto;\n    top: -650px;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 90%;\n    height: 20%;\n}\n.whole h1{\n    font-size:28px;\n}\n.whole span {\n    display: block;\n}\n.whole p{\n    font-size: 14px; text-align:left;\n    line-height: 2;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center\n}\n.whole u{\n    font-size:14px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n    color:#000000;\n}\n", ""]);
+exports.push([module.i, "\nbody{\n    text-align: center;\n    height: 100%;\n    position: relative;\n}\n.whole{\n    position: absolute;\n    margin: auto;\n    top: -650px;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 94%;\n    height: 20%;\n}\n.whole h1{\n    font-size:28px;\n}\n.whole span {\n    display: block;\n}\n.whole p{\n    font-size: 14px; text-align:left;\n    line-height: 2;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center\n}\n.whole u{\n    font-size:14px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n    color:#000000;\n}\n", ""]);
 
 // exports
 
@@ -111228,7 +111238,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }, [_c('u', [_vm._v(_vm._s(item.name ? item.name : '___________'))])])
     }), _vm._v("房屋（\n        口是/口否）已设定了抵押。甲方保证出租的房屋权属无瑕疵、无债务纠纷，房屋设施符合出租条件。"), _c('br'), _c('br')], 2)
-  }), _vm._v(" "), _c('b', [_vm._v("   第二条  房屋租赁情况")]), _c('br'), _vm._v("\n          租赁用途："), _c('u', [_vm._v(" 办公 ")]), _vm._v("，甲方应当协助乙方（或实际使用人）办理营业证照。"), _c('br'), _vm._v(" "), _c('br'), _c('b', [_vm._v("   第三条  租赁期限及免租期")]), _c('br'), _vm._v("\n         （一）甲方承诺在租赁合同期限内给予乙方" + _vm._s(_vm.free ? _vm.free : '__') + "个月的免租期，\n        "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
+  }), _vm._v(" "), _c('b', [_vm._v("   第二条  房屋租赁情况")]), _c('br'), _vm._v("\n          租赁用途："), _c('u', [_vm._v(" 办公 ")]), _vm._v("，甲方应当协助乙方（或实际使用人）办理营业证照。"), _c('br'), _vm._v(" "), _c('br'), _c('b', [_vm._v("   第三条  租赁期限及免租期")]), _c('br'), _vm._v("\n         （一）甲方承诺在租赁合同期限内给予乙方" + _vm._s(_vm.free > 0 ? _vm.free : '__') + "个月的免租期，\n        "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
     return _c('span', {
       staticStyle: {
         "display": "inline"
@@ -129863,7 +129873,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('br'), _vm._v(" "), _c('font', [_vm._v("_______年____月____日")]), _vm._v(" "), _c('font', {
     staticStyle: {
-      "margin-left": "6%"
+      "margin-left": "8%"
     }
   }, [_vm._v("_______年____月____日")]), _c('br'), _vm._v(" "), _c('br')], 1), (_vm.farenzhengjian == 's') ? _c('p', [_vm._m(2), _c('br'), _vm._v("\n            房地产经纪人："), _c('input', {
     staticStyle: {
@@ -130177,14 +130187,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.qianyuemianji = $event.target.value
         }
       }
-    }), _vm._v(" 平方米。"), _c('br'), _vm._v("\n         房屋用途为： "), _c('u', [_vm._v("办公")]), _vm._v("  。")]), _vm._v(" "), _c('p', [_vm._v("      （二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号："), _c('u', [_vm._v(_vm._s(item.chanquanzhenghao ? item.chanquanzhenghao : '_________________________'))]), _vm._v("，房屋所有权人姓名或名称：\n    "), _vm._l((_vm.owner.chanquanrenList), function(item, index) {
+    }), _vm._v(" 平方米。"), _c('br'), _vm._v("\n         房屋用途为： "), _c('u', [_vm._v("办公")]), _vm._v("  。")]), _vm._v(" "), _c('p', [_vm._v("      （二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件），房屋所有权证书编号："), _c('u', [_vm._v(_vm._s(item.chanquanzhenghao ? item.chanquanzhenghao : '_________________________'))]), _vm._v("，房屋所有权人姓名或名称：\n    "), _vm._l((_vm.owner.chanquanrenList), function(item, index) {
       return _c('span', {
         staticStyle: {
           "display": "inline"
         }
       }, [_c('u', [_vm._v(_vm._s(item.name ? item.name : '__________'))])])
     }), _vm._v("\n    ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为："), _c('u', [_vm._v(_vm._s(item.diyaren ? item.diyaren : '_______________'))]), _vm._v("。")], 2)])
-  }), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('p', [_vm._v("\n              （一）委托管理期限自\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止，共计\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.nian ? _vm.nian : '__') + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.yue ? _vm.yue : '__') + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.ri > 1 || _vm.ri == 0 ? _vm.ri : '__') + "  ")]), _vm._v("日。甲方应于\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。\n        "), _c('br'), _vm._v("\n              （二）甲方承诺给予乙方 "), _c('u', [_vm._v(_vm._s(_vm.free ? _vm.free : '__'))]), _vm._v(" 个月的招商装修期，即自\n        "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
+  }), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('p', [_vm._v("\n              （一）委托管理期限自\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.enddate)) + "  ")]), _vm._v("日止，共计\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.nian ? _vm.nian : '__') + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.yue ? _vm.yue : '__') + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.ri > 1 || _vm.ri == 0 ? _vm.ri : '__') + "  ")]), _vm._v("日。甲方应于\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.jiaofangdate)) + "  ")]), _vm._v("日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。\n        "), _c('br'), _vm._v("\n              （二）甲方承诺给予乙方 "), _c('u', [_vm._v(_vm._s(_vm.free > 0 ? _vm.free : '__'))]), _vm._v(" 个月的招商装修期，即自\n        "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
     return _c('span', {
       staticStyle: {
         "display": "inline"

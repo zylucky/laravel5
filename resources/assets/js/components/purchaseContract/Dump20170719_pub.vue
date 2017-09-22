@@ -26,6 +26,11 @@
     </div>
 </template>
 <style>
+    body{
+        text-align: center;
+        height: 100%;
+        position: relative;
+    }
     .whole{
         margin: auto;
         top:0px;

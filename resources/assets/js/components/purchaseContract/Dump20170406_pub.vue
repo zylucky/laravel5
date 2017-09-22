@@ -12,7 +12,7 @@
             联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">&nbsp;&nbsp;联系地址：<input type="text" name="" style="width:185px" value="">
             <br>联系方式：<input type="text" name="" style="width:180px;" disabled value="">&nbsp;&nbsp;联系方式：<input type="text" name="" style="width:185px;font-size:10px" value=""><br>
             <font>_______年____月____日</font>
-            <font style="margin-left: 6%" >_______年____月____日</font><br>
+            <font style="margin-left: 8%" >_______年____月____日</font><br>
             <br>
             <p v-if="farenzhengjian=='s'">
                 <b> 居间方（丙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b><br>
@@ -27,6 +27,11 @@
 </template>
 
 <style>
+    body{
+        text-align: center;
+        height: 100%;
+        position: relative;
+    }
     .whole{
         position: absolute;
         margin: auto;
@@ -34,7 +39,7 @@
         right: 0;
         left:0;
         bottom: 0;
-        width: 90%;
+        width: 94%;
         height: 20%;
     }
     .whole h1{

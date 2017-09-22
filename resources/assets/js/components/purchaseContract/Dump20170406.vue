@@ -23,7 +23,7 @@
         <b>&nbsp;&nbsp; 第二条  房屋租赁情况</b><br>
         &nbsp;&nbsp;租赁用途：<u> 办公 </u>，甲方应当协助乙方（或实际使用人）办理营业证照。<br>
         <br><b>&nbsp;&nbsp; 第三条  租赁期限及免租期</b><br>
-        &nbsp;（一）甲方承诺在租赁合同期限内给予乙方{{free?free:'__'}}个月的免租期，
+        &nbsp;（一）甲方承诺在租赁合同期限内给予乙方{{free>0?free:'__'}}个月的免租期，
         <span v-for="(item,index) in addDate.mianzuqiList" style="display:inline">
                 自<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
@@ -187,7 +187,7 @@
             right: 0;
             left:0;
             bottom: 0;
-            width: 90%;
+            width: 94%;
             height: 20%;
         }
         .tc{text-align:center;}
