@@ -47,7 +47,7 @@
             </span>
                 招商装修期内，甲方不向乙方收取任何租金收益，以便于乙方寻找潜在实际使用人、协商洽谈、装饰装修、办理入住等事宜；招商装修期内物业管理费、供暖费及制冷费由甲方自行缴纳。
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; （三）管理期满仍有实际使用人使用该房屋，乙方应及时通知甲方，本合同管理期限自动顺延一年，延长期过后仍存在租赁关系的实际使用人，甲方应当接收，并履行乙方已经签署的房屋租赁合同。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）管理期满仍有实际使用人使用该房屋，乙方应及时通知甲方，本合同管理期限自动顺延一年，延长期过后仍存在租赁关系的实际使用人，甲方应当接收，并履行乙方已经签署的房屋租赁合同。
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（四）管理期满或本合同解除后，甲方有权收回房屋，乙方应返还房屋。甲乙双方应对房屋和附属物品、设备设施及水电使用等情况进行验收，结清各自应当承担的费用。
             </p>
@@ -212,7 +212,7 @@
     .whole span {
         display: block;}
     p{
-        font-size: 18px; text-align:left;
+        font-size: 14px; text-align:left;
         line-height: 2;}
     .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center}
     .whole u{
