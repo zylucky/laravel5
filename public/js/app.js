@@ -55780,7 +55780,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\nbody{\n    text-align: center;\n    height: 100%;\n    position: relative;\n}\n.whole{\n    position: absolute;\n    margin: auto;\n    top: -650px;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 94%;\n    height: 20%;\n}\n.whole h1{\n    font-size:28px;\n}\n.whole span {\n    display: block;\n}\n.whole p{\n    font-size: 14px; text-align:left;\n    line-height: 2;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center\n}\n.whole u{\n    font-size:14px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n    color:#000000;\n}\n", ""]);
+exports.push([module.i, "\nbody{\n    text-align: center;\n    height: 100%;\n    position: relative;\n}\n.whole{\n    position: absolute;\n    margin: auto;\n    top: 0;\n    right: 0;\n    left:0;\n    bottom: 0;\n    width: 94%;\n    height: 20%;\n}\n.whole h1{\n    font-size:28px;\n}\n.whole span {\n    display: block;\n}\n.whole p{\n    font-size: 14px; text-align:left;\n    line-height: 2;\n}\n.whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center\n}\n.whole u{\n    font-size:14px!important;\n}\n.whole input[disabled]{\n    background-color:white;\n    color:#000000;\n}\n", ""]);
 
 // exports
 
