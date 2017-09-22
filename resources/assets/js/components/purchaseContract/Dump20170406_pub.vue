@@ -38,19 +38,16 @@
         height: 20%;
     }
     .whole h1{
-        font-size:40px;
+        font-size:28px;
     }
     .whole span {
         display: block;}
-    .f22{
-        font-size: 20px;
-    }
     .whole p{
-        font-size: 20px; text-align:left;
+        font-size: 14px; text-align:left;
         line-height: 2;}
-    .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size: 20px!important;text-align:center}
+    .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center}
     .whole u{
-        font-size:20px!important;
+        font-size:14px!important;
     }
     .whole input[disabled]{
         background-color:white;

@@ -130,7 +130,7 @@
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）租赁期内，甲方收回房屋自用或乙方提前退租应提前3个月通知对方，如未提前通知对方，违约方应向守约方支付两个月房租作为未提前通知的租金补偿，同时乙方应配合甲方带领未来租户看房，本条款与违约责任条款第（一）款同时叠加适用。
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）乙方在租赁房屋内的工商注册等营业证照，应在租赁期满或合同解除后10日内迁出，逾期未迁出的，乙方须按日向甲方支付租金直至乙方实际将营业证照迁出之日止，甲方退还乙方剩余押金。
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（四）由乙方原因违约本合同提前终止（包含租期结束），乙方须在终止或解除日3日内腾空房屋并向甲方返还该房屋，如乙方未能在3日内自行腾出该房屋，甲方有权立即收回房屋及钥匙，有权采取换锁、停水停电、阻止人员在承租区域进出经营等自我救济行为，同时可将屋内乙方物品清出至室外，甲方不承担任何保管及赔偿责任，乙方同意自行承担由此产生的全部后果和责任。
-            <br><b>第十条  送达条款</b>
+            <br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十条  送达条款</b>
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲乙双方一致同意，可通过在本合同中书写的手机号码以短信、微信方式进行相关通知的送达，在短信、微信发送成功后即视为完成送达。
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲乙双方在本合同中书写的地址即为本合同下任何书面通知的有效送达地址，若因接收方拒收或地址错误等情况致使无法送达的，均以付邮日（以邮戳为准）后3日即视为通知方已依本合同给予书面通知。若任何一方联络地址变更的，应及时通知对方。
             <br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十一条  其他</b>
@@ -160,21 +160,21 @@
     }
     .tc{text-align:center;}
     .whole h1{
-        font-size:40px;
+        font-size:30px;
     }
     .whole span {
         display: block;}
     .f22{
-        font-size: 20px;
+        font-size: 14px;
     }
     p{
-        font-size: 18px; text-align:left;
+        font-size: 14px; text-align:left;
         line-height: 2;
         display: block;
     }
-    .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center}
+    .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center}
     .whole u{
-        font-size:20px!important;
+        font-size:14px!important;
     }
     .whole input[disabled]{
         background-color:white;

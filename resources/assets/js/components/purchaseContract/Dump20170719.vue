@@ -47,7 +47,7 @@
             </span>
                 招商装修期内，甲方不向乙方收取任何租金收益，以便于乙方寻找潜在实际使用人、协商洽谈、装饰装修、办理入住等事宜；招商装修期内物业管理费、供暖费及制冷费由甲方自行缴纳。
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; （三）管理期满仍有实际使用人使用该房屋，乙方应及时通知甲方，本合同管理期限自动顺延一年，延长期过后仍存在租赁关系的实际使用人，甲方应当接收，并履行乙方已经签署的房屋租赁合同。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）管理期满仍有实际使用人使用该房屋，乙方应及时通知甲方，本合同管理期限自动顺延一年，延长期过后仍存在租赁关系的实际使用人，甲方应当接收，并履行乙方已经签署的房屋租赁合同。
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（四）管理期满或本合同解除后，甲方有权收回房屋，乙方应返还房屋。甲乙双方应对房屋和附属物品、设备设施及水电使用等情况进行验收，结清各自应当承担的费用。
             </p>
@@ -151,8 +151,8 @@
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、不按照约定支付租金收益达10日的。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、擅自拆除或破坏房屋建筑主体结构的。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、利用房屋从事违法犯罪活动而损害公共利益的。<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、要求提前解除本合同的。</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（五）其他法定的合同解除情形。</p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、要求提前解除本合同的。<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（五）其他法定的合同解除情形。
             <p><b>第十条  违约责任</b></p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方有第九条第（三）款约定的情形之一的，应按2个月的租金为标准向乙方支付违约金，且乙方有权单方解除本合同；乙方有第九条第（四）款约定的情形之一的，应按2个月的租金为标准向甲方支付违约金，且甲方有权单方解除本合同。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）因甲方违约致使合同解除的，甲方应补偿乙方对该房屋进行装饰装修以及添附设备所支付的费用；同时甲方应退还乙方已支付的未管理房屋期间的租金及全部保证金；如造成乙方向实际使用人承担赔偿责任的，亦由甲方全部承担。</p>
@@ -207,16 +207,16 @@
     }
     .tc{text-align:center;}
     .whole h1{
-        font-size:40px;
+        font-size:32px;
     }
     .whole span {
         display: block;}
     p{
-        font-size: 18px; text-align:left;
+        font-size: 14px; text-align:left;
         line-height: 2;}
-    .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:20px!important;text-align:center}
+    .whole input{border: none;border-bottom: 1px solid#333333;outline: none; font-size:14px!important;text-align:center}
     .whole u{
-        font-size:20px!important;
+        font-size:14px!important;
     }
     .whole input[disabled]{
         background-color:white;
