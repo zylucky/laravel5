@@ -366,7 +366,8 @@
                 let para = {
                     id:_this.id,
                 }
-                window.open('/#/purchaseContract/dump'+version+'?id='+_this.id+'&isdump=2')
+                window.open('/#/purchaseContract/dump'+version+'?id='+_this.id+'&isdump=2&bianhao='+_this.bianhao)
+                window.open('/#/purchaseContract/dump'+version+'pub?id='+_this.id+'&isdump=2&bianhao='+_this.bianhao)
             },
             fuzhi(res){
                 //console.log(res.data.data);

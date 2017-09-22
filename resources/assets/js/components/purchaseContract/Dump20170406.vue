@@ -13,8 +13,8 @@
                 v-for="(item,index) in property.officeList"
                 :key="index"
         >
-       &nbsp;（一）房屋坐落于北京市<u>{{item.weizhi?item.weizhi:'_______________________________'}}</u>,承租区域建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'________'}}</u>平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<u>{{item.qianyuemianji?item.qianyuemianji:'_______'}}</u>平方米。<br>
-        &nbsp;（二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_____________________________'}}</u>，房屋所有权人姓名或名称
+       &nbsp;（一）房屋坐落于北京市<u>{{item.weizhi?item.weizhi:'___________________________'}}</u>,承租区域建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'________'}}</u>平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<u>{{item.qianyuemianji?item.qianyuemianji:'_______'}}</u>平方米。<br>
+        &nbsp;（二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'____________________'}}</u>，房屋所有权人姓名或名称
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
                 <u>{{item.name?item.name:'___________'}}</u>
             </span>房屋（
@@ -23,20 +23,20 @@
         <b>&nbsp;&nbsp; 第二条  房屋租赁情况</b><br>
         &nbsp;&nbsp;租赁用途：<u> 办公 </u>，甲方应当协助乙方（或实际使用人）办理营业证照。<br>
         <br><b>&nbsp;&nbsp; 第三条  租赁期限及免租期</b><br>
-        合同期限内（一）甲方承诺在租赁合同期限内给予乙方<input type="text" style="width:25px;">个月的免租期，<br>自
-        <span v-for="(item,index) in addDate.mianzuqiList">
-                <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
+        &nbsp;（一）甲方承诺在租赁合同期限内给予乙方{{free?free:'__'}}个月的免租期，
+        <span v-for="(item,index) in addDate.mianzuqiList" style="display:inline">
+                自<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>止；
-            </span>
-        日止。免租期内乙方不支付租金，以便于乙方与入住方协商洽谈、进行装饰装修及办理入住手续等事宜。免租期内物业管理费用、供暖费和制冷费由甲方自行缴纳。<br>
+        </span>
+        免租期内乙方不支付租金，以便于乙方与入住方协商洽谈、进行装饰装修及办理入住手续等事宜。免租期内物业管理费用、供暖费和制冷费由甲方自行缴纳。<br>
         &nbsp;（二）本合同房屋租赁期限为
-        <u>&nbsp;&nbsp;{{nian}}&nbsp;&nbsp;</u>年
-        <u>&nbsp;&nbsp;{{yue}}&nbsp;&nbsp;</u>月
-        <u>&nbsp;&nbsp;{{ri}}&nbsp;&nbsp;</u>日，<br>自<u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{nian?nian:'__'}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{yue?yue:'__'}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{ri>1||ri==0?ri:'__'}}&nbsp;&nbsp;</u>日，自<u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日至
         <u>&nbsp;&nbsp;{{year(addDate.enddate)}}&nbsp;&nbsp;</u>年
@@ -59,9 +59,10 @@
                 <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(item.yuezujin)?toDecimal(item.yuezujin):'__________'}}&nbsp;&nbsp;</u>元/月）；
             <br>
         </span>
-        &nbsp;（二）租金支付方式为：<br>
+        &nbsp;（二）租金支付方式为：
         <span v-for="(item,index) in addDate.fukuanFangshiList"
               :key="index"
+              style="display:inline"
         >
                 <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
@@ -69,21 +70,22 @@
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日
-                每 <u>{{(item.zujinyue)}}</u> 月支付一次。
+                押 <u>{{item.yajinyue?intToChinese(item.yajinyue):'__'}}</u> 付 <u>{{item.zujinyue?intToChinese(item.zujinyue):'__'}}</u>;
+
             </span>
-        &nbsp;1、房屋押金：<u> ¥ {{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'_____________'}}&nbsp;&nbsp;</u>元，（大写：<u>{{daxie(addDate.yajin)}}&nbsp;&nbsp;
+        &nbsp;1、房屋押金：<u> ¥ {{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'_____________'}}&nbsp;&nbsp;</u>元，（大写)：<u>{{daxie(addDate.yajin)?daxie(addDate.yajin):'__________'}}&nbsp;&nbsp;
 
             </u>元整，支付时间为<u>&nbsp;&nbsp;{{year(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>月
-        <u>&nbsp;&nbsp;{{day(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>日日支付;<br>
+        <u>&nbsp;&nbsp;{{day(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>日支付;<br>
         &nbsp;2、押金是乙方向甲方支付的合法履约的保证金。租赁期满后5日内甲方退还乙方。<br>
-        &nbsp;3、首期租金：支付时间为
+        &nbsp;3、首期租金：¥ {{toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)>0?toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'___________'}}元，（大写)：{{daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)?daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'____________'}}支付时间为
         <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
-        <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每<u></u>个月支付一次，于付款月起租日 <u>{{addDate.tiqianfukuantian}}</u> 日前支付下一次租金，
+        <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每<u>{{addDate.fukuanFangshiList[0].zujinyue?addDate.fukuanFangshiList[0].zujinyue:'_____'}}</u>个月支付一次，于付款月起租日 <u>{{addDate.tiqianfukuantian}}</u> 日前支付下一次租金，
         即第二期租金的支付时间为：<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>月
-        <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日第三期租金的支付时间为 <u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日;第三期租金的支付时间为 <u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>日  ，合同期每期租金以此类推。<br>
 
@@ -101,7 +103,7 @@
         <b>&nbsp;&nbsp; 第六条  甲方的权利义务</b> <br>
         &nbsp;（一）甲方应保证出租房屋的建筑结构和设备设施符合建筑、消防、电路、防水等方面的安全标准，不得危及乙方使用安全。<br>
         &nbsp;（二）在承租期内，如乙方或房屋实际使用人需要甲方出面配合或提供房屋权属证明等相关材料办理税务发票事宜时，甲方应予以出面配合或提供。<br>
-        &nbsp;（三）甲方应当配合办理工商注册手续。甲方应于签约之日起5日内持房屋所有证或不动产权证及身份证原件去工商局备案。如甲方未能于签约之日起5日内进行备案，乙方有权不支付甲方房屋租金，直至甲方办理备案登记之日止。<br>
+        &nbsp;（三）甲方应当配合办理工商注册手续。甲方应于签约之日起5日内持房屋所有证或不动产权证及身份证原件去工商局备案。如甲方未能于签约之日起{{beianqixian?beianqixian:'____'}}日内进行备案，乙方有权不支付甲方房屋租金，直至甲方办理备案登记之日止。<br>
         &nbsp;（四）甲方保证乙方该房屋宽带网络可正常报装使用，如因原租户宽带网络未注销，影响正常报装使用宽带网络，甲方应在10日内解决。<br>
         &nbsp;（五）承租期内，该房屋主体结构、设备设施的维修责任。<br>
         &nbsp;&nbsp;&nbsp;对于该房屋的主要结构、固定管道线路及固定设施（包括制热、制冷、排风、上下水、电路及燃气等设施）发生自然损坏、故障或合理使用而导致的老化、耗损，乙方应及时通知甲方修复。甲方应在接到乙方通知后的5日内进行维修。逾期不维修的，乙方可代为维修，费用由甲方承担（乙方应出示相关维修支付凭据，并可在下次房屋租金中直接扣除）。<br>
@@ -180,13 +182,12 @@
 </template>
 <style>
     .whole{
-            position: absolute;
             margin: auto;
-            top: -350px;
+            top:0;
             right: 0;
             left:0;
             bottom: 0;
-            width: 85%;
+            width: 90%;
             height: 20%;
         }
         .tc{text-align:center;}
@@ -225,6 +226,8 @@
                 msg03:'三份，甲、乙、丙',
                 msg04:'二',
                 msg05:'三',
+                beianqixian:'',
+                free:'',
                 historyOptimize:false,
                 dumpShow:false,
                 property:{
@@ -335,6 +338,35 @@
                     s += '0';
                 }
                 return s;
+            },
+            intToChinese( str ) {
+                str = str+'';
+                var len = str.length-1;
+                var idxs = ['','十','百','千','万','十','百','千','亿','十','百','千','万','十','百','千','亿'];
+                var num = ['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+                return str.replace(/([1-9]|0+)/g,function( $, $1, idx, full) {
+                    var pos = 0;
+                    if( $1[0] != '0' ){
+                        pos = len-idx;
+                        if( idx == 0 && $1[0] == 1 && idxs[len-idx] == '十'){
+                            return idxs[len-idx];
+                        }
+                        return num[$1[0]] + idxs[len-idx];
+                    } else {
+                        var left = len - idx;
+                        var right = len - idx + $1.length;
+                        if( Math.floor(right/4) - Math.floor(left/4) > 0 ){
+                            pos = left - left%4;
+                        }
+                        if( pos ){
+                            return idxs[pos] + num[$1[0]];
+                        } else if( idx + $1.length >= len ){
+                            return '';
+                        }else {
+                            return num[$1[0]]
+                        }
+                    }
+                });
             },
             daxie(money) {
                 if(money==null){
@@ -520,6 +552,8 @@
                 this.yue = res.data.data.yue;
                 this.ri = res.data.data.ri;
                 this.yingyezhizhao = res.data.data.yingyezhizhao;
+                this.beianqixian = res.data.data.beianqixian;
+                this.free = res.data.data.free;
 
                 var lists = this.addDate.jiafangfeiyong;
                 var str ='';
@@ -547,7 +581,7 @@
         mounted(){
             //获取合同的详细信息
             this.getPurchaseContract(this.$route.query);
-            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
+            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人 - - - - - - - '+'合同编号:'+this.$route.query.bianhao;
             if(this.$route.query.isdump==1){
                 this.historyOptimize = false;
             }else if(this.$route.query.isdump==2) {

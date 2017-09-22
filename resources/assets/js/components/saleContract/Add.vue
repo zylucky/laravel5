@@ -348,11 +348,13 @@
                 let para = {
                     id:_this.id,
                 }
-                window.open('/#/saleContract/dump'+version+'?id='+_this.id+'&isdump=2')
+                window.open('/#/saleContract/dump'+version+'?id='+_this.id+'&isdump=2&bianhao='+this.bianhao)
+                window.open('/#/saleContract/dump'+version+'pub?id='+_this.id+'&isdump=2&bianhao='+this.bianhao)
             },
             fuzhi(res){
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
+                this.bianhao = res.data.data.bianhao;
                 if(this.zhuangtai==4){
                     this.$notify({
                         title: '提示',

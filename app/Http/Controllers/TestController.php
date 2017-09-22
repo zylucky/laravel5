@@ -173,4 +173,5 @@ from t_qd_compay");
         }
         return $hash&0x7FFFFFFF;
     }
+
 }
