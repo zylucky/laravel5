@@ -12,9 +12,9 @@
                     v-for="(item,index) in property.officeList"
                     :key="index"
             >
-        <p>（一）房屋坐落于北京市 <u>{{item.quyu?item.quyu:'_____'}}</u> 区（县）<u>{{item.weizhi?item.quyu:'_____________________'}}</u> ，建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'______'}}</u>平方米,实际承租面积为<u>{{item.qianyuemianji?item.qianyuemianji:'______'}}</u>平方米。<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： 办公  。</p>
-        <p>（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_________________________'}}</u>，房屋所有权人姓名或名称：
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市 <u>{{item.quyu?item.quyu:'_____'}}</u> 区（县）<input type="text" style="width:150px;" v-model="item.weizhi"> ，建筑面积 <input type="text" style="width:50px;" v-model="item.jianzhumianji"> 平方米,实际承租面积为 <input type="text" style="width:50px;" v-model="item.qianyuemianji" > 平方米。<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： <u>办公</u>  。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）房屋权属状况：甲方持有（□ 房屋所有权证 / □ 房屋买卖合同 / □ 其他房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_________________________'}}</u>，房屋所有权人姓名或名称：
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
                 <u>{{item.name?item.name:'__________'}}</u>
             </span>
@@ -22,7 +22,7 @@
         </span>
             <p><b>第二条  委托管理期限</b></p>
             <p>
-                （一）委托管理期限自
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）委托管理期限自
                 <u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日至
@@ -36,7 +36,7 @@
                 <u>&nbsp;&nbsp;{{month(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。
                 <br>
-                （二）甲方承诺给予乙方 <u>{{free?free:'__'}}</u> 个月的招商装修期，即自
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方承诺给予乙方 <u>{{free?free:'__'}}</u> 个月的招商装修期，即自
                 <span v-for="(item,index) in addDate.mianzuqiList" style="display: inline;">
                 <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
@@ -47,15 +47,15 @@
             </span>
                 招商装修期内，甲方不向乙方收取任何租金收益，以便于乙方寻找潜在实际使用人、协商洽谈、装饰装修、办理入住等事宜；招商装修期内物业管理费、供暖费及制冷费由甲方自行缴纳。
                 <br>
-                （三）管理期满仍有实际使用人使用该房屋，乙方应及时通知甲方，本合同管理期限自动顺延一年，延长期过后仍存在租赁关系的实际使用人，甲方应当接收，并履行乙方已经签署的房屋租赁合同。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; （三）管理期满仍有实际使用人使用该房屋，乙方应及时通知甲方，本合同管理期限自动顺延一年，延长期过后仍存在租赁关系的实际使用人，甲方应当接收，并履行乙方已经签署的房屋租赁合同。
                 <br>
-                （四）管理期满或本合同解除后，甲方有权收回房屋，乙方应返还房屋。甲乙双方应对房屋和附属物品、设备设施及水电使用等情况进行验收，结清各自应当承担的费用。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（四）管理期满或本合同解除后，甲方有权收回房屋，乙方应返还房屋。甲乙双方应对房屋和附属物品、设备设施及水电使用等情况进行验收，结清各自应当承担的费用。
             </p>
             <p><b>
                 第三条  租金收益及保证金
             </b></p>
             <p>
-                （一）乙方在受托管理期间，按照以下标准向甲方支付固定的租金收益（以下可简称为“租金”）：
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）乙方在受托管理期间，按照以下标准向甲方支付固定的租金收益（以下可简称为“租金”）：
             </p>
             <p>
         <span v-for="(item,index) in addDate.zujinList">
@@ -68,10 +68,9 @@
                 <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(item.yuezujin)?toDecimal(item.yuezujin):'___'}}&nbsp;&nbsp;</u>元/月）；
             <br>
         </span>
-            </p>
-            <p>如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(addDate.yanqizujin)?toDecimal(addDate.yanqizujin):'____'}}&nbsp;&nbsp;</u>元/月）。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(addDate.yanqizujin)?toDecimal(addDate.yanqizujin):'____'}}&nbsp;&nbsp;</u>元/月）。
                 <br>
-                租金的支付方式：
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租金的支付方式：
                 <span v-for="(item,index) in addDate.fukuanFangshiList"
                       :key="index"
                       style="display: inline;"
@@ -87,7 +86,7 @@
 
                 租金中包含物业管理费、供暖费及制冷费。
                 <br>
-                首期租金支付时间为
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首期租金支付时间为
                 <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前，其余每期租金在实际应付款月（减除招商期后）开始管理之日的前3天进行支付，即第二期租金的支付时间为
@@ -98,15 +97,15 @@
                 <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>日，管理期内每期租金的支付时间以此类推。
                 <br>
-                甲方指定收款账户为：
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲方指定收款账户为：
                 <br>
-                名&nbsp;&nbsp;&nbsp;称：  <input type="text" style="width:500px;text-align:left" v-model="owner.shoukuanren">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;称：  <input type="text" style="width:500px;text-align:left" v-model="owner.shoukuanren">
                 <br>
-                开户行： <input type="text" style="width:500px;text-align:left" v-model="owner.kaihuhang">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开户行： <input type="text" style="width:500px;text-align:left" v-model="owner.kaihuhang">
                 <br>
-                账&nbsp;&nbsp;&nbsp;号：  <input type="text" style="width:500px;text-align:left" v-model="owner.zhanghao">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账&nbsp;&nbsp;&nbsp;号：  <input type="text" style="width:500px;text-align:left" v-model="owner.zhanghao">
                 <br>
-                （二）保证金：人民币（大写）
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）保证金：人民币（大写）
                 <u>&nbsp;&nbsp;{{daxie(addDate.yajin)?daxie(addDate.yajin):'______'}}&nbsp;&nbsp;</u> （￥：
                 <u>&nbsp;&nbsp;{{(toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'_______')}}&nbsp;&nbsp;</u> 元），乙方在甲乙双方签署本合同当日向甲方支付，如甲方提供的房屋所有权证复印件和身份证复印件不全，则乙方仅支付甲方百分之五十的保证金，剩余百分之五十的保证金于甲方补齐房屋所有权证复印件及身份证复印件后支付。管理期满或合同解除后，保证金除抵扣应由乙方承担的费用，剩余部分应如数返还给乙方。</p>
             <p><b>第四条  资产管理服务费</b></p>
@@ -563,7 +562,7 @@
         mounted(){
             //获取合同的详细信息
             this.getPurchaseContract(this.$route.query);
-            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人'+'合同编号：'+this.$route.query.bianhao;
+            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人 - - - - - - - '+'合同编号：'+this.$route.query.bianhao;
             //            function  hello() {
             //                window.print()
             //            }

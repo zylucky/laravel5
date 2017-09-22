@@ -85,7 +85,7 @@
         },
         mounted(){
             this.getPurchaseContract(this.$route.query);
-            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
+            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人 - - - - - - -'+' 合同编号:'+this.$route.query.bianhao;
         }
 
     }

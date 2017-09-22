@@ -16,7 +16,7 @@
             <font style="margin-left: 6%" >_______年____月____日</font><br>
             <br>
             <p v-if="farenzhengjian=='s'">
-                <b> 居间方（丙方）：</b><u>北京华亮房地产经纪有限公司</u>
+                <b> 居间方（丙方）：</b><input type="text" style="width:120px;font-size:10px" v-model="jujianfang">
                 <br>联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">
                 <br>联系方式：<input type="text" name="" style="width:180px;font-size:10px" value="">
                 <br>
@@ -61,6 +61,7 @@
             return {
                 buchongtiaokuan:null,
                 farenzhengjian:null,
+                jujianfang:null,
             }
         },
         methods:{
@@ -71,6 +72,7 @@
                         //把数据分别赋值给三个组件的变量
                         this.buchongtiaokuan = res.data.data.yingyezhizhao;
                         this.farenzhengjian = res.data.data.farenzhengjian;
+                        this.jujianfang = res.data.data.jujianfang;
                     }else {
                         this.$message({
                             message: '获取数据失败',
@@ -82,7 +84,7 @@
         },
         mounted(){
             this.getPurchaseContract(this.$route.query);
-            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人';
+            document.title = "华亮房产 -- 先锋地产机构、专业人、信誉人 - - - - - - - 合同编号"+this.$route.query.bianhao;
         }
 
     }

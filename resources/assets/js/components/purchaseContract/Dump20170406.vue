@@ -14,7 +14,7 @@
                 :key="index"
         >
        &nbsp;（一）房屋坐落于北京市<u>{{item.weizhi?item.weizhi:'___________________________'}}</u>,承租区域建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'________'}}</u>平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<u>{{item.qianyuemianji?item.qianyuemianji:'_______'}}</u>平方米。<br>
-        &nbsp;（二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_____________________________'}}</u>，房屋所有权人姓名或名称
+        &nbsp;（二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'____________________'}}</u>，房屋所有权人姓名或名称
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
                 <u>{{item.name?item.name:'___________'}}</u>
             </span>房屋（
@@ -70,7 +70,8 @@
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日
-                每 <u>{{item.zujinyue?item.zujinyue:'____'}}</u> 月支付一次。
+                押 <u>{{item.yajinyue?intToChinese(item.yajinyue):'__'}}</u> 付 <u>{{item.zujinyue?intToChinese(item.zujinyue):'__'}}</u>;
+
             </span>
         &nbsp;1、房屋押金：<u> ¥ {{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'_____________'}}&nbsp;&nbsp;</u>元，（大写)：<u>{{daxie(addDate.yajin)?daxie(addDate.yajin):'__________'}}&nbsp;&nbsp;
 
@@ -338,6 +339,35 @@
                 }
                 return s;
             },
+            intToChinese( str ) {
+                str = str+'';
+                var len = str.length-1;
+                var idxs = ['','十','百','千','万','十','百','千','亿','十','百','千','万','十','百','千','亿'];
+                var num = ['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+                return str.replace(/([1-9]|0+)/g,function( $, $1, idx, full) {
+                    var pos = 0;
+                    if( $1[0] != '0' ){
+                        pos = len-idx;
+                        if( idx == 0 && $1[0] == 1 && idxs[len-idx] == '十'){
+                            return idxs[len-idx];
+                        }
+                        return num[$1[0]] + idxs[len-idx];
+                    } else {
+                        var left = len - idx;
+                        var right = len - idx + $1.length;
+                        if( Math.floor(right/4) - Math.floor(left/4) > 0 ){
+                            pos = left - left%4;
+                        }
+                        if( pos ){
+                            return idxs[pos] + num[$1[0]];
+                        } else if( idx + $1.length >= len ){
+                            return '';
+                        }else {
+                            return num[$1[0]]
+                        }
+                    }
+                });
+            },
             daxie(money) {
                 if(money==null){
                     return '';
@@ -551,7 +581,7 @@
         mounted(){
             //获取合同的详细信息
             this.getPurchaseContract(this.$route.query);
-            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人'+'合同编号:'+this.$route.query.bianhao;
+            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人 - - - - - - - '+'合同编号:'+this.$route.query.bianhao;
             if(this.$route.query.isdump==1){
                 this.historyOptimize = false;
             }else if(this.$route.query.isdump==2) {

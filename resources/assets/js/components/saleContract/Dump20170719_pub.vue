@@ -16,6 +16,7 @@
             <font>_______年____月____日</font>&nbsp;&nbsp;
             <font style="margin-left: 8%" >_______年____月____日</font><br>
             <br>
+        <p v-if="hetongtype==2">
             <b> 居间方（丙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b><br>
             房地产经纪人：<input type="text" name="" style="width:140px;font-size:10px" value="">
             <br>资质证书号：<input type="text" name="" style="width:160px;font-size:10px" value="">
@@ -67,6 +68,7 @@
         data(){
             return {
                 buchongtiaokuan:null,
+                hetongtype:null,
             }
         },
         methods:{
@@ -76,6 +78,7 @@
                     if(res.data.code=='200'){
                         //把数据分别赋值给三个组件的变量
                         this.buchongtiaokuan = res.data.data.iscompletefrzj;
+                        this.hetongtype = res.data.data.hetongtype;
                     }else {
                         this.$message({
                             message: '获取数据失败',
@@ -87,7 +90,7 @@
         },
         mounted(){
             this.getSaleContract(this.$route.query);
-            document.title = '北京幼狮科技有限公司 -- 为梦想、造支点 合同编号：'+this.$route.query.bianhao;
+            document.title = '北京幼狮科技有限公司 -- 为梦想、造支点 - - - - - - -  合同编号：'+this.$route.query.bianhao;
             function  hello() {
                 window.print()
             }
