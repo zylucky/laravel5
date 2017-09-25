@@ -36,7 +36,7 @@
                 <u>&nbsp;&nbsp;{{month(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方承诺给予乙方 <u>{{free>0?free:'__'}}</u> 个月的招商装修期，即自
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方承诺给予乙方 {{free_month>0?free_month:'__'}}个月{{free_day?free_day+'日':''}}的招商装修期，即自
                 <span v-for="(item,index) in addDate.mianzuqiList" style="display: inline;">
                 <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
@@ -240,7 +240,8 @@
                 historyOptimize:false,
                 dumpShow:false,
                 beiantixian:'',
-                free:'',
+                free_month:'',
+                free_day:'',
                 property:{
                     officeList: [{
                         omcId:null,
@@ -534,7 +535,8 @@
                 this.ri = res.data.data.ri;
                 this.yingyezhizhao = res.data.data.yingyezhizhao;
                 this.beiantixian = res.data.data.beiantixian;
-                this.free = res.data.data.free;
+                this.free_month = res.data.data.free_month;
+                this.free_day = res.data.data.free_day;
 
                 var lists = this.addDate.jiafangfeiyong;
                 var str ='';
