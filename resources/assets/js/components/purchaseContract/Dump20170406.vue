@@ -5,7 +5,7 @@
     <p>出租方（甲方）：<input type="text" style="width: 450px" disabled value=''/> </p>
     <p>承租方（乙方）：<input type="text" style="width: 450px" disabled value=""/>  </p>
     <p v-if="owner.farenzhengjian=='s'">居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="owner.jujianfang"/></p>
-    <br><br>
+    <br>
 
     <p>&nbsp;&nbsp;依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙{{msg01}}方在平等、自愿的基础上，就乙方承租甲方房屋，{{msg02}}经各方友好协商一致，签订本合同以资信守。</p>
     <p><b>&nbsp;&nbsp; 第一条  房屋基本情况</b>
@@ -23,7 +23,7 @@
         <b>&nbsp;&nbsp; 第二条  房屋租赁情况</b><br>
         &nbsp;&nbsp;租赁用途：<u> 办公 </u>，甲方应当协助乙方（或实际使用人）办理营业证照。<br>
         <br><b>&nbsp;&nbsp; 第三条  租赁期限及免租期</b><br>
-        &nbsp;（一）甲方承诺在租赁合同期限内给予乙方{{free>0?free:'__'}}个月的免租期，
+        &nbsp;（一）甲方承诺在租赁合同期限内给予乙方{{free_month>0?free_month:'__'}}个月{{free_day?free_day+'日':''}}的免租期，
         <span v-for="(item,index) in addDate.mianzuqiList" style="display:inline">
                 自<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
@@ -34,9 +34,9 @@
         </span>
         免租期内乙方不支付租金，以便于乙方与入住方协商洽谈、进行装饰装修及办理入住手续等事宜。免租期内物业管理费用、供暖费和制冷费由甲方自行缴纳。<br>
         &nbsp;（二）本合同房屋租赁期限为
-        <u>&nbsp;&nbsp;{{nian?nian:'__'}}&nbsp;&nbsp;</u>年
-        <u>&nbsp;&nbsp;{{yue?yue:'__'}}&nbsp;&nbsp;</u>月
-        <u>&nbsp;&nbsp;{{ri>1||ri==0?ri:'__'}}&nbsp;&nbsp;</u>日，自<u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
+        &nbsp;{{nian?nian:'__'}}&nbsp;年
+        {{yue?yue+'月':''}}
+        {{ri?ri+'日':''}}，自<u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日至
         <u>&nbsp;&nbsp;{{year(addDate.enddate)}}&nbsp;&nbsp;</u>年
@@ -73,6 +73,7 @@
                 押 <u>{{item.yajinyue?intToChinese(item.yajinyue):'__'}}</u> 付 <u>{{item.zujinyue?intToChinese(item.zujinyue):'__'}}</u>;
 
             </span>
+        <br>
         &nbsp;1、房屋押金：<u> ¥ {{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'_____________'}}&nbsp;&nbsp;</u>元，（大写)：<u>{{daxie(addDate.yajin)?daxie(addDate.yajin):'__________'}}&nbsp;&nbsp;
 
             </u>元整，支付时间为<u>&nbsp;&nbsp;{{year(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>年
@@ -103,7 +104,7 @@
         <b>&nbsp;&nbsp; 第六条  甲方的权利义务</b> <br>
         &nbsp;（一）甲方应保证出租房屋的建筑结构和设备设施符合建筑、消防、电路、防水等方面的安全标准，不得危及乙方使用安全。<br>
         &nbsp;（二）在承租期内，如乙方或房屋实际使用人需要甲方出面配合或提供房屋权属证明等相关材料办理税务发票事宜时，甲方应予以出面配合或提供。<br>
-        &nbsp;（三）甲方应当配合办理工商注册手续。甲方应于签约之日起5日内持房屋所有证或不动产权证及身份证原件去工商局备案。如甲方未能于签约之日起{{beianqixian?beianqixian:'____'}}日内进行备案，乙方有权不支付甲方房屋租金，直至甲方办理备案登记之日止。<br>
+        &nbsp;（三）甲方应当配合办理工商注册手续。甲方应于签约之日起{{beianqixian?beianqixian:'____'}}日内持房屋所有证或不动产权证及身份证原件去工商局备案。如甲方未能于签约之日起{{beianqixian?beianqixian:'____'}}日内进行备案，乙方有权不支付甲方房屋租金，直至甲方办理备案登记之日止。<br>
         &nbsp;（四）甲方保证乙方该房屋宽带网络可正常报装使用，如因原租户宽带网络未注销，影响正常报装使用宽带网络，甲方应在10日内解决。<br>
         &nbsp;（五）承租期内，该房屋主体结构、设备设施的维修责任。<br>
         &nbsp;&nbsp;&nbsp;对于该房屋的主要结构、固定管道线路及固定设施（包括制热、制冷、排风、上下水、电路及燃气等设施）发生自然损坏、故障或合理使用而导致的老化、耗损，乙方应及时通知甲方修复。甲方应在接到乙方通知后的5日内进行维修。逾期不维修的，乙方可代为维修，费用由甲方承担（乙方应出示相关维修支付凭据，并可在下次房屋租金中直接扣除）。<br>
@@ -134,7 +135,7 @@
         &nbsp;&nbsp;5、乙方提前终止合同。<br><br>
         <b>&nbsp;&nbsp; 第十条  违约责任</b> <br>
         &nbsp;&nbsp;（一）甲方有第九条第（三）款约定的情形之一的，应按2个月租金为标准向乙方支付违约金，同时退还乙方已支付押金及未使用租期租金，如甲方违约仍需足额支付乙方对该房屋多次进行装饰、装修、添附设备、设施及乙方对他方赔偿所支付的全部费用。<br>
-        &nbsp;&nbsp;（二）乙方有第九条第（四）款约定的情形之一的，应按2个月租金为标准向甲方支付违约金，甲方应退还乙方剩余押金及未使用租期租金。<br>
+        &nbsp;&nbsp;（二）乙方有第九条第（四）款约定的情形之一的，应按2个月租金为标准向甲方支付违约金，甲方应退还乙方剩余押金及未使用租期租金。
         <br><br>
         <b>&nbsp;&nbsp; 第十一条 合同争议的解决办法</b> <br>
         &nbsp;&nbsp;本合同各项条款发生的争议，由双方当事人协商解决；协商不成的，依法向有管辖权的人民法院起诉，或按照另行达成的仲裁条款或仲裁协议申请仲裁。<br><br>
@@ -227,7 +228,8 @@
                 msg04:'二',
                 msg05:'三',
                 beianqixian:'',
-                free:'',
+                free_month:'',
+                free_day:'',
                 historyOptimize:false,
                 dumpShow:false,
                 property:{
@@ -553,7 +555,8 @@
                 this.ri = res.data.data.ri;
                 this.yingyezhizhao = res.data.data.yingyezhizhao;
                 this.beianqixian = res.data.data.beianqixian;
-                this.free = res.data.data.free;
+                this.free_month = res.data.data.free_month;
+                this.free_day = res.data.data.free_day;
 
                 var lists = this.addDate.jiafangfeiyong;
                 var str ='';

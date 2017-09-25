@@ -20,10 +20,7 @@
         </b>
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租赁用途：
             <input type="text" style="width: 70px;" value="办公">，房屋性质
-            <input type="text" style="width: 70px;" v-if="item.leixing == 1" value="公寓">
-            <input type="text" style="width: 70px;" v-if="item.leixing == 2" value="写字楼">
-            <input type="text" style="width: 70px;" v-if="item.leixing == 3" value="商铺">
-            <input type="text" style="width: 70px;" v-if="item.leixing == 4" value="住宅">
+            <input type="text" style="width: 70px;" value="商品房">
             ，根据房产性质及政府相关规定可以进行工商注册的房屋，甲方向乙方提供业主身份证及房屋所有权证复印件，乙方自行到相关部门办理工商注册事宜，并由乙方自行承担注册不成功之风险。
         </span>
             <br>
@@ -55,7 +52,7 @@
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）合同期满乙方仍使用该房屋，乙方应提前90天通知甲方，双方协商同意后另行签署新的租赁合同；若乙方未提前90日提出书面续租申请视为乙方放弃续租权，在此期间乙方应配合甲方带领未来租户看房。在同等市场条件下，乙方拥有优先承租权。
             <br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第四条  租金和押金</b>
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）乙方按照下列标准向甲方支付租金（以人民币进行结算）：<span v-for="(item,index) in addDate.zujinList">
-                <u>&nbsp;{{year(item.startdate)?year(item.startdate):'&nbsp;&nbsp;'}}&nbsp;</u>年
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;{{year(item.startdate)?year(item.startdate):'&nbsp;&nbsp;'}}&nbsp;</u>年
             <u>&nbsp;{{month(item.startdate)?month(item.startdate):'&nbsp;&nbsp;'}}&nbsp;</u>月
             <u>&nbsp;{{day(item.startdate)?day(item.startdate):'&nbsp;&nbsp;'}}&nbsp;</u>日至
             <u>&nbsp;{{year(item.enddate)?year(item.enddate):'&nbsp;&nbsp;'}}&nbsp;</u>年

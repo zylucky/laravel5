@@ -8,20 +8,20 @@
             <input v-if="buchongtiaokuan==null||iscompletefrzj==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
 
-            <b> 出租人（甲方）：<input type="text" name="" style="width:119px;font-size:10px" value="">承租人（乙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
+            <b> 出租人（甲方）：<input type="text" name="" style="width:138px;font-size:10px" value="">承租人（乙方）：<input type="text" name="" style="width:143px;font-size:10px" value=""></b>　<br>
             联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">联系地址：<input type="text" name="" style="width:185px" value="">
             <br>联系方式：<input type="text" name="" style="width:180px;" disabled value="400-078-8800">联系方式：<input type="text" name="" style="width:185px;font-size:10px" value="">
-            <br>委托代理人 ：<input type="text" name="" style="width:150px;font-size:10px" value="">委托代理人：<input type="text" name="" style="width:165px;font-size:10px" value=""><br>
+            <br>委托代理人 ：<input type="text" name="" style="width:160px;font-size:10px" value="">委托代理人：<input type="text" name="" style="width:165px;font-size:10px" value=""><br>
 
             <font>_______年____月____日</font>&nbsp;&nbsp;
-            <font style="margin-left: 8%" >_______年____月____日</font><br>
+            <font style="margin-left: 93px;" >_______年____月____日</font><br>
             <br>
         <p v-if="hetongtype==2">
-            <b> 居间方（丙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b><br>
-            房地产经纪人：<input type="text" name="" style="width:140px;font-size:10px" value="">
-            <br>资质证书号：<input type="text" name="" style="width:160px;font-size:10px" value="">
-            <br>联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">
-            <br>联系方式：<input type="text" name="" style="width:180px;font-size:10px" value=""><br>
+            <b> 居间方（丙方）：<input type="text" name="" style="width:135px;font-size:10px" value=""></b><br>
+            房地产经纪人：<input type="text" name="" style="width:149px;font-size:10px" value="">
+            <br>资质证书号：<input type="text" name="" style="width:162px;font-size:10px" value="">
+            <br>联系地址：<input type="text" name="" style="width:176px;font-size:10px" value="">
+            <br>联系方式：<input type="text" name="" style="width:176px;font-size:10px" value=""><br>
             <font>_______年____月____日</font>
         </p>
     </div>
