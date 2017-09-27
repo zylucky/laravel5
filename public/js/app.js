@@ -39924,7 +39924,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -111230,7 +111229,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.owner.jujianfang = $event.target.value
       }
     }
-  })]) : _vm._e(), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("  依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙" + _vm._s(_vm.msg01) + "方在平等、自愿的基础上，就乙方承租甲方房屋，" + _vm._s(_vm.msg02) + "经各方友好协商一致，签订本合同以资信守。")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("   第一条  房屋基本情况")]), _vm._v(" "), _vm._l((_vm.property.officeList), function(item, index) {
+  })]) : _vm._e(), _vm._v(" "), _c('p', [_vm._v("  依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙" + _vm._s(_vm.msg01) + "方在平等、自愿的基础上，就乙方承租甲方房屋，" + _vm._s(_vm.msg02) + "经各方友好协商一致，签订本合同以资信守。")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("   第一条  房屋基本情况")]), _vm._v(" "), _vm._l((_vm.property.officeList), function(item, index) {
     return _c('span', {
       key: index
     }, [_vm._v("\n        （一）房屋坐落于北京市"), _c('u', [_vm._v(_vm._s(item.weizhi ? item.weizhi : '___________________________'))]), _vm._v(",承租区域建筑面积"), _c('u', [_vm._v(_vm._s(item.jianzhumianji ? item.jianzhumianji : '________'))]), _vm._v("平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积"), _c('u', [_vm._v(_vm._s(item.qianyuemianji ? item.qianyuemianji : '_______'))]), _vm._v("平方米。"), _c('br'), _vm._v("\n         （二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号："), _c('u', [_vm._v(_vm._s(item.chanquanzhenghao ? item.chanquanzhenghao : '____________________'))]), _vm._v("，房屋所有权人姓名或名称\n            "), _vm._l((_vm.owner.chanquanrenList), function(item, index) {
@@ -111240,7 +111239,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }, [_c('u', [_vm._v(_vm._s(item.name ? item.name : '___________'))])])
     }), _vm._v("房屋（\n        口是/口否）已设定了抵押。甲方保证出租的房屋权属无瑕疵、无债务纠纷，房屋设施符合出租条件。"), _c('br'), _c('br')], 2)
-  }), _vm._v(" "), _c('b', [_vm._v("   第二条  房屋租赁情况")]), _c('br'), _vm._v("\n          租赁用途："), _c('u', [_vm._v(" 办公 ")]), _vm._v("，甲方应当协助乙方（或实际使用人）办理营业证照。"), _c('br'), _vm._v(" "), _c('br'), _c('b', [_vm._v("   第三条  租赁期限及免租期")]), _c('br'), _vm._v("\n         （一）甲方承诺在租赁合同期限内给予乙方" + _vm._s(_vm.free_month > 0 ? _vm.free_month : '__') + "个月" + _vm._s(_vm.free_day ? _vm.free_day + '日' : '') + "的免租期，\n        "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
+  }), _vm._v(" "), _c('b', [_vm._v("   第二条  房屋租赁情况")]), _c('br'), _vm._v("\n          租赁用途："), _c('u', [_vm._v(" 办公 ")]), _vm._v("，甲方应当协助乙方（或实际使用人）办理营业证照。"), _c('br'), _vm._v(" "), _c('br'), _c('b', [_vm._v("   第三条  租赁期限及免租期")]), _c('br'), _vm._v("\n         （一）甲方承诺在租赁合同期限内给予乙方" + _vm._s(_vm.free_month > 0 ? _vm.free_month : '__') + "个月 "), (_vm.addDate.mianzuqiList[0].startdate) ? _c('span', {
+    staticStyle: {
+      "display": "inline"
+    }
+  }, [_c('u', [_vm._v(" " + _vm._s(_vm.free_day ? _vm.free_day : '') + " ")]), _vm._v("日")]) : _vm._e(), _vm._v("的免租期，\n        "), _vm._l((_vm.addDate.mianzuqiList), function(item, index) {
     return _c('span', {
       staticStyle: {
         "display": "inline"

@@ -5,7 +5,6 @@
     <p>出租方（甲方）：<input type="text" style="width: 450px" disabled value=''/> </p>
     <p>承租方（乙方）：<input type="text" style="width: 450px" disabled value=""/>  </p>
     <p v-if="owner.farenzhengjian=='s'">居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="owner.jujianfang"/></p>
-    <br>
 
     <p>&nbsp;&nbsp;依据《中华人民共和国合同法》及有关法律、法规的规定，甲、乙{{msg01}}方在平等、自愿的基础上，就乙方承租甲方房屋，{{msg02}}经各方友好协商一致，签订本合同以资信守。</p>
     <p><b>&nbsp;&nbsp; 第一条  房屋基本情况</b>
@@ -23,7 +22,7 @@
         <b>&nbsp;&nbsp; 第二条  房屋租赁情况</b><br>
         &nbsp;&nbsp;租赁用途：<u> 办公 </u>，甲方应当协助乙方（或实际使用人）办理营业证照。<br>
         <br><b>&nbsp;&nbsp; 第三条  租赁期限及免租期</b><br>
-        &nbsp;（一）甲方承诺在租赁合同期限内给予乙方{{free_month>0?free_month:'__'}}个月{{free_day?free_day+'日':''}}的免租期，
+        &nbsp;（一）甲方承诺在租赁合同期限内给予乙方{{free_month>0?free_month:'__'}}个月 <span style="display: inline;" v-if="addDate.mianzuqiList[0].startdate"><u> {{free_day?free_day:''}} </u>日</span>的免租期，
         <span v-for="(item,index) in addDate.mianzuqiList" style="display:inline">
                 自<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
