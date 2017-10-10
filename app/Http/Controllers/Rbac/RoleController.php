@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Rbac;
 
 use App\Http\Controllers\Controller;
 use App\models\Role;
-use App\Models\UserRole;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -69,7 +68,7 @@ class RoleController extends Controller
     public function show($id)
     {
         $data = [];
-        $user = UserRole::find($id);
+        $user = User::find($id);
         if (isset($user)) {
             $lists = $user
                 ->roles;
