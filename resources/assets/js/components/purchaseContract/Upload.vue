@@ -291,7 +291,7 @@
             },
             handlePictureCardPreview(file) {
                 console.log(file)
-                this.dialogImageUrl = file.path;
+                this.dialogImageUrl = file.url;
                 this.dialogVisible = true;
             },
             handleSuccess(response, file, fileList){

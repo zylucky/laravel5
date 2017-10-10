@@ -43473,7 +43473,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         handlePictureCardPreview: function handlePictureCardPreview(file) {
             console.log(file);
-            this.dialogImageUrl = file.path;
+            this.dialogImageUrl = file.url;
             this.dialogVisible = true;
         },
         handleSuccess: function handleSuccess(response, file, fileList) {
