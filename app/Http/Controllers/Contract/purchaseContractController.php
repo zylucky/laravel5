@@ -104,16 +104,24 @@ class purchaseContractController extends Controller
         $res->data->yifangfeiyong = explode(',',$res->data->yifangfeiyong);
         $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
         $obj = $this->get_month_day($res->data->startdate,$res->data->enddate);
-        $free=0;
+        //计算所有的免租期之和
+        $free_month=0;
+        $free_day=0;
         if(count($res->data->mianzuqiList)>0){
             foreach ($res->data->mianzuqiList as $key=>$value){
-                $free += $this->get_month_day($value->startdate,$value->enddate)->m;
+                $free_month += $this->get_month_day($value->startdate,$value->enddate)->m;
+                $free_day += $this->get_month_day($value->startdate,$value->enddate)->d;
             }
+        }
+        if($free_day>30){
+            $free_month += intval($free_day/30);
+            $free_day = $free_day%30;
         }
         $res->data->nian = $obj->y;
         $res->data->yue = $obj->m;
         $res->data->ri = $obj->d;
-        $res->data->free = $free;
+        $res->data->free_month = $free_month;
+        $res->data->free_day  = $free_day;
         echo json_encode($res)  ;
     }
 

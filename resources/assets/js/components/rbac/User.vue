@@ -46,8 +46,8 @@
                 </el-form-item>
                 <el-form-item label="性别" prop="sex">
                     <el-radio-group v-model="editForm.sex">
-                        <el-radio class="radio" :label="'1'">男</el-radio>
-                        <el-radio class="radio" :label="'2'">女</el-radio>
+                        <el-radio class="radio" :label=1>男</el-radio>
+                        <el-radio class="radio" :label=2>女</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="邮箱" prop="email">
@@ -70,8 +70,8 @@
                 </el-form-item>
                 <el-form-item label="性别" prop="sex">
                     <el-radio-group v-model="addForm.sex">
-                        <el-radio class="radio" :label="1">男</el-radio>
-                        <el-radio class="radio" :label="2">女</el-radio>
+                        <el-radio class="radio" :label="'1'">男</el-radio>
+                        <el-radio class="radio" :label="'2'">女</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="邮箱" prop="email">
@@ -172,7 +172,7 @@
                         { required: true, message: '请输入姓名', trigger: 'blur' }
                     ],
                     sex:[
-                        {required: true, message:'输入性别',trigger:'blur' }
+                        {required: true, message:'输入性别' }
                     ],
                     email:[
                         {required: true, message:'输入邮箱',trigger:'blur' }

@@ -19,6 +19,7 @@ class TestController extends Controller
      */
     public function index()
     {
+        echo $this->binToDec('10100010');exit;
 
         $bk = DB::connection('mysql2')->select("select CompayName,CONCAT(yewuqvyv,yewupianqv)ywqy,CONCAT('北京市',dz_xingzhengqvyv,dz_jiedao,dz_xiangxi)addr,gs_loupan,gs_guimo,gs_chenglishijian,zhuzuoqvyv,
 IF(shifouhezuoguo=0,'否','是')sfhz,hezuocishu,IF(shifouhezuoxieyi=0,'否','是')sfqy,qianxieyishijian,hezuoxieyidengji,yslianxiren1,yslianxiren2,yslianxiren3, farenxingming,farenlianxifangshi,fuzeren,fuzerenlianxifangshi,
@@ -30,13 +31,14 @@ from t_qd_compay");
             '是否签署协议','签署协议时间','合作协议等级','幼狮联系人1','幼狮联系人2','幼狮联系人3','法人姓名','法人联系方式','负责人姓名',
             '负责人联系方式','佣金类型','收房佣金占比','出房用尽占比','公司经营属性','服务对象'];
         array_unshift($cellData,$headerData);
+        exit;
         //dd($cellData);
         Excel::create('学生成绩',function($excel) use ($cellData){
             $excel->sheet('score', function($sheet) use ($cellData){
                 $sheet->rows($cellData);
             });
         })->export('xls');
-        exit;
+
         dd($this->objToArray($bk));
         $cellData = [
             ['学号','姓名','成绩'],
@@ -172,6 +174,17 @@ from t_qd_compay");
             $hash=$hash*$seed+ord($md5{$i});
         }
         return $hash&0x7FFFFFFF;
+    }
+
+    public  function binToDec($num){
+        $length = strlen($num);
+        $value = 0;
+        $n = $length;
+        for ($i=0;$i<$length;$i++){
+            $value += (int)$num[$i]*pow(2,$n-1);
+            $n--;
+        }
+        return $value;
     }
 
 }

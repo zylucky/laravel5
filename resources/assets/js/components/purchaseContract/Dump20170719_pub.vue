@@ -8,15 +8,15 @@
             <input v-if="buchongtiaokuan==null||yingyezhizhao==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
 
-            <b> 业主方（甲方）：<input type="text" name="" style="width:119px;font-size:10px" value="">&nbsp;&nbsp;管理方（乙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
-            <b>委托代理人：<input type="text" name="" style="width:160px;font-size:10px" value=""></b><br>
+            <b> 业主方（甲方）：<input type="text" name="" style="width:139px;font-size:10px" value="">&nbsp;&nbsp;管理方（乙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
+            <b>委托代理人：<input type="text" name="" style="width:166px;font-size:10px" value=""></b><br>
             联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">&nbsp;&nbsp;联系地址：<input type="text" name="" style="width:185px" value="">
             <br>联系方式：<input type="text" name="" style="width:180px;" disabled value="">&nbsp;&nbsp;联系方式：<input type="text" name="" style="width:185px;font-size:10px" value=""><br>
             <font>_______年____月____日</font>
-            <font style="margin-left: 6%" >_______年____月____日</font><br>
+            <font style="margin-left:110px" >_______年____月____日</font><br>
             <br>
             <p v-if="farenzhengjian=='s'">
-                <b> 居间方（丙方）：</b><input type="text" style="width:120px;font-size:10px" v-model="jujianfang">
+                <b> 居间方（丙方）：</b><input type="text" style="width:138px;font-size:10px" v-model="jujianfang">
                 <br>联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">
                 <br>联系方式：<input type="text" name="" style="width:180px;font-size:10px" value="">
                 <br>
@@ -26,6 +26,11 @@
     </div>
 </template>
 <style>
+    body{
+        text-align: center;
+        height: 100%;
+        position: relative;
+    }
     .whole{
         margin: auto;
         top:0px;
