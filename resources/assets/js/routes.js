@@ -47,7 +47,7 @@ import DecorationList from "./components/decoration/List.vue";
 //合同版本
 import ContractVersionList from "./components/contractVersion/index.vue";
 
-
+import SetPassword from "./components/rbac/ModifyPassword.vue";
 
 //渠道公司
 import BrokerCompany from "./components/brokerCompany/Index.vue";
@@ -95,7 +95,7 @@ var fk_permission ,fk_permission_user ,fk_permission_role ,fk_permission_per ,
     fk_contract ,fk_contract_purchase  ,fk_contract_sale ,fk_version,
     fk_brokerCompany ,fk_brokerCompanyList,fk_brokerCompanyUserList,fk_brokerUserList,
     fk_commission,fk_shouFangCommission,fk_chuFangCommission,
-    fk_account,fk_payableList,fk_financePayableList,fk_receivableList,fk_financeReceivableList;
+    fk_account,fk_payableList,fk_financePayableList,fk_receivableList,fk_financeReceivableList,fk_setPassword;
 fun('permission')==true? fk_permission = false:fk_permission = true;
 fun('permission')==true? fk_permission_user = false:fk_permission_user = true;
 fun('permission')==true? fk_permission_role = false:fk_permission_role = true;
@@ -116,7 +116,7 @@ fun('payableList')==true? fk_payableList = false:fk_payableList = true;
 fun('financePayableList')==true? fk_financePayableList = false:fk_financePayableList = true;
 fun('receivableList')==true? fk_receivableList = false:fk_receivableList = true;
 fun('financeReceivableList')==true? fk_financeReceivableList = false:fk_financeReceivableList = true;
-
+fun('setPassword')==true? fk_setPassword = false:fk_setPassword = true;
 let routes = [
     {
         path: '/login',
@@ -140,6 +140,7 @@ let routes = [
      { path: '/user', component: User, name: '用户' ,hidden:fk_permission_user},
       { path: '/role', component: Role, name: '角色' ,hidden:fk_permission_role},
          { path: '/fun', component: Permission, name: '权限',hidden:fk_permission_per },
+         { path: '/setPass', component: SetPassword, name: '修改密码',hidden:fk_permission_per },
      ]
 
      },
