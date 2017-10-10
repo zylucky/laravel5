@@ -193,6 +193,8 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('edit','UserController@editUser');
     Route::post('role/{id}','UserController@setRole');
     Route::post('batchRemoveUser','UserController@batchRemoveUser');
+    Route::post('setPassword','UserController@setPassword');
+    Route::post('checkPassword','UserController@checkPassword');
 });
 
 //合同房源

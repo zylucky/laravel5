@@ -24,14 +24,14 @@
                 <el-button type="primary" class="el-icon-plus" v-if="fun('receivableAddYXJ')" @click="handleAdd">新增</el-button>
             </el-form-item>
         </el-form>
-        合计  应付金额：{{DataSum.sumMoney}} 提交金额：{{DataSum.tijiaoMoney}}  实付金额：{{DataSum.shijiMoney}}
+        合计  应付金额：{{DataSum.sumMoney}}  实付金额：{{DataSum.shijiMoney}}
         <span style="color:red;font-size: 14px;">
             （注：红色日期表示收款已延期，请尽快处理）
         </span>
 
         <el-tabs v-model="activeName2" type="border-card" @tab-click="handleClick">
             <el-tab-pane label="全部" name="first"></el-tab-pane>
-            <el-tab-pane label="未提交" name="second"></el-tab-pane>
+            <el-tab-pane label="未完成" name="second"></el-tab-pane>
             <el-tab-pane label="部分已付" name="fourth"></el-tab-pane>
             <el-tab-pane label="已完成" name="fifth"></el-tab-pane>
             <el-table :data="Receivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
@@ -56,8 +56,8 @@
                 </el-table-column>
                 <el-table-column prop="skmoney" label="应收房租" width="100">
                 </el-table-column>
-                <el-table-column prop="tijiaomoney" label="提交金额" width="100">
-                </el-table-column>
+               <!-- <el-table-column prop="tijiaomoney" label="提交金额" width="100">
+                </el-table-column> -->
                 <el-table-column prop="shishoumoney" label="实收金额" width="100">
                 </el-table-column>
                 <el-table-column prop="shiugaizhuangtai" label="修改状态" width="100">
@@ -518,7 +518,7 @@
             //状态显示转换
             formatState: function (row, column) {
                 let status = [];
-                status[0] = '未提交';
+                status[0] = '未完成';
                 status[1] = '已提交';
                 status[2] = '已完成';
                 status[3] = '部分已付';

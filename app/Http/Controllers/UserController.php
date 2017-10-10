@@ -4,7 +4,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 /**
  *
  */
@@ -95,5 +97,31 @@ class UserController extends Controller
         }
         //设置
         DB::table('role_user')->insert($data);
+    }
+    /*
+     * 修改密码
+     * */
+    public function setPassword(Request $request ){
+        $input = $request->params;
+        // 获取当前用户
+        $user = Auth::user();
+        $user->password=bcrypt($input['newpassword']);
+        $user->save();
+    }
+    /*
+  * 检查密码
+  * */
+    public function checkPassword(Request $request ){
+        $input = $request->params;
+        // 获取当前用户
+        $user = Auth::user();
+        if(Hash::check($input['oldPassword'], $user->password))
+        {
+             return 1;
+        }else{
+            return 2;
+        }
+
+
     }
 }
