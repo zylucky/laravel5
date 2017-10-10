@@ -16,9 +16,21 @@ class UserController extends Controller
     {
         $name = Input::get('name');
         $pageSize = Input::get('pageSize');
-        return $users =  User::when($name, function ($query) use ($name) {
-            return $query->where('name','like',"$name%");
-        })->paginate($pageSize);
+        $page = Input::get('page');
+        $count = DB::table('users')
+                ->where("users.name","like","%$name%")
+                ->count();
+        $users =  DB::table('users')
+            ->leftJoin('role_user','role_user.user_id','=','users.id')
+            ->leftJoin('roles','roles.id','=','role_user.role_id')
+            ->where("users.name","like","%$name%")
+            ->select("users.id","users.name","users.sex","users.email","users.created_at",DB::raw('GROUP_CONCAT(roles.name) as role'))
+            ->groupBy("users.id","users.name","users.sex","users.email","users.created_at")
+            ->offset(($page-1)*$pageSize)
+            ->limit($pageSize)
+            ->get();
+
+        return $data = ['total'=>$count,'data'=>$users];
 
     }
     public function delete()

@@ -18,7 +18,8 @@
         <el-table :data="users" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="selection" width="55">
             </el-table-column>
-            <el-table-column type="index" width="60">
+
+            <el-table-column prop="id" width="150" sortable>
             </el-table-column>
             <el-table-column prop="name" label="姓名" width="150" sortable>
             </el-table-column>
@@ -28,7 +29,7 @@
             </el-table-column>
             <el-table-column prop="created_at" label="创建时间" width="220" sortable>
             </el-table-column>
-            <el-table-column prop="addr" label="角色" min-width="180" sortable>
+            <el-table-column prop="role" label="角色" min-width="180" sortable>
             </el-table-column>
             <el-table-column label="操作" width="200">
                 <template scope="scope">
