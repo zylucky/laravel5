@@ -476,26 +476,17 @@ class saleContractController extends Controller
 
         ]);
         $res = json_decode($response->getBody());
-        $data2 = [];
-        foreach ($res->data as $key => $value){
-            $content = base64_decode($res->data[$key]->content);
-            //新文件名
-            $_nowdate = date("YmdHis");
-            $rnd = rand(10000, 99999);
-            $new_file_name = $_nowdate . '_' . $rnd . '.' . 'jpg';
-            $path = 'image/tmp/';
-            if (!file_exists($path)) {
-                mkdir($path,0755,true);
+        if($res->data){
+            $data2 = [];
+            foreach ($res->data as $key => $value){
+                //新文件名
+                $value->url = 'http://www.youshikongjian.com'.$value->path;
+                $value->content =null;
+                $data2[$value->type][] = $value;
             }
-            file_put_contents($path.$new_file_name,$content);
-            $url = $path.$new_file_name;
-            $value->url =$url;
-            $value->content =null;
-            $data2[$value->type][] = $value;
+            $res->data = $data2;
+            echo json_encode($res);
         }
-        $res->data = $data2;
-        echo json_encode($res);
-        //$this->removeDir($path);
     }
 
     public function addCopyImage(){

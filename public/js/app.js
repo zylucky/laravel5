@@ -43448,7 +43448,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_66" /* copyImageDelete */])(para).then(function (res) {});
         },
         handlePictureCardPreview: function handlePictureCardPreview(file) {
-            this.dialogImageUrl = file.url;
+            this.dialogImageUrl = file.path;
             this.dialogVisible = true;
         },
         handleSuccess: function handleSuccess(response, file, fileList) {
@@ -43463,6 +43463,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_67" /* copyImageList */])(para).then(function (res) {
                 if (res.data.code == '200') {
+                    console.log(res.data.data[1]);
                     _this2.hetongList = res.data.data[1]; //合同
                     _this2.chanquanrenList = res.data.data[2]; //合同
                     _this2.yingyezhizhao = res.data.data[3]; //合同
