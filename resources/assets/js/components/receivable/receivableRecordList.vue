@@ -60,15 +60,19 @@
 
             //时间戳转日期格式
             changeTJDate(row, column){
-                var newDate = new Date();
-                newDate.setTime(row.tijiaoriqi);
-                return newDate.toLocaleDateString()
+                if(row.tijiaoriqi!=null) {
+                    var newDate = new Date();
+                    newDate.setTime(row.tijiaoriqi);
+                    return newDate.toLocaleDateString()
+                }
             },
             //时间戳转日期格式
             changeSKDate(row, column){
-                var newDate = new Date();
-                newDate.setTime(row.shoukuandate);
-                return newDate.toLocaleDateString()
+                if(row.shoukuandate!=null) {
+                    var newDate = new Date();
+                    newDate.setTime(row.shoukuandate);
+                    return newDate.toLocaleDateString()
+                }
             },
 
             formatFKType(row, column){

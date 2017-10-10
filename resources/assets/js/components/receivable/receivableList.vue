@@ -36,17 +36,17 @@
             <el-tab-pane label="已完成" name="fifth"></el-tab-pane>
             <el-table :data="Receivable" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
                       @selection-change="selsChange" style="width: 100%;">
-                <el-table-column prop="htbianhao" label="合同编号" width="200">
+                <el-table-column prop="htbianhao" label="合同编号" width="150">
                 </el-table-column>
-                <el-table-column prop="xiangmu" label="项目" width="200">
+                <el-table-column prop="xiangmu" label="项目" width="150">
                 </el-table-column>
                 <el-table-column prop="zuhu" label="租户">
                 </el-table-column>
                 <el-table-column prop="skfangshi" label="付款方式" width="100">
                 </el-table-column>
-                <el-table-column prop="monthmoney" label="月租金">
+                <el-table-column prop="monthmoney" label="月租金" width="90">
                 </el-table-column>
-                <el-table-column prop="skdate" label="收款日期" width="120">
+                <el-table-column prop="skdate" label="收款日期" width="110">
                     <template scope="scope">
                         <span :class="tableClassName(scope.row.skdate,scope.row.srstate)">  {{ changeDate(scope.row.skdate)
                             }}</span>
@@ -68,37 +68,37 @@
                     <template scope="scope">
                         <el-dropdown menu-align="start">
                             <el-button type="primary" size="normal" splitButton="true">
-                                操作<i class="el-icon-caret-bottom el-icon--right"></i>
-                            </el-button>
-                            <el-dropdown-menu slot="dropdown">
-                                <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableAdd')">
-                                    <el-button @click="handleRokeBack(scope.$index, scope.row)">提交收款</el-button>
-                                </el-dropdown-item>
-                                <el-dropdown-item v-if="scope.row.shiugaizhuangtai=='已修改'&&fun('editRecord')">
-                                    <el-button @click="handleOpen(scope.$index, scope.row)">修改记录</el-button>
-                                </el-dropdown-item>
-                                <el-dropdown-item v-if="ztin(scope.row,[1,2,3,4])&&fun('receivableRecord')">
-                                    <el-button @click="handleOpenUp(scope.$index, scope.row)">提交记录</el-button>
-                                </el-dropdown-item>
-                                <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableEidtDate')">
-                                    <el-button  v-if="scope.row.sktype<20"  @click="handleEdit(scope.$index, scope.row)">编辑收款日期</el-button>
-                                </el-dropdown-item>
-                                <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableEidtMoney')">
-                                    <el-button v-if="scope.row.sktype<20" @click="handleMoneyEdit(scope.$index, scope.row)">编辑收款金额</el-button>
-                                </el-dropdown-item>
-                                <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableEidt')">
-                                    <el-button v-if="scope.row.sktype==20" @click="handleEditYS(scope.$index, scope.row)">编辑</el-button>
-                                </el-dropdown-item>
-                                <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableFinish')">
-                                    <el-button @click="handleFinish(scope.$index, scope.row)">完成</el-button>
-                                </el-dropdown-item>
-                            </el-dropdown-menu>
-                        </el-dropdown>
-                    </template>
-                </el-table-column>
-            </el-table>
-            <div style="margin-top:30px"></div>
-            <!-- 分页-->
+                                  操作<i class="el-icon-caret-bottom el-icon--right"></i>
+                              </el-button>
+                              <el-dropdown-menu slot="dropdown">
+                                  <!--    <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableAdd')">
+                                       <el-button @click="handleRokeBack(scope.$index, scope.row)">提交收款</el-button>
+                                   </el-dropdown-item>-->
+                                  <el-dropdown-item v-if="scope.row.shiugaizhuangtai=='已修改'&&fun('editRecord')">
+                                      <el-button @click="handleOpen(scope.$index, scope.row)">修改记录</el-button>
+                                  </el-dropdown-item>
+                                  <el-dropdown-item v-if="ztin(scope.row,[1,2,3,4])&&fun('receivableRecord')">
+                                      <el-button @click="handleOpenUp(scope.$index, scope.row)">提交记录</el-button>
+                                  </el-dropdown-item>
+                                  <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableEidtDate')">
+                                      <el-button  v-if="scope.row.sktype<20"  @click="handleEdit(scope.$index, scope.row)">编辑收款日期</el-button>
+                                  </el-dropdown-item>
+                                  <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableEidtMoney')">
+                                      <el-button v-if="scope.row.sktype<20" @click="handleMoneyEdit(scope.$index, scope.row)">编辑收款金额</el-button>
+                                  </el-dropdown-item>
+                                  <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableEidt')">
+                                      <el-button v-if="scope.row.sktype==20" @click="handleEditYS(scope.$index, scope.row)">编辑</el-button>
+                                  </el-dropdown-item>
+                                  <el-dropdown-item v-if="ztin(scope.row,[0,1,3,4])&&fun('receivableFinish')">
+                                      <el-button @click="handleFinish(scope.$index, scope.row)">完成</el-button>
+                                  </el-dropdown-item>
+                              </el-dropdown-menu>
+                          </el-dropdown>
+                      </template>
+                  </el-table-column>
+              </el-table>
+              <div style="margin-top:30px"></div>
+              <!-- 分页-->
             <el-col :span="24" class="toolbar">
                 <el-pagination
                         @size-change="handleSizeChange"
@@ -528,9 +528,11 @@
 
             //时间戳转日期格式
             changeDate(skdate){
-                var newDate = new Date();
-                newDate.setTime(skdate);
-                return newDate.toLocaleDateString()
+                if(skdate!=null) {
+                    var newDate = new Date();
+                    newDate.setTime(skdate);
+                    return newDate.toLocaleDateString()
+                }
             },
             //页面跳转后
             handleCurrentChange(val) {
