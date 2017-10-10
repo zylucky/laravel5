@@ -24,7 +24,7 @@
             </el-table-column>
             <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
             </el-table-column>
-            <el-table-column prop="email" label="邮箱" width="200" sortable>
+            <el-table-column prop="email" label="用户名" width="200" sortable>
             </el-table-column>
             <el-table-column prop="created_at" label="创建时间" width="220" sortable>
             </el-table-column>
@@ -50,7 +50,7 @@
                         <el-radio class="radio" :label=2>女</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item label="邮箱" prop="email">
+                <el-form-item label="用户名" prop="email">
                     <el-input v-model="editForm.email" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="手机号" prop="phone">
@@ -74,7 +74,7 @@
                         <el-radio class="radio" :label="'2'">女</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item label="邮箱" prop="email">
+                <el-form-item label="用户名" prop="email">
                     <el-input v-model="addForm.email" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="手机号" prop="phone">
@@ -152,9 +152,7 @@
                     email:[
                         { required: true, message:'不能为空',trigger:'blur' }
                     ],
-                    phone:[
-                        { required: true, message:'不能为空',trigger:'blur' }
-                    ]
+
                 },
                 //编辑界面数据
                 editForm: {
@@ -177,9 +175,7 @@
                     email:[
                         {required: true, message:'输入邮箱',trigger:'blur' }
                     ],
-                    phone:[
-                        {required: true, message:'输入手机号',trigger:'blur' }
-                    ]
+
                 },
                 //新增界面数据
                 addForm: {

@@ -236,15 +236,15 @@
                     shoukuandate: [
                         {required: true, message: '不能为空'},
                     ],
-                    fukuanzhanghu: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    fukuanyinhang: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    fukuanzhanghao: [
-                        {required: true, message: '不能为空'},
-                    ],
+                 //    fukuanzhanghu: [
+                 //     {required: true, message: '不能为空'},
+                 //   ],
+                 //   fukuanyinhang: [
+                 //       {required: true, message: '不能为空'},
+                 //   ],
+                 //  fukuanzhanghao: [
+                 //      {required: true, message: '不能为空'},
+                 //  ],
                 },
                 //付款界面数据
                 addForm: {
@@ -322,9 +322,11 @@
             },
             //时间戳转日期格式
             changeDate2(row, column){
-                var newDate = new Date();
-                newDate.setTime(row.skdate);
-                return newDate.toLocaleDateString()
+                if(row.skdate!=null) {
+                    var newDate = new Date();
+                    newDate.setTime(row.skdate);
+                    return newDate.toLocaleDateString()
+                }
             },
             //标签切换时
             handleClick(tab, event) {

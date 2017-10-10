@@ -44741,8 +44741,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             editFormRules: {
                 name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
                 sex: [{ required: true, message: '不能为空', trigger: 'blur' }],
-                email: [{ required: true, message: '不能为空', trigger: 'blur' }],
-                phone: [{ required: true, message: '不能为空', trigger: 'blur' }]
+                email: [{ required: true, message: '不能为空', trigger: 'blur' }]
+
             },
             //编辑界面数据
             editForm: {
@@ -44758,8 +44758,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             addFormRules: {
                 name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
                 sex: [{ required: true, message: '输入性别' }],
-                email: [{ required: true, message: '输入邮箱', trigger: 'blur' }],
-                phone: [{ required: true, message: '输入手机号', trigger: 'blur' }]
+                email: [{ required: true, message: '输入邮箱', trigger: 'blur' }]
+
             },
             //新增界面数据
             addForm: {
@@ -45244,10 +45244,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             addFormLoading: false,
             addFormRules: {
                 shoukuanmoney: [{ required: true, message: '不能为空' }, { type: 'number', message: '必须为数字' }],
-                shoukuandate: [{ required: true, message: '不能为空' }],
-                fukuanzhanghu: [{ required: true, message: '不能为空' }],
-                fukuanyinhang: [{ required: true, message: '不能为空' }],
-                fukuanzhanghao: [{ required: true, message: '不能为空' }]
+                shoukuandate: [{ required: true, message: '不能为空' }]
+                //    fukuanzhanghu: [
+                //     {required: true, message: '不能为空'},
+                //   ],
+                //   fukuanyinhang: [
+                //       {required: true, message: '不能为空'},
+                //   ],
+                //  fukuanzhanghao: [
+                //      {required: true, message: '不能为空'},
+                //  ],
             },
             //付款界面数据
             addForm: {
@@ -45328,9 +45334,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //时间戳转日期格式
         changeDate2: function changeDate2(row, column) {
-            var newDate = new Date();
-            newDate.setTime(row.skdate);
-            return newDate.toLocaleDateString();
+            if (row.skdate != null) {
+                var newDate = new Date();
+                newDate.setTime(row.skdate);
+                return newDate.toLocaleDateString();
+            }
         },
 
         //标签切换时
@@ -46004,9 +46012,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //时间戳转日期格式
         changeDate: function changeDate(skdate) {
-            var newDate = new Date();
-            newDate.setTime(skdate);
-            return newDate.toLocaleDateString();
+            if (skdate != null) {
+                var newDate = new Date();
+                newDate.setTime(skdate);
+                return newDate.toLocaleDateString();
+            }
         },
 
         //页面跳转后
@@ -46532,16 +46542,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //时间戳转日期格式
         changeTJDate: function changeTJDate(row, column) {
-            var newDate = new Date();
-            newDate.setTime(row.tijiaoriqi);
-            return newDate.toLocaleDateString();
+            if (row.tijiaoriqi != null) {
+                var newDate = new Date();
+                newDate.setTime(row.tijiaoriqi);
+                return newDate.toLocaleDateString();
+            }
         },
 
         //时间戳转日期格式
         changeSKDate: function changeSKDate(row, column) {
-            var newDate = new Date();
-            newDate.setTime(row.shoukuandate);
-            return newDate.toLocaleDateString();
+            if (row.shoukuandate != null) {
+                var newDate = new Date();
+                newDate.setTime(row.shoukuandate);
+                return newDate.toLocaleDateString();
+            }
         },
         formatFKType: function formatFKType(row, column) {
             var status = [];
@@ -109772,7 +109786,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "email",
-      "label": "邮箱",
+      "label": "用户名",
       "width": "200",
       "sortable": ""
     }
@@ -109896,7 +109910,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "邮箱",
+      "label": "用户名",
       "prop": "email"
     }
   }, [_c('el-input', {
@@ -110005,7 +110019,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
-      "label": "邮箱",
+      "label": "用户名",
       "prop": "email"
     }
   }, [_c('el-input', {
@@ -117567,13 +117581,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "htbianhao",
       "label": "合同编号",
-      "width": "200"
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "xiangmu",
       "label": "项目",
-      "width": "200"
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -117589,13 +117603,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "monthmoney",
-      "label": "月租金"
+      "label": "月租金",
+      "width": "80"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "skdate",
       "label": "收款日期",
-      "width": "120"
+      "width": "110"
     },
     scopedSlots: _vm._u([{
       key: "default",
@@ -117661,17 +117676,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             "size": "normal",
             "splitButton": "true"
           }
-        }, [_vm._v("\n                            操作"), _c('i', {
+        }, [_vm._v("\n                              操作"), _c('i', {
           staticClass: "el-icon-caret-bottom el-icon--right"
         })]), _vm._v(" "), _c('el-dropdown-menu', {
           slot: "dropdown"
-        }, [(_vm.ztin(scope.row, [0, 1, 3, 4]) && _vm.fun('receivableAdd')) ? _c('el-dropdown-item', [_c('el-button', {
-          on: {
-            "click": function($event) {
-              _vm.handleRokeBack(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("提交收款")])], 1) : _vm._e(), _vm._v(" "), (scope.row.shiugaizhuangtai == '已修改' && _vm.fun('editRecord')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [(scope.row.shiugaizhuangtai == '已修改' && _vm.fun('editRecord')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.handleOpen(scope.$index, scope.row)
