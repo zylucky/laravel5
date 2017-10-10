@@ -207,3 +207,5 @@ export const getContractVersionList = params =>{ return axios.get(`${base}/contr
 export const changeContractVersionStatus = params =>{ return axios.get(`${base}/contractVersion/status`, { params: params }); };
 
 export const getPayOrder = params =>{ return axios.get(`${base}/payOrder`, { params: params }); };
+export const setPassword = params =>{ return axios.post(`${base}/user/setPassword`, { params: params }); };
+export const checkPassword = params =>{ return axios.post(`${base}/user/checkPassword`, { params: params }); };
