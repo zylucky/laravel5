@@ -33387,12 +33387,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var para = {
                 id: row.tQdCompayId.toString(),
-                status: row.zhuangtai == 0 ? 0 : 1
+                status: row.zhuangtai
             };
+            console.log(para);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_21" /* changeBrokerCompanyStatus */])(para).then(function (res) {
+                console.log(para);
                 if (res.data.code == 200) {
+                    var msg = '';
+                    if (row.zhuangtai == 1) {
+                        msg = '启用成功';
+                    } else {
+                        msg = '停用成功';
+                    }
                     _this.$message({
-                        message: row.zhuangtai == 0 ? '停用成功' : '启用成功',
+                        message: msg,
                         type: 'success'
                     });
                 } else {
@@ -41169,7 +41177,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
 //
 //
 //

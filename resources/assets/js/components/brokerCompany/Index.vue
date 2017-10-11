@@ -261,12 +261,20 @@
             changeStatus(row){
                 let para ={
                     id:row.tQdCompayId.toString(),
-                    status:row.zhuangtai==0?0:1,
+                    status:row.zhuangtai,
                 }
+                console.log(para);
                 changeBrokerCompanyStatus(para).then((res)=>{
+                    console.log(para);
                     if (res.data.code == 200) {
+                        var msg ='';
+                        if(row.zhuangtai==1){
+                            msg='启用成功';
+                        }else{
+                            msg='停用成功';
+                        }
                         this.$message({
-                            message:row.zhuangtai==0? '停用成功': '启用成功',
+                            message:msg,
                             type: 'success'
                         });
                     } else {
