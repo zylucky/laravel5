@@ -290,7 +290,8 @@
                 });
             },
             handlePictureCardPreview(file) {
-                this.dialogImageUrl = file.path;
+                console.log(file)
+                this.dialogImageUrl = file.url;
                 this.dialogVisible = true;
             },
             handleSuccess(response, file, fileList){
@@ -303,7 +304,6 @@
                 }
                 copyImageList(para).then((res)=>{
                     if(res.data.code=='200'){
-                        console.log(res.data.data[1])
                         this.hetongList = res.data.data[1];//合同
                         this.chanquanrenList = res.data.data[2];//合同
                         this.yingyezhizhao = res.data.data[3];//合同

@@ -135,8 +135,8 @@
                     enddate:'',
                     buildingname:'',
                     qvdaodengji:'',
-                    yewuqvyvid:'',
-                    yewupianqvid:'',
+                    yewuqvyvid:0,
+                    yewupianqvid:0,
                     bk_dianhua:'',
                 },
                 options:[
@@ -152,10 +152,19 @@
                     {value: 1, label: '启用'},
                     {value: 2, label: '停用'},
                 ],
-                optionsdtqy:[
+                optionsdtqy:[{
+                    value: 0,
+                    label: '请选择'
+                },
                 ],
-                optionsqddj:[   ],
-                optionsywqy:[
+                optionsqddj:[  {
+                    value: '',
+                    label: '请选择'
+                }, ],
+                optionsywqy:[{
+                    value: 0,
+                    label: '请选择'
+                },
 
                 ],
 
@@ -270,7 +279,10 @@
                 let para = {
                     parentid: this.filters.yewuqvyvid,
                 };
-                this.optionsdtqy = [];
+                this.optionsdtqy = [{
+                    value: 0,
+                    label: '请选择'
+                },];
                 this.filters.yewupianqvid = null;//清除地图区域的缓存
                 getYWQYDicList(para).then((res) => {
                     if (res.status == '200') {

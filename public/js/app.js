@@ -32763,8 +32763,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 enddate: '',
                 buildingname: '',
                 qvdaodengji: '',
-                yewuqvyvid: '',
-                yewupianqvid: '',
+                yewuqvyvid: 0,
+                yewupianqvid: 0,
                 bk_dianhua: ''
             },
             options: [{
@@ -32775,9 +32775,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 label: '按年租金'
             }],
             options2: [{ value: 1, label: '启用' }, { value: 2, label: '停用' }],
-            optionsdtqy: [],
-            optionsqddj: [],
-            optionsywqy: [],
+            optionsdtqy: [{
+                value: 0,
+                label: '请选择'
+            }],
+            optionsqddj: [{
+                value: '',
+                label: '请选择'
+            }],
+            optionsywqy: [{
+                value: 0,
+                label: '请选择'
+            }],
 
             //分页类数据
             total: 0,
@@ -32903,7 +32912,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 parentid: this.filters.yewuqvyvid
             };
-            this.optionsdtqy = [];
+            this.optionsdtqy = [{
+                value: 0,
+                label: '请选择'
+            }];
             this.filters.yewupianqvid = null; //清除地图区域的缓存
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["T" /* getYWQYDicList */])(para).then(function (res) {
                 if (res.status == '200') {
@@ -33266,8 +33278,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             filters: {
                 bk_name: '',
-                yewuqvyvid: '',
-                yewupianqvid: '',
+                yewuqvyvid: 0,
+                yewupianqvid: 0,
                 gongsijingyingshuxing: '',
                 hezuoxieyidengji: '',
                 xm: ''
@@ -33281,10 +33293,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 label: '按年租金'
             }],
             options2: [{ value: 1, label: '启用' }, { value: 2, label: '停用' }],
-            optionsdtqy: [],
-            optionsgssx: [],
-            optionsywqy: [],
-            optionsxydj: [],
+            optionsdtqy: [{
+                value: 0,
+                label: '请选择'
+            }],
+            optionsgssx: [{
+                value: '',
+                label: '请选择'
+            }],
+            optionsywqy: [{
+                value: 0,
+                label: '请选择'
+            }],
+            optionsxydj: [{
+                value: '',
+                label: '请选择'
+            }],
             value1: null,
             //分页类数据
             total: 0,
@@ -33423,7 +33447,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 parentid: this.filters.yewuqvyvid
             };
-            this.optionsdtqy = [];
+            this.optionsdtqy = [{
+                value: 0,
+                label: '请选择'
+            }];
             this.filters.yewupianqvid = null; //清除地图区域的缓存
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["T" /* getYWQYDicList */])(para).then(function (res) {
                 if (res.status == '200') {
@@ -33811,7 +33838,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             sels: [], //列表选中列
             bkNameloading: false,
             options1: [],
-            optionsqddj: [],
+            optionsqddj: [{
+                value: '',
+                label: '请选择'
+            }],
 
             bk_id: 0,
             bk_name: '',
@@ -43450,7 +43480,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_66" /* copyImageDelete */])(para).then(function (res) {});
         },
         handlePictureCardPreview: function handlePictureCardPreview(file) {
-            this.dialogImageUrl = file.path;
+            console.log(file);
+            this.dialogImageUrl = file.url;
             this.dialogVisible = true;
         },
         handleSuccess: function handleSuccess(response, file, fileList) {
@@ -43465,7 +43496,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_67" /* copyImageList */])(para).then(function (res) {
                 if (res.data.code == '200') {
-                    console.log(res.data.data[1]);
                     _this2.hetongList = res.data.data[1]; //合同
                     _this2.chanquanrenList = res.data.data[2]; //合同
                     _this2.yingyezhizhao = res.data.data[3]; //合同
