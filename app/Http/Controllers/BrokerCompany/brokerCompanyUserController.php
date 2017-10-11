@@ -30,7 +30,7 @@ class brokerCompanyUserController extends Controller
         $tel= Input::get('bk_dianhua');
         $client = new Client ([
             'base_uri' => $this->base_url,
-
+            'timeout'  => 2.0,
         ]);
         $response = $client->request('GET', '/api/qd/person/list', [
             'query' => [
