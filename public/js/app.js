@@ -41397,11 +41397,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -50134,11 +50129,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(1);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -128790,7 +128780,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-row', [_c('el-col', {
       attrs: {
-        "span": 9
+        "span": 12
       }
     }, [_c('el-form-item', {
       attrs: {
@@ -128829,7 +128819,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       })
     }))], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
-        "span": 9
+        "span": 12
       }
     }, [_c('el-form-item', {
       attrs: {
@@ -128853,16 +128843,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
       attrs: {
-        "span": 9
+        "span": 12
       }
     }, [_c('el-form-item', {
       attrs: {
-        "label": "签单人上级领导",
-        "prop": 'qiandanren.' + index + '.leaderpersonnelname',
-        "rules": [{
-          required: true,
-          message: '不能为空'
-        }]
+        "label": "签单人上级领导"
       }
     }, [_c('el-select', {
       attrs: {
@@ -128892,7 +128877,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       })
     }))], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
-        "span": 9
+        "span": 12
       }
     }, [_c('el-form-item', {
       attrs: {
@@ -128940,7 +128925,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "position": "fixed",
       "bottom": "1%",
-      "left": "6%"
+      "left": "100px"
     },
     on: {
       "click": _vm.addqiandan
@@ -128955,7 +128940,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "position": "fixed",
       "bottom": "1%",
-      "left": "12%"
+      "left": "165px"
     },
     on: {
       "click": function($event) {
@@ -132579,7 +132564,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-row', [_c('el-col', {
       attrs: {
-        "span": 9
+        "span": 12
       }
     }, [_c('el-form-item', {
       attrs: {
@@ -132618,7 +132603,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       })
     }))], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
-        "span": 9
+        "span": 12
       }
     }, [_c('el-form-item', {
       attrs: {
@@ -132642,16 +132627,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1)], 1)], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
       attrs: {
-        "span": 9
+        "span": 12
       }
     }, [_c('el-form-item', {
       attrs: {
-        "label": "签单人上级领导",
-        "prop": 'qiandanren.' + index + '.leaderpersonnelname',
-        "rules": [{
-          required: true,
-          message: '不能为空'
-        }]
+        "label": "签单人上级领导"
       }
     }, [_c('el-select', {
       attrs: {
@@ -132681,7 +132661,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       })
     }))], 1)], 1), _vm._v(" "), _c('el-col', {
       attrs: {
-        "span": 9
+        "span": 12
       }
     }, [_c('el-form-item', {
       attrs: {

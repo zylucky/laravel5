@@ -143,7 +143,7 @@
                 <div style="max-height:400px;border:0px solid #8391a5;overflow:auto;">
                 <div v-for="(item, index) in hedan.qiandanren" style="height:150px;">
                     <el-row>
-                        <el-col :span="9">
+                        <el-col :span="12">
                             <el-form-item label="签单人姓名" :prop="'qiandanren.' + index + '.signpersonnelname' " :rules="[
                                 {
                                     required: true, message: '不能为空'
@@ -167,7 +167,7 @@
                                 </el-select>
                             </el-form-item>
                         </el-col>
-                        <el-col :span="9">
+                        <el-col :span="12">
                             <el-form-item label="签单人所占比例" :prop="'qiandanren.' + index + '.ratio' " :rules="[
                                 {
                                     required: true, message: '不能为空'
@@ -179,13 +179,8 @@
                         </el-col>
                     </el-row>
                     <el-row>
-                        <el-col :span="9">
-                            <el-form-item label="签单人上级领导" :prop="'qiandanren.' + index + '.leaderpersonnelname'" :rules="[
-                                {
-                                    required: true, message: '不能为空'
-                                }
-                                ]"
-                            >
+                        <el-col :span="12">
+                            <el-form-item label="签单人上级领导">
                                 <el-select
                                         v-model="item.leaderpersonnelname"
                                         filterable
@@ -203,7 +198,7 @@
                                 </el-select>
                             </el-form-item>
                         </el-col>
-                        <el-col :span="9">
+                        <el-col :span="12">
                             <el-form-item label="签单人部门" :prop="'qiandanren.' + index + '.departmentname'" :rules="[
                                 {
                                     required: true, message: '不能为空'
