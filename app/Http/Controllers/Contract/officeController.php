@@ -13,6 +13,7 @@ class officeController extends Controller
     public function loupanList(){
         $client = new Client([
             'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
 
         ]);
         $loupan = Input::get('str');
@@ -33,6 +34,7 @@ class officeController extends Controller
     public function loudongList(){
         $client = new Client([
             'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
 
         ]);
         $loupanOmcId = Input::get('loupanOmcId');
@@ -54,6 +56,7 @@ class officeController extends Controller
     public function fanghaoList(){
         $client = new Client([
             'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
 
         ]);
         $lpid = Input::get('lpid');
@@ -82,6 +85,7 @@ class officeController extends Controller
         //dd(6666);
         $client = new Client([
             'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
 
         ]);
         $lpid = Input::get('lpid');

@@ -31,6 +31,7 @@ class brokerCompanyController extends Controller
         $xm= Input::get('xm');
         $client = new Client ([
             'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
         ]);
         $response = $client->request('GET', '/api/qd/compay/list', [
                 'query' => [

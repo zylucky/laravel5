@@ -185,6 +185,7 @@ class brokerCompanyUserController extends Controller
 
         $client = new Client([
             'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
 
         ]);
         $bkName = $request->params['name'];
