@@ -139,7 +139,10 @@
                 sels: [],//列表选中列
                 bkNameloading: false,
                 options1:[],
-                optionsqddj:[  ],
+                optionsqddj:[{
+                    value: '',
+                    label: '请选择'
+                },  ],
 
                 bk_id:0,
                 bk_name:'',
