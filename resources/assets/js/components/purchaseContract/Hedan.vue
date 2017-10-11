@@ -224,9 +224,15 @@
                         </el-row>
                     </div>
                 </div>
+<<<<<<< HEAD
+                <el-button v-show="editVisible"  @click="addqiandan" style="position:fixed;bottom:1%;left:6%;">添加</el-button>
+                <el-button v-show="editVisible"  @click.prevent="removeQiandan(item)" style="position:fixed;bottom:1%;left:12%;">删除</el-button>
+            </el-form> 
+=======
                 <el-button v-show="editVisible"  @click="addqiandan" style="position:fixed;bottom:1%;left:100px;">添加</el-button>
                 <el-button v-show="editVisible"  @click.prevent="removeQiandan(item)" style="position:fixed;bottom:1%;left:165px;">删除</el-button>
             </el-form>
+>>>>>>> 6dff0163b799b18a06b732b35f44c894f6fe7239
             <div slot="footer" class="dialog-footer" style="position:fixed;bottom:1%;left:80%;">
                 <el-button @click.native="Visible = false" style=""> 取消</el-button>
                 <el-button type="primary" @click.native="handleEnd" :loading="hedan.qiandanren.Loading" style="">提交</el-button>
