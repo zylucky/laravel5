@@ -320,7 +320,6 @@
             },
             jujianfangtypeChange(){
                 if(this.$route.path=='/saleContract/add'||this.renter.jujianfangtype!=this.renter.jujianfangtype2) {
-                    alert(1111);
                     this.renter.jujianfangid = null,
                     this.renter.jujianfangid2 = null,
                     this.renter.qudaorenid = null,
