@@ -4,7 +4,7 @@
             <div style="margin-top:30px;"></div>
             <li v-for="xsOffice in xsOffice" style="list-style-type:none;">
                 <el-row>
-                    <el-col :span="4">
+                    <el-col :span="6">
                         <span>合同编号：{{bianhao}}</span>
                     </el-col>
                     <el-col :span="4">
@@ -25,57 +25,14 @@
                 </el-row>
             </li>
         </el-row>
-        <el-form  label-width="150px"  ref="hedan" :rules="hedanRules" :model="hedan">
+        <el-form    ref="hedan" :rules="hedanRules" :model="hedan">
                 <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-                    <!--<el-table-column
-                            label="签单人"
-                            width="200">
-                        <template scope="scope">
-                            <el-input v-model="scope.row.signpersonnelname" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            label="合单占比"
-                            width="300">
-                        <template scope="scope">
-                            <el-input v-model="scope.row.ratio" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            label="签单人领导"
-                            width="300">
-                        <template scope="scope">
-                            <el-input v-model="scope.row.leaderpersonnelname" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            label="签单人部门"
-                            width="300">
-                        <template scope="scope">
-                            <el-input v-model="scope.row.departmentname" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
-                        </template>
-                    </el-table-column>
-                    <el-table-column prop="createtime" label="新增时间"  sortable>
-                    </el-table-column>
-                    <el-table-column label="操作" width="170">
-                        <template scope="scope">
-                            <el-dropdown   menu-align="start">
-                                <el-button @click="handleDel(scope.$index, scope.row)" type="primary" size="normal" splitButton="true">
-                                    删除&lt;!&ndash;<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>&ndash;&gt;
-                                </el-button>
-                                &lt;!&ndash;<el-dropdown-menu slot="dropdown" >
-                                    <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
-                                </el-dropdown-menu>&ndash;&gt;
-                            </el-dropdown>
-                        </template>
-                    </el-table-column>-->
                     <div v-for="(item, index) in hedan.qiandanren"> <!--style="height:150px;"-->
                         <el-row>
                             <el-table-column
                                     label="签单人"
                                     >
                                 <template scope="scope">
-                                    <!--<el-input v-model="scope.row.signpersonnelname" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>-->
                                     <el-col>
                                         <el-form-item>
                                             <el-select
@@ -84,7 +41,7 @@
                                                     filterable
                                                     remote
                                                     @change="updataHedan1(scope.$index, scope.row)"
-                                                    placeholder="请输入签单人姓名"
+                                                    placeholder="签单人姓名"
                                                     :remote-method="remoteMethodyslxr1"
                                                     :loading="fristyslxrloading1"
                                             >
@@ -99,16 +56,12 @@
                                     </el-col>
                                 </template>
                             </el-table-column>
-                            <el-table-column
-                                    label="合单占比"
-                                    width="200">
+                            <el-table-column label="合单占比">
                                 <template scope="scope"> <!--style="position:relative;top:0px;height:30px;"-->
                                     <el-input v-model="scope.row.ratio" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                                 </template>
                             </el-table-column>
-                            <el-table-column
-                                    label="签单人领导"
-                                    width="300">
+                            <el-table-column label="签单人领导">
                                 <template scope="scope">
                                     <el-col>
                                         <el-form-item>
@@ -118,7 +71,7 @@
                                                     filterable
                                                     remote
                                                     @change="updataHedan2(scope.$index, scope.row)"
-                                                    placeholder="请输入签单人上级领导"
+                                                    placeholder="签单人上级领导"
                                                     :remote-method="remoteMethodyslxr2"
                                                     :loading="fristyslxrloading1">
                                                 <el-option
@@ -132,9 +85,7 @@
                                     </el-col>
                                 </template>
                             </el-table-column>
-                            <el-table-column
-                                    label="签单人部门"
-                                    width="300">
+                            <el-table-column label="签单人部门">
                                 <template scope="scope">
                                     <el-col>
                                         <el-form-item>
@@ -144,7 +95,7 @@
                                                     filterable
                                                     remote
                                                     @change="updataHedan3(scope.$index, scope.row)"
-                                                    placeholder="请输入签单人部门"
+                                                    placeholder="签单人部门"
                                                     :remote-method="remoteMethodyslxr3"
                                                     :loading="fristyslxrloading2">
                                                 <el-option
@@ -158,13 +109,6 @@
                                     </el-col>
                                 </template>
                             </el-table-column>
-                            <!--<el-table-column
-                                    label="新增时间"
-                                    width="300">
-                                <template scope="scope">
-                                    <el-input v-model="scope.row.createtime" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
-                                </template>
-                            </el-table-column>-->
                             <el-table-column prop="createtime" label="新增时间"  sortable>
                             </el-table-column>
                             <el-table-column label="操作" width="170">
@@ -173,9 +117,6 @@
                                         <el-button @click="handleDel(scope.$index, scope.row)" type="primary" size="normal" splitButton="true">
                                             删除<!--<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>-->
                                         </el-button>
-                                        <!--<el-dropdown-menu slot="dropdown" >
-                                            <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
-                                        </el-dropdown-menu>-->
                                     </el-dropdown>
                                 </template>
                             </el-table-column>
@@ -183,33 +124,6 @@
                     </div>
                 </el-table>
         </el-form>
-<!--
-        <el-row>
-            <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-                <el-table-column prop="bianhao" label="签单人" width="200" >
-                </el-table-column>
-                <el-table-column prop="loupanName" label="合单占比"  sortable>
-                </el-table-column>
-                <el-table-column prop="loudongName" label="签单人领导"   sortable>
-                </el-table-column>
-                <el-table-column prop="fanghao" label="签单人部门"  sortable>
-                </el-table-column>
-                <el-table-column prop="fanghao" label="新增时间"  sortable>
-                </el-table-column>
-                <el-table-column label="操作" width="170">
-                    <template scope="scope">
-                        <el-dropdown   menu-align="start">
-                            <el-button type="primary" size="normal" splitButton="true">
-                                操作<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>
-                            </el-button>
-                            <el-dropdown-menu slot="dropdown" >
-                                <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
-                            </el-dropdown-menu>
-                        </el-dropdown>
-                    </template>
-                </el-table-column>
-            </el-table>
-        </el-row>-->
         <!-- 分页-->
         <el-col :span="24" class="toolbar" >
             <el-pagination
@@ -229,7 +143,7 @@
                 <div style="max-height:400px;border:0px solid #8391a5;overflow:auto;">
                 <div v-for="(item, index) in hedan.qiandanren" style="height:150px;">
                     <el-row>
-                        <el-col :span="9">
+                        <el-col :span="12">
                             <el-form-item label="签单人姓名" :prop="'qiandanren.' + index + '.signpersonnelname' " :rules="[
                                 {
                                     required: true, message: '不能为空'
@@ -241,7 +155,7 @@
                                         filterable
                                         remote
                                         @change="changeyslxr1"
-                                        placeholder="请输入签单人姓名"
+                                        placeholder="签单人姓名"
                                         :remote-method="remoteMethodyslxr1"
                                         :loading="fristyslxrloading1">
                                     <el-option
@@ -253,31 +167,26 @@
                                 </el-select>
                             </el-form-item>
                         </el-col>
-                        <el-col :span="9">
+                        <el-col :span="12">
                             <el-form-item label="签单人所占比例" :prop="'qiandanren.' + index + '.ratio' " :rules="[
                                 {
                                     required: true, message: '不能为空'
                                 }
                                 ]"
                             >
-                                <el-input v-model="item.ratio" placeholder="请输入签单人所占比例"></el-input>
+                                <el-input v-model="item.ratio" placeholder="签单人所占比例"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
-                        <el-col :span="9">
-                            <el-form-item label="签单人上级领导" :prop="'qiandanren.' + index + '.leaderpersonnelname'" :rules="[
-                                {
-                                    required: true, message: '不能为空'
-                                }
-                                ]"
-                            >
+                        <el-col :span="12">
+                            <el-form-item label="签单人上级领导">
                                 <el-select
                                         v-model="item.leaderpersonnelname"
                                         filterable
                                         remote
                                         @change="changeyslxr2"
-                                        placeholder="请输入签单人上级领导"
+                                        placeholder="签单人上级领导"
                                         :remote-method="remoteMethodyslxr2"
                                         :loading="fristyslxrloading1">
                                     <el-option
@@ -289,7 +198,7 @@
                                 </el-select>
                             </el-form-item>
                         </el-col>
-                        <el-col :span="9">
+                        <el-col :span="12">
                             <el-form-item label="签单人部门" :prop="'qiandanren.' + index + '.departmentname'" :rules="[
                                 {
                                     required: true, message: '不能为空'
@@ -301,7 +210,7 @@
                                         filterable
                                         remote
                                         @change="changeyslxr3"
-                                        placeholder="请输入签单人部门"
+                                        placeholder="签单人部门"
                                         :remote-method="remoteMethodyslxr3"
                                         :loading="fristyslxrloading2">
                                     <el-option
@@ -313,16 +222,6 @@
                                 </el-select>
                             </el-form-item>
                         </el-col>
-                        <!--<el-col :span="10">
-                            <el-form-item label="签单人上级领导">
-                                <el-input v-model="hedan.qiandanren[index].leaderpersonnelname"></el-input>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="10">
-                            <el-form-item label="签单人部门">
-                                <el-input v-model="hedan.qiandanren[index].departmentname"></el-input>
-                            </el-form-item>
-                        </el-col>-->
                     </el-row>
                 </div>
                 </div>

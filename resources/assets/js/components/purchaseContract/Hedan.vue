@@ -4,7 +4,7 @@
             <div style="margin-top:30px;"></div>
             <li v-for="officeList in officeList" style="list-style-type:none;">
                 <el-row>
-                    <el-col :span="4">
+                    <el-col :span="6">
                         <span>合同编号：{{bianhao}}</span>
                     </el-col>
                     <el-col :span="4">
@@ -26,7 +26,7 @@
             </li>
         </el-row>
         <el-row>
-            <el-form  label-width="150px"  ref="hedan" :rules="hedanRules" :model="hedan">
+            <el-form    ref="hedan" :rules="hedanRules" :model="hedan">
                 <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
                     <div v-for="(item, index) in hedan.qiandanren"> <!--style="height:150px;"-->
                         <el-row>
@@ -34,8 +34,7 @@
                                     label="签单人"
                             >
                                 <template scope="scope">
-                                    <el-col>
-                                        <el-form-item>
+                                    <el-form-item>
                                             <el-select
                                                     v-model="scope.row.signpersonnelname"
                                                     filterable
@@ -54,21 +53,15 @@
                                                 </el-option>
                                             </el-select>
                                         </el-form-item>
-                                    </el-col>
                                 </template>
                             </el-table-column>
-                            <el-table-column
-                                    label="合单占比"
-                                    width="300">
+                            <el-table-column label="合单占比">
                                 <template scope="scope">
                                     <el-input v-model="scope.row.ratio" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                                 </template>
                             </el-table-column>
-                            <el-table-column
-                                    label="签单人领导"
-                                    width="300">
+                            <el-table-column label="签单人领导">
                                 <template scope="scope">
-                                    <el-col>
                                         <el-form-item>
                                             <el-select
                                                     style="top:10px"
@@ -76,7 +69,7 @@
                                                     filterable
                                                     remote
                                                     @change="updataHedan2(scope.$index, scope.row)"
-                                                    placeholder="请输入签单人上级领导"
+                                                    placeholder="签单人上级领导"
                                                     :remote-method="remoteMethodyslxr2"
                                                     :loading="fristyslxrloading1">
                                                 <el-option
@@ -87,14 +80,10 @@
                                                 </el-option>
                                             </el-select>
                                         </el-form-item>
-                                    </el-col>
                                 </template>
                             </el-table-column>
-                            <el-table-column
-                                    label="签单人部门"
-                                    width="300">
+                            <el-table-column label="签单人部门">
                                 <template scope="scope">
-                                    <el-col>
                                         <el-form-item>
                                             <el-select
                                                     style="top:10px"
@@ -102,7 +91,7 @@
                                                     filterable
                                                     remote
                                                     @change="updataHedan3(scope.$index, scope.row)"
-                                                    placeholder="请输入签单人部门"
+                                                    placeholder="签单人部门"
                                                     :remote-method="remoteMethodyslxr3"
                                                     :loading="fristyslxrloading2">
                                                 <el-option
@@ -113,7 +102,6 @@
                                                 </el-option>
                                             </el-select>
                                         </el-form-item>
-                                    </el-col>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="createtime" label="新增时间"  sortable>
@@ -154,7 +142,7 @@
                 <div style="max-height:400px;border:0px solid #8391a5;overflow:auto;">
                     <div v-for="(item, index) in hedan.qiandanren" style="height:150px;">
                         <el-row>
-                            <el-col :span="9">
+                            <el-col :span="12">
                                 <el-form-item label="签单人姓名" :prop="'qiandanren.' + index + '.signpersonnelname' " :rules="[
                                 {
                                     required: true, message: '不能为空'
@@ -178,7 +166,7 @@
                                     </el-select>
                                 </el-form-item>
                             </el-col>
-                            <el-col :span="9">
+                            <el-col :span="12">
                                 <el-form-item label="签单人所占比例" :prop="'qiandanren.' + index + '.ratio' " :rules="[
                                 {
                                     required: true, message: '不能为空'
@@ -190,13 +178,8 @@
                             </el-col>
                         </el-row>
                         <el-row>
-                            <el-col :span="9">
-                                <el-form-item label="签单人上级领导" :prop="'qiandanren.' + index + '.leaderpersonnelname'" :rules="[
-                                {
-                                    required: true, message: '不能为空'
-                                }
-                                ]"
-                                >
+                            <el-col :span="12">
+                                <el-form-item label="签单人上级领导">
                                     <el-select
                                             v-model="item.leaderpersonnelname"
                                             filterable
@@ -214,7 +197,7 @@
                                     </el-select>
                                 </el-form-item>
                             </el-col>
-                            <el-col :span="9">
+                            <el-col :span="12">
                                 <el-form-item label="签单人部门" :prop="'qiandanren.' + index + '.departmentname'" :rules="[
                                 {
                                     required: true, message: '不能为空'
@@ -241,9 +224,15 @@
                         </el-row>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <el-button v-show="editVisible"  @click="addqiandan" style="position:fixed;bottom:1%;left:6%;">添加</el-button>
                 <el-button v-show="editVisible"  @click.prevent="removeQiandan(item)" style="position:fixed;bottom:1%;left:12%;">删除</el-button>
             </el-form> 
+=======
+                <el-button v-show="editVisible"  @click="addqiandan" style="position:fixed;bottom:1%;left:100px;">添加</el-button>
+                <el-button v-show="editVisible"  @click.prevent="removeQiandan(item)" style="position:fixed;bottom:1%;left:165px;">删除</el-button>
+            </el-form>
+>>>>>>> 6dff0163b799b18a06b732b35f44c894f6fe7239
             <div slot="footer" class="dialog-footer" style="position:fixed;bottom:1%;left:80%;">
                 <el-button @click.native="Visible = false" style=""> 取消</el-button>
                 <el-button type="primary" @click.native="handleEnd" :loading="hedan.qiandanren.Loading" style="">提交</el-button>
