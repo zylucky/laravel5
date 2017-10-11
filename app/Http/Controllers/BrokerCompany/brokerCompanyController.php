@@ -46,14 +46,6 @@ class brokerCompanyController extends Controller
 
             ]
         );
-        $obj = json_decode($response->getBody());
-        $json = [];
-        if($obj->code==200){
-            foreach ($obj->data as $key=> $value){
-                $obj->data->zt  = $value->topic;
-            }
-            return $json;
-        }
         echo $response->getBody();
 
     }
