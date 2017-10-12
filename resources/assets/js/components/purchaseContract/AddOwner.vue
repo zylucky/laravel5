@@ -4,7 +4,7 @@
         <el-col :span="24">
             <el-form-item label="承租人">
                 <el-radio-group v-model="owner.chengzufang">
-                    <el-radio label="华塑商贸"></el-radio>
+                    <el-radio label="华溯商贸"></el-radio>
                     <el-radio label="幼狮科技"></el-radio>
                     <el-radio label="航远房地产"></el-radio>
                     <el-radio label="航远投资管理"></el-radio>
