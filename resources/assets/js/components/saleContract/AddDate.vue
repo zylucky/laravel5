@@ -243,7 +243,7 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="合同佣金" prop="hetongyongjin" required>
+                    <el-form-item label="合同佣金" prop="hetongyongjin" >
                         <el-input v-model.number="addDate.hetongyongjin"
                                   :disabled="lydisabled"
                                   placeholder="合同佣金" required></el-input>
@@ -272,7 +272,7 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="实际月租金" prop="actualrent" required>
+                    <el-form-item label="实际月租金" prop="actualrent" >
                         <el-input v-model.number="addDate.actualrent"
                                   :disabled="lydisabled"
                                   placeholder="实际月租金"></el-input>
@@ -387,7 +387,7 @@
 //                        { type: 'number', message: '必须为数字'},
 //                    ],
                     hetongyongjin: [
-                        { required: true, message: '不能为空' },
+//                        { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
                     ],tiqianfukuantian: [
                         { required: true, message: '不能为空' },
@@ -411,9 +411,9 @@
 //                    jiafangfeiyong: [
 //                        { required: true, message: '不能为空' }
 //                    ],
-                    actualrent: [
-                    { required: true, message: '不能为空' }
-                ],
+//                    actualrent: [
+//                    { required: true, message: '不能为空' }
+//                ],
                 },
             }
         },

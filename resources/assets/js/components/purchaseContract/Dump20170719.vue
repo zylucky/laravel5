@@ -12,9 +12,9 @@
                     v-for="(item,index) in property.officeList"
                     :key="index"
             >
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市 <u>{{item.quyu?item.quyu:'_____'}}</u> 区（县）<input type="text" style="width:150px;" v-model="item.weizhi"> ，建筑面积 <input type="text" style="width:50px;" v-model="item.jianzhumianji"> 平方米,实际承租面积为 <input type="text" style="width:50px;" v-model="item.qianyuemianji" > 平方米。<br>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市 <u>{{item.quyu?item.quyu:'_____'}}</u> 区（县）<u>{{item.weizhi}}</u>，建筑面积 <input type="text" style="width:50px;" v-model="item.jianzhumianji"> 平方米,实际承租面积为 <input type="text" style="width:50px;" v-model="item.qianyuemianji" > 平方米。<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： <u>办公</u>  。</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_________________________'}}</u>，房屋所有权人姓名或名称：
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）房屋权属状况：甲方持有（□ 房屋所有权证/□ 房屋买卖合同/□ 商品房预售合同/□ 二手房网签合同/□ 其它房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_________________________'}}</u>，房屋所有权人姓名或名称：
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
                 <u>{{item.name?item.name:'__________'}}</u>
             </span>
@@ -30,11 +30,13 @@
                 <u>&nbsp;&nbsp;{{month(addDate.enddate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.enddate)}}&nbsp;&nbsp;</u>日止，共计
                 <u>&nbsp;&nbsp;{{nian?nian:'__'}}&nbsp;&nbsp;</u>年
-                <u>&nbsp;&nbsp;{{yue?yue:'__'}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{ri>1||ri==0?ri:'__'}}&nbsp;&nbsp;</u>日。甲方应于
-                <u>&nbsp;&nbsp;{{year(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>年
-                <u>&nbsp;&nbsp;{{month(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。
+
+                <u v-if="yue">&nbsp;&nbsp;{{yue?yue:''}}&nbsp;&nbsp;</u><span v-if="yue" style="display: inline">月</span>
+                <u v-if="ri">&nbsp;&nbsp;{{ri>1?ri:''}}&nbsp;&nbsp;</u><span v-if="ri" style="display: inline">日</span>。
+                甲方应于
+                <u>&nbsp;&nbsp;{{year(addDate.shoufangdate)}}&nbsp;&nbsp;</u>年
+                <u>&nbsp;&nbsp;{{month(addDate.shoufangdate)}}&nbsp;&nbsp;</u>月
+                <u>&nbsp;&nbsp;{{day(addDate.shoufangdate)}}&nbsp;&nbsp;</u>日前将房屋按约定条件交付给乙方。《房屋交割清单》（见附件一）经甲乙双方签章确认并将房门钥匙移交后视为将房屋交付乙方。
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方承诺给予乙方 {{free_month>0?free_month:'__'}}个月{{free_day?free_day+'日':''}}的招商装修期，即自
                 <span v-for="(item,index) in addDate.mianzuqiList" style="display: inline;">
