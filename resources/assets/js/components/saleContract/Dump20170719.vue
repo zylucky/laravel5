@@ -40,9 +40,12 @@
             </span>
 
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同房屋租赁期限为
-            {{nian?nian:'__'}}年
-            {{yue?yue:'__'}}月
-            {{ri>1||ri==0?ri:'__'}}日。
+            <u v-if="nian">{{nian?nian:'__'}}</u><span v-if="nian" style="display: inline">年</span>
+            <u v-if="yue">{{yue?yue:'__'}}</u><span v-if="yue" style="display: inline">月</span>
+            <u v-if="ri>1">{{ri>1?ri:'__'}}</u><span v-if="ri>1" style="display: inline">日</span>
+            <span v-if="!nian&&!yue" style="display: inline">
+                ____年__月__日
+            </span>。
         自<u>&nbsp;&nbsp;{{year(addDate.startdate)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.startdate)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.startdate)}}&nbsp;&nbsp;</u>日至

@@ -29,10 +29,13 @@
                 <u>&nbsp;&nbsp;{{year(addDate.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(addDate.enddate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.enddate)}}&nbsp;&nbsp;</u>日止，共计
-                <u>&nbsp;&nbsp;{{nian?nian:'__'}}&nbsp;&nbsp;</u>年
-
+                <u v-if="nian">&nbsp;&nbsp;{{nian?nian:'__'}}&nbsp;&nbsp;</u><span v-if="nian" style="display: inline">年</span>
                 <u v-if="yue">&nbsp;&nbsp;{{yue?yue:''}}&nbsp;&nbsp;</u><span v-if="yue" style="display: inline">月</span>
-                <u v-if="ri">&nbsp;&nbsp;{{ri>1?ri:''}}&nbsp;&nbsp;</u><span v-if="ri" style="display: inline">日</span>。
+                <u v-if="ri">&nbsp;&nbsp;{{ri>1?ri:''}}&nbsp;&nbsp;</u><span v-if="ri" style="display: inline">日</span>
+                <span v-if="!nian&&!yue" style="display: inline">
+                ____年__月__日
+                </span>
+                。
                 甲方应于
                 <u>&nbsp;&nbsp;{{year(addDate.shoufangdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(addDate.shoufangdate)}}&nbsp;&nbsp;</u>月
