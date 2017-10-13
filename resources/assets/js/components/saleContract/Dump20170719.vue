@@ -13,7 +13,7 @@
                 :key="index"
                 style="display:inline;"
         >
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:50px;">区（县）<input type="text" style="width:150px;" v-model="item.weizhi"> ，承租区域建筑面积<input type="text"  style="width:50px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:50px;" v-model="item.qianyuemianji">平方米，产权证编号： <u>{{item.chanquanzhenghao?item.chanquanzhenghao:'___________________________________'}}</u>  。
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:50px;">区（县）<u>{{item.weizhi}}</u> ，承租区域建筑面积<input type="text"  style="width:50px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:50px;" v-model="item.qianyuemianji">平方米，产权证编号： <u>{{item.chanquanzhenghao?item.chanquanzhenghao:'___________________________________'}}</u>  。
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。<br>
         <b>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二条  房屋租赁情况
