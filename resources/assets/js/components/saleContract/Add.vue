@@ -101,6 +101,7 @@
                         loupanName:null,
                         loudongName:null,
                         fanghao:null,
+                        fanghao2:null,
                         quyu:'',
                         weizhi: null,
                         chanquanzhenghao: null,
@@ -369,6 +370,7 @@
                 this.property.xsOffice.forEach((property,index)=>{
                     index ++;
                     this.property.tabIndex = index;
+                    this.property.xsOffice[index-1].fanghao2 = this.property.xsOffice[index-1].fanghao;
                     this.property.editableTabs2.push({
                         title: '房间'+index,
                         name: index+'',

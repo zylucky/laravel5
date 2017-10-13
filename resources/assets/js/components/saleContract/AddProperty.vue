@@ -412,7 +412,9 @@
                 //console.log(this.property.xsOffice)
                 this.$emit('getshoufanghetong')
                 this.shangyue();
-                this.getWeizhi(this.property.tabIndex-1);
+                if(this.property.xsOffice[this.property.tabIndex-1].fanghao2!=this.property.xsOffice[this.property.tabIndex-1].fanghao){
+                    this.getWeizhi(this.property.tabIndex-1);
+                }
             },
             //获取收房合同de dizhi
             getWeizhi(index){
