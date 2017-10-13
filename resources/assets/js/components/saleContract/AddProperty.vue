@@ -132,7 +132,7 @@
     </el-row>
 </template>
 <script>
-    import {getLoupanList,getLoudongList,getSaleFanghaoList,getSaleFanghaoChengzu} from '../../api/api';
+    import {getLoupanList,getLoudongList,getSaleFanghaoList,getSaleFanghaoChengzu,getContractChuzuren} from '../../api/api';
     export default {
         components:{
 
@@ -412,8 +412,32 @@
                 //console.log(this.property.xsOffice)
                 this.$emit('getshoufanghetong')
                 this.shangyue();
-
+                this.getWeizhi(this.property.tabIndex-1);
             },
+            //获取收房合同de dizhi
+            getWeizhi(index){
+                let para = {
+                    fangyuanId:this.property.xsOffice[index].omcId,
+                };
+                getContractChuzuren(para).then((res) => {
+                    if(res.data.code=='102001'){
+                        this.renter.chengzufang = '无';
+                    }else{
+                        if(res.data.code=='200'){
+                            this.property.xsOffice[index].weizhi = res.data.data.weizhi;
+                            this.property.xsOffice[index].quyu = res.data.data.quyu;
+                            this.property.xsOffice[index].chanquanzhenghao = res.data.data.chanquanzhenghao;
+                        }else{
+                            this.$message({
+                                message: '获取不了收房合同',
+                                type: 'error'
+                            });
+                        }
+                    }
+
+                });
+            },
+
             addTab(targetName,action) {
                 if(action === "add"){
                 let newTabName = ++this.property.tabIndex + '';

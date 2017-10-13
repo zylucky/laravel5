@@ -80,7 +80,7 @@ class saleContractController extends Controller
         $response = $client->request('GET', '/api/contract/xs/'.$id);
         $res = $response->getBody();
         $res = json_decode($res);
-        $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
+        //$res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
         if($res->code!='200'){
             echo $response->getBody();
             exit;

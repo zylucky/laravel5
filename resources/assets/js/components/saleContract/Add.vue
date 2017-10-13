@@ -474,9 +474,6 @@
                     }else{
                         if(res.data.code=='200'){
                             this.renter.chengzufang = res.data.data.diyaren;
-                            this.property.xsOffice[0].weizhi = res.data.data.weizhi;
-                            this.property.xsOffice[0].quyu = res.data.data.quyu;
-                            this.property.xsOffice[0].chanquanzhenghao = res.data.data.chanquanzhenghao;
                         }else{
                             this.$message({
                                 message: '获取不了收房合同的承租人',
