@@ -193,9 +193,9 @@ let routes = [
             // { path:'/decoration', component: DecorationList, name: '工程合同'},
             { path:'/contractVersion', component: ContractVersionList, name: '合同版本管理',hidden:fk_version},
 
-            { path:'/agreementAdd', component:AgreementAdd , name: '定金协议新增',hidden:fk_version},
-            { path:'/agreementDump', component:AgreementDump , name: '定金协议打印',hidden:fk_version},
-            { path:'/agreementList', component:AgreementList , name: '定金协议',hidden:fk_version},
+            // { path:'/agreementAdd', component:AgreementAdd , name: '定金协议新增',hidden:fk_version},
+            // { path:'/agreementDump', component:AgreementDump , name: '定金协议打印',hidden:fk_version},
+            // { path:'/agreementList', component:AgreementList , name: '定金协议',hidden:fk_version},
 
 
 

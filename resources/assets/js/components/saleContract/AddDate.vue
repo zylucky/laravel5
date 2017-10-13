@@ -327,8 +327,8 @@
             </el-form-item>-->
             <!--补充条款1111-->
             <el-col :span="24">
-                <el-form-item label="补充条款"  prop="iscompletefrzj">
-                    <el-input type="textarea" row="5px" v-model="addDate.iscompletefrzj"></el-input>
+                <el-form-item label="补充条款"  prop="jiafangfeiyong">
+                    <el-input type="textarea" row="5px" v-model="addDate.jiafangfeiyong"></el-input>
                 </el-form-item>
             </el-col>
         </el-form>

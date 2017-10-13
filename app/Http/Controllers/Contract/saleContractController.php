@@ -55,14 +55,14 @@ class saleContractController extends Controller
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $data = $request->params;
-        $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
+        //$data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
         $response = $client->request('POST', '/api/contract/xs/save', [
             'json' => $data,
         ]);
         $res = $response->getBody();
-        $res = json_decode($res);
-        $res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
-        echo json_encode($res);
+        //$res = json_decode($res);
+        //$res->data->jiafangfeiyong = explode(',',$res->data->jiafangfeiyong);
+        return $res;
     }
     /**
      * Display the specified resource.
