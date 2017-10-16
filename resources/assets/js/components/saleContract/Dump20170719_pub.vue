@@ -74,7 +74,7 @@
                 getSaleContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
                         //把数据分别赋值给三个组件的变量
-                        this.buchongtiaokuan = res.data.data.iscompletefrzj;
+                        this.buchongtiaokuan = res.data.data.jiafangfeiyong;
                         this.hetongtype = res.data.data.hetongtype;
                     }else {
                         this.$message({
