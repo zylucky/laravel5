@@ -14,7 +14,7 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="合同类型" required>
-                <el-radio-group v-model="renter.hetongtype">
+                <el-radio-group v-model="renter.hetongtype" :disabled="lydisabled">
                     <el-radio :label="1">双方合同</el-radio>
                     <el-radio :label="2">三方合同</el-radio>
                 </el-radio-group>

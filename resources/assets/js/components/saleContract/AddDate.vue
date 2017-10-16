@@ -177,8 +177,8 @@
                             <el-col :span="11">
                                 <el-form-item  :prop="'fukuanFangshiList.' + index + '.startdate'" :rules="{
                                             required: true, message: '不能为空'
-                                        }">
-                                    <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate">
+                                        }" >
+                                    <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate" :disabled="lydisabled">
                                     </el-date-picker>
                                 </el-form-item>
                             </el-col>
@@ -200,7 +200,7 @@
                                                 };
                                                     }, trigger:'blur'}
                                             ]">
-                                    <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate">
+                                    <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate" :disabled="lydisabled">
                                     </el-date-picker>
                                 </el-form-item>
                             </el-col>
@@ -245,7 +245,6 @@
                 <el-col :span="8">
                     <el-form-item label="合同佣金" prop="hetongyongjin" >
                         <el-input v-model.number="addDate.hetongyongjin"
-                                  :disabled="lydisabled"
                                   placeholder="合同佣金" required></el-input>
                     </el-form-item>
                 </el-col>
