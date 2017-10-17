@@ -45245,7 +45245,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //查数据，得业主leixing
             _this3.yezhuleixing = res.data.data.yezhuleixing;
         }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_68" /* isCopyCompleteList */])(this.$route.query).then(function (res) {
-            //查数据，得业主leixing
+            //查数据，得业主leixing222
             _this3.copyForm = res.data.data;
         });
         this.getCopyImageList();
