@@ -30779,7 +30779,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api_js__ = __webpack_require__(1);
 //
 //
 //
@@ -30909,9 +30909,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //折叠导航栏
         collapse: function collapse() {
             this.collapsed = !this.collapsed;
-            if (this.collapsed == false) {
-                $(".daoheng").removeAttr("style");
-            }
         },
         showMenu: function showMenu(i, status) {
             this.$refs.menuCollapsed.getElementsByClassName('submenu-hook-' + i)[0].style.display = status ? 'block' : 'none';
@@ -30928,7 +30925,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //setInterval(this.openMessage,3000)
     }
 });
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(13)))
 
 /***/ }),
 /* 103 */
@@ -44061,7 +44057,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 cnt: this.pageSize,
                 selectItem: this.filters.name,
                 zhuangtai: this.filters.status,
-                startDate: this.filters.startDate
+                startDate: this.filters.startDate,
+                endDate: this.filters.endDate
             };
             this.listLoading = true;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_83" /* getPurchaseContractList */])(para).then(function (res) {
@@ -53021,6 +53018,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53029,7 +53044,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             filters: {
                 name: '',
                 region: '',
-                status: ''
+                status: '',
+                startDate: null,
+                endDate: null
             },
             weiYueRules: {
                 weiyueleixing: [{ required: true, message: '不能为空' }],
@@ -53171,7 +53188,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 pn: this.page,
                 cnt: this.pageSize,
                 selectItem: this.filters.name,
-                zhuangtai: this.filters.status
+                zhuangtai: this.filters.status,
+                startDate: this.filters.startDate,
+                endDate: this.filters.endDate
                 //console.log(111);
                 //console.log(this.page);
                 //console.log(this.pageSize);
@@ -54110,9 +54129,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        cansel: function cansel() {
-            history.go(-1);
-        },
+        cansel: function cansel() {},
         beforeAvatarUpload: function beforeAvatarUpload(file) {
             var isJPG = file.type === 'image/jpeg';
             var isLt2M = file.size / 1024 / 1024 < 2;
@@ -133188,7 +133205,43 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": item.value
       }
     })
-  }))], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+  }))], 1), _vm._v(" "), _c('el-form-item', [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "开始时间"
+    },
+    nativeOn: {
+      "keyup": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13, $event.key)) { return null; }
+        _vm.saleContractList($event)
+      }
+    },
+    model: {
+      value: (_vm.filters.startDate),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "startDate", $$v)
+      },
+      expression: "filters.startDate"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "结束时间"
+    },
+    nativeOn: {
+      "keyup": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13, $event.key)) { return null; }
+        _vm.purchaseContractList($event)
+      }
+    },
+    model: {
+      value: (_vm.filters.endDate),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "endDate", $$v)
+      },
+      expression: "filters.endDate"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary",
       "icon": "search"
@@ -135837,7 +135890,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (!_vm.collapsed),
       expression: "!collapsed"
     }],
-    staticClass: "el-menu-vertical-demo daoheng",
+    staticClass: "el-menu-vertical-demo",
     attrs: {
       "default-active": _vm.$route.path,
       "unique-opened": "",

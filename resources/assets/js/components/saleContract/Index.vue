@@ -16,6 +16,24 @@
                 </el-select>
             </el-form-item>
             <el-form-item>
+                <el-date-picker
+                        v-model="filters.startDate"
+                        type="date"
+                        placeholder="开始时间"
+                        @keyup.enter.native="saleContractList"
+                >
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item>
+                <el-date-picker
+                        v-model="filters.endDate"
+                        type="date"
+                        placeholder="结束时间"
+                        @keyup.enter.native="purchaseContractList"
+                >
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item>
                 <el-button type="primary" icon="search" @click="saleContractList">搜索</el-button>
                 <el-button v-if="fun('saleContractAdd')" type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
             </el-form-item>
@@ -151,6 +169,8 @@
                     name: '',
                     region: '',
                     status:'',
+                    startDate:null,
+                    endDate:null,
                 },
                 weiYueRules:{
                     weiyueleixing: [
@@ -310,6 +330,8 @@
                     cnt: this.pageSize,
                     selectItem: this.filters.name,
                     zhuangtai:this.filters.status,
+                    startDate:this.filters.startDate,
+                    endDate:this.filters.endDate,
                 }
                 //console.log(111);
                 //console.log(this.page);
