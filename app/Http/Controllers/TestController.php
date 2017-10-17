@@ -19,6 +19,7 @@ class TestController extends Controller
      */
     public function index()
     {
+        echo env('BASE_URL'); exit;
         echo $this->binToDec('10100010');exit;
 
         $bk = DB::connection('mysql2')->select("select CompayName,CONCAT(yewuqvyv,yewupianqv)ywqy,CONCAT('北京市',dz_xingzhengqvyv,dz_jiedao,dz_xiangxi)addr,gs_loupan,gs_guimo,gs_chenglishijian,zhuzuoqvyv,
