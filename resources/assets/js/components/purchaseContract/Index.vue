@@ -16,6 +16,24 @@
                 </el-select>
             </el-form-item>
             <el-form-item>
+                <el-date-picker
+                        v-model="filters.startDate"
+                        type="date"
+                        placeholder="开始时间"
+                        @keyup.enter.native="purchaseContractList"
+                >
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item>
+                <el-date-picker
+                        v-model="filters.endDate"
+                        type="date"
+                        placeholder="结束时间"
+                        @keyup.enter.native="purchaseContractList"
+                >
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item>
                 <el-button type="primary" icon="search" @click="purchaseContractList">搜索</el-button>
                 <el-button v-if="fun('purchaseContractAdd')" type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
             </el-form-item>
@@ -23,18 +41,18 @@
         <el-table :data="lists" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column  prop="bianhao" label="编号" width="200" >
             </el-table-column>
-            <el-table-column prop="loupanName" label="楼盘"  sortable >
+            <el-table-column prop="loupanName" label="楼盘"   >
                 <!--<template scope="scope">-->
                     <!--<span v-for="(item,index) in  Estate(scope.row.loupanName)">{{item}}</span>-->
                 <!--</template>-->
             </el-table-column>
-            <el-table-column prop="loudongName" label="楼栋"   sortable>
+            <el-table-column prop="loudongName" label="楼栋"   >
             </el-table-column>
-            <el-table-column prop="fanghao" label="房间号"  sortable>
+            <el-table-column prop="fanghao" label="房间号"  >
             </el-table-column>
-            <el-table-column prop="zhuangtai" label="状态" :formatter="formatStatus"   sortable>
+            <el-table-column prop="zhuangtai" label="状态" :formatter="formatStatus"   >
             </el-table-column>
-            <el-table-column prop="qianyuedate" label="签约日"  :formatter="changeDate"  sortable>
+            <el-table-column prop="qianyuedate" label="签约日"  :formatter="changeDate"  >
             </el-table-column>
             <el-table-column
                     label="用友编号"
@@ -181,6 +199,8 @@
                 filters: {
                     name: '',
                     status:'',
+                    startDate:null,
+                    endDate:null,
                 },
                 options:[
                     {value:0, label:'已创建',},
@@ -286,6 +306,7 @@
                     cnt: this.pageSize,
                     selectItem:this.filters.name,
                     zhuangtai:this.filters.status,
+                    startDate:this.filters.startDate,
                 }
                 this.listLoading = true;
                 getPurchaseContractList(para).then((res) => {

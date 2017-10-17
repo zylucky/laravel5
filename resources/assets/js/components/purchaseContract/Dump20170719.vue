@@ -16,7 +16,10 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： <u>办公</u>  。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）房屋权属状况：甲方持有（□ 房屋所有权证/□ 房屋买卖合同/□ 商品房预售合同/□ 二手房网签合同/□ 其它房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_________________________'}}</u>，房屋所有权人姓名或名称：
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
-                <u>{{item.name?item.name:'__________'}}</u>
+                <u>{{item.name?item.name:'__________'}}
+
+                    <span style="display:inline;"  v-if="owner.chanquanrenList.length>1&&index<owner.chanquanrenList.length-1">/</span>
+                </u>
             </span>
             ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为：<u>{{item.diyaren?item.diyaren:'_______________'}}</u>。</p>
         </span>
@@ -94,7 +97,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首期租金支付时间为
                 <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前，其余每期租金在实际应付款月（减除招商期后）开始管理之日的前3天进行支付，即第二期租金的支付时间为
+                <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前，其余每期租金在实际应付款月（减除招商期后）开始管理之日的前 <u>&nbsp;&nbsp;{{addDate.tiqianfukuantian}}&nbsp;</u>天进行支付，即第二期租金的支付时间为
                 <u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日，第三期租金的支付时间为
@@ -134,7 +137,7 @@
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方有权按照本合同约定收取固定的租金收益，并在管理期限届满或合同解除时按照约定收回房屋。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方应按约定日期将房屋及其设施设备在整洁完好的状态下交给乙方,并及时清理与《房屋交割清单》（见附件）无关的物件。甲方承担房屋在交付乙方前发生的一切费用，并予以结清，同时详细填写在《房屋交割清单》上。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）甲方应向乙方出示其对房屋拥有合法所有权的证明文件,包括但不限于房屋产权证、契税发票、购房合同及身份证的原件，乙方有权保留其复印件，同时甲方应签署《授权委托书》（见附件）。甲方承诺该房屋权属无瑕疵、无债务纠纷，没有妨碍正常出租使用该房屋的抵押，不存在任何形式的查封、拍卖等权利限制，房屋设施符合出租条件。
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（四）出租房屋为办公、商业用途的，甲方有义务配合并协助实际使用人办理营业证照等事宜。根据本地工商部门要求，甲方应于签署本合同后{{beiantixian?beiantixian:'____'}}日内持房屋所有权证或不动产权证及身份证原件到工商局进行备案；如甲方未能于上述日期进行备案，乙方有权不支付租金收益，直至甲方办理备案登记并能够进行工商注册之日止。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（四）出租房屋为办公、商业用途的，甲方有义务配合并协助实际使用人办理营业证照等事宜。根据本地工商部门要求，甲方应于签署本合同后 <u>{{beianqixian?beianqixian:'____'}}</u> 日内持房屋所有权证或不动产权证及身份证原件到工商局进行备案；如甲方未能于上述日期进行备案，乙方有权不支付租金收益，直至甲方办理备案登记并能够进行工商注册之日止。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（五）甲方全权委托乙方对此房屋进行推广招商、商业运营、房屋装修改造（主体结构除外），对实际使用人进行管理，甲方应积极配合乙方对上述事项相关手续的办理。</p>
             <p><b>第八条  乙方权利义务</b></p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方授权乙方在管理期限内，对本合同约定的房产进行整体或部分出租、或自行使用；授权乙方以自身名义直接与实际使用人签署《房屋租赁合同》并收取租金和押金等费用；对实际使用人使用房屋进行监督和管理，并由乙方自行承担与实际使用人签署《房屋租赁合同》而产生的权利义务关系。
@@ -168,7 +171,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲乙双方在本合同中书写的地址即为本合同下任何书面通知的有效送达地址，若因接收方拒收或地址错误等情况致使无法送达的，均以付邮日（以邮戳为准）后3日即视为通知方已依本合同给予书面通知。若任何一方联络地址变更的，应及时通知对方。</p>
             <p><b>第十三条  其他</b></p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）本合同生效后，各方对合同内容的变更或补充应采取书面形式，作为本合同的附件；附件与本合同具有同等的法律效力。甲乙双方一致同意，未加盖乙方正式印鉴的任何书面承诺、口头承诺、条款变更等行为均不视为乙方行为，对双方不产生法律约束力。
-                <br v-if="owner.farenzhengjian=='s'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{msg_03}}
+                <br v-if="owner.farenzhengjian=='s'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{msg_03}} <u v-if="owner.farenzhengjian=='s'" style="display:inline;">{{addDate.yongjin}}元</u>
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（{{msg_02}}）本合同经甲乙双方签字盖章后生效。本合同（及附件）一式{{msg_04}}份，甲乙双方各持一份，{{msg_01}}每份具有相同法律效力。</p>
             <p v-if="historyOptimize">
                 <b>&nbsp;&nbsp;第十四条  补充条款</b> <br>
@@ -240,11 +243,11 @@
             return {
                 msg_01:'丙方留存备案一份，',
                 msg_02:'三',
-                msg_03:'（二）本合同生效后，甲方应以一个月租金收益为标准向丙方支付居间服务费用。',
+                msg_03:'（二）本合同生效后，甲方向丙方支付居间服务费¥：',
                 msg_04:'三',
                 historyOptimize:false,
                 dumpShow:false,
-                beiantixian:'',
+                beianqixian:'',
                 free_month:'',
                 free_day:'',
                 property:{
@@ -541,7 +544,7 @@
                 this.yue = res.data.data.yue;
                 this.ri = res.data.data.ri;
                 this.yingyezhizhao = res.data.data.yingyezhizhao;
-                this.beiantixian = res.data.data.beiantixian;
+                this.beianqixian = res.data.data.beianqixian;
                 this.free_month = res.data.data.free_month;
                 this.free_day = res.data.data.free_day;
 
