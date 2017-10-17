@@ -144,7 +144,7 @@ let routes = [
      children: [
      { path: '/user', component: User, name: '用户' ,hidden:fk_permission_user},
       { path: '/role', component: Role, name: '角色' ,hidden:fk_permission_role},
-         { path: '/fun', component: Permission, name: '权限',hidden:fk_permission_per },
+         // { path: '/fun', component: Permission, name: '权限',hidden:fk_permission_per },
          { path: '/setPass', component: SetPassword, name: '修改密码',hidden:fk_permission_per },
      ]
 

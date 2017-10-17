@@ -228,7 +228,7 @@
                 <el-button v-show="editVisible"  @click.prevent="removeQiandan(item)" style="position:fixed;bottom:1%;left:165px;">删除</el-button>
             </el-form>
             <div slot="footer" class="dialog-footer" style="position:fixed;bottom:1%;left:80%;">
-                <el-button @click.native="Visible = false" style=""> 取消</el-button>
+                <el-button @click.native="Visible = false,history.go(0)" style="" > 取消</el-button>
                 <el-button type="primary" @click.native="handleEnd" :loading="hedan.qiandanren.Loading" style="">提交</el-button>
             </div>
         </el-dialog>
@@ -510,7 +510,7 @@
                             }
                             this.saleHedanContractList();
                             this.resetForm('hedan');
-                            //location.reload('http://127.0.0.1:8000/#/purchaseContract');
+                            location.reload('http://127.0.0.1:8000/#/purchaseContract');
                         });
                     }
                 });

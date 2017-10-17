@@ -16,7 +16,10 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： <u>办公</u>  。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）房屋权属状况：甲方持有（□ 房屋所有权证/□ 房屋买卖合同/□ 商品房预售合同/□ 二手房网签合同/□ 其它房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_________________________'}}</u>，房屋所有权人姓名或名称：
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
-                <u>{{item.name?item.name:'__________'}}</u>
+                <u>{{item.name?item.name:'__________'}}
+
+                    <span style="display:inline;"  v-if="owner.chanquanrenList.length>1&&index<owner.chanquanrenList.length-1">/</span>
+                </u>
             </span>
             ；房屋（□是 / □否） 已设定了抵押，已设定抵押的，抵押权人为：<u>{{item.diyaren?item.diyaren:'_______________'}}</u>。</p>
         </span>
