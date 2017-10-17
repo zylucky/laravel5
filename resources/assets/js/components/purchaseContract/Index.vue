@@ -481,7 +481,7 @@
                 getPurchaseContractInfo({id:row.id}).then((res) => {
                     if (res.data.code == '200') {
                         //把数据分别赋值给三个组件的变量
-                        if (res.data.data.jujianfangid == null) {
+                        if (res.data.data.farenzhengjian == 'l') {
                             this.$confirm('确认没有居间方的信息吗?', '提示', {
                                 type: 'warning'
                             }).then(() => {
