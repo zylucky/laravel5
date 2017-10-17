@@ -16,7 +16,7 @@
             <font style="margin-left:110px" >_______年____月____日</font><br>
             <br>
             <p v-if="farenzhengjian=='s'">
-                <b> 居间方（丙方）：</b><input type="text" style="width:138px;font-size:10px" v-model="jujianfang">
+                <b> 居间方（丙方）：</b><input type="text" style="width:188px;font-size:10px" v-model="jujianfang">
                 <br>联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">
                 <br>联系方式：<input type="text" name="" style="width:180px;font-size:10px" value="">
                 <br>

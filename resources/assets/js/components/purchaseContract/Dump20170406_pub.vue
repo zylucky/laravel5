@@ -15,7 +15,7 @@
             <font style="margin-left: 110px;" >_______年____月____日</font><br>
             <br>
             <p v-if="farenzhengjian=='s'">
-                <b> 居间方（丙方）：<input type="text" name="" style="width:138px;font-size:10px" value=""></b><br>
+                <b> 居间方（丙方）：<input type="text" name="" style="width:188px;font-size:10px" value=""></b><br>
                 房地产经纪人：<input type="text" name="" style="width:151px;font-size:10px" value="">
                 <br>资质证书号：<input type="text" name="" style="width:165px;font-size:10px" value="">
                 <br>联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">
