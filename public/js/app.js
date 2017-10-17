@@ -30779,7 +30779,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api_js__ = __webpack_require__(1);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api_js__ = __webpack_require__(1);
 //
 //
 //
@@ -30909,6 +30909,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //折叠导航栏
         collapse: function collapse() {
             this.collapsed = !this.collapsed;
+            if (this.collapsed == false) {
+                $(".daoheng").removeAttr("style");
+            }
         },
         showMenu: function showMenu(i, status) {
             this.$refs.menuCollapsed.getElementsByClassName('submenu-hook-' + i)[0].style.display = status ? 'block' : 'none';
@@ -30925,6 +30928,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //setInterval(this.openMessage,3000)
     }
 });
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(13)))
 
 /***/ }),
 /* 103 */
@@ -54129,7 +54133,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        cansel: function cansel() {},
+        cansel: function cansel() {
+            history.go(-1);
+        },
         beforeAvatarUpload: function beforeAvatarUpload(file) {
             var isJPG = file.type === 'image/jpeg';
             var isLt2M = file.size / 1024 / 1024 < 2;
@@ -135890,7 +135896,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (!_vm.collapsed),
       expression: "!collapsed"
     }],
-    staticClass: "el-menu-vertical-demo",
+    staticClass: "el-menu-vertical-demo daoheng",
     attrs: {
       "default-active": _vm.$route.path,
       "unique-opened": "",
