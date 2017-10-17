@@ -228,7 +228,7 @@
                 <el-button v-show="editVisible"  @click.prevent="removeQiandan(item)" style="position:fixed;bottom:1%;left:165px;">删除</el-button>
             </el-form>
             <div slot="footer" class="dialog-footer" style="position:fixed;bottom:1%;left:80%;">
-                <el-button @click.native="Visible = false,history.go(0)" style="" > 取消</el-button>
+                <el-button @click.native="cancel()" style="" > 取消</el-button>
                 <el-button type="primary" @click.native="handleEnd" :loading="hedan.qiandanren.Loading" style="">提交</el-button>
             </div>
         </el-dialog>
@@ -305,6 +305,11 @@
                 if(row.tianjiadate!=null){
                     return newDate.toLocaleDateString()
                 }
+            },
+            cancel(){
+                this.resetForm('hedan');
+                this.Visible = false;
+                history.go(0)
             },
             //获取付款账号的数据列表
             saleHedanContractList() {

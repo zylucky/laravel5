@@ -523,7 +523,7 @@
             },
             quexiao(){
                 this.resetForm('hedan');
-                location.reload('http://127.0.0.1:8000/#/saleContract');
+                history.go(0)
                 this.Visible = false;
             },
             //新增的提交
