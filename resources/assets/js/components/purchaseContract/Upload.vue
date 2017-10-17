@@ -324,7 +324,7 @@
                 this.yezhuleixing = res.data.data.yezhuleixing;
             }),
             isCopyCompleteList(this.$route.query).then((res)=>{
-                //查数据，得业主leixing222
+                //查数据，得业主leixing
                 this.copyForm = res.data.data;
             })
             this.getCopyImageList();
