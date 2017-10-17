@@ -20,6 +20,8 @@ class saleContractController extends Controller
         $cnt = Input::get('cnt');
         $selectItem = Input::get('selectItem');
         $status = Input::get('zhuangtai');
+        $startDate = Input::get('startDate');
+        $endDate = Input::get('endDate');
         if(!$pn){
             $pn = 1;
         }
@@ -33,6 +35,8 @@ class saleContractController extends Controller
                 'cnt'=>$cnt,
                 'selectItem'=>$selectItem,
                 'status'=>$status,
+                'startDate'=>$startDate,
+                'endDate'=>$endDate,
             ]
         ]);
         echo $response->getBody();

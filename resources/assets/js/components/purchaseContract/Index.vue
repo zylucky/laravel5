@@ -307,6 +307,7 @@
                     selectItem:this.filters.name,
                     zhuangtai:this.filters.status,
                     startDate:this.filters.startDate,
+                    endDate:this.filters.endDate,
                 }
                 this.listLoading = true;
                 getPurchaseContractList(para).then((res) => {
