@@ -109,6 +109,7 @@
                         qianyuemianji: null,
                         leixing: null,
                         hetongid:null,
+                        syczmj:null,
                     }],
                 },
                 renter:{

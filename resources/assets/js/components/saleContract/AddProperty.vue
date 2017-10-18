@@ -110,7 +110,7 @@
                                                   :disabled="lydisabled"
                                         ></el-input>
                                     </el-form-item>
-                                    <span style="border:0px solid red;font-size:12px;position:relative;left:180px;top:-23px;color:#ff4949;">剩余承租面积&nbsp;&nbsp; <i v-text="syczmj"></i>㎡</span>
+                                    <span style="border:0px solid red;font-size:12px;position:relative;left:180px;top:-23px;color:#ff4949;">剩余承租面积&nbsp;&nbsp; <i v-text="property.xsOffice[index].syczmj"></i>㎡</span>
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item  label="房屋类型" prop="leixing">
@@ -140,7 +140,6 @@
         props:['property'],
         data() {
             return {
-                syczmj:0,
                 purchaseContract:{
                     type:0,
                 },
@@ -236,42 +235,6 @@
                         this.property.flag = flag1;
                     })
                 }
-            },
-            shangyue(){
-                let para = {
-                    id:this.property.xsOffice[0].omcId,
-                }
-                //console.log(para);
-                getSaleFanghaoChengzu(para).then((res) => {
-                    if(!res.data.success){
-                        this.$message({
-                            message: res.data.message,
-                            type: 'error'
-                        });
-                    }else{
-                        this.syczmj = res.data.data.kzmj;
-                        //console.log(res.data.data.kzmj);
-                        //console.log(this.syczmj);
-                    }
-                    /*let arr = [];
-                    arr[0] = '';
-                    for ( var i in res.data ){
-                        arr[res.data[i].id]=res.data[i].fybh;
-                    }
-                    this.house = arr;*/
-                   /* if (query !== '') {
-                        this.fanghaoloading = true;
-                        setTimeout(() => {
-                            this.fanghaoloading = false;
-                            this.options3 = this.list3.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query.toLowerCase()) > -1;
-                            });
-                        }, 200);
-                    } else {
-                        this.options3 = [];
-                    }*/
-                });
             },
             //获取楼盘
             remoteMethod1(query) {
@@ -411,7 +374,21 @@
                 }
                 //console.log(this.property.xsOffice)
                 this.$emit('getshoufanghetong')
-                this.shangyue();
+
+                let para = {
+                    id:this.property.xsOffice[this.property.tabIndex-1].omcId,
+                }
+                //console.log(para);
+                getSaleFanghaoChengzu(para).then((res) => {
+                    if(!res.data.success){
+                        this.$message({
+                            message: res.data.message,
+                            type: 'error'
+                        });
+                    }else{
+                        this.property.xsOffice[this.property.tabIndex-1].syczmj = res.data.data.kzmj;
+                    }
+                });
                 if(this.property.xsOffice[this.property.tabIndex-1].fanghao2!=this.property.xsOffice[this.property.tabIndex-1].fanghao){
                     this.getWeizhi(this.property.tabIndex-1);
                 }
