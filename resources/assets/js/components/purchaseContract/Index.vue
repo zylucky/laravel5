@@ -56,10 +56,20 @@
             </el-table-column>
             <el-table-column
                     label="用友编号"
-                    width="200">
-                <template scope="scope">
-                    <el-input v-model="scope.row.yongyouid" @blur="updatayongyouid(scope.$index, scope.row)"></el-input>
+                    width="200"
+                    prop="yongyouid"
+                    v-if="fun('setYongYou')"
+            >
+                <template scope="scope" >
+                    <el-input   v-model="scope.row.yongyouid" @blur="updatayongyouid(scope.$index, scope.row)"></el-input>
                 </template>
+            </el-table-column>
+            <el-table-column
+                    label="用友编号"
+                    width="200"
+                    prop="yongyouid"
+                    v-if="!fun('setYongYou')"
+            >
             </el-table-column>
             <el-table-column label="操作" width="170">
                 <template scope="scope">
