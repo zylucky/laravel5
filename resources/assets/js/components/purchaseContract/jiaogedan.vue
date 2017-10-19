@@ -126,14 +126,6 @@
                 }
                 copyImageList(para).then((res)=>{
                     if(res.data.code=='200'){
-                        this.hetongList = res.data.data[1];//合同
-                        this.chanquanrenList = res.data.data[2];//合同
-                        this.yingyezhizhao = res.data.data[3];//合同
-                        this.faren  = res.data.data[4];//合同
-                        this.fangchanzheng = res.data.data[5];//合同
-                        this.budongchan = res.data.data[6];//合同
-                        this.yezhushouquan = res.data.data[7];//合同
-                        this.weituoren = res.data.data[8];//合同
                         this.jiaogedan = res.data.data[9];//合同
                     }
                 })

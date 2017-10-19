@@ -236,9 +236,7 @@
                 let para ={
                     id :file.id,
                 }
-                copySaleImageDelete(para).then((res)=>{
-
-                });
+                copySaleImageDelete(para).then((res)=>{});
                 //console.log(file.id);
             },
             handlePictureCardPreview(file) {
@@ -256,12 +254,12 @@
                 copySaleImageList(para).then((res)=>{
                     if(res.data.code=='200'){
                         this.hetongList = res.data.data[1];//合同
-                        this.chengzuren = res.data.data[2];//合同
-                        this.yingyezhizhao = res.data.data[3];//合同
-                        this.faren  = res.data.data[4];//合同
-                        this.chengzurenshouquan = res.data.data[5];//合同
-                        this.weituoren = res.data.data[6];//合同
-                        this.jiaogedan = res.data.data[7];//合同
+                        this.chengzuren = res.data.data[2];//承租人
+                        this.yingyezhizhao = res.data.data[3];//营业支招
+                        this.faren  = res.data.data[4];//法人证件
+                        this.chengzurenshouquan = res.data.data[7];//承租人授权
+                        this.weituoren = res.data.data[8];//委托人
+                        this.jiaogedan = res.data.data[9];//交割单
                     }
                 })
             },
