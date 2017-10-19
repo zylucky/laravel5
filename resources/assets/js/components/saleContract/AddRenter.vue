@@ -32,41 +32,43 @@
                     <el-row>
                         <el-col  :span="8">
                             <el-form-item label="居间方">
-                                <el-select
-                                        id="jujianfang"
-                                        v-model="renter.jujianfangid"
-                                        filterable
-                                        remote
-                                        @change="changeOnSelect1"
-                                        placeholder="渠道公司名称"
-                                        :remote-method="remoteMethod1"
-                                        :loading="bkNameloading">
-                                    <el-option
-                                            v-for="item in renter.options1"
-                                            :key="item.value"
-                                            :label="item.label"
-                                            :value="item.value">
-                                    </el-option>
-                                </el-select>
+                                <el-input v-model="renter.jujianfang"></el-input>
+                                <!--<el-select-->
+                                        <!--id="jujianfang"-->
+                                        <!--v-model="renter.jujianfangid"-->
+                                        <!--filterable-->
+                                        <!--remote-->
+                                        <!--@change="changeOnSelect1"-->
+                                        <!--placeholder="渠道公司名称"-->
+                                        <!--:remote-method="remoteMethod1"-->
+                                        <!--:loading="bkNameloading">-->
+                                    <!--<el-option-->
+                                            <!--v-for="item in renter.options1"-->
+                                            <!--:key="item.value"-->
+                                            <!--:label="item.label"-->
+                                            <!--:value="item.value">-->
+                                    <!--</el-option>-->
+                                <!--</el-select>-->
                             </el-form-item>
                         </el-col>
                         <el-col  :span="8">
                             <el-form-item label="渠道人员">
-                                <el-select
-                                        v-model="renter.qudaorenid"
-                                        filterable
-                                        remote
-                                        @change="changeOnSelect3"
-                                        placeholder="渠道人员"
-                                        :remote-method="remoteMethod3"
-                                        :loading="bkryNameloading">
-                                    <el-option
-                                            v-for="item in renter.options2"
-                                            :key="item.value"
-                                            :label="item.label"
-                                            :value="item.value">
-                                    </el-option>
-                                </el-select>
+                                <el-input v-model="renter.qudaoren"></el-input>
+                                <!--<el-select-->
+                                        <!--v-model="renter.qudaorenid"-->
+                                        <!--filterable-->
+                                        <!--remote-->
+                                        <!--@change="changeOnSelect3"-->
+                                        <!--placeholder="渠道人员"-->
+                                        <!--:remote-method="remoteMethod3"-->
+                                        <!--:loading="bkryNameloading">-->
+                                    <!--<el-option-->
+                                            <!--v-for="item in renter.options2"-->
+                                            <!--:key="item.value"-->
+                                            <!--:label="item.label"-->
+                                            <!--:value="item.value">-->
+                                    <!--</el-option>-->
+                                <!--</el-select>-->
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -74,22 +76,23 @@
                 <div v-if="renter.jujianfangtype==2">
                     <el-row>
                         <el-form-item label="自由经纪人">
-                            <el-select
-                                    id="jujianfang"
-                                    v-model="renter.jujianfangid"
-                                    filterable
-                                    remote
-                                    @change="jingjirenchangeOnSelect"
-                                    placeholder="自由经纪人名称"
-                                    :remote-method="remoteMethod2"
-                                    :loading="bkNameloading">
-                                <el-option
-                                        v-for="item in renter.options1"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value">
-                                </el-option>
-                            </el-select>
+                            <el-input v-model="renter.qudaoren"></el-input>
+                            <!--<el-select-->
+                                    <!--id="jujianfang"-->
+                                    <!--v-model="renter.jujianfangid"-->
+                                    <!--filterable-->
+                                    <!--remote-->
+                                    <!--@change="jingjirenchangeOnSelect"-->
+                                    <!--placeholder="自由经纪人名称"-->
+                                    <!--:remote-method="remoteMethod2"-->
+                                    <!--:loading="bkNameloading">-->
+                                <!--<el-option-->
+                                        <!--v-for="item in renter.options1"-->
+                                        <!--:key="item.value"-->
+                                        <!--:label="item.label"-->
+                                        <!--:value="item.value">-->
+                                <!--</el-option>-->
+                            <!--</el-select>-->
                         </el-form-item>
                     </el-row>
                 </div>
@@ -344,66 +347,66 @@
                     this.renter.flag = valid;
                 });
             },
-            changeOnSelect1(){
-                var arr = this.renter.options1;
-                for (let i=0;i<arr.length;i++ ){
-                    if(arr[i].value==this.renter.jujianfangid){
-                        this.renter.jujianfang = arr[i].label;
-                        if(this.renter.jujianfangid!=this.renter.jujianfangid2){
-                            this.renter.qudaoren=null;
-                            this.renter.qudaorenid=null;
-                        }
-                    }
-                }
-            },
-            changeOnSelect3(){
-                var arr = this.renter.options2;
-                for (let i=0;i<arr.length;i++ ){
-                    if(arr[i].value==this.renter.qudaorenid){
-                        this.renter.qudaoren = arr[i].label;
-                    }
-                }
-            },
-            jingjirenchangeOnSelect(){
-                var arr = this.renter.options1;
-                for (let i=0;i<arr.length;i++ ){
-                    if(arr[i].value==this.renter.jujianfangid){
-                        this.renter.jujianfang = arr[i].label;
-                    }
-                }
-            },
+//            changeOnSelect1(){
+//                var arr = this.renter.options1;
+//                for (let i=0;i<arr.length;i++ ){
+//                    if(arr[i].value==this.renter.jujianfangid){
+//                        this.renter.jujianfang = arr[i].label;
+//                        if(this.renter.jujianfangid!=this.renter.jujianfangid2){
+//                            this.renter.qudaoren=null;
+//                            this.renter.qudaorenid=null;
+//                        }
+//                    }
+//                }
+//            },
+//            changeOnSelect3(){
+//                var arr = this.renter.options2;
+//                for (let i=0;i<arr.length;i++ ){
+//                    if(arr[i].value==this.renter.qudaorenid){
+//                        this.renter.qudaoren = arr[i].label;
+//                    }
+//                }
+//            },
+//            jingjirenchangeOnSelect(){
+//                var arr = this.renter.options1;
+//                for (let i=0;i<arr.length;i++ ){
+//                    if(arr[i].value==this.renter.jujianfangid){
+//                        this.renter.jujianfang = arr[i].label;
+//                    }
+//                }
+//            },
             //获取渠道公司名称
-            remoteMethod1(query) {
-                let para = {
-                    name: query
-                };
-                this.bkNameloading = true;
-                getbkNameList(para).then((res) => {
-                    let arr = [];
-                    arr[0] = '';
-                    for ( var i in res.data.data ){
-                        arr[i]=res.data.data[i]
-                    }
-                    this.estate = arr;
-                    this.bkNameloading = false;
-                    this.list = this.estate.map((item,index) => {
-                        return { value: item.tQdCompayId, label: item.compayname };
-                    });
-                    if (query !== '') {
-                        this.bkNameloading = true;
-                        setTimeout(() => {
-                            this.bkNameloading = false;
-                            this.renter.options1 = this.list.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query) > -1;
-                            });
-                        }, 200);
-                    } else {
-                        this.renter.options1 = [];
-                    }
-                });
-
-            },
+//            remoteMethod1(query) {
+//                let para = {
+//                    name: query
+//                };
+//                this.bkNameloading = true;
+//                getbkNameList(para).then((res) => {
+//                    let arr = [];
+//                    arr[0] = '';
+//                    for ( var i in res.data.data ){
+//                        arr[i]=res.data.data[i]
+//                    }
+//                    this.estate = arr;
+//                    this.bkNameloading = false;
+//                    this.list = this.estate.map((item,index) => {
+//                        return { value: item.tQdCompayId, label: item.compayname };
+//                    });
+//                    if (query !== '') {
+//                        this.bkNameloading = true;
+//                        setTimeout(() => {
+//                            this.bkNameloading = false;
+//                            this.renter.options1 = this.list.filter(item => {
+//                                return item.label.toLowerCase()
+//                                        .indexOf(query) > -1;
+//                            });
+//                        }, 200);
+//                    } else {
+//                        this.renter.options1 = [];
+//                    }
+//                });
+//
+//            },
 
 
 
@@ -450,67 +453,67 @@
 
 
             //获取渠道人员
-            remoteMethod3(query) {
-                let para = {
-                    username: query,
-                    id:this.renter.jujianfangid!=null?this.renter.jujianfangid:'',
-                };
-                this.bkryNameloading = true;
-                getBrokerCompanyUserListPage(para).then((res) => {
-                    let arr = [];
-                    arr[0] = '';
-                    for ( var i in res.data.data ){
-                        arr[i]=res.data.data[i]
-                    }
-                    this.estate = arr;
-                    this.bkryNameloading = false;
-                    this.list = this.estate.map((item,index) => {
-                        return { value: item.tQdPersonId, label: item.qdPername };
-                    });
-                    if (query !== '') {
-                        this.bkryNameloading = true;
-                        setTimeout(() => {
-                            this.bkryNameloading = false;
-                            this.renter.options2 = this.list;
-                        }, 200);
-                    } else {
-                        this.renter.options2 = [];
-                    }
-                });
-
-            },
-            //获取自由经济人名称
-            remoteMethod2(query) {
-                let para = {
-                    name: query
-                };
-                this.bkNameloading = true;
-                getNameSaleList(para).then((res) => {
-                    let arr = [];
-                    arr[0] = '';
-                    for ( var i in res.data.data ){
-                        arr[i]=res.data.data[i]
-                    }
-                    this.estate = arr;
-                    this.bkNameloading = false;
-                    this.list = this.estate.map((item,index) => {
-                        return { value: item.tQdZyPersonId, label: item.xingming };
-                    });
-                    if (query !== '') {
-                        this.bkNameloading = true;
-                        setTimeout(() => {
-                            this.bkNameloading = false;
-                            this.renter.options1 = this.list.filter(item => {
-                                return item.label.toLowerCase()
-                                        .indexOf(query) > -1;
-                            });
-                        }, 200);
-                    } else {
-                        this.renter.options1 = [];
-                    }
-                });
-
-            },
+//            remoteMethod3(query) {
+//                let para = {
+//                    username: query,
+//                    id:this.renter.jujianfangid!=null?this.renter.jujianfangid:'',
+//                };
+//                this.bkryNameloading = true;
+//                getBrokerCompanyUserListPage(para).then((res) => {
+//                    let arr = [];
+//                    arr[0] = '';
+//                    for ( var i in res.data.data ){
+//                        arr[i]=res.data.data[i]
+//                    }
+//                    this.estate = arr;
+//                    this.bkryNameloading = false;
+//                    this.list = this.estate.map((item,index) => {
+//                        return { value: item.tQdPersonId, label: item.qdPername };
+//                    });
+//                    if (query !== '') {
+//                        this.bkryNameloading = true;
+//                        setTimeout(() => {
+//                            this.bkryNameloading = false;
+//                            this.renter.options2 = this.list;
+//                        }, 200);
+//                    } else {
+//                        this.renter.options2 = [];
+//                    }
+//                });
+//
+//            },
+//            //获取自由经济人名称
+//            remoteMethod2(query) {
+//                let para = {
+//                    name: query
+//                };
+//                this.bkNameloading = true;
+//                getNameSaleList(para).then((res) => {
+//                    let arr = [];
+//                    arr[0] = '';
+//                    for ( var i in res.data.data ){
+//                        arr[i]=res.data.data[i]
+//                    }
+//                    this.estate = arr;
+//                    this.bkNameloading = false;
+//                    this.list = this.estate.map((item,index) => {
+//                        return { value: item.tQdZyPersonId, label: item.xingming };
+//                    });
+//                    if (query !== '') {
+//                        this.bkNameloading = true;
+//                        setTimeout(() => {
+//                            this.bkNameloading = false;
+//                            this.renter.options1 = this.list.filter(item => {
+//                                return item.label.toLowerCase()
+//                                        .indexOf(query) > -1;
+//                            });
+//                        }, 200);
+//                    } else {
+//                        this.renter.options1 = [];
+//                    }
+//                });
+//
+//            },
             //新增承租人
             addRentItem() {
                 this.renter.chengzuren.push({

@@ -22,14 +22,15 @@
             <el-row v-if="owner.farenzhengjian=='s'">
                 <el-col  :span="8">
                     <el-form-item label="居间方">
-                        <el-select>
+                        <el-select
                                 v-model="owner.jujianfangid"
                                 filterable
                                 remote
                                 @change="changeOnSelect1"
                                 placeholder="渠道公司名称"
                                 :remote-method="remoteMethod1"
-                                :loading="bkNameloading">
+                                :loading="bkNameloading"
+                            >
                             <el-option
                                     v-for="item in owner.options1"
                                     :key="item.value"
