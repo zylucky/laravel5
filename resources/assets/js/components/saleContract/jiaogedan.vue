@@ -1,17 +1,22 @@
 <template>
-    <el-upload
-            action="/saleContract/addCopyImage?type=7"
-            list-type="picture-card"
-            :headers="headers"
-            :data="data"
-            multiple
-            :on-preview="handlePictureCardPreview"
-            :on-remove="handleRemove"
-            :on-success="handleSuccess"
-            :file-list="jiaogedan"
-    >
-        <i class="el-icon-plus"></i>
-    </el-upload>
+    <div>
+        <el-upload
+                action="/saleContract/addCopyImage?type=7"
+                list-type="picture-card"
+                :headers="headers"
+                :data="data"
+                multiple
+                :on-preview="handlePictureCardPreview"
+                :on-remove="handleRemove"
+                :on-success="handleSuccess"
+                :file-list="jiaogedan"
+        >
+            <i class="el-icon-plus"></i>
+        </el-upload>
+        <el-dialog v-model="dialogVisible" size="large">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+    </div>
 </template>
 <script>
     import {
@@ -118,13 +123,7 @@
                 }
                 copySaleImageList(para).then((res)=>{
                     if(res.data.code=='200'){
-                        this.hetongList = res.data.data[1];//合同
-                        this.chengzuren = res.data.data[2];//合同
-                        this.yingyezhizhao = res.data.data[3];//合同
-                        this.faren  = res.data.data[4];//合同
-                        this.chengzurenshouquan = res.data.data[5];//合同
-                        this.weituoren = res.data.data[6];//合同
-                        this.jiaogedan = res.data.data[7];//合同
+                        this.jiaogedan = res.data.data[9];//合同
                     }
                 })
             },
