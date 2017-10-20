@@ -33,7 +33,7 @@
                         <a href="javascript:;" v-if="this.$route.path=='/saleContract/see'" @click="stepNum=5"><el-step  title="解约协议"></el-step></a>
                     </el-steps>
                     <el-input type="hidden" prop="id"  auto-complete="off"></el-input>
-                    <el-button type="primary" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
+                    <el-button type="primary" :disabled="saveBtn" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
                     <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
                     <div style="margin-top:10px;">
                         <el-button type="primary" @click="preview" >打印预览</el-button>
@@ -71,6 +71,7 @@
                 ],
                 contractVersion:null,
                 btnType:true,
+                saveBtn:false,
                 submsg:'提交',
                 shenhe:null,//审核数据
                 reviewVisible:false,//审核显示
@@ -259,6 +260,7 @@
             },
             save:function () {
                 this.btnType = false;
+                this.saveBtn = true;
                 this.submsg  = '提交';
                     var child_property = this.$refs.property.property;
                     var child_renter  = this.$refs.renter.renter;
@@ -278,6 +280,7 @@
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
                             this.fuzhi(res);
+                            this.saveBtn = false;
                             this.$message({
                                 message: '保存成功',
                                 type: 'success'

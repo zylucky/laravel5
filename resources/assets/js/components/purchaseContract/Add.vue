@@ -32,7 +32,7 @@
                     <a href="javascript:" v-if="this.$route.path=='/purchaseContract/view'"  onfocus="this.blur();" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>
 
                 </el-steps>
-                <el-button type="primary"  v-show="editVisible" @click="save" style="margin-top:100px;margin-bottom:1em;padding-left:2em;padding-right:2em">保存</el-button>
+                <el-button type="primary"  :disabled="saveBtn" v-show="editVisible" @click="save" style="margin-top:100px;margin-bottom:1em;padding-left:2em;padding-right:2em">保存</el-button>
                 <el-button type="primary"  v-show="editVisible" :disabled="btnType" @click="submit" style="margin-bottom:.3em;padding-left:2em;padding-right:2em;margin-left:0 !important">{{submsg}}</el-button>
                 <div style="margin-top:10px;">
                     <el-button type="primary" @click="preview"style="">打印预览</el-button>
@@ -80,6 +80,7 @@
                 contractVersion:null,
                 btnType:true,
                 btnView:false,
+                saveBtn:false,
                 submsg:'提交',
                 shenhe:null,//审核数据
                 reviewVisible:false,//审核显示
@@ -259,6 +260,7 @@
             },
             save() {
                 this.submsg  = '提交';
+                this.saveBtn = true;
                     var child_property = this.$refs.property.property;//
                     var child_owner  = this.$refs.owner.owner;//业主信息
                     var child_date = this.$refs.date.addDate;//日期
@@ -281,6 +283,7 @@
                         //把数据分别赋值给三个组件的变量
                         this.btnType = false;
                         this.fuzhi(res);
+                        this.saveBtn = false;
                         this.$message({
                             message: '保存成功',
                             type: 'success'

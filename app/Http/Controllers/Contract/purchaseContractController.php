@@ -632,8 +632,12 @@ class purchaseContractController extends Controller
 
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
+        $data = $request->params;
+        if($request->params['yongyouid']==null){
+            $data['yongyouid'] = '';
+        }
         $response = $client->request('POST', '/api/contract/sf/saveyongyou', [
-            'json' => $request->params
+            'json' => $data
         ]);
         echo $response->getBody();
     }
