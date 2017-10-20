@@ -2,7 +2,7 @@
         <div class="whole">
             <h2 class="tc">房屋资产管理服务合同</h2>
             <p>业主方（甲方）：<input type="text" style="width: 450px" disabled value=''/></p>
-            <p>管理方（乙方）：<input type="text" style="width: 450px" disabled value="北京幼狮科技有限公司"/></p>
+            <p>管理方（乙方）：<input type="text" style="width: 450px" disabled v-model="guanlifang"/></p>
             <p v-if="owner.farenzhengjian=='s'">居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="owner.jujianfang"/></p>
 
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鉴于乙方具有行业领先的房屋资产管理服务经验，能够运用自身拥有的资源及优质的增值服务，为业主方提供完善的服务，如物业对接，装饰装修，代缴物业费、供暖费，设备、空调设施、维修检测等，提高受托管理房屋资产的使用价值，为业主方带来稳定的租金收益；同时为业主方节省大量的管理费用及时间成本。<br>
@@ -250,6 +250,7 @@
                 beianqixian:'',
                 free_month:'',
                 free_day:'',
+                guanlifang:'北京幼狮科技有限公司',
                 property:{
                     officeList: [{
                         omcId:null,
@@ -497,6 +498,9 @@
                     this.owner.chanquanrenList = res.data.data.chanquanrenList;
                 }
                 this.owner.chengzufang = res.data.data.chengzufang;
+                if(this.owner.chengzufang=='无'){
+                    this.guanlifang = '';
+                }
                 this.owner.jujianfang = res.data.data.jujianfang;
                 this.owner.yezhuleixing = res.data.data.yezhuleixing;
                 this.owner.farenzhengjian = res.data.data.farenzhengjian;
