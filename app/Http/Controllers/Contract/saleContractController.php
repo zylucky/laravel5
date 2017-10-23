@@ -59,6 +59,25 @@ class saleContractController extends Controller
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $data = $request->params;
+        if($request->params['qianyuerenName']==null){
+            $data['qianyuerenName'] = '';
+        }
+        if($request->params['qianyuerenTel']==null){
+            $data['qianyuerenTel'] = '';
+        }
+        if($request->params['qianyuerenId']==null){
+            $data['qianyuerenId'] = '';
+        }
+        if($request->params['jujianfang']==null){
+            $data['jujianfang'] = '';
+        }
+        if($request->params['qudaoren']==null){
+            $data['qudaoren'] = '';
+        }
+        if($request->params['jiafangfeiyong']==null){
+            $data['jiafangfeiyong'] = '';
+        }
+
         //$data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
         $response = $client->request('POST', '/api/contract/xs/save', [
             'json' => $data,

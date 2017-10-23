@@ -74,7 +74,20 @@ class purchaseContractController extends Controller
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $data = $request->params;
-        
+        if($request->params['dailirenName']==null){
+            $data['dailirenName'] = '';
+        }
+        if($request->params['dailirenTel']==null){
+            $data['dailirenTel'] = '';
+        }
+        if($request->params['dailirenId']==null){
+            $data['dailirenId'] = '';
+        }
+        if($request->params['yingyezhizhao']==null){
+            $data['yingyezhizhao'] = '';
+        }
+
+
         $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
         $data['yifangfeiyong'] = implode(',',$data['yifangfeiyong']);
         $response = $client->request('POST', '/api/contract/sf/save', [
@@ -632,8 +645,12 @@ class purchaseContractController extends Controller
 
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
+        $data = $request->params;
+        if($request->params['yongyouid']==null){
+            $data['yongyouid'] = '';
+        }
         $response = $client->request('POST', '/api/contract/sf/saveyongyou', [
-            'json' => $request->params
+            'json' => $data
         ]);
         echo $response->getBody();
     }

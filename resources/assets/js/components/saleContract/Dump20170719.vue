@@ -77,7 +77,7 @@
 
 
 
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：￥ <u>{{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'____'}}</u>元/月（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yajin)?daxie(addDate.yajin):'________'}}&nbsp;&nbsp;</u>/月），支付时间为
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：￥ <u>{{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'____'}}</u>元（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yajin)?daxie(addDate.yajin):'________'}}&nbsp;&nbsp;</u>），支付时间为
 
             <u>&nbsp;&nbsp;{{year(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>月
