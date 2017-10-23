@@ -20,11 +20,11 @@
                     </el-col>
                 </el-row>
 
-                <el-form-item required label="联系电话" v-for="(item, index) in brokerCompanyUserForm.telList"
+                <el-form-item  label="联系电话" v-for="(item, index) in brokerCompanyUserForm.telList"
                               :key="item.key">
                     <el-col :span="8">
                         <el-form-item :prop="'telList.' + index + '.dianhua' " :rules="[
-                                {required: true, message: '不能为空'},
+                              //  {required: true, message: '不能为空'},
                                 {required: true,validator:MycheckPhone, trigger:'blur'  }
                         ]">
                         <el-input v-model.number="brokerCompanyUserForm.telList[index].dianhua"></el-input>
@@ -233,9 +233,9 @@
                 dialogImageUrl: '',
                 dialogVisible: false,
                 showed: false,
-                ishy: true,
-                isdk: true,
-                isqy: true,
+                ishy: false,
+                isdk: false,
+                isqy: false,
                 isname: false,
                 brokerCompanyUserForm: {
                     tQdPersonId: '',
@@ -253,12 +253,12 @@
                     yslianxiren2Id: '',
                     yslianxiren3: '',
                     yslianxiren3Id: '',
-                    shifouweixin: true,
+                    shifouweixin: false,
                     tianjiahaoyourenshu: '',
-                    shifoudaikanyoushi: true,
+                    shifoudaikanyoushi: false,
                     daikancishu: '',
                     daikanduijierenshu: '',
-                    shifouqianyueyoushifang: true,
+                    shifouqianyueyoushifang: false,
                     qianyuecishu: '',
                     qianyueduijierenshu: '',
                     qvdaodengji: '',
@@ -297,12 +297,15 @@
                     tQdCompayId: [
                         {required: true, message: '不能为空'},
                     ],
-                    zhiwu: [
+                  /*  zhiwu: [
                         {required: true, message: '不能为空'},
                     ],
                     yslianxiren1: [
                         {required: true, message: '不能为空'},
                     ],
+                    qvdaodengji: [
+                        {required: true, message: '不能为空'},
+                    ],**/
                     shifouweixin: [
                         {required: true, message: '不能为空'},
                     ],
@@ -312,9 +315,7 @@
                     shifouqianyueyoushifang: [
                         {required: true, message: '不能为空'},
                     ],
-                    qvdaodengji: [
-                        {required: true, message: '不能为空'},
-                    ],
+
 
                     tianjiahaoyourenshu: [{required: true, message: '不能为空'},
                         {type: 'number', message: '必须为数字'}],
