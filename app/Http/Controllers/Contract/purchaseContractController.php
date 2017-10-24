@@ -159,31 +159,31 @@ class purchaseContractController extends Controller
         ]);
         $response1 = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
         //1.根据楼栋的id取获取 objareaID
-        $client = new Client ([
-            'base_uri' => $this->work_url,
-        ]);
-        $response = $client->request('GET', '/api/wf/getzdareaid?zd='.$zd);
-        $objareaid = $response->getBody()->getContents();
-        $data = [
-            "cmd"=>0,
-            "data"=>[
-                "tempname"=>"shenhe",
-                "objareaid"=>(int)$objareaid,
-            ],
-            "condition"=>["%bianhao%"=>$bianhao],
-            "operatorId"=>15,//操作人
-            "operatorName"=>'liyuequn',
-            "reserved"=>null,
-        ];
-        //2.服务创建审核任务
-        $client = new Client([
-            'base_uri' => $this->work_url,
-            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
-        ]);
-        //return $data;
-        $client->request('POST', '/api/wf/createtaskbytemplate', [
-            'json' => $data
-        ]);
+//        $client = new Client ([
+//            'base_uri' => $this->work_url,
+//        ]);
+//        $response = $client->request('GET', '/api/wf/getzdareaid?zd='.$zd);
+//        $objareaid = $response->getBody()->getContents();
+//        $data = [
+//            "cmd"=>0,
+//            "data"=>[
+//                "tempname"=>"shenhe",
+//                "objareaid"=>(int)$objareaid,
+//            ],
+//            "condition"=>["%bianhao%"=>$bianhao],
+//            "operatorId"=>15,//操作人
+//            "operatorName"=>'liyuequn',
+//            "reserved"=>null,
+//        ];
+//        //2.服务创建审核任务
+//        $client = new Client([
+//            'base_uri' => $this->work_url,
+//            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+//        ]);
+//        //return $data;
+//        $client->request('POST', '/api/wf/createtaskbytemplate', [
+//            'json' => $data
+//        ]);
 
         echo $response1->getBody();
     }
