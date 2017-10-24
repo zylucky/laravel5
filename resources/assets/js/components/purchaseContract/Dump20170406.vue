@@ -87,7 +87,7 @@
         <u>&nbsp;&nbsp;{{month(addDate.yajinfukuanri)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.yajinfukuanri)}}&nbsp;&nbsp;</u>日支付;<br>
         &nbsp;2、押金是乙方向甲方支付的合法履约的保证金。租赁期满后5日内甲方退还乙方。<br>
-        &nbsp;3、首期租金：¥ {{toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)>0?toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'___________'}}元，（大写)：{{daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)?daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'____________'}}支付时间为
+        &nbsp;3、首期租金：¥ {{toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)>0?toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'___________'}}元，（大写)：{{daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)?daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'____________'}}，支付时间为
         <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每<u>{{addDate.fukuanFangshiList[0].zujinyue?addDate.fukuanFangshiList[0].zujinyue:'_____'}}</u>个月支付一次，于付款月起租日 <u>{{addDate.tiqianfukuantian}}</u> 日前支付下一次租金，
