@@ -712,5 +712,14 @@ class saleContractController extends Controller
         ]);
         echo $response->getBody();
     }
+    public function cancelled(){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $id = Input::get('id');
+        $response = $client->request('GET', '/api/contract/sf/'.$id.'/cancelled');
+        echo $response->getBody();
+    }
 
 }

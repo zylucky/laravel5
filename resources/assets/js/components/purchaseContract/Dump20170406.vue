@@ -485,7 +485,11 @@
             },
             day(riqi){
                 if(riqi!=null&&riqi!=''){
-                    return new Date(riqi).getDate();
+                    if(new Date(riqi).getDate()+1 <10 ){
+                        return '0'+(new Date(riqi).getDate()+1);
+                    }else{
+                        return new Date(riqi).getDate()+1
+                    }
                 }else{
                     return '';
                 }

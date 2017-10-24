@@ -25,11 +25,11 @@
         </span>
             <br>
         <b>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第三条  租赁期限及免租期
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第三条  租赁期限{{free01}}
         </b>
 
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方承诺在租赁合同期限内给予乙方<input type="text" v-model="da" style="width:70px;">天的免租期。
-            <span v-for="(item,index) in addDate.mianzuqiList"
+            <br v-if="addDate.mianzuqiList">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="display: inline;" v-if="addDate.mianzuqiList">（一）甲方承诺在租赁合同期限内给予乙方<input type="text" v-model="da" style="width:70px;">天的免租期。</span>
+            <span v-if="addDate.mianzuqiList" v-for="(item,index) in addDate.mianzuqiList"
             style="display:inline"
             >自<u>&nbsp;&nbsp;{{year(item.startdate)?year(item.startdate):''}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(item.startdate)?month(item.startdate):''}}&nbsp;&nbsp;</u>月
@@ -39,7 +39,7 @@
             <u>&nbsp;&nbsp;{{day(item.enddate)?day(item.enddate):''}}&nbsp;&nbsp;</u>日止。免租期内乙方不支付租金，以便于乙方进行装饰装修及办理入住手续等事宜。免租期内物业管理费、供暖费由 □甲方 □乙方 承担。
             </span>
 
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）本合同房屋租赁期限为
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（{{free02}}）本合同房屋租赁期限为
             <u v-if="nian">{{nian?nian:'__'}}</u><span v-if="nian" style="display: inline">年</span>
             <u v-if="yue">{{yue?yue:'__'}}</u><span v-if="yue" style="display: inline">月</span>
             <u v-if="ri>1">{{ri>1?ri:'__'}}</u><span v-if="ri>1" style="display: inline">日</span>
@@ -52,7 +52,7 @@
         <u>&nbsp;&nbsp;{{year(addDate.enddate)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.enddate)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.enddate)}}&nbsp;&nbsp;</u>日止。
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）合同期满乙方仍使用该房屋，乙方应提前90天通知甲方，双方协商同意后另行签署新的租赁合同；若乙方未提前90日提出书面续租申请视为乙方放弃续租权，在此期间乙方应配合甲方带领未来租户看房。在同等市场条件下，乙方拥有优先承租权。
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（{{free03}}）合同期满乙方仍使用该房屋，乙方应提前90天通知甲方，双方协商同意后另行签署新的租赁合同；若乙方未提前90日提出书面续租申请视为乙方放弃续租权，在此期间乙方应配合甲方带领未来租户看房。在同等市场条件下，乙方拥有优先承租权。
             <br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第四条  租金和押金</b>
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）乙方按照下列标准向甲方支付租金（以人民币进行结算）：<span v-for="(item,index) in addDate.zujinList">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;{{year(item.startdate)?year(item.startdate):'&nbsp;&nbsp;'}}&nbsp;</u>年
@@ -62,28 +62,31 @@
             <u>&nbsp;{{month(item.enddate)?month(item.enddate):'&nbsp;&nbsp;'}}&nbsp;</u>月
             <u>&nbsp;{{day(item.enddate)?day(item.enddate):'&nbsp;&nbsp;'}}&nbsp;</u>日，租金为￥<u>&nbsp;&nbsp;{{toDecimal(item.yuezujin)?toDecimal(item.yuezujin):'_____'}}&nbsp;&nbsp;</u>元/月（大写：<u>&nbsp;&nbsp;{{daxie(item.yuezujin)?daxie(item.yuezujin):'_____'}}&nbsp;&nbsp;</u>/月）；
         </span>
-        <span v-for="(item,index) in addDate.fukuanFangshiList"
-              :key="index"
-              style="display: inline"
-        >
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）租金支付方式为：
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）租金支付方式为：<br>
+            <span v-for="(item,index) in addDate.fukuanFangshiList"
+                  :key="index"
+                  style="display: inline"
+            >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <u>&nbsp;{{year(item.startdate)?year(item.startdate):'&nbsp;&nbsp;'}}&nbsp;</u>年
             <u>&nbsp;{{month(item.startdate)?month(item.startdate):'&nbsp;&nbsp;'}}&nbsp;</u>月
             <u>&nbsp;{{day(item.startdate)?day(item.startdate):'&nbsp;&nbsp;'}}&nbsp;</u>日至
             <u>&nbsp;{{year(item.enddate)?year(item.enddate):'&nbsp;&nbsp;'}}&nbsp;</u>年
             <u>&nbsp;{{month(item.enddate)?month(item.enddate):'&nbsp;&nbsp;'}}&nbsp;</u>月
             <u>&nbsp;{{day(item.enddate)?day(item.enddate):'&nbsp;&nbsp;'}}&nbsp;</u>日，
-            押 <u>{{item.yajinyue?intToChinese(item.yajinyue):'__'}}</u> 付 <u>{{item.zujinyue?intToChinese(item.zujinyue):'__'}}</u>;
+            押 <u>{{item.yajinyue?intToChinese(item.yajinyue):'__'}}</u> 付 <u>{{item.zujinyue?intToChinese(item.zujinyue):'__'}}</u>;<br>
+            </span>
 
 
 
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：￥ <u>{{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'____'}}</u>元（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yajin)?daxie(addDate.yajin):'________'}}&nbsp;&nbsp;</u>），支付时间为
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、房租押金：￥ <u>{{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'____'}}</u>元（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yajin)?daxie(addDate.yajin):'________'}}&nbsp;&nbsp;</u>），支付时间为
 
             <u>&nbsp;&nbsp;{{year(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>月
             <u>&nbsp;&nbsp;{{day(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>日前。
 
-        </span>
+
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、首期租金：￥ <u>{{toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)>0?toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'_____'}}</u> 元（大写：<u>&nbsp;&nbsp;{{daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)?daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'_____'}}</u>），支付时间为
 
@@ -196,6 +199,10 @@
                 msg02:'丙方提供居间服务等事宜，',
                 msg03:'、丙',
                 msg04:'叁',
+                free01:'及免租期',
+                free02:'二',
+                free03:'三',
+
                 historyBuchong:false,
                 listJieyue:false,
                 hetongtype:1,//合同类型
@@ -439,7 +446,11 @@
             },
             day(riqi){
                 if(riqi!=null){
-                    return new Date(riqi).getDate();
+                    if(new Date(riqi).getDate()+1 <10 ){
+                        return '0'+(new Date(riqi).getDate()+1);
+                    }else{
+                        return new Date(riqi).getDate()+1
+                    }
                 }else{
                     return '';
                 }
@@ -545,6 +556,10 @@
                 this.addDate.mianzufangshi = res.data.data.mianzufangshi;
                 if(res.data.data.mianzuqiList != ''){
                     this.addDate.mianzuqiList = res.data.data.mianzuqiList;
+                    if(!this.addDate.mianzuqiList){
+                        this.free02 = '一';
+                        this.free03 = '二';
+                    }
                 }
                 this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;
                 this.addDate.yajin = res.data.data.yajin;

@@ -93,6 +93,7 @@
                             <!--<el-dropdown-item v-if="ztin(scope.row,[12,13])"><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史补充协议</el-button></el-dropdown-item>-->
                             <el-dropdown-item v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactUpload')"><el-button @click="handleUplod(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactSummary')"><el-button @click="handleSummary(scope.$index, scope.row)">打印核心数据</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,3,4,5])&&fun('saleContactZF')"><el-button @click="handleZuofei(scope.$index, scope.row)">合同作废</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactJGD')"><el-button @click="handleJiaogedan(scope.$index, scope.row)">交割单&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
@@ -169,6 +170,7 @@
         getSaleContractInfo,
         getSaleContractOmc,
         buchongSaleContract,
+        saleContractCancelled,
     } from '../../api/api.js';
     export default {
         data() {
@@ -237,6 +239,24 @@
 
         },
         methods: {
+            //作废
+            handleZuofei(index,row){
+                this.$confirm('确认将合同作废吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    let para = {
+                        id:row.id,
+                    }
+                    purchaseContractCancelled(para).then((res)=>{
+                        this.$message({
+                            message: '设置成功',
+                            type: 'success'
+                        });
+                    });
+                    this.purchaseContractList();
+                })
+
+            },
             //打印核心数据
             handleSummary(index,row){
                 window.open('/#/saleContract/summary?id='+row.id);

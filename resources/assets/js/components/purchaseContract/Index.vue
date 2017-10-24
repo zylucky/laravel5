@@ -94,6 +94,7 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactHD')"><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactSummary')"><el-button @click="handleSummary(scope.$index, scope.row)">打印核心数据</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactJGD')"><el-button @click="handleJiaogedan(scope.$index, scope.row)">交割单</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,3,4,5])&&fun('purchaseContactZF')"><el-button @click="handleZuofei(scope.$index, scope.row)">合同作废</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -171,6 +172,7 @@
         weiYueInfoPurchaseContract,
         weiYueSavePurchaseContract,
         getPurchaseContractInfo,
+        purchaseContractCancelled,
     } from '../../api/api.js';
     export default {
         data() {
@@ -367,6 +369,24 @@
                 approvingPurchaseContract(para).then((res)=>{
                 });
                 this.$router.push('/purchaseContract/review?id='+row.id);
+            },
+            //作废
+            handleZuofei(index,row){
+                this.$confirm('确认将合同作废吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    let para = {
+                        id:row.id,
+                    }
+                    purchaseContractCancelled(para).then((res)=>{
+                        this.$message({
+                            message: '设置成功',
+                            type: 'success'
+                        });
+                    });
+                    this.purchaseContractList();
+                })
+
             },
             //查看
             handleView(index,row){
