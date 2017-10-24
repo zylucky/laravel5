@@ -10,7 +10,7 @@
 
                 <el-col :span="12">
                     <el-form-item >
-                        <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate">
+                        <el-date-picker :disabled="lydisabled" type = "date" placeholder="开始时间" v-model="item.startdate">
                         </el-date-picker>
                     </el-form-item>
                 </el-col>
@@ -30,14 +30,14 @@
                                     };
                                         }, trigger:'blur'}
                                 ]">
-                        <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate" >
+                        <el-date-picker :disabled="lydisabled" type = "date" placeholder="结束时间" v-model="item.enddate" >
                         </el-date-picker>
                     </el-form-item>
                 </el-col>
                 </el-col>
 
                 <!--免方式ddd-->
-                <el-radio-group v-model="item.mianzufangshi">
+                <el-radio-group v-model="item.mianzufangshi" :disabled="lydisabled">
                     <el-radio :label="1">期内免租</el-radio>
                     <el-radio :label="2">期外免租</el-radio>
                 </el-radio-group>
@@ -46,7 +46,7 @@
             </el-form-item>
 
             <el-form-item>
-                <el-button v-show="editVisible"  @click="addFreeItem">新增免租期</el-button>
+                <el-button :disabled="lydisabled" v-show="editVisible"  @click="addFreeItem">新增免租期</el-button>
             </el-form-item>
 
             <!--总租期-->
@@ -644,7 +644,7 @@
             }
             if(this.$route.path=='/purchaseContract/edit'&&this.$route.query.status>=6){
                 this.lydisabled = true;
-                this.editVisible   =false;
+                this.editVisible=false;
             }
 
         }
