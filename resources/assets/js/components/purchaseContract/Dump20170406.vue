@@ -64,10 +64,13 @@
             <br>
         </span>
         &nbsp;（二）租金支付方式为：
+        <br>
         <span v-for="(item,index) in addDate.fukuanFangshiList"
               :key="index"
               style="display:inline"
         >
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
