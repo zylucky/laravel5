@@ -282,7 +282,9 @@
                     if(res.data.code == 200)　{
                         //保存完以后可以得到一个返回的ID
                         //把数据分别赋值给三个组件的变量
-                        this.btnType = false;
+                        if(this.$route.query.status<6){
+                            this.btnType = false;
+                        }
                         this.fuzhi(res);
                         this.saveBtn = false;
                         this.$message({
@@ -446,6 +448,8 @@
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
                 this.addDate.buchongtiaokuan = res.data.data.buchongtiaokuan;
                 this.addDate.zujinList = res.data.data.zujinList;
+                this.addDate.zujinList.sort(function(a,b){
+                    return a.startdate-b.startdate})
                 this.addDate.yanqizujin = res.data.data.yanqizujin;
                 //this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
@@ -504,6 +508,7 @@
             if(this.$route.path=='/purchaseContract/add'){
                 //this.getTiaokuan();
             }
+
             this.getVersion();
         },
 

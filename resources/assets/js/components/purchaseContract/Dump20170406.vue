@@ -559,6 +559,8 @@
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
                 this.addDate.buchongtiaokuan = res.data.data.buchongtiaokuan;
                 this.addDate.zujinList = res.data.data.zujinList;
+                this.addDate.zujinList.sort(function(a,b){
+                    return a.startdate-b.startdate})
                 this.addDate.yanqizujin = res.data.data.yanqizujin;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
                 this.nian = res.data.data.nian;
