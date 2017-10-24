@@ -223,7 +223,7 @@
                     {value:11, label:'合同终止（合同到期）',},
                     {value:12, label:'优化中',},
                     {value:13, label:'已优化，履约中',},
-                    {value:14, label:'作废',},
+                    {value:14, label:'合同作废',},
 
                 ],
                 //分页类数据
@@ -249,7 +249,7 @@
                     let para = {
                         id:row.id,
                     }
-                    purchaseContractCancelled(para).then((res)=>{
+                    saleContractCancelled(para).then((res)=>{
                         this.$message({
                             message: '设置成功',
                             type: 'success'
@@ -343,6 +343,7 @@
                 status[11] = '合同终止（合同到期）';
                 status[12] = '优化中';
                 status[13] = '已优化，履约中';
+                status[14] = '合同作废';
                 return status[row.zhuangtai];
             },
             //时间戳转日期格式
