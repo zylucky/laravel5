@@ -737,7 +737,7 @@ class saleContractController extends Controller
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $id = Input::get('id');
-        $response = $client->request('GET', '/api/contract/sf/'.$id.'/cancelled');
+        $response = $client->request('GET', '/api/contract/xs/'.$id.'/cancelled');
         echo $response->getBody();
     }
 
