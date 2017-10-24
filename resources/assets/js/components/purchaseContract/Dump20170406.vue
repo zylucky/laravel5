@@ -486,9 +486,9 @@
             day(riqi){
                 if(riqi!=null&&riqi!=''){
                     if(new Date(riqi).getDate()+1 <10 ){
-                        return '0'+(new Date(riqi).getDate()+1);
+                        return '0'+(new Date(riqi).getDate());
                     }else{
-                        return new Date(riqi).getDate()+1
+                        return new Date(riqi).getDate()
                     }
                 }else{
                     return '';
