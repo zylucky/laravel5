@@ -255,7 +255,7 @@
                             type: 'success'
                         });
                     });
-                    this.purchaseContractList();
+                    this.saleContractList();
                 })
 
             },
