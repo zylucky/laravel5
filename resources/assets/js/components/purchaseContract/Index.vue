@@ -227,6 +227,7 @@
                     {value:9, label:'优化中',},
                     {value:10, label:'二次优化',},
                     {value:11, label:'已完成',},
+                    {value:12, label:'作废',},
                 ],
                 //分页类数据
                 total:0,

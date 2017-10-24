@@ -223,6 +223,8 @@
                     {value:11, label:'合同终止（合同到期）',},
                     {value:12, label:'优化中',},
                     {value:13, label:'已优化，履约中',},
+                    {value:14, label:'作废',},
+
                 ],
                 //分页类数据
                 total:0,
