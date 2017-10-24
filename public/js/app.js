@@ -55329,6 +55329,7 @@ if (typeof jQuery === 'undefined') {
 
   Tooltip.VERSION  = '3.3.7'
 
+<<<<<<< HEAD
   Tooltip.TRANSITION_DURATION = 150
 
   Tooltip.DEFAULTS = {
@@ -55344,6 +55345,31 @@ if (typeof jQuery === 'undefined') {
     viewport: {
       selector: 'body',
       padding: 0
+=======
+        //移除付款方式
+        removePayItem: function removePayItem(item) {
+            var index = this.addDate.fukuanFangshiList.indexOf(item);
+            if (index !== -1) {
+                this.addDate.fukuanFangshiList.splice(index, 1);
+            }
+        },
+        disabledInput: function disabledInput() {
+            this.editVisible = false;
+        }
+    },
+    mounted: function mounted() {
+        //审核页面input禁用
+        if (this.$route.path == '/saleContract/review') {
+            this.editVisible = false;
+        }
+        if (this.$route.path == '/saleContract/see') {
+            this.editVisible = false;
+        }
+        if (this.$route.path == '/saleContract/edit' && this.$route.query.status >= 6) {
+            this.lydisabled = true;
+            this.editVisible = false;
+        }
+>>>>>>> 88b69d5cf262d3c07e4606741338df2bce1b0517
     }
   }
 
@@ -113303,14 +113329,126 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "span": 20
     }
+<<<<<<< HEAD
   }, [_c('add-property', {
+=======
+  }, [_vm._l((_vm.addDate.mianzuqiList), function(item, index) {
+    return _c('el-form-item', {
+      key: item.key,
+      attrs: {
+        "label": "免租期"
+      }
+    }, [_c('el-col', {
+      staticStyle: {
+        "width": "410px"
+      }
+    }, [_c('el-col', {
+      attrs: {
+        "span": 12
+      }
+    }, [_c('el-form-item', [_c('el-date-picker', {
+      attrs: {
+        "disabled": _vm.lydisabled,
+        "type": "date",
+        "placeholder": "开始时间"
+      },
+      model: {
+        value: (item.startdate),
+        callback: function($$v) {
+          item.startdate = $$v
+        },
+        expression: "item.startdate"
+      }
+    })], 1)], 1), _vm._v(" "), _c('el-col', {
+      attrs: {
+        "span": 12
+      }
+    }, [_c('el-form-item', {
+      attrs: {
+        "prop": 'mianzuqiList.' + index + '.enddate',
+        "rules": [{
+          required: false,
+          validator:
+            function (rule, value, callback) {
+              var d1 = new Date(_vm.addDate.mianzuqiList[index].startdate);
+              var d2 = new Date(value);
+              if (d2 < d1) {
+                callback('结束日期不能小于开始日期');
+              } else {
+                callback();
+              };
+            },
+          trigger: 'blur'
+        }]
+      }
+    }, [_c('el-date-picker', {
+      attrs: {
+        "disabled": _vm.lydisabled,
+        "type": "date",
+        "placeholder": "结束时间"
+      },
+      model: {
+        value: (item.enddate),
+        callback: function($$v) {
+          item.enddate = $$v
+        },
+        expression: "item.enddate"
+      }
+    })], 1)], 1)], 1), _vm._v(" "), _c('el-radio-group', {
+      attrs: {
+        "disabled": _vm.lydisabled
+      },
+      model: {
+        value: (item.mianzufangshi),
+        callback: function($$v) {
+          item.mianzufangshi = $$v
+        },
+        expression: "item.mianzufangshi"
+      }
+    }, [_c('el-radio', {
+      attrs: {
+        "label": 1
+      }
+    }, [_vm._v("期内免租")]), _vm._v(" "), _c('el-radio', {
+      attrs: {
+        "label": 2
+      }
+    }, [_vm._v("期外免租")])], 1), _vm._v(" "), (index > 0) ? _c('el-button', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (_vm.editVisible),
+        expression: "editVisible"
+      }],
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeFreeItem(item)
+        }
+      }
+    }, [_vm._v("删除")]) : _vm._e()], 1)
+  }), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+>>>>>>> 88b69d5cf262d3c07e4606741338df2bce1b0517
     directives: [{
       name: "show",
       rawName: "v-show",
       value: (_vm.stepNum == 1),
       expression: "stepNum==1"
     }],
+<<<<<<< HEAD
     ref: "property",
+=======
+    attrs: {
+      "disabled": _vm.lydisabled
+    },
+    on: {
+      "click": _vm.addFreeItem
+    }
+  }, [_vm._v("新增免租期")])], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    staticStyle: {
+      "width": "550px"
+    },
+>>>>>>> 88b69d5cf262d3c07e4606741338df2bce1b0517
     attrs: {
       "property": _vm.property
     }
@@ -124784,6 +124922,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('el-date-picker', {
       attrs: {
+        "disabled": _vm.lydisabled,
         "type": "date",
         "placeholder": "开始时间"
       },
@@ -124796,6 +124935,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1), _vm._v(" "), _c('el-date-picker', {
       attrs: {
+        "disabled": _vm.lydisabled,
         "type": "date",
         "placeholder": "结束时间"
       },
@@ -124807,6 +124947,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         expression: "item.enddate"
       }
     })], 1), _vm._v(" "), _c('el-radio-group', {
+      attrs: {
+        "disabled": _vm.lydisabled
+      },
       model: {
         value: (item.mianzufangshi),
         callback: function($$v) {
@@ -124829,6 +124972,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         value: (_vm.editVisible),
         expression: "editVisible"
       }],
+      attrs: {
+        "disabled": _vm.lydisabled
+      },
       on: {
         "click": function($event) {
           $event.preventDefault();
@@ -124843,6 +124989,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.editVisible),
       expression: "editVisible"
     }],
+    attrs: {
+      "disabled": _vm.lydisabled
+    },
     on: {
       "click": _vm.addFreeItem
     }
