@@ -64,25 +64,28 @@
             <br>
         </span>
         &nbsp;（二）租金支付方式为：
+        <br>
         <span v-for="(item,index) in addDate.fukuanFangshiList"
               :key="index"
               style="display:inline"
         >
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日
-                押 <u>{{item.yajinyue?intToChinese(item.yajinyue):'__'}}</u> 付 <u>{{item.zujinyue?intToChinese(item.zujinyue):'__'}}</u>;
+                押 <u>{{item.yajinyue?intToChinese(item.yajinyue):'__'}}</u> 付 <u>{{item.zujinyue?intToChinese(item.zujinyue):'__'}}</u>;<br>
 
             </span>
         <br>
         &nbsp;1、房屋押金：<u> ¥ {{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'_____________'}}&nbsp;&nbsp;</u>元，（大写)：<u>{{daxie(addDate.yajin)?daxie(addDate.yajin):'__________'}}&nbsp;&nbsp;
 
-            </u>元整，支付时间为<u>&nbsp;&nbsp;{{year(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>年
-        <u>&nbsp;&nbsp;{{month(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>月
-        <u>&nbsp;&nbsp;{{day(addDate.yajinfukuanriqi)}}&nbsp;&nbsp;</u>日支付;<br>
+            </u>元整，支付时间为<u>&nbsp;&nbsp;{{year(addDate.yajinfukuanri)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{month(addDate.yajinfukuanri)}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{day(addDate.yajinfukuanri)}}&nbsp;&nbsp;</u>日支付;<br>
         &nbsp;2、押金是乙方向甲方支付的合法履约的保证金。租赁期满后5日内甲方退还乙方。<br>
         &nbsp;3、首期租金：¥ {{toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)>0?toDecimal(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'___________'}}元，（大写)：{{daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue)?daxie(addDate.zujinList[0].yuezujin*addDate.fukuanFangshiList[0].zujinyue):'____________'}}支付时间为
         <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
@@ -486,9 +489,9 @@
             day(riqi){
                 if(riqi!=null&&riqi!=''){
                     if(new Date(riqi).getDate()+1 <10 ){
-                        return '0'+(new Date(riqi).getDate()+1);
+                        return '0'+(new Date(riqi).getDate());
                     }else{
-                        return new Date(riqi).getDate()+1
+                        return new Date(riqi).getDate()
                     }
                 }else{
                     return '';

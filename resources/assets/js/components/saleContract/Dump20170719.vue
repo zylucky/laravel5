@@ -28,7 +28,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第三条  租赁期限{{free01}}
         </b>
 
-            <br v-if="addDate.mianzuqiList">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="display: inline;" v-if="addDate.mianzuqiList">（一）甲方承诺在租赁合同期限内给予乙方<input type="text" v-model="da" style="width:70px;">天的免租期。</span>
+            <br v-if="addDate.mianzuqiList.length>0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="display: inline;" v-if="addDate.mianzuqiList.length>0">（一）甲方承诺在租赁合同期限内给予乙方<input type="text" v-model="da" style="width:70px;">天的免租期。</span>
             <span v-if="addDate.mianzuqiList" v-for="(item,index) in addDate.mianzuqiList"
             style="display:inline"
             >自<u>&nbsp;&nbsp;{{year(item.startdate)?year(item.startdate):''}}&nbsp;&nbsp;</u>年
@@ -447,9 +447,9 @@
             day(riqi){
                 if(riqi!=null){
                     if(new Date(riqi).getDate()+1 <10 ){
-                        return '0'+(new Date(riqi).getDate()+1);
+                        return '0'+(new Date(riqi).getDate());
                     }else{
-                        return new Date(riqi).getDate()+1
+                        return new Date(riqi).getDate()
                     }
                 }else{
                     return '';
@@ -554,13 +554,13 @@
                     this.addDate.qianyueDate = res.data.data.qianyueDate;
                 }
                 this.addDate.mianzufangshi = res.data.data.mianzufangshi;
-                if(res.data.data.mianzuqiList != ''){
-                    this.addDate.mianzuqiList = res.data.data.mianzuqiList;
-                    if(!this.addDate.mianzuqiList){
-                        this.free02 = '一';
-                        this.free03 = '二';
-                    }
+                this.addDate.mianzuqiList = res.data.data.mianzuqiList;
+                if(this.addDate.mianzuqiList.length==0){
+                    this.free01 = '';
+                    this.free02 = '一';
+                    this.free03 = '二';
                 }
+
                 this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;
                 this.addDate.yajin = res.data.data.yajin;
                 this.addDate.yingfuzongzujin = res.data.data.yingfuzongzujin;

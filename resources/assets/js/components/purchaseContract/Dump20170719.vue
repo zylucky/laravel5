@@ -78,17 +78,18 @@
         </span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(addDate.yanqizujin)?toDecimal(addDate.yanqizujin):'____'}}&nbsp;&nbsp;</u>元/月）。
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租金的支付方式：
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租金的支付方式：<br>
                 <span v-for="(item,index) in addDate.fukuanFangshiList"
                       :key="index"
                       style="display: inline;"
                 >
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日 <br>
                 每 <u>{{(item.zujinyue?item.zujinyue:'_____')}}</u> 月支付一次。
             </span>
 
@@ -472,9 +473,9 @@
             day(riqi){
                 if(riqi!=null&&riqi!=''){
                     if(new Date(riqi).getDate()+1 <10 ){
-                        return '0'+(new Date(riqi).getDate()+1);
+                        return '0'+(new Date(riqi).getDate());
                     }else{
-                        return new Date(riqi).getDate()+1
+                        return new Date(riqi).getDate()
                     }
                 }else{
                     return '';
