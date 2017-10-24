@@ -575,6 +575,8 @@
                 this.addDate.iscompletefrzj = res.data.data.iscompletefrzj;
                 if(res.data.data.zujinList != ''){
                     this.addDate.zujinList = res.data.data.zujinList;
+                    this.addDate.zujinList.sort(function(a,b){
+                        return a.startdate-b.startdate})
                 }
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;

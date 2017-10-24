@@ -259,7 +259,6 @@
                 }
             },
             save:function () {
-                this.btnType = false;
                 this.saveBtn = true;
                 this.submsg  = '提交';
                     var child_property = this.$refs.property.property;
@@ -279,6 +278,9 @@
                     //console.log(para);
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
+                            if(this.$route.query.status<6){
+                                this.btnType = false;
+                            }
                             this.fuzhi(res);
                             this.saveBtn = false;
                             this.$message({
@@ -434,6 +436,8 @@
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
                 this.addDate.actualrent = res.data.data.actualrent;
                 this.addDate.zujinList = res.data.data.zujinList;
+                this.addDate.zujinList.sort(function(a,b){
+                    return a.startdate-b.startdate})
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.iscompletefrzj = res.data.data.iscompletefrzj;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
