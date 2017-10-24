@@ -380,7 +380,7 @@
                     }
                     purchaseContractCancelled(para).then((res)=>{
                         this.$message({
-                            message: '设置成功',
+                            message: '设置成功!',
                             type: 'success'
                         });
                     });

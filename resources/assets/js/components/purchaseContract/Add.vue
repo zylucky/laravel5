@@ -207,6 +207,7 @@
                         }],
                     jiafangfeiyong:[],
                     yifangfeiyong:[],
+                    yingyezhizhao:'',
                 },
                 tiaoList:[],
 
