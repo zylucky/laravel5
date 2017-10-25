@@ -277,17 +277,17 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="收房日" prop="shoufangdate" >
-                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;" ></el-date-picker>
+                        <el-date-picker :disabled="lydisabled" type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;" ></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="签约日" prop="qianyuedate" >
-                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;" ></el-date-picker>
+                        <el-date-picker :disabled="lydisabled" type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;" ></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="延长期租金">
-                        <el-input placeholder="延长期租金" v-model.number="addDate.yanqizujin" style="width: 100%;"></el-input>
+                        <el-input :disabled="lydisabled" placeholder="延长期租金" v-model.number="addDate.yanqizujin" style="width: 100%;"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -349,7 +349,7 @@
                 </el-checkbox-group>
             </el-form-item>
             <el-form-item label="乙方承担" prop="yifangfeiyong"  >
-                <el-checkbox-group v-model="addDate.yifangfeiyong" @change="changeOnCheck(2)" :disabled="lydisabled">
+                <el-checkbox-group v-model="addDate.yifangfeiyong" @change="changeOnCheck(2)" :disabled="true">
                     <el-checkbox label="（1）供暖费"></el-checkbox>
                     <el-checkbox label="（2）制冷费"></el-checkbox>
                     <el-checkbox label="（3）物业管理费"></el-checkbox>

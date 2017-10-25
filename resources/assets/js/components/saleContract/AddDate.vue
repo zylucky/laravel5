@@ -4,7 +4,7 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="签约日" prop="qianyuedate" >
-                        <el-date-picker type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
+                        <el-date-picker :disabled="lydisabled" type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;"></el-date-picker>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -245,7 +245,7 @@
                 <el-col :span="8">
                     <el-form-item label="合同佣金" prop="hetongyongjin" >
                         <el-input v-model.number="addDate.hetongyongjin"
-                                  placeholder="合同佣金" required></el-input>
+                                  placeholder="合同佣金" :disabled="lydisabled" required></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -327,7 +327,7 @@
             <!--补充条款1111-->
             <el-col :span="24">
                 <el-form-item label="补充条款"  prop="jiafangfeiyong">
-                    <el-input type="textarea" row="5px" v-model="addDate.jiafangfeiyong"></el-input>
+                    <el-input type="textarea" :disabled="lydisabled"  v-model="addDate.jiafangfeiyong"></el-input>
                 </el-form-item>
             </el-col>
         </el-form>
@@ -559,9 +559,10 @@
                this.editVisible   =false;
             }
             if(this.$route.path=='/saleContract/edit'&&this.$route.query.status>=6){
-                this.lydisabled = true;
-                this.editVisible =false;
-     }
+
+                this.editVisible   =false;
+
+            }
         }
     }
 </script>
