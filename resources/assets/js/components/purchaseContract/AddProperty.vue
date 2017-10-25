@@ -415,33 +415,40 @@
                 var fanghao = this.property.officeList[this.property.tabIndex-1].fanghao.split('');
                 var house_no = this.property.officeList[this.property.tabIndex-1].fanghao;
                 var flag = true;
-                this.gzys2 = this.gzys.split('');
-                if(this.gzys.length!=0&&this.gzys.length!=house_no.length){
-                    flag =false;
-                }
+                this.gzys2 = this.gzys.split(';');
+                var count = 0;
                 this.gzys2.forEach((property,index)=>{
-                    if(property=='A'){
-                        if(checkString(house_no[index])){
-                            flag = false;
-                        }
-                    }else if(property=='0') {
-                        if(checknumber((house_no[index]))){
-                            flag = false;
-                        }
-                    } else if(property=='-') {
-                        if(house_no[index]!='-'){
-                            flag = false;
-                        }
-                    }else if(property=='/') {
-                        if(house_no[index]!='/'){
-                            flag = false;
+                    flag = true;
+                    if(property.length!=house_no.length){
+                        flag =false;
+                    }else{
+                        if(property.charAt(index)=='A'){
+                            if(checkString(house_no[index])){
+                                flag = false;
+                            }
+                        }else if(property.charAt(index)=='0') {
+                            if(checknumber((house_no[index]))){
+                                flag = false;
+                            }
+                        } else if(property.charAt(index)=='-') {
+                            if(house_no[index]!='-'){
+                                flag = false;
+                            }
+                        }else if(property.charAt(index)=='/') {
+                            if(house_no[index]!='/'){
+                                flag = false;
+                            }
                         }
                     }
+                    console.log(flag)
+                    if(flag){
+                        count++;
+                    }
+
 
                 })
-                if(flag){
+                if(count>=1){
                     if(this.property.officeList[this.property.tabIndex-1].omcId==null&&this.$route.path=='/purchaseContract/add'){
-
                         let  para = {
                             loupanOmcId:this.property.officeList[this.property.tabIndex-1].loupanOmcId,
                             loudongOmcId:this.property.officeList[this.property.tabIndex-1].loudongOmcId,

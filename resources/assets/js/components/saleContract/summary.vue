@@ -7,7 +7,7 @@
             华溯商贸</u> 【    】级 </p>
         <p style="margin-left: 6%;"> <b>项目房间号</b> <u >{{data.xiangmufangjianhao}}</u> <b style="margin-left:10%;">面积</b> <u>{{data.mianji}}</u> </p>
         <div style="margin-left: 4%;float: left">
-            租赁合同、经办人身份证复印件、公司营业执照复印件、法人身份证附件、委托书元件
+            租赁合同、经办人身份证复印件、公司营业执照复印件、法人身份证附件、委托书原件
             <br>
             <table  style="border-collapse: collapse;">
                 <tr >
