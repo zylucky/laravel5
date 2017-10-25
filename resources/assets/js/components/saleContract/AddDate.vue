@@ -560,12 +560,8 @@
             }
             if(this.$route.path=='/saleContract/edit'&&this.$route.query.status>=6){
                 this.lydisabled = true;
-<<<<<<< HEAD
-                this.editVisible   =false;
-=======
                 this.editVisible =false;
->>>>>>> 88b69d5cf262d3c07e4606741338df2bce1b0517
-            }
+     }
         }
     }
 </script>
