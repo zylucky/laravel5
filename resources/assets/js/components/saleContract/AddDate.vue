@@ -559,7 +559,7 @@
                this.editVisible   =false;
             }
             if(this.$route.path=='/saleContract/edit'&&this.$route.query.status>=6){
-                this.lydisabled = true;
+
                 this.editVisible   =false;
 
             }

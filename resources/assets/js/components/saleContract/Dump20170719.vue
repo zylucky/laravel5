@@ -564,6 +564,8 @@
                 }
 
                 this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;
+                this.addDate.fukuanFangshiList.sort(function(a,b){
+                    return a.startdate-b.startdate})
                 this.addDate.yajin = res.data.data.yajin;
                 this.addDate.yingfuzongzujin = res.data.data.yingfuzongzujin;
                 this.addDate.hetongyongjin = res.data.data.hetongyongjin;
