@@ -343,42 +343,54 @@
             },
             //得到房间号以后，提取OMC的对应信息
             change1(){
-                //楼盘
-                for (var x in this.options1){
-                    if(this.options1[x].label==this.property.officeList[this.property.tabIndex-1].loupanName){
-                        this.property.officeList[this.property.tabIndex-1].loupanOmcId=this.options1[x].value;
-                        this.property.officeList[this.property.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
-                        this.property.officeList[this.property.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
-                        this.property.officeList[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
-                        this.property.officeList[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
+                if(this.$route.path=='/purchaseContract/add') {
+                    //楼盘
+                    for (var x in this.options1){
+                        if(this.options1[x].label==this.property.officeList[this.property.tabIndex-1].loupanName){
+                            this.property.officeList[this.property.tabIndex-1].loupanOmcId=this.options1[x].value;
+                            this.property.officeList[this.property.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
+                            this.property.officeList[this.property.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
+                            this.property.officeList[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                            this.property.officeList[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
+                        }
                     }
+                }else{
+                    return false;
                 }
+
             },
             change2(){
-                //楼栋
-                for (var x in this.options2){
-                    if(this.options2[x].label==this.property.officeList[this.property.tabIndex-1].loudongName){
-                        this.property.officeList[this.property.tabIndex-1].loudongOmcId=this.options2[x].value;
-                        this.property.officeList[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
-                        this.property.officeList[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
+                if(this.$route.path=='/purchaseContract/add') {
+                    //楼栋
+                    for (var x in this.options2){
+                        if(this.options2[x].label==this.property.officeList[this.property.tabIndex-1].loudongName){
+                            this.property.officeList[this.property.tabIndex-1].loudongOmcId=this.options2[x].value;
+                            this.property.officeList[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                            this.property.officeList[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
+                        }
                     }
+                    //get rules of building
+                    let para ={
+                        loudongOmcId:this.property.officeList[this.property.tabIndex-1].loudongOmcId,
+                    }
+                    getLoudongRules(para).then((res)=>{
+                        this.$notify({
+                            title: '提示',
+                            message: '创建房间号的规则为'+res.data.data.gzys+'(0代表数字，A代表字母)',
+                            duration: 0
+                        });
+                        this.gzys = res.data.data.gzys;
+                    })
+                }else{
+                    return false;
                 }
-                //get rules of building
-                let para ={
-                    loudongOmcId:this.property.officeList[this.property.tabIndex-1].loudongOmcId,
-                }
-                getLoudongRules(para).then((res)=>{
-                    this.$notify({
-                        title: '提示',
-                        message: '创建房间号的规则为'+res.data.data.gzys+'(0代表数字，A代表字母)',
-                        duration: 0
-                    });
-                    this.gzys = res.data.data.gzys;
-                })
+
             },
             change3(){
                 if(this.$route.path=='/purchaseContract/add') {
                     this.property.officeList[this.property.tabIndex-1].omcId=null;
+                }else{
+                    return false;
                 }
                 //房号
                 for (var x in this.options3){
@@ -412,7 +424,6 @@
                     }
                     return false;
                 }
-                var fanghao = this.property.officeList[this.property.tabIndex-1].fanghao.split('');
                 var house_no = this.property.officeList[this.property.tabIndex-1].fanghao;
                 var flag = true;
                 this.gzys2 = this.gzys.split(';');
@@ -440,12 +451,9 @@
                             }
                         }
                     }
-                    console.log(flag)
                     if(flag){
                         count++;
                     }
-
-
                 })
                 if(count>=1){
                     if(this.property.officeList[this.property.tabIndex-1].omcId==null&&this.$route.path=='/purchaseContract/add'){
