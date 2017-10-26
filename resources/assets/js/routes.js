@@ -74,7 +74,7 @@ import PayableRecord from "./components/payable/payableRecordList.vue";
 import Payable from "./components/payable/payableList.vue";
 import FinancePayable from "./components/payable/financePayableList.vue";
 import PayOrder from "./components/payable/payorder.vue" ;
-
+import ShoufangReport from "./components/report/Index.vue" ;
 //消息管理
 import MessageList from "./components/message/Index.vue";
 
@@ -317,6 +317,17 @@ let routes = [
         component: PayOrder,
         name: '支付凭证',
         hidden: true
+    },
+    {
+        path: '/',
+        component: navigation,
+        name: '报表',
+        iconCls: 'el-icon-document',//图标样式class
+        hidden:false,
+        children: [
+            {path:'/shoufangReport', component: ShoufangReport, name: '收房明细', hidden: false},
+        ]
+
     },
 
 
