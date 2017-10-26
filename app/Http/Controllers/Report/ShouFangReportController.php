@@ -30,18 +30,18 @@ class ShouFangReportController extends Controller
         $limitStart=($page-1)*$pageSize;
         $limitEnd = $pageSize;
 
-        $sql="select * from v_sf where 1=1 ";
-
+        $sql="select * from v_sf ";
+        $strWhere=" where 1=1 ";
         if(!empty($startdate)){
-            $sql=$sql."and QianyueDate>='".$startdate  ;
+            $strWhere=$strWhere." and QianyueDate>='".$startdate."'"  ;
 
         }
         if(!empty($enddate)){
-            $sql=$sql."and QianyueDate<='".$enddate  ;
+            $strWhere=$strWhere." and QianyueDate<='".$enddate."'"  ;
 
         }
-        $count =  DB::connection('mysql2')->select("select count(*) as countNum from v_sf where 1=1 ") ;
-        $sql=$sql."order by QianyueDate desc limit ".$limitStart.", ".$limitEnd;
+        $count =  DB::connection('mysql2')->select("select count(*) as countNum from v_sf ".$strWhere) ;
+        $sql=$sql.$strWhere." order by QianyueDate desc limit ".$limitStart.", ".$limitEnd;
         $bk = DB::connection('mysql2')->select($sql);
         return $data = ['total'=>$count[0]->countNum,'data'=>$bk];
     }
@@ -121,20 +121,18 @@ class ShouFangReportController extends Controller
         $enddate = Input::get('enddate');
         $sql="select * from v_sf where 1=1 ";
         if(!empty($startdate)){
-            $sql=$sql."and QianyueDate>='".$startdate  ;
+            $sql=$sql." and QianyueDate>='".$startdate."'"  ;
         }
         if(!empty($enddate)){
-            $sql=$sql."and QianyueDate<='".$enddate  ;
-
+            $sql=$sql." and QianyueDate<='".$enddate."'"  ;
         }
-        $sql=$sql."order by QianyueDate ";
+        $sql=$sql." order by QianyueDate desc";
         try{
         $bk = DB::connection('mysql2')->select($sql);
         $cellData= $this->objToArray($bk);
         if(count($cellData)>0){
-        $headerData=['公司名称','业务区域','公司详细地址','项目名称','公司规模','公司成立时间','主做区域','是否有过合作','合作次数',
-            '是否签署协议','签署协议时间','合作协议等级','幼狮联系人1','幼狮联系人2','幼狮联系人3','法人姓名','法人联系方式','负责人姓名',
-            '负责人联系方式','佣金类型','收房佣金占比','出房用尽占比','公司经营属性','服务对象'];
+        $headerData=['区域','分区','产品类型','用友编号','楼盘','楼栋','房间号','面积','收房单价（元/㎡/天）',
+            '收房月租金','收房免租天数','收房签约年限','签约年限','收房免租期','收房签约日期'];
         array_unshift($cellData,$headerData);
         //dd($cellData);
         Excel::create('收购'.date("YmdHis"),function($excel) use ($cellData){
