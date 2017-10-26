@@ -67,7 +67,7 @@ class UserController extends Controller
         $user->name = $input['name'];
         //$user->password = bcrypt('secret');
         $user->email = $input['email'];
-        $user->phone = $input['phone'];
+        $user->phone = isset($input['phone'])?$input['phone']:'';
         $user->sex = $input['sex'];
         if($user->save()){
             return [

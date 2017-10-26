@@ -12,12 +12,12 @@
                 v-for="(item,index) in property.officeList"
                 :key="index"
         >
-       &nbsp;（一）房屋坐落于北京市<u>{{item.weizhi?item.weizhi:'___________________________'}}</u>,承租区域建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'________'}}</u>平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<u>{{item.qianyuemianji?item.qianyuemianji:'_______'}}</u>平方米。<br>
-        &nbsp;（二）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'____________________'}}</u>，房屋所有权人姓名或名称
+       &nbsp;（{{daxie2(2*index)}}）房屋坐落于北京市<u>{{item.weizhi?item.weizhi:'___________________________'}}</u>,承租区域建筑面积<u>{{item.jianzhumianji?item.jianzhumianji:'________'}}</u>平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<u>{{item.qianyuemianji?item.qianyuemianji:'_______'}}</u>平方米。<br>
+        &nbsp;（{{daxie2(index*2+1)}}）房屋权属状况：甲方持有（口 房屋所有权证/口 房屋买卖合同/口 商品房预售合同/口 二手房网签合同/口 其它房屋证明文件）,房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'____________________'}}</u>，房屋所有权人姓名或名称
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
                 <u>{{item.name?item.name:'___________'}}</u>
             </span>房屋（
-        口是/口否）已设定了抵押。甲方保证出租的房屋权属无瑕疵、无债务纠纷，房屋设施符合出租条件。<br><br>
+        口是/口否）已设定了抵押。甲方保证出租的房屋权属无瑕疵、无债务纠纷，房屋设施符合出租条件。<br v-if="property.officeList.length ==index+1"><br v-if="property.officeList.length ==index+1">
          </span>
         <b>&nbsp;&nbsp; 第二条  房屋租赁情况</b><br>
         &nbsp;&nbsp;租赁用途：<u> 办公 </u>，甲方应当协助乙方（或实际使用人）办理营业证照。<br>
@@ -466,7 +466,8 @@
                 return chineseStr;
             },
             daxie2(number){
-                let arr = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
+                let arr = [ '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+                return arr[number];
             },
             year(riqi){
                 if(riqi!=null&&riqi!=''){

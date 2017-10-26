@@ -13,8 +13,9 @@
                 :key="index"
                 style="display:inline;"
         >
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:50px;">区（县）<u>{{item.weizhi}}</u> ，承租区域建筑面积<input type="text"  style="width:50px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:50px;" v-model="item.qianyuemianji">平方米，产权证编号： <u>{{item.chanquanzhenghao?item.chanquanzhenghao:'___________________________________'}}</u>  。
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。<br>
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（{{daxie2(index)}}）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:50px;">区（县）<u>{{item.weizhi}}</u> ，承租区域建筑面积<input type="text"  style="width:50px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:50px;" v-model="item.qianyuemianji">平方米，产权证编号： <u>{{item.chanquanzhenghao?item.chanquanzhenghao:'___________________________________'}}</u>  。
+        </span>
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（{{daxie2(property.xsOffice.length)}}）甲方保证出租的房屋权属证明真实有效，房屋设施符合出租条件。<br>
         <b>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二条  房屋租赁情况
         </b>
@@ -22,7 +23,7 @@
             <input type="text" style="width: 70px;" value="办公">，房屋性质
             <input type="text" style="width: 70px;" value="商品房">
             ，根据房产性质及政府相关规定可以进行工商注册的房屋，甲方向乙方提供业主身份证及房屋所有权证复印件，乙方自行到相关部门办理工商注册事宜，并由乙方自行承担注册不成功之风险。
-        </span>
+
             <br>
         <b>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第三条  租赁期限{{free01}}
@@ -424,7 +425,8 @@
                 return chineseStr;
             },
             daxie2(number){
-                let arr = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
+                let arr = [ '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+                return arr[number];
             },
             year(riqi){
                 if(riqi!=null){
