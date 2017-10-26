@@ -47,8 +47,8 @@
                 </el-form-item>
                 <el-form-item label="性别" prop="sex">
                     <el-radio-group v-model="editForm.sex">
-                        <el-radio class="radio" :label=1>男</el-radio>
-                        <el-radio class="radio" :label=2>女</el-radio>
+                        <el-radio class="radio" label="1">男</el-radio>
+                        <el-radio class="radio" label="2">女</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="用户名" prop="email">
@@ -71,8 +71,8 @@
                 </el-form-item>
                 <el-form-item label="性别" prop="sex">
                     <el-radio-group v-model="addForm.sex">
-                        <el-radio class="radio" :label="'1'">男</el-radio>
-                        <el-radio class="radio" :label="'2'">女</el-radio>
+                        <el-radio class="radio" label="1">男</el-radio>
+                        <el-radio class="radio" label="2">女</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="用户名" prop="email">
@@ -159,7 +159,7 @@
                 editForm: {
                     id: 0,
                     name: '',
-                    sex: 1,
+                    sex: '',
                     email: '',
                     phone: '',
                     addr: ''
@@ -181,7 +181,7 @@
                 //新增界面数据
                 addForm: {
                     name: '',
-                    sex: 1,
+                    sex: '',
                     email: '',
                     phone: '',
                     addr: ''
@@ -323,7 +323,7 @@
                 this.addFormVisible = true;
                 this.addForm = {
                     name: '',
-                    sex: 0,
+                    sex: '',
                     email: '',
                     phone: '',
                     addr: ''
