@@ -327,7 +327,7 @@
             <!--补充条款1111-->
             <el-col :span="24">
                 <el-form-item label="补充条款"  prop="jiafangfeiyong">
-                    <el-input type="textarea" :disabled="lydisabled"  v-model="addDate.jiafangfeiyong"></el-input>
+                    <el-input type="textarea" :rows="12" :disabled="lydisabled"  v-model="addDate.jiafangfeiyong"></el-input>
                 </el-form-item>
             </el-col>
         </el-form>

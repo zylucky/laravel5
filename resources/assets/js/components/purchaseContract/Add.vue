@@ -264,10 +264,8 @@
                 this.saveBtn = true;
                     var child_property = this.$refs.property.property;//
                     var child_owner  = this.$refs.owner.owner;//业主信息
+                    this.addDate.yingyezhizhao = this.addDate.yingyezhizhao.replace(/\n|\r\n/g,"<br>");
                     var child_date = this.$refs.date.addDate;//日期
-//                    var tiaokuan = {
-//                        tiaoList:this.$refs.tiaokuan.tiaoList,
-//                    };//条款
                     var id = {
                        id: this.id
                     };
@@ -456,7 +454,11 @@
                 //this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
                 this.addDate.yifangfeiyong = res.data.data.yifangfeiyong;
-                this.addDate.yingyezhizhao = res.data.data.yingyezhizhao;
+                var reg=new RegExp("<br>","g"); //创建正则RegExp对象
+                this.addDate.yingyezhizhao = res.data.data.yingyezhizhao.replace(reg,"\n");
+
+
+
                 //给条款的每一条数据都添加一个属性字段show
                 for (let x in res.data.data.tiaoList){
                     res.data.data.tiaoList[x].show = false;

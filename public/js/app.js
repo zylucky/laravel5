@@ -40002,10 +40002,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.saveBtn = true;
             var child_property = this.$refs.property.property; //
             var child_owner = this.$refs.owner.owner; //业主信息
+            this.addDate.yingyezhizhao = this.addDate.yingyezhizhao.replace(/\n|\r\n/g, "<br>");
             var child_date = this.$refs.date.addDate; //日期
-            //                    var tiaokuan = {
-            //                        tiaoList:this.$refs.tiaokuan.tiaoList,
-            //                    };//条款
             var id = {
                 id: this.id
             };
@@ -40206,7 +40204,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //this.addDate.checkList = res.data.data.checkList;
             this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
             this.addDate.yifangfeiyong = res.data.data.yifangfeiyong;
-            this.addDate.yingyezhizhao = res.data.data.yingyezhizhao;
+            var reg = new RegExp("<br>", "g"); //创建正则RegExp对象
+            this.addDate.yingyezhizhao = res.data.data.yingyezhizhao.replace(reg, "\n");
+
             //给条款的每一条数据都添加一个属性字段show
             for (var x in res.data.data.tiaoList) {
                 res.data.data.tiaoList[x].show = false;
@@ -42731,6 +42731,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (res.data.code == '200') {
                     //把数据分别赋值给三个组件的变量
                     _this.buchongtiaokuan = res.data.data.yingyezhizhao;
+                    console.log(_this.buchongtiaokuan);
                     _this.farenzhengjian = res.data.data.farenzhengjian;
                     _this.jujianfang = res.data.data.jujianfang;
                 } else {
@@ -49550,6 +49551,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.submsg = '提交';
             var child_property = this.$refs.property.property;
             var child_renter = this.$refs.renter.renter;
+            this.addDate.jiafangfeiyong = this.addDate.jiafangfeiyong.replace(/\n|\r\n/g, "<br>");
             var child_date = this.$refs.date.addDate;
             var id = {
                 id: this.id
@@ -49561,8 +49563,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 version: this.contractVersion
             };
             var para = Object.assign({}, child_property, child_renter, child_date, id, bianhao, version);
-            //alert(para);
-            //console.log(para);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__api_api__["_47" /* addSaleContractInfo */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     if (_this3.$route.query.status < 6) {
@@ -49741,7 +49741,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             this.addDate.checkList = res.data.data.checkList;
             this.addDate.iscompletefrzj = res.data.data.iscompletefrzj;
-            this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+            var reg = new RegExp("<br>", "g"); //创建正则RegExp对象
+            this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong.replace(reg, "\n");
 
             //console.log(res.data.data);
         },
@@ -115970,7 +115971,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-input', {
     attrs: {
       "type": "textarea",
-      "row": "5px"
+      "rows": 12
     },
     model: {
       value: (_vm.addDate.yingyezhizhao),
@@ -119702,7 +119703,11 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "whole"
-  }, [_c('p', [_c('b', [_vm._v("  第十四条  补充条款")]), _vm._v(" "), _c('br'), _vm._v("\n          以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。"), _c('br'), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.buchongtiaokuan))]), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.buchongtiaokuan == null || _vm.yingyezhizhao == '') ? _c('input', {
+  }, [_c('p', [_c('b', [_vm._v("  第十四条  补充条款")]), _vm._v(" "), _c('br'), _vm._v("\n          以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。"), _c('br'), _vm._v(" "), _c('u', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.buchongtiaokuan)
+    }
+  }), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.buchongtiaokuan == null || _vm.buchongtiaokuan == '') ? _c('input', {
     staticStyle: {
       "width": "600px"
     },
@@ -126320,7 +126325,11 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('p', [_c('b', [_vm._v("  第十二条  补充条款")]), _vm._v(" "), _c('br'), _vm._v("\n          以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。"), _c('br'), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.buchongtiaokuan))]), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.buchongtiaokuan == null || _vm.iscompletefrzj == '') ? _c('input', {
+  return _c('div', [_c('p', [_c('b', [_vm._v("  第十二条  补充条款")]), _vm._v(" "), _c('br'), _vm._v("\n          以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。"), _c('br'), _vm._v(" "), _c('u', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.buchongtiaokuan)
+    }
+  }), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.buchongtiaokuan == null || _vm.iscompletefrzj == '') ? _c('input', {
     staticStyle: {
       "width": "600px"
     },
@@ -127747,6 +127756,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-input', {
     attrs: {
       "type": "textarea",
+      "rows": 12,
       "disabled": _vm.lydisabled
     },
     model: {
@@ -135679,7 +135689,11 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "whole"
-  }, [_c('p', [_c('b', [_vm._v("  第十四条  补充条款")]), _vm._v(" "), _c('br'), _vm._v("\n          以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。"), _c('br'), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.buchongtiaokuan))]), _vm._v(" "), (_vm.buchongtiaokuan == null || _vm.yingyezhizhao == '') ? _c('input', {
+  }, [_c('p', [_c('b', [_vm._v("  第十四条  补充条款")]), _vm._v(" "), _c('br'), _vm._v("\n          以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。"), _c('br'), _vm._v(" "), _c('u', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.buchongtiaokuan)
+    }
+  }), _vm._v(" "), (_vm.buchongtiaokuan == null || _vm.buchongtiaokuan == '') ? _c('input', {
     staticStyle: {
       "width": "600px"
     },
