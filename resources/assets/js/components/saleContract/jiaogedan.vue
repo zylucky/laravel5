@@ -101,12 +101,15 @@
                 return isJPG && isLt2M;
             },
             handleRemove(file, fileList) {
-                let para ={
-                    id :file.id,
-                }
-                copySaleImageDelete(para).then((res)=>{
+                this.$confirm('确认删除吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    let para ={
+                        id :file.id,
+                    }
+                    copySaleImageDelete(para).then((res)=>{});
+                })
 
-                });
                 //console.log(file.id);
             },
             handlePictureCardPreview(file) {
