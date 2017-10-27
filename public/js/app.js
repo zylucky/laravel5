@@ -46584,6 +46584,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.data = res.data.data;
                 console.log(_this.data);
             });
+        },
+        format: function format(zujinzhifufangshi) {
+            return zujinzhifufangshi.replace(/押2/, '');
         }
     },
     mounted: function mounted() {
@@ -55621,6 +55624,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.data = res.data.data;
                 console.log(_this.data);
             });
+        },
+        format: function format(zujinzhifufangshi) {
+            return zujinzhifufangshi.replace(/押2/, '');
         }
     },
     mounted: function mounted() {
@@ -121325,7 +121331,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("面积")]), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.data.mianji))])]), _vm._v(" "), _c('div', {
     staticStyle: {
-      "margin-left": "4%",
+      "margin-left": "8px",
       "float": "left"
     }
   }, [_vm._v("\n        租赁合同、经办人身份证复印件、公司营业执照复印件、法人身份证附件、委托书原件\n        "), _c('br'), _vm._v(" "), _c('table', {
@@ -121454,7 +121460,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "align": "center"
     }
-  }, [_vm._v(_vm._s(_vm.data.zujingzhifufangshi))])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v(_vm._s(_vm.format(_vm.data.zujingzhifufangshi)))])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
       "height": "20"
@@ -121643,9 +121649,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }), _vm._v(" "), _c('td', {
       attrs: {
+        "align": "center",
         "height": "20"
       }
-    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
   }), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._l((_vm.data.zjProofs), function(item, index) {
     return _c('tr', [_c('td', {
       staticStyle: {
@@ -121653,9 +121672,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c('td', {
       attrs: {
+        "align": "center",
         "height": "20"
       }
-    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
   }), _vm._m(2), _vm._m(3), _vm._m(4), _vm._m(5)], 2)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', [_c('td', {
@@ -123340,11 +123372,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('b', [_vm._v("项目房间号")]), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.data.xiangmufangjianhao))]), _vm._v(" "), _c('b', {
     staticStyle: {
-      "margin-left": "10%"
+      "margin-left": "50%"
     }
   }, [_vm._v("面积")]), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.data.mianji))])]), _vm._v(" "), _c('div', {
     staticStyle: {
-      "margin-left": "4%",
+      "margin-left": "8px",
       "float": "left"
     }
   }, [_c('input', {
@@ -123574,7 +123606,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "border": "0"
     }
-  }, [_vm._v("规划用途:" + _vm._s(_vm.yongtu(_vm.data.guihuayongtu)))])]), _vm._v(" "), _c('tr', [_c('th', {
+  }, [_c('b', [_vm._v("规划用途")]), _vm._v(":" + _vm._s(_vm.yongtu(_vm.data.guihuayongtu)))])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
       "height": "20",
       "align": "left"
@@ -123612,7 +123644,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "border": "0"
     }
-  }, [_vm._v("佣金:" + _vm._s(_vm.toDecimal(_vm.data.yongjin)) + "元")])]), _vm._v(" "), _c('tr', [_c('th', {
+  }, [_c('b', [_vm._v("佣金")]), _vm._v(":" + _vm._s(_vm.toDecimal(_vm.data.yongjin)) + "元")])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
       "height": "20",
       "align": "left"
@@ -123671,7 +123703,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "align": "center"
     }
-  }, [_vm._v(_vm._s(_vm.data.zujingzhifufangshi))])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v(_vm._s(_vm.format(_vm.data.zujingzhifufangshi)))])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
       "height": "20"
@@ -123685,7 +123717,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "border": "0"
     }
-  }, [_vm._v("业务：" + _vm._s(_vm.data.yewu))])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_c('b', [_vm._v("业务")]), _vm._v("：" + _vm._s(_vm.data.yewu))])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
       "height": "20"
@@ -123819,15 +123851,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v("发票\n                ")])]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "height": "100",
-      "colspan": "4"
-    },
-    domProps: {
-      "innerHTML": _vm._s(_vm.data.buchongtiaokuan)
-    }
-  })])]), _vm._v(" "), _c('table', {
+  }), _vm._v("发票\n                ")])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('table', {
     staticStyle: {
       "border-collapse": "collapse",
       "margin-left": "-15px"
@@ -123847,7 +123871,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("付款科目")]), _vm._v(" "), _c('td', {
     attrs: {
-      "width": "200"
+      "width": "200",
+      "align": "center"
     }
   }, [_vm._v("付款周期")]), _vm._v(" "), _c('td', {
     attrs: {
@@ -123861,27 +123886,53 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "border": "0"
     }
-  }, [_vm._v("签约日:" + _vm._s(_vm.changeDate(_vm.data.qianyueri)))])]), _vm._v(" "), _vm._l((_vm.data.yjProofs), function(item, index) {
+  }, [_c('b', [_vm._v("签约日")]), _vm._v(":" + _vm._s(_vm.changeDate(_vm.data.qianyueri)))])]), _vm._v(" "), _vm._l((_vm.data.yjProofs), function(item, index) {
     return _c('tr', [_c('td', {
       staticStyle: {
         "border": "0"
       }
     }), _vm._v(" "), _c('td', {
       attrs: {
-        "height": "20"
+        "height": "20",
+        "align": "center"
       }
-    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
-  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._l((_vm.data.zjProofs), function(item, index) {
+    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+  }), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._l((_vm.data.zjProofs), function(item, index) {
     return _c('tr', [_c('td', {
       staticStyle: {
         "border": "0"
       }
     }, [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c('td', {
       attrs: {
-        "height": "20"
+        "height": "20",
+        "align": "center"
       }
-    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
-  }), _vm._m(2), _vm._m(3), _vm._m(4), _vm._m(5)], 2)])])
+    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+  }), _vm._m(3), _vm._m(4), _vm._m(5), _vm._m(6)], 2)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', {
     staticStyle: {
@@ -123889,6 +123940,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "font-size": "17px"
     }
   }, [_c('u', [_vm._v("房屋资产管理服务合同     管理方：幼狮科技")]), _vm._v(" 【    】级 ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', [_c('td', {
+    attrs: {
+      "height": "100",
+      "colspan": "4"
+    }
+  })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', [_c('td', {
     staticStyle: {

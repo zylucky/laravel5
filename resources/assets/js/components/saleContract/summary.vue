@@ -6,7 +6,7 @@
             <input type="checkbox" v-model="data.huashuoshangmao">
             华溯商贸</u> 【    】级 </p>
         <p style="margin-left: 6%;"> <b>项目房间号</b> <u >{{data.xiangmufangjianhao}}</u> <b style="margin-left:10%;">面积</b> <u>{{data.mianji}}</u> </p>
-        <div style="margin-left: 4%;float: left">
+        <div style="margin-left: 8px;float: left">
             租赁合同、经办人身份证复印件、公司营业执照复印件、法人身份证附件、委托书原件
             <br>
             <table  style="border-collapse: collapse;">
@@ -50,7 +50,7 @@
                 <tr>
                     <td  align="center" height="20"></td>
                     <th align="left">租金支付方式</th>
-                    <td align="center">{{data.zujingzhifufangshi}}</td>
+                    <td align="center">{{format(data.zujingzhifufangshi)}}</td>
                 </tr>
                 <tr>
                     <td  align="center" height="20"></td>
@@ -83,10 +83,10 @@
 
                 <tr v-for="(item,index) in data.yjProofs">
                     <td style="border:0 "></td>
-                    <td height="20">{{changeDate(item.fukuanri)}}</td>
-                    <td>{{item.fukuankemu}}</td>
-                    <td>{{item.fukuanzhouqi}}</td>
-                    <td>{{toDecimal(item.fukuanjine)}}元</td>
+                    <td align="center" height="20">{{changeDate(item.fukuanri)}}</td>
+                    <td align="center">{{item.fukuankemu}}</td>
+                    <td align="center">{{item.fukuanzhouqi}}</td>
+                    <td align="center">{{toDecimal(item.fukuanjine)}}元</td>
                     <td>{{item.beizhu}}</td>
                 </tr>
                 <tr>
@@ -100,10 +100,10 @@
                 </tr>
                 <tr v-for="(item,index) in data.zjProofs">
                     <td style="border:0 ">{{index+1}}</td>
-                    <td height="20">{{changeDate(item.fukuanri)}}</td>
-                    <td>{{item.fukuankemu}}</td>
-                    <td>{{item.fukuanzhouqi}}</td>
-                    <td>{{toDecimal(item.fukuanjine)}}元</td>
+                    <td align="center" height="20">{{changeDate(item.fukuanri)}}</td>
+                    <td align="center" >{{item.fukuankemu}}</td>
+                    <td align="center">{{item.fukuanzhouqi}}</td>
+                    <td align="center">{{toDecimal(item.fukuanjine)}}元</td>
                     <td>{{item.beizhu}}</td>
                 </tr><tr>
                 <td style="border:0 "></td>
@@ -202,6 +202,9 @@
                     console.log(this.data)
 
                 });
+            },
+            format(zujinzhifufangshi){
+                return zujinzhifufangshi.replace(/押2/,'');
             }
         },
         mounted(){
