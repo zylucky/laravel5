@@ -33,7 +33,7 @@
             <el-table-column prop="qianyuedate" label="签约日" :formatter="changeDate"  sortable>
             </el-table-column>
                <el-table-column label="操作" width="140">
-                    <template scope="scope">
+                    <template slot-scope="scope">
                         <el-dropdown   menu-align="start">
                             <el-button type="primary" size="normal" splitButton="true">
                                 操作<i class="el-icon-caret-bottom el-icon--right"></i>

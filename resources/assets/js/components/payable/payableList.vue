@@ -47,7 +47,7 @@
                 <el-table-column prop="monthmoney" label="月租金" width="80" >
                 </el-table-column>
                 <el-table-column prop="fkdate" label="付款日期" width="120"   >
-                    <template scope="scope">
+                    <template slot-scope="scope">
                         <span :class="tableClassName(scope.row.fkdate,scope.row.fkstate)">  {{ changeDate(scope.row.fkdate) }}</span>
                     </template>
                 </el-table-column>
@@ -66,7 +66,7 @@
                 <el-table-column prop="fkstate" label="支付状态"  :formatter="formatState"  width="95">
                 </el-table-column>
                 <el-table-column label="操作" width="120">
-                       <template scope="scope">
+                       <template slot-scope="scope">
                            <el-dropdown   menu-align="start">
                                <el-button type="primary" size="normal" splitButton="true">
                                    操作<i class="el-icon-caret-bottom el-icon--right"></i>

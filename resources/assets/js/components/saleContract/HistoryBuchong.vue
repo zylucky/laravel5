@@ -3,7 +3,7 @@
         <!--列表页-->
         <el-table :data="youhuaList" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="expand">
-                <template scope="props">
+                <template slot-scope="scope">
                     <el-form label-position="left" inline class="demo-table-expand">
                         <el-form-item label="协议生效时间">
                             <span>{{ changedate(props.row.xieyistartdate)  }}</span>

@@ -16,7 +16,7 @@
             <el-table-column prop="xinxishifouzhunque" label="信息是否准确" :formatter="changezq" >
             </el-table-column>
             <el-table-column   type="expand">
-                       <template scope="props">
+                       <template slot-scope="scope">
                            <el-form label-position="left" inline class="demo-table-expand">
                                <el-form-item label="跟进内容：">
                                    <span>{{ props.row.shuoming }}</span>

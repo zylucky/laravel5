@@ -82,7 +82,7 @@
             <el-table-column prop="wanchengdu" label="信息完整度"  >
             </el-table-column>
             <el-table-column prop="zhuangtai" label="渠道状态"  >
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-switch
                             v-model="scope.row.zhuangtai"
                             on-color="#13ce66"
@@ -95,7 +95,7 @@
                 </template>
             </el-table-column>
             <el-table-column label="操作" width="150">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-dropdown   menu-align="start">
                         <el-button type="primary" size="normal" splitButton="true">
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>

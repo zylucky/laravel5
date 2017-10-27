@@ -3,7 +3,7 @@
     <el-row >
         <el-table :data="PayableRecord" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="expand">
-                <template scope="props">
+                <template slot-scope="scope">
                     <el-form label-position="left" inline class="demo-table-expand">
                         <el-form-item label="备注：">
                             <span>{{props.row.beizhu}}</span>
@@ -30,7 +30,7 @@
             <el-table-column prop="" label="收款银行及账号"   width="200" :formatter="formatskyh">
             </el-table-column>
             <el-table-column label="操作" width="150">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-button   @click="handleDump(scope.$index, scope.row)">打印凭证</el-button>
                 </template>
             </el-table-column>

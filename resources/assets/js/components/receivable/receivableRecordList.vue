@@ -21,7 +21,7 @@
             <el-table-column   label="付款银行及账号"   width="200" :formatter="formatskyh">
             </el-table-column>
             <el-table-column label="操作" width="150">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-button v-if="fun('cancelClaim')"  @click="handleRokeBack(scope.$index, scope.row)">取消认领</el-button>
                 </template>
             </el-table-column>

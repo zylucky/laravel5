@@ -38,7 +38,7 @@
             <el-table-column prop="createtime" label="版本创建时间" :formatter="changeDate" sortable>
             </el-table-column>
             <el-table-column prop="enabled" label="版本状态"  sortable>
-                <template scope="scope">
+                <template slot-scope="scope">
                 <el-switch
                         v-model="scope.row.enabled"
                         on-color="#13ce66"
@@ -51,7 +51,7 @@
                 </template>
             </el-table-column>
             <el-table-column label="操作" >
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-button v-if="fun('versionView')" type="small" size="small" @click="preview(scope.$index, scope.row)">查看</el-button>
                 </template>
             </el-table-column>
