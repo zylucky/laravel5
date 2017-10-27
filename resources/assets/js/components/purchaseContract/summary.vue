@@ -69,7 +69,7 @@
                     </th>
                 </tr>
                 <tr>
-                    <td  height="100" colspan="4" ></td>
+                    <td  height="100" colspan="4" v-html="data.buchongtiaokuan" ></td>
                 </tr>
             </table>
         <table   style="border-collapse: collapse;margin-left:-15px; ">
