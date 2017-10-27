@@ -87,7 +87,6 @@ class purchaseContractController extends Controller
             $data['yingyezhizhao'] = '';
         }
 
-
         $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
         $data['yifangfeiyong'] = implode(',',$data['yifangfeiyong']);
         $response = $client->request('POST', '/api/contract/sf/save', [
