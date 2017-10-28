@@ -52833,7 +52833,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 leaderpersonnelname: row.leaderpersonnelname,
                 departmentname: row.departmentname
             };
-            //alert(22);
+            //alert(22);2222222
             //console.log(para);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_34" /* hedanUpdataSaleContract */])(para).then(function (res) {
                 if (res.data.code != '200') {
