@@ -614,7 +614,7 @@
                     leaderpersonnelname: row.leaderpersonnelname,
                     departmentname: row.departmentname,
                 };
-                //alert(22);
+                //alert(22);2222222
                 //console.log(para);
                 hedanUpdataSaleContract(para).then((res)=>{
                     if(res.data.code!='200'){
