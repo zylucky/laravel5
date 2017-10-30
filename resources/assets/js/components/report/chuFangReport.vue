@@ -12,12 +12,12 @@
                     </el-date-picker>
                 </el-form-item>
             <el-form-item>
-                <el-button type="primary" icon="search"  v-on:click="getshoufangReport">搜索</el-button>
+                <el-button type="primary" icon="search"  v-on:click="getchufangReport">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus" v-if="fun('brokerCompanyExport')"    @click="handleExport"    > 导出</el-button>
             </el-form-item>
         </el-row>
         </el-form>
-        <el-table :data="shouFang"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
+        <el-table :data="chuFang"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column prop="quyu" label="区域"  width="80">
             </el-table-column>
             <el-table-column label="分区"  prop="fullname"  width="200">
@@ -71,6 +71,7 @@
 <script>
     import {
         getshoufangReportListPage,
+        exportBrokerCompany
     } from '../../api/api';
     import ElRow from "element-ui/packages/row/src/row";
     export default{
@@ -86,7 +87,7 @@
                 currentPage:0,
                 pageSize:10,
                 pageSizes:[10, 20, 30, 40, 50, 100],
-                shouFang:[],
+                chuFang:[],
                 listLoading: false,
                 sels: [],//列表选中列
             }
@@ -105,7 +106,7 @@
                 this.getshoufangReport();
             },
             //获取渠道公司列表
-            getshoufangReport() {
+            getchufangReport() {
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
@@ -115,7 +116,7 @@
                 this.listLoading = true;
                 getshoufangReportListPage(para).then((res) => {
                     this.total = res.data.total;
-                    this.shouFang = res.data.data;
+                    this.chuFang = res.data.data;
                     this.listLoading = false;
                 });
             },

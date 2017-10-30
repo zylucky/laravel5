@@ -47805,10 +47805,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = {
                 page: this.page,
                 pageSize: this.pageSize,
-                startdate: this.filters.startdate,
-                enddate: this.filters.enddate
+                startdate: this.filters.startdate == '' ? '' : this.filters.startdate.toLocaleDateString(),
+                enddate: this.filters.enddate == '' ? '' : this.filters.enddate.toLocaleDateString()
             };
             this.listLoading = true;
+            alert(1);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["b" /* getshoufangReportListPage */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.brokerCompany = res.data.data;
@@ -47817,7 +47818,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         handleExport: function handleExport() {
-            window.open("/shoufangReport/ExportExcel?startdate=" + this.filters.startdate + "&enddate=" + this.filters.enddate);
+            var sDate = this.filters.startdate == '' ? '' : this.filters.startdate.toLocaleDateString();
+            var eDate = this.filters.enddate == '' ? '' : this.filters.enddate.toLocaleDateString();
+            window.open("/shoufangReport/ExportExcel?startdate=" + sDate + "&enddate=" + eDate);
         },
         selsChange: function selsChange(sels) {
             this.sels = sels;
