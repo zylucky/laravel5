@@ -18,9 +18,9 @@
         </el-row>
         </el-form>
         <el-table :data="shouFang"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column prop="quyu" label="区域"  width="80">
+            <el-table-column prop="quyu" label="区域"  width="100">
             </el-table-column>
-            <el-table-column label="分区"  prop="fullname"  width="200">
+            <el-table-column label="分区"  prop="fullname"  width="100">
             </el-table-column>
             <el-table-column prop="Leixing" label="产品类型"  width="95"  >
             </el-table-column>
