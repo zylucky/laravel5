@@ -372,13 +372,11 @@
                         this.property.xsOffice[this.property.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
                     }
                 }
-                //console.log(this.property.xsOffice)
                 this.$emit('getshoufanghetong')
 
                 let para = {
                     id:this.property.xsOffice[this.property.tabIndex-1].omcId,
                 }
-                //console.log(para);
                 getSaleFanghaoChengzu(para).then((res) => {
                     if(!res.data.success){
                         this.$message({
