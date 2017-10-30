@@ -200,6 +200,8 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('checkPassword','UserController@checkPassword');
 });
 Route::get('shoufangReport/ExportExcel','Report\ShouFangReportController@ExportExcel');
+Route::get('chufangReport/ExportExcel','Report\ChuFangReportController@ExportExcel');
+
 //合同房源
 Route::group(['prefix' => 'office'], function () {
     Route::get('loupanList','Contract\officeController@loupanList');
@@ -214,4 +216,5 @@ Route::resource('payOrder','Report\payOrderController');
 Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');
 Route::resource('brokerCompanyUser','BrokerCompany\brokerCompanyUserController');
 Route::resource('shoufangReport', 'Report\ShouFangReportController');
+Route::resource('chufangReport', 'Report\ChuFangReportController');
 //hello world1

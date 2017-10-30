@@ -18,9 +18,9 @@
         </el-row>
         </el-form>
         <el-table :data="chuFang"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column prop="quyu" label="区域"  width="80">
+            <el-table-column prop="quyu" label="区域"  width="100">
             </el-table-column>
-            <el-table-column label="分区"  prop="fullname"  width="200">
+            <el-table-column label="分区"  prop="fullname"  width="100">
             </el-table-column>
             <el-table-column prop="Leixing" label="产品类型"  width="95"  >
             </el-table-column>
@@ -34,21 +34,21 @@
             </el-table-column>
             <el-table-column prop="Qianyuemianji" label="面积" width="90" >
             </el-table-column>
-            <el-table-column prop="Price" label="收房单价（元/㎡/天）"  width="180"  >
+            <el-table-column prop="Price" label="出房单价（元/㎡/天）"  width="180"  >
             </el-table-column>
-            <el-table-column prop="YueZujin" label="收房月租金"   width="110" >
+            <el-table-column prop="YueZujin" label="出房月租金"   width="110" >
             </el-table-column>
-            <el-table-column prop="sffkfs" label="收房付款方式"    width="120" >
+            <el-table-column prop="sffkfs" label="出房付款方式"    width="120" >
             </el-table-column>
-            <el-table-column prop="mzNum" label="收房免租天数" width="120" >
+            <el-table-column prop="mzNum" label="出房免租天数" width="120" >
             </el-table-column>
-            <el-table-column prop="qyzq" label="收房签约年限"   width="120">
+            <el-table-column prop="qyzq" label="出房签约年限"   width="120">
             </el-table-column>
             <el-table-column prop="qynx" label="签约年限"   width="95"  >
             </el-table-column>
-            <el-table-column prop="mzsj" label="收房免租期"  width="120" >
+            <el-table-column prop="mzsj" label="出房免租期"  width="120" >
             </el-table-column>
-            <el-table-column prop="QianyueDate" label="收房签约日期"  width="120" >
+            <el-table-column prop="QianyueDate" label="出房签约日期"  width="120" >
             </el-table-column>
         </el-table>
         <div style="margin-top:30px"></div>
@@ -70,8 +70,7 @@
 </template>
 <script>
     import {
-        getshoufangReportListPage,
-        exportBrokerCompany
+        getchufangReportListPage,
     } from '../../api/api';
     import ElRow from "element-ui/packages/row/src/row";
     export default{
@@ -97,13 +96,13 @@
             handleCurrentChange(val) {
                 this.page = val;
                // console.log(`当前页: ${val}`);
-               this.getshoufangReport();
+               this.getchufangReport();
             },
             //更改每页显示数据
             handleSizeChange(val){
                 this.pageSize =val;
                 //console.log(`每页 ${val} 条`);
-                this.getshoufangReport();
+                this.getchufangReport();
             },
             //获取渠道公司列表
             getchufangReport() {
@@ -114,7 +113,7 @@
                     enddate: this.filters.enddate==''?'': this.filters.enddate.toLocaleDateString(),
                 };
                 this.listLoading = true;
-                getshoufangReportListPage(para).then((res) => {
+                getchufangReportListPage(para).then((res) => {
                     this.total = res.data.total;
                     this.chuFang = res.data.data;
                     this.listLoading = false;
@@ -123,7 +122,7 @@
             handleExport: function () {
                 var sDate=this.filters.startdate==''?'': this.filters.startdate.toLocaleDateString();
                 var eDate=this.filters.enddate==''?'': this.filters.enddate.toLocaleDateString() ;
-                window.open("/shoufangReport/ExportExcel?startdate="+sDate+"&enddate="+ eDate);
+                window.open("/chufangReport/ExportExcel?startdate="+sDate+"&enddate="+ eDate);
             },
             selsChange: function (sels) {
                 this.sels = sels;
@@ -131,7 +130,7 @@
         },
         mounted() {
             this.page=1;
-            this.getshoufangReport();
+            this.getchufangReport();
         }
     }
 </script>

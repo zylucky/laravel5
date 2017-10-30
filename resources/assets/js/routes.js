@@ -75,6 +75,7 @@ import Payable from "./components/payable/payableList.vue";
 import FinancePayable from "./components/payable/financePayableList.vue";
 import PayOrder from "./components/payable/payorder.vue" ;
 import ShoufangReport from "./components/report/Index.vue" ;
+import ChufangReport from "./components/report/chuFangReport.vue" ;
 //消息管理
 import MessageList from "./components/message/Index.vue";
 
@@ -100,7 +101,7 @@ var fk_permission ,fk_permission_user ,fk_permission_role ,fk_permission_per ,
     fk_contract ,fk_contract_purchase  ,fk_contract_sale ,fk_version,
     fk_brokerCompany ,fk_brokerCompanyList,fk_brokerCompanyUserList,fk_brokerUserList,
     fk_commission,fk_shouFangCommission,fk_chuFangCommission,
-    fk_account,fk_payableList,fk_financePayableList,fk_receivableList,fk_financeReceivableList,fk_setPassword;
+    fk_account,fk_payableList,fk_financePayableList,fk_receivableList,fk_financeReceivableList,fk_setPassword,fk_reportList,fk_shoufangReport,fk_chufangReport;
 fun('permission')==true? fk_permission = false:fk_permission = true;
 fun('permission')==true? fk_permission_user = false:fk_permission_user = true;
 fun('permission')==true? fk_permission_role = false:fk_permission_role = true;
@@ -122,6 +123,12 @@ fun('financePayableList')==true? fk_financePayableList = false:fk_financePayable
 fun('receivableList')==true? fk_receivableList = false:fk_receivableList = true;
 fun('financeReceivableList')==true? fk_financeReceivableList = false:fk_financeReceivableList = true;
 fun('setPassword')==true? fk_setPassword = false:fk_setPassword = true;
+fun('reportList')==true? fk_reportList = false:fk_reportList = true;
+fun('shoufangReport')==true? fk_shoufangReport = false:fk_shoufangReport = true;
+fun('chufangReport')==true? fk_chufangReport = false:fk_chufangReport = true;
+
+
+
 let routes = [
     {
         path: '/login',
@@ -323,9 +330,10 @@ let routes = [
         component: navigation,
         name: '报表',
         iconCls: 'el-icon-document',//图标样式class
-        hidden:false,
+        hidden:fk_reportList,
         children: [
-            {path:'/shoufangReport', component: ShoufangReport, name: '收房明细', hidden: false},
+            {path:'/shoufangReport', component: ShoufangReport, name: '收房明细', hidden: fk_shoufangReport},
+            {path:'/chufangReport', component: ChufangReport, name: '出房明细', hidden: fk_chufangReport},
         ]
 
     },
