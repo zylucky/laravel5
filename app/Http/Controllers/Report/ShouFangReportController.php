@@ -40,6 +40,13 @@ class ShouFangReportController extends Controller
         $count =  DB::connection('mysql2')->select("select count(*) as countNum from v_sf ".$strWhere) ;
         $sql=$sql.$strWhere." order by QianyueDate desc limit ".$limitStart.", ".$limitEnd;
         $bk = DB::connection('mysql2')->select($sql);
+        foreach ($bk as $key=>$value){
+
+            $startdate = date_create( $value->StartDate);
+            $enddate = date_add(date_create( $value->EndDate ),date_interval_create_from_date_string('1 day') );
+            $qynx=date_diff($startdate,$enddate);
+            $bk[$key]->qynx=$qynx->y.'年'.$qynx->m.'月'.$qynx->d.'日';
+        }
         return $data = ['total'=>$count[0]->countNum,'data'=>$bk];
     }
 
@@ -129,10 +136,19 @@ class ShouFangReportController extends Controller
         $sql=$sql.$strWhere." order by QianyueDate desc " ;
         try{
         $bk = DB::connection('mysql2')->select($sql);
+            foreach ($bk as $key=>$value){
+
+                $startdate = date_create( $value->StartDate);
+                $enddate = date_add(date_create( $value->EndDate ),date_interval_create_from_date_string('1 day') );
+                $qynx=date_diff($startdate,$enddate);
+                $bk[$key]->qynx=$qynx->y.'年'.$qynx->m.'月'.$qynx->d.'日';
+                unset($bk[$key]->StartDate) ;
+                unset($bk[$key]->EndDate);
+            }
         $cellData= $this->objToArray($bk);
         if(count($cellData)>0){
         $headerData=['区域','分区','产品类型','用友编号','楼盘','楼栋','房间号','面积','收房单价（元/㎡/天）',
-            '收房月租金','收房免租天数','收房签约年限','签约年限','收房免租期','收房签约日期'];
+            '收房月租金','收房付款方式','收房免租天数','收房签约年限','签约年限','收房免租期','收房签约日期'];
         array_unshift($cellData,$headerData);
         //dd($cellData);
         Excel::create('收购'.date("YmdHis"),function($excel) use ($cellData){

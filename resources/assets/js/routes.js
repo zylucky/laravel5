@@ -75,6 +75,7 @@ import Payable from "./components/payable/payableList.vue";
 import FinancePayable from "./components/payable/financePayableList.vue";
 import PayOrder from "./components/payable/payorder.vue" ;
 import ShoufangReport from "./components/report/Index.vue" ;
+import ChufangReport from "./components/report/chuFangReport.vue" ;
 //消息管理
 import MessageList from "./components/message/Index.vue";
 
@@ -326,6 +327,7 @@ let routes = [
         hidden:false,
         children: [
             {path:'/shoufangReport', component: ShoufangReport, name: '收房明细', hidden: false},
+            {path:'/chufangReport', component: ChufangReport, name: '出房明细', hidden: false},
         ]
 
     },
