@@ -31,7 +31,7 @@
             </el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="scope">
-                    <el-button   @click="handleDump(scope.$index, scope.row)">打印凭证</el-button>
+                    <el-button  v-if="fun('printVoucher')"   @click="handleDump(scope.$index, scope.row)">打印凭证</el-button>
                 </template>
             </el-table-column>
            </el-table>
