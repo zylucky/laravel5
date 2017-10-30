@@ -24,7 +24,7 @@
             <el-table-column prop="status" label="状态" :formatter="formatZT"  width="100" >
             </el-table-column>
             <el-table-column label="操作" width="130">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-dropdown   menu-align="start">
                         <el-button type="primary" size="normal" splitButton="true">
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>

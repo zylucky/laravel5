@@ -32,7 +32,7 @@
             <el-table-column prop="role" label="角色" min-width="180" sortable>
             </el-table-column>
             <el-table-column label="操作" width="200">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)"><i class="el-icon-delete"></i></el-button>
                     <el-button type="small" size="small" @click="handleSet(scope.$index, scope.row)"><i class="el-icon-setting"></i></el-button>

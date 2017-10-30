@@ -57,7 +57,7 @@
                     width="200"
                     v-if="fun('setYongYou')"
             >
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-input v-model="scope.row.yongyouid" @blur="updatayongyouid(scope.$index, scope.row)"></el-input>
                 </template>
             </el-table-column>
@@ -69,7 +69,7 @@
             >
             </el-table-column>
             <el-table-column label="操作" width="170">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-dropdown   menu-align="start">
                         <el-button type="primary" size="normal" splitButton="true">
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
@@ -89,7 +89,7 @@
                             <el-dropdown-item v-if="ztin(scope.row,[12])&&fun('editSaleOptimize')"><el-button @click="editOptimize(scope.$index, scope.row)">修改补充协议</el-button></el-dropdown-item>
                             <!--<el-dropdown-item v-if="ztin(scope.row,[13])"><el-button @click="handleCheckOptimize(scope.$index, scope.row)">当前补充协议</el-button></el-dropdown-item>-->
                             <el-dropdown-item v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactZH')"><el-button @click="handleZhanghao(scope.$index, scope.row)">付款账号</el-button></el-dropdown-item>
-                            <el-dropdown-item v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactHD')"><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
+                            <el-dropdown-item v-if="fun('saleContactHD')"><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
                             <!--<el-dropdown-item v-if="ztin(scope.row,[12,13])"><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史补充协议</el-button></el-dropdown-item>-->
                             <el-dropdown-item v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactUpload')"><el-button @click="handleUplod(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactSummary')"><el-button @click="handleSummary(scope.$index, scope.row)">打印核心数据</el-button></el-dropdown-item>

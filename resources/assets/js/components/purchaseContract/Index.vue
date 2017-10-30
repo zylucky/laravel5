@@ -42,7 +42,7 @@
             <el-table-column  prop="bianhao" label="编号" width="200" >
             </el-table-column>
             <el-table-column prop="loupanName" label="楼盘"   >
-                <!--<template scope="scope">-->
+                <!--<template slot-scope="scope">-->
                     <!--<span v-for="(item,index) in  Estate(scope.row.loupanName)">{{item}}</span>-->
                 <!--</template>-->
             </el-table-column>
@@ -60,7 +60,7 @@
                     prop="yongyouid"
                     v-if="fun('setYongYou')"
             >
-                <template scope="scope" >
+                <template slot-scope="scope" >
                     <el-input   v-model="scope.row.yongyouid" @blur="updatayongyouid(scope.$index, scope.row)"></el-input>
                 </template>
             </el-table-column>
@@ -72,7 +72,7 @@
             >
             </el-table-column>
             <el-table-column label="操作" width="170">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-dropdown   menu-align="start">
                         <el-button type="primary" size="normal" splitButton="true">
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>

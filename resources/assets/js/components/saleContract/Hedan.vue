@@ -32,7 +32,7 @@
                             <el-table-column
                                     label="签单人"
                                     >
-                                <template scope="scope">
+                                <template slot-scope="scope">
                                     <el-col>
                                         <el-form-item>
                                             <el-select
@@ -57,12 +57,12 @@
                                 </template>
                             </el-table-column>
                             <el-table-column label="合单占比">
-                                <template scope="scope">
+                                <template slot-scope="scope">
                                     <el-input v-model="scope.row.ratio" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                                 </template>
                             </el-table-column>
                             <el-table-column label="签单人领导">
-                                <template scope="scope">
+                                <template slot-scope="scope">
                                     <el-col>
                                         <el-form-item>
                                             <el-select
@@ -86,7 +86,7 @@
                                 </template>
                             </el-table-column>
                             <el-table-column label="签单人部门">
-                                <template scope="scope">
+                                <template slot-scope="scope">
                                     <el-col>
                                         <el-form-item>
                                             <el-select
@@ -111,12 +111,24 @@
                             </el-table-column>
                             <el-table-column prop="createtime" label="新增时间"  sortable>
                             </el-table-column>
-                            <el-table-column label="操作" width="170">
-                                <template scope="scope">
+                           <!-- <el-table-column label="操作" width="170">
+                                <template slot-scope="scope">
                                     <el-dropdown   menu-align="start">
                                         <el-button @click="handleDel(scope.$index, scope.row)" type="primary" size="normal" splitButton="true">
-                                            删除<!--<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>-->
+                                            删除&lt;!&ndash;<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>&ndash;&gt;
                                         </el-button>
+                                    </el-dropdown>
+                                </template>
+                            </el-table-column>-->
+                            <el-table-column label="操作" width="170">
+                                <template slot-scope="scope">
+                                    <el-dropdown   menu-align="start">
+                                        <el-button type="primary" size="normal" splitButton="true">
+                                            删除<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>
+                                        </el-button>
+                                        <el-dropdown-menu slot="dropdown" >
+                                            <el-dropdown-item  ><el-button @click="handleDel(scope.$index, scope.row)">删除</el-button></el-dropdown-item>
+                                        </el-dropdown-menu>
                                     </el-dropdown>
                                 </template>
                             </el-table-column>
@@ -154,6 +166,7 @@
                                         v-model="item.signpersonnelname"
                                         filterable
                                         remote
+                                        @change="changeyslxr1"
                                         placeholder="签单人姓名"
                                         :remote-method="remoteMethodyslxr1"
                                         :loading="fristyslxrloading1">
@@ -184,6 +197,7 @@
                                         v-model="item.leaderpersonnelname"
                                         filterable
                                         remote
+                                        @change="changeyslxr2"
                                         placeholder="签单人上级领导"
                                         :remote-method="remoteMethodyslxr2"
                                         :loading="fristyslxrloading1">
@@ -207,6 +221,7 @@
                                         v-model="item.departmentname"
                                         filterable
                                         remote
+                                        @change="changeyslxr3"
                                         placeholder="签单人部门"
                                         :remote-method="remoteMethodyslxr3"
                                         :loading="fristyslxrloading2">
@@ -320,28 +335,27 @@
 
                 });
             },
-
-//            changeyslxr1(){
-//                for (var x in this.optionsyslxr1) {
-//                    if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex-1].signpersonnelname) {
-//                        this.hedan.qiandanren[this.tabIndex-1].signpersonnelname = this.optionsyslxr1[x].label;
-//                    }
-//                }
-//            },
-//            changeyslxr2(){
-//                for (var x in this.optionsyslxr2) {
-//                    if (this.optionsyslxr2[x].value == this.hedan.qiandanren[this.tabIndex-1].leaderpersonnelname) {
-//                        this.hedan.qiandanren[this.tabIndex-1].leaderpersonnelname = this.optionsyslxr2[x].label;
-//                    }
-//                }
-//            },
-//            changeyslxr3(){
-//                for (var x in this.optionsyslxr3) {
-//                    if (this.optionsyslxr3[x].value == this.hedan.qiandanren[this.tabIndex-1].departmentname) {
-//                        this.hedan.qiandanren[this.tabIndex-1].departmentname = this.optionsyslxr3[x].label;
-//                    }
-//                }
-//            },
+            changeyslxr1(){
+                for (var x in this.optionsyslxr1) {
+                    if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex-1].signpersonnelname) {
+                        this.hedan.qiandanren[this.tabIndex-1].signpersonnelname = this.optionsyslxr1[x].label;
+                    }
+                }
+            },
+            changeyslxr2(){
+                for (var x in this.optionsyslxr2) {
+                    if (this.optionsyslxr2[x].value == this.hedan.qiandanren[this.tabIndex-1].leaderpersonnelname) {
+                        this.hedan.qiandanren[this.tabIndex-1].leaderpersonnelname = this.optionsyslxr2[x].label;
+                    }
+                }
+            },
+            changeyslxr3(){
+                for (var x in this.optionsyslxr3) {
+                    if (this.optionsyslxr3[x].value == this.hedan.qiandanren[this.tabIndex-1].departmentname) {
+                        this.hedan.qiandanren[this.tabIndex-1].departmentname = this.optionsyslxr3[x].label;
+                    }
+                }
+            },
 
             //获取签单人列表
             remoteMethodyslxr1(query) {
@@ -505,6 +519,7 @@
                         let para1 = this.hedan.qiandanren;
                         //console.log(para1);
                         this.Visible = false;
+                        console.log(para1);
                         hedanSaveSaleContract(para1).then((res)=>{
                             if(res.data.code!='200'){
                                 this.$message({
@@ -599,7 +614,7 @@
                     leaderpersonnelname: row.leaderpersonnelname,
                     departmentname: row.departmentname,
                 };
-                //alert(22);
+                //alert(22);2222222
                 //console.log(para);
                 hedanUpdataSaleContract(para).then((res)=>{
                     if(res.data.code!='200'){

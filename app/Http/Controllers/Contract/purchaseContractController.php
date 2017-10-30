@@ -86,8 +86,6 @@ class purchaseContractController extends Controller
         if($request->params['yingyezhizhao']==null){
             $data['yingyezhizhao'] = '';
         }
-
-
         $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
         $data['yifangfeiyong'] = implode(',',$data['yifangfeiyong']);
         $response = $client->request('POST', '/api/contract/sf/save', [

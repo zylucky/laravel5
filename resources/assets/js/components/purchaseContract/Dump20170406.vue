@@ -35,7 +35,7 @@
         &nbsp;（二）本合同房屋租赁期限为
         <u v-if="nian">{{nian?nian:'__'}}</u><span v-if="nian" style="display: inline">年</span>
         <u v-if="yue">{{yue?yue:'__'}}</u><span v-if="yue" style="display: inline">月</span>
-        <u v-if="ri>1">{{ri>1?ri:'__'}}</u><span v-if="ri>1" style="display: inline">日</span>。
+        <u v-if="ri>1">{{ri>1?ri:'__'}}</u><span v-if="ri>1" style="display: inline">日</span>
         <span v-if="!nian&&!yue" style="display: inline">
                 ____年__月__日
         </span>，
@@ -46,9 +46,9 @@
         <u>&nbsp;&nbsp;{{year(addDate.enddate)}}&nbsp;&nbsp;</u>年
         <u>&nbsp;&nbsp;{{month(addDate.enddate)}}&nbsp;&nbsp;</u>月
         <u>&nbsp;&nbsp;{{day(addDate.enddate)}}&nbsp;&nbsp;</u>日止。<br>
-        &nbsp;（三）甲方应于<u>&nbsp;&nbsp;{{year(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>年
-        <u>&nbsp;&nbsp;{{month(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>月
-        <u>&nbsp;&nbsp;{{day(addDate.jiaofangdate)}}&nbsp;&nbsp;</u>日前将房屋按约定条件交付给乙方。《房屋交割清单》经甲乙双方交验签字（盖章）确认及将房门钥匙移交视为交付完成。<br>
+        &nbsp;（三）甲方应于<u>&nbsp;&nbsp;{{year(addDate.shoufangdate)}}&nbsp;&nbsp;</u>年
+        <u>&nbsp;&nbsp;{{month(addDate.shoufangdate)}}&nbsp;&nbsp;</u>月
+        <u>&nbsp;&nbsp;{{day(addDate.shoufangdate)}}&nbsp;&nbsp;</u>日前将房屋按约定条件交付给乙方。《房屋交割清单》经甲乙双方交验签字（盖章）确认及将房门钥匙移交视为交付完成。<br>
         &nbsp;（四）若合同期满乙方仍有承租人需使用该房屋，乙方应提前90天通知甲方，双方协商认可后签订延长期合同，本合同期限最长可自动顺延一年。在同等市场条件下，乙方拥有优先承租权。<br><br>
 
         <b>&nbsp;&nbsp; 第四条 租金和押金</b><br>

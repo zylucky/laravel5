@@ -3,9 +3,9 @@
         <p>
             <b>&nbsp;&nbsp;第十四条  补充条款</b> <br>
             &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
-            <u>{{buchongtiaokuan}}</u>
+            <u v-html="buchongtiaokuan"></u>
             <br>
-            <input v-if="buchongtiaokuan==null||yingyezhizhao==''" type="text" name="" disabled style="width:600px;" value="以下空白">
+            <input v-if="buchongtiaokuan==null||buchongtiaokuan==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
 
             <b> 业主方（甲方）：<input type="text" name="" style="width:139px;font-size:10px" value="">&nbsp;&nbsp;管理方（乙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>

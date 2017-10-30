@@ -1,8 +1,8 @@
 <template>
     <div style="font-size: 12px;" class="summary">
         <p style="margin-left: 15%;font-size:17px;"> <u>房屋资产管理服务合同     管理方：幼狮科技</u> 【    】级 </p>
-        <p style="margin-left: 6%;"> <b>项目房间号</b> <u >{{data.xiangmufangjianhao}}</u> <b style="margin-left:10%;">面积</b> <u>{{data.mianji}}</u> </p>
-        <div style="margin-left: 4%;float: left">
+        <p style="margin-left: 6%;"> <b>项目房间号</b> <u >{{data.xiangmufangjianhao}}</u> <b style="margin-left:50%;">面积</b> <u>{{data.mianji}}</u> </p>
+        <div style="margin-left:8px;float: left">
             <input type="checkbox" v-model="data.fangwuzichanguanlifuwuhetong" >房屋资产管理服务合同
             <input type="checkbox"style="margin-left:43px;" v-model="data.budongchanshouquanweituoshu">不动产授权委托书
             <input type="checkbox"style="margin-left:43px;" v-model="data.chanquanzhengfuyinjian">产权证复印件（全套，无缺页）
@@ -13,54 +13,54 @@
             <br>
             <table  style="border-collapse: collapse;">
                 <tr >
-                    <th width="95" height="28" align="left">业主</th>
+                    <th width="95" height="20" align="left">业主</th>
                     <td width="220" align="center">{{data.yezhu}}</td>
                     <th width="95" align="left">收款人</th>
                     <td width="220" align="center">{{data.shoukuanren}}</td>
-                    <td style="border:0 " >规划用途:{{yongtu(data.guihuayongtu)}}</td>
+                    <td style="border:0 " ><b>规划用途</b>:{{yongtu(data.guihuayongtu)}}</td>
                 </tr>
                 <tr>
-                    <th  height="28" align="left">联系方式</th>
+                    <th  height="20" align="left">联系方式</th>
                     <td  align="center">{{data.lianxifangshi}}</td>
                     <th  align="left">开户行</th>
                     <td  align="center">{{data.kaihuhang}}</td>
                 </tr>
                 <tr>
-                    <th height="28" align="left"></th>
+                    <th height="20" align="left"></th>
                     <td  align="center"></td>
                     <th  align="left">账号</th>
                     <td  align="center">{{data.zhanghao}}</td>
-                    <td style="border:0 ">佣金:{{toDecimal(data.yongjin)}}元</td>
+                    <td style="border:0 "><b>佣金</b>:{{toDecimal(data.yongjin)}}元</td>
 
                 </tr>
                 <tr>
-                    <th  height="28" align="left">委托管理期限</th>
+                    <th  height="20" align="left">委托管理期限</th>
                     <td  align="center">{{data.weituoguanliqixian}}</td>
                     <th  align="left"  rowspan="2">招商装修期</th>
                     <td  align="center">{{data.zhaoshangzhuangxiuqi}}</td>
                 </tr>
                 <tr >
-                    <th  height="28" align="left" rowspan="5">租金</th>
-                    <td  align="center" height="28" >{{data.zujins[0]}}</td>
+                    <th  height="20" align="left" rowspan="5">租金</th>
+                    <td  align="center" height="20" >{{data.zujins[0]}}</td>
                     <td  align="center"></td>
                 </tr>
                 <tr>
-                    <td  align="center" height="28">{{data.zujins[1]}}</td>
+                    <td  align="center" height="20">{{data.zujins[1]}}</td>
                     <th  align="left">保证金</th>
                     <td  align="center">{{toDecimal(data.baozhengjin)}}元</td>
                 </tr>
                 <tr>
-                    <td  align="center" height="28">{{data.zujins[2]}}</td>
+                    <td  align="center" height="20">{{data.zujins[2]}}</td>
                     <th align="left">租金支付方式</th>
-                    <td align="center">{{data.zujingzhifufangshi}}</td>
+                    <td align="center">{{format(data.zujingzhifufangshi)}}</td>
                 </tr>
                 <tr>
-                    <td  align="center" height="28"></td>
+                    <td  align="center" height="20"></td>
                     <th  align="left" colspan="2">提前【{{data.tiqianfukuantian}}】天付款</th>
-                    <td style="border:0 ">业务：{{data.yewu}}</td>
+                    <td style="border:0 "><b>业务</b>：{{data.yewu}}</td>
                 </tr>
                 <tr>
-                    <td  align="center" height="28"></td>
+                    <td  align="center" height="20"></td>
                     <th  align="left" colspan="2">
                         <input type="checkbox" v-model="data.shifouhanwuye">是否含物业
                         <input type="checkbox" v-model="data.qvnuan">取暖
@@ -69,32 +69,32 @@
                     </th>
                 </tr>
                 <tr>
-                    <td  height="100" colspan="4" ></td>
+                    <td  height="100" colspan="4"  ></td>
                 </tr>
             </table>
         <table   style="border-collapse: collapse;margin-left:-15px; ">
             <tr>
                 <td style="border:0 "></td>
-                <td width="75" height="28">付款日</td>
+                <td width="75" height="20">付款日</td>
                 <td width="75">付款科目</td>
-                <td width="200">付款周期</td>
+                <td width="200" align="center">付款周期</td>
                 <td width="75">付款金额</td>
                 <td width="202">备注</td>
-                <td style="border:0 ">签约日:{{changeDate(data.qianyueri)}}</td>
+                <td style="border:0 "><b>签约日</b>:{{changeDate(data.qianyueri)}}</td>
             </tr>
 
             <tr v-for="(item,index) in data.yjProofs">
                 <td style="border:0 "></td>
-                <td height="28">{{changeDate(item.fukuanri)}}</td>
-                <td>{{item.fukuankemu}}</td>
-                <td>{{item.fukuanzhouqi}}</td>
-                <td>{{toDecimal(item.fukuanjine)}}元</td>
+                <td height="20" align="center">{{changeDate(item.fukuanri)}}</td>
+                <td align="center">{{item.fukuankemu}}</td>
+                <td align="center" >{{item.fukuanzhouqi}}</td>
+                <td align="center">{{toDecimal(item.fukuanjine)}}元</td>
                 <td>{{item.beizhu}}</td>
             </tr>
             <tr>
                 <td style="border:0 "></td>
 
-                <td height="28"></td>
+                <td height="20"></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -102,14 +102,14 @@
             </tr>
             <tr v-for="(item,index) in data.zjProofs">
                 <td style="border:0 ">{{index+1}}</td>
-                <td height="28">{{changeDate(item.fukuanri)}}</td>
-                <td>{{item.fukuankemu}}</td>
-                <td>{{item.fukuanzhouqi}}</td>
-                <td>{{toDecimal(item.fukuanjine)}}元</td>
+                <td height="20" align="center">{{changeDate(item.fukuanri)}}</td>
+                <td align="center">{{item.fukuankemu}}</td>
+                <td align="center">{{item.fukuanzhouqi}}</td>
+                <td align="center">{{toDecimal(item.fukuanjine)}}元</td>
                 <td>{{item.beizhu}}</td>
             </tr><tr>
             <td style="border:0 "></td>
-            <td height="28"></td>
+            <td height="20"></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -117,7 +117,7 @@
             </tr><tr>
             <td style="border:0 "></td>
 
-            <td height="28"></td>
+            <td height="20"></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -125,7 +125,7 @@
             </tr><tr>
             <td style="border:0 "></td>
 
-            <td height="28"></td>
+            <td height="20"></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -133,7 +133,7 @@
             </tr><tr>
             <td style="border:0 "></td>
 
-            <td height="28"></td>
+            <td height="20"></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -204,6 +204,9 @@
                     console.log(this.data)
 
                 });
+            },
+            format(zujinzhifufangshi){
+                return zujinzhifufangshi.replace(/押2/,'');
             }
         },
         mounted(){

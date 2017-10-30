@@ -5,8 +5,8 @@
             <p>管理方（乙方）：<input type="text" style="width: 450px" disabled v-model="guanlifang"/></p>
             <p v-if="owner.farenzhengjian=='s'">居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="owner.jujianfang"/></p>
 
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鉴于乙方具有行业领先的房屋资产管理服务经验，能够运用自身拥有的资源及优质的增值服务，为业主方提供完善的服务，如物业对接，装饰装修，代缴物业费、供暖费，设备、空调设施、维修检测等，提高受托管理房屋资产的使用价值，为业主方带来稳定的租金收益；同时为业主方节省大量的管理费用及时间成本。<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现依据《中华人民共和国合同法》及有关法律、法规的规定，甲方与乙方在平等、自愿的基础上，就甲方委托乙方对下述房屋资产提供管理服务一事，达成如下约定。</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鉴于乙方具有行业领先的房屋资产管理服务经验，能够运用自身拥有的资源及优质的增值服务，为业主方提供完善的服务，如物业对接，装饰装修，代缴物业费、供暖费，设备、空调设施、维修检测等，提高受托管理房屋资产的使用价值，为业主方带来稳定的租金收益；同时为业主方节省大量的管理费用及时间成本。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现依据《中华人民共和国合同法》及有关法律、法规的规定，甲方与乙方在平等、自愿的基础上，就甲方委托乙方对下述房屋资产提供管理服务一事，达成如下约定。</p>
             <p><b>第一条  房屋基本情况</b></p>
             <span
                     v-for="(item,index) in property.officeList"
@@ -67,7 +67,7 @@
             </p>
             <p>
         <span v-for="(item,index) in addDate.zujinList">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 自<u>&nbsp;&nbsp;{{year(item.startdate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.startdate)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
@@ -76,9 +76,9 @@
                 <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日止，租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(item.yuezujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(item.yuezujin)?toDecimal(item.yuezujin):'___'}}&nbsp;&nbsp;</u>元/月）；
             <br>
         </span>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(addDate.yanqizujin)?toDecimal(addDate.yanqizujin):'____'}}&nbsp;&nbsp;</u>元/月）。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如有延长期，延长期租金为人民币（大写）<u>&nbsp;&nbsp;{{daxie(addDate.yanqizujin)}}&nbsp;&nbsp;</u> /月（￥：<u>&nbsp;&nbsp;{{toDecimal(addDate.yanqizujin)?toDecimal(addDate.yanqizujin):'____'}}&nbsp;&nbsp;</u>元/月）。
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租金的支付方式：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租金的支付方式：<br>
                 <span v-for="(item,index) in addDate.fukuanFangshiList"
                       :key="index"
                       style="display: inline;"
@@ -89,13 +89,12 @@
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日 <br>
-                每 <u>{{(item.zujinyue?item.zujinyue:'_____')}}</u> 月支付一次。
-            </span>
-
-                租金中包含物业管理费、供暖费及制冷费。
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日,每 <u>{{(item.zujinyue?daxie2(item.zujinyue-1):'_____')}}</u> 月支付一次。
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首期租金支付时间为
+            </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租金中包含物业管理费、供暖费及制冷费。
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首期租金支付时间为
                 <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前，其余每期租金在实际应付款月（减除招商期后）开始管理之日的前 <u>&nbsp;&nbsp;{{addDate.tiqianfukuantian}}&nbsp;</u>天进行支付，即第二期租金的支付时间为
@@ -106,19 +105,19 @@
                 <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月
                 <u>&nbsp;&nbsp;{{day(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>日，管理期内每期租金的支付时间以此类推。
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲方指定收款账户为：
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲方指定收款账户为：
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;称：  <input type="text" style="width:500px;text-align:left" v-model="owner.shoukuanren">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;称：  <input type="text" style="width:500px;text-align:left" v-model="owner.shoukuanren">
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开户行： <input type="text" style="width:500px;text-align:left" v-model="owner.kaihuhang">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开户行： <input type="text" style="width:500px;text-align:left" v-model="owner.kaihuhang">
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账&nbsp;&nbsp;&nbsp;号：  <input type="text" style="width:500px;text-align:left" v-model="owner.zhanghao">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账&nbsp;&nbsp;&nbsp;号：  <input type="text" style="width:500px;text-align:left" v-model="owner.zhanghao">
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）保证金：人民币（大写）
                 <u>&nbsp;&nbsp;{{daxie(addDate.yajin)?daxie(addDate.yajin):'______'}}&nbsp;&nbsp;</u> （￥：
                 <u>&nbsp;&nbsp;{{(toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'_______')}}&nbsp;&nbsp;</u> 元），乙方在甲乙双方签署本合同当日向甲方支付，如甲方提供的房屋所有权证复印件和身份证复印件不全，则乙方仅支付甲方百分之五十的保证金，剩余百分之五十的保证金于甲方补齐房屋所有权证复印件及身份证复印件后支付。管理期满或合同解除后，保证金除抵扣应由乙方承担的费用，剩余部分应如数返还给乙方。</p>
             <p><b>第四条  资产管理服务费</b></p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲、乙双方一致同意，乙方按照风险自担的方式收取资产管理服务费。即乙方对房屋进行出租及为实际使用人提供增值服务而取得的收入中，超出向甲方支付固定租金收益的溢价部分，将作为乙方的服务费，由乙方直接收取；如未产生溢价的，甲方亦不向乙方支付任何服务费用，该风险由乙方自行承担。</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲、乙双方一致同意，乙方按照风险自担的方式收取资产管理服务费。即乙方对房屋进行出租及为实际使用人提供增值服务而取得的收入中，超出向甲方支付固定租金收益的溢价部分，将作为乙方的服务费，由乙方直接收取；如未产生溢价的，甲方亦不向乙方支付任何服务费用，该风险由乙方自行承担。</p>
             <p><b>第五条  相关费用的承担方式</b></p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）管理期限内的下列费用中， <u>{{addDate.jiafangfeiyong?addDate.jiafangfeiyong:'_____________'}}</u>  由甲方承担， 其他费用 由乙方（或实际使用人）承担：(1)供暖费 (2)制冷费 (3)物业管理费 (4)水费 (5)电费 (6)燃气费 (7)电话费 (8)电视收视费 (9)上网费 (10)卫生费 (11)车位费 （12）其他
                 <input type="text" style="width:100px;">。
@@ -130,9 +129,9 @@
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方应保证房屋的建筑结构和设备设施符合建筑、消防、治安、卫生、电路、防水等方面的安全条件，不得危及人身安全；乙方应遵守国家、北京市的法律法规规定以及房屋所在小区的物业管理规约。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）管理期内，乙方可以对管理房屋进行装饰装修和添附房屋附属设备设施，但乙方不得拆除、破坏房屋建筑的主体结构。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）管理期内，该房屋及其附属物品、设备设施应处于适用和安全的状态：
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、对于该房屋的主要结构、固定管道线路及固定设施（包括制热、制冷、排风、上下水、电路及燃气等设施）因自然属性或合理使用而导致的损耗，乙方应及时通知甲方修复；甲方应在接到乙方通知后的3日内进行维修。逾期不维修的，乙方可代为维修，费用由甲方承担或乙方直接从下一次支付的租金收益中扣除。
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、该房屋的主要结构、固定管道线路及设施问题（不合理使用的情形除外）出现如漏水、断电、燃气、供暖、制冷等故障进行维修的，在房屋恢复到正常使用前的期间，因无法正常使用房屋的租金损失由甲方承担，并由乙方从下一期租金收益中扣除；如造成乙方或实际使用人经济损失的，甲方应按照实际损失进行赔偿。
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、因乙方管理不当或不合理使用，致使该房屋的主要结构、固定管道线路及固定设施发生损坏或故障的，乙方应负责维修或承担赔偿责任。</p>
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、对于该房屋的主要结构、固定管道线路及固定设施（包括制热、制冷、排风、上下水、电路及燃气等设施）因自然属性或合理使用而导致的损耗，乙方应及时通知甲方修复；甲方应在接到乙方通知后的3日内进行维修。逾期不维修的，乙方可代为维修，费用由甲方承担或乙方直接从下一次支付的租金收益中扣除。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、该房屋的主要结构、固定管道线路及设施问题（不合理使用的情形除外）出现如漏水、断电、燃气、供暖、制冷等故障进行维修的，在房屋恢复到正常使用前的期间，因无法正常使用房屋的租金损失由甲方承担，并由乙方从下一期租金收益中扣除；如造成乙方或实际使用人经济损失的，甲方应按照实际损失进行赔偿。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、因乙方管理不当或不合理使用，致使该房屋的主要结构、固定管道线路及固定设施发生损坏或故障的，乙方应负责维修或承担赔偿责任。</p>
             <p><b>第七条  甲方权利义务
             </b></p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方有权按照本合同约定收取固定的租金收益，并在管理期限届满或合同解除时按照约定收回房屋。
@@ -150,23 +149,23 @@
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）经甲乙双方协商一致，可以解除本合同。<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）因不可抗力导致本合同无法继续履行的，本合同自行解除。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）甲方有下列情形之一的，乙方有权单方解除合同：
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、迟延交付房屋达10日的。
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、交付的房屋不符合法定和约定的使用条件或影响实际使用人安全、健康，或未提前说明存在重大安全隐患如漏水、漏电的。
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、不承担约定的维修义务，致使乙方无法正常管理或使用房屋达10日的。
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、甲方不配合房屋实际使用人开具增值税专用发票或增值税普通发票，以及违反本合同第七条及其他约定义务的。
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、房屋因原租户或营业执照未迁出等原因导致乙方或实际使用人无法办理工商注册或迁入，或该房屋宽带网络不能正常使用的。
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6、要求提前收回房屋的。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、迟延交付房屋达10日的。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、交付的房屋不符合法定和约定的使用条件或影响实际使用人安全、健康，或未提前说明存在重大安全隐患如漏水、漏电的。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、不承担约定的维修义务，致使乙方无法正常管理或使用房屋达10日的。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、甲方不配合房屋实际使用人开具增值税专用发票或增值税普通发票，以及违反本合同第七条及其他约定义务的。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、房屋因原租户或营业执照未迁出等原因导致乙方或实际使用人无法办理工商注册或迁入，或该房屋宽带网络不能正常使用的。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6、要求提前收回房屋的。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（四）乙方有下列情形之一的，甲方有权单方解除合同：
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、不按照约定支付租金收益达10日的。
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、擅自拆除或破坏房屋建筑主体结构的。
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、利用房屋从事违法犯罪活动而损害公共利益的。<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、要求提前解除本合同的。<br>
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、不按照约定支付租金收益达10日的。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、擅自拆除或破坏房屋建筑主体结构的。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、利用房屋从事违法犯罪活动而损害公共利益的。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、要求提前解除本合同的。<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（五）其他法定的合同解除情形。
             <p><b>第十条  违约责任</b></p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方有第九条第（三）款约定的情形之一的，应按2个月的租金为标准向乙方支付违约金，且乙方有权单方解除本合同；乙方有第九条第（四）款约定的情形之一的，应按2个月的租金为标准向甲方支付违约金，且甲方有权单方解除本合同。
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）因甲方违约致使合同解除的，甲方应补偿乙方对该房屋进行装饰装修以及添附设备所支付的费用；同时甲方应退还乙方已支付的未管理房屋期间的租金及全部保证金；如造成乙方向实际使用人承担赔偿责任的，亦由甲方全部承担。</p>
             <p><b>第十一条  争议解决</b></p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本合同项下发生的争议，由双方当事人协商解决；协商不成的，依法向有管辖权的人民法院起诉，或按照另行达成的仲裁条款或仲裁合同申请仲裁。</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本合同项下发生的争议，由双方当事人协商解决；协商不成的，依法向有管辖权的人民法院起诉，或按照另行达成的仲裁条款或仲裁合同申请仲裁。</p>
             <p><b>第十二条  送达条款</b></p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲乙双方一致同意，可通过在本合同中书写的手机号码以短信、微信方式进行相关通知的送达，在短信、微信发送成功后即视为完成送达。<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲乙双方在本合同中书写的地址即为本合同下任何书面通知的有效送达地址，若因接收方拒收或地址错误等情况致使无法送达的，均以付邮日（以邮戳为准）后3日即视为通知方已依本合同给予书面通知。若任何一方联络地址变更的，应及时通知对方。</p>

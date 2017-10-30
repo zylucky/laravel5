@@ -30,21 +30,21 @@
                 <el-table-column
                         label="付款方户名"
                         width="350">
-                    <template scope="scope">
+                    <template slot-scope="scope">
                         <el-input v-model="scope.row.zhanghu" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
                 <el-table-column
                         label="付款方银行"
                         width="350">
-                    <template scope="scope">
+                    <template slot-scope="scope">
                         <el-input v-model="scope.row.yinhang" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
                 <el-table-column
                         label="付款账号"
                         width="350">
-                    <template scope="scope">
+                    <template slot-scope="scope">
                         <el-input v-model="scope.row.zhanghao" @blur="updataZhanghao(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
                     </template>
                 </el-table-column>
@@ -53,7 +53,7 @@
                 <!--<el-table-column prop="laiyuantype"  label="来源"   :formatter="formatStatus" sortable>
                 </el-table-column>-->
                <!-- <el-table-column label="操作" width="170">
-                    <template scope="scope">
+                    <template slot-scope="scope">
                         <el-dropdown   menu-align="start">
                             <el-button v-show="!hanshu(scope.row)" @click="handleDel(scope.$index, scope.row)" type="primary" size="normal" splitButton="true">
                                 删除&lt;!&ndash;<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>&ndash;&gt;

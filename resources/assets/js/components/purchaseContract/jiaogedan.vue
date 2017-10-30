@@ -105,12 +105,17 @@
                 return isJPG && isLt2M;
             },
             handleRemove(file, fileList) {
-                let para ={
-                    id :file.id,
-                }
-                copyImageDelete(para).then((res)=>{
+                this.$confirm('确认删除吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    let para ={
+                        id :file.id,
+                    }
+                    copyImageDelete(para).then((res)=>{
 
-                });
+                    });
+                })
+
             },
             handlePictureCardPreview(file) {
                 this.dialogImageUrl = file.url;

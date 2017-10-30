@@ -263,6 +263,7 @@
                 this.submsg  = '提交';
                     var child_property = this.$refs.property.property;
                     var child_renter  = this.$refs.renter.renter;
+                    this.addDate.jiafangfeiyong = this.addDate.jiafangfeiyong.replace(/\n|\r\n/g,"<br>");
                     var child_date = this.$refs.date.addDate;
                     var id = {
                         id: this.id
@@ -274,8 +275,6 @@
                         version:this.contractVersion,
                     }
                     let para = Object.assign({}, child_property,child_renter,child_date,id,bianhao,version);
-                    //alert(para);
-                    //console.log(para);
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
                             if(this.$route.query.status<6){
@@ -442,7 +441,8 @@
                     return a.startdate-b.startdate})
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.iscompletefrzj = res.data.data.iscompletefrzj;
-                this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+                var reg=new RegExp("<br>","g"); //创建正则RegExp对象
+                this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong.replace(reg,"\n");
 
                 //console.log(res.data.data);
             },
