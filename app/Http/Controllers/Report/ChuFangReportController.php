@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Auth;
 use Excel;
 use Mockery\Exception;
 
-class ShouFangReportController extends Controller
+class ChuFangReportController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *显示渠道公司列表
+     *显示出房列表
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -29,7 +29,7 @@ class ShouFangReportController extends Controller
         $limitStart=($page-1)*$pageSize;
         $limitEnd = $pageSize;
 
-        $sql="select * from v_sf ";
+        $sql="select * from v_cf ";
         $strWhere=" where 1=1 ";
         if(!empty($startdate)){
             $strWhere=$strWhere." and QianyueDate>='".$startdate."'"  ;
@@ -37,7 +37,7 @@ class ShouFangReportController extends Controller
         if(!empty($enddate)){
             $strWhere=$strWhere." and QianyueDate<='".$enddate."'"  ;
         }
-        $count =  DB::connection('mysql2')->select("select count(*) as countNum from v_sf ".$strWhere) ;
+        $count =  DB::connection('mysql2')->select("select count(*) as countNum from v_cf ".$strWhere) ;
         $sql=$sql.$strWhere." order by QianyueDate desc limit ".$limitStart.", ".$limitEnd;
         $bk = DB::connection('mysql2')->select($sql);
         return $data = ['total'=>$count[0]->countNum,'data'=>$bk];
@@ -116,7 +116,7 @@ class ShouFangReportController extends Controller
     {
         $startdate = Input::get('startdate');
         $enddate = Input::get('enddate');
-        $sql="select * from v_sf ";
+        $sql="select * from v_cf ";
         $strWhere=" where 1=1 ";
         if(!empty($startdate)){
             $strWhere=$strWhere." and QianyueDate>='".$startdate."'"  ;
