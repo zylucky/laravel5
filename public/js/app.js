@@ -49682,9 +49682,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 });
             } else {
-                //console.log(this.property.flag);
-                //console.log(this.renter.flag);
-                //console.log(this.addDate.flag);
                 if (this.property.flag == false) {
                     this.stepNum = 3;
                 }
@@ -49754,7 +49751,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this4 = this;
 
             var para = Object.assign({}, { content: this.content }, this.shenhe);
-            //console.log(para);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__api_api__["_49" /* reviewSaleContract */])(para).then(function (res) {
                 if (res.data.code == 200) {
                     history.go(-1);
@@ -49774,7 +49770,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__api_api__["e" /* getSaleContractInfo */])(id).then(function (res) {
                 if (res.data.code == '200') {
-                    //console.log(res.data.data)
                     //把数据分别赋值给三个组件的变量
                     _this5.fuzhi(res);
                 } else {
@@ -49826,7 +49821,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             }
             this.contractVersion = res.data.data.version;
-            this.property.xsOffice = res.data.data.xsOffice;
+            if (res.data.data.xsOffice.length > 0) {
+                this.property.xsOffice = res.data.data.xsOffice;
+            }
             this.property.editableTabs2 = [];
             this.property.xsOffice.forEach(function (property, index) {
                 index++;
@@ -49901,8 +49898,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.addDate.iscompletefrzj = res.data.data.iscompletefrzj;
             var reg = new RegExp("<br>", "g"); //创建正则RegExp对象
             this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong.replace(reg, "\n");
-
-            //console.log(res.data.data);
         },
         disabledInput: function disabledInput() {
             this.reviewVisible = true;
@@ -50908,13 +50903,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.property.xsOffice[this.property.tabIndex - 1].Qianyuemianji = this.houseData[x].fjmj;
                 }
             }
-            //console.log(this.property.xsOffice)
             this.$emit('getshoufanghetong');
 
             var para = {
                 id: this.property.xsOffice[this.property.tabIndex - 1].omcId
-                //console.log(para);
-            };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_52" /* getSaleFanghaoChengzu */])(para).then(function (res) {
+            };
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_52" /* getSaleFanghaoChengzu */])(para).then(function (res) {
                 if (!res.data.success) {
                     _this6.$message({
                         message: res.data.message,

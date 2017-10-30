@@ -245,9 +245,6 @@
                     }
                 })
                 }else{
-                    //console.log(this.property.flag);
-                    //console.log(this.renter.flag);
-                    //console.log(this.addDate.flag);
                     if(this.property.flag==false){this.stepNum = 3;}
                     if(this.renter.flag==false){this.stepNum = 2;}
                     if(this.addDate.flag==false){this.stepNum = 1;}
@@ -306,7 +303,6 @@
             //审核通过
             review2(){
                 let para = Object.assign({},{content:this.content},this.shenhe);
-                //console.log(para);
                     reviewSaleContract(para).then((res) => {
                     if(res.data.code == 200)　{
                         history.go(-1);
@@ -323,7 +319,6 @@
             getSaleContract(id){
                 getSaleContractInfo(id).then((res)=>{
                     if(res.data.code=='200'){
-                        //console.log(res.data.data)
                         //把数据分别赋值给三个组件的变量
                         this.fuzhi(res);
                     }else {
@@ -370,7 +365,9 @@
                     });
                 }
                 this.contractVersion = res.data.data.version;
-                this.property.xsOffice = res.data.data.xsOffice;
+                if(res.data.data.xsOffice.length>0){
+                    this.property.xsOffice = res.data.data.xsOffice;
+                }
                 this.property.editableTabs2 = [];
                 this.property.xsOffice.forEach((property,index)=>{
                     index ++;
@@ -443,8 +440,6 @@
                 this.addDate.iscompletefrzj = res.data.data.iscompletefrzj;
                 var reg=new RegExp("<br>","g"); //创建正则RegExp对象
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong.replace(reg,"\n");
-
-                //console.log(res.data.data);
             },
             disabledInput(){
                 this.reviewVisible = true;
