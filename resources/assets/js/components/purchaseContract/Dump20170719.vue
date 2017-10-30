@@ -89,11 +89,10 @@
                 <u>&nbsp;&nbsp;{{day(item.startdate)}}&nbsp;&nbsp;</u>日至
                 <u>&nbsp;&nbsp;{{year(item.enddate)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(item.enddate)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日,
-                每 <u>{{(item.zujinyue?daxie2(item.zujinyue-1):'_____')}}</u> 月支付一次。
+                <u>&nbsp;&nbsp;{{day(item.enddate)}}&nbsp;&nbsp;</u>日,每 <u>{{(item.zujinyue?daxie2(item.zujinyue-1):'_____')}}</u> 月支付一次。
+                <br>
             </span>
-
-                租金中包含物业管理费、供暖费及制冷费。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租金中包含物业管理费、供暖费及制冷费。
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首期租金支付时间为
                 <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
