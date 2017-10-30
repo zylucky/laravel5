@@ -545,6 +545,7 @@
                     }
                 });
             },
+
             updataHedan(index, row){
                 let para = {
                     id: row.id,

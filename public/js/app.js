@@ -52934,6 +52934,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53015,29 +53030,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.listLoading = false;
             });
         },
+        changeyslxr1: function changeyslxr1() {
+            for (var x in this.optionsyslxr1) {
+                if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname) {
+                    this.hedan.qiandanren[this.tabIndex - 1].signpersonnelname = this.optionsyslxr1[x].label;
+                }
+            }
+        },
+        changeyslxr2: function changeyslxr2() {
+            for (var x in this.optionsyslxr2) {
+                if (this.optionsyslxr2[x].value == this.hedan.qiandanren[this.tabIndex - 1].leaderpersonnelname) {
+                    this.hedan.qiandanren[this.tabIndex - 1].leaderpersonnelname = this.optionsyslxr2[x].label;
+                }
+            }
+        },
+        changeyslxr3: function changeyslxr3() {
+            for (var x in this.optionsyslxr3) {
+                if (this.optionsyslxr3[x].value == this.hedan.qiandanren[this.tabIndex - 1].departmentname) {
+                    this.hedan.qiandanren[this.tabIndex - 1].departmentname = this.optionsyslxr3[x].label;
+                }
+            }
+        },
 
-
-        //            changeyslxr1(){
-        //                for (var x in this.optionsyslxr1) {
-        //                    if (this.optionsyslxr1[x].value == this.hedan.qiandanren[this.tabIndex-1].signpersonnelname) {
-        //                        this.hedan.qiandanren[this.tabIndex-1].signpersonnelname = this.optionsyslxr1[x].label;
-        //                    }
-        //                }
-        //            },
-        //            changeyslxr2(){
-        //                for (var x in this.optionsyslxr2) {
-        //                    if (this.optionsyslxr2[x].value == this.hedan.qiandanren[this.tabIndex-1].leaderpersonnelname) {
-        //                        this.hedan.qiandanren[this.tabIndex-1].leaderpersonnelname = this.optionsyslxr2[x].label;
-        //                    }
-        //                }
-        //            },
-        //            changeyslxr3(){
-        //                for (var x in this.optionsyslxr3) {
-        //                    if (this.optionsyslxr3[x].value == this.hedan.qiandanren[this.tabIndex-1].departmentname) {
-        //                        this.hedan.qiandanren[this.tabIndex-1].departmentname = this.optionsyslxr3[x].label;
-        //                    }
-        //                }
-        //            },
 
         //获取签单人列表
         remoteMethodyslxr1: function remoteMethodyslxr1(query) {
@@ -53210,6 +53224,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     var para1 = _this6.hedan.qiandanren;
                     //console.log(para1);
                     _this6.Visible = false;
+                    console.log(para1);
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_33" /* hedanSaveSaleContract */])(para1).then(function (res) {
                         if (res.data.code != '200') {
                             _this6.$message({
@@ -53311,7 +53326,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 leaderpersonnelname: row.leaderpersonnelname,
                 departmentname: row.departmentname
             };
-            //alert(22);
+            //alert(22);2222222
             //console.log(para);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_34" /* hedanUpdataSaleContract */])(para).then(function (res) {
                 if (res.data.code != '200') {
@@ -138322,13 +138337,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               "type": "primary",
               "size": "normal",
               "splitButton": "true"
+            }
+          }, [_vm._v("\n                                        删除"), _c('i', {
+            staticClass: "el-icon-caret-bottom el-icon&#45;&#45;right"
+          })]), _vm._v(" "), _c('el-dropdown-menu', {
+            attrs: {
+              "slot": "dropdown"
             },
+            slot: "dropdown"
+          }, [_c('el-dropdown-item', [_c('el-button', {
             on: {
               "click": function($event) {
                 _vm.handleDel(scope.$index, scope.row)
               }
             }
-          }, [_vm._v("\n                                        删除")])], 1)]
+          }, [_vm._v("删除")])], 1)], 1)], 1)]
         }
       }])
     })], 1)], 1)
@@ -138409,6 +138432,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "remote-method": _vm.remoteMethodyslxr1,
         "loading": _vm.fristyslxrloading1
       },
+      on: {
+        "change": _vm.changeyslxr1
+      },
       model: {
         value: (item.signpersonnelname),
         callback: function($$v) {
@@ -138464,6 +138490,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "remote-method": _vm.remoteMethodyslxr2,
         "loading": _vm.fristyslxrloading1
       },
+      on: {
+        "change": _vm.changeyslxr2
+      },
       model: {
         value: (item.leaderpersonnelname),
         callback: function($$v) {
@@ -138499,6 +138528,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "placeholder": "签单人部门",
         "remote-method": _vm.remoteMethodyslxr3,
         "loading": _vm.fristyslxrloading2
+      },
+      on: {
+        "change": _vm.changeyslxr3
       },
       model: {
         value: (item.departmentname),
