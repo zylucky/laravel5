@@ -171,7 +171,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）甲乙双方在本合同中书写的地址即为本合同下任何书面通知的有效送达地址，若因接收方拒收或地址错误等情况致使无法送达的，均以付邮日（以邮戳为准）后3日即视为通知方已依本合同给予书面通知。若任何一方联络地址变更的，应及时通知对方。</p>
             <p><b>第十三条  其他</b></p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）本合同生效后，各方对合同内容的变更或补充应采取书面形式，作为本合同的附件；附件与本合同具有同等的法律效力。甲乙双方一致同意，未加盖乙方正式印鉴的任何书面承诺、口头承诺、条款变更等行为均不视为乙方行为，对双方不产生法律约束力。
-                <br v-if="owner.farenzhengjian=='s'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{msg_03}} <input v-if="owner.farenzhengjian=='s'" v-model="addDate.yongjin" style="width: 50px;" ><span style="display:inline;">元</span>
+                <br v-if="owner.farenzhengjian=='s'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{msg_03}} <input v-if="owner.farenzhengjian=='s'" v-model="addDate.yongjin" style="width: 50px;" ><span v-if="owner.farenzhengjian=='s'" style="display:inline;">元</span>
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（{{msg_02}}）本合同经甲乙双方签字盖章后生效。本合同（及附件）一式{{msg_04}}份，甲乙双方各持一份，{{msg_01}}每份具有相同法律效力。</p>
             <p v-if="historyOptimize">
                 <b>&nbsp;&nbsp;第十四条  补充条款</b> <br>
