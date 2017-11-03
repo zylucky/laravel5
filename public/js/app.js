@@ -39943,8 +39943,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     dizengfangshi: '',
                     dizengliang: ''
                 }],
-                jiafangfeiyong: null,
-                yifangfeiyong: null,
+                jiafangfeiyong: [],
+                yifangfeiyong: [],
                 yingyezhizhao: ''
             },
             tiaoList: []
@@ -40730,9 +40730,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var jafangs = this.addDate.jiafangfeiyong;
             var yifangs = this.addDate.yifangfeiyong;
+            console.log(this.addDate.jiafangfeiyong);
 
             if (index == 1) {
                 //点击甲方的时候
+                if (this.addDate.jiafangfeiyong[0] == "") {
+                    this.addDate.jiafangfeiyong.splice(0, 1);
+                }
                 this.addDate.yifangfeiyong = [];
                 this.checkList.forEach(function (check, index) {
                     if (jafangs.indexOf(check) == -1) {
