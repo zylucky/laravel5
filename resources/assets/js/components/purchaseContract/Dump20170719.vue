@@ -100,10 +100,12 @@
                 <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前，其余每期租金在实际应付款月（减除招商期后）开始管理之日的前 <u>&nbsp;&nbsp;{{addDate.tiqianfukuantian}}&nbsp;</u>天进行支付，即第二期租金的支付时间为
                 <u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日，第三期租金的支付时间为
+                <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日，
+                <span v-if="addDate.sanqifukuanri">第三期租金的支付时间为
                 <u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
                 <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月
-                <u>&nbsp;&nbsp;{{day(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>日，管理期内每期租金的支付时间以此类推。
+                <u>&nbsp;&nbsp;{{day(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>日,
+                </span>管理期内每期租金的支付时间以此类推。
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲方指定收款账户为：
                 <br>
