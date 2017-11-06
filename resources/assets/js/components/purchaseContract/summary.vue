@@ -2,7 +2,7 @@
     <div style="font-size: 12px;" class="summary">
         <p style="margin-left: 15%;font-size:17px;"> <u>房屋资产管理服务合同     管理方：幼狮科技</u> 【    】级 </p>
         <p style="margin-left: 6%;"> <b>项目房间号</b> <u >{{data.xiangmufangjianhao}}</u> <b style="margin-left:50%;">面积</b> <u>{{data.mianji}}</u> </p>
-        <div style="margin-left:8px;float: left">
+        <div style="margin-left:18px;float: left">
             <input type="checkbox" v-model="data.fangwuzichanguanlifuwuhetong" >房屋资产管理服务合同
             <input type="checkbox"style="margin-left:43px;" v-model="data.budongchanshouquanweituoshu">不动产授权委托书
             <input type="checkbox"style="margin-left:43px;" v-model="data.chanquanzhengfuyinjian">产权证复印件（全套，无缺页）
@@ -17,7 +17,6 @@
                     <td width="220" align="center">{{data.yezhu}}</td>
                     <th width="95" align="left">收款人</th>
                     <td width="220" align="center">{{data.shoukuanren}}</td>
-                    <td style="border:0 " ><b>规划用途</b>:{{yongtu(data.guihuayongtu)}}</td>
                 </tr>
                 <tr>
                     <th  height="20" align="left">联系方式</th>
@@ -30,8 +29,6 @@
                     <td  align="center"></td>
                     <th  align="left">账号</th>
                     <td  align="center">{{data.zhanghao}}</td>
-                    <td style="border:0 "><b>佣金</b>:{{toDecimal(data.yongjin)}}元</td>
-
                 </tr>
                 <tr>
                     <th  height="20" align="left">委托管理期限</th>
@@ -57,7 +54,6 @@
                 <tr>
                     <td  align="center" height="20"></td>
                     <th  align="left" colspan="2">提前【{{data.tiqianfukuantian}}】天付款</th>
-                    <td style="border:0 "><b>业务</b>：{{data.yewu}}</td>
                 </tr>
                 <tr>
                     <td  align="center" height="20"></td>
@@ -72,15 +68,14 @@
                     <td  height="100" colspan="4"  ></td>
                 </tr>
             </table>
-        <table   style="border-collapse: collapse;margin-left:-15px; ">
+            <table   style="border-collapse: collapse;margin-left:-15px; ">
             <tr>
                 <td style="border:0 "></td>
                 <td width="75" height="20">付款日</td>
                 <td width="75">付款科目</td>
                 <td width="200" align="center">付款周期</td>
-                <td width="75">付款金额</td>
+                <td width="80">付款金额</td>
                 <td width="202">备注</td>
-                <td style="border:0 "><b>签约日</b>:{{changeDate(data.qianyueri)}}</td>
             </tr>
 
             <tr v-for="(item,index) in data.yjProofs">
@@ -140,6 +135,10 @@
                 <td></td>
             </tr>
         </table>
+            <b>规划用途</b>:{{yongtu(data.guihuayongtu)}}
+            <b>佣金</b>:{{toDecimal(data.yongjin)}}元
+            <b>业务</b>：{{data.yewu}}
+            <b>签约日</b>:{{changeDate(data.qianyueri)}}
         </div>
     </div>
 

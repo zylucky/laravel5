@@ -46543,7 +46543,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -121539,11 +121538,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('b', [_vm._v("项目房间号")]), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.data.xiangmufangjianhao))]), _vm._v(" "), _c('b', {
     staticStyle: {
-      "margin-left": "10%"
+      "margin-left": "50%"
     }
   }, [_vm._v("面积")]), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.data.mianji))])]), _vm._v(" "), _c('div', {
     staticStyle: {
-      "margin-left": "8px",
+      "margin-left": "18px",
       "float": "left"
     }
   }, [_vm._v("\n        租赁合同、经办人身份证复印件、公司营业执照复印件、法人身份证附件、委托书原件\n        "), _c('br'), _vm._v(" "), _c('table', {
@@ -121571,11 +121570,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "220",
       "align": "center"
     }
-  }, [_vm._v(_vm._s(_vm.data.kaihuhang))]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_vm._v("佣金：" + _vm._s(_vm.data.yongjin))])]), _vm._v(" "), _c('tr', [_c('th', {
+  }, [_vm._v(_vm._s(_vm.data.kaihuhang))])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
       "height": "20",
       "align": "left"
@@ -121592,28 +121587,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "align": "center"
     }
-  }, [_vm._v(_vm._s(_vm.data.shoukuanren))])]), _vm._v(" "), _c('tr', [_c('th', {
-    attrs: {
-      "height": "20",
-      "align": "left"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "align": "center"
-    }
-  }), _vm._v(" "), _c('th', {
-    attrs: {
-      "align": "left"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "align": "center"
-    }
-  }), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_vm._v("销售：" + _vm._s(_vm.data.yewu))])]), _vm._v(" "), _c('tr', [_c('th', {
+  }, [_vm._v(_vm._s(_vm.data.shoukuanren))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
       "height": "20",
       "align": "left"
@@ -121682,11 +121656,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "align": "left",
       "colspan": "2"
     }
-  }, [_vm._v("提前【" + _vm._s(_vm.data.tiqianfukuantian) + "】天付款")]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_vm._v("渠道公司：远行地产")])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v("提前【" + _vm._s(_vm.data.tiqianfukuantian) + "】天付款")])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
       "height": "20"
@@ -121820,12 +121790,86 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v("发票\n                ")])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('table', {
+  }), _vm._v("发票\n                ")])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('table', {
     staticStyle: {
       "border-collapse": "collapse",
       "margin-left": "-10px"
     }
-  }, [_c('tr', [_c('td', {
+  }, [_vm._m(2), _vm._v(" "), _vm._l((_vm.data.yjProofs), function(item, index) {
+    return _c('tr', [_c('td', {
+      staticStyle: {
+        "border": "0"
+      }
+    }), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center",
+        "height": "20"
+      }
+    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+  }), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._l((_vm.data.zjProofs), function(item, index) {
+    return _c('tr', [_c('td', {
+      staticStyle: {
+        "border": "0"
+      }
+    }, [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center",
+        "height": "20"
+      }
+    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+  }), _vm._m(4), _vm._m(5), _vm._m(6), _vm._m(7)], 2), _vm._v(" "), _c('b', [_vm._v("佣金")]), _vm._v("：" + _vm._s(_vm.data.yongjin) + "\n        "), _c('b', [_vm._v("销售")]), _vm._v("：" + _vm._s(_vm.data.yewu) + "\n        "), _c('b', [_vm._v("渠道公司")]), _vm._v("：远行地产\n        "), _c('b', [_vm._v("签约日")]), _vm._v(":" + _vm._s(_vm.changeDate(_vm.data.qianyueri)) + "\n    ")])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', [_c('th', {
+    attrs: {
+      "height": "20",
+      "align": "left"
+    }
+  }), _vm._v(" "), _c('td', {
+    attrs: {
+      "align": "center"
+    }
+  }), _vm._v(" "), _c('th', {
+    attrs: {
+      "align": "left"
+    }
+  }), _vm._v(" "), _c('td', {
+    attrs: {
+      "align": "center"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', [_c('td', {
+    attrs: {
+      "height": "100",
+      "colspan": "4"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', [_c('td', {
     staticStyle: {
       "border": "0"
     }
@@ -121850,64 +121894,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "width": "202"
     }
-  }, [_vm._v("备注")]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_vm._v("签约日:" + _vm._s(_vm.changeDate(_vm.data.qianyueri)))])]), _vm._v(" "), _vm._l((_vm.data.yjProofs), function(item, index) {
-    return _c('tr', [_c('td', {
-      staticStyle: {
-        "border": "0"
-      }
-    }), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center",
-        "height": "20"
-      }
-    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
-  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._l((_vm.data.zjProofs), function(item, index) {
-    return _c('tr', [_c('td', {
-      staticStyle: {
-        "border": "0"
-      }
-    }, [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center",
-        "height": "20"
-      }
-    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
-  }), _vm._m(2), _vm._m(3), _vm._m(4), _vm._m(5)], 2)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', {
-    attrs: {
-      "height": "100",
-      "colspan": "4"
-    }
-  })])
+  }, [_vm._v("备注")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', [_c('td', {
     staticStyle: {
@@ -123588,7 +123575,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("面积")]), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.data.mianji))])]), _vm._v(" "), _c('div', {
     staticStyle: {
-      "margin-left": "8px",
+      "margin-left": "18px",
       "float": "left"
     }
   }, [_c('input', {
@@ -123814,11 +123801,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "220",
       "align": "center"
     }
-  }, [_vm._v(_vm._s(_vm.data.shoukuanren))]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_c('b', [_vm._v("规划用途")]), _vm._v(":" + _vm._s(_vm.yongtu(_vm.data.guihuayongtu)))])]), _vm._v(" "), _c('tr', [_c('th', {
+  }, [_vm._v(_vm._s(_vm.data.shoukuanren))])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
       "height": "20",
       "align": "left"
@@ -123852,11 +123835,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "align": "center"
     }
-  }, [_vm._v(_vm._s(_vm.data.zhanghao))]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_c('b', [_vm._v("佣金")]), _vm._v(":" + _vm._s(_vm.toDecimal(_vm.data.yongjin)) + "元")])]), _vm._v(" "), _c('tr', [_c('th', {
+  }, [_vm._v(_vm._s(_vm.data.zhanghao))])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
       "height": "20",
       "align": "left"
@@ -123925,11 +123904,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "align": "left",
       "colspan": "2"
     }
-  }, [_vm._v("提前【" + _vm._s(_vm.data.tiqianfukuantian) + "】天付款")]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_c('b', [_vm._v("业务")]), _vm._v("：" + _vm._s(_vm.data.yewu))])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v("提前【" + _vm._s(_vm.data.tiqianfukuantian) + "】天付款")])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
       "height": "20"
@@ -124068,37 +124043,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "border-collapse": "collapse",
       "margin-left": "-15px"
     }
-  }, [_c('tr', [_c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "75",
-      "height": "20"
-    }
-  }, [_vm._v("付款日")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "75"
-    }
-  }, [_vm._v("付款科目")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "200",
-      "align": "center"
-    }
-  }, [_vm._v("付款周期")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "75"
-    }
-  }, [_vm._v("付款金额")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "202"
-    }
-  }, [_vm._v("备注")]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_c('b', [_vm._v("签约日")]), _vm._v(":" + _vm._s(_vm.changeDate(_vm.data.qianyueri)))])]), _vm._v(" "), _vm._l((_vm.data.yjProofs), function(item, index) {
+  }, [_vm._m(2), _vm._v(" "), _vm._l((_vm.data.yjProofs), function(item, index) {
     return _c('tr', [_c('td', {
       staticStyle: {
         "border": "0"
@@ -124121,7 +124066,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "align": "center"
       }
     }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
-  }), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._l((_vm.data.zjProofs), function(item, index) {
+  }), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._l((_vm.data.zjProofs), function(item, index) {
     return _c('tr', [_c('td', {
       staticStyle: {
         "border": "0"
@@ -124144,7 +124089,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "align": "center"
       }
     }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
-  }), _vm._m(3), _vm._m(4), _vm._m(5), _vm._m(6)], 2)])])
+  }), _vm._m(4), _vm._m(5), _vm._m(6), _vm._m(7)], 2), _vm._v(" "), _c('b', [_vm._v("规划用途")]), _vm._v(":" + _vm._s(_vm.yongtu(_vm.data.guihuayongtu)) + "\n        "), _c('b', [_vm._v("佣金")]), _vm._v(":" + _vm._s(_vm.toDecimal(_vm.data.yongjin)) + "元\n        "), _c('b', [_vm._v("业务")]), _vm._v("：" + _vm._s(_vm.data.yewu) + "\n        "), _c('b', [_vm._v("签约日")]), _vm._v(":" + _vm._s(_vm.changeDate(_vm.data.qianyueri)) + "\n    ")])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', {
     staticStyle: {
@@ -124159,6 +124104,34 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "colspan": "4"
     }
   })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', [_c('td', {
+    staticStyle: {
+      "border": "0"
+    }
+  }), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "75",
+      "height": "20"
+    }
+  }, [_vm._v("付款日")]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "75"
+    }
+  }, [_vm._v("付款科目")]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "200",
+      "align": "center"
+    }
+  }, [_vm._v("付款周期")]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "80"
+    }
+  }, [_vm._v("付款金额")]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "202"
+    }
+  }, [_vm._v("备注")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', [_c('td', {
     staticStyle: {

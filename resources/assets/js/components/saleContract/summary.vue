@@ -5,8 +5,8 @@
             幼狮科技
             <input type="checkbox" v-model="data.huashuoshangmao">
             华溯商贸</u> 【    】级 </p>
-        <p style="margin-left: 6%;"> <b>项目房间号</b> <u >{{data.xiangmufangjianhao}}</u> <b style="margin-left:10%;">面积</b> <u>{{data.mianji}}</u> </p>
-        <div style="margin-left: 8px;float: left">
+        <p style="margin-left: 6%;"> <b>项目房间号</b> <u >{{data.xiangmufangjianhao}}</u> <b style="margin-left:50%;">面积</b> <u>{{data.mianji}}</u> </p>
+        <div style="margin-left: 18px;float: left">
             租赁合同、经办人身份证复印件、公司营业执照复印件、法人身份证附件、委托书原件
             <br>
             <table  style="border-collapse: collapse;">
@@ -15,7 +15,6 @@
                     <td width="220" align="center">{{data.yezhu}}</td>
                     <th width="95" align="left">收款银行</th>
                     <td width="220" align="center">{{data.kaihuhang}}</td>
-                    <td style="border:0 ">佣金：{{data.yongjin}}</td>
                 </tr>
                 <tr>
                     <th  height="20" align="left">联系方式</th>
@@ -28,7 +27,6 @@
                     <td  align="center"></td>
                     <th  align="left"></th>
                     <td  align="center"></td>
-                    <td style="border:0 ">销售：{{data.yewu}}</td>
 
                 </tr>
                 <tr>
@@ -55,7 +53,6 @@
                 <tr>
                     <td  align="center" height="20"></td>
                     <th  align="left" colspan="2">提前【{{data.tiqianfukuantian}}】天付款</th>
-                    <td style="border:0 ">渠道公司：远行地产</td>
                 </tr>
                 <tr>
                     <td  align="center" height="20"></td>
@@ -78,7 +75,6 @@
                     <td width="200">付款周期</td>
                     <td width="75">付款金额</td>
                     <td width="202">备注</td>
-                    <td style="border:0 ">签约日:{{changeDate(data.qianyueri)}}</td>
                 </tr>
 
                 <tr v-for="(item,index) in data.yjProofs">
@@ -138,6 +134,10 @@
                 <td></td>
             </tr>
             </table>
+            <b>佣金</b>：{{data.yongjin}}
+            <b>销售</b>：{{data.yewu}}
+            <b>渠道公司</b>：远行地产
+            <b>签约日</b>:{{changeDate(data.qianyueri)}}
         </div>
     </div>
 
