@@ -11,51 +11,50 @@
             <br>
             <table  style="border-collapse: collapse;">
                 <tr >
-                    <th width="95" height="20" align="left">租户</th>
-                    <td width="220" align="center">{{data.yezhu}}</td>
-                    <th width="95" align="left">收款银行</th>
-                    <td width="220" align="center">{{data.kaihuhang}}</td>
+                    <th width="65" height="23" align="left">租户</th>
+                    <td width="180" align="center">{{data.yezhu}}</td>
+                    <th width="99" align="left">收款银行</th>
+                    <td width="190" align="center">{{data.kaihuhang}}</td>
                 </tr>
                 <tr>
-                    <th  height="20" align="left">联系方式</th>
+                    <th  height="23" align="left">联系方式</th>
                     <td  align="center">{{data.lianxifangshi}}</td>
                     <th  align="left">户名</th>
                     <td  align="center">{{data.shoukuanren}}</td>
                 </tr>
                 <tr>
-                    <th  height="20" align="left"></th>
+                    <th  height="23" align="left"></th>
                     <td  align="center"></td>
                     <th  align="left"></th>
                     <td  align="center"></td>
 
                 </tr>
                 <tr>
-                    <th  height="20" align="left">租期</th>
+                    <th  height="23" align="left">租期</th>
                     <td  align="center">{{data.weituoguanliqixian}}</td>
                     <th  align="left"  rowspan="2">免租期</th>
-                    <td  align="center">{{data.zhaoshangzhuangxiuqi}}</td>
+                    <td  align="center" rowspan="2">{{data.zhaoshangzhuangxiuqi}}</td>
                 </tr>
                 <tr>
-                    <th  height="20" align="left" rowspan="5">租金</th>
-                    <td  align="center" height="20">{{data.zujins[0]}}</td>
-                    <td  align="center"></td>
+                    <th  height="23" align="left" rowspan="5">租金</th>
+                    <td  align="center" height="23">{{data.zujins[0]}}</td>
                 </tr>
                 <tr>
-                    <td  align="center" height="20"></td>
+                    <td  align="center" height="23"></td>
                     <th  align="left">押金</th>
                     <td  align="center">{{toDecimal(data.baozhengjin)}}元</td>
                 </tr>
                 <tr>
-                    <td  align="center" height="20"></td>
+                    <td  align="center" height="23"></td>
                     <th align="left">租金支付方式</th>
                     <td align="center">{{format(data.zujingzhifufangshi)}}</td>
                 </tr>
                 <tr>
-                    <td  align="center" height="20"></td>
+                    <td  align="center" height="23"></td>
                     <th  align="left" colspan="2">提前【{{data.tiqianfukuantian}}】天付款</th>
                 </tr>
                 <tr>
-                    <td  align="center" height="20"></td>
+                    <td  align="center" height="23"></td>
                     <th  align="left" colspan="2">
                         <input type="checkbox" v-model="data.shifouhanwuye">是否含物业
                         <input type="checkbox" v-model="data.qvnuan">取暖
@@ -64,13 +63,13 @@
                     </th>
                 </tr>
                 <tr>
-                    <td  height="100" colspan="4" ></td>
+                    <td  height="60" colspan="4" ></td>
                 </tr>
             </table>
             <table   style="border-collapse: collapse;margin-left:-10px; ">
                 <tr>
                     <td style="border:0 "></td>
-                    <td width="75" height="20">付款日</td>
+                    <td width="75" height="23">付款日</td>
                     <td width="75">付款科目</td>
                     <td width="200">付款周期</td>
                     <td width="75">付款金额</td>
@@ -79,7 +78,7 @@
 
                 <tr v-for="(item,index) in data.yjProofs">
                     <td style="border:0 "></td>
-                    <td align="center" height="20">{{changeDate(item.fukuanri)}}</td>
+                    <td align="center" height="23">{{changeDate(item.fukuanri)}}</td>
                     <td align="center">{{item.fukuankemu}}</td>
                     <td align="center">{{item.fukuanzhouqi}}</td>
                     <td align="center">{{toDecimal(item.fukuanjine)}}元</td>
@@ -88,7 +87,7 @@
                 <tr>
                     <td style="border:0 "></td>
 
-                    <td height="20"></td>
+                    <td height="23"></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -96,38 +95,15 @@
                 </tr>
                 <tr v-for="(item,index) in data.zjProofs">
                     <td style="border:0 ">{{index+1}}</td>
-                    <td align="center" height="20">{{changeDate(item.fukuanri)}}</td>
+                    <td align="center" height="23">{{changeDate(item.fukuanri)}}</td>
                     <td align="center" >{{item.fukuankemu}}</td>
                     <td align="center">{{item.fukuanzhouqi}}</td>
                     <td align="center">{{toDecimal(item.fukuanjine)}}元</td>
                     <td>{{item.beizhu}}</td>
-                </tr><tr>
+                </tr>
+            <tr v-for="x in (18-data.zjProofs.length)">
                 <td style="border:0 "></td>
-                <td height="20"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr><tr>
-                <td style="border:0 "></td>
-
-                <td height="20"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr><tr>
-                <td style="border:0 "></td>
-
-                <td height="20"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr><tr>
-                <td style="border:0 "></td>
-
-                <td height="20"></td>
+                <td height="23"></td>
                 <td></td>
                 <td></td>
                 <td></td>
