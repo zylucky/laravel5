@@ -1,10 +1,10 @@
 <template>
     <div style="font-size: 12px;" class="summary">
-        <p style="margin-left: 15%;font-size:17px;"> <u>
+        <p style="margin-left: 35%;font-size:17px;"> <u>
             <input type="checkbox" v-model="data.youshikeji">
             幼狮科技
             <input type="checkbox" v-model="data.huashuoshangmao">
-            华溯商贸</u> 【    】级 </p>
+            华溯商贸</u></p>
         <p style="margin-left: 6%;"> <b>项目房间号</b> <u >{{data.xiangmufangjianhao}}</u> <b style="margin-left:50%;">面积</b> <u>{{data.mianji}}</u> </p>
         <div style="margin-left: 18px;float: left">
             租赁合同、经办人身份证复印件、公司营业执照复印件、法人身份证附件、委托书原件
@@ -135,9 +135,9 @@
             </tr>
             </table>
             <b>佣金</b>：{{data.yongjin}}
-            <b>销售</b>：{{data.yewu}}
-            <b>渠道公司</b>：远行地产
-            <b>签约日</b>:{{changeDate(data.qianyueri)}}
+            <b style="margin-left:35px;">销售</b>：{{data.yewu}}
+            <b style="margin-left:35px;">渠道公司</b>：远行地产
+            <b style="margin-left:35px;">签约日</b>:{{changeDate(data.qianyueri)}}
         </div>
     </div>
 

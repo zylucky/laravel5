@@ -136,9 +136,9 @@
             </tr>
         </table>
             <b>规划用途</b>:{{yongtu(data.guihuayongtu)}}
-            <b>佣金</b>:{{toDecimal(data.yongjin)}}元
-            <b>业务</b>：{{data.yewu}}
-            <b>签约日</b>:{{changeDate(data.qianyueri)}}
+            <b style="margin-left:35px;">佣金</b>:{{toDecimal(data.yongjin)}}元
+            <b style="margin-left:35px;">业务</b>：{{data.yewu}}
+            <b style="margin-left:35px;">签约日</b>:{{changeDate(data.qianyueri)}}
         </div>
     </div>
 
