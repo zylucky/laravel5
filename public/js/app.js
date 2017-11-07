@@ -46269,24 +46269,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 iscompletehetong: [{ required: true, message: '不能为空' }]
             },
             copyForm: {
-                iscompletehetong: null,
-                iscompletecqrsfz: null,
-                iscompleteyyzz: null,
-                iscompletefrzz: null,
-                iscompletefcz: null,
-                iscompletebdcsqwts: null,
-                iscompleteyzsqdlrwts: null,
-                iscompletewtrsfz: null,
                 iscompletefwjgd: null
             },
-            hetongList: [],
-            chanquanrenList: [],
-            yingyezhizhao: [],
-            faren: [],
-            fangchanzheng: [],
-            budongchan: [],
-            yezhushouquan: [],
-            weituoren: [],
             jiaogedan: [],
             yezhuleixing: null,
             dialogImageUrl: '',
@@ -125930,7 +125914,7 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('el-upload', {
     attrs: {
-      "action": "/saleContract/addCopyImage?type=7",
+      "action": "/saleContract/addCopyImage?type=9",
       "list-type": "picture-card",
       "headers": _vm.headers,
       "data": _vm.data,
