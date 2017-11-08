@@ -121505,23 +121505,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('tr', [_c('th', {
     attrs: {
-      "width": "65",
+      "width": "95",
       "height": "23",
       "align": "left"
     }
   }, [_vm._v("租户")]), _vm._v(" "), _c('td', {
     attrs: {
-      "width": "180",
+      "width": "220",
       "align": "center"
     }
   }, [_vm._v(_vm._s(_vm.data.yezhu))]), _vm._v(" "), _c('th', {
     attrs: {
-      "width": "99",
+      "width": "100",
       "align": "left"
     }
   }, [_vm._v("收款银行")]), _vm._v(" "), _c('td', {
     attrs: {
-      "width": "190",
+      "width": "220",
       "align": "center"
     }
   }, [_vm._v(_vm._s(_vm.data.kaihuhang))])]), _vm._v(" "), _c('tr', [_c('th', {
@@ -121861,7 +121861,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("付款周期")]), _vm._v(" "), _c('td', {
     attrs: {
-      "width": "75"
+      "width": "80"
     }
   }, [_vm._v("付款金额")]), _vm._v(" "), _c('td', {
     attrs: {

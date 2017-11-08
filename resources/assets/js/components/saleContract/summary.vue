@@ -11,10 +11,10 @@
             <br>
             <table  style="border-collapse: collapse;">
                 <tr >
-                    <th width="65" height="23" align="left">租户</th>
-                    <td width="180" align="center">{{data.yezhu}}</td>
-                    <th width="99" align="left">收款银行</th>
-                    <td width="190" align="center">{{data.kaihuhang}}</td>
+                    <th width="95" height="23" align="left">租户</th>
+                    <td width="220" align="center">{{data.yezhu}}</td>
+                    <th width="100" align="left">收款银行</th>
+                    <td width="220" align="center">{{data.kaihuhang}}</td>
                 </tr>
                 <tr>
                     <th  height="23" align="left">联系方式</th>
@@ -72,7 +72,7 @@
                     <td width="75" height="23">付款日</td>
                     <td width="75">付款科目</td>
                     <td width="200">付款周期</td>
-                    <td width="75">付款金额</td>
+                    <td width="80">付款金额</td>
                     <td width="202">备注</td>
                 </tr>
 
