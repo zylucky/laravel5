@@ -37,7 +37,7 @@ class UserController extends Controller
             ->limit($pageSize)
             ->get();
 
-        return $data = ['total'=>$count,'data'=>$users];
+        return $data = ['total'=>count($count),'data'=>$users];
 
     }
     public function delete()
