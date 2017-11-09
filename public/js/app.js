@@ -54348,11 +54348,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //添加补充协议
         handleOptimize: function handleOptimize(index, row) {
-            var para = {
-                id: row.id
-            };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_67" /* buchongSaleContract */])(para).then(function (res) {});
-            this.saleContractList();
+            var _this13 = this;
+
+            this.$confirm('确认优化合同吗?', '提示', {
+                type: 'warning'
+            }).then(function () {
+                var para = {
+                    id: row.id
+                };
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_67" /* buchongSaleContract */])(para).then(function (res) {});
+                _this13.saleContractList();
+            });
+
             //this.$router.push('/saleContract/buchong?hetongid='+row.id+'&bianhao='+row.bianhao);
         },
 
