@@ -122308,7 +122308,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getchufangReport
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('brokerCompanyExport')) ? _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -122316,7 +122316,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleExport
     }
-  }, [_vm._v(" 导出")]) : _vm._e()], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 导出")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -124684,6 +124684,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "prop": "qdPername"
     }
   }, [_c('el-input', {
+    attrs: {
+      "disabled": _vm.isname
+    },
     model: {
       value: (_vm.brokerCompanyUserForm.qdPername),
       callback: function($$v) {
@@ -128968,7 +128971,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getchufangReport
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('brokerCompanyExport')) ? _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -128976,7 +128979,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleExport
     }
-  }, [_vm._v(" 导出")]) : _vm._e()], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 导出")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -134356,7 +134359,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getshoufangReport
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('brokerCompanyExport')) ? _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -134364,7 +134367,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleExport
     }
-  }, [_vm._v(" 导出")]) : _vm._e()], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 导出")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",

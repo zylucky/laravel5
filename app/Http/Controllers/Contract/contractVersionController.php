@@ -43,10 +43,10 @@ class contractVersionController extends Controller
         ]);
         switch ($status)
         {
-            case 0:
+            case 1:
                 $requestUrl = 'api/contract/muban/'.$id.'/enable';
                 break;
-            case 1:
+            case 0:
                 $requestUrl = 'api/contract/muban/'.$id.'/disable';
                 break;
             default:

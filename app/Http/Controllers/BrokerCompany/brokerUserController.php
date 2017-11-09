@@ -187,7 +187,7 @@ class brokerUserController extends Controller
             'base_uri' => $this->base_url,
 
         ]);
-        if ($obj['status'] == 0) {
+        if ($obj['status'] == 1) {
             $response = $client->request('GET', '/api/qd/ziyou/' . $obj['id'] .'/start', [
                 ]
             );
