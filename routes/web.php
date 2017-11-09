@@ -201,6 +201,7 @@ Route::group(['prefix' => 'user'], function () {
 });
 Route::get('shoufangReport/ExportExcel','Report\ShouFangReportController@ExportExcel');
 Route::get('chufangReport/ExportExcel','Report\ChuFangReportController@ExportExcel');
+Route::get('chanpinReport/ExportExcel','Report\chanPinHeYueReportController@ExportExcel');
 
 //合同房源
 Route::group(['prefix' => 'office'], function () {
@@ -217,4 +218,5 @@ Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');
 Route::resource('brokerCompanyUser','BrokerCompany\brokerCompanyUserController');
 Route::resource('shoufangReport', 'Report\ShouFangReportController');
 Route::resource('chufangReport', 'Report\ChuFangReportController');
+Route::resource('chanpinReport', 'Report\chanPinHeYueReportController');
 //hello world1
