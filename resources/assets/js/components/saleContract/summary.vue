@@ -112,7 +112,7 @@
             </table>
             <b>佣金</b>：{{data.yongjin}}
             <b style="margin-left:35px;">销售</b>：{{data.yewu}}
-            <b style="margin-left:35px;">渠道公司</b>：远行地产
+            <b style="margin-left:35px;">渠道公司</b>：{{data.qvdaogongsi}}
             <b style="margin-left:35px;">签约日</b>:{{changeDate(data.qianyueri)}}
         </div>
     </div>
