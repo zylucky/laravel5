@@ -408,6 +408,7 @@
             }
         },
         mounted() {
+            this.page=1;
             this.getUsers();
         }
     }
