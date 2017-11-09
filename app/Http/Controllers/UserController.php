@@ -21,22 +21,23 @@ class UserController extends Controller
         $count = DB::table('users')
             ->leftJoin('role_user','role_user.user_id','=','users.id')
             ->leftJoin('roles','roles.id','=','role_user.role_id')
+            ->select("users.id" ,DB::raw("GROUP_CONCAT(ifnull(roles.name,'')) as role"))
             ->where("users.name","like","%$name%")
-            ->select("users.id","users.name","users.sex","users.email","users.created_at",DB::raw("GROUP_CONCAT(ifnull(roles.name,'')) as role"))
-            ->groupBy("users.id")
-            ->having("role","like","%$rolename%") ->get();
+            ->groupBy("users.id" )
+            ->having("role","like","%$rolename%")
+            ->get();
         $users =  DB::table('users')
             ->leftJoin('role_user','role_user.user_id','=','users.id')
             ->leftJoin('roles','roles.id','=','role_user.role_id')
             ->where("users.name","like","%$name%")
             ->select("users.id","users.name","users.sex","users.email","users.created_at",DB::raw("GROUP_CONCAT(ifnull(roles.name,'')) as role"))
-            ->groupBy("users.id")
+            ->groupBy("users.id","users.name","users.sex","users.email","users.created_at")
             ->having("role","like","%$rolename%")
             ->offset(($page-1)*$pageSize)
             ->limit($pageSize)
             ->get();
 
-        return $data = ['total'=>count($count),'data'=>$users];
+        return $data = ['total'=>$count,'data'=>$users];
 
     }
     public function delete()
