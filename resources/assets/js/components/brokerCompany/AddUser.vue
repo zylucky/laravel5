@@ -10,7 +10,7 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="姓名" prop="qdPername">
-                            <el-input v-model="brokerCompanyUserForm.qdPername" :disabled="isname"></el-input>
+                            <el-input v-model="brokerCompanyUserForm.qdPername"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
