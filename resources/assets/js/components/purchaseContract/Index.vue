@@ -225,8 +225,8 @@
                     {value:7, label:'违约处理中',},
                     {value:8, label:'合同终止',},
                     {value:9, label:'优化中',},
-                    {value:10, label:'二次优化',},
-                    {value:11, label:'已完成',},
+                    {value:10, label:'已优化，履约中',},
+                    {value:11, label:'合同终止',},
                     {value:12, label:'合同作废',},
                 ],
                 //分页类数据

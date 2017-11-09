@@ -44579,7 +44579,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 startDate: null,
                 endDate: null
             },
-            options: [{ value: 0, label: '已创建' }, { value: 1, label: '待审核' }, { value: 2, label: '审核中' }, { value: 3, label: '待打印' }, { value: 4, label: '审核拒绝' }, { value: 5, label: '待确认' }, { value: 6, label: '履约中' }, { value: 7, label: '违约处理中' }, { value: 8, label: '合同终止' }, { value: 9, label: '优化中' }, { value: 10, label: '二次优化' }, { value: 11, label: '已完成' }, { value: 12, label: '合同作废' }],
+            options: [{ value: 0, label: '已创建' }, { value: 1, label: '待审核' }, { value: 2, label: '审核中' }, { value: 3, label: '待打印' }, { value: 4, label: '审核拒绝' }, { value: 5, label: '待确认' }, { value: 6, label: '履约中' }, { value: 7, label: '违约处理中' }, { value: 8, label: '合同终止' }, { value: 9, label: '优化中' }, { value: 10, label: '已优化，履约中' }, { value: 11, label: '合同终止' }, { value: 12, label: '合同作废' }],
             //分页类数据
             total: 0,
             currentPage: 0,
