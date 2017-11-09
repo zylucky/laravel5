@@ -624,6 +624,7 @@
                 }
                 buchongSaleContract(para).then((res)=>{
                 });
+                this.saleContractList();
                 //this.$router.push('/saleContract/buchong?hetongid='+row.id+'&bianhao='+row.bianhao);
             },
             //修改补充协议

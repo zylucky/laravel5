@@ -469,6 +469,7 @@
                     }
                     youhuaPurchaseContract(para).then((res)=>{
                     });
+                    this.purchaseContractList();
                     //this.$router.push('/purchaseContract/optimize?hetongid='+row.id+'&bianhao='+row.bianhao);
                 })
             },

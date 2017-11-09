@@ -44827,6 +44827,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //二次优化添加协议
         handleOptimize: function handleOptimize(index, row) {
+            var _this7 = this;
+
             this.$confirm('确认优化合同吗?', '提示', {
                 type: 'warning'
             }).then(function () {
@@ -44834,6 +44836,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: row.id
                 };
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_93" /* youhuaPurchaseContract */])(para).then(function (res) {});
+                _this7.purchaseContractList();
                 //this.$router.push('/purchaseContract/optimize?hetongid='+row.id+'&bianhao='+row.bianhao);
             });
         },
@@ -44855,7 +44858,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //打印
         handleDump: function handleDump(index, row) {
-            var _this7 = this;
+            var _this8 = this;
 
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["L" /* getPurchaseContractInfo */])({ id: row.id }).then(function (res) {
                 var version = res.data.data.version;
@@ -44864,7 +44867,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 };
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_94" /* dumpingPurchaseContract */])(para).then(function (res) {
                     if (res.data.code == "200") {
-                        _this7.purchaseContractList();
+                        _this8.purchaseContractList();
                         window.open('/#/purchaseContract/dump' + version + '?id=' + row.id + '&isdump=1');
                         window.open('/#/purchaseContract/dump' + version + 'pub?id=' + row.id + '&isdump=1');
                     }
@@ -44879,13 +44882,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //合同确认
         handleConfirm: function handleConfirm(index, row) {
-            var _this8 = this;
+            var _this9 = this;
 
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["L" /* getPurchaseContractInfo */])({ id: row.id }).then(function (res) {
                 if (res.data.code == '200') {
                     //把数据分别赋值给三个组件的变量
                     if (res.data.data.farenzhengjian == 'l') {
-                        _this8.$confirm('确认没有居间方的信息吗?', '提示', {
+                        _this9.$confirm('确认没有居间方的信息吗?', '提示', {
                             type: 'warning'
                         }).then(function () {
                             var para1 = {
@@ -44893,21 +44896,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 //直接执行签约完成的状态
                             };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_95" /* confirmPurchaseContract */])(para1).then(function (res) {
                                 if (res.data.code == '200') {
-                                    _this8.$message({
+                                    _this9.$message({
                                         message: '签约完成',
                                         type: 'success'
                                     });
-                                    _this8.purchaseContractList();
+                                    _this9.purchaseContractList();
                                 }
                             });
                         });
                     } else {
-                        _this8.payType.sureFormVisible = true;
-                        _this8.payType.tHetongId = row.id;
-                        _this8.payType.tHetongBianhao = row.bianhao;
+                        _this9.payType.sureFormVisible = true;
+                        _this9.payType.tHetongId = row.id;
+                        _this9.payType.tHetongBianhao = row.bianhao;
                     }
                 } else {
-                    _this8.$message({
+                    _this9.$message({
                         message: '获取数据失败',
                         type: 'error'
                     });
@@ -54349,6 +54352,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: row.id
             };
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_67" /* buchongSaleContract */])(para).then(function (res) {});
+            this.saleContractList();
             //this.$router.push('/saleContract/buchong?hetongid='+row.id+'&bianhao='+row.bianhao);
         },
 
