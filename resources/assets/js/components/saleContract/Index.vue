@@ -626,8 +626,21 @@
                         id:row.id,
                     }
                     buchongSaleContract(para).then((res)=>{
+                        if(res.data.code=='200'){
+                            this.listLoading = false;
+                            this.$message({
+                                message: '设置成功',
+                                type: 'success'
+                            });
+                            this.saleContractList();
+                        }else{
+                            this.$message({
+                                message: '设置failed',
+                                type: 'error'
+                            });
+                        }
                     });
-                    this.saleContractList();
+
                 })
 
                 //this.$router.push('/saleContract/buchong?hetongid='+row.id+'&bianhao='+row.bianhao);

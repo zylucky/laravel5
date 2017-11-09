@@ -468,8 +468,21 @@
                         id:row.id,
                     }
                     youhuaPurchaseContract(para).then((res)=>{
+                        if(res.data.code=='200'){
+                            this.listLoading = false;
+                            this.$message({
+                                message: '设置成功',
+                                type: 'success'
+                            });
+                            this.purchaseContractList();
+                        }else{
+                            this.$message({
+                                message: '设置failed',
+                                type: 'error'
+                            });
+                        }
                     });
-                    this.purchaseContractList();
+
                     //this.$router.push('/purchaseContract/optimize?hetongid='+row.id+'&bianhao='+row.bianhao);
                 })
             },

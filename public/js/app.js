@@ -44835,8 +44835,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     id: row.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_93" /* youhuaPurchaseContract */])(para).then(function (res) {});
-                _this7.purchaseContractList();
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_93" /* youhuaPurchaseContract */])(para).then(function (res) {
+                    if (res.data.code == '200') {
+                        _this7.listLoading = false;
+                        _this7.$message({
+                            message: '设置成功',
+                            type: 'success'
+                        });
+                        _this7.purchaseContractList();
+                    } else {
+                        _this7.$message({
+                            message: '设置failed',
+                            type: 'error'
+                        });
+                    }
+                });
+
                 //this.$router.push('/purchaseContract/optimize?hetongid='+row.id+'&bianhao='+row.bianhao);
             });
         },
@@ -54356,8 +54370,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     id: row.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_67" /* buchongSaleContract */])(para).then(function (res) {});
-                _this13.saleContractList();
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_67" /* buchongSaleContract */])(para).then(function (res) {
+                    if (res.data.code == '200') {
+                        _this13.listLoading = false;
+                        _this13.$message({
+                            message: '设置成功',
+                            type: 'success'
+                        });
+                        _this13.saleContractList();
+                    } else {
+                        _this13.$message({
+                            message: '设置failed',
+                            type: 'error'
+                        });
+                    }
+                });
             });
 
             //this.$router.push('/saleContract/buchong?hetongid='+row.id+'&bianhao='+row.bianhao);
