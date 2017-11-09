@@ -21,8 +21,8 @@ class UserController extends Controller
         $count = DB::table('users')
             ->leftJoin('role_user','role_user.user_id','=','users.id')
             ->leftJoin('roles','roles.id','=','role_user.role_id')
-            ->select("users.id" ,DB::raw("GROUP_CONCAT(ifnull(roles.name,'')) as role"))
             ->where("users.name","like","%$name%")
+            ->select("users.id" ,DB::raw("GROUP_CONCAT(ifnull(roles.name,'')) as role"))
             ->groupBy("users.id" )
             ->having("role","like","%$rolename%")
             ->get();
@@ -37,7 +37,7 @@ class UserController extends Controller
             ->limit($pageSize)
             ->get();
 
-        return $data = ['total'=>$count,'data'=>$users];
+        return $data = ['total'=>count($count),'data'=>$users];
 
     }
     public function delete()
