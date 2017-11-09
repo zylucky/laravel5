@@ -19,45 +19,14 @@ class TestController extends Controller
      */
     public function index()
     {
-        echo env('BASE_URL'); exit;
-        echo $this->binToDec('10100010');exit;
+        $client = new Client([
+            'base_uri' => '',
 
-        $bk = DB::connection('mysql2')->select("select CompayName,CONCAT(yewuqvyv,yewupianqv)ywqy,CONCAT('北京市',dz_xingzhengqvyv,dz_jiedao,dz_xiangxi)addr,gs_loupan,gs_guimo,gs_chenglishijian,zhuzuoqvyv,
-IF(shifouhezuoguo=0,'否','是')sfhz,hezuocishu,IF(shifouhezuoxieyi=0,'否','是')sfqy,qianxieyishijian,hezuoxieyidengji,yslianxiren1,yslianxiren2,yslianxiren3, farenxingming,farenlianxifangshi,fuzeren,fuzerenlianxifangshi,
-case YJ_Type when 1 then '按月租金' when 2 then '按年租金' end,
-YJZB_SF,YJZB_CF,gongsijingyingshuxing,fuwuduixiang
-from t_qd_compay");
-        $cellData= $this->objToArray($bk);
-        $headerData=['公司名称','业务区域','公司详细地址','项目名称','公司规模','公司成立时间','主做区域','是否有过合作','合作次数',
-            '是否签署协议','签署协议时间','合作协议等级','幼狮联系人1','幼狮联系人2','幼狮联系人3','法人姓名','法人联系方式','负责人姓名',
-            '负责人联系方式','佣金类型','收房佣金占比','出房用尽占比','公司经营属性','服务对象'];
-        array_unshift($cellData,$headerData);
-        exit;
-        //dd($cellData);
-        Excel::create('学生成绩',function($excel) use ($cellData){
-            $excel->sheet('score', function($sheet) use ($cellData){
-                $sheet->rows($cellData);
-            });
-        })->export('xls');
-
-        dd($this->objToArray($bk));
-        $cellData = [
-            ['学号','姓名','成绩'],
-            ['10001','AAAAA','99'],
-            ['10002','BBBBB','92'],
-            ['10003','CCCCC','95'],
-            ['10004','DDDDD','89'],
-            ['10005','EEEEE','96'],
-        ];
-        Excel::create('学生成绩',function($excel) use ($cellData){
-            $excel->sheet('score', function($sheet) use ($cellData){
-                $sheet->rows($cellData);
-            });
-       exit;
-    })->export('xls');
-       $hello =  DB::connection('mysql2')->table('t_shoufanghetong')->find(3091);
-       dd($hello);
-
+        ]);
+        $response = $client->request('GET', 'http://api.map.baidu.com/geocoder/v2/?ak=MhuuVxziXcOqWUAZ5vVEd4GBUdnZj0yO&callback=renderReverse&location=39.9041394,116.45570660000001&output=json&pois=1', [
+                ]
+        );
+ echo $response->getBody();
 
 
     }

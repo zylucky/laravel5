@@ -41,7 +41,7 @@
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item required label="公司详细地址" prop="addr">
+                        <el-form-item   label="公司详细地址" prop="addr">
                             <el-input value="北京市" disabled="disabled"></el-input>
                         </el-form-item>
                     </el-col>
@@ -379,9 +379,9 @@
         },
         data() {
             return {
-                isdis:true,
+                isdis:false,
                 iscompayname:false,
-                isqydis:true,
+                isqydis:false,
                 dialogImageUrl: '',
                 isckdis:false,
                 dialogVisible: false,
@@ -410,9 +410,9 @@
                     gsChenglishijian: '',
                     zhuzuoqvyv: [],
                     zhuzuoqvyvids: '',
-                    shifouhezuoguo: true,
+                    shifouhezuoguo: false,
                     hezuocishu: '',
-                    shifouhezuoxieyi: true,
+                    shifouhezuoxieyi: false,
                     qianxieyishijian: '',
                     hezuoxieyidengji: '',
                     hezuoxieyidengji1:'',
@@ -440,42 +440,6 @@
                 },
                 brokerCompanyFromRules: {
                     compayname: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    yewuqvyvid: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    yewupianqvid: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    dzXingzhengqvyvId: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    dzJiedaoId: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    dzXiangxi: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    zhuzuoqvyv: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    shifouhezuoguo: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    shifouhezuoxieyi: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    gongsijingyingshuxing: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    fuwuduixiang: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    hezuoxieyidengji: [
-                        {required: true, message: '不能为空'},
-                    ],
-                    yslianxiren1Id: [
                         {required: true, message: '不能为空'},
                     ],
                     gsGuimo: [{
@@ -1032,7 +996,7 @@
             },
             save(){
                 this.$refs.brokerCompanyFrom.validate((valid) => {
-                    if((this.brokerCompanyFrom.fuzeren!=''&& this.brokerCompanyFrom.fuzerenlianxifangshi!='')||(this.brokerCompanyFrom.farenlianxifangshi!=''&& this.brokerCompanyFrom.farenxingming!='')){
+
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
                             this.getGSSX();
@@ -1076,11 +1040,7 @@
                             }
                         });
                     }
-                }else{
-                        alert("法人姓名法人联系方式与负责人姓名负责人联系方式必须填其中一组");
-                    }
-                    }
-                );
+                    });
             },
             savehistory(){
                 this.$refs.editForm.validate((valid) => {
