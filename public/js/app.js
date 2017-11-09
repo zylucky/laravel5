@@ -124684,9 +124684,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "prop": "qdPername"
     }
   }, [_c('el-input', {
-    attrs: {
-      "disabled": _vm.isname
-    },
     model: {
       value: (_vm.brokerCompanyUserForm.qdPername),
       callback: function($$v) {
