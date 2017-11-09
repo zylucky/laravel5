@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-upload
-                action="/saleContract/addCopyImage?type=7"
+                action="/saleContract/addCopyImage?type=9"
                 list-type="picture-card"
                 :headers="headers"
                 :data="data"

@@ -40739,9 +40739,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var jafangs = this.addDate.jiafangfeiyong;
             var yifangs = this.addDate.yifangfeiyong;
+            console.log(this.addDate.jiafangfeiyong);
 
             if (index == 1) {
                 //点击甲方的时候
+                if (this.addDate.jiafangfeiyong[0] == "") {
+                    this.addDate.jiafangfeiyong.splice(0, 1);
+                }
                 this.addDate.yifangfeiyong = [];
                 this.checkList.forEach(function (check, index) {
                     if (jafangs.indexOf(check) == -1) {
@@ -41809,7 +41813,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     message: '房间号不符合规则！',
                     type: 'error'
                 });
-                //this.property.officeList[this.property.tabIndex-1].fanghao=null;
+                this.property.officeList[this.property.tabIndex - 1].fanghao = null;
             }
         },
         addTab: function addTab(targetName, action) {
@@ -42779,6 +42783,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HistoryOptimize_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__HistoryOptimize_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Dump20170719_pub_vue__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Dump20170719_pub_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Dump20170719_pub_vue__);
+//
+//
 //
 //
 //
@@ -44821,8 +44827,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //二次优化添加协议
         handleOptimize: function handleOptimize(index, row) {
-            var _this7 = this;
-
             this.$confirm('确认优化合同吗?', '提示', {
                 type: 'warning'
             }).then(function () {
@@ -44830,7 +44834,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: row.id
                 };
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_93" /* youhuaPurchaseContract */])(para).then(function (res) {});
-                _this7.$router.push('/purchaseContract/optimize?hetongid=' + row.id + '&bianhao=' + row.bianhao);
+                //this.$router.push('/purchaseContract/optimize?hetongid='+row.id+'&bianhao='+row.bianhao);
             });
         },
 
@@ -44851,7 +44855,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //打印
         handleDump: function handleDump(index, row) {
-            var _this8 = this;
+            var _this7 = this;
 
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["L" /* getPurchaseContractInfo */])({ id: row.id }).then(function (res) {
                 var version = res.data.data.version;
@@ -44860,7 +44864,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 };
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_94" /* dumpingPurchaseContract */])(para).then(function (res) {
                     if (res.data.code == "200") {
-                        _this8.purchaseContractList();
+                        _this7.purchaseContractList();
                         window.open('/#/purchaseContract/dump' + version + '?id=' + row.id + '&isdump=1');
                         window.open('/#/purchaseContract/dump' + version + 'pub?id=' + row.id + '&isdump=1');
                     }
@@ -44875,13 +44879,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //合同确认
         handleConfirm: function handleConfirm(index, row) {
-            var _this9 = this;
+            var _this8 = this;
 
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["L" /* getPurchaseContractInfo */])({ id: row.id }).then(function (res) {
                 if (res.data.code == '200') {
                     //把数据分别赋值给三个组件的变量
                     if (res.data.data.farenzhengjian == 'l') {
-                        _this9.$confirm('确认没有居间方的信息吗?', '提示', {
+                        _this8.$confirm('确认没有居间方的信息吗?', '提示', {
                             type: 'warning'
                         }).then(function () {
                             var para1 = {
@@ -44889,21 +44893,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 //直接执行签约完成的状态
                             };__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api_js__["_95" /* confirmPurchaseContract */])(para1).then(function (res) {
                                 if (res.data.code == '200') {
-                                    _this9.$message({
+                                    _this8.$message({
                                         message: '签约完成',
                                         type: 'success'
                                     });
-                                    _this9.purchaseContractList();
+                                    _this8.purchaseContractList();
                                 }
                             });
                         });
                     } else {
-                        _this9.payType.sureFormVisible = true;
-                        _this9.payType.tHetongId = row.id;
-                        _this9.payType.tHetongBianhao = row.bianhao;
+                        _this8.payType.sureFormVisible = true;
+                        _this8.payType.tHetongId = row.id;
+                        _this8.payType.tHetongBianhao = row.bianhao;
                     }
                 } else {
-                    _this9.$message({
+                    _this8.$message({
                         message: '获取数据失败',
                         type: 'error'
                     });
@@ -46272,24 +46276,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 iscompletehetong: [{ required: true, message: '不能为空' }]
             },
             copyForm: {
-                iscompletehetong: null,
-                iscompletecqrsfz: null,
-                iscompleteyyzz: null,
-                iscompletefrzz: null,
-                iscompletefcz: null,
-                iscompletebdcsqwts: null,
-                iscompleteyzsqdlrwts: null,
-                iscompletewtrsfz: null,
                 iscompletefwjgd: null
             },
-            hetongList: [],
-            chanquanrenList: [],
-            yingyezhizhao: [],
-            faren: [],
-            fangchanzheng: [],
-            budongchan: [],
-            yezhushouquan: [],
-            weituoren: [],
             jiaogedan: [],
             yezhuleixing: null,
             dialogImageUrl: '',
@@ -46394,24 +46382,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api_js__ = __webpack_require__(1);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -50566,7 +50536,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //                    qianyuedate: [
                 //                        { required: true, message: '不能为空' }
                 //                    ],
-                shouqifukuanri: [{ required: true, message: '不能为空' }], erqifukuanri: [{ required: true, message: '不能为空' }], sanqifukuanri: [{ required: true, message: '不能为空' }]
+                shouqifukuanri: [{ required: true, message: '不能为空' }], erqifukuanri: [{ required: true, message: '不能为空' }]
+                //                    sanqifukuanri: [
+                //                        { required: true, message: '不能为空' }
+                //                    ],
                 //                    jiafangfeiyong: [
                 //                        { required: true, message: '不能为空' }
                 //                    ],
@@ -52323,6 +52296,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HistoryBuchong_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__HistoryBuchong_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ListJieyue_vue__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ListJieyue_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__ListJieyue_vue__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -54555,7 +54534,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: row.id
             };
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_67" /* buchongSaleContract */])(para).then(function (res) {});
-            this.$router.push('/saleContract/buchong?hetongid=' + row.id + '&bianhao=' + row.bianhao);
+            //this.$router.push('/saleContract/buchong?hetongid='+row.id+'&bianhao='+row.bianhao);
         },
 
         //修改补充协议
@@ -55785,30 +55764,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api_js__ = __webpack_require__(1);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -116488,7 +116443,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "display": "inline"
       }
     }, [_vm._v("\n                   \n        "), _c('u', [_vm._v(" " + _vm._s(_vm.year(item.startdate) ? _vm.year(item.startdate) : '  ') + " ")]), _vm._v("年\n        "), _c('u', [_vm._v(" " + _vm._s(_vm.month(item.startdate) ? _vm.month(item.startdate) : '  ') + " ")]), _vm._v("月\n        "), _c('u', [_vm._v(" " + _vm._s(_vm.day(item.startdate) ? _vm.day(item.startdate) : '  ') + " ")]), _vm._v("日至\n        "), _c('u', [_vm._v(" " + _vm._s(_vm.year(item.enddate) ? _vm.year(item.enddate) : '  ') + " ")]), _vm._v("年\n        "), _c('u', [_vm._v(" " + _vm._s(_vm.month(item.enddate) ? _vm.month(item.enddate) : '  ') + " ")]), _vm._v("月\n        "), _c('u', [_vm._v(" " + _vm._s(_vm.day(item.enddate) ? _vm.day(item.enddate) : '  ') + " ")]), _vm._v("日，\n        押 "), _c('u', [_vm._v(_vm._s(item.yajinyue ? _vm.intToChinese(item.yajinyue) : '__'))]), _vm._v(" 付 "), _c('u', [_vm._v(_vm._s(item.zujinyue ? _vm.intToChinese(item.zujinyue) : '__'))]), _vm._v(";"), _c('br')])
-  }), _vm._v("\n\n\n\n           1、房租押金：￥ "), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.yajin) ? _vm.toDecimal(_vm.addDate.yajin) : '____'))]), _vm._v("元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yajin) ? _vm.daxie(_vm.addDate.yajin) : '________') + "  ")]), _vm._v("），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("日前。\n\n\n    "), _c('br'), _vm._v("       2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。\n    "), _c('br'), _vm._v("       3、首期租金：￥ "), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) > 0 ? _vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '_____'))]), _vm._v(" 元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) ? _vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '_____'))]), _vm._v("），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前；租金每 "), _c('u', [_vm._v(_vm._s(_vm.addDate.fukuanFangshiList[0].zujinyue ? _vm.intToChinese(_vm.addDate.fukuanFangshiList[0].zujinyue) : '__'))]), _vm._v("个月支付一次，于付款月起租日 "), _c('u', [_vm._v(_vm._s(_vm.addDate.tiqianfukuantian ? _vm.addDate.tiqianfukuantian : '__'))]), _vm._v(" 日前支付下一次租金，即第二期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日前，第三期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日前，合同期每期租金以此类推。\n    "), _c('br'), _vm._v("       （三）租金的结算方式为：□ 以转账方式 ；□ 现金支付\n    "), _c('br'), _vm._v("       甲方指定收款账户为：\n    "), _c('br'), _vm._v("       户   名："), _c('input', {
+  }), _vm._v("\n\n\n\n           1、房租押金：￥ "), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.yajin) ? _vm.toDecimal(_vm.addDate.yajin) : '____'))]), _vm._v("元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yajin) ? _vm.daxie(_vm.addDate.yajin) : '________') + "  ")]), _vm._v("），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("日前。\n\n\n    "), _c('br'), _vm._v("       2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。\n    "), _c('br'), _vm._v("       3、首期租金：￥ "), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) > 0 ? _vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '_____'))]), _vm._v(" 元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) ? _vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '_____'))]), _vm._v("），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前；租金每 "), _c('u', [_vm._v(_vm._s(_vm.addDate.fukuanFangshiList[0].zujinyue ? _vm.intToChinese(_vm.addDate.fukuanFangshiList[0].zujinyue) : '__'))]), _vm._v("个月支付一次，于付款月起租日 "), _c('u', [_vm._v(_vm._s(_vm.addDate.tiqianfukuantian ? _vm.addDate.tiqianfukuantian : '__'))]), _vm._v(" 日前支付下一次租金，即第二期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日前，\n        "), (_vm.addDate.sanqifukuanri) ? _c('span', {
+    staticStyle: {
+      "display": "inline"
+    }
+  }, [_vm._v("\n            第三期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日前，\n        ")]) : _vm._e(), _vm._v("\n        \n        \n        合同期每期租金以此类推。\n    "), _c('br'), _vm._v("       （三）租金的结算方式为：□ 以转账方式 ；□ 现金支付\n    "), _c('br'), _vm._v("       甲方指定收款账户为：\n    "), _c('br'), _vm._v("       户   名："), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -116843,7 +116802,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("添加补充协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [12]) && _vm.fun('editSaleOptimize')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("优化")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [12]) && _vm.fun('editSaleOptimize')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.editOptimize(scope.$index, scope.row)
@@ -117696,7 +117655,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('p', {
     staticStyle: {
-      "margin-left": "15%",
+      "margin-left": "35%",
       "font-size": "17px"
     }
   }, [_c('u', [_c('input', {
@@ -117761,17 +117720,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v("\n        华溯商贸")]), _vm._v(" 【    】级 ")]), _vm._v(" "), _c('p', {
+  }), _vm._v("\n        华溯商贸")])]), _vm._v(" "), _c('p', {
     staticStyle: {
       "margin-left": "6%"
     }
   }, [_c('b', [_vm._v("项目房间号")]), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.data.xiangmufangjianhao))]), _vm._v(" "), _c('b', {
     staticStyle: {
-      "margin-left": "10%"
+      "margin-left": "50%"
     }
   }, [_vm._v("面积")]), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.data.mianji))])]), _vm._v(" "), _c('div', {
     staticStyle: {
-      "margin-left": "8px",
+      "margin-left": "18px",
       "float": "left"
     }
   }, [_vm._v("\n        租赁合同、经办人身份证复印件、公司营业执照复印件、法人身份证附件、委托书原件\n        "), _c('br'), _vm._v(" "), _c('table', {
@@ -117781,7 +117740,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('tr', [_c('th', {
     attrs: {
       "width": "95",
-      "height": "20",
+      "height": "23",
       "align": "left"
     }
   }, [_vm._v("租户")]), _vm._v(" "), _c('td', {
@@ -117791,7 +117750,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v(_vm._s(_vm.data.yezhu))]), _vm._v(" "), _c('th', {
     attrs: {
-      "width": "95",
+      "width": "100",
       "align": "left"
     }
   }, [_vm._v("收款银行")]), _vm._v(" "), _c('td', {
@@ -117799,13 +117758,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "220",
       "align": "center"
     }
-  }, [_vm._v(_vm._s(_vm.data.kaihuhang))]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_vm._v("佣金：" + _vm._s(_vm.data.yongjin))])]), _vm._v(" "), _c('tr', [_c('th', {
+  }, [_vm._v(_vm._s(_vm.data.kaihuhang))])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
-      "height": "20",
+      "height": "23",
       "align": "left"
     }
   }, [_vm._v("联系方式")]), _vm._v(" "), _c('td', {
@@ -117820,30 +117775,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "align": "center"
     }
-  }, [_vm._v(_vm._s(_vm.data.shoukuanren))])]), _vm._v(" "), _c('tr', [_c('th', {
+  }, [_vm._v(_vm._s(_vm.data.shoukuanren))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
-      "height": "20",
-      "align": "left"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "align": "center"
-    }
-  }), _vm._v(" "), _c('th', {
-    attrs: {
-      "align": "left"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "align": "center"
-    }
-  }), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_vm._v("销售：" + _vm._s(_vm.data.yewu))])]), _vm._v(" "), _c('tr', [_c('th', {
-    attrs: {
-      "height": "20",
+      "height": "23",
       "align": "left"
     }
   }, [_vm._v("租期")]), _vm._v(" "), _c('td', {
@@ -117857,27 +117791,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("免租期")]), _vm._v(" "), _c('td', {
     attrs: {
-      "align": "center"
+      "align": "center",
+      "rowspan": "2"
     }
   }, [_vm._v(_vm._s(_vm.data.zhaoshangzhuangxiuqi))])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
-      "height": "20",
+      "height": "23",
       "align": "left",
       "rowspan": "5"
     }
   }, [_vm._v("租金")]), _vm._v(" "), _c('td', {
     attrs: {
       "align": "center",
-      "height": "20"
+      "height": "23"
     }
-  }, [_vm._v(_vm._s(_vm.data.zujins[0]))]), _vm._v(" "), _c('td', {
-    attrs: {
-      "align": "center"
-    }
-  })]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v(_vm._s(_vm.data.zujins[0]))])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
-      "height": "20"
+      "height": "23"
     }
   }), _vm._v(" "), _c('th', {
     attrs: {
@@ -117890,7 +117821,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.toDecimal(_vm.data.baozhengjin)) + "元")])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
-      "height": "20"
+      "height": "23"
     }
   }), _vm._v(" "), _c('th', {
     attrs: {
@@ -117903,21 +117834,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.format(_vm.data.zujingzhifufangshi)))])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
-      "height": "20"
+      "height": "23"
     }
   }), _vm._v(" "), _c('th', {
     attrs: {
       "align": "left",
       "colspan": "2"
     }
-  }, [_vm._v("提前【" + _vm._s(_vm.data.tiqianfukuantian) + "】天付款")]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_vm._v("渠道公司：远行地产")])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v("提前【" + _vm._s(_vm.data.tiqianfukuantian) + "】天付款")])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
-      "height": "20"
+      "height": "23"
     }
   }), _vm._v(" "), _c('th', {
     attrs: {
@@ -118048,19 +117975,115 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v("发票\n                ")])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('table', {
+  }), _vm._v("发票\n                ")])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('table', {
     staticStyle: {
       "border-collapse": "collapse",
       "margin-left": "-10px"
     }
-  }, [_c('tr', [_c('td', {
+  }, [_vm._m(2), _vm._v(" "), _vm._l((_vm.data.yjProofs), function(item, index) {
+    return _c('tr', [_c('td', {
+      staticStyle: {
+        "border": "0"
+      }
+    }), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center",
+        "height": "23"
+      }
+    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+  }), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._l((_vm.data.zjProofs), function(item, index) {
+    return _c('tr', [_c('td', {
+      staticStyle: {
+        "border": "0"
+      }
+    }, [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center",
+        "height": "23"
+      }
+    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "align": "center"
+      }
+    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+  }), _vm._v(" "), _vm._l(((18 - _vm.data.zjProofs.length)), function(x) {
+    return _c('tr', [_c('td', {
+      staticStyle: {
+        "border": "0"
+      }
+    }), _vm._v(" "), _c('td', {
+      attrs: {
+        "height": "23"
+      }
+    }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
+  })], 2), _vm._v(" "), _c('b', [_vm._v("佣金")]), _vm._v("：" + _vm._s(_vm.data.yongjin) + "\n        "), _c('b', {
+    staticStyle: {
+      "margin-left": "35px"
+    }
+  }, [_vm._v("销售")]), _vm._v("：" + _vm._s(_vm.data.yewu) + "\n        "), _c('b', {
+    staticStyle: {
+      "margin-left": "35px"
+    }
+  }, [_vm._v("渠道公司")]), _vm._v("：远行地产\n        "), _c('b', {
+    staticStyle: {
+      "margin-left": "35px"
+    }
+  }, [_vm._v("签约日")]), _vm._v(":" + _vm._s(_vm.changeDate(_vm.data.qianyueri)) + "\n    ")])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', [_c('th', {
+    attrs: {
+      "height": "23",
+      "align": "left"
+    }
+  }), _vm._v(" "), _c('td', {
+    attrs: {
+      "align": "center"
+    }
+  }), _vm._v(" "), _c('th', {
+    attrs: {
+      "align": "left"
+    }
+  }), _vm._v(" "), _c('td', {
+    attrs: {
+      "align": "center"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', [_c('td', {
+    attrs: {
+      "height": "60",
+      "colspan": "4"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', [_c('td', {
     staticStyle: {
       "border": "0"
     }
   }), _vm._v(" "), _c('td', {
     attrs: {
       "width": "75",
-      "height": "20"
+      "height": "23"
     }
   }, [_vm._v("付款日")]), _vm._v(" "), _c('td', {
     attrs: {
@@ -118072,70 +118095,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("付款周期")]), _vm._v(" "), _c('td', {
     attrs: {
-      "width": "75"
+      "width": "80"
     }
   }, [_vm._v("付款金额")]), _vm._v(" "), _c('td', {
     attrs: {
       "width": "202"
     }
-  }, [_vm._v("备注")]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_vm._v("签约日:" + _vm._s(_vm.changeDate(_vm.data.qianyueri)))])]), _vm._v(" "), _vm._l((_vm.data.yjProofs), function(item, index) {
-    return _c('tr', [_c('td', {
-      staticStyle: {
-        "border": "0"
-      }
-    }), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center",
-        "height": "20"
-      }
-    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
-  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._l((_vm.data.zjProofs), function(item, index) {
-    return _c('tr', [_c('td', {
-      staticStyle: {
-        "border": "0"
-      }
-    }, [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center",
-        "height": "20"
-      }
-    }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(item.fukuankemu))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(item.fukuanzhouqi))]), _vm._v(" "), _c('td', {
-      attrs: {
-        "align": "center"
-      }
-    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
-  }), _vm._m(2), _vm._m(3), _vm._m(4), _vm._m(5)], 2)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', {
-    attrs: {
-      "height": "100",
-      "colspan": "4"
-    }
-  })])
+  }, [_vm._v("备注")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', [_c('td', {
     staticStyle: {
@@ -118143,47 +118109,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('td', {
     attrs: {
-      "height": "20"
-    }
-  }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "height": "20"
-    }
-  }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "height": "20"
-    }
-  }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "height": "20"
-    }
-  }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "height": "20"
+      "height": "23"
     }
   }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
 }]}
@@ -118202,7 +118128,7 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('el-upload', {
     attrs: {
-      "action": "/saleContract/addCopyImage?type=7",
+      "action": "/saleContract/addCopyImage?type=9",
       "list-type": "picture-card",
       "headers": _vm.headers,
       "data": _vm.data,
@@ -118727,7 +118653,79 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "font-size": "12px"
     }
-  }, [_vm._m(0), _vm._v(" "), _c('p', {
+  }, [(_vm.data.fangwuzichanguanlifuwuhetong) ? _c('p', {
+    staticStyle: {
+      "margin-left": "15%",
+      "font-size": "17px"
+    }
+  }, [_c('u', [_vm._v("房屋资产管理服务合同     管理方： 幼狮科技  ")]), _vm._v(" 【    】级 ")]) : _vm._e(), _vm._v(" "), (!_vm.data.fangwuzichanguanlifuwuhetong) ? _c('p', {
+    staticStyle: {
+      "margin-left": "35%",
+      "font-size": "17px"
+    }
+  }, [_c('u', [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.data.youshikeji),
+      expression: "data.youshikeji"
+    }],
+    attrs: {
+      "type": "checkbox"
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.data.youshikeji) ? _vm._i(_vm.data.youshikeji, null) > -1 : (_vm.data.youshikeji)
+    },
+    on: {
+      "change": function($event) {
+        var $$a = _vm.data.youshikeji,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.data.youshikeji = $$a.concat([$$v]))
+          } else {
+            $$i > -1 && (_vm.data.youshikeji = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.$set(_vm.data, "youshikeji", $$c)
+        }
+      }
+    }
+  }), _vm._v("\n        幼狮科技\n        "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.data.huashuoshangmao),
+      expression: "data.huashuoshangmao"
+    }],
+    attrs: {
+      "type": "checkbox"
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.data.huashuoshangmao) ? _vm._i(_vm.data.huashuoshangmao, null) > -1 : (_vm.data.huashuoshangmao)
+    },
+    on: {
+      "change": function($event) {
+        var $$a = _vm.data.huashuoshangmao,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.data.huashuoshangmao = $$a.concat([$$v]))
+          } else {
+            $$i > -1 && (_vm.data.huashuoshangmao = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.$set(_vm.data, "huashuoshangmao", $$c)
+        }
+      }
+    }
+  }), _vm._v("\n        华溯商贸")])]) : _vm._e(), _vm._v(" "), _c('p', {
     staticStyle: {
       "margin-left": "6%"
     }
@@ -118737,7 +118735,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("面积")]), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.data.mianji))])]), _vm._v(" "), _c('div', {
     staticStyle: {
-      "margin-left": "8px",
+      "margin-left": "18px",
       "float": "left"
     }
   }, [_c('input', {
@@ -118945,7 +118943,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('tr', [_c('th', {
     attrs: {
       "width": "95",
-      "height": "20",
+      "height": "23",
       "align": "left"
     }
   }, [_vm._v("业主")]), _vm._v(" "), _c('td', {
@@ -118955,7 +118953,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v(_vm._s(_vm.data.yezhu))]), _vm._v(" "), _c('th', {
     attrs: {
-      "width": "95",
+      "width": "100",
       "align": "left"
     }
   }, [_vm._v("收款人")]), _vm._v(" "), _c('td', {
@@ -118963,13 +118961,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "220",
       "align": "center"
     }
-  }, [_vm._v(_vm._s(_vm.data.shoukuanren))]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_c('b', [_vm._v("规划用途")]), _vm._v(":" + _vm._s(_vm.yongtu(_vm.data.guihuayongtu)))])]), _vm._v(" "), _c('tr', [_c('th', {
+  }, [_vm._v(_vm._s(_vm.data.shoukuanren))])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
-      "height": "20",
+      "height": "23",
       "align": "left"
     }
   }, [_vm._v("联系方式")]), _vm._v(" "), _c('td', {
@@ -118986,7 +118980,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v(_vm._s(_vm.data.kaihuhang))])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
-      "height": "20",
+      "height": "23",
       "align": "left"
     }
   }), _vm._v(" "), _c('td', {
@@ -119001,13 +118995,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "align": "center"
     }
-  }, [_vm._v(_vm._s(_vm.data.zhanghao))]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_c('b', [_vm._v("佣金")]), _vm._v(":" + _vm._s(_vm.toDecimal(_vm.data.yongjin)) + "元")])]), _vm._v(" "), _c('tr', [_c('th', {
+  }, [_vm._v(_vm._s(_vm.data.zhanghao))])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
-      "height": "20",
+      "height": "23",
       "align": "left"
     }
   }, [_vm._v("委托管理期限")]), _vm._v(" "), _c('td', {
@@ -119021,27 +119011,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("招商装修期")]), _vm._v(" "), _c('td', {
     attrs: {
-      "align": "center"
+      "align": "center",
+      "rowspan": "2",
+      "width": "120"
     }
   }, [_vm._v(_vm._s(_vm.data.zhaoshangzhuangxiuqi))])]), _vm._v(" "), _c('tr', [_c('th', {
     attrs: {
-      "height": "20",
+      "height": "23",
       "align": "left",
       "rowspan": "5"
     }
   }, [_vm._v("租金")]), _vm._v(" "), _c('td', {
     attrs: {
       "align": "center",
-      "height": "20"
+      "height": "23"
     }
-  }, [_vm._v(_vm._s(_vm.data.zujins[0]))]), _vm._v(" "), _c('td', {
-    attrs: {
-      "align": "center"
-    }
-  })]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v(_vm._s(_vm.data.zujins[0]))])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
-      "height": "20"
+      "height": "23"
     }
   }, [_vm._v(_vm._s(_vm.data.zujins[1]))]), _vm._v(" "), _c('th', {
     attrs: {
@@ -119054,7 +119042,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.toDecimal(_vm.data.baozhengjin)) + "元")])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
-      "height": "20"
+      "height": "23"
     }
   }, [_vm._v(_vm._s(_vm.data.zujins[2]))]), _vm._v(" "), _c('th', {
     attrs: {
@@ -119067,21 +119055,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.format(_vm.data.zujingzhifufangshi)))])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
-      "height": "20"
+      "height": "23"
     }
   }), _vm._v(" "), _c('th', {
     attrs: {
       "align": "left",
       "colspan": "2"
     }
-  }, [_vm._v("提前【" + _vm._s(_vm.data.tiqianfukuantian) + "】天付款")]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_c('b', [_vm._v("业务")]), _vm._v("：" + _vm._s(_vm.data.yewu))])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v("提前【" + _vm._s(_vm.data.tiqianfukuantian) + "】天付款")])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
-      "height": "20"
+      "height": "23"
     }
   }), _vm._v(" "), _c('th', {
     attrs: {
@@ -119212,49 +119196,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v("发票\n                ")])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('table', {
+  }), _vm._v("发票\n                ")])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('table', {
     staticStyle: {
       "border-collapse": "collapse",
       "margin-left": "-15px"
     }
-  }, [_c('tr', [_c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "75",
-      "height": "20"
-    }
-  }, [_vm._v("付款日")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "75"
-    }
-  }, [_vm._v("付款科目")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "200",
-      "align": "center"
-    }
-  }, [_vm._v("付款周期")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "75"
-    }
-  }, [_vm._v("付款金额")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "202"
-    }
-  }, [_vm._v("备注")]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }, [_c('b', [_vm._v("签约日")]), _vm._v(":" + _vm._s(_vm.changeDate(_vm.data.qianyueri)))])]), _vm._v(" "), _vm._l((_vm.data.yjProofs), function(item, index) {
+  }, [_vm._m(1), _vm._v(" "), _vm._l((_vm.data.yjProofs), function(item, index) {
     return _c('tr', [_c('td', {
       staticStyle: {
         "border": "0"
       }
     }), _vm._v(" "), _c('td', {
       attrs: {
-        "height": "20",
+        "height": "23",
         "align": "center"
       }
     }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
@@ -119277,7 +119231,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c('td', {
       attrs: {
-        "height": "20",
+        "height": "23",
         "align": "center"
       }
     }, [_vm._v(_vm._s(_vm.changeDate(item.fukuanri)))]), _vm._v(" "), _c('td', {
@@ -119293,18 +119247,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "align": "center"
       }
     }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
-  }), _vm._m(3), _vm._m(4), _vm._m(5), _vm._m(6)], 2)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', {
+  }), _vm._l(((17 - _vm.data.zjProofs.length)), function(x) {
+    return _c('tr', [_c('td', {
+      staticStyle: {
+        "border": "0"
+      }
+    }), _vm._v(" "), _c('td', {
+      attrs: {
+        "height": "23"
+      }
+    }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
+  })], 2), _vm._v(" "), _c('b', [_vm._v("规划用途")]), _vm._v(":" + _vm._s(_vm.yongtu(_vm.data.guihuayongtu)) + "\n        "), _c('b', {
     staticStyle: {
-      "margin-left": "15%",
-      "font-size": "17px"
+      "margin-left": "35px"
     }
-  }, [_c('u', [_vm._v("房屋资产管理服务合同     管理方：幼狮科技")]), _vm._v(" 【    】级 ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  }, [_vm._v("佣金")]), _vm._v(":" + _vm._s(_vm.toDecimal(_vm.data.yongjin)) + "元\n        "), _c('b', {
+    staticStyle: {
+      "margin-left": "35px"
+    }
+  }, [_vm._v("业务")]), _vm._v("：" + _vm._s(_vm.data.yewu) + "\n        "), _c('b', {
+    staticStyle: {
+      "margin-left": "35px"
+    }
+  }, [_vm._v("签约日")]), _vm._v(":" + _vm._s(_vm.changeDate(_vm.data.qianyueri)) + "\n    ")])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', [_c('td', {
     attrs: {
-      "height": "100",
+      "height": "60",
       "colspan": "4"
     }
   })])
@@ -119315,9 +119284,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('td', {
     attrs: {
-      "height": "20"
+      "width": "75",
+      "height": "23"
     }
-  }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
+  }, [_vm._v("付款日")]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "75"
+    }
+  }, [_vm._v("付款科目")]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "200",
+      "align": "center"
+    }
+  }, [_vm._v("付款周期")]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "80"
+    }
+  }, [_vm._v("付款金额")]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "202"
+    }
+  }, [_vm._v("备注")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', [_c('td', {
     staticStyle: {
@@ -119325,37 +119312,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('td', {
     attrs: {
-      "height": "20"
-    }
-  }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "height": "20"
-    }
-  }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "height": "20"
-    }
-  }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', {
-    staticStyle: {
-      "border": "0"
-    }
-  }), _vm._v(" "), _c('td', {
-    attrs: {
-      "height": "20"
+      "height": "23"
     }
   }), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
 }]}
@@ -127465,7 +127422,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "display": "inline"
       }
     }, [_vm._v("\n                   \n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.startdate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.startdate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.startdate)) + "  ")]), _vm._v("日至\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(item.enddate)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(item.enddate)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(item.enddate)) + "  ")]), _vm._v("日,每 "), _c('u', [_vm._v(_vm._s((item.zujinyue ? _vm.daxie2(item.zujinyue - 1) : '_____')))]), _vm._v(" 月支付一次。\n        "), _c('br')])
-  }), _vm._v("\n               租金中包含物业管理费、供暖费及制冷费。\n        "), _c('br'), _vm._v("\n               首期租金支付时间为\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前，其余每期租金在实际应付款月（减除招商期后）开始管理之日的前 "), _c('u', [_vm._v("  " + _vm._s(_vm.addDate.tiqianfukuantian) + " ")]), _vm._v("天进行支付，即第二期租金的支付时间为\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日，第三期租金的支付时间为\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日，管理期内每期租金的支付时间以此类推。\n        "), _c('br'), _vm._v("\n               甲方指定收款账户为：\n        "), _c('br'), _vm._v("\n               名   称：  "), _c('input', {
+  }), _vm._v("\n               租金中包含物业管理费、供暖费及制冷费。\n        "), _c('br'), _vm._v("\n               首期租金支付时间为\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前，其余每期租金在实际应付款月（减除招商期后）开始管理之日的前 "), _c('u', [_vm._v("  " + _vm._s(_vm.addDate.tiqianfukuantian) + " ")]), _vm._v("天进行支付，即第二期租金的支付时间为\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日，\n        "), (_vm.addDate.sanqifukuanri) ? _c('span', {
+    staticStyle: {
+      "display": "inline"
+    }
+  }, [_vm._v("第三期租金的支付时间为\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日,\n        ")]) : _vm._e(), _vm._v("管理期内每期租金的支付时间以此类推。\n        "), _c('br'), _vm._v("\n               甲方指定收款账户为：\n        "), _c('br'), _vm._v("\n               名   称：  "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -127560,11 +127521,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.$set(_vm.addDate, "yongjin", $event.target.value)
       }
     }
-  }) : _vm._e(), _c('span', {
+  }) : _vm._e(), (_vm.owner.farenzhengjian == 's') ? _c('span', {
     staticStyle: {
       "display": "inline"
     }
-  }, [_vm._v("元")]), _vm._v(" "), _c('br'), _vm._v("      （" + _vm._s(_vm.msg_02) + "）本合同经甲乙双方签字盖章后生效。本合同（及附件）一式" + _vm._s(_vm.msg_04) + "份，甲乙双方各持一份，" + _vm._s(_vm.msg_01) + "每份具有相同法律效力。")]), _vm._v(" "), (_vm.historyOptimize) ? _c('p', [_c('b', [_vm._v("  第十四条  补充条款")]), _vm._v(" "), _c('br'), _vm._v("\n          以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。"), _c('br'), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.yingyezhizhao))]), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.yingyezhizhao == null || _vm.yingyezhizhao == '') ? _c('input', {
+  }, [_vm._v("元")]) : _vm._e(), _vm._v(" "), _c('br'), _vm._v("      （" + _vm._s(_vm.msg_02) + "）本合同经甲乙双方签字盖章后生效。本合同（及附件）一式" + _vm._s(_vm.msg_04) + "份，甲乙双方各持一份，" + _vm._s(_vm.msg_01) + "每份具有相同法律效力。")]), _vm._v(" "), (_vm.historyOptimize) ? _c('p', [_c('b', [_vm._v("  第十四条  补充条款")]), _vm._v(" "), _c('br'), _vm._v("\n          以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。"), _c('br'), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.yingyezhizhao))]), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.yingyezhizhao == null || _vm.yingyezhizhao == '') ? _c('input', {
     staticStyle: {
       "width": "600px"
     },
@@ -129201,7 +129162,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     scopedSlots: _vm._u([{
       key: "default",
-      fn: function(scope) {
+      fn: function(props) {
         return [_c('el-form', {
           staticClass: "demo-table-expand",
           attrs: {
@@ -129212,12 +129173,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           attrs: {
             "label": "协议生效时间"
           }
-        }, [_c('span', [_vm._v(_vm._s(_vm.changedate(_vm.props.row.xieyistartdate)))])]), _vm._v(" "), _c('el-form-item', {
+        }, [_c('span', [_vm._v(_vm._s(_vm.changedate(props.row.xieyistartdate)))])]), _vm._v(" "), _c('el-form-item', {
           attrs: {
             "label": "协议结束时间"
           }
-        }, [_c('span', [_vm._v(_vm._s(_vm.changedate(_vm.props.row.xieyienddate)))])])], 1), _vm._v(" "), _vm._l((_vm.props.row.chanquanrenList), function(item, index) {
-          return (_vm.props.row.chanquanrenList[0].name != null) ? _c('el-form', {
+        }, [_c('span', [_vm._v(_vm._s(_vm.changedate(props.row.xieyienddate)))])])], 1), _vm._v(" "), _vm._l((props.row.chanquanrenList), function(item, index) {
+          return (props.row.chanquanrenList[0].name != null) ? _c('el-form', {
             key: index,
             staticClass: "demo-table-expand",
             attrs: {
@@ -129247,8 +129208,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               "label": "身份证"
             }
           }, [_c('span', [_vm._v(_vm._s(item.zhengjian))])])], 1) : _vm._e()
-        }), _vm._v(" "), _vm._l((_vm.props.row.mianzuqiList), function(item, index) {
-          return (_vm.props.row.mianzuqiList[0].startdate != null) ? _c('el-form', {
+        }), _vm._v(" "), _vm._l((props.row.mianzuqiList), function(item, index) {
+          return (props.row.mianzuqiList[0].startdate != null) ? _c('el-form', {
             key: index,
             staticClass: "demo-table-expand",
             attrs: {
@@ -129264,7 +129225,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               "label": "免租期结束时间"
             }
           }, [_c('span', [_vm._v(_vm._s(_vm.changedate(item.enddate)))])])], 1) : _vm._e()
-        }), _vm._v(" "), (_vm.props.row.zuqistartdate != null) ? _c('el-form', {
+        }), _vm._v(" "), (props.row.zuqistartdate != null) ? _c('el-form', {
           staticClass: "demo-table-expand",
           attrs: {
             "label-position": "left",
@@ -129274,12 +129235,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           attrs: {
             "label": "总租期开始时间"
           }
-        }, [_c('span', [_vm._v(_vm._s(_vm.changedate(_vm.props.row.zuqistartdate)))])]), _vm._v(" "), _c('el-form-item', {
+        }, [_c('span', [_vm._v(_vm._s(_vm.changedate(props.row.zuqistartdate)))])]), _vm._v(" "), _c('el-form-item', {
           attrs: {
             "label": "总租期结束时间"
           }
-        }, [_c('span', [_vm._v(_vm._s(_vm.changedate(_vm.props.row.zuqienddate)))])])], 1) : _vm._e(), _vm._v(" "), _vm._l((_vm.props.row.fukuanFangshiList), function(item, index) {
-          return (_vm.props.row.fukuanFangshiList[0].startdate != null) ? _c('el-form', {
+        }, [_c('span', [_vm._v(_vm._s(_vm.changedate(props.row.zuqienddate)))])])], 1) : _vm._e(), _vm._v(" "), _vm._l((props.row.fukuanFangshiList), function(item, index) {
+          return (props.row.fukuanFangshiList[0].startdate != null) ? _c('el-form', {
             key: index,
             staticClass: "demo-table-expand",
             attrs: {
@@ -129309,8 +129270,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               "label": "付"
             }
           }, [_c('span', [_vm._v(_vm._s(item.zujinyue))])])], 1) : _vm._e()
-        }), _vm._v(" "), _vm._l((_vm.props.row.zujinList), function(item, index) {
-          return (_vm.props.row.zujinList[0].startdate != null) ? _c('el-form', {
+        }), _vm._v(" "), _vm._l((props.row.zujinList), function(item, index) {
+          return (props.row.zujinList[0].startdate != null) ? _c('el-form', {
             key: index,
             staticClass: "demo-table-expand",
             attrs: {
@@ -130258,8 +130219,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "三期租金日期",
-      "prop": "sanqifukuanri",
-      "required": ""
+      "prop": "sanqifukuanri"
     }
   }, [_c('el-date-picker', {
     staticStyle: {
@@ -138573,7 +138533,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleOptimize(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("添加协议")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9]) && _vm.fun('editOptimize')) ? _c('el-dropdown-item', [_c('el-button', {
+        }, [_vm._v("优化")])], 1) : _vm._e(), _vm._v(" "), (_vm.ztin(scope.row, [9]) && _vm.fun('editOptimize')) ? _c('el-dropdown-item', [_c('el-button', {
           on: {
             "click": function($event) {
               _vm.editOptimize(scope.$index, scope.row)

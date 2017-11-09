@@ -483,9 +483,13 @@
             changeOnCheck(index){
                 let jafangs =  this.addDate.jiafangfeiyong;
                 let yifangs =  this.addDate.yifangfeiyong;
+                console.log(this.addDate.jiafangfeiyong)
 
                 if(index==1){
                     //点击甲方的时候
+                    if(this.addDate.jiafangfeiyong[0]==""){
+                        this.addDate.jiafangfeiyong.splice(0,1);
+                    }
                     this.addDate.yifangfeiyong = [];
                     this.checkList.forEach((check,index)=>{
                         if(jafangs.indexOf(check)==-1){

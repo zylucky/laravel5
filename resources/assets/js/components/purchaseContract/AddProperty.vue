@@ -481,7 +481,7 @@
                         message: '房间号不符合规则！',
                         type: 'error'
                     });
-                    //this.property.officeList[this.property.tabIndex-1].fanghao=null;
+                    this.property.officeList[this.property.tabIndex-1].fanghao=null;
                 }
             },
             addTab(targetName, action) {
