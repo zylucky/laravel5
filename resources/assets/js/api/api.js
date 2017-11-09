@@ -214,3 +214,4 @@ export const checkPassword = params =>{ return axios.post(`${base}/user/checkPas
 
 export const getshoufangReportListPage = params => { return axios.get(`${base}/shoufangReport`, { params: params }); };
 export const getchufangReportListPage = params => { return axios.get(`${base}/chufangReport`, { params: params }); };
+export const getchanpinReportListPage = params => { return axios.get(`${base}/chanpinReport`, { params: params }); };

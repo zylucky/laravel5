@@ -7,6 +7,9 @@
                     <el-input v-model="filters.name" placeholder="姓名"></el-input>
                 </el-form-item>
                 <el-form-item>
+                    <el-input v-model="filters.rolename" placeholder="角色"></el-input>
+                </el-form-item>
+                <el-form-item>
                     <el-button type="primary" v-on:click="getUsers">查询</el-button>
                 </el-form-item>
                 <el-form-item>
@@ -132,6 +135,7 @@
             return {
                 filters:{
                     name:'',
+                    rolename:'',
                 },
                 //分页类数据
                 total:0,
@@ -284,7 +288,8 @@
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
-                    name: this.filters.name
+                    name: this.filters.name,
+                    rolename: this.filters.rolename
                 };
                 this.listLoading = true;
                 getUserListPage(para).then((res) => {
