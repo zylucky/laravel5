@@ -32593,9 +32593,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            isdis: true,
+            isdis: false,
             iscompayname: false,
-            isqydis: true,
+            isqydis: false,
             dialogImageUrl: '',
             isckdis: false,
             dialogVisible: false,
@@ -32624,9 +32624,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 gsChenglishijian: '',
                 zhuzuoqvyv: [],
                 zhuzuoqvyvids: '',
-                shifouhezuoguo: true,
+                shifouhezuoguo: false,
                 hezuocishu: '',
-                shifouhezuoxieyi: true,
+                shifouhezuoxieyi: false,
                 qianxieyishijian: '',
                 hezuoxieyidengji: '',
                 hezuoxieyidengji1: '',
@@ -32654,18 +32654,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             brokerCompanyFromRules: {
                 compayname: [{ required: true, message: '不能为空' }],
-                yewuqvyvid: [{ required: true, message: '不能为空' }],
-                yewupianqvid: [{ required: true, message: '不能为空' }],
-                dzXingzhengqvyvId: [{ required: true, message: '不能为空' }],
-                dzJiedaoId: [{ required: true, message: '不能为空' }],
-                dzXiangxi: [{ required: true, message: '不能为空' }],
-                zhuzuoqvyv: [{ required: true, message: '不能为空' }],
-                shifouhezuoguo: [{ required: true, message: '不能为空' }],
-                shifouhezuoxieyi: [{ required: true, message: '不能为空' }],
-                gongsijingyingshuxing: [{ required: true, message: '不能为空' }],
-                fuwuduixiang: [{ required: true, message: '不能为空' }],
-                hezuoxieyidengji: [{ required: true, message: '不能为空' }],
-                yslianxiren1Id: [{ required: true, message: '不能为空' }],
                 gsGuimo: [{
                     validator: function validator(rule, value, callback) {
                         if (value != '' && value != null) {
@@ -33230,50 +33218,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this12 = this;
 
             this.$refs.brokerCompanyFrom.validate(function (valid) {
-                if (_this12.brokerCompanyFrom.fuzeren != '' && _this12.brokerCompanyFrom.fuzerenlianxifangshi != '' || _this12.brokerCompanyFrom.farenlianxifangshi != '' && _this12.brokerCompanyFrom.farenxingming != '') {
-                    if (valid) {
-                        _this12.$confirm('确认提交吗？', '提示', {}).then(function () {
-                            _this12.getGSSX();
-                            _this12.getFWDX();
-                            _this12.getZZQY();
-                            var para = Object.assign({}, _this12.brokerCompanyFrom);
-                            if (_this12.brokerCompanyFrom.tQdCompayId != '' && _this12.brokerCompanyFrom.tQdCompayId != null) {
-                                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_20" /* editBrokerCompany */])(para).then(function (res) {
-                                    _this12.brokerCompanyFrom.gongsijingyingshuxing = _this12.brokerCompanyFrom.gongsijingyingshuxing == null ? [] : _this12.brokerCompanyFrom.gongsijingyingshuxing.split(',');
-                                    _this12.brokerCompanyFrom.fuwuduixiang = _this12.brokerCompanyFrom.fuwuduixiang == null ? [] : _this12.brokerCompanyFrom.fuwuduixiang.split(',');
-                                    _this12.brokerCompanyFrom.zhuzuoqvyv = _this12.brokerCompanyFrom.zhuzuoqvyv == null ? [] : _this12.brokerCompanyFrom.zhuzuoqvyv.split(',');
-                                    if (res.data.code == 200) {
-                                        _this12.$message({
-                                            message: '提交成功',
-                                            type: 'success'
-                                        });
-                                    } else {
-                                        _this12.$message({
-                                            message: res.data.msg,
-                                            type: 'error'
-                                        });
-                                    };
-                                });
-                            } else {
-                                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_21" /* addBrokerCompany */])(para).then(function (res) {
-                                    if (res.data.code == 200) {
-                                        _this12.$message({
-                                            message: '提交成功',
-                                            type: 'success'
-                                        });
-                                    } else {
-                                        _this12.$message({
-                                            message: res.data.msg,
-                                            type: 'error'
-                                        });
-                                    };
-                                });
-                                _this12.$router.push('/brokerCompany');
-                            }
-                        });
-                    }
-                } else {
-                    alert("法人姓名法人联系方式与负责人姓名负责人联系方式必须填其中一组");
+
+                if (valid) {
+                    _this12.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this12.getGSSX();
+                        _this12.getFWDX();
+                        _this12.getZZQY();
+                        var para = Object.assign({}, _this12.brokerCompanyFrom);
+                        if (_this12.brokerCompanyFrom.tQdCompayId != '' && _this12.brokerCompanyFrom.tQdCompayId != null) {
+                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_20" /* editBrokerCompany */])(para).then(function (res) {
+                                _this12.brokerCompanyFrom.gongsijingyingshuxing = _this12.brokerCompanyFrom.gongsijingyingshuxing == null ? [] : _this12.brokerCompanyFrom.gongsijingyingshuxing.split(',');
+                                _this12.brokerCompanyFrom.fuwuduixiang = _this12.brokerCompanyFrom.fuwuduixiang == null ? [] : _this12.brokerCompanyFrom.fuwuduixiang.split(',');
+                                _this12.brokerCompanyFrom.zhuzuoqvyv = _this12.brokerCompanyFrom.zhuzuoqvyv == null ? [] : _this12.brokerCompanyFrom.zhuzuoqvyv.split(',');
+                                if (res.data.code == 200) {
+                                    _this12.$message({
+                                        message: '提交成功',
+                                        type: 'success'
+                                    });
+                                } else {
+                                    _this12.$message({
+                                        message: res.data.msg,
+                                        type: 'error'
+                                    });
+                                };
+                            });
+                        } else {
+                            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_21" /* addBrokerCompany */])(para).then(function (res) {
+                                if (res.data.code == 200) {
+                                    _this12.$message({
+                                        message: '提交成功',
+                                        type: 'success'
+                                    });
+                                } else {
+                                    _this12.$message({
+                                        message: res.data.msg,
+                                        type: 'error'
+                                    });
+                                };
+                            });
+                            _this12.$router.push('/brokerCompany');
+                        }
+                    });
                 }
             });
         },
@@ -47555,6 +47540,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
+        this.page = 1;
         this.getUsers();
     }
 });
@@ -119082,7 +119068,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "required": "",
       "label": "公司详细地址",
       "prop": "addr"
     }
@@ -123170,7 +123155,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getshoufangReport
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('brokerCompanyExport')) ? _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -123178,7 +123163,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleExport
     }
-  }, [_vm._v(" 导出")]) : _vm._e()], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 导出")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -129170,7 +129155,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getchufangReport
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('brokerCompanyExport')) ? _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -129178,7 +129163,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleExport
     }
-  }, [_vm._v(" 导出")]) : _vm._e()], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 导出")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -130613,7 +130598,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getchufangReport
     }
-  }, [_vm._v("搜索")]), _vm._v(" "), (_vm.fun('brokerCompanyExport')) ? _c('el-button', {
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
     staticClass: "el-icon-plus",
     attrs: {
       "type": "primary"
@@ -130621,7 +130606,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.handleExport
     }
-  }, [_vm._v(" 导出")]) : _vm._e()], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v(" 导出")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",

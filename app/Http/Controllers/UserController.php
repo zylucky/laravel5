@@ -18,25 +18,43 @@ class UserController extends Controller
         $rolename = Input::get('rolename');
         $pageSize = Input::get('pageSize');
         $page = Input::get('page');
-        $count = DB::table('users')
-            ->leftJoin('role_user','role_user.user_id','=','users.id')
-            ->leftJoin('roles','roles.id','=','role_user.role_id')
-            ->where("users.name","like","%$name%")
-            ->select("users.id","users.name","users.sex","users.email","users.created_at",DB::raw("GROUP_CONCAT(ifnull(roles.name,'')) as role"))
-            ->groupBy("users.id")
-            ->having("role","like","%$rolename%") ->get();
-        $users =  DB::table('users')
-            ->leftJoin('role_user','role_user.user_id','=','users.id')
-            ->leftJoin('roles','roles.id','=','role_user.role_id')
-            ->where("users.name","like","%$name%")
-            ->select("users.id","users.name","users.sex","users.email","users.created_at",DB::raw("GROUP_CONCAT(ifnull(roles.name,'')) as role"))
-            ->groupBy("users.id")
-            ->having("role","like","%$rolename%")
-            ->offset(($page-1)*$pageSize)
-            ->limit($pageSize)
-            ->get();
+//        $count = DB::table('users')
+//            ->leftJoin('role_user','role_user.user_id','=','users.id')
+//            ->leftJoin('roles','roles.id','=','role_user.role_id')
+//            ->where("users.name","like","%$name%")
+//            ->select("users.id" ,DB::raw("GROUP_CONCAT(ifnull(roles.name,'')) as role"))
+//            ->groupBy("users.id" )
+//            ->having("role","like","%$rolename%")
+//            ->get();
+//        $users =  DB::table('users')
+//            ->leftJoin('role_user','role_user.user_id','=','users.id')
+//            ->leftJoin('roles','roles.id','=','role_user.role_id')
+//            ->where("users.name","like","%$name%")
+//            ->select("users.id","users.name","users.sex","users.email","users.created_at",DB::raw("GROUP_CONCAT(ifnull(roles.name,'')) as role"))
+//            ->groupBy("users.id","users.name","users.sex","users.email","users.created_at")
+//            ->having("role","like","%$rolename%")
+//            ->offset(($page-1)*$pageSize)
+//            ->limit($pageSize)
+//            ->get();
+        $limitStart=($page-1)*$pageSize;
+        $limitEnd = $pageSize;
 
-        return $data = ['total'=>count($count),'data'=>$users];
+        $sql="select users.id,users.name,users.sex,users.email,users.created_at, GROUP_CONCAT(ifnull(roles.name,'')) as role from  users
+left join role_user on role_user.user_id = users.id
+left join roles on roles.id = role_user.role_id  ";
+        $strWhere=" where 1=1 ";
+        $strhaving=" GROUP BY users.id,users.name,users.sex,users.email,users.created_at ";
+        if(!empty($name)){
+            $strWhere=$strWhere." and users.name like '%".$name."%'"  ;
+        }
+        if(!empty($rolename)){
+            $strhaving= $strhaving." HAVING role like  '%".$rolename."%'"  ;
+        }
+        $sql=$sql.$strWhere.$strhaving;
+        $count =  DB::connection('mysql')->select($sql) ;
+        $sql=$sql." order by  users.id desc limit ".$limitStart.", ".$limitEnd;
+        $users = DB::connection('mysql')->select($sql);
+        return $data = ['total'=>count($count) ,'data'=>$users];
 
     }
     public function delete()
