@@ -41672,15 +41672,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         change2: function change2() {
             var _this6 = this;
 
+            for (var x in this.options2) {
+                if (this.options2[x].label == this.property.officeList[this.property.tabIndex - 1].loudongName) {
+                    this.property.officeList[this.property.tabIndex - 1].loudongOmcId = this.options2[x].value;
+                    this.property.officeList[this.property.tabIndex - 1].fanghao = null; //清除楼栋和房号的缓存
+                    this.property.officeList[this.property.tabIndex - 1].omcId = null; //清除楼栋和房号的缓存
+                }
+            }
             if (this.$route.path == '/purchaseContract/add') {
                 //楼栋
-                for (var x in this.options2) {
-                    if (this.options2[x].label == this.property.officeList[this.property.tabIndex - 1].loudongName) {
-                        this.property.officeList[this.property.tabIndex - 1].loudongOmcId = this.options2[x].value;
-                        this.property.officeList[this.property.tabIndex - 1].fanghao = null; //清除楼栋和房号的缓存
-                        this.property.officeList[this.property.tabIndex - 1].omcId = null; //清除楼栋和房号的缓存
-                    }
-                }
                 //get rules of building
                 var para = {
                     loudongOmcId: this.property.officeList[this.property.tabIndex - 1].loudongOmcId
@@ -41700,18 +41700,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         change3: function change3() {
             var _this7 = this;
 
-            if (this.$route.path == '/purchaseContract/add') {
-                this.property.officeList[this.property.tabIndex - 1].omcId = null;
-            } else {
-                return false;
-            }
             //房号
             for (var x in this.options3) {
                 if (this.options3[x].label == this.property.officeList[this.property.tabIndex - 1].fanghao) {
                     this.property.officeList[this.property.tabIndex - 1].omcId = this.options3[x].value;
                 }
             }
-
+            if (this.$route.path == '/purchaseContract/add') {
+                this.property.officeList[this.property.tabIndex - 1].omcId = null;
+            } else {
+                return false;
+            }
             //1.第一步把放号分割，判断每一位是否符合规则
             function checknumber(String) {
                 var Letters = "1234567890";
