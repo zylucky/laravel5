@@ -315,7 +315,10 @@
                     </el-col>
                     <el-col :span="2" :pull="1" style="width: 160px;margin-left:30px;">
                         <el-form-item label="月租金" label-width="55px">
-                            <el-input v-model="item.yuezujin" placeholder="租金"></el-input>
+                            <el-input v-model="item.yuezujin"
+                                      placeholder="租金"
+                                      @change="perPrice(index,item.yuezujin)"
+                            ></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="2" :pull="1" style="width: 120px;margin-left:10px;">
@@ -353,7 +356,7 @@
     </el-row>
 </template>
 <script>
-    import {optimizePurchaseContract,getOptimizePurchaseContract,youhuacgPurchaseContract} from  '../../api/api';
+    import {optimizePurchaseContract,getOptimizePurchaseContract,youhuacgPurchaseContract,getPurchaseContractInfo} from  '../../api/api';
     export default{
         data(){
             return{
@@ -432,9 +435,25 @@
 
                     ],
                 },
+                toTalArea:1,
             }
         },
         methods:{
+            getContractInfo(){
+                getPurchaseContractInfo({id:this.$route.query.hetongid}).then((res)=>{
+                    //1.先计算面积综合
+                    res.data.data.officeList.forEach((property,index)=>{
+                        this.toTalArea += property.qianyuemianji;
+                    })
+                })
+            },
+            perPrice(index,value){
+                //2.计算单价
+                var perPrice = (value*12/365/this.toTalArea).toFixed(2);
+                console.log(perPrice)
+                console.log(this.addDate.zujinList)
+                this.addDate.zujinList[index].price = parseFloat(perPrice);
+            },
             //根据合同ID来查询协议
             getOptimize(){
                 getOptimizePurchaseContract(this.$route.query).then((res)=>{
@@ -618,6 +637,7 @@
             },
         },
         mounted(){
+            this.getContractInfo();
             this.bianhao = this.$route.query.bianhao;
             //type==1的时候查看协议的内容
             if(this.$route.query.type==1){
