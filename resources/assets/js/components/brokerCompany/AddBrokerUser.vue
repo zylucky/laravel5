@@ -13,11 +13,10 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-form-item required label="联系电话" v-for="(item, index) in brokerCompanyUserForm.telList"
+                <el-form-item  label="联系电话" v-for="(item, index) in brokerCompanyUserForm.telList"
                               :key="item.key">
                     <el-col :span="8">
                         <el-form-item  :prop="'telList.' + index + '.dianhua' " :rules="[
-                                {required: true, message: '不能为空'},
                                 {required: true, validator: MycheckPhone, trigger: 'blur' },
                                 ]">
                             <el-input v-model.number="brokerCompanyUserForm.telList[index].dianhua"></el-input>
@@ -401,27 +400,31 @@
         },
         methods: {
             MycheckPhone(rule,value,callback){
-                if (/^\d+$/.test(value) == true) {
-                    var telid=0;
-                    for (var x in this.brokerCompanyUserForm.telList) {
-                        if (this.brokerCompanyUserForm.telList[x].dianhua ==value) {
-                            telid= this.brokerCompanyUserForm.telList[x].tQdPersonTelId;
+                if (value != ''&&value != null) {
+                    if (/^\d+$/.test(value) == true) {
+                        var telid = 0;
+                        for (var x in this.brokerCompanyUserForm.telList) {
+                            if (this.brokerCompanyUserForm.telList[x].dianhua == value) {
+                                telid = this.brokerCompanyUserForm.telList[x].tQdPersonTelId;
+                            }
                         }
-                    }
-                    let para = {
-                        id:telid ,
-                        phone: value,
-                    };
-                    checkPhone(para).then((res) => {
-                        if (res.data.code != '200') {
-                            callback(res.data.msg);
-                        } else {
-                            callback();
-                        }
-                    })
+                        let para = {
+                            id: telid,
+                            phone: value,
+                        };
+                        checkPhone(para).then((res) => {
+                            if (res.data.code != '200') {
+                                callback(res.data.msg);
+                            } else {
+                                callback();
+                            }
+                        })
 
+                    } else {
+                        callback('必须为数字');
+                    }
                 }else{
-                    callback('必须为数字');
+                    callback();
                 }
             },
             openHistory(){

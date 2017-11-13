@@ -366,27 +366,31 @@
                 });
             },
             MycheckPhone(rule,value,callback){
-                if (/^\d+$/.test(value) == true) {
-                    var telid=0;
-                    for (var x in this.brokerCompanyUserForm.telList) {
-                        if (this.brokerCompanyUserForm.telList[x].dianhua ==value) {
-                            telid= this.brokerCompanyUserForm.telList[x].tQdPersonTelId;
+                if (value != ''&&value != null) {
+                    if (/^\d+$/.test(value) == true) {
+                        var telid = 0;
+                        for (var x in this.brokerCompanyUserForm.telList) {
+                            if (this.brokerCompanyUserForm.telList[x].dianhua == value) {
+                                telid = this.brokerCompanyUserForm.telList[x].tQdPersonTelId;
+                            }
                         }
-                    }
-                    let para = {
-                        id:telid ,
-                        phone: value,
-                    };
-                    checkPhone(para).then((res) => {
-                        if (res.data.code != '200') {
-                            callback(res.data.msg);
-                        } else {
-                            callback();
-                        }
-                    })
+                        let para = {
+                            id: telid,
+                            phone: value,
+                        };
+                        checkPhone(para).then((res) => {
+                            if (res.data.code != '200') {
+                                callback(res.data.msg);
+                            } else {
+                                callback();
+                            }
+                        })
 
+                    } else {
+                        callback('必须为数字');
+                    }
                 }else{
-                    callback('必须为数字');
+                    callback();
                 }
             },
             changehaoyou(){
