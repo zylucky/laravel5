@@ -50,6 +50,8 @@
             </el-table-column>
             <el-table-column prop="qianyuedate" label="签约日" :formatter="changeDate"  >
             </el-table-column>
+            <el-table-column prop="updatetime" label="更新日期"  :formatter="changeUpdateTime"  >
+            </el-table-column>
             <!--<el-table-column prop="yongyouid" label="用友编号" >
             </el-table-column>-->
             <el-table-column
@@ -351,6 +353,13 @@
                 var newDate = new Date();
                 newDate.setTime(row.qianyuedate);
                 if(row.qianyuedate!=null){
+                    return newDate.toLocaleDateString()
+                }
+            },
+            changeUpdateTime(row, column){
+                var newDate = new Date();
+                newDate.setTime(row.updatetime);
+                if(row.updatetime!=null){
                     return newDate.toLocaleDateString()
                 }
             },
