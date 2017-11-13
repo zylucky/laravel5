@@ -33602,7 +33602,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -33738,26 +33737,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         MycheckPhone: function MycheckPhone(rule, value, callback) {
-            if (/^\d+$/.test(value) == true) {
-                var telid = 0;
-                for (var x in this.brokerCompanyUserForm.telList) {
-                    if (this.brokerCompanyUserForm.telList[x].dianhua == value) {
-                        telid = this.brokerCompanyUserForm.telList[x].tQdPersonTelId;
+            if (value != '' && value != null) {
+                if (/^\d+$/.test(value) == true) {
+                    var telid = 0;
+                    for (var x in this.brokerCompanyUserForm.telList) {
+                        if (this.brokerCompanyUserForm.telList[x].dianhua == value) {
+                            telid = this.brokerCompanyUserForm.telList[x].tQdPersonTelId;
+                        }
                     }
+                    var para = {
+                        id: telid,
+                        phone: value
+                    };
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["U" /* checkPhone */])(para).then(function (res) {
+                        if (res.data.code != '200') {
+                            callback(res.data.msg);
+                        } else {
+                            callback();
+                        }
+                    });
+                } else {
+                    callback('必须为数字');
                 }
-                var para = {
-                    id: telid,
-                    phone: value
-                };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["U" /* checkPhone */])(para).then(function (res) {
-                    if (res.data.code != '200') {
-                        callback(res.data.msg);
-                    } else {
-                        callback();
-                    }
-                });
             } else {
-                callback('必须为数字');
+                callback();
             }
         },
         openHistory: function openHistory() {
@@ -34418,26 +34421,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         MycheckPhone: function MycheckPhone(rule, value, callback) {
-            if (/^\d+$/.test(value) == true) {
-                var telid = 0;
-                for (var x in this.brokerCompanyUserForm.telList) {
-                    if (this.brokerCompanyUserForm.telList[x].dianhua == value) {
-                        telid = this.brokerCompanyUserForm.telList[x].tQdPersonTelId;
+            if (value != '' && value != null) {
+                if (/^\d+$/.test(value) == true) {
+                    var telid = 0;
+                    for (var x in this.brokerCompanyUserForm.telList) {
+                        if (this.brokerCompanyUserForm.telList[x].dianhua == value) {
+                            telid = this.brokerCompanyUserForm.telList[x].tQdPersonTelId;
+                        }
                     }
+                    var para = {
+                        id: telid,
+                        phone: value
+                    };
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["U" /* checkPhone */])(para).then(function (res) {
+                        if (res.data.code != '200') {
+                            callback(res.data.msg);
+                        } else {
+                            callback();
+                        }
+                    });
+                } else {
+                    callback('必须为数字');
                 }
-                var para = {
-                    id: telid,
-                    phone: value
-                };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["U" /* checkPhone */])(para).then(function (res) {
-                    if (res.data.code != '200') {
-                        callback(res.data.msg);
-                    } else {
-                        callback();
-                    }
-                });
             } else {
-                callback('必须为数字');
+                callback();
             }
         },
         changehaoyou: function changehaoyou() {
@@ -134844,7 +134851,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('el-form-item', {
       key: item.key,
       attrs: {
-        "required": "",
         "label": "联系电话"
       }
     }, [_c('el-col', {
@@ -134855,14 +134861,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "prop": 'telList.' + index + '.dianhua',
         "rules": [{
-            required: true,
-            message: '不能为空'
-          },
-          {
-            required: true,
-            validator: _vm.MycheckPhone,
-            trigger: 'blur'
-          } ]
+          required: true,
+          validator: _vm.MycheckPhone,
+          trigger: 'blur'
+        } ]
       }
     }, [_c('el-input', {
       model: {
