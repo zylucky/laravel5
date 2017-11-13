@@ -45386,7 +45386,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 fukuanFangshiList: [],
                 zujinList: []
             },
-            toTalArea: 1
+            toTalArea: 0
         };
     },
 
@@ -45398,6 +45398,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //1.先计算面积综合
                 res.data.data.officeList.forEach(function (property, index) {
                     _this2.toTalArea += property.qianyuemianji;
+                    if (_this2.toTalArea == 0) {
+                        alert('面积错误，除数不能为零');
+                    }
                 });
             });
         },
