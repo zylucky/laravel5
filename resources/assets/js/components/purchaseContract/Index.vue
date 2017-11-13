@@ -54,6 +54,8 @@
             </el-table-column>
             <el-table-column prop="qianyuedate" label="签约日"  :formatter="changeDate"  >
             </el-table-column>
+            <el-table-column prop="updatetime" label="更新日期"  :formatter="changeUpdateTime"  >
+            </el-table-column>
             <el-table-column
                     label="用友编号"
                     width="200"
@@ -223,10 +225,10 @@
                     {value:5, label:'待确认',},
                     {value:6, label:'履约中',},
                     {value:7, label:'违约处理中',},
-                    {value:8, label:'合同终止',},
+                    {value:8, label:'合同终止（违约处理完成）',},
                     {value:9, label:'优化中',},
                     {value:10, label:'已优化，履约中',},
-                    {value:11, label:'合同终止',},
+                    {value:11, label:'合同终止（合同到期）',},
                     {value:12, label:'合同作废',},
                 ],
                 //分页类数据
@@ -298,7 +300,7 @@
                 status[5] = '待确认';
                 status[6] = '履约中';
                 status[7] = '违约处理中';
-                status[8] = '合同终止(违约处理失败)';
+                status[8] = '合同终止(违约处理完成)';
                 status[9] = '优化中';
                 status[10] = '已优化，履约中';
                 status[11] = '合同终止(合同到期)';
@@ -310,6 +312,13 @@
                 var newDate = new Date();
                 newDate.setTime(row.qianyuedate);
                 if(row.qianyuedate!=null){
+                    return newDate.toLocaleDateString()
+                }
+            },
+            changeUpdateTime(row, column){
+                var newDate = new Date();
+                newDate.setTime(row.updatetime);
+                if(row.updatetime!=null){
                     return newDate.toLocaleDateString()
                 }
             },
