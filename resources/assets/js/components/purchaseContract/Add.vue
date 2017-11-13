@@ -280,7 +280,7 @@
                     if(res.data.code == 200)　{
                         //保存完以后可以得到一个返回的ID
                         //把数据分别赋值给三个组件的变量
-                        if(this.$route.query.status<6){
+                        if(this.$route.query.status<6||this.$route.path=='/purchaseContract/add'){
                             this.btnType = false;
                         }
                         this.fuzhi(res);

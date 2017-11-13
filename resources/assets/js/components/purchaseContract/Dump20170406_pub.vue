@@ -7,7 +7,7 @@
             <input v-if="buchongtiaokuan==null||buchongtiaokuan==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
 
-            <b> 业主方（甲方）：<input type="text" name="" style="width:139px;font-size:10px" value="">&nbsp;&nbsp;管理方（乙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
+            <b> 业主方（甲方）：<input type="text" name="" style="width:139px;font-size:10px" value="">&nbsp;&nbsp;承租方（乙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
             <b>委托代理人：<input type="text" name="" style="width:166px;font-size:10px" value=""></b><br>
             联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">&nbsp;&nbsp;联系地址：<input type="text" name="" style="width:185px" value="">
             <br>联系方式：<input type="text" name="" style="width:180px;" disabled value="">&nbsp;&nbsp;联系方式：<input type="text" name="" style="width:185px;font-size:10px" value=""><br>

@@ -435,7 +435,7 @@
 
                     ],
                 },
-                toTalArea:1,
+                toTalArea:0,
             }
         },
         methods:{
@@ -444,6 +444,9 @@
                     //1.先计算面积综合
                     res.data.data.officeList.forEach((property,index)=>{
                         this.toTalArea += property.qianyuemianji;
+                        if(this.toTalArea ==0){
+                            alert('面积错误，除数不能为零')
+                        }
                     })
                 })
             },
