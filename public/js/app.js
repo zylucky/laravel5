@@ -136892,7 +136892,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": "",
       "value": ""
     }
-  }), _vm._v("  管理方（乙方）："), _c('input', {
+  }), _vm._v("  承租方（乙方）："), _c('input', {
     staticStyle: {
       "width": "119px",
       "font-size": "10px"
