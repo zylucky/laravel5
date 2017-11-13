@@ -258,7 +258,6 @@
             save:function () {
                 this.saveBtn = true;
                 this.submsg  = '提交';
-                this.btnType = false;
                     var child_property = this.$refs.property.property;
                     var child_renter  = this.$refs.renter.renter;
                     this.addDate.jiafangfeiyong = this.addDate.jiafangfeiyong.replace(/\n|\r\n/g,"<br>");
