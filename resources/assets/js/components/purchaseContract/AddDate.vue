@@ -440,6 +440,7 @@
                         { type: 'number', message: '必须为数字'},
                     ],
                     actualrent: [
+                        { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
                     ],
                     tiqianfukuantian: [
