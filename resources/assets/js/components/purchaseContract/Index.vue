@@ -317,8 +317,8 @@
             },
             changeUpdateTime(row, column){
                 var newDate = new Date();
-                newDate.setTime(row.updatetime);
-                if(row.updatetime!=null){
+                newDate.setTime(row.updateTime);
+                if(row.updateTime!=null){
                     return newDate.toLocaleDateString()
                 }
             },
