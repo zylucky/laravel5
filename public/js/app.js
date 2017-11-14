@@ -168,13 +168,13 @@ module.exports = function normalizeComponent (
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_115", function() { return requestLogin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_114", function() { return logout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_116", function() { return requestLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_115", function() { return logout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_109", function() { return getUserListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_110", function() { return removeUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_112", function() { return addUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_111", function() { return editUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_113", function() { return batchRemoveUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_113", function() { return addUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_112", function() { return editUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_114", function() { return batchRemoveUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_101", function() { return getRoleListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_102", function() { return removeRole; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_104", function() { return addRole; });
@@ -223,9 +223,9 @@ module.exports = function normalizeComponent (
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "O", function() { return finishFK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return getPayableInfos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getPayableRecordList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_116", function() { return getMessageListPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_117", function() { return AcceptMessage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_118", function() { return RefuseMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_117", function() { return getMessageListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_118", function() { return AcceptMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_119", function() { return RefuseMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return getFinancePayableListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return skeditMoney; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return skeditDate; });
@@ -316,11 +316,11 @@ module.exports = function normalizeComponent (
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_52", function() { return getSaleFanghaoList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return createFanghao; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_53", function() { return getSaleFanghaoChengzu; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_119", function() { return getDecorationList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_120", function() { return getDecorationList; });
 /* unused harmony export getDecorationDetail */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_120", function() { return submitDecoration; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_121", function() { return storeDecoration; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_122", function() { return statusDecoration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_121", function() { return submitDecoration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_122", function() { return storeDecoration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_123", function() { return statusDecoration; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_3", function() { return getBrokerCompanyUserHistoryListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_4", function() { return getBrokerCompanyHistoryListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_22", function() { return addBrokerCompanyHistory; });
@@ -354,6 +354,7 @@ module.exports = function normalizeComponent (
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getPayOrder; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_97", function() { return setPassword; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_96", function() { return checkPassword; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_111", function() { return setPass; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getshoufangReportListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getchufangReportListPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getchanpinReportListPage; });
@@ -948,7 +949,9 @@ var setPassword = function setPassword(params) {
 var checkPassword = function checkPassword(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/user/checkPassword', { params: params });
 };
-
+var setPass = function setPass(params) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(base + '/user/setPass', { params: params });
+};
 var getshoufangReportListPage = function getshoufangReportListPage(params) {
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(base + '/shoufangReport', { params: params });
 };
@@ -31270,7 +31273,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (valid) {
                     _this2.logining = true;
                     var loginParams = { email: _this2.ruleForm2.account, password: _this2.ruleForm2.checkPass };
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_115" /* requestLogin */])(loginParams).then(function (data) {
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_116" /* requestLogin */])(loginParams).then(function (data) {
 
                         _this2.logining = false;
                         //NProgress.done();
@@ -31432,7 +31435,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //type: 'warning'
             }).then(function () {
                 sessionStorage.removeItem('user');
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_114" /* logout */])().then();
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api_js__["_115" /* logout */])().then();
                 _this.$router.push('/login');
             }).catch(function () {});
         },
@@ -36646,7 +36649,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 status: this.filters.status
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_119" /* getDecorationList */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_120" /* getDecorationList */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.decoration = res.data.data;
                 _this.listLoading = false;
@@ -36675,7 +36678,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         _this2.editLoading = true;
                         var para = Object.assign({}, _this2.editForm);
                         para.id = _this2.editForm.id;
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_120" /* submitDecoration */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_121" /* submitDecoration */])(para).then(function (res) {
                             _this2.editLoading = false;
                             _this2.$message({
                                 message: '提交成功',
@@ -36698,7 +36701,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this3.$confirm('确认提交吗？', '提示', {}).then(function () {
                         _this3.addLoading = true;
                         var para = Object.assign({}, _this3.addForm);
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_121" /* storeDecoration */])(para).then(function (res) {
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_122" /* storeDecoration */])(para).then(function (res) {
                             _this3.addLoading = false;
                             _this3.$message({
                                 message: '提交成功',
@@ -36720,7 +36723,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: row.id,
                 status: 1
             };
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_122" /* statusDecoration */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_123" /* statusDecoration */])(para).then(function (res) {
                 if (res.data.code == "200") {
                     _this4.getDecoration();
                     window.open('/#/purchaseContract/dump?id=' + row.id);
@@ -36737,7 +36740,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$confirm('合同状态将更为签约完成?', '提示', {
                 type: 'warning'
             }).then(function () {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_122" /* statusDecoration */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_123" /* statusDecoration */])(para).then(function (res) {
                     if (res.data.code == "200") {
                         _this5.getDecoration();
                     }
@@ -36976,7 +36979,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 bk_name: this.filters.bk_name
             };
             this.listLoading = true;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_116" /* getMessageListPage */])(para).then(function (res) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_117" /* getMessageListPage */])(para).then(function (res) {
                 _this.total = res.data.total;
                 _this.messageDate = res.data.data;
                 _this.listLoading = false;
@@ -36991,7 +36994,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     id: row.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_117" /* AcceptMessage */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_118" /* AcceptMessage */])(para).then(function (res) {
                     _this2.$message({
                         message: '提交成功',
                         type: 'success'
@@ -37008,7 +37011,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var para = {
                     id: row.id
                 };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_118" /* RefuseMessage */])(para).then(function (res) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_119" /* RefuseMessage */])(para).then(function (res) {
                     _this3.$message({
                         message: '提交成功',
                         type: 'success'
@@ -47266,6 +47269,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47461,6 +47471,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             }).catch(function () {});
         },
+        //重置密码
+        handleSetPassWord: function handleSetPassWord(index, row) {
+            var _this7 = this;
+
+            this.$confirm('确认重置该用户的密码吗?', '提示', {
+                type: 'warning'
+            }).then(function () {
+                _this7.listLoading = true;
+                //NProgress.start();
+                var para = { id: row.id };
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_111" /* setPass */])(para).then(function (res) {
+                    _this7.listLoading = false;
+                    //NProgress.done();
+                    _this7.$message({
+                        message: '重置成功',
+                        type: 'success'
+                    });
+                    _this7.getUsers();
+                });
+            }).catch(function () {});
+        },
         //显示编辑界面
         handleEdit: function handleEdit(index, row) {
             this.editFormVisible = true;
@@ -47479,25 +47510,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //编辑
         editSubmit: function editSubmit() {
-            var _this7 = this;
+            var _this8 = this;
 
             this.$refs.editForm.validate(function (valid) {
                 if (valid) {
-                    _this7.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this7.editLoading = true;
+                    _this8.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this8.editLoading = true;
                         //NProgress.start();
-                        var para = Object.assign({}, _this7.editForm);
+                        var para = Object.assign({}, _this8.editForm);
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_111" /* editUser */])(para).then(function (res) {
-                            _this7.editLoading = false;
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_112" /* editUser */])(para).then(function (res) {
+                            _this8.editLoading = false;
                             //NProgress.done();
-                            _this7.$message({
+                            _this8.$message({
                                 message: '提交成功',
                                 type: 'success'
                             });
-                            _this7.$refs['editForm'].resetFields();
-                            _this7.editFormVisible = false;
-                            _this7.getUsers();
+                            _this8.$refs['editForm'].resetFields();
+                            _this8.editFormVisible = false;
+                            _this8.getUsers();
                         });
                     });
                 }
@@ -47505,25 +47536,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //新增
         addSubmit: function addSubmit() {
-            var _this8 = this;
+            var _this9 = this;
 
             this.$refs.addForm.validate(function (valid) {
                 if (valid) {
-                    _this8.$confirm('确认提交吗？', '提示', {}).then(function () {
-                        _this8.addLoading = true;
+                    _this9.$confirm('确认提交吗？', '提示', {}).then(function () {
+                        _this9.addLoading = true;
                         //NProgress.start();
-                        var para = Object.assign({}, _this8.addForm);
+                        var para = Object.assign({}, _this9.addForm);
                         //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_112" /* addUser */])(para).then(function (res) {
-                            _this8.addLoading = false;
+                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_113" /* addUser */])(para).then(function (res) {
+                            _this9.addLoading = false;
                             //NProgress.done();
-                            _this8.$message({
+                            _this9.$message({
                                 message: '提交成功',
                                 type: 'success'
                             });
-                            _this8.$refs['addForm'].resetFields();
-                            _this8.addFormVisible = false;
-                            _this8.getUsers();
+                            _this9.$refs['addForm'].resetFields();
+                            _this9.addFormVisible = false;
+                            _this9.getUsers();
                         });
                     });
                 }
@@ -47534,7 +47565,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         //批量删除
         batchRemove: function batchRemove() {
-            var _this9 = this;
+            var _this10 = this;
 
             var ids = this.sels.map(function (item) {
                 return item.id;
@@ -47542,17 +47573,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$confirm('确认删除选中记录吗？', '提示', {
                 type: 'warning'
             }).then(function () {
-                _this9.listLoading = true;
+                _this10.listLoading = true;
                 //NProgress.start();
                 var para = { ids: ids };
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_113" /* batchRemoveUser */])(para).then(function (res) {
-                    _this9.listLoading = false;
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_114" /* batchRemoveUser */])(para).then(function (res) {
+                    _this10.listLoading = false;
                     //NProgress.done();
-                    _this9.$message({
+                    _this10.$message({
                         message: '删除成功',
                         type: 'success'
                     });
-                    _this9.getUsers();
+                    _this10.getUsers();
                 });
             }).catch(function () {});
         }
@@ -113814,13 +113845,17 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(473)
+}
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(185),
   /* template */
   __webpack_require__(373),
   /* styles */
-  null,
+  injectStyle,
   /* scopeId */
   null,
   /* moduleIdentifier (server only) */
@@ -118632,7 +118667,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "label": "操作",
-      "width": "200"
+      "width": "260"
     },
     scopedSlots: _vm._u([{
       key: "default",
@@ -118672,6 +118707,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           }
         }, [_c('i', {
           staticClass: "el-icon-setting"
+        })]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "small",
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleSetPassWord(scope.$index, scope.row)
+            }
+          }
+        }, [_c('img', {
+          attrs: {
+            "src": __webpack_require__(472),
+            "height": "10",
+            "width": "11"
+          }
         })])]
       }
     }])
@@ -142992,6 +143043,58 @@ module.exports = function(module) {
 __webpack_require__(94);
 module.exports = __webpack_require__(95);
 
+
+/***/ }),
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 472 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/cz.png?3b6efb2ab5bba48c4ec478be4834f166";
+
+/***/ }),
+/* 473 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(471);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("d187a61a", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0feec7c1\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./User.vue", function() {
+     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0feec7c1\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./User.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

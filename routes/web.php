@@ -198,6 +198,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('batchRemoveUser','UserController@batchRemoveUser');
     Route::post('setPassword','UserController@setPassword');
     Route::post('checkPassword','UserController@checkPassword');
+    Route::post('setPass','UserController@setPass');
 });
 Route::get('shoufangReport/ExportExcel','Report\ShouFangReportController@ExportExcel');
 Route::get('chufangReport/ExportExcel','Report\ChuFangReportController@ExportExcel');
