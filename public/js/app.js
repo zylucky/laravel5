@@ -128339,8 +128339,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "二期租金日期",
-      "prop": "erqifukuanri",
-      "required": ""
+      "prop": "erqifukuanri"
     }
   }, [_c('el-date-picker', {
     staticStyle: {
