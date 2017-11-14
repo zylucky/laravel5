@@ -49928,7 +49928,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = Object.assign({}, child_property, child_renter, child_date, id, bianhao, version);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__api_api__["_49" /* addSaleContractInfo */])(para).then(function (res) {
                 if (res.data.code == 200) {
-                    if (_this3.$route.query.status < 6) {
+                    if (_this3.$route.query.status < 6 || '/saleContract/add') {
                         _this3.btnType = false;
                     }
                     _this3.fuzhi(res);

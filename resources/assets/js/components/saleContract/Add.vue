@@ -274,7 +274,7 @@
                     let para = Object.assign({}, child_property,child_renter,child_date,id,bianhao,version);
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
-                            if(this.$route.query.status<6){
+                            if(this.$route.query.status<6||'/saleContract/add'){
                                 this.btnType = false;
                             }
                             this.fuzhi(res);
