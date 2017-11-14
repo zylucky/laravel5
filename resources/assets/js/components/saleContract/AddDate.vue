@@ -402,9 +402,10 @@
 //                    ],
                     shouqifukuanri: [
                         { required: true, message: '不能为空' }
-                    ],erqifukuanri: [
-                        { required: true, message: '不能为空' }
                     ],
+//                    erqifukuanri: [
+//                        { required: true, message: '不能为空' }
+//                    ],
 //                    sanqifukuanri: [
 //                        { required: true, message: '不能为空' }
 //                    ],
