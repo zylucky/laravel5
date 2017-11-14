@@ -34,11 +34,15 @@
             </el-table-column>
             <el-table-column prop="role" label="角色" min-width="180" sortable>
             </el-table-column>
-            <el-table-column label="操作" width="200">
+            <el-table-column label="操作" width="260">
                 <template slot-scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)"><i class="el-icon-delete"></i></el-button>
                     <el-button type="small" size="small" @click="handleSet(scope.$index, scope.row)"><i class="el-icon-setting"></i></el-button>
+                    <el-button type="small" size="small" @click="handleSetPassWord(scope.$index, scope.row)"  > <img src="../../../../../public/image/cz.png" height="10" width="11"/>
+                        </el-button>
+
+
                 </template>
             </el-table-column>
         </el-table>
@@ -128,8 +132,11 @@
 
     </section>
 </template>
+<style>
+
+</style>
 <script>
-    import { getUserListPage, removeUser ,addUser,editUser,batchRemoveUser,getTotalRoleList,getRoleList,setRoleList} from '../../api/api';
+    import { getUserListPage, removeUser ,addUser,editUser,batchRemoveUser,getTotalRoleList,getRoleList,setRoleList,setPass} from '../../api/api';
     export default{
         data(){
             return {
@@ -311,6 +318,26 @@
                         //NProgress.done();
                         this.$message({
                             message: '删除成功',
+                            type: 'success'
+                        });
+                        this.getUsers();
+                    });
+                }).catch(() => {
+                });
+            },
+            //重置密码
+            handleSetPassWord: function (index, row) {
+                this.$confirm('确认重置该用户的密码吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    this.listLoading = true;
+                    //NProgress.start();
+                    let para = { id: row.id };
+                    setPass(para).then((res) => {
+                        this.listLoading = false;
+                        //NProgress.done();
+                        this.$message({
+                            message: '重置成功',
                             type: 'success'
                         });
                         this.getUsers();

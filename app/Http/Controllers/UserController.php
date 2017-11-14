@@ -148,4 +148,15 @@ left join roles on roles.id = role_user.role_id  ";
 
 
     }
+
+    /*
+ * 重置密码
+ * */
+    public function setPass(Request $request ){
+        $id = $request->params['id'];
+        $user= User::find($id);
+        $user->password=bcrypt('123456');
+        $user->save();
+    }
+
 }
