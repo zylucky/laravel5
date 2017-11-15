@@ -273,10 +273,12 @@
                 }
             },
             handleUplod(index,row){
-                this.$router.push('saleContract/upload?id='+row.id)
+                //this.$router.push('saleContract/upload?id='+row.id)
+                window.open('/#/saleContract/upload?id='+row.id);
             },
             handleJiaogedan(index,row){
-                this.$router.push('saleContract/jiaogedan?id='+row.id)
+                //this.$router.push('/#/saleContract/jiaogedan?id='+row.id)
+                window.open('/#/saleContract/jiaogedan?id='+row.id);
             },
             changeEnd(value){
                 //获取三个信息：合同ID，违约类型，以及本日期
@@ -414,14 +416,8 @@
             selsChange: function (sels) {
                 this.sels = sels;
             },
-            uploadImg(){
-                var _this = this;
-                _this.$router.push('/saleContact/upload');
-            },
             handlSee(index, row){
-                this.$router.push('/saleContract/see?id=' + row.id);
-                //window.open('/#/saleContract/dump'+version+'?id=' + row.id);
-
+                window.open('/#/saleContract/see?id=' + row.id);
             },
             handleEdit(index, row){
                 let para = {
@@ -671,11 +667,13 @@
             },*/
             //账号管理
             handleZhanghao(index,row){
-                this.$router.push('/saleContract/zhanghao?id='+row.id);
+                //this.$router.push('/saleContract/zhanghao?id='+row.id);
+                window.open('/#/saleContract/zhanghao?id='+row.id);
             },
             //合单管理
             handleHedan(index,row){
                 this.$router.push('/saleContract/hedan?id='+row.id+'&bianhao='+row.bianhao);
+                window.open('/#/saleContract/hedan?id='+row.id+'&bianhao='+row.bianhao);
             },
             /*handleEnd(index, row){
                 this.$confirm('确认合同终止吗?', '提示', {
