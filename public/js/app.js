@@ -44605,10 +44605,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
              return ss;
         },*/
         handleupload: function handleupload(index, row) {
-            this.$router.push('purchaseContract/upload?id=' + row.id);
+            //this.$router.push('purchaseContract/upload?id='+row.id)
+            window.open('/#/purchaseContract/upload?id=' + row.id);
         },
         handleJiaogedan: function handleJiaogedan(index, row) {
-            this.$router.push('purchaseContract/Jiaogedan?id=' + row.id);
+            //this.$router.push('purchaseContract/Jiaogedan?id='+row.id)
+            window.open('/#/purchaseContract/Jiaogedan?id=' + row.id);
         },
         changeEnd: function changeEnd(value) {
             var _this = this;
@@ -44728,9 +44730,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         selsChange: function selsChange(sels) {
             this.sels = sels;
         },
-        uploadImg: function uploadImg() {
-            this.$router.push('/purchaseContract/upload');
-        },
         handleEdit: function handleEdit(index, row) {
             this.$router.push('/purchaseContract/edit?id=' + row.id + '&status=' + row.zhuangtai);
         },
@@ -44767,7 +44766,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         //查看
         handleView: function handleView(index, row) {
-            this.$router.push('/purchaseContract/view?id=' + row.id);
+            //this.$router.push('/purchaseContract/view?id='+row.id);
+            window.open('/#/purchaseContract/view?id=' + row.id);
         },
 
         //违约 弹窗确认是否违约
@@ -44946,12 +44946,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //账号管理
         handleZhanghao: function handleZhanghao(index, row) {
             //alert(222);
-            this.$router.push('/purchaseContract/zhanghao?id=' + row.id);
+            //this.$router.push('/purchaseContract/zhanghao?id='+row.id);
+            window.open('/#/purchaseContract/zhanghao?id=' + row.id);
         },
 
         //合单管理
         handleHedan: function handleHedan(index, row) {
-            this.$router.push('/purchaseContract/hedan?id=' + row.id);
+            //this.$router.push('/purchaseContract/hedan?id='+row.id);
+            window.open('/#/purchaseContract/hedan?id=' + row.id);
         }
     },
     mounted: function mounted() {
@@ -50781,7 +50783,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //                    qianyuedate: [
                 //                        { required: true, message: '不能为空' }
                 //                    ],
-                shouqifukuanri: [{ required: true, message: '不能为空' }], erqifukuanri: [{ required: true, message: '不能为空' }]
+                shouqifukuanri: [{ required: true, message: '不能为空' }]
+                //                    erqifukuanri: [
+                //                        { required: true, message: '不能为空' }
+                //                    ],
                 //                    sanqifukuanri: [
                 //                        { required: true, message: '不能为空' }
                 //                    ],
@@ -52754,6 +52759,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 ;
 
@@ -54441,10 +54451,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         handleUplod: function handleUplod(index, row) {
-            this.$router.push('saleContract/upload?id=' + row.id);
+            //this.$router.push('saleContract/upload?id='+row.id)
+            window.open('/#/saleContract/upload?id=' + row.id);
         },
         handleJiaogedan: function handleJiaogedan(index, row) {
-            this.$router.push('saleContract/jiaogedan?id=' + row.id);
+            //this.$router.push('/#/saleContract/jiaogedan?id='+row.id)
+            window.open('/#/saleContract/jiaogedan?id=' + row.id);
         },
         changeEnd: function changeEnd(value) {
             var _this3 = this;
@@ -54590,13 +54602,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         selsChange: function selsChange(sels) {
             this.sels = sels;
         },
-        uploadImg: function uploadImg() {
-            var _this = this;
-            _this.$router.push('/saleContact/upload');
-        },
         handlSee: function handlSee(index, row) {
-            this.$router.push('/saleContract/see?id=' + row.id);
-            //window.open('/#/saleContract/dump'+version+'?id=' + row.id);
+            window.open('/#/saleContract/see?id=' + row.id);
         },
         handleEdit: function handleEdit(index, row) {
             var para = {
@@ -54849,12 +54856,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },*/
         //账号管理
         handleZhanghao: function handleZhanghao(index, row) {
-            this.$router.push('/saleContract/zhanghao?id=' + row.id);
+            //this.$router.push('/saleContract/zhanghao?id='+row.id);
+            window.open('/#/saleContract/zhanghao?id=' + row.id);
         },
 
         //合单管理
         handleHedan: function handleHedan(index, row) {
             this.$router.push('/saleContract/hedan?id=' + row.id + '&bianhao=' + row.bianhao);
+            window.open('/#/saleContract/hedan?id=' + row.id + '&bianhao=' + row.bianhao);
         }
     },
     mounted: function mounted() {
@@ -117067,11 +117076,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "display": "inline"
       }
     }, [_vm._v("\n                   \n        "), _c('u', [_vm._v(" " + _vm._s(_vm.year(item.startdate) ? _vm.year(item.startdate) : '  ') + " ")]), _vm._v("年\n        "), _c('u', [_vm._v(" " + _vm._s(_vm.month(item.startdate) ? _vm.month(item.startdate) : '  ') + " ")]), _vm._v("月\n        "), _c('u', [_vm._v(" " + _vm._s(_vm.day(item.startdate) ? _vm.day(item.startdate) : '  ') + " ")]), _vm._v("日至\n        "), _c('u', [_vm._v(" " + _vm._s(_vm.year(item.enddate) ? _vm.year(item.enddate) : '  ') + " ")]), _vm._v("年\n        "), _c('u', [_vm._v(" " + _vm._s(_vm.month(item.enddate) ? _vm.month(item.enddate) : '  ') + " ")]), _vm._v("月\n        "), _c('u', [_vm._v(" " + _vm._s(_vm.day(item.enddate) ? _vm.day(item.enddate) : '  ') + " ")]), _vm._v("日，\n        押 "), _c('u', [_vm._v(_vm._s(item.yajinyue ? _vm.intToChinese(item.yajinyue) : '__'))]), _vm._v(" 付 "), _c('u', [_vm._v(_vm._s(item.zujinyue ? _vm.intToChinese(item.zujinyue) : '__'))]), _vm._v(";"), _c('br')])
-  }), _vm._v("\n\n\n\n           1、房租押金：￥ "), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.yajin) ? _vm.toDecimal(_vm.addDate.yajin) : '____'))]), _vm._v("元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yajin) ? _vm.daxie(_vm.addDate.yajin) : '________') + "  ")]), _vm._v("），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("日前。\n\n\n    "), _c('br'), _vm._v("       2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。\n    "), _c('br'), _vm._v("       3、首期租金：￥ "), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) > 0 ? _vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '_____'))]), _vm._v(" 元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) ? _vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '_____'))]), _vm._v("），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前；租金每 "), _c('u', [_vm._v(_vm._s(_vm.addDate.fukuanFangshiList[0].zujinyue ? _vm.intToChinese(_vm.addDate.fukuanFangshiList[0].zujinyue) : '__'))]), _vm._v("个月支付一次，于付款月起租日 "), _c('u', [_vm._v(_vm._s(_vm.addDate.tiqianfukuantian ? _vm.addDate.tiqianfukuantian : '__'))]), _vm._v(" 日前支付下一次租金，即第二期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日前，\n        "), (_vm.addDate.sanqifukuanri) ? _c('span', {
+  }), _vm._v("\n\n\n\n           1、房租押金：￥ "), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.yajin) ? _vm.toDecimal(_vm.addDate.yajin) : '____'))]), _vm._v("元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.yajin) ? _vm.daxie(_vm.addDate.yajin) : '________') + "  ")]), _vm._v("），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.yajinfukuanriqi)) + "  ")]), _vm._v("日前。\n\n\n    "), _c('br'), _vm._v("       2、押金是乙方向甲方交付的合法履约的保证金，如乙方在租赁期限届满之前违反本合同约定，押金作为违约金不予退还。租赁期满，乙方结清应承担的费用，并将工商注册地迁离此房后3个工作日内由甲方退还乙方剩余押金。\n    "), _c('br'), _vm._v("       3、首期租金：￥ "), _c('u', [_vm._v(_vm._s(_vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) > 0 ? _vm.toDecimal(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '_____'))]), _vm._v(" 元（大写："), _c('u', [_vm._v("  " + _vm._s(_vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) ? _vm.daxie(_vm.addDate.zujinList[0].yuezujin * _vm.addDate.fukuanFangshiList[0].zujinyue) : '_____'))]), _vm._v("），支付时间为\n\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.shouqifukuanri)) + "  ")]), _vm._v("日前；\n        "), (_vm.addDate.erqifukuanri) ? _c('span', {
     staticStyle: {
       "display": "inline"
     }
-  }, [_vm._v("\n            第三期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日前，\n        ")]) : _vm._e(), _vm._v("\n        \n        \n        合同期每期租金以此类推。\n    "), _c('br'), _vm._v("       （三）租金的结算方式为：□ 以转账方式 ；□ 现金支付\n    "), _c('br'), _vm._v("       甲方指定收款账户为：\n    "), _c('br'), _vm._v("       户   名："), _c('input', {
+  }, [_vm._v("\n            租金每 "), _c('u', [_vm._v(_vm._s(_vm.addDate.fukuanFangshiList[0].zujinyue ? _vm.intToChinese(_vm.addDate.fukuanFangshiList[0].zujinyue) : '__'))]), _vm._v("个月支付一次，\n        于付款月起租日 "), _c('u', [_vm._v(_vm._s(_vm.addDate.tiqianfukuantian ? _vm.addDate.tiqianfukuantian : '__'))]), _vm._v(" 日前支付下一次租金，即第二期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.erqifukuanri)) + "  ")]), _vm._v("日前，\n        ")]) : _vm._e(), _vm._v(" "), (_vm.addDate.sanqifukuanri) ? _c('span', {
+    staticStyle: {
+      "display": "inline"
+    }
+  }, [_vm._v("\n            第三期租金的支付时间为"), _c('u', [_vm._v("  " + _vm._s(_vm.year(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("年\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.month(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("月\n        "), _c('u', [_vm._v("  " + _vm._s(_vm.day(_vm.addDate.sanqifukuanri)) + "  ")]), _vm._v("日前，\n        ")]) : _vm._e(), _vm._v(" "), (_vm.addDate.erqifukuanri) ? _c('span', {
+    staticStyle: {
+      "display": "inline"
+    }
+  }, [_vm._v("\n                        合同期每期租金以此类推。\n        ")]) : _vm._e(), _vm._v(" "), _c('br'), _vm._v("       （三）租金的结算方式为：□ 以转账方式 ；□ 现金支付\n    "), _c('br'), _vm._v("       甲方指定收款账户为：\n    "), _c('br'), _vm._v("       户   名："), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -130827,8 +130844,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-form-item', {
     attrs: {
       "label": "二期租金日期",
-      "prop": "erqifukuanri",
-      "required": ""
+      "prop": "erqifukuanri"
     }
   }, [_c('el-date-picker', {
     staticStyle: {

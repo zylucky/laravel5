@@ -93,17 +93,22 @@
 
             <u>&nbsp;&nbsp;{{year(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>月
-            <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；租金每 <u>{{addDate.fukuanFangshiList[0].zujinyue?intToChinese(addDate.fukuanFangshiList[0].zujinyue):'__'}}</u>个月支付一次，于付款月起租日 <u>{{addDate.tiqianfukuantian?addDate.tiqianfukuantian:'__'}}</u> 日前支付下一次租金，即第二期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
+            <u>&nbsp;&nbsp;{{day(addDate.shouqifukuanri)}}&nbsp;&nbsp;</u>日前；
+            <span v-if="addDate.erqifukuanri" style="display: inline;">
+                租金每 <u>{{addDate.fukuanFangshiList[0].zujinyue?intToChinese(addDate.fukuanFangshiList[0].zujinyue):'__'}}</u>个月支付一次，
+            于付款月起租日 <u>{{addDate.tiqianfukuantian?addDate.tiqianfukuantian:'__'}}</u> 日前支付下一次租金，即第二期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>月
             <u>&nbsp;&nbsp;{{day(addDate.erqifukuanri)}}&nbsp;&nbsp;</u>日前，
+            </span>
             <span v-if="addDate.sanqifukuanri" style="display: inline;">
                 第三期租金的支付时间为<u>&nbsp;&nbsp;{{year(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>年
             <u>&nbsp;&nbsp;{{month(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>月
             <u>&nbsp;&nbsp;{{day(addDate.sanqifukuanri)}}&nbsp;&nbsp;</u>日前，
             </span>
             
-            
-            合同期每期租金以此类推。
+            <span v-if="addDate.erqifukuanri" style="display: inline;">
+                            合同期每期租金以此类推。
+            </span>
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）租金的结算方式为：□ 以转账方式 ；□ 现金支付
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲方指定收款账户为：
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户 &nbsp;&nbsp;名：<input type="text" style="width: 350px;" v-model="renter.shoukuanren">

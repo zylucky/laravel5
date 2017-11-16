@@ -292,7 +292,7 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="二期租金日期" prop="erqifukuanri" required>
+                    <el-form-item label="二期租金日期" prop="erqifukuanri">
                         <el-date-picker
                                 type="date"
                                 v-model="addDate.erqifukuanri"
@@ -402,9 +402,10 @@
 //                    ],
                     shouqifukuanri: [
                         { required: true, message: '不能为空' }
-                    ],erqifukuanri: [
-                        { required: true, message: '不能为空' }
                     ],
+//                    erqifukuanri: [
+//                        { required: true, message: '不能为空' }
+//                    ],
 //                    sanqifukuanri: [
 //                        { required: true, message: '不能为空' }
 //                    ],

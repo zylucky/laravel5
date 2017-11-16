@@ -252,10 +252,12 @@
                 return ss;
             },*/
             handleupload(index,row){
-                this.$router.push('purchaseContract/upload?id='+row.id)
+                //this.$router.push('purchaseContract/upload?id='+row.id)
+                window.open('/#/purchaseContract/upload?id='+row.id);
             },
             handleJiaogedan(index,row){
-                this.$router.push('purchaseContract/Jiaogedan?id='+row.id)
+                //this.$router.push('purchaseContract/Jiaogedan?id='+row.id)
+                window.open('/#/purchaseContract/Jiaogedan?id='+row.id);
             },
             changeEnd(value){
                 //获取三个信息：合同ID，违约类型，以及本日期
@@ -365,9 +367,6 @@
             selsChange: function (sels) {
                 this.sels = sels;
             },
-            uploadImg(){
-                this.$router.push('/purchaseContract/upload');
-            },
             handleEdit(index,row){
                 this.$router.push('/purchaseContract/edit?id='+row.id+'&status='+row.zhuangtai);
             },
@@ -401,7 +400,8 @@
             },
             //查看
             handleView(index,row){
-                this.$router.push('/purchaseContract/view?id='+row.id);
+                //this.$router.push('/purchaseContract/view?id='+row.id);
+                window.open('/#/purchaseContract/view?id='+row.id);
             },
             //违约 弹窗确认是否违约
             handleWeiyue(index,row){
@@ -571,11 +571,13 @@
             //账号管理
             handleZhanghao(index,row){
                 //alert(222);
-                this.$router.push('/purchaseContract/zhanghao?id='+row.id);
+                //this.$router.push('/purchaseContract/zhanghao?id='+row.id);
+                window.open('/#/purchaseContract/zhanghao?id='+row.id);
             },
             //合单管理
             handleHedan(index,row){
-                this.$router.push('/purchaseContract/hedan?id='+row.id);
+                //this.$router.push('/purchaseContract/hedan?id='+row.id);
+                window.open('/#/purchaseContract/hedan?id='+row.id);
             }
         },
         mounted(){
