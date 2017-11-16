@@ -18,16 +18,6 @@
         </el-row>
         </el-form>
         <el-table :data="chuFang"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column prop="pname" label="区域"  width="100">
-            </el-table-column>
-            <el-table-column label="分区"  prop="fd_name"  width="100">
-            </el-table-column>
-            <el-table-column prop="Name" label="联系人"  width="95"  >
-            </el-table-column>
-            <el-table-column prop="Phone" label="电话"  width="95"  >
-            </el-table-column>
-            <el-table-column prop="xmsx" label="项目属性"  width="95"  >
-            </el-table-column>
             <el-table-column prop="Loupan_name" label="楼盘"  width="150"    >
             </el-table-column>
             <el-table-column prop="Loudong_name" label="楼栋"  width="80"  >
@@ -36,33 +26,25 @@
             </el-table-column>
             <el-table-column prop="Qianyuemianji" label="面积" width="90" >
             </el-table-column>
-            <el-table-column prop="Price" label="收购单价（元/㎡/天）"  width="180"  >
+            <el-table-column prop="Price" label="单价（元/㎡/天）"  width="180"  >
             </el-table-column>
-            <el-table-column prop="YueZujin" label="收购月租金"   width="110" >
+            <el-table-column prop="YueZujin" label="月租金"   width="110" >
             </el-table-column>
-            <el-table-column prop="xsdj" label="销售底价"    width="120" >
+            <el-table-column prop="xsdj" label="航远房源"    width="120" >
             </el-table-column>
-            <el-table-column prop="xsyzj" label="销售月租金" width="120" >
+            <el-table-column prop="YueZujin" label="空置状态"   width="110" >
             </el-table-column>
-            <el-table-column prop="ckzl" label="对外销售单价"   width="120">
+            <el-table-column prop="xsdj" label="支持注册"    width="120" >
             </el-table-column>
-            <el-table-column prop="ckzlzj" label="对外销售月租金"   width="130"  >
+            <el-table-column prop="xsyzj" label="业主属性" width="120" >
             </el-table-column>
-            <el-table-column prop="QianyueDate" label="收购签约日"  width="120" >
+            <el-table-column prop="ckzl" label="业主电话"   width="120">
             </el-table-column>
-            <el-table-column prop="StartDate" label="收购免租期开始日"  width="120" >
+            <el-table-column prop="ckzlzj" label="可租状态评估"   width="130"  >
             </el-table-column>
-            <el-table-column prop="EndDate" label="收购免租期结束日"  width="120" >
+            <el-table-column prop="QianyueDate" label="本周新增"  width="120" >
             </el-table-column>
-            <el-table-column prop="yjts" label="预警天数"  width="120" >
-            </el-table-column>
-            <el-table-column prop="yjkxf" label="风险房变亏损房预警天数"  width="120" >
-            </el-table-column>
-            <el-table-column prop="yjjb" label="预警级别"  width="100" >
-            </el-table-column>
-            <el-table-column prop="zxsp" label="装修状态"  width="120" >
-            </el-table-column>
-            <el-table-column prop="lpsort" label="礼品等级"  width="120" >
+            <el-table-column prop="StartDate" label="本周已租"  width="120" >
             </el-table-column>
         </el-table>
         <div style="margin-top:30px"></div>
