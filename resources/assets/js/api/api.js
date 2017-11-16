@@ -215,3 +215,4 @@ export const setPass = params =>{ return axios.post(`${base}/user/setPass`, { pa
 export const getshoufangReportListPage = params => { return axios.get(`${base}/shoufangReport`, { params: params }); };
 export const getchufangReportListPage = params => { return axios.get(`${base}/chufangReport`, { params: params }); };
 export const getchanpinReportListPage = params => { return axios.get(`${base}/chanpinReport`, { params: params }); };
+export const getfangyuanReportListPage = params => { return axios.get(`${base}/fangyuanXKReport`, { params: params }); };
