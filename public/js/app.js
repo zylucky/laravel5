@@ -51140,6 +51140,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             for (var x in this.options2) {
                 if (this.options2[x].label == this.property.xsOffice[this.property.tabIndex - 1].loudongName) {
                     this.property.xsOffice[this.property.tabIndex - 1].loudongOmcId = this.options2[x].value;
+                    this.property.xsOffice[this.property.tabIndex - 1].fanghao = null; //清除楼栋和房号的缓存
+                    this.property.xsOffice[this.property.tabIndex - 1].omcId = null; //清除楼栋和房号的缓存
                 }
             }
         },
@@ -122189,7 +122191,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+    }, [_vm._v("¥" + _vm._s(_vm.toDecimal(item.fukuanjine)))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
   }), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._l((_vm.data.zjProofs), function(item, index) {
     return _c('tr', [_c('td', {
       staticStyle: {
@@ -122212,8 +122214,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
-  }), _vm._v(" "), _vm._l(((18 - _vm.data.zjProofs.length)), function(x) {
+    }, [_vm._v("¥" + _vm._s(_vm.toDecimal(item.fukuanjine)))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+  }), _vm._v(" "), _vm._l(((16 - _vm.data.zjProofs.length)), function(x) {
     return _c('tr', [_c('td', {
       staticStyle: {
         "border": "0"
@@ -122258,7 +122260,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', [_c('td', {
     attrs: {
-      "height": "60",
+      "height": "100",
       "colspan": "4"
     }
   })])
@@ -124001,9 +124003,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "margin-left": "6%"
     }
-  }, [_c('b', [_vm._v("项目房间号")]), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.data.xiangmufangjianhao))]), _vm._v(" "), _c('b', {
+  }, [_c('b', [_vm._v("项目房间号")]), _vm._v(" "), _c('u', {
     staticStyle: {
-      "margin-left": "50%"
+      "font-size": "24px"
+    }
+  }, [_vm._v(_vm._s(_vm.data.xiangmufangjianhao))]), _vm._v(" "), _c('b', {
+    staticStyle: {
+      "margin-left": "40%"
     }
   }, [_vm._v("面积")]), _vm._v(" "), _c('u', [_vm._v(_vm._s(_vm.data.mianji))])]), _vm._v(" "), _c('div', {
     staticStyle: {
@@ -124214,13 +124220,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('tr', [_c('th', {
     attrs: {
-      "width": "95",
+      "width": "75",
       "height": "23",
       "align": "left"
     }
   }, [_vm._v("业主")]), _vm._v(" "), _c('td', {
     attrs: {
-      "width": "220",
+      "width": "240",
       "align": "center"
     }
   }, [_vm._v(_vm._s(_vm.data.yezhu))]), _vm._v(" "), _c('th', {
@@ -124298,12 +124304,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "align": "center",
       "height": "23"
     }
-  }, [_vm._v(_vm._s(_vm.data.zujins[0]))])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_c('p', {
+    staticStyle: {
+      "display": "inline"
+    }
+  }, [_vm._v(_vm._s(_vm.data.zujins[0].split(' ')[0]))]), _vm._v(" "), _c('p', {
+    staticStyle: {
+      "display": "inline",
+      "margin-left": "15px"
+    }
+  }, [_vm._v(_vm._s(_vm.data.zujins[0].split(' ')[1]))])])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "align": "center",
       "height": "23"
     }
-  }, [_vm._v(_vm._s(_vm.data.zujins[1]))]), _vm._v(" "), _c('th', {
+  }, [_c('p', {
+    staticStyle: {
+      "display": "inline"
+    }
+  }, [_vm._v(_vm._s(_vm.data.zujins[1].split(' ')[0]))]), _vm._v(" "), _c('p', {
+    staticStyle: {
+      "display": "inline",
+      "margin-left": "15px"
+    }
+  }, [_vm._v(_vm._s(_vm.data.zujins[1].split(' ')[1]))])]), _vm._v(" "), _c('th', {
     attrs: {
       "align": "left"
     }
@@ -124316,7 +124340,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "align": "center",
       "height": "23"
     }
-  }, [_vm._v(_vm._s(_vm.data.zujins[2]))]), _vm._v(" "), _c('th', {
+  }, [_c('p', {
+    staticStyle: {
+      "display": "inline"
+    }
+  }, [_vm._v(_vm._s(_vm.data.zujins[2].split(' ')[0]))]), _vm._v(" "), _c('p', {
+    staticStyle: {
+      "display": "inline",
+      "margin-left": "15px"
+    }
+  }, [_vm._v(_vm._s(_vm.data.zujins[2].split(' ')[1]))])]), _vm._v(" "), _c('th', {
     attrs: {
       "align": "left"
     }
@@ -124495,7 +124528,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+    }, [_vm._v("¥" + _vm._s(_vm.toDecimal(item.fukuanjine)))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
   }), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._l((_vm.data.zjProofs), function(item, index) {
     return _c('tr', [_c('td', {
       staticStyle: {
@@ -124518,8 +124551,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [_vm._v(_vm._s(_vm.toDecimal(item.fukuanjine)) + "元")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
-  }), _vm._l(((17 - _vm.data.zjProofs.length)), function(x) {
+    }, [_vm._v("¥" + _vm._s(_vm.toDecimal(item.fukuanjine)))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.beizhu))])])
+  }), _vm._l(((15 - _vm.data.zjProofs.length)), function(x) {
     return _c('tr', [_c('td', {
       staticStyle: {
         "border": "0"
@@ -124545,7 +124578,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', [_c('td', {
     attrs: {
-      "height": "60",
+      "height": "100",
       "colspan": "4"
     }
   })])

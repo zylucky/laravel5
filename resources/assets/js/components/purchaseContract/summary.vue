@@ -6,7 +6,7 @@
             幼狮科技
             <input type="checkbox" v-model="data.huashuoshangmao">
             华溯商贸</u></p>
-        <p style="margin-left: 6%;"> <b>项目房间号</b> <u >{{data.xiangmufangjianhao}}</u> <b style="margin-left:50%;">面积</b> <u>{{data.mianji}}</u> </p>
+        <p style="margin-left: 6%;"> <b>项目房间号</b> <u style="font-size: 24px;">{{data.xiangmufangjianhao}}</u> <b style="margin-left:40%;">面积</b> <u>{{data.mianji}}</u> </p>
         <div style="margin-left:18px;float: left">
             <input type="checkbox" v-model="data.fangwuzichanguanlifuwuhetong" >房屋资产管理服务合同
             <input type="checkbox"style="margin-left:43px;" v-model="data.budongchanshouquanweituoshu">不动产授权委托书
@@ -18,8 +18,8 @@
             <br>
             <table  style="border-collapse: collapse;">
                 <tr >
-                    <th width="95" height="23" align="left">业主</th>
-                    <td width="220" align="center">{{data.yezhu}}</td>
+                    <th width="75" height="23" align="left">业主</th>
+                    <td width="240" align="center">{{data.yezhu}}</td>
                     <th width="100" align="left">收款人</th>
                     <td width="220" align="center">{{data.shoukuanren}}</td>
                 </tr>
@@ -43,15 +43,15 @@
                 </tr>
                 <tr >
                     <th  height="23" align="left" rowspan="5">租金</th>
-                    <td  align="center" height="23" >{{data.zujins[0]}}</td>
+                    <td  align="center" height="23" ><p style="display: inline;">{{data.zujins[0].split(' ')[0]}}</p> <p style="display: inline;margin-left:15px;">{{data.zujins[0].split(' ')[1]}}</p> </td>
                 </tr>
                 <tr>
-                    <td  align="center" height="23">{{data.zujins[1]}}</td>
+                    <td  align="center" height="23" ><p style="display: inline;">{{data.zujins[1].split(' ')[0]}}</p> <p style="display: inline;margin-left:15px;">{{data.zujins[1].split(' ')[1]}}</p> </td>
                     <th  align="left">保证金</th>
                     <td  align="center">{{toDecimal(data.baozhengjin)}}元</td>
                 </tr>
                 <tr>
-                    <td  align="center" height="23">{{data.zujins[2]}}</td>
+                    <td  align="center" height="23" ><p style="display: inline;">{{data.zujins[2].split(' ')[0]}}</p> <p style="display: inline;margin-left:15px;">{{data.zujins[2].split(' ')[1]}}</p> </td>
                     <th align="left">租金支付方式</th>
                     <td align="center">{{format(data.zujingzhifufangshi)}}</td>
                 </tr>
@@ -69,7 +69,7 @@
                     </th>
                 </tr>
                 <tr>
-                    <td  height="60" colspan="4"  ></td>
+                    <td  height="100" colspan="4"  ></td>
                 </tr>
             </table>
             <table   style="border-collapse: collapse;margin-left:-15px; ">
@@ -87,7 +87,7 @@
                 <td height="23" align="center">{{changeDate(item.fukuanri)}}</td>
                 <td align="center">{{item.fukuankemu}}</td>
                 <td align="center" >{{item.fukuanzhouqi}}</td>
-                <td align="center">{{toDecimal(item.fukuanjine)}}元</td>
+                <td align="center">¥{{toDecimal(item.fukuanjine)}}</td>
                 <td>{{item.beizhu}}</td>
             </tr>
             <tr>
@@ -104,9 +104,9 @@
                 <td height="23" align="center">{{changeDate(item.fukuanri)}}</td>
                 <td align="center">{{item.fukuankemu}}</td>
                 <td align="center">{{item.fukuanzhouqi}}</td>
-                <td align="center">{{toDecimal(item.fukuanjine)}}元</td>
+                <td align="center">¥{{toDecimal(item.fukuanjine)}}</td>
                 <td>{{item.beizhu}}</td>
-            </tr><tr v-for="x in (17-data.zjProofs.length)">
+            </tr><tr v-for="x in (15-data.zjProofs.length)">
             <td style="border:0 "></td>
             <td height="23"></td>
                 <td></td>

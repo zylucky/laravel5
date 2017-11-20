@@ -19,15 +19,8 @@ class TestController extends Controller
      */
     public function index()
     {
-        $client = new Client([
-            'base_uri' => '',
-
-        ]);
-        $response = $client->request('GET', 'http://api.map.baidu.com/geocoder/v2/?ak=MhuuVxziXcOqWUAZ5vVEd4GBUdnZj0yO&callback=renderReverse&location=39.9041394,116.45570660000001&output=json&pois=1', [
-                ]
-        );
- echo $response->getBody();
-
+        $arr =['12456','25320','24916','41456','38692','15840','18116','5688','6656','25700','24332','3416','4860','25840','71548','10984','7248','63832','12012','27016','17772','37600','1080','20848','12900','7680','31684','34792','22020','54696','33652'];
+        echo array_sum($arr);
 
     }
 
