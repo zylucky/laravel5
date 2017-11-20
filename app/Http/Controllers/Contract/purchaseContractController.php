@@ -415,7 +415,7 @@ class purchaseContractController extends Controller
             $data2 = [];
             foreach ($res->data as $key => $value){
                 //新文件名
-                $value->url = 'http://www.youshikongjian.com'.$value->path;
+                $value->url = $value->path;
                 $value->content =null;
                 $data2[$value->type][] = $value;
             }
