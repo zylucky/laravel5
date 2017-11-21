@@ -190,7 +190,7 @@
             </el-dialog>
         <div style="position: fixed;right:10%;top:50%;">
             <el-button type="primary"   @click="save" style="margin-top:100px;">保存</el-button>
-            <el-button type="warning"   @click="cansel" style="margin-top:100px;">取消</el-button>
+            <!--<el-button type="warning"   @click="cansel" style="margin-top:100px;">取消</el-button>-->
         </div>
 
     </el-form>
