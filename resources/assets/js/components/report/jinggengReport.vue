@@ -3,48 +3,41 @@
     <el-row >
         <el-form   :inline="true" :model="filters"  class="demo-form-inline">
             <el-row>
-                <el-form-item label="签约日期:">
-                    <el-date-picker  type = "date" placeholder="请选择开始日期" v-model="filters.startdate">
-                    </el-date-picker>
-                </el-form-item>
-                <el-form-item label="至">
-                    <el-date-picker type = "date" placeholder="请选择结束日期" v-model="filters.enddate">
-                    </el-date-picker>
-                </el-form-item>
+
             <el-form-item>
-                <el-button type="primary" icon="search"  v-on:click="getfangyuanReport">搜索</el-button>
+                <el-button type="primary" icon="search"  v-on:click="getjinggengReport">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus"     @click="handleExport"    > 导出</el-button>
             </el-form-item>
         </el-row>
         </el-form>
         <el-table :data="chuFang"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column prop="Loupan_name" label="楼盘"  width="150"    >
+            <el-table-column prop="topic" label="楼盘"  width="150"    >
             </el-table-column>
-            <el-table-column prop="Loudong_name" label="楼栋"  width="80"  >
+            <el-table-column prop="zdh" label="楼栋"  width="80"  >
             </el-table-column>
-            <el-table-column prop="Fanghao" label="房间号"   width="80"  >
+            <el-table-column prop="fybh" label="房间号"   width="80"  >
             </el-table-column>
-            <el-table-column prop="Qianyuemianji" label="面积" width="90" >
+            <el-table-column prop="fjmj" label="面积" width="90" >
             </el-table-column>
-            <el-table-column prop="Price" label="单价（元/㎡/天）"  width="180"  >
+            <el-table-column prop="price" label="单价（元/㎡/天）"  width="160"  >
             </el-table-column>
-            <el-table-column prop="YueZujin" label="月租金"   width="110" >
+            <el-table-column prop="fjyzj" label="月租金"   width="110" >
             </el-table-column>
-            <el-table-column prop="xsdj" label="航远房源"    width="120" >
+            <el-table-column prop="hyzt" label="航远房源"    width="120" >
             </el-table-column>
-            <el-table-column prop="YueZujin" label="空置状态"   width="110" >
+            <el-table-column prop="kzzt" label="空置状态"   width="110" >
             </el-table-column>
-            <el-table-column prop="xsdj" label="支持注册"    width="120" >
+            <el-table-column prop="sfzc" label="支持注册"    width="120" >
             </el-table-column>
-            <el-table-column prop="xsyzj" label="业主属性" width="120" >
+            <el-table-column prop="yzsx" label="业主属性" width="120" >
             </el-table-column>
-            <el-table-column prop="ckzl" label="业主电话"   width="120">
+            <el-table-column prop="yzdh" label="业主电话"   width="120">
             </el-table-column>
-            <el-table-column prop="ckzlzj" label="可租状态评估"   width="130"  >
+            <el-table-column prop="bzxzyz" label="可租状态评估"   width="130"  >
             </el-table-column>
-            <el-table-column prop="QianyueDate" label="本周新增"  width="120" >
+            <el-table-column prop="bzxzyz" label="本周新增"  width="120" >
             </el-table-column>
-            <el-table-column prop="StartDate" label="本周已租"  width="120" >
+            <el-table-column prop="bzxzyz" label="本周已租"  width="120" >
             </el-table-column>
         </el-table>
         <div style="margin-top:30px"></div>
@@ -66,7 +59,7 @@
 </template>
 <script>
     import {
-        getfangyuanReportListPage,
+        getjinggengReportListPage,
     } from '../../api/api';
     import ElRow from "element-ui/packages/row/src/row";
     export default{
@@ -92,16 +85,16 @@
             handleCurrentChange(val) {
                 this.page = val;
                // console.log(`当前页: ${val}`);
-               this.getfangyuanReport();
+               this.getjinggengReport();
             },
             //更改每页显示数据
             handleSizeChange(val){
                 this.pageSize =val;
                 //console.log(`每页 ${val} 条`);
-                this.getfangyuanReport();
+                this.getjinggengReport();
             },
             //获取渠道公司列表
-            getfangyuanReport() {
+            getjinggengReport() {
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
@@ -109,7 +102,7 @@
                     enddate: this.filters.enddate==''?'': this.filters.enddate.toLocaleDateString(),
                 };
                 this.listLoading = true;
-                getfangyuanReportListPage(para).then((res) => {
+                getjinggengReportListPage(para).then((res) => {
                     this.total = res.data.total;
                     this.chuFang = res.data.data;
                     this.listLoading = false;
@@ -118,7 +111,7 @@
             handleExport: function () {
                 var sDate=this.filters.startdate==''?'': this.filters.startdate.toLocaleDateString();
                 var eDate=this.filters.enddate==''?'': this.filters.enddate.toLocaleDateString() ;
-                window.open("/fangyuanXKReport/ExportExcel?startdate="+sDate+"&enddate="+ eDate);
+                window.open("/jinggengReport/ExportExcel?startdate="+sDate+"&enddate="+ eDate);
             },
             selsChange: function (sels) {
                 this.sels = sels;
@@ -126,7 +119,7 @@
         },
         mounted() {
             this.page=1;
-            this.getfangyuanReport();
+            this.getjinggengReport();
         }
     }
 </script>

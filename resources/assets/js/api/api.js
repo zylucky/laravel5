@@ -216,3 +216,4 @@ export const getshoufangReportListPage = params => { return axios.get(`${base}/s
 export const getchufangReportListPage = params => { return axios.get(`${base}/chufangReport`, { params: params }); };
 export const getchanpinReportListPage = params => { return axios.get(`${base}/chanpinReport`, { params: params }); };
 export const getfangyuanReportListPage = params => { return axios.get(`${base}/fangyuanXKReport`, { params: params }); };
+export const getjinggengReportListPage = params => { return axios.get(`${base}/jinggengReport`, { params: params }); };
