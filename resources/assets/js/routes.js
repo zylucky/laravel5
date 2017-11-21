@@ -79,6 +79,7 @@ import ShoufangReport from "./components/report/Index.vue" ;
 import ChufangReport from "./components/report/chuFangReport.vue" ;
 import ChanPinReport from "./components/report/chanPinHeYueReport.vue" ;
 import FangYuanXKReport from "./components/report/fangYuanXKReport.vue" ;
+import JingGengReport from "./components/report/jinggengReport.vue" ;
 //消息管理
 import MessageList from "./components/message/Index.vue";
 
@@ -105,7 +106,8 @@ var fk_permission ,fk_permission_user ,fk_permission_role ,fk_permission_per ,
     fk_brokerCompany ,fk_brokerCompanyList,fk_brokerCompanyUserList,fk_brokerUserList,
     fk_commission,fk_shouFangCommission,fk_chuFangCommission,
     fk_account,fk_payableList,fk_financePayableList,fk_receivableList,fk_financeReceivableList,
-    fk_setPassword,fk_reportList,fk_shoufangReport,fk_chufangReport,fk_chanpinReport,fk_fangyuanXKReport;
+    fk_setPassword,fk_reportList,fk_shoufangReport,fk_chufangReport,fk_chanpinReport,fk_fangyuanXKReport,
+    fk_jinggengReport;
 fun('permission')==true? fk_permission = false:fk_permission = true;
 fun('permission')==true? fk_permission_user = false:fk_permission_user = true;
 fun('permission')==true? fk_permission_role = false:fk_permission_role = true;
@@ -132,6 +134,8 @@ fun('shoufangReport')==true? fk_shoufangReport = false:fk_shoufangReport = true;
 fun('chufangReport')==true? fk_chufangReport = false:fk_chufangReport = true;
 fun('chanpinReport')==true? fk_chanpinReport = false:fk_chanpinReport = true;
 fun('fangyuanXKReport')==true? fk_fangyuanXKReport = false:fk_fangyuanXKReport = true;
+fun('jinggengReport')==true? fk_jinggengReport  = false:fk_jinggengReport = true;
+
 
 
 let routes = [
@@ -341,6 +345,7 @@ let routes = [
             {path:'/chufangReport', component: ChufangReport, name: '出房明细', hidden: fk_chufangReport},
             {path:'/chanpinReport', component: ChanPinReport, name: '产品合约表', hidden: fk_chanpinReport},
             {path:'/fangyuanXKReport', component: FangYuanXKReport, name: '房源销控表', hidden: fk_fangyuanXKReport},
+            {path:'/jinggengReport', component: JingGengReport, name: '精耕房源表', hidden: fk_jinggengReport},
         ]
 
     },

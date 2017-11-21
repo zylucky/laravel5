@@ -18,33 +18,57 @@
         </el-row>
         </el-form>
         <el-table :data="chuFang"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column prop="Loupan_name" label="楼盘"  width="150"    >
+            <el-table-column prop="Loupan_name" label="项目名称"  width="150"    >
             </el-table-column>
-            <el-table-column prop="Loudong_name" label="楼栋"  width="80"  >
+            <el-table-column prop="Loudong_name" label="项目总户数"  width="100"  >
             </el-table-column>
-            <el-table-column prop="Fanghao" label="房间号"   width="80"  >
+            <el-table-column prop="Fanghao" label="小业主总户数"   width="120"  >
             </el-table-column>
-            <el-table-column prop="Qianyuemianji" label="面积" width="90" >
+            <el-table-column prop="Qianyuemianji" label="已知小业主房间总户数" width="180" >
             </el-table-column>
-            <el-table-column prop="Price" label="单价（元/㎡/天）"  width="180"  >
+            <el-table-column prop="Price" label="小业主资料百分比"  width="180"  >
             </el-table-column>
-            <el-table-column prop="YueZujin" label="月租金"   width="110" >
+            <el-table-column prop="YueZujin" label="项目总面积"   width="110" >
             </el-table-column>
-            <el-table-column prop="xsdj" label="航远房源"    width="120" >
+            <el-table-column prop="xsdj" label="销控总面积"    width="120" >
             </el-table-column>
-            <el-table-column prop="YueZujin" label="空置状态"   width="110" >
+            <el-table-column prop="YueZujin" label="销控总套数"   width="110" >
             </el-table-column>
-            <el-table-column prop="xsdj" label="支持注册"    width="120" >
+            <el-table-column prop="xsdj" label="销控总面积百分比"    width="120" >
             </el-table-column>
-            <el-table-column prop="xsyzj" label="业主属性" width="120" >
+            <el-table-column prop="xsyzj" label="小业主空置可出租房源面积" width="120" >
             </el-table-column>
-            <el-table-column prop="ckzl" label="业主电话"   width="120">
+            <el-table-column prop="ckzl" label="小业主空置可出租房源套数"   width="120">
             </el-table-column>
-            <el-table-column prop="ckzlzj" label="可租状态评估"   width="130"  >
+            <el-table-column prop="ckzlzj" label="小业主45天之内到期可出租的面积"   width="130"  >
             </el-table-column>
-            <el-table-column prop="QianyueDate" label="本周新增"  width="120" >
+            <el-table-column prop="QianyueDate" label="小业主45天之内到期可出租的套数"  width="120" >
             </el-table-column>
-            <el-table-column prop="StartDate" label="本周已租"  width="120" >
+            <el-table-column prop="xsyzj" label="46到90天之内到期可出租面积" width="120" >
+            </el-table-column>
+            <el-table-column prop="ckzl" label="46到90天之内到期可出租套数"   width="120">
+            </el-table-column>
+            <el-table-column prop="xsyzj" label="租户或资产管理公司转租约的面积" width="120" >
+            </el-table-column>
+            <el-table-column prop="ckzl" label="租户或资产管理公司转租约的套数"   width="120">
+            </el-table-column>
+            <el-table-column prop="xsyzj" label="可收购房源总面积" width="120" >
+            </el-table-column>
+            <el-table-column prop="ckzl" label="可收购房源总套数"   width="120">
+            </el-table-column>
+            <el-table-column prop="ckzlzj" label="本周新增房源面积"   width="130"  >
+            </el-table-column>
+            <el-table-column prop="QianyueDate" label="本周新增房源套数"  width="120" >
+            </el-table-column>
+            <el-table-column prop="xsyzj" label="本周已租房源面积" width="120" >
+            </el-table-column>
+            <el-table-column prop="ckzl" label="本周已租房源套数"   width="120">
+            </el-table-column>
+            <el-table-column prop="xsyzj" label="已收购面积" width="120" >
+            </el-table-column>
+            <el-table-column prop="ckzl" label="已收购套数"   width="120">
+            </el-table-column>
+            <el-table-column prop="ckzl" label="已收购均价"   width="120">
             </el-table-column>
         </el-table>
         <div style="margin-top:30px"></div>

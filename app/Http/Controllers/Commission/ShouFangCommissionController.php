@@ -110,9 +110,11 @@ class ShouFangCommissionController extends Controller
     public function update(Request $request, $id)
     {
         //以后用户会从OMC取
+        $u = Auth::user();
+
         $user=    Array(
-            'tEmpId'=>1,
-            'empname'=>'张三',
+            'tEmpId'=>$u->id,
+            'empname'=>$u->name,
             'empzb'=>null,
         );
 
