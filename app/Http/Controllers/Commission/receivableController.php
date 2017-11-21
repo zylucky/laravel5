@@ -136,10 +136,12 @@ class receivableController extends Controller
     {
 
         //以后用户会从OMC取
+        $u = Auth::user();
         $user=    Array(
-            'personid'=>1,
-            'persnoname'=>'张三',
+            'personid'=>$u->id,
+            'persnoname'=>$u->name,
         );
+
 
         $obj=array_merge($request->params,$user);
         // dd( json_encode( $obj));
@@ -156,11 +158,12 @@ class receivableController extends Controller
     public function editDate(Request $request)
     {
         //以后用户会从OMC取
-        $user=    Array(
-            'personId'=>1,
-            'personName'=>'张三',
-        );
 
+        $u = Auth::user();
+        $user=    Array(
+            'personId'=>$u->id,
+            'personName'=>$u->name,
+        );
         $obj=array_merge($request->params,$user);
      //  dd(  json_encode($obj));
         $client = new Client ([
@@ -177,11 +180,12 @@ class receivableController extends Controller
     public function editMoney(Request $request)
     {
         //以后用户会从OMC取
-        $user=    Array(
-            'personId'=>1,
-            'personName'=>'张三',
-        );
 
+        $u = Auth::user();
+        $user=    Array(
+            'personId'=>$u->id,
+            'personName'=>$u->name,
+        );
         $obj=array_merge($request->params,$user);
          //dd($obj);
         $client = new Client ([

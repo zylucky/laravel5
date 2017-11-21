@@ -77,7 +77,8 @@ class brokerCompanyController extends Controller
     public function store(Request $request)
     {
         // dd($request->params);
-        $obj = array_merge($request->params, Array('tbPersonIdCreate' => 91));
+        $user = Auth::user();
+        $obj = array_merge($request->params, Array('tbPersonIdCreate' =>$user->id));
         //dd($obj);
         $client = new Client ([
             'base_uri' => $this->base_url,

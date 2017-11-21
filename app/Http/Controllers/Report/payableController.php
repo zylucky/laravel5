@@ -138,9 +138,10 @@ class payableController extends Controller
     public function saveFuKuan(Request $request)
     {
         //以后用户会从OMC取
-        $user=    Array(
-            'faqirenid'=>1,
-            'faqiren'=>'张三',
+        $u = Auth::user();
+        $user= Array(
+            'faqirenid'=>$u->id,
+            'faqiren'=>$u->name,
         );
 
         $obj=array_merge($request->params,$user);
@@ -159,9 +160,10 @@ class payableController extends Controller
     public function editDate(Request $request)
     {
         //以后用户会从OMC取
+        $u = Auth::user();
         $user=    Array(
-            'personId'=>1,
-            'personName'=>'张三',
+            'personId'=>$u->id,
+            'personName'=>$u->name,
         );
 
         $obj=array_merge($request->params,$user);
@@ -180,9 +182,10 @@ class payableController extends Controller
     public function editMoney(Request $request)
     {
         //以后用户会从OMC取
+        $u = Auth::user();
         $user=    Array(
-            'personId'=>1,
-            'personName'=>'张三',
+            'personId'=>$u->id,
+            'personName'=>$u->name,
         );
 
         $obj=array_merge($request->params,$user);
