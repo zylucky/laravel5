@@ -63,7 +63,7 @@
                     </th>
                 </tr>
                 <tr>
-                    <td  height="60" colspan="4" ></td>
+                    <td  height="100" colspan="4" ></td>
                 </tr>
             </table>
             <table   style="border-collapse: collapse;margin-left:-10px; ">
@@ -81,7 +81,7 @@
                     <td align="center" height="23">{{changeDate(item.fukuanri)}}</td>
                     <td align="center">{{item.fukuankemu}}</td>
                     <td align="center">{{item.fukuanzhouqi}}</td>
-                    <td align="center">{{toDecimal(item.fukuanjine)}}元</td>
+                    <td align="center">¥{{toDecimal(item.fukuanjine)}}</td>
                     <td>{{item.beizhu}}</td>
                 </tr>
                 <tr>
@@ -98,10 +98,10 @@
                     <td align="center" height="23">{{changeDate(item.fukuanri)}}</td>
                     <td align="center" >{{item.fukuankemu}}</td>
                     <td align="center">{{item.fukuanzhouqi}}</td>
-                    <td align="center">{{toDecimal(item.fukuanjine)}}元</td>
+                    <td align="center">¥{{toDecimal(item.fukuanjine)}}</td>
                     <td>{{item.beizhu}}</td>
                 </tr>
-            <tr v-for="x in (18-data.zjProofs.length)">
+            <tr v-for="x in (16-data.zjProofs.length)">
                 <td style="border:0 "></td>
                 <td height="23"></td>
                 <td></td>

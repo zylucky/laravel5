@@ -354,7 +354,8 @@
                 for (var x in this.options2){
                     if(this.options2[x].label==this.property.xsOffice[this.property.tabIndex-1].loudongName){
                         this.property.xsOffice[this.property.tabIndex-1].loudongOmcId=this.options2[x].value;
-
+                        this.property.xsOffice[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                        this.property.xsOffice[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
                     }
                 }
             },
