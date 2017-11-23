@@ -34,19 +34,25 @@
                                 :value="item.value">
                         </el-option>
                     </el-select>
-            </el-form-item></el-row><el-row>
-            <el-form-item label="协议等级："   >
-                <el-select v-model="filters.hezuoxieyidengji" placeholder="请选择协议等级">
-                    <el-option
-                            v-for="item in optionsxydj"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
             </el-form-item>
+            <el-form-item label="协议等级："   >
+                    <el-select v-model="filters.hezuoxieyidengji" placeholder="请选择协议等级">
+                        <el-option
+                                v-for="item in optionsxydj"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+            </el-row>
+            <el-row>
+
 
             <el-form-item label="公司名称：">
+                <el-input v-model="filters.pname" placeholder="请输入公司名称"></el-input>
+            </el-form-item>
+            <el-form-item label="门店名称：">
                 <el-input v-model="filters.bk_name" placeholder="请输入公司名称"></el-input>
             </el-form-item>
             <el-form-item label="项目名称：">
@@ -161,7 +167,7 @@
                     gongsijingyingshuxing:'',
                     hezuoxieyidengji:'',
                     xm:'',
-
+                    pname:'',
                 },
                 options:[
                    {
@@ -381,7 +387,8 @@
                     gongsijingyingshuxing: this.filters.gongsijingyingshuxing.toString(),
                     hezuoxieyidengji: this.filters.hezuoxieyidengji,
                     xm:this.filters.xm,
-                    parentid:1,
+                    parentid:-1,
+                    pname:this.filters.pname,
                 };
                 this.listLoading = true;
                 getBrokerCompanyListPage(para).then((res) => {

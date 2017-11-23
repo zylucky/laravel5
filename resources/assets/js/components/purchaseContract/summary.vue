@@ -1,12 +1,12 @@
 <template>
     <div style="font-size: 12px;" class="summary">
-        <p style="margin-left: 15%;font-size:17px;" v-if="data.fangwuzichanguanlifuwuhetong"> <u>房屋资产管理服务合同     管理方： 幼狮科技  </u> 【    】级 </p>
+        <p style="margin-left: 15%;font-size:17px;" v-if="data.fangwuzichanguanlifuwuhetong"> <u>房屋资产管理服务合同     管理方： 幼狮科技  </u> <span style="font-size:20px; ">【 &nbsp;&nbsp;&nbsp; 】</span> 级 </p>
         <p style="margin-left: 35%;font-size:17px;" v-if="!data.fangwuzichanguanlifuwuhetong"> <u>
             <input type="checkbox" v-model="data.youshikeji">
             幼狮科技
             <input type="checkbox" v-model="data.huashuoshangmao">
             华溯商贸</u></p>
-        <p style="margin-left: 6%;"> <b>项目房间号</b> <u style="font-size: 24px;">{{data.xiangmufangjianhao}}</u> <b style="margin-left:40%;">面积</b> <u>{{data.mianji}}m²</u> </p>
+        <p style="margin-left: 6%;"> <b>项目房间号</b> <u style="font-size: 24px;">{{data.xiangmufangjianhao}}</u> <b style="position:absolute;left:60%;">面积 <u>{{data.mianji}}m²</u></b> </p>
         <div style="margin-left:18px;float: left">
             <input type="checkbox" v-model="data.fangwuzichanguanlifuwuhetong" >房屋资产管理服务合同
             <input type="checkbox"style="margin-left:43px;" v-model="data.budongchanshouquanweituoshu">不动产授权委托书

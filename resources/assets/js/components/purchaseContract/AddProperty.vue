@@ -104,7 +104,7 @@
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item required  label="承租面积" prop="qianyuemianji">
-                                        <el-input :disabled="lydisabled" v-model.number="property.officeList[index].qianyuemianji"></el-input>
+                                        <el-input :disabled="lydisabled" @change="changeArea()" v-model.number="property.officeList[index].qianyuemianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
@@ -343,21 +343,16 @@
             },
             //得到房间号以后，提取OMC的对应信息
             change1(){
-                if(this.$route.path=='/purchaseContract/add') {
-                    //楼盘
-                    for (var x in this.options1){
-                        if(this.options1[x].label==this.property.officeList[this.property.tabIndex-1].loupanName){
-                            this.property.officeList[this.property.tabIndex-1].loupanOmcId=this.options1[x].value;
-                            this.property.officeList[this.property.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
-                            this.property.officeList[this.property.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
-                            this.property.officeList[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
-                            this.property.officeList[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
-                        }
+                //楼盘
+                for (var x in this.options1){
+                    if(this.options1[x].label==this.property.officeList[this.property.tabIndex-1].loupanName){
+                        this.property.officeList[this.property.tabIndex-1].loupanOmcId=this.options1[x].value;
+                        this.property.officeList[this.property.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
+                        this.property.officeList[this.property.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
+                        this.property.officeList[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
+                        this.property.officeList[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
                     }
-                }else{
-                    return false;
                 }
-
             },
             change2(){
                 for (var x in this.options2){
@@ -482,6 +477,9 @@
                     });
                     this.property.officeList[this.property.tabIndex-1].fanghao=null;
                 }
+            },
+            changeArea(){
+                this.$emit('changeArea');
             },
             addTab(targetName, action) {
                 if(action === 'add'){

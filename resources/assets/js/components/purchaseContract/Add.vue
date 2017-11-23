@@ -2,7 +2,7 @@
     <div>
         <el-row>
             <el-col :span="20">
-                <add-property ref="property" :property="property" v-show="stepNum==1"></add-property>
+                <add-property ref="property" v-on:changeArea="computeArea()" :property="property" v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" :owner="owner" v-show="stepNum==2"></add-owner>
                 <add-date ref="date" :addDate="addDate" :property="property"  v-show="stepNum==3"></add-date>
                 <history-optimize  v-show="stepNum==4"></history-optimize>
@@ -484,6 +484,18 @@
                 }
 
             },
+            computeArea(){
+                //1.先计算面积综合
+                var areaToal = 0;
+                this.property.officeList.forEach((property,index)=>{
+                    areaToal += property.qianyuemianji;
+                })
+                //2.计算单价
+                this.addDate.zujinList.forEach((item,index)=>{
+                    var perPrice = (item.yuezujin*12/365/areaToal).toFixed(2);
+                    this.addDate.zujinList[index].price = parseFloat(perPrice);
+                })
+            }
         },
         mounted() {
             //根据url得到的合同ID，来获取数据

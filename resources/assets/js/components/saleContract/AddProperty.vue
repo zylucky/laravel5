@@ -108,6 +108,7 @@
                                     <el-form-item label="承租面积" required prop="qianyuemianji">
                                         <el-input v-model.number="property.xsOffice[index].qianyuemianji"
                                                   :disabled="lydisabled"
+                                                  @change="changeArea()"
                                         ></el-input>
                                     </el-form-item>
                                     <span style="border:0px solid red;font-size:12px;position:relative;left:180px;top:-23px;color:#ff4949;">剩余承租面积&nbsp;&nbsp; <i v-text="property.xsOffice[index].syczmj"></i>㎡</span>
@@ -391,6 +392,9 @@
                 if(this.property.xsOffice[this.property.tabIndex-1].fanghao2!=this.property.xsOffice[this.property.tabIndex-1].fanghao){
                     this.getWeizhi(this.property.tabIndex-1);
                 }
+            },
+            changeArea(){
+                this.$emit('changeArea');
             },
             //获取收房合同de dizhi
             getWeizhi(index){
