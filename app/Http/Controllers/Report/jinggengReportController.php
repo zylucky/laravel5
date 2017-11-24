@@ -23,21 +23,13 @@ class jinggengReportController extends Controller
     {
         $pageSize = Input::get('pageSize');
         $page = Input::get('page');
-        $startdate = Input::get('startdate');
-        $enddate = Input::get('enddate');
 
         $limitStart=($page-1)*$pageSize;
         $limitEnd = $pageSize;
         $sql="select * from v_jgfy ";
-        $strWhere=" where 1=1 ";
-        if(!empty($startdate)){
-            $strWhere=$strWhere." and QianyueDate>='".$startdate."'"  ;
-        }
-        if(!empty($enddate)){
-            $strWhere=$strWhere." and QianyueDate<='".$enddate."'"  ;
-        }
-        $count =  DB::connection('mysql3')->select("select count(*) as countNum from v_jgfy ".$strWhere) ;
-        $sql=$sql.$strWhere."  limit ".$limitStart.", ".$limitEnd;
+
+        $count =  DB::connection('mysql3')->select("select count(*) as countNum from v_jgfy ") ;
+        $sql=$sql."  limit ".$limitStart.", ".$limitEnd;
         $bk = DB::connection('mysql3')->select($sql);
 
         return $data = ['total'=>$count[0]->countNum,'data'=>$bk];
@@ -114,17 +106,9 @@ class jinggengReportController extends Controller
     //导出Excel
     public function ExportExcel()
     {
-        $startdate = Input::get('startdate');
-        $enddate = Input::get('enddate');
+
         $sql=" select topic,zdh,fybh,fjmj,price,fjyzj,hyzt,kzzt,sfzc,yzsx,yzdh,bzxzyz from v_jgfy ";
-        $strWhere=" where 1=1 ";
-        if(!empty($startdate)){
-            $strWhere=$strWhere." and QianyueDate>='".$startdate."'"  ;
-        }
-        if(!empty($enddate)){
-            $strWhere=$strWhere." and QianyueDate<='".$enddate."'"  ;
-        }
-        $sql=$sql.$strWhere  ;
+
         try{
             $bk = DB::connection('mysql3')->select($sql);
 
