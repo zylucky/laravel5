@@ -18,7 +18,7 @@
                                                 filterable
                                                 default-first-option
                                                 remote
-                                                @change="change1"
+                                                @change="change1(index)"
                                                 placeholder="楼盘"
                                                 :remote-method="remoteMethod1"
                                                 :loading="loupanloading"
@@ -40,7 +40,7 @@
                                                 filterable
                                                 default-first-option
                                                 remote
-                                                @change="change2"
+                                                @change="change2(index)"
                                                 placeholder="楼栋"
                                                 :remote-method="remoteMethod2"
                                                 :loading="loupanloading"
@@ -64,7 +64,7 @@
                                                 allow-create
                                                 default-first-option
                                                 remote
-                                                @change="change3"
+                                                @change="change3(index)"
                                                 :placeholder="gzys"
                                                 :remote-method="remoteMethod3"
                                                 :loading="fanghaoloading"
@@ -104,7 +104,7 @@
                                 </el-col>
                                 <el-col :span="8">
                                     <el-form-item required  label="承租面积" prop="qianyuemianji">
-                                        <el-input :disabled="lydisabled" v-model.number="property.officeList[index].qianyuemianji"></el-input>
+                                        <el-input :disabled="lydisabled" @change="changeArea()" v-model.number="property.officeList[index].qianyuemianji"></el-input>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="8">
@@ -254,6 +254,9 @@
                     })
                 }
             },
+            getIndex(index){
+                alert(index)
+            },
             //获取楼盘
             remoteMethod1(query) {
                 let para = {
@@ -342,36 +345,33 @@
 
             },
             //得到房间号以后，提取OMC的对应信息
-            change1(){
-                if(this.$route.path=='/purchaseContract/add') {
-                    //楼盘
-                    for (var x in this.options1){
-                        if(this.options1[x].label==this.property.officeList[this.property.tabIndex-1].loupanName){
-                            this.property.officeList[this.property.tabIndex-1].loupanOmcId=this.options1[x].value;
-                            this.property.officeList[this.property.tabIndex-1].loudongName=null;//清除楼栋和房号的缓存
-                            this.property.officeList[this.property.tabIndex-1].loudongOmcId=null;//清除楼栋和房号的缓存
-                            this.property.officeList[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
-                            this.property.officeList[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
-                        }
+            change1(index){
+                this.property.tabIndex = index+1;
+                //楼盘
+                for (var x in this.options1){
+                    if(this.options1[x].label==this.property.officeList[index].loupanName){
+                        this.property.officeList[index].loupanOmcId=this.options1[x].value;
+                        this.property.officeList[index].loudongName=null;//清除楼栋和房号的缓存
+                        this.property.officeList[index].loudongOmcId=null;//清除楼栋和房号的缓存
+                        this.property.officeList[index].fanghao=null;//清除楼栋和房号的缓存
+                        this.property.officeList[index].omcId=null;//清除楼栋和房号的缓存
                     }
-                }else{
-                    return false;
                 }
-
             },
-            change2(){
+            change2(index){
+                this.property.tabIndex = index+1;
                 for (var x in this.options2){
-                    if(this.options2[x].label==this.property.officeList[this.property.tabIndex-1].loudongName){
-                        this.property.officeList[this.property.tabIndex-1].loudongOmcId=this.options2[x].value;
-                        this.property.officeList[this.property.tabIndex-1].fanghao=null;//清除楼栋和房号的缓存
-                        this.property.officeList[this.property.tabIndex-1].omcId=null;//清除楼栋和房号的缓存
+                    if(this.options2[x].label==this.property.officeList[index].loudongName){
+                        this.property.officeList[index].loudongOmcId=this.options2[x].value;
+                        this.property.officeList[index].fanghao=null;//清除楼栋和房号的缓存
+                        this.property.officeList[index].omcId=null;//清除楼栋和房号的缓存
                     }
                 }
                 if(this.$route.path=='/purchaseContract/add') {
                     //楼栋
                     //get rules of building
                     let para ={
-                        loudongOmcId:this.property.officeList[this.property.tabIndex-1].loudongOmcId,
+                        loudongOmcId:this.property.officeList[index].loudongOmcId,
                     }
                     getLoudongRules(para).then((res)=>{
                         this.$notify({
@@ -386,15 +386,15 @@
                 }
 
             },
-            change3(){
+            change3(index){
                 //房号
                 for (var x in this.options3){
-                    if(this.options3[x].label==this.property.officeList[this.property.tabIndex-1].fanghao){
-                        this.property.officeList[this.property.tabIndex-1].omcId=this.options3[x].value;
+                    if(this.options3[x].label==this.property.officeList[index].fanghao){
+                        this.property.officeList[index].omcId=this.options3[x].value;
                     }
                 }
                 if(this.$route.path=='/purchaseContract/add') {
-                    this.property.officeList[this.property.tabIndex-1].omcId=null;
+                    this.property.officeList[index].omcId=null;
                 }else{
                     return false;
                 }
@@ -423,7 +423,7 @@
                     }
                     return false;
                 }
-                var house_no = this.property.officeList[this.property.tabIndex-1].fanghao;
+                var house_no = this.property.officeList[index].fanghao;
                 var flag = true;
                 this.gzys2 = this.gzys.split(';');
                 var count = 0;
@@ -455,14 +455,14 @@
                     }
                 })
                 if(count>=1){
-                    if(this.property.officeList[this.property.tabIndex-1].omcId==null&&this.$route.path=='/purchaseContract/add'){
+                    if(this.property.officeList[index].omcId==null&&this.$route.path=='/purchaseContract/add'){
                         let  para = {
-                            loupanOmcId:this.property.officeList[this.property.tabIndex-1].loupanOmcId,
-                            loudongOmcId:this.property.officeList[this.property.tabIndex-1].loudongOmcId,
-                            fanghao:this.property.officeList[this.property.tabIndex-1].fanghao,
+                            loupanOmcId:this.property.officeList[index].loupanOmcId,
+                            loudongOmcId:this.property.officeList[index].loudongOmcId,
+                            fanghao:this.property.officeList[index].fanghao,
                         }
                         createFanghao(para).then((res=>{
-                            this.property.officeList[this.property.tabIndex-1].omcId = res.data.data;
+                            this.property.officeList[index].omcId = res.data.data;
                             this.$message({
                                 message: '楼盘字典中不存在该房源，已自动创建',
                                 type: 'success'
@@ -470,9 +470,9 @@
                         }))
                     }
                     for (var x in this.houseData){
-                        if(this.houseData[x].id==this.property.officeList[this.property.tabIndex-1].omcId){
-                            this.property.officeList[this.property.tabIndex-1].jianzhumianji=this.houseData[x].fjmj;
-                            this.property.officeList[this.property.tabIndex-1].qianyuemianji=this.houseData[x].fjmj;
+                        if(this.houseData[x].id==this.property.officeList[index].omcId){
+                            this.property.officeList[index].jianzhumianji=this.houseData[x].fjmj;
+                            this.property.officeList[index].qianyuemianji=this.houseData[x].fjmj;
                         }
                     }
                 }else{
@@ -480,8 +480,11 @@
                         message: '房间号不符合规则！',
                         type: 'error'
                     });
-                    this.property.officeList[this.property.tabIndex-1].fanghao=null;
+                    this.property.officeList[index].fanghao=null;
                 }
+            },
+            changeArea(){
+                this.$emit('changeArea');
             },
             addTab(targetName, action) {
                 if(action === 'add'){

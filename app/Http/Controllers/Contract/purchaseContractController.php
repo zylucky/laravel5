@@ -124,11 +124,17 @@ class purchaseContractController extends Controller
         $free_day=0;
         if(count($res->data->mianzuqiList)>0){
             foreach ($res->data->mianzuqiList as $key=>$value){
-                $free_month += $this->get_month_day($value->startdate,$value->enddate)->m;
-                $free_day += $this->get_month_day($value->startdate,$value->enddate)->d;
+                $free_month = $this->DiffDate(
+                    date('y-m-d',$value->startdate/1000),
+                    date('y-m-d',strtotime(date('y-m-d',$value->enddate/1000).'+ 1 day'))
+                    )[1];
+                $free_day = $this->DiffDate(
+                    date('y-m-d',$value->startdate/1000),
+                    date('y-m-d',strtotime(date('y-m-d',$value->enddate/1000).'+ 1 day'))
+                    )[2];
             }
         }
-        if($free_day>30){
+        if($free_day>30&&count($res->data->mianzuqiList)>1){
             $free_month += intval($free_day/30);
             $free_day = $free_day%30;
         }
@@ -521,11 +527,31 @@ class purchaseContractController extends Controller
     public function get_month_day($startdate,$enddate)
     {
         $startdate = $startdate/1000;
+        $enddate   = $enddate/1000;
         $startdate = date_create(date('Y-m-d',$startdate));
-        $enddate  = $enddate/1000+86400;//加一天
-        $enddate = date_create(date('Y-m-d',$enddate));
+        $enddate   = date_add(date_create(date('Y-m-d',$enddate)),date_interval_create_from_date_string('1 day'));
         $bian = date_diff($startdate,$enddate);
         return $bian;
+    }
+    public function DiffDate($date1, $date2) {
+        if (strtotime($date1) > strtotime($date2)) {
+            $ymd = $date2;
+            $date2 = $date1;
+            $date1 = $ymd;
+        }
+        list($y1, $m1, $d1) = explode('-', $date1);
+        list($y2, $m2, $d2) = explode('-', $date2);
+        $y = $m = $d = $_m = 0;
+        $math = ($y2 - $y1) * 12 + $m2 - $m1;
+        $y = round($math / 12);
+        $m = intval($math % 12);
+        $d = (mktime(0, 0, 0, $m2, $d2, $y2) - mktime(0, 0, 0, $m2, $d1, $y2)) / 86400;
+        if ($d < 0) {
+            $m -= 1;
+            $d += date('j', mktime(0, 0, 0, $m2, 0, $y2));
+        }
+        $m < 0 && $y -= 1;
+        return array($y, $m, $d);
     }
     //付款账号的提交
     public function zhanghaoSave(Request $request){

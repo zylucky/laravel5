@@ -1,87 +1,28 @@
-
 <template>
-    <el-row >
-        <el-form   :inline="true" :model="filters"  class="demo-form-inline">
-            <el-row>
-            <el-form-item label="业务区域：" >
-                <el-select v-model="filters.yewuqvyvid" placeholder="请选择区域"   @change="remoteMethoddtqy">
-                    <el-option
-                            v-for="item in optionsywqy"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-            </el-form-item>
-
-            <el-form-item label=""   >
-                <el-select v-model="filters.yewupianqvid" placeholder="请选择地图区域">
-                    <el-option
-                            v-for="item in optionsdtqy"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-
-            </el-form-item>
-            <el-form-item label="经营属性："    >
-                    <el-select v-model="filters.gongsijingyingshuxing" placeholder="请选择经营属性">
-                        <el-option
-                                v-for="item in optionsgssx"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                        </el-option>
-                    </el-select>
-            </el-form-item></el-row><el-row>
-            <el-form-item label="协议等级："   >
-                <el-select v-model="filters.hezuoxieyidengji" placeholder="请选择协议等级">
-                    <el-option
-                            v-for="item in optionsxydj"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-            </el-form-item>
-
-            <el-form-item label="公司名称：">
-                <el-input v-model="filters.bk_name" placeholder="请输入公司名称"></el-input>
-            </el-form-item>
-            <el-form-item label="项目名称：">
-                <el-input v-model="filters.xm" placeholder="请输入项目名称"></el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="primary" icon="search"  v-on:click="getBrokerCompany">搜索</el-button>
-                <el-button type="primary" class="el-icon-plus" v-if="fun('brokerCompanyAdd')"    @click="handleAdd"    > 新增</el-button>
-                <el-button type="primary" class="el-icon-plus" v-if="fun('brokerCompanyExport')"    @click="handleExport"    > 导出</el-button>
-            </el-form-item>
-        </el-row>
-        </el-form>
-        <el-table :data="brokerCompany"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-
-            <el-table-column type="index"   width="60">
-            </el-table-column>
+    <section>
+        <!--工具条-->
+        <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
+            <el-form :inline="true" :model="filters">
+                <el-form-item>
+                    <el-input v-model="filters.bk_name" placeholder="公司名称"></el-input>
+                </el-form-item>
+                <el-form-item>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" v-on:click="getBrokerCompany">查询</el-button>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="handleAdd">新增</el-button>
+                </el-form-item>
+            </el-form>
+        </el-col>
+        <!--列表页-->
+        <el-table :data="brokerCompany" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column prop="compayname" label="公司名称"  >
             </el-table-column>
-            <el-table-column label="公司所属业务区域"  :formatter="changeywqy" width="200px">
+            <el-table-column prop="createdate" :formatter="changeDate" label="创建时间"  >
             </el-table-column>
-            <el-table-column prop="zhuzuoqvyv" label="主做区域"  :formatter="formatZZQY"  >
-            </el-table-column>
-            <el-table-column prop="hezuoxieyidengji" label="渠道等级"    >
-            </el-table-column>
-            <el-table-column prop="fuzeren" label="负责人姓名"     >
-            </el-table-column>
-            <el-table-column prop="yslianxiren1" label="幼狮对接人"    >
-            </el-table-column>
-            <el-table-column prop="shifouhezuoxieyi" label="是否签署协议"   :formatter="formatSFQSXY"  >
-            </el-table-column>
-            <el-table-column prop="genjinDate" label="最后跟进日期"  :formatter="changeDate"   >
-            </el-table-column>
-            <el-table-column prop="wanchengdu" label="信息完整度"  >
-            </el-table-column>
-            <el-table-column prop="zhuangtai" label="渠道状态"  >
+            <el-table-column prop="zhuangtai" label="状态"  >
                 <template slot-scope="scope">
                     <el-switch
                             v-model="scope.row.zhuangtai"
@@ -94,168 +35,190 @@
                     </el-switch>
                 </template>
             </el-table-column>
-            <el-table-column label="操作" width="150">
+            <el-table-column label="操作" width="260">
                 <template slot-scope="scope">
-                    <el-dropdown   menu-align="start">
-                        <el-button type="primary" size="normal" splitButton="true">
-                            操作<i class="el-icon-caret-bottom el-icon--right"></i>
-                        </el-button>
-                        <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item v-if="fun('brokerCompanyEdit')" >  <el-button   @click="handleEdit(scope.$index, scope.row)">跟进/编辑</el-button> </el-dropdown-item>
-                            <el-dropdown-item v-if="fun('brokerCompanyView')">  <el-button   @click="handleView(scope.$index, scope.row)">详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;情</el-button> </el-dropdown-item>
-                            <el-dropdown-item v-if="fun('queryUser')">  <el-button    @click="handleUser(scope.$index, scope.row)">查看渠道人员</el-button> </el-dropdown-item>
-                            
-                        </el-dropdown-menu>
-                    </el-dropdown>
-
+                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
                 </template>
             </el-table-column>
         </el-table>
-        <div style="margin-top:30px"></div>
+        <!--编辑界面-->
+        <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
+            <el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
+                <el-form-item label="公司名称" prop="compayname">
+                    <el-input v-model="editForm.compayname" auto-complete="off"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click.native="editFormVisible = false">取消</el-button>
+                <el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+            </div>
+        </el-dialog>
+        <!--新增界面-->
+        <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
+            <el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
+                <el-form-item label="公司名称" prop="compayname">
+                    <el-input v-model="addForm.compayname" auto-complete="off"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click.native="addFormVisible = false">取消</el-button>
+                <el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
+            </div>
+        </el-dialog>
         <!-- 分页-->
-        <el-col :span="24" class="toolbar" >
-
+        <el-col :span="24" class="toolbar">
             <el-pagination
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
                     :current-page="currentPage"
                     :page-sizes="pageSizes"
-                    :page-size="10"
                     layout="total, sizes, prev, pager, next, jumper"
                     :total=total
-                    style="float:right"
-            >
+                    style="float:right">
             </el-pagination>
         </el-col>
 
-
-    </el-row>
+    </section>
 </template>
+<style>
+
+</style>
 <script>
-
-
-    import {
-        getBrokerCompanyListPage,
-        editBrokerCompany,
-        removeBrokerCompany,
-        addBrokerCompany,
-        checkbkNameList,
-        changeBrokerCompanyStatus,
-        getGSSXDicList,
-        getYWQYDicList,
-        getXYDJDicList,
-        exportBrokerCompany
-    } from '../../api/api';
-    import ElRow from "element-ui/packages/row/src/row";
-
+    import { getBrokerCompanyListPage,addBrokerCompany,editBrokerCompany,changeBrokerCompanyStatus} from '../../api/api';
     export default{
-
-        components: {ElRow},
         data(){
-
             return {
                 filters:{
                     bk_name:'',
-                    yewuqvyvid:0,
-                    yewupianqvid:0,
-                    gongsijingyingshuxing:'',
-                    hezuoxieyidengji:'',
-                    xm:'',
-
                 },
-                options:[
-                   {
-                        value: 1,
-                        label: '按月租金'
-                    }, {
-                        value: 2,
-                        label: '按年租金'
-                    },
-                ],
-                options2:[
-                    {value: 1, label: '启用'},
-                    {value: 2, label: '停用'},
-                ],
-                optionsdtqy:[{
-                    value: 0,
-                    label: '请选择'
-                },
-                ],
-                optionsgssx:[
-                    {
-                        value:'',
-                        label: '请选择'
-                    },
-                ],
-                optionsywqy:[
-                    {
-                        value: 0,
-                        label: '请选择'
-                    },
-                ],
-                optionsxydj:[
-                    {
-                        value: '',
-                        label: '请选择'
-                    },
-                ],
-                value1: null,
                 //分页类数据
                 total:0,
                 currentPage:0,
-                dialogImageUrl: '',
-                dialogVisible: false,
-
                 pageSize:10,
                 pageSizes:[10, 20, 30, 40, 50, 100],
                 brokerCompany:[],
                 listLoading: false,
                 sels: [],//列表选中列
-
-                tQdCompayId:0,
-                bk_name:'',
-                //被选中的权限
-                checked:[],
+                editFormVisible: false,//编辑界面是否显示
+                editLoading: false,
+                editFormRules: {
+                    compayname: [
+                        { required: true, message: '请输入公司名称', trigger: 'blur' }
+                    ],
+                },
+                //编辑界面数据
+                editForm: {
+                    id: 0,
+                    compayname: '',
+                },
+                addFormVisible: false,//新增界面是否显示
+                addLoading: false,
+                addFormRules: {
+                    compayname: [
+                        { required: true, message: '请输入公司名称', trigger: 'blur' }
+                    ],
+                },
+                //新增界面数据
+                addForm: {
+                    compayname: '',
+                    parentid:0,
+                },
             }
         },
         methods:{
-            //佣金类型显示转换
-            formatSFQSXY: function (row, column) {
-               return row.shifouhezuoxieyi == true ? '是' :  '否' ;
+            roleSubmit: function () {
+                this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                    this.roleLoading = true;
+                    let para = {
+                        id:this.userId,
+                        value:this.Roles,
+                    }
+                    setRoleList(para).then((res)=>{
+                        this.roleLoading = false;
+                        this.$message({
+                            message: '保存成功',
+                            type: 'success'
+                        });
+                        this.dialogRoleVisible = false;
+                    });
+                });
             },
-            changeywqy(row, column){
-                if(row.yewuqvyv!=null) {
-                    return  row.yewuqvyv + '-' + row.yewupianqv ;
-                }
-            },
-            //时间戳转日期格式
-            changeDate(row, column){
-                if(row.genjinDate!=null) {
-                    var newDate = new Date();
-                    newDate.setTime(row.genjinDate);
-                    return newDate.toLocaleDateString()
-                }
-            },
-            formatZZQY(row, column){
-                if(row.zhuzuoqvyv!=null&&row.zhuzuoqvyv!='') {
-                    return row.zhuzuoqvyv.substring(row.zhuzuoqvyv.length - 1) == ',' ? row.zhuzuoqvyv.substring(0, row.zhuzuoqvyv.length - 1) : row.zhuzuoqvyv;
-                }
-            },
-            handleView: function (index, row) {
-                this.$router.push('/brokerCompany/view?id=' + row.tQdCompayId);
+            handleSet(index,row){
+                this.userId = row.id;
+                this.getTotalRoles();
+                this.getRoles();
+                this.dialogRoleVisible = true;
             },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
-               // console.log(`当前页: ${val}`);
-               this.getBrokerCompany();
+                this.getBrokerCompany();
             },
             //更改每页显示数据
             handleSizeChange(val){
                 this.pageSize =val;
-                //console.log(`每页 ${val} 条`);
-
                 this.getBrokerCompany();
+            },
+            //获取渠道公司列表
+            getBrokerCompany() {
+                let para = {
+                    page: this.page,
+                    pageSize: this.pageSize,
+                    bk_name: this.filters.bk_name,
+                    parentid:0,
+                    xm:this.filters.xm,
+                };
+                this.listLoading = true;
+                getBrokerCompanyListPage(para).then((res) => {
+                    this.total = res.data.total;
+                    this.brokerCompany = res.data.data;
+                    this.listLoading = false;
+                });
+            },
+            //显示编辑界面
+            handleEdit: function (index, row) {
+                this.editFormVisible = true;
+                this.editForm = Object.assign({}, row);
+            },
+            //时间戳转日期格式
+            changeDate(row, column){
+                if(row.createdate!=null) {
+                    var newDate = new Date();
+                    newDate.setTime(row.createdate);
+                    return newDate.toLocaleDateString()
+                }
+            },
+            //显示新增界面
+            handleAdd: function () {
+                this.addFormVisible = true;
+                this.addForm = {
+                    compayname: '',
+                    parentid: 0,
+                };
+            },
+            //编辑
+            editSubmit: function () {
+                this.$refs.editForm.validate((valid) => {
+                    if (valid) {
+                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                            this.editLoading = true;
+                            //NProgress.start();
+                            let para = Object.assign({}, this.editForm);
+                            //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
+                            editBrokerCompany(para).then((res) => {
+                                this.editLoading = false;
+                                //NProgress.done();
+                                this.$message({
+                                    message: '提交成功',
+                                    type: 'success'
+                                });
+                                this.$refs['editForm'].resetFields();
+                                this.editFormVisible = false;
+                                this.getBrokerCompany();
+                            });
+                        });
+                    }
+                });
             },
             //更改渠道公司状态
             changeStatus(row){
@@ -286,150 +249,38 @@
                     }
                 })
             },
-            //获取公司属性
-            remoteMethodgssx() {
-                getGSSXDicList().then((res) => {
-                    if (res.status == '200') {
-                        for (var item in res.data.data) {
-                            this.optionsgssx.push({
-                                value: res.data.data[item].enumValue,
-                                label: res.data.data[item].enumKey
+            //新增
+            addSubmit: function () {
+                this.$refs.addForm.validate((valid) => {
+                    if (valid) {
+                        this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                            this.addLoading = true;
+                            //NProgress.start();
+                            let para = Object.assign({}, this.addForm);
+                            console.log(para)
+                            //para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
+                            addBrokerCompany(para).then((res) => {
+                                this.addLoading = false;
+                                //NProgress.done();
+                                this.$message({
+                                    message: '提交成功',
+                                    type: 'success'
+                                });
+                                this.$refs['addForm'].resetFields();
+                                this.addFormVisible = false;
+                                this.getBrokerCompany();
                             });
-                        }
-
-                    } else {
-                        this.$message({
-                            message: '获取公司属性数据失败',
-                            type: 'error'
                         });
                     }
-                })
-            },
-            //获取公司业务区域
-            remoteMethodywqy() {
-                let para = {
-                    parentid: 0,
-                };
-                //this.optionsywqy = [];
-                getYWQYDicList(para).then((res) => {
-
-                    if (res.status == '200') {
-                        for (var item in res.data.data) {
-
-                            this.optionsywqy.push({value: res.data.data[item].id, label: res.data.data[item].fdName});
-                        }
-                    } else {
-                        this.$message({
-                            message: '获取业务区域数据失败',
-                            type: 'error'
-                        });
-                    }
-                })
-            },
-            //获取公司业务区域id获取地图区域列表
-            remoteMethoddtqy() {
-                let para = {
-                    parentid: this.filters.yewuqvyvid,
-                };
-                this.optionsdtqy = [{
-                    value: 0,
-                    label: '请选择'
-                },];
-                this.filters.yewupianqvid = null;//清除地图区域的缓存
-                getYWQYDicList(para).then((res) => {
-                    if (res.status == '200') {
-                        for (var item in res.data.data) {
-                            this.optionsdtqy.push({value: res.data.data[item].id, label: res.data.data[item].fdName});
-                        }
-                    } else {
-                        this.$message({
-                            message: '获取地图区域数据失败',
-                            type: 'error'
-                        });
-                    }
-                })
-            },
-            //获取协议等级
-            remoteMethodXYDJ() {
-                //this.optionsxydj = [];
-               // this.filters.hezuoxieyidengji = null;//清除街道的缓存
-                getXYDJDicList().then((res) => {
-                    if (res.status == '200') {
-                        for (var item in res.data.data) {
-                            this.optionsxydj.push({
-                                value: res.data.data[item].enumValue,
-                                label: res.data.data[item].enumKey,
-                                yjvalue: parseFloat(res.data.data[item].enumValues)
-                            });
-                        }
-                    } else {
-                        this.$message({
-                            message: '获取协议等级数据失败',
-                            type: 'error'
-                        });
-                    }
-                })
-            },
-            //获取渠道公司列表
-            getBrokerCompany() {
-                let para = {
-                    page: this.page,
-                    pageSize: this.pageSize,
-                    bk_name: this.filters.bk_name,
-                    yewuqvyvid: this.filters.yewuqvyvid,
-                    yewupianqvid: this.filters.yewupianqvid,
-                    gongsijingyingshuxing: this.filters.gongsijingyingshuxing.toString(),
-                    hezuoxieyidengji: this.filters.hezuoxieyidengji,
-                    xm:this.filters.xm,
-                };
-                this.listLoading = true;
-                getBrokerCompanyListPage(para).then((res) => {
-                    this.total = res.data.total;
-                    this.brokerCompany = res.data.data;
-                    this.listLoading = false;
                 });
-            },
-            //查看渠道人员
-            handleUser: function (index, row) {
-                this.$router.push('/brokerCompanyUserList?id=' + row.tQdCompayId+'&name='+row.compayname);
-            },
-            //上传协议
-            handleUpload: function (index, row) {
-                this.$router.push('/brokerCompany/edit?id=' + row.tQdCompayId);
-            },
-            //显示编辑界面
-            handleEdit: function (index, row) {
-                this.$router.push('/brokerCompany/edit?id=' + row.tQdCompayId);
-            },
-            //显示新增界面
-            handleAdd: function () {
-                this.$router.push('/brokerCompany/add');
-            },
-            handleExport: function () {
-                window.open("/brokerCompany/ExportExcel?bk_name="+this.filters.bk_name  +"&yewuqvyvid="+this.filters.yewuqvyvid+"&yewupianqvid="+this.filters.yewupianqvid
-                    +"&gongsijingyingshuxing="+this.filters.gongsijingyingshuxing+"&xm="+this.filters.xm+"&hezuoxieyidengji="+this.filters.hezuoxieyidengji);
             },
             selsChange: function (sels) {
                 this.sels = sels;
             },
-
-            handleRemove(file, fileList) {
-                console.log(file, fileList);
-            },
-            handlePictureCardPreview(file) {
-                this.dialogImageUrl = file.url;
-                this.dialogVisible = true;
-            }
         },
-
-
         mounted() {
-            this.remoteMethodgssx();
-            this.remoteMethodywqy();
-            this.remoteMethodXYDJ();
             this.page=1;
             this.getBrokerCompany();
-
         }
     }
 </script>

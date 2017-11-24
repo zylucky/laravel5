@@ -1,12 +1,12 @@
 <template>
     <div style="font-size: 12px;" class="summary">
-        <p style="margin-left: 15%;font-size:17px;" v-if="data.fangwuzichanguanlifuwuhetong"> <u>房屋资产管理服务合同     管理方： 幼狮科技  </u> 【    】级 </p>
+        <p style="margin-left: 15%;font-size:17px;" v-if="data.fangwuzichanguanlifuwuhetong"> <u>房屋资产管理服务合同     管理方： 幼狮科技  </u> <span style="font-size:20px; ">【 &nbsp;&nbsp;&nbsp; 】</span> 级 </p>
         <p style="margin-left: 35%;font-size:17px;" v-if="!data.fangwuzichanguanlifuwuhetong"> <u>
             <input type="checkbox" v-model="data.youshikeji">
             幼狮科技
             <input type="checkbox" v-model="data.huashuoshangmao">
             华溯商贸</u></p>
-        <p style="margin-left: 6%;"> <b>项目房间号</b> <u style="font-size: 24px;">{{data.xiangmufangjianhao}}</u> <b style="margin-left:40%;">面积</b> <u>{{data.mianji}}</u> </p>
+        <p style="margin-left: 6%;"> <b>项目房间号</b> <u style="font-size: 24px;">{{data.xiangmufangjianhao}}</u> <b style="position:absolute;left:60%;">面积 <u>{{data.mianji}}m²</u></b> </p>
         <div style="margin-left:18px;float: left">
             <input type="checkbox" v-model="data.fangwuzichanguanlifuwuhetong" >房屋资产管理服务合同
             <input type="checkbox"style="margin-left:43px;" v-model="data.budongchanshouquanweituoshu">不动产授权委托书
@@ -48,7 +48,7 @@
                 <tr>
                     <td  align="center" height="23" ><p style="display: inline;">{{data.zujins[1].split(' ')[0]}}</p> <p style="display: inline;margin-left:15px;">{{data.zujins[1].split(' ')[1]}}</p> </td>
                     <th  align="left">保证金</th>
-                    <td  align="center">{{toDecimal(data.baozhengjin)}}元</td>
+                    <td  align="center">¥{{toDecimal(data.baozhengjin)}}</td>
                 </tr>
                 <tr>
                     <td  align="center" height="23" ><p style="display: inline;">{{data.zujins[2].split(' ')[0]}}</p> <p style="display: inline;margin-left:15px;">{{data.zujins[2].split(' ')[1]}}</p> </td>
@@ -119,7 +119,7 @@
 
         </table>
             <b>规划用途</b>:{{yongtu(data.guihuayongtu)}}
-            <b style="margin-left:35px;">佣金</b>:{{toDecimal(data.yongjin)}}元
+            <b style="margin-left:35px;">佣金</b>:¥{{toDecimal(data.yongjin)}}
             <b style="margin-left:35px;">业务</b>：{{data.yewu}}
             <b style="margin-left:35px;">签约日</b>:{{changeDate(data.qianyueri)}}
         </div>

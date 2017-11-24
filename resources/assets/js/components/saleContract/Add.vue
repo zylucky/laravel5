@@ -2,7 +2,9 @@
     <div>
         <el-row>
             <el-col :span="20">
-                <add-property ref="property" :property="property" v-on:getshoufanghetong="getChuzuren" v-show="stepNum==1"></add-property>
+                <add-property ref="property" :property="property"
+                              v-on:getshoufanghetong="getChuzuren"
+                              v-on:changeArea="computeArea" v-show="stepNum==1"></add-property>
                 <!--标签中v-on:getshoufanghetong="getChuzuren"是监听事件，getshoufanghetong自己定义的监听的名字，getChuzuren是监听到这个事件之后发生操作的名字，v-on监听事件且是监听谁就放的谁上面-->
                 <add-renter ref="renter" :renter="renter" v-show="stepNum==2" ></add-renter>
                 <add-date ref="date" :property="property" :addDate="addDate" v-show="stepNum==3"></add-date>
@@ -327,6 +329,18 @@
                             type: 'error'
                         });
                     }
+                })
+            },
+            computeArea(){
+                //1.先计算面积综合
+                var areaToal = 0;
+                this.property.xsOffice.forEach((property,index)=>{
+                    areaToal += property.qianyuemianji;
+                })
+                //2.计算单价
+                this.addDate.zujinList.forEach((item,index)=>{
+                    var perPrice = (item.yuezujin*12/365/areaToal).toFixed(2);
+                    this.addDate.zujinList[index].price = parseFloat(perPrice);
                 })
             },
             //获取当前启用的合同版本

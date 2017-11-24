@@ -144,7 +144,7 @@
             </el-upload>
         <div style="position: fixed;right:10%;top:50%;">
             <el-button type="primary"   @click="save" style="margin-top:100px;">保存</el-button>
-            <el-button type="warning"   @click="cansel" style="margin-top:100px;">取消</el-button>
+            <!--<el-button type="warning"   @click="cansel" style="margin-top:100px;">取消</el-button>-->
         </div>
     </el-form>
 </template>
@@ -262,8 +262,8 @@
                         this.chengzuren = res.data.data[2];//承租人
                         this.yingyezhizhao = res.data.data[3];//营业支招
                         this.faren  = res.data.data[4];//法人证件
-                        this.chengzurenshouquan = res.data.data[7];//承租人授权
-                        this.weituoren = res.data.data[8];//委托人
+                        this.chengzurenshouquan = res.data.data[5];//承租人授权
+                        this.weituoren = res.data.data[6];//委托人
                         this.jiaogedan = res.data.data[9];//交割单
                     }
                 })

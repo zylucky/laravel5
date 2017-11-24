@@ -49,16 +49,21 @@ import ContractVersionList from "./components/contractVersion/index.vue";
 
 import SetPassword from "./components/rbac/ModifyPassword.vue";
 
-//渠道公司
-import BrokerCompany from "./components/brokerCompany/Index.vue";
-import BrokerCompanyUser from "./components/brokerCompany/UserList.vue";
-import BrokerCompanyAdd from "./components/brokerCompany/Add.vue";
-import BrokerCompanyUserAdd from "./components/brokerCompany/AddUser.vue";
-import BrokerCompanyHistory from "./components/brokerCompany/HistoryList.vue";
-import BrokerCompanyUserHistory from "./components/brokerCompany/UserHistoryList.vue";
-import BrokerUser from "./components/brokerCompany/BrokerUserList.vue";
-import BrokerUserAdd from "./components/brokerCompany/AddBrokerUser.vue";
-import BrokerUserHistory from "./components/brokerCompany/BrokerUserHistoryList.vue";
+//渠道公司门店
+import qdCompany from "./components/brokerCompany/Index.vue";
+
+
+import BrokerCompany from "./components/brokerCompanyPart/Index.vue";
+import BrokerCompanyUser from "./components/brokerCompanyPart/UserList.vue";
+import BrokerCompanyAdd from "./components/brokerCompanyPart/Add.vue";
+import BrokerCompanyUserAdd from "./components/brokerCompanyPart/AddUser.vue";
+import BrokerCompanyHistory from "./components/brokerCompanyPart/HistoryList.vue";
+import BrokerCompanyUserHistory from "./components/brokerCompanyPart/UserHistoryList.vue";
+import BrokerUser from "./components/brokerCompanyPart/BrokerUserList.vue";
+import BrokerUserAdd from "./components/brokerCompanyPart/AddBrokerUser.vue";
+import BrokerUserHistory from "./components/brokerCompanyPart/BrokerUserHistoryList.vue";
+
+
 //佣金管理
 import ChuFangCommission from "./components/Commission/Index.vue";
 import ShouFangCommission from "./components/Commission/ShouFangList.vue";
@@ -227,16 +232,17 @@ let routes = [
         iconCls: 'el-icon-document',//图标样式class
         hidden:fk_brokerCompany,
         children: [
-            { path:'/brokerCompany', component: BrokerCompany, name: '渠道公司管理',hidden:fk_brokerCompanyList},
-            { path:'/brokerCompany/add',component:BrokerCompanyAdd,name:'渠道公司录入',hidden:true},
-            { path:'/brokerCompany/edit',component:BrokerCompanyAdd,name:'渠道公司编辑',hidden:true},
-            { path:'/brokerCompany/view',component:BrokerCompanyAdd,name:'渠道公司查看',hidden:true},
-            { path:'/brokerCompanyUserList',component:BrokerCompanyUser,name:'渠道公司人员管理',hidden:fk_brokerCompanyUserList},
-            { path:'/brokerCompanyUserList/add',component:BrokerCompanyUserAdd,name:'渠道公司人员录入',hidden:true},
-            { path:'/brokerCompanyUserList/edit',component:BrokerCompanyUserAdd,name:'渠道公司人员编辑',hidden:true},
-            { path:'/brokerCompanyUserList/view',component:BrokerCompanyUserAdd,name:'渠道公司人员查看',hidden:true},
-            { path:'/brokerCompanyHistory',component:BrokerCompanyHistory,name:'渠道公司跟进记录',hidden:true},
-            { path:'/brokerCompanyUserHistory',component:BrokerCompanyUserHistory,name:'渠道公司人员跟进记录',hidden:true},
+            { path:'/qdCompany', component: qdCompany, name: '渠道公司管理',hidden:fk_brokerCompanyList},
+            { path:'/brokerCompany', component: BrokerCompany, name: '渠道公司门店管理',hidden:fk_brokerCompanyList},
+            { path:'/brokerCompany/add',component:BrokerCompanyAdd,name:'渠道公司门店录入',hidden:true},
+            { path:'/brokerCompany/edit',component:BrokerCompanyAdd,name:'渠道公司门店编辑',hidden:true},
+            { path:'/brokerCompany/view',component:BrokerCompanyAdd,name:'渠道公司门店查看',hidden:true},
+            { path:'/brokerCompanyUserList',component:BrokerCompanyUser,name:'渠道公司门店人员管理',hidden:fk_brokerCompanyUserList},
+            { path:'/brokerCompanyUserList/add',component:BrokerCompanyUserAdd,name:'渠道公司门店人员录入',hidden:true},
+            { path:'/brokerCompanyUserList/edit',component:BrokerCompanyUserAdd,name:'渠道公司门店人员编辑',hidden:true},
+            { path:'/brokerCompanyUserList/view',component:BrokerCompanyUserAdd,name:'渠道公司门店人员查看',hidden:true},
+            { path:'/brokerCompanyHistory',component:BrokerCompanyHistory,name:'渠道公司门店跟进记录',hidden:true},
+            { path:'/brokerCompanyUserHistory',component:BrokerCompanyUserHistory,name:'渠道公司门店人员跟进记录',hidden:true},
             { path:'/brokerUser',component:BrokerUser,name:'自由经纪人管理',hidden:fk_brokerUserList},
             { path:'/brokerUser/add',component:BrokerUserAdd,name:'自由经纪人录入',hidden:true},
             { path:'/brokerUser/edit',component:BrokerUserAdd,name:'自由经纪人编辑',hidden:true},
