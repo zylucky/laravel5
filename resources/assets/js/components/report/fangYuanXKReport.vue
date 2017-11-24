@@ -36,9 +36,9 @@
             </el-table-column>
             <el-table-column prop="Qianyuemianji" label="面积" width="90" >
             </el-table-column>
-            <el-table-column prop="Price" label="收购单价（元/㎡/天）"  width="180"  >
+            <el-table-column prop="price" label="收购单价（元/㎡/天）"  width="180"  >
             </el-table-column>
-            <el-table-column prop="YueZujin" label="收购月租金"   width="110" >
+            <el-table-column prop="yuezujin" label="收购月租金"   width="110" >
             </el-table-column>
             <el-table-column prop="xsdj" label="销售底价"    width="120" >
             </el-table-column>

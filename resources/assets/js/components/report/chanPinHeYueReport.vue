@@ -42,7 +42,7 @@
             </el-table-column>
             <el-table-column prop="ShouChuFangDate" label="收房/出房日"   width="120"  >
             </el-table-column>
-            <el-table-column prop="QianyueDate" label="签约日"  width="120" >
+            <el-table-column prop="QianYueDate" label="签约日"  width="120" >
             </el-table-column>
             <el-table-column prop="QYZQ" label="合同租期"   width="150">
             </el-table-column>
