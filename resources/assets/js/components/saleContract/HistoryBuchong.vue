@@ -6,15 +6,15 @@
                 <template slot-scope="scope">
                     <el-form label-position="left" inline class="demo-table-expand">
                         <el-form-item label="协议生效时间">
-                            <span>{{ changedate(props.row.xieyistartdate)  }}</span>
+                            <span>{{ changedate(scope.row.xieyistartdate)  }}</span>
                         </el-form-item>
                         <el-form-item label="协议结束时间">
-                            <span>{{ changedate(props.row.xieyienddate)  }}</span>
+                            <span>{{ changedate(scope.row.xieyienddate)  }}</span>
                         </el-form-item>
                     </el-form>
                     <el-form label-position="left" inline class="demo-table-expand"
-                             v-if="props.row.chanquanrenList[0].name!=null"
-                             v-for=" (item,index) in props.row.chanquanrenList"
+                             v-if="scope.row.chanquanrenList[0].name!=null"
+                             v-for=" (item,index) in scope.row.chanquanrenList"
                              :key="index">
                         <el-form-item label="产权人姓名">
                             <span>{{ item.name }}</span>
@@ -31,8 +31,8 @@
 
                     </el-form>
                     <el-form label-position="left" inline class="demo-table-expand"
-                             v-if="props.row.mianzuqiList[0].startdate!=null"
-                             v-for=" (item,index) in props.row.mianzuqiList"
+                             v-if="scope.row.mianzuqiList[0].startdate!=null"
+                             v-for=" (item,index) in scope.row.mianzuqiList"
                              :key="index">
                         <el-form-item label="免租期开始时间">
                             <span>{{ changedate(item.startdate) }}</span>
@@ -42,18 +42,18 @@
                         </el-form-item>
                     </el-form>
                     <el-form label-position="left"
-                             v-if="props.row.zuqistartdate!=null"
+                             v-if="scope.row.zuqistartdate!=null"
                              inline class="demo-table-expand">
                         <el-form-item label="总租期开始时间">
-                            <span>{{ changedate(props.row.zuqistartdate)  }}</span>
+                            <span>{{ changedate(scope.row.zuqistartdate)  }}</span>
                         </el-form-item>
                         <el-form-item label="总租期结束时间">
-                            <span>{{ changedate(props.row.zuqienddate)  }}</span>
+                            <span>{{ changedate(scope.row.zuqienddate)  }}</span>
                         </el-form-item>
                     </el-form>
                     <el-form label-position="left" inline class="demo-table-expand"
-                             v-if="props.row.fukuanFangshiList[0].startdate!=null "
-                             v-for=" (item,index) in props.row.fukuanFangshiList"
+                             v-if="scope.row.fukuanFangshiList[0].startdate!=null "
+                             v-for=" (item,index) in scope.row.fukuanFangshiList"
                              :key="index">
                         <el-form-item label="开始时间">
                             <span>{{ changedate(item.startdate)  }}</span>
@@ -69,8 +69,8 @@
                         </el-form-item>
                     </el-form>
                     <el-form label-position="left" inline class="demo-table-expand"
-                             v-if="props.row.zujinList[0].startdate!=null "
-                             v-for=" (item,index) in props.row.zujinList"
+                             v-if="scope.row.zujinList[0].startdate!=null "
+                             v-for=" (item,index) in scope.row.zujinList"
                              :key="index">
                         <el-form-item label="开始时间">
                             <span>{{ changedate(item.startdate)  }}</span>
