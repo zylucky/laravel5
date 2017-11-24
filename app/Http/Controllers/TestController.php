@@ -19,11 +19,30 @@ class TestController extends Controller
      */
     public function index()
     {
-        $arr =['12456','25320','24916','41456','38692','15840','18116','5688','6656','25700','24332','3416','4860','25840','71548','10984','7248','63832','12012','27016','17772','37600','1080','20848','12900','7680','31684','34792','22020','54696','33652'];
-        echo array_sum($arr);
+
+         var_dump($this->DiffDate('2017-11-01','2018-2-01')) ;
 
     }
-
+    function DiffDate($date1, $date2) {
+        if (strtotime($date1) > strtotime($date2)) {
+            $ymd = $date2;
+            $date2 = $date1;
+            $date1 = $ymd;
+        }
+        list($y1, $m1, $d1) = explode('-', $date1);
+        list($y2, $m2, $d2) = explode('-', $date2);
+        $y = $m = $d = $_m = 0;
+        $math = ($y2 - $y1) * 12 + $m2 - $m1;
+        $y = round($math / 12);
+        $m = intval($math % 12);
+        $d = (mktime(0, 0, 0, $m2, $d2, $y2) - mktime(0, 0, 0, $m2, $d1, $y2)) / 86400;
+        if ($d < 0) {
+            $m -= 1;
+            $d += date('j', mktime(0, 0, 0, $m2, 0, $y2));
+        }
+        $m < 0 && $y -= 1;
+        return array($y, $m, $d);
+    }
     public function objToArray($data){
         //1.获取数据
         $data2 = [];
