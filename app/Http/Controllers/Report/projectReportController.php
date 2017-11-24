@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Excel;
 use Mockery\Exception;
 
-class jinggengReportController extends Controller
+class projectReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,13 +23,17 @@ class jinggengReportController extends Controller
     {
         $pageSize = Input::get('pageSize');
         $page = Input::get('page');
+        $lpname = Input::get('xm');
 
         $limitStart=($page-1)*$pageSize;
         $limitEnd = $pageSize;
-        $sql="select * from v_jgfy ";
-
-        $count =  DB::connection('mysql3')->select("select count(*) as countNum from v_jgfy ") ;
-        $sql=$sql."  limit ".$limitStart.", ".$limitEnd;
+        $sql="select * from t_projcet_report ";
+        $strWhere=" where 1=1 ";
+        if(!empty($lpname)){
+            $strWhere=$strWhere." and lpname like '%".$lpname."%'"  ;
+        }
+        $count =  DB::connection('mysql3')->select("select count(*) as countNum from t_projcet_report ".$strWhere) ;
+        $sql=$sql.$strWhere."   limit ".$limitStart.", ".$limitEnd;
         $bk = DB::connection('mysql3')->select($sql);
 
         return $data = ['total'=>$count[0]->countNum,'data'=>$bk];
@@ -106,20 +110,26 @@ class jinggengReportController extends Controller
     //导出Excel
     public function ExportExcel()
     {
-
-        $sql=" select topic,zdh,fybh,fjmj,price,fjyzj,hyzt,kzzt,sfzc,yzsx,yzdh,bzxzyz from v_jgfy ";
+        $lpname = Input::get('xm');
+        $sql="select lpname,xmzhs,xyzzhs,yzxyzhs,xyzzjbfb,xmzmj,xkzmj,xkzts,xkzmjbfb,xyzkzmj,xyzkzts,xyzamj,xyzats,xyzbmj,xyzbts,xyzcmj,xyzcts,ksgfyzmj,
+      ksgfyzts,bzxzfymj,bzxzfyts,bzyzfymj,bzyzfyts,ysgfymj,ysgfyts,sgprice from t_projcet_report ";
+        $strWhere=" where 1=1 ";
+        if(!empty($lpname)){
+            $strWhere=$strWhere." and lpname like '%".$lpname."%'"  ;
+        }
 
         try{
-            $bk = DB::connection('mysql3')->select($sql);
+            $bk = DB::connection('mysql3')->select($sql.$strWhere);
 
         $cellData= $this->objToArray($bk);
         if(count($cellData)>0){
-        $headerData=[ '楼盘','楼栋','房间号','面积','单价（元/㎡/天）',
-            '月租金','航远房源','空置状态','支持注册','业主属性','业主电话','可租状态评估','本周新增',
-            '本周已租','目标底价','租期年限','付款方式','免租期（天）','备注'];
+        $headerData=['项目名称','项目总户数','小业主总户数','已知小业主房间总户数','小业主资料百分比','项目总面积','销控总面积','销控总套数','销控总面积百分比','小业主空置可出租房源面积',
+            '小业主空置可出租房源套数','小业主45天之内到期可出租的面积','小业主45天之内到期可出租的套数','46到90天之内到期可出租面积','46到90天之内到期可出租套数','租户或资产管理公司转租约的面积',
+            '租户或资产管理公司转租约的套数','可收购房源总面积', '可收购房源总套数','本周新增房源面积','本周新增房源套数','本周已租房源面积','本周已租房源套数',
+            '已收购面积','已收购套数','已收购均价'];
         array_unshift($cellData,$headerData);
         //dd($cellData);
-        Excel::create('精耕房源'.date("YmdHis"),function($excel) use ($cellData){
+        Excel::create('项目汇总'.date("YmdHis"),function($excel) use ($cellData){
             $excel->sheet('score', function($sheet) use ($cellData){
                 $sheet->rows($cellData);
             });

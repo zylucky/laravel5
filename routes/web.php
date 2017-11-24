@@ -205,6 +205,7 @@ Route::get('chufangReport/ExportExcel','Report\ChuFangReportController@ExportExc
 Route::get('chanpinReport/ExportExcel','Report\chanPinHeYueReportController@ExportExcel');
 Route::get('fangyuanXKReport/ExportExcel','Report\fangYuanXKReportController@ExportExcel');
 Route::get('jinggengReport/ExportExcel','Report\jinggengReportController@ExportExcel');
+Route::get('projectReport/ExportExcel','Report\projectReportController@ExportExcel');
 //合同房源
 Route::group(['prefix' => 'office'], function () {
     Route::get('loupanList','Contract\officeController@loupanList');
@@ -223,4 +224,5 @@ Route::resource('chufangReport', 'Report\ChuFangReportController');
 Route::resource('chanpinReport', 'Report\chanPinHeYueReportController');
 Route::resource('fangyuanXKReport', 'Report\fangYuanXKReportController');
 Route::resource('jinggengReport', 'Report\jinggengReportController');
+Route::resource('projectReport', 'Report\projectReportController');
 //hello world1

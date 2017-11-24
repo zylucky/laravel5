@@ -19,6 +19,8 @@ class TestController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
+=======
         //防止执行超时
         set_time_limit(0);
         //清空并关闭输出缓存
@@ -44,9 +46,31 @@ class TestController extends Controller
 
 
 
+>>>>>>> 1de5a302b390f03f68e96499b39ad33603d78108
+
+         var_dump($this->DiffDate('2017-11-01','2018-2-01')) ;
 
     }
-
+    function DiffDate($date1, $date2) {
+        if (strtotime($date1) > strtotime($date2)) {
+            $ymd = $date2;
+            $date2 = $date1;
+            $date1 = $ymd;
+        }
+        list($y1, $m1, $d1) = explode('-', $date1);
+        list($y2, $m2, $d2) = explode('-', $date2);
+        $y = $m = $d = $_m = 0;
+        $math = ($y2 - $y1) * 12 + $m2 - $m1;
+        $y = round($math / 12);
+        $m = intval($math % 12);
+        $d = (mktime(0, 0, 0, $m2, $d2, $y2) - mktime(0, 0, 0, $m2, $d1, $y2)) / 86400;
+        if ($d < 0) {
+            $m -= 1;
+            $d += date('j', mktime(0, 0, 0, $m2, 0, $y2));
+        }
+        $m < 0 && $y -= 1;
+        return array($y, $m, $d);
+    }
     public function objToArray($data){
         //1.获取数据
         $data2 = [];
