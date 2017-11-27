@@ -10,8 +10,8 @@
             height: 100%;
             margin: 0px;
         }
-        .main{bottom: 1px;position:fixed;width:100%;background-color: #ffa211;color: white;text-align: center;height: 20px;padding: 10px;float: left;  z-index:1;}
-
+        .main{bottom: 1px;position:fixed;width:100%;background-color: #ffa211;text-align: center;height: 20px;padding: 10px;float: left;  z-index:1;}
+        .main a{color: white;text-decoration: none;}
     </style>
 </head>
 <body>
@@ -19,7 +19,7 @@
         <img src="{{asset('images/yezhuweituo.png')}}" width="100%" alt="">
     </div>
     <footer class="main">
-        拨打电话 , 立即委托
+        <a href="tel:4000788800">拨打电话 , 立即委托</a>
     </footer>
 
 </body>
