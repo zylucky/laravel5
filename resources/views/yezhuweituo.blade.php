@@ -10,12 +10,18 @@
             height: 100%;
             margin: 0px;
         }
-        {{--.main{background: url({{asset('images/yezhuweituo.jpg')}}) no-repeat;height: 1000%;width: 200%;}--}}
+        .main{background-color: #ffa211;color: white;text-align: center;height: 20px;padding: 10px;}
     </style>
 </head>
 <body>
-    <div class="main">
+    <div>
         <img src="{{asset('images/yezhuweituo.png')}}" width="100%" alt="">
+    </div>
+    <div class="main">
+        拨打电话 , 立即委托
+    </div>
+    <div style="margin-top: 100px;height: 100px;">
+
     </div>
 
 </body>
