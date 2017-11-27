@@ -10,7 +10,7 @@
             height: 100%;
             margin: 0px;
         }
-        .main{bottom: 0;position:fixed;width:100%;background-color: #ffa211;color: white;text-align: center;height: 20px;padding: 10px;float: left;  z-index:1;}
+        .main{bottom: 1px;position:fixed;width:100%;background-color: #ffa211;color: white;text-align: center;height: 20px;padding: 10px;float: left;  z-index:1;}
 
     </style>
 </head>
