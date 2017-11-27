@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="main">
-        <img src="{{asset('images/yezhuweituo.jpg')}}" width="100%" alt="">
+        <img src="{{asset('images/yezhuweituo.png')}}" width="100%" alt="">
     </div>
 
 </body>
