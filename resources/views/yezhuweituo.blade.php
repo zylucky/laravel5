@@ -10,19 +10,17 @@
             height: 100%;
             margin: 0px;
         }
-        .main{background-color: #ffa211;color: white;text-align: center;height: 20px;padding: 10px;}
+        .main{bottom: 0;position:fixed;width:100%;background-color: #ffa211;color: white;text-align: center;height: 20px;padding: 10px;float: left;  z-index:1;}
+
     </style>
 </head>
 <body>
     <div>
         <img src="{{asset('images/yezhuweituo.png')}}" width="100%" alt="">
     </div>
-    <div class="main">
+    <footer class="main">
         拨打电话 , 立即委托
-    </div>
-    <div style="margin-top: 100px;height: 100px;">
-
-    </div>
+    </footer>
 
 </body>
 </html>
