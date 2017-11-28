@@ -300,7 +300,7 @@ class brokerCompanyUserController extends Controller
             $strWhere = $strWhere . " and tel like '%" . $tel . "%' ";
 
         }
-        $count =  DB::connection('mysql2')->select("select count(*) as countNum from t_qd_person p LEFT JOIN t_qd_compay qd on p.T_QD_Compay_ID = qd.T_QD_Compay_ID
+        $count =  DB::connection('mysql3')->select("select count(*) as countNum from t_qd_person p LEFT JOIN t_qd_compay qd on p.T_QD_Compay_ID = qd.T_QD_Compay_ID
 	    left join (select personId,GROUP_CONCAT(dianhua)tel from t_qd_person_tel where qd_type=1 GROUP BY personId)dianhua on p.t_qd_person_id=dianhua.personId  ".$strWhere) ;
         if($count[0]->countNum<=8000){
            $limitStart= 1;
@@ -309,7 +309,7 @@ class brokerCompanyUserController extends Controller
 
         try {
             $sql=$sql.$strWhere."  limit ".$limitStart.", ".$limitEnd;
-            $bk = DB::connection('mysql2')->select($sql);
+            $bk = DB::connection('mysql3')->select($sql);
             $cellData = $this->objToArray($bk);
            // dd(count($cellData) );
             //dd($cellData);
