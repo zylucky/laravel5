@@ -26,6 +26,16 @@
             <el-form-item label="联系电话：">
                 <el-input v-model="filters.bk_dianhua" placeholder="请输入联系电话"></el-input>
             </el-form-item>
+            <el-form-item label="导出条数："    >
+                <el-select v-model="filters.dcts" placeholder="请选择导出条数"  >
+                    <el-option
+                            v-for="item in optionsdcts"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getBrokerCompanyUser">搜索</el-button>
                 <el-button v-if="fun('brokerCompanyUserAdd')" type="primary" class="el-icon-plus" @click="handleAdd"> 新增</el-button>
@@ -125,6 +135,7 @@
                     buildingname:'',
                     qvdaodengji:'',
                     bk_dianhua:'',
+                    dcts:1,
                 },
 
 
@@ -143,7 +154,7 @@
                     value: '',
                     label: '请选择'
                 },  ],
-
+                optionsdcts:[  ],//导出条数
                 bk_id:0,
                 bk_name:'',
                 //被选中的权限
@@ -268,6 +279,14 @@
                     this.brokerCompanyUser = res.data.data;
                     this.listLoading = false;
                 });
+                var num = this.total%8000==0?this.total/8000:this.total/8000+1;
+                for (var i=1;i<num;i++)
+                {
+                    this.optionsdcts.push({
+                        value: i,
+                        label: (i-1)*8000+1+'到'+i*8000+'条'
+                    });
+                }
             },
             //显示编辑界面
             handleEdit: function (index, row) {
@@ -282,7 +301,7 @@
                 this.$router.push({path: '/brokerCompanyUserList/view?id=' + row.tQdPersonId });
             },
             handleExport: function () {
-                window.open("/brokerCompanyUser/ExportExcel?bk_name="+this.filters.bk_name
+                window.open("/brokerCompanyUser/ExportExcel?bk_name="+this.filters.bk_name+"&dcts="+this.filters.dcts
                     +"&username="+this.filters.bk_username+"&buildingname="+this.filters.buildingname+"&qvdaodengji="+this.filters.qvdaodengji+"&bk_dianhua="+this.filters.bk_dianhua);
             },
             selsChange: function (sels) {

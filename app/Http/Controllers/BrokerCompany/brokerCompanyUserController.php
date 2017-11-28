@@ -270,13 +270,15 @@ class brokerCompanyUserController extends Controller
         $buildingname = Input::get('buildingname');
         $qvdaodengji = Input::get('qvdaodengji');
         $tel= Input::get('bk_dianhua');
+        $dcts= Input::get('dcts');
         $sql = " select QD_PerName, zhiwu,tel,CompayName,gs_loupan, p.yslianxiren1, p.yslianxiren2,p.yslianxiren3, 
      IF(shifouweixin=0,'否','是'), tianjiahaoyourenshu, IF(shifoudaikanyoushi=0,'否','是'), daikancishu, 
     daikanduijierenshu, IF(shifouqianyueyoushifang=0,'否','是'), qianyuecishu, qianyueduijierenshu, qvdaodengji,p.beizhu
     from t_qd_person p LEFT JOIN t_qd_compay qd on p.T_QD_Compay_ID = qd.T_QD_Compay_ID
 	left join (select personId,GROUP_CONCAT(dianhua)tel from t_qd_person_tel where qd_type=1 GROUP BY personId)dianhua on p.t_qd_person_id=dianhua.personId
     where 1=1  ";
-
+        $limitStart=($dcts-1)*8000+1;
+        $limitEnd=$dcts*8000;
         if (!empty($name)) {
             $sql = $sql . " and CompayName like '%" . $name . "%' ";
 
@@ -298,6 +300,7 @@ class brokerCompanyUserController extends Controller
 
         }
         try {
+            $sql=$sql."  limit ".$limitStart.", ".$limitEnd;
             $bk = DB::connection('mysql2')->select($sql);
             $cellData = $this->objToArray($bk);
            // dd(count($cellData) );
