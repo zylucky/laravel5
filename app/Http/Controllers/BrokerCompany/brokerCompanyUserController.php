@@ -271,36 +271,44 @@ class brokerCompanyUserController extends Controller
         $qvdaodengji = Input::get('qvdaodengji');
         $tel= Input::get('bk_dianhua');
         $dcts= Input::get('dcts');
+
         $sql = " select QD_PerName, zhiwu,tel,CompayName,gs_loupan, p.yslianxiren1, p.yslianxiren2,p.yslianxiren3, 
      IF(shifouweixin=0,'否','是'), tianjiahaoyourenshu, IF(shifoudaikanyoushi=0,'否','是'), daikancishu, 
     daikanduijierenshu, IF(shifouqianyueyoushifang=0,'否','是'), qianyuecishu, qianyueduijierenshu, qvdaodengji,p.beizhu
     from t_qd_person p LEFT JOIN t_qd_compay qd on p.T_QD_Compay_ID = qd.T_QD_Compay_ID
-	left join (select personId,GROUP_CONCAT(dianhua)tel from t_qd_person_tel where qd_type=1 GROUP BY personId)dianhua on p.t_qd_person_id=dianhua.personId
-    where 1=1  ";
+	left join (select personId,GROUP_CONCAT(dianhua)tel from t_qd_person_tel where qd_type=1 GROUP BY personId)dianhua on p.t_qd_person_id=dianhua.personId  ";
         $limitStart=($dcts-1)*8000+1;
         $limitEnd=$dcts*8000;
+        $strWhere=" where 1=1 ";
         if (!empty($name)) {
-            $sql = $sql . " and CompayName like '%" . $name . "%' ";
+            $strWhere = $strWhere . " and CompayName like '%" . $name . "%' ";
 
         }
         if (!empty($username)) {
-            $sql = $sql . " and QD_PerName like '%" . $username . "%' ";
+            $strWhere = $strWhere . " and QD_PerName like '%" . $username . "%' ";
 
         }
         if (!empty($buildingname)) {
-            $sql = $sql . " and gs_loupan  like '%" . $buildingname . "%' ";
+            $strWhere = $strWhere . " and gs_loupan  like '%" . $buildingname . "%' ";
 
         }
         if (!empty($qvdaodengji)) {
-            $sql = $sql . " and qvdaodengji =" . $qvdaodengji;
+            $strWhere = $strWhere . " and qvdaodengji ='" . $qvdaodengji."'";
 
         }
         if (!empty($tel)) {
-            $sql = $sql . " and tel like '%" . $tel . "%' ";
+            $strWhere = $strWhere . " and tel like '%" . $tel . "%' ";
 
         }
+        $count =  DB::connection('mysql2')->select("select count(*) as countNum from t_qd_person p LEFT JOIN t_qd_compay qd on p.T_QD_Compay_ID = qd.T_QD_Compay_ID
+	    left join (select personId,GROUP_CONCAT(dianhua)tel from t_qd_person_tel where qd_type=1 GROUP BY personId)dianhua on p.t_qd_person_id=dianhua.personId  ".$strWhere) ;
+        if($count[0]->countNum<=8000){
+           $limitStart= 1;
+           $limitEnd= 8000;
+        }
+
         try {
-            $sql=$sql."  limit ".$limitStart.", ".$limitEnd;
+            $sql=$sql.$strWhere."  limit ".$limitStart.", ".$limitEnd;
             $bk = DB::connection('mysql2')->select($sql);
             $cellData = $this->objToArray($bk);
            // dd(count($cellData) );

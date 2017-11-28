@@ -58,8 +58,6 @@
             </el-table-column>
             <el-table-column prop="ZJXX" label="租期/租金"   width="310" >
             </el-table-column>
-            <el-table-column prop="DiZengFs" label="递增%"   width="100" >
-            </el-table-column>
             <el-table-column prop="DiZengLiang" label="递增量"   width="110" >
             </el-table-column>
             <el-table-column prop="Price" label="单价（元/㎡/天）"  width="180"  >

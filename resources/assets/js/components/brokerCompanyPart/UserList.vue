@@ -278,15 +278,17 @@
                     this.total = res.data.total;
                     this.brokerCompanyUser = res.data.data;
                     this.listLoading = false;
+                    var num = Math.ceil(this.total/8000);
+                    this.optionsdcts=[];
+                    for (var i=1;i<=num;i++)
+                    {
+                        this.optionsdcts.push({
+                            value: i,
+                            label: (i-1)*8000+1+'到'+i*8000+'条'
+                        });
+                    }
                 });
-                var num = this.total%8000==0?this.total/8000:this.total/8000+1;
-                for (var i=1;i<num;i++)
-                {
-                    this.optionsdcts.push({
-                        value: i,
-                        label: (i-1)*8000+1+'到'+i*8000+'条'
-                    });
-                }
+
             },
             //显示编辑界面
             handleEdit: function (index, row) {
