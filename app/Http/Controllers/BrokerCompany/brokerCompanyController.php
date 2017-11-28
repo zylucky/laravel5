@@ -385,7 +385,7 @@ from t_qd_compay where 1=1 ";
 
         }
         try{
-        $bk = DB::connection('mysql2')->select($sql);
+        $bk = DB::connection('mysql3')->select($sql);
         $cellData= $this->objToArray($bk);
         if(count($cellData)>0){
         $headerData=['公司名称','业务区域','公司详细地址','项目名称','公司规模','公司成立时间','主做区域','是否有过合作','合作次数',
