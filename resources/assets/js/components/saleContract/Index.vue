@@ -32,6 +32,9 @@
                 >
                 </el-date-picker>
             </el-form-item>
+            <el-form-item label="">
+                <el-input v-model="filters.yongyouid" @keyup.enter.native="purchaseContractList" placeholder="请输入用友编号"></el-input>
+            </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search" @click="saleContractList">搜索</el-button>
                 <el-button v-if="fun('saleContractAdd')" type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
@@ -183,6 +186,7 @@
                     status:'',
                     startDate:null,
                     endDate:null,
+                    yongyouid: '',
                 },
                 weiYueRules:{
                     weiyueleixing: [
@@ -374,6 +378,7 @@
                     zhuangtai:this.filters.status,
                     startDate:this.filters.startDate,
                     endDate:this.filters.endDate,
+                    yongyouid:this.filters.yongyouid,
                 }
                 //console.log(111);
                 //console.log(this.page);

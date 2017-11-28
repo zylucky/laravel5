@@ -33,6 +33,9 @@
                 >
                 </el-date-picker>
             </el-form-item>
+            <el-form-item label="">
+                <el-input v-model="filters.yongyouid" @keyup.enter.native="purchaseContractList" placeholder="请输入用友编号"></el-input>
+            </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search" @click="purchaseContractList">搜索</el-button>
                 <el-button v-if="fun('purchaseContractAdd')" type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
@@ -215,6 +218,7 @@
                     status:'',
                     startDate:null,
                     endDate:null,
+                    yongyouid: '',
                 },
                 options:[
                     {value:0, label:'已创建',},
@@ -333,6 +337,7 @@
                     zhuangtai:this.filters.status,
                     startDate:this.filters.startDate,
                     endDate:this.filters.endDate,
+                    yongyouid:this.filters.yongyouid,
                 }
                 this.listLoading = true;
                 getPurchaseContractList(para).then((res) => {
