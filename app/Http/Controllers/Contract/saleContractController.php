@@ -22,6 +22,7 @@ class saleContractController extends Controller
         $status = Input::get('zhuangtai');
         $startDate = Input::get('startDate');
         $endDate = Input::get('endDate');
+        $yongyouid = Input::get('yongyouid');
         if(!$pn){
             $pn = 1;
         }
@@ -37,6 +38,7 @@ class saleContractController extends Controller
                 'status'=>$status,
                 'startDate'=>$startDate,
                 'endDate'=>$endDate,
+                'yongyouid'=>$yongyouid,
             ]
         ]);
         echo $response->getBody();
