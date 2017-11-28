@@ -367,7 +367,7 @@
                         this.property.officeList[index].omcId=null;//清除楼栋和房号的缓存
                     }
                 }
-                if(this.$route.path=='/purchaseContract/add') {
+//                if(this.$route.path=='/purchaseContract/add') {
                     //楼栋
                     //get rules of building
                     let para ={
@@ -381,9 +381,9 @@
                         });
                         this.gzys = res.data.data.gzys;
                     })
-                }else{
-                    return false;
-                }
+//                }else{
+//                    return false;
+//                }
 
             },
             change3(index){
@@ -455,7 +455,8 @@
                     }
                 })
                 if(count>=1){
-                    if(this.property.officeList[index].omcId==null&&this.$route.path=='/purchaseContract/add'){
+//                    if(this.property.officeList[index].omcId==null&&this.$route.path=='/purchaseContract/add'){
+                    if(this.property.officeList[index].omcId==null){
                         let  para = {
                             loupanOmcId:this.property.officeList[index].loupanOmcId,
                             loudongOmcId:this.property.officeList[index].loudongOmcId,
