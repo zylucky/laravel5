@@ -15,6 +15,9 @@
 Route::get('/', function (){
     return view('home');
 });
+Route::get('/yezhuweituo',function(){
+   return view('yezhuweituo');
+});
 Route::resource('test', 'TestController');
 Route::resource('role', 'Rbac\RoleController');
 //收房合同分组
