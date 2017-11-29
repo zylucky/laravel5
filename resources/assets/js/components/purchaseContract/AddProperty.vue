@@ -367,9 +367,6 @@
                         this.property.officeList[index].omcId=null;//清除楼栋和房号的缓存
                     }
                 }
-//                if(this.$route.path=='/purchaseContract/add') {
-                    //楼栋
-                    //get rules of building
                     let para ={
                         loudongOmcId:this.property.officeList[index].loudongOmcId,
                     }
@@ -381,12 +378,13 @@
                         });
                         this.gzys = res.data.data.gzys;
                     })
-//                }else{
-//                    return false;
-//                }
 
             },
             change3(index){
+                if(this.options3.length>0){
+                    //当非页面加载时，造成当change事件，清除omcid。
+                    this.property.officeList[index].omcId=null
+                }
                 //房号
                 for (var x in this.options3){
                     if(this.options3[x].label==this.property.officeList[index].fanghao){
@@ -453,7 +451,6 @@
                     }
                 })
                 if(count>=1){
-//                    if(this.property.officeList[index].omcId==null&&this.$route.path=='/purchaseContract/add'){
                     if(this.property.officeList[index].omcId==null){
                         let  para = {
                             loupanOmcId:this.property.officeList[index].loupanOmcId,
