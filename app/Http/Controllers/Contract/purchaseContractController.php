@@ -126,11 +126,11 @@ class purchaseContractController extends Controller
         $free_day=0;
         if(count($res->data->mianzuqiList)>0){
             foreach ($res->data->mianzuqiList as $key=>$value){
-                $free_month = $this->DiffDate(
+                $free_month += $this->DiffDate(
                     date('y-m-d',$value->startdate/1000),
                     date('y-m-d',strtotime(date('y-m-d',$value->enddate/1000).'+ 1 day'))
                     )[1];
-                $free_day = $this->DiffDate(
+                $free_day += $this->DiffDate(
                     date('y-m-d',$value->startdate/1000),
                     date('y-m-d',strtotime(date('y-m-d',$value->enddate/1000).'+ 1 day'))
                     )[2];

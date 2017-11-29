@@ -142,7 +142,7 @@ fun('chanpinReport')==true? fk_chanpinReport = false:fk_chanpinReport = true;
 fun('fangyuanXKReport')==true? fk_fangyuanXKReport = false:fk_fangyuanXKReport = true;
 fun('jinggengReport')==true? fk_jinggengReport  = false:fk_jinggengReport = true;
 fun('projectReport')==true? fk_projectReport  = false:fk_projectReport = true;
-fun('fk_qdCompanyList')==true? fk_qdCompanyList  = false:fk_qdCompanyList = true;
+fun('qdCompanyList')==true? fk_qdCompanyList  = false:fk_qdCompanyList = true;
 
 
 
