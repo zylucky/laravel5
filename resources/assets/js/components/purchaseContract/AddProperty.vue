@@ -393,11 +393,6 @@
                         this.property.officeList[index].omcId=this.options3[x].value;
                     }
                 }
-                if(this.$route.path=='/purchaseContract/add') {
-                    this.property.officeList[index].omcId=null;
-                }else{
-                    return false;
-                }
                 //1.第一步把放号分割，判断每一位是否符合规则
                 function checknumber(String){
                     var Letters = "1234567890";
@@ -425,6 +420,9 @@
                 }
                 var house_no = this.property.officeList[index].fanghao;
                 var flag = true;
+                if(!this.gzys||!house_no){
+                    return;
+                }
                 this.gzys2 = this.gzys.split(';');
                 var count = 0;
                 this.gzys2.forEach((property,index)=>{
