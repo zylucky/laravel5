@@ -52,7 +52,7 @@
             </el-table-column>
             <el-table-column prop="telList.0.dianhua" label="联系电话"  >
             </el-table-column>
-            <el-table-column prop="qvDaoCompayXinxi.compayname" label="公司名称"  >
+            <el-table-column prop="qvDaoCompayXinxi.compayname" label="门店名称"  >
             </el-table-column>
             <el-table-column prop="qvDaoCompayXinxi.gsLoupan" label="项目名称"  >
             </el-table-column>

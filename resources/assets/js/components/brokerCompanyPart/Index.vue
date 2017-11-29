@@ -168,6 +168,7 @@
                     hezuoxieyidengji:'',
                     xm:'',
                     pname:'',
+                    parentid:-1,
                 },
                 options:[
                    {
