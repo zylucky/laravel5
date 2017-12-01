@@ -559,8 +559,8 @@
                 this.editVisible   =false;
             }
             if(this.$route.path=='/saleContract/edit'&&this.$route.query.status>=6){
-                this.lydisabled = true;
-                this.editVisible = false;
+//                this.lydisabled = true;
+//                this.editVisible = false;
             }
             //获取收房合同出租人
 
