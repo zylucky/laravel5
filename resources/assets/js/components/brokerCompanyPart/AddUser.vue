@@ -38,13 +38,13 @@
 
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="渠道公司名称" prop="tQdCompayId">
+                    <el-form-item label="渠道门店名称" prop="tQdCompayId">
                         <el-select
                                 v-model="brokerCompanyUserForm.qvDaoCompayXinxi.tQdCompayId"
                                 filterable
                                 remote
                                 @change="change1"
-                                placeholder="渠道公司名称"
+                                placeholder="渠道门店名称"
                                 :remote-method="remoteMethod1"
                                 :loading="bkNameloading">
                             <el-option
@@ -486,7 +486,8 @@
             //获取渠道公司名称
             remoteMethod1(query) {
                 let para = {
-                    name: query
+                    name: query,
+                    parentid:-1,
                 };
                 this.bkNameloading = true;
                 this.list = [];

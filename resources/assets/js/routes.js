@@ -114,7 +114,7 @@ var fk_permission ,fk_permission_user ,fk_permission_role ,fk_permission_per ,
     fk_commission,fk_shouFangCommission,fk_chuFangCommission,
     fk_account,fk_payableList,fk_financePayableList,fk_receivableList,fk_financeReceivableList,
     fk_setPassword,fk_reportList,fk_shoufangReport,fk_chufangReport,fk_chanpinReport,fk_fangyuanXKReport,
-    fk_jinggengReport,fk_projectReport,fk_projectSaleReport;
+    fk_jinggengReport,fk_projectReport,fk_projectSaleReport,fk_qdCompanyList;
 fun('permission')==true? fk_permission = false:fk_permission = true;
 fun('permission')==true? fk_permission_user = false:fk_permission_user = true;
 fun('permission')==true? fk_permission_role = false:fk_permission_role = true;
@@ -144,6 +144,7 @@ fun('fangyuanXKReport')==true? fk_fangyuanXKReport = false:fk_fangyuanXKReport =
 fun('jinggengReport')==true? fk_jinggengReport  = false:fk_jinggengReport = true;
 fun('projectReport')==true? fk_projectReport  = false:fk_projectReport = true;
 fun('projectSaleReport')==true? fk_projectSaleReport  = false:fk_projectSaleReport = true;
+fun('qdCompanyList')==true? fk_qdCompanyList  = false:fk_qdCompanyList = true;
 
 
 
@@ -234,7 +235,7 @@ let routes = [
         iconCls: 'el-icon-document',//图标样式class
         hidden:fk_brokerCompany,
         children: [
-            { path:'/qdCompany', component: qdCompany, name: '渠道公司管理',hidden:fk_brokerCompanyList},
+            { path:'/qdCompany', component: qdCompany, name: '渠道公司管理',hidden:fk_qdCompanyList},
             { path:'/brokerCompany', component: BrokerCompany, name: '渠道公司门店管理',hidden:fk_brokerCompanyList},
             { path:'/brokerCompany/add',component:BrokerCompanyAdd,name:'渠道公司门店录入',hidden:true},
             { path:'/brokerCompany/edit',component:BrokerCompanyAdd,name:'渠道公司门店编辑',hidden:true},

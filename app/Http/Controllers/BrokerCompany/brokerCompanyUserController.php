@@ -189,10 +189,12 @@ class brokerCompanyUserController extends Controller
 
         ]);
         $bkName = $request->params['name'];
+        $parentid = $request->params['parentid'];
         $response = $client->request('GET', '/api/qd/compay/list', [
                 'query' => [
                     'compay' => $bkName,
                     'zt' => 1,
+                    'parentid'=>$parentid,
                 ]
             ]
         );

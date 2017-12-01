@@ -212,6 +212,7 @@
                 building: [],//服务器搜索的楼盘数据放入这个数组中
                 // 房间数据
                 options3:[],
+                options3_mark:false,
                 list3: [],
                 fanghaoloading: false,
                 house: [],//服务器搜索的楼盘数据放入这个数组中
@@ -337,6 +338,7 @@
                             return item.label.toLowerCase()
                                     .indexOf(query.toLowerCase()) > -1;
                         });
+                        this.options3_mark = true;
                     } else {
                         this.options3 = [];
                     }
@@ -367,9 +369,6 @@
                         this.property.officeList[index].omcId=null;//清除楼栋和房号的缓存
                     }
                 }
-                if(this.$route.path=='/purchaseContract/add') {
-                    //楼栋
-                    //get rules of building
                     let para ={
                         loudongOmcId:this.property.officeList[index].loudongOmcId,
                     }
@@ -381,22 +380,18 @@
                         });
                         this.gzys = res.data.data.gzys;
                     })
-                }else{
-                    return false;
-                }
 
             },
             change3(index){
+                if(this.options3_mark&&this.options3.length<1){
+                    this.property.officeList[index].omcId=null;
+                }
+                //如何判断是房号不存在，还是加载页面
                 //房号
                 for (var x in this.options3){
                     if(this.options3[x].label==this.property.officeList[index].fanghao){
                         this.property.officeList[index].omcId=this.options3[x].value;
                     }
-                }
-                if(this.$route.path=='/purchaseContract/add') {
-                    this.property.officeList[index].omcId=null;
-                }else{
-                    return false;
                 }
                 //1.第一步把放号分割，判断每一位是否符合规则
                 function checknumber(String){
@@ -425,6 +420,9 @@
                 }
                 var house_no = this.property.officeList[index].fanghao;
                 var flag = true;
+                if(!this.gzys||!house_no){
+                    return;
+                }
                 this.gzys2 = this.gzys.split(';');
                 var count = 0;
                 this.gzys2.forEach((property,index)=>{
@@ -455,7 +453,7 @@
                     }
                 })
                 if(count>=1){
-                    if(this.property.officeList[index].omcId==null&&this.$route.path=='/purchaseContract/add'){
+                    if(this.property.officeList[index].omcId==null){
                         let  para = {
                             loupanOmcId:this.property.officeList[index].loupanOmcId,
                             loudongOmcId:this.property.officeList[index].loudongOmcId,
@@ -463,12 +461,15 @@
                         }
                         createFanghao(para).then((res=>{
                             this.property.officeList[index].omcId = res.data.data;
+                            console.log(res)
                             this.$message({
                                 message: '楼盘字典中不存在该房源，已自动创建',
                                 type: 'success'
                             });
                         }))
                     }
+
+
                     for (var x in this.houseData){
                         if(this.houseData[x].id==this.property.officeList[index].omcId){
                             this.property.officeList[index].jianzhumianji=this.houseData[x].fjmj;

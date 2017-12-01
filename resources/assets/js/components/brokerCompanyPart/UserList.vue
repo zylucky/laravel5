@@ -3,8 +3,8 @@
     <el-row >
         <el-form :inline="true" :model="filters" class="demo-form-inline">
 
-            <el-form-item label="公司名称：">
-                <el-input v-model="filters.bk_name" placeholder="请输入公司名称"></el-input>
+            <el-form-item label="门店名称：">
+                <el-input v-model="filters.bk_name" placeholder="请输入门店名称"></el-input>
             </el-form-item>
             <el-form-item label="项目名称："   >
                 <el-input v-model="filters.buildingname" placeholder="请输入项目名称"></el-input>
@@ -52,7 +52,7 @@
             </el-table-column>
             <el-table-column prop="telList.0.dianhua" label="联系电话"  >
             </el-table-column>
-            <el-table-column prop="qvDaoCompayXinxi.compayname" label="公司名称"  >
+            <el-table-column prop="qvDaoCompayXinxi.compayname" label="门店名称"  >
             </el-table-column>
             <el-table-column prop="qvDaoCompayXinxi.gsLoupan" label="项目名称"  >
             </el-table-column>

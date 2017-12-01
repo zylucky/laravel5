@@ -69,7 +69,7 @@
 
             <el-table-column type="index"   width="60">
             </el-table-column>
-            <el-table-column prop="compayname" label="公司名称"  >
+            <el-table-column prop="compayname" label="门店名称"  >
             </el-table-column>
             <el-table-column label="公司所属业务区域"  :formatter="changeywqy" width="200px">
             </el-table-column>
@@ -168,6 +168,7 @@
                     hezuoxieyidengji:'',
                     xm:'',
                     pname:'',
+                    parentid:-1,
                 },
                 options:[
                    {

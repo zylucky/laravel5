@@ -3,7 +3,9 @@
         <el-form :label-position="labelPosition" ref="renterForm" :rules="editRenterRules" label-width="100px" :model="renter">
         <el-col :span="24">
             <el-form-item label="出租人">
-                <el-radio-group v-model="renter.chengzufang">
+                <el-radio-group
+                        @change="changeCzr"
+                        v-model="renter.chengzufang">
                     <el-radio  label="华溯商贸"></el-radio>
                     <el-radio  label="幼狮科技"></el-radio>
                     <el-radio  label="航远房地产"></el-radio>
@@ -308,6 +310,21 @@
         },
         props:['renter'],
         methods: {
+            changeCzr(){
+                if(this.renter.chengzufang =='彭亮'){
+                    this.renter.shoukuanren = '彭亮';
+                    this.renter.kaihuhang = '招商银行北京分行建外大街支行';
+                    this.renter.zhanghao = '6214 8501 1231 5079';
+                }else if(this.renter.chengzufang =='华溯商贸'){
+                    this.renter.shoukuanren = '肖艳文';
+                    this.renter.kaihuhang = '招商银行北京分行万达广场支行';
+                    this.renter.zhanghao = '6214 8301 2090 8081';
+                }else if(this.renter.chengzufang =='幼狮科技'){
+                    this.renter.shoukuanren = '北京幼狮科技有限公司';
+                    this.renter.kaihuhang = '招行建国门支行';
+                    this.renter.zhanghao = '1109 2166 7410 901';
+                }
+            },
             zuhuleixingChange(){
                 //只要业主类型发生改变，那么我就将变量初始化
                 if(this.$route.path=='/saleContract/add'||this.renter.zuhuleixing!=this.renter.zuhuleixing2){
