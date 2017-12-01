@@ -278,13 +278,13 @@
                     this.total = res.data.total;
                     this.brokerCompanyUser = res.data.data;
                     this.listLoading = false;
-                    var num = Math.ceil(this.total/8000);
+                    var num = Math.ceil(this.total/6000);
                     this.optionsdcts=[];
                     for (var i=1;i<=num;i++)
                     {
                         this.optionsdcts.push({
                             value: i,
-                            label: (i-1)*8000+1+'到'+i*8000+'条'
+                            label: (i-1)*6000+1+'到'+i*6000+'条'
                         });
                     }
                 });
