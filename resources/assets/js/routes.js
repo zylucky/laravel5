@@ -86,6 +86,7 @@ import ChanPinReport from "./components/report/chanPinHeYueReport.vue" ;
 import FangYuanXKReport from "./components/report/fangYuanXKReport.vue" ;
 import JingGengReport from "./components/report/jinggengReport.vue" ;
 import ProjectReport from "./components/report/projectReport.vue" ;
+import ProjectSaleReport from "./components/report/projectSaleReport.vue" ;
 //消息管理
 import MessageList from "./components/message/Index.vue";
 
@@ -113,7 +114,7 @@ var fk_permission ,fk_permission_user ,fk_permission_role ,fk_permission_per ,
     fk_commission,fk_shouFangCommission,fk_chuFangCommission,
     fk_account,fk_payableList,fk_financePayableList,fk_receivableList,fk_financeReceivableList,
     fk_setPassword,fk_reportList,fk_shoufangReport,fk_chufangReport,fk_chanpinReport,fk_fangyuanXKReport,
-    fk_jinggengReport,fk_projectReport;
+    fk_jinggengReport,fk_projectReport,fk_projectSaleReport;
 fun('permission')==true? fk_permission = false:fk_permission = true;
 fun('permission')==true? fk_permission_user = false:fk_permission_user = true;
 fun('permission')==true? fk_permission_role = false:fk_permission_role = true;
@@ -142,6 +143,7 @@ fun('chanpinReport')==true? fk_chanpinReport = false:fk_chanpinReport = true;
 fun('fangyuanXKReport')==true? fk_fangyuanXKReport = false:fk_fangyuanXKReport = true;
 fun('jinggengReport')==true? fk_jinggengReport  = false:fk_jinggengReport = true;
 fun('projectReport')==true? fk_projectReport  = false:fk_projectReport = true;
+fun('projectSaleReport')==true? fk_projectSaleReport  = false:fk_projectSaleReport = true;
 
 
 
@@ -355,6 +357,7 @@ let routes = [
             {path:'/fangyuanXKReport', component: FangYuanXKReport, name: '房源销控表', hidden: fk_fangyuanXKReport},
             {path:'/jinggengReport', component: JingGengReport, name: '精耕房源表', hidden: fk_jinggengReport},
             {path:'/projectReport', component: ProjectReport, name: '项目汇总表', hidden: fk_projectReport},
+            {path:'/projectSaleReport', component: ProjectSaleReport, name: '项目汇总表', hidden: fk_projectSaleReport},
         ]
 
     },
