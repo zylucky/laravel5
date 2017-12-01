@@ -374,7 +374,7 @@
                         this.property.xsOffice[this.property.tabIndex-1].Qianyuemianji=this.houseData[x].fjmj;
                     }
                 }
-                this.$emit('getshoufanghetong')
+//                this.$emit('getshoufanghetong')
 
                 let para = {
                     id:this.property.xsOffice[this.property.tabIndex-1].omcId,
@@ -391,6 +391,7 @@
                 });
                 if(this.property.xsOffice[this.property.tabIndex-1].fanghao2!=this.property.xsOffice[this.property.tabIndex-1].fanghao){
                     this.getWeizhi(this.property.tabIndex-1);
+                    this.$emit('getshoufanghetong')
                 }
             },
             changeArea(){
