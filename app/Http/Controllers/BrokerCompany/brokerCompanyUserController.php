@@ -279,8 +279,8 @@ class brokerCompanyUserController extends Controller
     daikanduijierenshu, IF(shifouqianyueyoushifang=0,'否','是'), qianyuecishu, qianyueduijierenshu, qvdaodengji,p.beizhu
     from t_qd_person p LEFT JOIN t_qd_compay qd on p.T_QD_Compay_ID = qd.T_QD_Compay_ID
 	left join (select personId,GROUP_CONCAT(dianhua)tel from t_qd_person_tel where qd_type=1 GROUP BY personId)dianhua on p.t_qd_person_id=dianhua.personId  ";
-        $limitStart=($dcts-1)*8000+1;
-        $limitEnd=$dcts*8000;
+        $limitStart=($dcts-1)*6000+1;
+        $limitEnd=$dcts*6000;
         $strWhere=" where 1=1 ";
         if (!empty($name)) {
             $strWhere = $strWhere . " and CompayName like '%" . $name . "%' ";
@@ -304,9 +304,9 @@ class brokerCompanyUserController extends Controller
         }
         $count =  DB::connection('mysql3')->select("select count(*) as countNum from t_qd_person p LEFT JOIN t_qd_compay qd on p.T_QD_Compay_ID = qd.T_QD_Compay_ID
 	    left join (select personId,GROUP_CONCAT(dianhua)tel from t_qd_person_tel where qd_type=1 GROUP BY personId)dianhua on p.t_qd_person_id=dianhua.personId  ".$strWhere) ;
-        if($count[0]->countNum<=8000){
+        if($count[0]->countNum<=6000){
            $limitStart= 1;
-           $limitEnd= 8000;
+           $limitEnd= 6000;
         }
 
         try {
