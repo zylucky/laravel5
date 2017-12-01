@@ -91,7 +91,7 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[5])&&fun('purchaseContactConfirm')"  > <el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,10])&&fun('purchaseContactWeiyue')" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[7])&&fun('purchaseContactEnd')" ><el-button @click="openEndDialog(scope.$index, scope.row)">合同终止</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,10])&&fun('addOptimize')" ><el-button @click="handleOptimize(scope.$index, scope.row)">优化</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,10])&&fun('addOptimize')" ><el-button @click="handleOptimize(scope.$index, scope.row)">优&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;化</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[9])&&fun('editOptimize')" ><el-button @click="editOptimize(scope.$index, scope.row)">修改协议</el-button></el-dropdown-item>
                             <!--<el-dropdown-item   v-if="ztin(scope.row,[10])" ><el-button @click="handleCheckOptimize(scope.$index, scope.row)">当前协议</el-button></el-dropdown-item>-->
                             <!--<el-dropdown-item   v-if="ztin(scope.row,[9,10])" ><el-button @click="checkhistoryOptimize(scope.$index, scope.row)">历史协议</el-button></el-dropdown-item>-->
