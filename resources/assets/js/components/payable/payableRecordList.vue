@@ -6,7 +6,7 @@
                 <template slot-scope="scope">
                     <el-form label-position="left" inline class="demo-table-expand">
                         <el-form-item label="备注：">
-                            <span>{{props.row.beizhu}}</span>
+                            <span>{{scope.row.beizhu}}</span>
                         </el-form-item>
                     </el-form>
                 </template>
