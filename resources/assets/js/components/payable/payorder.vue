@@ -10,7 +10,7 @@
                     <div align="left">用友编号：{{Payable.yongyouid}}</div>
                 </td>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp; {{changeDate(Payable.fukuandate)}}</td>
-                <td height="40" colspan="2"><b>第&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</b></td>
+                <td height="40" colspan="2"><b>第&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</b></td>
             </tr>
             <tr>
                 <td height="110">
@@ -21,7 +21,7 @@
                         <b>项 目:</b>{{Payable.xiangmu}}<br>
                         <b>租 期:</b>{{Payable.zuqi}}<br>
                         <b>付款方式:</b>{{Payable.zhifufangshi}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>业主</b><u
-                            style="text-decoration:none;border-bottom:1px solid #555;padding-bottom:2px;">&nbsp;&nbsp;&nbsp;&nbsp;</u>个月房租<br>
+                            style="text-decoration:none;border-bottom:1px solid #555;padding-bottom:2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>个月房租<br>
                         <b>月租金:</b>{{toDecimal(Payable.monthmoney)}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;元<br>
                         <b>单价:</b>{{toDecimal(Payable.price)}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;元/m²/天<br>
                     </div>
@@ -266,7 +266,7 @@
             document.title = '支出凭证';
             this.getPayable();
             this.nowDate = new Date().toLocaleDateString();
-           // setTimeout(hello, 1000);
+            setTimeout(hello, 1000);
         }
     }
 </script>
