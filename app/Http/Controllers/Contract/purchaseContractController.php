@@ -277,6 +277,28 @@ class purchaseContractController extends Controller
         ]);
         $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirm');
         echo $response->getBody();
+
+        //给OMC传递免租期，单价
+        $response = $client->request('GET', '/api/contract/sf/'.$id);
+        $res = $response->getBody();
+        $res = json_decode($res);
+        $contract = $res->data;
+        //omc-mzq
+        $client2  = new Client ([
+            'base_uri' => $this->omc_url,
+        ]);
+        $json = ['parameters'=>[]];
+        foreach ($contract->officeList as $item){
+            $json['parameters'][] = [
+                'fyid'=>$item->omcId,
+                'mzq'=>date('Y-m-d',$contract->mianzuqiList[0]->startdate/1000),
+                'sgtime'=>$contract->shoufangdate,
+                'sgprice'=>date('Y-m-d',$contract->zujinList[0]->startdate),
+            ];
+        }
+        $client2->post('/yhcms/web/jcsj/addFyMzq.do',[
+            'json'=>$json
+        ]);
     }
     //合同状态变为：待确认
     public function confirming(){
