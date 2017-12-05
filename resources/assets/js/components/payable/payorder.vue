@@ -51,7 +51,7 @@
                     <div><b>银行账号</b></div>
                 </td>
                 <td height="25" colspan="3">
-                    <div>{{Payable.fukuanzhanghao}}</div>
+                    <div>{{Payable.fukuanzhanghao.replace(/\s/g, '').replace(/(.{4})/g, "$1 ")}}</div>
                 </td>
             </tr>
             <tr>
