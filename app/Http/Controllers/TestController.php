@@ -19,8 +19,7 @@ class TestController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-=======
+
         //防止执行超时
         set_time_limit(0);
         //清空并关闭输出缓存
@@ -45,8 +44,6 @@ class TestController extends Controller
 
 
 
-
->>>>>>> 1de5a302b390f03f68e96499b39ad33603d78108
 
          var_dump($this->DiffDate('2017-11-01','2018-2-01')) ;
 

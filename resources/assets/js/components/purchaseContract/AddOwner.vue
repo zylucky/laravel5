@@ -317,7 +317,8 @@
             //获取渠道公司名称
             remoteMethod1(query) {
                 let para = {
-                    name: query
+                    name: query,
+                    parentid:0,
                 };
                 this.bkNameloading = true;
                 getbkNameList(para).then((res) => {

@@ -3,7 +3,7 @@
 
         <table width="750" border="1" style="border-collapse:collapse!important">
             <caption><h2> 支 出 凭 单</h2>
-                <p style="text-align:right;padding:0;margin:0;">打印时间：{{nowDate}}</p></caption>
+                <p style="text-align:right;padding:0;margin:0;">业主支付方式：{{Payable.yezhuzhifufangshi}}</p></caption>
             <tbody>
             <tr>
                 <td height="40">
@@ -60,14 +60,6 @@
                 </td>
                 <td height="25" colspan="3">
                     <div>{{Payable.fukuanyinhang}}</div>
-                </td>
-            </tr>
-            <tr>
-                <td height="25">
-                    <div><b>业主支付方式</b></div>
-                </td>
-                <td height="25" colspan="3">
-                    <div>{{Payable.yezhuzhifufangshi}}</div>
                 </td>
             </tr>
             <tr>
@@ -259,8 +251,12 @@
                 while (s.length <= rs + 2) {
                     s += '0';
                 }
-                return s;
+
+                return  s.split('').reverse().join('').replace(/(\d{3}(?=\d)(?!\d+\.|$))/g, '$1,').split('').reverse().join('');
+
             },
+
+
         },
         mounted() {
             function hello() {
@@ -270,7 +266,7 @@
             document.title = '支出凭证';
             this.getPayable();
             this.nowDate = new Date().toLocaleDateString();
-            setTimeout(hello, 1000);
+           // setTimeout(hello, 1000);
         }
     }
 </script>
