@@ -12,7 +12,8 @@
                     v-for="(item,index) in property.officeList"
                     :key="index"
             >
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（{{daxie2(2*index)}}）房屋坐落于北京市 <u>{{item.quyu?item.quyu:'_____'}}</u> 区（县）<u>{{item.weizhi}}</u>，建筑面积 <input type="text" style="width:50px;" v-model="item.jianzhumianji"> 平方米,实际承租面积为 <input type="text" style="width:50px;" v-model="item.qianyuemianji" > 平方米。<br>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（{{daxie2(2*index)}}）房屋坐落于北京市 <u>{{item.quyu?item.quyu:'_____'}}</u> 区（县）<u v-if="item.weizhi">{{item.weizhi}}</u>
+            <input v-if="!item.weizhi" type="text" style="width: 200px;">，建筑面积 <input type="text" style="width:50px;" v-model="item.jianzhumianji"> 平方米,实际承租面积为 <input type="text" style="width:50px;" v-model="item.qianyuemianji" > 平方米。<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房屋用途为： <u>办公</u>  。</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（{{daxie2(index*2+1)}}）房屋权属状况：甲方持有（□ 房屋所有权证/□ 房屋买卖合同/□ 商品房预售合同/□ 二手房网签合同/□ 其它房屋证明文件），房屋所有权证书编号：<u>{{item.chanquanzhenghao?item.chanquanzhenghao:'_________________________'}}</u>，房屋所有权人姓名或名称：
             <span style="display: inline" v-for="(item,index) in owner.chanquanrenList">
