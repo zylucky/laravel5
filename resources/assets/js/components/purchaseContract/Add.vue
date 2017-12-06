@@ -439,7 +439,7 @@
                 this.addDate.yajin = res.data.data.yajin;
                 this.addDate.zongyingfuzujin = res.data.data.zongyingfuzujin;
                 this.addDate.yongjin = res.data.data.yongjin;
-                this.addDate.actualrent = res.data.data.actualrent;
+                this.addDate.actualrent = res.data.data.zujinList[0].yuezujin;
                 this.addDate.tiqianfukuantian = res.data.data.tiqianfukuantian;
                 this.addDate.beianqixian = res.data.data.beianqixian;
                 this.addDate.yajinfukuanri = res.data.data.yajinfukuanri;

@@ -242,11 +242,11 @@
                         <el-input v-model.number="addDate.yongjin" placeholder="合同佣金" :disabled="lydisabled"></el-input>
                     </el-form-item>
                 </el-col>
-                <el-col :span="8">
-                    <el-form-item label="实际月租金" prop="actualrent" >
-                        <el-input v-model.number="addDate.actualrent" placeholder="实际月租金" :disabled="lydisabled"></el-input>
-                    </el-form-item>
-                </el-col>
+                <!--<el-col :span="8">-->
+                    <!--<el-form-item label="实际月租金" prop="actualrent" >-->
+                        <!--<el-input v-model.number="addDate.actualrent" placeholder="实际月租金" :disabled="lydisabled"></el-input>-->
+                    <!--</el-form-item>-->
+                <!--</el-col>-->
             </el-row>
             <!--提前几天付款 押金付款日期-->
             <el-row>
@@ -439,10 +439,10 @@
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
                     ],
-                    actualrent: [
-                        { required: true, message: '不能为空' },
-                        { type: 'number', message: '必须为数字'},
-                    ],
+//                    actualrent: [
+//                        { required: true, message: '不能为空' },
+//                        { type: 'number', message: '必须为数字'},
+//                    ],
                     tiqianfukuantian: [
                         { required: true, message: '不能为空' },
                         { type: 'number', message: '必须为数字'},
@@ -625,6 +625,7 @@
             },
             //计算单价
             perPrice(index,value){
+                this.addDate.actualrent = this.addDate.zujinList[0].yuezujin;
                 //1.先计算面积综合
                 var areaToal = 0;
                 this.property.officeList.forEach((property,index)=>{
