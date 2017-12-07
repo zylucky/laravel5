@@ -21,9 +21,6 @@
         <el-table :data="users" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="selection" width="55">
             </el-table-column>
-
-            <el-table-column prop="id" width="150" sortable>
-            </el-table-column>
             <el-table-column prop="name" label="姓名" width="150" sortable>
             </el-table-column>
             <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
