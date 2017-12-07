@@ -634,8 +634,9 @@
                 //2.计算单价
                 var perPrice = (value*12/365/areaToal).toFixed(2);
                 this.addDate.zujinList[index].price = parseFloat(perPrice);
+                this.yajin();
             },
-            yajin(index,value){
+            yajin(){
                 this.addDate.yajin = this.addDate.fukuanFangshiList[0].yajinyue*(this.addDate.zujinList[0].yuezujin)
             }
 
