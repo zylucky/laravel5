@@ -12,7 +12,7 @@
                     </el-date-picker>
                 </el-form-item>
             <el-form-item>
-                <el-button type="primary" icon="search"  v-on:click="getchufangReport">搜索</el-button>
+                <el-button type="primary" icon="search"  v-on:click="getchanpinReport">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus"    @click="handleExport"    > 导出</el-button>
             </el-form-item>
         </el-row>
