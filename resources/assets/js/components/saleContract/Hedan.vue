@@ -20,7 +20,7 @@
                         <span>房间号： {{xsOffice.fanghao}}{{subleaseno}}</span>
                     </el-col>
                     <el-col :span="0" style="margin-rigjt:0;float:right;margin-top:50;">
-                        <el-button type="primary" class="el-icon-plus" @click="addContract"> 新增</el-button>
+                        <el-button type="primary" class="el-icon-plus" v-if="fun('saleContactEdit')"  @click="addContract"> 新增</el-button>
                     </el-col>
                 </el-row>
             </li>
@@ -44,6 +44,7 @@
                                                     placeholder="签单人姓名"
                                                     :remote-method="remoteMethodyslxr1"
                                                     :loading="fristyslxrloading1"
+                                                    :disabled="!fun('saleContactEdit')"
                                             >
                                                 <el-option
                                                         v-for="item in optionsyslxr1"
@@ -58,7 +59,7 @@
                             </el-table-column>
                             <el-table-column label="合单占比">
                                 <template slot-scope="scope">
-                                    <el-input v-model="scope.row.ratio" @blur="updataHedan(scope.$index, scope.row)" :disabled="hanshu(scope.row)"></el-input>
+                                    <el-input v-model="scope.row.ratio" @blur="updataHedan(scope.$index, scope.row)"  :disabled="!fun('saleContactEdit')"></el-input>
                                 </template>
                             </el-table-column>
                             <el-table-column label="签单人领导">
@@ -73,7 +74,8 @@
                                                     @change="updataHedan2(scope.$index, scope.row)"
                                                     placeholder="签单人上级领导"
                                                     :remote-method="remoteMethodyslxr2"
-                                                    :loading="fristyslxrloading1">
+                                                    :loading="fristyslxrloading1"
+                                                    :disabled="!fun('saleContactEdit')">
                                                 <el-option
                                                         v-for="item in optionsyslxr2"
                                                         :key="item.value"
@@ -97,7 +99,8 @@
                                                     @change="updataHedan3(scope.$index, scope.row)"
                                                     placeholder="签单人部门"
                                                     :remote-method="remoteMethodyslxr3"
-                                                    :loading="fristyslxrloading2">
+                                                    :loading="fristyslxrloading2"
+                                                    :disabled="!fun('saleContactEdit')">
                                                 <el-option
                                                         v-for="item in optionsyslxr3"
                                                         :key="item.value"
@@ -122,7 +125,7 @@
                             </el-table-column>-->
                             <el-table-column label="操作" width="170">
                                 <template slot-scope="scope">
-                                    <el-dropdown   menu-align="start">
+                                    <el-dropdown v-if="fun('saleContactEdit')"  menu-align="start">
                                         <el-button type="primary" size="normal" splitButton="true">
                                             删除<i class="el-icon-caret-bottom el-icon&#45;&#45;right"></i>
                                         </el-button>
@@ -309,9 +312,6 @@
             }
         },
         methods: {
-            hanshu(row){
-                return row.laiyuantype==3?true:false;
-            },
             //时间戳转日期格式
             changeDate(row, column){
                 var newDate = new Date();
