@@ -755,6 +755,12 @@ class saleContractController extends Controller
         $id = Input::get('id');
         $response = $client->request('GET', '/api/contract/xs/'.$id.'/cancelled');
         echo $response->getBody();
+        $response = $client->request('GET', '/api/contract/xs/'.$id);
+        $res = $response->getBody();
+        $res = json_decode($res);
+        foreach ($res->data->xsOffice as $item){
+            $this->omcPropertyStatus($item->omcId);
+        }
     }
 
     /**
