@@ -724,11 +724,11 @@ class saleContractController extends Controller
         //dd(99999);
         //dd($request);
         $client = new Client([
-            'base_uri' => $this->base_url,
+            'base_uri' => $this->omc_url,
 
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $response = $client->request('POST', 'http://47.92.145.21:8080/yhcms/web/jcsj/addFyZhxx.do', [
+        $response = $client->request('POST', '/yhcms/web/jcsj/addFyZhxx.do', [
             'json' => $request->params
         ]);
         echo $response->getBody();
