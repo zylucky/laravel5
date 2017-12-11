@@ -296,7 +296,6 @@ class purchaseContractController extends Controller
                 'sgprice'=>$contract->zujinList[0]->price,
             ];
         }
-        var_dump($json);exit;
         $client2->post('/yhcms/web/jcsj/addFyMzq.do',[
             'json'=>$json
         ]);
