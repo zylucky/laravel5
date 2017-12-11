@@ -2,7 +2,7 @@
     <el-row>
 
         <table width="750" border="1" style="border-collapse:collapse!important">
-            <caption><h2> 支 出 凭 单</h2>
+            <caption><span style="font-size:24px;"> <b>支 出 凭 单</b></span>
                 <p style="text-align:right;padding:0;margin:0;">业主支付方式：{{Payable.yezhuzhifufangshi}}</p></caption>
             <tbody>
             <tr>
@@ -266,7 +266,7 @@
             document.title = '支出凭证';
             this.getPayable();
             this.nowDate = new Date().toLocaleDateString();
-            setTimeout(hello, 1000);
+            //setTimeout(hello, 1000);
         }
     }
 </script>
