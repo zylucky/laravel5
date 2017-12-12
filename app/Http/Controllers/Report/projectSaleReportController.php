@@ -115,7 +115,7 @@ from t_projectweek_report tpw inner join t_enum on tpw.mianji=t_enum.enum_value 
     public function ExportExcel()
     {
         $lpname = Input::get('xm');
-        $sql=" select lpid,lpname,mianji,totalNum,bzxzNum,bzyzNum,zdqjfy,minprice,maxprice,yearNum,weekNum,enum_key 
+        $sql=" select lpname,enum_key,totalNum,bzxzNum,bzyzNum,zdqjfy,minprice,maxprice 
 from t_projectweek_report tpw inner join t_enum on tpw.mianji=t_enum.enum_value and enum_name='mianji'";
         $strWhere=" where 1=1 ";
         if(!empty($lpname)){
