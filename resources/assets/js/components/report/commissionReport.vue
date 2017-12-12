@@ -3,39 +3,50 @@
     <el-row >
         <el-form   :inline="true" :model="filters"  class="demo-form-inline">
             <el-row>
-                <el-form-item label="项目名称:">
-                    <el-input v-model="filters.xm" placeholder="请输入项目名称"></el-input>
+                <el-form-item label="签约日期:">
+                    <el-date-picker  type = "date" placeholder="请选择开始日期" v-model="filters.startdate">
+                    </el-date-picker>
                 </el-form-item>
-                <el-form-item label="选择周:">
-                    <el-date-picker
-                            v-model="filters.weekNum"
-                            type="week"
-                            format="yyyy 第 WW 周"
-                            placeholder="选择周">
+                <el-form-item label="至">
+                    <el-date-picker type = "date" placeholder="请选择结束日期" v-model="filters.enddate">
                     </el-date-picker>
                 </el-form-item>
             <el-form-item>
-                <el-button type="primary" icon="search"  v-on:click="getprojectReport">搜索</el-button>
+                <el-button type="primary" icon="search"  v-on:click="getfangyuanReport">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus"     @click="handleExport"    > 导出</el-button>
             </el-form-item>
         </el-row>
         </el-form>
         <el-table :data="chuFang"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
-            <el-table-column prop="lpname" label="项目名称"  width="200"    >
+            <el-table-column prop="QianYueDate" label="签约日"  width="120" >
             </el-table-column>
-            <el-table-column prop="enum_key" label="面积"  width="150"  >
+            <el-table-column prop="Leixing" label="产品类型"  width="95"  >
             </el-table-column>
-            <el-table-column prop="totalNum" label="总套数"   width="150"  >
+            <el-table-column prop="Loupan_name" label="楼盘"  width="150"    >
             </el-table-column>
-            <el-table-column prop="bzxzNum" label="本周新增套数" width="220" >
+            <el-table-column prop="Loudong_name" label="楼栋"  width="80"  >
             </el-table-column>
-            <el-table-column prop="bzyzNum" label="本周已租套数"  width="220"  >
+            <el-table-column prop="Fanghao" label="房间号"   width="80"  >
             </el-table-column>
-            <el-table-column prop="zdqjfy" label="最低价格区间房源"   width="260" >
+            <el-table-column prop="Qianyuemianji" label="面积" width="90" >
             </el-table-column>
-            <el-table-column prop="minprice" label="最低价格"    width="220" >
+            <el-table-column prop="Price" label="居间人-华亮"  width="180"  >
             </el-table-column>
-            <el-table-column prop="maxprice" label="最高价格"   width="210" >
+            <el-table-column prop="Price" label="单价（元/㎡/天）"  width="180"  >
+            </el-table-column>
+            <el-table-column prop="YueZujin" label="实际月租金"   width="110" >
+            </el-table-column>
+            <el-table-column prop="htyzj" label="合同月租金"    width="120" >
+            </el-table-column>
+            <el-table-column prop="YueZujin" label="月租金60%"   width="110" >
+            </el-table-column>
+            <el-table-column prop="xsdj" label="合同返佣金额"    width="120" >
+            </el-table-column>
+            <el-table-column prop="xsyzj" label="月60%-返佣=差额" width="120" >
+            </el-table-column>
+            <el-table-column prop="ckzl" label="备注正数为华溯支付华亮;负数为华亮退还华溯"   width="120">
+            </el-table-column>
+            <el-table-column prop="ckzlzj" label="实际与华亮结佣"   width="130"  >
             </el-table-column>
 
         </el-table>
@@ -58,7 +69,7 @@
 </template>
 <script>
     import {
-        getprojectSaleReportListPage,
+        getfangyuanReportListPage,
     } from '../../api/api';
     import ElRow from "element-ui/packages/row/src/row";
     export default{
@@ -66,8 +77,8 @@
         data(){
             return {
                 filters:{
-                    xm: '',
-                    weekNum: this.addDate(new Date(),-7),
+                    startdate: '',
+                    enddate: '',
                 },
                 //分页类数据
                 total:0,
@@ -84,47 +95,41 @@
             handleCurrentChange(val) {
                 this.page = val;
                // console.log(`当前页: ${val}`);
-               this.getprojectReport();
+               this.getfangyuanReport();
             },
             //更改每页显示数据
             handleSizeChange(val){
                 this.pageSize =val;
                 //console.log(`每页 ${val} 条`);
-                this.getprojectReport();
+                this.getfangyuanReport();
             },
             //获取渠道公司列表
-            getprojectReport() {
+            getfangyuanReport() {
                 let para = {
                     page: this.page,
                     pageSize: this.pageSize,
-                    xm:this.filters.xm,
-                    weekNum:this.filters.weekNum,
+                    startdate:this.filters.startdate==''?'': this.filters.startdate.toLocaleDateString(),
+                    enddate: this.filters.enddate==''?'': this.filters.enddate.toLocaleDateString(),
                 };
-
                 this.listLoading = true;
-                getprojectSaleReportListPage(para).then((res) => {
+                getfangyuanReportListPage(para).then((res) => {
                     this.total = res.data.total;
                     this.chuFang = res.data.data;
                     this.listLoading = false;
                 });
             },
             handleExport: function () {
-                var xm=this.filters.xm ;
-                window.open("/projectSaleReport/ExportExcel?xm="+xm );
+                var sDate=this.filters.startdate==''?'': this.filters.startdate.toLocaleDateString();
+                var eDate=this.filters.enddate==''?'': this.filters.enddate.toLocaleDateString() ;
+                window.open("/fangyuanXKReport/ExportExcel?startdate="+sDate+"&enddate="+ eDate);
             },
             selsChange: function (sels) {
                 this.sels = sels;
             },
-            addDate: function (date,days){
-                var d=new Date(date);
-                d.setDate(d.getDate()+days);
-                var m=d.getMonth()+1;
-                return d.getFullYear()+'-'+m+'-'+d.getDate();
-            },
         },
         mounted() {
             this.page=1;
-            this.getprojectReport();
+            this.getfangyuanReport();
         }
     }
 </script>

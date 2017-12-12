@@ -24,18 +24,20 @@ class projectSaleReportController extends Controller
         $pageSize = Input::get('pageSize');
         $page = Input::get('page');
         $lpname = Input::get('xm');
-
+        $weekNum = Input::get('weekNum');
         $limitStart=($page-1)*$pageSize;
         $limitEnd = $pageSize;
         $sql=" select lpid,lpname,mianji,totalNum,bzxzNum,bzyzNum,zdqjfy,minprice,maxprice,yearNum,weekNum,enum_key 
-from t_projectweek_report tpw inner join t_enum on tpw.mianji=t_enum.enum_value and enum_name='mianji'
-where yearNum = YEAR(NOW()) and weekNum=yearweek(now() )-1 ";
+from t_projectweek_report tpw inner join t_enum on tpw.mianji=t_enum.enum_value and enum_name='mianji'";
         $strWhere=" where 1=1 ";
         if(!empty($lpname)){
             $strWhere=$strWhere." and lpname like '%".$lpname."%'"  ;
         }
-        $count =  DB::connection('mysql3')->select("select count(*) as countNum from t_projectweek_report where yearNum = YEAR(NOW()) and weekNum=yearweek(now() )-1 ".$strWhere) ;
-        $sql=$sql.$strWhere."   limit ".$limitStart.", ".$limitEnd;
+        if(!empty($weekNum)){
+            $strWhere=$strWhere." and weekNum =yearweek('".$weekNum."')"  ;
+        }
+        $count =  DB::connection('mysql3')->select("select count(*) as countNum from t_projectweek_report   ".$strWhere) ;
+        $sql=$sql.$strWhere." order by  lpid,mianji limit ".$limitStart.", ".$limitEnd;
         $bk = DB::connection('mysql3')->select($sql);
 
         return $data = ['total'=>$count[0]->countNum,'data'=>$bk];
@@ -114,14 +116,16 @@ where yearNum = YEAR(NOW()) and weekNum=yearweek(now() )-1 ";
     {
         $lpname = Input::get('xm');
         $sql=" select lpid,lpname,mianji,totalNum,bzxzNum,bzyzNum,zdqjfy,minprice,maxprice,yearNum,weekNum,enum_key 
-from t_projectweek_report tpw inner join t_enum on tpw.mianji=t_enum.enum_value and enum_name='mianji'
-where yearNum = YEAR(NOW()) and weekNum=yearweek(now() )-1 ";
+from t_projectweek_report tpw inner join t_enum on tpw.mianji=t_enum.enum_value and enum_name='mianji'";
         $strWhere=" where 1=1 ";
         if(!empty($lpname)){
             $strWhere=$strWhere." and lpname like '%".$lpname."%'"  ;
         }
+        if(!empty($weekNum)){
+            $strWhere=$strWhere." and weekNum =yearweek('".$weekNum."')"  ;
+        }
         try{
-            $bk = DB::connection('mysql3')->select($sql.$strWhere);
+            $bk = DB::connection('mysql3')->select($sql.$strWhere.'  order by  lpid,mianji ');
 
         $cellData= $this->objToArray($bk);
         if(count($cellData)>0){
