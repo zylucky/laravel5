@@ -62,7 +62,6 @@ class purchaseContractController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -150,47 +149,15 @@ class purchaseContractController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     * 提交的时候，先根据楼栋的id取获取 objareaID，然后再根据获取到的东西去服务创建审核任务
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $bianhao = Input::get('bianhao');
-        $zd = Input::get('zd');
-        //0.将合同提交
         $client = new Client ([
             'base_uri' => $this->base_url,
-
         ]);
         $response1 = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
-        //1.根据楼栋的id取获取 objareaID
-//        $client = new Client ([
-//            'base_uri' => $this->work_url,
-//        ]);
-//        $response = $client->request('GET', '/api/wf/getzdareaid?zd='.$zd);
-//        $objareaid = $response->getBody()->getContents();
-//        $data = [
-//            "cmd"=>0,
-//            "data"=>[
-//                "tempname"=>"shenhe",
-//                "objareaid"=>(int)$objareaid,
-//            ],
-//            "condition"=>["%bianhao%"=>$bianhao],
-//            "operatorId"=>15,//操作人
-//            "operatorName"=>'liyuequn',
-//            "reserved"=>null,
-//        ];
-//        //2.服务创建审核任务
-//        $client = new Client([
-//            'base_uri' => $this->work_url,
-//            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
-//        ]);
-//        //return $data;
-//        $client->request('POST', '/api/wf/createtaskbytemplate', [
-//            'json' => $data
-//        ]);
-
         echo $response1->getBody();
     }
 
@@ -213,17 +180,6 @@ class purchaseContractController extends Controller
         ]);
         echo $response->getBody();
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
     /*
      * 合同审核
      *
@@ -233,7 +189,6 @@ class purchaseContractController extends Controller
             'base_uri' => $this->base_url,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-
         $response = $client->request('POST', '/api/contract/sf/shenhe', [
             'json' => $request->params
         ]);
@@ -269,78 +224,10 @@ class purchaseContractController extends Controller
         ]);
         echo $response->getBody();
     }
-    //合同状态变为：已确认
-    public function confirm(){
-        $id = Input::get('id');
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-        ]);
-        $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirm');
-        echo $response->getBody();
-
-        //给OMC传递免租期，单价
-        $response = $client->request('GET', '/api/contract/sf/'.$id);
-        $res = $response->getBody();
-        $res = json_decode($res);
-        $contract = $res->data;
-        //omc-mzq
-        $client2  = new Client ([
-            'base_uri' => $this->omc_url,
-        ]);
-        $json = ['parameters'=>[]];
-        foreach ($contract->officeList as $item){
-            $json['parameters'][] = [
-                'fyid'=>$item->omcId,
-                'mzq'=>date('Y-m-d',$contract->mianzuqiList[0]->startdate/1000),
-                'sgtime'=>date('Y-m-d',$contract->shoufangdate/1000),
-                'sgprice'=>$contract->zujinList[0]->price,
-            ];
-        }
-        $client2->post('/yhcms/web/jcsj/addFyMzq.do',[
-            'json'=>$json
-        ]);
-    }
-    //合同状态变为：待确认
-    public function confirming(){
-        $id = Input::get('id');
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-        ]);
-        $response = $client->request('GET', '/api/contract/sf/'.$id.'/confirming');
-        echo $response->getBody();
-    }
-    //合同状态变为：违约处理中
-    public function violating(){
-        $id = Input::get('id');
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-        ]);
-        $response = $client->request('GET', '/api/contract/sf/'.$id.'/violating');
-        echo $response->getBody();
-    }
-    //合同状态变为：合同终止
-    public function terminated(){
-        $id = Input::get('id');
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-        ]);
-        $response = $client->request('GET', '/api/contract/sf/'.$id.'/terminated');
-        echo $response->getBody();
-    }
-    //合同状态变为：优化中
-    public function releasing(){
-        $id = Input::get('id');
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-        ]);
-        $response = $client->request('GET', '/api/contract/sf/'.$id.'/releasing');
-        echo $response->getBody();
-    }
     //合同状态变为：优化成功  执行两个动作：协议改为已提交的状态，合同改为已经优化的状态
     public function released(){
         $id = Input::get('hetongid');
         $xyid = Input::get('xyid');
-
         $client = new Client ([
             'base_uri' => $this->base_url,
         ]);
@@ -375,15 +262,7 @@ class purchaseContractController extends Controller
       echo json_encode($res);
 
     }
-    //状态变更为审核中
-    public function approving(){
-        $id = Input::get('id');
-        $client = new Client ([
-            'base_uri' => $this->base_url,
-        ]);
-        $response = $client->request('GET', "/api/contract/sf/$id/approving");
-        echo $response->getBody();
-    }
+
     /*
      * /api/contract/sf/buchongXieyi/3
      * 获取该合同的优化协议
@@ -690,7 +569,6 @@ class purchaseContractController extends Controller
         //dd(111);
         $client = new Client([
             'base_uri' => $this->base_url,
-
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
         $data = $request->params;
@@ -712,14 +590,89 @@ class purchaseContractController extends Controller
         echo $response->getBody();
 
     }
-    public function cancelled(){
+    /**
+     * @param $property_id
+     * 当解约和合同终止的时候改变omc房源的状态
+     */
+    protected function omcPropertyStatus($property_id)
+    {
+        $client = new Client([
+            'base_uri' => $this->omc_url,
+        ]);
+        $json=['fyid'=>$property_id];
+        $client->post('/yhcms/web/updateFyZt.do',['json'=>$json]);
+    }
+
+    /**
+     * @param Request $request 改变合同状态
+     */
+    public function changeStatus(Request $request)
+    {
+        $id = $request->input('id');
+        $status = substr($request->path(),17);
         $client = new Client([
             'base_uri' => $this->base_url,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $id = Input::get('id');
-        $response = $client->request('GET', '/api/contract/sf/'.$id.'/cancelled');
+        $response = $client->request('GET', '/api/contract/sf/'.$id.'/'.$status);
         echo $response->getBody();
+
+        $contract = $this->getContractInfo($id);
+        switch ($status)
+        {
+            case 'cancelled':
+                foreach ($contract->officeList as $item){
+                    $this->omcPropertyStatus($item->omcId);
+                }
+                break;
+            case 'terminated':
+                foreach ($contract->officeList as $item){
+                    $this->omcPropertyStatus($item->omcId);
+                }
+                break;
+            case 'confirm':
+                $this->omcSginfo($contract);
+                break;
+            default:
+        }
+    }
+
+    /**
+     * @param $id 合同ID
+     * @return mixed
+     */
+    public function getContractInfo($id)
+    {
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/'.$id);
+        $res = json_decode($response->getBody());
+        $contract = $res->data;
+        return $contract;
+    }
+
+    /**
+     * @param $contract 合同信息
+     */
+    public function omcSginfo($contract)
+    {
+        $client2  = new Client ([
+            'base_uri' => $this->omc_url,
+        ]);
+        $json = ['parameters'=>[]];
+        foreach ($contract->officeList as $item){
+            $json['parameters'][] = [
+                'fyid'=>$item->omcId,
+                'mzq'=>date('Y-m-d',$contract->mianzuqiList[0]->startdate/1000),
+                'sgtime'=>date('Y-m-d',$contract->shoufangdate/1000),
+                'sgprice'=>$contract->zujinList[0]->price,
+            ];
+        }
+        $client2->post('/yhcms/web/jcsj/addFyMzq.do',[
+            'json'=>$json
+        ]);
     }
 
 }

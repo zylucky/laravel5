@@ -19,6 +19,7 @@ Route::get('/yezhuweituo',function(){
    return view('yezhuweituo');
 });
 Route::resource('test', 'TestController');
+Route::get('hello','TestController@index');
 Route::resource('role', 'Rbac\RoleController');
 //收房合同分组
 Route::group(['prefix' => 'purchaseContract'], function () {
@@ -28,13 +29,13 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::post('weiYueSave','Contract\purchaseContractController@weiYueSave');
     Route::post('isCopyComplete','Contract\purchaseContractController@isCopyComplete');
     Route::get('optimize','Contract\purchaseContractController@getOptimize');
-    Route::get('approving','Contract\purchaseContractController@approving');
     Route::post('editTiaoKuan','Contract\purchaseContractController@editTiaoKuan');
-    Route::get('confirm','Contract\purchaseContractController@confirm');
-    Route::get('confirming','Contract\purchaseContractController@confirming');
-    Route::get('violating','Contract\purchaseContractController@violating');
-    Route::get('terminated','Contract\purchaseContractController@terminated');
-    Route::get('releasing','Contract\purchaseContractController@releasing');
+    Route::get('approving','Contract\purchaseContractController@changeStatus');
+    Route::get('confirm','Contract\purchaseContractController@changeStatus');
+    Route::get('confirming','Contract\purchaseContractController@changeStatus');
+    Route::get('violating','Contract\purchaseContractController@changeStatus');
+    Route::get('terminated','Contract\purchaseContractController@changeStatus');
+    Route::get('releasing','Contract\purchaseContractController@changeStatus');
     Route::get('released','Contract\purchaseContractController@released');
     Route::get('releasedList','Contract\purchaseContractController@releasedList');
     Route::get('copyImageList','Contract\purchaseContractController@copyImageList');

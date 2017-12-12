@@ -17,36 +17,9 @@ class TestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
-        //防止执行超时
-        set_time_limit(0);
-        //清空并关闭输出缓存
-        ob_end_clean();
-        //flush();
-        echo '<div id="jindu" style="height: 20px;background-color: greenyellow;z-index: 1000000;"></div>';
-        for ($j=1;$j<=100;$j++){
-            $jindu = $j*10;
-            echo '<script>
-                var jindu = document.getElementById("jindu");
-                jindu.style.width = "'.$jindu.'px";
-                jindu.innerHTML = "'.$j.'%";
-            </script>';
-            for ($i =0;$i<10000000;$i++){
-
-            }
-        }
-
-        //flush();
-       // return view('welcome',['jindu' => $j]);
-
-
-
-
-
-         var_dump($this->DiffDate('2017-11-01','2018-2-01')) ;
-
+        var_dump($request->path());
     }
     function DiffDate($date1, $date2) {
         if (strtotime($date1) > strtotime($date2)) {
