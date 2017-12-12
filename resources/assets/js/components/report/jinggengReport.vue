@@ -33,9 +33,9 @@
             </el-table-column>
             <el-table-column prop="yzdh" label="业主电话"   width="120">
             </el-table-column>
-            <el-table-column prop="bzxzyz" label="可租状态评估"   width="130"  >
+            <el-table-column prop="kzztpg" label="可租状态评估"   width="130"  >
             </el-table-column>
-            <el-table-column prop="bzxzyz" label="本周新增"  width="120" >
+            <el-table-column prop="bzxzfy" label="本周新增"  width="120" >
             </el-table-column>
             <el-table-column prop="bzxzyz" label="本周已租"  width="120" >
             </el-table-column>
