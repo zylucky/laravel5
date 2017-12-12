@@ -37,7 +37,7 @@ from t_projectweek_report tpw inner join t_enum on tpw.mianji=t_enum.enum_value 
             $strWhere=$strWhere." and weekNum =yearweek('".$weekNum."')"  ;
         }
         $count =  DB::connection('mysql3')->select("select count(*) as countNum from t_projectweek_report   ".$strWhere) ;
-        $sql=$sql.$strWhere."   limit ".$limitStart.", ".$limitEnd;
+        $sql=$sql.$strWhere." order by  lpid,mianji limit ".$limitStart.", ".$limitEnd;
         $bk = DB::connection('mysql3')->select($sql);
 
         return $data = ['total'=>$count[0]->countNum,'data'=>$bk];
@@ -125,7 +125,7 @@ from t_projectweek_report tpw inner join t_enum on tpw.mianji=t_enum.enum_value 
             $strWhere=$strWhere." and weekNum =yearweek('".$weekNum."')"  ;
         }
         try{
-            $bk = DB::connection('mysql3')->select($sql.$strWhere);
+            $bk = DB::connection('mysql3')->select($sql.$strWhere.'  order by  lpid,mianji ');
 
         $cellData= $this->objToArray($bk);
         if(count($cellData)>0){
