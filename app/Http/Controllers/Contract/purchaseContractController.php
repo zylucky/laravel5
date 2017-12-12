@@ -292,8 +292,8 @@ class purchaseContractController extends Controller
             $json['parameters'][] = [
                 'fyid'=>$item->omcId,
                 'mzq'=>date('Y-m-d',$contract->mianzuqiList[0]->startdate/1000),
-                'sgtime'=>$contract->shoufangdate,
-                'sgprice'=>date('Y-m-d',$contract->zujinList[0]->startdate),
+                'sgtime'=>date('Y-m-d',$contract->shoufangdate/1000),
+                'sgprice'=>$contract->zujinList[0]->price,
             ];
         }
         $client2->post('/yhcms/web/jcsj/addFyMzq.do',[

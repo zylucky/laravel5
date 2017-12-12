@@ -273,6 +273,13 @@ class saleContractController extends Controller
             'json' => $request->params
         ]);
         echo $response->getBody();
+
+        $response = $client->request('GET', '/api/contract/xs/'.$request->input('params')['hetongid']);
+        $res = $response->getBody();
+        $res = json_decode($res);
+        foreach ($res->data->xsOffice as $item){
+            $this->omcPropertyStatus($item->omcId);
+        }
     }
     //合同状态变为：审核中
     public function approving(){
@@ -487,6 +494,13 @@ class saleContractController extends Controller
             'json' => $request->params
         ]);
         echo $response->getBody();
+
+        $response = $client->request('GET', '/api/contract/xs/'.$request->input('params')['hetongid']);
+        $res = $response->getBody();
+        $res = json_decode($res);
+        foreach ($res->data->xsOffice as $item){
+            $this->omcPropertyStatus($item->omcId);
+        }
     }
     /*
      * 扫描合同复印件列表copyImageList
@@ -724,11 +738,11 @@ class saleContractController extends Controller
         //dd(99999);
         //dd($request);
         $client = new Client([
-            'base_uri' => $this->base_url,
+            'base_uri' => $this->omc_url,
 
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $response = $client->request('POST', 'http://47.92.145.21:8080/yhcms/web/jcsj/addFyZhxx.do', [
+        $response = $client->request('POST', '/yhcms/web/jcsj/addFyZhxx.do', [
             'json' => $request->params
         ]);
         echo $response->getBody();
@@ -741,6 +755,24 @@ class saleContractController extends Controller
         $id = Input::get('id');
         $response = $client->request('GET', '/api/contract/xs/'.$id.'/cancelled');
         echo $response->getBody();
+        $response = $client->request('GET', '/api/contract/xs/'.$id);
+        $res = $response->getBody();
+        $res = json_decode($res);
+        foreach ($res->data->xsOffice as $item){
+            $this->omcPropertyStatus($item->omcId);
+        }
+    }
+
+    /**
+     * @param $property_id
+     * 当解约和合同终止的时候改变omc房源的状态
+     */
+    protected function omcPropertyStatus($property_id){
+        $client = new Client([
+            'base_uri' => $this->omc_url,
+        ]);
+        $json=['fyid'=>$property_id];
+        $client->post('/yhcms/web/updateFyZt.do',['json'=>$json]);
     }
 
 }
