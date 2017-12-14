@@ -10,7 +10,7 @@
 
             <b> 出租人（甲方）：<input type="text" name="" style="width:138px;font-size:10px" value="">承租人（乙方）：<input type="text" name="" style="width:143px;font-size:10px" value=""></b>　<br>
             联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">联系地址：<input type="text" name="" style="width:185px" value="">
-            <br>联系方式：<input type="text" name="" style="width:180px;" disabled value="400-078-8800">联系方式：<input type="text" name="" style="width:185px;font-size:10px" value="">
+            <br>联系方式：<input type="text" name="" style="width:180px;" disabled value="">联系方式：<input type="text" name="" style="width:185px;font-size:10px" value="">
             <br>委托代理人 ：<input type="text" name="" style="width:160px;font-size:10px" value="">委托代理人：<input type="text" name="" style="width:165px;font-size:10px" value=""><br>
 
             <font>_______年____月____日</font>&nbsp;&nbsp;
