@@ -231,4 +231,5 @@ Route::resource('fangyuanXKReport', 'Report\fangYuanXKReportController');
 Route::resource('jinggengReport', 'Report\jinggengReportController');
 Route::resource('projectReport', 'Report\projectReportController');
 Route::resource('projectSaleReport', 'Report\projectSaleReportController');
+Route::resource('coreDataReport', 'Report\projectSaleReportController');
 //hello world1

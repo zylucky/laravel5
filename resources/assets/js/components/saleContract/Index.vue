@@ -47,7 +47,7 @@
             </el-table-column>
             <el-table-column prop="loudongName" label="楼栋"   >
             </el-table-column>
-            <el-table-column prop="fanghao" label="房间号" :formatter="fangjia"  >
+            <el-table-column prop="fanghao" label="房间号"   >
             </el-table-column>
             <el-table-column prop="zhuangtai" label="状态" :formatter="formatStatus"  >
             </el-table-column>
@@ -269,13 +269,6 @@
             //打印核心数据
             handleSummary(index,row){
                 window.open('/#/saleContract/summary?id='+row.id);
-            },
-            fangjia(row, column){
-                if(row.subleaseno == null){
-                    return  row.fanghao;
-                }else{
-                    return  row.fanghao+"-"+row.subleaseno;//在这里面拼接数据的时候，在js中拼接
-                }
             },
             handleUplod(index,row){
                 //this.$router.push('saleContract/upload?id='+row.id)
