@@ -28,7 +28,7 @@
             </el-table-column>
             <el-table-column prop="Qianyuemianji" label="面积" width="90" >
             </el-table-column>
-            <el-table-column prop="price" label="收购单价"  width="180"  >
+            <el-table-column prop="Price" label="收购单价"  width="110"  >
             </el-table-column>
             <el-table-column prop="saleprice" label="出房单价"   width="110" >
             </el-table-column>
@@ -62,7 +62,7 @@
 </template>
 <script>
     import {
-        getprojectSaleReportListPage,
+        getcoreDataReportListPage,
     } from '../../api/api';
     import ElRow from "element-ui/packages/row/src/row";
     export default{
@@ -102,11 +102,10 @@
                     page: this.page,
                     pageSize: this.pageSize,
                     xm:this.filters.xm,
-                    weekNum:this.filters.weekNum,
                 };
 
                 this.listLoading = true;
-                getprojectSaleReportListPage(para).then((res) => {
+                getcoreDataReportListPage(para).then((res) => {
                     this.total = res.data.total;
                     this.chuFang = res.data.data;
                     this.listLoading = false;
@@ -114,7 +113,7 @@
             },
             handleExport: function () {
                 var xm=this.filters.xm ;
-                window.open("/projectSaleReport/ExportExcel?xm="+xm );
+                window.open("/coreDataReport/ExportExcel?xm="+xm );
             },
             selsChange: function (sels) {
                 this.sels = sels;

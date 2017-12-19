@@ -68,6 +68,7 @@ import BrokerUserHistory from "./components/brokerCompanyPart/BrokerUserHistoryL
 import ChuFangCommission from "./components/Commission/Index.vue";
 import ShouFangCommission from "./components/Commission/ShouFangList.vue";
 import selectCommissionPayType from "./components/Commission/contractPayType.vue";
+import commissionView  from "./components/Commission/commissionView.vue";
 //应收
 import AccountsReceivable from "./components/Commission/accountsReceivableList.vue";
 import ReceivableRecord from "./components/receivable/receivableRecordList.vue";
@@ -267,6 +268,7 @@ let routes = [
             { path:'/shouFangCommission', component: ShouFangCommission, name: '收房佣金管理',hidden:fk_shouFangCommission},
             { path:'/chuFangCommission',component:ChuFangCommission,name:'出房佣金管理',hidden:fk_chuFangCommission},
             { path:'/contractPayType',component:selectCommissionPayType,name:'佣金支付方式',hidden:true},
+            {path:'/commissionView', component: commissionView, name: '佣金', hidden: false},
         ]
     },
     {

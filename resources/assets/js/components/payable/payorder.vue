@@ -266,7 +266,7 @@
             document.title = '支出凭证';
             this.getPayable();
             this.nowDate = new Date().toLocaleDateString();
-            //setTimeout(hello, 1000);
+            setTimeout(hello, 1000);
         }
     }
 </script>
