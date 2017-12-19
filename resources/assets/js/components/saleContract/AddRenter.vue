@@ -16,12 +16,44 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="合同类型" required>
-                <el-radio-group v-model="renter.hetongtype" :disabled="lydisabled">
+                <el-radio-group v-model="renter.hetongtype" :disabled="lydisabled" @change="hetongtypeChange" >
                     <el-radio :label="1">双方合同</el-radio>
                     <el-radio :label="2">三方合同</el-radio>
                 </el-radio-group>
             </el-form-item>
             <div v-if="renter.hetongtype==2">
+                <el-row>
+                    <el-col  :span="8">
+                    <el-form-item label="销售" :prop="'salesmanList.' + 0 + '.salesmanid'" :rules="{
+                                            required: true, message: '不能为空'
+                                        }"    required>
+                            <el-select
+                                    v-model="renter.salesmanList[0].salesmanid"
+                                    filterable
+                                    remote
+                                    @change="updataHedan1"
+                                    placeholder="销售人员姓名"
+                                    :remote-method="remoteMethodyslxr1"
+                                    :loading="fristyslxrloading1"
+
+                            >
+                                <el-option
+                                        v-for="item in renter.optionsyslxr1"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                </el-option>
+                            </el-select>
+                    </el-form-item>
+                    </el-col>
+                    <el-col  :span="8">
+                    <el-form-item label="联系电话"   :prop="'salesmanList.' + 0 + '.salesmanphone'" :rules="{
+                                            required: true, message: '不能为空'
+                                        }"     required>
+                        <el-input v-model="renter.salesmanList[0].salesmanphone" disabled="disabled" ></el-input>
+                    </el-form-item>
+                    </el-col>
+                </el-row>
                 <el-row>
                     <el-form-item label="居间方类型">
                         <el-radio-group v-model="renter.jujianfangtype" @change="jujianfangtypeChange">
@@ -285,7 +317,7 @@
     </div>
 </template>
 <script>
-    import {getbkNameList,getNameSaleList,getBrokerCompanyUserListPage} from '../../api/api';;
+    import {getbkNameList,getNameSaleList,getBrokerCompanyUserListPage,getHedanqiannamephoneList} from '../../api/api';;
     export default{
         data(){
             return {
@@ -294,6 +326,7 @@
                 labelPosition:'right',
                 bkNameloading:false,
                 bkryNameloading:false,
+                fristyslxrloading1:false,
                 estate: [],//服务器搜索的渠道公司数据放入这个数组中
                 editRenterRules :{
                     shoukuanren: [
@@ -305,6 +338,7 @@
                     zhanghao: [
                         { required: true, message: '不能为空' }
                     ],
+                    salesmanphone:[{required: true, message: '不能为空', trigger: 'blur' }],
                 },
             }
         },
@@ -336,6 +370,25 @@
                         sex: 1,
                         hetongid: null,
                     },]
+
+
+                }
+            },
+            hetongtypeChange(){
+                if(this.$route.path=='/saleContract/add'||this.renter.hetongtype !=this.renter.hetongtype2) {
+                    console.log(this.renter.hetongtype2);
+                    this.renter.salesmanList[0].salesmanname=null;
+                    this.renter.salesmanList[0].salesmanid=null;
+                    this.renter.salesmanList[0].salesmanphone=null;
+                    this.renter.salesmanList[0].id=null;
+                    this.renter.salesmanList[0].hetongid=null;
+                    this.renter.optionsyslxr1 = [
+                        {
+                            value: null,
+                            label: null,
+                            phone:null,
+                        },
+                    ];
                 }
             },
             jujianfangtypeChange(){
@@ -357,11 +410,44 @@
                             label: null,
                         },
                     ];
+
                 }
             },
             valid(){
                 this.$refs.renterForm.validate((valid) => {
                     this.renter.flag = valid;
+                });
+            },
+            updataHedan1(){
+                for (var x in this.renter.optionsyslxr1) {
+                    if (this.renter.optionsyslxr1[x].value == this.renter.salesmanList[0].salesmanid) {
+                        this.renter.salesmanList[0].salesmanname = this.renter.optionsyslxr1[x].label;
+                        this.renter.salesmanList[0].salesmanphone = this.renter.optionsyslxr1[x].phone;
+                    }
+                }
+            },
+            //获取销售人列表
+            remoteMethodyslxr1(query) {
+                let para = {
+                    uname: query
+                };
+                this.renter.optionsyslxr1 = [];
+                this.fristyslxrloading1 = true;
+                getHedanqiannamephoneList(para).then((res) => {
+                    if (query !== '') {
+                        setTimeout(() => {
+                            this.fristyslxrloading1 = false;
+                            for (var item in res.data.data) {
+                                this.renter.optionsyslxr1.push({
+                                    value: res.data.data[item].id,
+                                    label: res.data.data[item].name,
+                                    phone: res.data.data[item].Phone,
+                                });
+                            }
+                        }, 200);
+                    } else {
+                        this.renter.optionsyslxr1 = [];
+                    }
                 });
             },
 //            changeOnSelect1(){

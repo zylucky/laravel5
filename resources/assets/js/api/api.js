@@ -153,6 +153,7 @@ export const hedanSaveSaleContract= params => { return axios.post(`${base}/saleC
 export const removeHedanSaleContract= params => { return axios.get(`${base}/saleContract/deleteHedan`, {params:params}); };//删除扫描建
 export const hedanUpdataSaleContract= params => { return axios.post(`${base}/saleContract/updataHedan`, {params:params}); };//修改合单信息
 export const getHedanqiannameSaleList = params => { return axios.post(`${base}/saleContract/getHedanqiannameList`, { params: params }); };//获取签单人姓名列表
+export const getHedanqiannamephoneList = params => { return axios.post(`${base}/saleContract/getHedanqiannamephoneList`, { params: params }); };//获取销售人姓名列表
 export const getHedanbumenSaleList = params => { return axios.post(`${base}/saleContract/getHedanbumenList`, { params: params }); };//
 export const yongyouUpdataSaleContract = params => { return axios.post(`${base}/saleContract/saveyongyou`, { params: params }); };//用友编号的保存
 export const getSaleContractOmc = params => { return axios.post(`${base}/saleContract/omcdata`, { params: params }); };//给omc那边传递的数据接口
@@ -218,3 +219,4 @@ export const getfangyuanReportListPage = params => { return axios.get(`${base}/f
 export const getjinggengReportListPage = params => { return axios.get(`${base}/jinggengReport`, { params: params }); };
 export const getprojectReportListPage = params => { return axios.get(`${base}/projectReport`, { params: params }); };
 export const getprojectSaleReportListPage = params => { return axios.get(`${base}/projectSaleReport`, { params: params }); };
+export const getcoreDataReportListPage = params => { return axios.get(`${base}/coreDataReport`, { params: params }); };

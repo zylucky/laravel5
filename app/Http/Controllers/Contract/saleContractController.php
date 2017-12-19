@@ -686,6 +686,17 @@ class saleContractController extends Controller
             return $json;
         }
     }
+    //获取销售人姓名列表
+    public function getHedanqiannamephoneList(Request $request){
+        $uname = $request->params['uname'];
+        $client = new Client([
+            'base_uri' => $this->base_url,
+
+        ]);
+        $response = $client->request('GET', '/api/base/search/personfuzzy?uname='.$uname);
+        echo$response->getBody() ;
+
+    }
     //获取签单人姓名列表
     public function getHedanbumenList(Request $request){
         $dname = $request->params['dname'];
