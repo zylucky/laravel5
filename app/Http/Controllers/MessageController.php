@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Message;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Flc\Alidayu\Client;
+use Flc\Alidayu\App;
+use Flc\Alidayu\Requests\AlibabaAliqinFcSmsNumSend;
+use Flc\Alidayu\Requests\IRequest;
 
 class MessageController extends Controller
 {
@@ -15,7 +18,7 @@ class MessageController extends Controller
         $message =  Message::create($request->all());
         //发送短信
         if($request->input('is_message')==1){
-            $this->sendMessage($request->input('phone'),$request->input('content'));
+            $this->sendMessage($request->input('phone'),$request->input('content'),$request->input('type'));
         }
         return [
             'success'=>true,
@@ -51,20 +54,35 @@ class MessageController extends Controller
         ])->get();
     }
     //发短信
-    public function sendMessage($phone,$message)
+    public function sendMessage($phone,$message,$type)
     {
-        $client = new  Client([
-            // Base URI is used with relative requests
-            'base_uri' => 'http://116.62.68.26:8080',
-            // You can set any number of default request options.
-            'timeout'  => 2.0,
-        ]);
-        $client->post('yhcms/web/qduser/getErpCode.do',[
-            'parameters'=>
-                [
-                    'cookie'=>'',
-                    'phone'=>$phone
-                ]
-        ]);
+        // 配置信息
+        $config = [
+            'app_key'    => '*****',
+            'app_secret' => '************',
+            // 'sandbox'    => true,  // 是否为沙箱环境，默认false
+        ];
+        $templateCode = [
+            'SMS_15105357',
+            'SMS_15105357',
+            'SMS_15105357',
+            'SMS_15105357',
+        ];
+        // 使用方法一
+        $client = new Client(new App($config));
+        $req    = new AlibabaAliqinFcSmsNumSend;
+
+        $req->setRecNum($phone)
+            ->setSmsParam([
+                'number' => rand(100000, 999999)
+            ])
+            ->setSmsFreeSignName('叶子坑')
+            ->setSmsTemplateCode($templateCode[$type]);
+
+        $resp = $client->execute($req);
+
+// 返回结果
+        print_r($resp);
+        print_r($resp->result->model);
     }
 }

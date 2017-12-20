@@ -22,38 +22,38 @@
                 </el-radio-group>
             </el-form-item>
             <div v-if="renter.hetongtype==2">
-                <el-row>
-                    <el-col  :span="8">
-                    <el-form-item label="销售" :prop="'salesmanList.' + 0 + '.salesmanid'" :rules="{
-                                            required: true, message: '不能为空'
-                                        }"    required>
-                            <el-select
-                                    v-model="renter.salesmanList[0].salesmanid"
-                                    filterable
-                                    remote
-                                    @change="updataHedan1"
-                                    placeholder="销售人员姓名"
-                                    :remote-method="remoteMethodyslxr1"
-                                    :loading="fristyslxrloading1"
+                <!--<el-row>-->
+                    <!--<el-col  :span="8">-->
+                    <!--<el-form-item label="销售" :prop="'salesmanList.' + 0 + '.salesmanid'" :rules="{-->
+                                            <!--required: true, message: '不能为空'-->
+                                        <!--}"    required>-->
+                            <!--<el-select-->
+                                    <!--v-model="renter.salesmanList[0].salesmanid"-->
+                                    <!--filterable-->
+                                    <!--remote-->
+                                    <!--@change="updataHedan1"-->
+                                    <!--placeholder="销售人员姓名"-->
+                                    <!--:remote-method="remoteMethodyslxr1"-->
+                                    <!--:loading="fristyslxrloading1"-->
 
-                            >
-                                <el-option
-                                        v-for="item in renter.optionsyslxr1"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value">
-                                </el-option>
-                            </el-select>
-                    </el-form-item>
-                    </el-col>
-                    <el-col  :span="8">
-                    <el-form-item label="联系电话"   :prop="'salesmanList.' + 0 + '.salesmanphone'" :rules="{
-                                            required: true, message: '不能为空'
-                                        }"     required>
-                        <el-input v-model="renter.salesmanList[0].salesmanphone" disabled="disabled" ></el-input>
-                    </el-form-item>
-                    </el-col>
-                </el-row>
+                            <!--&gt;-->
+                                <!--<el-option-->
+                                        <!--v-for="item in renter.optionsyslxr1"-->
+                                        <!--:key="item.value"-->
+                                        <!--:label="item.label"-->
+                                        <!--:value="item.value">-->
+                                <!--</el-option>-->
+                            <!--</el-select>-->
+                    <!--</el-form-item>-->
+                    <!--</el-col>-->
+                    <!--<el-col  :span="8">-->
+                    <!--<el-form-item label="联系电话"   :prop="'salesmanList.' + 0 + '.salesmanphone'" :rules="{-->
+                                            <!--required: true, message: '不能为空'-->
+                                        <!--}"     required>-->
+                        <!--<el-input v-model="renter.salesmanList[0].salesmanphone" disabled="disabled" ></el-input>-->
+                    <!--</el-form-item>-->
+                    <!--</el-col>-->
+                <!--</el-row>-->
                 <el-row>
                     <el-form-item label="居间方类型">
                         <el-radio-group v-model="renter.jujianfangtype" @change="jujianfangtypeChange">
@@ -355,8 +355,8 @@
                     this.renter.zhanghao = '6214 8301 2090 8081';
                 }else if(this.renter.chengzufang =='幼狮科技'){
                     this.renter.shoukuanren = '北京幼狮科技有限公司';
-                    this.renter.kaihuhang = '招行建国门支行';
-                    this.renter.zhanghao = '1109 2166 7410 901';
+                    this.renter.kaihuhang = '工行北京天竺支行';
+                    this.renter.zhanghao = '0200 0901 1920 0218 968';
                 }
             },
             zuhuleixingChange(){

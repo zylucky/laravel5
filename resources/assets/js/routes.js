@@ -268,7 +268,7 @@ let routes = [
             { path:'/shouFangCommission', component: ShouFangCommission, name: '收房佣金管理',hidden:fk_shouFangCommission},
             { path:'/chuFangCommission',component:ChuFangCommission,name:'出房佣金管理',hidden:fk_chuFangCommission},
             { path:'/contractPayType',component:selectCommissionPayType,name:'佣金支付方式',hidden:true},
-            {path:'/commissionView', component: commissionView, name: '佣金', hidden: false},
+            {path:'/commissionView', component: commissionView, name: '佣金', hidden: true},
         ]
     },
     {
