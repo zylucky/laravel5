@@ -231,4 +231,7 @@ Route::resource('fangyuanXKReport', 'Report\fangYuanXKReportController');
 Route::resource('jinggengReport', 'Report\jinggengReportController');
 Route::resource('projectReport', 'Report\projectReportController');
 Route::resource('projectSaleReport', 'Report\projectSaleReportController');
-//hello world1
+//message
+Route::post('/sendMessage','MessageController@create');
+Route::get('/readMessage/{id}','MessageController@read');
+Route::get('/receiveMessage/{send_to_id}/sys/{sys}','MessageController@index');
