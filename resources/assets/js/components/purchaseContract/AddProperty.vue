@@ -348,7 +348,7 @@
             },
             //得到房间号以后，提取OMC的对应信息
             change1(index){
-                this.property.tabIndex = index+1;
+//                this.property.tabIndex = index+1;
                 //楼盘
                 for (var x in this.options1){
                     if(this.options1[x].label==this.property.officeList[index].loupanName){
@@ -361,7 +361,7 @@
                 }
             },
             change2(index){
-                this.property.tabIndex = index+1;
+//                this.property.tabIndex = index+1;
                 for (var x in this.options2){
                     if(this.options2[x].label==this.property.officeList[index].loudongName){
                         this.property.officeList[index].loudongOmcId=this.options2[x].value;

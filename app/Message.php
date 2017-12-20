@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     //
-    protected $connection = 'mysql_omc';
+    protected $connection = 'mysql3';
     protected $table = 'messages';
     protected $fillable = [
         'send_from_id',

@@ -123,6 +123,13 @@
                             label:null,
                         }
                     ],
+                    optionsyslxr1:[
+                        {
+                            value:null,
+                            label:null,
+                            phone:null,
+                        }
+                    ],
                     options2:[
                         {
                             value:null,
@@ -150,6 +157,16 @@
                             hetongid:null,
                         },
                     ],
+                    //销售人
+                    salesmanList:[
+                        {
+                            salesmanid:'',
+                            salesmanname:'',
+                            salesmanphone:'',
+                            hetongtid:1,
+                            hetongid:null,
+                        },
+                    ],
                     //收款人
                     shoukuanren:'',
                     zhanghao:'',
@@ -165,6 +182,7 @@
                     qianyuerenSex:1,
                     qianyuerenId:'',
                     hetongtype:1,//合同类型
+                    hetongtype2:1,//合同类型
                 },
                 addDate: {
                     dikoujine:'',//合同金额
@@ -411,11 +429,16 @@
                 this.renter.jujianfangid2 = res.data.data.jujianfangid;
                 this.renter.qudaoren = res.data.data.qudaoren;
                 this.renter.qudaorenid = res.data.data.qudaorenid;
-
+                if(res.data.data.salesmanList.length>0){
+                    this.renter.salesmanList = res.data.data.salesmanList;
+                    this.renter.optionsyslxr1[0].value = res.data.data.salesmanList[0].salesmanid;
+                    this.renter.optionsyslxr1[0].label =  res.data.data.salesmanList[0].salesmanname;
+                }
                 this.renter.options1[0].value = res.data.data.jujianfangid;
                 this.renter.options1[0].label = res.data.data.jujianfang;
                 this.renter.options2[0].value = res.data.data.qudaorenid;
                 this.renter.options2[0].label = res.data.data.qudaoren;
+
                 /*for (let x in res.data.data.jujianfangid){
                     this.renter.options1[x].value = res.data.data.jujianfangid;
                     this.renter.options1[x].label = res.data.data.jujianfang;
@@ -429,6 +452,7 @@
                 this.renter.qianyuerenSex = res.data.data.qianyuerenSex;
                 this.renter.qianyuerenId = res.data.data.qianyuerenId;
                 this.renter.hetongtype = res.data.data.hetongtype;
+                this.renter.hetongtype2 = res.data.data.hetongtype;
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;

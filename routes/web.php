@@ -135,6 +135,7 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::get('cancelled','Contract\saleContractController@cancelled');
     Route::post('updataHedan','Contract\saleContractController@updataHedan');
     Route::post('getHedanqiannameList','Contract\saleContractController@getHedanqiannameList');
+    Route::post('getHedanqiannamephoneList','Contract\saleContractController@getHedanqiannamephoneList');
     Route::post('getHedanbumenList','Contract\saleContractController@getHedanbumenList');
     Route::post('saveyongyou','Contract\saleContractController@saveyongyou');
     Route::post('omcdata','Contract\saleContractController@omcdata');
@@ -211,6 +212,7 @@ Route::get('fangyuanXKReport/ExportExcel','Report\fangYuanXKReportController@Exp
 Route::get('jinggengReport/ExportExcel','Report\jinggengReportController@ExportExcel');
 Route::get('projectReport/ExportExcel','Report\projectReportController@ExportExcel');
 Route::get('projectSaleReport/ExportExcel','Report\projectSaleReportController@ExportExcel');
+Route::get('coreDataReport/ExportExcel','Report\coreDataReportController@ExportExcel');
 //合同房源
 Route::group(['prefix' => 'office'], function () {
     Route::get('loupanList','Contract\officeController@loupanList');
@@ -231,7 +233,11 @@ Route::resource('fangyuanXKReport', 'Report\fangYuanXKReportController');
 Route::resource('jinggengReport', 'Report\jinggengReportController');
 Route::resource('projectReport', 'Report\projectReportController');
 Route::resource('projectSaleReport', 'Report\projectSaleReportController');
+
 //message
 Route::post('/sendMessage','MessageController@create');
 Route::get('/readMessage/{id}','MessageController@read');
 Route::get('/receiveMessage/{send_to_id}/sys/{sys}','MessageController@index');
+
+Route::resource('coreDataReport', 'Report\coreDataReportController');
+
