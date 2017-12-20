@@ -419,6 +419,7 @@
                     this.renter.chengzuren = res.data.data.chengzuren;
                 }*/
                 this.renter.chengzufang = res.data.data.chengzufang;
+                this.renter.chengzufang2 = res.data.data.chengzufang;
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.kaihuhang = res.data.data.kaihuhang;
                 this.renter.zhanghao = res.data.data.zhanghao;

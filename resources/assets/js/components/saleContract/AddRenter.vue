@@ -345,19 +345,33 @@
         props:['renter'],
         methods: {
             changeCzr(){
-                if(this.renter.chengzufang =='彭亮'){
-                    this.renter.shoukuanren = '彭亮';
-                    this.renter.kaihuhang = '招商银行北京分行建外大街支行';
-                    this.renter.zhanghao = '6214 8501 1231 5079';
-                }else if(this.renter.chengzufang =='华溯商贸'){
-                    this.renter.shoukuanren = '肖艳文';
-                    this.renter.kaihuhang = '招商银行北京分行万达广场支行';
-                    this.renter.zhanghao = '6214 8301 2090 8081';
-                }else if(this.renter.chengzufang =='幼狮科技'){
-                    this.renter.shoukuanren = '北京幼狮科技有限公司';
-                    this.renter.kaihuhang = '工行北京天竺支行';
-                    this.renter.zhanghao = '0200 0901 1920 0218 968';
+                if(this.renter.chengzufang!=this.renter.chengzufang2){
+                    switch(this.renter.chengzufang)
+                    {
+                        case '彭亮':
+                            this.renter.shoukuanren = '彭亮';
+                            this.renter.kaihuhang = '招商银行北京分行建外大街支行';
+                            this.renter.zhanghao = '6214 8501 1231 5079';
+                            break;
+                        case '华溯商贸':
+                            this.renter.shoukuanren = '肖艳文';
+                            this.renter.kaihuhang = '招商银行北京分行万达广场支行';
+                            this.renter.zhanghao = '6214 8301 2090 8081';
+                            break;
+                        case '幼狮科技':
+                            this.renter.shoukuanren = '北京幼狮科技有限公司';
+                            this.renter.kaihuhang = '工行北京天竺支行';
+                            this.renter.zhanghao = '0200 0901 1920 0218 968';
+                            break;
+                        default:
+                            this.renter.shoukuanren = '';
+                            this.renter.kaihuhang = '';
+                            this.renter.zhanghao = '';
+                    }
+                    this.renter.chengzufang2 = '';
+                    console.log(this.renter.zhanghao)
                 }
+
             },
             zuhuleixingChange(){
                 //只要业主类型发生改变，那么我就将变量初始化
