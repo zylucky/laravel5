@@ -18,13 +18,23 @@ class MessageController extends Controller
         $message =  Message::create($request->all());
         //发送短信
         if($request->input('is_message')==1){
-            $this->sendMessage($request->input('phone'),$request->input('content'),$request->input('type'));
+            $res = $this->sendMessage(
+                $request->input('phone'),
+                $request->input('type'),
+                $request->input('yongjin')
+            );
+            $success = isset($res->err_code)?false:true;
+        }else{
+            $res = $this->send($message->id);
+            $success = $res==1?true:false;
         }
         return [
-            'success'=>true,
-            'data'=>$message,
+            'success'=>$success,
+            'msg'=>$res
         ];
-
+    }
+    public function send($id){
+       return Message::where('id',$id)->update(['status'=>1]);
     }
 
     /**
@@ -54,35 +64,36 @@ class MessageController extends Controller
         ])->get();
     }
     //发短信
-    public function sendMessage($phone,$message,$type)
+
+    /**
+     * @param $phone
+     * @param $type
+     * @param $yongjin
+     */
+    public function sendMessage($phone,$type,$yongjin)
     {
+        $success = true;
         // 配置信息
-        $config = [
-            'app_key'    => '*****',
-            'app_secret' => '************',
-            // 'sandbox'    => true,  // 是否为沙箱环境，默认false
+        $configs = [
+            [
+                'app_key'    => '24739810',
+                'app_secret' => '6e32fd0efdeec3b419fc43988422e8ac',
+                // 'sandbox'    => true,  // 是否为沙箱环境，默认false
+            ]
         ];
-        $templateCode = [
-            'SMS_15105357',
-            'SMS_15105357',
-            'SMS_15105357',
-            'SMS_15105357',
-        ];
+
+        $templateCode = ['SMS_118080024'];
         // 使用方法一
-        $client = new Client(new App($config));
+        $client = new Client(new App($configs[$type]));
         $req    = new AlibabaAliqinFcSmsNumSend;
 
         $req->setRecNum($phone)
             ->setSmsParam([
-                'number' => rand(100000, 999999)
+                'yongjin' => $yongjin
             ])
-            ->setSmsFreeSignName('叶子坑')
+            ->setSmsFreeSignName('幼狮')
             ->setSmsTemplateCode($templateCode[$type]);
-
         $resp = $client->execute($req);
-
-// 返回结果
-        print_r($resp);
-        print_r($resp->result->model);
+        return $resp;
     }
 }
