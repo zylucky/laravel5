@@ -234,4 +234,11 @@ Route::resource('jinggengReport', 'Report\jinggengReportController');
 Route::resource('projectReport', 'Report\projectReportController');
 Route::resource('projectSaleReport', 'Report\projectSaleReportController');
 Route::resource('coreDataReport', 'Report\coreDataReportController');
+
+Route::resource('commossionAudit', 'Commission\commissionAuditController');
+//佣金审批
+Route::group(['prefix' => 'commossionAudit'], function () {
+    Route::post('auditComm','UserController@auditComm');
+    Route::post('payComm','UserController@payComm');
+});
 //hello world1

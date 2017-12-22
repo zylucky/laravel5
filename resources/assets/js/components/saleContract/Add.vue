@@ -160,9 +160,9 @@
                     //销售人
                     salesmanList:[
                         {
-                            salesmanid:'',
-                            salesmanname:'',
-                            salesmanphone:'',
+                            salesmanid:null,
+                            salesmanname:null,
+                            salesmanphone:null,
                             hetongtid:1,
                             hetongid:null,
                         },
