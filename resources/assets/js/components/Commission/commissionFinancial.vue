@@ -228,6 +228,10 @@
                 this.$confirm('确认提交完成付款吗？', '提示', {}).then(() => {
                     let para = {
                         id:row.tQdApplyId,
+                        xsQvdaoid:row.xsQvdaoid,
+                        qvdao:row.qvdao,
+                        phone:row.phone,
+                        yongjin:row.yongjin,
                     }
                     //console.log(para);
                     payComm(para).then((res) => {

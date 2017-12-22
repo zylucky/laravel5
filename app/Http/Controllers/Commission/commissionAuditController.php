@@ -140,7 +140,7 @@ class commissionAuditController extends Controller
             'send_from_id'=>$u->id,
             'send_from_name'=>$u->name,
             'send_from_name'=>'erp',
-            'send_to_id'=>$u->id,
+            'send_to_id'=>$request->xsQvdaoid,
             'send_to_name'=>$request->qvdao,
             'send_to_sys'=>'erp',
             'phone'=>$request->phone,
@@ -159,6 +159,5 @@ class commissionAuditController extends Controller
             'json' => $obj
         ]);
         return $r->getBody();
-        return 1;
     }
 }
