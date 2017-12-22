@@ -241,3 +241,11 @@ Route::get('/receiveMessage/{send_to_id}/sys/{sys}','MessageController@index');
 
 Route::resource('coreDataReport', 'Report\coreDataReportController');
 
+Route::resource('commossionAudit', 'Commission\commissionAuditController');
+//佣金审批
+Route::group(['prefix' => 'commossionAudit'], function () {
+    Route::post('auditComm','UserController@auditComm');
+    Route::post('payComm','UserController@payComm');
+});
+//hello world1
+
