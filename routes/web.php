@@ -233,6 +233,12 @@ Route::resource('fangyuanXKReport', 'Report\fangYuanXKReportController');
 Route::resource('jinggengReport', 'Report\jinggengReportController');
 Route::resource('projectReport', 'Report\projectReportController');
 Route::resource('projectSaleReport', 'Report\projectSaleReportController');
+
+//message
+Route::post('/sendMessage','MessageController@create');
+Route::get('/readMessage/{id}','MessageController@read');
+Route::get('/receiveMessage/{send_to_id}/sys/{sys}','MessageController@index');
+
 Route::resource('coreDataReport', 'Report\coreDataReportController');
 
 Route::resource('commossionAudit', 'Commission\commissionAuditController');
@@ -242,3 +248,4 @@ Route::group(['prefix' => 'commossionAudit'], function () {
     Route::post('payComm','UserController@payComm');
 });
 //hello world1
+

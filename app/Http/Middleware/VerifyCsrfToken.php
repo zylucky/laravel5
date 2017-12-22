@@ -13,6 +13,10 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         //
-        'login','logout'
+        'login',
+        'logout',
+        '/sendMessage',
+        '/readMessage',
+        '/receiveMessage/{send_to_id}/sys/{sys}',
     ];
 }

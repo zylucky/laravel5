@@ -419,6 +419,7 @@
                     this.renter.chengzuren = res.data.data.chengzuren;
                 }*/
                 this.renter.chengzufang = res.data.data.chengzufang;
+                this.renter.chengzufang2 = res.data.data.chengzufang;
                 this.renter.shoukuanren = res.data.data.shoukuanren;
                 this.renter.kaihuhang = res.data.data.kaihuhang;
                 this.renter.zhanghao = res.data.data.zhanghao;
@@ -429,11 +430,11 @@
                 this.renter.jujianfangid2 = res.data.data.jujianfangid;
                 this.renter.qudaoren = res.data.data.qudaoren;
                 this.renter.qudaorenid = res.data.data.qudaorenid;
-                if(res.data.data.salesmanList.length>0){
-                    this.renter.salesmanList = res.data.data.salesmanList;
-                    this.renter.optionsyslxr1[0].value = res.data.data.salesmanList[0].salesmanid;
-                    this.renter.optionsyslxr1[0].label =  res.data.data.salesmanList[0].salesmanname;
-                }
+               if(res.data.data.salesmanList.length>0){
+                   this.renter.salesmanList = res.data.data.salesmanList;
+                  this.renter.optionsyslxr1[0].value = res.data.data.salesmanList[0].salesmanid;
+                   this.renter.optionsyslxr1[0].label =  res.data.data.salesmanList[0].salesmanname;
+               }
                 this.renter.options1[0].value = res.data.data.jujianfangid;
                 this.renter.options1[0].label = res.data.data.jujianfang;
                 this.renter.options2[0].value = res.data.data.qudaorenid;
