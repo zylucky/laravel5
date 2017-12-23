@@ -235,9 +235,17 @@ Route::resource('projectReport', 'Report\projectReportController');
 Route::resource('projectSaleReport', 'Report\projectSaleReportController');
 
 //message
-Route::post('/sendMessage','MessageController@create');
-Route::get('/readMessage/{id}','MessageController@read');
-Route::get('/receiveMessage/{send_to_id}/sys/{sys}','MessageController@index');
+Route::post('/sendMessage','Api\MessageController@create');
+Route::get('/readMessage/{id}','Api\MessageController@read');
+Route::get('/receiveMessage/{send_to_id}/sys/{sys}','Api\MessageController@index');
 
 Route::resource('coreDataReport', 'Report\coreDataReportController');
 
+//owner
+Route::post('/owner','Api\OwnerController@create');
+Route::post('/owner/login','Api\OwnerController@login');
+Route::post('/owner/resetPassword','Api\OwnerController@resetPassword')->middleware(\App\Http\Middleware\CheckAccessToken::class);;
+Route::post('/owner/editPassword','Api\OwnerController@editPassword')->middleware(\App\Http\Middleware\CheckAccessToken::class);
+Route::get('/owner/sendVerificationCode/{phone}','Api\OwnerController@sendVerificationCode');
+Route::get('/owner/{id}','Api\OwnerController@index')->middleware(\App\Http\Middleware\CheckAccessToken::class);
+Route::post('/owner/verifyCode','Api\OwnerController@verifyCode');

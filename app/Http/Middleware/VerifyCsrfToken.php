@@ -18,5 +18,10 @@ class VerifyCsrfToken extends BaseVerifier
         '/sendMessage',
         '/readMessage',
         '/receiveMessage/{send_to_id}/sys/{sys}',
+        '/owner',
+        '/owner/login',
+        '/owner/verifyCode',
+        '/owner/resetPassword',
+        '/owner/editPassword',
     ];
 }
