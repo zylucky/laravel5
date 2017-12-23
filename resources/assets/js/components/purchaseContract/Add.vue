@@ -391,6 +391,7 @@
                 this.property.editableTabs2 = [];
                 this.property.officeList.forEach((property,index)=>{
                     index ++;
+                    console.log(index);
                     this.property.tabIndex = index;
                     this.property.editableTabs2.push({
                         title: '房间'+index,

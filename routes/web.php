@@ -241,6 +241,7 @@ Route::get('/receiveMessage/{send_to_id}/sys/{sys}','Api\MessageController@index
 
 Route::resource('coreDataReport', 'Report\coreDataReportController');
 
+
 //owner
 Route::post('/owner','Api\OwnerController@create');
 Route::post('/owner/login','Api\OwnerController@login');
@@ -249,3 +250,12 @@ Route::post('/owner/editPassword','Api\OwnerController@editPassword')->middlewar
 Route::get('/owner/sendVerificationCode/{phone}','Api\OwnerController@sendVerificationCode');
 Route::get('/owner/{id}','Api\OwnerController@index')->middleware(\App\Http\Middleware\CheckAccessToken::class);
 Route::post('/owner/verifyCode','Api\OwnerController@verifyCode');
+
+Route::resource('commossionAudit', 'Commission\commissionAuditController');
+//佣金审批
+Route::group(['prefix' => 'commossionAudit'], function () {
+    Route::post('auditComm','UserController@auditComm');
+    Route::post('payComm','UserController@payComm');
+});
+//hello world1
+

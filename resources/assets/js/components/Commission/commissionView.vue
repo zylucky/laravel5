@@ -7,81 +7,96 @@
             <tr class="tr1" >
                 <td   class="td1"> 楼盘：
                 </td>
-                <td  class="td2">12331</td>
+                <td  class="td2">{{Payable.loupan}}</td>
                 <td  class="td1" >
                     座栋：
                 </td>
                 <td  class="td2">
-                    sdsdfwseffd
+                    {{Payable.loudong}}
                 </td>
                 <td   class="td1">
                     房间号：
                 </td>
                 <td  class="td2" >
-                    xcdsfs
+                    {{Payable.fanghao}}
                 </td>
             </tr>
             <tr class="tr1">
                 <td  > 签单人：
                 </td>
-                <td>12331</td>
+                <td>{{Payable.salesmanName}}</td>
                 <td  >
                     联系电话：
                 </td>
                 <td  >
-                    sdsdfwseffd
+                    {{Payable.salesmanPhone}}
                 </td>
                 <td  >
                     申领金额：
                 </td>
                 <td  >
-                    xcdsfs
+                    {{toDecimal(Payable.yongjin)}}
                 </td>
             </tr>
             <tr class="tr1">
                 <td  > 渠道门店：
                 </td>
-                <td>12331</td>
+                <td>{{Payable.gsname}}</td>
                 <td  >
                      渠道人员：
                 </td>
                 <td  >
-                   sdsdfwseffd
+                    {{Payable.qvdao}}
                 </td>
                 <td  >
                     联系电话：
                 </td>
                 <td >
-                    xcdsfs
+                    {{Payable.phone}}
                 </td>
             </tr>
             <tr class="tr1">
                 <td  > 收款方户名：
                 </td>
-                <td>12331</td>
+                <td>{{Payable.huming}}</td>
                 <td  >
                     开户行：
                 </td>
                 <td  >
-                    sdsdfwseffd
+                    {{Payable.kaihuhang}}
                 </td>
                 <td  >
                     银行账号：
                 </td>
                 <td >
-                    xcdsfs
+                    {{Payable.zhanghao.replace(/\s/g, '').replace(/(.{4})/g, "$1 ")}}
                 </td>
             </tr>
             </tbody>
         </table>
-        <div >
-        <el-steps :active="3" align-center>
-            <el-step title="发起申请" description="张三  2017-12-15"></el-step>
-            <el-step title="佣金确认" description="李四  2017-12-15"></el-step>
-            <el-step title="领导审批" description="赵五  2017-12-15"></el-step>
-            <el-step title="财务审批" description="刘六  2017-12-15"></el-step>
+        <table  width="1220px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
+            <tbody>
+            <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批进度</td></tr>
+            <tr style=" text-align:left; height: 40px"><td colspan="6">
+                <div style="margin-left:60px;margin-top:30px;width: 100%;height: 130px"  >
+
+                <el-steps :active="3" align-center >
+              <el-step v-for="(item, index) in options" :title="item.value" :key="index" :description="item.label"></el-step>
+
         </el-steps>
-        </div>
+        </div></td></tr>
+            </tbody>
+        </table>
+        <table  width="1220px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
+            <tbody>
+            <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批意见</td></tr>
+
+            </tbody>
+        </table>
+            <el-input type="textarea"  auto-complete="off"
+                      placeholder="请输入意见"    style="width:1220px"></el-input>
+        <div style="text-align:center;margin-top:30px;width:1220px" > <el-button @click.native="fanhui">通过</el-button>
+            <el-button @click.native="fanhui">驳回</el-button></div>
     </el-row>
 </template>
 <style>
@@ -100,7 +115,7 @@
 <script>
 
     import {
-        getPayOrder,
+        showcommission,
     } from '../../api/api';
     import ElForm from "../../../../../node_modules/element-ui/packages/form/src/form";
     export default{
@@ -109,6 +124,21 @@
             return {
                 Payable: [],
                 nowDate: '',
+                options: [
+                    {
+                        value: '提交申请',
+                        label: '张三'
+                    }, {
+                        value: '审批通过',
+                        label: '李四'
+                    }, {
+                        value: '审批通过',
+                        label: '王五'
+                    }, {
+                        value: '审批通过',
+                        label: '赵六'
+                    },
+                ],
             }
         },
         methods: {
@@ -218,7 +248,7 @@
                     id: this.$route.query.id
                 };
                 this.listLoading = true;
-                getPayOrder(para).then((res) => {
+                showcommission(para).then((res) => {
                     this.Payable = res.data.data;
                     this.listLoading = false;
                 });

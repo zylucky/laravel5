@@ -220,3 +220,7 @@ export const getjinggengReportListPage = params => { return axios.get(`${base}/j
 export const getprojectReportListPage = params => { return axios.get(`${base}/projectReport`, { params: params }); };
 export const getprojectSaleReportListPage = params => { return axios.get(`${base}/projectSaleReport`, { params: params }); };
 export const getcoreDataReportListPage = params => { return axios.get(`${base}/coreDataReport`, { params: params }); };
+export const getcommissionAuditListPage = params => { return axios.get(`${base}/commossionAudit`, { params: params }); };
+export const showcommission = params => { return axios.get(`${base}/commossionAudit/`+params.id, {}); };
+export const payComm = params =>{ return axios.post(`${base}/commossionAudit/payComm`, { params: params }); };
+export const auditComm = params =>{ return axios.post(`${base}/commossionAudit/auditComm`, { params: params }); };
