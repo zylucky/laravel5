@@ -117,7 +117,7 @@ class commissionAuditController extends Controller
      */
     public function auditComm(Request $request)
     {
-
+       dd($request->request );
         DB::connection('mysql3')->table('users')
             ->where('id', 1)
             ->update(['zt' => 1,'yijian' => '']);
