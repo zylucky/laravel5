@@ -49,7 +49,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('getHedanList','Contract\purchaseContractController@getHedanList');
     Route::get('deleteHedan','Contract\purchaseContractController@deleteHedan');
     Route::get('summary','Contract\purchaseContractController@summary');
-    Route::get('cancelled','Contract\purchaseContractController@cancelled');
+    Route::get('cancelled','Contract\purchaseContractController@changeStatus');
     Route::post('updataHedan','Contract\purchaseContractController@updataHedan');
     Route::post('saveyongyou','Contract\purchaseContractController@saveyongyou');
 });
