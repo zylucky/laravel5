@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Excel;
+use Illuminate\Support\Facades\Redis;
 use Qiniu\Auth;
 
 class TestController extends Controller
@@ -19,7 +20,10 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
-        var_dump($request->path());
+       echo  md5('0124phpoxVxtseIxK');exit;
+        Redis::set('name', 'Taylor');
+        $name = Redis::get('name');
+        var_dump($name);
     }
     function DiffDate($date1, $date2) {
         if (strtotime($date1) > strtotime($date2)) {
