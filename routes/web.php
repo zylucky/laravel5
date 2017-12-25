@@ -243,13 +243,17 @@ Route::resource('coreDataReport', 'Report\coreDataReportController');
 
 
 //owner
-Route::post('/owner','Api\OwnerController@create');
-Route::post('/owner/login','Api\OwnerController@login');
-Route::post('/owner/resetPassword','Api\OwnerController@resetPassword')->middleware(\App\Http\Middleware\CheckAccessToken::class);;
-Route::post('/owner/editPassword','Api\OwnerController@editPassword')->middleware(\App\Http\Middleware\CheckAccessToken::class);
-Route::get('/owner/sendVerificationCode/{phone}','Api\OwnerController@sendVerificationCode');
-Route::get('/owner/{id}','Api\OwnerController@index')->middleware(\App\Http\Middleware\CheckAccessToken::class);
-Route::post('/owner/verifyCode','Api\OwnerController@verifyCode');
+Route::group(['prefix' => 'api/v1','middleware' => 'throttle:60,1'],function (){
+    Route::post('/owner','Api\OwnerController@create');
+    Route::post('/owner/login','Api\OwnerController@login');
+    Route::post('/owner/resetPassword','Api\OwnerController@resetPassword')->middleware(\App\Http\Middleware\CheckAccessToken::class);;
+    Route::post('/owner/editPassword','Api\OwnerController@editPassword')->middleware(\App\Http\Middleware\CheckAccessToken::class);
+    Route::get('/owner/sendVerificationCode/{phone}','Api\OwnerController@sendVerificationCode');
+    Route::get('/owner/{id}','Api\OwnerController@index')->middleware(\App\Http\Middleware\CheckAccessToken::class);
+    Route::post('/owner/verifyCode','Api\OwnerController@verifyCode');
+    Route::post('/owner/createOwner','Api\OwnerController@createOwner')->middleware(\App\Http\Middleware\CheckAccessToken::class);
+});
+
 
 Route::resource('commossionAudit', 'Commission\commissionAuditController');
 //佣金审批

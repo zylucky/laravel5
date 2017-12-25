@@ -35,6 +35,7 @@ class OwnerController extends ApiController
         }else{
             $owner = Owner::create([
                 'phone'=>$phone,
+                'type' =>$type,
                 'password'=>md5($password.$rand),
                 'rand'=>$rand,
             ]);
@@ -174,4 +175,32 @@ class OwnerController extends ApiController
         return $res;
     }
 
+    /**
+     * @param Request $request
+     * @return mixed|string
+     */
+    public function createOwner(Request $request)
+    {
+        $admin = Owner::where('phone',18511909124)->first();
+        if($request->header('access_token')!=$admin->access_token)
+        {
+            return $this->failed('Authorization invalid',401);
+        }
+        $password = $request->input('password');
+        $phone = $request->input('phone');
+        $type = $request->input('type');
+        $rand = str_random(10);
+        $res = Owner::where('phone',$phone)->first();
+        if($res){
+            return $this->failed('用户已存在');
+        }else{
+            $owner = Owner::create([
+                'phone'=>$phone,
+                'type'=>$type,
+                'password'=>md5($password.$rand),
+                'rand'=>$rand,
+            ]);
+            return $this->success($owner);
+        }
+    }
 }
