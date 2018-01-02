@@ -252,6 +252,7 @@ Route::group(['prefix' => 'api/v1','middleware' => 'throttle:60,1'],function (){
     Route::get('/owner/{id}','Api\OwnerController@index')->middleware(\App\Http\Middleware\CheckAccessToken::class);
     Route::post('/owner/verifyCode','Api\OwnerController@verifyCode');
     Route::post('/owner/createOwner','Api\OwnerController@createOwner')->middleware(\App\Http\Middleware\CheckAccessToken::class);
+    Route::get('/owner/{id}/info','Api\OwnerController@yzfyInfo');
 });
 
 

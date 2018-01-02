@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Owner;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
-
+use Mockery\Exception;
 
 
 class OwnerController extends ApiController
@@ -194,13 +196,59 @@ class OwnerController extends ApiController
         if($res){
             return $this->failed('用户已存在');
         }else{
-            $owner = Owner::create([
-                'phone'=>$phone,
-                'type'=>$type,
-                'password'=>md5($password.$rand),
-                'rand'=>$rand,
-            ]);
-            return $this->success($owner);
+            try{
+                DB::beginTransaction();
+                $owner = Owner::create([
+                    'phone'=>$phone,
+                    'type'=>$type,
+                    'password'=>md5($password.$rand),
+                    'rand'=>$rand,
+                ]);
+                foreach ($request->input('fy_id') as $key => $value)
+                {
+                    DB::connection('mysql3')->insert("insert into yz_fy  (yz_id,fy_id) VALUE ($owner->id,$value)");
+                }
+                DB::commit();
+                return $this->success($owner);
+
+            }catch (Exception $exception){
+                DB::rollBack();
+            }
+
         }
+    }
+    /*
+     * 收购前，根据业主获取到的房源信息
+     */
+    public function yzfyInfo($yz_id)
+    {
+        $client = new Client([
+            'base_uri' => $this->omc_url,
+        ]);
+        $yzfys = DB::connection('mysql3')->select("select * from yz_fy where yz_id = $yz_id");
+
+        foreach ($yzfys as $yzfy)
+        {
+            $response = $client->post('/yhcms/web/jcsj/getErpFy.do',[
+                'json' => ['fyid'=>$yzfy->fy_id]
+            ]);
+           $res[] = json_decode($response->getBody())->data;
+           //在erp中查找是否已经收购，收购的信息和销售的信息
+            $purchaseInfo = DB::connection('mysql2')->select("
+            select * from t_shoufang_office office INNER  JOIN t_shoufanghetong ht ON office.HetongId = ht.id where omc_id = $yzfy->fy_id
+            
+            ");
+            if($purchaseInfo)
+            {
+                //已经收购  委托时间（收购时间）、到期时间，租户信息（租户名称、起租时间、到期时间、所属行业）
+                $start_time = $purchaseInfo->;
+            }
+            $saleInfo = DB::connection('mysql2')->select("select * from t_xs_office where omc_id = $yzfy->fy_id");
+
+        }
+
+
+        return $this->success($res);
+
     }
 }
