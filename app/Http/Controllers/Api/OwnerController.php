@@ -232,18 +232,31 @@ class OwnerController extends ApiController
             $response = $client->post('/yhcms/web/jcsj/getErpFy.do',[
                 'json' => ['fyid'=>$yzfy->fy_id]
             ]);
-           $res[] = json_decode($response->getBody())->data;
-           //在erp中查找是否已经收购，收购的信息和销售的信息
+           $data = json_decode($response->getBody())->data;
+                //在erp中查找是否已经收购，收购的信息和销售的信息
             $purchaseInfo = DB::connection('mysql2')->select("
-            select * from t_shoufang_office office INNER  JOIN t_shoufanghetong ht ON office.HetongId = ht.id where omc_id = $yzfy->fy_id
-            
-            ");
-            if($purchaseInfo)
+            select ht.StartDate,ht.EndDate from t_shoufang_office office INNER  JOIN t_shoufanghetong ht ON office.HetongId = ht.id 
+            where omc_id = $yzfy->fy_id limit 1");
+            if(count($purchaseInfo)>0)
             {
-                //已经收购  委托时间（收购时间）、到期时间，租户信息（租户名称、起租时间、到期时间、所属行业）
-                $start_time = $purchaseInfo->;
+                //已经收购  委托时间（收购时间）、到期时间
+                $data->purchase_start_time = $purchaseInfo[0]->StartDate;
+                $data->purchase_end_time = $purchaseInfo[0]->EndDate;
             }
-            $saleInfo = DB::connection('mysql2')->select("select * from t_xs_office where omc_id = $yzfy->fy_id");
+            $saleInfo = DB::connection('mysql2')->select("
+            select ht.startDate,ht.endDate,ren.name from t_xs_office  office 
+            INNER  JOIN  t_xs_hetong ht on office.HetongId = ht.id 
+            INNER JOIN t_chengzuren ren ON ren.HetongId = ht.id
+            where office.omc_id = $yzfy->fy_id limit 1");
+
+            if(count($saleInfo)>0)
+            {
+                //已经出售  租户信息（租户名称、起租时间、到期时间、所属行业）
+                $data->sale_start_time = $saleInfo[0]->startDate;
+                $data->sale_end_time = $saleInfo[0]->endDate;
+                $data->chengzuren = $saleInfo[0]->name;
+            }
+            $res[] = $data;
 
         }
 
