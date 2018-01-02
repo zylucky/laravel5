@@ -4,7 +4,6 @@
         <table   border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 基本信息</td></tr>
-            <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 基本信息</td></tr>
             <tr class="tr1" >
                 <td   class="td1"> 楼盘：
                 </td>
@@ -169,7 +168,8 @@
             handleAgis: function (index, row) {
                 this.$confirm('确认通过审核吗？', '提示', {}).then(() => {
                     let para = {
-                        id:row.tQdApplyId,
+                        id:this.$route.query.id,
+                        status:1
                     }
                     //console.log(para);
                     auditComm(para).then((res) => {
@@ -184,7 +184,8 @@
             handleReject: function (index, row) {
                 this.$confirm('确认驳回审核吗？', '提示', {}).then(() => {
                     let para = {
-                        id:row.tQdApplyId,
+                        id:this.$route.query.id,
+                        status:2
                     }
                     //console.log(para);
                     auditComm(para).then((res) => {
