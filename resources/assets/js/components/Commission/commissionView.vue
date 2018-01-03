@@ -80,7 +80,7 @@
             <tr style=" text-align:left; height: 40px"><td colspan="6">
                 <div style="margin-left:60px;margin-top:30px;width: 100%;height: 130px"  >
 
-                <el-steps :active="3" align-center >
+                <el-steps :active=shenpijindu align-center >
               <el-step v-for="(item, index) in options" :title="item.value" :key="index" :description="item.label"></el-step>
 
         </el-steps>
@@ -125,20 +125,8 @@
                 Payable: [],
                 nowDate: '',
                 options: [
-                    {
-                        value: '提交申请',
-                        label: '张三'
-                    }, {
-                        value: '审批通过',
-                        label: '李四'
-                    }, {
-                        value: '审批通过',
-                        label: '王五'
-                    }, {
-                        value: '审批通过',
-                        label: '赵六'
-                    },
                 ],
+                shenpijindu:1,
             }
         },
         methods: {
@@ -238,7 +226,7 @@
                 if (value != '' || value != null) {
                     var newDate = new Date();
                     newDate.setTime(value);
-                    return newDate.toLocaleDateString();
+                    return newDate.toLocaleString();
                 }
             },
 
@@ -251,6 +239,15 @@
                 showcommission(para).then((res) => {
                     this.Payable = res.data.data;
                     this.listLoading = false;
+                    for (var item in res.data.shenpi) {
+                        if(res.data.shenpi[item].isfock==true){
+                           this.shenpijindu=parseInt(item)+1;
+                        }
+                        this.options.push({
+                            value: res.data.shenpi[item].person,
+                            label: this.changeDate(res.data.shenpi[item].shenpitime ),
+                        });
+                    }
                 });
             },
             toDecimal(x) {

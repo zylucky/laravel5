@@ -36,6 +36,7 @@ class commissionAuditController extends Controller
         $sql=$sql.$strWhere."   limit ".$limitStart.", ".$limitEnd;
         $bk = DB::connection('mysql3')->select($sql);
 
+
         return $data = ['total'=>$count[0]->countNum,'data'=>$bk];
     }
 
@@ -72,8 +73,15 @@ class commissionAuditController extends Controller
         $sql=" select *,case sqfk+sqfk1 when 0 then '首期房租押金已付齐' else '首期房租押金未付齐' end beizhu  from v_yjxx where id=".$id;
 
         $bk = DB::connection('mysql3')->select($sql);
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', 'http://192.168.1.40:8557/api/task/apply/OMC_t_qd_xs_yongjin/2/get',[
+            ]
+        );
+        $shenpi = json_decode($response->getBody());
 
-        return $data = [ 'data'=>$bk[0]];
+        return $data = [ 'data'=>$bk[0],'shenpi'=>$shenpi->data->shenpi];
     }
 
     /**

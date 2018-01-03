@@ -49,7 +49,7 @@
             </el-table-column>
             <el-table-column prop="task_zt" label="审批状态" :formatter="formatYJType">
             </el-table-column>
-            <el-table-column prop="task_zt" label="支付状态" :formatter="formatYJType">
+            <el-table-column prop="zfzt" label="支付状态" :formatter="formatState">
             </el-table-column>
             <el-table-column prop="beizhu" label="备注" width="220" >
             </el-table-column>
@@ -146,18 +146,17 @@
             //状态显示转换
             formatYJType: function (row, column) {
                 let status = [];
-                status[1] = '未付款';
-                status[2] = '已付款';
-                status[3] = '已完成';
-                return status[row.yjstate];
+                status[1] = '已提交';
+                status[2] = '未审批';
+                status[3] = '已通过';
+                return status[row.task_zt];
             },
             //状态显示转换
-            formatState: function (yjstate) {
+            formatState: function (row, column) {
                 let status = [];
                 status[1] = '未付款';
                 status[2] = '已付款';
-                status[3] = '已完成';
-                return status[yjstate];
+                return status[row.zfzt];
             },
 
             //时间戳转日期格式
