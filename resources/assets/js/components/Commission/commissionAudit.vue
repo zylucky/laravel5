@@ -4,7 +4,6 @@
         <table   border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 基本信息</td></tr>
-            <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 基本信息</td></tr>
             <tr class="tr1" >
                 <td   class="td1"> 楼盘：
                 </td>
@@ -78,16 +77,14 @@
         <table  width="1220px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批进度</td></tr>
-            <tr style=" text-align:left; height: 40px"><td colspan="6"> <div style="margin-left:60px;margin-top:30px;width: 100%;height: 130px">
-        <el-steps :active="3" align-center >
-            <el-step title="发起申请" description="张三  2017-12-15"></el-step>
-            <el-step title="佣金确认" description="李四  2017-12-15"></el-step>
-            <el-step title="领导审批" description="赵五  2017-12-15"></el-step>
-            <el-step title="财务审批" description="刘六  2017-12-15"></el-step>
-            <el-step title="领导审批" description="赵五  2017-12-15"></el-step>
-            <el-step title="财务审批" description="刘六  2017-12-15"></el-step>
-        </el-steps>
-        </div></td></tr>
+            <tr style=" text-align:left; height: 40px"><td colspan="6">
+                <div style="margin-left:60px;margin-top:30px;width: 100%;height: 130px"  >
+
+                    <el-steps :active=shenpijindu align-center >
+                        <el-step v-for="(item, index) in options" :title="item.value" :key="index" :description="item.label"></el-step>
+
+                    </el-steps>
+                </div></td></tr>
             </tbody>
         </table>
         <table  width="1220px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
@@ -96,10 +93,10 @@
 
             </tbody>
         </table>
-            <el-input type="textarea"  auto-complete="off"
-                      placeholder="请输入意见"    style="width:1220px"></el-input>
-       <div > <el-button @click.native="handleAgis">通过</el-button>
-           <el-button @click.native="handleReject">驳回</el-button></div>
+        <el-input type="textarea"  auto-complete="off"
+                  placeholder="请输入意见"   prop="shuoming" style="width:1220px"></el-input>
+        <div style="text-align:center;margin-top:30px;width:1220px" > <el-button @click.native="save">通过</el-button>
+            <el-button @click.native="bohui">驳回</el-button></div>
     </el-row>
 </template>
 <style>
@@ -127,17 +124,23 @@
             return {
                 Payable: [],
                 nowDate: '',
+                options: [
+                ],
+                shenpijindu:1,
+                shuoming:'',
             }
         },
         methods: {
+
             //时间戳转日期格式
             changeDate(value){
                 if (value != '' || value != null) {
                     var newDate = new Date();
                     newDate.setTime(value);
-                    return newDate.toLocaleDateString();
+                    return newDate.toLocaleString();
                 }
             },
+
             //获取应付款列表
             getPayable() {
                 let para = {
@@ -147,6 +150,16 @@
                 showcommission(para).then((res) => {
                     this.Payable = res.data.data;
                     this.listLoading = false;
+                    for (var item in res.data.shenPi) {
+                        if(res.data.shenPi[item].isfock==true){
+                            this.shenpijindu=parseInt(item)+1;
+                        }
+
+                        this.options.push({
+                            value: res.data.shenPi[item].person,
+                            label: this.changeDate(res.data.shenPi[item].shenpitime ),
+                        });
+                    }
                 });
             },
             toDecimal(x) {
@@ -164,39 +177,56 @@
                 while (s.length <= rs + 2) {
                     s += '0';
                 }
-                return  s.split('').reverse().join('').replace(/(\d{3}(?=\d)(?!\d+\.|$))/g, '$1,').split('').reverse().join('');
-            },
-            handleAgis: function (index, row) {
-                this.$confirm('确认通过审核吗？', '提示', {}).then(() => {
-                    let para = {
-                        id:row.tQdApplyId,
-                    }
-                    //console.log(para);
-                    auditComm(para).then((res) => {
-                        this.$message({
-                            message: '提交成功',
-                            type: 'success'
-                        });
-                        this.getPayable();
-                    });
-                });
-            },
-            handleReject: function (index, row) {
-                this.$confirm('确认驳回审核吗？', '提示', {}).then(() => {
-                    let para = {
-                        id:row.tQdApplyId,
-                    }
-                    //console.log(para);
-                    auditComm(para).then((res) => {
-                        this.$message({
-                            message: '提交成功',
-                            type: 'success'
-                        });
-                        this.getPayable();
-                    });
-                });
-            },
 
+                return  s.split('').reverse().join('').replace(/(\d{3}(?=\d)(?!\d+\.|$))/g, '$1,').split('').reverse().join('');
+
+            },
+            save(){
+                this.$confirm('确认通过吗？', '提示', {}).then(() => {
+                    let para = {
+                        id: this.$route.query.id,
+                        shenpi:1,
+                        shuoming:'cs',
+                    };
+                    auditComm(para).then((res) => {
+                        if(res.data.code==200){
+                            this.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                        }else{
+                            this.$message({
+                                message: res.data.msg,
+                                type: 'error'
+                            });
+
+                        };
+                    });
+                });
+            },
+            bohui(){
+                this.$confirm('确认通过吗？', '提示', {}).then(() => {
+                    let para = {
+                        id: this.$route.query.id,
+                        shenpi:2,
+                        shuoming:'cs',
+                    };
+                    auditComm(para).then((res) => {
+                        if(res.data.code==200){
+                            this.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                        }else{
+                            this.$message({
+                                message: res.data.msg,
+                                type: 'error'
+                            });
+
+                        };
+                    });
+                });
+            },
         },
         mounted() {
             this.getPayable();

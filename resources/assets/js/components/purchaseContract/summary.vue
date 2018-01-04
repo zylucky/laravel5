@@ -46,12 +46,12 @@
                     <td  align="center" height="23" ><p style="display: inline;">{{data.zujins[0].split(' ')[0]}}</p> <p style="display: inline;margin-left:15px;">{{data.zujins[0].split(' ')[1]}}</p> </td>
                 </tr>
                 <tr>
-                    <td  align="center" height="23" ><p style="display: inline;">{{data.zujins[1].split(' ')[0]}}</p> <p style="display: inline;margin-left:15px;">{{data.zujins[1].split(' ')[1]}}</p> </td>
+                    <td  align="center" height="23" ><p style="display: inline;">{{data.zujins[1]?data.zujins[1].split(' ')[0]:''}}</p> <p style="display: inline;margin-left:15px;">{{data.zujins[1]?data.zujins[1].split(' ')[1]:''}}</p> </td>
                     <th  align="left">保证金</th>
                     <td  align="center">¥{{toDecimal(data.baozhengjin)}}</td>
                 </tr>
                 <tr>
-                    <td  align="center" height="23" ><p style="display: inline;">{{data.zujins[2].split(' ')[0]}}</p> <p style="display: inline;margin-left:15px;">{{data.zujins[2].split(' ')[1]}}</p> </td>
+                    <td  align="center" height="23" ><p style="display: inline;">{{data.zujins[2]?data.zujins[2].split(' ')[0]:''}}</p> <p style="display: inline;margin-left:15px;">{{data.zujins[2]?data.zujins[2].split(' ')[1]:''}}</p> </td>
                     <th align="left">租金支付方式</th>
                     <td align="center">{{format(data.zujingzhifufangshi)}}</td>
                 </tr>
