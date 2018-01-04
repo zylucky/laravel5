@@ -47,7 +47,7 @@
             </el-table-column>
             <el-table-column prop="qvdao" label="渠道人员" width="100" >
             </el-table-column>
-            <el-table-column prop="task_zt" label="审批状态" :formatter="formatYJType">
+            <el-table-column  label="审批状态" :formatter="formatYJType">
             </el-table-column>
             <el-table-column prop="zfzt" label="支付状态" :formatter="formatState">
             </el-table-column>
@@ -60,8 +60,8 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  > <el-button   v-if="scope.row.task_zt=1" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
-                            <el-dropdown-item  > <el-button  v-if="scope.row.task_zt=1" @click="handleFinish(scope.$index, scope.row)">付款</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button   v-if="scope.row.task_zt==2" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button  v-if="scope.row.task_zt==3" @click="handleFinish(scope.$index, scope.row)">付款</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button    @click="handleView(scope.$index, scope.row)">查看</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
@@ -108,14 +108,14 @@
                 },
                 optionsspzt: [
                     {
-                        value: 1,
+                        value: 2,
                         label: '待审批'
                     },
                     {
-                        value: 2,
+                        value: 3,
                         label: '已通过'
                     }, {
-                        value: 3,
+                        value: 4,
                         label: '已驳回'
                     },
                 ],
@@ -146,16 +146,18 @@
             //状态显示转换
             formatYJType: function (row, column) {
                 let status = [];
+                status[0] = '未提交';
                 status[1] = '已提交';
                 status[2] = '未审批';
                 status[3] = '已通过';
+                status[4] = '已驳回';
                 return status[row.task_zt];
             },
             //状态显示转换
             formatState: function (row, column) {
                 let status = [];
-                status[1] = '未付款';
-                status[2] = '已付款';
+                status[0] = '未付款';
+                status[1] = '已付款';
                 return status[row.zfzt];
             },
 
@@ -226,13 +228,12 @@
             handleFinish: function (index, row) {
                 this.$confirm('确认提交完成付款吗？', '提示', {}).then(() => {
                     let para = {
-                        id:row.tQdApplyId,
+                        id:row.id,
                         xsQvdaoid:row.xsQvdaoid,
                         qvdao:row.qvdao,
                         phone:row.phone,
                         yongjin:row.yongjin,
                     }
-                    //console.log(para);
                     payComm(para).then((res) => {
                         this.$message({
                             message: '提交成功',

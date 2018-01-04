@@ -273,7 +273,7 @@ let routes = [
 
             {path:'/commissionView', component: commissionView, name: '佣金详情', hidden: true},
             {path:'/commissionAudit', component: commissionAudit, name: '佣金审批', hidden: true},
-            {path:'/commissionAuditList', component: commissionAuditList, name: '佣金列表', hidden: true},
+            {path:'/commissionAuditList', component: commissionAuditList, name: '佣金列表', hidden: false},
 
         ]
     },
