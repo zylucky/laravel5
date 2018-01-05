@@ -8,13 +8,13 @@
             华溯商贸</u></p>
         <p style="margin-left: 6%;"> <b>项目房间号</b> <u style="font-size: 24px;">{{data.xiangmufangjianhao}}</u> <b style="position:absolute;left:60%;">面积 <u>{{data.mianji}}m²</u></b> </p>
         <div style="margin-left:18px;float: left">
-            <input type="checkbox" v-model="data.fangwuzichanguanlifuwuhetong" >房屋资产管理服务合同
-            <input type="checkbox"style="margin-left:43px;" v-model="data.budongchanshouquanweituoshu">不动产授权委托书
-            <input type="checkbox"style="margin-left:43px;" v-model="data.chanquanzhengfuyinjian">产权证复印件（全套，无缺页）
+            <input type="checkbox" v-model="data.fangwuzichanguanlifuwuhetong" ><b>房屋资产管理服务合同</b>
+            <input type="checkbox"style="margin-left:43px;" v-model="data.budongchanshouquanweituoshu"><b>不动产授权委托书</b>
+            <input type="checkbox"style="margin-left:43px;" v-model="data.chanquanzhengfuyinjian"><b>产权证复印件（全套，无缺页）</b>
             <br>
-            <input type="checkbox" v-model="data.yezhushengfenzhengfuyinjian">业主身份证复印件
-            <input type="checkbox" style="margin-left:67px;" v-model="data.yezhushouquandailirenweituoshu">业主授权代理人委托书
-            <input type="checkbox"style="margin-left:19px;" v-model="data.weituorenshenfenzhengfuyinjian">委托人身份证复印件
+            <input type="checkbox" v-model="data.yezhushengfenzhengfuyinjian"><b>业主身份证复印件</b>
+            <input type="checkbox" style="margin-left:67px;" v-model="data.yezhushouquandailirenweituoshu"><b>业主授权代理人委托书</b>
+            <input type="checkbox"style="margin-left:19px;" v-model="data.weituorenshenfenzhengfuyinjian"><b>委托人身份证复印件</b>
             <br>
             <table  style="border-collapse: collapse;">
                 <tr >
@@ -53,7 +53,7 @@
                 <tr>
                     <td  align="center" height="23" ><p style="display: inline;">{{data.zujins[2]?data.zujins[2].split(' ')[0]:''}}</p> <p style="display: inline;margin-left:15px;">{{data.zujins[2]?data.zujins[2].split(' ')[1]:''}}</p> </td>
                     <th align="left">租金支付方式</th>
-                    <td align="center">{{format(data.zujingzhifufangshi)}}</td>
+                    <td align="center">{{data.zujingzhifufangshi}}</td>
                 </tr>
                 <tr>
                     <td  align="center" height="23"></td>
@@ -187,9 +187,7 @@
 
                 });
             },
-            format(zujinzhifufangshi){
-                return zujinzhifufangshi.replace(/押2/,'');
-            }
+
         },
         mounted(){
             this.getInfo();
