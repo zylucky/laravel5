@@ -87,7 +87,7 @@
         </div></td></tr>
             </tbody>
         </table>
-
+<div> <el-button @click.native="fanhui">返回</el-button></div>
     </el-row>
 </template>
 <style>
@@ -173,7 +173,9 @@
 
             },
 
-
+            fanhui(){
+                this.$router.push('/commissionAuditList');
+            },
         },
         mounted() {
             this.getPayable();

@@ -22,37 +22,37 @@
                 </el-radio-group>
             </el-form-item>
             <div v-if="renter.hetongtype==2">
-                <!--<el-row>-->
-                    <!--<el-col  :span="8">-->
-                    <!--<el-form-item label="销售" :prop="'salesmanList.' + 0 + '.salesmanid'" :rules="{-->
-                                            <!--required: true, message: '不能为空'-->
-                                        <!--}"    required>-->
-                            <!--<el-select-->
-                                    <!--v-model="renter.salesmanList[0].salesmanid"-->
-                                    <!--filterable-->
-                                    <!--remote-->
-                                    <!--@change="updataHedan1"-->
-                                    <!--placeholder="销售人员姓名"-->
-                                    <!--:remote-method="remoteMethodyslxr1"-->
-                                    <!--:loading="fristyslxrloading1"-->
-                           <!--&gt;-->
-                                <!--<el-option-->
-                                        <!--v-for="item in renter.optionsyslxr1"-->
-                                        <!--:key="item.value"-->
-                                        <!--:label="item.label"-->
-                                        <!--:value="item.value">-->
-                                <!--</el-option>-->
-                            <!--</el-select>-->
-                    <!--</el-form-item>-->
-                    <!--</el-col>-->
-                    <!--<el-col  :span="8">-->
-                    <!--<el-form-item label="联系电话"   :prop="'salesmanList.' + 0 + '.salesmanphone'" :rules="{-->
-                                            <!--required: true, message: '不能为空'-->
-                                        <!--}"     required>-->
-                        <!--<el-input v-model="renter.salesmanList[0].salesmanphone" disabled="disabled" ></el-input>-->
-                    <!--</el-form-item>-->
-                    <!--</el-col>-->
-                <!--</el-row>-->
+                <el-row>
+                    <el-col  :span="8">
+                    <el-form-item label="销售" :prop="'salesmanList.' + 0 + '.salesmanid'" :rules="{
+                                            required: true, message: '不能为空'
+                                        }"    required>
+                            <el-select
+                                    v-model="renter.salesmanList[0].salesmanid"
+                                    filterable
+                                    remote
+                                    @change="updataHedan1"
+                                    placeholder="销售人员姓名"
+                                    :remote-method="remoteMethodyslxr1"
+                                    :loading="fristyslxrloading1"
+                           >
+                                <el-option
+                                        v-for="item in renter.optionsyslxr1"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                </el-option>
+                            </el-select>
+                    </el-form-item>
+                    </el-col>
+                    <el-col  :span="8">
+                    <el-form-item label="联系电话"   :prop="'salesmanList.' + 0 + '.salesmanphone'" :rules="{
+                                            required: true, message: '不能为空'
+                                        }"     required>
+                        <el-input v-model="renter.salesmanList[0].salesmanphone" disabled="disabled" ></el-input>
+                    </el-form-item>
+                    </el-col>
+                </el-row>
                 <el-row>
                     <el-form-item label="居间方类型">
                         <el-radio-group v-model="renter.jujianfangtype" @change="jujianfangtypeChange">
