@@ -26,7 +26,7 @@ class MessageController extends Controller
                 $request->input('type'),
                 $request->input('yongjin')
             );
-            $success = isset($res->err_code)?false:true;
+            $success = $res->Code=="OK"?true:false;
         }else{
             $res = $this->send($message->id);
             $success = $res==1?true:false;
@@ -141,7 +141,7 @@ class MessageController extends Controller
         $sendSms->setPhoneNumbers($phone);
         $sendSms->setSignName('亮狮网');//阿里云短信测试专用
         $sendSms->setTemplateCode($templateCode[$type]);
-        $sendSms->setTemplateParam(['yongjin' => $yongjin]);
+        $sendSms->setTemplateParam(['yongjin' => "$yongjin"]);
         $sendSms->setOutId('demo');
 
          return $client->execute($sendSms);
