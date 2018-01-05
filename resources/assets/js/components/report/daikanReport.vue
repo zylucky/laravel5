@@ -18,6 +18,8 @@
         </el-row>
         </el-form>
         <el-table :data="chuFang"  highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
+            <el-table-column prop="Loupan_name" label="发起人部门"  width="150"    >
+            </el-table-column>
             <el-table-column prop="Loupan_name" label="楼盘"  width="150"    >
             </el-table-column>
             <el-table-column prop="Loudong_name" label="楼栋"  width="80"  >
@@ -26,70 +28,35 @@
             </el-table-column>
             <el-table-column prop="Qianyuemianji" label="面积" width="90" >
             </el-table-column>
-            <el-table-column prop="Price" label="收购单价（元/㎡/天）"  width="180"  >
+            <el-table-column prop="Price" label="经纪公司"  width="180"  >
             </el-table-column>
-            <el-table-column prop="Price" label="出租单价（元/㎡/天）"  width="180"  >
+            <el-table-column prop="Price" label="联系人"  width="180"  >
             </el-table-column>
-            <el-table-column prop="YueZujin" label="收购月租金"   width="110" >
+            <el-table-column prop="YueZujin" label="电话"   width="110" >
             </el-table-column>
-            <el-table-column prop="xsdj" label="收购日租金"    width="120" >
+            <el-table-column prop="xsdj" label="客户业态"    width="120" >
             </el-table-column>
-            <el-table-column prop="YueZujin" label="出租月租金"   width="110" >
+            <el-table-column prop="YueZujin" label="预算"   width="110" >
             </el-table-column>
-            <el-table-column prop="xsdj" label="出租日租金"    width="120" >
+            <el-table-column prop="xsdj" label="是否二看"    width="120" >
             </el-table-column>
-            <el-table-column prop="xsyzj" label="收购付款方式" width="120" >
+            <el-table-column prop="xsyzj" label="意向客户项目房间号" width="120" >
             </el-table-column>
-            <el-table-column prop="ckzl" label="出租付款方式"   width="120">
+            <el-table-column prop="ckzl" label="跟进情况"   width="120">
             </el-table-column>
-            <el-table-column prop="ckzlzj" label="收购免租"   width="130"  >
+            <el-table-column prop="ckzlzj" label="幼狮对接人"   width="130"  >
             </el-table-column>
-            <el-table-column prop="QianyueDate" label="收房佣金合计天数"  width="120" >
+            <el-table-column prop="QianyueDate" label="房源状态"  width="120" >
             </el-table-column>
-            <el-table-column prop="StartDate" label="收房佣金补差额"  width="120" >
+            <el-table-column prop="StartDate" label="需求面积"  width="120" >
             </el-table-column>
-            <el-table-column prop="EndDate" label="出房佣金"  width="120" >
+            <el-table-column prop="EndDate" label="销售单价"  width="120" >
             </el-table-column>
-            <el-table-column prop="yjts" label="出房佣金合计天数"  width="120" >
+            <el-table-column prop="yjts" label="月租金"  width="120" >
             </el-table-column>
-            <el-table-column prop="yjkxf" label="出房免租"  width="95" >
+            <el-table-column prop="yjkxf" label="带看时间"  width="95" >
             </el-table-column>
-            <el-table-column prop="yjjb" label="出房免租期"  width="100" >
-            </el-table-column>
-            <el-table-column prop="zxsp" label="销售出房预警"  width="120" >
-            </el-table-column>
-            <el-table-column prop="lpsort" label="空置时间"  width="120" >
-            </el-table-column>
-            <el-table-column prop="QianyueDate" label="实际空置时间"  width="120" >
-            </el-table-column>
-            <el-table-column prop="StartDate" label="装修工期天数"  width="120" >
-            </el-table-column>
-            <el-table-column prop="EndDate" label="装修款"  width="120" >
-            </el-table-column>
-            <el-table-column prop="yjts" label="装修费用合计天数"  width="120" >
-            </el-table-column>
-            <el-table-column prop="yjkxf" label="定制装修款"  width="95" >
-            </el-table-column>
-            <el-table-column prop="yjjb" label="定制装修费用合计天数"  width="100" >
-            </el-table-column>
-            <el-table-column prop="zxsp" label="礼品费用"  width="120" >
-            </el-table-column>
-            <el-table-column prop="lpsort" label="礼品费用合计天数"  width="120" >
-            </el-table-column>
-            <el-table-column prop="StartDate" label="盈亏天数"  width="120" >
-            </el-table-column>
-            <el-table-column prop="EndDate" label="盈亏金额"  width="120" >
-            </el-table-column>
-            <el-table-column prop="yjts" label="出房已收款"  width="120" >
-            </el-table-column>
-            <el-table-column prop="yjkxf" label="出房未收款"  width="95" >
-            </el-table-column>
-            <el-table-column prop="yjjb" label="何时收齐"  width="100" >
-            </el-table-column>
-            <el-table-column prop="zxsp" label="客服收房日"  width="120" >
-            </el-table-column>
-            <el-table-column prop="lpsort" label="出房签约日"  width="120" >
-            </el-table-column>
+
         </el-table>
         <div style="margin-top:30px"></div>
         <!-- 分页-->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Commission;
 
+use App\Http\Controllers\Api\MessageController;
 use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -151,7 +152,7 @@ class commissionAuditController extends Controller
         $obj=    Array(
             'send_from_id'=>$u->id,
             'send_from_name'=>$u->name,
-            'send_from_name'=>'erp',
+            'send_from_sys'=>'erp',
             'send_to_id'=>$request->params["xsQvdaoid"],
             'send_to_name'=>$request->params["qvdao"],
             'send_to_sys'=>'erp',
@@ -162,15 +163,13 @@ class commissionAuditController extends Controller
             'yongjin'=>$request->params["yongjin"],
         );
          DB::connection('mysql3')->update("update t_qd_xs_yongjin SET zfzt=1 where id =".$request->params["id"]);
-         dd($obj);
-        $client = new Client ([
-            'base_uri' =>'',
+         $request->request->add($obj);
+        $proxy = Request::create(
+            '/sendMessage',
+            'POST'
+        );
+        $response = \Route::dispatch($proxy);
 
-        ]);
-
-        $r = $client->request('POST', 'http://erp.youshikongjian.com/sendMessage', [
-            'json' => $obj
-        ]);
-        return $r->getBody();
+        return $response;
     }
 }
