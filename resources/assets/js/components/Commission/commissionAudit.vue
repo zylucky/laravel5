@@ -1,7 +1,7 @@
 <template>
     <el-row>
 
-        <table   border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;" >
+        <table   border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;width:1280px" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 基本信息</td></tr>
             <tr class="tr1" >
@@ -74,7 +74,7 @@
             </tr>
             </tbody>
         </table>
-        <table  width="1220px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
+        <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批进度</td></tr>
             <tr style=" text-align:left; height: 40px"><td colspan="6">
@@ -87,7 +87,7 @@
                 </div></td></tr>
             </tbody>
         </table>
-        <table  width="1220px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
+        <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批意见</td></tr>
 
@@ -95,7 +95,7 @@
         </table>
         <el-input type="textarea"  auto-complete="off"
                   placeholder="请输入意见"   prop="shuoming" style="width:1220px"></el-input>
-        <div style="text-align:center;margin-top:30px;width:1220px" > <el-button @click.native="save">通过</el-button>
+        <div style="text-align:center;margin-top:30px;width:1280px" > <el-button @click.native="save">通过</el-button>
             <el-button @click.native="bohui">驳回</el-button></div>
     </el-row>
 </template>
