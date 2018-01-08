@@ -23,5 +23,6 @@ class Message extends Model
         'content',
         'sourcetype',
         'sourcemid',
+        'title',
     ];
 }
