@@ -161,6 +161,9 @@ class commissionAuditController extends Controller
             'is_message'=>1,
             'is_web'=>0,
             'yongjin'=>$request->params["yongjin"],
+            'sourcemid'=>$request->params["id"],
+            'sourcetype'=>'OMC_t_qd_xs_yongjin',
+            'title'=> '收款通知',
         );
          DB::connection('mysql3')->update("update t_qd_xs_yongjin SET zfzt=1 where id =".$request->params["id"]);
          $request->request->add($obj);
