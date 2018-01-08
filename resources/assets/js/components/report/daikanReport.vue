@@ -56,7 +56,6 @@
             </el-table-column>
             <el-table-column prop="yjkxf" label="带看时间"  width="95" >
             </el-table-column>
-
         </el-table>
         <div style="margin-top:30px"></div>
         <!-- 分页-->
