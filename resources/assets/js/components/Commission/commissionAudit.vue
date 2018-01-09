@@ -94,7 +94,7 @@
             </tbody>
         </table>
         <el-input type="textarea"  auto-complete="off"
-                  placeholder="请输入意见"   v-model="shuoming" style="width:1220px"></el-input>
+                  placeholder="请输入意见"   v-model="shuoming" style="width:1280px"></el-input>
         <div style="text-align:center;margin-top:30px;width:1280px" > <el-button @click.native="save">通过</el-button>
             <el-button @click.native="bohui">驳回</el-button></div>
     </el-row>

@@ -87,6 +87,14 @@
         </div></td></tr>
             </tbody>
         </table>
+        <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
+            <tbody>
+            <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批意见</td></tr>
+
+            </tbody>
+        </table>
+        <div style="text-align:center;margin-top:30px;width:1280px" > {{Payable.huming}}</div>
+
 <div style="text-align:center;margin-top:30px;width:1280px"> <el-button @click.native="fanhui">返回</el-button></div>
     </el-row>
 </template>
