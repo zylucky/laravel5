@@ -93,7 +93,7 @@
 
             </tbody>
         </table>
-        <div style="text-align:center;margin-top:30px;width:1280px" > {{Payable.huming}}</div>
+        <div style="text-align:left;margin-top:30px;width:1280px" > {{Payable.shuoming}}</div>
 
 <div style="text-align:center;margin-top:30px;width:1280px"> <el-button @click.native="fanhui">返回</el-button></div>
     </el-row>
