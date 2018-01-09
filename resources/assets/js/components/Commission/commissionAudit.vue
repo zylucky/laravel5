@@ -94,7 +94,7 @@
             </tbody>
         </table>
         <el-input type="textarea"  auto-complete="off"
-                  placeholder="请输入意见"   prop="shuoming" style="width:1220px"></el-input>
+                  placeholder="请输入意见"   v-model="shuoming" style="width:1220px"></el-input>
         <div style="text-align:center;margin-top:30px;width:1280px" > <el-button @click.native="save">通过</el-button>
             <el-button @click.native="bohui">驳回</el-button></div>
     </el-row>
@@ -131,10 +131,10 @@
             }
         },
         methods: {
-
             //时间戳转日期格式
             changeDate(value){
-                if (value != '' || value != null) {
+                if (value != '' && value != null) {
+                    console.log(value)
                     var newDate = new Date();
                     newDate.setTime(value);
                     return newDate.toLocaleString();
@@ -152,7 +152,7 @@
                     this.listLoading = false;
                     for (var item in res.data.shenPi) {
                         if(res.data.shenPi[item].isfock==true){
-                            this.shenpijindu=parseInt(item)+1;
+                            this.shenpijindu=parseInt(item);
                         }
 
                         this.options.push({
@@ -186,7 +186,7 @@
                     let para = {
                         id: this.$route.query.id,
                         shenpi:1,
-                        shuoming:'cs',
+                        shuoming:this.shuoming,
                     };
                     auditComm(para).then((res) => {
                         if(res.data.code==200){
