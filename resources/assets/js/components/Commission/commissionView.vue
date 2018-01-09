@@ -125,7 +125,8 @@
 
             //时间戳转日期格式
             changeDate(value){
-                if (value != '' || value != null) {
+                if (value != '' && value != null) {
+                    console.log(value)
                     var newDate = new Date();
                     newDate.setTime(value);
                     return newDate.toLocaleString();
@@ -143,7 +144,7 @@
                     this.listLoading = false;
                     for (var item in res.data.shenPi) {
                         if(res.data.shenPi[item].isfock==true){
-                           this.shenpijindu=parseInt(item)+1;
+                           this.shenpijindu=parseInt(item);
                         }
 
                         this.options.push({
