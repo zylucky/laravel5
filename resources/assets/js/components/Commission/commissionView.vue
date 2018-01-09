@@ -151,10 +151,8 @@
                     this.Payable = res.data.data;
                     this.listLoading = false;
                     for (var item in res.data.shenPi) {
-                        if(res.data.shenPi[item].isfock==true){
-                           this.shenpijindu=parseInt(item);
-                        }
-
+                        this.shenpijindu=parseInt(item)+1;
+                        this.Payable.shuoming=res.data.shenPi[item].shuoming;
                         this.options.push({
                             value: res.data.shenPi[item].person,
                             label: this.changeDate(res.data.shenPi[item].shenpitime ),
