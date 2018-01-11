@@ -108,6 +108,10 @@
                 },
                 optionsspzt: [
                     {
+                        value: 0,
+                        label: '请选择'
+                    },
+                    {
                         value: 2,
                         label: '待审批'
                     },
@@ -120,6 +124,10 @@
                     },
                 ],
                 optionszfzt: [
+                    {
+                        value: 0,
+                        label: '请选择'
+                    },
                     {
                         value: 1,
                         label: '未付款'
