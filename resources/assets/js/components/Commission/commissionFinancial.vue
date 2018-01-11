@@ -243,12 +243,22 @@
                         yongjin:row.yongjin,
                     }
                     payComm(para).then((res) => {
-                        this.$message({
-                            message: '提交成功',
-                            type: 'success'
-                        });
-                        this.getChuFangCommission();
+                        if(res.success==true){
+                            this.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            this.getChuFangCommission();
+                        }else{
+                            this.$message({
+                                message: res.msg.Message,
+                                type: 'error'
+                            });
+
+                        };
+
                     });
+
                 });
             },
 

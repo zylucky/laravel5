@@ -20,10 +20,30 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
-       echo  md5('0124phpoxVxtseIxK');exit;
-        Redis::set('name', 'Taylor');
-        $name = Redis::get('name');
-        var_dump($name);
+        $obj=    Array(
+            'send_from_id'=>1,
+            'send_from_name'=>'123',
+            'send_from_sys'=>'erp',
+            'send_to_id'=>1,
+            'send_to_name'=>'张三',
+            'send_to_sys'=>'omc',
+            'phone'=>'17611440599',//$request->params["phone"],
+            'type'=>5,
+            'is_message'=>1,
+            'is_web'=>0,
+            'yongjin'=>'123456',
+            'sourcemid'=>1,
+            'sourcetype'=>'OMC_t_qd_xs_yongjin',
+            'title'=> '收款通知',
+        );
+        $request->request->add($obj);
+        $proxy = Request::create(
+            '/sendMessage',
+            'POST'
+        );
+        $response = \Route::dispatch($proxy);
+
+        return $response;
     }
     function DiffDate($date1, $date2) {
         if (strtotime($date1) > strtotime($date2)) {
