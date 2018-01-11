@@ -61,7 +61,7 @@
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item  > <el-button     v-if="scope.row.task_zt==2&&fun('commissionAudit')" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
-                            <el-dropdown-item  > <el-button  v-if="scope.row.task_zt==3&&scope.row.zfzt==0&&fun('commissionPay')" @click="handleFinish(scope.$index, scope.row)">付款</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button  v-if="scope.row.task_zt==3&&scope.row.zfzt==1&&fun('commissionPay')" @click="handleFinish(scope.$index, scope.row)">付款</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button    @click="handleView(scope.$index, scope.row)">查看</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
@@ -156,8 +156,8 @@
             //状态显示转换
             formatState: function (row, column) {
                 let status = [];
-                status[0] = '未付款';
-                status[1] = '已付款';
+                status[1] = '未付款';
+                status[2] = '已付款';
                 return status[row.zfzt];
             },
 

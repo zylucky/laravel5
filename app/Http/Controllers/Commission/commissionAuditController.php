@@ -165,7 +165,7 @@ class commissionAuditController extends Controller
             'sourcetype'=>'OMC_t_qd_xs_yongjin',
             'title'=> '收款通知',
         );
-         DB::connection('mysql3')->update("update t_qd_xs_yongjin SET zfzt=1 where id =".$request->params["id"]);
+         DB::connection('mysql3')->update("update t_qd_xs_yongjin SET zfzt=2 where id =".$request->params["id"]);
          $request->request->add($obj);
         $proxy = Request::create(
             '/sendMessage',

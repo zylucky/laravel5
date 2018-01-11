@@ -206,11 +206,11 @@
                 });
             },
             bohui(){
-                this.$confirm('确认通过吗？', '提示', {}).then(() => {
+                this.$confirm('确认驳回吗？', '提示', {}).then(() => {
                     let para = {
                         id: this.$route.query.id,
                         shenpi:2,
-                        shuoming:'cs',
+                        shuoming:this.shuoming,
                     };
                     auditComm(para).then((res) => {
                         if(res.data.code==200){
