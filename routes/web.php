@@ -49,7 +49,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('getHedanList','Contract\purchaseContractController@getHedanList');
     Route::get('deleteHedan','Contract\purchaseContractController@deleteHedan');
     Route::get('summary','Contract\purchaseContractController@summary');
-    Route::get('cancelled','Contract\purchaseContractController@cancelled');
+    Route::get('cancelled','Contract\purchaseContractController@changeStatus');
     Route::post('updataHedan','Contract\purchaseContractController@updataHedan');
     Route::post('saveyongyou','Contract\purchaseContractController@saveyongyou');
 });
@@ -252,14 +252,15 @@ Route::group(['prefix' => 'api/v1','middleware' => 'throttle:60,1'],function (){
     Route::get('/owner/{id}','Api\OwnerController@index')->middleware(\App\Http\Middleware\CheckAccessToken::class);
     Route::post('/owner/verifyCode','Api\OwnerController@verifyCode');
     Route::post('/owner/createOwner','Api\OwnerController@createOwner')->middleware(\App\Http\Middleware\CheckAccessToken::class);
+    Route::get('/owner/{id}/info','Api\OwnerController@yzfyInfo');
 });
 
 
 Route::resource('commossionAudit', 'Commission\commissionAuditController');
 //佣金审批
 Route::group(['prefix' => 'commossionAudit'], function () {
-    Route::post('auditComm','UserController@auditComm');
-    Route::post('payComm','UserController@payComm');
+    Route::post('auditComm','Commission\commissionAuditController@auditComm');
+    Route::post('payComm','Commission\commissionAuditController@payComm');
 });
 //hello world1
 

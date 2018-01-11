@@ -21,5 +21,8 @@ class Message extends Model
         'is_message',
         'is_web',
         'content',
+        'sourcetype',
+        'sourcemid',
+        'title',
     ];
 }
