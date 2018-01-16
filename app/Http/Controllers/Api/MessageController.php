@@ -134,7 +134,8 @@ class MessageController extends Controller
             'SMS_121135362',//渠道佣金支付通知      6
             'SMS_121165334',//渠道佣金信息被驳回通知 7
             'SMS_121160644',//渠道佣金信息审批通过   8
-            'SMS_117513026',//发送验证码通知
+            'SMS_121910205',//渠道佣金待财务审批 9
+            'SMS_117513026',//发送验证码通知 10
 
         ];
         $client  = new Client($config);
