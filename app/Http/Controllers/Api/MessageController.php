@@ -27,7 +27,7 @@ class MessageController extends Controller
                 $request->input('yongjin')
             );
             $success = $res->Code=="OK"?true:false;
-        }else{
+        }elseif($request->input('is_web')==1){
             $res = $this->send($message->id);
             $success = $res==1?true:false;
         }
