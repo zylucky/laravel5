@@ -20,30 +20,25 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
-        $obj=    Array(
-            'send_from_id'=>1,
-            'send_from_name'=>'123',
-            'send_from_sys'=>'erp',
-            'send_to_id'=>1,
-            'send_to_name'=>'张三',
-            'send_to_sys'=>'omc',
-            'phone'=>'17611440599',//$request->params["phone"],
-            'type'=>5,
-            'is_message'=>1,
-            'is_web'=>0,
-            'yongjin'=>'123456',
-            'sourcemid'=>1,
-            'sourcetype'=>'OMC_t_qd_xs_yongjin',
-            'title'=> '收款通知',
-        );
-        $request->request->add($obj);
-        $proxy = Request::create(
-            '/sendMessage',
-            'POST'
-        );
-        $response = \Route::dispatch($proxy);
+//      $str="1,dsf,3ee,34r,rf,d,we,dfewr,erf";
+//      $s="";
+//      $ss=[];
+//      for ($i=0;$i< strlen($str);$i++ ){
+//          if($str[$i]==","){
+//              $ss[]=$s;
+//              $s="";
+//          }else{
+//              $s=$s.$str[$i];
+//          }
+//
+//      }
+//        $ss[]=$s;
+//      print_r($ss);
+        $str="1,dsf,3ee,34r,rf,d,we,dfewr,erf";
+        while (strlen($str)>0){
 
-        return $response;
+        }
+
     }
     function DiffDate($date1, $date2) {
         if (strtotime($date1) > strtotime($date2)) {

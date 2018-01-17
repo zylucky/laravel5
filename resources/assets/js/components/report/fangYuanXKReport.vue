@@ -22,11 +22,13 @@
             </el-table-column>
             <el-table-column label="分区"  prop="fd_name"  width="100">
             </el-table-column>
-            <el-table-column prop="Name" label="联系人"  width="95"  >
+            <el-table-column prop="Name" label="产品带看对接人"  width="95"  >
             </el-table-column>
             <el-table-column prop="Phone" label="电话"  width="95"  >
             </el-table-column>
             <el-table-column prop="xmsx" label="项目属性"  width="95"  >
+            </el-table-column>
+            <el-table-column prop="fybq" label="房源标签"  width="95"  >
             </el-table-column>
             <el-table-column prop="Loupan_name" label="楼盘"  width="150"    >
             </el-table-column>
@@ -50,15 +52,13 @@
             </el-table-column>
             <el-table-column prop="QianyueDate" label="收购签约日"  width="120" >
             </el-table-column>
-            <el-table-column prop="StartDate" label="收购免租期开始日"  width="120" >
-            </el-table-column>
-            <el-table-column prop="EndDate" label="收购免租期结束日"  width="120" >
-            </el-table-column>
             <el-table-column prop="yjts" label="预警天数"  width="120" >
             </el-table-column>
-            <el-table-column prop="yjkxf" label="风险房变亏损房预警天数"  width="120" >
-            </el-table-column>
             <el-table-column prop="yjjb" label="预警级别"  width="100" >
+            </el-table-column>
+            <el-table-column prop="ShoufangDate" label="收房日期"  width="100" >
+            </el-table-column>
+            <el-table-column prop="zhbzh" label="备注"  width="100" >
             </el-table-column>
             <el-table-column prop="zxsp" label="装修状态"  width="120" >
             </el-table-column>

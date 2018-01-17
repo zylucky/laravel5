@@ -159,7 +159,7 @@ class commissionAuditController extends Controller
             'phone'=>'17611440599',//$request->params["phone"],
             'type'=>6,
             'is_message'=>1,
-            'is_web'=>0,
+            'is_web'=>1,
             'yongjin'=>$request->params["yongjin"],
             'sourcemid'=>$request->params["id"],
             'sourcetype'=>'OMC_t_qd_xs_yongjin',
