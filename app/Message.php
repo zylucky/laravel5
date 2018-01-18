@@ -24,5 +24,6 @@ class Message extends Model
         'sourcetype',
         'sourcemid',
         'title',
+        'yongjin',
     ];
 }
