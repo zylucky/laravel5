@@ -155,7 +155,7 @@ class commissionAuditController extends Controller
             'send_from_sys'=>'erp',
             'send_to_id'=>$request->params["xsQvdaoid"],
             'send_to_name'=>$request->params["qvdao"],
-            'send_to_sys'=>'omc',
+            'send_to_sys'=>'qd',
             'phone'=>'17611440599',//$request->params["phone"],
             'type'=>6,
             'is_message'=>1,
