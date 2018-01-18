@@ -51,7 +51,7 @@
             </el-table-column>
             <el-table-column prop="zfzt" label="支付状态" :formatter="formatState">
             </el-table-column>
-            <el-table-column prop="beizhu" label="备注" width="220" >
+            <el-table-column prop="beizhu" label="备注" width="130" >
             </el-table-column>
             <el-table-column label="操作" width="140">
                 <template slot-scope="scope">
