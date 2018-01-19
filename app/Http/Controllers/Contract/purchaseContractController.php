@@ -5,15 +5,11 @@ namespace App\Http\Controllers\Contract;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class purchaseContractController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $pn = Input::get('pn');
@@ -39,6 +35,7 @@ class purchaseContractController extends Controller
                     'startDate'=>$startDate,
                     'endDate'=>$endDate,
                     'yongyouid'=>$yongyouid,
+                    'createId'=>Auth::user()->id,
                     ]
             ]);
             echo $response->getBody();
@@ -89,6 +86,7 @@ class purchaseContractController extends Controller
         }
         $data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
         $data['yifangfeiyong'] = implode(',',$data['yifangfeiyong']);
+        $data['createId'] = Auth::user()->id;
         $response = $client->request('POST', '/api/contract/sf/save', [
             'json' => $data,
         ]);

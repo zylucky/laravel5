@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Contract;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class saleContractController extends Controller
@@ -39,6 +40,7 @@ class saleContractController extends Controller
                 'startDate'=>$startDate,
                 'endDate'=>$endDate,
                 'yongyouid'=>$yongyouid,
+                'createId'=>Auth::user()->id,
             ]
         ]);
         echo $response->getBody();
@@ -81,6 +83,7 @@ class saleContractController extends Controller
         }
 
         //$data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
+        $data['createId'] = Auth::user();
         $response = $client->request('POST', '/api/contract/xs/save', [
             'json' => $data,
         ]);
