@@ -39,7 +39,7 @@ class UserController extends Controller
         $limitStart=($page-1)*$pageSize;
         $limitEnd = $pageSize;
 
-        $sql="select users.id,users.name,users.sex,users.email,users.created_at, GROUP_CONCAT(ifnull(roles.name,'')) as role from  users
+        $sql="select users.id,users.name,users.sex,CONVERT(users.ht_query_flg,CHAR)as ht_query_flg ,users.email,users.created_at, GROUP_CONCAT(ifnull(roles.name,'')) as role from  users
 left join role_user on role_user.user_id = users.id
 left join roles on roles.id = role_user.role_id  ";
         $strWhere=" where 1=1 ";
@@ -76,6 +76,7 @@ left join roles on roles.id = role_user.role_id  ";
         $user->email = $input['email'];
         $user->phone = $input['phone'];
         $user->sex = $input['sex'];
+        $user->ht_query_flg = $input['ht_query_flg'];
         if($user->save()){
             return [
                 'msg'=>'保存成功！',
@@ -93,6 +94,7 @@ left join roles on roles.id = role_user.role_id  ";
         $user->email = $input['email'];
         $user->phone = isset($input['phone'])?$input['phone']:'';
         $user->sex = $input['sex'];
+        $user->ht_query_flg = $input['ht_query_flg'];
         if($user->save()){
             return [
                 'msg'=>'保存成功！',
