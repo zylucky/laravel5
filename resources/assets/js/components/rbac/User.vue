@@ -59,8 +59,8 @@
                 </el-form-item>
                 <el-form-item label="合同权限" prop="ht_query_flg">
                     <el-radio-group v-model="editForm.ht_query_flg">
-                        <el-radio class="radio" label="0">个人</el-radio>
-                        <el-radio class="radio" label="1">所有</el-radio>
+                        <el-radio class="radio" label="1">个人</el-radio>
+                        <el-radio class="radio" label="2">所有</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="用户名" prop="email">
@@ -89,8 +89,8 @@
                 </el-form-item>
                 <el-form-item label="合同权限" prop="ht_query_flg">
                     <el-radio-group v-model="addForm.ht_query_flg">
-                        <el-radio class="radio" label="0">个人</el-radio>
-                        <el-radio class="radio" label="1">所有</el-radio>
+                        <el-radio class="radio" label="1">个人</el-radio>
+                        <el-radio class="radio" label="2">所有</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="用户名" prop="email">
@@ -282,14 +282,12 @@
                 let para = {
                     name: this.filters.name
                 };
-                this.listLoading = true;
                 getTotalRoleList(para).then((res) => {
                     let arr = [];
                     for ( var i in res.data ){
                         arr.push(res.data[i])
                     }
                     this.states = arr;
-                    this.listLoading = false;
                     this.list = this.states.map(item => {
                         return { value: item, label: item };
                     });
@@ -300,7 +298,7 @@
                 return row.sex == 1 ? '男' : row.sex == 2 ? '女' : '未知';
             },
             formathtqueryflg: function (row, column) {
-                return row.ht_query_flg == 0 ? '个人' : row.sex == 1 ? '全部' : '未知';
+                return row.ht_query_flg == 1 ? '个人' : row.ht_query_flg == 2 ? '全部' : '未知';
             },
             //页面跳转后
             handleCurrentChange(val) {
