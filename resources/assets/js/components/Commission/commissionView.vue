@@ -77,14 +77,27 @@
         <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批进度</td></tr>
-            <tr style=" text-align:left; height: 40px"><td colspan="6">
-                <div style="margin-left:60px;margin-top:30px;width: 100%;height: 130px"  >
-
-                <el-steps :active=shenpijindu align-center >
-              <el-step v-for="(item, index) in options" :title="item.value" :key="index" :description="item.label"></el-step>
-
-        </el-steps>
-        </div></td></tr>
+            <tr style=" text-align:left; height: 40px">
+            	<td colspan="6">
+	                <!--<div style="margin-left:60px;margin-top:30px;width: 100%;height: 130px"  >-->
+	
+			                <!--<el-steps :active=shenpijindu align-center >
+					              <el-step v-for="(item, index) in options" :title="item.value" :key="index" :description="item.label">
+					              </el-step>
+					        </el-steps>-->
+					        <ul class="plan_box">
+					        	<li>
+					        		<p class="zt">
+					        			<span>1</span>
+					        			发起申请
+					        		</p>
+					        		<p class="name">张三</p>
+					        		<p class="date">2018-01-22<br/>10:05:22</p>
+					        	</li>
+					        </ul>
+			        <!--</div>-->
+            	</td>
+            </tr>
             </tbody>
         </table>
         <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
@@ -189,3 +202,53 @@
         }
     }
 </script>
+<style scoped>
+	ul,li,dl,dd{
+		list-style: none;
+	}
+	.plan_box{
+		display: flex;
+		padding: 0;
+		margin: 0;
+		min-height: 50px;
+		height: auto;
+		border: 1px solid red;
+		font-size: 16px;
+	}
+	.plan_box p{
+		margin: 0;
+		padding: 0;
+	}
+	.plan_box li{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 120px;
+	}
+	.zt{
+		width: 120px;
+		height: 34px;
+		line-height: 34px;
+		background: #1fa0fc;
+		color: #fff;
+		font-size: 16px;
+		text-align: center;
+		border-radius: 34px;;
+	}
+	.zt span{
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		border-radius: 50%;
+		background: #fff;
+		color: #1fa0fc;
+		text-align: center;
+	}
+	.name{
+		
+	}
+	.date{
+		
+	}
+</style>
