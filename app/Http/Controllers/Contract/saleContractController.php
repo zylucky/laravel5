@@ -83,7 +83,7 @@ class saleContractController extends Controller
         }
 
         //$data['jiafangfeiyong'] = implode(',',$data['jiafangfeiyong']);
-        $data['createId'] = Auth::user();
+        $data['createId'] = Auth::user()->id;
         $response = $client->request('POST', '/api/contract/xs/save', [
             'json' => $data,
         ]);
