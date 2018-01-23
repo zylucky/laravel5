@@ -71,6 +71,7 @@ import selectCommissionPayType from "./components/Commission/contractPayType.vue
 import commissionView  from "./components/Commission/commissionView.vue";
 import commissionAuditList  from "./components/Commission/commissionFinancial.vue";
 import commissionAudit   from "./components/Commission/commissionAudit.vue";
+import commissionBalanceList  from "./components/Commission/commissionBalance.vue";
 //应收
 import AccountsReceivable from "./components/Commission/accountsReceivableList.vue";
 import ReceivableRecord from "./components/receivable/receivableRecordList.vue";
@@ -119,7 +120,8 @@ var fk_permission ,fk_permission_user ,fk_permission_role ,fk_permission_per ,
     fk_commission,fk_shouFangCommission,fk_chuFangCommission,
     fk_account,fk_payableList,fk_financePayableList,fk_receivableList,fk_financeReceivableList,
     fk_setPassword,fk_reportList,fk_shoufangReport,fk_chufangReport,fk_chanpinReport,fk_fangyuanXKReport,
-    fk_jinggengReport,fk_projectReport,fk_projectSaleReport,fk_qdCompanyList,fk_commissionReport,fk_coreDataReport,fk_commissionAuditList;
+    fk_jinggengReport,fk_projectReport,fk_projectSaleReport,fk_qdCompanyList,fk_commissionReport,fk_coreDataReport,fk_commissionAuditList,
+    fk_commissionBalanceList;
 fun('permission')==true? fk_permission = false:fk_permission = true;
 fun('permission')==true? fk_permission_user = false:fk_permission_user = true;
 fun('permission')==true? fk_permission_role = false:fk_permission_role = true;
@@ -153,6 +155,7 @@ fun('qdCompanyList')==true? fk_qdCompanyList  = false:fk_qdCompanyList = true;
 fun('commissionReport')==true? fk_commissionReport  = false:fk_commissionReport = true;
 fun('coreDataReport')==true? fk_coreDataReport  = false:fk_coreDataReport = true;
 fun('commissionAuditList')==true? fk_commissionAuditList  = false:fk_commissionAuditList = true;
+fun('commissionBalanceList')==true? fk_commissionBalanceList  = false:fk_commissionBalanceList = true;
 
 
 let routes = [
@@ -274,8 +277,8 @@ let routes = [
 
             {path:'/commissionView', component: commissionView, name: '佣金详情', hidden: true},
             {path:'/commissionAudit', component: commissionAudit, name: '佣金审批', hidden: true},
-            {path:'/commissionAuditList', component: commissionAuditList, name: '佣金列表', hidden: fk_commissionAuditList},
-
+            {path:'/commissionAuditList', component: commissionAuditList, name: '财务佣金列表', hidden: fk_commissionAuditList},
+            {path:'/commissionBalanceList', component: commissionBalanceList, name: '结算佣金列表', hidden: fk_commissionBalanceList},
         ]
     },
     {
