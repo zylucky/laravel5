@@ -105,8 +105,8 @@
 					        </el-steps>-->
 					        <ul class="plan_box">
 					        	<li v-for="(item, index) in options">
-					        		<p class="zt">
-					        			<span class="xh">{{index + 1}}</span>
+					        		<p :class="item.shenpi==1 && !item.isfock?'zt':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'zt spz':(item.shenpi==2?'zt ybh':'zt dsp'))">
+					        			<span :class="item.shenpi==1 && !item.isfock?'xh':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'xh xh3':(item.shenpi==2?'xh xh2':'xh xh1'))">{{index + 1}}</span>
 					        			<span>
 											<i v-if='item.shenpi==1 && !item.isfock'>{{item.shenpi==1 && !item.isfock?"已通过":"待审批"}}</i>
 											<i v-if='item.shenpi==null && !item.isfock'>{{item.shenpi==null && !item.isfock?"待审批":''}}</i>
@@ -310,5 +310,29 @@
 	}
 	.plan_box li:last-child .tiao{
 		display: none;
+	}
+	.dsp{
+		/*待审批样式*/
+		background: #bbbbbb;
+	}
+	.xh1{
+		/*待审批文字颜色*/
+		color: #bbbbbb!important;
+	}
+	.ybh{
+		/*驳回样式*/
+		background: #ff7271;
+	}
+	.xh2{
+		/*驳回文字颜色*/
+		color: #ff7271!important;
+	}
+	.spz{
+		/*审批中*/
+		background: #fea843;
+	}
+	.xh3{
+		/*审批中文字颜色*/
+		color: #fea843!important;
 	}
 </style>
