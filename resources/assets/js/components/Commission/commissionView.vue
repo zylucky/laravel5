@@ -108,7 +108,8 @@
 					        		<p class="zt">
 					        			<span class="xh">{{index + 1}}</span>
 					        			<span>
-											<i v-if='item.shenpi==1'>{{item.shenpi==1?"已通过":"待审批"}}</i>
+											<i v-if='item.shenpi==1 && !item.isfock'>{{item.shenpi==1 && !item.isfock?"已通过":"待审批"}}</i>
+											<i v-if='item.shenpi==null && !item.isfock'>{{item.shenpi==null && !item.isfock?"待审批":''}}</i>
 											<i v-if='item.shenpi!=1 && item.shenpi!=2 && item.isfock'>审批中</i>
 											<i v-if='item.shenpi==2'>{{item.shenpi==2?"已驳回":"已审批"}}</i>
 										</span>
@@ -206,6 +207,7 @@
                             value: res.data.shenPi[item].person,
                             label: this.changeDate(res.data.shenPi[item].shenpitime ),
                             shenpi: res.data.shenPi[item].shenpi,
+                            isfock: res.data.shenPi[item].isfock,
                         });
                     }
                 });
