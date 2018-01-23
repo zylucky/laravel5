@@ -77,7 +77,7 @@
         <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批进度</td></tr>
-            <tr style=" text-align:left; height: 40px">
+            <tr style=" text-align:left; height: 40px;">
             	<td colspan="6">
 	                <!--<div style="margin-left:60px;margin-top:30px;width: 100%;height: 130px"  >-->
 	
@@ -86,13 +86,15 @@
 					              </el-step>
 					        </el-steps>-->
 					        <ul class="plan_box">
-					        	<li>
+					        	<li v-for="(item, index) in options">
 					        		<p class="zt">
-					        			<span>1</span>
-					        			发起申请
+					        			<span class="xh">{{index + 1}}</span>
+					        			{{item.value}}
+					        			<span class="tiao"></span>
 					        		</p>
-					        		<p class="name">张三</p>
-					        		<p class="date">2018-01-22<br/>10:05:22</p>
+					        		<p class="name">{{item.value}}</p>
+					        		<p class="date">{{item.label}}</p>
+					        		
 					        	</li>
 					        </ul>
 			        <!--</div>-->
@@ -161,6 +163,7 @@
                 };
                 this.listLoading = true;
                 showcommission(para).then((res) => {
+                	console.log(res.data.shenPi);
                     this.Payable = res.data.data;
                     this.listLoading = false;
                     for (var item in res.data.shenPi) {
@@ -205,27 +208,30 @@
 <style scoped>
 	ul,li,dl,dd{
 		list-style: none;
+		margin: 0;
+		padding: 0;
 	}
 	.plan_box{
 		display: flex;
-		padding: 0;
-		margin: 0;
 		min-height: 50px;
 		height: auto;
-		border: 1px solid red;
 		font-size: 16px;
+		margin: 30px;
 	}
 	.plan_box p{
 		margin: 0;
 		padding: 0;
+		text-align: center;
 	}
 	.plan_box li{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		width: 120px;
+		margin-right: 35px;
 	}
 	.zt{
+		position: relative;
 		width: 120px;
 		height: 34px;
 		line-height: 34px;
@@ -233,9 +239,10 @@
 		color: #fff;
 		font-size: 16px;
 		text-align: center;
-		border-radius: 34px;;
+		border-radius: 34px;
+		margin-bottom: 10px !important;
 	}
-	.zt span{
+	.zt .xh{
 		display: inline-block;
 		width: 20px;
 		height: 20px;
@@ -245,10 +252,21 @@
 		color: #1fa0fc;
 		text-align: center;
 	}
-	.name{
-		
+	.name,.date{
+		color: #646464;
 	}
-	.date{
-		
+	.tiao{
+		position: absolute;
+		right: -37.5px;
+		top: 50%;
+		margin-top: -1px;
+		display: inline-block;
+		width: 40px;
+		height: 2px;
+		/*background: #1fa0fc;*/
+		background: red;
+	}
+	.plan_box li:last-child .tiao{
+		display: none;
 	}
 </style>
