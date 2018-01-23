@@ -107,7 +107,11 @@
 					        	<li v-for="(item, index) in options">
 					        		<p class="zt">
 					        			<span class="xh">{{index + 1}}</span>
-					        			{{item.value}}
+					        			<span>
+											<i v-if='item.shenpi==1'>{{item.shenpi==1?"已通过":"待审批"}}</i>
+											<i v-if='item.shenpi!=1 && item.shenpi!=2 && item.isfock'>审批中</i>
+											<i v-if='item.shenpi==2'>{{item.shenpi==2?"已驳回":"已审批"}}</i>
+										</span>
 					        			<span class="tiao"></span>
 					        		</p>
 					        		<p class="name">{{item.value}}</p>
@@ -174,7 +178,13 @@
                     console.log(value)
                     var newDate = new Date();
                     newDate.setTime(value);
-                    return newDate.toLocaleString();
+                    var hour = newDate.getHours();
+				    var minute = newDate.getMinutes();
+				    var second = newDate.getSeconds();
+				    if(hour<10){hour = '0' + hour;}
+				    if(minute<10){minute = '0' + minute;}
+				    if(second<10){second = '0' + second;}
+                    return newDate.toLocaleDateString() + ' ' + hour + ':' + minute + ':' + second;
                 }
             },
 
@@ -195,6 +205,7 @@
                         this.options.push({
                             value: res.data.shenPi[item].person,
                             label: this.changeDate(res.data.shenPi[item].shenpitime ),
+                            shenpi: res.data.shenPi[item].shenpi,
                         });
                     }
                 });
@@ -278,6 +289,9 @@
 		color: #1fa0fc;
 		text-align: center;
 	}
+	.zt i{
+		font-style: normal;
+	}
 	.name,.date{
 		color: #646464;
 	}
@@ -289,8 +303,8 @@
 		display: inline-block;
 		width: 40px;
 		height: 2px;
-		/*background: #1fa0fc;*/
-		background: red;
+		background: #1fa0fc;
+		/*background: red;*/
 	}
 	.plan_box li:last-child .tiao{
 		display: none;
