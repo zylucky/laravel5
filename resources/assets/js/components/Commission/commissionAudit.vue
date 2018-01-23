@@ -162,7 +162,10 @@
                     return newDate.toLocaleString();
                 }
             },
-
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
             //获取应付款列表
             getPayable() {
                 let para = {

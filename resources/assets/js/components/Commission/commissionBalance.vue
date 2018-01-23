@@ -42,7 +42,7 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  > <el-button     v-if="scope.row.task_zt==2&&fun('commissionAudit')" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button v-if="filters.spzt==0&&fun('commissionBalanceAudit')" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button    @click="handleView(scope.$index, scope.row)">查看</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
@@ -71,7 +71,7 @@
 
 
     import {
-        getcommissionAuditListPage,
+        getcommissionBalanceListPage,
         editChuFangCommission,
         payComm,
 
@@ -137,7 +137,7 @@
                 let status = [];
                 status[0] = '未提交';
                 status[1] = '已提交';
-                status[2] = '未审批';
+                status[2] = '审核中';
                 status[3] = '已通过';
                 status[4] = '已驳回';
                 return status[row.task_zt];
@@ -200,7 +200,7 @@
                     spzt: this.filters.spzt,
                 };
                 this.listLoading = true;
-                getcommissionAuditListPage(para).then((res) => {
+                getcommissionBalanceListPage(para).then((res) => {
                     this.total = res.data.total;
                     this.ChuFang = res.data.data;
                     this.listLoading = false;
