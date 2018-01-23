@@ -4,32 +4,14 @@
             <el-form-item label="">
                 <el-input v-model="filters.xm" placeholder="项目："></el-input>
             </el-form-item>
-            <el-form-item label="审批状态：" >
-                <el-select v-model="filters.spzt" placeholder="审批状态"    >
-                    <el-option
-                            v-for="item in optionsspzt"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-            </el-form-item>
 
-            <el-form-item label="支付状态"   >
-                <el-select v-model="filters.zfzt" placeholder="支付状态">
-                    <el-option
-                            v-for="item in optionszfzt"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-
-            </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search" v-on:click="getChuFangCommission">搜索</el-button>
             </el-form-item>
         </el-form>
+        <el-tabs v-model="activeName2" type="border-card" @tab-click="handleClick">
+            <el-tab-pane label="待审批" name="first"></el-tab-pane>
+            <el-tab-pane label="已审批" name="second"></el-tab-pane>
         <el-table :data="ChuFang" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
                   @selection-change="selsChange" style="width: 100%;">
 
@@ -61,7 +43,6 @@
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item  > <el-button     v-if="scope.row.task_zt==2&&fun('commissionAudit')" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
-                            <el-dropdown-item  > <el-button  v-if="scope.row.task_zt==3&&scope.row.zfzt==1&&fun('commissionPay')" @click="handleFinish(scope.$index, scope.row)">付款</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button    @click="handleView(scope.$index, scope.row)">查看</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
@@ -83,6 +64,7 @@
             >
             </el-pagination>
         </el-col>
+        </el-tabs>
     </el-row>
 </template>
 <script>
@@ -104,7 +86,6 @@
                 filters: {
                     xm: '',
                     spzt: '',
-                    zfzt: '',
                 },
                 optionsspzt: [
                     {
@@ -145,7 +126,7 @@
                 ChuFang: [],
                 listLoading: false,
                 sels: [],//列表选中列
-
+                activeName2:'first',
                 //被选中的权限
                 checked: [],
             }
@@ -168,7 +149,13 @@
                 status[2] = '已付款';
                 return status[row.zfzt];
             },
+            //标签切换时
+            handleClick(tab, event) {
 
+                this.filters.spzt = tab.index;
+                this.getChuFangCommission();
+
+            },
             //时间戳转日期格式
             changeXQDate(dt){
                 if(dt!=null){
@@ -211,7 +198,6 @@
                     pageSize: this.pageSize,
                     xm: this.filters.xm,
                     spzt: this.filters.spzt,
-                    zfzt: this.filters.zfzt,
                 };
                 this.listLoading = true;
                 getcommissionAuditListPage(para).then((res) => {
@@ -277,9 +263,7 @@
                 while (s.length <= rs + 2) {
                     s += '0';
                 }
-
                 return  s.split('').reverse().join('').replace(/(\d{3}(?=\d)(?!\d+\.|$))/g, '$1,').split('').reverse().join('');
-
             },
         },
 

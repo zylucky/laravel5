@@ -175,4 +175,33 @@ class commissionAuditController extends Controller
 
         return $response;
     }
+
+    /**
+     * Update the specified resource in storage.
+     *结算佣金列表
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function  commBalance(Request $request)
+    {
+        $pageSize = $request->params["pageSize"];
+        $page = $request->params["page"];
+        $lpname =  $request->params["xm"];
+        $spzt = $request->params["spzt"] ;
+        $u = Auth::user();
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/qd/yongjin/tasklist',[
+                'query' => [
+                    'page'=>$page,
+                    'size'=>$pageSize,
+                    'userid'=>$u->id,
+                    'lpname'=>$lpname,
+                    'spzt'=>$spzt,
+                ]
+            ]
+        );
+        echo $response->getBody();
+    }
 }

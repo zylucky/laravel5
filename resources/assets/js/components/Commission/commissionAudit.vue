@@ -76,9 +76,27 @@
         </table>
         <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
+            <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 发票信息</td></tr>
+
+            </tbody>
+        </table>
+        <el-upload  style="margin-top:30px"
+                    action=""
+                    list-type="picture-card"
+                    disabled="true"
+                    :on-preview="handlePictureCardPreview"
+                    :file-list="fapiao"
+        >
+
+        </el-upload>
+        <el-dialog v-model="dialogVisible" size="large">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+        <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
+            <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批进度</td></tr>
             <tr style=" text-align:left; height: 40px"><td colspan="6">
-                <div style="margin-left:60px;margin-top:30px;width: 100%;height: 130px"  >
+                <div style="margin-left:20px;margin-top:30px;width: 100%;height: 130px"  >
 
                     <el-steps :active=shenpijindu align-center >
                         <el-step v-for="(item, index) in options" :title="item.value" :key="index" :description="item.label"></el-step>
@@ -87,6 +105,7 @@
                 </div></td></tr>
             </tbody>
         </table>
+
         <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批意见</td></tr>
@@ -128,6 +147,9 @@
                 ],
                 shenpijindu:1,
                 shuoming:'',
+                fapiao:[],
+                dialogVisible: false,
+                dialogImageUrl: '',
             }
         },
         methods: {
@@ -149,6 +171,7 @@
                 this.listLoading = true;
                 showcommission(para).then((res) => {
                     this.Payable = res.data.data;
+                    this.fapiao=res.data.imgs;
                     this.listLoading = false;
                     for (var item in res.data.shenPi) {
                         if(res.data.shenPi[item].isfock==true){
