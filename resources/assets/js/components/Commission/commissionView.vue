@@ -76,6 +76,24 @@
         </table>
         <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
+            <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 发票信息</td></tr>
+
+            </tbody>
+        </table>
+        <el-upload  style="margin-top:30px"
+                action=""
+                list-type="picture-card"
+                disabled="true"
+                :on-preview="handlePictureCardPreview"
+                :file-list="fapiao"
+        >
+
+        </el-upload>
+        <el-dialog v-model="dialogVisible" size="large">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+        <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
+            <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批进度</td></tr>
             <tr style=" text-align:left; height: 40px;">
             	<td colspan="6">
@@ -102,6 +120,7 @@
             </tr>
             </tbody>
         </table>
+
         <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批意见</td></tr>
@@ -142,6 +161,9 @@
                 ],
                 shenpijindu:1,
                 shuoming:'',
+                fapiao:[],
+                dialogVisible: false,
+                dialogImageUrl: '',
             }
         },
         methods: {
@@ -165,6 +187,7 @@
                 showcommission(para).then((res) => {
                 	console.log(res.data.shenPi);
                     this.Payable = res.data.data;
+                    this.fapiao=res.data.imgs;
                     this.listLoading = false;
                     for (var item in res.data.shenPi) {
                         this.shenpijindu=parseInt(item)+1;
@@ -195,7 +218,10 @@
                 return  s.split('').reverse().join('').replace(/(\d{3}(?=\d)(?!\d+\.|$))/g, '$1,').split('').reverse().join('');
 
             },
-
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
             fanhui(){
                 this.$router.push('/commissionAuditList');
             },

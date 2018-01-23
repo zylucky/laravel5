@@ -155,11 +155,11 @@ class commissionAuditController extends Controller
             'send_from_sys'=>'erp',
             'send_to_id'=>$request->params["xsQvdaoid"],
             'send_to_name'=>$request->params["qvdao"],
-            'send_to_sys'=>'omc',
+            'send_to_sys'=>'qd',
             'phone'=>'17611440599',//$request->params["phone"],
             'type'=>6,
             'is_message'=>1,
-            'is_web'=>0,
+            'is_web'=>1,
             'yongjin'=>$request->params["yongjin"],
             'sourcemid'=>$request->params["id"],
             'sourcetype'=>'OMC_t_qd_xs_yongjin',
@@ -174,5 +174,34 @@ class commissionAuditController extends Controller
         $response = \Route::dispatch($proxy);
 
         return $response;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *结算佣金列表
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function  commBalance(Request $request)
+    {
+        $pageSize = $request->params["pageSize"];
+        $page = $request->params["page"];
+        $lpname =  $request->params["xm"];
+        $spzt = $request->params["spzt"] ;
+        $u = Auth::user();
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/qd/yongjin/tasklist',[
+                'query' => [
+                    'page'=>$page,
+                    'size'=>$pageSize,
+                    'userid'=>$u->id,
+                    'lpname'=>$lpname,
+                    'spzt'=>$spzt,
+                ]
+            ]
+        );
+        echo $response->getBody();
     }
 }
