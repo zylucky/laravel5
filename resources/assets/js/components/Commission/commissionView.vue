@@ -238,7 +238,11 @@
                 this.dialogVisible = true;
             },
             fanhui(){
-                this.$router.push('/commissionAuditList');
+                if (this.$route.query.goindex === 'true') {
+                    this.$router.push('/')
+                } else {
+                    this.$router.back(-1)
+                }
             },
         },
         mounted() {

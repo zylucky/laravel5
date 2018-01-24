@@ -220,7 +220,13 @@
                                 message: '提交成功',
                                 type: 'success'
                             });
-                            this.$router.push('/commissionAuditList');
+                            if(fun("commissionAuditList"))
+                            {
+                                this.$router.push('/commissionAuditList');
+                            }else{
+                                this.$router.push('/commissionBalanceList');
+                            }
+
                         }else{
                             this.$message({
                                 message: res.data.msg,
@@ -244,7 +250,12 @@
                                 message: '提交成功',
                                 type: 'success'
                             });
-                            this.$router.push('/commissionAuditList');
+                            if(fun("commissionAuditList"))
+                            {
+                                this.$router.push('/commissionAuditList');
+                            }else{
+                                this.$router.push('/commissionBalanceList');
+                            }
                         }else{
                             this.$message({
                                 message: res.data.msg,
