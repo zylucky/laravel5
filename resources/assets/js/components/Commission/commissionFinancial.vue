@@ -113,7 +113,7 @@
                     },
                     {
                         value: 2,
-                        label: '待审批'
+                        label: '审核中'
                     },
                     {
                         value: 3,
@@ -156,7 +156,7 @@
                 let status = [];
                 status[0] = '未提交';
                 status[1] = '已提交';
-                status[2] = '未审批';
+                status[2] = '审核中';
                 status[3] = '已通过';
                 status[4] = '已驳回';
                 return status[row.task_zt];

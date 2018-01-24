@@ -222,35 +222,7 @@
             selsChange: function (sels) {
                 this.sels = sels;
             },
-            //完成按钮
-            handleFinish: function (index, row) {
-                this.$confirm('确认提交完成付款吗？', '提示', {}).then(() => {
-                    let para = {
-                        id:row.id,
-                        xsQvdaoid:row.xsQvdaoid,
-                        qvdao:row.qvdao,
-                        phone:row.phone,
-                        yongjin:row.yongjin,
-                    }
-                    payComm(para).then((res) => {
-                        if(res.data.success){
-                            this.$message({
-                                message: '提交成功',
-                                type: 'success'
-                            });
-                            this.getChuFangCommission();
-                        }else{
-                            this.$message({
-                                message: res.data.msg.Message,
-                                type: 'error'
-                            });
-                            this.getChuFangCommission();
-                        };
 
-                    });
-
-                });
-            },
 
             toDecimal(x) {
                 var f = parseFloat(x);
