@@ -238,11 +238,17 @@
                 this.dialogVisible = true;
             },
             fanhui(){
-                if (this.$route.query.goindex === 'true') {
-                    this.$router.push('/')
-                } else {
-                    this.$router.back(-1)
+                if(this.fun("commissionAuditList"))
+                {
+                    this.$router.push('/commissionAuditList');
+                }else{
+                    this.$router.push('/commissionBalanceList');
                 }
+//                if (this.$route.query.goindex === 'true') {
+//                    this.$router.push('/')
+//                } else {
+//                    this.$router.back(-1)
+//                }
             },
         },
         mounted() {
