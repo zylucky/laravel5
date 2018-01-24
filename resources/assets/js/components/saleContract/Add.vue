@@ -294,7 +294,7 @@
                     let para = Object.assign({}, child_property,child_renter,child_date,id,bianhao,version);
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
-                            if(this.$route.query.status<6||'/saleContract/add'){
+                            if(this.$route.query.status<6||this.$route.path=='/saleContract/add'){
                                 this.btnType = false;
                             }
                             this.fuzhi(res);
@@ -432,7 +432,7 @@
                 this.renter.qudaorenid = res.data.data.qudaorenid;
                if(res.data.data.salesmanList.length>0){
                    this.renter.salesmanList = res.data.data.salesmanList;
-                  this.renter.optionsyslxr1[0].value = res.data.data.salesmanList[0].salesmanid;
+                   this.renter.optionsyslxr1[0].value = res.data.data.salesmanList[0].salesmanid;
                    this.renter.optionsyslxr1[0].label =  res.data.data.salesmanList[0].salesmanname;
                }
                 this.renter.options1[0].value = res.data.data.jujianfangid;

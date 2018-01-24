@@ -311,7 +311,7 @@ let routes = [
     },
     { path:'/purchaseContract/summary',component:PurchaseContractSummary,name:'收房摘要',hidden:true},
     { path:'/saleContract/summary',component:SaleContractSummary,name:'出房摘要',hidden:true},
-    {path:'/approvalDump/:id', component: approvalDump, name: '出房佣金申请审批单', hidden: fk_approvalDump},
+    {path:'/approvalDump/:id', component: approvalDump, name: '出房佣金申请审批单', hidden: true},
 
     {
         path: '/',

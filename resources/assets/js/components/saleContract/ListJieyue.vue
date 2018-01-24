@@ -101,11 +101,8 @@
             //获取这个解约协议页面的数据
             getListSaleContract(id){
                 //alert(11);
-                console.log(id);
                 getjieyueSaleContractInfo(id).then((res)=>{
                     this.jieyueList = res.data.data;
-
-                    console.log(res.data.data);
                 });
             },
             handleView(index,row){
