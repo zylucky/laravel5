@@ -14,10 +14,11 @@
                     multiple
                     :on-preview="handlePictureCardPreview"
                     :on-remove="handleRemove"
+                    :disabled="!fun('purchaseUpload')"
                     :on-success="handleSuccess"
                     :file-list="hetongList"
             >
-                <i class="el-icon-plus"></i>
+                <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
             </el-upload>
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
@@ -39,8 +40,9 @@
                         :on-remove="handleRemove"
                         :on-success="handleSuccess"
                         :file-list="chanquanrenList"
+                        :disabled="!fun('purchaseUpload')"
                 >
-                    <i class="el-icon-plus"></i>
+                    <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
                 </el-upload>
                 <el-dialog v-model="dialogVisible" size="large">
                     <img width="100%" :src="dialogImageUrl" alt="">
@@ -64,8 +66,9 @@
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
                     :file-list="yingyezhizhao"
+                    :disabled="!fun('purchaseUpload')"
             >
-                <i class="el-icon-plus"></i>
+                <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
             </el-upload>
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
@@ -89,8 +92,9 @@
                         :on-remove="handleRemove"
                         :on-success="handleSuccess"
                         :file-list="faren"
+                        :disabled="!fun('purchaseUpload')"
                 >
-                    <i class="el-icon-plus"></i>
+                    <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
                 </el-upload>
                 <el-dialog v-model="dialogVisible" size="large">
                     <img width="100%" :src="dialogImageUrl" alt="">
@@ -113,8 +117,9 @@
                 :on-remove="handleRemove"
                 :on-success="handleSuccess"
                 :file-list="fangchanzheng"
+                :disabled="!fun('purchaseUpload')"
         >
-            <i class="el-icon-plus"></i>
+            <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
         </el-upload>
         <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
@@ -136,8 +141,9 @@
                 :on-remove="handleRemove"
                 :on-success="handleSuccess"
                 :file-list="budongchan"
+                :disabled="!fun('purchaseUpload')"
         >
-            <i class="el-icon-plus"></i>
+            <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
         </el-upload>
         <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
@@ -159,8 +165,9 @@
                 :on-remove="handleRemove"
                 :on-success="handleSuccess"
                 :file-list="yezhushouquan"
+                :disabled="!fun('purchaseUpload')"
         >
-            <i class="el-icon-plus"></i>
+            <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
         </el-upload>
         <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
@@ -182,8 +189,9 @@
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
                     :file-list="weituoren"
+                    :disabled="!fun('purchaseUpload')"
             >
-                <i class="el-icon-plus"></i>
+                <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
             </el-upload>
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
