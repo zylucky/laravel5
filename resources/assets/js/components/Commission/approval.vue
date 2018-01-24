@@ -62,13 +62,13 @@
                 <tr>
                     <th align="center" :rowspan="approval.shenPi.length"  width="200" height="30"> 审批人:</th>
                     <td align="center" width="400">{{approval.shenPi[0].person}}
-                        {{format_shenpi(approval.shenPi[0].shenPi)}}
+                        {{format_shenpi(approval.shenPi[0].shenpi)}}
                         {{format_date(approval.shenPi[0].shenpitime)}}</td>
                 </tr>
                 <tr v-if="index>=1" v-for="(item,index) in approval.shenPi">
                     <td  align="center" width="400">
                         {{item.person}}
-                        {{format_shenpi(item.shenPi)}}
+                        {{format_shenpi(item.shenpi)}}
                         {{format_date(item.shenpitime)}}
                     </td>
                 </tr>
@@ -142,13 +142,22 @@
                 return res;
             },
             format_date(date){
+                if(!date){
+                    return '';
+                }
                 var myDate = new Date(date);
                 var year = myDate.getFullYear();
                 var month = myDate.getMonth()+1;
                 var day = myDate.getDate();
+                var hour = myDate.getHours();
+                var minute = myDate.getMinutes();
+                var second = myDate.getSeconds();
                 if(month<10){month = '0' + month;}
                 if(day<10){day = '0' + day;}
-                return year+'-'+month+'-'+day;
+                if(hour<10){hour = '0' + hour;}
+                if(minute<10){minute = '0' + minute;}
+                if(second<10){second = '0' + second;}
+                return year+'-'+month+'-'+day + ' ' + hour + ':' + minute;
             },
             format_bank(num){
                if(num){
