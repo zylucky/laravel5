@@ -80,7 +80,7 @@
 
             </tbody>
         </table>
-        <el-upload  style="margin-top:30px"
+        <el-upload v-if='fapiao' style="margin-top:30px"
                 action=""
                 list-type="picture-card"
                 disabled="true"
@@ -113,7 +113,7 @@
 											<i v-if='item.shenpi!=1 && item.shenpi!=2 && item.isfock'>审批中</i>
 											<i v-if='item.shenpi==2'>{{item.shenpi==2?"已驳回":"已审批"}}</i>
 										</span>
-					        			<span class="tiao"></span>
+					        			<span :class="item.shenpi==1 && !item.isfock?'tiao':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'tiao jb1':(item.shenpi==2?'tiao jb2':(item.shenpi==null && !item.isfock?'tiao jb3':'tiao jb')))"></span>
 					        		</p>
 					        		<p class="name">{{item.value}}</p>
 					        		<p class="date">{{item.label}}</p>
@@ -148,7 +148,9 @@
     .td2{
         width:240px;
     }
-
+	.el-upload--picture-card{
+		display: none !important;
+	}
 </style>
 <script>
 
@@ -299,16 +301,15 @@
 	}
 	.tiao{
 		position: absolute;
-		right: -37.5px;
+		left: -37.5px;
 		top: 50%;
 		margin-top: -1px;
 		display: inline-block;
 		width: 40px;
 		height: 2px;
 		background: #1fa0fc;
-		/*background: red;*/
 	}
-	.plan_box li:last-child .tiao{
+	.plan_box li:first-child .tiao{
 		display: none;
 	}
 	.dsp{
@@ -334,5 +335,20 @@
 	.xh3{
 		/*审批中文字颜色*/
 		color: #fea843!important;
+	}
+	.jb{
+		/*条渐变审批中到待审批*/
+		background: -webkit-linear-gradient(left,#fea843,#bbbbbb);
+	}
+	.jb1{
+		/*条渐变已通过到审批中*/
+		background: -webkit-linear-gradient(left,#20a1ff,#fea843);
+	}
+	.jb2{
+		/*条渐变已通过到已驳回*/
+		background: -webkit-linear-gradient(left,#20a1ff,#ff7271);
+	}
+	.jb3{
+		background: #bbbbbb;
 	}
 </style>
