@@ -261,6 +261,7 @@ Route::resource('commossionAudit', 'Commission\commissionAuditController');
 Route::group(['prefix' => 'commossionAudit'], function () {
     Route::post('auditComm','Commission\commissionAuditController@auditComm');
     Route::post('payComm','Commission\commissionAuditController@payComm');
+    Route::post('commBalance','Commission\commissionAuditController@commBalance');
 });
 //hello world1
 

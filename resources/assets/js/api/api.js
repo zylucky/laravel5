@@ -224,3 +224,4 @@ export const getcommissionAuditListPage = params => { return axios.get(`${base}/
 export const showcommission = params => { return axios.get(`${base}/commossionAudit/`+params.id, {}); };
 export const payComm = params =>{ return axios.post(`${base}/commossionAudit/payComm`, { params: params }); };
 export const auditComm = params =>{ return axios.post(`${base}/commossionAudit/auditComm`, { params: params }); };
+export const getcommissionBalanceListPage = params =>{ return axios.post(`${base}/commossionAudit/commBalance`, { params: params }); };

@@ -51,7 +51,7 @@
             </el-table-column>
             <el-table-column prop="zfzt" label="支付状态" :formatter="formatState">
             </el-table-column>
-            <el-table-column prop="beizhu" label="备注" width="220" >
+            <el-table-column prop="beizhu" label="备注" width="130" >
             </el-table-column>
             <el-table-column label="操作" width="140">
                 <template slot-scope="scope">
@@ -61,7 +61,7 @@
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item  > <el-button     v-if="scope.row.task_zt==2&&fun('commissionAudit')" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
-                            <el-dropdown-item  > <el-button  v-if="scope.row.task_zt==3&&fun('commissionPay')" @click="handleFinish(scope.$index, scope.row)">付款</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button  v-if="scope.row.task_zt==3&&scope.row.zfzt==1&&fun('commissionPay')" @click="handleFinish(scope.$index, scope.row)">付款</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button    @click="handleView(scope.$index, scope.row)">查看</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
@@ -221,11 +221,11 @@
                 });
             },
 
-            //显示编辑界面
+            //显示审批界面
             handleAudit: function (index, row) {
                 this.$router.push('/commissionAudit?id=' + row.id);
             },
-            //显示新增界面
+            //显示查看界面
             handleView: function (index, row) {
                 this.$router.push('/commissionView?id='+ row.id);
             },
