@@ -220,7 +220,7 @@
                                 message: '提交成功',
                                 type: 'success'
                             });
-                            if(fun("commissionAuditList"))
+                            if(this.fun("commissionAuditList"))
                             {
                                 this.$router.push('/commissionAuditList');
                             }else{
@@ -250,7 +250,7 @@
                                 message: '提交成功',
                                 type: 'success'
                             });
-                            if(fun("commissionAuditList"))
+                            if(this.fun("commissionAuditList"))
                             {
                                 this.$router.push('/commissionAuditList');
                             }else{
