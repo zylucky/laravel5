@@ -44,6 +44,7 @@
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item  > <el-button v-if="filters.spzt==0&&fun('commissionBalanceAudit')" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button    @click="handleView(scope.$index, scope.row)">查看</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button  v-if="fun('approvalDump')"  @click="handledump(scope.$index, scope.row)">打印</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
                 </template>
@@ -214,6 +215,9 @@
             //显示查看界面
             handleView: function (index, row) {
                 this.$router.push('/commissionView?id='+ row.id);
+            },
+            handledump: function (index, row) {
+                this.$router.push('/approvalDump/'+ row.id);
             },
             selsChange: function (sels) {
                 this.sels = sels;
