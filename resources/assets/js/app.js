@@ -36,8 +36,6 @@ import 'font-awesome/css/font-awesome.min.css'
 
 import {getPermissionList}  from './api/api';
 
-
-
 Vue.use(ElementUI);
 Vue.use(VueRouter);
 

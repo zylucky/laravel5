@@ -204,4 +204,14 @@ class commissionAuditController extends Controller
         );
         echo $response->getBody();
     }
+
+    public function approval($id)
+    {
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', 'api/qd/shenpidan/'.$id.'/get');
+        echo $response->getBody();
+
+    }
 }

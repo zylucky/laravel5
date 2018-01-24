@@ -71,6 +71,7 @@ import selectCommissionPayType from "./components/Commission/contractPayType.vue
 import commissionView  from "./components/Commission/commissionView.vue";
 import commissionAuditList  from "./components/Commission/commissionFinancial.vue";
 import commissionAudit   from "./components/Commission/commissionAudit.vue";
+import approvalDump   from "./components/Commission/approval.vue";
 import commissionBalanceList  from "./components/Commission/commissionBalance.vue";
 //应收
 import AccountsReceivable from "./components/Commission/accountsReceivableList.vue";
@@ -121,7 +122,7 @@ var fk_permission ,fk_permission_user ,fk_permission_role ,fk_permission_per ,
     fk_account,fk_payableList,fk_financePayableList,fk_receivableList,fk_financeReceivableList,
     fk_setPassword,fk_reportList,fk_shoufangReport,fk_chufangReport,fk_chanpinReport,fk_fangyuanXKReport,
     fk_jinggengReport,fk_projectReport,fk_projectSaleReport,fk_qdCompanyList,fk_commissionReport,fk_coreDataReport,fk_commissionAuditList,
-    fk_commissionBalanceList;
+    fk_commissionBalanceList,fk_approvalDump;
 fun('permission')==true? fk_permission = false:fk_permission = true;
 fun('permission')==true? fk_permission_user = false:fk_permission_user = true;
 fun('permission')==true? fk_permission_role = false:fk_permission_role = true;
@@ -155,6 +156,7 @@ fun('qdCompanyList')==true? fk_qdCompanyList  = false:fk_qdCompanyList = true;
 fun('commissionReport')==true? fk_commissionReport  = false:fk_commissionReport = true;
 fun('coreDataReport')==true? fk_coreDataReport  = false:fk_coreDataReport = true;
 fun('commissionAuditList')==true? fk_commissionAuditList  = false:fk_commissionAuditList = true;
+fun('approvalDump')==true? fk_approvalDump  = false:fk_approvalDump = true;
 fun('commissionBalanceList')==true? fk_commissionBalanceList  = false:fk_commissionBalanceList = true;
 
 
@@ -309,6 +311,7 @@ let routes = [
     },
     { path:'/purchaseContract/summary',component:PurchaseContractSummary,name:'收房摘要',hidden:true},
     { path:'/saleContract/summary',component:SaleContractSummary,name:'出房摘要',hidden:true},
+    {path:'/approvalDump/:id', component: approvalDump, name: '出房佣金申请审批单', hidden: fk_approvalDump},
 
     {
         path: '/',

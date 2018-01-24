@@ -262,6 +262,7 @@ Route::group(['prefix' => 'commossionAudit'], function () {
     Route::post('auditComm','Commission\commissionAuditController@auditComm');
     Route::post('payComm','Commission\commissionAuditController@payComm');
     Route::post('commBalance','Commission\commissionAuditController@commBalance');
+    Route::get('approval/{id}','Commission\commissionAuditController@approval');
 });
 //hello world1
 
