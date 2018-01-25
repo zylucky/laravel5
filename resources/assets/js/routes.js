@@ -94,6 +94,7 @@ import ProjectReport from "./components/report/projectReport.vue" ;
 import ProjectSaleReport from "./components/report/projectSaleReport.vue" ;
 import CommissionReport from "./components/report/commissionReport.vue" ;
 import CoreDataReport from "./components/report/coreDataReport.vue" ;
+import DaiKanReport from "./components/report/daikanReport.vue" ;
 //消息管理
 import MessageList from "./components/message/Index.vue";
 
@@ -122,7 +123,7 @@ var fk_permission ,fk_permission_user ,fk_permission_role ,fk_permission_per ,
     fk_account,fk_payableList,fk_financePayableList,fk_receivableList,fk_financeReceivableList,
     fk_setPassword,fk_reportList,fk_shoufangReport,fk_chufangReport,fk_chanpinReport,fk_fangyuanXKReport,
     fk_jinggengReport,fk_projectReport,fk_projectSaleReport,fk_qdCompanyList,fk_commissionReport,fk_coreDataReport,fk_commissionAuditList,
-    fk_commissionBalanceList,fk_approvalDump;
+    fk_commissionBalanceList,fk_approvalDump,fk_daikanReport;
 fun('permission')==true? fk_permission = false:fk_permission = true;
 fun('permission')==true? fk_permission_user = false:fk_permission_user = true;
 fun('permission')==true? fk_permission_role = false:fk_permission_role = true;
@@ -158,6 +159,7 @@ fun('coreDataReport')==true? fk_coreDataReport  = false:fk_coreDataReport = true
 fun('commissionAuditList')==true? fk_commissionAuditList  = false:fk_commissionAuditList = true;
 fun('approvalDump')==true? fk_approvalDump  = false:fk_approvalDump = true;
 fun('commissionBalanceList')==true? fk_commissionBalanceList  = false:fk_commissionBalanceList = true;
+fun('daikanReport')==true? fk_daikanReport  = false:fk_daikanReport = true;
 
 
 let routes = [
@@ -379,6 +381,7 @@ let routes = [
             {path:'/projectSaleReport', component: ProjectSaleReport, name: '八周价格对比表', hidden: fk_projectSaleReport},
             {path:'/commissionReport', component: CommissionReport, name: '收房返佣', hidden: fk_commissionReport},
             {path:'/coreDataReport', component: CoreDataReport, name: '收购与销售核心数据表', hidden: fk_coreDataReport},
+            {path:'/daikanReport', component: DaiKanReport, name: '客户带看', hidden: fk_daikanReport},
         ]
 
     },
