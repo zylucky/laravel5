@@ -1,7 +1,7 @@
 <template>
     <el-row>
 
-        <table   border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;" >
+        <table   border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;width:1280px" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 基本信息</td></tr>
             <tr class="tr1" >
@@ -74,29 +74,67 @@
             </tr>
             </tbody>
         </table>
-        <table  width="1220px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
+        <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
-            <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批进度</td></tr>
-            <tr style=" text-align:left; height: 40px"><td colspan="6">
-                <div style="margin-left:60px;margin-top:30px;width: 100%;height: 130px"  >
+            <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 发票信息</td></tr>
 
-                <el-steps :active=shenpijindu align-center >
-              <el-step v-for="(item, index) in options" :title="item.value" :key="index" :description="item.label"></el-step>
-
-        </el-steps>
-        </div></td></tr>
             </tbody>
         </table>
-        <table  width="1220px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
+        <el-upload v-if='fapiao' style="margin-top:30px"
+                action=""
+                list-type="picture-card"
+                disabled="true"
+                :on-preview="handlePictureCardPreview"
+                :file-list="fapiao"
+        >
+
+        </el-upload>
+        <el-dialog v-model="dialogVisible" size="large">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+        <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
+            <tbody>
+            <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批进度</td></tr>
+            <tr style=" text-align:left; height: 40px;">
+            	<td colspan="6">
+	                <!--<div style="margin-left:60px;margin-top:30px;width: 100%;height: 130px"  >-->
+	
+			                <!--<el-steps :active=shenpijindu align-center >
+					              <el-step v-for="(item, index) in options" :title="item.value" :key="index" :description="item.label">
+					              </el-step>
+					        </el-steps>-->
+					        <ul class="plan_box">
+					        	<li v-for="(item, index) in options">
+					        		<p :class="item.shenpi==1 && !item.isfock?'zt':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'zt spz':(item.shenpi==2?'zt ybh':'zt dsp'))">
+					        			<span :class="item.shenpi==1 && !item.isfock?'xh':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'xh xh3':(item.shenpi==2?'xh xh2':'xh xh1'))">{{index + 1}}</span>
+					        			<span>
+											<i v-if='item.shenpi==1 && !item.isfock'>{{item.shenpi==1 && !item.isfock?"已通过":"待审批"}}</i>
+											<i v-if='item.shenpi==null && !item.isfock'>{{item.shenpi==null && !item.isfock?"待审批":''}}</i>
+											<i v-if='item.shenpi!=1 && item.shenpi!=2 && item.isfock'>审批中</i>
+											<i v-if='item.shenpi==2'>{{item.shenpi==2?"已驳回":"已审批"}}</i>
+										</span>
+					        			<span :class="item.shenpi==1 && !item.isfock?'tiao':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'tiao jb1':(item.shenpi==2?'tiao jb2':(item.shenpi==null && !item.isfock?'tiao jb3':'tiao jb')))"></span>
+					        		</p>
+					        		<p class="name">{{item.value}}</p>
+					        		<p class="date">{{item.label}}</p>
+					        		
+					        	</li>
+					        </ul>
+			        <!--</div>-->
+            	</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 审批意见</td></tr>
 
             </tbody>
         </table>
-            <el-input type="textarea"  auto-complete="off"
-                      placeholder="请输入意见"    style="width:1220px"></el-input>
-        <div style="text-align:center;margin-top:30px;width:1220px" > <el-button @click.native="fanhui">通过</el-button>
-            <el-button @click.native="fanhui">驳回</el-button></div>
+        <div style="text-align:left;margin-top:30px;width:1280px" > {{Payable.shuoming}}</div>
+
+<div style="text-align:center;margin-top:30px;width:1280px"> <el-button @click.native="fanhui">返回</el-button></div>
     </el-row>
 </template>
 <style>
@@ -110,7 +148,9 @@
     .td2{
         width:240px;
     }
-
+	.el-upload--picture-card{
+		display: none !important;
+	}
 </style>
 <script>
 
@@ -127,106 +167,27 @@
                 options: [
                 ],
                 shenpijindu:1,
+                shuoming:'',
+                fapiao:[],
+                dialogVisible: false,
+                dialogImageUrl: '',
             }
         },
         methods: {
-            daxie(money) {
-                if (money == null) {
-                    return '';
-                }
-                //汉字的数字
-                var cnNums = new Array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
-                //基本单位
-                var cnIntRadice = new Array('', '拾', '佰', '仟');
-                //对应整数部分扩展单位
-                var cnIntUnits = new Array('', '万', '亿', '兆');
-                //对应小数部分单位
-                var cnDecUnits = new Array('角', '分', '毫', '厘');
-                //整数金额时后面跟的字符
-                var cnInteger = '整';
-                //整型完以后的单位
-                var cnIntLast = '元';
-                //最大处理的数字
-                var maxNum = 999999999999999.9999;
-                //金额整数部分
-                var integerNum;
-                //金额小数部分
-                var decimalNum;
-                //输出的中文金额字符串
-                var chineseStr = '';
-                //分离金额后用的数组，预定义
-                var parts;
-                if (money == '') {
-                    return '';
-                }
-                money = parseFloat(money);
-                if (money >= maxNum) {
-                    //超出最大处理数字
-                    return '';
-                }
-                if (money == 0) {
-                    chineseStr = cnNums[0] + cnIntLast + cnInteger;
-                    return chineseStr;
-                }
-                //转换为字符串
-                money = money.toString();
-                if (money.indexOf('.') == -1) {
-                    integerNum = money;
-                    decimalNum = '';
-                } else {
-                    parts = money.split('.');
-                    integerNum = parts[0];
-                    decimalNum = parts[1].substr(0, 4);
-                }
-                //获取整型部分转换
-                if (parseInt(integerNum, 10) > 0) {
-                    var zeroCount = 0;
-                    var IntLen = integerNum.length;
-                    for (var i = 0; i < IntLen; i++) {
-                        var n = integerNum.substr(i, 1);
-                        var p = IntLen - i - 1;
-                        var q = p / 4;
-                        var m = p % 4;
-                        if (n == '0') {
-                            zeroCount++;
-                        } else {
-                            if (zeroCount > 0) {
-                                chineseStr += cnNums[0];
-                            }
-                            //归零
-                            zeroCount = 0;
-                            chineseStr += cnNums[parseInt(n)] + cnIntRadice[m];
-                        }
-                        if (m == 0 && zeroCount < 4) {
-                            chineseStr += cnIntUnits[q];
-                        }
-                    }
-                    chineseStr += cnIntLast;
-                }
-                //小数部分
-                if (decimalNum != '') {
-                    var decLen = decimalNum.length;
-                    for (var i = 0; i < decLen; i++) {
-                        var n = decimalNum.substr(i, 1);
-                        if (n != '0') {
-                            chineseStr += cnNums[Number(n)] + cnDecUnits[i];
-                        }
-                    }
-                }
-                if (chineseStr == '') {
-                    chineseStr += cnNums[0] + cnIntLast + cnInteger;
-                } else if (decimalNum == '') {
-                    chineseStr += cnInteger;
-                }
-                return chineseStr;
-            },
 
             //时间戳转日期格式
             changeDate(value){
-                if (value != '' || value != null) {
+                if (value != '' && value != null) {
+                    console.log(value)
                     var newDate = new Date();
                     newDate.setTime(value);
-                    return newDate.toLocaleString();
+                    var hour = newDate.getHours();
+				    var minute = newDate.getMinutes();
+				    var second = newDate.getSeconds();
+				    if(hour<10){hour = '0' + hour;}
+				    if(minute<10){minute = '0' + minute;}
+				    if(second<10){second = '0' + second;}
+                    return newDate.toLocaleDateString() + ' ' + hour + ':' + minute + ':' + second;
                 }
             },
 
@@ -237,15 +198,18 @@
                 };
                 this.listLoading = true;
                 showcommission(para).then((res) => {
+                	console.log(res.data.shenPi);
                     this.Payable = res.data.data;
+                    this.fapiao=res.data.imgs;
                     this.listLoading = false;
-                    for (var item in res.data.shenpi) {
-                        if(res.data.shenpi[item].isfock==true){
-                           this.shenpijindu=parseInt(item)+1;
-                        }
+                    for (var item in res.data.shenPi) {
+                        this.shenpijindu=parseInt(item)+1;
+                        this.Payable.shuoming=res.data.shenPi[item].shuoming;
                         this.options.push({
-                            value: res.data.shenpi[item].person,
-                            label: this.changeDate(res.data.shenpi[item].shenpitime ),
+                            value: res.data.shenPi[item].person,
+                            label: this.changeDate(res.data.shenPi[item].shenpitime ),
+                            shenpi: res.data.shenPi[item].shenpi,
+                            isfock: res.data.shenPi[item].isfock,
                         });
                     }
                 });
@@ -269,11 +233,132 @@
                 return  s.split('').reverse().join('').replace(/(\d{3}(?=\d)(?!\d+\.|$))/g, '$1,').split('').reverse().join('');
 
             },
-
-
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
+            fanhui(){
+                if(this.fun("commissionAuditList"))
+                {
+                    this.$router.push('/commissionAuditList');
+                }else{
+                    this.$router.push('/commissionBalanceList');
+                }
+//                if (this.$route.query.goindex === 'true') {
+//                    this.$router.push('/')
+//                } else {
+//                    this.$router.back(-1)
+//                }
+            },
         },
         mounted() {
             this.getPayable();
         }
     }
 </script>
+<style scoped>
+	ul,li,dl,dd{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.plan_box{
+		display: flex;
+		min-height: 50px;
+		height: auto;
+		font-size: 16px;
+		margin: 30px;
+	}
+	.plan_box p{
+		margin: 0;
+		padding: 0;
+		text-align: center;
+	}
+	.plan_box li{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 120px;
+		margin-right: 35px;
+	}
+	.zt{
+		position: relative;
+		width: 120px;
+		height: 34px;
+		line-height: 34px;
+		background: #1fa0fc;
+		color: #fff;
+		font-size: 16px;
+		text-align: center;
+		border-radius: 34px;
+		margin-bottom: 10px !important;
+	}
+	.zt .xh{
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		border-radius: 50%;
+		background: #fff;
+		color: #1fa0fc;
+		text-align: center;
+	}
+	.zt i{
+		font-style: normal;
+	}
+	.name,.date{
+		color: #646464;
+	}
+	.tiao{
+		position: absolute;
+		left: -37.5px;
+		top: 50%;
+		margin-top: -1px;
+		display: inline-block;
+		width: 40px;
+		height: 2px;
+		background: #1fa0fc;
+	}
+	.plan_box li:first-child .tiao{
+		display: none;
+	}
+	.dsp{
+		/*待审批样式*/
+		background: #bbbbbb;
+	}
+	.xh1{
+		/*待审批文字颜色*/
+		color: #bbbbbb!important;
+	}
+	.ybh{
+		/*驳回样式*/
+		background: #ff7271;
+	}
+	.xh2{
+		/*驳回文字颜色*/
+		color: #ff7271!important;
+	}
+	.spz{
+		/*审批中*/
+		background: #fea843;
+	}
+	.xh3{
+		/*审批中文字颜色*/
+		color: #fea843!important;
+	}
+	.jb{
+		/*条渐变审批中到待审批*/
+		background: -webkit-linear-gradient(left,#fea843,#bbbbbb);
+	}
+	.jb1{
+		/*条渐变已通过到审批中*/
+		background: -webkit-linear-gradient(left,#20a1ff,#fea843);
+	}
+	.jb2{
+		/*条渐变已通过到已驳回*/
+		background: -webkit-linear-gradient(left,#20a1ff,#ff7271);
+	}
+	.jb3{
+		background: #bbbbbb;
+	}
+</style>

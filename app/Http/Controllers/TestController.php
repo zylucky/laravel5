@@ -20,10 +20,25 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
-       echo  md5('0124phpoxVxtseIxK');exit;
-        Redis::set('name', 'Taylor');
-        $name = Redis::get('name');
-        var_dump($name);
+//      $str="1,dsf,3ee,34r,rf,d,we,dfewr,erf";
+//      $s="";
+//      $ss=[];
+//      for ($i=0;$i< strlen($str);$i++ ){
+//          if($str[$i]==","){
+//              $ss[]=$s;
+//              $s="";
+//          }else{
+//              $s=$s.$str[$i];
+//          }
+//
+//      }
+//        $ss[]=$s;
+//      print_r($ss);
+        $str="1,dsf,3ee,34r,rf,d,we,dfewr,erf";
+        while (strlen($str)>0){
+
+        }
+
     }
     function DiffDate($date1, $date2) {
         if (strtotime($date1) > strtotime($date2)) {

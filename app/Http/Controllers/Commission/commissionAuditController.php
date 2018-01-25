@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Commission;
 
+use App\Http\Controllers\Api\MessageController;
 use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -24,20 +25,25 @@ class commissionAuditController extends Controller
         $pageSize = Input::get('pageSize');
         $page = Input::get('page');
         $lpname = Input::get('xm');
+        $spzt = Input::get('spzt');
+        $zfzt = Input::get('zfzt');
+        $u = Auth::user();
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/qd/yongjin/list',[
+                'query' => [
+                    'page'=>$page,
+                    'size'=>$pageSize,
+                    'userid'=>$u->id,
+                    'lpname'=>$lpname,
+                    'spzt'=>$spzt,
+                    'zfzt'=>$zfzt,
+                ]
 
-        $limitStart=($page-1)*$pageSize;
-        $limitEnd = $pageSize;
-        $sql=" select *,case sqfk+sqfk1 when 0 then '首期房租押金已付齐' else '首期房租押金未付齐' end beizhu  from v_yjxx ";
-        $strWhere=" where 1=1 ";
-        if(!empty($lpname)){
-            $strWhere=$strWhere." and CONCAT(loupan,loudong,fanghao)  like '%".$lpname."%'"  ;
-        }
-        $count =  DB::connection('mysql3')->select("select count(*) as countNum from v_yjxx ".$strWhere) ;
-        $sql=$sql.$strWhere."   limit ".$limitStart.", ".$limitEnd;
-        $bk = DB::connection('mysql3')->select($sql);
-
-
-        return $data = ['total'=>$count[0]->countNum,'data'=>$bk];
+            ]
+        );
+        echo $response->getBody();
     }
 
     /**
@@ -70,18 +76,13 @@ class commissionAuditController extends Controller
      */
     public function show($id)
     {
-        $sql=" select *,case sqfk+sqfk1 when 0 then '首期房租押金已付齐' else '首期房租押金未付齐' end beizhu  from v_yjxx where id=".$id;
-
-        $bk = DB::connection('mysql3')->select($sql);
         $client = new Client ([
             'base_uri' => $this->base_url,
         ]);
-        $response = $client->request('GET', 'http://192.168.1.40:8557/api/task/apply/OMC_t_qd_xs_yongjin/2/get',[
+        $response = $client->request('GET', '/api/qd/yongjin/'.$id.'/get',[
             ]
         );
-        $shenpi = json_decode($response->getBody());
-
-        return $data = [ 'data'=>$bk[0],'shenpi'=>$shenpi->data->shenpi];
+        return $response->getBody();
     }
 
     /**
@@ -125,11 +126,18 @@ class commissionAuditController extends Controller
      */
     public function auditComm(Request $request)
     {
-       dd($request->request );
-        DB::connection('mysql3')->table('users')
-            ->where('id', 1)
-            ->update(['zt' => 1,'yijian' => '']);
-        return 1;
+
+        $user = Auth::user();
+        $obj = array_merge($request->params, Array('personid' =>$user->id,'person' =>$user->name,'persontype' =>3));
+        //dd($obj);
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+        ]);
+
+        $r = $client->request('POST', '/api/qd/yongjin/auditYongJin', [
+            'json' => $obj
+        ]);
+        return $r->getBody();
     }
     /**
      * Update the specified resource in storage.
@@ -139,33 +147,71 @@ class commissionAuditController extends Controller
      */
     public function  payComm(Request $request)
     {
-        DB::connection('mysql3')->table('users')
-            ->where('id', 1)
-            ->update(['zt' => 1,'yijian' => '']);
 
         $u = Auth::user();
         $obj=    Array(
             'send_from_id'=>$u->id,
             'send_from_name'=>$u->name,
-            'send_from_name'=>'erp',
-            'send_to_id'=>$request->xsQvdaoid,
-            'send_to_name'=>$request->qvdao,
-            'send_to_sys'=>'erp',
-            'phone'=>$request->phone,
+            'send_from_sys'=>'erp',
+            'send_to_id'=>$request->params["xsQvdaoid"],
+            'send_to_name'=>$request->params["qvdao"],
+            'send_to_sys'=>'qd',
+            'phone'=>'17611440599',//$request->params["phone"],
             'type'=>6,
             'is_message'=>1,
-            'is_web'=>0,
-            'yongjin'=>$request->yongjin,
+            'is_web'=>1,
+            'yongjin'=>$request->params["yongjin"],
+            'sourcemid'=>$request->params["id"],
+            'sourcetype'=>'OMC_t_qd_xs_yongjin',
+            'title'=> '收款通知',
         );
-        //dd($obj);
+         DB::connection('mysql3')->update("update t_qd_xs_yongjin SET zfzt=2 where id =".$request->params["id"]);
+         $request->request->add($obj);
+        $proxy = Request::create(
+            '/sendMessage',
+            'POST'
+        );
+        $response = \Route::dispatch($proxy);
+
+        return $response;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *结算佣金列表
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function  commBalance(Request $request)
+    {
+        $pageSize = $request->params["pageSize"];
+        $page = $request->params["page"];
+        $lpname =  $request->params["xm"];
+        $spzt = $request->params["spzt"] ;
+        $u = Auth::user();
         $client = new Client ([
-            'base_uri' =>'',
-
+            'base_uri' => $this->base_url,
         ]);
+        $response = $client->request('GET', '/api/qd/yongjin/tasklist',[
+                'query' => [
+                    'page'=>$page,
+                    'size'=>$pageSize,
+                    'userid'=>$u->id,
+                    'lpname'=>$lpname,
+                    'spzt'=>$spzt,
+                ]
+            ]
+        );
+        echo $response->getBody();
+    }
 
-        $r = $client->request('POST', 'http://erp.youshikongjian.com/sendMessage', [
-            'json' => $obj
+    public function approval($id)
+    {
+        $client = new Client ([
+            'base_uri' => $this->base_url,
         ]);
-        return $r->getBody();
+        $response = $client->request('GET', 'api/qd/shenpidan/'.$id.'/get');
+        echo $response->getBody();
+
     }
 }

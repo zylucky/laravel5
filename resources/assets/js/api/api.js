@@ -1,7 +1,6 @@
 import axios from 'axios';
 let base = '';
 let java = 'http://121.196.195.129:8557';
-
 export const requestLogin = params => { return axios.post(`${base}/login`, params).then(res => res.data); };
 export const logout = params => { return axios.post(`${base}/logout`, params).then(res => res.data); };
 
@@ -224,3 +223,5 @@ export const getcommissionAuditListPage = params => { return axios.get(`${base}/
 export const showcommission = params => { return axios.get(`${base}/commossionAudit/`+params.id, {}); };
 export const payComm = params =>{ return axios.post(`${base}/commossionAudit/payComm`, { params: params }); };
 export const auditComm = params =>{ return axios.post(`${base}/commossionAudit/auditComm`, { params: params }); };
+export const getcommissionBalanceListPage = params =>{ return axios.post(`${base}/commossionAudit/commBalance`, { params: params }); };
+export const getApprovalInfo = params => { return axios.get(`${base}/commossionAudit/approval/`+params.id); };

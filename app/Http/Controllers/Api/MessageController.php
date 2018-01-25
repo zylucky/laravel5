@@ -27,7 +27,7 @@ class MessageController extends Controller
                 $request->input('yongjin')
             );
             $success = $res->Code=="OK"?true:false;
-        }else{
+        }elseif($request->input('is_web')==1){
             $res = $this->send($message->id);
             $success = $res==1?true:false;
         }
@@ -132,9 +132,11 @@ class MessageController extends Controller
 
             'SMS_121165326',//渠道佣金信息待确认通知 5
             'SMS_121135362',//渠道佣金支付通知      6
-            'SMS_117522550',//渠道佣金信息被驳回通知 7
-            'SMS_117527659',//渠道佣金信息审批通过   8
-            'SMS_117513026',//发送验证码通知
+
+            'SMS_121165334',//渠道佣金信息被驳回通知 7
+            'SMS_121160644',//渠道佣金信息审批通过   8
+            'SMS_121910205',//渠道佣金待财务审批 9
+            'SMS_117513026',//发送验证码通知 10
 
         ];
         $client  = new Client($config);

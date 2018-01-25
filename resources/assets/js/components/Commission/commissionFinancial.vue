@@ -47,11 +47,11 @@
             </el-table-column>
             <el-table-column prop="qvdao" label="渠道人员" width="100" >
             </el-table-column>
-            <el-table-column prop="task_zt" label="审批状态" :formatter="formatYJType">
+            <el-table-column  label="审批状态" :formatter="formatYJType">
             </el-table-column>
             <el-table-column prop="zfzt" label="支付状态" :formatter="formatState">
             </el-table-column>
-            <el-table-column prop="beizhu" label="备注" width="220" >
+            <el-table-column prop="beizhu" label="备注" width="130" >
             </el-table-column>
             <el-table-column label="操作" width="140">
                 <template slot-scope="scope">
@@ -60,8 +60,8 @@
                             操作<i class="el-icon-caret-bottom el-icon--right"></i>
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
-                            <el-dropdown-item  > <el-button   v-if="scope.row.task_zt=1" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
-                            <el-dropdown-item  > <el-button  v-if="scope.row.task_zt=1" @click="handleFinish(scope.$index, scope.row)">付款</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button     v-if="scope.row.task_zt==2&&fun('commissionAudit')" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button  v-if="scope.row.task_zt==3&&scope.row.zfzt==1&&fun('commissionPay')" @click="handleFinish(scope.$index, scope.row)">付款</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button    @click="handleView(scope.$index, scope.row)">查看</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
@@ -108,18 +108,26 @@
                 },
                 optionsspzt: [
                     {
-                        value: 1,
-                        label: '待审批'
+                        value: 0,
+                        label: '请选择'
                     },
                     {
                         value: 2,
+                        label: '审核中'
+                    },
+                    {
+                        value: 3,
                         label: '已通过'
                     }, {
-                        value: 3,
+                        value: 4,
                         label: '已驳回'
                     },
                 ],
                 optionszfzt: [
+                    {
+                        value: 0,
+                        label: '请选择'
+                    },
                     {
                         value: 1,
                         label: '未付款'
@@ -146,9 +154,11 @@
             //状态显示转换
             formatYJType: function (row, column) {
                 let status = [];
+                status[0] = '未提交';
                 status[1] = '已提交';
-                status[2] = '未审批';
+                status[2] = '审核中';
                 status[3] = '已通过';
+                status[4] = '已驳回';
                 return status[row.task_zt];
             },
             //状态显示转换
@@ -211,11 +221,11 @@
                 });
             },
 
-            //显示编辑界面
+            //显示审批界面
             handleAudit: function (index, row) {
                 this.$router.push('/commissionAudit?id=' + row.id);
             },
-            //显示新增界面
+            //显示查看界面
             handleView: function (index, row) {
                 this.$router.push('/commissionView?id='+ row.id);
             },
@@ -226,20 +236,29 @@
             handleFinish: function (index, row) {
                 this.$confirm('确认提交完成付款吗？', '提示', {}).then(() => {
                     let para = {
-                        id:row.tQdApplyId,
+                        id:row.id,
                         xsQvdaoid:row.xsQvdaoid,
                         qvdao:row.qvdao,
                         phone:row.phone,
                         yongjin:row.yongjin,
                     }
-                    //console.log(para);
                     payComm(para).then((res) => {
-                        this.$message({
-                            message: '提交成功',
-                            type: 'success'
-                        });
-                        this.getChuFangCommission();
+                        if(res.data.success){
+                            this.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            this.getChuFangCommission();
+                        }else{
+                            this.$message({
+                                message: res.data.msg.Message,
+                                type: 'error'
+                            });
+                            this.getChuFangCommission();
+                        };
+
                     });
+
                 });
             },
 

@@ -259,8 +259,10 @@ Route::group(['prefix' => 'api/v1','middleware' => 'throttle:60,1'],function (){
 Route::resource('commossionAudit', 'Commission\commissionAuditController');
 //佣金审批
 Route::group(['prefix' => 'commossionAudit'], function () {
-    Route::post('auditComm','UserController@auditComm');
-    Route::post('payComm','UserController@payComm');
+    Route::post('auditComm','Commission\commissionAuditController@auditComm');
+    Route::post('payComm','Commission\commissionAuditController@payComm');
+    Route::post('commBalance','Commission\commissionAuditController@commBalance');
+    Route::get('approval/{id}','Commission\commissionAuditController@approval');
 });
 //hello world1
 
