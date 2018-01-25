@@ -12,7 +12,7 @@
                 :file-list="jiaogedan"
                 :disabled="!fun('purchaseJGDUpload')"
         >
-            <i v-if="fun('purchaseJGDUploadAdd')" class="el-icon-plus"></i>
+            <i v-if="fun('purchaseJGDUpload')" class="el-icon-plus"></i>
         </el-upload>
         <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">

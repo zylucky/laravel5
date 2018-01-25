@@ -20,7 +20,7 @@
                 :before-upload="beforeAvatarUpload"
                 :disabled="!fun('saleUpload')"
         >
-            <i v-if="fun('saleUploadAdd')" class="el-icon-plus"></i>
+            <i v-if="fun('saleUpload')" class="el-icon-plus"></i>
         </el-upload>
         <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
@@ -45,7 +45,7 @@
                     :file-list="chengzuren"
                     :disabled="!fun('saleUpload')"
             >
-                <i v-if="fun('saleUploadAdd')" class="el-icon-plus"></i>
+                <i v-if="fun('saleUpload')" class="el-icon-plus"></i>
             </el-upload>
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
@@ -71,7 +71,7 @@
                     :file-list="yingyezhizhao"
                     :disabled="!fun('saleUpload')"
             >
-                <i  v-if="fun('saleUploadAdd')" class="el-icon-plus"></i>
+                <i  v-if="fun('saleUpload')" class="el-icon-plus"></i>
             </el-upload>
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
@@ -97,7 +97,7 @@
                     :file-list="faren"
                     :disabled="!fun('saleUpload')"
             >
-                <i v-if="fun('saleUploadAdd')" class="el-icon-plus"></i>
+                <i v-if="fun('saleUpload')" class="el-icon-plus"></i>
             </el-upload>
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
@@ -122,7 +122,7 @@
                     :file-list="chengzurenshouquan"
                     :disabled="!fun('saleUpload')"
             >
-                <i v-if="fun('saleUploadAdd')" class="el-icon-plus"></i>
+                <i v-if="fun('saleUpload')" class="el-icon-plus"></i>
             </el-upload>
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
@@ -146,7 +146,7 @@
                     :file-list="weituoren"
                     :disabled="!fun('saleUpload')"
             >
-                <i v-if="fun('saleUploadAdd')" class="el-icon-plus"></i>
+                <i v-if="fun('saleUpload')" class="el-icon-plus"></i>
             </el-upload>
         <div style="position: fixed;right:10%;top:50%;">
             <el-button type="primary"   @click="save" style="margin-top:100px;">保存</el-button>

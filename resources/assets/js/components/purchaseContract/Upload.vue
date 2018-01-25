@@ -18,7 +18,7 @@
                     :on-success="handleSuccess"
                     :file-list="hetongList"
             >
-                <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
+                <i v-if="fun('purchaseUpload')" class="el-icon-plus"></i>
             </el-upload>
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
@@ -42,7 +42,7 @@
                         :file-list="chanquanrenList"
                         :disabled="!fun('purchaseUpload')"
                 >
-                    <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
+                    <i v-if="fun('purchaseUpload')" class="el-icon-plus"></i>
                 </el-upload>
                 <el-dialog v-model="dialogVisible" size="large">
                     <img width="100%" :src="dialogImageUrl" alt="">
@@ -68,7 +68,7 @@
                     :file-list="yingyezhizhao"
                     :disabled="!fun('purchaseUpload')"
             >
-                <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
+                <i v-if="fun('purchaseUpload')" class="el-icon-plus"></i>
             </el-upload>
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
@@ -94,7 +94,7 @@
                         :file-list="faren"
                         :disabled="!fun('purchaseUpload')"
                 >
-                    <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
+                    <i v-if="fun('purchaseUpload')" class="el-icon-plus"></i>
                 </el-upload>
                 <el-dialog v-model="dialogVisible" size="large">
                     <img width="100%" :src="dialogImageUrl" alt="">
@@ -119,7 +119,7 @@
                 :file-list="fangchanzheng"
                 :disabled="!fun('purchaseUpload')"
         >
-            <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
+            <i v-if="fun('purchaseUpload')" class="el-icon-plus"></i>
         </el-upload>
         <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
@@ -143,7 +143,7 @@
                 :file-list="budongchan"
                 :disabled="!fun('purchaseUpload')"
         >
-            <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
+            <i v-if="fun('purchaseUpload')" class="el-icon-plus"></i>
         </el-upload>
         <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
@@ -167,7 +167,7 @@
                 :file-list="yezhushouquan"
                 :disabled="!fun('purchaseUpload')"
         >
-            <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
+            <i v-if="fun('purchaseUpload')" class="el-icon-plus"></i>
         </el-upload>
         <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
@@ -191,7 +191,7 @@
                     :file-list="weituoren"
                     :disabled="!fun('purchaseUpload')"
             >
-                <i v-if="fun('purchaseUploadAdd')" class="el-icon-plus"></i>
+                <i v-if="fun('purchaseUpload')" class="el-icon-plus"></i>
             </el-upload>
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
