@@ -63,6 +63,7 @@
                             <el-dropdown-item  > <el-button     v-if="scope.row.task_zt==2&&fun('commissionAudit')" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button  v-if="scope.row.task_zt==3&&scope.row.zfzt==1&&fun('commissionPay')" @click="handleFinish(scope.$index, scope.row)">付款</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button    @click="handleView(scope.$index, scope.row)">查看</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button  v-if="fun('commissionContact')"  @click="handleHT(scope.$index, scope.row)">查看合同</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
                 </template>
@@ -188,7 +189,9 @@
                     return this.toDecimal(row.yongjin);
                 }
             },
-
+            handleHT: function (index, row) {
+                window.open('/#/saleContract/see?id='+row.hetongid);
+            },
             //页面跳转后
             handleCurrentChange(val) {
                 this.page = val;
