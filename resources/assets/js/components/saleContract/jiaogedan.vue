@@ -10,8 +10,9 @@
                 :on-remove="handleRemove"
                 :on-success="handleSuccess"
                 :file-list="jiaogedan"
+                :disabled="!fun('saleJGDUploadEdit')"
         >
-            <i class="el-icon-plus"></i>
+            <i v-if="fun('saleJGDUploadEdit')" class="el-icon-plus"></i>
         </el-upload>
         <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
