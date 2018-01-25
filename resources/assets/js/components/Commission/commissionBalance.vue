@@ -45,6 +45,7 @@
                             <el-dropdown-item  > <el-button v-if="filters.spzt==0&&fun('commissionBalanceAudit')" @click="handleAudit(scope.$index, scope.row)">审批</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button    @click="handleView(scope.$index, scope.row)">查看</el-button> </el-dropdown-item>
                             <el-dropdown-item  > <el-button  v-if="fun('approvalDump')"  @click="handledump(scope.$index, scope.row)">打印</el-button> </el-dropdown-item>
+                            <el-dropdown-item  > <el-button  v-if="fun('commissionContact')"  @click="handleHT(scope.$index, scope.row)">查看合同</el-button> </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
                 </template>
@@ -218,6 +219,9 @@
             },
             handledump: function (index, row) {
                 this.$router.push('/approvalDump/'+ row.id);
+            },
+            handleHT: function (index, row) {
+                window.open('/#/saleContract/see?id='+row.hetongid);
             },
             selsChange: function (sels) {
                 this.sels = sels;
