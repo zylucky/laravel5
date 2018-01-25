@@ -225,3 +225,4 @@ export const payComm = params =>{ return axios.post(`${base}/commossionAudit/pay
 export const auditComm = params =>{ return axios.post(`${base}/commossionAudit/auditComm`, { params: params }); };
 export const getcommissionBalanceListPage = params =>{ return axios.post(`${base}/commossionAudit/commBalance`, { params: params }); };
 export const getApprovalInfo = params => { return axios.get(`${base}/commossionAudit/approval/`+params.id); };
+export const getcoreDaiKanListPage = params => { return axios.get(`${base}/daikanReport`, { params: params }); };

@@ -213,6 +213,7 @@ Route::get('jinggengReport/ExportExcel','Report\jinggengReportController@ExportE
 Route::get('projectReport/ExportExcel','Report\projectReportController@ExportExcel');
 Route::get('projectSaleReport/ExportExcel','Report\projectSaleReportController@ExportExcel');
 Route::get('coreDataReport/ExportExcel','Report\coreDataReportController@ExportExcel');
+Route::get('daikanReport/ExportExcel','Report\daikanReportController@ExportExcel');
 //合同房源
 Route::group(['prefix' => 'office'], function () {
     Route::get('loupanList','Contract\officeController@loupanList');
@@ -240,7 +241,7 @@ Route::get('/readMessage/{id}','Api\MessageController@read');
 Route::get('/receiveMessage/{send_to_id}/sys/{sys}','Api\MessageController@index');
 
 Route::resource('coreDataReport', 'Report\coreDataReportController');
-
+Route::resource('daikanReport', 'Report\daikanReportController');
 
 //owner
 Route::group(['prefix' => 'api/v1','middleware' => 'throttle:60,1'],function (){
@@ -264,5 +265,6 @@ Route::group(['prefix' => 'commossionAudit'], function () {
     Route::post('commBalance','Commission\commissionAuditController@commBalance');
     Route::get('approval/{id}','Commission\commissionAuditController@approval');
 });
+
 //hello world1
 
