@@ -381,7 +381,7 @@ let routes = [
             {path:'/projectSaleReport', component: ProjectSaleReport, name: '八周价格对比表', hidden: fk_projectSaleReport},
             {path:'/commissionReport', component: CommissionReport, name: '收房返佣', hidden: fk_commissionReport},
             {path:'/coreDataReport', component: CoreDataReport, name: '收购与销售核心数据表', hidden: fk_coreDataReport},
-            {path:'/daiaknReport', component: DaiKanReport, name: '客户带看', hidden: fk_daikanReport},
+            {path:'/daikanReport', component: DaiKanReport, name: '客户带看', hidden: fk_daikanReport},
         ]
 
     },
