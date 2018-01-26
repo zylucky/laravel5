@@ -253,6 +253,8 @@
         },
         mounted() {
             this.getPayable();
+            var t = document.getElementsByClassName('jb3')[0];
+            console.log(t);
         }
     }
 </script>
