@@ -503,7 +503,7 @@
             }
             setTimeout(hello,500);
             if(this.$route.path=='/saleContract/edit'&&this.$route.query.status>=6){
-//                this.lydisabled = true;
+                this.lydisabled = true;
             }
         }
 
