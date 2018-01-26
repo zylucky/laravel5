@@ -25,6 +25,8 @@
             </el-table-column>
             <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
             </el-table-column>
+            <el-table-column prop="ht_query_flg" label="合同权限" :formatter="formathtqueryflg" width="150" sortable>
+            </el-table-column>
             <el-table-column prop="email" label="用户名" width="200" sortable>
             </el-table-column>
             <el-table-column prop="created_at" label="创建时间" width="220" sortable>
@@ -55,6 +57,12 @@
                         <el-radio class="radio" label="2">女</el-radio>
                     </el-radio-group>
                 </el-form-item>
+                <el-form-item label="合同权限" prop="ht_query_flg">
+                    <el-radio-group v-model="editForm.ht_query_flg">
+                        <el-radio class="radio" label="1">个人</el-radio>
+                        <el-radio class="radio" label="2">所有</el-radio>
+                    </el-radio-group>
+                </el-form-item>
                 <el-form-item label="用户名" prop="email">
                     <el-input v-model="editForm.email" auto-complete="off"></el-input>
                 </el-form-item>
@@ -77,6 +85,12 @@
                     <el-radio-group v-model="addForm.sex">
                         <el-radio class="radio" label="1">男</el-radio>
                         <el-radio class="radio" label="2">女</el-radio>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item label="合同权限" prop="ht_query_flg">
+                    <el-radio-group v-model="addForm.ht_query_flg">
+                        <el-radio class="radio" label="1">个人</el-radio>
+                        <el-radio class="radio" label="2">所有</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="用户名" prop="email">
@@ -158,6 +172,9 @@
                     sex:[
                         { required: true, message:'不能为空',trigger:'blur' }
                     ],
+                    ht_query_flg:[
+                        { required: true, message:'不能为空',trigger:'blur' }
+                    ],
                     email:[
                         { required: true, message:'不能为空',trigger:'blur' }
                     ],
@@ -168,6 +185,7 @@
                     id: 0,
                     name: '',
                     sex: '',
+                    ht_query_flg: '',
                     email: '',
                     phone: '',
                     addr: ''
@@ -181,6 +199,9 @@
                     sex:[
                         {required: true, message:'输入性别' }
                     ],
+                    ht_query_flg:[
+                        { required: true, message:'不能为空',trigger:'blur' },
+                    ],
                     email:[
                         {required: true, message:'输入邮箱',trigger:'blur' }
                     ],
@@ -190,6 +211,7 @@
                 addForm: {
                     name: '',
                     sex: '',
+                    ht_query_flg: '',
                     email: '',
                     phone: '',
                     addr: ''
@@ -260,14 +282,12 @@
                 let para = {
                     name: this.filters.name
                 };
-                this.listLoading = true;
                 getTotalRoleList(para).then((res) => {
                     let arr = [];
                     for ( var i in res.data ){
                         arr.push(res.data[i])
                     }
                     this.states = arr;
-                    this.listLoading = false;
                     this.list = this.states.map(item => {
                         return { value: item, label: item };
                     });
@@ -276,6 +296,9 @@
             //性别显示转换
             formatSex: function (row, column) {
                 return row.sex == 1 ? '男' : row.sex == 2 ? '女' : '未知';
+            },
+            formathtqueryflg: function (row, column) {
+                return row.ht_query_flg == 1 ? '个人' : row.ht_query_flg == 2 ? '全部' : '未知';
             },
             //页面跳转后
             handleCurrentChange(val) {
@@ -353,6 +376,7 @@
                 this.addForm = {
                     name: '',
                     sex: '',
+                    ht_query_flag: null,
                     email: '',
                     phone: '',
                     addr: ''
