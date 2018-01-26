@@ -62,11 +62,11 @@
                 <el-form-item label="合同权限" prop="ht_query_flg">
                     <el-radio-group v-model="editForm.ht_query_flg">
                         <el-radio class="radio" label="1">个人</el-radio>
-                        <el-radio class="radio" label="2">所有</el-radio>
-                        <el-radio class="radio" label="3">区域</el-radio>
+                        <el-radio class="radio" label="2">区域</el-radio>
+                        <el-radio class="radio" label="3">所有</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item v-if="editForm.ht_query_flg=='3'" label="上级领导" required prop="parentId">
+                <el-form-item v-if="editForm.ht_query_flg=='2'" label="上级领导"  prop="parentId">
                     <el-select
                             style="width: 100%;"
                             v-model="editForm.parentId"
@@ -112,11 +112,11 @@
                 <el-form-item label="合同权限" prop="ht_query_flg">
                     <el-radio-group v-model="addForm.ht_query_flg">
                         <el-radio class="radio" label="1">个人</el-radio>
-                        <el-radio class="radio" label="2">所有</el-radio>
-                        <el-radio class="radio" label="3">区域</el-radio>
+                        <el-radio class="radio" label="2">区域</el-radio>
+                        <el-radio class="radio" label="3">所有</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item v-if="addForm.ht_query_flg=='3'" label="上级领导" required prop="parentId">
+                <el-form-item v-if="addForm.ht_query_flg=='2'" label="上级领导"  prop="parentId">
                     <el-select
                             style="width: 100%;"
                             v-model="addForm.parentId"
@@ -386,10 +386,10 @@
                         res = '个人'
                         break;
                      case '2':
-                        res = '全部'
+                        res = '区域'
                         break;
                      case '3':
-                        res = '区域'
+                        res = '全部'
                         break;
                 }
                 return res;
