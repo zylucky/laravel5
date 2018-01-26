@@ -35,6 +35,7 @@
                                     placeholder="销售人员姓名"
                                     :remote-method="remoteMethodyslxr1"
                                     :loading="fristyslxrloading1"
+                                    :disabled="lydisabled"
                            >
                                 <el-option
                                         v-for="item in renter.optionsyslxr1"
