@@ -66,8 +66,9 @@
                         <el-radio class="radio" label="3">区域</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item label="上级领导" required prop="parentId">
+                <el-form-item v-if="editForm.ht_query_flg=='3'" label="上级领导" required prop="parentId">
                     <el-select
+                            style="width: 100%;"
                             v-model="editForm.parentId"
                             filterable
                             default-first-option
@@ -112,10 +113,12 @@
                     <el-radio-group v-model="addForm.ht_query_flg">
                         <el-radio class="radio" label="1">个人</el-radio>
                         <el-radio class="radio" label="2">所有</el-radio>
+                        <el-radio class="radio" label="3">区域</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item label="上级领导" required prop="parentId">
+                <el-form-item v-if="addForm.ht_query_flg=='3'" label="上级领导" required prop="parentId">
                     <el-select
+                            style="width: 100%;"
                             v-model="addForm.parentId"
                             filterable
                             default-first-option
