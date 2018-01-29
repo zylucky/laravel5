@@ -122,6 +122,6 @@ class RoleController extends Controller
     {
         //删除该角色的所有原权限
         DB::table('permission_role')->where('role_id', '=', $id)->delete();
-        return Role::destroy($id);
+        DB::table('roles')->where('id', '=', $id)->delete();
     }
 }
