@@ -102,7 +102,7 @@
 			                <!--<el-steps :active=shenpijindu align-center >
 					              <el-step v-for="(item, index) in options" :title="item.value" :key="index" :description="item.label">
 					              </el-step>
-					        </el-steps>-->
+					        </el-steps>--> 
 					        <ul class="plan_box">
 					        	<li v-for="(item, index) in options">
 					        		<p :class="item.shenpi==1 && !item.isfock?'zt':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'zt spz':(item.shenpi==2?'zt ybh':'zt dsp'))">

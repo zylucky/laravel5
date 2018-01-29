@@ -443,3 +443,8 @@
         }
     }
 </script>
+<style>
+	.el-dialog--small{
+		width: 405px;
+	}
+</style>
