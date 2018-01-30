@@ -103,8 +103,8 @@
 					              <el-step v-for="(item, index) in options" :title="item.value" :key="index" :description="item.label">
 					              </el-step>
 					        </el-steps>--> 
-					        <ul class="plan_box">
-					        	<li v-for="(item, index) in options">
+					        <ul class="plan_box" v-for="i in spDatas.length">
+					        	<li v-for="(item, index) in spDatas[i-1]">
 					        		<p :class="item.shenpi==1 && !item.isfock?'zt':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'zt spz':(item.shenpi==2?'zt ybh':'zt dsp'))">
 					        			<span :class="item.shenpi==1 && !item.isfock?'xh':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'xh xh3':(item.shenpi==2?'xh xh2':'xh xh1'))">{{index + 1}}</span>
 					        			<span>
@@ -114,9 +114,10 @@
 											<i v-if='item.shenpi==2'>{{item.shenpi==2?"已驳回":"已审批"}}</i>
 										</span>
 					        			<span :class="item.shenpi==1 && !item.isfock?'tiao':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'tiao jb1':(item.shenpi==2?'tiao jb2':(item.shenpi==null && !item.isfock?'tiao jb3':'tiao jb')))"></span>
+					        			<!--<span class="tiaos"></span>-->
 					        		</p>
-					        		<p class="name">{{item.value}}</p>
-					        		<p class="date">{{item.label}}</p>
+					        		<p class="name">{{item.person}}</p>
+					        		<p class="date">{{item.shenpitime | typeDate}}</p>
 					        		
 					        	</li>
 					        </ul>
@@ -171,6 +172,8 @@
                 fapiao:[],
                 dialogVisible: false,
                 dialogImageUrl: '',
+                spData:[],
+                spDatas:[],//分组后的数据
             }
         },
         methods: {
@@ -198,7 +201,9 @@
                 };
                 this.listLoading = true;
                 showcommission(para).then((res) => {
-                	console.log(res.data.shenPi);
+                	this.spData = res.data.shenPi;
+                	console.log('================')
+                	console.log(this.spData);
                     this.Payable = res.data.data;
                     this.fapiao=res.data.imgs;
                     this.listLoading = false;
@@ -212,6 +217,20 @@
                             isfock: res.data.shenPi[item].isfock,
                         });
                     }
+                    var newArr = [],
+					    b;
+					this.spData.forEach(function(item, index, array) {
+					    var a = Math.floor(index / 8);
+					    if (b !== a) {
+					        b = a;
+					        newArr[a] = new Array();
+					    }
+					    newArr[a].push(item);         
+					});
+					this.spDatas = newArr;
+					console.log(this.spDatas)
+                    
+                    
                 });
             },
             toDecimal(x) {
@@ -255,6 +274,23 @@
             this.getPayable();
             var t = document.getElementsByClassName('jb3')[0];
             console.log(t);
+        },
+        filters:{
+        	//时间戳转日期格式
+            typeDate(value){
+                if (value != '' && value != null) {
+                    console.log(value)
+                    var newDate = new Date();
+                    newDate.setTime(value);
+                    var hour = newDate.getHours();
+				    var minute = newDate.getMinutes();
+				    var second = newDate.getSeconds();
+				    if(hour<10){hour = '0' + hour;}
+				    if(minute<10){minute = '0' + minute;}
+				    if(second<10){second = '0' + second;}
+                    return newDate.toLocaleDateString() + ' ' + hour + ':' + minute + ':' + second;
+                }
+            },
         }
     }
 </script>
@@ -321,6 +357,16 @@
 		height: 2px;
 		background: #1fa0fc;
 	}
+	.tiaos{
+		position: absolute;
+		right: -37.5px;
+		top: 50%;
+		margin-top: -1px;
+		display: inline-block;
+		width: 40px;
+		height: 2px;
+		background: #1fa0fc;
+	}
 	.plan_box li:first-child .tiao{
 		display: none;
 	}
@@ -363,4 +409,7 @@
 	.jb3{
 		background: #bbbbbb;
 	}
+	/*.plan_box:nth-child(even){
+		align-content: flex-end;
+	}*/
 </style>
