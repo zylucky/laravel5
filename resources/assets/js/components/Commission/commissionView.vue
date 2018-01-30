@@ -103,10 +103,10 @@
 					              <el-step v-for="(item, index) in options" :title="item.value" :key="index" :description="item.label">
 					              </el-step>
 					        </el-steps>--> 
-					        <ul class="plan_box" v-for="i in spDatas.length">
-					        	<li v-for="(item, index) in spDatas[i-1]">
+					        <ul class="plan_box" v-for="(i,idx) in spDatas.length">
+					        	<li v-for="(item, index) in spDatas[idx]">
 					        		<p :class="item.shenpi==1 && !item.isfock?'zt':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'zt spz':(item.shenpi==2?'zt ybh':'zt dsp'))">
-					        			<span :class="item.shenpi==1 && !item.isfock?'xh':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'xh xh3':(item.shenpi==2?'xh xh2':'xh xh1'))">{{index + 1}}</span>
+					        			<span :class="item.shenpi==1 && !item.isfock?'xh':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'xh xh3':(item.shenpi==2?'xh xh2':'xh xh1'))">{{(idx * 8 + index + 1)}}</span>
 					        			<span>
 											<i v-if='item.shenpi==1 && !item.isfock'>{{item.shenpi==1 && !item.isfock?"已通过":"待审批"}}</i>
 											<i v-if='item.shenpi==null && !item.isfock'>{{item.shenpi==null && !item.isfock?"待审批":''}}</i>
@@ -409,7 +409,12 @@
 	.jb3{
 		background: #bbbbbb;
 	}
-	/*.plan_box:nth-child(even){
-		align-content: flex-end;
-	}*/
+	.plan_box:nth-child(even){
+		/*align-content: flex-end;*/
+		flex-direction: row-reverse;
+	}
+	.plan_box:nth-child(even) .tiao{
+		transform: rotateY(180deg)!important;
+    	left: 100%;
+	}
 </style>
