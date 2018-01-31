@@ -103,10 +103,10 @@
 
                     </el-steps>-->
                 <!--</div>-->
-                <ul class="plan_box">
-		        	<li v-for="(item, index) in options">
+                <ul class="plan_box" v-for="(i,idx) in spDatas.length">
+		        	<li v-for="(item, index) in spDatas[idx]">
 		        		<p :class="item.shenpi==1 && !item.isfock?'zt':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'zt spz':(item.shenpi==2?'zt ybh':'zt dsp'))">
-		        			<span :class="item.shenpi==1 && !item.isfock?'xh':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'xh xh3':(item.shenpi==2?'xh xh2':'xh xh1'))">{{index + 1}}</span>
+		        			<span :class="item.shenpi==1 && !item.isfock?'xh':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'xh xh3':(item.shenpi==2?'xh xh2':'xh xh1'))">{{(idx * 8 + index + 1)}}</span>
 		        			<span>
 								<i v-if='item.shenpi==1 && !item.isfock'>{{item.shenpi==1 && !item.isfock?"已通过":"待审批"}}</i>
 								<i v-if='item.shenpi==null && !item.isfock'>{{item.shenpi==null && !item.isfock?"待审批":''}}</i>
@@ -115,10 +115,10 @@
 							</span>
 		        			<span :class="item.shenpi==1 && !item.isfock?'tiao':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'tiao jb1':(item.shenpi==2?'tiao jb2':(item.shenpi==null && !item.isfock?'tiao jb3':'tiao jb')))"></span>
 		        		</p>
-		        		<p class="name">{{item.value}}</p>
-		        		<p class="date">{{item.label}}</p>
-		        		
+		        		<p class="name">{{item.person}}</p>
+		        		<p class="date">{{item.shenpitime | typeDate}}</p>
 		        	</li>
+		        	<p class="jdx"></p>
 		        </ul>
             </td></tr>
             </tbody>
@@ -170,6 +170,8 @@
                 fapiao:[],
                 dialogVisible: false,
                 dialogImageUrl: '',
+                spData:[],
+                spDatas:[],//重新组织后的数据
             }
         },
         methods: {
@@ -199,6 +201,7 @@
                 };
                 this.listLoading = true;
                 showcommission(para).then((res) => {
+                	this.spData = res.data.shenPi;
                     this.Payable = res.data.data;
                     this.fapiao=res.data.imgs;
                     this.listLoading = false;
@@ -214,6 +217,19 @@
                             isfock: res.data.shenPi[item].isfock,
                         });
                     }
+                    var newArr = [],
+					    b;
+					this.spData.forEach(function(item, index, array) {
+					    var a = Math.floor(index / 8);
+					    if (b !== a) {
+					        b = a;
+					        newArr[a] = new Array();
+					    }
+					    newArr[a].push(item);         
+					});
+					this.spDatas = newArr;
+                    
+                    
                 });
             },
             toDecimal(x) {
@@ -297,6 +313,23 @@
         },
         mounted() {
             this.getPayable();
+        },
+        filters:{
+        	//时间戳转日期格式
+            typeDate(value){
+                if (value != '' && value != null) {
+                    console.log(value)
+                    var newDate = new Date();
+                    newDate.setTime(value);
+                    var hour = newDate.getHours();
+				    var minute = newDate.getMinutes();
+				    var second = newDate.getSeconds();
+				    if(hour<10){hour = '0' + hour;}
+				    if(minute<10){minute = '0' + minute;}
+				    if(second<10){second = '0' + second;}
+                    return newDate.toLocaleDateString() + ' ' + hour + ':' + minute + ':' + second;
+                }
+            },
         }
     }
 </script>
@@ -307,6 +340,7 @@
 		padding: 0;
 	}
 	.plan_box{
+		position: relative;
 		display: flex;
 		min-height: 50px;
 		height: auto;
@@ -404,5 +438,36 @@
 	}
 	.jb3{
 		background: #bbbbbb;
+	}
+	.plan_box:nth-child(even){
+		flex-direction: row-reverse;
+	}
+	.plan_box:nth-child(even) .tiao{
+		transform: rotateY(180deg)!important;
+    	left: 100%;
+	}
+	.plan_box:nth-child(odd) .jdx{
+		position: absolute;
+		top: 17px;
+		right: 21px;
+		width: 12px;
+		height: 134px;
+		border: 2px solid #20a1ff;
+		border-left: none;
+	}
+	.plan_box:nth-child(even) .jdx{
+		position: absolute;
+		top: 17px;
+		right: 21px;
+		width: 12px;
+		height: 134px;
+		border: 2px solid #20a1ff;
+		border-left: none;
+		transform: rotateY(180deg)!important;
+    	right: 100%;
+	}
+	.plan_box:last-child .jdx{
+		/*最后一行隐藏*/
+		display: none;
 	}
 </style>
