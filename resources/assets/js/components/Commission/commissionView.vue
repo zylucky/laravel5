@@ -120,6 +120,7 @@
 					        		<p class="date">{{item.shenpitime | typeDate}}</p>
 					        		
 					        	</li>
+					        	<p class="jdx"></p>
 					        </ul>
 			        <!--</div>-->
             	</td>
@@ -301,6 +302,7 @@
 		padding: 0;
 	}
 	.plan_box{
+		position: relative;
 		display: flex;
 		min-height: 50px;
 		height: auto;
@@ -410,11 +412,34 @@
 		background: #bbbbbb;
 	}
 	.plan_box:nth-child(even){
-		/*align-content: flex-end;*/
 		flex-direction: row-reverse;
 	}
 	.plan_box:nth-child(even) .tiao{
 		transform: rotateY(180deg)!important;
     	left: 100%;
+	}
+	.plan_box:nth-child(odd) .jdx{
+		position: absolute;
+		top: 17px;
+		right: 21px;
+		width: 12px;
+		height: 134px;
+		border: 2px solid #20a1ff;
+		border-left: none;
+	}
+	.plan_box:nth-child(even) .jdx{
+		position: absolute;
+		top: 17px;
+		right: 21px;
+		width: 12px;
+		height: 134px;
+		border: 2px solid #20a1ff;
+		border-left: none;
+		transform: rotateY(180deg)!important;
+    	right: 100%;
+	}
+	.plan_box:last-child .jdx{
+		/*最后一行隐藏*/
+		display: none;
 	}
 </style>
