@@ -114,11 +114,13 @@
 								<i v-if='item.shenpi==2'>{{item.shenpi==2?"已驳回":"已审批"}}</i>
 							</span>
 		        			<span :class="item.shenpi==1 && !item.isfock?'tiao':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'tiao jb1':(item.shenpi==2?'tiao jb2':(item.shenpi==null && !item.isfock?'tiao jb3':'tiao jb')))"></span>
+		        			
+		        			<span v-for=" items in options" :class="items.shenpi==1 && !items.isfock?'tiaos':(items.shenpi!=1 && items.shenpi!=2 && items.isfock?'tiaos jb1':(items.shenpi==2?'tiaos jb4':(items.shenpi==null && !items.isfock?'tiaos jb3':(items.shenpi==2 && items.isfock?'tiaos jb2':'tiaos jb'))))" v-if="(idx * 8 + index + 1)%8==0"></span>
 		        		</p>
 		        		<p class="name">{{item.person}}</p>
 		        		<p class="date">{{item.shenpitime | typeDate}}</p>
 		        	</li>
-		        	<p class="jdx"></p>
+		        	<!--<p class="jdx"></p>-->
 		        </ul>
             </td></tr>
             </tbody>
@@ -396,6 +398,17 @@
 		width: 40px;
 		height: 2px;
 		background: #1fa0fc;
+	}
+	.tiaos{
+		position: absolute;
+		right: -35px;
+		top: 85px;
+		margin-top: -1px;
+		display: inline-block;
+		width: 104px;
+		height: 2px;
+		background: #1fa0fc;
+		transform: rotate(-270deg)!important;
 	}
 	.plan_box li:first-child .tiao{
 		display: none;
