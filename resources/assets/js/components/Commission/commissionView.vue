@@ -118,7 +118,6 @@
 					        		</p>
 					        		<p class="name">{{item.person}}</p>
 					        		<p class="date">{{item.shenpitime | typeDate}}</p>
-					
 					        	</li>
 					        	<!--<p v-for=" items in options" :class="items.shenpi==1 && !items.isfock?'jdx':(items.shenpi!=1 && items.shenpi!=2 && items.isfock?'jdx jb1':(items.shenpi==2?'jdx jb2':(items.shenpi==null && !items.isfock?'jdx jb3':'jdx jb')))"></p>-->
 					        </ul>
