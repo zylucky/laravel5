@@ -41,11 +41,11 @@
 
         </el-form>
         <el-table :data="ChuFang" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中"
-                  @selection-change="selsChange" style="width: 100%;">
+                  @selection-change="selsChange" style="width: 100%;text-align: center;">
 
-            <el-table-column prop="htqiandingdate" label="合同签订日期" :formatter="changeDate" sortable>
+            <el-table-column prop="htqiandingdate" label="合同签订日期" :formatter="changeDate" sortable width="140">
             </el-table-column>
-            <el-table-column prop="loupanname" label="楼盘" >
+            <el-table-column prop="loupanname" label="楼盘">
             </el-table-column>
             <el-table-column prop="loudongname" label="楼栋" >
             </el-table-column>
@@ -53,11 +53,11 @@
             </el-table-column>
             <el-table-column prop="htzujin" label="实际月租金" >
             </el-table-column>
-            <el-table-column prop="htyongjin" label="合同佣金" width="200" >
+            <el-table-column prop="htyongjin" label="合同佣金">
             </el-table-column>
-            <el-table-column prop="shijiyongjin" label="协议佣金" width="100" >
+            <el-table-column prop="shijiyongjin" label="协议佣金">
             </el-table-column>
-            <el-table-column prop="htyezhushifuyj" label="实付佣金" width="100" >
+            <el-table-column prop="htyezhushifuyj" label="实付佣金">
             </el-table-column>
             <el-table-column prop="fukuanriqi" label="佣金结算日" :formatter="changeJSDate">
             </el-table-column>
@@ -440,3 +440,12 @@
         }
     }
 </script>
+
+<style>	
+	.el-table .cell, .el-table th>div{
+		width: 100% !important;
+    	text-align: center!important;
+		padding-left: 0!important;
+		padding-right: 0!important;
+	}
+</style>
