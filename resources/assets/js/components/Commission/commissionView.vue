@@ -114,13 +114,12 @@
 											<i v-if='item.shenpi==2'>{{item.shenpi==2?"已驳回":"已审批"}}</i>
 										</span>
 					        			<span :class="item.shenpi==1 && !item.isfock?'tiao':(item.shenpi!=1 && item.shenpi!=2 && item.isfock?'tiao jb1':(item.shenpi==2?'tiao jb2':(item.shenpi==null && !item.isfock?'tiao jb3':'tiao jb')))"></span>
-					        			<!--<span class="tiaos"></span>-->
+					        			<span v-for=" items in options" :class="items.shenpi==1 && !items.isfock?'tiaos':(items.shenpi!=1 && items.shenpi!=2 && items.isfock?'tiaos jb1':(items.shenpi==2?'tiaos jb4':(items.shenpi==null && !items.isfock?'tiaos jb3':(items.shenpi==2 && items.isfock?'tiaos jb2':'tiaos jb'))))" v-if="(idx * 8 + index + 1)%8==0"></span>
 					        		</p>
 					        		<p class="name">{{item.person}}</p>
 					        		<p class="date">{{item.shenpitime | typeDate}}</p>
-					        		
 					        	</li>
-					        	<p class="jdx"></p>
+					        	<!--<p v-for=" items in options" :class="items.shenpi==1 && !items.isfock?'jdx':(items.shenpi!=1 && items.shenpi!=2 && items.isfock?'jdx jb1':(items.shenpi==2?'jdx jb2':(items.shenpi==null && !items.isfock?'jdx jb3':'jdx jb')))"></p>-->
 					        </ul>
 			        <!--</div>-->
             	</td>
@@ -303,6 +302,7 @@
 	}
 	.plan_box{
 		position: relative;
+		z-index: 9;
 		display: flex;
 		min-height: 50px;
 		height: auto;
@@ -323,6 +323,7 @@
 	}
 	.zt{
 		position: relative;
+		z-index: 9;
 		width: 120px;
 		height: 34px;
 		line-height: 34px;
@@ -361,13 +362,14 @@
 	}
 	.tiaos{
 		position: absolute;
-		right: -37.5px;
-		top: 50%;
+		right: -35px;
+		top: 85px;
 		margin-top: -1px;
 		display: inline-block;
-		width: 40px;
+		width: 104px;
 		height: 2px;
 		background: #1fa0fc;
+		transform: rotate(-270deg)!important;
 	}
 	.plan_box li:first-child .tiao{
 		display: none;
@@ -398,18 +400,22 @@
 	}
 	.jb{
 		/*条渐变审批中到待审批*/
-		background: -webkit-linear-gradient(left,#fea843,#bbbbbb);
+		background: -webkit-linear-gradient(left,#fea843,#bbbbbb)!important;
 	}
 	.jb1{
 		/*条渐变已通过到审批中*/
-		background: -webkit-linear-gradient(left,#20a1ff,#fea843);
+		background: -webkit-linear-gradient(left,#20a1ff,#fea843)!important;
 	}
 	.jb2{
 		/*条渐变已通过到已驳回*/
-		background: -webkit-linear-gradient(left,#20a1ff,#ff7271);
+		background: -webkit-linear-gradient(left,#20a1ff,#ff7271)!important;
+	}
+	.jb4{
+		/*条渐变已通过到已驳回*/
+		background: #20a1ff!important;
 	}
 	.jb3{
-		background: #bbbbbb;
+		background: #bbbbbb!important;
 	}
 	.plan_box:nth-child(even){
 		flex-direction: row-reverse;
@@ -421,19 +427,19 @@
 	.plan_box:nth-child(odd) .jdx{
 		position: absolute;
 		top: 17px;
-		right: 21px;
-		width: 12px;
+		right: 48px;
+		width: 2px;
 		height: 134px;
-		border: 2px solid #20a1ff;
+		background: #20a1ff;
 		border-left: none;
 	}
 	.plan_box:nth-child(even) .jdx{
 		position: absolute;
 		top: 17px;
-		right: 21px;
-		width: 12px;
+		right: 48px;
+		width: 2px;
 		height: 134px;
-		border: 2px solid #20a1ff;
+		background: #20a1ff;
 		border-left: none;
 		transform: rotateY(180deg)!important;
     	right: 100%;
