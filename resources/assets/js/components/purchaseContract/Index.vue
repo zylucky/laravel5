@@ -223,9 +223,9 @@
                 options:[
                     {value:0, label:'已创建',},
                     {value:1, label:'待审核',},
-                    {value:2, label:'审核中',},
+                    {value:2, label:'复审核中',},
                     {value:3, label:'待打印',},
-                    {value:4, label:'审核拒绝',},
+                    {value:4, label:'复审拒绝',},
                     {value:5, label:'待确认',},
                     {value:6, label:'履约中',},
                     {value:7, label:'违约处理中',},
@@ -234,6 +234,9 @@
                     {value:10, label:'已优化，履约中',},
                     {value:11, label:'合同终止（合同到期）',},
                     {value:12, label:'合同作废',},
+                    {value:13, label:'初审中',},
+                    {value:14, label:'初审通过',},
+                    {value:15, label:'初审拒绝',},
                 ],
                 //分页类数据
                 total:0,
