@@ -247,20 +247,20 @@
                 <el-button type="primary" @click.native="addFormSubmit" :loading="addFormLoading">保存</el-button>
             </div>
         </el-dialog>
-        <el-dialog title="编辑付款日期" v-model="editDateFormVisible" :close-on-click-modal="false">
+        <el-dialog title="编辑付款日期" v-model="editDateFormVisible" :close-on-click-modal="false" style="width:1000px;margin-left: 250px;">
             <el-form :model="editDateForm" label-width="120px" :rules="editDateFormRules" ref="editDateForm"  >
                 <el-row>
-                    <el-col :span="7">
+                    <el-col :span="10">
                         <el-form-item label="提前付款：" prop="tiQianDays">
                             <el-input v-model.number="editDateForm.tiQianDays" auto-complete="off"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="1" style="text-align: right;margin-top: 8px;">
+                    <el-col :span="1" style="text-align: right;margin-top: 2px;line-height: 36px;margin-right: 50px;">
                         天
                     </el-col>
                     <el-col :span="10">
-                        <el-form-item  label="" prop="isBenQi">
-                            <el-radio-group v-model="editDateForm.isBenQi">
+                        <el-form-item label="" prop="isBenQi" style='margin-left: -120px;'>
+                            <el-radio-group v-model="editDateForm.isBenQi" style='display: flex;height: 36px;align-items: center;'>
                                 <el-radio class="radio" label=true>本期</el-radio>
                                 <el-radio class="radio" label=false>所有</el-radio>
                             </el-radio-group>
@@ -275,10 +275,10 @@
             </div>
         </el-dialog>
 
-        <el-dialog title="编辑付款金额" v-model="editMoneyFormVisible" :close-on-click-modal="false">
-            <el-form :model="editMoneyForm" label-width="120px" :rules="editMoneyFormRules" ref="editMoneyForm"  >
+        <el-dialog title="编辑付款金额" v-model="editMoneyFormVisible" :close-on-click-modal="false" style="width:800px;margin-left: 400px;">
+            <el-form :model="editMoneyForm" label-width="125px" :rules="editMoneyFormRules" ref="editMoneyForm" >
                 <el-row>
-                    <el-col :span="16">
+                    <el-col :span="20">
                         <el-form-item label="本期付款金额：" prop="shouKuanMoney">
                             <el-input   v-model.number="editMoneyForm.shouKuanMoney" auto-complete="off"></el-input>
                         </el-form-item>
@@ -298,7 +298,9 @@
     .el-table .info-row {
         color:red;
     }
-
+   /*.el-form-item__content{
+   		margin-left: 10px!important;
+   }*/
 </style>
 <script>
 
@@ -972,3 +974,6 @@
         }
     }
 </script>
+<style>
+	/*el-dialog el-dialog--small*/
+</style>
