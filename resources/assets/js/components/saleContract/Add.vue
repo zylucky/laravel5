@@ -295,7 +295,7 @@
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
                             var submit_table = [0,1,2,3,4,5,17];
-                            if(submit_table.indexOf(parseInt(this.$route.query.status))>0||this.$route.path=='/saleContract/add'){
+                            if(submit_table.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/saleContract/add'){
                                 this.btnType = false;
                             }
                             this.fuzhi(res);
