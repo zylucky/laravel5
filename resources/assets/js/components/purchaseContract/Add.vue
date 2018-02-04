@@ -280,7 +280,8 @@
                     if(res.data.code == 200)　{
                         //保存完以后可以得到一个返回的ID
                         //把数据分别赋值给三个组件的变量
-                        if(this.$route.query.status<6||this.$route.path=='/purchaseContract/add'){
+                        var submit_table = [0,1,2,3,4,5,15];
+                        if(submit_table.indexOf(parseInt(this.$route.query.status))>0||this.$route.path=='/purchaseContract/add'){
                             this.btnType = false;
                         }
                         this.fuzhi(res);
@@ -299,10 +300,12 @@
             },
             review(result){
                 this.dialogFormVisible = true;
+                var flag = this.$route.query.flag;
                 //审核
                 this.shenhe = {
                     hetongid:this.id,
                     result:result,
+                    shenheFlg:flag
                 };
             },
             review2(){
@@ -377,7 +380,7 @@
                 //console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
-                if(this.zhuangtai==4){
+                if(this.zhuangtai==4||this.zhuangtai==15){
                     this.$notify({
                         title: '提示',
                         message: res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content==null?'审核拒绝：无':'审核拒绝：'+res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content,
@@ -391,7 +394,6 @@
                 this.property.editableTabs2 = [];
                 this.property.officeList.forEach((property,index)=>{
                     index ++;
-                    console.log(index);
                     this.property.tabIndex = index;
                     this.property.editableTabs2.push({
                         title: '房间'+index,
@@ -499,6 +501,7 @@
             }
         },
         mounted() {
+            var flag = this.$route.query.flag;
             //根据url得到的合同ID，来获取数据
             if(this.$route.query.id!=null){
                 this.getPurchaseContract(this.$route.query);

@@ -35,6 +35,7 @@
                                     placeholder="销售人员姓名"
                                     :remote-method="remoteMethodyslxr1"
                                     :loading="fristyslxrloading1"
+                                    :disabled="lydisabled"
                            >
                                 <el-option
                                         v-for="item in renter.optionsyslxr1"
@@ -658,8 +659,8 @@
                 this.editVisible   =false;
             }
             if(this.$route.path=='/saleContract/edit'&&this.$route.query.status>=6){
-//                this.lydisabled = true;
-//                this.editVisible = false;
+                this.lydisabled = true;
+                this.editVisible = false;
             }
             //获取收房合同出租人
 

@@ -294,7 +294,8 @@
                     let para = Object.assign({}, child_property,child_renter,child_date,id,bianhao,version);
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
-                            if(this.$route.query.status<6||this.$route.path=='/saleContract/add'){
+                            var submit_table = [0,1,2,3,4,5,17];
+                            if(submit_table.indexOf(parseInt(this.$route.query.status))>0||this.$route.path=='/saleContract/add'){
                                 this.btnType = false;
                             }
                             this.fuzhi(res);
@@ -318,6 +319,7 @@
                 this.shenhe = {
                     hetongid:this.id,
                     result:result,
+                    shenheFlg:this.$route.query.flag
                 };
             },
             //审核通过
@@ -388,7 +390,7 @@
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
                 this.bianhao = res.data.data.bianhao;
-                if(this.zhuangtai==4){
+                if(this.zhuangtai==4||this.zhuangtai==17){
                     this.$notify({
                         title: '提示',
                         message: res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content==null?'审核拒绝：无':'审核拒绝：'+res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content,

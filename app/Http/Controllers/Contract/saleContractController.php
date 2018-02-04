@@ -216,15 +216,25 @@ class saleContractController extends Controller
      *
      * */
     public function review(Request $request){
+        $contract = $this->getContractInfo($request->params['hetongid']);
+        $data = $request->params;
+        $data['hetongbianhao'] = $contract->bianhao;
+        $data['shenherenid'] = Auth::user()->id;
+        $data['shenherenname'] =Auth::user()->name;
         $client = new Client([
             'base_uri' => $this->base_url,
 
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-
-        $response = $client->request('POST', '/api/contract/xs/shenhe', [
-            'json' => $request->params
-        ]);
+        if($request->params['shenheFlg']==0){
+            $response = $client->request('POST', '/api/contract/xs/chushen', [
+                'json' => $request->params
+            ]);
+        }elseif ($request->params['shenheFlg']==1) {
+            $response = $client->request('POST', '/api/contract/xs/shenhe', [
+                'json' => $request->params
+            ]);
+        }
         echo $response->getBody();
     }
 
@@ -285,6 +295,16 @@ class saleContractController extends Controller
 
         ]);
         $response = $client->request('GET', '/api/contract/xs/'.$id.'/approving');
+        echo $response->getBody();
+    }
+    //合同状态变为：审核中
+    public function preApproving(){
+        $id = Input::get('id');
+        $client = new Client ([
+            'base_uri' => $this->base_url,
+
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/'.$id.'/preApproving');
         echo $response->getBody();
     }
     //补充协议的保存
@@ -756,7 +776,17 @@ class saleContractController extends Controller
         $response = $client->request('GET', '/api/contract/xs/'.$id.'/cancelled');
         echo $response->getBody();
     }
-
+    public function getContractInfo($id)
+    {
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/'.$id);
+        $res = json_decode($response->getBody());
+        $contract = $res->data;
+        return $contract;
+    }
 
 
 }
