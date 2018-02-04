@@ -82,8 +82,8 @@
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item v-if="fun('saleContractIndex')" ><el-button @click="handlSee(scope.$index, scope.row)">查看合同</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[0,4,5,6,7,8,9,12,13,17])&&fun('saleContactUpdate')"><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
-                            <el-dropdown-item v-if="ztin(scope.row,[16])&&fun('saleContactAudit')"><el-button @click="handleReview(scope.$index, scope.row)">复审</el-button> </el-dropdown-item>
-                            <el-dropdown-item v-if="ztin(scope.row,[1])&&fun('saleContactPreAudit')"><el-button @click="handlePreReview(scope.$index, scope.row)">初审</el-button> </el-dropdown-item>
+                            <el-dropdown-item v-if="ztin(scope.row,[16])&&fun('saleContactAudit')"><el-button @click="handleReview(scope.$index, scope.row)">复&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
+                            <el-dropdown-item v-if="ztin(scope.row,[1])&&fun('saleContactPreAudit')"><el-button @click="handlePreReview(scope.$index, scope.row)">初&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[3])&&fun('saleContactDump')"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[5])&&fun('saleContactConfirm')"><el-button @click="handleConfirm(scope.$index, scope.row)">签约成功</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[6,13])&&fun('saleContactWeiyue')"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
