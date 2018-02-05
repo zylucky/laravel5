@@ -35,8 +35,8 @@
                         <a href="javascript:;" v-if="this.$route.path=='/saleContract/see'" @click="stepNum=5"><el-step  title="解约协议"></el-step></a>
                     </el-steps>
                     <el-input type="hidden" prop="id"  auto-complete="off"></el-input>
-                    <el-button type="primary" :disabled="saveBtn" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
-                    <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
+                    <el-button type="primary" :disabled="saveBtn" v-show="!reviewVisible" @click="save" style="margin-top:10px;">保存</el-button>
+                    <el-button style="margin:0px;" type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
                     <div style="margin-top:10px;">
                         <el-button type="primary" @click="preview" >打印预览</el-button>
                     </div>

@@ -32,8 +32,8 @@
                     <a href="javascript:" v-if="this.$route.path=='/purchaseContract/view'"  onfocus="this.blur();" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>
 
                 </el-steps>
-                <el-button type="primary"  :disabled="saveBtn" v-show="editVisible" @click="save" style="margin-top:100px;margin-bottom:1em;padding-left:2em;padding-right:2em">保存</el-button>
-                <el-button type="primary"  v-show="editVisible" :disabled="btnType" @click="submit" style="margin-bottom:.3em;padding-left:2em;padding-right:2em;margin-left:0 !important">{{submsg}}</el-button>
+                <el-button type="primary"  :disabled="saveBtn" v-show="editVisible" @click="save" style="margin-top:10px;">保存</el-button>
+                <el-button type="primary"  v-show="editVisible" :disabled="btnType" @click="submit" style="margin:0px;">{{submsg}}</el-button>
                 <div style="margin-top:10px;">
                     <el-button type="primary" @click="preview"style="">打印预览</el-button>
                 </div>

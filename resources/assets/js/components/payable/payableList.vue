@@ -24,10 +24,16 @@
                 <el-button v-if="fun('payableAddYXJ')" type="primary" class="el-icon-plus" @click="handleAdd">新增</el-button>
             </el-form-item>
         </el-form>
-          合计  应付金额：{{DataSum.sumMoney}} 提交金额：{{DataSum.tijiaoMoney}}  实付金额：{{DataSum.shijiMoney}}
-        <span style="color:red;font-size: 14px;">
-            (注：红色日期表示付款已延期，请尽快处理)
-        </span>
+         	<div class="totals_box">
+         		<p>
+         			合计 <span class="totals">应付金额：{{DataSum.sumMoney}}</span>
+	         		<span class="totals">提交金额：{{DataSum.tijiaoMoney}}</span>
+	         		<span class="totals">实付金额：{{DataSum.shijiMoney}}</span>
+         		</p>
+         		<p>
+         			<span style="color:red;font-size: 14px;">(注：红色日期表示付款已延期，请尽快处理)</span>         			
+         		</p>
+         	</div>
         <el-tabs v-model="activeName2" type="border-card" @tab-click="handleClick">
             <el-tab-pane label="全部" name="first"></el-tab-pane>
             <el-tab-pane label="未提交" name="second"></el-tab-pane>
@@ -974,6 +980,12 @@
         }
     }
 </script>
-<style>
-	/*el-dialog el-dialog--small*/
+<style scoped>
+	.totals{
+		margin-left: 20px;
+	}
+	.totals_box{
+		display: flex;
+		justify-content: space-between;
+	}
 </style>

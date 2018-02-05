@@ -1,6 +1,6 @@
 <template>
     <el-form style="margin-top:2%" :model="copyForm" ref="copyForm" :rules="copyRules" label-position="top">
-            <el-form-item label="合同" prop="iscompletehetong" >
+            <el-form-item label="合同" prop="iscompletehetong" style="margin-bottom:0;">
                 <el-radio-group v-model="copyForm.iscompletehetong">
                     <el-radio :label=1>全</el-radio>
                     <el-radio :label=0>不全</el-radio>
@@ -24,7 +24,7 @@
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
             <div v-if="yezhuleixing==1">
-                <el-form-item label="产权人身份证"  prop="iscompletecqrsfz" >
+                <el-form-item label="产权人身份证"  prop="iscompletecqrsfz" style="margin-bottom:0;margin-top:40px;">
                     <el-radio-group v-model="copyForm.iscompletecqrsfz">
                         <el-radio :label=1>全</el-radio>
                         <el-radio :label=0>不全</el-radio>
@@ -50,7 +50,7 @@
             </div>
 
         <div v-if="yezhuleixing==2">
-            <el-form-item label="营业执照"  prop="iscompleteyyzz">
+            <el-form-item label="营业执照"  prop="iscompleteyyzz"  style="margin-bottom:0;margin-top:40px;">
                     <el-radio-group v-model="copyForm.iscompleteyyzz">
                         <el-radio :label=1>全</el-radio>
                         <el-radio :label=0>不全</el-radio>
@@ -76,7 +76,7 @@
         </div>
 
         <div v-if="yezhuleixing==2">
-            <el-form-item label="法人证件"  prop="iscompletefrzz">
+            <el-form-item label="法人证件"  prop="iscompletefrzz" style="margin-bottom:0;margin-top:40px;">
                     <el-radio-group v-model="copyForm.iscompletefrzz">
                         <el-radio :label=1>全</el-radio>
                         <el-radio :label=0>不全</el-radio>
@@ -101,7 +101,7 @@
                 </el-dialog>
         </div>
 
-        <el-form-item label="房产证" prop="iscompletefcz" >
+        <el-form-item label="房产证" prop="iscompletefcz" style="margin-bottom:0;margin-top:40px;">
             <el-radio-group v-model="copyForm.iscompletefcz">
                 <el-radio :label=1>全</el-radio>
                 <el-radio :label=0>不全</el-radio>
@@ -125,7 +125,7 @@
             <img width="100%" :src="dialogImageUrl" alt="">
         </el-dialog>
 
-        <el-form-item label="不动产授权委托书" prop="" >
+        <el-form-item label="不动产授权委托书" prop=""  style="margin-bottom:0;margin-top:40px;">
             <el-radio-group v-model="copyForm.iscompletebdcsqwts">
                 <el-radio :label=1>全</el-radio>
                 <el-radio :label=0>不全</el-radio>
@@ -149,7 +149,7 @@
             <img width="100%" :src="dialogImageUrl" alt="">
         </el-dialog>
 
-        <el-form-item label="业主授权代理人委托书" prop="" >
+        <el-form-item label="业主授权代理人委托书" prop="" style="margin-bottom:0;margin-top:40px;">
             <el-radio-group v-model="copyForm.iscompleteyzsqdlrwts">
                 <el-radio :label=1>全</el-radio>
                 <el-radio :label=0>不全</el-radio>
@@ -173,7 +173,7 @@
             <img width="100%" :src="dialogImageUrl" alt="">
         </el-dialog>
 
-            <el-form-item label="委托人身份证" prop="" >
+            <el-form-item label="委托人身份证" prop="" style="margin-bottom:0;margin-top:40px;">
                 <el-radio-group v-model="copyForm.iscompletewtrsfz">
                     <el-radio :label=1>全</el-radio>
                     <el-radio :label=0>不全</el-radio>
