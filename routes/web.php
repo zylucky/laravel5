@@ -31,6 +31,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('optimize','Contract\purchaseContractController@getOptimize');
     Route::post('editTiaoKuan','Contract\purchaseContractController@editTiaoKuan');
     Route::get('approving','Contract\purchaseContractController@changeStatus');
+    Route::get('preApproving','Contract\purchaseContractController@changeStatus');//初审合同-审核前
     Route::get('confirm','Contract\purchaseContractController@changeStatus');
     Route::get('confirming','Contract\purchaseContractController@changeStatus');
     Route::get('violating','Contract\purchaseContractController@changeStatus');
@@ -108,6 +109,7 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::get('jieyue','Contract\saleContractController@jieyue');
     Route::post('getzyrNameList','Contract\saleContractController@getzyrNameList');
     Route::get('approving','Contract\saleContractController@approving');
+    Route::get('preApproving','Contract\saleContractController@preApproving');
     Route::get('confirm','Contract\saleContractController@confirm');
     Route::get('confirmed','Contract\saleContractController@confirmed');
     Route::get('violating','Contract\saleContractController@violating');

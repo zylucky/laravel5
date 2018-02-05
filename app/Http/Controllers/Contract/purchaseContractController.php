@@ -180,16 +180,30 @@ class purchaseContractController extends Controller
     }
     /*
      * 合同审核
-     *
-     * */
+     * hetongid,hetongbianhao,shenherenid,shenherenname,content,result,ShenheFlg
+     */
     public function review(Request $request){
+        $contract = $this->getContractInfo($request->params['hetongid']);
+        $data = $request->params;
+        $data['hetongbianhao'] = $contract->bianhao;
+        $data['shenherenid'] = Auth::user()->id;
+        $data['shenherenname'] =Auth::user()->name;
+
         $client = new Client([
             'base_uri' => $this->base_url,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $response = $client->request('POST', '/api/contract/sf/shenhe', [
-            'json' => $request->params
-        ]);
+        //根据合同当前的状态判断是初审还是复审
+        if($request->params['shenheFlg']==0){
+            $response = $client->request('POST', '/api/contract/sf/chushen', [
+                'json' => $data
+            ]);
+        }elseif ($request->params['shenheFlg']==1){
+            $response = $client->request('POST', '/api/contract/sf/shenhe', [
+                'json' => $data
+            ]);
+        }
+
         echo $response->getBody();
     }
     /*

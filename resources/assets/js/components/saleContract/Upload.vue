@@ -238,6 +238,7 @@
                 return isJPG && isLt2M;
             },
             handleRemove(file, fileList) {
+                return false
                 this.$confirm('确认删除吗?', '提示', {
                     type: 'warning'
                 }).then(() => {

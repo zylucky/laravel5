@@ -33,6 +33,8 @@
             </el-table-column>
             <el-table-column prop="role" label="角色" min-width="180" sortable>
             </el-table-column>
+            <el-table-column  prop="parentName" label="上级领导" min-width="180" sortable>
+            </el-table-column>
             <el-table-column label="操作" width="260">
                 <template slot-scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)"><i class="el-icon-edit"></i></el-button>
@@ -60,8 +62,28 @@
                 <el-form-item label="合同权限" prop="ht_query_flg">
                     <el-radio-group v-model="editForm.ht_query_flg">
                         <el-radio class="radio" label="1">个人</el-radio>
-                        <el-radio class="radio" label="2">所有</el-radio>
+                        <el-radio class="radio" label="2">区域</el-radio>
+                        <el-radio class="radio" label="3">所有</el-radio>
                     </el-radio-group>
+                </el-form-item>
+                <el-form-item v-if="editForm.ht_query_flg=='2'" label="上级领导"  prop="parentId">
+                    <el-select
+                            style="width: 100%;"
+                            v-model="editForm.parentId"
+                            filterable
+                            default-first-option
+                            remote
+                            @change="change1"
+                            placeholder=""
+                            :remote-method="remoteMethod1"
+                    >
+                        <el-option
+                                v-for="item in options1"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
                 </el-form-item>
                 <el-form-item label="用户名" prop="email">
                     <el-input v-model="editForm.email" auto-complete="off"></el-input>
@@ -90,8 +112,29 @@
                 <el-form-item label="合同权限" prop="ht_query_flg">
                     <el-radio-group v-model="addForm.ht_query_flg">
                         <el-radio class="radio" label="1">个人</el-radio>
-                        <el-radio class="radio" label="2">所有</el-radio>
+                        <el-radio class="radio" label="2">区域</el-radio>
+                        <el-radio class="radio" label="3">所有</el-radio>
                     </el-radio-group>
+                </el-form-item>
+                <el-form-item v-if="addForm.ht_query_flg=='2'" label="上级领导"  prop="parentId">
+                    <el-select
+                            style="width: 100%;"
+                            v-model="addForm.parentId"
+                            filterable
+                            default-first-option
+                            remote
+                            @change="change1"
+                            placeholder=""
+                            :remote-method="remoteMethod1"
+                    >
+                        <el-option
+                                v-for="item in options1"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value"
+                        >
+                        </el-option>
+                    </el-select>
                 </el-form-item>
                 <el-form-item label="用户名" prop="email">
                     <el-input v-model="addForm.email" auto-complete="off"></el-input>
@@ -186,6 +229,7 @@
                     name: '',
                     sex: '',
                     ht_query_flg: '',
+                    parentId:0,
                     email: '',
                     phone: '',
                     addr: ''
@@ -212,6 +256,7 @@
                     name: '',
                     sex: '',
                     ht_query_flg: '',
+                    parentId:0,
                     email: '',
                     phone: '',
                     addr: ''
@@ -224,6 +269,7 @@
                 roleLoading:false,
                 states: [],
                 list: [],
+                options1:[],
             }
         },
         methods:{
@@ -257,6 +303,41 @@
                 } else {
                     this.options4 = [];
                 }
+            },
+            //获取上级领导
+            remoteMethod1(query) {
+                let para = {
+                    page:1,
+                    pageSize:10,
+                    name: query,
+                    rolename: ''
+                };
+                getUserListPage(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for ( var i in res.data.data ){
+                        arr[i]=res.data.data [i];
+                    }
+                    this.list = arr.map((item,index) => {
+                        return { value: item.id, label: item.name };
+                    });
+                    if (query !== '') {
+                        setTimeout(() => {
+                            this.options1 = this.list.filter(item => {
+                                if(item.label){
+                                    return item.label.toLowerCase()
+                                            .indexOf(query.toLowerCase()) > -1;
+                                }
+                            });
+                        }, 200);
+                    } else {
+                        this.options1 = [];
+                    }
+                });
+
+            },
+            change1(){
+
             },
             handleSet(index,row){
                 this.userId = row.id;
@@ -298,7 +379,20 @@
                 return row.sex == 1 ? '男' : row.sex == 2 ? '女' : '未知';
             },
             formathtqueryflg: function (row, column) {
-                return row.ht_query_flg == 1 ? '个人' : row.ht_query_flg == 2 ? '全部' : '未知';
+                var res = '';
+                switch (row.ht_query_flg)
+                {
+                    case '1':
+                        res = '个人'
+                        break;
+                     case '2':
+                        res = '区域'
+                        break;
+                     case '3':
+                        res = '全部'
+                        break;
+                }
+                return res;
             },
             //页面跳转后
             handleCurrentChange(val) {
@@ -369,6 +463,12 @@
             handleEdit: function (index, row) {
                 this.editFormVisible = true;
                 this.editForm = Object.assign({}, row);
+                this.options1 = [
+                    {
+                        label:this.editForm.parentName,
+                        value:this.editForm.parentId,
+                    }
+                ];
             },
             //显示新增界面
             handleAdd: function () {
