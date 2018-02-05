@@ -45,7 +45,7 @@
             <el-table-column  prop="bianhao" label="编号" width="200" >
             </el-table-column>
             <el-table-column prop="loupanName" label="楼盘"   >
-                <!--<template slot-scope="scope">-->
+                <!--<template slot-scope="scope">/-->
                     <!--<span v-for="(item,index) in  Estate(scope.row.loupanName)">{{item}}</span>-->
                 <!--</template>-->
             </el-table-column>
