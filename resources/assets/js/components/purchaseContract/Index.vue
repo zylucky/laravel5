@@ -66,7 +66,7 @@
                     v-if="fun('setYongYou')"
             >
                 <template slot-scope="scope" >
-                    <el-input   v-model="scope.row.yongyouid" @blur="updatayongyouid(scope.$index, scope.row)"></el-input>
+                    <el-input v-model="scope.row.yongyouid" @blur="updatayongyouid(scope.$index, scope.row)"></el-input>
                 </template>
             </el-table-column>
             <el-table-column
