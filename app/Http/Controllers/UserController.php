@@ -79,7 +79,9 @@ left join users u on users.parentId = u.id
         $user->phone = $input['phone'];
         $user->sex = $input['sex'];
         $user->ht_query_flg = $input['ht_query_flg'];
-        $user->parentId = $input['parentId'];
+        if(isset($input['parentId'])){
+            $user->parentId = $input['parentId'];
+        }
         if($user->save()){
             return [
                 'msg'=>'保存成功！',
@@ -97,8 +99,9 @@ left join users u on users.parentId = u.id
         $user->phone = isset($input['phone'])?$input['phone']:'';
         $user->sex = $input['sex'];
         $user->ht_query_flg = $input['ht_query_flg'];
-        $user->parentId = $input['parentId'];
-
+        if(isset($input['parentId'])){
+            $user->parentId = $input['parentId'];
+        }
         if($user->save()){
             return [
                 'msg'=>'保存成功！',
