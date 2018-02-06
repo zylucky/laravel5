@@ -686,5 +686,4 @@ class purchaseContractController extends Controller
             'json'=>$json
         ]);
     }
-
 }
