@@ -148,6 +148,7 @@
 
 </template>
 <script>
+    import {purchaseEditable} from '../../global'
     import {getLoupanList,getLoudongList,getFanghaoList,createFanghao,getLoudongRules} from '../../api/api';
     export default {
         components:{
@@ -572,7 +573,7 @@
                 }
             }
             setTimeout(hello,500);
-            if(this.$route.path=='/purchaseContract/edit'&&this.$route.query.status>=6){
+            if(this.$route.path=='/purchaseContract/edit'&&purchaseEditable.indexOf(parseInt(this.$route.query.status))>=0){
                 this.lydisabled = true;
             }
         }

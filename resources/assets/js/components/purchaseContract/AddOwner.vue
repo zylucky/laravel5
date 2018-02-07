@@ -246,6 +246,7 @@
     </div>
 </template>
 <script>
+    import {purchaseEditable} from '../../global'
     import {
         getbkNameList,
         getBrokerCompanyUserListPage,
@@ -401,7 +402,7 @@
             if(this.$route.path=='/purchaseContract/view'){
                 this.editVisible   =false;
             }
-            if(this.$route.path=='/purchaseContract/edit'&&this.$route.query.status>=6){
+            if(this.$route.path=='/purchaseContract/edit'&&purchaseEditable.indexOf(parseInt(this.$route.query.status))>=0){
                 this.lydisabled = true;
             }
 
