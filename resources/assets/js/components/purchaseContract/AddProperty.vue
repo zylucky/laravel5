@@ -573,7 +573,7 @@
                 }
             }
             setTimeout(hello,500);
-            if(this.$route.path=='/purchaseContract/edit'&&purchaseEditable.indexOf(parseInt(this.$route.query.status))>=0){
+            if(this.$route.path=='/purchaseContract/edit'&&purchaseEditable.indexOf(parseInt(this.$route.query.status))<0){
                 this.lydisabled = true;
             }
         }

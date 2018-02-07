@@ -568,7 +568,7 @@
             if(this.$route.path=='/saleContract/see'){
                this.editVisible   =false;
             }
-            if(this.$route.path=='/saleContract/edit'&&saleEditable.indexOf(parseInt(this.$route.query.status))>=0){
+            if(this.$route.path=='/saleContract/edit'&&saleEditable.indexOf(parseInt(this.$route.query.status))<0){
                 this.lydisabled = true;
                 this.editVisible   =false;
             }

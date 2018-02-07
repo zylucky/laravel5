@@ -659,7 +659,7 @@
             if(this.$route.path=='/saleContract/see'){
                 this.editVisible   =false;
             }
-            if(this.$route.path=='/saleContract/edit'&&saleEditable.indexOf(parseInt(this.$route.query.status))>=0){
+            if(this.$route.path=='/saleContract/edit'&&saleEditable.indexOf(parseInt(this.$route.query.status))<0){
                 this.editVisible = false;
             }
             //获取收房合同出租人
