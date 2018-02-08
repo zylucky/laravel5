@@ -39,6 +39,27 @@
                 </td>
             </tr>
             <tr class="tr1">
+                <td  > 合同月租金：
+                </td>
+                <td>{{toDecimal(Payable.monthMoney)}}</td>
+                <td  >
+                    佣金信息：
+                </td>
+                <td  >
+                    {{changeBool(Payable.xsYongjinxinxi)}}
+                </td>
+                <td  >
+                </td>
+                <td  >
+                </td>
+            </tr>
+            <tr class="tr1">
+                <td  > 佣金计算公式：
+                </td>
+                <td colspan="5">{{Payable.xsJisuangongshi}}</td>
+
+            </tr>
+            <tr class="tr1">
                 <td  > 渠道门店：
                 </td>
                 <td>{{Payable.gsname}}</td>
@@ -193,7 +214,11 @@
                     return newDate.toLocaleDateString() + ' ' + hour + ':' + minute + ':' + second;
                 }
             },
+            //时间戳转日期格式
+            changeBool(value){
+                    return value?'正常':"不正常";
 
+            },
             //获取应付款列表
             getPayable() {
                 let para = {
