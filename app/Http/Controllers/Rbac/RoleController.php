@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Rbac;
 use App\Http\Controllers\Controller;
 use App\models\Role;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -121,6 +122,6 @@ class RoleController extends Controller
     {
         //删除该角色的所有原权限
         DB::table('permission_role')->where('role_id', '=', $id)->delete();
-        return Role::destroy($id);
+        return  Role::destroy($id);
     }
 }
