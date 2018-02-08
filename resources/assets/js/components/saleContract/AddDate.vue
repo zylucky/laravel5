@@ -430,6 +430,10 @@
                     var d1=new Date(this.addDate.startdate);
                     var d2=new Date(this.addDate.enddate);
                     var cha = parseInt(d2.getFullYear())-parseInt(d1.getFullYear());
+                    if(cha<1){
+                        this.addRentItem();
+                        return
+                    }
                     //每次变数据清空当前的列表
                     this.addDate.zujinList.splice(0,this.addDate.zujinList.length);//清空数组
                     for(var i =0;i<cha;i++){
@@ -458,6 +462,10 @@
                     var d1 = new Date(this.addDate.startdate);
                     var d2 = new Date(this.addDate.enddate);
                     var cha = parseInt(d2.getFullYear()) - parseInt(d1.getFullYear());
+                    if(cha<1){
+                        this.addRentItem();
+                        return
+                    }
                     //每次变数据清空当前的列表
                     this.addDate.zujinList.splice(0, this.addDate.zujinList.length);//清空数组
                     for (var i = 0; i < cha; i++) {
@@ -562,8 +570,8 @@
                this.editVisible   =false;
             }
             if(this.$route.path=='/saleContract/edit'&&this.$route.query.status>=6){
-
-//                this.editVisible   =false;
+                this.lydisabled = true;
+                this.editVisible   =false;
 
             }
         }

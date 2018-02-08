@@ -35,8 +35,8 @@
                         <a href="javascript:;" v-if="this.$route.path=='/saleContract/see'" @click="stepNum=5"><el-step  title="解约协议"></el-step></a>
                     </el-steps>
                     <el-input type="hidden" prop="id"  auto-complete="off"></el-input>
-                    <el-button type="primary" :disabled="saveBtn" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
-                    <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
+                    <el-button type="primary" :disabled="saveBtn" v-show="!reviewVisible" @click="save" style="margin-top:10px;">保存</el-button>
+                    <el-button style="margin:0px;" type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
                     <div style="margin-top:10px;">
                         <el-button type="primary" @click="preview" >打印预览</el-button>
                     </div>
@@ -294,7 +294,8 @@
                     let para = Object.assign({}, child_property,child_renter,child_date,id,bianhao,version);
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
-                            if(this.$route.query.status<6||this.$route.path=='/saleContract/add'){
+                            var submit_table = [0,1,2,3,4,5,17];
+                            if(submit_table.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/saleContract/add'){
                                 this.btnType = false;
                             }
                             this.fuzhi(res);
@@ -318,6 +319,7 @@
                 this.shenhe = {
                     hetongid:this.id,
                     result:result,
+                    shenheFlg:this.$route.query.flag
                 };
             },
             //审核通过
@@ -388,7 +390,7 @@
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
                 this.bianhao = res.data.data.bianhao;
-                if(this.zhuangtai==4){
+                if(this.zhuangtai==4||this.zhuangtai==17){
                     this.$notify({
                         title: '提示',
                         message: res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content==null?'审核拒绝：无':'审核拒绝：'+res.data.data.xsHetongshenhe[res.data.data.xsHetongshenhe.length-1].content,

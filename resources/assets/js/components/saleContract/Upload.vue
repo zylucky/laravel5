@@ -1,12 +1,12 @@
 <template>
     <el-form style="margin-top:2%" :model="copyForm" ref="copyForm" :rules="copyRules" label-position="top">
-        <el-form-item label="合同" prop="iscompletehetong" >
+        <el-form-item label="合同" prop="iscompletehetong" style="margin-bottom:0;">
             <el-radio-group v-model="copyForm.iscompletehetong">
                 <el-radio :label="1">全</el-radio>
                 <el-radio :label="0">不全</el-radio>
             </el-radio-group>
         </el-form-item>
-        <br>
+
         <el-upload
                 action="/saleContract/addCopyImage?type=1"
                 list-type="picture-card"
@@ -25,15 +25,14 @@
         <el-dialog v-model="dialogVisible" size="large">
             <img width="100%" :src="dialogImageUrl" alt="">
         </el-dialog>
-        <div v-if="zuhuleixing==1">
-            <el-form-item label="承租人身份证" prop="" >
+        <div v-if="zuhuleixing==1" style="padding-top:10px;">
+            <el-form-item label="承租人身份证" prop="" style="margin-bottom:0;margin-top:40px;">
                 <el-radio-group v-model="copyForm.iscompleteczrzj">
                     <el-radio :label="1">全</el-radio>
                     <el-radio :label="0">不全</el-radio>
                 </el-radio-group>
             </el-form-item>
-            <br>
-            <el-upload
+            <el-upload 
                     action="/saleContract/addCopyImage?type=2"
                     list-type="picture-card"
                     :headers="headers"
@@ -51,14 +50,14 @@
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         </div>
-        <div v-if="zuhuleixing==2">
-            <el-form-item label="营业执照" prop="" >
+        <div v-if="zuhuleixing==2" style="padding-top:10px;">
+            <el-form-item label="营业执照" prop="" style="margin-bottom:0;margin-top:40px;">
                 <el-radio-group v-model="copyForm.iscompleteyyzz">
                     <el-radio :label="1">全</el-radio>
                     <el-radio :label="0">不全</el-radio>
                 </el-radio-group>
             </el-form-item>
-            <br>
+
             <el-upload
                     action="/saleContract/addCopyImage?type=3"
                     list-type="picture-card"
@@ -77,14 +76,14 @@
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         </div>
-        <div v-if="zuhuleixing==2">
-            <el-form-item label="法人证件" prop="" >
+        <div v-if="zuhuleixing==2" style="padding-top:10px;">
+            <el-form-item label="法人证件" prop="" style="margin-bottom:0;margin-top:40px;">
                 <el-radio-group v-model="copyForm.iscompletefrzj">
                     <el-radio :label="1">全</el-radio>
                     <el-radio :label="0">不全</el-radio>
                 </el-radio-group>
             </el-form-item>
-            <br>
+
             <el-upload
                     action="/saleContract/addCopyImage?type=4"
                     list-type="picture-card"
@@ -103,13 +102,13 @@
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         </div>
-            <el-form-item label="承租人授权代理人委托书" prop="" >
+            <el-form-item label="承租人授权代理人委托书" prop="" style="margin-bottom:0;margin-top:40px;">
                 <el-radio-group v-model="copyForm.iscompleteczrsqdlrwts">
                     <el-radio :label="1">全</el-radio>
                     <el-radio :label="0">不全</el-radio>
                 </el-radio-group>
             </el-form-item>
-            <br>
+
             <el-upload
                     action="/saleContract/addCopyImage?type=5"
                     list-type="picture-card"
@@ -127,13 +126,13 @@
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
-            <el-form-item label="委托人身份证" prop="" >
+            <el-form-item label="委托人身份证" prop="" style="margin-bottom:0;margin-top:40px;">
                 <el-radio-group v-model="copyForm.iscompletewtrsfz">
                     <el-radio :label="1">全</el-radio>
                     <el-radio :label="0">不全</el-radio>
                 </el-radio-group>
             </el-form-item>
-            <br>
+
             <el-upload
                     action="/saleContract/addCopyImage?type=6"
                     list-type="picture-card"
@@ -239,6 +238,7 @@
                 return isJPG && isLt2M;
             },
             handleRemove(file, fileList) {
+                return false
                 this.$confirm('确认删除吗?', '提示', {
                     type: 'warning'
                 }).then(() => {

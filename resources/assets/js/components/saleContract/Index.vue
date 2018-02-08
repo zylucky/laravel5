@@ -81,9 +81,9 @@
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item v-if="fun('saleContractIndex')" ><el-button @click="handlSee(scope.$index, scope.row)">查看合同</el-button></el-dropdown-item>
-                            <!--<el-dropdown-item v-if="ztin(scope.row,[0,4,5,6,7,8,9,12,13])&&fun('saleContactUpdate')"><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>-->
-                            <el-dropdown-item><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
-                            <el-dropdown-item v-if="ztin(scope.row,[1,2])&&fun('saleContactAudit')"><el-button @click="handleReview(scope.$index, scope.row)">审核合同</el-button> </el-dropdown-item>
+                            <el-dropdown-item v-if="ztin(scope.row,[0,4,5,6,7,8,9,12,13,17])&&fun('saleContactUpdate')"><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
+                            <el-dropdown-item v-if="ztin(scope.row,[16])&&fun('saleContactAudit')"><el-button @click="handleReview(scope.$index, scope.row)">复&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
+                            <el-dropdown-item v-if="ztin(scope.row,[1])&&fun('saleContactPreAudit')"><el-button @click="handlePreReview(scope.$index, scope.row)">初&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[3])&&fun('saleContactDump')"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[5])&&fun('saleContactConfirm')"><el-button @click="handleConfirm(scope.$index, scope.row)">签约成功</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[6,13])&&fun('saleContactWeiyue')"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
@@ -231,6 +231,9 @@
                     {value:12, label:'优化中',},
                     {value:13, label:'已优化，履约中',},
                     {value:14, label:'合同作废',},
+                    {value:15, label:'初审中',},
+                    {value:16, label:'初审通过',},
+                    {value:17, label:'初审拒绝',},
 
                 ],
                 //分页类数据
@@ -346,6 +349,9 @@
                 status[12] = '优化中';
                 status[13] = '已优化，履约中';
                 status[14] = '合同作废';
+                status[15] = '初审中';
+                status[16] = '初审通过';
+                status[17] = '初审拒绝';
                 return status[row.zhuangtai];
             },
             //时间戳转日期格式
@@ -431,7 +437,15 @@
                 }
                 approvingSaleContract(para).then((res)=>{
                 });
-                this.$router.push('/saleContract/review?id=' + row.id);
+                this.$router.push('/saleContract/review?id=' + row.id+'&flag=1');
+            },
+            handlePreReview(index, row){
+                let para = {
+                    id:row.id,
+                }
+                approvingSaleContract(para).then((res)=>{
+                });
+                this.$router.push('/saleContract/review?id=' + row.id+'&flag=0');
             },
             handleJieyue(index, row){
                 this.$confirm('确认将合同设置为解约中吗?', '提示', {
