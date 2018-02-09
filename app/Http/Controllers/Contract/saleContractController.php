@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Contract;
 
+use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -231,12 +232,13 @@ class saleContractController extends Controller
         if($request->params['shenheFlg']==0){
             //如果复审通过，短信发给法务
             if($data['result']==1){
-                $this->sendMessage($request->params['hetongid'],12,env('CONTRACT_ID'));
+                $this->sendMessage($request->params['hetongid'],12,env(CONTRACT_ID));
             }
             $response = $client->request('POST', '/api/contract/xs/chushen', [
                 'json' => $request->params
             ]);
         }elseif ($request->params['shenheFlg']==1) {
+
             $response = $client->request('POST', '/api/contract/xs/shenhe', [
                 'json' => $request->params
             ]);
