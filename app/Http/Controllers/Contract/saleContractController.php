@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Contract;
 
+use App\Http\Controllers\Api\MessageController;
 use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
