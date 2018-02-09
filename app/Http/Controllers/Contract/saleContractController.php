@@ -178,6 +178,8 @@ class saleContractController extends Controller
         ]);
         $response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
         echo $response->getBody();
+        $parentId = Auth::user()->parentId;
+        $this->sendMessage($id,11,$parentId);
     }
 
     /**
@@ -231,6 +233,10 @@ class saleContractController extends Controller
                 'json' => $request->params
             ]);
         }elseif ($request->params['shenheFlg']==1) {
+            //如果复审通过，短信发给法务
+            if($data['result']==1){
+                $this->sendMessage($request->params['hetongid'],12,env(CONTRACT_ID));
+            }
             $response = $client->request('POST', '/api/contract/xs/shenhe', [
                 'json' => $request->params
             ]);
@@ -786,6 +792,39 @@ class saleContractController extends Controller
         $res = json_decode($response->getBody());
         $contract = $res->data;
         return $contract;
+    }
+
+    public function sendMessage($id,$type,$send_to_id){
+        //第一次提交的发送信息给初审人
+        $user = Auth::user();//1.获取用户信息
+        $parent = User::find($send_to_id);
+        $send_to_name = $parent->name;
+        $phone = $parent->phone;
+
+        $contract = $this->getContractInfo($id);//合同信息
+        $loupan = '';
+        foreach ($contract->xsOffice as $office){
+            $loupan .= $office->loupanName.'-'.$office->loudongName.'-'.$office->fanghao.',';
+        }
+        $loupan = rtrim($loupan,',');
+        $content = $type==11?"合同初审":"合同复审";
+        $data=[
+            "send_from_id"=>$user->id,
+            "send_from_name"=>$user->name,
+            "send_from_sys"=>"erp",
+            "send_to_id"=>$send_to_id,
+            "send_to_name"=>$send_to_name,
+            "send_to_sys"=>"erp",
+            "phone"=>$phone,
+            "type"=>11,
+            "is_message"=>1,
+            "is_web"=>1,
+            "content"=>$content,
+            "title"=>$content,
+            "loupan"=>$loupan
+        ];
+        $message = new MessageController();
+        $message->createMessage($data);
     }
 
 
