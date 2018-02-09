@@ -11,7 +11,7 @@
                     <el-form label-Weizhi="right" ref="propertyForm" :rules="editPropertyRules" label-width="100px" :model="property.xsOffice[index]">
                         <el-col :span="24">
                             <el-row>
-                                <el-col :span="5">
+                                <el-col :span="6">
                                     <el-form-item label="楼盘" required prop="loupanName">
                                         <el-select
                                                 v-model="property.xsOffice[index].loupanName"
@@ -32,7 +32,7 @@
                                         </el-select>
                                     </el-form-item>
                                 </el-col>
-                                <el-col :span="5">
+                                <el-col :span="6">
                                     <el-form-item label="楼栋" required prop="loudongName" >
                                         <el-select
                                                 v-model="property.xsOffice[index].loudongName"
@@ -53,8 +53,8 @@
                                         </el-select>
                                     </el-form-item>
                                 </el-col>
-                                <el-col :span="5">
-                                    <el-form-item label="房间号" required prop="fanghao">
+                                <el-col :span="12" style="display:flex;position: relative;">
+                                    <el-form-item label="房间号" required prop="fanghao" style="width:230px;">
                                         <el-select
                                                 v-model="property.xsOffice[index].fanghao"
                                                 filterable
@@ -73,20 +73,21 @@
                                             </el-option>
                                         </el-select>
                                     </el-form-item>
-                                </el-col>
-                                <el-col :span="4">
-                                    <el-form-item label="——" prop="subleaseno">
+                                    <el-form-item label="-" prop="subleaseno" style="position: absolute;left:160px;width:230px;">
                                         <el-input placeholder="子房间号" v-model="property.xsOffice[index].subleaseno"></el-input>
                                     </el-form-item>
                                 </el-col>
+                                <!-- <el-col :span="6">
+                                    
+                                </el-col> -->
                             </el-row>
                             <el-row>
-                                <el-col :span="8">
+                                <el-col :span="12">
                                     <el-form-item  label="区域" prop="quyu">
                                         <el-input v-model="property.xsOffice[index].quyu"></el-input>
                                     </el-form-item>
                                 </el-col>
-                                <el-col :span="16">
+                                <el-col :span="12">
                                     <el-form-item label="位置"  prop="weizhi" :span="10">
                                         <el-input v-model="property.xsOffice[index].weizhi"></el-input>
                                     </el-form-item>
@@ -510,3 +511,5 @@
 
     }
 </script>
+<style type="text/css">
+</style>
