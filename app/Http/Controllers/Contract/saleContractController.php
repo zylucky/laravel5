@@ -236,12 +236,12 @@ class saleContractController extends Controller
                 $this->sendMessage($request->params['hetongid'],12,env('CONTRACT_ID'));
             }
             $response = $client->request('POST', '/api/contract/xs/chushen', [
-                'json' => $request->params
+                'json' => $data
             ]);
         }elseif ($request->params['shenheFlg']==1) {
 
             $response = $client->request('POST', '/api/contract/xs/shenhe', [
-                'json' => $request->params
+                'json' => $data
             ]);
         }
         echo $response->getBody();
