@@ -200,14 +200,14 @@ class purchaseContractController extends Controller
         ]);
         //根据合同当前的状态判断是初审还是复审
         if($request->params['shenheFlg']==0){
-            $response = $client->request('POST', '/api/contract/sf/chushen', [
-                'json' => $data
-            ]);
-        }elseif ($request->params['shenheFlg']==1){
             //如果复审通过，短信发给法务
             if($data['result']==1){
                 $this->sendMessage($request->params['hetongid'],12,env(CONTRACT_ID));
             }
+            $response = $client->request('POST', '/api/contract/sf/chushen', [
+                'json' => $data
+            ]);
+        }elseif ($request->params['shenheFlg']==1){
             $response = $client->request('POST', '/api/contract/sf/shenhe', [
                 'json' => $data
             ]);
