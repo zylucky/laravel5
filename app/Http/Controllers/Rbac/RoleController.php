@@ -7,7 +7,6 @@ use App\models\Role;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class RoleController extends Controller

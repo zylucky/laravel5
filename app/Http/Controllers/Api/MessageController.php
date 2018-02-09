@@ -29,8 +29,16 @@ class MessageController extends Controller
         //创建消息
         $message =  Message::create($params);
         //发送短信
+        if(isset($params['yongjin']))
+        {
+            $param = $params['yongjin'];
+        }
+        if(isset($params['loupan']))
+        {
+            $param = $params['loupan'];
+        }
         if($params['is_message']==1){
-            $res = $this->sendMessage($params['phone'], $params['type'], $params['yongjin']);
+            $res = $this->sendMessage($params['phone'], $params['type'], $param);
             $success = $res->Code=="OK"?true:false;
         }elseif($params['is_web']==1){
             $res = $this->send($message->id);
