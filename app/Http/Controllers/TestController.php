@@ -21,6 +21,7 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
+        var_dump(env('CONTRACT_ID'));exit;
         $contract = new saleContractController();
         $info = $contract->getContractInfo(4464);//合同信息
         echo '<pre>';

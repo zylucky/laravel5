@@ -202,7 +202,7 @@ class purchaseContractController extends Controller
         if($request->params['shenheFlg']==0){
             //如果复审通过，短信发给法务
             if($data['result']==1){
-                $this->sendMessage($request->params['hetongid'],12,env(CONTRACT_ID));
+                $this->sendMessage($request->params['hetongid'],12,env('CONTRACT_ID'));
             }
             $response = $client->request('POST', '/api/contract/sf/chushen', [
                 'json' => $data
