@@ -158,10 +158,9 @@ class purchaseContractController extends Controller
             'base_uri' => $this->base_url,
         ]);
         $response1 = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
-        echo $response1->getBody();
         $parentId = Auth::user()->parentId;
         $this->sendMessage($id,11,$parentId);
-
+        echo $response1->getBody();
     }
 
     /**

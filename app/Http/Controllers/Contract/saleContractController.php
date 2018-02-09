@@ -179,9 +179,10 @@ class saleContractController extends Controller
 
         ]);
         $response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
-        echo $response->getBody();
         $parentId = Auth::user()->parentId;
         $this->sendMessage($id,11,$parentId);
+        echo $response->getBody();
+
     }
 
     /**
