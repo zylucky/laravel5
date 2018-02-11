@@ -110,7 +110,6 @@
 
         </el-upload>
         <el-dialog v-model="dialogVisible" size="50" style="height: 100%;">
-<!--            <img width="100%" :src="dialogImageUrl" alt="">-->
             <div class="imgbox">
             	<div id="imageView_container" style="overflow: auto; position: relative; width: 800px; height: 500px; ">
 				    <img :src="dialogImageUrl" id="rotImg" style="cursor: pointer; visibility: visible; position: absolute;width: auto; height: auto;" />
