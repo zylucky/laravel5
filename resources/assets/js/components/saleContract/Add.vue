@@ -83,7 +83,7 @@
                 dialogFormVisible:false,
                 stepNum:1,
                 id:'',
-                //fangyuanId:'',
+                //fangyuanId:'', 
                 bianhao:'',
                 zhuangtai:'',
                 property:{
