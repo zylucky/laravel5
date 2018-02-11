@@ -92,7 +92,7 @@
 <!--            <img width="100%" :src="dialogImageUrl" alt="">-->
             <div class="imgbox">
             	<div id="imageView_container" style="overflow: auto; position: relative; width: 800px; height: 500px; ">
-				    <img src="../../../../../public/image/123.jpg" id="rotImg" style="cursor: pointer; visibility: visible; position: absolute;width: auto; height: auto;" />
+				    <img :src="dialogImageUrl" id="rotImg" style="cursor: pointer; visibility: visible; position: absolute;width: auto; height: auto;" />
 				</div>
 				<div style="padding-top:5px;">
 				    <input type="button" value="" @click="imgToSize(100)" class="fbig" @mousedown="fbig" @mouseup="fbig1" @mouseleave="leav">
