@@ -17,17 +17,22 @@ class MessageController extends Controller
     //
     public function create(Request $request)
     {
+       return $this->createMessage($request->all());
+    }
+
+    /**
+     * 创建
+     * @param $params
+     * @return array
+     */
+    public function createMessage($params){
         //创建消息
-        $message =  Message::create($request->all());
+        $message =  Message::create($params);
         //发送短信
-        if($request->input('is_message')==1){
-            $res = $this->sendMessage(
-                $request->input('phone'),
-                $request->input('type'),
-                $request->input('yongjin')
-            );
+        if($params['is_message']==1){
+            $res = $this->sendMessage($params['phone'], $params['type'], $params['yongjin']);
             $success = $res->Code=="OK"?true:false;
-        }elseif($request->input('is_web')==1){
+        }elseif($params['is_web']==1){
             $res = $this->send($message->id);
             $success = $res==1?true:false;
         }
@@ -36,6 +41,7 @@ class MessageController extends Controller
             'msg'=>$res
         ];
     }
+    //发送
     public function send($id){
        return Message::where('id',$id)->update(['status'=>1]);
     }
@@ -76,78 +82,35 @@ class MessageController extends Controller
 
 
     }
-    //发短信
-
-    /**
-     * 阿里大鱼
-     * @param $phone
-     * @param $type
-     * @param $yongjin
-     */
-
-    public function sendMessage_bak($phone,$type,$yongjin)
-    {
-        // 配置信息
-        $config =
-            [
-                'app_key'    => '24739810',
-                'app_secret' => '6e32fd0efdeec3b419fc43988422e8ac',
-                // 'sandbox'    => true,  // 是否为沙箱环境，默认false
-            ];
-
-
-        $templateCode = [
-            'SMS_118080024',//test
-            ];
-        // 使用方法一
-        $client = new Client(new App($config));
-        $req    = new AlibabaAliqinFcSmsNumSend;
-
-        $req->setRecNum($phone)
-            ->setSmsParam([
-                'yongjin' => $yongjin
-            ])
-            ->setSmsFreeSignName('幼狮')
-            ->setSmsTemplateCode($templateCode[$type]);
-        $resp = $client->execute($req);
-        return $resp;
-    }
 
     /**
      * @param $phone
      * @param $type
-     * @param $yongjin
+     * @param array ...$params
+     * @return mixed
      */
-    public function sendMessage($phone,$type,$yongjin){
-        $config = [
-            'accessKeyId'    => 'LTAIqU7BYqEDohQz',
-            'accessKeySecret' => 'ubNJux0Vd4D27NW4A66BEj9e4JrmIn',
-        ];
-        $templateCode = [
-            'SMS_117527728',//销售佣金信息待处理通知 0
-            'SMS_117527727',//销售佣金信息被驳回通知 1
-            'SMS_117512654',//销售佣金信息抄送通知   2
-            'SMS_117512653',//销售佣金申请已通过通知 3
-            'SMS_117527645',//销售佣金信息待审批通知 4
+    public function sendMessage($phone,$type,...$params){
+        $config  = config('message.config');
+        $templateCodesParams = config('message.templateCodesParams');//获取配置的编码和对应的模板参数
+        $templateCodes = array_keys($templateCodesParams);//获取配置数组的所有编码
 
-            'SMS_121165326',//渠道佣金信息待确认通知 5
-            'SMS_121135362',//渠道佣金支付通知      6
-
-            'SMS_121165334',//渠道佣金信息被驳回通知 7
-            'SMS_121160644',//渠道佣金信息审批通过   8
-            'SMS_121910205',//渠道佣金待财务审批 9
-            'SMS_117513026',//发送验证码通知 10
-
-        ];
+        $currentCode = $templateCodes[$type];//当前模版编码
+        $currentCodeParam = $templateCodesParams[$currentCode];//当前模板编码和对应的参数
+        $templateParam = [];
+        if(count($params)>0&&count($currentCodeParam)>0){
+            foreach ($params as $key => $param){
+                $templateParam[$currentCodeParam[$key]] = $param;
+            }
+        }
         $client  = new Client($config);
         $sendSms = new SendSms;
         $sendSms->setPhoneNumbers($phone);
         $sendSms->setSignName('亮狮网');//阿里云短信测试专用
-        $sendSms->setTemplateCode($templateCode[$type]);
-        $sendSms->setTemplateParam(['yongjin' => "$yongjin"]);
+        $sendSms->setTemplateCode($templateCodes[$type]);
+        $sendSms->setTemplateParam($templateParam);
         $sendSms->setOutId('demo');
 
-         return $client->execute($sendSms);
+        return $client->execute($sendSms);
 
     }
 }

@@ -10,13 +10,12 @@
 
                 <el-col :span="12">
                     <el-form-item >
-                        <el-date-picker :disabled="lydisabled" type = "date" placeholder="开始时间" v-model="item.startdate">
+                        <el-date-picker :editable = "false" :disabled="lydisabled" :picker-options="pickerOptionsMzq['pickerOptionsMzqs'+index]" type = "date" placeholder="开始时间" v-model="item.startdate">
                         </el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="12">
                     <el-form-item
-
                             :prop="'mianzuqiList.' + index + '.enddate'"
                             :rules="[
                                 {required: false,validator:
@@ -30,7 +29,8 @@
                                     };
                                         }, trigger:'blur'}
                                 ]">
-                        <el-date-picker :disabled="lydisabled" type = "date" placeholder="结束时间" v-model="item.enddate" >
+                        <el-date-picker :editable = "false" :disabled="lydisabled" :picker-options="pickerOptionsMzq['pickerOptionsMzqe'+index]"
+                                        type = "date" placeholder="结束时间" v-model="item.enddate" >
                         </el-date-picker>
                     </el-form-item>
                 </el-col>
@@ -56,24 +56,28 @@
                     <el-form-item label="总租期" required>
                         <el-col :span="11">
                             <el-form-item prop="startdate">
-                                <el-date-picker
+                                <el-date-picker :editable = "false"
                                         v-model="addDate.startdate"
                                         type="date"
                                         placeholder="开始时间"
                                         @change="zqchange1()"
                                         :disabled="lydisabled"
+                                        :picker-options="pickerOptionsZzqs"
+
                                 >
                                 </el-date-picker>
                             </el-form-item>
                         </el-col>
                         <el-col :span="11">
                             <el-form-item prop="enddate">
-                                <el-date-picker
+                                <el-date-picker :editable = "false"
                                         v-model="addDate.enddate"
                                         type="date"
                                         placeholder="结束时间"
                                         @change="zqchange2()"
                                         :disabled="lydisabled"
+                                        :picker-options="pickerOptionsZzqe"
+
                                 >
                                 </el-date-picker>
                             </el-form-item>
@@ -98,7 +102,7 @@
                                 }
                                 ]"
                                 >
-                                    <el-date-picker type = "date" placeholder="开始时间" v-model="item.startdate" :disabled="lydisabled">
+                                    <el-date-picker :editable = "false" :picker-options="pickerOptionsZj['pickerOptionsZjs'+index]" type = "date" placeholder="开始时间" v-model="item.startdate" :disabled="lydisabled">
                                     </el-date-picker>
                                 </el-form-item>
                             </el-col>
@@ -119,7 +123,7 @@
                                         }, trigger:'blur'}
                                 ]"
                                 >
-                                    <el-date-picker  type = "date" placeholder="结束时间" v-model="item.enddate" :disabled="lydisabled">
+                                    <el-date-picker :editable = "false" :picker-options="pickerOptionsZj['pickerOptionsZje'+index]"  type = "date" placeholder="结束时间" v-model="item.enddate" :disabled="lydisabled">
                                     </el-date-picker>
                                 </el-form-item>
                             </el-col>
@@ -176,7 +180,7 @@
                                 <el-form-item  :prop="'fukuanFangshiList.' + index + '.startdate'" :rules="{
                                     required: true, message: '不能为空'
                                 }">
-                            <el-date-picker type = "date"  placeholder="开始时间" v-model="item.startdate" :disabled="lydisabled">
+                            <el-date-picker :editable = "false" :picker-options="pickerOptionsFkfs['pickerOptionsFkfss'+index]" type = "date"  placeholder="开始时间" v-model="item.startdate" :disabled="lydisabled">
                             </el-date-picker>
                                 </el-form-item>
                             </el-col>
@@ -196,7 +200,7 @@
                                     };
                                         }, trigger:'blur'}
                                 ]">
-                            <el-date-picker type = "date" placeholder="结束时间" v-model="item.enddate" :disabled="lydisabled">
+                            <el-date-picker :editable = "false" :picker-options="pickerOptionsFkfs['pickerOptionsFkfse'+index]" type = "date" placeholder="结束时间" v-model="item.enddate" :disabled="lydisabled">
                             </el-date-picker>
                                 </el-form-item>
                             </el-col>
@@ -262,7 +266,7 @@
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="押金付款日期" prop="yajinfukuanri" required>
-                        <el-date-picker
+                        <el-date-picker :editable = "false"
                                 type="date"
                                 placeholder="选择日期"
                                 v-model="addDate.yajinfukuanri"
@@ -277,12 +281,12 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="收房日" prop="shoufangdate" >
-                        <el-date-picker :disabled="lydisabled" type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;" ></el-date-picker>
+                        <el-date-picker :editable = "false" :disabled="lydisabled" type="date" placeholder="选择日期" v-model="addDate.shoufangdate" style="width: 100%;" ></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="签约日" prop="qianyuedate" >
-                        <el-date-picker :disabled="lydisabled" type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;" ></el-date-picker>
+                        <el-date-picker :editable = "false" :disabled="lydisabled" type="date" placeholder="选择日期" v-model="addDate.qianyuedate" style="width: 100%;" ></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
@@ -295,7 +299,7 @@
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="首期租金日期" prop="shouqifukuanri" required>
-                        <el-date-picker
+                        <el-date-picker :editable = "false"
                                 type="date"
                                 v-model="addDate.shouqifukuanri"
                                 placeholder="首期租金日期"
@@ -306,7 +310,7 @@
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="二期租金日期" prop="erqifukuanri" required>
-                        <el-date-picker
+                        <el-date-picker :editable = "false"
                                 type="date"
                                 v-model="addDate.erqifukuanri"
                                 placeholder="二期租金日期"
@@ -317,7 +321,7 @@
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="三期租金日期" prop="sanqifukuanri" required>
-                        <el-date-picker
+                        <el-date-picker :editable = "false"
                                 tpye="date"
                                 v-model="addDate.sanqifukuanri"
                                 placeholder="三期租金日期"
@@ -381,11 +385,82 @@
     }
 </style>
 <script>
-    import ElCol from "element-ui/packages/col/src/col";
+    import {purchaseEditable} from '../../global'
     export default {
-        components: {ElCol},
         data() {
             return {
+                pickerOptionsMzq:{
+                    pickerOptionsMzqs0:{
+                        disabledDate:(time) =>  {
+                            let endDate = this.addDate.mianzuqiList[0].enddate
+                            if (endDate) {
+                                return time.getTime() > endDate;
+                            }
+                        }
+                    },
+                    pickerOptionsMzqe0:{
+                        disabledDate:(time) =>  {
+                            let startDate = this.addDate.mianzuqiList[0].startdate
+                            if (startDate) {
+                                return time.getTime() < startDate;
+                            }
+                        }
+                    },
+                },
+                pickerOptionsZzqs:{
+                    disabledDate:(time) =>  {
+                        let endDate = this.addDate.enddate
+                        if (endDate) {
+                            return time.getTime() > endDate;
+                        }
+                    }
+                },
+                pickerOptionsZzqe:{
+                    disabledDate:(time) =>  {
+                        let startDate = this.addDate.startdate
+                        if (startDate) {
+                            return time.getTime() < startDate;
+                        }
+                    }
+                },
+                pickerOptionsZj:{
+                    pickerOptionsZjs0:{
+                        disabledDate:(time) =>  {
+                            let endDate = this.addDate.zujinList[0].enddate
+                            if (endDate) {
+                                return time.getTime() > endDate;
+                            }
+                        }
+                    },
+                    pickerOptionsZje0:{
+                        disabledDate:(time) =>  {
+                            let startDate = this.addDate.zujinList[0].startdate
+                            if (startDate) {
+                                return time.getTime() < startDate;
+                            }
+                        }
+                    },
+                },
+                pickerOptionsFkfs:{
+                    pickerOptionsFkfss0:{
+                        disabledDate:(time) =>  {
+                            let endDate = this.addDate.fukuanFangshiList[0].enddate
+                            if (endDate) {
+                                return time.getTime() > endDate;
+                            }
+                        }
+                    },
+                    pickerOptionsFkfse0:{
+                        disabledDate:(time) =>  {
+                            let startDate = this.addDate.fukuanFangshiList[0].startdate
+                            if (startDate) {
+                                return time.getTime() < startDate;
+                            }
+                        }
+                    },
+                },
+
+
                 checkList : [
                     "（1）供暖费",
                     "（2）制冷费",
@@ -476,6 +551,9 @@
         },
         props:['addDate','property'],
         methods: {
+            disabledDate(){
+                return true;
+            },
             changeDate(value){
                 var newDate = new Date();
                 newDate.setTime(value);
@@ -589,6 +667,22 @@
                     mianzufangshi:'',
                     key: Date.now()
                 });
+                this.pickerOptionsMzq['pickerOptionsMzqs'+(this.addDate.mianzuqiList.length-1)] = {
+                        disabledDate:(time) =>  {
+                            let endDate = this.addDate.mianzuqiList[this.addDate.mianzuqiList.length-1].enddate
+                            if (endDate) {
+                                return time.getTime() > endDate;
+                            }
+                        }
+                };
+                this.pickerOptionsMzq['pickerOptionsMzqe'+(this.addDate.mianzuqiList.length-1)]={
+                        disabledDate:(time) =>  {
+                            let startDate = this.addDate.mianzuqiList[this.addDate.mianzuqiList.length-1].startdate
+                            if (startDate) {
+                                return time.getTime() < startDate;
+                            }
+                        }
+                };
             },
             //移除免
             removeFreeItem(item) {
@@ -607,6 +701,23 @@
                     dizengfangshi:'',
                     dizengliang:'',
                 });
+
+                this.pickerOptionsZj['pickerOptionsZjs'+(this.addDate.zujinList.length-1)] = {
+                    disabledDate:(time) =>  {
+                        let endDate = this.addDate.zujinList[this.addDate.zujinList.length-1].enddate
+                        if (endDate) {
+                            return time.getTime() > endDate;
+                        }
+                    }
+                };
+                this.pickerOptionsZj['pickerOptionsZje'+(this.addDate.zujinList.length-1)]={
+                    disabledDate:(time) =>  {
+                        let startDate = this.addDate.zujinList[this.addDate.zujinList.length-1].startdate
+                        if (startDate) {
+                            return time.getTime() < startDate;
+                        }
+                    }
+                };
             },
             //移除租金
             removeRentItem(item) {
@@ -623,6 +734,22 @@
                     yajinyue:'',
                     zujinyue:'',
                 });
+                this.pickerOptionsFkfs['pickerOptionsFkfss'+(this.addDate.fukuanFangshiList.length-1)] = {
+                    disabledDate:(time) =>  {
+                        let endDate = this.addDate.fukuanFangshiList[this.addDate.fukuanFangshiList.length-1].enddate
+                        if (endDate) {
+                            return time.getTime() > endDate;
+                        }
+                    }
+                };
+                this.pickerOptionsFkfs['pickerOptionsFkfse'+(this.addDate.fukuanFangshiList.length-1)]={
+                    disabledDate:(time) =>  {
+                        let startDate = this.addDate.fukuanFangshiList[this.addDate.fukuanFangshiList.length-1].startdate
+                        if (startDate) {
+                            return time.getTime() < startDate;
+                        }
+                    }
+                };
             },
             //移除付款方式
             removePayItem(item) {
@@ -657,7 +784,7 @@
             if(this.$route.path=='/purchaseContract/view'){
                 this.editVisible   =false;
             }
-            if(this.$route.path=='/purchaseContract/edit'&&this.$route.query.status>=6){
+            if(this.$route.path=='/purchaseContract/edit'&&purchaseEditable.indexOf(parseInt(this.$route.query.status))<0){
                 this.lydisabled = true;
                 this.editVisible=false;
             }

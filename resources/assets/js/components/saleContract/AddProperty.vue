@@ -134,6 +134,7 @@
     </el-row>
 </template>
 <script>
+    import {saleEditable} from '../../global'
     import {getLoupanList,getLoudongList,getSaleFanghaoList,getSaleFanghaoChengzu,getContractChuzuren} from '../../api/api';
     export default {
         components:{
@@ -503,7 +504,7 @@
                 }
             }
             setTimeout(hello,500);
-            if(this.$route.path=='/saleContract/edit'&&this.$route.query.status>=6){
+            if(this.$route.path=='/saleContract/edit'&&saleEditable.indexOf(parseInt(this.$route.query.status))<0){
                 this.lydisabled = true;
             }
         }

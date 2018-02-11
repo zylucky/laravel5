@@ -79,7 +79,7 @@ left join users u on users.parentId = u.id
         $user->phone = $input['phone'];
         $user->sex = $input['sex'];
         $user->ht_query_flg = $input['ht_query_flg'];
-        if($user->parentId){
+        if(isset($input['parentId'])){
             $user->parentId = $input['parentId'];
         }
         if($user->save()){
@@ -95,12 +95,11 @@ left join users u on users.parentId = u.id
         $id = $input['id'];
         $user = User::find($id);
         $user->name = $input['name'];
-        //$user->password = bcrypt('secret');
         $user->email = $input['email'];
         $user->phone = isset($input['phone'])?$input['phone']:'';
         $user->sex = $input['sex'];
         $user->ht_query_flg = $input['ht_query_flg'];
-        if($user->parentId){
+        if(isset($input['parentId'])){
             $user->parentId = $input['parentId'];
         }
         if($user->save()){

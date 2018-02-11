@@ -127,6 +127,7 @@ export const submitSaleContract = params => {return axios.get(`${base}/saleContr
 export const getJieyueSaleContract = params => { return axios.get(`${base}/saleContract/jieyue`, { params: params }); };
 /*export const dumpingSaleContract = params => {return axios.get(`${base}/saleContract/`+params.id+'/edit', {}); };//状态变更为：待确认*/
 export const approvingSaleContract= params => { return axios.get(`${base}/saleContract/approving`, {params:params}); };//状态变更为：审核中
+export const approvingPreSaleContract= params => { return axios.get(`${base}/saleContract/preApproving`, {params:params}); };//状态变更为：初审中
 export const confirmSaleContract= params => { return axios.get(`${base}/saleContract/confirm`, {params:params}); };//状态变更为：待确认
 export const confirmedSaleContract= params => { return axios.get(`${base}/saleContract/confirmed`, {params:params}); };//状态变更为：
 
