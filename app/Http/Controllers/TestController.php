@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Contract\saleContractController;
 use App\models\Role;
 use GuzzleHttp\Client;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Excel;
 use Illuminate\Support\Facades\Redis;
-use Qiniu\Auth;
 
 class TestController extends Controller
 {
@@ -20,6 +21,22 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
+        var_dump(env('CONTRACT_ID'));exit;
+        $contract = new saleContractController();
+        $info = $contract->getContractInfo(4464);//合同信息
+        echo '<pre>';
+        var_dump($info->xsOffice);
+
+        exit;
+
+        $loupan = '';
+        foreach ($info->xsOffice as $office){
+            $loupan .= $office->loupanName.'-'.$office->loudongName.'-'.$office->fanghao.',';
+        }
+        $loupan = rtrim($loupan,',');
+        var_dump($loupan);
+        exit;
+
 //      $str="1,dsf,3ee,34r,rf,d,we,dfewr,erf";
 //      $s="";
 //      $ss=[];
@@ -34,10 +51,7 @@ class TestController extends Controller
 //      }
 //        $ss[]=$s;
 //      print_r($ss);
-        $str="1,dsf,3ee,34r,rf,d,we,dfewr,erf";
-        while (strlen($str)>0){
 
-        }
 
     }
     function DiffDate($date1, $date2) {
