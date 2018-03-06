@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Contract\saleContractController;
 use App\models\Role;
 use GuzzleHttp\Client;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Excel;
 use Illuminate\Support\Facades\Redis;
-use Qiniu\Auth;
 
 class TestController extends Controller
 {
@@ -20,6 +21,46 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
+<<<<<<< HEAD
+        $arr = [1, 2, -4, 4, 10, -3, 4, -5, 1];
+        //1。找出所有的连续子数组
+        //1.1先实现一个切片的函数
+        //1.2弄出所有可能的的开始和结束
+        $len = count($arr);
+        $childrenValues = [];
+        for ($i=0;$i<$len;$i++){
+            for($j=0;$j<$len;$j++){.
+                if($j>=$i){
+                    $newArr=$this->spliceArr($arr,$i,$j);
+                    $childrenValues[array_sum($newArr)] =  $newArr ;
+//                    echo $i."+".$j.'<br>';
+                }
+
+            }
+        }
+        //2.计算每个子数组的和
+        //3。找出最大
+         ksort($childrenValues);
+         $res = array_pop( $childrenValues);
+        var_dump($res);exit;
+=======
+        var_dump(env('CONTRACT_ID'));exit;
+        $contract = new saleContractController();
+        $info = $contract->getContractInfo(4464);//合同信息
+        echo '<pre>';
+        var_dump($info->xsOffice);
+
+        exit;
+
+        $loupan = '';
+        foreach ($info->xsOffice as $office){
+            $loupan .= $office->loupanName.'-'.$office->loudongName.'-'.$office->fanghao.',';
+        }
+        $loupan = rtrim($loupan,',');
+        var_dump($loupan);
+        exit;
+
+>>>>>>> 7f5a4f94958aaecb8bfc462fe93e1c9fd0fc7586
 //      $str="1,dsf,3ee,34r,rf,d,we,dfewr,erf";
 //      $s="";
 //      $ss=[];
@@ -34,11 +75,17 @@ class TestController extends Controller
 //      }
 //        $ss[]=$s;
 //      print_r($ss);
-        $str="1,dsf,3ee,34r,rf,d,we,dfewr,erf";
-        while (strlen($str)>0){
 
+
+    }
+    public function spliceArr($arr,$start,$end){
+        $newArr=[];
+        foreach ($arr as $key => $item){
+            if($key>=$start&&$key<=$end){
+                $newArr[]=$arr[$key];
+            }
         }
-
+        return $newArr;
     }
     function DiffDate($date1, $date2) {
         if (strtotime($date1) > strtotime($date2)) {

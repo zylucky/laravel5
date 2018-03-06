@@ -1,6 +1,5 @@
 <template>
     <el-row>
-
         <table   border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;width:1280px" >
             <tbody>
             <tr style=" text-align:left;background-color:#EEF1F6;height: 40px"><td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 基本信息</td></tr>
@@ -39,6 +38,27 @@
                 </td>
             </tr>
             <tr class="tr1">
+                <td  > 合同月租金：
+                </td>
+                <td>{{toDecimal(Payable.monthMoney)}}</td>
+                <td  >
+                    佣金信息：
+                </td>
+                <td  >
+                    {{changeBool(Payable.xsYongjinxinxi)}}
+                </td>
+                <td  >
+                </td>
+                <td  >
+                </td>
+            </tr>
+            <tr class="tr1">
+                <td  > 佣金计算公式：
+                </td>
+                <td colspan="5">{{Payable.xsJisuangongshi}}</td>
+
+            </tr>
+            <tr class="tr1">
                 <td  > 渠道门店：
                 </td>
                 <td>{{Payable.gsname}}</td>
@@ -65,7 +85,7 @@
                 <td  >
                     {{Payable.kaihuhang}}
                 </td>
-                <td  >
+                <td>
                     银行账号：
                 </td>
                 <td >
@@ -89,8 +109,17 @@
         >
 
         </el-upload>
-        <el-dialog v-model="dialogVisible" size="large">
-            <img width="100%" :src="dialogImageUrl" alt="">
+        <el-dialog v-model="dialogVisible" size="50" style="height: 100%;">
+            <div class="imgbox">
+            	<div id="imageView_container" style="overflow: auto; position: relative; width: 800px; height: 500px; ">
+				    <img :src="dialogImageUrl" id="rotImg" style="cursor: pointer; visibility: visible; position: absolute;width: auto; height: auto;" />
+				</div>
+				<div style="padding-top:5px;">
+				    <input type="button" value="" @click="imgToSize(100)" class="fbig" @mousedown="fbig" @mouseup="fbig1" @mouseleave="leav">
+				    <input type="button" value="" @click="imgToSize(-100);" class="fsmall" @mousedown="fsmall" @mouseup="fsmall1" @mouseleave="leav">
+				    <input type="button" value="" id="rotRight" @click="toright" @mousedown="torights" @mouseup="torights1" @mouseleave="leav">
+				</div>
+            </div>
         </el-dialog>
         <table  width="1280px" border="1" bordercolor="#DFE6EC"  style="border-collapse:collapse!important;text-align:center;margin-top:30px" >
             <tbody>
@@ -174,6 +203,8 @@
                 dialogImageUrl: '',
                 spData:[],
                 spDatas:[],//重新组织后的数据
+                rote:-1,//旋转状态
+                sizes:0,
             }
         },
         methods: {
@@ -191,6 +222,11 @@
 				    if(second<10){second = '0' + second;}
                     return newDate.toLocaleDateString() + ' ' + hour + ':' + minute + ':' + second;
                 }
+            },
+            //时间戳转日期格式
+            changeBool(value){
+                return value?'正常':"不正常";
+
             },
             handlePictureCardPreview(file) {
                 this.dialogImageUrl = file.url;
@@ -312,9 +348,92 @@
                     });
                 });
             },
+             //放大缩小图片
+		   imgToSize(size) {
+		   		this.sizes = size;
+		        var img = $("#rotImg");
+		        var oWidth = img.width(); //取得图片的实际宽度
+		        var oHeight = img.height(); //取得图片的实际高度
+		        if((oWidth + this.sizes) < 200){
+		        	return;
+		        }
+		        img.width(oWidth + this.sizes);
+		        img.height(oHeight + this.sizes / oWidth * oHeight);
+		   },
+		   toright(){
+		   		this.rote++;
+		   		if(this.rote==0){
+		   			$('#rotImg').addClass("rot1");
+		   			$('#rotImg').removeClass("rot4");
+		   		}
+		   		if(this.rote==1){
+		   			$('#rotImg').addClass("rot2");
+		   			$('#rotImg').removeClass("rot1");
+		   		}
+		   		if(this.rote==2){
+		   			$('#rotImg').addClass("rot3");
+		   			$('#rotImg').removeClass("rot2");
+		   		}
+		   		if(this.rote==3){
+		   			$('#rotImg').addClass("rot4");
+		   			$('#rotImg').removeClass("rot3");
+		   			this.rote = -1;
+		   		}
+		   },
+		   fbig(){
+		   	$('.fbig').css('transform','scale(0.8)');
+		   },
+		   fbig1(){
+		   	$('.fbig').css('transform','scale(1)');
+		   },
+		   fsmall(){
+		   	$('.fsmall').css('transform','scale(0.8)');
+		   },
+		   fsmall1(){
+		   	$('.fsmall').css('transform','scale(1)');
+		   },
+		   leav(){
+		   	$('.fbig').css('transform','scale(1)');
+		   	$('.fsmall').css('transform','scale(1)');
+		   	$('#rotRight').css('transform','scale(1)');
+		   },
+		   torights(){
+		   	$('#rotRight').css('transform','scale(0.8)');
+		   },
+		   torights1(){
+		   	$('#rotRight').css('transform','scale(1)');
+		   }
         },
         mounted() {
             this.getPayable();
+            //
+            if(this.dialogVisible){
+			    var param = {
+			        right: document.getElementById("rotRight"),
+			        left: document.getElementById("rotLeft"),
+			        img: document.getElementById("rotImg"),
+			        rot: 0
+			    };
+				console.log(param)
+			    var fun = {
+			        right: function () {
+			            param.rot += 1;
+			            param.img.className = "rot" + param.rot;
+			            if (param.rot === 3) {
+			                param.rot = -1;
+			            }
+			        },
+			        left: function () {
+			            param.rot -= 1;
+			            if (param.rot === -1) {
+			                param.rot = 3;
+			            }
+			            param.img.className = "rot" + param.rot;
+			        }
+			    };
+			    $('#imageView_container').imageView({ width: 800, height: 500 });
+			    var size = 0;
+            }  
         },
         filters:{
         	//时间戳转日期格式
@@ -483,4 +602,77 @@
 		/*最后一行隐藏*/
 		display: none;
 	}
+	.rot1 {
+            -moz-transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+            -ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+        }
+
+        .rot2 {
+            -moz-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+            -ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+        }
+
+        .rot3 {
+            -moz-transform: rotate(270deg);
+            -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+            -ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+        }
+        .rot4 {
+            -moz-transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=4);
+            -ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=4);
+        }
+
+        #imageView_container{
+        	display: flex;
+        	align-items: center;
+        	justify-content: center;
+            /*border: 2px solid #000000;*/
+        }
+        .fbig{
+        	outline: none;
+        	border: none;
+        	width: 60px;
+        	height: 30px;
+        	background: url(../../../../../public/image/fbig.png) no-repeat center;
+        	background-size: 45%;
+        }
+        .fsmall{
+        	outline: none;
+        	border: none;
+        	width: 60px;
+        	height: 30px;
+        	background: url(../../../../../public/image/fsmall.png) no-repeat center;
+        	background-size: 45%;
+        }
+        #rotRight{
+        	outline: none;
+        	border: none;
+        	width: 60px;
+        	height: 30px;
+        	background: url(../../../../../public/image/rotes.png) no-repeat center;
+        	background-size: 45%;
+        }
+        .fbig:hover{
+        	background: url(../../../../../public/image/fbig1.png) no-repeat center;
+        	background-size: 45%;
+        }
+        .fsmall:hover{
+        	background: url(../../../../../public/image/fsmall1.png) no-repeat center;
+        	background-size: 45%;
+        }
+        #rotRight:hover{
+        	background: url(../../../../../public/image/rotes1.png) no-repeat center;
+        	background-size: 45%;
+        }
 </style>

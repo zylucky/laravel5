@@ -33,6 +33,9 @@ import 'element-ui/lib/theme-default/index.css';
 import VueRouter from 'vue-router';
 import routes from './routes';
 import 'font-awesome/css/font-awesome.min.css'
+import './api/jquery-1.10.2.js'
+import './api/jquery.imageView.js'
+import './api/jquery-browser.js'
 
 import {getPermissionList}  from './api/api';
 

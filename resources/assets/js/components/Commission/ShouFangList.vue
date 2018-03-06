@@ -182,14 +182,13 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
-
             </el-form>
         </el-dialog>
 
         
-        <el-dialog title="确认收款" v-model="rokeBackFormVisible" :close-on-click-modal="false">
+        <el-dialog title="确认收款" v-model="rokeBackFormVisible" :close-on-click-modal="false" style='width: 800px;margin-left:400px;'>
             <el-form :model="rokeBackForm" label-width="120px" :rules="rokeBackFormRules" ref="rokeBackForm">
-                <el-form-item label="业主实付佣金" prop="empmoney">
+                <el-form-item label="业主实付佣金" prop="empmoney" style='width:312px'>
                     <el-input    v-model.number="rokeBackForm.empmoney" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="收款日期" prop="skdate">
@@ -444,7 +443,5 @@
     }
 </script>
 <style>
-	.el-dialog--small{
-		width: 405px;
-	}
+
 </style>

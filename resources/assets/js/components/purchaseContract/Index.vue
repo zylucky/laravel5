@@ -45,7 +45,7 @@
             <el-table-column  prop="bianhao" label="编号" width="200" >
             </el-table-column>
             <el-table-column prop="loupanName" label="楼盘"   >
-                <!--<template slot-scope="scope">-->
+                <!--<template slot-scope="scope">/-->
                     <!--<span v-for="(item,index) in  Estate(scope.row.loupanName)">{{item}}</span>-->
                 <!--</template>-->
             </el-table-column>
@@ -66,7 +66,7 @@
                     v-if="fun('setYongYou')"
             >
                 <template slot-scope="scope" >
-                    <el-input   v-model="scope.row.yongyouid" @blur="updatayongyouid(scope.$index, scope.row)"></el-input>
+                    <el-input v-model="scope.row.yongyouid" @blur="updatayongyouid(scope.$index, scope.row)"></el-input>
                 </template>
             </el-table-column>
             <el-table-column
@@ -85,6 +85,7 @@
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item v-if="fun('purchaseContractIndex')"  ><el-button @click="handleView(scope.$index, scope.row)">查看合同</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[0,4,5,6,7,8,9,10,12,15])&&fun('purchaseContactUpdate')" ><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="fun('purchaseContactMoreUpdate')" ><el-button @click="handleEditMore(scope.$index, scope.row)">专用编辑</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[1,13])&&fun('purchaseContactPreAudit')" ><el-button @click="handlePreReview(scope.$index, scope.row)">初&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[2,14])&&fun('purchaseContactAudit')" ><el-button @click="handleReview(scope.$index, scope.row)">复&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[3])&&fun('purchaseContactDump')"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
@@ -383,6 +384,11 @@
             },
             handleEdit(index,row){
                 this.$router.push('/purchaseContract/edit?id='+row.id+'&status='+row.zhuangtai);
+            },
+            handleEditMore(index, row){
+
+                this.$router.push('/purchaseContract/edit?id=' + row.id+'&status=0&zt=1');
+                // this.$router.push('/purchaseContact/add?id='+row.id);
             },
             //初审
             handlePreReview(index,row){

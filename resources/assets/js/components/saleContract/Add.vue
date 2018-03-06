@@ -35,8 +35,8 @@
                         <a href="javascript:;" v-if="this.$route.path=='/saleContract/see'" @click="stepNum=5"><el-step  title="解约协议"></el-step></a>
                     </el-steps>
                     <el-input type="hidden" prop="id"  auto-complete="off"></el-input>
-                    <el-button type="primary" :disabled="saveBtn" v-show="!reviewVisible" @click="save" style="margin-top:100px;">保存</el-button>
-                    <el-button type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
+                    <el-button type="primary" :disabled="saveBtn" v-show="!reviewVisible" @click="save" style="margin-top:10px;">保存</el-button>
+                    <el-button style="margin:0px;" type="primary" v-show="!reviewVisible" :disabled="btnType" @click="submit" >{{submsg}}</el-button>
                     <div style="margin-top:10px;">
                         <el-button type="primary" @click="preview" >打印预览</el-button>
                     </div>
@@ -83,7 +83,7 @@
                 dialogFormVisible:false,
                 stepNum:1,
                 id:'',
-                //fangyuanId:'',
+                //fangyuanId:'', 
                 bianhao:'',
                 zhuangtai:'',
                 property:{
@@ -296,7 +296,9 @@
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
                             if(saleEditable.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/saleContract/add'){
-                                this.btnType = false;
+                                if(this.$route.query.zt!=1){
+                                    this.btnType = false;
+                                }
                             }
                             this.fuzhi(res);
                             this.saveBtn = false;

@@ -24,10 +24,16 @@
                 <el-button v-if="fun('payableAddYXJ')" type="primary" class="el-icon-plus" @click="handleAdd">新增</el-button>
             </el-form-item>
         </el-form>
-          合计  应付金额：{{DataSum.sumMoney}} 提交金额：{{DataSum.tijiaoMoney}}  实付金额：{{DataSum.shijiMoney}}
-        <span style="color:red;font-size: 14px;">
-            (注：红色日期表示付款已延期，请尽快处理)
-        </span>
+         	<div class="totals_box">
+         		<p>
+         			合计 <span class="totals">应付金额：{{DataSum.sumMoney}}</span>
+	         		<span class="totals">提交金额：{{DataSum.tijiaoMoney}}</span>
+	         		<span class="totals">实付金额：{{DataSum.shijiMoney}}</span>
+         		</p>
+         		<p>
+         			<span style="color:red;font-size: 14px;">(注：红色日期表示付款已延期，请尽快处理)</span>         			
+         		</p>
+         	</div>
         <el-tabs v-model="activeName2" type="border-card" @tab-click="handleClick">
             <el-tab-pane label="全部" name="first"></el-tab-pane>
             <el-tab-pane label="未提交" name="second"></el-tab-pane>
@@ -247,20 +253,20 @@
                 <el-button type="primary" @click.native="addFormSubmit" :loading="addFormLoading">保存</el-button>
             </div>
         </el-dialog>
-        <el-dialog title="编辑付款日期" v-model="editDateFormVisible" :close-on-click-modal="false">
+        <el-dialog title="编辑付款日期" v-model="editDateFormVisible" :close-on-click-modal="false" style="width:1000px;margin-left: 250px;">
             <el-form :model="editDateForm" label-width="120px" :rules="editDateFormRules" ref="editDateForm"  >
                 <el-row>
-                    <el-col :span="7">
+                    <el-col :span="10">
                         <el-form-item label="提前付款：" prop="tiQianDays">
                             <el-input v-model.number="editDateForm.tiQianDays" auto-complete="off"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="1" style="text-align: right;margin-top: 8px;">
+                    <el-col :span="1" style="text-align: right;margin-top: 2px;line-height: 36px;margin-right: 50px;">
                         天
                     </el-col>
                     <el-col :span="10">
-                        <el-form-item  label="" prop="isBenQi">
-                            <el-radio-group v-model="editDateForm.isBenQi">
+                        <el-form-item label="" prop="isBenQi" style='margin-left: -120px;'>
+                            <el-radio-group v-model="editDateForm.isBenQi" style='display: flex;height: 36px;align-items: center;'>
                                 <el-radio class="radio" label=true>本期</el-radio>
                                 <el-radio class="radio" label=false>所有</el-radio>
                             </el-radio-group>
@@ -275,10 +281,10 @@
             </div>
         </el-dialog>
 
-        <el-dialog title="编辑付款金额" v-model="editMoneyFormVisible" :close-on-click-modal="false">
-            <el-form :model="editMoneyForm" label-width="120px" :rules="editMoneyFormRules" ref="editMoneyForm"  >
+        <el-dialog title="编辑付款金额" v-model="editMoneyFormVisible" :close-on-click-modal="false" style="width:800px;margin-left: 400px;">
+            <el-form :model="editMoneyForm" label-width="125px" :rules="editMoneyFormRules" ref="editMoneyForm" >
                 <el-row>
-                    <el-col :span="16">
+                    <el-col :span="20">
                         <el-form-item label="本期付款金额：" prop="shouKuanMoney">
                             <el-input   v-model.number="editMoneyForm.shouKuanMoney" auto-complete="off"></el-input>
                         </el-form-item>
@@ -298,7 +304,9 @@
     .el-table .info-row {
         color:red;
     }
-
+   /*.el-form-item__content{
+   		margin-left: 10px!important;
+   }*/
 </style>
 <script>
 
@@ -972,3 +980,12 @@
         }
     }
 </script>
+<style scoped>
+	.totals{
+		margin-left: 20px;
+	}
+	.totals_box{
+		display: flex;
+		justify-content: space-between;
+	}
+</style>
