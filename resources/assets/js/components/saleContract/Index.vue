@@ -81,9 +81,9 @@
                         </el-button>
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item v-if="fun('saleContractIndex')" ><el-button @click="handlSee(scope.$index, scope.row)">查看合同</el-button></el-dropdown-item>
-                            <el-dropdown-item v-if="ztin(scope.row,[0,4,5,6,7,8,9,12,13,17])&&fun('saleContactUpdate')"><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
-                            <el-dropdown-item v-if="ztin(scope.row,[16])&&fun('saleContactAudit')"><el-button @click="handleReview(scope.$index, scope.row)">复&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
-                            <el-dropdown-item v-if="ztin(scope.row,[1])&&fun('saleContactPreAudit')"><el-button @click="handlePreReview(scope.$index, scope.row)">初&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
+                            <el-dropdown-item v-if="ztin(scope.row,[0,4,5,6,7,8,9,12,13,14,17])&&fun('saleContactUpdate')"><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
+                            <el-dropdown-item v-if="ztin(scope.row,[2,16])&&fun('saleContactAudit')"><el-button @click="handleReview(scope.$index, scope.row)">复&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
+                            <el-dropdown-item v-if="ztin(scope.row,[1,15])&&fun('saleContactPreAudit')"><el-button @click="handlePreReview(scope.$index, scope.row)">初&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[3])&&fun('saleContactDump')"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[5])&&fun('saleContactConfirm')"><el-button @click="handleConfirm(scope.$index, scope.row)">签约成功</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[6,13])&&fun('saleContactWeiyue')"><el-button @click="handleWeiyue(scope.$index, scope.row)">违 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
@@ -100,7 +100,7 @@
                             <el-dropdown-item v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactUpload')"><el-button @click="handleUplod(scope.$index, scope.row)">扫描件&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactSummary')"><el-button @click="handleSummary(scope.$index, scope.row)">打印核心数据</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,3,4,5])&&fun('saleContactZF')"><el-button @click="handleZuofei(scope.$index, scope.row)">合同作废</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13])&&fun('saleContactJGD')"><el-button @click="handleJiaogedan(scope.$index, scope.row)">交割单&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11,12,13,15,16,17])&&fun('saleContactJGD')"><el-button @click="handleJiaogedan(scope.$index, scope.row)">交割单&nbsp;&nbsp;&nbsp;</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
                 </template>
@@ -173,6 +173,7 @@
         weiYueSaveSaleContract,
         weiYueInfoSaleContract,
         approvingSaleContract,
+        approvingPreSaleContract,
         getSaleContractInfo,
         getSaleContractOmc,
         buchongSaleContract,
@@ -217,10 +218,13 @@
                 },
                 options:[
                     {value:0, label:'已创建',},
-                    {value:1, label:'已提交',},
-                    {value:2, label:'审核中',},
+                    {value:1, label:'待初审',},
+                    {value:15, label:'初审中',},
+                    {value:16, label:'待复审',},
+                    {value:17, label:'初审拒绝',},
+                    {value:2, label:'复审中',},
                     {value:3, label:'待打印',},
-                    {value:4, label:'审核拒绝',},
+                    {value:4, label:'复审拒绝',},
                     {value:5, label:'待确认',},
                     {value:6, label:'履约中',},
                     {value:7, label:'违约处理中',},
@@ -231,10 +235,6 @@
                     {value:12, label:'优化中',},
                     {value:13, label:'已优化，履约中',},
                     {value:14, label:'合同作废',},
-                    {value:15, label:'初审中',},
-                    {value:16, label:'初审通过',},
-                    {value:17, label:'初审拒绝',},
-
                 ],
                 //分页类数据
                 total:0,
@@ -335,10 +335,13 @@
             formatStatus(row, column){
                 let status = [];
                 status[0] = '已创建';
-                status[1] = '已提交';
-                status[2] = '审核中';
+                status[1] = '待初审';
+                status[15] = '初审中';
+                status[16] = '待复审';
+                status[17] = '初审拒绝';
+                status[2] = '复审中';
                 status[3] = '等待打印';
-                status[4] = '审核拒绝';
+                status[4] = '复审拒绝';
                 status[5] = '正在确认';
                 status[6] = '履约中';
                 status[7] = '违约处理中';
@@ -349,9 +352,6 @@
                 status[12] = '优化中';
                 status[13] = '已优化，履约中';
                 status[14] = '合同作废';
-                status[15] = '初审中';
-                status[16] = '初审通过';
-                status[17] = '初审拒绝';
                 return status[row.zhuangtai];
             },
             //时间戳转日期格式
@@ -443,7 +443,7 @@
                 let para = {
                     id:row.id,
                 }
-                approvingSaleContract(para).then((res)=>{
+                approvingPreSaleContract(para).then((res)=>{
                 });
                 this.$router.push('/saleContract/review?id=' + row.id+'&flag=0');
             },

@@ -317,7 +317,8 @@
     </div>
 </template>
 <script>
-    import {getbkNameList,getNameSaleList,getBrokerCompanyUserListPage,getHedanqiannamephoneList} from '../../api/api';;
+    import {saleEditable} from '../../global';
+    import {getbkNameList,getNameSaleList,getBrokerCompanyUserListPage,getHedanqiannamephoneList} from '../../api/api';
     export default{
         data(){
             return {
@@ -658,8 +659,7 @@
             if(this.$route.path=='/saleContract/see'){
                 this.editVisible   =false;
             }
-            if(this.$route.path=='/saleContract/edit'&&this.$route.query.status>=6){
-                this.lydisabled = true;
+            if(this.$route.path=='/saleContract/edit'&&saleEditable.indexOf(parseInt(this.$route.query.status))<0){
                 this.editVisible = false;
             }
             //获取收房合同出租人

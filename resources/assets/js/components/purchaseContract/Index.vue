@@ -85,8 +85,8 @@
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item v-if="fun('purchaseContractIndex')"  ><el-button @click="handleView(scope.$index, scope.row)">查看合同</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[0,4,5,6,7,8,9,10,12,15])&&fun('purchaseContactUpdate')" ><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[1,2])&&fun('purchaseContactPreAudit')" ><el-button @click="handlePreReview(scope.$index, scope.row)">初&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[14])&&fun('purchaseContactAudit')" ><el-button @click="handleReview(scope.$index, scope.row)">复&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[1,13])&&fun('purchaseContactPreAudit')" ><el-button @click="handlePreReview(scope.$index, scope.row)">初&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[2,14])&&fun('purchaseContactAudit')" ><el-button @click="handleReview(scope.$index, scope.row)">复&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[3])&&fun('purchaseContactDump')"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[5])&&fun('purchaseContactConfirm')"  > <el-button @click="handleConfirm(scope.$index, scope.row)">签约完成</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,10])&&fun('purchaseContactWeiyue')" ><el-button @click="handleWeiyue(scope.$index, scope.row)">违&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约</el-button></el-dropdown-item>
@@ -100,7 +100,7 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactHD')"><el-button @click="handleHedan(scope.$index, scope.row)">合单管理</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactSummary')"><el-button @click="handleSummary(scope.$index, scope.row)">打印核心数据</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactJGD')"><el-button @click="handleJiaogedan(scope.$index, scope.row)">交割单</el-button></el-dropdown-item>
-                            <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,3,4,5])&&fun('purchaseContactZF')"><el-button @click="handleZuofei(scope.$index, scope.row)">合同作废</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,3,4,5,13,14,15])&&fun('purchaseContactZF')"><el-button @click="handleZuofei(scope.$index, scope.row)">合同作废</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -225,9 +225,12 @@
                 options:[
                     {value:0, label:'已创建',},
                     {value:1, label:'待初审',},
-                    {value:2, label:'复审核中',},
-                    {value:3, label:'待打印',},
+                    {value:13, label:'初审中',},
+                    {value:15, label:'初审拒绝',},
+                    {value:14, label:'待复审',},
+                    {value:2, label:'复审中',},
                     {value:4, label:'复审拒绝',},
+                    {value:3, label:'待打印',},
                     {value:5, label:'待确认',},
                     {value:6, label:'履约中',},
                     {value:7, label:'违约处理中',},
@@ -236,9 +239,6 @@
                     {value:10, label:'已优化，履约中',},
                     {value:11, label:'合同终止（合同到期）',},
                     {value:12, label:'合同作废',},
-                    {value:13, label:'初审中',},
-                    {value:14, label:'初审通过',},
-                    {value:15, label:'初审拒绝',},
                 ],
                 //分页类数据
                 total:0,
@@ -304,10 +304,13 @@
             formatStatus(row, column){
                 let status = [];
                 status[0] = '已创建';
-                status[1] = '待审核';
-                status[2] = '审核中';
+                status[1] = '待初审';
+                status[13] = '初审中';
+                status[14] = '待复审';
+                status[15] = '初审拒绝';
+                status[2] = '复审中';
                 status[3] = '待打印';
-                status[4] = '审核拒绝';
+                status[4] = '复审拒绝';
                 status[5] = '待确认';
                 status[6] = '履约中';
                 status[7] = '违约处理中';
@@ -316,9 +319,7 @@
                 status[10] = '已优化，履约中';
                 status[11] = '合同终止(合同到期)';
                 status[12] = '合同作废';
-                status[13] = '初审中';
-                status[14] = '初审通过';
-                status[15] = '初审拒绝';
+
                 return status[row.zhuangtai];
             },
             //时间戳转日期格式
@@ -389,7 +390,7 @@
                 let para = {
                     id:row.id,
                 }
-                approvingPurchaseContract(para).then((res)=>{
+                approvingPrePurchaseContract(para).then((res)=>{
                 });
                 this.$router.push('/purchaseContract/review?id='+row.id+'&flag=0');
             },

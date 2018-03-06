@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Contract;
 
+use App\Http\Controllers\Api\MessageController;
+use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -156,6 +158,8 @@ class purchaseContractController extends Controller
             'base_uri' => $this->base_url,
         ]);
         $response1 = $client->request('GET', '/api/contract/sf/'.$id.'/submit');
+        $parentId = Auth::user()->parentId;
+        $this->sendMessage($id,11,$parentId);
         echo $response1->getBody();
     }
 
@@ -179,7 +183,7 @@ class purchaseContractController extends Controller
         echo $response->getBody();
     }
     /*
-     * 合同审核
+     * 合同审核 结果
      * hetongid,hetongbianhao,shenherenid,shenherenname,content,result,ShenheFlg
      */
     public function review(Request $request){
@@ -195,6 +199,10 @@ class purchaseContractController extends Controller
         ]);
         //根据合同当前的状态判断是初审还是复审
         if($request->params['shenheFlg']==0){
+            //如果复审通过，短信发给法务
+            if($data['result']==1){
+                $this->sendMessage($request->params['hetongid'],12,env('CONTRACT_ID'));
+            }
             $response = $client->request('POST', '/api/contract/sf/chushen', [
                 'json' => $data
             ]);
@@ -203,7 +211,6 @@ class purchaseContractController extends Controller
                 'json' => $data
             ]);
         }
-
         echo $response->getBody();
     }
     /*
@@ -687,4 +694,35 @@ class purchaseContractController extends Controller
         ]);
     }
 
+    public function sendMessage($id,$type,$send_to_id){
+        //第一次提交的发送信息给初审人
+        $user = Auth::user();//1.获取用户信息
+        $parent = User::find($send_to_id);
+        $send_to_name = $parent->name;
+        $phone = $parent->phone;
+        $contract = $this->getContractInfo($id);//合同信息
+        $loupan = '';
+        foreach ($contract->officeList as $office){
+            $loupan .= $office->loupanName.'-'.$office->loudongName.'-'.$office->fanghao.',';
+        }
+        $loupan = rtrim($loupan,',');
+        $content = $type==11?"合同初审":"合同复审";
+        $data=[
+            "send_from_id"=>$user->id,
+            "send_from_name"=>$user->name,
+            "send_from_sys"=>"erp",
+            "send_to_id"=>$send_to_id,
+            "send_to_name"=>$send_to_name,
+            "send_to_sys"=>"erp",
+            "phone"=>$phone,
+            "type"=>11,
+            "is_message"=>1,
+            "is_web"=>1,
+            "content"=>$content,
+            "title"=>$content,
+            "loupan"=>$loupan
+        ];
+        $message = new MessageController();
+        $message->createMessage($data);
+    }
 }

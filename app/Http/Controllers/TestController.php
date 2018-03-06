@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Contract\saleContractController;
 use App\models\Role;
 use GuzzleHttp\Client;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Excel;
 use Illuminate\Support\Facades\Redis;
-use Qiniu\Auth;
 
 class TestController extends Controller
 {
@@ -20,6 +21,7 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
+<<<<<<< HEAD
         $arr = [1, 2, -4, 4, 10, -3, 4, -5, 1];
         //1。找出所有的连续子数组
         //1.1先实现一个切片的函数
@@ -41,6 +43,24 @@ class TestController extends Controller
          ksort($childrenValues);
          $res = array_pop( $childrenValues);
         var_dump($res);exit;
+=======
+        var_dump(env('CONTRACT_ID'));exit;
+        $contract = new saleContractController();
+        $info = $contract->getContractInfo(4464);//合同信息
+        echo '<pre>';
+        var_dump($info->xsOffice);
+
+        exit;
+
+        $loupan = '';
+        foreach ($info->xsOffice as $office){
+            $loupan .= $office->loupanName.'-'.$office->loudongName.'-'.$office->fanghao.',';
+        }
+        $loupan = rtrim($loupan,',');
+        var_dump($loupan);
+        exit;
+
+>>>>>>> 7f5a4f94958aaecb8bfc462fe93e1c9fd0fc7586
 //      $str="1,dsf,3ee,34r,rf,d,we,dfewr,erf";
 //      $s="";
 //      $ss=[];

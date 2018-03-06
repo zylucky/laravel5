@@ -59,6 +59,7 @@
     </div>
 </template>
 <script>
+    import {purchaseEditable} from '../../global'
     import AddProperty from './AddProperty.vue'
     import AddOwner from './AddOwner.vue'
     import AddDate from './AddDate.vue'
@@ -280,8 +281,8 @@
                     if(res.data.code == 200)　{
                         //保存完以后可以得到一个返回的ID
                         //把数据分别赋值给三个组件的变量
-                        var submit_table = [0,1,2,3,4,5,15];
-                        if(submit_table.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/purchaseContract/add'){
+
+                        if(purchaseEditable.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/purchaseContract/add'){
                             this.btnType = false;
                         }
                         this.fuzhi(res);

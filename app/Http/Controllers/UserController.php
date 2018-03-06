@@ -39,7 +39,7 @@ class UserController extends Controller
         $limitStart=($page-1)*$pageSize;
         $limitEnd = $pageSize;
 
-        $sql="select users.id,users.name,users.sex,CONVERT(users.ht_query_flg,CHAR)as ht_query_flg ,users.email,users.created_at,users.parentId,u.name as parentName,GROUP_CONCAT(ifnull(roles.name,'')) as role from  users
+        $sql="select users.phone,users.id,users.name,users.sex,CONVERT(users.ht_query_flg,CHAR)as ht_query_flg ,users.email,users.created_at,users.parentId,u.name as parentName,GROUP_CONCAT(ifnull(roles.name,'')) as role from  users
 left join role_user on role_user.user_id = users.id
 left join roles on roles.id = role_user.role_id  
 left join users u on users.parentId = u.id
@@ -79,7 +79,7 @@ left join users u on users.parentId = u.id
         $user->phone = $input['phone'];
         $user->sex = $input['sex'];
         $user->ht_query_flg = $input['ht_query_flg'];
-        if($user->parentId){
+        if(isset($input['parentId'])){
             $user->parentId = $input['parentId'];
         }
         if($user->save()){
@@ -95,12 +95,11 @@ left join users u on users.parentId = u.id
         $id = $input['id'];
         $user = User::find($id);
         $user->name = $input['name'];
-        //$user->password = bcrypt('secret');
         $user->email = $input['email'];
         $user->phone = isset($input['phone'])?$input['phone']:'';
         $user->sex = $input['sex'];
         $user->ht_query_flg = $input['ht_query_flg'];
-        if($user->parentId){
+        if(isset($input['parentId'])){
             $user->parentId = $input['parentId'];
         }
         if($user->save()){

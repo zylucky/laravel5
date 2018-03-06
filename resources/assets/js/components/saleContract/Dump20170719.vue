@@ -1,7 +1,7 @@
 <template>
     <div class="whole">
         <h2 class="tc">北京市房屋租赁合同</h2>
-        <span class="tc f22">幼狮空间成交版</span>
+        <span class="tc f22">{{chengjiaoban}}</span>
         <p>出租方（甲方）：<input type="text" style="width: 450px" disabled v-model="renter.chuzufang"/></p>
         <p>承租方（乙方）：<input type="text" style="width: 450px" disabled value=""/></p>
         <p v-if="hetongtype==2">居间方（丙方）：<input type="text" style="width: 450px" disabled v-model="renter.jujianfang"/></p>
@@ -10,7 +10,7 @@
         <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一条  房屋基本情况</b>
         <span
                 v-for="(item,index) in property.xsOffice"
-                :key="index"
+                :key="item.chanquanzhenghao"
                 style="display:inline;"
         >
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（{{daxie2(index)}}）房屋坐落于北京市<input type="text" v-model="item.quyu" style="width:50px;">区（县）<u>{{item.weizhi}}</u> ，承租区域建筑面积<input type="text"  style="width:50px;" v-model="item.jianzhumianji">平方米（最终以房屋所有权证标注的建筑面积为准），实际承租面积<input type="text"  style="width:50px;" v-model="item.qianyuemianji">平方米，产权证编号： <u>{{item.chanquanzhenghao?item.chanquanzhenghao:'___________________________________'}}</u>  。
@@ -207,6 +207,7 @@
         },
         data(){
             return {
+                chengjiaoban:'',
                 msg01:'、丙三',
                 msg02:'丙方提供居间服务等事宜，',
                 msg03:'、丙',
@@ -245,7 +246,7 @@
                             label:null,
                         }
                     ],
-                    chengzufang:'华溯商贸',
+                    chengzufang:'',
                     jujianfang:'',
                     jujianfangtype:'',
                     zuhuleixing:1,
@@ -330,6 +331,19 @@
             }
         },
         methods:{
+            contractTitle(){
+                switch (this.renter.chengzufang){
+                    case '华溯商贸':
+                        this.chengjiaoban = '华溯商贸成交版'
+                        break;
+                    case '幼狮科技':
+                        this.chengjiaoban = '幼狮空间成交版'
+                        break;
+                    case '彭亮':
+                        this.chengjiaoban = '幼狮空间成交版'
+                        break;
+                }
+            },
             toDecimal(x) {
                 var f = parseFloat(x);
                 if (isNaN(f)) {
@@ -476,6 +490,7 @@
                         //把数据分别赋值给三个组件的变量
                         //console.log(res.data)
                         this.fuzhi(res);
+
                     }else {
                         this.$message({
                             message: '获取数据失败',
@@ -533,6 +548,7 @@
                 }
                 //this.renter.chengzuren = res.data.data.chengzuren;
                 this.renter.chengzufang = res.data.data.chengzufang;
+                this.contractTitle();
                 this.renter.chuzufang = res.data.data.chuzufang?res.data.data.chuzufang+'有限公司':'';
                 this.renter.jujianfangtype = res.data.data.jujianfangtype;
                 this.renter.jujianfang = res.data.data.jujianfang;
@@ -605,6 +621,7 @@
             },
         },
         mounted(){
+            //
             //获取合同的详细信息
             this.getSaleContract(this.$route.query);
             document.title = '北京幼狮科技有限公司 -- 为梦想、造支点 - - - - - - - 合同编号：'+this.$route.query.bianhao;

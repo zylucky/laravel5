@@ -7,7 +7,6 @@ use App\models\Role;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class RoleController extends Controller
@@ -123,10 +122,6 @@ class RoleController extends Controller
     {
         //删除该角色的所有原权限
         DB::table('permission_role')->where('role_id', '=', $id)->delete();
-<<<<<<< HEAD
         return  Role::destroy($id);
-=======
-        DB::table('roles')->where('id', '=', $id)->delete();
->>>>>>> d883c6ec50d77e32c78a11484e86acfacd58aa88
     }
 }

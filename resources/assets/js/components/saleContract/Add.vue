@@ -59,6 +59,7 @@
     </div>
 </template>
 <script>
+    import {saleEditable } from '../../global'
     import AddProperty from './AddProperty.vue'
     import AddRenter from './AddRenter.vue'
     import AddDate from './AddDate.vue'
@@ -82,7 +83,7 @@
                 dialogFormVisible:false,
                 stepNum:1,
                 id:'',
-                //fangyuanId:'',
+                //fangyuanId:'', 
                 bianhao:'',
                 zhuangtai:'',
                 property:{
@@ -294,8 +295,7 @@
                     let para = Object.assign({}, child_property,child_renter,child_date,id,bianhao,version);
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
-                            var submit_table = [0,1,2,3,4,5,17];
-                            if(submit_table.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/saleContract/add'){
+                            if(saleEditable.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/saleContract/add'){
                                 this.btnType = false;
                             }
                             this.fuzhi(res);
