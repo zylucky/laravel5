@@ -20,6 +20,27 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
+        $arr = [1, 2, -4, 4, 10, -3, 4, -5, 1];
+        //1。找出所有的连续子数组
+        //1.1先实现一个切片的函数
+        //1.2弄出所有可能的的开始和结束
+        $len = count($arr);
+        $childrenValues = [];
+        for ($i=0;$i<$len;$i++){
+            for($j=0;$j<$len;$j++){.
+                if($j>=$i){
+                    $newArr=$this->spliceArr($arr,$i,$j);
+                    $childrenValues[array_sum($newArr)] =  $newArr ;
+//                    echo $i."+".$j.'<br>';
+                }
+
+            }
+        }
+        //2.计算每个子数组的和
+        //3。找出最大
+         ksort($childrenValues);
+         $res = array_pop( $childrenValues);
+        var_dump($res);exit;
 //      $str="1,dsf,3ee,34r,rf,d,we,dfewr,erf";
 //      $s="";
 //      $ss=[];
@@ -34,11 +55,17 @@ class TestController extends Controller
 //      }
 //        $ss[]=$s;
 //      print_r($ss);
-        $str="1,dsf,3ee,34r,rf,d,we,dfewr,erf";
-        while (strlen($str)>0){
 
+
+    }
+    public function spliceArr($arr,$start,$end){
+        $newArr=[];
+        foreach ($arr as $key => $item){
+            if($key>=$start&&$key<=$end){
+                $newArr[]=$arr[$key];
+            }
         }
-
+        return $newArr;
     }
     function DiffDate($date1, $date2) {
         if (strtotime($date1) > strtotime($date2)) {

@@ -228,11 +228,11 @@ class saleContractController extends Controller
         ]);
         if($request->params['shenheFlg']==0){
             $response = $client->request('POST', '/api/contract/xs/chushen', [
-                'json' => $request->params
+                'json' => $data
             ]);
         }elseif ($request->params['shenheFlg']==1) {
             $response = $client->request('POST', '/api/contract/xs/shenhe', [
-                'json' => $request->params
+                'json' => $data
             ]);
         }
         echo $response->getBody();
