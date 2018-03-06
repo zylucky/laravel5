@@ -432,9 +432,8 @@
                 this.$router.push('/saleContract/edit?id=' + row.id+'&status='+row.zhuangtai);
                 // this.$router.push('/purchaseContact/add?id='+row.id);
             },
-            handleEditMore(index, row){ 
+            handleEditMore(index, row){
                 this.$router.push('/saleContract/edit?id=' + row.id+'&status=0&zt=1');
-                // this.$router.push('/purchaseContact/add?id='+row.id);
             },
             handleReview(index, row){
                 let para = {
