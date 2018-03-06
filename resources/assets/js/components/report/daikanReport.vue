@@ -11,6 +11,15 @@
                     <el-date-picker type = "date" placeholder="请选择结束日期" v-model="filters.enddate">
                     </el-date-picker>
                 </el-form-item>
+                <el-form-item label="带看人:">
+                    <el-input v-model="filters.personname" @keyup.enter.native="purchaseContractList" placeholder="带看人"></el-input>
+                </el-form-item>
+                <el-form-item label="楼盘:">
+                    <el-input v-model="filters.loupan" @keyup.enter.native="purchaseContractList" placeholder="楼盘"></el-input>
+                </el-form-item>
+                <el-form-item label="区域:">
+                    <el-input v-model="filters.dep1" @keyup.enter.native="purchaseContractList" placeholder="区域"></el-input>
+                </el-form-item>
             <el-form-item>
                 <el-button type="primary" icon="search"  v-on:click="getfangyuanReport">搜索</el-button>
                 <el-button type="primary" class="el-icon-plus"     @click="handleExport"    > 导出</el-button>
@@ -58,6 +67,8 @@
             </el-table-column>
             <el-table-column prop="shuoming" label="带看情况"  width="150" >
             </el-table-column>
+            <el-table-column prop="kehuyijian" label="客户意见"  width="150" >
+            </el-table-column>
             <el-table-column prop="xiaciqvdaoshuoming" label="下次渠道推荐说明"  width="150" >
             </el-table-column>
             <el-table-column prop="personname" label="幼狮带看人"  width="120" >
@@ -96,6 +107,9 @@
                 filters:{
                     startdate: '',
                     enddate: '',
+                    personname:'',
+                    loupan:'',
+                    dep1:'',
                 },
                 //分页类数据
                 total:0,
@@ -127,6 +141,9 @@
                     pageSize: this.pageSize,
                     startdate:this.filters.startdate==''?'': this.filters.startdate.toLocaleDateString(),
                     enddate: this.filters.enddate==''?'': this.filters.enddate.toLocaleDateString(),
+                    personname:this.filters.personname ,
+                    loupan:this.filters.loupan,
+                    dep1:this.filters.dep1,
                 };
                 this.listLoading = true;
                 getcoreDaiKanListPage(para).then((res) => {
@@ -138,7 +155,10 @@
             handleExport: function () {
                 var sDate=this.filters.startdate==''?'': this.filters.startdate.toLocaleDateString();
                 var eDate=this.filters.enddate==''?'': this.filters.enddate.toLocaleDateString() ;
-                window.open("/daikanReport/ExportExcel?startdate="+sDate+"&enddate="+ eDate);
+                var personname=this.filters.personname;
+                var loupan=this.filters.loupan;
+                var dep1=this.filters.dep1;
+                window.open("/daikanReport/ExportExcel?startdate="+sDate+"&enddate="+ eDate+"&personname="+personname+"&loupan="+loupan+"&dep1="+dep1);
             },
             selsChange: function (sels) {
                 this.sels = sels;

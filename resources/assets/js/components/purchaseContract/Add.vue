@@ -283,7 +283,10 @@
                         //把数据分别赋值给三个组件的变量
 
                         if(purchaseEditable.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/purchaseContract/add'){
-                            this.btnType = false;
+                            if(this.$route.query.zt!=1){
+                                this.btnType = false;
+                            }
+
                         }
                         this.fuzhi(res);
                         this.saveBtn = false;

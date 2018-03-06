@@ -296,7 +296,9 @@
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
                             if(saleEditable.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/saleContract/add'){
-                                this.btnType = false;
+                                if(this.$route.query.zt!=1){
+                                    this.btnType = false;
+                                }
                             }
                             this.fuzhi(res);
                             this.saveBtn = false;

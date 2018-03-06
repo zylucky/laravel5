@@ -82,6 +82,7 @@
                         <el-dropdown-menu slot="dropdown" >
                             <el-dropdown-item v-if="fun('saleContractIndex')" ><el-button @click="handlSee(scope.$index, scope.row)">查看合同</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[0,4,5,6,7,8,9,12,13,14,17])&&fun('saleContactUpdate')"><el-button @click="handleEdit(scope.$index, scope.row)">编辑合同</el-button></el-dropdown-item>
+                            <el-dropdown-item v-if=" fun('saleContactMoreUpdate')"><el-button @click="handleEditMore(scope.$index, scope.row)">专用编辑</el-button></el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[2,16])&&fun('saleContactAudit')"><el-button @click="handleReview(scope.$index, scope.row)">复&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[1,15])&&fun('saleContactPreAudit')"><el-button @click="handlePreReview(scope.$index, scope.row)">初&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审</el-button> </el-dropdown-item>
                             <el-dropdown-item v-if="ztin(scope.row,[3])&&fun('saleContactDump')"><el-button @click="handleDump(scope.$index, scope.row)">打印合同</el-button></el-dropdown-item>
@@ -429,6 +430,10 @@
                     id:row.id,
                 }
                 this.$router.push('/saleContract/edit?id=' + row.id+'&status='+row.zhuangtai);
+                // this.$router.push('/purchaseContact/add?id='+row.id);
+            },
+            handleEditMore(index, row){ 
+                this.$router.push('/saleContract/edit?id=' + row.id+'&status=0&zt=1');
                 // this.$router.push('/purchaseContact/add?id='+row.id);
             },
             handleReview(index, row){
