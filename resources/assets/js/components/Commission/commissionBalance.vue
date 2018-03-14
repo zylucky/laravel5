@@ -218,7 +218,7 @@
                 this.$router.push('/commissionView?id='+ row.id);
             },
             handledump: function (index, row) {
-                this.$router.push('/approvalDump/'+ row.id);
+                this.$router.push('/approvalDump/'+ row.id+'?yzj='+row.monthMoney);
             },
             handleHT: function (index, row) {
                 window.open('/#/saleContract/see?id='+row.hetongid);
