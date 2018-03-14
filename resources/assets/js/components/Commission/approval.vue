@@ -33,7 +33,7 @@
                 </tr>
                 <tr>
                     <th align="center" width="200" height="30"> 月租金:</th>
-                    <td align="center" width="400">¥{{toDecimal(approval.data.yzj)}}</td>
+                    <td align="center" width="400">{{approval.data.yzj==''?'':'¥'+toDecimal(approval.data.yzj)}}</td>
                 </tr>
                 <tr>
                     <th align="center" width="200" height="30"> 佣金计算公式:</th>
