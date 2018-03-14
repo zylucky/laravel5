@@ -32,6 +32,10 @@
                     <td align="center" width="400">{{approval.data.xsyongjinxinxi==true?'正常':'不正常'}}</td>
                 </tr>
                 <tr>
+                    <th align="center" width="200" height="30"> 月租金:</th>
+                    <td align="center" width="400">¥{{approval.data.yzj}}</td>
+                </tr>
+                <tr>
                     <th align="center" width="200" height="30"> 佣金计算公式:</th>
                     <td align="center" width="400">{{approval.data.xsjisuangongshi}}</td>
                 </tr>
@@ -106,6 +110,7 @@
                         qdhuming:'',
                         qdkaihuhang:'',
                         qdzhanghao:'',
+                        yzj:'',
                     },
                     shenPi:[
                         {
@@ -124,6 +129,7 @@
                 getApprovalInfo(params).then((res)=>{
                     console.log(res.data)
                     this.approval = res.data;
+                    this.approval.data.yzj=this.$route.query.yzj;
                 })
             },
             format_shenpi(shenpi){
