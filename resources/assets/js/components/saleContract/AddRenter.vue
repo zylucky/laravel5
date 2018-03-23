@@ -161,7 +161,7 @@
                                     outline: 0;
                                     padding: 3px 10px;
                                     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-                                    width: 100%;"
+                                    width: 100%;" id="zh"
                                onkeyup="this.value=this.value.replace(/\D/g,'').replace(/....(?!$)/g,'$& ')" >
                     </el-form-item>
                 </el-col>
@@ -661,6 +661,7 @@
             }
             if(this.$route.path=='/saleContract/edit'&&saleEditable.indexOf(parseInt(this.$route.query.status))<0){
                 this.editVisible = false;
+                this.lydisabled=true;
             }
             //获取收房合同出租人
 
