@@ -715,7 +715,7 @@ class purchaseContractController extends Controller
             "send_to_name"=>$send_to_name,
             "send_to_sys"=>"erp",
             "phone"=>$phone,
-            "type"=>11,
+            "type"=>$type,
             "is_message"=>1,
             "is_web"=>1,
             "content"=>$content,
