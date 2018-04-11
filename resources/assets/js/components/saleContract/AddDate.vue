@@ -278,6 +278,27 @@
                     </el-form-item>
                 </el-col>
             </el-row>
+            <!--提前几天付款 押金付款日期-->
+         <!--   <el-row>
+                <el-col :span="8">
+                    <el-form-item label="水、电能源押金" prop="isPayDeposit" required>
+                        <el-radio-group v-model="addDate.isPayDeposit" @change="isPayDepositChange"  :disabled="lydisabled">
+                            <el-radio :label="1">需缴纳</el-radio>
+                            <el-radio :label="2">无需缴纳</el-radio>
+                        </el-radio-group>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="8" v-if="addDate.isPayDeposit==1">
+                    <el-form-item label="能源押金金额" prop="nengyuanyajin"  :rules=" [
+                        { required: true, message: '不能为空' },
+                        { type: 'number', message: '必须为数字'},
+                    ]"     required>
+                        <el-input v-model.number="addDate.nengyuanyajin"
+                                  :disabled="lydisabled"
+                                  placeholder="能源押金金额"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>-->
             <!--首期支付 二期支付 三期支付-->
             <el-row>
                 <el-col :span="8">
@@ -484,6 +505,12 @@
                             this.addDate.zujinList[i].enddate = dy.setDate(dx.getDate() - 1);
                         }
                     }
+                }
+            },
+            isPayDepositChange(){
+                //只要业主类型发生改变，那么我就将变量初始化
+                if(this.$route.path=='/saleContract/add'||this.renter.zuhuleixing!=this.renter.zuhuleixing2){
+                    this.addDate.nengyuanyajin = '';
                 }
             },
             //计算单价

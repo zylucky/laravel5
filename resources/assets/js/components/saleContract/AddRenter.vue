@@ -356,8 +356,8 @@
                             break;
                         case '华溯商贸':
                             this.renter.shoukuanren = '肖艳文';
-                            this.renter.kaihuhang = '招商银行北京分行万达广场支行';
-                            this.renter.zhanghao = '6214 8301 2090 8081';
+                            this.renter.kaihuhang = '民生银行国贸支行';
+                            this.renter.zhanghao = '6226 2201 3607 6386';
                             break;
                         case '幼狮科技':
                             this.renter.shoukuanren = '北京幼狮科技有限公司';
