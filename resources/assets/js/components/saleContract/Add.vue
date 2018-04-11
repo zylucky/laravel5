@@ -233,6 +233,9 @@
                     ],
                     checkList: [],
                     jiafangfeiyong:'',
+                   // isPayDeposit:1,
+                   // nengyuanyajin:'',
+
                 },
             }
         },
@@ -483,6 +486,8 @@
                 this.addDate.iscompletefrzj = res.data.data.iscompletefrzj;
                 var reg=new RegExp("<br>","g"); //创建正则RegExp对象
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong.replace(reg,"\n");
+                //this.addDate.isPayDeposit = res.data.data.isPayDeposit;
+              //  this.addDate.nengyuanyajin = res.data.data.nengyuanyajin;
             },
             disabledInput(){
                 this.reviewVisible = true;
