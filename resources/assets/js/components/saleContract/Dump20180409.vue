@@ -119,9 +119,9 @@
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）在承租期内，乙方自行承担在使用期间的相关费用（水费、电费、燃气费、宽带费、停车费等），乙方按物业管理机构提供的交费通知单交费。
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（三）在承租期内，乙方自行报装电话、宽带，相关费用由乙方自行承担。
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（四）此合同租金仅含物业费、供暖费，出租房屋所产生税费由乙方承担。甲方向乙方提供业主身份证明及房屋所有权证复印件，由乙方自行到税务部门开具租房增值税普通发票。
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（五）本房屋（<input type="checkbox"  v-if="!addDate.isPayDeposit" checked="checked" disabled="disabled"/><input type="checkbox"  v-if="addDate.isPayDeposit"   disabled="disabled"/>需缴纳/
-            <input type="checkbox"  v-if="addDate.isPayDeposit" checked="checked" disabled="disabled"/>  <input type="checkbox"  v-if="!addDate.isPayDeposit"  disabled="disabled"/>无需缴纳）水、电能源押金。<span v-if="!addDate.isPayDeposit" style="display: inline;">
-                能源押金金额为：￥<u>&nbsp;&nbsp;{{toDecimal(addDate.yajin)?toDecimal(addDate.yajin):'_____'}}&nbsp;&nbsp;</u>元，（大写：<u>&nbsp;&nbsp;{{daxie(addDate.yajin)?daxie(addDate.yajin):'_____'}}&nbsp;&nbsp;</u>元）；乙方需在合同签订后与首期房屋租金一并支付甲方，能源押金以物业管理机构实际收取的金额为准，由甲方代为收取。租赁期满如乙方无违约行为甲方在乙方结清房屋剩余费用及迁出房屋后三日内退还乙方。如乙方未结清剩余费用，甲方有权将剩余费用扣除后退还乙方。 </span>
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（五）本房屋（<input type="checkbox"  v-if="addDate.ispaydeposit==1" checked="checked" disabled="disabled"/><input type="checkbox"  v-if="addDate.ispaydeposit==2"   disabled="disabled"/>需缴纳/
+            <input type="checkbox"  v-if="addDate.ispaydeposit==2" checked="checked" disabled="disabled"/>  <input type="checkbox"  v-if="addDate.ispaydeposit==1"  disabled="disabled"/>无需缴纳）水、电能源押金。<span v-if="addDate.ispaydeposit==1" style="display: inline;">
+                能源押金金额为：￥<u>&nbsp;&nbsp;{{toDecimal(addDate.nengyuanyajin)?toDecimal(addDate.nengyuanyajin):'_____'}}&nbsp;&nbsp;</u>元，（大写：<u>&nbsp;&nbsp;{{daxie(addDate.nengyuanyajin)?daxie(addDate.nengyuanyajin):'_____'}}&nbsp;&nbsp;</u>元）；乙方需在合同签订后与首期房屋租金一并支付甲方，能源押金以物业管理机构实际收取的金额为准，由甲方代为收取。租赁期满如乙方无违约行为甲方在乙方结清房屋剩余费用及迁出房屋后三日内退还乙方。如乙方未结清剩余费用，甲方有权将剩余费用扣除后退还乙方。 </span>
             <br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第六条  甲方的权利义务</b>
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（一）甲方应保证出租房屋的建筑结构和设备设施能达到使用要求，不得影响乙方正常使用。
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（二）对于该房屋的主要结构、固定管道线路及固定设施（包括制热、制冷、排风、上下水等设施）发生自然损坏、故障或合理使用而导致的老化、耗损，乙方应及时通知甲方，由甲方对接本项目物业公司及时修复。
@@ -325,6 +325,8 @@
                     ],
                     checkList: [],
                     jiafangfeiyong:[],
+                    ispaydeposit:1,
+                    nengyuanyajin:'',
                 },
                 quyu:null,
                 nian:null,
@@ -614,6 +616,8 @@
                 }
                 this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
+                this.addDate.ispaydeposit = res.data.data.ispaydeposit;
+                this.addDate.nengyuanyajin = res.data.data.nengyuanyajin;
                 this.nian = res.data.data.nian;
                 this.yue = res.data.data.yue;
                 this.ri = res.data.data.ri;
