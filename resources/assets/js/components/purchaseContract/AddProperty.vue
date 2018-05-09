@@ -433,21 +433,50 @@
                     if(property.length!=house_no.length){
                         flag =false;
                     }else{
-                        if(property.charAt(index)=='A'){
-                            if(checkString(house_no[index])){
-                                flag = false;
-                            }
-                        }else if(property.charAt(index)=='0') {
-                            if(checknumber((house_no[index]))){
-                                flag = false;
-                            }
-                        } else if(property.charAt(index)=='-') {
-                            if(house_no[index]!='-'){
-                                flag = false;
-                            }
-                        }else if(property.charAt(index)=='/') {
-                            if(house_no[index]!='/'){
-                                flag = false;
+//                        if(property.charAt(index)=='A'){
+//                            alert(house_no[index]+'aaa');
+//
+//                            if(checkString(house_no[index])){
+//                                flag = false;
+//                            }
+//                        }else if(property.charAt(index)=='0') {
+//                            alert(index);
+//                            if(checknumber((house_no[index]))){
+//                                alert(house_no[index]);
+//                                flag = false;
+//                            }
+//                        } else if(property.charAt(index)=='-') {
+//                            if(house_no[index]!='-'){
+//                                flag = false;
+//                            }
+//                        }else if(property.charAt(index)=='/') {
+//                            if(house_no[index]!='/'){
+//                                flag = false;
+//                            }
+//                        }
+                        for(var j=0;j<property.length;j++){
+                            var  sd2=property.charAt(j);
+                            var  sd3=house_no.charAt(j);
+                            if(sd2=='A'){
+                                if(checkString(sd3)){
+                                    flag = false;
+                                }
+
+                            }else if(sd2=='-'){
+                                if(sd3!='-'){
+                                    flag = false;
+                                }
+
+                            }else if(sd2=='0'){
+                                if(checknumber(sd3)){
+                                    flag = false;
+                                }
+
+                            }else if(sd2=='/'){
+                                if(sd3!='/'){
+                                    flag = false;
+                                }
+
                             }
                         }
                     }
