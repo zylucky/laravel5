@@ -25,11 +25,15 @@
                 </tr>
                 <tr>
                     <th align="center" width="200" height="30"> 佣金金额:</th>
-                    <td align="center" width="400">¥{{approval.data.xsyongjin}}</td>
+                    <td align="center" width="400">¥{{toDecimal(approval.data.xsyongjin)}}</td>
                 </tr>
                 <tr>
                     <th align="center" width="200" height="30"> 佣金信息:</th>
                     <td align="center" width="400">{{approval.data.xsyongjinxinxi==true?'正常':'不正常'}}</td>
+                </tr>
+                <tr>
+                    <th align="center" width="200" height="30"> 月租金:</th>
+                    <td align="center" width="400">{{approval.data.yzj==''?'':'¥'+toDecimal(approval.data.yzj)}}</td>
                 </tr>
                 <tr>
                     <th align="center" width="200" height="30"> 佣金计算公式:</th>
@@ -106,6 +110,7 @@
                         qdhuming:'',
                         qdkaihuhang:'',
                         qdzhanghao:'',
+                        yzj:'',
                     },
                     shenPi:[
                         {
@@ -124,6 +129,7 @@
                 getApprovalInfo(params).then((res)=>{
                     console.log(res.data)
                     this.approval = res.data;
+                    this.approval.data.yzj=this.$route.query.yzj;
                 })
             },
             format_shenpi(shenpi){
@@ -163,7 +169,26 @@
                if(num){
                    return num.replace(/[\s]/g, '').replace(/(\d{4})(?=\d)/g, "$1 ")
                }
-            }
+            },
+            toDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+
+                return  s.split('').reverse().join('').replace(/(\d{3}(?=\d)(?!\d+\.|$))/g, '$1,').split('').reverse().join('');
+
+            },
         },
         mounted(){
             this.getInfo();

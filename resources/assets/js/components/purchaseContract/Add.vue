@@ -167,6 +167,8 @@
                     qianyuerenTel:'',
                     qianyuerenSex:1,
                     qianyuerenId:'',
+                    username:'',
+                    phone:'',
                 },
                 addDate: {
                     actualrent:null,
@@ -283,7 +285,10 @@
                         //把数据分别赋值给三个组件的变量
 
                         if(purchaseEditable.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/purchaseContract/add'){
-                            this.btnType = false;
+                            if(this.$route.query.zt!=1){
+                                this.btnType = false;
+                            }
+
                         }
                         this.fuzhi(res);
                         this.saveBtn = false;
@@ -431,6 +436,8 @@
                 this.owner.qianyuerenTel = res.data.data.qianyuerenTel;
                 this.owner.qianyuerenSex = res.data.data.qianyuerenSex;
                 this.owner.qianyuerenId = res.data.data.qianyuerenId;
+                this.owner.username = res.data.data.username;
+                this.owner.phone = res.data.data.phone;
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;

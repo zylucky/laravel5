@@ -131,7 +131,18 @@
                     </el-row>
                 </div>
             </div>
-
+            <el-row>
+                <el-col :span="8">
+                    <el-form-item label="APP账号" prop="phone" required>
+                        <el-input v-model="renter.phone" :disabled="lydisabled"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="10">
+                    <el-form-item label="联系人姓名" prop="username" required>
+                        <el-input v-model="renter.username" :disabled="lydisabled"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="收款人" prop="shoukuanren" required>
@@ -161,7 +172,7 @@
                                     outline: 0;
                                     padding: 3px 10px;
                                     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-                                    width: 100%;"
+                                    width: 100%;" id="zh"
                                onkeyup="this.value=this.value.replace(/\D/g,'').replace(/....(?!$)/g,'$& ')" >
                     </el-form-item>
                 </el-col>
@@ -339,6 +350,12 @@
                     zhanghao: [
                         { required: true, message: '不能为空' }
                     ],
+                    username: [
+                        { required: true, message: '不能为空' }
+                    ],
+                    phone: [
+                        { required: true, message: '不能为空' }
+                    ],
                     salesmanphone:[{required: true, message: '不能为空', trigger: 'blur' }],
                 },
             }
@@ -356,8 +373,8 @@
                             break;
                         case '华溯商贸':
                             this.renter.shoukuanren = '肖艳文';
-                            this.renter.kaihuhang = '招商银行北京分行万达广场支行';
-                            this.renter.zhanghao = '6214 8301 2090 8081';
+                            this.renter.kaihuhang = '民生银行国贸支行';
+                            this.renter.zhanghao = '6226 2201 3607 6386';
                             break;
                         case '幼狮科技':
                             this.renter.shoukuanren = '北京幼狮科技有限公司';
@@ -661,6 +678,7 @@
             }
             if(this.$route.path=='/saleContract/edit'&&saleEditable.indexOf(parseInt(this.$route.query.status))<0){
                 this.editVisible = false;
+                this.lydisabled=true;
             }
             //获取收房合同出租人
 

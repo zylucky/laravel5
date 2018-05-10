@@ -452,7 +452,7 @@
             return chineseStr;
             },
             daxie2(number){
-                let arr = [ '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+                let arr = [ '一', '二', '三', '四', '五', '六', '七', '八', '九','十','十一','十二'];
                 return arr[number];
             },
             year(riqi){

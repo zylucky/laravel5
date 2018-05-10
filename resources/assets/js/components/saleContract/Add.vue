@@ -184,6 +184,8 @@
                     qianyuerenId:'',
                     hetongtype:1,//合同类型
                     hetongtype2:1,//合同类型
+                    username:'',
+                    phone:'',
                 },
                 addDate: {
                     dikoujine:'',//合同金额
@@ -233,6 +235,9 @@
                     ],
                     checkList: [],
                     jiafangfeiyong:'',
+                    ispaydeposit:1,
+                    nengyuanyajin:'',
+                    ispaydeposit2:1,
                 },
             }
         },
@@ -296,7 +301,9 @@
                     addSaleContractInfo(para).then((res) => {
                         if(res.data.code == 200)　{
                             if(saleEditable.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/saleContract/add'){
-                                this.btnType = false;
+                                if(this.$route.query.zt!=1){
+                                    this.btnType = false;
+                                }
                             }
                             this.fuzhi(res);
                             this.saveBtn = false;
@@ -456,6 +463,8 @@
                 this.renter.qianyuerenId = res.data.data.qianyuerenId;
                 this.renter.hetongtype = res.data.data.hetongtype;
                 this.renter.hetongtype2 = res.data.data.hetongtype;
+                this.renter.username = res.data.data.username;
+                this.renter.phone = res.data.data.phone;
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;
@@ -481,6 +490,9 @@
                 this.addDate.iscompletefrzj = res.data.data.iscompletefrzj;
                 var reg=new RegExp("<br>","g"); //创建正则RegExp对象
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong.replace(reg,"\n");
+                this.addDate.ispaydeposit = res.data.data.ispaydeposit;
+                this.addDate.ispaydeposit2 = res.data.data.ispaydeposit;
+                this.addDate.nengyuanyajin = res.data.data.nengyuanyajin;
             },
             disabledInput(){
                 this.reviewVisible = true;

@@ -107,7 +107,7 @@ class jinggengReportController extends Controller
     public function ExportExcel()
     {
 
-        $sql=" select topic,zdh,fybh,fjmj,price,fjyzj,hyzt,kzzt,sfzc,yzsx,yzdh,bzxzyz from v_jgfy ";
+        $sql=" select topic,zdh,fybh,fjmj,price,fjyzj,hyzt,kzzt,sfzc,yzsx,yzdh,kzztpg,bzxzfy,bzxzyz from v_jgfy ";
 
         try{
             $bk = DB::connection('mysql3')->select($sql);

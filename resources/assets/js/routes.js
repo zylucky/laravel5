@@ -37,6 +37,8 @@ import SaleContractCheckBuchongList from "./components/saleContract/HistoryBucho
 import SaleContractCheckJieyue from "./components/saleContract/Jieyue.vue";
 import SaleContractDump20170719 from "./components/saleContract/Dump20170719.vue";
 import SaleContractDump20170719pub from "./components/saleContract/Dump20170719_pub.vue";//版本1补充条款
+import SaleContractDump20180409 from "./components/saleContract/Dump20180409.vue";
+import SaleContractDump20180409pub from "./components/saleContract/Dump20180409_pub.vue";//版本1补充条款
 import SaleContractZhanghao from "./components/saleContract/Zhanghao.vue";
 import SaleContractHedan from "./components/saleContract/Hedan.vue";
 import SaleContractJiaogedan from "./components/saleContract/jiaogedan.vue";
@@ -344,6 +346,20 @@ let routes = [
         //版本1
         path:'/saleContract/dumpx20170719pub',
         component: SaleContractDump20170719pub,
+        name: '出房打印补充条款',
+        hidden: true
+    },
+    {
+        //版本1
+        path:'/saleContract/dumpx20180409',
+        component: SaleContractDump20180409,
+        name: '出方合同打印',
+        hidden: true
+    },
+    {
+        //版本1
+        path:'/saleContract/dumpx20180409pub',
+        component: SaleContractDump20180409pub,
         name: '出房打印补充条款',
         hidden: true
     },
