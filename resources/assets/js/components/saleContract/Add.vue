@@ -235,9 +235,9 @@
                     ],
                     checkList: [],
                     jiafangfeiyong:'',
-                    ispaydeposit:1,
+                    ispaydeposit:2,
                     nengyuanyajin:'',
-                    ispaydeposit2:1,
+                    ispaydeposit2:2,
                 },
             }
         },
