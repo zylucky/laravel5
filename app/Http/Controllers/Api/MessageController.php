@@ -112,7 +112,7 @@ class MessageController extends Controller
         }
         $client  = new Client($config);
         $sendSms = new SendSms;
-        $sendSms->setPhoneNumbers($phone);
+        $sendSms->setPhoneNumbers('17611480828');//setPhoneNumbers($phone);
         $sendSms->setSignName('亮狮网');//阿里云短信测试专用
         $sendSms->setTemplateCode($templateCodes[$type]);
         $sendSms->setTemplateParam($templateParam);
