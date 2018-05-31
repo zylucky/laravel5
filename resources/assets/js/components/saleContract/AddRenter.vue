@@ -131,7 +131,7 @@
                     </el-row>
                 </div>
             </div>
-           <!-- <el-row>
+           <el-row>
                 <el-col :span="8">
                     <el-form-item label="APP账号" prop="phone" required>
                         <el-input v-model="renter.phone" :disabled="lydisabled"></el-input>
@@ -142,7 +142,7 @@
                         <el-input v-model="renter.username" :disabled="lydisabled"></el-input>
                     </el-form-item>
                 </el-col>
-            </el-row>-->
+            </el-row>
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="收款人" prop="shoukuanren" required>
