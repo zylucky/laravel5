@@ -154,6 +154,8 @@
                         <el-input v-model="renter.kaihuhang" :disabled="lydisabled"></el-input>
                     </el-form-item>
                 </el-col>
+            </el-row>
+                <el-row>
                 <el-col :span="8">
                     <el-form-item label="账号" prop="zhanghao" required>
                         <input v-model="renter.zhanghao" :disabled="lydisabled"
@@ -367,10 +369,12 @@
                     switch(this.renter.chengzufang)
                     {
                         case '彭亮':
-                            this.renter.shoukuanren = '彭亮';
-                            this.renter.kaihuhang = '招商银行北京分行建外大街支行';
-                            this.renter.zhanghao = '6214 8501 1231 5079';
-                            break;
+                       this.renter.shoukuanren = '彭亮';
+                            this.renter.kaihuhang = '';
+                            this.renter.zhanghao = '';
+//                            this.renter.kaihuhang = '招商银行北京分行建外大街支行';
+//                            this.renter.zhanghao = '6214 8501 1231 5079';
+                          break;
                         case '华溯商贸':
                             this.renter.shoukuanren = '肖艳文';
                             this.renter.kaihuhang = '民生银行国贸支行';
