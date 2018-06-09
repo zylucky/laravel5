@@ -370,8 +370,8 @@
                     {
                         case '彭亮':
                        this.renter.shoukuanren = '彭亮';
-                            this.renter.kaihuhang = '';
-                            this.renter.zhanghao = '';
+                            this.renter.kaihuhang = '民生银行北京国贸支行';
+                            this.renter.zhanghao = '6226 2201 3674 1880';
 //                            this.renter.kaihuhang = '招商银行北京分行建外大街支行';
 //                            this.renter.zhanghao = '6214 8501 1231 5079';
                           break;
