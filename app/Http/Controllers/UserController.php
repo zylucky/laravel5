@@ -39,10 +39,12 @@ class UserController extends Controller
         $limitStart=($page-1)*$pageSize;
         $limitEnd = $pageSize;
 
-        $sql="select users.phone,users.id,users.name,users.sex,CONVERT(users.ht_query_flg,CHAR)as ht_query_flg ,users.email,users.created_at,users.parentId,u.name as parentName,GROUP_CONCAT(ifnull(roles.name,'')) as role from  users
+        $sql="select users.phone,users.id,users.name,users.sex,CONVERT(users.ht_query_flg,CHAR)as ht_query_flg ,users.email,users.created_at,users.parentId,u.name as parentName,
+GROUP_CONCAT(ifnull(roles.name,'')) as role,users.butlerId,gju.name as butlerName  from  users
 left join role_user on role_user.user_id = users.id
 left join roles on roles.id = role_user.role_id  
 left join users u on users.parentId = u.id
+left join users gju on users.butlerId = gju.id
 ";
         $strWhere=" where 1=1 ";
         $strhaving=" GROUP BY users.id,users.name,users.sex,users.email,users.created_at ";
@@ -79,6 +81,7 @@ left join users u on users.parentId = u.id
         $user->phone = $input['phone'];
         $user->sex = $input['sex'];
         $user->ht_query_flg = $input['ht_query_flg'];
+        $user->butlerId = $input['butlerId'];
         if(isset($input['parentId'])){
             $user->parentId = $input['parentId'];
         }
@@ -99,6 +102,7 @@ left join users u on users.parentId = u.id
         $user->phone = isset($input['phone'])?$input['phone']:'';
         $user->sex = $input['sex'];
         $user->ht_query_flg = $input['ht_query_flg'];
+        $user->butlerId = $input['butlerId'];
         if(isset($input['parentId'])){
             $user->parentId = $input['parentId'];
         }

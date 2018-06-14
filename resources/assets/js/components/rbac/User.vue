@@ -21,19 +21,21 @@
         <el-table :data="users" highlight-current-row v-loading="listLoading" element-loading-text="拼命加载中" @selection-change="selsChange" style="width: 100%;">
             <el-table-column type="selection" width="55">
             </el-table-column>
-            <el-table-column prop="name" label="姓名" width="150" sortable>
+            <el-table-column prop="name" label="姓名" width="120" sortable>
             </el-table-column>
             <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
             </el-table-column>
             <el-table-column prop="ht_query_flg" label="合同权限" :formatter="formathtqueryflg" width="150" sortable>
             </el-table-column>
-            <el-table-column prop="email" label="用户名" width="200" sortable>
+            <el-table-column prop="email" label="用户名" width="150" sortable>
             </el-table-column>
-            <el-table-column prop="created_at" label="创建时间" width="220" sortable>
+            <el-table-column prop="created_at" label="创建时间" width="180" sortable>
             </el-table-column>
-            <el-table-column prop="role" label="角色" min-width="180" sortable>
+            <el-table-column prop="role" label="角色" min-width="150" sortable>
             </el-table-column>
-            <el-table-column  prop="parentName" label="上级领导" min-width="180" sortable>
+            <el-table-column  prop="parentName" label="上级领导" min-width="120" sortable>
+            </el-table-column>
+            <el-table-column  prop="butlerName" label="管家" min-width="120" >
             </el-table-column>
             <el-table-column label="操作" width="260">
                 <template slot-scope="scope">
@@ -79,6 +81,25 @@
                     >
                         <el-option
                                 v-for="item in options1"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item  label="管家"  prop="butlerId">
+                    <el-select
+                            style="width: 100%;"
+                            v-model="editForm.butlerId"
+                            filterable
+                            default-first-option
+                            remote
+                            @change="change1"
+                            placeholder=""
+                            :remote-method="remoteMethod2"
+                    >
+                        <el-option
+                                v-for="item in optionsgj"
                                 :key="item.value"
                                 :label="item.label"
                                 :value="item.value">
@@ -133,6 +154,25 @@
                                 :label="item.label"
                                 :value="item.value"
                         >
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item  label="管家"  prop="butlerId">
+                    <el-select
+                            style="width: 100%;"
+                            v-model="addForm.butlerId"
+                            filterable
+                            default-first-option
+                            remote
+                            @change="change1"
+                            placeholder=""
+                            :remote-method="remoteMethod2"
+                    >
+                        <el-option
+                                v-for="item in optionsgj"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
                         </el-option>
                     </el-select>
                 </el-form-item>
@@ -232,7 +272,8 @@
                     parentId:0,
                     email: '',
                     phone: '',
-                    addr: ''
+                    addr: '',
+                    butlerId:0,
                 },
                 addFormVisible: false,//新增界面是否显示
                 addLoading: false,
@@ -259,7 +300,8 @@
                     parentId:0,
                     email: '',
                     phone: '',
-                    addr: ''
+                    addr: '',
+                    butlerId:0,
                 },
                 //角色参数
                 userId:0,
@@ -270,6 +312,7 @@
                 states: [],
                 list: [],
                 options1:[],
+                optionsgj:[],
             }
         },
         methods:{
@@ -332,6 +375,38 @@
                         }, 200);
                     } else {
                         this.options1 = [];
+                    }
+                });
+
+            },
+            //获取管家
+            remoteMethod2(query) {
+                let para = {
+                    page:1,
+                    pageSize:10,
+                    name: query,
+                    rolename: ''
+                };
+                getUserListPage(para).then((res) => {
+                    let arr = [];
+                    arr[0] = '';
+                    for ( var i in res.data.data ){
+                        arr[i]=res.data.data [i];
+                    }
+                    this.list = arr.map((item,index) => {
+                        return { value: item.id, label: item.name };
+                    });
+                    if (query !== '') {
+                        setTimeout(() => {
+                            this.optionsgj = this.list.filter(item => {
+                                if(item.label){
+                                    return item.label.toLowerCase()
+                                            .indexOf(query.toLowerCase()) > -1;
+                                }
+                            });
+                        }, 200);
+                    } else {
+                        this.optionsgj = [];
                     }
                 });
 
@@ -467,6 +542,12 @@
                     {
                         label:this.editForm.parentName,
                         value:this.editForm.parentId,
+                    }
+                ];
+                this.optionsgj = [
+                    {
+                        label:this.editForm.butlerName,
+                        value:this.editForm.butlerId,
                     }
                 ];
             },
