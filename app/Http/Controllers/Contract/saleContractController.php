@@ -181,7 +181,7 @@ class saleContractController extends Controller
         $response = $client->request('GET','/api/contract/xs/'.$id.'/submit');
         $contract = $this->getContractInfo($id);//合同信息
         $loupan = '';
-        foreach ($contract->officeList as $office){
+        foreach ($contract->xsOffice as $office){
             $loupan .= $office->loupanName.'-'.$office->loudongName.'-'.$office->fanghao.',';
         }
         $loupan = rtrim($loupan,',');
@@ -240,9 +240,8 @@ class saleContractController extends Controller
         if($request->params['shenheFlg']==0){
             //如果复审通过，短信发给法务
             if($data['result']==1){
-                $contract = $this->getContractInfo($request->params['hetongid']);//合同信息
                 $loupan = '';
-                foreach ($contract->officeList as $office){
+                foreach ($contract->xsOffice as $office){
                     $loupan .= $office->loupanName.'-'.$office->loudongName.'-'.$office->fanghao.',';
                 }
                 $loupan = rtrim($loupan,',');
