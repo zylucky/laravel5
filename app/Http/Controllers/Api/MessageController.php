@@ -28,14 +28,27 @@ class MessageController extends Controller
     public function createMessage($params){
         //创建消息
         $message =  Message::create($params);
+        $param=array();
         //发送短信
         if(isset($params['yongjin']))
         {
-            $param = $params['yongjin'];
+            array_push($param,$params['yongjin']) ;
+        }
+        if(isset($params['qianyueren']))
+        {
+          array_push($param,$params['qianyueren']) ;
+        }
+        if(isset($params['date']))
+        {
+            array_push($param,$params['date']) ;
         }
         if(isset($params['loupan']))
         {
-            $param = $params['loupan'];
+            array_push($param,$params['loupan']) ;
+        }
+        if(isset($params['httype']))
+        {
+            array_push($param,$params['httype']) ;
         }
         if($params['is_message']==1){
             $res = $this->sendMessage($params['phone'], $params['type'], $param);
@@ -97,7 +110,9 @@ class MessageController extends Controller
      * @param array ...$params
      * @return mixed
      */
-    public function sendMessage($phone,$type,...$params){
+    public function sendMessage($phone,$type,$params){
+
+
         $config  = config('message.config');
         $templateCodesParams = config('message.templateCodesParams');//获取配置的编码和对应的模板参数
         $templateCodes = array_keys($templateCodesParams);//获取配置数组的所有编码
@@ -109,15 +124,16 @@ class MessageController extends Controller
             foreach ($params as $key => $param){
                 $templateParam[$currentCodeParam[$key]] = $param;
             }
+           // print_r($templateParam);die;
         }
         $client  = new Client($config);
         $sendSms = new SendSms;
-        $sendSms->setPhoneNumbers($phone);
+        $sendSms->setPhoneNumbers('17611480828');//setPhoneNumbers($phone);
         $sendSms->setSignName('亮狮网');//阿里云短信测试专用
         $sendSms->setTemplateCode($templateCodes[$type]);
         $sendSms->setTemplateParam($templateParam);
         $sendSms->setOutId('demo');
-
+       // print_r($client->execute($sendSms));die;
         return $client->execute($sendSms);
 
     }

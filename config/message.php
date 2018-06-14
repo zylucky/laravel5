@@ -20,6 +20,7 @@ return [
         'SMS_117513026'=>['code'],//发送验证码通知 10
         'SMS_125021187'=>['loupan'],//初审 11
         'SMS_125026196'=>['loupan'],//复审 12
+        'SMS_137416603'=>['xiaoshou','shijian','fanghao','leixing'],//管家初审 13
     ],
 
 ];
