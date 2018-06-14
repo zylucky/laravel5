@@ -207,7 +207,6 @@ class purchaseContractController extends Controller
         if($request->params['shenheFlg']==0){
             //如果复审通过，短信发给法务
             if($data['result']==1){
-                $contract = $this->getContractInfo($request->params['hetongid']);//合同信息
                 $loupan = '';
                 foreach ($contract->officeList as $office){
                     $loupan .= $office->loupanName.'-'.$office->loudongName.'-'.$office->fanghao.',';
@@ -709,60 +708,63 @@ class purchaseContractController extends Controller
     public function sendMessage($type,$loupan,$createId){
         //第一次提交的发送信息给初审人
         $user =User::find($createId) ;//1.获取用户信息
-        $send_to_id=$user->parentId;
-        $parent = User::find($send_to_id);
-        if(!empty($parent)&&!empty($parent->phone)){
-        $send_to_name = $parent->name;
-        $phone = $parent->phone;
-        $content = $type==11?"合同初审":"合同复审";
-        $data=[
-            "send_from_id"=>$user->id,
-            "send_from_name"=>$user->name,
-            "send_from_sys"=>"erp",
-            "send_to_id"=>$send_to_id,
-            "send_to_name"=>$send_to_name,
-            "send_to_sys"=>"erp",
-            "phone"=>$phone,
-            "type"=>$type,
-            "is_message"=>1,
-            "is_web"=>1,
-            "content"=>$content,
-            "title"=>$content,
-            "loupan"=>$loupan
-        ];
-        $message = new MessageController();
-        $message->createMessage($data);
+        if(!empty($user->parentId)) {
+            $send_to_id = $user->parentId;
+            $parent = User::find($send_to_id);
+            if (!empty($parent) && !empty($parent->phone)) {
+                $send_to_name = $parent->name;
+                $phone = $parent->phone;
+                $content = $type == 11 ? "合同初审" : "合同复审";
+                $data = [
+                    "send_from_id" => $user->id,
+                    "send_from_name" => $user->name,
+                    "send_from_sys" => "erp",
+                    "send_to_id" => $send_to_id,
+                    "send_to_name" => $send_to_name,
+                    "send_to_sys" => "erp",
+                    "phone" => $phone,
+                    "type" => $type,
+                    "is_message" => 1,
+                    "is_web" => 1,
+                    "content" => $content,
+                    "title" => $content,
+                    "loupan" => $loupan
+                ];
+                $message = new MessageController();
+                $message->createMessage($data);
+            }
         }
     }
     public function sendGJMessage($loupan,$createId){
         //第一次提交的发送信息给初审人
         $qianyueren = User::find($createId);//1.获取用户信息
+        if(!empty($qianyueren->butlerId)) {
         $butler = User::find($qianyueren->butlerId);
-        if(!empty($butler)&&!empty($butler->phone)){
-        $send_to_name = $butler->name;
-        $phone = $butler->phone;
-        $content = "合同初审";
-        $data=[
-            "send_from_id"=>$qianyueren->id,
-            "send_from_name"=>$qianyueren->name,
-            "send_from_sys"=>"erp",
-            "send_to_id"=>$butler->id,
-            "send_to_name"=>$send_to_name,
-            "send_to_sys"=>"erp",
-            "phone"=>$phone,
-            "type"=>13,
-            "is_message"=>1,
-            "is_web"=>1,
-            "content"=>$content,
-            "title"=>$content,
-            "loupan"=>$loupan,
-            "qianyueren"=>$qianyueren->name,
-            "date"=> date('Y-m-d H:i:s',time()),
-            "httype"=>"收房",
-        ];
-        $message = new MessageController();
-        $message->createMessage($data);
-
+        if(!empty($butler)&&!empty($butler->phone)) {
+            $send_to_name = $butler->name;
+            $phone = $butler->phone;
+            $content = "合同初审";
+            $data = [
+                "send_from_id" => $qianyueren->id,
+                "send_from_name" => $qianyueren->name,
+                "send_from_sys" => "erp",
+                "send_to_id" => $butler->id,
+                "send_to_name" => $send_to_name,
+                "send_to_sys" => "erp",
+                "phone" => $phone,
+                "type" => 13,
+                "is_message" => 1,
+                "is_web" => 1,
+                "content" => $content,
+                "title" => $content,
+                "loupan" => $loupan,
+                "qianyueren" => $qianyueren->name,
+                "date" => date('Y-m-d H:i:s', time()),
+                "httype" => "收房",
+            ];
+            $message = new MessageController();
+            $message->createMessage($data);
+        }
         }
     }
 }
