@@ -111,8 +111,6 @@ class MessageController extends Controller
      * @return mixed
      */
     public function sendMessage($phone,$type,$params){
-
-
         $config  = config('message.config');
         $templateCodesParams = config('message.templateCodesParams');//获取配置的编码和对应的模板参数
         $templateCodes = array_keys($templateCodesParams);//获取配置数组的所有编码
@@ -128,7 +126,7 @@ class MessageController extends Controller
         }
         $client  = new Client($config);
         $sendSms = new SendSms;
-        $sendSms->setPhoneNumbers('17611480828');//setPhoneNumbers($phone);
+        $sendSms->setPhoneNumbers($phone);//setPhoneNumbers('17611480828');
         $sendSms->setSignName('亮狮网');//阿里云短信测试专用
         $sendSms->setTemplateCode($templateCodes[$type]);
         $sendSms->setTemplateParam($templateParam);
