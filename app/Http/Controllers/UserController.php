@@ -81,7 +81,9 @@ left join users gju on users.butlerId = gju.id
         $user->phone = $input['phone'];
         $user->sex = $input['sex'];
         $user->ht_query_flg = $input['ht_query_flg'];
-        $user->butlerId = $input['butlerId'];
+        if(isset($input['butlerId'])){
+            $user->butlerId = $input['butlerId'];
+        }
         if(isset($input['parentId'])){
             $user->parentId = $input['parentId'];
         }
@@ -102,7 +104,9 @@ left join users gju on users.butlerId = gju.id
         $user->phone = isset($input['phone'])?$input['phone']:'';
         $user->sex = $input['sex'];
         $user->ht_query_flg = $input['ht_query_flg'];
-        $user->butlerId = $input['butlerId'];
+        if(isset($input['butlerId'])){
+            $user->butlerId = $input['butlerId'];
+        }
         if(isset($input['parentId'])){
             $user->parentId = $input['parentId'];
         }
