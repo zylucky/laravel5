@@ -560,7 +560,8 @@
                     ht_query_flag: null,
                     email: '',
                     phone: '',
-                    addr: ''
+                    addr: '',
+                    butlerId:0,
                 };
             },
             //编辑
