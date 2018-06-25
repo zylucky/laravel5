@@ -132,7 +132,7 @@ class daikanReportController extends Controller
         $loupan= Input::get('loupan');
         $dep1 = Input::get('dep1');
         $sql="select dep1,dep2, loupan, loudong, fangjian, fjmj, ckzl, ckzlzj, kehuyetai,bangongrenshu,kehumianji,kehuyusuan,kehuqvyv,kehuyongfangshijian,shifoufuzeren,
- gongsi, renyuan, dianhua, sfek, shuoming,xiaciqvdaoshuoming , personname, phone,dakatime from v_daikan";
+ gongsi, renyuan, dianhua, sfek, shuoming,kehuyijian,xiaciqvdaoshuoming , personname, phone,dakatime from v_daikan";
         $strWhere=" where 1=1 ";
         if(!empty($startdate)){
             $strWhere=$strWhere." and date(dakatime)>=date('".$startdate."')"  ;

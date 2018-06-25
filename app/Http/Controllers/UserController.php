@@ -172,7 +172,7 @@ left join users gju on users.butlerId = gju.id
     public function setPass(Request $request ){
         $id = $request->params['id'];
         $user= User::find($id);
-        $user->password=bcrypt('123456');
+        $user->password=bcrypt('yskg20150701');
         $user->save();
     }
 

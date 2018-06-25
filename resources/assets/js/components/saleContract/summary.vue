@@ -101,7 +101,7 @@
                     <td align="center">¥{{toDecimal(item.fukuanjine)}}</td>
                     <td>{{item.beizhu}}</td>
                 </tr>
-            <tr v-for="x in (16-data.zjProofs.length)">
+            <tr   v-for="x in (16-(data.zjProofs.length<16?data.zjProofs.length:16))">
                 <td style="border:0 "></td>
                 <td height="23"></td>
                 <td></td>
