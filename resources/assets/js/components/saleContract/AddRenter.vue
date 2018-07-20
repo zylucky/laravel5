@@ -21,6 +21,15 @@
                     <el-radio :label="2">三方合同</el-radio>
                 </el-radio-group>
             </el-form-item>
+            <el-row v-if="renter.hetongtype==1">
+                <el-col :span="8">
+                    <el-form-item label="原合同编号" prop="oldBianhao" :rules="[
+                                {validator:checkbianhao, trigger:'blur'  }
+                        ]">
+                        <el-input v-model="renter.oldBianhao" :disabled="lydisabled"  ></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
             <div v-if="renter.hetongtype==2">
                 <el-row>
                     <el-col  :span="8">
@@ -331,7 +340,7 @@
 </template>
 <script>
     import {saleEditable} from '../../global';
-    import {getbkNameList,getNameSaleList,getBrokerCompanyUserListPage,getHedanqiannamephoneList} from '../../api/api';
+    import {getbkNameList,getNameSaleList,getBrokerCompanyUserListPage,getHedanqiannamephoneList,checkCFbianhao} from '../../api/api';
     export default{
         data(){
             return {
@@ -668,6 +677,22 @@
                 var index = this.renter.chengzuren.indexOf(item)
                 if (index !== -1) {
                     this.renter.chengzuren.splice(index, 1)
+                }
+            },
+            checkbianhao(rule,value,callback){
+                if (value != ''&&value != null) {
+                        let para = {
+                            bianhao: value,
+                        };
+                    checkCFbianhao(para).then((res) => {
+                            if (res.data.code != '200') {
+                                callback(res.data.msg);
+                            } else {
+                                callback();
+                            }
+                        })
+                } else {
+                    callback();
                 }
             },
 

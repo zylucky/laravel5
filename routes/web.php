@@ -53,6 +53,8 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('cancelled','Contract\purchaseContractController@changeStatus');
     Route::post('updataHedan','Contract\purchaseContractController@updataHedan');
     Route::post('saveyongyou','Contract\purchaseContractController@saveyongyou');
+    Route::post('checkbianhao','Contract\purchaseContractController@checkbianhao');
+    Route::post('changeZhanghao','Contract\purchaseContractController@changeZhanghao');
 });
 Route::resource('purchaseContract','Contract\purchaseContractController');
 //装饰合同
@@ -141,7 +143,7 @@ Route::group(['prefix' => 'saleContract'], function () {
     Route::post('getHedanbumenList','Contract\saleContractController@getHedanbumenList');
     Route::post('saveyongyou','Contract\saleContractController@saveyongyou');
     Route::post('omcdata','Contract\saleContractController@omcdata');
-
+    Route::post('checkbianhao','Contract\saleContractController@checkbianhao');
 });
 Route::resource('saleContract','Contract\saleContractController');//这要放到confirm方法的后面，因为放到confirm的前面会把confirm的这个路径和它的这个路由混要了
 //权限

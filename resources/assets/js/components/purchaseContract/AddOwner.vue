@@ -19,6 +19,15 @@
                     <el-radio label="s">三方</el-radio>
                 </el-radio-group>
             </el-form-item>
+            <el-row v-if="owner.farenzhengjian=='l'">
+                <el-col :span="8">
+                    <el-form-item label="原合同编号" prop="oldBianhao" :rules="[
+                                {validator:checkbianhao, trigger:'blur'  }
+                        ]">
+                        <el-input v-model="owner.oldBianhao" :disabled="lydisabled"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
             <el-row v-if="owner.farenzhengjian=='s'">
                 <el-col  :span="8">
                     <el-form-item label="居间方">
@@ -262,6 +271,7 @@
     import {
         getbkNameList,
         getBrokerCompanyUserListPage,
+        checkSFbianhao,
     } from '../../api/api';;
     export default{
         data(){
@@ -410,7 +420,23 @@
                 if (index !== -1) {
                     this.owner.chanquanrenList.splice(index, 1)
                 }
-            }
+            },
+            checkbianhao(rule,value,callback){
+                if (value != ''&&value != null) {
+                    let para = {
+                        bianhao: value,
+                    };
+                    checkSFbianhao(para).then((res) => {
+                        if (res.data.code != '200') {
+                            callback(res.data.msg);
+                        } else {
+                            callback();
+                        }
+                    })
+                } else {
+                    callback();
+                }
+            },
         },
         mounted(){
             //审核页面input禁用

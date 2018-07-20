@@ -186,6 +186,8 @@
                     hetongtype2:1,//合同类型
                     username:'',
                     phone:'',
+                    oldBianhao:'',
+                    oldID:'',
                 },
                 addDate: {
                     dikoujine:'',//合同金额
@@ -465,6 +467,8 @@
                 this.renter.hetongtype2 = res.data.data.hetongtype;
                 this.renter.username = res.data.data.username;
                 this.renter.phone = res.data.data.phone;
+                this.renter.oldBianhao= res.data.data.oldBianhao;
+                this.renter.oldID= res.data.data.oldID;
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;
