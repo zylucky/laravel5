@@ -112,6 +112,8 @@ export const hedanUpdataPurchaseContract= params => { return axios.post(`${base}
 export const yongyouUpdataPurchaseContract = params => { return axios.post(`${base}/purchaseContract/saveyongyou`, { params: params }); };//用友编号的保存
 export const summaryPurchaseContract = params => { return axios.get(`${base}/purchaseContract/summary`, { params: params }); };//合同摘要核心数据
 export const purchaseContractCancelled = params => { return axios.get(`${base}/purchaseContract/cancelled`, { params: params }); };//合同作废
+export const checkSFbianhao = params => { return axios.post(`${base}/purchaseContract/checkbianhao`, { params: params }); };
+export const changeSFZhanghao = params => { return axios.post(`${base}/purchaseContract/changeZhanghao`, { params: params }); };
 
 //出房合同
 //合同信息
@@ -159,6 +161,8 @@ export const getHedanbumenSaleList = params => { return axios.post(`${base}/sale
 export const yongyouUpdataSaleContract = params => { return axios.post(`${base}/saleContract/saveyongyou`, { params: params }); };//用友编号的保存
 export const getSaleContractOmc = params => { return axios.post(`${base}/saleContract/omcdata`, { params: params }); };//给omc那边传递的数据接口
 export const saleContractCancelled = params => { return axios.get(`${base}/saleContract/cancelled`, { params: params }); };//合同作废
+export const checkCFbianhao = params => { return axios.post(`${base}/saleContract/checkbianhao`, { params: params }); };
+export const changeCFZhanghao = params => { return axios.post(`${base}/saleContract/changeZhanghao`, { params: params }); };
 
 //获取楼盘，楼栋，房间号,rules
 export const getLoupanList = params =>{ return axios.get(`${base}/office/loupanList`, { params: params }); };
@@ -168,7 +172,11 @@ export const getFanghaoList = params =>{ return axios.get(`${base}/office/fangha
 export const getSaleFanghaoList = params =>{ return axios.get(`${base}/office/salefanghaoList`, { params: params }); };
 export const createFanghao = params =>{ return axios.get(`${base}/office/createFanghao`, { params: params }); };
 export const getSaleFanghaoChengzu = params =>{ return axios.get(`${base}/office/shengyuechengzu`, { params: params }); };
-
+export const getAppUserList = params =>{ return axios.get(`${base}/office/getAppUserList`, { params: params }); };
+export const appUserSave = params =>{ return axios.post(`${base}/office/appUserSave`, { params: params }); };
+export const appUserAlter = params =>{ return axios.post(`${base}/office/appUserAlter`, { params: params }); };
+export const deleteAppUser = params =>{ return axios.post(`${base}/office/deleteAppUser`, { params: params }); };
+export const getUserListByPhone = params =>{ return axios.get(`${base}/office/getUserListByPhone`, { params: params }); };
 //工程合同
 export const getDecorationList = params =>{ return axios.get(`${base}/decoration/index`, { params: params }); };
 export const getDecorationDetail = params =>{ return axios.get(`${base}/decoration/show`, { params: params }); };

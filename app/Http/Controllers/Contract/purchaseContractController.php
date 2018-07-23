@@ -492,8 +492,10 @@ class purchaseContractController extends Controller
             'base_uri' => $this->base_url,
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
+        $user = Auth::user();
+        $param=array_merge($request->params,Array('username'=>$user->name,'userid'=>$user->id));
         $response = $client->request('POST', '/api/contract/yhzh/add', [
-            'json' => $request->params
+            'json' => $param
         ]);
         echo $response->getBody();
     }
@@ -505,8 +507,10 @@ class purchaseContractController extends Controller
 
             'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
+        $user = Auth::user();
+        $param=array_merge($request->params,Array('username'=>$user->name,'userid'=>$user->id));
         $response = $client->request('POST', '/api/contract/yhzh/alter', [
-            'json' => $request->params
+            'json' => $param
         ]);
         echo $response->getBody();
     }
@@ -536,12 +540,25 @@ class purchaseContractController extends Controller
         }*/
     }
     public function deleteZhanghao(Request $request){
-        $id = Input::get('id');
+        $user = Auth::user();
+        $param=array_merge($request->params,Array('username'=>$user->name,'userid'=>$user->id));
         $client = new Client([
             'base_uri' => $this->base_url,
-            'headers' =>['access_token'=>'XXXX','app_id'=>'123']
         ]);
-        $response = $client->request('GET', '/api/contract/yhzh/'.$id.'/delete');
+        $response = $client->request('GET', '/api/contract/yhzh/delete',[
+            'query' =>$param
+        ]);
+        echo $response->getBody();
+    }
+    public function changeZhanghao(Request $request){
+        $user = Auth::user();
+        $param=array_merge($request->params,Array('username'=>$user->name,'userid'=>$user->id,'httype'=>0));
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/contract/yhzh/changeState',[
+        'query' =>$param
+            ]);
         echo $response->getBody();
     }
     //合单的提交
@@ -766,5 +783,16 @@ class purchaseContractController extends Controller
             $message->createMessage($data);
         }
         }
+    }
+    //编号查找合同是否存在
+    public function checkbianhao(Request $request){
+        //dd(111);
+        $bianhao = $request->params['bianhao'];
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/contract/sf/checkBianhao/'.$bianhao.'/check', [
+        ]);
+        echo $response->getBody();
     }
 }

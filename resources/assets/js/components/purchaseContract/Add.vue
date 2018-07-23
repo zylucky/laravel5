@@ -167,8 +167,8 @@
                     qianyuerenTel:'',
                     qianyuerenSex:1,
                     qianyuerenId:'',
-                    username:'',
-                    phone:'',
+                    oldBianhao:'',
+                    oldID:'',
                 },
                 addDate: {
                     actualrent:null,
@@ -436,8 +436,8 @@
                 this.owner.qianyuerenTel = res.data.data.qianyuerenTel;
                 this.owner.qianyuerenSex = res.data.data.qianyuerenSex;
                 this.owner.qianyuerenId = res.data.data.qianyuerenId;
-                this.owner.username = res.data.data.username;
-                this.owner.phone = res.data.data.phone;
+                this.owner.oldBianhao= res.data.data.oldBianhao;
+                this.owner.oldID= res.data.data.oldID;
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;

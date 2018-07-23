@@ -873,4 +873,16 @@ class saleContractController extends Controller
         }
     }
 
+    //编号查找合同是否存在
+    public function checkbianhao(Request $request){
+        //dd(111);
+        $bianhao = $request->params['bianhao'];
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/contract/xs/checkBianhao/'.$bianhao.'/check', [
+        ]);
+        echo $response->getBody();
+    }
+
 }

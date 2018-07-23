@@ -158,6 +158,89 @@ class officeController extends Controller
         echo $response1->getBody();
 
     }
+    //管家获取合同下的app账号
+    public function getAppUserList(){
+        $htid = Input::get('htid');
+        $page = Input::get('page');
+        $size = Input::get('size');
+        $httid = Input::get('httid');
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/contract/qduser/list',
+            [
+                'query' => [
+                    'htid' => $htid,
+                    'httid' =>  $httid,
+                    'page' => $page,
+                    'size' => $size,
+                ]
+            ]
+        );
+        echo $response->getBody();
+    }
 
+    //付款账号的提交
+    public function appUserSave(Request $request){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $param= $request->params ;
+        $response = $client->request('POST', '/api/contract/qduser/add', [
+            'json' => $param
+        ]);
+        echo $response->getBody();
+    }
+    //付款账号的提交
+    public function appUserAlter(Request $request){
+        //dd(33333);
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $param= $request->params ;
+        $response = $client->request('POST', '/api/contract/qduser/alter', [
+            'json' => $param
+        ]);
+        echo $response->getBody();
+    }
+
+    public function deleteAppUser(Request $request){
+        $param= $request->params ;
+        $client = new Client([
+            'base_uri' => $this->base_url,
+        ]);
+        $response = $client->request('GET', '/api/contract/qduser/delete',[
+            'query' => $param
+        ]);
+        echo $response->getBody();
+    }
+
+    public function getUserListByPhone(){
+        $client = new Client([
+            'base_uri' => $this->base_url,
+            'timeout'  => 2.0,
+
+        ]);
+        $phone = Input::get('phone');
+       // dd($phone);die;
+        $response = $client->request('GET', '/api/contract/qduser/getUserByPhone',[
+            'query' => [
+                'phone' => $phone,
+            ]
+        ]);
+        $obj = json_decode($response->getBody());
+        $json = [];
+        if($obj->code==200){
+            foreach ($obj->data as $key=> $value){
+                $json[$key]['id'] = $value->id;
+                $json[$key]['phone'] = $value->phone;
+                $json[$key]['name'] = $value->name;
+                $json[$key]['typeid'] = $value->typeid;
+            }
+            return $json;
+        }else{
+            echo $obj->msg;
+        }
+    }
 }
 

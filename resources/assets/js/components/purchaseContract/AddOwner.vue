@@ -19,6 +19,15 @@
                     <el-radio label="s">三方</el-radio>
                 </el-radio-group>
             </el-form-item>
+            <el-row v-if="owner.farenzhengjian=='l'">
+                <el-col :span="8">
+                    <el-form-item label="原合同编号" prop="oldBianhao" :rules="[
+                                {validator:checkbianhao, trigger:'blur'  }
+                        ]">
+                        <el-input v-model="owner.oldBianhao" :disabled="lydisabled"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
             <el-row v-if="owner.farenzhengjian=='s'">
                 <el-col  :span="8">
                     <el-form-item label="居间方">
@@ -57,18 +66,6 @@
                                 :value="item.value">
                         </el-option>
                         </el-select>
-                    </el-form-item>
-                </el-col>
-            </el-row>
-             <el-row>
-                <el-col :span="8">
-                    <el-form-item label="APP账号" prop="phone" required>
-                        <el-input v-model="owner.phone" :disabled="lydisabled"></el-input>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="10">
-                    <el-form-item label="联系人姓名" prop="username" required>
-                        <el-input v-model="owner.username" :disabled="lydisabled"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -262,6 +259,7 @@
     import {
         getbkNameList,
         getBrokerCompanyUserListPage,
+        checkSFbianhao,
     } from '../../api/api';;
     export default{
         data(){
@@ -282,12 +280,7 @@
                     zhanghao: [
                         { required: true, message: '不能为空' }
                     ],
-                    username: [
-                        { required: true, message: '不能为空' }
-                    ],
-                    phone: [
-                        { required: true, message: '不能为空' }
-                    ],
+
                 },
             }
         },
@@ -410,7 +403,23 @@
                 if (index !== -1) {
                     this.owner.chanquanrenList.splice(index, 1)
                 }
-            }
+            },
+            checkbianhao(rule,value,callback){
+                if (value != ''&&value != null) {
+                    let para = {
+                        bianhao: value,
+                    };
+                    checkSFbianhao(para).then((res) => {
+                        if (res.data.code != '200') {
+                            callback(res.data.msg);
+                        } else {
+                            callback();
+                        }
+                    })
+                } else {
+                    callback();
+                }
+            },
         },
         mounted(){
             //审核页面input禁用
