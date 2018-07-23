@@ -417,7 +417,7 @@
                     let para = {
                         userid: row.id,
                         hetongid:this.$route.query.id,
-                        hetongtid:1
+                        hetongtid:0
                     };
                     deleteAppUser(para).then((res) => {
                         this.listLoading = false;
