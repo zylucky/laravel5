@@ -227,6 +227,11 @@ Route::group(['prefix' => 'office'], function () {
     Route::get('createFanghao','Contract\officeController@createFanghao');
     Route::get('shengyuechengzu','Contract\officeController@shengyuechengzu');
     Route::get('loudongRules','Contract\officeController@loudongRules');
+    Route::get('getAppUserList','Contract\officeController@getAppUserList');
+    Route::post('appUserSave','Contract\officeController@appUserSave');
+    Route::post('appUserAlter','Contract\officeController@appUserAlter');
+    Route::post('deleteAppUser','Contract\officeController@deleteAppUser');
+    Route::get('getUserListByPhone','Contract\officeController@getUserListByPhone');
 });
 Route::resource('payOrder','Report\payOrderController');
 Route::resource('brokerCompany','BrokerCompany\brokerCompanyController');

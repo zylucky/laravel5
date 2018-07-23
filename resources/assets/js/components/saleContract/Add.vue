@@ -184,8 +184,6 @@
                     qianyuerenId:'',
                     hetongtype:1,//合同类型
                     hetongtype2:1,//合同类型
-                    username:'',
-                    phone:'',
                     oldBianhao:'',
                     oldID:'',
                 },
@@ -465,8 +463,6 @@
                 this.renter.qianyuerenId = res.data.data.qianyuerenId;
                 this.renter.hetongtype = res.data.data.hetongtype;
                 this.renter.hetongtype2 = res.data.data.hetongtype;
-                this.renter.username = res.data.data.username;
-                this.renter.phone = res.data.data.phone;
                 this.renter.oldBianhao= res.data.data.oldBianhao;
                 this.renter.oldID= res.data.data.oldID;
                 this.addDate.startdate = res.data.data.startdate;

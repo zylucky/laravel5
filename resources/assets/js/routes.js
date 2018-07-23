@@ -24,7 +24,7 @@ import PurchaseContractSummary from "./components/purchaseContract/summary.vue";
 import PurchaseContractZhanghao from "./components/purchaseContract/Zhanghao.vue";
 import PurchaseContractHedan from "./components/purchaseContract/Hedan.vue";
 import PurchaseContractJiaogedan from "./components/purchaseContract/jiaogedan.vue";
-
+import PurchaseContractAppZhanghao from "./components/purchaseContract/AppZhanghao.vue";
 
 //出房合同
 import SaleContractIndex from "./components/saleContract/Index.vue";
@@ -43,7 +43,7 @@ import SaleContractZhanghao from "./components/saleContract/Zhanghao.vue";
 import SaleContractHedan from "./components/saleContract/Hedan.vue";
 import SaleContractJiaogedan from "./components/saleContract/jiaogedan.vue";
 import SaleContractSummary from "./components/saleContract/summary.vue";//新版摘要
-
+import SaleContractAppZhanghao from "./components/saleContract/AppZhanghao.vue";
 //装饰合同
 import DecorationList from "./components/decoration/List.vue";
 //合同版本
@@ -211,6 +211,7 @@ let routes = [
             { path:'/purchaseContract/zhanghao',component:PurchaseContractZhanghao,name:'收房收款账号',hidden:true},
             { path:'/purchaseContract/hedan',component:PurchaseContractHedan,name:'收房合单管理',hidden:true},
             { path:'/purchaseContract/jiaogedan',component:PurchaseContractJiaogedan,name:'交割单',hidden:true},
+            { path:'/purchaseContract/appzhanghao',component:PurchaseContractAppZhanghao,name:'收房APP账号',hidden:true},
 
 
 
@@ -229,7 +230,7 @@ let routes = [
             { path:'/saleContract/zhanghao',component:SaleContractZhanghao,name:'出房付款账号',hidden:true},
             { path:'/saleContract/hedan',component:SaleContractHedan,name:'出房合单管理',hidden:true},
             { path:'/saleContract/jiaogedan',component:SaleContractJiaogedan,name:'交割单',hidden:true},
-
+            { path:'/saleContract/appzhanghao',component:SaleContractAppZhanghao,name:'出房APP账号',hidden:true},
 
 
             // { path:'/decoration', component: DecorationList, name: '工程合同'},

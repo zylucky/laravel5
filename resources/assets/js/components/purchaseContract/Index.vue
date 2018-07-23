@@ -102,6 +102,7 @@
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactSummary')"><el-button @click="handleSummary(scope.$index, scope.row)">打印核心数据</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactJGD')"><el-button @click="handleJiaogedan(scope.$index, scope.row)">交割单</el-button></el-dropdown-item>
                             <el-dropdown-item  v-if="ztin(scope.row,[0,1,2,3,4,5,13,14,15])&&fun('purchaseContactZF')"><el-button @click="handleZuofei(scope.$index, scope.row)">合同作废</el-button></el-dropdown-item>
+                            <el-dropdown-item  v-if="ztin(scope.row,[6,7,8,9,10,11])&&fun('purchaseContactAppZH')"><el-button @click="handleAppZhanghao(scope.$index, scope.row)">app账号管理</el-button></el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
 
@@ -603,6 +604,12 @@
                 //alert(222);
                 //this.$router.push('/purchaseContract/zhanghao?id='+row.id);
                 window.open('/#/purchaseContract/zhanghao?id='+row.id);
+            },
+            //app账号管理
+            handleAppZhanghao(index,row){
+                //alert(222);
+                //this.$router.push('/purchaseContract/zhanghao?id='+row.id);
+                window.open('/#/purchaseContract/appzhanghao?id='+row.id);
             },
             //合单管理
             handleHedan(index,row){

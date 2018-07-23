@@ -42,7 +42,6 @@
                     </el-table-column>
                     <el-table-column label="操作" width="300">
                         <template slot-scope="scope">
-                            <el-dropdown   menu-align="start">
                                 <el-button v-if="fun('purchaseContactZHEdit')&&!hanshu(scope.row)&&scope.row.stateid>2"   type="primary" size="normal" splitButton="true" @click="editYHZH(scope.$index, scope.row)">
                                     编辑
                                 </el-button>
@@ -58,7 +57,6 @@
                                 <el-button v-if="fun('purchaseContactZHDel')&&!hanshu(scope.row)"  type="primary" size="normal" splitButton="true" @click="handleDel(scope.$index, scope.row)">
                                     删除
                                 </el-button>
-                            </el-dropdown>
                         </template>
                     </el-table-column>
             </el-table>
@@ -290,6 +288,14 @@
             //新增
             addContract(){
                 this.Visible = true;
+                this.zhanghao= {
+                      hetongid: this.$route.query.id,
+                        hetongbianhao:null,
+                        zhanghu:null,
+                        yinhang:null,
+                        zhanghao:null,
+                        hetongtid: 0,
+                }
             },
             //新增的提交
             handleEnd(index,row){

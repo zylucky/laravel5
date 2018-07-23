@@ -546,7 +546,7 @@ class purchaseContractController extends Controller
             'base_uri' => $this->base_url,
         ]);
         $response = $client->request('GET', '/api/contract/yhzh/delete',[
-            'query' =>$request->$param
+            'query' =>$param
         ]);
         echo $response->getBody();
     }

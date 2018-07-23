@@ -140,18 +140,7 @@
                     </el-row>
                 </div>
             </div>
-           <el-row>
-                <el-col :span="8">
-                    <el-form-item label="APP账号" prop="phone" required>
-                        <el-input v-model="renter.phone" :disabled="lydisabled"></el-input>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="10">
-                    <el-form-item label="联系人姓名" prop="username" required>
-                        <el-input v-model="renter.username" :disabled="lydisabled"></el-input>
-                    </el-form-item>
-                </el-col>
-            </el-row>
+
             <el-row>
                 <el-col :span="8">
                     <el-form-item label="收款人" prop="shoukuanren" required>
@@ -361,12 +350,7 @@
                     zhanghao: [
                         { required: true, message: '不能为空' }
                     ],
-                    username: [
-                        { required: true, message: '不能为空' }
-                    ],
-                    phone: [
-                        { required: true, message: '不能为空' }
-                    ],
+
                     salesmanphone:[{required: true, message: '不能为空', trigger: 'blur' }],
                 },
             }
