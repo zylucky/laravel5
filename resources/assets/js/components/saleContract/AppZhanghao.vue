@@ -91,7 +91,7 @@
                 <el-row>
                     <el-col :span="20">
                         <el-form-item label="姓名：" prop="name" >
-                            <el-input v-model="zhanghao.name"></el-input>
+                            <el-input v-model="zhanghao.name" :disabled="isdisabled"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -180,6 +180,7 @@
                 id:null,
                 Visible:false,
                 editVisible:false,
+                isdisabled:false,
                 zhanghao:{
                     hetongid:null,
                     userid:null,
@@ -293,8 +294,16 @@
                 this.sels = sels;
             },
             change3(){
+                if(this.options3.length==0){
+                    this.isdisabled=false;
+                    this.zhanghao.name='';
+                    this.zhanghao.userid=null;
+                }
                 for (var x in this.options3){
                     if(this.options3[x].label==this.zhanghao.phone){
+                        if(this.options3[x].value!=null){
+                            this.isdisabled=true;
+                        }
                         if(this.options3[x].typeid==2)
                         {
                             this.$message({
@@ -302,6 +311,7 @@
                                 type: 'error'
                             });
                             this.zhanghao.phone='';
+                            this.isdisabled=false;
                             return false;
                         }
                         this.zhanghao.userid=this.options3[x].value;
