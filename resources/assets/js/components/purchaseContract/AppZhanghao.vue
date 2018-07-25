@@ -91,7 +91,7 @@
                 <el-row>
                     <el-col :span="20">
                         <el-form-item label="姓名：" prop="name" >
-                            <el-input v-model="zhanghao.name"></el-input>
+                            <el-input v-model="zhanghao.name" :disabled="isdisabled"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -199,6 +199,7 @@
                 tianjiadate:null,
                 Loading:null,
                 editLoading:null,
+                isdisabled:false,
                 zhanghaoRules:{
                     phone: [
                         { required: true, message: '不能为空'}
@@ -293,8 +294,16 @@
                 this.sels = sels;
             },
             change3(){
+                if(this.options3.length==0){
+                    this.isdisabled=false;
+                    this.zhanghao.name='';
+                    this.zhanghao.userid=null;
+                }
                 for (var x in this.options3){
                     if(this.options3[x].label==this.zhanghao.phone){
+                        if(this.options3[x].value!=null){
+                            this.isdisabled=true;
+                        }
                         if(this.options3[x].typeid==3)
                         {
                             this.$message({
@@ -319,7 +328,6 @@
                 this.fanghaoloading = true;
                 this.list = [];
                 getUserListByPhone(para).then((res) => {
-                    console.log(res.data);
                     for (let i in res.data) {
                         this.list.push({
                             value: res.data[i].id,
