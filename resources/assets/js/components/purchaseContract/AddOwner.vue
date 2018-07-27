@@ -14,17 +14,15 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="合同类型" prop="farenzhengjian" >
-                <el-radio-group v-model="owner.farenzhengjian">
+                <el-radio-group v-model="owner.farenzhengjian" @change="leixingChange" >
                     <el-radio label="l">两方</el-radio>
                     <el-radio label="s">三方</el-radio>
                 </el-radio-group>
             </el-form-item>
             <el-row v-if="owner.farenzhengjian=='l'">
                 <el-col :span="8">
-                    <el-form-item label="原合同编号" prop="oldBianhao" :rules="[
-                                {validator:checkbianhao, trigger:'blur'  }
-                        ]">
-                        <el-input v-model="owner.oldBianhao" :disabled="lydisabled"></el-input>
+                    <el-form-item label="原合同编号" prop="oldBianhao" >
+                        <el-input v-model="owner.oldBianhao" :disabled="lydisabled" @blur="checkbianhao"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -299,6 +297,15 @@
                     },]
                 }
             },
+            leixingChange(){
+                //只要类型发生改变，那么我就将变量初始化
+                if(this.$route.path=='/purchaseContract/add'||this.owner.farenzhengjian!=this.owner.farenzhengjian2){
+                     this.owner.oldBianhao='';
+                     this.owner.jujianfangid =null;
+                     this.owner.qudaorenid=null;
+                     this.owner.qudaoren='';
+                }
+            },
             valid(){
                 this.$refs.ownerForm.validate((valid) => {
                     this.owner.flag = valid;
@@ -404,20 +411,22 @@
                     this.owner.chanquanrenList.splice(index, 1)
                 }
             },
-            checkbianhao(rule,value,callback){
+            checkbianhao(){
+                var value=this.owner.oldBianhao;
                 if (value != ''&&value != null) {
                     let para = {
                         bianhao: value,
                     };
                     checkSFbianhao(para).then((res) => {
                         if (res.data.code != '200') {
-                            callback(res.data.msg);
-                        } else {
-                            callback();
+                            this.$message({
+                                message: res.data.msg,
+                                type: 'error'
+                            });
+                        }else{
+                            this.owner.oldID=res.data.data.id;
                         }
                     })
-                } else {
-                    callback();
                 }
             },
         },
