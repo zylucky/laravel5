@@ -366,8 +366,13 @@
                         appUserSave(para1).then((res)=>{
                             if(res.data.code!='200'){
                                 this.$message({
-                                    message: '数据没有保存成功',
+                                    message: res.data.msg,
                                     type: 'error'
+                                });
+                            }else{
+                                this.$message({
+                                    message: '数据保存成功',
+                                    type: 'success'
                                 });
                             }
                             this.resetForm('zhanghao');
@@ -399,7 +404,7 @@
                         appUserAlter(para).then((res)=>{
                             if(res.data.code!='200'){
                                 this.$message({
-                                    message: '数据没有保存成功',
+                                    message: res.data.msg,
                                     type: 'error'
                                 });
                             } else{

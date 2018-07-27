@@ -1,6 +1,6 @@
 <template>
     <el-form style="margin-top:2%" :model="copyForm" ref="copyForm" :rules="copyRules" label-position="top">
-        <el-form-item label="合同" prop="iscompletehetong" style="margin-bottom:0;">
+        <el-form-item label="合同" prop="iscompletehetong" style="margin-bottom: 24px;">
             <el-radio-group v-model="copyForm.iscompletehetong">
                 <el-radio :label="1">全</el-radio>
                 <el-radio :label="0">不全</el-radio>
@@ -26,7 +26,7 @@
             <img width="100%" :src="dialogImageUrl" alt="">
         </el-dialog>
         <div v-if="zuhuleixing==1" style="padding-top:10px;">
-            <el-form-item label="承租人身份证" prop="" style="margin-bottom:0;margin-top:40px;">
+            <el-form-item label="承租人身份证" prop="" style="margin-bottom: 24px;margin-top:40px;">
                 <el-radio-group v-model="copyForm.iscompleteczrzj">
                     <el-radio :label="1">全</el-radio>
                     <el-radio :label="0">不全</el-radio>
@@ -51,7 +51,7 @@
             </el-dialog>
         </div>
         <div v-if="zuhuleixing==2" style="padding-top:10px;">
-            <el-form-item label="营业执照" prop="" style="margin-bottom:0;margin-top:40px;">
+            <el-form-item label="营业执照" prop="" style="margin-bottom: 24px;margin-top:40px;">
                 <el-radio-group v-model="copyForm.iscompleteyyzz">
                     <el-radio :label="1">全</el-radio>
                     <el-radio :label="0">不全</el-radio>
@@ -77,7 +77,7 @@
             </el-dialog>
         </div>
         <div v-if="zuhuleixing==2" style="padding-top:10px;">
-            <el-form-item label="法人证件" prop="" style="margin-bottom:0;margin-top:40px;">
+            <el-form-item label="法人证件" prop="" style="margin-bottom: 24px;margin-top:40px;">
                 <el-radio-group v-model="copyForm.iscompletefrzj">
                     <el-radio :label="1">全</el-radio>
                     <el-radio :label="0">不全</el-radio>
@@ -102,7 +102,7 @@
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         </div>
-            <el-form-item label="承租人授权代理人委托书" prop="" style="margin-bottom:0;margin-top:40px;">
+            <el-form-item label="承租人授权代理人委托书" prop="" style="margin-bottom: 24px;margin-top:40px;">
                 <el-radio-group v-model="copyForm.iscompleteczrsqdlrwts">
                     <el-radio :label="1">全</el-radio>
                     <el-radio :label="0">不全</el-radio>
@@ -126,7 +126,7 @@
             <el-dialog v-model="dialogVisible" size="large">
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
-            <el-form-item label="委托人身份证" prop="" style="margin-bottom:0;margin-top:40px;">
+            <el-form-item label="委托人身份证" prop="" style="margin-bottom: 24px;margin-top:40px;">
                 <el-radio-group v-model="copyForm.iscompletewtrsfz">
                     <el-radio :label="1">全</el-radio>
                     <el-radio :label="0">不全</el-radio>

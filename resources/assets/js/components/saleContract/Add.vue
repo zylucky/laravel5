@@ -282,6 +282,13 @@
                 }
             },
             save:function () {
+                if (this.renter.oldBianhao != '' && this.renter.oldID == '') {
+                    this.$message({
+                        message: '原合同编号对应的合同不存在',
+                        type: 'error'
+                    });
+                    return false;
+                }
                 this.saveBtn = true;
                 this.submsg  = '提交';
                     var child_property = this.$refs.property.property;

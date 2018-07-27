@@ -23,10 +23,8 @@
             </el-form-item>
             <el-row v-if="renter.hetongtype==1">
                 <el-col :span="8">
-                    <el-form-item label="原合同编号" prop="oldBianhao" :rules="[
-                                {validator:checkbianhao, trigger:'blur'  }
-                        ]">
-                        <el-input v-model="renter.oldBianhao" :disabled="lydisabled"  ></el-input>
+                    <el-form-item label="原合同编号" prop="oldBianhao"  >
+                        <el-input v-model="renter.oldBianhao" :disabled="lydisabled"  @blur="checkbianhao"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -663,20 +661,22 @@
                     this.renter.chengzuren.splice(index, 1)
                 }
             },
-            checkbianhao(rule,value,callback){
+            checkbianhao(){
+                var value=this.renter.oldBianhao;
                 if (value != ''&&value != null) {
-                        let para = {
-                            bianhao: value,
-                        };
+                    let para = {
+                        bianhao: value,
+                    };
                     checkCFbianhao(para).then((res) => {
-                            if (res.data.code != '200') {
-                                callback(res.data.msg);
-                            } else {
-                                callback();
-                            }
-                        })
-                } else {
-                    callback();
+                        if (res.data.code != '200') {
+                            this.$message({
+                                message: res.data.msg,
+                                type: 'error'
+                            });
+                        }else{
+                            this.renter.oldID=res.data.data.id;
+                        }
+                    })
                 }
             },
 

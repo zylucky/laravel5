@@ -2,10 +2,11 @@
     <div>
         <el-row>
             <el-col :span="20">
-                <add-property ref="property" v-on:changeArea="computeArea()" :property="property" v-show="stepNum==1"></add-property>
+                <add-property ref="property" v-on:changeArea="computeArea()" :property="property"
+                              v-show="stepNum==1"></add-property>
                 <add-owner ref="owner" :owner="owner" v-show="stepNum==2"></add-owner>
-                <add-date ref="date" :addDate="addDate" :property="property"  v-show="stepNum==3"></add-date>
-                <history-optimize  v-show="stepNum==4"></history-optimize>
+                <add-date ref="date" :addDate="addDate" :property="property" v-show="stepNum==3"></add-date>
+                <history-optimize v-show="stepNum==4"></history-optimize>
                 <!--<add-tiaokuan ref="tiaokuan" :tiaoList="tiaoList" v-show="stepNum==4"></add-tiaokuan>-->
             </el-col>
             <div style="margin-bottom:51px;">
@@ -24,24 +25,41 @@
                     </el-form-item>
                 </el-form>
                 <div style="margin-left: 30%">
-                <el-steps :space="80" direction="vertical" :active="stepNum">
-                    <a href="javascript:;" onfocus="this.blur();" @click="stepNum=1"><el-step title="房间信息"></el-step></a>
-                    <a href="javascript:;" onfocus="this.blur();" @click="stepNum=2"><el-step title="业主信息"></el-step></a>
-                    <a href="javascript:;" onfocus="this.blur();" @click="stepNum=3"><el-step title="租期信息"></el-step></a>
-                    <!--<a href="javascript:;"  onfocus="this.blur();" @click="stepNum=4"><el-step title="补充协议"></el-step></a>-->
-                    <a href="javascript:" v-if="this.$route.path=='/purchaseContract/view'"  onfocus="this.blur();" @click="stepNum=4"><el-step  title="条款信息"></el-step></a>
+                    <el-steps :space="80" direction="vertical" :active="stepNum">
+                        <a href="javascript:;" onfocus="this.blur();" @click="stepNum=1">
+                            <el-step title="房间信息"></el-step>
+                        </a>
+                        <a href="javascript:;" onfocus="this.blur();" @click="stepNum=2">
+                            <el-step title="业主信息"></el-step>
+                        </a>
+                        <a href="javascript:;" onfocus="this.blur();" @click="stepNum=3">
+                            <el-step title="租期信息"></el-step>
+                        </a>
+                        <!--<a href="javascript:;"  onfocus="this.blur();" @click="stepNum=4"><el-step title="补充协议"></el-step></a>-->
+                        <a href="javascript:" v-if="this.$route.path=='/purchaseContract/view'" onfocus="this.blur();"
+                           @click="stepNum=4">
+                            <el-step title="条款信息"></el-step>
+                        </a>
 
-                </el-steps>
-                <el-button type="primary"  :disabled="saveBtn" v-show="editVisible" @click="save" style="margin-top:10px;">保存</el-button>
-                <el-button type="primary"  v-show="editVisible" :disabled="btnType" @click="submit" style="margin:0px;">{{submsg}}</el-button>
-                <div style="margin-top:10px;">
-                    <el-button type="primary" @click="preview"style="">打印预览</el-button>
-                </div>
-                <div style="margin-left:-50px;">
+                    </el-steps>
+                    <el-button type="primary" :disabled="saveBtn" v-show="editVisible" @click="save"
+                               style="margin-top:10px;">保存
+                    </el-button>
+                    <el-button type="primary" v-show="editVisible" :disabled="btnType" @click="submit"
+                               style="margin:0px;">{{submsg}}
+                    </el-button>
+                    <div style="margin-top:10px;">
+                        <el-button type="primary" @click="preview" style="">打印预览</el-button>
+                    </div>
+                    <div style="margin-left:-50px;">
 
-                    <el-button type="primary"  v-show="reviewVisible" @click="review(1)" style="margin-top:100px;">通&nbsp;&nbsp;&nbsp;过</el-button>
-                    <el-button type="warning"  v-show="reviewVisible" @click="review(0)" style="margin-top:100px;">不通过</el-button>
-                </div>
+                        <el-button type="primary" v-show="reviewVisible" @click="review(1)" style="margin-top:100px;">
+                            通&nbsp;&nbsp;&nbsp;过
+                        </el-button>
+                        <el-button type="warning" v-show="reviewVisible" @click="review(0)" style="margin-top:100px;">
+                            不通过
+                        </el-button>
+                    </div>
                 </div>
             </el-col>
         </el-row>
@@ -76,185 +94,191 @@
     export default{
         data(){
             return {
-                options:[
-                ],
-                contractVersion:null,
-                btnType:true,
-                btnView:false,
-                saveBtn:false,
-                submsg:'提交',
-                shenhe:null,//审核数据
-                reviewVisible:false,//审核显示
-                editVisible:true,
-                content:'',//审核批注
-                dialogFormVisible:false,
-                stepNum:1,
-                id:'',
-                bianhao:'',
-                zhuangtai:'',
-                property:{
-                    editableTabs2:[
+                options: [],
+                contractVersion: null,
+                btnType: true,
+                btnView: false,
+                saveBtn: false,
+                submsg: '提交',
+                shenhe: null,//审核数据
+                reviewVisible: false,//审核显示
+                editVisible: true,
+                content: '',//审核批注
+                dialogFormVisible: false,
+                stepNum: 1,
+                id: '',
+                bianhao: '',
+                zhuangtai: '',
+                property: {
+                    editableTabs2: [
                         {
                             title: '房间1',
                             name: '1',
                             content: 'New Tab content'
                         }
                     ],
-                    tabIndex:1,
-                    flag:null,
+                    tabIndex: 1,
+                    flag: null,
                     officeList: [{
-                            chanquanzhenghao:null,
-                            diyaren:null,
-                            fanghao:null,
-                            hetongid: null,
-                            isdiya: null,
-                            jianzhumianji: null,
-                            leixing:null,
-                            loudongName:null,
-                            loudongOmcId:null,
-                            loupanName:null,
-                            loupanOmcId:null,
-                            omcId:null,
-                            qianyuemianji:null,
-                            quyu:null,
-                        },],
+                        chanquanzhenghao: null,
+                        diyaren: null,
+                        fanghao: null,
+                        hetongid: null,
+                        isdiya: null,
+                        jianzhumianji: null,
+                        leixing: null,
+                        loudongName: null,
+                        loudongOmcId: null,
+                        loupanName: null,
+                        loupanOmcId: null,
+                        omcId: null,
+                        qianyuemianji: null,
+                        quyu: null,
+                    },],
                 },
-                owner:{
-                    flag:null,
-                    options1:[
+                owner: {
+                    flag: null,
+                    options1: [
                         {
-                            value:null,
-                            label:null,
+                            value: null,
+                            label: null,
                         }
                     ],
-                    options2:[
+                    options2: [
                         {
-                            value:null,
-                            label:null,
+                            value: null,
+                            label: null,
                         }
                     ],
-                    chengzufang:'',
-                    jujianfang:'',
-                    jujianfangid:null,
-                    jujianfangid2:null,
-                    qudaorenid:null,
-                    qudaoren:'',
-                    yezhuleixing:1,
-                    yezhuleixing2:1,
-                    farenzhengjian:'s',
+                    chengzufang: '',
+                    jujianfang: '',
+                    jujianfangid: null,
+                    jujianfangid2: null,
+                    qudaorenid: null,
+                    qudaoren: '',
+                    yezhuleixing: 1,
+                    yezhuleixing2: 1,
+                    farenzhengjian: 'l',
+                    farenzhengjian2: 'l',
                     //产权人
-                    chanquanrenList:[
+                    chanquanrenList: [
                         {
-                            name:'',
-                            faren:'',
-                            zhengjian:'',
-                            tel:'',
-                            sex:1,
-                            hetongid:null,
+                            name: '',
+                            faren: '',
+                            zhengjian: '',
+                            tel: '',
+                            sex: 1,
+                            hetongid: null,
                         },
                     ],
                     //收款人
-                    shoukuanren:'',
-                    zhanghao:'',
-                    kaihuhang:'',
+                    shoukuanren: '',
+                    zhanghao: '',
+                    kaihuhang: '',
                     //代理人
-                    dailirenName:'',
-                    dailirenTel:'',
-                    dailirenSex:1,
-                    dailirenId:'',
+                    dailirenName: '',
+                    dailirenTel: '',
+                    dailirenSex: 1,
+                    dailirenId: '',
                     //签约人
-                    qianyuerenName:'',
-                    qianyuerenTel:'',
-                    qianyuerenSex:1,
-                    qianyuerenId:'',
-                    oldBianhao:'',
-                    oldID:'',
+                    qianyuerenName: '',
+                    qianyuerenTel: '',
+                    qianyuerenSex: 1,
+                    qianyuerenId: '',
+                    oldBianhao: '',
+                    oldID: '',
                 },
                 addDate: {
-                    actualrent:null,
-                    flag:null,
-                    startdate:'',//租期开始时间
-                    enddate:'',//租期结束时间
+                    actualrent: null,
+                    flag: null,
+                    startdate: '',//租期开始时间
+                    enddate: '',//租期结束时间
                     shoufangdate: '',//收房日期
                     qianyuedate: '',//签约日期
                     mianzufangshi: [],//免租方式
                     mianzuqiList: [{
-                        startdate:'',//免租开始
-                        enddate:'',//免租结束
-                        mianzufangshi:'',
+                        startdate: '',//免租开始
+                        enddate: '',//免租结束
+                        mianzufangshi: '',
                     }],
-                    fukuanFangshiList:[{
-                        startdate:'',//开始
-                        enddate:'',//结束
-                        yajinyue:'',
-                        zujinyue:'',
+                    fukuanFangshiList: [{
+                        startdate: '',//开始
+                        enddate: '',//结束
+                        yajinyue: '',
+                        zujinyue: '',
                     }],
-                    yajin:'',//押金
-                    zongyingfuzujin:'',//总租金
-                    yongjin:'',//佣金
-                    tiqianfukuantian:'',//提前付款天数
-                    beianqixian:'',
-                    yajinfukuanri:'',//押金付款日
-                    shouqifukuanri:'',//首期租金付款日
-                    erqifukuanri:'',//二期付款
-                    sanqifukuanri:'',//三期付款
-                    buchongtiaokuan:'',//补充条款
-                    yanqizujin:'',
-                    zujinList:[{
-                            startdate:'',
-                            enddate:'',
-                            yuezujin:'',
-                            price:'',
-                            dizengfangshi:'',
-                            dizengliang:'',
-                        }],
-                    jiafangfeiyong:[],
-                    yifangfeiyong:[],
-                    yingyezhizhao:'',
+                    yajin: '',//押金
+                    zongyingfuzujin: '',//总租金
+                    yongjin: '',//佣金
+                    tiqianfukuantian: '',//提前付款天数
+                    beianqixian: '',
+                    yajinfukuanri: '',//押金付款日
+                    shouqifukuanri: '',//首期租金付款日
+                    erqifukuanri: '',//二期付款
+                    sanqifukuanri: '',//三期付款
+                    buchongtiaokuan: '',//补充条款
+                    yanqizujin: '',
+                    zujinList: [{
+                        startdate: '',
+                        enddate: '',
+                        yuezujin: '',
+                        price: '',
+                        dizengfangshi: '',
+                        dizengliang: '',
+                    }],
+                    jiafangfeiyong: [],
+                    yifangfeiyong: [],
+                    yingyezhizhao: '',
                 },
-                tiaoList:[],
+                tiaoList: [],
 
             }
         },
-        components:{
+        components: {
             AddProperty,
             AddOwner,
             AddDate,
             AddTiaokuan,
             HistoryOptimize
         },
-        methods:{
+        methods: {
             submit(){
                 this.$refs.owner.valid();
                 this.$refs.property.valid();
                 this.$refs.date.valid();
-                if(this.property.flag && this.owner.flag && this.addDate.flag){
-                    let  para = {
-                        id:this.id,
-                        bianhao:this.bianhao,
-                        zd:this.property.officeList[0].loudongOmcId,
+                if (this.property.flag && this.owner.flag && this.addDate.flag) {
+                    let para = {
+                        id: this.id,
+                        bianhao: this.bianhao,
+                        zd: this.property.officeList[0].loudongOmcId,
                     };
-                    submitPurchaseContract(para).then((res)=>{
-                        if(res.data.code == 200)　{
+                    submitPurchaseContract(para).then((res) => {
+                        if (res.data.code == 200) {
                             this.$message({
                                 message: '提交成功',
                                 type: 'success'
                             });
                             history.go(-1);
                             this.btnType = true;
-                            this.submsg  = '已提交';
-                        }else{
+                            this.submsg = '已提交';
+                        } else {
                             this.$message({
-                                message:res.data.msg,
-                                type:'error'
+                                message: res.data.msg,
+                                type: 'error'
                             })
                         }
                     })
                 }
-                else{
-                    if(this.property.flag==false){this.stepNum = 3;}
-                    if(this.owner.flag==false){this.stepNum = 2;}
-                    if(this.addDate.flag==false){this.stepNum = 1;}
+                else {
+                    if (this.property.flag == false) {
+                        this.stepNum = 3;
+                    }
+                    if (this.owner.flag == false) {
+                        this.stepNum = 2;
+                    }
+                    if (this.addDate.flag == false) {
+                        this.stepNum = 1;
+                    }
                     this.btnType = true;
                     this.$message({
                         message: '数据格式有问题，请检查',
@@ -263,29 +287,36 @@
                 }
             },
             save() {
-                this.submsg  = '提交';
+                if (this.owner.oldBianhao != '' && this.owner.oldID == '') {
+                    this.$message({
+                        message: '原合同编号对应的合同不存在',
+                        type: 'error'
+                    });
+                    return false;
+                }
+                this.submsg = '提交';
                 this.saveBtn = true;
-                    var child_property = this.$refs.property.property;//
-                    var child_owner  = this.$refs.owner.owner;//业主信息
-                    this.addDate.yingyezhizhao = this.addDate.yingyezhizhao.replace(/\n|\r\n/g,"<br>");
-                    var child_date = this.$refs.date.addDate;//日期
-                    var id = {
-                       id: this.id
-                    };
-                    var bianhao = {
-                        bianhao:this.bianhao,
-                    }
-                    var version ={
-                        version:this.contractVersion,
-                    }
-                    let para = Object.assign({}, child_property,child_owner,child_date,id,bianhao,version);
-                    addPurchaseContractInfo(para).then((res) => {
-                    if(res.data.code == 200)　{
+                var child_property = this.$refs.property.property;//
+                var child_owner = this.$refs.owner.owner;//业主信息
+                this.addDate.yingyezhizhao = this.addDate.yingyezhizhao.replace(/\n|\r\n/g, "<br>");
+                var child_date = this.$refs.date.addDate;//日期
+                var id = {
+                    id: this.id
+                };
+                var bianhao = {
+                    bianhao: this.bianhao,
+                }
+                var version = {
+                    version: this.contractVersion,
+                }
+                let para = Object.assign({}, child_property, child_owner, child_date, id, bianhao, version);
+                addPurchaseContractInfo(para).then((res) => {
+                    if (res.data.code == 200) {
                         //保存完以后可以得到一个返回的ID
                         //把数据分别赋值给三个组件的变量
 
-                        if(purchaseEditable.indexOf(parseInt(this.$route.query.status))>=0||this.$route.path=='/purchaseContract/add'){
-                            if(this.$route.query.zt!=1){
+                        if (purchaseEditable.indexOf(parseInt(this.$route.query.status)) >= 0 || this.$route.path == '/purchaseContract/add') {
+                            if (this.$route.query.zt != 1) {
                                 this.btnType = false;
                             }
 
@@ -296,10 +327,10 @@
                             message: '保存成功',
                             type: 'success'
                         });
-                    }else{
+                    } else {
                         this.$message({
-                            message:res.data.msg,
-                            type:'error'
+                            message: res.data.msg,
+                            type: 'error'
                         })
                     }
                 });
@@ -309,32 +340,32 @@
                 var flag = this.$route.query.flag;
                 //审核
                 this.shenhe = {
-                    hetongid:this.id,
-                    result:result,
-                    shenheFlg:flag
+                    hetongid: this.id,
+                    result: result,
+                    shenheFlg: flag
                 };
             },
             review2(){
-                let para = Object.assign({},{content:this.content},this.shenhe);
+                let para = Object.assign({}, {content: this.content}, this.shenhe);
                 reviewPurchaseContract(para).then((res) => {
-                    if(res.data.code == 200)　{
+                    if (res.data.code == 200) {
                         history.go(-1);
                         this.dialogFormVisible = false;
-                    }else{
+                    } else {
                         this.$message({
-                            message:res.data.msg,
-                            type:'error'
+                            message: res.data.msg,
+                            type: 'error'
                         })
                     }
                 });
             },
             //根据url得到的合同ID，来获取数据
             getPurchaseContract(id){
-                getPurchaseContractInfo(id).then((res)=>{
-                    if(res.data.code=='200'){
+                getPurchaseContractInfo(id).then((res) => {
+                    if (res.data.code == '200') {
                         //把数据分别赋值给三个组件的变量
                         this.fuzhi(res);
-                    }else {
+                    } else {
                         this.$message({
                             message: '获取数据失败',
                             type: 'error'
@@ -363,33 +394,33 @@
             getVersion(){
                 let para = {
                     category: 0,
-                    status:1,
+                    status: 1,
                 };
                 this.listLoading = true;
                 getContractVersionList(para).then((res) => {
                     this.options = res.data.data;
-                    if(this.contractVersion==null){
+                    if (this.contractVersion == null) {
                         this.contractVersion = this.options[0].version;
                     }
                 });
             },
             preview(){
                 var version = this.contractVersion;
-               let _this = this;
+                let _this = this;
                 let para = {
-                    id:_this.id,
+                    id: _this.id,
                 }
-                window.open('/#/purchaseContract/dump'+version+'?id='+_this.id+'&isdump=2&bianhao='+_this.bianhao)
-                window.open('/#/purchaseContract/dump'+version+'pub?id='+_this.id+'&isdump=2&bianhao='+_this.bianhao)
+                window.open('/#/purchaseContract/dump' + version + '?id=' + _this.id + '&isdump=2&bianhao=' + _this.bianhao)
+                window.open('/#/purchaseContract/dump' + version + 'pub?id=' + _this.id + '&isdump=2&bianhao=' + _this.bianhao)
             },
             fuzhi(res){
                 //console.log(res.data.data);
                 this.id = res.data.data.id;
                 this.zhuangtai = res.data.data.zhuangtai;
-                if(this.zhuangtai==4||this.zhuangtai==15){
+                if (this.zhuangtai == 4 || this.zhuangtai == 15) {
                     this.$notify({
                         title: '提示',
-                        message: res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content==null?'审核拒绝：无':'审核拒绝：'+res.data.data.shenheJiluList[res.data.data.shenheJiluList.length-1].content,
+                        message: res.data.data.shenheJiluList[res.data.data.shenheJiluList.length - 1].content == null ? '审核拒绝：无' : '审核拒绝：' + res.data.data.shenheJiluList[res.data.data.shenheJiluList.length - 1].content,
                         duration: 0,
                         type: 'warning',
                     });
@@ -398,16 +429,16 @@
                 this.contractVersion = res.data.data.version;
                 this.property.officeList = res.data.data.officeList;
                 this.property.editableTabs2 = [];
-                this.property.officeList.forEach((property,index)=>{
-                    index ++;
+                this.property.officeList.forEach((property, index) => {
+                    index++;
                     this.property.tabIndex = index;
                     this.property.editableTabs2.push({
-                        title: '房间'+index,
-                        name: index+'',
+                        title: '房间' + index,
+                        name: index + '',
                         content: 'New Tab content'
                     })
                 })
-                if(res.data.data.chanquanrenList.length>0){
+                if (res.data.data.chanquanrenList.length > 0) {
                     this.owner.chanquanrenList = res.data.data.chanquanrenList;
                 }
                 this.owner.chengzufang = res.data.data.chengzufang;
@@ -425,6 +456,7 @@
                 this.owner.yezhuleixing = res.data.data.yezhuleixing;
                 this.owner.farenzhengjian = res.data.data.farenzhengjian;
                 this.owner.yezhuleixing2 = res.data.data.yezhuleixing;
+                this.owner.farenzhengjian2 = res.data.data.farenzhengjian;
                 this.owner.shoukuanren = res.data.data.shoukuanren;
                 this.owner.kaihuhang = res.data.data.kaihuhang;
                 this.owner.zhanghao = res.data.data.zhanghao;
@@ -436,8 +468,8 @@
                 this.owner.qianyuerenTel = res.data.data.qianyuerenTel;
                 this.owner.qianyuerenSex = res.data.data.qianyuerenSex;
                 this.owner.qianyuerenId = res.data.data.qianyuerenId;
-                this.owner.oldBianhao= res.data.data.oldBianhao;
-                this.owner.oldID= res.data.data.oldID;
+                this.owner.oldBianhao = res.data.data.oldBianhao;
+                this.owner.oldID = res.data.data.oldID;
                 this.addDate.startdate = res.data.data.startdate;
                 this.addDate.enddate = res.data.data.enddate;
                 this.addDate.shoufangdate = res.data.data.shoufangdate;
@@ -445,8 +477,9 @@
                 this.addDate.mianzufangshi = res.data.data.mianzufangshi;
                 this.addDate.mianzuqiList = res.data.data.mianzuqiList;
                 this.addDate.fukuanFangshiList = res.data.data.fukuanFangshiList;
-                this.addDate.fukuanFangshiList.sort(function(a,b){
-                    return a.startdate-b.startdate})
+                this.addDate.fukuanFangshiList.sort(function (a, b) {
+                    return a.startdate - b.startdate
+                })
                 this.addDate.yajin = res.data.data.yajin;
                 this.addDate.zongyingfuzujin = res.data.data.zongyingfuzujin;
                 this.addDate.yongjin = res.data.data.yongjin;
@@ -459,23 +492,23 @@
                 this.addDate.sanqifukuanri = res.data.data.sanqifukuanri;
                 this.addDate.buchongtiaokuan = res.data.data.buchongtiaokuan;
                 this.addDate.zujinList = res.data.data.zujinList;
-                this.addDate.zujinList.sort(function(a,b){
-                    return a.startdate-b.startdate})
+                this.addDate.zujinList.sort(function (a, b) {
+                    return a.startdate - b.startdate
+                })
                 this.addDate.yanqizujin = res.data.data.yanqizujin;
                 //this.addDate.checkList = res.data.data.checkList;
                 this.addDate.jiafangfeiyong = res.data.data.jiafangfeiyong;
                 this.addDate.yifangfeiyong = res.data.data.yifangfeiyong;
-                var reg=new RegExp("<br>","g"); //创建正则RegExp对象
-                this.addDate.yingyezhizhao = res.data.data.yingyezhizhao.replace(reg,"\n");
-
+                var reg = new RegExp("<br>", "g"); //创建正则RegExp对象
+                this.addDate.yingyezhizhao = res.data.data.yingyezhizhao.replace(reg, "\n");
 
 
                 //给条款的每一条数据都添加一个属性字段show
-                for (let x in res.data.data.tiaoList){
+                for (let x in res.data.data.tiaoList) {
                     res.data.data.tiaoList[x].show = false;
-                    for (let y in res.data.data.tiaoList[x].kuanList){
+                    for (let y in res.data.data.tiaoList[x].kuanList) {
                         res.data.data.tiaoList[x].kuanList[y].show = false;
-                        for (let z in res.data.data.tiaoList[x].kuanList[y].xiangList){
+                        for (let z in res.data.data.tiaoList[x].kuanList[y].xiangList) {
                             res.data.data.tiaoList[x].kuanList[y].xiangList[z].show = false;
                         }
                     }
@@ -485,12 +518,12 @@
             disabledInput(){
                 var allInputs = document.getElementsByTagName('input');
                 var textArea = document.getElementsByTagName('textarea');
-                for (let i=0; i<allInputs.length; i++){
-                    allInputs[i].disabled="true";
+                for (let i = 0; i < allInputs.length; i++) {
+                    allInputs[i].disabled = "true";
                     allInputs[i].parentNode.className += " is-disabled";
                 }
-                for (let i=0; i<textArea.length; i++){
-                    textArea[i].disabled="true";
+                for (let i = 0; i < textArea.length; i++) {
+                    textArea[i].disabled = "true";
                     textArea[i].parentNode.className += " is-disabled";
                 }
 
@@ -498,12 +531,12 @@
             computeArea(){
                 //1.先计算面积综合
                 var areaToal = 0;
-                this.property.officeList.forEach((property,index)=>{
+                this.property.officeList.forEach((property, index) => {
                     areaToal += property.qianyuemianji;
                 })
                 //2.计算单价
-                this.addDate.zujinList.forEach((item,index)=>{
-                    var perPrice = (item.yuezujin*12/365/areaToal).toFixed(2);
+                this.addDate.zujinList.forEach((item, index) => {
+                    var perPrice = (item.yuezujin * 12 / 365 / areaToal).toFixed(2);
                     this.addDate.zujinList[index].price = parseFloat(perPrice);
                 })
             }
@@ -511,29 +544,33 @@
         mounted() {
             var flag = this.$route.query.flag;
             //根据url得到的合同ID，来获取数据
-            if(this.$route.query.id!=null){
+            if (this.$route.query.id != null) {
                 this.getPurchaseContract(this.$route.query);
             }
             //审核页面input禁用
-            if(this.$route.path=='/purchaseContract/review'){
-                this.reviewVisible =true;
-                this.editVisible   =false;
+            if (this.$route.path == '/purchaseContract/review') {
+                this.reviewVisible = true;
+                this.editVisible = false;
                 var _this = this;
-                function  hello() {
+
+                function hello() {
                     _this.disabledInput();
                 }
-                setTimeout(hello,500);
+
+                setTimeout(hello, 500);
             }
-            if(this.$route.path=='/purchaseContract/view'){
-                this.editVisible   =false;
+            if (this.$route.path == '/purchaseContract/view') {
+                this.editVisible = false;
                 var _this = this;
-                function  hello() {
+
+                function hello() {
                     _this.disabledInput();
                 }
-                setTimeout(hello,500);
+
+                setTimeout(hello, 500);
             }
             //新增页面获取默认条款
-            if(this.$route.path=='/purchaseContract/add'){
+            if (this.$route.path == '/purchaseContract/add') {
                 //this.getTiaokuan();
             }
 
