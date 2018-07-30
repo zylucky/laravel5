@@ -103,7 +103,7 @@ export const isCopyComplete= params => { return axios.post(`${base}/purchaseCont
 export const isCopyCompleteList= params => { return axios.get(`${base}/purchaseContract/getCopyComplete`, {params:params}); };//列表
 export const zhanghaoSavePurchaseContract= params => { return axios.post(`${base}/purchaseContract/zhanghaoSave`, {params:params}); };//保存付款账号的数据
 export const getZhanghaoPurchaseContractList= params => { return axios.get(`${base}/purchaseContract/getZhanghaoList`, {params:params}); };//获取账号数据的列表
-export const removeZhanghaoPurchaseContract= params => { return axios.get(`${base}/purchaseContract/deleteZhanghao`, {params:params}); };//删除扫描建
+export const removeZhanghaoPurchaseContract= params => { return axios.post(`${base}/purchaseContract/deleteZhanghao`, {params:params}); };//删除扫描建
 export const zhanghaoUpdataPurchaseContract= params => { return axios.post(`${base}/purchaseContract/zhanghaoAlter`, {params:params}); };//修改付款账号的数据
 export const getHedanPurchaseContractList= params => { return axios.get(`${base}/purchaseContract/getHedanList`, {params:params}); };//获取账号数据的列表
 export const hedanSavePurchaseContract= params => { return axios.post(`${base}/purchaseContract/hedanSave`, {params:params}); };//保存付款账号的数据
