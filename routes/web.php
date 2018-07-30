@@ -44,7 +44,7 @@ Route::group(['prefix' => 'purchaseContract'], function () {
     Route::get('getCopyComplete','Contract\purchaseContractController@getCopyComplete');
     Route::post('zhanghaoSave','Contract\purchaseContractController@zhanghaoSave');
     Route::get('getZhanghaoList','Contract\purchaseContractController@getZhanghaoList');
-    Route::get('deleteZhanghao','Contract\purchaseContractController@deleteZhanghao');
+    Route::post('deleteZhanghao','Contract\purchaseContractController@deleteZhanghao');
     Route::post('zhanghaoAlter','Contract\purchaseContractController@zhanghaoAlter');
     Route::post('hedanSave','Contract\purchaseContractController@hedanSave');
     Route::get('getHedanList','Contract\purchaseContractController@getHedanList');
