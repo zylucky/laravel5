@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Exception;
+
 /**
  *
  */
@@ -87,12 +89,21 @@ left join users gju on users.butlerId = gju.id
         if(isset($input['parentId'])){
             $user->parentId = $input['parentId'];
         }
-        if($user->save()){
+        try{
+            if($user->save()){
+                return [
+                    'msg'=>'保存成功！',
+                    'code'=>200
+                ];
+            }
+        }catch (Exception $ex){
             return [
-                'msg'=>'保存成功！',
-                'code'=>200
+                'msg'=>'保存失败！失败原因是'.$ex->getMessage(),
+                'code'=>300
             ];
         }
+
+
     }
     public function editUser(Request $request)
     {

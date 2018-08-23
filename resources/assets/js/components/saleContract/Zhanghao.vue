@@ -2,7 +2,7 @@
     <el-row>
         <el-row>
             <div style="margin-top:30px;list-style-type:none;"></div>
-            <li v-for="xsOffice in xsOffice" style="list-style-type:none;" >
+            <li   style="list-style-type:none;" >
                 <el-row>
                     <el-col :span="6">
                         <span>合同编号：{{bianhao}}</span>
@@ -11,13 +11,13 @@
                         <span>合同类型：出房合同</span>
                     </el-col>
                     <el-col :span="4">
-                        <span >楼盘：{{xsOffice.loupanName}}</span>
+                        <span >楼盘：{{xsOffice[0].loupanName}}</span>
                     </el-col>
                     <el-col :span="4">
-                        <span >楼栋：{{xsOffice.loudongName}}</span>
+                        <span >楼栋：{{xsOffice[0].loudongName}}</span>
                     </el-col>
                     <el-col :span="4">
-                        <span>房间号： {{xsOffice.fanghao}}{{subleaseno}}</span>
+                        <span>房间号： {{xsOffice[0].fanghao}} </span>
                     </el-col>
                      <el-col :span="0" style="margin-rigjt:0;float:right;margin-top:50;">
                         <el-button type="primary" class="el-icon-plus" @click="addContract" v-if="fun('saleContactZHAdd')"> 新增</el-button>
@@ -513,14 +513,23 @@
             fuzhi(res){
                 this.hetongid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
-                this.xsOffice = res.data.data.xsOffice;
-                this.subleaseno = res.data.data.subleaseno;
+                this.xsOffice = res.data.data.xsOffice
+                var fj="";
+                for (var x in this.xsOffice){
+                    fj=fj+this.xsOffice[x].fanghao+"-"+this.xsOffice[x].subleaseno+",";
+                }
+                var reg = new RegExp( '-null' , "g" );
+                fj=fj.replace( reg , '' );
+                this.xsOffice[0].fanghao = fj.substring(0,fj.length-1);
+
                 //console.log(this.xsOffice)
             },
             resetForm(formName) {
                 this.$refs[formName].resetFields();
             }
         },
+
+
         mounted(){
             this.purchaseZhanghaoContractList();
             this.zhanghao.hetongid = this.$route.query.id;
