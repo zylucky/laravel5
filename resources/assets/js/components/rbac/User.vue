@@ -282,13 +282,13 @@
                         { required: true, message: '请输入姓名', trigger: 'blur' }
                     ],
                     sex:[
-                        {required: true, message:'输入性别' }
+                        {required: true, message:'不能为空' }
                     ],
                     ht_query_flg:[
                         { required: true, message:'不能为空',trigger:'blur' },
                     ],
                     email:[
-                        {required: true, message:'输入邮箱',trigger:'blur' }
+                        {required: true, message:'不能为空',trigger:'blur' }
                     ],
 
                 },
@@ -600,10 +600,17 @@
                             addUser(para).then((res) => {
                                 this.addLoading = false;
                                 //NProgress.done();
+                                if(res.data.code==200){
                                 this.$message({
                                     message: '提交成功',
                                     type: 'success'
-                                });
+                                });}
+                                else{
+                                    this.$message({
+                                        message: res.data.msg,
+                                        type: 'error'
+                                    });
+                            }
                                 this.$refs['addForm'].resetFields();
                                 this.addFormVisible = false;
                                 this.getUsers();

@@ -2,7 +2,7 @@
     <el-row>
         <el-row>
             <div style="margin-top:30px;"></div>
-            <li v-for="officeList in officeList" style="list-style-type:none;">
+            <li  style="list-style-type:none;">
                 <el-row>
                     <el-col :span="6">
                         <span>合同编号：{{bianhao}}</span>
@@ -11,13 +11,13 @@
                         <span>合同类型：出房合同</span>
                     </el-col>
                     <el-col :span="4">
-                        <span >楼盘：{{officeList.loupanName}}</span>
+                        <span >楼盘：{{officeList[0].loupanName}}</span>
                     </el-col>
                     <el-col :span="4">
-                        <span >楼栋：{{officeList.loudongName}}</span>
+                        <span >楼栋：{{officeList[0].loudongName}}</span>
                     </el-col>
                     <el-col :span="4">
-                        <span>房间号： {{officeList.fanghao}}</span>
+                        <span>房间号： {{officeList[0].fanghao}}</span>
                     </el-col>
                     <el-col :span="0" style="margin-rigjt:0;float:right;margin-top:50;">
                         <el-button type="primary" class="el-icon-plus" v-if="fun('purchaseContactEdit')"  @click="addContract"> 新增</el-button>
@@ -631,6 +631,11 @@
                 this.hedan.qiandanren.contractid = res.data.data.id;
                 this.bianhao = res.data.data.bianhao;
                 this.officeList = res.data.data.officeList;
+                var fj="";
+                for (var x in this.officeList){
+                    fj=fj+this.officeList[x].fanghao +",";
+                }
+                this.officeList[0].fanghao = fj.substring(0,fj.length-1);
             },
             resetForm(formName) {
                 this.$refs[formName].resetFields();
