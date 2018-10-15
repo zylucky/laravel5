@@ -491,8 +491,14 @@
                     confirmSaleContract(para).then((res)=>{
                     if(res.data.code=="200"){
                         this.saleContractList();
+                        if(version == 'x20180907' || version == 'x20180927'){
+                            window.open('/#/saleContract/dump'+version+'homepage?id=' + row.id+'&isdump=1');
+                        }
                         window.open('/#/saleContract/dump'+version+'?id=' + row.id+'&isdump=1');
                         window.open('/#/saleContract/dump'+version+'pub?id=' + row.id+'&isdump=1');
+                        if(version == 'x20180907' || version == 'x20180927'){
+                            window.open('/#/saleContract/dump'+version+'enclosure?id=' + row.id+'&isdump=1');
+                        }
                         }
                     });
                     //window.open('/#/purchaseContract/dump?id='+row.id)

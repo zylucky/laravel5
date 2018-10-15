@@ -600,7 +600,7 @@
         mounted(){
             //获取合同的详细信息
             this.getPurchaseContract(this.$route.query);
-            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人 - - - - - - - '+'合同编号:'+this.$route.query.bianhao;
+            document.title = '合同编号:'+this.$route.query.bianhao;
             if(this.$route.query.isdump==1){
                 this.historyOptimize = false;
             }else if(this.$route.query.isdump==2) {

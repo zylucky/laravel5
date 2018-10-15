@@ -13,7 +13,7 @@
             <br>联系方式：<input type="text" name="" style="width:180px;" disabled value="">&nbsp;&nbsp;联系方式：<input type="text" name="" style="width:185px;font-size:10px" value=""><br>
             <font>_______年____月____日</font>
             <font style="margin-left: 110px;" >_______年____月____日</font><br>
-            <br>
+            <br><br><br>
             <p v-if="farenzhengjian=='s'">
                 <b> 居间方（丙方）：<input type="text" name="" style="width:188px;font-size:10px" v-model="jujianfang"></b><br>
                 房地产经纪人：<input type="text" name="" style="width:151px;font-size:10px" value="">
@@ -90,7 +90,7 @@
         },
         mounted(){
             this.getPurchaseContract(this.$route.query);
-            document.title = '华亮房产 -- 先锋地产机构、专业人、信誉人 - - - - - - -'+' 合同编号:'+this.$route.query.bianhao;
+            document.title = '合同编号:'+this.$route.query.bianhao;
         }
 
     }
