@@ -18,8 +18,15 @@ import PurchaseContractCheckOptimize from "./components/purchaseContract/Optimiz
 import PurchaseContractCheckOptimizeList from "./components/purchaseContract/HistoryOptimize.vue";
 import PurchaseContractDump20170719 from "./components/purchaseContract/Dump20170719.vue";//版本1
 import PurchaseContractDump20170406 from "./components/purchaseContract/Dump20170406.vue";//版本12
+import PurchaseContractDump20180907 from "./components/purchaseContract/Dump20180907.vue";//版本3
+import PurchaseContractDump20180927 from "./components/purchaseContract/Dump20180927.vue";//版本4
+import PurchaseContractDump20180907homepage from "./components/purchaseContract/Dump20180907_homepage.vue";//版本3
+import PurchaseContractDump20180927homepage from "./components/purchaseContract/Dump20180927_homepage.vue";//版本4
+import PurchaseContractDump20180927enclosure from "./components/purchaseContract/Dump20180927_enclosure.vue";//版本4
 import PurchaseContractDump20170719pub from "./components/purchaseContract/Dump20170719_pub.vue";//版本1补充条款
 import PurchaseContractDump20170406pub from "./components/purchaseContract/Dump20170406_pub.vue";//版本2补充条款
+import PurchaseContractDump20180907pub from "./components/purchaseContract/Dump20180907_pub.vue";//版本3补充条款
+import PurchaseContractDump20180927pub from "./components/purchaseContract/Dump20180927_pub.vue";//版本4补充条款
 import PurchaseContractSummary from "./components/purchaseContract/summary.vue";//新版摘要
 import PurchaseContractZhanghao from "./components/purchaseContract/Zhanghao.vue";
 import PurchaseContractHedan from "./components/purchaseContract/Hedan.vue";
@@ -39,6 +46,13 @@ import SaleContractDump20170719 from "./components/saleContract/Dump20170719.vue
 import SaleContractDump20170719pub from "./components/saleContract/Dump20170719_pub.vue";//版本1补充条款
 import SaleContractDump20180409 from "./components/saleContract/Dump20180409.vue";
 import SaleContractDump20180409pub from "./components/saleContract/Dump20180409_pub.vue";//版本1补充条款
+import SaleContractDump20180907homepage from "./components/saleContract/Dump20180907_homepage.vue";
+import SaleContractDump20180907 from "./components/saleContract/Dump20180907.vue";
+import SaleContractDump20180907pub from "./components/saleContract/Dump20180907_pub.vue";//版本3补充条款
+import SaleContractDump20180927homepage from "./components/saleContract/Dump20180927_homepage.vue";
+import SaleContractDump20180927 from "./components/saleContract/Dump20180927.vue";
+import SaleContractDump20180927pub from "./components/saleContract/Dump20180927_pub.vue";//版本4补充条款
+import SaleContractDump20180927enclosure from "./components/saleContract/Dump20180927_enclosure.vue";//版本4补充条款
 import SaleContractZhanghao from "./components/saleContract/Zhanghao.vue";
 import SaleContractHedan from "./components/saleContract/Hedan.vue";
 import SaleContractJiaogedan from "./components/saleContract/jiaogedan.vue";
@@ -300,6 +314,36 @@ let routes = [
         component: PurchaseContractDump20170406,
         name: '收房合同打印',
         hidden: true
+    },{
+        //版本3
+        path:'/purchaseContract/dumps20180907',
+        component: PurchaseContractDump20180907,
+        name: '收房合同打印',
+        hidden: true
+    },{
+        //版本4
+        path:'/purchaseContract/dumps20180927',
+        component: PurchaseContractDump20180927,
+        name: '收房合同打印',
+        hidden: true
+    }, {
+        //版本3
+        path:'/purchaseContract/dumps20180907homepage',
+        component: PurchaseContractDump20180907homepage,
+        name: '收房合同打印',
+        hidden: true
+    }, {
+        //版本4
+        path:'/purchaseContract/dumps20180927homepage',
+        component: PurchaseContractDump20180927homepage,
+        name: '收房合同打印',
+        hidden: true
+    },{
+        //版本4
+        path:'/purchaseContract/dumps20180927enclosure',
+        component: PurchaseContractDump20180927enclosure,
+        name: '收房合同打印',
+        hidden: true
     },
     {
         //版本1
@@ -311,6 +355,18 @@ let routes = [
         //版本1
         path:'/purchaseContract/dumps20170406pub',
         component: PurchaseContractDump20170406pub,
+        name: '收房打印补充条款',
+        hidden: true
+    },{
+        //版本3
+        path:'/purchaseContract/dumps20180907pub',
+        component: PurchaseContractDump20180907pub,
+        name: '收房打印补充条款',
+        hidden: true
+    },{
+        //版本4
+        path:'/purchaseContract/dumps20180927pub',
+        component: PurchaseContractDump20180927pub,
         name: '收房打印补充条款',
         hidden: true
     },
@@ -361,6 +417,55 @@ let routes = [
         //版本1
         path:'/saleContract/dumpx20180409pub',
         component: SaleContractDump20180409pub,
+        name: '出房打印补充条款',
+        hidden: true
+    },
+    {
+        //版本3
+        path:'/saleContract/dumpx20180907homepage',
+        component: SaleContractDump20180907homepage,
+        name: '出方合同打印',
+        hidden: true
+    },
+    {
+        //版本4
+        path:'/saleContract/dumpx20180927homepage',
+        component: SaleContractDump20180927homepage,
+        name: '出方合同打印',
+        hidden: true
+    },
+    {
+        //版本3
+        path:'/saleContract/dumpx20180907',
+        component: SaleContractDump20180907,
+        name: '出方合同打印',
+        hidden: true
+    },
+    {
+        //版本4
+        path:'/saleContract/dumpx20180927',
+        component: SaleContractDump20180927,
+        name: '出方合同打印',
+        hidden: true
+    },
+    {
+        //版本3
+        path:'/saleContract/dumpx20180907pub',
+        component: SaleContractDump20180907pub,
+        name: '出房打印补充条款',
+        hidden: true
+    },
+    {
+        //版本4
+        path:'/saleContract/dumpx20180927pub',
+        component: SaleContractDump20180927pub,
+        name: '出房打印补充条款',
+        hidden: true
+    },
+    {
+        //版本4
+        path:'/saleContract/dumpx20180927enclosure',
+        component: SaleContractDump20180927enclosure,
         name: '出房打印补充条款',
         hidden: true
     },

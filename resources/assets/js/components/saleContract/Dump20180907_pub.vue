@@ -1,28 +1,35 @@
 <template>
     <div>
         <p>
-            <b>&nbsp;&nbsp;第十二条  补充条款</b> <br>
+            <b>&nbsp;&nbsp;第十三条  补充条款</b> <br>
             &nbsp; 以下条款内容与本合同其它各条款具备同等法律效力,若补充条款与本合同不一致或发生冲突时，应以补充条款为准。<br>
             <u v-html="buchongtiaokuan"></u>
             <br>
             <input v-if="buchongtiaokuan==null||iscompletefrzj==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
 
-            <b> 出租人（甲方）：<input type="text" name="" style="width:138px;font-size:10px" value="">承租人（乙方）：<input type="text" name="" style="width:143px;font-size:10px" value=""></b>　<br>
-            联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">联系地址：<input type="text" name="" style="width:185px" value="">
-            <br>联系方式：<input type="text" name="" style="width:180px;" disabled value="">联系方式：<input type="text" name="" style="width:185px;font-size:10px" value="">
-            <br>委托代理人 ：<input type="text" name="" style="width:160px;font-size:10px" value="">委托代理人：<input type="text" name="" style="width:165px;font-size:10px" value=""><br>
+            <b> 出租人（甲方）：<input type="text" name="" style="width:175px;font-size:10px" value=""></b>　<br>
+            联系地址：<input type="text" name="" style="width:217px;font-size:10px" value=""></span>
+            <br>联系方式：<input type="text" name="" style="width:217px;" disabled value="">
+            <br>资产管理代理机构：<input type="text" name="" style="width:160px;font-size:10px" value=""><br>
 
-            <font>_______年____月____日</font>&nbsp;&nbsp;
-            <font style="margin-left: 93px;" >_______年____月____日</font><br>
-            <br><br><br>
+            <font class="datemar">_______年____月____日</font>&nbsp;&nbsp;
+            <br><br><br><br>
+        <p style="margin-top: 34px;">
+            <b> <span style="display: inherit;">承租人（乙方）：<input type="text" name="" style="width:175px;font-size:10px" value=""></span></b>　<br>
+            <span style="display: initial;">联系地址：<input type="text" name="" style="width:217px" value=""></span>
+            <br><span style="display: initial;">联系方式：<input type="text" name="" style="width:217px;font-size:10px" value=""></span>
+            <br><span style="display: initial;">委托代理人：<input type="text" name="" style="width:202px;font-size:10px" value=""></span><br>
+
+            <font style="margin-left: 149px;" >_______年____月____日</font><br>
+            <br>
+        </p>
         <p v-if="hetongtype==2">
-            <b> 居间方（丙方）：<input type="text" name="" style="width:135px;font-size:10px" value=""></b><br>
-            房地产经纪人：<input type="text" name="" style="width:149px;font-size:10px" value="">
-            <br>资质证书号：<input type="text" name="" style="width:162px;font-size:10px" value="">
-            <br>联系地址：<input type="text" name="" style="width:176px;font-size:10px" value="">
-            <br>联系方式：<input type="text" name="" style="width:176px;font-size:10px" value=""><br>
-            <font>_______年____月____日</font>
+            <b> 居间方（丙方）：<input type="text" name="" style="width:178px;font-size:10px" value=""></b><br>
+        房地产经纪人及编号：<input type="text" name="" style="width:149px;font-size:10px" value="">
+            <br>联系地址：<input type="text" name="" style="width:218px;font-size:10px" value="">
+            <br>联系方式：<input type="text" name="" style="width:218px;font-size:10px" value=""><br>
+            <font class="datemar">_______年____月____日</font>
         </p>
     </div>
 </template>
@@ -58,6 +65,7 @@
         background-color:white;
         color:#000000;
     }
+    .datemar{margin-left: 152px;}
 </style>
 <script>
     import {getSaleContractInfo} from '../../api/api';

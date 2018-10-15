@@ -15,7 +15,7 @@
 
             <font>_______年____月____日</font>&nbsp;&nbsp;
             <font style="margin-left: 93px;" >_______年____月____日</font><br>
-            <br>
+            <br><br><br>
         <p v-if="hetongtype==2">
             <b> 居间方（丙方）：<input type="text" name="" style="width:135px;font-size:10px" value=""></b><br>
             房地产经纪人：<input type="text" name="" style="width:149px;font-size:10px" value="">
@@ -87,7 +87,7 @@
         },
         mounted(){
             this.getSaleContract(this.$route.query);
-            document.title = '北京幼狮科技有限公司 -- 为梦想、造支点 - - - - - - -  合同编号：'+this.$route.query.bianhao;
+            document.title = '合同编号：'+this.$route.query.bianhao;
             function  hello() {
                 window.print()
             }

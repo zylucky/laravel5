@@ -410,8 +410,15 @@
                 let para = {
                     id: _this.id,
                 }
+                if(version == 's20180907' || version == 's20180927'){
+                    window.open('/#/purchaseContract/dump'+version+'homepage?id='+_this.id+'&isdump=2&bianhao='+this.bianhao)
+                }
                 window.open('/#/purchaseContract/dump' + version + '?id=' + _this.id + '&isdump=2&bianhao=' + _this.bianhao)
                 window.open('/#/purchaseContract/dump' + version + 'pub?id=' + _this.id + '&isdump=2&bianhao=' + _this.bianhao)
+                if(version == 's20180927'){
+                    window.open('/#/purchaseContract/dump' + version + 'enclosure?id=' + _this.id + '&isdump=2&bianhao=' + _this.bianhao)
+                }
+
             },
             fuzhi(res){
                 //console.log(res.data.data);
@@ -524,7 +531,7 @@
                 }
                 for (let i = 0; i < textArea.length; i++) {
                     textArea[i].disabled = "true";
-                    textArea[i].parentNode.className += " is-disabled";
+//                    textArea[i].parentNode.className += " is-disabled";
                 }
 
             },
