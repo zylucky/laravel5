@@ -360,21 +360,30 @@
                     switch(this.renter.chengzufang)
                     {
                         case '彭亮':
-                       this.renter.shoukuanren = '彭亮';
-                            this.renter.kaihuhang = '民生银行北京国贸支行';
-                            this.renter.zhanghao = '6226 2201 3674 1880';
+                       this.renter.shoukuanren = '';
+                            this.renter.kaihuhang = '';
+                            this.renter.zhanghao = '';
+//                            this.renter.shoukuanren = '彭亮';
+//                            this.renter.kaihuhang = '民生银行北京国贸支行';
+//                            this.renter.zhanghao = '6226 2201 3674 1880';
 //                            this.renter.kaihuhang = '招商银行北京分行建外大街支行';
 //                            this.renter.zhanghao = '6214 8501 1231 5079';
                           break;
                         case '华溯商贸':
-                            this.renter.shoukuanren = '肖艳文';
-                            this.renter.kaihuhang = '民生银行国贸支行';
-                            this.renter.zhanghao = '6226 2201 3607 6386';
+                            this.renter.shoukuanren = '';
+                            this.renter.kaihuhang = '';
+                            this.renter.zhanghao = '';
+//                            this.renter.shoukuanren = '肖艳文';
+//                            this.renter.kaihuhang = '民生银行国贸支行';
+//                            this.renter.zhanghao = '6226 2201 3607 6386';
                             break;
                         case '幼狮科技':
-                            this.renter.shoukuanren = '北京幼狮科技有限公司';
-                            this.renter.kaihuhang = '工行北京天竺支行';
-                            this.renter.zhanghao = '0200 0901 1920 0218 968';
+                            this.renter.shoukuanren = '';
+                            this.renter.kaihuhang = '';
+                            this.renter.zhanghao = '';
+//                            this.renter.shoukuanren = '北京幼狮科技有限公司';
+//                            this.renter.kaihuhang = '工行北京天竺支行';
+//                            this.renter.zhanghao = '0200 0901 1920 0218 968';
                             break;
                         default:
                             this.renter.shoukuanren = '';

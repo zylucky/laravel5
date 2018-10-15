@@ -8,20 +8,24 @@
             <input v-if="buchongtiaokuan==null||buchongtiaokuan==''" type="text" name="" disabled style="width:600px;" value="以下空白">
             <br><br>
 
-            <b> 业主方（甲方）：<input type="text" name="" style="width:139px;font-size:10px" value="">&nbsp;&nbsp;管理方（乙方）：<input type="text" name="" style="width:119px;font-size:10px" value=""></b>　<br>
-            <b>委托代理人：<input type="text" name="" style="width:166px;font-size:10px" value=""></b><br>
-            联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">&nbsp;&nbsp;联系地址：<input type="text" name="" style="width:185px" value="">
-            <br>联系方式：<input type="text" name="" style="width:180px;" disabled value="">&nbsp;&nbsp;联系方式：<input type="text" name="" style="width:185px;font-size:10px" value=""><br>
-            <font>_______年____月____日</font>
-            <font style="margin-left:110px" >_______年____月____日</font><br>
-            <br><br><br>
-            <p v-if="farenzhengjian=='s'">
-                <b> 居间方（丙方）：</b><input type="text" style="width:188px;font-size:10px" v-model="jujianfang">
-                <br>联系地址：<input type="text" name="" style="width:180px;font-size:10px" value="">
-                <br>联系方式：<input type="text" name="" style="width:180px;font-size:10px" value="">
-                <br>
-                <font>_______年____月____日</font>
-            </p>
+            <b> 业主方（甲方）：<input type="text" name="" style="width:175px;font-size:10px" value=""></b>　<br>
+            <b>委托代理人：<input type="text" name="" style="width:202px;font-size:10px" value=""></b><br>
+            联系地址：<input type="text" name="" style="width:217px;font-size:10px" value="">
+            <br>联系方式：<input type="text" name="" style="width:217px;" disabled value=""><br>
+            <font class="datemar">_______年____月____日</font>
+            <br><br><br><br>
+            <b>管理方（乙方）：<input type="text" name="" style="width:175px;font-size:10px" value=""></b>　<br>
+            联系地址：<input type="text" name="" style="width:217px" value="">
+            <br>联系方式：<input type="text" name="" style="width:217px;font-size:10px" value=""><br>
+            <font style="margin-left:152px" >_______年____月____日</font><br>
+            <br>
+        <p v-if="farenzhengjian=='s'">
+            <b> 居间方（丙方）：</b><input type="text" style="width:175px;font-size:10px" v-model="jujianfang">
+            <br>联系地址：<input type="text" name="" style="width:217px;font-size:10px" value="">
+            <br>联系方式：<input type="text" name="" style="width:217px;font-size:10px" value="">
+            <br>
+            <font class="datemar">_______年____月____日</font>
+        </p>
         </p>
     </div>
 </template>
@@ -40,7 +44,7 @@
         width: 90%;
         height: 20%;
     }
-   .whole h1{
+    .whole h1{
         font-size:32px;
     }
     .whole span {
@@ -58,6 +62,7 @@
         background-color:white;
         color:#000000;
     }
+    .datemar{margin-left: 152px;}
 </style>
 <script>
     import {getPurchaseContractInfo} from '../../api/api';

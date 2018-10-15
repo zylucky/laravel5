@@ -397,8 +397,14 @@
                 let para = {
                     id:_this.id,
                 }
+                if(version == 'x20180907' || version == 'x20180927'){
+                    window.open('/#/saleContract/dump'+version+'homepage?id='+_this.id+'&isdump=2&bianhao='+this.bianhao)
+                }
                 window.open('/#/saleContract/dump'+version+'?id='+_this.id+'&isdump=2&bianhao='+this.bianhao)
                 window.open('/#/saleContract/dump'+version+'pub?id='+_this.id+'&isdump=2&bianhao='+this.bianhao)
+                if(version == 'x20180927'){
+                    window.open('/#/saleContract/dump'+version+'enclosure?id='+_this.id+'&isdump=2&bianhao='+this.bianhao)
+                }
             },
             fuzhi(res){
                 this.id = res.data.data.id;
@@ -526,7 +532,7 @@
                 }
                 for (let i=0; i<textArea.length; i++){
                     textArea[i].disabled="true";
-                    //textArea[i].parentNode.className += " is-disabled";
+//                    textArea[i].parentNode.className += " is-disabled";
                 }
 
             },

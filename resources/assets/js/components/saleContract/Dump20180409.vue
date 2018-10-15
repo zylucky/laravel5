@@ -631,7 +631,7 @@
             //
             //获取合同的详细信息
             this.getSaleContract(this.$route.query);
-            document.title = '北京幼狮科技有限公司 -- 为梦想、造支点 - - - - - - - 合同编号：'+this.$route.query.bianhao;
+            document.title = '合同编号：'+this.$route.query.bianhao;
             function  hello() {
                 window.print()
             }

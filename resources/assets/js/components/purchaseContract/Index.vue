@@ -551,8 +551,14 @@
                     dumpingPurchaseContract(para).then((res)=>{
                         if(res.data.code=="200"){
                             this.purchaseContractList();
+                            if(version == 's20180907' || version == 's20180927'){
+                                window.open('/#/purchaseContract/dump'+version+'homepage?id='+row.id+'&isdump=1')
+                            }
                             window.open('/#/purchaseContract/dump'+version+'?id='+row.id+'&isdump=1')
                             window.open('/#/purchaseContract/dump'+version+'pub?id='+row.id+'&isdump=1')
+                            if(version == 's20180927'){
+                                window.open('/#/purchaseContract/dump'+version+'enclosure?id='+row.id+'&isdump=1')
+                            }
                         }
                     });
                 })
