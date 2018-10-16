@@ -197,7 +197,7 @@
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>
         <div style="position: fixed;right:10%;top:50%;">
-            <el-button type="primary"   @click="save" style="margin-top:100px;">保存</el-button>
+            <el-button type="primary" v-if="fun('purchaseUploadEdit')"  @click="save" style="margin-top:100px;">保存</el-button>
             <!--<el-button type="warning"   @click="cansel" style="margin-top:100px;">取消</el-button>-->
         </div>
 
@@ -290,6 +290,10 @@
                 return isJPG && isLt2M;
             },
             handleRemove(file, fileList) {
+                if(!this.fun('purchaseUploadDel')){
+                    this.$message.error('你没有删除权限!');
+                    return false;
+                }
                 this.$confirm('确认删除吗?', '提示', {
                     type: 'warning'
                 }).then(() => {
