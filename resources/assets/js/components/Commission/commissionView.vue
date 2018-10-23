@@ -431,10 +431,10 @@
                     return newDate.toLocaleDateString() + ' ' + hour + ':' + minute + ':' + second;
                 }
             },
-						card_str(num){
-							var str=String(num).replace(/(\d{4})/g,'$1 ').replace(/\s*$/,'');
-							return str;
-						}
+			card_str(num){
+				var str=String(num).replace(/(\d{4})/g,'$1 ').replace(/\s*$/,'');
+				return str;
+			}
         }
     }
 </script>
