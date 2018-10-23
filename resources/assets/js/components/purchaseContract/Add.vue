@@ -531,7 +531,7 @@
                 }
                 for (let i = 0; i < textArea.length; i++) {
                     textArea[i].disabled = "true";
-//                    textArea[i].parentNode.className += " is-disabled";
+                    //textArea[i].parentNode.className += " is-disabled";
                 }
 
             },

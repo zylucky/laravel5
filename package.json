@@ -23,10 +23,15 @@
     "vue-router": "^2.5.3"
   },
   "dependencies": {
+    "css-loader": "^0.28.11",
     "element-ui": "^1.4.8",
     "font-awesome": "^4.7.0",
+<<<<<<< HEAD
     "node-sass": "^4.9.4",
     "sass-loader": "^7.1.0",
+=======
+    "viewerjs": "^1.2.1",
+>>>>>>> 4e8a8933a46c7e85295395b3686af5bce5e2b38a
     "vue-style-loader": "^4.1.2"
   }
 }
