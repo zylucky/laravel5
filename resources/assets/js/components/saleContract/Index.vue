@@ -1,12 +1,5 @@
 <template>
     <el-row >
-        <div class="big_box">
-            <ul id="img_box">
-                <li v-for="(item,index) in imgArr">
-                    <img :src="item" alt="">
-                </li>
-            </ul>
-        </div>
         <el-form :inline="true" :model="filters" class="demo-form-inline">
             <el-form-item label="">
                 <el-input v-model="filters.name" placeholder="请输入项目"></el-input>
@@ -170,22 +163,7 @@
     </el-row>
 </template>
 
-<style>
-    #img_box{
-        display: flex;
-    }
-    #img_box li{
-        width: 146px;
-        height: 146px;
-        border-radius: 5px;
-        overflow: hidden;
-        margin-right: 10px;
-    }
-    #img_box li img{
-        width: 100%;
-        height: 100%;
-    }
-</style>
+
 <script>
     import Viewer from 'viewerjs';
     import '../../../../../node_modules/viewerjs/dist/viewer.min.css';
@@ -273,14 +251,6 @@
                 lists:[],
                 listLoading: false,
                 sels: [],//列表选中列
-                imgArr:[
-                    'http://116.62.68.26/upload/2018-10-18/072b63012cd8e23b5cf70c84fd8a62a5.jpeg',
-                    'http://116.62.68.26/upload/2018-10-18/b052165834e427615e2f6303e4ae6561.jpeg',
-                    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538987750397&di=106be7a370b48812e9e7ed19e9c8eb16&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dpixel_huitu%252C0%252C0%252C294%252C40%2Fsign%3D896dc4cbde62853586edda61f99713aa%2Fd009b3de9c82d158de82e7888b0a19d8bc3e4282.jpg',
-                    'http://116.62.68.26/upload/2018-10-18/072b63012cd8e23b5cf70c84fd8a62a5.jpeg',
-                    'http://116.62.68.26/upload/2018-10-18/b052165834e427615e2f6303e4ae6561.jpeg',
-                    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538987750397&di=106be7a370b48812e9e7ed19e9c8eb16&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dpixel_huitu%252C0%252C0%252C294%252C40%2Fsign%3D896dc4cbde62853586edda61f99713aa%2Fd009b3de9c82d158de82e7888b0a19d8bc3e4282.jpg'
-                ],
             }
         },
         components:{
@@ -770,10 +740,6 @@
         },
         mounted(){
             this.saleContractList();
-            const ViewerDom = document.getElementById('img_box');
-            const viewer = new Viewer(ViewerDom, {
-                // 配置
-            })
         }
 
     }
