@@ -13,25 +13,20 @@
     "babel-loader": "^7.0.0",
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^3.2.3",
-    "css-loader": "^0.28.11",
+    "css-loader": "^0.28.1",
     "jquery": "^3.1.1",
     "laravel-mix": "^0.8.3",
     "lodash": "^4.17.4",
     "style-loader": "^0.17.0",
     "vue": "^2.1.10",
-    "vue-loader": "^12.2.2",
+    "vue-loader": "^12.0.3",
     "vue-router": "^2.5.3"
   },
   "dependencies": {
     "css-loader": "^0.28.11",
     "element-ui": "^1.4.8",
     "font-awesome": "^4.7.0",
-<<<<<<< HEAD
-    "node-sass": "^4.9.4",
-    "sass-loader": "^7.1.0",
-=======
     "viewerjs": "^1.2.1",
->>>>>>> 4e8a8933a46c7e85295395b3686af5bce5e2b38a
     "vue-style-loader": "^4.1.2"
   }
 }
