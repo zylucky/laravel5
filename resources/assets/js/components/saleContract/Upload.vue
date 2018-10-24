@@ -13,7 +13,8 @@
                 :headers="headers"
                 :data="data"
                 multiple
-                :on-preview="handlePictureCardPreview"
+                :on-preview="handlePictureCardPreview" 
+				:before-remove='handleRemove1'
                 :on-remove="handleRemove"
                 :on-success="handleSuccess"
                 :file-list="hetongList"
@@ -38,7 +39,8 @@
                     :headers="headers"
                     :data="data"
                     multiple
-                    :on-preview="handlePictureCardPreview"
+                    :on-preview="handlePictureCardPreview" 
+					:before-remove='handleRemove1'
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
                     :file-list="chengzuren"
@@ -64,7 +66,8 @@
                     :headers="headers"
                     :data="data"
                     multiple
-                    :on-preview="handlePictureCardPreview"
+                    :on-preview="handlePictureCardPreview" 
+					:before-remove='handleRemove1'
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
                     :file-list="yingyezhizhao"
@@ -90,7 +93,8 @@
                     :headers="headers"
                     :data="data"
                     multiple
-                    :on-preview="handlePictureCardPreview"
+                    :on-preview="handlePictureCardPreview" 
+					:before-remove='handleRemove1'
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
                     :file-list="faren"
@@ -115,7 +119,8 @@
                     :headers="headers"
                     :data="data"
                     multiple
-                    :on-preview="handlePictureCardPreview"
+                    :on-preview="handlePictureCardPreview" 
+					:before-remove='handleRemove1'
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
                     :file-list="chengzurenshouquan"
@@ -139,7 +144,8 @@
                     :headers="headers"
                     :data="data"
                     multiple
-                    :on-preview="handlePictureCardPreview"
+                    :on-preview="handlePictureCardPreview" 
+					:before-remove='handleRemove1'
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
                     :file-list="weituoren"
@@ -238,21 +244,21 @@
                 return isJPG && isLt2M;
             },
             handleRemove(file, fileList) {
-                if(!this.fun('saleUploadDel')){
-                    this.$message.error('你没有删除权限!');
-                    return false;
-                }
-                this.$confirm('确认删除吗?', '提示', {
-                    type: 'warning'
-                }).then(() => {
+
                     let para ={
                         id :file.id,
                     }
                     copySaleImageDelete(para).then((res)=>{});
-                })
 
-                //console.log(file.id);
             },
+			handleRemove1(file, fileList) {
+				if(!this.fun('purchaseUploadDel')){
+					this.$message.error('你没有删除权限!');
+					return false;
+				}
+				return this.$confirm('确定删除吗？');
+			},
+			
             handlePictureCardPreview(file) {
                 this.dialogImageUrl = file.url;
                 this.dialogVisible = true;
