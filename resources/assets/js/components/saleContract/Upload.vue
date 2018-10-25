@@ -249,9 +249,9 @@
                         id :file.id,
                     }
                     copySaleImageDelete(para).then((res)=>{});
-                })
-
-                //console.log(file.id);
+                }).catch(()=>{
+					fileList.push(file);
+				})
             },
             handlePictureCardPreview(file) {
                 this.dialogImageUrl = file.url;
@@ -274,6 +274,11 @@
                         this.chengzurenshouquan = res.data.data[5];//承租人授权
                         this.weituoren = res.data.data[6];//委托人
                         this.jiaogedan = res.data.data[9];//交割单
+						if(!this.fun('saleUploadDel')){
+							setTimeout(function(){
+								$('.el-upload-list--picture-card .el-upload-list__item-actions .el-upload-list__item-delete').remove();
+							})						
+						}
                     }
                 })
             },
