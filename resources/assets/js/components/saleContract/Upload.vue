@@ -246,7 +246,7 @@
                     type: 'warning'
                 }).then(() => {
                     let para ={
-                        id :file.id,
+                        id :file.id?file.id:file.response.data,
                     }
                     copySaleImageDelete(para).then((res)=>{});
                 }).catch(()=>{
