@@ -489,13 +489,15 @@
             handleDump(index, row){
                 getSaleContractInfo({id:row.id}).then((res) => {
                     var version = res.data.data.version;
+					var resoin = res;
                     let para = {
                         id: row.id,
                     }
                     confirmSaleContract(para).then((res)=>{
                     if(res.data.code=="200"){
                         this.saleContractList();
-                        if(version == 'x20180907' || version == 'x20180927'){
+						console.log(resoin);
+                        if(version == 'x20180907' || version == 'x20180927' || version == 'x20181101'){
                             window.open('/#/saleContract/dump'+version+'homepage?id=' + row.id+'&isdump=1');
                         }
                         window.open('/#/saleContract/dump'+version+'?id=' + row.id+'&isdump=1');
@@ -503,7 +505,11 @@
                         if(version == 'x20180907' || version == 'x20180927'){
                             window.open('/#/saleContract/dump'+version+'enclosure?id=' + row.id+'&isdump=1');
                         }
-                        }
+						
+						if(version == 'x20181101' && resoin.data.data.mianzuqiList.length > 0){
+							window.open('/#/saleContract/dump'+version+'suppleagree?id=' + row.id+'&isdump=1');
+						}
+						}
                     });
                     //window.open('/#/purchaseContract/dump?id='+row.id)
                 })
